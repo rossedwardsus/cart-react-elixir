@@ -144,7 +144,7 @@
 
                         
 
-                        $("#menu_items").html("<table><tr><td><table><tr><td>Chocolate Chip Scone-$2</td></tr><tr><td><img src=\"/images/chocolate_chip_scones.jpg\" style=\"border:10px solid black;\"></img></td></tr><tr><td><select id=\"12345\"><option value=\"\"></option><option value=\"1\">1</option></select></td></td></table></td><td><table><tr><td>Strawberry Scone-$2</td></tr><tr><td><img src=\"/images/chocolate_chip_scones.jpg\"></img></td></tr><tr><td><select id=\"67890\"><option value=\"\"></option><option value=\"1\">1</option></select></td></td></table></td></tr></table>");
+                        $("#menu_items").html("<table><tr><td><table><tr><td>Chocolate Chip Scone-$2</td></tr><tr><td><img src=\"/images/chocolate_chip_scones.jpg\" style=\"border:10px solid black;\"></img></td></tr><tr><td><select id=\"12345\"><option value=\"\"></option><option value=\"1\">1</option></select></td></td></table></td><td><table><tr><td>Strawberry Scone-$2</td></tr><tr><td><img src=\"/images/strawberry_scones.jpg\"></img></td></tr><tr><td><select id=\"67890\"><option value=\"\"></option><option value=\"1\">1</option></select></td></td></table></td></tr></table>");
 
                     //}else if(e.target.value == "members_choose"){
 
