@@ -20,8 +20,8 @@ defmodule SconeHomeElixir.LoginController do
     #IO.puts("email" <> email)
     #IO.puts("password" <> password)
 
-    query = from l in Login, where: l.email == "email1"
-    result1 = Repo.get_by(Login, email: "email1")
+    #query = from l in Login, where: l.email == "email1"
+    #result1 = Repo.get_by(Login, email: "email1")
 
     #result = Repo.all(query)
     #IO.puts(first(result).email)
