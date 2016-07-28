@@ -122,8 +122,8 @@
 
                       if(v.scone_id == e.target.id){
 
-                          alert(JSON.stringify("price " + (v.data.price * e.target.value)));
-                          sub_total = sub_total + "<font size=\"5\">" + v.data.name + " $" + (v.data.price * e.target.value + "</font><br>");
+                          //alert(JSON.stringify("price " + (v.data.price * e.target.value)));
+                          sub_total = sub_total + "<font size=\"5\">1 " + v.data.name + " x $" + (v.data.price * e.target.value + "</font><br>");
 
                       };
 
