@@ -30,7 +30,7 @@ defmodule SconeHomeElixir.LoginController do
     #end)
 
     #Enum.each(result1, fn(r1) ->
-        IO.puts("password1" <> result1.password)
+    #    IO.puts("password1" <> result1.password)
     #end)
 
     
