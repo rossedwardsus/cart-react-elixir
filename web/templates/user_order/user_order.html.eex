@@ -72,6 +72,8 @@
           </td>
           <td valign="top">
           <b>Subtotal</b>
+          <br>
+          <div id="sub_total"></div>
           </td>
           </tr>
           </table>
