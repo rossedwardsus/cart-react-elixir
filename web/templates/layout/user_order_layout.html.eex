@@ -136,7 +136,7 @@
 
               $("#order_type").on("change", function(e){
 
-                    alert(e.target.value);
+                    //alert(e.target.value);
 
                     //if(e.target.value == "preselected_no_members"){
 
