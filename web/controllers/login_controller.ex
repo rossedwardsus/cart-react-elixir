@@ -17,17 +17,17 @@ defmodule SconeHomeElixir.LoginController do
 
   def create(conn, %{"email" => email, "password" => password}) do
 
-    IO.puts("email" <> email)
-    IO.puts("password" <> password)
+    #IO.puts("email" <> email)
+    #IO.puts("password" <> password)
 
     query = from l in Login, where: l.email == "email1"
     result1 = Repo.get_by(Login, email: "email1")
 
-    result = Repo.all(query)
+    #result = Repo.all(query)
     #IO.puts(first(result).email)
-    Enum.each(result, fn(r) ->
-        IO.puts("password" <> r.password)
-    end)
+    #Enum.each(result, fn(r) ->
+    #    IO.puts("password" <> r.password)
+    #end)
 
     #Enum.each(result1, fn(r1) ->
         IO.puts("password1" <> result1.password)
@@ -49,10 +49,10 @@ defmodule SconeHomeElixir.LoginController do
     #render conn, "login.html"
     #conn
 
-    conn = Plug.Conn.put_resp_cookie(conn, "user_id", "12345")
+    #conn = Plug.Conn.put_resp_cookie(conn, "user_id", "12345")
 
     text conn, "hello"
-    redirect conn, to: "/user"
+    #redirect conn, to: "/user"
   end
 
   defp authenticate(conn, _) do
