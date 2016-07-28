@@ -3,7 +3,7 @@
        <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-          photo
+          add photo
           <br>
           <form action="/user/profile/photo" method="post" enctype="multipart/form-data">
           <input type="file" id="userprofile" name="userprofile">
