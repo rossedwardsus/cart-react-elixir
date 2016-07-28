@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello Phoenix!</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container" role="main">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+        </ul>
+        <span class="logo"></span>
+      </div>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <%= render @view_module, @view_template, assigns %>
+
+    </div> <!-- /container -->
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script>
+    </script>
+
+        $(document).ready(function() {
+
+              alert();
+
+              var order_items = [];
+
+              $("#guests").hide();
+              //$("#message_div").hide();
+              $("#delivery_datetime_onetime").hide();
+              $("#delivery_datetime_recurring").hide();
+              
+              document.getElementById('txtFileUpload').addEventListener('change', upload, false);
+
+              /*window.addEventListener("error", function (e) {
+                 alert("Error occured: " + JSON.stringify(e));
+                 return false;
+              })
+
+              $(window).error( 
+                function(e, url, line){
+                  //handle error
+                  alert(JSON.stringify(e));
+                }
+              );*/
+
+
+              $( "#datepicker" ).datepicker();
+
+              
+              function upload(evt) {
+                  //var printEventType = function(evt) {
+                    //alert('got event: ' + evt);
+
+                    //if (evt.type === 'loadstart') {
+                      //reader.abort();
+                    //}
+                  //};
+
+                  var file = evt.target.files[0];
+                    var reader = new FileReader();
+                    reader.readAsText(file);
+                    reader.onload = function(event) {
+                        var csvData = event.target.result.replace(/, /g , ",");;
+                        //alert(csvData);
+                        data = $.csv.toArrays(csvData);
+                        if (data && data.length > 0) {
+                          //alert('Imported -' + data.length + '- rows successfully!' + data[0][0]);
+                          var html = "<table>";
+                          $.each(data, function(index, data){
+
+                                html = html + "<tr><td>" + data[0] + "</td><td>" + data[1] + "</td></tr>";
+
+                          });
+                          $("#csv").html(html);
+                          //$("#csv").html(<table><tr><td>data[0][0]</td><td>data[0][1]</td></tr>);
+                        } else {
+                            alert('No data to import!');
+                        }
+                        //alert(csvData);
+                    }
+                    //reader.onerror = printEventType;
+                    //reader.onabort = printEventType;
+                
+              }
+
+              //$("select").on("change", function(e){
+
+                //    alert();
+
+              //})
+
+              $(document).on('change','select', function(e){
+
+                  //alert("id" + e.target.id);
+               
+                  //var chosen_scone = e.target.value.split(",");
+
+                  //order_items = {items: [{scone_id: chosen_scone[0], price: chosen_scone[1], quantity: chosen_scone[2]}]};
+                  //order_items.push({scone_id: e.target.id, price: chosen_scone[1], quantity: chosen_scone[2]});
+
+
+                  //alert(JSON.stringify(order_items));
+                  //alert("PROBANDO" + chosen_scone[2]);
+
+                  var menu_items = [{scone_id: 12345, data: {name: "chocolate scone", price: 2}}, {scone_id: 67890, data: {name: "strawberry scone", price: 4}}];
+
+                  var sub_total = "";
+
+                  $.each(menu_items, function(i, v){
+
+                      //alert(JSON.stringify(v.scone_id + " " + e.target.id));
+
+                      if(v.scone_id == e.target.id){
+
+                          alert(JSON.stringify("price " + (v.data.price * e.target.value)));
+                          sub_total = sub_total + "<font size=\"5\">" + v.data.name + " $" + (v.data.price * e.target.value + "</font><br>");
+
+                      };
+
+                  });
+                  
+                  $("#sub_total").html(sub_total + "subtotal: ");
+
+
+              });
+
+              $("#order_type").on("change", function(e){
+
+                    //alert(e.target.value);
+
+                    //if(e.target.value == "preselected_no_members"){
+
+                        
+
+                        $("#menu_items").html("<table><tr><td><table><tr><td>Chocolate Chip Scone-$2</td></tr><tr><td><img src=\"/images/chocolate_chip_scones.jpg\" style=\"border:10px solid black;\"></img></td></tr><tr><td><select id=\"12345\"><option value=\"\"></option><option value=\"1\">1</option></select></td></td></table></td><td><table><tr><td>Strawberry Scone-$2</td></tr><tr><td><img src=\"/images/chocolate_chip_scones.jpg\"></img></td></tr><tr><td><select id=\"67890\"><option value=\"\"></option><option value=\"1\">1</option></select></td></td></table></td></tr></table>");
+
+                    //}else if(e.target.value == "members_choose"){
+
+                      //  $("#members").show();
+              
+                    //}
+
+              })
+
+              $("#one_time_recurring").on("change", function(e){
+
+                    if(e.target.value == "one_time"){
+
+                        $("#delivery_datetime_onetime").show();
+
+                    }else{
+
+                        $("#delivery_datetime_recurring").show();
+                    
+                    }
+
+              })
+
+              $("#message").on("paste", function(e){
+
+                    guests = e.target.value;
+
+                    /*var lines = guests.split('\n');
+                    for(var i = 0;i < lines.length;i++){
+                        //code here using lines[i] which will give you each line
+                        var data = lines[i].split(",");
+                        alert(data[0]);
+                    }*/
+
+                    var elem = $(this);
+
+                    setTimeout(function() {
+                        // gets the copied text after a specified time (100 milliseconds)
+                        var text = elem.val(); 
+                        alert(text);
+                    }, 100);
+
+                    //alert(guests);;
+              })
+
+              $("#btnSubmitOrder").click(function(){
+
+                    alert("order submitted");
+
+                    //{event_name: "test event", event_type: "", order_type: "fast", delivery_ddress: {address: "", city: "", state: "", zipcode: ""}, dlivery_datetime: "", items: [{item_id: 1, quantity: 1}]}
+
+                    $.ajax({
+                        url: "/api/orders/single_page_order",
+                        data: {id: 123},
+                        type: "POST",
+                        dataType : "json",
+                        success: function(){
+
+                            alert();
+
+                        }
+                    })
+
+
+              })
+
+          });
+         
+
+
+    <select>
+  </body>
+</html>
