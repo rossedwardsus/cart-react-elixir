@@ -99,6 +99,8 @@
 
               //})
 
+              var sub_total = "";
+
               $(document).on('change','select', function(e){
 
                   //alert("id" + e.target.id);
@@ -114,8 +116,6 @@
 
                   var menu_items = [{scone_id: 12345, data: {name: "chocolate scone", price: 2}}, {scone_id: 67890, data: {name: "strawberry scone", price: 4}}];
 
-                  var sub_total = "";
-
                   $.each(menu_items, function(i, v){
 
                       //alert(JSON.stringify(v.scone_id + " " + e.target.id));
@@ -123,13 +123,15 @@
                       if(v.scone_id == e.target.id){
 
                           //alert(JSON.stringify("price " + (v.data.price * e.target.value)));
-                          sub_total = sub_total + "<font size=\"5\">1 " + v.data.name + " x $" + (v.data.price * e.target.value + "</font><br>");
+                          sub_total = sub_total + "<br><font size=\"5\">1 " + v.data.name + " x $" + (v.data.price * e.target.value + "</font><br>");
 
                       };
 
                   });
+
+                  //alert(sub_total);
                   
-                  $("#sub_total").html(sub_total + "subtotal: ");
+                  $("#sub_total").html(sub_total + "<br>subtotal: ");
 
 
               });
