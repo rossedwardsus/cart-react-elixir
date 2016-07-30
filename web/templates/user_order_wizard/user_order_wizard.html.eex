@@ -9,12 +9,23 @@
           <table width="100%">
           <tr>
           <td width="20%" valign="top">
-          menu
+          create order1
+          <br>
+          my orders
+          <br>
+          profile
+          <br>
+          credit card
+          <br>
+          change password
           </td>
           <td>
           <div id="order">
-            <a id="order_guests" href="javascript:void()">Guest</a> or <a id="order_no_guests" href="javascript:void()">no guests</a>
+            <a id="order_guests" href="javascript:void()"><font size="10">Guest</font></a> or <a id="order_no_guests" href="javascript:void()"><font size="10">no guests</font></a>
           </div>
+          </td>
+          <td>
+          <div id="cart"></div>
           </td>
           </tr>
           </table>
