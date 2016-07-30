@@ -62,7 +62,7 @@
 
 
                   //alert();
-                  $("#order").html("message to guests<br><br><button id=\"next\">Next</button>");
+                  $("#order").html("Message to Guests<br><textarea></textarea><br><button id=\"next\">Next</button>");
 
 
               });
@@ -71,7 +71,7 @@
 
 
                   //alert();
-                  $("#order").html("add items<br>your cart<br><button id=\"next\">Next</button>");
+                  $("#order").html("Add Items<br>your cart<br><button id=\"next\">Next</button>");
 
 
               });
