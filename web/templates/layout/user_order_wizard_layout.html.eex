@@ -53,7 +53,16 @@
 
 
                   //alert();
-                  $("#order").html("add members<br>upload csv</br>add via csv<br><br><button id=\"next\">Next</button>");
+                  $("#order").html("add members<br>upload csv</br>add via csv<br><br><button id=\"order_guests_next\">Next</button>");
+
+
+              });
+
+              $(document).on("click", "#order_guests_next", function(){
+
+
+                  //alert();
+                  $("#order").html("message to guests<br><br><button id=\"next\">Next</button>");
 
 
               });
