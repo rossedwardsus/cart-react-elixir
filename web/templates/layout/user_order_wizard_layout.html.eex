@@ -53,16 +53,34 @@
 
 
                   //alert();
-                  $("#order").html("add members<br>upload csv</br>add via csv<br><br><button id=\"order_guests_next\">Next</button>");
+                  $("#order").html("add members<br>upload csv</br>add via csv<br><br><button id=\"order_guests_message\">Create Message</button>");
 
 
               });
 
-              $(document).on("click", "#order_guests_next", function(){
+              $(document).on("click", "#order_guests_message", function(){
 
 
                   //alert();
-                  $("#order").html("Message to Guests<br><textarea></textarea><br><button id=\"next\">Next</button>");
+                  $("#order").html("Message to Guests<br><textarea></textarea><br><button id=\"order_guest_stationary\">Choose Stationary</button>");
+
+
+              });
+
+              $(document).on("click", "#order_guest_stationary", function(){
+
+
+                  //alert();
+                  $("#order").html("Choose Stationary<br><button id=\"order_payment\">Payment</button>");
+
+
+              });
+
+              $(document).on("click", "#order_payment", function(){
+
+
+                  //alert();
+                  $("#order").html("Payment<br><br><button id=\"next\">Submit Order</button>");
 
 
               });
@@ -71,7 +89,7 @@
 
 
                   //alert();
-                  $("#order").html("Add Items<br>your cart<br><button id=\"next\">Next</button>");
+                  $("#order").html("Add Items<br>your cart<br><button id=\"order_payment\">Next</button>");
 
 
               });
