@@ -51,7 +51,7 @@ end
 
 current_user = %{id: 1}
 
-SconeHomeElixir.Userprofile.store({"test.jpg", %{id: 1}})
+#SconeHomeElixir.Userprofile.store({"test.jpg", %{id: 1}})
 
 #SconeHomeElixir.Userprofile.store({%Plug.Upload{}, current_user})
 

@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.UserProfilePhotoController do
   import Mogrify
   #import Gm
 
-  plug :put_layout, "user_order.html"
+  plug :put_layout, "user.html"
 
   def index(conn, _params) do
     render conn, "user_profile_photo.html"
@@ -14,15 +14,18 @@ defmodule SconeHomeElixir.UserProfilePhotoController do
   def create(conn, %{"userprofile" => user_params}) do
   
   	#Userprofile.store()
-  	#SconeHomeElixir.Userprofile.store({user_params.path, System.cwd() <> "/uploads/test.jpg"})
+  	SconeHomeElixir.Userprofile.store(user_params)
   	
-  	File.cp!(user_params.path, System.cwd() <> "/uploads/test.jpg")
+  	
+  	#File.cp!(user_params.path, System.cwd() <> "/uploads/test.jpg")
   	#open(System.cwd() <> "/uploads/test.jpg") |> resize("10x10") |> save(in_place: true)
   	
   	#put under a task?
-  	image = open(System.cwd() <> "/uploads/test.jpg") |> resize("100x100") |> save
+  	#image = open(System.cwd() <> "/uploads/test.jpg") |> resize("100x100") |> save
   	
-  	File.cp(image.path, System.cwd() <> "/uploads/test_thumbnail.jpg")
+  	#File.cp(image.path, System.cwd() <> "/uploads/test_thumbnail.jpg")
+
+  	
 
   	#Gm.open(System.cwd() <> "/uploads/test.jpg") |> Gm.resize(100, 100) |> Gm.write(System.cwd() <> "/uploads/thumbnail.jpg")
   	#:timer.sleep(1000)
@@ -33,7 +36,7 @@ defmodule SconeHomeElixir.UserProfilePhotoController do
 	#Postgrex.query!(pid, "SELECT * FROM items", [])
 	#%Postgrex.Result{command: :select, empty?: false, columns: ["item_id", "title"], rows: [[3,"hey"],[4,"there"]], size: 2}}
 
-    #text conn, user_params.path <> "/" <> user_params.filename
+    text conn, user_params.path <> "/" <> user_params.filename
   	#render conn, "create.html"
   end
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  </head>
+
+  <body>
+    <div class="container" role="main">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+        </ul>
+        <span class="logo"></span>
+      </div>
+
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+      <%= render @view_module, @view_template, assigns %>
+
+    </div> <!-- /container -->
+    <script>
+
+        //alert();
+    
+        $(document).ready(function() {
+
+              //alert("hello");
+
+              var order_items = [];
+
+              //document.getElementById('txtFileUpload').addEventListener('change', upload, false);
+
+              /*window.addEventListener("error", function (e) {
+                 alert("Error occured: " + JSON.stringify(e));
+                 return false;
+              })
+
+              $(window).error( 
+                function(e, url, line){
+                  //handle error
+                  alert(JSON.stringify(e));
+                }
+              );*/
+
+
+              $("#order_guests").click(function(){
+
+
+                  //alert();
+                  $("#order").html("add members<br>upload csv</br>add via csv<br><br><button id=\"next\">Next</button>");
+
+
+              });
+
+              $("#order_no_guests").click(function(){
+
+
+                  //alert();
+                  $("#order").html("add items<br>your cart<br><button id=\"next\">Next</button>");
+
+
+              });
+
+          });
+        
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    create order
+    <br>
+    my orders
+    <br>
+    profile
+    <br>
+    credit card
+    <br>
+    change password
+  </body>
+</html>
