@@ -80,7 +80,7 @@
 
 
                   //alert();
-                  $("#order").html("Delivery Adress<br><br><button id=\"next\">Submit Order</button>");
+                  $("#order").html("Delivery Adress<br><br><button id=\"order_payment\">Payment</button>");
 
 
               });
@@ -101,7 +101,7 @@
 
 
                   //alert();
-                  $("#order").html("Add Items<br>your cart<br><br><table border=\"1\"><tr><td><table><tr><td>chocolate scones</td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_1\"><option value=\"\"></option><option value=\"1\">1</option></select></td></tr></table></td><td><table><tr><td>strawberry scones<td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_2\"><option value=\"\"></option><option value=\"2\">1</option></select></td></tr></table></td></tr></table><button id=\"order_payment\">Next</button>");
+                  $("#order").html("Add Items<br>your cart<br><br><table border=\"1\"><tr><td><table><tr><td>chocolate scones</td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_1\"><option value=\"\"></option><option value=\"1\">1</option></select></td></tr></table></td><td><table><tr><td>strawberry scones<td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_2\"><option value=\"\"></option><option value=\"2\">1</option></select></td></tr></table></td></tr></table><button id=\"order_delivery_address\">Delivery Address</button>");
 
 
               });
