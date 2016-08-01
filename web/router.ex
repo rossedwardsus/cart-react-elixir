@@ -52,7 +52,7 @@ defmodule SconeHomeElixir.Router do
     get "/user", UserController, :index
 
     get "/user/order", UserOrderController, :index
-    
+
     get "/user/order/wizard", UserOrderWizardController, :index
     
     get "/user/profile/photo", UserProfilePhotoController, :index
@@ -63,6 +63,7 @@ defmodule SconeHomeElixir.Router do
     
     get "/admin", AdminController, :index
     get "/admin/items", AdminItemsController, :index
+    get "/admin/item/photo", AdminItemPhotoController, :index
   end
 
 

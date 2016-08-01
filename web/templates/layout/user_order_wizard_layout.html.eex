@@ -71,19 +71,31 @@
 
 
                   //alert();
-                  $("#order").html("Choose Stationary<br><button id=\"order_payment\">Payment</button>");
+                  $("#order").html("Choose Stationary<br><table><tr><td>stationary</td><td>stationary</td></tr></table><br><br><button id=\"order_delivery_address\">Delivery Date and Time</button>");
 
 
               });
+
+              $(document).on("click", "#order_delivery_address", function(){
+
+
+                  //alert();
+                  $("#order").html("Delivery Adress<br><br><button id=\"next\">Submit Order</button>");
+
+
+              });
+
 
               $(document).on("click", "#order_payment", function(){
 
 
                   //alert();
-                  $("#order").html("Payment<br><br><button id=\"next\">Submit Order</button>");
+                  $("#order").html("Total due including delivery cost<br><br>Payment<br><br><button id=\"next\">Submit Order</button>");
 
 
               });
+
+              
 
               $("#order_no_guests").click(function(){
 
