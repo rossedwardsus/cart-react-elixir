@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserController do
+defmodule SconeHomeElixir.UserSettingsController do
   use SconeHomeElixir.Web, :controller
 
   plug :put_layout, "user.html"

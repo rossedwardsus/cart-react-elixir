@@ -49,12 +49,11 @@ defmodule SconeHomeElixir.Router do
     post "/login", LoginController, :create
     get "/register", RegisterController, :index
     post "/register", RegisterController, :create
-    get "/user", UserController, :index
-
-    get "/user/order", UserOrderController, :index
-
-    get "/user/order/wizard", UserOrderWizardController, :index
     
+    get "/user", UserController, :index
+    get "/user/settings", UserSettingsController, :index
+    get "/user/order", UserOrderController, :index
+    get "/user/order/wizard", UserOrderWizardController, :index
     get "/user/profile/photo", UserProfilePhotoController, :index
     post "/user/profile/photo", UserProfilePhotoController, :create
     

@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Order do
+defmodule SconeHomeElixir.UserOrder do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 

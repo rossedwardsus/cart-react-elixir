@@ -1,6 +1,6 @@
 <table width="100%" border="0">
 <tr><td width="5%"><td width="25%">
-<a href="/user/settings">Settings</a>
+settings
 <br>
 payments
 <br>
@@ -18,9 +18,13 @@ food allergies
 </form>
 </td>
 <td valign="top">
-<a href="/user/order/wizard">Start Order</a>
+Photo
 <br>
-Your Recent Orders
+food profile
+<br>
+payment
+<br>
+password
 </td>
 </tr>
 </table>

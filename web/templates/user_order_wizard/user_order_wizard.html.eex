@@ -8,10 +8,13 @@
           <br>
           <table width="100%">
           <tr>
+          <td width="5%" valign="top">
           <td width="20%" valign="top">
-          create order1
+          Welcome user!
           <br>
-          my orders
+          Start Order
+          <br>
+          My Orders
           <br>
           profile
           <br>

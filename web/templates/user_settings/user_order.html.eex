@@ -2,9 +2,9 @@ settings
 <br>
 payments
 <br>
-<a href="/user/profile/photo">profile photo</a>
+profile
 <br>
-<a href="/user/order">order</a>
+order
 <br>
 <br>
 <br>
@@ -13,13 +13,8 @@ payments
 <br>
 <input type="submit">
 </form>
-<br>
-your recent orders
-<br>
-start an order
-<br>
-<br>
-<br>
+
+
 <div class="jumbotron">
   <h2>Welcome to Phoenix!</h2>
   <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>

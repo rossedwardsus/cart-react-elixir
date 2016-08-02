@@ -10,20 +10,10 @@
   </head>
 
   <body>
-    <div class="container" role="main">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
-      </div>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <img src="/images/Scone_Home_logo_june_9_sm.jpg">
 
       <%= render @view_module, @view_template, assigns %>
 
-    </div> <!-- /container -->
     <script>
 
         //alert();
@@ -62,7 +52,7 @@
 
 
                   //alert();
-                  $("#order").html("Message to Guests<br><textarea></textarea><br><button id=\"order_guest_stationary\">Choose Stationary</button>");
+                  $("#order").html("Message to Guests/Stationary<br><textarea></textarea><br>Choose Stationary<br><table><tr><td>stationary</td><td>stationary</td></tr></table><br><br><button id=\"order_delivery_address_datetime\">Delivery Date and Time</button>");
 
 
               });
@@ -76,11 +66,11 @@
 
               });
 
-              $(document).on("click", "#order_delivery_address", function(){
+              $(document).on("click", "#order_delivery_address_datetime", function(){
 
 
                   //alert();
-                  $("#order").html("Delivery Adress<br><br><button id=\"order_payment\">Payment</button>");
+                  $("#order").html("Delivery Adress/Date time<br><br><br><table width=\"100%\" border=\"0\"><tr><td width=\"50%\"><table border=\"0\"><tr><td>Address</td><td></td></tr><tr><td>Street1</td><td><input name=\"street\"></td></tr><tr><td>City1</td><td><input name=\"city\"></td></tr><tr><td>State</td><td><input name=\"state\"></td></tr></table></td><td><table><tr><td>date time of delivery</td></tr><tr><td>Date</td></tr><tr><td>Time</td></tr></table><tr><td><button id=\"order_payment\">Payment</button></td></tr></table>");
 
 
               });
@@ -90,7 +80,7 @@
 
 
                   //alert();
-                  $("#order").html("Total due including delivery cost<br><br>Payment<br><br><button id=\"next\">Submit Order</button>");
+                  $("#order").html("Description of order-Total due including delivery cost<br><br>Payment<br><br><button id=\"next\">Submit Order</button>");
 
 
               });
@@ -101,7 +91,7 @@
 
 
                   //alert();
-                  $("#order").html("Add Items<br>your cart<br><br><table border=\"1\"><tr><td><table><tr><td>chocolate scones</td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_1\"><option value=\"\"></option><option value=\"1\">1</option></select></td></tr></table></td><td><table><tr><td>strawberry scones<td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_2\"><option value=\"\"></option><option value=\"2\">1</option></select></td></tr></table></td></tr></table><button id=\"order_delivery_address\">Delivery Address</button>");
+                  $("#order").html("Add Items<br>your cart<br><br><table border=\"1\"><tr><td><table><tr><td>chocolate scones</td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_1\"><option value=\"\"></option><option value=\"1\">1</option></select></td></tr></table></td><td><table><tr><td>strawberry scones<td></tr><tr><td>image</td></tr><tr><td><select id=\"item_id_2\"><option value=\"\"></option><option value=\"2\">1</option></select></td></tr></table></td></tr></table><button id=\"order_delivery_address_datetime\">Delivery Address/Datetime</button>");
 
 
               });
