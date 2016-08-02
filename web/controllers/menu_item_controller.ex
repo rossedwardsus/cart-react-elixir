@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserProfilePhotoController do
+defmodule SconeHomeElixir.AdminMenuItemController do
   use SconeHomeElixir.Web, :controller
 
   import Mogrify
