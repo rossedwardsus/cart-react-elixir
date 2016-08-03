@@ -5,8 +5,8 @@ defmodule SconeHomeElixir.UserController do
 
   def index(conn, _params) do
   	#clear_session
-  	user_id = conn.cookies["user_id"]
-  	IO.puts("user_id" <> user_id)
+  	#user_id = conn.cookies["user_id"]
+  	#IO.puts("user_id" <> user_id)
     render conn, "index.html"
   end
 
