@@ -1,0 +1,28 @@
+<body>
+<table width="100%">
+  <tr>
+    <td width="2%">
+    <td width="25%" valign="top">
+        About Us
+        <br>
+        Menu
+    </td>
+    <td>
+      <div id="gallery"></div>
+    </td>
+    <td valign="top">
+        <form action="/login" method="post">
+            Login:
+            <br>
+            <input name="email">
+            <br>
+            <input name="password">
+            <br>
+            <input type="submit">
+        </form>
+    </td>
+  </tr>
+</table>
+</body>
+<br>
+<script src="/js/gallery.js">

@@ -2,13 +2,13 @@
 <tr><td width="5%"><td width="25%">
 <a href="/user/settings">Settings</a>
 <br>
-payments
+<a href="/user/settings">payments</a>
 <br>
 profile
 <br>
 <a href="/user/order">my order</a>
 <br>
-food allergies
+<a href="/user/settings/dietary">Dietary Preferences</a>
 <br>
 <br>
 <form action="/user" method="post" enctype="multipart/form-data">
@@ -21,6 +21,9 @@ food allergies
 <a href="/user/order/wizard">Start Order</a>
 <br>
 Your Recent Orders
+<br>
+<br>
+date of order - total cost
 </td>
 </tr>
 </table>

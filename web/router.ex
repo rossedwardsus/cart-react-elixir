@@ -44,7 +44,7 @@ defmodule SconeHomeElixir.Router do
   scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", HomeController, :index
     get "/login", LoginController, :index
     post "/login", LoginController, :create
     get "/register", RegisterController, :index

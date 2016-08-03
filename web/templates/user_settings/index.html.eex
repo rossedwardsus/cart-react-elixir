@@ -18,13 +18,13 @@ food allergies
 </form>
 </td>
 <td valign="top">
-Photo
+<a href="/user/profile/photo">Upload Photo
 <br>
-food profile
+<a href="/user/profile">food profile</a>
 <br>
-payment
+<a href="/user/settings/payment">add payment</a>
 <br>
-password
+<a href="/user/settings/password">change password</a>
 </td>
 </tr>
 </table>
