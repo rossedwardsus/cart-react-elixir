@@ -10,26 +10,37 @@
           <tr>
           <td width="5%" valign="top">
           <td width="20%" valign="top">
-          Welcome user!
+          Welcome user!!
           <br>
-          Start Order
+          <a href="/user/order">my orders</a>
           <br>
-          My Orders
+          <br>
+          <a href="/user/settings">Settings</a>
+          <br>
+          <a href="/user/settings">payments</a>
+          <br>
+          password
+          <br>
           <br>
           profile
           <br>
-          credit card
+          <a href="/user/settings/dietary">Dietary Preferences</a>
           <br>
-          change password
+          delivery address
+          <br>
+          photo
+          <br>
           </td>
           <td>
           <div id="order">
-            <a id="order_guests" href="javascript:void()"><font size="10">Guest</font></a> or <a id="order_no_guests" href="javascript:void()"><font size="10">no guests</font></a>
+            <a id="order_guests" href="javascript:void()"><font size="10">Guest1</font></a> or <a id="order_no_guests" href="javascript:void()"><font size="10">no guests</font></a>
           </div>
+          <div id="react_order"></div>
           </td>
           <td>
           <div id="cart"></div>
           </td>
           </tr>
           </table>
+      <script src="/js/order.js">
     

@@ -2,14 +2,14 @@
 //import AdminOrder from './admin_order.jsx';
 //import AdminAddItem from './admin_add_item.jsx';
 
-import Gallery from './gallery.jsx';
+//import Gallery from './gallery.jsx';
 
 //import ProfileName from './profile_name.jsx';
 //import ProfilePayment from './profile_payment.jsx';
 //import ProfilePassword from './profile_password.jsx';
 //import ProfileImage from './profile_image.jsx';
 
-//import CreateOrder from './create_order.jsx';
+import Order from './order.jsx';
 //import ChooseItems from './choose_items.jsx';
 //import ChosenItem from './chosen_item.jsx';
 //import OrderItems from './order_items.jsx'; 

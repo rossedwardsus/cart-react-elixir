@@ -8,12 +8,12 @@ module.exports = {
     //demo: './demo.js' //entry point for building scripts
   //},
 
-  output: { path: __dirname, filename: 'admin_orders.js' },
+  //output: { path: __dirname, filename: 'admin_orders.js' },
   //output: { path: __dirname, filename: 'admin_order.js' },
   //output: { path: __dirname, filename: 'admin_item_add.js' },
   
 
-  output: { path: __dirname, filename: 'gallery.js' },
+  output: { path: __dirname, filename: '/priv/static/js/order.js' },
   //output: { path: __dirname, filename: 'create_order.js' },
   
   //output: { path: __dirname, filename: 'user_profile_name.js' },
