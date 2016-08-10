@@ -31,6 +31,8 @@ defmodule SconeHomeElixir.ApiUserOrderController do
 
   def create(conn, _params) do
 
+    #save order
+
   	#send_email to: "rossedwards.us@gmail.com",
      #          from: "@from",
      #          subject: "hello!",
@@ -52,20 +54,23 @@ defmodule SconeHomeElixir.ApiUserOrderController do
     #|> html_body("<strong>Welcome</strong>")
     #|> text_body("welcome")
 
-    task = Task.async(fn ->  
+    #task = Task.async(fn ->  
 
     #		SconeHomeElixir.Email.welcome_email |> SconeHomeElixir.Mailer.deliver_now
 
-    end)
+    #end)
     
     #Enum.map([a: 1, b: 2, c: 3], fn({k, v}) -> {k, v * v} end)
 
-    SconeHomeElixir.Email.welcome_email |> SconeHomeElixir.Mailer.deliver_now
+    
+
+    #SconeHomeElixir.Email.welcome_email |> SconeHomeElixir.Mailer.deliver_now
+
+    
 
     #Mailer.send_welcome_text_email()
 
-    SconeHomeElixir.Mailer.welcome_email("rossedwards.us@gmail.com")
-
+    #SconeHomeElixir.Mailer.welcome_email("rossedwards.us@gmail.com")
     		#{:ok, value} -> "value #{value}"
     		#{:error, value} -> "value #{value}"
     		#{:batch_fetch, value} -> "value #{value}"

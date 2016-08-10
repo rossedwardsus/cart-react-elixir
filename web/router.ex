@@ -58,7 +58,7 @@ defmodule SconeHomeElixir.Router do
     post "/user/profile/photo", UserProfilePhotoController, :create
     
     get "/api/user/orders/new", ApiUserOrderController, :index
-    get "/api/user/orders/create", ApiUserOrderController, :create
+    post "/api/user/orders/create", ApiUserOrderController, :create
     
     get "/admin", AdminController, :index
     get "/admin/items", AdminItemsController, :index
