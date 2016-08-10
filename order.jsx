@@ -32,14 +32,9 @@ var Order = React.createClass({
 	},
   componentWillMount: function(){
 
-  		var myVar = setInterval(this.myTimer, 10000);
+      //alert("!");
 
-  		//alert(this.state.images[0] + ".jpg");
-
-  		//this.setState({image_url: "/images/" + this.state.images[0]});
-
-  		//get default image
-  		//with a timer change the image on a 5 second interval
+      Stripe.setPublishableKey(); // set your test public key
 
   },
 
@@ -77,6 +72,8 @@ var Order = React.createClass({
           //order = {paid: true}
 
           //submit payment 
+          Stripe.setPublishableKey(); // set your test public key
+
           //if successful submit to database
 
           alert("paid!");
@@ -188,7 +185,7 @@ var Order = React.createClass({
 
       if(this.state.order_state == "start"){
 
-          page = "bulk or invited"
+          page = <div><a onClick={this.startBulkOrder}>bulk</a> or <a>invited</a></div>
 
           
       }else if(this.state.order_state == "delivery"){
@@ -231,7 +228,7 @@ var Order = React.createClass({
 
       }else if(this.state.order_state == "payment"){
 
-          page = <table><tbody><tr><td>chocolate scone x 1<br/>strawberry scone x 2<br/>subtotal</td><td>payment</td></tr></tbody></table>;
+          page = <table width="100%"><tbody><tr><td>chocolate scone x 1<br/>strawberry scone x 2<br/>subtotal</td><td>payment-use existing<br/><form method="post" onSubmit={ this.handleSubmit }><input size="20" data-stripe="number" placeholder="number"/><input size="4" data-stripe="cvc" placeholder="cvc" /><input size="2" data-stripe="exp-month" placeholder="exp-month" /><input size="4" data-stripe="exp-year" placeholder="exp-year" /><button type="submit">Pay</button></form></td></tr></tbody></table>;
 
       }else if(this.state.order_state == "cart"){
 
@@ -248,3 +245,5 @@ var Order = React.createClass({
 
 
 ReactDOM.render(<Order />, document.getElementById('react_order'));
+
+//ReactDOM.render(<Cart />, document.getElementById('cart'));

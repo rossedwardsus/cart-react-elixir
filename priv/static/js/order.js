@@ -104,14 +104,9 @@
 	    },
 	    componentWillMount: function componentWillMount() {
 
-	        var myVar = setInterval(this.myTimer, 10000);
+	        //alert("!");
 
-	        //alert(this.state.images[0] + ".jpg");
-
-	        //this.setState({image_url: "/images/" + this.state.images[0]});
-
-	        //get default image
-	        //with a timer change the image on a 5 second interval
+	        Stripe.setPublishableKey(); // set your test public key
 	    },
 
 	    handleState: function handleState() {
@@ -145,6 +140,8 @@
 	            //order = {paid: true}
 
 	            //submit payment 
+	            Stripe.setPublishableKey(); // set your test public key
+
 	            //if successful submit to database
 
 	            alert("paid!");
@@ -229,7 +226,21 @@
 
 	        if (this.state.order_state == "start") {
 
-	            page = "bulk or invited";
+	            page = _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'a',
+	                    { onClick: this.startBulkOrder },
+	                    'bulk'
+	                ),
+	                ' or ',
+	                _react2.default.createElement(
+	                    'a',
+	                    null,
+	                    'invited'
+	                )
+	            );
 	        } else if (this.state.order_state == "delivery") {
 
 	            page = _react2.default.createElement(
@@ -408,7 +419,7 @@
 
 	            page = _react2.default.createElement(
 	                'table',
-	                null,
+	                { width: '100%' },
 	                _react2.default.createElement(
 	                    'tbody',
 	                    null,
@@ -427,7 +438,21 @@
 	                        _react2.default.createElement(
 	                            'td',
 	                            null,
-	                            'payment'
+	                            'payment-use existing',
+	                            _react2.default.createElement('br', null),
+	                            _react2.default.createElement(
+	                                'form',
+	                                { method: 'post', onSubmit: this.handleSubmit },
+	                                _react2.default.createElement('input', { size: '20', 'data-stripe': 'number', placeholder: 'number' }),
+	                                _react2.default.createElement('input', { size: '4', 'data-stripe': 'cvc', placeholder: 'cvc' }),
+	                                _react2.default.createElement('input', { size: '2', 'data-stripe': 'exp-month', placeholder: 'exp-month' }),
+	                                _react2.default.createElement('input', { size: '4', 'data-stripe': 'exp-year', placeholder: 'exp-year' }),
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'submit' },
+	                                    'Pay'
+	                                )
+	                            )
 	                        )
 	                    )
 	                )
@@ -488,6 +513,8 @@
 	});
 
 	_reactDom2.default.render(_react2.default.createElement(Order, null), document.getElementById('react_order'));
+
+	//ReactDOM.render(<Cart />, document.getElementById('cart'));
 
 /***/ },
 /* 2 */

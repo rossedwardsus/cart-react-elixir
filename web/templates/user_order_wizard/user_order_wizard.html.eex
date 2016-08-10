@@ -2,7 +2,7 @@
        <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
        <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
-       <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js">
+       <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
          <br>
           <br>
@@ -38,7 +38,7 @@
           <div id="react_order"></div>
           </td>
           <td>
-          <div id="cart"></div>
+          <div id="cart">cart</div>
           </td>
           </tr>
           </table>
