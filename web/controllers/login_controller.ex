@@ -52,7 +52,7 @@ defmodule SconeHomeElixir.LoginController do
     #conn = Plug.Conn.put_resp_cookie(conn, "user_id", "12345")
 
     #text conn, "hello"
-    redirect conn, to: "/user"
+     redirect conn, to: "/user"
   end
 
   defp authenticate(conn, _) do
