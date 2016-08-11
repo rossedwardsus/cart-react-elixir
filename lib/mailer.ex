@@ -6,11 +6,10 @@ defmodule SconeHomeElixir.Mailer do
       key: "key-22e98444fc043c1e72943865de283d39"
 
 
-  def welcome_email(email) do
-    send_email to: email,
-          from: "us@example.com",
-          subject: "Welcome!",
-          html: "Welcome to HelloPhoenix!"
-
-  end
+  #def welcome_email(email) do
+   # send_email to: email,
+    #      from: "us@example.com",
+     #     subject: "Welcome!",
+      #    html: "Welcome to HelloPhoenix!"
+  #end
 end

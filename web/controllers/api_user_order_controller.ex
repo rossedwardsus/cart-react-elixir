@@ -64,7 +64,7 @@ defmodule SconeHomeElixir.ApiUserOrderController do
 
     
 
-    #SconeHomeElixir.Email.welcome_email |> SconeHomeElixir.Mailer.deliver_now
+    SconeHomeElixir.Email.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now
 
     
 

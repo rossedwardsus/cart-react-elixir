@@ -1,9 +1,11 @@
 defmodule SconeHomeElixir.Email do
   import Bamboo.Email
 
-  def welcome_email do
+  def welcome_email(_params) do
+
+    IO.puts(_params["address"])
     
-    template = Phoenix.View.render_to_string(SconeHomeElixir.UserOrderProcessedEmailView, "user_order_processed_email.html", %{})
+    template = Phoenix.View.render_to_string(SconeHomeElixir.UserOrderProcessedEmailView, "user_order_processed_email.html", key: _params)
 
     new_email(
       to: "rossedwards.us@gmail.com",

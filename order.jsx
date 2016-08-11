@@ -211,7 +211,7 @@ var Order = React.createClass({
 
                   //alert(JSON.stringify(item.title));
 
-                  return <td><table><tbody><tr><td>{i.title}<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="100px" width="100px"/><br/><select ref="item_1" id="item_1" onChange={this.selectedItem}><option value=""></option><option value="1">1</option></select><button onClick={this.btnAddToCart}>add to cart</button></td></tr></tbody></table></td>;
+                  return <td><table><tbody><tr><td>{i.title}<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="100px" width="100px"/><br/><select ref="item_1" id="item_1" onChange={this.selectedItem}><option value=""></option><option value="10">10</option><option value="20">20</option></select><button onClick={this.btnAddToCart}>add to cart</button></td></tr></tbody></table></td>;
 
                 //}
               }.bind(this));
@@ -227,6 +227,20 @@ var Order = React.createClass({
           //page = <table width="100%"><tbody><tr><td><input type="checkbox"/>title<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="100px" width="100px"/>image<br/><select ref="item_1" id="item_1" onChange={this.selectedItem}><option value=""></option><option value="1">1</option></select><button onClick={this.btnAddToCart}>add to cart</button></td><td>title<br/>image<select ref="item_2" id="item_2" onChange={this.selectedItem}><option value=""></option><option value="1">1</option></select></td></tr></tbody></table>;
 
       }else if(this.state.order_state == "payment"){
+
+          //var items_html = <table><tbody;
+
+          //var items_html_temp = this.state.order.items.map(function(item){
+
+              //return(
+
+              //    <tr><td>{item.title}</td><td>{item.quantity}</td></tr>
+
+              //)
+
+          //});
+
+          //items_html = items_html + items_html_temp + </tbody></table>
 
           page = <table width="100%"><tbody><tr><td>chocolate scone x 1<br/>strawberry scone x 2<br/>subtotal</td><td>payment-use existing<br/><form method="post" onSubmit={ this.handleSubmit }><input size="20" data-stripe="number" placeholder="number"/><input size="4" data-stripe="cvc" placeholder="cvc" /><input size="2" data-stripe="exp-month" placeholder="exp-month" /><input size="4" data-stripe="exp-year" placeholder="exp-year" /><button type="submit">Pay</button></form></td></tr></tbody></table>;
 

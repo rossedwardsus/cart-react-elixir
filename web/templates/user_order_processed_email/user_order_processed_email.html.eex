@@ -2,7 +2,7 @@
 <html lang="en">
 
 	<table bgcolor="#00FF00" width="100%">
-	<tr><td>order processed from email</td></tr>
+	<tr><td>order processed from email <%= @key["address"] %></td></tr>
 	<tr><td>event name</td></tr>
 	<tr><td>order items</td></tr>
 	<tr><td>total</td></tr>
