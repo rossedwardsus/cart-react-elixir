@@ -1,15 +1,278 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { render } from 'react-dom'
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 //var Popup = require('react-popup');
 //var Modal = require('react-bootstrap-modal')
 //var Modal = ReactBootstrap.Modal;
-import { Modal } from 'react-bootstrap';
+import { Button, FormGroup, FormControl, Modal } from 'react-bootstrap';
+var Dropzone = require('react-dropzone');
 
 require('react-datepicker/dist/react-datepicker.css');
 
+import { Router, Route, Link, browserHistory, useRouterHistory, withRouter } from 'react-router'
+import { createHashHistory } from 'history'
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
+
 //Popup.alert('This is an alert popup');
+
+const BulkOrderMenu = React.createClass({
+
+  componentDidMount() {
+  
+    //alert("polinav");
+
+  },
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  changeRoute(){
+
+    //browserHistory.push('/users/polinav#/bills');
+    //this.props.router.push('/some/path');
+    //router.push('/users/12')
+    this.context.router.push("/bills")
+
+
+  },
+
+  render(){
+
+      return(<div>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests"><Button>Guests</Button></Link><Link to="/order/1/message"><Button>Message</Button></Link><Link to="/order/1/delivery"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link>
+
+      </div>);
+
+  }
+
+});
+
+var Home = React.createClass({
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                        New Bulk/New Invited
+                        <br/>
+                        <Link to="/new/bulk"><Button>New Bulk Order</Button></Link><Link to="/new/bulk"><Button>New Invited Order</Button></Link>
+                        <br/>
+                        <OrderList/>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+var NewBulkOrder = React.createClass({
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                        <BulkOrderMenu/>
+                        <br/>
+                        new bulk order
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+
+var OrderList = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+
+  },
+
+  render(){
+
+      return(<div>
+            
+                  {this.state.orders.map(function(order){
+
+                      return(<div><Link to="/order1/1">August 15, 2016</Link>-bulk-sent</div>);
+
+                  })}
+
+            </div>);
+
+  }
+
+});
+
+var Order1 = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+      //get the details from the database for this order
+      //status-new/being processed
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                        <BulkOrderMenu/>
+                        <br/>
+                        Delivery date-order type
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+var OrderMessage = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                      <BulkOrderMenu/>
+                      <br/>
+                      order message
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+var OrderGuests = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                      <BulkOrderMenu/>
+                      <br/>
+                      order guests
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
 
 var Order = React.createClass({
 	//var counter = 0;
@@ -21,13 +284,17 @@ var Order = React.createClass({
         order_state: "start",
 				startDate: moment(),
         open: false,
-        order: {},
+        order: {order_type: "invited"},
+        guest_list: [{"first_name": "ross", "last_name": "edwards", "email": "rossedwards.us@gmail.com"}],
+        items: [{item_id: 1, quantity: 0}],
+        message: "",
         items_count: 0,
         popup_image: "",
         popup_details: "",
         delivery_address_from_profile: "",
         selected_city: "",
-        selected_state: ""
+        selected_state: "",
+        cart: [{title: "title"}]
 			}
 	},
   componentWillMount: function(){
@@ -38,11 +305,20 @@ var Order = React.createClass({
 
   },
 
-  handleState: function(){
+  btnHandleState: function(){
 
-      if(this.state.order_state == "start"){
+      if(this.state.order_state == "guest_list" && this.state.order_type == "invited"){
 
-          //order_type: "bulk"
+          //alert();
+
+          var order_temp = this.state.order;
+          order_temp["guest_list"] = {guest_list: []};
+
+          this.setState({order_state: "message_stationary"});
+
+      }else if(this.state.order_state == "message_stationary" && this.state.order_type == "invited"){
+
+          //alert();
 
           this.setState({order_state: "delivery"});
 
@@ -56,7 +332,7 @@ var Order = React.createClass({
           //delivery_date = this.refs.street_date.value;
           //delivery_time = this.refs.street_time.value;         
 
-          this.state.order = {delivery_address: {street: this.refs.street_address.value, city: this.refs.city.value, state: this.refs.state.value, zipcode: this.refs.zipcode.value, date: this.state.startDate, time: ""}};      
+          this.state.order = {delivery_address: {street: "this.refs.street_address.value", city: "this.refs.city.value", state: "this.refs.state.value", zipcode: "this.refs.zipcode.value", date: this.state.startDate, time: ""}};      
 
           this.setState({order_state: "items"});
 
@@ -70,6 +346,9 @@ var Order = React.createClass({
       }else if(this.state.order_state == "payment"){
 
           //order = {paid: true}
+          //order = {order_type: "invited", guest_list: [{}, {}], message: "", stationary_id: 1, delivery_address: "", delivery_datetime: "", paid: true}
+          //order = {order_type: "bulk", items: [{}, {}], delivery_address: "", delivery_datetime: "", paid: true}
+
 
           //submit payment 
           Stripe.setPublishableKey(); // set your test public key
@@ -176,6 +455,83 @@ var Order = React.createClass({
 
   },
 
+  startBulkOrder: function(){
+
+      //alert("bulk");
+
+      this.setState({order_type: "bulk", order_state: "guest_list"});
+
+  },
+
+  startInvitedOrder: function(){
+
+      //alert("invited");
+
+      this.setState({order_type: "invited", order_state: "guest_list"});
+
+  },
+
+  onDrop: function (files) {
+      var reader = new FileReader();
+      console.log('Received files: ', files);
+      //alert(files[0].result);
+      //alert(reader.readAsText(files[0]));
+
+      var guest_list = [];
+
+      files.forEach((file)=> {
+            //alert(JSON.stringify(file.getAsText("utf-8")));
+            //req.attach(file.name, file);
+            reader.onload = function(e) {
+                // e.target.result should contain the text
+                //alert(e.target.result);
+                alert(e.target.result.split(",")[0]);
+                //e.target.result.map(function(guest){
+
+                  //  guest_list.push(guest);
+
+                //})
+                this.setState({guest_list: guest_list});
+            };
+            reader.readAsText(file);
+      });
+
+      /*var rawFile = new XMLHttpRequest();
+      rawFile.open("GET", files[0], false);
+      rawFile.onreadystatechange = function ()
+      {
+          if(rawFile.readyState === 4)
+          {
+              if(rawFile.status === 200 || rawFile.status == 0)
+              {
+                  var allText = rawFile.responseText;
+                  alert(allText);
+              }
+          }
+      }
+      rawFile.send(null);*/
+  },
+
+  textareaChange: function(){
+
+    //alert(this.refs.guestList.value);
+    
+    var guest_list = "";
+
+    //this.refs.guestList.value.map(function(guest){
+
+      //  guest_list.push(guest);
+
+    //})
+    //this.setState({guest_list: guest_list});
+            
+
+  },
+
+
+
+
+
   render: function(){
 
       var page = "";
@@ -185,14 +541,62 @@ var Order = React.createClass({
 
       if(this.state.order_state == "start"){
 
-          page = <div><a onClick={this.startBulkOrder}>bulk</a> or <a>invited</a></div>
+          page = <div><a onClick={this.startBulkOrder}><font size="20" color="black">bulk</font></a> or <a onClick={this.startInvitedOrder}><font size="20">invited</font></a></div>
 
-          
+      }else if(this.state.order_state == "guest_list"){
+
+          page = <div>guest list-upload or paste
+                  <br/>
+                  <br/>
+                  <table width="100%">
+                    <tbody>
+                      <tr>
+                        <td>you have added 25 guests-choose how many items a guest can select</td>
+                      <tr>
+                      </tr>
+                        <td>
+                        <FormGroup controlId="formControlsTextarea">
+                          <FormControl componentClass="textarea" placeholder="textarea" style={{resize: "none"}}/>
+                        </FormGroup>
+                        </td>
+                        <td><textarea ref="guestList" cols="50" rows="10" style={{resize: "none"}} onChange={this.textareaChange}></textarea></td>
+                        <td>
+                            <Dropzone onDrop={this.onDrop}>
+                              <div>Try dropping some files here, or click to select files to upload.</div>
+                            </Dropzone>
+                        </td>
+                      </tr>
+                      <tr>
+                      {this.state.guest_list.map(function(guest){
+
+                          return(<td>{guest.name}</td>)
+
+                      })}
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+
+      }else if(this.state.order_state == "message_stationary"){
+
+          page =  <div>
+                  Message Stationary
+                  <table width="100%">
+                    <tbody>
+                      <tr>
+                          <td><textarea rows="10" cols="50" style={{resize: "none"}}></textarea></td>
+                          <td>stationary-gallery?</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+
+         
       }else if(this.state.order_state == "delivery"){
 
           page =  <table width="100%" border="1">
                     <tbody>
-                      <tr><td><b>Please allow 3 hours for delivery-Delivery Address</b></td><td><b>Datetime</b></td></tr><tr><td><input ref="street_address" value="Street" size="50" onChange={this.onStreetAddressChange}/><input ref="apt" value="apt" size="10" onChange={this.onAptChange}/><br/><select ref="city" onChange={this.selectedCity}><option value="">city</option><option value="santa_monica">Santa Monica</option></select><select ref="state" onChange={this.selectedState}><option value="">state</option><option value="CA">Ca</option></select><br/><input ref="zipcode" size="10" value="zipcode" onChange={this.onZipCodeChange}/><input ref="comments" value="comments" size="50" onChange={this.onCommentChange}/></td><td><DatePicker selected={this.state.startDate} onChange={this.handleChange} /><br/><select ref="time"><option value="">time</option><option value="800">8:00</option><option value="830">8:30</option></select></td>
+                      <tr><td><b>Delivery Address</b></td><td><b>Datetime</b></td></tr><tr><td><input ref="street_address" value="Street" size="50" onChange={this.onStreetAddressChange}/><input ref="apt" value="suite" size="10" onChange={this.onAptChange}/><br/><br/><input ref="zipcode" size="10" value="zipcode" onChange={this.onZipCodeChange}/><br/><input ref="comments" value="comments" size="50" onChange={this.onCommentChange}/></td><td><DatePicker selected={this.state.startDate} onChange={this.handleChange} /><br/><select ref="time"><option value="">time</option><option value="800">8:00</option><option value="830">8:30</option></select></td>
                       </tr>
                     </tbody>
                   </table>;
@@ -251,13 +655,58 @@ var Order = React.createClass({
       }
 
 
-  		return (<div>start-items-address-pay<a onClick={this.clickCart}>cart({this.state.items_count})</a><br/><br/>{page}<br/><button onClick={this.handleState}>Next</button><Modal show={this.state.open} onHide={this.closeModal} aria-labelledby="ModalHeader"><Modal.Header closeButton><Modal.Title id='ModalHeader'>A Title Goes here</Modal.Title></Modal.Header><Modal.Body><p><img src={this.state.popup_image} onClick={this.clickImage}/><br/><br/>{this.state.popup_description}</p></Modal.Body></Modal></div>);
+  		return (<div>
+                  <table width="100%">
+                    <tbody>
+                      <tr>
+                        <td width="2%"></td>
+                        <td width="25%" style={{verticalAlign: "top"}}>
+                            settings
+                            <br/>
+                            profile
+                            <br/>
+                            <br/>
+                            <b>CART</b>
+                            <br/>
+                            <table>
+                              <tbody>
+                                {this.state.cart.map(function(item){
+
+                                    return(<tr><td>{item.title}</td></tr>);
+
+                                })}
+                              </tbody>
+                            </table>
+                        </td>
+                        <td valign="top">
+                            start-items-address-pay<a onClick={this.clickCart}>cart({this.state.items_count})</a><br/><br/><br/>{page}<br/><Button onClick={this.btnHandleState}>Next</Button>
+                        </td>
+                        </tr>
+                    </tbody>
+                  </table>
+              <Modal show={this.state.open} onHide={this.closeModal} aria-labelledby="ModalHeader"><Modal.Header closeButton><Modal.Title id='ModalHeader'>A Title Goes here</Modal.Title></Modal.Header><Modal.Body><p><img src={this.state.popup_image} onClick={this.clickImage}/><br/><br/>{this.state.popup_description}</p></Modal.Body></Modal>
+          </div>);
 
   }
 
 });
 
 
-ReactDOM.render(<Order />, document.getElementById('react_order'));
+//ReactDOM.render(<Order />, document.getElementById('react_order'));
 
 //ReactDOM.render(<Cart />, document.getElementById('cart'));
+
+
+//start order
+//buttons at top
+//list of orders
+render((
+  <Router history={appHistory}>
+    <Route path="/" component={Home}/>
+    <Route path="/new/bulk" component={NewBulkOrder}/>
+    <Route path="/new/invited" component={NewBulkOrder}/>
+    <Route path="/order1/:order_id" component={Order1}/>
+    <Route path="/order/:order_id/guests" component={OrderGuests}/>
+    <Route path="/order/:order_id/message" component={OrderMessage}/>
+  </Router>
+), document.getElementById('react_order'))

@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Email do
+defmodule SconeHomeElixir.UserOrderAdminEmail do
   import Bamboo.Email
 
   def welcome_email(_params) do

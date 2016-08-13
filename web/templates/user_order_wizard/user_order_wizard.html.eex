@@ -5,42 +5,7 @@
        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
          <br>
-          <br>
-          <table width="100%">
-          <tr>
-          <td width="2%" valign="top">
-          <td width="20%" valign="top">
-          Welcome user!!
-          <br>
-          <a href="/user/order">my orders</a>
-          <br>
-          <br>
-          <a href="/user/settings">Settings</a>
-          <br>
-          <a href="/user/settings">payments</a>
-          <br>
-          password
-          <br>
-          <br>
-          profile
-          <br>
-          <a href="/user/settings/dietary">Dietary Preferences</a>
-          <br>
-          delivery address
-          <br>
-          photo
-          <br>
-          </td>
-          <td>
-          <div id="order">
-            <a id="order_guests" href="javascript:void()"><font size="10">Guest1</font></a> or <a id="order_no_guests" href="javascript:void()"><font size="10">no guests</font></a>
-          </div>
-          <div id="react_order"></div>
-          </td>
-          <td>
-          <div id="cart">cart</div>
-          </td>
-          </tr>
-          </table>
-      <script src="/js/order.js">
+         <br>
+         <div id="react_order"></div>
+       <script src="/js/order.js">
     
