@@ -6,6 +6,6 @@
        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
          <br>
          <br>
-         <div id="react_order"></div>
-       <script src="/js/order.js">
+         <div id="order"></div>
+       <script src="/js/order.js"></script>
     

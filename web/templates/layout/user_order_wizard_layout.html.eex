@@ -11,6 +11,9 @@
 
   <body>
       <img src="/images/Scone_Home_logo_june_9_sm.jpg">
+      <br>
+      <div id="order"></div>
+      
 
       <%= render @view_module, @view_template, assigns %>
 

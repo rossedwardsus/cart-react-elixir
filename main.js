@@ -4,17 +4,9 @@
 
 //import Gallery from './gallery.jsx';
 
-//import ProfileName from './profile_name.jsx';
-//import ProfilePayment from './profile_payment.jsx';
-//import ProfilePassword from './profile_password.jsx';
-//import ProfileImage from './profile_image.jsx';
+//import UserProfilePhoto from './profile_photo.jsx';
+//import UserProfileDeliveryAddress from './profile_delivery_address.jsx';
+import UserProfileName from './profile_name.jsx';
+//import UserProfilePayment from './profile_payment.jsx';
 
-import Order from './order.jsx';
-//import ChooseItems from './choose_items.jsx';
-//import ChosenItem from './chosen_item.jsx';
-//import OrderItems from './order_items.jsx'; 
-//import Members from './choose_members.jsx';
-//import Message from './message.jsx';
-//import Stationary from './stationary.jsx';
-//import Subtotal from './subtotal.jsx';
-//import Payment from './payment.jsx';
+//import Order from './order.jsx';

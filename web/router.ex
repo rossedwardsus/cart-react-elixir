@@ -55,7 +55,12 @@ defmodule SconeHomeElixir.Router do
     get "/user/order", UserOrderController, :index
     get "/user/order/wizard", UserOrderWizardController, :index
     get "/user/profile/photo", UserProfilePhotoController, :index
-    post "/user/profile/photo", UserProfilePhotoController, :create
+    get "/user/profile/delivery_address", UserProfileDeliveryAddressController, :index
+    get "/user/profile/name", UserProfileNameController, :index
+    get "/user/profile/food_preference", UserProfileFoodPreferenceController, :index
+    get "/user/profile/payment", UserProfilePaymentController, :index
+
+    post "/api/user/profile/photo", UserProfilePhotoController, :create
     
     get "/api/user/orders/new", ApiUserOrderController, :index
     get "/api/user/orders/create", ApiUserOrderController, :create

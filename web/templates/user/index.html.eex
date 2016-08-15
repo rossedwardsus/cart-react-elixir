@@ -1,21 +1,16 @@
 <table width="100%" border="0">
 <tr><td width="5%"><td width="25%">
-<a href="/user/settings">Settings</a>
+password
 <br>
-<a href="/user/settings">payments</a>
 <br>
 profile
 <br>
-<a href="/user/order">my order</a>
-<br>
 <a href="/user/settings/dietary">Dietary Preferences</a>
 <br>
+delivery address
 <br>
-<form action="/user" method="post" enctype="multipart/form-data">
-<input type="file" name="photo">
+<a href="/user/profile/photo">profile photo</a>
 <br>
-<input type="submit">
-</form>
 </td>
 <td valign="top">
 <a href="/user/order/wizard">Start Order</a>

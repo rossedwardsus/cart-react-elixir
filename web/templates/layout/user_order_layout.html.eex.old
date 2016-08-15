@@ -220,7 +220,7 @@
     <br>
     my orders
     <br>
-    profile
+    <a href="/user/profile/photo">profile photo</a>
     <br>
     credit card
     <br>

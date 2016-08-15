@@ -42,7 +42,7 @@ const BulkOrderMenu = React.createClass({
   render(){
 
       return(<div>
-                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests"><Button>Guests</Button></Link><Link to="/order/1/message"><Button>Message</Button></Link><Link to="/order/1/delivery"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/new/message"><Button>Items</Button></Link><Link to="/order/new/items"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link>
 
       </div>);
 
@@ -50,7 +50,69 @@ const BulkOrderMenu = React.createClass({
 
 });
 
+const InvitedOrderMenu = React.createClass({
+
+  componentDidMount() {
+  
+    //alert("polinav");
+
+  },
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  changeRoute(){
+
+    //browserHistory.push('/users/polinav#/bills');
+    //this.props.router.push('/some/path');
+    //router.push('/users/12')
+    this.context.router.push("/bills")
+
+
+  },
+
+  render(){
+
+      return(<div>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests"><Button>Guests</Button></Link><Link to="/order/1/message"><Button>Message</Button></Link><Link to="/order/1/delivery"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link><Link to="/students"><Button>Message Guests</Button></Link>
+
+      </div>);
+
+  }
+
+});
+
+
 var Home = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  newBulkOrder(){
+
+    //browserHistory.push('/users/polinav#/bills');
+    //this.props.router.push('/some/path');
+    //router.push('/users/12')
+
+    //get new order_id from server and redirect
+
+    this.context.router.push("/order/1/items")
+
+  },
+
+  newInvitedOrder(){
+
+    //browserHistory.push('/users/polinav#/bills');
+    //this.props.router.push('/some/path');
+    //router.push('/users/12')
+
+    //get new order_id from server and redirect
+
+    this.context.router.push("/order/1/guests")
+
+  },
 
   render(){
 
@@ -67,7 +129,7 @@ var Home = React.createClass({
                       <td>
                         New Bulk/New Invited
                         <br/>
-                        <Link to="/new/bulk"><Button>New Bulk Order</Button></Link><Link to="/new/bulk"><Button>New Invited Order</Button></Link>
+                        <Button onClick={this.newBulkOrder}>New Bulk Order</Button><Button onClick={this.newInvitedOrder}>New Invited Order</Button>
                         <br/>
                         <OrderList/>
                       </td>
@@ -82,6 +144,19 @@ var Home = React.createClass({
 
 var NewBulkOrder = React.createClass({
 
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  changeRoute(){
+
+    //browserHistory.push('/users/polinav#/bills');
+    //this.props.router.push('/some/path');
+    //router.push('/users/12')
+    this.context.router.push("/bills")
+
+  },
+
   render(){
 
       return(<div>
@@ -95,9 +170,9 @@ var NewBulkOrder = React.createClass({
                         <br/>
                       </td>
                       <td>
-                        <BulkOrderMenu/>
+                        <InvitedOrderMenu/>
                         <br/>
-                        new bulk order
+                        go to items page actually-redirect
                       </td>
                     </tr>
                   </tbody>
@@ -176,6 +251,7 @@ var Order1 = React.createClass({
                       <td>
                         <BulkOrderMenu/>
                         <br/>
+                        if no params order is new-if bulk show bulk menu and go to item page
                         Delivery date-order type
                       </td>
                     </tr>
@@ -263,6 +339,49 @@ var OrderGuests = React.createClass({
                       <BulkOrderMenu/>
                       <br/>
                       order guests
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+var OrderItems = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                      if order type==bulk <BulkOrderMenu/>
+                      <br/>
+                      order items
                       </td>
                     </tr>
                   </tbody>
@@ -708,5 +827,6 @@ render((
     <Route path="/order1/:order_id" component={Order1}/>
     <Route path="/order/:order_id/guests" component={OrderGuests}/>
     <Route path="/order/:order_id/message" component={OrderMessage}/>
+    <Route path="/order/:order_id/Items" component={OrderItems}/>
   </Router>
-), document.getElementById('react_order'))
+), document.getElementById('order'))
