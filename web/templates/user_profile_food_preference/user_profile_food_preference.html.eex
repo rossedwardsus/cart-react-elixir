@@ -5,8 +5,8 @@
        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
           Delivery Address
           <br>
-          <div id="user_profile_delivery_address"></div>
+          <div id="user_profile_food_preferences"></div>
           <br>
-          <script src="/js/user_profile_delivery_address.js"></script>
+          <script src="/js/user_profile_food_preferences.js"></script>
 
           

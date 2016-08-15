@@ -18,8 +18,8 @@ module.exports = {
   
   //output: { path: __dirname, filename: '/priv/static/js/user_profile_delivery_address.js' },
   //output: { path: __dirname, filename: '/priv/static/js/user_profile_payment.js' },
-  output: { path: __dirname, filename: '/priv/static/js/user_profile_name.js' },
-  //output: { path: __dirname, filename: 'user_orders.js' },
+  //output: { path: __dirname, filename: '/priv/static/js/user_profile_name.js' },
+  output: { path: __dirname, filename: '/priv/static/js/user_profile_food_preferences.js' },
   //output: { path: __dirname, filename: 'user_order.js' },
 
   module: {

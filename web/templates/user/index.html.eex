@@ -1,25 +1,7 @@
-<table width="100%" border="0">
-<tr><td width="5%"><td width="25%">
-password
-<br>
-<br>
-profile
-<br>
-<a href="/user/settings/dietary">Dietary Preferences</a>
-<br>
-delivery address
-<br>
-<a href="/user/profile/photo">profile photo</a>
-<br>
-</td>
-<td valign="top">
 <a href="/user/order/wizard">Start Order</a>
 <br>
 Your Recent Orders
 <br>
 <br>
 date of order - total cost
-</td>
-</tr>
-</table>
 
