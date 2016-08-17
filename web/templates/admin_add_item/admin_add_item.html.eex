@@ -1,0 +1,4 @@
+Admin Add Item
+<br>
+<div id="admin_add_item"></div>
+<script src="/js/admin_add_item.js"></script>

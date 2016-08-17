@@ -1,7 +1,11 @@
-<a href="/admin/items">manage items</a>
+<a href="/admin/add_item">add item</a>
+<br>
+<a href="/admin/edit_item">edit item</a>
+<br>
+<a href="/admin/items">items</a>
 <br>
 <br>
-view orders
+<a href="/admin/orders">view orders</a>
 <br>
 users
 <br>
