@@ -88,6 +88,7 @@
 
 	//Popup.alert('This is an alert popup');
 
+
 	var BulkOrderMenu = _react2.default.createClass({
 	  displayName: 'BulkOrderMenu',
 	  componentDidMount: function componentDidMount() {
@@ -174,55 +175,56 @@
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/order/1/guests' },
+	        'Guest List'
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/order/1/items' },
+	        'Items'
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/order/1/messages' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
-	          'Guests'
+	          'Messages'
 	        )
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/1/guests' },
+	        { to: '/order/1/delivery_address' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
-	          'Items'
-	        ),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/order/1/guests' },
-	          _react2.default.createElement(
-	            _reactBootstrap.Button,
-	            null,
-	            'Messages'
-	          )
+	          'Delivery Address'
 	        )
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/1/message' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          null,
-	          'Message'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/order/1/delivery' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          null,
-	          'Delivery'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/students' },
+	        { to: '/payment' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
 	          'Payment'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/event_name' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          null,
+	          'Event Name'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/Map' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          null,
+	          'Map'
 	        )
 	      )
 	    );
@@ -461,7 +463,7 @@
 
 	    return {
 
-	      orders: [{ order_id: 1 }]
+	      guest_messages: [{ order_id: 1 }]
 
 	    };
 	  },
@@ -497,9 +499,13 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              _react2.default.createElement(BulkOrderMenu, null),
+	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'order message'
+	              'guest messages',
+	              _react2.default.createElement('br', null),
+	              'send message to guests',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('textarea', null)
 	            )
 	          )
 	        )
@@ -554,7 +560,10 @@
 	              null,
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'order guests1',
+	              'order guests',
+	              _react2.default.createElement('br', null),
+	              'number of items each guest can order?',
+	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
 	                'table',
@@ -569,8 +578,11 @@
 	                      'td',
 	                      null,
 	                      'you have added 25 guests-choose how many items a guest can select'
-	                    ),
-	                    _react2.default.createElement('tr', null),
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'tr',
+	                    null,
 	                    _react2.default.createElement(
 	                      'td',
 	                      { width: '50%' },

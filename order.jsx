@@ -17,6 +17,8 @@ const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 
 //Popup.alert('This is an alert popup');
 
+
+
 const BulkOrderMenu = React.createClass({
 
   componentDidMount() {
@@ -75,7 +77,7 @@ const InvitedOrderMenu = React.createClass({
   render(){
 
       return(<div>
-                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests"><Button>Guests</Button></Link><Link to="/order/1/guests"><Button>Items</Button><Link to="/order/1/guests"><Button>Messages</Button></Link></Link><Link to="/order/1/message"><Button>Message</Button></Link><Link to="/order/1/delivery"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests">Guest List</Link><Link to="/order/1/items">Items</Link><Link to="/order/1/messages"><Button>Messages</Button></Link><Link to="/order/1/delivery_address"><Button>Delivery Address</Button></Link><Link to="/payment"><Button>Payment</Button></Link><Link to="/event_name"><Button>Event Name</Button></Link><Link to="/Map"><Button>Map</Button></Link>
 
       </div>);
 
@@ -269,7 +271,7 @@ var OrderMessage = React.createClass({
 
       return {
 
-          orders: [{order_id: 1}]
+         guest_messages: [{order_id: 1}]
         
       }
   },
@@ -293,9 +295,13 @@ var OrderMessage = React.createClass({
                         <br/>
                       </td>
                       <td>
-                      <BulkOrderMenu/>
+                      <InvitedOrderMenu/>
                       <br/>
-                      order message
+                      guest messages
+                      <br/>
+                      send message to guests
+                      <br/>
+                      <textarea></textarea>
                       </td>
                     </tr>
                   </tbody>
@@ -338,14 +344,17 @@ var OrderGuests = React.createClass({
                       <td>
                       <InvitedOrderMenu/>
                       <br/>
-                      order guests1
+                      order guests
+                      <br/>
+                      number of items each guest can order?
+                      <br/>
                       <br/>
                       <table width="100%">
                         <tbody>
                           <tr>
                             <td>you have added 25 guests-choose how many items a guest can select</td>
-                          <tr>
                           </tr>
+                          <tr>
                             <td width="50%">
                             <FormGroup controlId="formControlsTextarea">
                               <FormControl componentClass="textarea" placeholder="textarea" rows="10" cols="1" style={{resize: "none"}}/>
