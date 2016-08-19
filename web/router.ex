@@ -69,7 +69,7 @@ defmodule SconeHomeElixir.Router do
 
     get "/user/profile/payment", UserProfilePaymentController, :index
 
-    #get "/order/:order_id/guests/item?guest_email=", UserProfilePaymentController, :index
+    get "/order/:order_id/guests/item", UserOrderGuestChooseItemController, :index
     
     get "/admin", AdminController, :index
     get "/admin/add_item", AdminAddItemController, :index

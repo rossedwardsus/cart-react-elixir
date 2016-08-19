@@ -7,7 +7,9 @@ defmodule SconeHomeElixir.UserController do
   	#clear_session
   	#user_id = conn.cookies["user_id"]
   	#IO.puts("user_id" <> user_id)
-    render conn, "index.html"
+    conn
+    |> assign(:user, "hello")
+    |> render("index.html")
   end
 
   def create(conn, %{"photo" => user_params}) do

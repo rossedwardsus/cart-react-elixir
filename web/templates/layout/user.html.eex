@@ -19,6 +19,10 @@
           <tr>
             <td valign="top" width="2%">
             <td valign="top" width="35%">
+              <br>
+              Welcome user!<%= @user %>
+              <br>
+              <br>
               setting
               <br>
               <a href="/user">home</a>
