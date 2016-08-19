@@ -182,6 +182,24 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
+	        { to: '/order/1/guests' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          null,
+	          'Items'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/order/1/guests' },
+	          _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            null,
+	            'Messages'
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
 	        { to: '/order/1/message' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
@@ -205,15 +223,6 @@
 	          _reactBootstrap.Button,
 	          null,
 	          'Payment'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/students' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          null,
-	          'Message Guests'
 	        )
 	      )
 	    );
@@ -507,7 +516,7 @@
 
 	    return {
 
-	      orders: [{ order_id: 1 }]
+	      guest_list: [{ guest_name: "guest" }]
 
 	    };
 	  },
@@ -543,13 +552,68 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              _react2.default.createElement(BulkOrderMenu, null),
+	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'order guests'
+	              'order guests1',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                'table',
+	                { width: '100%' },
+	                _react2.default.createElement(
+	                  'tbody',
+	                  null,
+	                  _react2.default.createElement(
+	                    'tr',
+	                    null,
+	                    _react2.default.createElement(
+	                      'td',
+	                      null,
+	                      'you have added 25 guests-choose how many items a guest can select'
+	                    ),
+	                    _react2.default.createElement('tr', null),
+	                    _react2.default.createElement(
+	                      'td',
+	                      { width: '50%' },
+	                      _react2.default.createElement(
+	                        _reactBootstrap.FormGroup,
+	                        { controlId: 'formControlsTextarea' },
+	                        _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', rows: '10', cols: '1', style: { resize: "none" } })
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'td',
+	                      { width: '50%' },
+	                      _react2.default.createElement(
+	                        Dropzone,
+	                        { onDrop: this.onDrop },
+	                        _react2.default.createElement(
+	                          'div',
+	                          null,
+	                          'Try dropping some files here, or click to select files to upload.'
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'tr',
+	                    null,
+	                    this.state.guest_list.map(function (guest) {
+
+	                      return _react2.default.createElement(
+	                        'td',
+	                        null,
+	                        guest.name
+	                      );
+	                    })
+	                  )
+	                )
+	              )
 	            )
 	          )
 	        )
-	      )
+	      ),
+	      _react2.default.createElement('br', null),
+	      _react2.default.createElement('br', null)
 	    );
 	  }
 	});
@@ -770,7 +834,7 @@
 
 	  startInvitedOrder: function startInvitedOrder() {
 
-	    //alert("invited");
+	    alert("invited");
 
 	    this.setState({ order_type: "invited", order_state: "guest_list" });
 	  },

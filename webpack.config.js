@@ -10,9 +10,9 @@ module.exports = {
 
   //output: { path: __dirname, filename: 'admin_orders.js' },
   //output: { path: __dirname, filename: 'admin_order.js' },
-  output: { path: __dirname, filename: '/priv/static/js/admin_add_item.js' },
+  //output: { path: __dirname, filename: '/priv/static/js/admin_add_item.js' },
   
-  //output: { path: __dirname, filename: '/priv/static/js/order.js' },
+  output: { path: __dirname, filename: '/priv/static/js/order.js' },
   
   //output: { path: __dirname, filename: '/priv/static/js/user_profile_photo.js' },
   

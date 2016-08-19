@@ -75,7 +75,7 @@ const InvitedOrderMenu = React.createClass({
   render(){
 
       return(<div>
-                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests"><Button>Guests</Button></Link><Link to="/order/1/message"><Button>Message</Button></Link><Link to="/order/1/delivery"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link><Link to="/students"><Button>Message Guests</Button></Link>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests"><Button>Guests</Button></Link><Link to="/order/1/guests"><Button>Items</Button><Link to="/order/1/guests"><Button>Messages</Button></Link></Link><Link to="/order/1/message"><Button>Message</Button></Link><Link to="/order/1/delivery"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link>
 
       </div>);
 
@@ -312,7 +312,7 @@ var OrderGuests = React.createClass({
 
       return {
 
-          orders: [{order_id: 1}]
+          guest_list: [{guest_name: "guest"}]
         
       }
   },
@@ -336,13 +336,43 @@ var OrderGuests = React.createClass({
                         <br/>
                       </td>
                       <td>
-                      <BulkOrderMenu/>
+                      <InvitedOrderMenu/>
                       <br/>
-                      order guests
+                      order guests1
+                      <br/>
+                      <table width="100%">
+                        <tbody>
+                          <tr>
+                            <td>you have added 25 guests-choose how many items a guest can select</td>
+                          <tr>
+                          </tr>
+                            <td width="50%">
+                            <FormGroup controlId="formControlsTextarea">
+                              <FormControl componentClass="textarea" placeholder="textarea" rows="10" cols="1" style={{resize: "none"}}/>
+                            </FormGroup>
+                            </td>
+                            <td width="50%">
+                                <Dropzone onDrop={this.onDrop}>
+                                  <div>Try dropping some files here, or click to select files to upload.</div>
+                                </Dropzone>
+                            </td>
+                          </tr>
+                          <tr>
+                          {this.state.guest_list.map(function(guest){
+
+                              return(<td>{guest.name}</td>)
+
+                          })}
+                          </tr>
+                        </tbody>
+                      </table>
                       </td>
                     </tr>
                   </tbody>
                 </table>
+                <br/>
+                <br/>
+                
             </div>);
 
   }
@@ -584,7 +614,7 @@ var Order = React.createClass({
 
   startInvitedOrder: function(){
 
-      //alert("invited");
+      alert("invited");
 
       this.setState({order_type: "invited", order_state: "guest_list"});
 

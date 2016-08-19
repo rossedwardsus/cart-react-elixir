@@ -1,6 +1,8 @@
 defmodule SconeHomeElixir.AdminAddItemController do
   use SconeHomeElixir.Web, :controller
 
+  plug :put_layout, "admin.html"
+
   def index(conn, _params) do
     render conn, "admin_add_item.html"
   end
