@@ -52,7 +52,7 @@ const UserOrderGuestChooseItem = React.createClass({
 
                           //alert(JSON.stringify(item.title));
 
-                          return <td><table><tbody><tr><td>{i.title}<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="100px" width="100px"/><br/><select ref="item_1" id="item_1" onChange={this.selectedItem}><option value=""></option><option value="10">10</option><option value="20">20</option></select><button onClick={this.btnAddToCart}>add to cart</button></td></tr></tbody></table></td>;
+                          return <td><table><tbody><tr><td>{i.title}<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="100px" width="100px"/><br/><select ref="item_1" id="item_1" onChange={this.selectedItem}><option value=""></option><option value="1">1</option><option value="2">2</option></select><button onClick={this.btnAddToCart}>add to cart</button></td></tr></tbody></table></td>;
 
                         //}
                       }.bind(this));
@@ -66,10 +66,22 @@ const UserOrderGuestChooseItem = React.createClass({
                   
 
       return(<div>
+                  Welcome user!
+                  <br/>
+                  You have been invited to an event by user
+                  <br>
+                  The event name is and will be held on
+                  <br/>
+                  The address of the event is
+                  <br/>
+                  <br/>
+                  <br/>
+                  Please choose the items for this event
+                  <br/>
+                  <br/> 
                   List of items
                   <br/>
                   {page}
-                  
                   <br/>
                   Message to host
                   <br/>

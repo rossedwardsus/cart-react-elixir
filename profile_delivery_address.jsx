@@ -24,9 +24,19 @@ var UserProfileName = React.createClass({
 
   		    return(<div>
                     <br/>
+                    Address
+                    <br/>
+                    Suite
                     <Input/>
+                    City
+                    <br/>
+                    State
+                    <br/>
+                    Zipcode
                     <br/>
                     <Input/>
+                    <br/>
+                    Leave food at front desk
           </div>);
   }
 
