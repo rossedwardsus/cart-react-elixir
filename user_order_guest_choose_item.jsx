@@ -69,7 +69,7 @@ const UserOrderGuestChooseItem = React.createClass({
                   Welcome user!
                   <br/>
                   You have been invited to an event by user
-                  <br>
+                  <br/>
                   The event name is and will be held on
                   <br/>
                   The address of the event is
