@@ -7,7 +7,12 @@ defmodule SconeHomeElixir.UserProfileDeliveryAddressController do
   plug :put_layout, "user.html"
 
   def index(conn, _params) do
-    render conn, "user_profile_delivery_address.html"
+    #render conn, "user_profile_delivery_address.html"
+
+    conn
+    |> assign(:user, "hello")
+    |> render("user_profile_delivery_address.html")
+
   end
 
   #def create(conn, %{"profile_photo" => user_params}) do
