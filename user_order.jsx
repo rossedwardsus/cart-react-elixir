@@ -344,34 +344,30 @@ var OrderGuests = React.createClass({
                       <td>
                       <InvitedOrderMenu/>
                       <br/>
-                      order guests
+                      <b>Guests</b>
                       <br/>
-                      number of items each guest can order?
                       <br/>
                       <br/>
                       <table width="100%">
                         <tbody>
                           <tr>
-                            <td>you have added 25 guests-choose how many items a guest can select</td>
-                          </tr>
-                          <tr>
                             <td width="50%">
-                            <FormGroup controlId="formControlsTextarea">
-                              <FormControl componentClass="textarea" placeholder="textarea" rows="10" cols="1" style={{resize: "none"}}/>
-                            </FormGroup>
+                              <FormGroup controlId="formControlsTextarea">
+                                <FormControl componentClass="textarea" placeholder="textarea" rows="10" cols="1" style={{resize: "none"}}/>
+                              </FormGroup>
                             </td>
+                            <br/>
                             <td width="50%">
                                 <Dropzone onDrop={this.onDrop}>
                                   <div>Try dropping some files here, or click to select files to upload.</div>
                                 </Dropzone>
                             </td>
-                          </tr>
-                          <tr>
-                          {this.state.guest_list.map(function(guest){
+                            {this.state.guest_list.map(function(guest){
 
                               return(<td>{guest.name}</td>)
 
-                          })}
+                            })}
+                            </td>
                           </tr>
                         </tbody>
                       </table>
