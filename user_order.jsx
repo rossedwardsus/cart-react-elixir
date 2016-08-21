@@ -318,7 +318,7 @@ var OrderGuests = React.createClass({
 
       return {
 
-          guest_list: [{guest_name: "guest"}]
+          guest_list: [{name: "ross edwards", email: "rossedwards.us@gmail.com"}, {name: "julia friedman", email: ""}]
         
       }
   },
@@ -326,6 +326,25 @@ var OrderGuests = React.createClass({
 
       //alert("!");
       //alert(this.props.params.order_id);
+
+  },
+
+  onChange: function(e){
+
+        //alert(e.target.value);
+        var guests = e.target.value.split("\n");
+        //alert(guests[0]);
+        var guests_temp = [];
+
+        guests.map(function(guest){
+        
+            guests_temp.push({name: guest.split(",")[0], email: guest.split(",")[1]});
+
+        });
+
+        //alert(JSON.stringify(guests_temp));
+
+        this.setState({guest_list: guests_temp});
 
   },
 
@@ -353,20 +372,26 @@ var OrderGuests = React.createClass({
                           <tr>
                             <td width="50%">
                               <FormGroup controlId="formControlsTextarea">
-                                <FormControl componentClass="textarea" placeholder="textarea" rows="10" cols="1" style={{resize: "none"}}/>
+                                <FormControl componentClass="textarea" placeholder="textarea" ref="guests" rows="10" cols="1" style={{resize: "none"}} onChange={this.onChange}/>
                               </FormGroup>
+                              <br/>
+                              <br/>
+                              <Dropzone onDrop={this.onDrop}>
+                                <div>Try dropping some files here, or click to select files to upload.</div>
+                              </Dropzone>
                             </td>
-                            <br/>
-                            <td width="50%">
-                                <Dropzone onDrop={this.onDrop}>
-                                  <div>Try dropping some files here, or click to select files to upload.</div>
-                                </Dropzone>
-                            </td>
-                            {this.state.guest_list.map(function(guest){
+                            <td width="5%"></td>
+                            <td style={{verticalAlign: "top"}}>
+                                <table width="100%">
+                                  <tbody>
+                                    {this.state.guest_list.map(function(guest){
+                                            //alert(guest.name);
 
-                              return(<td>{guest.name}</td>)
+                                      return(<tr><td style={{verticalAlign: "top"}}>{guest.name}</td><td>{guest.email}</td></tr>)
 
-                            })}
+                                    })}
+                                  </tbody>
+                                </table>
                             </td>
                           </tr>
                         </tbody>
