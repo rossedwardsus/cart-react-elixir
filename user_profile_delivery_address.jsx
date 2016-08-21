@@ -15,7 +15,7 @@ var UserProfileDeliveryAddress = React.createClass({
 	},
   componentDidMount: function(){
 
-    //alert();
+    //alert(this.props.user_id);
 
   },
 
@@ -39,47 +39,68 @@ var UserProfileDeliveryAddress = React.createClass({
                           <td>
                             <Form horizontal>
                               <FormGroup>
-                                  <Col componentClass={ControlLabel} sm={2}>
-                                        Address
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Delivery Address"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
                                   </Col>
-                                  <Col sm={10}>
-                                  <FormControl
-                                    type="text"
-                                    value={this.state.value}
-                                    placeholder="Enter text"
-                                    onChange={this.handleChange}
-                                    ref="delivery_address"
-                                  />
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Suite"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
                                   </Col>
                               </FormGroup>
                             </Form>
-                            <ControlLabel>Suite</ControlLabel>Suite
                             <br/>
-                            <FormControl
-                              type="text"
-                              value={this.state.value}
-                              placeholder="Enter text"
-                              onChange={this.handleChange}
-                              ref="suite"
-                            />
+                            <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={5}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="City"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="State"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={5}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="ZipCode"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                            </Form>
                             <br/>
-                            CityStateZipcode
-                            <br/>
-                            <input/>
-                            <br/>
-                            <ControlLabel>City</ControlLabel>Suite
-                            <br/>
-                            <FormControl
-                              type="text"
-                              value={this.state.value}
-                              placeholder="Enter text"
-                              onChange={this.handleChange}
-                              ref="city"
-                            />
                             <br/>
                             Notes
                             <br/>
                             Leave food at front desk
+                            <br/>
+                            <FormGroup>
+                                <FormControl componentClass="textarea" placeholder="textarea" style={{resize: "none"}}/>
+                            </FormGroup>
+                            <br/>
                             <br/>
                             <Button onClick={this.save}>Save</Button>
                           </td>
@@ -90,4 +111,4 @@ var UserProfileDeliveryAddress = React.createClass({
   }
 });
 
-ReactDOM.render(<UserProfileDeliveryAddress />, document.getElementById('user_profile_delivery_address'));
+ReactDOM.render(<UserProfileDeliveryAddress user_id={user_id}/>, document.getElementById('user_profile_delivery_address'));

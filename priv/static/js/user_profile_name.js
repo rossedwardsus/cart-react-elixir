@@ -46,9 +46,9 @@
 
 	'use strict';
 
-	var _profile_name = __webpack_require__(1);
+	var _user_profile_name = __webpack_require__(1);
 
-	var _profile_name2 = _interopRequireDefault(_profile_name);
+	var _user_profile_name2 = _interopRequireDefault(_user_profile_name);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -98,13 +98,10 @@
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(_reactBootstrap.FormControl, {
 	        type: 'text',
-	        placeholder: 'Enter text',
+	        placeholder: 'Name',
 	        onChange: this.handleChange
 	      }),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', null),
-	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
 	        _reactBootstrap.Button,

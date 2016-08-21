@@ -7,7 +7,13 @@ defmodule SconeHomeElixir.UserProfileNameController do
   plug :put_layout, "user.html"
 
   def index(conn, _params) do
-    render conn, "user_profile_name.html"
+    #render conn, "user_profile_name.html"
+
+    conn
+    |> assign(:user, "hello")
+    |> render "user_profile_name.html"
+
+    
   end
 
   #def create(conn, %{"profile_photo" => user_params}) do

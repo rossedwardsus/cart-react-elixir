@@ -10,6 +10,8 @@ var UserProfilePhoto = React.createClass({
 	getInitialState: function(){
 
 			return {
+
+          files: []
 				
 			}
 	},
@@ -19,6 +21,9 @@ var UserProfilePhoto = React.createClass({
 
   },
   onDrop: function(files){
+        this.setState({
+            files: files
+        });
         var req = request.post('/upload');
         files.forEach((file)=> {
             req.attach(file.name, file);
@@ -35,6 +40,10 @@ var UserProfilePhoto = React.createClass({
                     <Dropzone onDrop={this.onDrop}>
                       <div>Try dropping some files here, or click to select files to upload.</div>
                     </Dropzone>
+                    {this.state.files.length > 0 ? <div>
+                    <h2>Uploading {this.state.files.length} files...</h2>
+                    <div>{this.state.files.map((file) => <img src={file.preview} /> )}</div>
+                    </div> : null}
           </div>);
   }
 

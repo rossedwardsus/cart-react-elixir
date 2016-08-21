@@ -46,9 +46,9 @@
 
 	'use strict';
 
-	var _profile_food_preferences = __webpack_require__(1);
+	var _user_profile_food_preferences = __webpack_require__(1);
 
-	var _profile_food_preferences2 = _interopRequireDefault(_profile_food_preferences);
+	var _user_profile_food_preferences2 = _interopRequireDefault(_user_profile_food_preferences);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71,54 +71,102 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var UserProfileFoodPreferences = _react2.default.createClass({
-	  displayName: 'UserProfileFoodPreferences',
+	    displayName: 'UserProfileFoodPreferences',
 
-	  //var counter = 0;
+	    //var counter = 0;
 
 
-	  getInitialState: function getInitialState() {
+	    getInitialState: function getInitialState() {
 
-	    return {
-	      food_preferences: []
-	    };
-	  },
-	  componentWillMount: function componentWillMount() {
+	        return {
+	            food_preferences: []
+	        };
+	    },
+	    componentWillMount: function componentWillMount() {
 
-	    var myVar = setInterval(this.myTimer, 10000);
+	        var myVar = setInterval(this.myTimer, 10000);
 
-	    //alert(this.state.images[0] + ".jpg");
+	        //alert(this.state.images[0] + ".jpg");
 
-	    //this.setState({image_url: "/images/" + this.state.images[0]});
+	        //this.setState({image_url: "/images/" + this.state.images[0]});
 
-	    //get default image
-	    //with a timer change the image on a 5 second interval
-	  },
-	  onChange: function onChange(e) {
+	        //get default image
+	        //with a timer change the image on a 5 second interval
+	    },
+	    onChange: function onChange(e) {
 
-	    alert(e.target.value);
+	        alert(e.target.value);
 
-	    var food_preferences_temp = this.state.food_preferences;
-	    food_preferences_temp.push(e.target.value);
-	  },
+	        var food_preferences_temp = this.state.food_preferences;
+	        food_preferences_temp.push(e.target.value);
+	    },
 
-	  render: function render() {
+	    render: function render() {
 
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        _reactBootstrap.Checkbox,
-	        { value: 'sugar_free', checked: 'true', onChange: this.onChange },
-	        'Sugar Free'
-	      ),
-	      _react2.default.createElement('br', null),
-	      _react2.default.createElement(
-	        _reactBootstrap.Checkbox,
-	        { value: 'gluten_free', onChange: this.onChange },
-	        'Gluten Free'
-	      )
-	    );
-	  }
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                null,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'sugar_free', checked: 'true', onChange: this.onChange, inline: true },
+	                    'Refined Sugar Free'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Gluten Free'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Wheet Free'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Vegan'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Vegetarian'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                null,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Soy Free'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Egg Free'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Nut Allergies'
+	                ),
+	                _react2.default.createElement(
+	                    _reactBootstrap.Checkbox,
+	                    { value: 'gluten_free', onChange: this.onChange, inline: true },
+	                    'Dairy Free'
+	                )
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                null,
+	                'Save'
+	            )
+	        );
+	    }
 
 	});
 

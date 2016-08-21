@@ -1,56 +1,113 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+var request = require("superagent");
+import {Button, Form, FormControl, ControlLabel, FormGroup, Col} from 'react-bootstrap'
 
-
-var Gallery = React.createClass({
+var UserProfilePayment = React.createClass({
 	//var counter = 0;
 
 
 	getInitialState: function(){
 
 			return {
-				images: ["SH_SFe_8x8.jpg", "SH_10_x_10_scone_720.jpg", "SH_strawberry_buttermilk_8x8.jpg", "SH_group_pic_8x8.jpg"],
-				image_url: "/images/gallery/SH_SFe_8x8.jpg",
-				counter: 0
+				
 			}
 	},
-  componentWillMount: function(){
+  componentDidMount: function(){
 
-  		var myVar = setInterval(this.myTimer, 10000);
-
-  		//alert(this.state.images[0] + ".jpg");
-
-  		//this.setState({image_url: "/images/" + this.state.images[0]});
-
-  		//get default image
-  		//with a timer change the image on a 5 second interval
-
-  },
-  myTimer: function(){
-
-  		//counter = counter + 1;
-
-  		this.setState({image_url: "/images/gallery/" + this.state.images[this.state.counter]});
-
-  		if(this.state.counter == this.state.images.length-1){
-
-  			this.setState({counter: 0});
-
-  		}else{
-
-  			this.setState({counter: this.state.counter+1});
-
-  		}
+    //alert(this.props.user_id);
 
   },
 
+  save: function(){
+
+      //save to stripe first and then store the token
+
+      //Stripe.createToken();
+      Stripe.setPublishableKey('pk_test_xxxx');
+
+      request
+        .post('/api/user/profile/delivery_address')
+        .send({delivery_address: this.refs.delivery_address.value, suite: this.refs.suite.value, city: this.refs.city.value, state: this.state.state, zipcode: this.refs.zipcode.value, note: this.refs.zipcode.value})
+        .set('X-API-Key', 'foobar')
+        .set('Accept', 'application/json')
+        .end(function(err, res){
+          // Calling the end function will send the request
+        });
+  },
+  
   render: function(){
 
-  		return(<div><table><tbody><tr><td><img src={this.state.image_url}/></td></tr></tbody></table></div>);
-
+  		    return(<div>
+                    <table width="100%">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Credit Card Number"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Cvc"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Expiry Month"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Expiry Year"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                            </Form>
+                            <br/>
+                            <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Card Type"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                                  
+                              </FormGroup>
+                            </Form>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <Button onClick={this.save}>Save</Button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+          </div>);
   }
-
 });
 
-
-ReactDOM.render(<Gallery />, document.getElementById('gallery'));
+ReactDOM.render(<UserProfilePayment user_id={user_id}/>, document.getElementById('user_profile_payment'));

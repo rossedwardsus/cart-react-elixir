@@ -2,6 +2,11 @@
           <br>
           <div id="user_profile_delivery_address"></div>
           <br>
+          <script>
+
+              var user_id = 1234;
+
+          </script>
           <script src="/js/user_profile_delivery_address.js"></script>
 
           

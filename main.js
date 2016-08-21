@@ -4,12 +4,12 @@
 
 //import Gallery from './gallery.jsx';
 
-//import UserProfilePhoto from './profile_photo.jsx';
+import UserProfilePhoto from './user_profile_photo.jsx';
 //import UserProfileDeliveryAddress from './user_profile_delivery_address.jsx';
-//import UserProfileName from './profile_name.jsx';
-//import UserProfilePayment from './profile_payment.jsx';
-//import UserProfileFoodPreferences from './profile_food_preferences.jsx';
+//import UserProfileName from './user_profile_name.jsx';
+//import UserProfilePayment from './user_profile_payment.jsx';
+//import UserProfileFoodPreferences from './user_profile_food_preferences.jsx';
 
-//import Order from './order.jsx';
+//import UserOrder from './user_order.jsx';
 
-import UserOrderGuestChooseItem from "./user_order_guest_choose_item.jsx";
+//import UserOrderGuestChooseItem from "./user_order_guest_choose_item.jsx";

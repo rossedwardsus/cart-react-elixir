@@ -7,7 +7,14 @@ defmodule SconeHomeElixir.UserProfileFoodPreferenceController do
   plug :put_layout, "user.html"
 
   def index(conn, _params) do
-    render conn, "user_profile_food_preference.html"
+    #render conn, "user_profile_food_preference.html"
+
+    IO.puts("user_id" <> conn.cookies["first_cookie_key"])
+
+    conn
+    |> assign(:user, "hello")
+    |> render("user_profile_food_preference.html")
+
   end
 
   #def create(conn, %{"profile_photo" => user_params}) do

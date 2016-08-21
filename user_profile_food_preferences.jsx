@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Checkbox} from 'react-bootstrap';
+import {Checkbox, FormGroup, Button} from 'react-bootstrap';
 
 var UserProfileFoodPreferences = React.createClass({
 	//var counter = 0;
@@ -38,11 +38,39 @@ var UserProfileFoodPreferences = React.createClass({
 
   		return(
           <div>
-
-                <Checkbox value="sugar_free" checked="true" onChange={this.onChange}>Sugar Free</Checkbox>
-                <br/>
-                <Checkbox value="gluten_free" onChange={this.onChange}>Gluten Free</Checkbox>
-
+              <FormGroup>
+                <Checkbox value="sugar_free" checked="true" onChange={this.onChange} inline>
+                    Refined Sugar Free
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Gluten Free
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Wheet Free
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Vegan
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Vegetarian
+                </Checkbox>
+              </FormGroup>
+              <FormGroup>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Soy Free
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Egg Free
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Nut Allergies
+                </Checkbox>
+                <Checkbox value="gluten_free" onChange={this.onChange} inline>
+                    Dairy Free
+                </Checkbox>
+              </FormGroup>
+              <br/>
+              <Button>Save</Button>
           </div>
       );
 

@@ -52,21 +52,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//import UserProfileName from './profile_name.jsx';
-	//import UserProfilePayment from './profile_payment.jsx';
-	//import UserProfileFoodPreferences from './profile_food_preferences.jsx';
-
-	//import Order from './order.jsx';
-
-	i; //mport UserOrderGuestChooseItem from "./user_order_guest_choose_item.jsx";
-	//import AdminOrders from './admin_orders.jsx';
-	//import AdminOrder from './admin_order.jsx';
-	//import AdminAddItem from './admin_add_item.jsx';
-
-	//import Gallery from './gallery.jsx';
-
-	//import UserProfilePhoto from './profile_photo.jsx';
-
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -100,7 +85,7 @@
 	  },
 	  componentDidMount: function componentDidMount() {
 
-	    //alert();
+	    //alert(this.props.user_id);
 
 	  },
 
@@ -135,59 +120,82 @@
 	                  null,
 	                  _react2.default.createElement(
 	                    _reactBootstrap.Col,
-	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
-	                    'Address'
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.Col,
-	                    { sm: 10 },
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },
 	                    _react2.default.createElement(_reactBootstrap.FormControl, {
 	                      type: 'text',
 	                      value: this.state.value,
-	                      placeholder: 'Enter text',
+	                      placeholder: 'Delivery Address',
 	                      onChange: this.handleChange,
 	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Suite',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
 	                    })
 	                  )
 	                )
 	              ),
-	              _react2.default.createElement(
-	                _reactBootstrap.ControlLabel,
-	                null,
-	                'Suite'
-	              ),
-	              'Suite',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement(_reactBootstrap.FormControl, {
-	                type: 'text',
-	                value: this.state.value,
-	                placeholder: 'Enter text',
-	                onChange: this.handleChange,
-	                ref: 'suite'
-	              }),
-	              _react2.default.createElement('br', null),
-	              'CityStateZipcode',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('input', null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
-	                _reactBootstrap.ControlLabel,
-	                null,
-	                'City'
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'City',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'State',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'ZipCode',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  )
+	                )
 	              ),
-	              'Suite',
 	              _react2.default.createElement('br', null),
-	              _react2.default.createElement(_reactBootstrap.FormControl, {
-	                type: 'text',
-	                value: this.state.value,
-	                placeholder: 'Enter text',
-	                onChange: this.handleChange,
-	                ref: 'city'
-	              }),
 	              _react2.default.createElement('br', null),
 	              'Notes',
 	              _react2.default.createElement('br', null),
 	              'Leave food at front desk',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                null,
+	                _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', style: { resize: "none" } })
+	              ),
+	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
 	                _reactBootstrap.Button,
@@ -202,7 +210,7 @@
 	  }
 	});
 
-	_reactDom2.default.render(_react2.default.createElement(UserProfileDeliveryAddress, null), document.getElementById('user_profile_delivery_address'));
+	_reactDom2.default.render(_react2.default.createElement(UserProfileDeliveryAddress, { user_id: user_id }), document.getElementById('user_profile_delivery_address'));
 
 /***/ },
 /* 2 */

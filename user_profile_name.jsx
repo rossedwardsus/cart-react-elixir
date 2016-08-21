@@ -26,13 +26,10 @@ var UserProfileName = React.createClass({
                     <br/>
                     <FormControl
                      type="text"
-                     placeholder="Enter text"
+                     placeholder="Name"
                      onChange={this.handleChange}
                     />
                     <br/>
-                    <input/>
-                    <br/>
-                    <input/>
                     <br/>
                     <Button>Save</Button>
           </div>);

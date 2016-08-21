@@ -17,7 +17,7 @@ defmodule SconeHomeElixir.Router do
       conn = Plug.Conn.put_resp_cookie(conn, "first_cookie_key", "first_cookie_value")
       IO.puts("cookie" <> conn.cookies["first_cookie_key"])
       if conn.cookies["cookie_name"] == nil do
-          IO.puts "hello from a plug"
+          IO.puts "logged_in in router"
       end
       conn
   end
@@ -73,18 +73,18 @@ defmodule SconeHomeElixir.Router do
     get "/admin/item/photo", AdminItemPhotoController, :index
   end
 
-  scope "/", SconeHomeElixir do
+  scope "/api", SconeHomeElixir do
     pipe_through :api # Use the default browser stack
 
-    post "/api/user/profile/photo", UserProfilePhotoController, :create
+    post "/user/profile/photo", UserProfilePhotoController, :create
     
-    get "/api/user/orders/new", ApiUserOrderController, :index
-    get "/api/user/orders/create", ApiUserOrderController, :create
+    get "/user/orders/new", ApiUserOrderController, :index
+    get "/user/orders/create", ApiUserOrderController, :create
 
-    get "/api/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
-    post "/api/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :create
+    get "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
+    post "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :create
 
-    get "/api/menu/items", ApiMenuItemsController, :index
+    get "/menu/items", ApiMenuItemsController, :index
 
   end
 

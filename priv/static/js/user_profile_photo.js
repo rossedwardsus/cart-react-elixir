@@ -46,9 +46,9 @@
 
 	'use strict';
 
-	var _profile_photo = __webpack_require__(1);
+	var _user_profile_photo = __webpack_require__(1);
 
-	var _profile_photo2 = _interopRequireDefault(_profile_photo);
+	var _user_profile_photo2 = _interopRequireDefault(_user_profile_photo);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -79,7 +79,11 @@
 
 	  getInitialState: function getInitialState() {
 
-	    return {};
+	    return {
+
+	      files: []
+
+	    };
 	  },
 	  componentDidMount: function componentDidMount() {
 
@@ -87,6 +91,9 @@
 
 	  },
 	  onDrop: function onDrop(files) {
+	    this.setState({
+	      files: files
+	    });
 	    var req = request.post('/upload');
 	    files.forEach(function (file) {
 	      req.attach(file.name, file);
@@ -110,7 +117,25 @@
 	          null,
 	          'Try dropping some files here, or click to select files to upload.'
 	        )
-	      )
+	      ),
+	      this.state.files.length > 0 ? _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Uploading ',
+	          this.state.files.length,
+	          ' files...'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.state.files.map(function (file) {
+	            return _react2.default.createElement('img', { src: file.preview });
+	          })
+	        )
+	      ) : null
 	    );
 	  }
 

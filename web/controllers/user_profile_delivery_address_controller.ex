@@ -9,6 +9,8 @@ defmodule SconeHomeElixir.UserProfileDeliveryAddressController do
   def index(conn, _params) do
     #render conn, "user_profile_delivery_address.html"
 
+    #IO.puts("user_id" <> conn.cookies["first_cookie_key"])
+
     conn
     |> assign(:user, "hello")
     |> render("user_profile_delivery_address.html")
