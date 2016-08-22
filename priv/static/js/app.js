@@ -21226,7 +21226,7 @@ require("deps/phoenix_html/web/static/js/phoenix_html");
 // import socket from "./socket"
 });
 
-;require.register("web/static/js/gallery", function(exports, require, module) {
+;require.register("web/static/js/gallery.js.old", function(exports, require, module) {
 /******/'use strict';(function(modules){ // webpackBootstrap
 /******/ // The module cache
 /******/var installedModules={}; /******/ // The require function

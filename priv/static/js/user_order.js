@@ -597,12 +597,27 @@
 	                    _react2.default.createElement(
 	                      'td',
 	                      { width: '50%' },
+	                      'Add individually:',
+	                      _react2.default.createElement('br', null),
+	                      _react2.default.createElement('input', null),
+	                      _react2.default.createElement('br', null),
+	                      _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        null,
+	                        'Add'
+	                      ),
+	                      _react2.default.createElement('br', null),
+	                      _react2.default.createElement('br', null),
+	                      'Copy and paste:',
+	                      _react2.default.createElement('br', null),
 	                      _react2.default.createElement(
 	                        _reactBootstrap.FormGroup,
 	                        { controlId: 'formControlsTextarea' },
 	                        _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', ref: 'guests', rows: '10', cols: '1', style: { resize: "none" }, onChange: this.onChange })
 	                      ),
 	                      _react2.default.createElement('br', null),
+	                      _react2.default.createElement('br', null),
+	                      'Drag a file',
 	                      _react2.default.createElement('br', null),
 	                      _react2.default.createElement(
 	                        Dropzone,
@@ -706,6 +721,247 @@
 	              _react2.default.createElement(BulkOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              'order items'
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	var OrderDeliveryAddress = _react2.default.createClass({
+	  displayName: 'OrderDeliveryAddress',
+
+
+	  getInitialState: function getInitialState() {
+
+	    return {
+
+	      orders: [{ order_id: 1 }]
+
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+
+	    //alert("!");
+	    //alert(this.props.params.order_id);
+
+	  },
+
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'table',
+	        { width: '100%' },
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              { style: { verticalAlign: "top" } },
+	              'settings',
+	              _react2.default.createElement('br', null),
+	              'orders',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('input', { type: 'radio' }),
+	              'Use Existing Address',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Delivery Address',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Suite',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'City',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'State',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Zipcode',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              'City-State-Zipcode',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('input', { type: 'radio' }),
+	              'Or enter a new one',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'City',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'State',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Zipcode',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	var OrderPayment = _react2.default.createClass({
+	  displayName: 'OrderPayment',
+
+
+	  getInitialState: function getInitialState() {
+
+	    return {
+
+	      orders: [{ order_id: 1 }]
+
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+
+	    //alert("!");
+	    //alert(this.props.params.order_id);
+
+	  },
+
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'table',
+	        { width: '100%' },
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              'settings',
+	              _react2.default.createElement('br', null),
+	              'orders',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              'Use Existing Payment Method',
+	              _react2.default.createElement('br', null),
+	              'Address-Suite',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('input', null),
+	              _react2.default.createElement('br', null),
+	              'City-State-Zipcode',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              'Or enter a new one'
 	            )
 	          )
 	        )
@@ -1395,7 +1651,9 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order1/:order_id', component: Order1 }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: OrderGuests }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/message', component: OrderMessage }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/Items', component: OrderItems })
+	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: OrderItems }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: OrderPayment }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress })
 	), document.getElementById('order'));
 
 /***/ },

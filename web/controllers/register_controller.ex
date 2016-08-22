@@ -6,15 +6,19 @@ defmodule SconeHomeElixir.RegisterController do
 
   alias SconeHomeElixir.{Repo, Login}
 
-  plug :action
+  #plug :action
 
   require Logger
+
+  plug :put_layout, "home.html"
 
   def index(conn, _params) do
     render conn, "register.html"
   end
 
-  def create(conn, %{"email" => email}) do
+  def create(conn, %{"email" => email, "password" => password}) do
+
+    IO.puts(email <> password)
 
     #{:ok, pid} = Postgrex.start_link(hostname: "localhost", username: "postgres", password: "", database: "scone_home")
     #{:ok, #PID<0.69.0>}
@@ -39,7 +43,7 @@ defmodule SconeHomeElixir.RegisterController do
     #text conn, Timex.format!(datetime, "%FT%T%:z", :strftime) <> UUID.uuid4()
     #json conn, Repo.all(query)
 
-    logins = Repo.all(Login)
+    #logins = Repo.all(Login)
 
     
     #Enum.map(logins.rows, fn row -> 
@@ -48,7 +52,7 @@ defmodule SconeHomeElixir.RegisterController do
     #    |> JSON.encode
     #end)
 
-    render conn, "index.json", logins: logins
+    render conn, "index.json", logins: "logins"
 
     #render conn, "index.json", data: logins
 

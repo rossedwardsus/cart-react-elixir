@@ -6,7 +6,7 @@ var moment = require('moment');
 //var Popup = require('react-popup');
 //var Modal = require('react-bootstrap-modal')
 //var Modal = ReactBootstrap.Modal;
-import { Button, FormGroup, FormControl, Modal } from 'react-bootstrap';
+import { Button, FormGroup, FormControl, Modal, Form, FieldGroup, Col, ControlLabel } from 'react-bootstrap';
 var Dropzone = require('react-dropzone');
 
 require('react-datepicker/dist/react-datepicker.css');
@@ -371,10 +371,21 @@ var OrderGuests = React.createClass({
                         <tbody>
                           <tr>
                             <td width="50%">
+                              Add individually:
+                              <br/>
+                              <input/>
+                              <br/>
+                              <Button>Add</Button>
+                              <br/>
+                              <br/>
+                              Copy and paste:
+                              <br/>
                               <FormGroup controlId="formControlsTextarea">
                                 <FormControl componentClass="textarea" placeholder="textarea" ref="guests" rows="10" cols="1" style={{resize: "none"}} onChange={this.onChange}/>
                               </FormGroup>
                               <br/>
+                              <br/>
+                              Drag a file
                               <br/>
                               <Dropzone onDrop={this.onDrop}>
                                 <div>Try dropping some files here, or click to select files to upload.</div>
@@ -451,6 +462,208 @@ var OrderItems = React.createClass({
   }
 
 });
+
+var OrderDeliveryAddress = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td style={{verticalAlign: "top"}}>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                          <br/>
+                          <input type="radio"/>Use Existing Address
+                          <br/>
+                          <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Delivery Address"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Suite"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
+                          <br/>
+                          <br/>
+                          <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={5}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="City"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="State"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Zipcode"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
+                          <br/>
+                          <br/>
+                          City-State-Zipcode
+                          <br/>
+                          <br/>
+                          <input type="radio"/>Or enter a new one
+                          <br/>
+                          <br/>
+                          <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={5}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="City"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="State"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Zipcode"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+var OrderPayment = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                          Use Existing Payment Method
+                          <br/>
+                          Address-Suite
+                          <br/>
+                          <input/>
+                          <br/>
+                          City-State-Zipcode
+                          <br/>
+                          <br/>
+                          Or enter a new one
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var Order = React.createClass({
@@ -887,6 +1100,8 @@ render((
     <Route path="/order1/:order_id" component={Order1}/>
     <Route path="/order/:order_id/guests" component={OrderGuests}/>
     <Route path="/order/:order_id/message" component={OrderMessage}/>
-    <Route path="/order/:order_id/Items" component={OrderItems}/>
+    <Route path="/order/:order_id/items" component={OrderItems}/>
+    <Route path="/order/:order_id/payment" component={OrderPayment}/>
+    <Route path="/order/:order_id/delivery_address" component={OrderDeliveryAddress}/>
   </Router>
 ), document.getElementById('order'))

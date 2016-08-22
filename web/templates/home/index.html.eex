@@ -20,6 +20,8 @@
             <br>
             <input type="submit">
         </form>
+        <br>
+        <a href="/register">Register</a>
     </td>
   </tr>
 </table>
