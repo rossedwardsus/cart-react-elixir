@@ -40,6 +40,25 @@ defmodule SconeHomeElixir.Router do
   #end
 
 
+  scope "/api", SconeHomeElixir do
+    pipe_through :api # Use the default browser stack
+
+    post "/user/profile/photo", ApiUserProfilePhotoController, :create
+    get "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
+    post "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :create
+    get "/user/profile/guest_list", ApiUserProfileGuestListController, :index
+    post "/user/profile/guest_list", ApiUserProfileGuestListController, :create
+    get "/user/profile/datetime", ApiUserProfileDatetimeController, :index
+    post "/user/profile/datetime", ApiUserProfileDatetimeController, :create
+
+    get "/user/orders/new", ApiUserOrderController, :index
+    get "/user/orders/create", ApiUserOrderController, :create
+
+    get "/menu/items", ApiMenuItemsController, :index
+
+  end
+
+
 
   scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
@@ -73,21 +92,7 @@ defmodule SconeHomeElixir.Router do
     get "/admin/item/photo", AdminItemPhotoController, :index
   end
 
-  scope "/api", SconeHomeElixir do
-    pipe_through :api # Use the default browser stack
-
-    post "/user/profile/photo", UserProfilePhotoController, :create
-    
-    get "/user/orders/new", ApiUserOrderController, :index
-    get "/user/orders/create", ApiUserOrderController, :create
-
-    get "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
-    post "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :create
-
-    get "/menu/items", ApiMenuItemsController, :index
-
-  end
-
+  
 
   
   #scope "/user", SconeHomeElixir do

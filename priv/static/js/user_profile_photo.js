@@ -94,10 +94,11 @@
 	    this.setState({
 	      files: files
 	    });
-	    var req = request.post('/upload');
+	    var req = request.post('/api/user/profile/photo');
 	    files.forEach(function (file) {
-	      req.attach(file.name, file);
+	      req.attach("file", file);
 	    });
+	    req.set('Accept', 'application/json');
 	    //req.end("callback");
 	    req.end(function (err, res) {
 	      // Calling the end function will send the request

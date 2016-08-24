@@ -20,6 +20,10 @@ defmodule SconeHomeElixir.RegisterController do
 
     IO.puts(email <> password)
 
+    changeset = Login.changeset(%Login{}, %{email: "mary@example.com", password: "password"})
+    #{:error, changeset} = Repo.insert(changeset)
+    
+
     #{:ok, pid} = Postgrex.start_link(hostname: "localhost", username: "postgres", password: "", database: "scone_home")
     #{:ok, #PID<0.69.0>}
     #Postgrex.query!(pid, "SELECT * FROM items", [])

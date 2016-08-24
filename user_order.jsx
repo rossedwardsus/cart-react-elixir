@@ -77,7 +77,7 @@ const InvitedOrderMenu = React.createClass({
   render(){
 
       return(<div>
-                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests">Guest List</Link><Link to="/order/1/items">Items</Link><Link to="/order/1/messages"><Button>Messages</Button></Link><Link to="/order/1/delivery_address"><Button>Delivery Address</Button></Link><Link to="/payment"><Button>Payment</Button></Link><Link to="/event_name"><Button>Event Name</Button></Link><Link to="/Map"><Button>Map</Button></Link>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests">Guest List</Link><Link to="/order/1/items">Items</Link><Link to="/order/1/messages"><Button>Messages</Button></Link><Link to="/order/1/delivery_address"><Button>Delivery Address</Button></Link><Link to="/order/1/datetme"><Button>Date Time</Button></Link><Link to="/order/1/payment"><Button>Payment</Button></Link><Link to="/order/1/event_name"><Button>Event Name</Button></Link><Link to="/Map"><Button>Map</Button></Link>
 
       </div>);
 
@@ -265,6 +265,52 @@ var Order1 = React.createClass({
 
 });
 
+
+var OrderEventName = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+         guest_messages: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                      <InvitedOrderMenu/>
+                      <br/>
+                      Event Name
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+
+
 var OrderMessage = React.createClass({
 
   getInitialState: function(){
@@ -450,7 +496,7 @@ var OrderItems = React.createClass({
                         <br/>
                       </td>
                       <td>
-                      if order type==bulk <BulkOrderMenu/>
+                      <InvitedOrderMenu/>
                       <br/>
                       order items
                       </td>
@@ -493,6 +539,7 @@ var OrderDeliveryAddress = React.createClass({
                         <br/>
                       </td>
                       <td>
+                          <InvitedOrderMenu/>
                           <br/>
                           <input type="radio"/>Use Existing Address
                           <br/>
@@ -630,6 +677,8 @@ var OrderPayment = React.createClass({
                         <br/>
                       </td>
                       <td>
+                          <InvitedOrderMenu/>
+                          <br/>
                           Use Existing Payment Method
                           <br/>
                           Address-Suite
@@ -650,6 +699,55 @@ var OrderPayment = React.createClass({
 
 });
 
+var OrderDateTime = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                          Use Existing Payment Method
+                          <br/>
+                          Address-Suite
+                          <br/>
+                          <input/>
+                          <br/>
+                          City-State-Zipcode
+                          <br/>
+                          <br/>
+                          Or enter a new one
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
 
 
 
@@ -1098,10 +1196,12 @@ render((
     <Route path="/new/bulk" component={NewBulkOrder}/>
     <Route path="/new/invited" component={NewBulkOrder}/>
     <Route path="/order1/:order_id" component={Order1}/>
+    <Route path="/order/:order_id/event_name" component={OrderEventName}/>
     <Route path="/order/:order_id/guests" component={OrderGuests}/>
     <Route path="/order/:order_id/message" component={OrderMessage}/>
     <Route path="/order/:order_id/items" component={OrderItems}/>
     <Route path="/order/:order_id/payment" component={OrderPayment}/>
     <Route path="/order/:order_id/delivery_address" component={OrderDeliveryAddress}/>
+    <Route path="/order/:order_id/datetime" component={OrderDateTime}/>
   </Router>
 ), document.getElementById('order'))

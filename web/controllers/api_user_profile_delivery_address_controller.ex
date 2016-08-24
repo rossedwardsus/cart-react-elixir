@@ -9,11 +9,13 @@ defmodule SconeHomeElixir.ApiUserProfileDeliveryAddressController do
   		json conn, %{id: "id1"}
   end
 
-  def create(conn, _params) do
+  def create(conn, %{"address" => address, "suite" => suite}) do
 
   		#insert into database
 
-  		IO.puts(_params["delivery_address"])
+  		IO.puts(address)
+  		IO.puts(suite)
+
   		json conn, %{id: "id1"}
   end
 end

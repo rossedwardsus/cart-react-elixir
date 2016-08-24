@@ -4,15 +4,20 @@ defmodule SconeHomeElixir.Login do
 
 		use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		@derive {Poison.Encoder, only: [:email, :password]}
 
 		schema "registration" do
-			field :user_id, Ecto.UUID
+			#field :user_id, Ecto.UUID
 			field :email, :string
 			field :password, :string
 			
 			#timestamps()
 		end
 
+		def changeset(struct, params \\ %{}) do
+		    #struct
+		    #|> cast(params, [:name, :email, :bio, :number_of_pets])
+		    #|> validate_required([:name, :email, :bio, :number_of_pets])
+		end
 
 end 

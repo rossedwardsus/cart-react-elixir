@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 var request = require("superagent");
-import {Button, Form, FormControl, ControlLabel, FormGroup, Col} from 'react-bootstrap'
+import {Button, Form, FormControl, ControlLabel, FormGroup, Col, Input} from 'react-bootstrap'
 
 var UserProfileDeliveryAddress = React.createClass({
 	//var counter = 0;
@@ -10,6 +10,13 @@ var UserProfileDeliveryAddress = React.createClass({
 	getInitialState: function(){
 
 			return {
+
+          address: "",
+          suite: "",
+          city: "",
+          state: "",
+          zipcode: "",
+          note: ""
 				
 			}
 	},
@@ -19,10 +26,46 @@ var UserProfileDeliveryAddress = React.createClass({
 
   },
 
+  handleAddressChange: function(e){
+
+    this.setState({address: e.target.value})
+
+  },
+
+  handleSuiteChange: function(e){
+
+    this.setState({suite: e.target.value})
+
+  },
+
+  handleCityChange: function(e){
+
+    this.setState({city: e.target.value})
+
+  },
+
+  handleStateChange: function(e){
+
+    this.setState({state: e.target.value})
+
+  },
+
+  handleZipCodeChange: function(e){
+
+    this.setState({zipcode: e.target.value})
+
+  },
+
+  handleNoteChange: function(e){
+
+    this.setState({note: e.target.value})
+
+  },
+
   save: function(){
       request
         .post('/api/user/profile/delivery_address')
-        .send({delivery_address: this.refs.delivery_address.value, suite: this.refs.suite.value, city: this.refs.city.value, state: this.state.state, zipcode: this.refs.zipcode.value, note: this.refs.zipcode.value})
+        .send({address: this.state.address, suite: this.state.suite, city: this.state.city, state: this.state.state, zipcode: this.state.zipcode, note: this.state.note})
         .set('X-API-Key', 'foobar')
         .set('Accept', 'application/json')
         .end(function(err, res){
@@ -38,22 +81,22 @@ var UserProfileDeliveryAddress = React.createClass({
                         <tr>
                           <td>
                             <Form horizontal>
-                              <FormGroup>
+                              <FormGroup bsSize="large">
                                   <Col componentClass={ControlLabel} sm={10}>
                                     <FormControl
                                       type="text"
-                                      value={this.state.value}
+                                      value={this.state.address}
                                       placeholder="Delivery Address"
-                                      onChange={this.handleChange}
-                                      ref="delivery_address"
+                                      onChange={this.handleAddressChange}
+                                      ref="address"
                                     />
                                   </Col>
                                   <Col componentClass={ControlLabel} sm={2}>
                                     <FormControl
                                       type="text"
-                                      value={this.state.value}
+                                      value={this.state.suite}
                                       placeholder="Suite"
-                                      onChange={this.handleChange}
+                                      onChange={this.handleSuiteChange}
                                       ref="suite"
                                     />
                                   </Col>
@@ -65,28 +108,28 @@ var UserProfileDeliveryAddress = React.createClass({
                                   <Col componentClass={ControlLabel} sm={5}>
                                     <FormControl
                                       type="text"
-                                      value={this.state.value}
+                                      value={this.state.city}
                                       placeholder="City"
-                                      onChange={this.handleChange}
-                                      ref="delivery_address"
+                                      onChange={this.handleCityChange}
+                                      ref="city"
                                     />
                                   </Col>
                                   <Col componentClass={ControlLabel} sm={2}>
                                     <FormControl
                                       type="text"
-                                      value={this.state.value}
+                                      value={this.state.state}
                                       placeholder="State"
-                                      onChange={this.handleChange}
-                                      ref="suite"
+                                      onChange={this.handleStateChange}
+                                      ref="state"
                                     />
                                   </Col>
                                   <Col componentClass={ControlLabel} sm={5}>
                                     <FormControl
                                       type="text"
-                                      value={this.state.value}
-                                      placeholder="ZipCode"
-                                      onChange={this.handleChange}
-                                      ref="suite"
+                                      value={this.state.zipcode}
+                                      placeholder="Zip Code"
+                                      onChange={this.handleZipCodeChange}
+                                      ref="zipcode"
                                     />
                                   </Col>
                               </FormGroup>
@@ -98,12 +141,13 @@ var UserProfileDeliveryAddress = React.createClass({
                             Leave food at front desk
                             <br/>
                             <FormGroup>
-                                <FormControl componentClass="textarea" placeholder="textarea" style={{resize: "none"}}/>
+                                <FormControl componentClass="textarea" placeholder="textarea" style={{resize: "none"}} ref="note" onChange={this.handleNoteChange}/>
                             </FormGroup>
                             <br/>
                             <br/>
                             <Button onClick={this.save}>Save</Button>
                           </td>
+                          <td width="30%"></td>
                         </tr>
                       </tbody>
                     </table>

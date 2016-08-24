@@ -202,7 +202,16 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/payment' },
+	        { to: '/order/1/datetme' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          null,
+	          'Date Time'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/order/1/payment' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
@@ -211,7 +220,7 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/event_name' },
+	        { to: '/order/1/event_name' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
@@ -447,6 +456,61 @@
 	              _react2.default.createElement(BulkOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              'if no params order is new-if bulk show bulk menu and go to item page Delivery date-order type'
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	var OrderEventName = _react2.default.createClass({
+	  displayName: 'OrderEventName',
+
+
+	  getInitialState: function getInitialState() {
+
+	    return {
+
+	      guest_messages: [{ order_id: 1 }]
+
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+
+	    //alert("!");
+	    //alert(this.props.params.order_id);
+
+	  },
+
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'table',
+	        { width: '100%' },
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              'settings',
+	              _react2.default.createElement('br', null),
+	              'orders',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement(InvitedOrderMenu, null),
+	              _react2.default.createElement('br', null),
+	              'Event Name'
 	            )
 	          )
 	        )
@@ -717,8 +781,7 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              'if order type==bulk ',
-	              _react2.default.createElement(BulkOrderMenu, null),
+	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              'order items'
 	            )
@@ -773,6 +836,7 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
+	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('input', { type: 'radio' }),
 	              'Use Existing Address',
@@ -910,6 +974,70 @@
 
 	var OrderPayment = _react2.default.createClass({
 	  displayName: 'OrderPayment',
+
+
+	  getInitialState: function getInitialState() {
+
+	    return {
+
+	      orders: [{ order_id: 1 }]
+
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+
+	    //alert("!");
+	    //alert(this.props.params.order_id);
+
+	  },
+
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'table',
+	        { width: '100%' },
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              'settings',
+	              _react2.default.createElement('br', null),
+	              'orders',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement(InvitedOrderMenu, null),
+	              _react2.default.createElement('br', null),
+	              'Use Existing Payment Method',
+	              _react2.default.createElement('br', null),
+	              'Address-Suite',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('input', null),
+	              _react2.default.createElement('br', null),
+	              'City-State-Zipcode',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              'Or enter a new one'
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	var OrderDateTime = _react2.default.createClass({
+	  displayName: 'OrderDateTime',
 
 
 	  getInitialState: function getInitialState() {
@@ -1649,11 +1777,13 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: '/new/bulk', component: NewBulkOrder }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/new/invited', component: NewBulkOrder }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order1/:order_id', component: Order1 }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_name', component: OrderEventName }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: OrderGuests }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/message', component: OrderMessage }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: OrderItems }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: OrderPayment }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress })
+	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/datetime', component: OrderDateTime })
 	), document.getElementById('order'));
 
 /***/ },

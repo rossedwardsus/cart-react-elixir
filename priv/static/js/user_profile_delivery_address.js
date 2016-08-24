@@ -81,7 +81,16 @@
 
 	  getInitialState: function getInitialState() {
 
-	    return {};
+	    return {
+
+	      address: "",
+	      suite: "",
+	      city: "",
+	      state: "",
+	      zipcode: "",
+	      note: ""
+
+	    };
 	  },
 	  componentDidMount: function componentDidMount() {
 
@@ -89,8 +98,38 @@
 
 	  },
 
+	  handleAddressChange: function handleAddressChange(e) {
+
+	    this.setState({ address: e.target.value });
+	  },
+
+	  handleSuiteChange: function handleSuiteChange(e) {
+
+	    this.setState({ suite: e.target.value });
+	  },
+
+	  handleCityChange: function handleCityChange(e) {
+
+	    this.setState({ city: e.target.value });
+	  },
+
+	  handleStateChange: function handleStateChange(e) {
+
+	    this.setState({ state: e.target.value });
+	  },
+
+	  handleZipCodeChange: function handleZipCodeChange(e) {
+
+	    this.setState({ zipcode: e.target.value });
+	  },
+
+	  handleNoteChange: function handleNoteChange(e) {
+
+	    this.setState({ note: e.target.value });
+	  },
+
 	  save: function save() {
-	    request.post('/api/user/profile/delivery_address').send({ delivery_address: this.refs.delivery_address.value, suite: this.refs.suite.value, city: this.refs.city.value, state: this.state.state, zipcode: this.refs.zipcode.value, note: this.refs.zipcode.value }).set('X-API-Key', 'foobar').set('Accept', 'application/json').end(function (err, res) {
+	    request.post('/api/user/profile/delivery_address').send({ address: this.state.address, suite: this.state.suite, city: this.state.city, state: this.state.state, zipcode: this.state.zipcode, note: this.state.note }).set('X-API-Key', 'foobar').set('Accept', 'application/json').end(function (err, res) {
 	      // Calling the end function will send the request
 	    });
 	  },
@@ -117,16 +156,16 @@
 	                { horizontal: true },
 	                _react2.default.createElement(
 	                  _reactBootstrap.FormGroup,
-	                  null,
+	                  { bsSize: 'large' },
 	                  _react2.default.createElement(
 	                    _reactBootstrap.Col,
 	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },
 	                    _react2.default.createElement(_reactBootstrap.FormControl, {
 	                      type: 'text',
-	                      value: this.state.value,
+	                      value: this.state.address,
 	                      placeholder: 'Delivery Address',
-	                      onChange: this.handleChange,
-	                      ref: 'delivery_address'
+	                      onChange: this.handleAddressChange,
+	                      ref: 'address'
 	                    })
 	                  ),
 	                  _react2.default.createElement(
@@ -134,9 +173,9 @@
 	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
 	                    _react2.default.createElement(_reactBootstrap.FormControl, {
 	                      type: 'text',
-	                      value: this.state.value,
+	                      value: this.state.suite,
 	                      placeholder: 'Suite',
-	                      onChange: this.handleChange,
+	                      onChange: this.handleSuiteChange,
 	                      ref: 'suite'
 	                    })
 	                  )
@@ -154,10 +193,10 @@
 	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
 	                    _react2.default.createElement(_reactBootstrap.FormControl, {
 	                      type: 'text',
-	                      value: this.state.value,
+	                      value: this.state.city,
 	                      placeholder: 'City',
-	                      onChange: this.handleChange,
-	                      ref: 'delivery_address'
+	                      onChange: this.handleCityChange,
+	                      ref: 'city'
 	                    })
 	                  ),
 	                  _react2.default.createElement(
@@ -165,10 +204,10 @@
 	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
 	                    _react2.default.createElement(_reactBootstrap.FormControl, {
 	                      type: 'text',
-	                      value: this.state.value,
+	                      value: this.state.state,
 	                      placeholder: 'State',
-	                      onChange: this.handleChange,
-	                      ref: 'suite'
+	                      onChange: this.handleStateChange,
+	                      ref: 'state'
 	                    })
 	                  ),
 	                  _react2.default.createElement(
@@ -176,10 +215,10 @@
 	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
 	                    _react2.default.createElement(_reactBootstrap.FormControl, {
 	                      type: 'text',
-	                      value: this.state.value,
-	                      placeholder: 'ZipCode',
-	                      onChange: this.handleChange,
-	                      ref: 'suite'
+	                      value: this.state.zipcode,
+	                      placeholder: 'Zip Code',
+	                      onChange: this.handleZipCodeChange,
+	                      ref: 'zipcode'
 	                    })
 	                  )
 	                )
@@ -193,7 +232,7 @@
 	              _react2.default.createElement(
 	                _reactBootstrap.FormGroup,
 	                null,
-	                _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', style: { resize: "none" } })
+	                _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', style: { resize: "none" }, ref: 'note', onChange: this.handleNoteChange })
 	              ),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null),
@@ -202,7 +241,8 @@
 	                { onClick: this.save },
 	                'Save'
 	              )
-	            )
+	            ),
+	            _react2.default.createElement('td', { width: '30%' })
 	          )
 	        )
 	      )
