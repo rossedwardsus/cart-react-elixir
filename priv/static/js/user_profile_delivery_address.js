@@ -153,10 +153,10 @@
 	              null,
 	              _react2.default.createElement(
 	                _reactBootstrap.Form,
-	                { horizontal: true },
+	                { bsSize: 'small', horizontal: true },
 	                _react2.default.createElement(
 	                  _reactBootstrap.FormGroup,
-	                  { bsSize: 'large' },
+	                  { bsSize: 'small' },
 	                  _react2.default.createElement(
 	                    _reactBootstrap.Col,
 	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },

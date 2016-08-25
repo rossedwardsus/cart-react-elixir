@@ -80,8 +80,8 @@ var UserProfileDeliveryAddress = React.createClass({
                       <tbody>
                         <tr>
                           <td>
-                            <Form horizontal>
-                              <FormGroup bsSize="large">
+                            <Form bsSize="small" horizontal>
+                              <FormGroup bsSize="small">
                                   <Col componentClass={ControlLabel} sm={10}>
                                     <FormControl
                                       type="text"

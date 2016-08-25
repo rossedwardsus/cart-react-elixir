@@ -77,7 +77,7 @@ const InvitedOrderMenu = React.createClass({
   render(){
 
       return(<div>
-                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guests">Guest List</Link><Link to="/order/1/items">Items</Link><Link to="/order/1/messages"><Button>Messages</Button></Link><Link to="/order/1/delivery_address"><Button>Delivery Address</Button></Link><Link to="/order/1/datetme"><Button>Date Time</Button></Link><Link to="/order/1/payment"><Button>Payment</Button></Link><Link to="/order/1/event_name"><Button>Event Name</Button></Link><Link to="/Map"><Button>Map</Button></Link>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/guest_list">Guest List</Link><Link to="/order/1/items">Items</Link><Link to="/order/1/inbox"><Button>Inbox</Button></Link><Link to="/order/1/messaging"><Button>Messaging</Button></Link><Link to="/order/1/delivery_address"><Button>Delivery Address</Button></Link><Link to="/order/1/datetime"><Button>Date Time</Button></Link><Link to="/order/1/payment"><Button>Payment</Button></Link><Link to="/order/1/event_name"><Button>Event Name</Button></Link><Link to="/Map"><Button>Map</Button></Link>
 
       </div>);
 
@@ -208,7 +208,7 @@ var OrderList = React.createClass({
             
                   {this.state.orders.map(function(order){
 
-                      return(<div><Link to="/order1/1">August 15, 2016</Link>-bulk-sent</div>);
+                      return(<div><Link to="/order/1">August 15, 2016</Link>-express</div>);
 
                   })}
 
@@ -218,7 +218,7 @@ var OrderList = React.createClass({
 
 });
 
-var Order1 = React.createClass({
+var Order = React.createClass({
 
   getInitialState: function(){
 
@@ -251,10 +251,16 @@ var Order1 = React.createClass({
                         <br/>
                       </td>
                       <td>
-                        <BulkOrderMenu/>
+                        if bulk order just show summary:
                         <br/>
-                        if no params order is new-if bulk show bulk menu and go to item page
-                        Delivery date-order type
+                        order date time
+                        <br/>
+                        total amount
+                        <br/>
+                        items ordered
+                        <br/>
+                        <br/>
+                        if invited show menu and details unless order is completed
                       </td>
                     </tr>
                   </tbody>
@@ -289,16 +295,28 @@ var OrderEventName = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td>
+                      <td width="30%">
                         settings
                         <br/>
                         orders
                         <br/>
                       </td>
                       <td>
-                      <InvitedOrderMenu/>
-                      <br/>
-                      Event Name
+                        <InvitedOrderMenu/>
+                        <br/>
+                        <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Event Name"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
                       </td>
                     </tr>
                   </tbody>
@@ -311,7 +329,7 @@ var OrderEventName = React.createClass({
 
 
 
-var OrderMessage = React.createClass({
+var OrderMessaging = React.createClass({
 
   getInitialState: function(){
 
@@ -334,20 +352,25 @@ var OrderMessage = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td>
+                      <td width="30%">
                         settings
                         <br/>
                         orders
                         <br/>
                       </td>
                       <td>
-                      <InvitedOrderMenu/>
-                      <br/>
-                      guest messages
-                      <br/>
-                      send message to guests
-                      <br/>
-                      <textarea></textarea>
+                          <InvitedOrderMenu/>
+                          <br/>
+                          <table width="100%">
+                            <tr>
+                              <td>
+                                <textarea></textarea>
+                              </td>
+                              <td>
+                                Stationary
+                              </td>
+                            </tr>
+                          </table>
                       </td>
                     </tr>
                   </tbody>
@@ -358,7 +381,7 @@ var OrderMessage = React.createClass({
 
 });
 
-var OrderGuests = React.createClass({
+var OrderGuestList = React.createClass({
 
   getInitialState: function(){
 
@@ -400,28 +423,23 @@ var OrderGuests = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td>
+                      <td width="30%">
                         settings
                         <br/>
                         orders
                         <br/>
                       </td>
                       <td>
+                      Order id - creation date
+                      <br/>
                       <InvitedOrderMenu/>
                       <br/>
-                      <b>Guests</b>
-                      <br/>
-                      <br/>
+                      <b>Guest List</b>
                       <br/>
                       <table width="100%">
                         <tbody>
                           <tr>
                             <td width="50%">
-                              Add individually:
-                              <br/>
-                              <input/>
-                              <br/>
-                              <Button>Add</Button>
                               <br/>
                               <br/>
                               Copy and paste:
@@ -430,12 +448,15 @@ var OrderGuests = React.createClass({
                                 <FormControl componentClass="textarea" placeholder="textarea" ref="guests" rows="10" cols="1" style={{resize: "none"}} onChange={this.onChange}/>
                               </FormGroup>
                               <br/>
+                              <Button>Import</Button>
+                              <br/>
                               <br/>
                               Drag a file
                               <br/>
                               <Dropzone onDrop={this.onDrop}>
                                 <div>Try dropping some files here, or click to select files to upload.</div>
                               </Dropzone>
+                              <Button>Import</Button>
                             </td>
                             <td width="5%"></td>
                             <td style={{verticalAlign: "top"}}>
@@ -496,6 +517,9 @@ var OrderItems = React.createClass({
                         <br/>
                       </td>
                       <td>
+                      Order Id - Started Date
+                      <br/>
+                      <br/>
                       <InvitedOrderMenu/>
                       <br/>
                       order items
@@ -539,6 +563,9 @@ var OrderDeliveryAddress = React.createClass({
                         <br/>
                       </td>
                       <td>
+                          Order Id-Started Date
+                          <br/>
+                          <br/>
                           <InvitedOrderMenu/>
                           <br/>
                           <input type="radio"/>Use Existing Address
@@ -599,6 +626,19 @@ var OrderDeliveryAddress = React.createClass({
                               </FormGroup>
                           </Form>
                           <br/>
+                          <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={5}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Note"
+                                      onChange={this.handleChange}
+                                      ref="note"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
                           <br/>
                           City-State-Zipcode
                           <br/>
@@ -670,25 +710,62 @@ var OrderPayment = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td>
+                      <td width="30%">
                         settings
                         <br/>
                         orders
                         <br/>
                       </td>
                       <td>
-                          <InvitedOrderMenu/>
-                          <br/>
-                          Use Existing Payment Method
-                          <br/>
-                          Address-Suite
-                          <br/>
-                          <input/>
-                          <br/>
-                          City-State-Zipcode
-                          <br/>
-                          <br/>
-                          Or enter a new one
+                        <InvitedOrderMenu/>
+                        <br/>
+                        <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Credit Card"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Cvv"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
+                        <br/>
+                        <Form horizontal>
+                              <FormGroup>
+                                  <Col componentClass={ControlLabel} sm={10}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="Expiry Date"
+                                      onChange={this.handleChange}
+                                      ref="delivery_address"
+                                    />
+                                  </Col>
+                                  <Col componentClass={ControlLabel} sm={2}>
+                                    <FormControl
+                                      type="text"
+                                      value={this.state.value}
+                                      placeholder="ZipCode"
+                                      onChange={this.handleChange}
+                                      ref="suite"
+                                    />
+                                  </Col>
+                              </FormGroup>
+                          </Form>
+                        
+                        Or enter a new one
                       </td>
                     </tr>
                   </tbody>
@@ -722,23 +799,16 @@ var OrderDateTime = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td>
+                      <td width="30%">
                         settings
                         <br/>
                         orders
                         <br/>
                       </td>
                       <td>
-                          Use Existing Payment Method
+                          <InvitedOrderMenu/>
                           <br/>
-                          Address-Suite
-                          <br/>
-                          <input/>
-                          <br/>
-                          City-State-Zipcode
-                          <br/>
-                          <br/>
-                          Or enter a new one
+                          <DatePicker inline selected={this.state.startDate} onChange={this.handleChange}/><br/><select ref="time"><option value="">time</option><option value="800">8:00</option><option value="830">8:30</option></select>
                       </td>
                     </tr>
                   </tbody>
@@ -1190,18 +1260,29 @@ var Order = React.createClass({
 //start order
 //buttons at top
 //list of orders
-render((
+render((<div><table>
+          <tbody>
+            <tr>
+              <td>
+              hello
+              </td>
+              <td>
   <Router history={appHistory}>
     <Route path="/" component={Home}/>
     <Route path="/new/bulk" component={NewBulkOrder}/>
     <Route path="/new/invited" component={NewBulkOrder}/>
-    <Route path="/order1/:order_id" component={Order1}/>
+    <Route path="/order/:order_id" component={Order}/>
     <Route path="/order/:order_id/event_name" component={OrderEventName}/>
-    <Route path="/order/:order_id/guests" component={OrderGuests}/>
-    <Route path="/order/:order_id/message" component={OrderMessage}/>
+    <Route path="/order/:order_id/guest_list" component={OrderGuestList}/>
+    <Route path="/order/:order_id/messaging" component={OrderMessaging}/>
     <Route path="/order/:order_id/items" component={OrderItems}/>
     <Route path="/order/:order_id/payment" component={OrderPayment}/>
     <Route path="/order/:order_id/delivery_address" component={OrderDeliveryAddress}/>
     <Route path="/order/:order_id/datetime" component={OrderDateTime}/>
   </Router>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
 ), document.getElementById('order'))

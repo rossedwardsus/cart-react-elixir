@@ -174,7 +174,7 @@
 	      _react2.default.createElement(_reactBootstrap.Button, { onClick: this.changeRoute }),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/1/guests' },
+	        { to: '/order/1/guest_list' },
 	        'Guest List'
 	      ),
 	      _react2.default.createElement(
@@ -184,11 +184,20 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/1/messages' },
+	        { to: '/order/1/inbox' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
-	          'Messages'
+	          'Inbox'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/order/1/messaging' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          null,
+	          'Messaging'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -202,7 +211,7 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/1/datetme' },
+	        { to: '/order/1/datetime' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
@@ -396,18 +405,18 @@
 	          null,
 	          _react2.default.createElement(
 	            _reactRouter.Link,
-	            { to: '/order1/1' },
+	            { to: '/order/1' },
 	            'August 15, 2016'
 	          ),
-	          '-bulk-sent'
+	          '-express'
 	        );
 	      })
 	    );
 	  }
 	});
 
-	var Order1 = _react2.default.createClass({
-	  displayName: 'Order1',
+	var Order = _react2.default.createClass({
+	  displayName: 'Order',
 
 
 	  getInitialState: function getInitialState() {
@@ -453,9 +462,16 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              _react2.default.createElement(BulkOrderMenu, null),
+	              'if bulk order just show summary:',
 	              _react2.default.createElement('br', null),
-	              'if no params order is new-if bulk show bulk menu and go to item page Delivery date-order type'
+	              'order date time',
+	              _react2.default.createElement('br', null),
+	              'total amount',
+	              _react2.default.createElement('br', null),
+	              'items ordered',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              'if invited show menu and details unless order is completed'
 	            )
 	          )
 	        )
@@ -499,7 +515,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'td',
-	              null,
+	              { width: '30%' },
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
@@ -510,7 +526,25 @@
 	              null,
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'Event Name'
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Event Name',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  )
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -519,8 +553,8 @@
 	  }
 	});
 
-	var OrderMessage = _react2.default.createClass({
-	  displayName: 'OrderMessage',
+	var OrderMessaging = _react2.default.createClass({
+	  displayName: 'OrderMessaging',
 
 
 	  getInitialState: function getInitialState() {
@@ -554,7 +588,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'td',
-	              null,
+	              { width: '30%' },
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
@@ -565,11 +599,24 @@
 	              null,
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'guest messages',
-	              _react2.default.createElement('br', null),
-	              'send message to guests',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('textarea', null)
+	              _react2.default.createElement(
+	                'table',
+	                { width: '100%' },
+	                _react2.default.createElement(
+	                  'tr',
+	                  null,
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement('textarea', null)
+	                  ),
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    'Stationary'
+	                  )
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -578,8 +625,8 @@
 	  }
 	});
 
-	var OrderGuests = _react2.default.createClass({
-	  displayName: 'OrderGuests',
+	var OrderGuestList = _react2.default.createClass({
+	  displayName: 'OrderGuestList',
 
 
 	  getInitialState: function getInitialState() {
@@ -630,7 +677,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'td',
-	              null,
+	              { width: '30%' },
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
@@ -639,15 +686,15 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
+	              'Order id - creation date',
+	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
 	                'b',
 	                null,
-	                'Guests'
+	                'Guest List'
 	              ),
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
 	                'table',
@@ -661,15 +708,6 @@
 	                    _react2.default.createElement(
 	                      'td',
 	                      { width: '50%' },
-	                      'Add individually:',
-	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement('input', null),
-	                      _react2.default.createElement('br', null),
-	                      _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        null,
-	                        'Add'
-	                      ),
 	                      _react2.default.createElement('br', null),
 	                      _react2.default.createElement('br', null),
 	                      'Copy and paste:',
@@ -678,6 +716,12 @@
 	                        _reactBootstrap.FormGroup,
 	                        { controlId: 'formControlsTextarea' },
 	                        _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', ref: 'guests', rows: '10', cols: '1', style: { resize: "none" }, onChange: this.onChange })
+	                      ),
+	                      _react2.default.createElement('br', null),
+	                      _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        null,
+	                        'Import'
 	                      ),
 	                      _react2.default.createElement('br', null),
 	                      _react2.default.createElement('br', null),
@@ -691,6 +735,11 @@
 	                          null,
 	                          'Try dropping some files here, or click to select files to upload.'
 	                        )
+	                      ),
+	                      _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        null,
+	                        'Import'
 	                      )
 	                    ),
 	                    _react2.default.createElement('td', { width: '5%' }),
@@ -781,6 +830,9 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
+	              'Order Id - Started Date',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              'order items'
@@ -836,6 +888,9 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
+	              'Order Id-Started Date',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('input', { type: 'radio' }),
@@ -915,6 +970,25 @@
 	                )
 	              ),
 	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 5 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Note',
+	                      onChange: this.handleChange,
+	                      ref: 'note'
+	                    })
+	                  )
+	                )
+	              ),
 	              _react2.default.createElement('br', null),
 	              'City-State-Zipcode',
 	              _react2.default.createElement('br', null),
@@ -1007,7 +1081,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'td',
-	              null,
+	              { width: '30%' },
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
@@ -1018,15 +1092,67 @@
 	              null,
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'Use Existing Payment Method',
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Credit Card',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Cvv',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  )
+	                )
+	              ),
 	              _react2.default.createElement('br', null),
-	              'Address-Suite',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('input', null),
-	              _react2.default.createElement('br', null),
-	              'City-State-Zipcode',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactBootstrap.Form,
+	                { horizontal: true },
+	                _react2.default.createElement(
+	                  _reactBootstrap.FormGroup,
+	                  null,
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 10 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'Expiry Date',
+	                      onChange: this.handleChange,
+	                      ref: 'delivery_address'
+	                    })
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                    _react2.default.createElement(_reactBootstrap.FormControl, {
+	                      type: 'text',
+	                      value: this.state.value,
+	                      placeholder: 'ZipCode',
+	                      onChange: this.handleChange,
+	                      ref: 'suite'
+	                    })
+	                  )
+	                )
+	              ),
 	              'Or enter a new one'
 	            )
 	          )
@@ -1071,7 +1197,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'td',
-	              null,
+	              { width: '30%' },
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
@@ -1080,16 +1206,29 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              'Use Existing Payment Method',
+	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'Address-Suite',
+	              _react2.default.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: this.handleChange }),
 	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('input', null),
-	              _react2.default.createElement('br', null),
-	              'City-State-Zipcode',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('br', null),
-	              'Or enter a new one'
+	              _react2.default.createElement(
+	                'select',
+	                { ref: 'time' },
+	                _react2.default.createElement(
+	                  'option',
+	                  { value: '' },
+	                  'time'
+	                ),
+	                _react2.default.createElement(
+	                  'option',
+	                  { value: '800' },
+	                  '8:00'
+	                ),
+	                _react2.default.createElement(
+	                  'option',
+	                  { value: '830' },
+	                  '8:30'
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -1771,19 +1910,44 @@
 	//buttons at top
 	//list of orders
 	(0, _reactDom.render)(_react2.default.createElement(
-	  _reactRouter.Router,
-	  { history: appHistory },
-	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: Home }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/new/bulk', component: NewBulkOrder }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/new/invited', component: NewBulkOrder }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order1/:order_id', component: Order1 }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_name', component: OrderEventName }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: OrderGuests }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/message', component: OrderMessage }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: OrderItems }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: OrderPayment }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress }),
-	  _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/datetime', component: OrderDateTime })
+	  'div',
+	  null,
+	  _react2.default.createElement(
+	    'table',
+	    null,
+	    _react2.default.createElement(
+	      'tbody',
+	      null,
+	      _react2.default.createElement(
+	        'tr',
+	        null,
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          'hello'
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement(
+	            _reactRouter.Router,
+	            { history: appHistory },
+	            _react2.default.createElement(_reactRouter.Route, { path: '/', component: Home }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/new/bulk', component: NewBulkOrder }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/new/invited', component: NewBulkOrder }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: Order }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_name', component: OrderEventName }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest_list', component: OrderGuestList }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/messaging', component: OrderMessaging }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: OrderItems }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: OrderPayment }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress }),
+	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/datetime', component: OrderDateTime })
+	          )
+	        )
+	      )
+	    )
+	  )
 	), document.getElementById('order'));
 
 /***/ },

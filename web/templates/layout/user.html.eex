@@ -17,7 +17,7 @@
       <table width="100%">
         <tbody>
           <tr>
-            <td valign="top" width="2%">
+            <td valign="top" width="2%"></td>
             <td valign="top" width="20%">
               <br>
               Welcome user!<%= @user %>
@@ -43,6 +43,7 @@
             <td>
               <%= render @view_module, @view_template, assigns %>
             </td>
+            <td width="20%"></td>
           </tr>
         </tbody>
       </table>
