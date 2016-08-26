@@ -553,7 +553,7 @@ var OrderItems = React.createClass({
           popup_description: "",
           open: false,
           quantity: 0,
-          order: []
+          cart: [{item_id: 1, item_title: "Strawberry Scone", quantity: 10}, {item_id: 1, item_title: "Chocolate Scone", quantity: 10}]
 
       }
   },
@@ -606,7 +606,7 @@ var OrderItems = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td width="30%">
+                      <td width="20%">
                         settings
                         <br/>
                         orders
@@ -618,7 +618,13 @@ var OrderItems = React.createClass({
                         profile event name
                         <br/>
                         <br/>
-                        {this.state.cart}
+                        <table width="100%"><tbody>
+                        {this.state.cart.map(function(cart_item){
+
+                            return(<tr><td>{cart_item.item_title}</td><td>x</td><td>{cart_item.quantity}</td><td>remove</td></tr>)
+
+                        })}
+                        </tbody></table>
                       </td>
                       <td>
                       Order Id - Started Date-Cart(0)
@@ -696,7 +702,10 @@ var OrderDeliveryAddress = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
+                      <td width="2"></td>
                       <td style={{verticalAlign: "top"}}>
+                        home
+                        <br/>
                         settings
                         <br/>
                         orders
@@ -708,11 +717,11 @@ var OrderDeliveryAddress = React.createClass({
                           <br/>
                           <InvitedOrderMenu/>
                           <br/>
-                          <Radio onClick={this.whichAddress}/>Use Existing Address
+                          <Radio onClick={this.whichAddress} id="existing" name="delivery_address"/>Use Existing Address
                           <br/>
                           <Form horizontal>
                               <FormGroup>
-                                  <Col componentClass={ControlLabel} sm={10}>
+                                  <Col componentClass={ControlLabel} sm={8}>
                                     <FormControl
                                       type="text"
                                       value={this.state.value}
@@ -783,7 +792,7 @@ var OrderDeliveryAddress = React.createClass({
                           City-State-Zipcode
                           <br/>
                           <br/>
-                          <input type="radio"/>Or enter a new one
+                          <Radio onClick={this.whichAddress} id="new" name="delivery_address"/>Or Enter a new one
                           <br/>
                           <br/>
                           <Form horizontal>
@@ -826,6 +835,39 @@ var OrderDeliveryAddress = React.createClass({
   }
 
 });
+
+
+var OrderCart = React.createClass({
+
+  getInitialState: function(){
+
+      return {
+
+          orders: [{order_id: 1}]
+        
+      }
+  },
+  componentWillMount: function(){
+
+      //alert("!");
+      //alert(this.props.params.order_id);
+
+  },
+
+  whichAddress: function(){
+
+      alert();
+
+  },
+
+  render(){
+
+      return(<div>cart items</div>);
+
+  }
+
+});
+
 
 var OrderPayment = React.createClass({
 
@@ -939,7 +981,10 @@ var OrderDateTime = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td width="30%">
+                      <td width="1.5%"></td>
+                      <td width="20%" style={{verticalAlign: "top"}}>
+                        home
+                        <br/>
                         settings
                         <br/>
                         orders
@@ -1405,14 +1450,15 @@ render((<div>
                     <Route path="/" component={Home}/>
                     <Route path="/new/bulk" component={NewBulkOrder}/>
                     <Route path="/new/invited" component={NewInvitedOrder}/>
-                    <Route path="/order/:order_id" component={Order}/>
                     <Route path="/order/:order_id/event_name" component={OrderEventName}/>
                     <Route path="/order/:order_id/guest_list" component={OrderGuestList}/>
                     <Route path="/order/:order_id/messaging" component={OrderMessaging}/>
                     <Route path="/order/:order_id/items" component={OrderItems}/>
+                    <Route path="/order/:order_id/cart" component={OrderCart}/>
                     <Route path="/order/:order_id/payment" component={OrderPayment}/>
                     <Route path="/order/:order_id/delivery_address" component={OrderDeliveryAddress}/>
                     <Route path="/order/:order_id/datetime" component={OrderDateTime}/>
+                    <Route path="/order/:order_id" component={Order}/>
                   </Router>
 
   </div>
