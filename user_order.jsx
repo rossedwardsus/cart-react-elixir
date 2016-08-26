@@ -6,7 +6,7 @@ var moment = require('moment');
 //var Popup = require('react-popup');
 //var Modal = require('react-bootstrap-modal')
 //var Modal = ReactBootstrap.Modal;
-import { Button, FormGroup, FormControl, Modal, Form, FieldGroup, Col, ControlLabel, Image } from 'react-bootstrap';
+import { Button, FormGroup, FormControl, Modal, Form, FieldGroup, Col, ControlLabel, Image, Radio } from 'react-bootstrap';
 var Dropzone = require('react-dropzone');
 
 require('react-datepicker/dist/react-datepicker.css');
@@ -551,7 +551,7 @@ var OrderItems = React.createClass({
           orders: [{order_id: 1}],
           popup_image: "",
           popup_description: "",
-          open: "",
+          open: false,
           quantity: 0,
           order: []
 
@@ -628,33 +628,32 @@ var OrderItems = React.createClass({
                       <br/>
                       order items
                       <br/>
-                      <table>
+                      <table width="100%">
                         <tbody>
+                           {items.map(function(item, index){
 
-                       {items.map(function(item, index){
+                                var rows = item.map(function(i, x){
 
-                            var rows = item.map(function(i, x){
+                                    //alert(JSON.stringify(item.title));
 
-                                //alert(JSON.stringify(item.title));
+                                    return <td><table><tbody>
+                                              <tr><td>{i.title}<br/><Image src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="200px" width="200px" thumbnail /><br/>
+                                              <FormGroup controlId="formControlsSelect">
+                                                <FormControl ref="quantity" id="item_1" onChange={this.selectQuantity} componentClass="select" placeholder="select">
+                                                  <option value="">Quantity</option>
+                                                  <option value="10">10</option>
+                                                  <option value="20">20</option>
+                                                </FormControl>
+                                              </FormGroup>
+                                              <Button id={i.item_id} onClick={this.btnAddToCart}>Add</Button></td>
+                                            </tr></tbody></table></td>;
 
-                                return <td><table><tbody>
-                                          <tr><td>{i.title}<br/><Image src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="200px" width="200px" thumbnail /><br/>
-                                          <FormGroup controlId="formControlsSelect">
-                                            <FormControl ref="quantity" id="item_1" onChange={this.selectQuantity} componentClass="select" placeholder="select">
-                                              <option value="">Quantity</option>
-                                              <option value="10">10</option>
-                                              <option value="20">20</option>
-                                            </FormControl>
-                                          </FormGroup>
-                                          <Button id={i.item_id} onClick={this.btnAddToCart}>Add To Cart</Button></td>
-                                        </tr></tbody></table></td>;
+                                  //}
+                                }.bind(this));
 
-                              //}
-                            }.bind(this));
+                                return <tr>{rows}</tr>;
 
-                            return <tr>{rows}</tr>;
-
-                        }.bind(this))}
+                            }.bind(this))}
                         </tbody>
                         </table>
                       </td>
@@ -685,6 +684,12 @@ var OrderDeliveryAddress = React.createClass({
 
   },
 
+  whichAddress: function(){
+
+      alert();
+
+  },
+
   render(){
 
       return(<div>
@@ -703,7 +708,7 @@ var OrderDeliveryAddress = React.createClass({
                           <br/>
                           <InvitedOrderMenu/>
                           <br/>
-                          <input type="radio"/>Use Existing Address
+                          <Radio onClick={this.whichAddress}/>Use Existing Address
                           <br/>
                           <Form horizontal>
                               <FormGroup>

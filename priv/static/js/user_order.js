@@ -869,7 +869,7 @@
 	      orders: [{ order_id: 1 }],
 	      popup_image: "",
 	      popup_description: "",
-	      open: "",
+	      open: false,
 	      quantity: 0,
 	      order: []
 
@@ -956,7 +956,7 @@
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
 	                'table',
-	                null,
+	                { width: '100%' },
 	                _react2.default.createElement(
 	                  'tbody',
 	                  null,
@@ -1011,7 +1011,7 @@
 	                                _react2.default.createElement(
 	                                  _reactBootstrap.Button,
 	                                  { id: i.item_id, onClick: this.btnAddToCart },
-	                                  'Add To Cart'
+	                                  'Add'
 	                                )
 	                              )
 	                            )
@@ -1082,6 +1082,11 @@
 
 	  },
 
+	  whichAddress: function whichAddress() {
+
+	    alert();
+	  },
+
 	  render: function render() {
 
 	    return _react2.default.createElement(
@@ -1112,7 +1117,7 @@
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('input', { type: 'radio' }),
+	              _react2.default.createElement(_reactBootstrap.Radio, { onClick: this.whichAddress }),
 	              'Use Existing Address',
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
