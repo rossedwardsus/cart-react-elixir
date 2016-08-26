@@ -44,7 +44,7 @@ const BulkOrderMenu = React.createClass({
   render(){
 
       return(<div>
-                  <Button onClick={this.changeRoute}></Button><Link to="/order/new/message"><Button>Items</Button></Link><Link to="/order/new/items"><Button>Delivery</Button></Link><Link to="/students"><Button>Payment</Button></Link>
+                  <Button onClick={this.changeRoute}></Button><Link to="/order/1/items"><Button>Items</Button></Link><Link to="/order/1/delivery_address"><Button>Delivery Address</Button></Link><Link to="/order/1/payment"><Button>Payment</Button></Link>
 
       </div>);
 
@@ -100,7 +100,7 @@ var Home = React.createClass({
 
     //get new order_id from server and redirect
 
-    this.context.router.push("/order/1/items")
+    this.context.router.push("/new/bulk")
 
   },
 
@@ -112,7 +112,7 @@ var Home = React.createClass({
 
     //get new order_id from server and redirect
 
-    this.context.router.push("/order/1/guests")
+    this.context.router.push("/new/invites")
 
   },
 
@@ -166,6 +166,52 @@ var NewBulkOrder = React.createClass({
                   <tbody>
                     <tr>
                       <td>
+                        home
+                        <br/>
+                        settings
+                        <br/>
+                        orders
+                        <br/>
+                      </td>
+                      <td>
+                        <BulkOrderMenu/>
+                        <br/>
+                        go to items page actually-redirect
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>);
+
+  }
+
+});
+
+
+var NewInvitedOrder = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.object
+  },
+
+  changeRoute(){
+
+    //browserHistory.push('/users/polinav#/bills');
+    //this.props.router.push('/some/path');
+    //router.push('/users/12')
+    this.context.router.push("/bills")
+
+  },
+
+  render(){
+
+      return(<div>
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td>
+                        home
+                        <br/>
                         settings
                         <br/>
                         orders
@@ -364,10 +410,19 @@ var OrderMessaging = React.createClass({
                           <table width="100%">
                             <tr>
                               <td>
+                                Add a message to send to your guests here:
+                                <br/>
                                 <textarea></textarea>
                               </td>
                               <td>
+                                scrolling images at the top which are clickable
+                                <br/>
                                 Stationary
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <Button>Save</Button>
                               </td>
                             </tr>
                           </table>
@@ -492,9 +547,14 @@ var OrderItems = React.createClass({
   getInitialState: function(){
 
       return {
+          items: [],
+          orders: [{order_id: 1}],
+          popup_image: "",
+          popup_description: "",
+          open: "",
+          quantity: 0,
+          order: []
 
-          orders: [{order_id: 1}]
-        
       }
   },
   componentWillMount: function(){
@@ -504,29 +564,104 @@ var OrderItems = React.createClass({
 
   },
 
+  selectQuantity: function(e){
+
+      //alert(e.target.value);
+      this.setState({quantity: e.target.value});
+
+  },
+
+  btnAddToCart: function(e){
+
+      alert(e.target.id);
+      alert(this.state.quantity);
+
+  },
+
+  closeModal: function(){
+
+      //alert();
+      this.setState({open: false});
+
+  },
+
+  clickImage: function(){
+
+      //alert();
+
+      //menu_items[0].item_id
+      //menu_items[0].description
+
+      this.setState({popup_image: "/images/chocolate_chip_scones.jpg"})
+      this.setState({popup_description: "description"})
+      this.setState({open: true});
+
+  },
+
   render(){
+
+      var items = [[{item_id: 1, title: "title1", description: ""}, {item_id: 2, title: "title2", description: ""}, {item_id: 1, title: "title3", description: ""}, {item_id: 2, title: "title4", description: ""}]];
 
       return(<div>
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td>
+                      <td width="30%">
                         settings
                         <br/>
                         orders
                         <br/>
+                        profile photo
+                        <br/>
+                        profile delivery address
+                        <br/>
+                        profile event name
+                        <br/>
+                        <br/>
+                        {this.state.cart}
                       </td>
                       <td>
-                      Order Id - Started Date
+                      Order Id - Started Date-Cart(0)
                       <br/>
                       <br/>
-                      <InvitedOrderMenu/>
+                      <BulkOrderMenu/>
                       <br/>
                       order items
+                      <br/>
+                      <table>
+                        <tbody>
+
+                       {items.map(function(item, index){
+
+                            var rows = item.map(function(i, x){
+
+                                //alert(JSON.stringify(item.title));
+
+                                return <td><table><tbody>
+                                          <tr><td>{i.title}<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="200px" width="200px"/><br/>
+                                          <FormGroup controlId="formControlsSelect">
+                                            <FormControl ref="quantity" id="item_1" onChange={this.selectQuantity} componentClass="select" placeholder="select">
+                                              <option value="">Quantity</option>
+                                              <option value="10">10</option>
+                                              <option value="20">20</option>
+                                            </FormControl>
+                                          </FormGroup>
+                                          <Button id={i.item_id} onClick={this.btnAddToCart}>Add To Cart</Button></td>
+                                        </tr></tbody></table></td>;
+
+                              //}
+                            }.bind(this));
+
+                            return <tr>{rows}</tr>;
+
+                        }.bind(this))}
+                        </tbody>
+                        </table>
                       </td>
                     </tr>
                   </tbody>
                 </table>
+                <Modal show={this.state.open} onHide={this.closeModal} aria-labelledby="ModalHeader"><Modal.Header closeButton><Modal.Title id='ModalHeader'>A Title Goes here</Modal.Title></Modal.Header><Modal.Body><p><img src={this.state.popup_image} onClick={this.clickImage}/><br/><br/>{this.state.popup_description}</p></Modal.Body></Modal>
             </div>);
 
   }
@@ -1260,29 +1395,20 @@ var Order = React.createClass({
 //start order
 //buttons at top
 //list of orders
-render((<div><table>
-          <tbody>
-            <tr>
-              <td>
-              hello
-              </td>
-              <td>
-  <Router history={appHistory}>
-    <Route path="/" component={Home}/>
-    <Route path="/new/bulk" component={NewBulkOrder}/>
-    <Route path="/new/invited" component={NewBulkOrder}/>
-    <Route path="/order/:order_id" component={Order}/>
-    <Route path="/order/:order_id/event_name" component={OrderEventName}/>
-    <Route path="/order/:order_id/guest_list" component={OrderGuestList}/>
-    <Route path="/order/:order_id/messaging" component={OrderMessaging}/>
-    <Route path="/order/:order_id/items" component={OrderItems}/>
-    <Route path="/order/:order_id/payment" component={OrderPayment}/>
-    <Route path="/order/:order_id/delivery_address" component={OrderDeliveryAddress}/>
-    <Route path="/order/:order_id/datetime" component={OrderDateTime}/>
-  </Router>
-  </td>
-  </tr>
-  </tbody>
-  </table>
+render((<div>
+             <Router history={appHistory}>
+                    <Route path="/" component={Home}/>
+                    <Route path="/new/bulk" component={NewBulkOrder}/>
+                    <Route path="/new/invited" component={NewInvitedOrder}/>
+                    <Route path="/order/:order_id" component={Order}/>
+                    <Route path="/order/:order_id/event_name" component={OrderEventName}/>
+                    <Route path="/order/:order_id/guest_list" component={OrderGuestList}/>
+                    <Route path="/order/:order_id/messaging" component={OrderMessaging}/>
+                    <Route path="/order/:order_id/items" component={OrderItems}/>
+                    <Route path="/order/:order_id/payment" component={OrderPayment}/>
+                    <Route path="/order/:order_id/delivery_address" component={OrderDeliveryAddress}/>
+                    <Route path="/order/:order_id/datetime" component={OrderDateTime}/>
+                  </Router>
+
   </div>
 ), document.getElementById('order'))

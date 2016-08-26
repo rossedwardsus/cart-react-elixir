@@ -117,7 +117,7 @@
 	      _react2.default.createElement(_reactBootstrap.Button, { onClick: this.changeRoute }),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/new/message' },
+	        { to: '/order/1/items' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
@@ -126,16 +126,16 @@
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/order/new/items' },
+	        { to: '/order/1/delivery_address' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
-	          'Delivery'
+	          'Delivery Address'
 	        )
 	      ),
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/students' },
+	        { to: '/order/1/payment' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Button,
 	          null,
@@ -265,7 +265,7 @@
 
 	    //get new order_id from server and redirect
 
-	    this.context.router.push("/order/1/items");
+	    this.context.router.push("/new/bulk");
 	  },
 	  newInvitedOrder: function newInvitedOrder() {
 
@@ -275,7 +275,7 @@
 
 	    //get new order_id from server and redirect
 
-	    this.context.router.push("/order/1/guests");
+	    this.context.router.push("/new/invites");
 	  },
 	  render: function render() {
 
@@ -356,6 +356,61 @@
 	            _react2.default.createElement(
 	              'td',
 	              null,
+	              'home',
+	              _react2.default.createElement('br', null),
+	              'settings',
+	              _react2.default.createElement('br', null),
+	              'orders',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement(BulkOrderMenu, null),
+	              _react2.default.createElement('br', null),
+	              'go to items page actually-redirect'
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	var NewInvitedOrder = _react2.default.createClass({
+	  displayName: 'NewInvitedOrder',
+
+
+	  contextTypes: {
+	    router: _react2.default.PropTypes.object
+	  },
+
+	  changeRoute: function changeRoute() {
+
+	    //browserHistory.push('/users/polinav#/bills');
+	    //this.props.router.push('/some/path');
+	    //router.push('/users/12')
+	    this.context.router.push("/bills");
+	  },
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'table',
+	        { width: '100%' },
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              'home',
+	              _react2.default.createElement('br', null),
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
@@ -608,12 +663,29 @@
 	                  _react2.default.createElement(
 	                    'td',
 	                    null,
+	                    'Add a message to send to your guests here:',
+	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement('textarea', null)
 	                  ),
 	                  _react2.default.createElement(
 	                    'td',
 	                    null,
+	                    'scrolling images at the top which are clickable',
+	                    _react2.default.createElement('br', null),
 	                    'Stationary'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'tr',
+	                  null,
+	                  _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement(
+	                      _reactBootstrap.Button,
+	                      null,
+	                      'Save'
+	                    )
 	                  )
 	                )
 	              )
@@ -793,8 +865,13 @@
 	  getInitialState: function getInitialState() {
 
 	    return {
-
-	      orders: [{ order_id: 1 }]
+	      items: [],
+	      orders: [{ order_id: 1 }],
+	      popup_image: "",
+	      popup_description: "",
+	      open: "",
+	      quantity: 0,
+	      order: []
 
 	    };
 	  },
@@ -805,7 +882,39 @@
 
 	  },
 
+	  selectQuantity: function selectQuantity(e) {
+
+	    //alert(e.target.value);
+	    this.setState({ quantity: e.target.value });
+	  },
+
+	  btnAddToCart: function btnAddToCart(e) {
+
+	    alert(e.target.id);
+	    alert(this.state.quantity);
+	  },
+
+	  closeModal: function closeModal() {
+
+	    //alert();
+	    this.setState({ open: false });
+	  },
+
+	  clickImage: function clickImage() {
+
+	    //alert();
+
+	    //menu_items[0].item_id
+	    //menu_items[0].description
+
+	    this.setState({ popup_image: "/images/chocolate_chip_scones.jpg" });
+	    this.setState({ popup_description: "description" });
+	    this.setState({ open: true });
+	  },
+
 	  render: function render() {
+
+	    var items = [[{ item_id: 1, title: "title1", description: "" }, { item_id: 2, title: "title2", description: "" }, { item_id: 1, title: "title3", description: "" }, { item_id: 2, title: "title4", description: "" }]];
 
 	    return _react2.default.createElement(
 	      'div',
@@ -821,22 +930,132 @@
 	            null,
 	            _react2.default.createElement(
 	              'td',
-	              null,
+	              { width: '30%' },
 	              'settings',
 	              _react2.default.createElement('br', null),
 	              'orders',
-	              _react2.default.createElement('br', null)
+	              _react2.default.createElement('br', null),
+	              'profile photo',
+	              _react2.default.createElement('br', null),
+	              'profile delivery address',
+	              _react2.default.createElement('br', null),
+	              'profile event name',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
+	              this.state.cart
 	            ),
 	            _react2.default.createElement(
 	              'td',
 	              null,
-	              'Order Id - Started Date',
+	              'Order Id - Started Date-Cart(0)',
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null),
-	              _react2.default.createElement(InvitedOrderMenu, null),
+	              _react2.default.createElement(BulkOrderMenu, null),
 	              _react2.default.createElement('br', null),
-	              'order items'
+	              'order items',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(
+	                  'tbody',
+	                  null,
+	                  items.map(function (item, index) {
+
+	                    var rows = item.map(function (i, x) {
+
+	                      //alert(JSON.stringify(item.title));
+
+	                      return _react2.default.createElement(
+	                        'td',
+	                        null,
+	                        _react2.default.createElement(
+	                          'table',
+	                          null,
+	                          _react2.default.createElement(
+	                            'tbody',
+	                            null,
+	                            _react2.default.createElement(
+	                              'tr',
+	                              null,
+	                              _react2.default.createElement(
+	                                'td',
+	                                null,
+	                                i.title,
+	                                _react2.default.createElement('br', null),
+	                                _react2.default.createElement('img', { src: '/images/chocolate_chip_scones.jpg', onClick: this.clickImage, height: '200px', width: '200px' }),
+	                                _react2.default.createElement('br', null),
+	                                _react2.default.createElement(
+	                                  _reactBootstrap.FormGroup,
+	                                  { controlId: 'formControlsSelect' },
+	                                  _react2.default.createElement(
+	                                    _reactBootstrap.FormControl,
+	                                    { ref: 'quantity', id: 'item_1', onChange: this.selectQuantity, componentClass: 'select', placeholder: 'select' },
+	                                    _react2.default.createElement(
+	                                      'option',
+	                                      { value: '' },
+	                                      'Quantity'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                      'option',
+	                                      { value: '10' },
+	                                      '10'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                      'option',
+	                                      { value: '20' },
+	                                      '20'
+	                                    )
+	                                  )
+	                                ),
+	                                _react2.default.createElement(
+	                                  _reactBootstrap.Button,
+	                                  { id: i.item_id, onClick: this.btnAddToCart },
+	                                  'Add To Cart'
+	                                )
+	                              )
+	                            )
+	                          )
+	                        )
+	                      );
+
+	                      //}
+	                    }.bind(this));
+
+	                    return _react2.default.createElement(
+	                      'tr',
+	                      null,
+	                      rows
+	                    );
+	                  }.bind(this))
+	                )
+	              )
 	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal,
+	        { show: this.state.open, onHide: this.closeModal, 'aria-labelledby': 'ModalHeader' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal.Header,
+	          { closeButton: true },
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Title,
+	            { id: 'ModalHeader' },
+	            'A Title Goes here'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal.Body,
+	          null,
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement('img', { src: this.state.popup_image, onClick: this.clickImage }),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            this.state.popup_description
 	          )
 	        )
 	      )
@@ -1913,40 +2132,19 @@
 	  'div',
 	  null,
 	  _react2.default.createElement(
-	    'table',
-	    null,
-	    _react2.default.createElement(
-	      'tbody',
-	      null,
-	      _react2.default.createElement(
-	        'tr',
-	        null,
-	        _react2.default.createElement(
-	          'td',
-	          null,
-	          'hello'
-	        ),
-	        _react2.default.createElement(
-	          'td',
-	          null,
-	          _react2.default.createElement(
-	            _reactRouter.Router,
-	            { history: appHistory },
-	            _react2.default.createElement(_reactRouter.Route, { path: '/', component: Home }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/new/bulk', component: NewBulkOrder }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/new/invited', component: NewBulkOrder }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: Order }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_name', component: OrderEventName }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest_list', component: OrderGuestList }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/messaging', component: OrderMessaging }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: OrderItems }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: OrderPayment }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress }),
-	            _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/datetime', component: OrderDateTime })
-	          )
-	        )
-	      )
-	    )
+	    _reactRouter.Router,
+	    { history: appHistory },
+	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: Home }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/new/bulk', component: NewBulkOrder }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/new/invited', component: NewInvitedOrder }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: Order }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_name', component: OrderEventName }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest_list', component: OrderGuestList }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/messaging', component: OrderMessaging }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: OrderItems }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: OrderPayment }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/delivery_address', component: OrderDeliveryAddress }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/datetime', component: OrderDateTime })
 	  )
 	), document.getElementById('order'));
 
