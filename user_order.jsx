@@ -6,7 +6,7 @@ var moment = require('moment');
 //var Popup = require('react-popup');
 //var Modal = require('react-bootstrap-modal')
 //var Modal = ReactBootstrap.Modal;
-import { Button, FormGroup, FormControl, Modal, Form, FieldGroup, Col, ControlLabel } from 'react-bootstrap';
+import { Button, FormGroup, FormControl, Modal, Form, FieldGroup, Col, ControlLabel, Image } from 'react-bootstrap';
 var Dropzone = require('react-dropzone');
 
 require('react-datepicker/dist/react-datepicker.css');
@@ -638,7 +638,7 @@ var OrderItems = React.createClass({
                                 //alert(JSON.stringify(item.title));
 
                                 return <td><table><tbody>
-                                          <tr><td>{i.title}<br/><img src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="200px" width="200px"/><br/>
+                                          <tr><td>{i.title}<br/><Image src="/images/chocolate_chip_scones.jpg" onClick={this.clickImage} height="200px" width="200px" thumbnail /><br/>
                                           <FormGroup controlId="formControlsSelect">
                                             <FormControl ref="quantity" id="item_1" onChange={this.selectQuantity} componentClass="select" placeholder="select">
                                               <option value="">Quantity</option>

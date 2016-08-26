@@ -983,7 +983,7 @@
 	                                null,
 	                                i.title,
 	                                _react2.default.createElement('br', null),
-	                                _react2.default.createElement('img', { src: '/images/chocolate_chip_scones.jpg', onClick: this.clickImage, height: '200px', width: '200px' }),
+	                                _react2.default.createElement(_reactBootstrap.Image, { src: '/images/chocolate_chip_scones.jpg', onClick: this.clickImage, height: '200px', width: '200px', thumbnail: true }),
 	                                _react2.default.createElement('br', null),
 	                                _react2.default.createElement(
 	                                  _reactBootstrap.FormGroup,
