@@ -1,6 +1,6 @@
 exports.config = {
   // See http://brunch.io/#documentation for docs.
-  /*files: {
+  files: {
     javascripts: {
       joinTo: "js/app.js"
 
@@ -65,5 +65,5 @@ exports.config = {
 
   npm: {
     enabled: false
-  }*/
+  }
 };
