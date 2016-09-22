@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.MenuItem do
+defmodule SconeHomeElixir.UserOrderGuestList do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,10 +6,10 @@ defmodule SconeHomeElixir.MenuItem do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "menu_items" do
-			field :item_id, Ecto.UUID
-			field :description, :string
-			field :active, :string
+		schema "order_guest_list" do
+			field :user_id, Ecto.UUID
+			field :order_id, :string
+			field :guest_id, :string
 			
 			#timestamps()
 		end

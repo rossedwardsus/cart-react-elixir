@@ -1,9 +1,9 @@
-defmodule SconeHomeElixir.ApiUserOrderController do
+defmodule SconeHomeElixir.ApiUserOrderEventNameController do
   use SconeHomeElixir.Web, :controller
 
-  def index(conn, _params) do
-  json conn, %{id: "id"}
-	end
+  #def index(conn, _params) do
+  #json conn, %{id: "id"}
+	#end
 
   #@config domain: Application.get_env(:scone_home_elixir, :mailgun_domain),
   #        key: Application.get_env(:scone_home_eliir, :mailgun_key)
@@ -29,7 +29,7 @@ defmodule SconeHomeElixir.ApiUserOrderController do
   #end
    
 
-  def create(conn, _params) do
+  def index(conn, _params) do
 
     #save order
 
@@ -64,7 +64,7 @@ defmodule SconeHomeElixir.ApiUserOrderController do
 
     
 
-    SconeHomeElixir.Email.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now
+    SconeHomeElixir.UserOrderGuestEmail.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now
 
     
 

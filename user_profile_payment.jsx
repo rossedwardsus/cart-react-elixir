@@ -43,6 +43,16 @@ var UserProfilePayment = React.createClass({
                       <tbody>
                         <tr>
                           <td>
+                              Name this account-input
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                              Name on card
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
                             <Form horizontal>
                               <FormGroup>
                                   <Col componentClass={ControlLabel} sm={10}>
@@ -99,6 +109,7 @@ var UserProfilePayment = React.createClass({
                               </FormGroup>
                             </Form>
                             <br/>
+                            update payment method
                             <br/>
                             <br/>
                             <Button onClick={this.save}>Save</Button>

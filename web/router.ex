@@ -53,6 +53,7 @@ defmodule SconeHomeElixir.Router do
 
     get "/user/orders/new", ApiUserOrderController, :index
     get "/user/orders/create", ApiUserOrderController, :create
+    get "/user/orders/eventname", ApiUserOrderEventNameController, :index
 
     get "/menu/items", ApiMenuItemsController, :index
 
@@ -62,6 +63,8 @@ defmodule SconeHomeElixir.Router do
 
   scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
+
+    get "/mobile", MobileController, :index
 
     get "/", HomeController, :index
     get "/login", LoginController, :index

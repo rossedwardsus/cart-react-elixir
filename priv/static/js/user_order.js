@@ -88,6 +88,7 @@
 
 	//Popup.alert('This is an alert popup');
 
+	var order = { order_type: "bulk" };
 
 	var BulkOrderMenu = _react2.default.createClass({
 	  displayName: 'BulkOrderMenu',
@@ -665,7 +666,11 @@
 	                    null,
 	                    'Add a message to send to your guests here:',
 	                    _react2.default.createElement('br', null),
-	                    _react2.default.createElement('textarea', null)
+	                    _react2.default.createElement(
+	                      _reactBootstrap.FormGroup,
+	                      { controlId: 'formControlsTextarea' },
+	                      _react2.default.createElement(_reactBootstrap.FormControl, { componentClass: 'textarea', placeholder: 'textarea', ref: 'guests', rows: '10', cols: '1', style: { resize: "none" }, onChange: this.onChange })
+	                    )
 	                  ),
 	                  _react2.default.createElement(
 	                    'td',
@@ -725,12 +730,25 @@
 
 	    guests.map(function (guest) {
 
+	      //check for duplicates
+
 	      guests_temp.push({ name: guest.split(",")[0], email: guest.split(",")[1] });
 	    });
 
 	    //alert(JSON.stringify(guests_temp));
 
 	    this.setState({ guest_list: guests_temp });
+	  },
+
+	  btnSaveGuestListInTextarea: function btnSaveGuestListInTextarea() {
+
+	    //save in order variable
+	    //check if already in gust list
+
+	    //[1, 2, 3].includes(2);     // true
+	    //guest_temp
+
+
 	  },
 
 	  render: function render() {
@@ -792,7 +810,7 @@
 	                      _react2.default.createElement('br', null),
 	                      _react2.default.createElement(
 	                        _reactBootstrap.Button,
-	                        null,
+	                        { onClick: this.btnGuestListinTextarea },
 	                        'Import'
 	                      ),
 	                      _react2.default.createElement('br', null),
@@ -892,6 +910,8 @@
 
 	    alert(e.target.id);
 	    alert(this.state.quantity);
+
+	    //save in global order variable
 	  },
 
 	  closeModal: function closeModal() {
@@ -1118,7 +1138,16 @@
 
 	  whichAddress: function whichAddress() {
 
-	    alert();
+	    //alert();
+
+
+	  },
+
+	  btnDeliveryClick: function btnDeliveryClick() {
+
+	    //if existing then look up in the users record and then save for order
+	    //else post new address and save in order
+
 	  },
 
 	  render: function render() {
@@ -1135,10 +1164,10 @@
 	          _react2.default.createElement(
 	            'tr',
 	            null,
-	            _react2.default.createElement('td', { width: '2' }),
+	            _react2.default.createElement('td', { width: '2%' }),
 	            _react2.default.createElement(
 	              'td',
-	              { style: { verticalAlign: "top" } },
+	              { width: '30%', style: { verticalAlign: "top" } },
 	              'home',
 	              _react2.default.createElement('br', null),
 	              'settings',
@@ -1151,6 +1180,7 @@
 	              null,
 	              'Order Id-Started Date',
 	              _react2.default.createElement('br', null),
+	              order.order_type == "bulk" ? "bulk" : null,
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(InvitedOrderMenu, null),
 	              _react2.default.createElement('br', null),
@@ -1299,6 +1329,15 @@
 	                  )
 	                )
 	              )
+	            ),
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                { onClick: this.btnDeliveryClick },
+	                'Save'
+	              )
 	            )
 	          )
 	        )
@@ -1386,6 +1425,11 @@
 	              'td',
 	              null,
 	              _react2.default.createElement(InvitedOrderMenu, null),
+	              'Use existing',
+	              _react2.default.createElement('br', null),
+	              'Mastercard xxx3456-personal',
+	              _react2.default.createElement('br', null),
+	              'Or enter a new one',
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
 	                _reactBootstrap.Form,
@@ -1449,6 +1493,19 @@
 	                )
 	              ),
 	              'Or enter a new one'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                null,
+	                'Complete Order'
+	              )
 	            )
 	          )
 	        )
@@ -1526,6 +1583,19 @@
 	                  { value: '830' },
 	                  '8:30'
 	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'td',
+	              null,
+	              _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                null,
+	                'Save'
 	              )
 	            )
 	          )

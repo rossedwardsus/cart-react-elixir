@@ -8,8 +8,16 @@ defmodule SconeHomeElixir.UserOrder do
 
 		schema "orders" do
 			field :user_id, Ecto.UUID
-			field :email, :string
-			field :password, :string
+			field :order_type, :string
+			field :event_name, :string
+			field :stationary_id, :string
+			field :delivery_address_street, :string
+			field :delivery_address_city, :string
+			field :delivery_address_state, :string
+			field :delivery_address_zipcode, :string
+			field :status, :string
+			field :message_to_guests, :string
+			field :delivery_datetime, :string
 			
 			#timestamps()
 		end

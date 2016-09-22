@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.ApiUserProfileDeliveryAddressController do
+defmodule SconeHomeElixir.ApiUserOrderCheckStatus do
   use SconeHomeElixir.Web, :controller
 
   def index(conn, _params) do

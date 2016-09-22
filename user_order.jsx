@@ -17,6 +17,8 @@ const appHistory = useRouterHistory(createHashHistory)({ queryKey: false })
 
 //Popup.alert('This is an alert popup');
 
+var order = {order_type: "bulk"};
+
 
 
 const BulkOrderMenu = React.createClass({
@@ -412,7 +414,9 @@ var OrderMessaging = React.createClass({
                               <td>
                                 Add a message to send to your guests here:
                                 <br/>
-                                <textarea></textarea>
+                                <FormGroup controlId="formControlsTextarea">
+                                    <FormControl componentClass="textarea" placeholder="textarea" ref="guests" rows="10" cols="1" style={{resize: "none"}} onChange={this.onChange}/>
+                                </FormGroup>
                               </td>
                               <td>
                                 scrolling images at the top which are clickable
@@ -461,6 +465,8 @@ var OrderGuestList = React.createClass({
         var guests_temp = [];
 
         guests.map(function(guest){
+
+            //check for duplicates
         
             guests_temp.push({name: guest.split(",")[0], email: guest.split(",")[1]});
 
@@ -469,6 +475,17 @@ var OrderGuestList = React.createClass({
         //alert(JSON.stringify(guests_temp));
 
         this.setState({guest_list: guests_temp});
+
+  },
+
+  btnSaveGuestListInTextarea: function(){
+
+        //save in order variable
+        //check if already in gust list
+
+        //[1, 2, 3].includes(2);     // true
+        //guest_temp
+
 
   },
 
@@ -503,7 +520,7 @@ var OrderGuestList = React.createClass({
                                 <FormControl componentClass="textarea" placeholder="textarea" ref="guests" rows="10" cols="1" style={{resize: "none"}} onChange={this.onChange}/>
                               </FormGroup>
                               <br/>
-                              <Button>Import</Button>
+                              <Button onClick={this.btnGuestListinTextarea}>Import</Button>
                               <br/>
                               <br/>
                               Drag a file
@@ -575,6 +592,8 @@ var OrderItems = React.createClass({
 
       alert(e.target.id);
       alert(this.state.quantity);
+
+      //save in global order variable
 
   },
 
@@ -692,7 +711,16 @@ var OrderDeliveryAddress = React.createClass({
 
   whichAddress: function(){
 
-      alert();
+      //alert();
+
+
+
+  },
+
+  btnDeliveryClick: function(){
+
+      //if existing then look up in the users record and then save for order
+      //else post new address and save in order
 
   },
 
@@ -702,8 +730,8 @@ var OrderDeliveryAddress = React.createClass({
                 <table width="100%">
                   <tbody>
                     <tr>
-                      <td width="2"></td>
-                      <td style={{verticalAlign: "top"}}>
+                      <td width="2%"></td>
+                      <td width="30%" style={{verticalAlign: "top"}}>
                         home
                         <br/>
                         settings
@@ -714,6 +742,7 @@ var OrderDeliveryAddress = React.createClass({
                       <td>
                           Order Id-Started Date
                           <br/>
+                          {(order.order_type == "bulk") ? "bulk" : null}
                           <br/>
                           <InvitedOrderMenu/>
                           <br/>
@@ -827,6 +856,9 @@ var OrderDeliveryAddress = React.createClass({
                               </FormGroup>
                           </Form>
                       </td>
+                      <td>
+                          <Button onClick={this.btnDeliveryClick}>Save</Button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -900,6 +932,11 @@ var OrderPayment = React.createClass({
                       </td>
                       <td>
                         <InvitedOrderMenu/>
+                        Use existing
+                        <br/>
+                        Mastercard xxx3456-personal
+                        <br/>
+                        Or enter a new one
                         <br/>
                         <Form horizontal>
                               <FormGroup>
@@ -950,6 +987,11 @@ var OrderPayment = React.createClass({
                         Or enter a new one
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                          <Button>Complete Order</Button>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
             </div>);
@@ -996,8 +1038,13 @@ var OrderDateTime = React.createClass({
                           <DatePicker inline selected={this.state.startDate} onChange={this.handleChange}/><br/><select ref="time"><option value="">time</option><option value="800">8:00</option><option value="830">8:30</option></select>
                       </td>
                     </tr>
-                  </tbody>
-                </table>
+                    <tr>
+                      <td>
+                          <Button>Save</Button>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
             </div>);
 
   }
