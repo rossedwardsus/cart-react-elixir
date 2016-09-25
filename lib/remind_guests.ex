@@ -17,7 +17,7 @@ defmodule SconeHomeElixir.RemindGuests do
 
   def handle_info(:work, state) do
     # Do the work you desire here
-    IO.puts "hello"
+    #IO.puts "hello"
 
     #changeset = UserProfileDeliveryAddress.changeset(%UserProfileDeliveryAddress{}, %{question_id: "1", created_by: "1", title: "title"})
 
@@ -38,7 +38,7 @@ defmodule SconeHomeElixir.RemindGuests do
 
     all_ids = Repo.all(query)
 
-    Enum.map(all_ids, fn(x) -> IO.inspect x[:id] end)
+    #Enum.map(all_ids, fn(x) -> IO.inspect x[:id] end)
     
     IO.puts ""
 
@@ -47,6 +47,6 @@ defmodule SconeHomeElixir.RemindGuests do
   end
 
   defp schedule_work() do
-    Process.send_after(self(), :work, 3600) # In 2 hours
+    #Process.send_after(self(), :work, 3600) # In 2 hours
   end
 end
