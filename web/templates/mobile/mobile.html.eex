@@ -26,31 +26,18 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar">1</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
        <ul class="nav navbar-nav">
-        <li class="active"><a href="#">About us<span class="sr-only">(current)</span></a><a href="#">Link</a></li>
-        <li><a href="#">Link1</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">About Us</a></li>
             <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
 
         <!--<a class="navbar-brand" href="#"><img src="/images/logo/sconely_transparent_sm.png"></a>-->
-        <li class="active"><a href="#"><img src="/images/logo/sconely_transparent_sm.png"><span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><img src="/images/logo/sconely_transparent_sm.png"><span class="sr-only">(current)</span></a></li>
         <li><a href="#">Cart(<div id="cart_amount" style="display: inline;"></div>)</a></li>
       </ul>
 
@@ -60,105 +47,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
     </div><!-- /.navbar-collapse -->
-    <ul id="multicol-menu" class="nav pull-right">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MultiCol Menu <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li>
-                    <div class="row" style="width: 400px;">
-                        <ul class="list-unstyled col-md-4">
-                            <li><a href="#">test1-1</a></li>
-                            <li><a href="#">test1-2</a></li>
-                            <li><a href="#">test1-3</a></li>
-                        </ul>
-                        <ul class="list-unstyled col-md-4">
-                            <li><a href="#">test2-1</a></li>
-                            <li><a href="#">test2-2</a></li>
-                            <li><a href="#">test2-3</a></li>
-                        </ul>
-                        <ul class="list-unstyled col-md-4">
-                            <li><a href="#">test3-1</a></li>
-                            <li><a href="#">test3-2</a></li>
-                            <li><a href="#">test3-3</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">wybierz region<b class="caret"></b></a>
-            <ul class="dropdown-menu columns">
-                <li><a href="#"><strong>Górny Śląsk</strong></a></li>
-                <li><a href="#">powiat będziński</a></li>
-                <li><a href="#">powiat bielski</a></li>
-                <li><a href="#">powiat bieruńsko-lędziński</a></li>
-                <li><a href="#">powiat cieszyński</a></li>
-                <li><a href="#">powiat częstochowski</a></li>
-                <li><a href="#">powiat gliwicki</a></li>
-                <li><a href="#">powiat kłobucki</a></li>
-                <li><a href="#">powiat lubliniecki</a></li>
-                <li><a href="#">powiat mikołowski</a></li>
-                <li><a href="#">powiat myszkowski</a></li>
-            </ul>
-        </li>
-        <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Heading 1 </a>
-                  <div class="dropdown-menu multi-column">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Col 1 - Opt 1</a></li>
-                                <li><a href="#">Col 1 - Opt 2</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Col 2 - Opt 1</a></li>
-                                <li><a href="#">Col 2 - Opt 2</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Col 2 - Opt 1</a></li>
-                                <li><a href="#">Col 2 - Opt 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Two Column <b class="caret"></b></a>
-              <ul class="dropdown-menu multi-column columns-2">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <ul class="multi-column-dropdown">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here that's extra long so we can see how it looks</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-sm-6">
-                    <ul class="multi-column-dropdown">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">One more separated link</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </ul>
-          </li>
-
-        </ul>
-    </ul>
+    
   </div><!-- /.container-fluid -->
   <div>
 </nav>
