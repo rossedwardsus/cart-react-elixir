@@ -24,32 +24,53 @@
 </script>
 
 <style type="text/css">
-            .full-width {
-                max-width:100%;
-                top:0;
-                left:0;
-                min-height: 100%;
-                min-width: 1024px;
-                background-color: #808080;
-            }
-            .col-md-3 {
-                background-color: #4f4;
-            }
-            .col-md-9 {
-                background-color: #f4f;
-            }
+   .navbar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    left: 0;
+    z-index: 20;
+    }
 
-            body {
-                width: 100%;
-                margin: 0%;
-            }
+    /* Flip around the padding for proper display in narrow viewports */
+    .navbar-wrapper > .container {
+        padding-right: 0;
+        padding-left: 0;
+        width: inherit;
+    }
 
-            .navbar-nav > li > a, .navbar-brand {
-                padding-top:4px !important; 
-                padding-bottom:0 !important;
-                height: 75px;
-            }
-        }
+    .navbar-wrapper .navbar {
+        width: 100% !important;
+    }
+
+    .navbar-inverse {
+      width: 100% !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+      border-radius: 0;
+    }
+
+    .navbar-inverse .nav > li > a {
+        color: #FFFFFF;
+    }
+
+    .navbar-inverse .nav > li > a:hover {
+        background: none;
+    }
+
+    .navbar-brand a {
+        color: #FFFFFF;
+    }
+
+    .main-header-background {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center; 
+        background-image: url('http://www.riwakawebsitedesigns.com/external/images/stars/img-stars-2.jpg');
+      height: 620px;
+      width: 100%;
+      margin-bottom: 60px;
+    }
 </style>
 
 <nav class="navbar navbar-default">
