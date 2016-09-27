@@ -23,6 +23,29 @@
 
 </script>
 
+<style type="text/css">
+            .full-width {
+                max-width:100%;
+                top:0;
+                left:0;
+                min-height: 100%;
+                min-width: 1024px;
+                background-color: #808080;
+            }
+            .col-md-3 {
+                background-color: #4f4;
+            }
+            .col-md-9 {
+                background-color: #f4f;
+            }
+
+            body {
+                width: 100%;
+                margin: 0%;
+            }
+        }
+</style>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid" style="container: 0px">
     <!-- Brand and toggle get grouped for better mobile display -->
