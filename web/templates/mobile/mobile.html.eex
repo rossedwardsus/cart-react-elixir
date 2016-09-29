@@ -76,7 +76,7 @@
     }
 
     html, body {
-      width: 100%,
+      width: auto;
       overflow-x: hidden;
     }
 
@@ -133,15 +133,16 @@
 <br>
 
 <div class="container">
-    <div class="row" style="width="100%"">
+      <div class="col-md-4">
         <div class="thumbnail">
-            <img src="/images/strawberry_scones.png" alt="...">
-            <div class="caption">
-              <h3>Strawberry Scone</h3>
-              <p>Cost</p>
-              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To CArt</a></p>
-            </div>
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone</h3>
+            <p>Cost</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To CArt</a></p>
           </div>
+        </div>
+      </div>
       <div class="col-md-4">
         <div class="thumbnail">
           <img src="/images/strawberry_scones.png" alt="...">
@@ -152,7 +153,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4"><div class="thumbnail">
+      <div class="col-md-4">
         <div class="thumbnail">
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
