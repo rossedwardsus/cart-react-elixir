@@ -83,7 +83,7 @@
     .container {
       padding:0;
       margin:0;
-      padding-right: 0;
+      padding-right: -1000;
       padding-left: 30px;
       margin-right: 0;
       margin-left: 0;
