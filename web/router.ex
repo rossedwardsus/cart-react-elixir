@@ -66,6 +66,9 @@ defmodule SconeHomeElixir.Router do
 
     get "/mobile", MobileController, :index
 
+    get "/redux", ReduxController, :index
+
+
     get "/", HomeController, :index
     get "/login", LoginController, :index
     post "/login", LoginController, :create
