@@ -64,8 +64,11 @@ defmodule SconeHomeElixir.Router do
   scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
 
-    get "/mobile", MobileController, :index
-    get "/menu", MenuController, :index
+    get "/mobile/order", MobileController, :index
+    get "/mobile/menu", MenuController, :index
+    get "/mobile/login", MenuController, :index
+    get "/mobile/user", MobileUserController, :index
+    get "/mobile", MenuController, :index
 
     get "/redux", ReduxController, :index
 
