@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.AdminOrdersController do
+defmodule SconeHomeElixir.AdminOrderController do
   use SconeHomeElixir.Web, :controller
 
   def index(conn, _params) do

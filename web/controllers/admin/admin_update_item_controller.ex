@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.AdminItemPhotoController do
+defmodule SconeHomeElixir.AdminUpdateItemController do
   use SconeHomeElixir.Web, :controller
 
   def index(conn, _params) do
