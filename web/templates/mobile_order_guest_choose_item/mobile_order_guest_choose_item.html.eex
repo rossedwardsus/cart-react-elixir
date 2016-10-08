@@ -117,12 +117,12 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/menu">Menu</a></li>
-            <li><a href="/login">Login</a></li>
+            <li><a href="/login">Logout</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
+                <li><a href="#">Delivery Address</a></li>
+                <li><a href="#">Payment</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -132,7 +132,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/mobile/order/guest/choose/item">Guest Choose Item</a></li>
+            <li><a href="../navbar/">Password</a></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
             <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
           </ul>
@@ -146,6 +146,9 @@
 <br>
 
 <div class="container-fluid">
+    Welcome Guest!  Please choose your scone and enter your name and a message to your host.
+    <br>
+    <br>
     <div class="row">
       <div class="col-xs-12 col-md-3">
         <div class="thumbnail">
@@ -153,8 +156,7 @@
           <div class="caption">
             <h3>Strawberry Scone1</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
@@ -163,8 +165,7 @@
           <div class="caption">
             <h3>Strawberry Scone2</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To cart</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
@@ -172,9 +173,7 @@
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
             <h3>Strawberry Scone3</h3>
-            <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
@@ -183,8 +182,7 @@
           <div class="caption">
             <h3>Strawberry Scone4</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
@@ -193,8 +191,7 @@
           <div class="caption">
             <h3>Strawberry Scone5</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
@@ -203,8 +200,7 @@
           <div class="caption">
             <h3>Strawberry Scone6</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To cart</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
@@ -213,8 +209,7 @@
           <div class="caption">
             <h3>Strawberry Scone7</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
+            </div>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">

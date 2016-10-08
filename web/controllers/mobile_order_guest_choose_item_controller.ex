@@ -1,7 +1,7 @@
-defmodule SconeHomeElixir.MenuController do
+defmodule SconeHomeElixir.MobileOrderGuestChooseItemController do
   use SconeHomeElixir.Web, :controller
 
-  plug :put_layout, "mobile.html"
+  plug :put_layout, "mobile_user.html"
 
   def index(conn, _params) do
   	#clear_session
@@ -9,7 +9,7 @@ defmodule SconeHomeElixir.MenuController do
   	#IO.puts("user_id" <> user_id)
     conn
     |> assign(:user, "hello")
-    |> render("menu.html")
+    |> render("mobile_order_guest_choose_item.html")
   end
 
   def create(conn, %{"photo" => user_params}) do

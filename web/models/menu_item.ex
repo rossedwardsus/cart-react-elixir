@@ -10,6 +10,7 @@ defmodule SconeHomeElixir.MenuItem do
 			field :item_id, Ecto.UUID
 			field :description, :string
 			field :active, :string
+			field :cost, :string
 			
 			#timestamps()
 		end
