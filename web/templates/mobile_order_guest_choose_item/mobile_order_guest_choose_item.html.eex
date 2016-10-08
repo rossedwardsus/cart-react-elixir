@@ -19,7 +19,7 @@
 
       $('.thumbnail').on('click', function (e) {
       //  $('#myInput').focus()
-            alert(this.id);
+      //      alert(this.id);
 
       //    
 
