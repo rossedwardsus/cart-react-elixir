@@ -17,9 +17,12 @@
 
       })
 
-      $('.thumbnail').on('click', function () {
+      $('.thumbnail').on('click', function (e) {
       //  $('#myInput').focus()
-      //    alert();
+            alert(this.id);
+
+      //    
+
             $('#myModal').modal('show')
       })
 
@@ -109,14 +112,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Strawberry Scone</h4>
       </div>
       <div class="modal-body">
-        ...
+        A savory Scone made with Strawberries
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Choose</button>
       </div>
     </div>
   </div>
@@ -174,7 +176,7 @@
     <br>
     <div class="row">
       <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
+        <div class="thumbnail" id="1">
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
             <h3>Strawberry Scone1</h3>
