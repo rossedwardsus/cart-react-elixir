@@ -17,13 +17,31 @@
 
       })
 
+      $("#menu").show();
+      $("#name").hide();
+
       $('.thumbnail').on('click', function (e) {
       //  $('#myInput').focus()
       //      alert(this.id);
 
-      //    
+      //   
+
 
             $('#myModal').modal('show')
+
+
+      })
+
+      //div show hide
+
+      $("#choose").click(function(){ 
+      
+            //alert();
+
+            //location.href = "#name";
+            $("#menu").hide();
+            $("#name").show();
+      
       })
 
   })
@@ -118,10 +136,12 @@
         A savory Scone made with Strawberries
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Choose</button>
+        <button id="choose" type="button" class="btn btn-default" data-dismiss="modal">Choose</button>
       </div>
     </div>
   </div>
+
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -163,92 +183,107 @@
       </div>
     </nav>
 
-
-
 <br>
 <br>
-
 
 
 <div class="container-fluid">
-    Welcome Guest!  Please choose your scone and enter your name and a message to your host.
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail" id="1">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone1</h3>
-            <p>Cost</p>
+    <div id="menu">
+        Welcome Guest!  Please choose your scone and enter your name and a message to your host.
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail" id="1">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone1</h3>
+                </div>
             </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone2</h3>
-            <p>Cost</p>
-            </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone3</h3>
-            </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone4</h3>
-            <p>Cost</p>
-            </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone5</h3>
-            <p>Cost</p>
-            </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone6</h3>
-            <p>Cost</p>
-            </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone7</h3>
-            <p>Cost</p>
-            </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="thumbnail">
-          <img src="/images/strawberry_scones.png" alt="...">
-          <div class="caption">
-            <h3>Strawberry Scone8</h3>
-            <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
           </div>
-        </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone2</h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone3</h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone4</h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone5</h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone6</h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone7</h3>
+                </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="thumbnail">
+              <img src="/images/strawberry_scones.png" alt="...">
+              <div class="caption">
+                <h3>Strawberry Scone8</h3>
+              </div>
+            </div>
+          </div>
       </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="name">
       Your name
       <br>
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="exampleInputName2">Name</label>
+          <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail2">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+        </div>
+        <button type="submit" class="btn btn-default">Send invitation</button>
+      </form>
+    </div>
+    <div>
+      <br>
       Add a message to send to your host
-  </div>
+    </div>
 </div>
