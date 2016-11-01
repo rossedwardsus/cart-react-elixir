@@ -151,7 +151,7 @@
         <div class="thumbnail">
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
-            <h3>Strawberry Scone1</h3>
+            <h3>Strawberry Scone</h3>
             <p>Cost</p>
             <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
           </div>
