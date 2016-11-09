@@ -51,9 +51,14 @@ defmodule SconeHomeElixir.Router do
     get "/user/profile/datetime", ApiUserProfileDatetimeController, :index
     post "/user/profile/datetime", ApiUserProfileDatetimeController, :create
 
-    get "/user/orders/new", ApiUserOrderController, :index
+    get "/user/orders/bulk/new", ApiUserOrderController, :index
     get "/user/orders/create", ApiUserOrderController, :create
     get "/user/orders/eventname", ApiUserOrderEventNameController, :index
+
+    get "/user/orders/bulk/delivery_address", ApiUserOrderEventNameController, :index    
+    get "/user/orders/bulk/datetime", ApiUserOrderEventNameController, :index
+    get "/user/orders/bulk/payment", ApiUserOrderEventNameController, :index
+    get "/user/orders/bulk/item/add", ApiUserOrderEventNameController, :index            
 
     get "/menu/items", ApiMenuItemsController, :index
 
@@ -64,12 +69,26 @@ defmodule SconeHomeElixir.Router do
   scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
 
+    #social
     get "/mobile/order/guest/choose/item", MobileOrderGuestChooseItemController, :index
+    
+    #yours
+    get "/mobile/order/datetime", MobileOrderController, :index
+    get "/mobile/order/items", MobileOrderController, :index
+    get "/mobile/order/payment", MobileOrderController, :index
+    get "/mobile/order/delivery_address", MobileOrderController, :index
     get "/mobile/order", MobileOrderController, :index
+    
     get "/mobile/menu", MobileMenuController, :index
     #get "/mobile/login", MenuController, :index
+    
+
     get "/mobile/user", MobileUserController, :index
+    
+
     get "/mobile", MobileController, :index
+
+    
 
     get "/redux", ReduxController, :index
 

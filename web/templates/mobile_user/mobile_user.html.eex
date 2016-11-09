@@ -149,7 +149,7 @@
     <div class="row">
         <div class="hidden-xs col-md-4">left hand menu on desktop</div>
         <div class="col-xs-6 col-md-4">
-            start new express order
+            <a href="/mobile/user/order/yours">sconely yours</a>
             <br>
             order date-order number
         </div>
