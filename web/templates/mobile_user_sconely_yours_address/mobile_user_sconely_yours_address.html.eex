@@ -152,18 +152,48 @@
 
 <br>
 <br>
-Please enter your address
 <br>
 <br>
+
+<div class="col-md-3">
+user menu
+</div>
 
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-md-3">
+        user menu on left
+        <br>
         Delivery address:
         <br>
         Street, Number
         <br>
         City, State Zipcode
+        <br>
+             <form class="form-inline">
+                <div class="form-group">
+                  <label for="exampleInputName2">Street</label>
+                  <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail2">PO</label>
+                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                </div>
+              </form>
+              <br>
+              <form class="form-inline">
+                <div class="form-group">
+                  <label for="exampleInputName2">City</label>
+                  <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail2">State</label>
+                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                </div>
+              </form>
+            <br>
+            <button type="submit" class="btn btn-default">Submit</button>
+    
       </div>
     </div>
 </div>
