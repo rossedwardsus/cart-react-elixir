@@ -247,12 +247,12 @@ user menu
         render() {
           return (
               <div>
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-xs-12 col-md-3">
-                      <div class="thumbnail">
+                <div className="container-fluid">
+                  <div className="row">
+                    <div className="col-xs-12 col-md-3">
+                      <div className="thumbnail">
                         <img src="/images/strawberry_scones.png" alt="..."/>
-                        <div class="caption">
+                        <div className="caption">
                           <h3>Suzy Sunshine</h3>
                           <p><select id="amount">
                               <option value=""></option>
@@ -262,10 +262,10 @@ user menu
                         </div>
                       </div>
                     </div>
-                    <div class="col-xs-12 col-md-3">
-                      <div class="thumbnail">
+                    <div className="col-xs-12 col-md-3">
+                      <div className="thumbnail">
                         <img src="/images/strawberry_scones.png" alt="..."/>
-                        <div class="caption">
+                        <div className="caption">
                           <h3>Snorker</h3>
                           <p><select><option value="">12</option></select></p>
                           <p><a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a></p>
