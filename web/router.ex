@@ -40,7 +40,7 @@ defmodule SconeHomeElixir.Router do
   #end
 
 
-  scope "/api", SconeHomeElixir do
+  scope "/api/v_alpha", SconeHomeElixir do
     pipe_through :api # Use the default browser stack
 
     post "/user/profile/photo", ApiUserProfilePhotoController, :create
@@ -74,16 +74,16 @@ defmodule SconeHomeElixir.Router do
     
     #yours
     get "/mobile/order/datetime", MobileOrderController, :index
-    get "/mobile/order/items", MobileOrderController, :index
+    get "/mobile/user/sconely_yours/items", MobileUserSconelyYoursItemsController, :index
     get "/mobile/order/payment", MobileOrderController, :index
     get "/mobile/order/delivery_address", MobileOrderController, :index
     get "/mobile/order", MobileOrderController, :index
     
     get "/mobile/menu", MobileMenuController, :index
-    #get "/mobile/login", MenuController, :index
+    get "/mobile/login", MobileLoginController, :index
     
 
-    get "/mobile/user", MobileUserController, :index
+    #get "/mobile/user", MobileUserController, :index
     
 
     get "/mobile", MobileController, :index

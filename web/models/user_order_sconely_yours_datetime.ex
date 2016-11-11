@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserOrderItems do
+defmodule SconeHomeElixir.SconelyYoursDatetime do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 

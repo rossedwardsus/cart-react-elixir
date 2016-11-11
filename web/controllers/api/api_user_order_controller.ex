@@ -26,16 +26,16 @@ defmodule SconeHomeElixir.ApiUserOrderController do
 
       #create order
 
-      changeset = UserProfileDeliveryAddress.changeset(%UserProfileDeliveryAddress{}, %{question_id: "1", created_by: "1", title: "title"})
+      #changeset = UserProfileDeliveryAddress.changeset(%UserProfileDeliveryAddress{}, %{question_id: "1", created_by: "1", title: "title"})
 
-      case Repo.insert(changeset) do
-        {:ok, _user} ->
-          conn
+      #case Repo.insert(changeset) do
+      #  {:ok, _user} ->
+      #    conn
     #      |> put_flash(:info, "User created successfully.")
     #      |> redirect(to: user_path(conn, :index))
-        {:error, changeset} ->
-          render(conn, "new.html", changeset: changeset)
-      end
+     #   {:error, changeset} ->
+     #     render(conn, "new.html", changeset: changeset)
+     # end
 
   		IO.puts(address)
   		IO.puts(suite)

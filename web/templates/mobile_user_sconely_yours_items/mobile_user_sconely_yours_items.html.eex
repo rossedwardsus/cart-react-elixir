@@ -147,11 +147,76 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="hidden-xs col-md-4">left hand menu on desktop</div>
-        <div class="col-xs-6 col-md-4">
-            start new express order
-            <br>
-            order date-order number
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone1</h3>
+            <p>Cost</p>
+            </div>
         </div>
-    </div>
-</div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone2</h3>
+            <p>Cost</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone3</h3>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone4</h3>
+            <p>Cost</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone5</h3>
+            <p>Cost</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone6</h3>
+            <p>Cost</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone7</h3>
+            <p>Cost</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone8</h3>
+            <p>Cost</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+  </div>

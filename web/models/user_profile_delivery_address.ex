@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserProfileDeliveryAddress do
+defmodule SconeHomeElixir.SconelyYoursDeliveryAddress do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 

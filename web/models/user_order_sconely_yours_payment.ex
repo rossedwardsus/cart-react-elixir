@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserOrderItems do
+defmodule SconeHomeElixir.SconelyYoursPayment do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
