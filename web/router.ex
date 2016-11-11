@@ -78,6 +78,8 @@ defmodule SconeHomeElixir.Router do
     get "/mobile/user/sconely_yours/payment", MobileUserSconelyYoursPaymentController, :index
     get "/mobile/user/sconely_yours/address", MobileUserSconelyYoursAddressController, :index
     get "/mobile/user/sconely_yours/datetime", MobileUserSconelyYoursDateTimeController, :index
+    get "/mobile/user/sconely_yours", MobileUserSconelyYoursController, :index
+    
     
     get "/mobile/menu", MobileMenuController, :index
     get "/mobile/login", MobileLoginController, :index
