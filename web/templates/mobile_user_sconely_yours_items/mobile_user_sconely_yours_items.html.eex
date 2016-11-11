@@ -12,11 +12,15 @@
 
       //alert('it works');
 
+      $("#next").hide();
+
       //$('#btnItem').on('click','img',function(e){
       $(document).on('click', '#btnItem', function (e) {
        
           //alert('it works' + e.target.attributes.value.value);
           $("#cart_item_count").html(10);
+          $("#next").show();
+          $("#amount").val("");
 
       })
 
@@ -100,30 +104,7 @@
       margin-left: 0;
     }
 
-    .footer-wrapper {
-    position: relative;
-    height: 50px;
-    }
-
-    #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
-
-.footer-block { margin: 10px 0; }
-
-#footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.footer {
-  padding: 15px 0;
-}
+   
 </style>
 
 
@@ -186,54 +167,47 @@ Please select your Scones
         <div class="thumbnail">
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
-            <h3>Suzy Sunshine (Banana chai date)</h3>
-            <select><option value="">12</option></select>
-            <a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a>
+            <h3>Suzy Sunshine</h3>
+            <p><select id="amount">
+                <option value=""></option>
+                <option value="8">8</option>
+            </select></p>
+            <p><a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a><p>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
       <div class="col-xs-12 col-md-3">
         <div class="thumbnail">
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
-            <h3>Snorker (Double chocolate hazelnut)</h3>
-            <select><option value="">12</option></select>
-            <a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a>
+            <h3>Snorker</h3>
+            <p><select><option value="">12</option></select></p>
+            <p><a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a></p>
           </div>
         </div>
       </div>
     </div>
-    <br>
+</div>
+<br>
     Grady (Pear Ginger Pecan)
     Bea (Blueberry green tea vegan)
     Savvy Go Go (Mushroom, sundried tomato, goat cheese)
     Zilla (Carmelized onion, sage, gruyere)
     Julie Freedom (Gluten free, vegan dried fruit and nut)
-    Delivery Address
-    <div class="footer-wrapper">
-          <footer>That's the sticky footer</footer>
-    </div>
-    <div id="footer">
-      <div class="container">
-        <p class="footer-block">Footer</p>  
-      </div>
-    </div>
-</div>
 
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Delivery Address</a>
-      </div>
-    </div>
+<div id="next">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <input type="button" value="Next">
+            </div>
+          </div>
+    </nav>
 </div>
 
