@@ -134,7 +134,9 @@
               </ul>
             </li>
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-text">cart(<span id="cart_item_count"><a href="">0</a></span>)</li>
             <li><a href="../navbar/">Password</a></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
             <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
@@ -147,7 +149,7 @@
 
 <br>
 <br>
-Please select your Scones-cart(<span id="cart_item_count"><a href="">0</a></span>)
+Please select your Scones
 <br>
 <br>
 
@@ -157,7 +159,19 @@ Please select your Scones-cart(<span id="cart_item_count"><a href="">0</a></span
         <div class="thumbnail">
           <img src="/images/strawberry_scones.png" alt="...">
           <div class="caption">
-            <h3>12 - Strawberry Scones</h3>
+            <h3>Suzy Sunshine (Banana chai date)</h3>
+            <select><option value="">12</option></select>
+            <a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Snorker (Double chocolate hazelnut)</h3>
             <select><option value="">12</option></select>
             <a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a>
           </div>
@@ -165,5 +179,10 @@ Please select your Scones-cart(<span id="cart_item_count"><a href="">0</a></span
       </div>
     </div>
     <br>
+    Grady (Pear Ginger Pecan)
+    Bea (Blueberry green tea vegan)
+    Savvy Go Go (Mushroom, sundried tomato, goat cheese)
+    Zilla (Carmelized onion, sage, gruyere)
+    Julie Freedom (Gluten free, vegan dried fruit and nut)
     Delivery Address
 </div>
