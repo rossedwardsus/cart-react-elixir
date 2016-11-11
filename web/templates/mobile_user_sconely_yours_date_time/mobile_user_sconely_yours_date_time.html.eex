@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 <script>
@@ -17,9 +18,24 @@
 
       })
 
+      $(document).on('click', '#btnNext', function (e) {
+      
+          //alert();
+          location.href="/mobile/user/sconely_yours/payment";
+
+      });
+
+
   })
 
 </script>
+
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
 
 <style type="text/css">
    .navbar-wrapper {
@@ -149,9 +165,15 @@
     <div class="row">
         <div class="hidden-xs col-md-4">left hand menu on desktop</div>
         <div class="col-xs-6 col-md-4">
-            start new express order
-            <br>
-            order date-order number
+            <div id="datepicker"></div>
         </div>
     </div>
+</div>
+
+<div id="next">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+          <div class="container-fluid">
+            <a id="btnNext" class="btn btn-default" role="button">Next</a></p>
+          </div>
+    </nav>
 </div>

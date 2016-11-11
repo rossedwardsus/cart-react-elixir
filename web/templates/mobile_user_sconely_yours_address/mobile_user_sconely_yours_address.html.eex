@@ -15,7 +15,7 @@
       $(document).on('click', '#btnNext', function (e) {
       
           alert();
-          location.href="/mobile/user/sconely_yours/address";
+          location.href="/mobile/user/sconely_yours/datetime";
 
       });
 
