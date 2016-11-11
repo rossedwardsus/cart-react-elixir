@@ -114,6 +114,9 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#"><img src="/images/logo/sconely_logo_tiny.jpg"></a>
+
+            <p class="navbar-text">cart(<span id="cart_item_count"><a href="">0</a></span>)</p>
+          
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -133,10 +136,6 @@
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
-          </ul>
-
-          <ul>
-            <li class="navbar-text">cart(<span id="cart_item_count"><a href="">0</a></span>)</li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
