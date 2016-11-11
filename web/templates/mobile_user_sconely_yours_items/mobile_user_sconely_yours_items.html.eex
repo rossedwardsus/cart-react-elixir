@@ -10,12 +10,12 @@
 
   $(document).ready(function(){
 
-      alert('it works');
+      //alert('it works');
 
       //$('#btnItem').on('click','img',function(e){
       $(document).on('click', '#btnItem', function (e) {
        
-          alert('it works' + e.target.attributes.value.value);
+          //alert('it works' + e.target.attributes.value.value);
           $("#cart_item_count").html(10);
 
       })
@@ -147,7 +147,7 @@
 
 <br>
 <br>
-Please select your Scones-cart(<span id="cart_item_count">0</span>)
+Please select your Scones-cart(<span id="cart_item_count"><a href="">0</a></span>)
 <br>
 <br>
 
