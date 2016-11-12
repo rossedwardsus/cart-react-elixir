@@ -98,11 +98,16 @@
       width: 100%;
       padding:0;
       margin:0;
-      padding-right: 0;
-      padding-left: 0;
+      padding-right: -1000;
+      padding-left: 30px;
       margin-right: 0;
       margin-left: 0;
     }
+
+    .row-no-margin {
+   margin-left: 0px;
+   margin-right: 0px;
+} 
 
    
 </style>
