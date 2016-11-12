@@ -383,6 +383,7 @@ user menu
         selectedItem(id){
 
             //alert(id);
+            this.setState({selected_item: ""});
 
         }
 
