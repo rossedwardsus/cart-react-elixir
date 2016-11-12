@@ -382,7 +382,7 @@ user menu
 
         selectedItem(id){
 
-            alert(id);
+            //alert(id);
 
         }
 
@@ -531,7 +531,7 @@ user menu
                         <div className="caption">
                           <h3>Suzy Sunshine</h3>
                           <p><select onChange={this.selectedItem}>
-                              <option value="" selected={this.state.selected_item}></option>
+                              <option value=""></option>
                               <option value="8">8</option>
                           </select></p>
                           <p><a id="btnItem" onClick={this.addItem} class="btn btn-default" role="button" value="1">Add To Cart</a></p>
