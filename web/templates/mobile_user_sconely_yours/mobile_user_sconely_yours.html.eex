@@ -112,12 +112,6 @@
    
 </style>
 
-
-
-
-
-
-
 <br>
 <br>
 <br>
@@ -236,19 +230,19 @@ user menu
                         <p className="navbar-text">cart(<span id="cart_item_count"><a href="">{cart}</a></span>)</p>
                       
                     </div>
-                    <div id="navbar" class="navbar-collapse collapse">
+                    <div id="navbar" className="navbar-collapse collapse">
                       <ul className="nav navbar-nav">
                         <li className="active"><a href="#">Home</a></li>
                         <li><a href="/about">About Us</a></li>
                         <li><a href="/menu">Menu</a></li>
                         <li><a href="/login">Logout</a></li>
                         <li className="dropdown">
-                          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
                           <ul className="dropdown-menu">
                             <li><a href="#">Delivery Address</a></li>
                             <li><a href="#">Payment</a></li>
                             <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
+                            <li role="separator" className="divider"></li>
                             <li className="dropdown-header">Nav header</li>
                             <li><a href="#">Separated link</a></li>
                             <li><a href="#">One more separated link</a></li>
