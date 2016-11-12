@@ -98,8 +98,8 @@
       width: 100%;
       padding:0;
       margin:0;
-      padding-right: -1000;
-      padding-left: 30px;
+      padding-right: 0;
+      padding-left: 0;
       margin-right: 0;
       margin-left: 0;
     }
@@ -110,48 +110,6 @@
 
 
 
-<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><img src="/images/logo/sconely_logo_tiny.jpg"></a>
-
-            <p class="navbar-text">cart(<span id="cart_item_count"><a href="">0</a></span>)</p>
-          
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/menu">Menu</a></li>
-            <li><a href="/login">Logout</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Delivery Address</a></li>
-                <li><a href="#">Payment</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Password</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
 
 
 
@@ -232,10 +190,19 @@ user menu
           // bind it and make it an instance method instead of prototype method
           //this.myFunction = this.myFunction.bind(this);
           //alert();
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+
         }
-        //myFunction() {
+        addItem() {
           // this
-        //},
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
         //componentDidMount() {
           //SomeEvent.subscribe(this.myFunction);
         //  alert();
@@ -245,8 +212,54 @@ user menu
         //}
 
         render() {
+
+          var cart = this.state.cart;
+
           return (
               <div>
+                <nav className="navbar navbar-default navbar-fixed-top">
+                  <div className="container-fluid">
+                    <div className="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span className="sr-only">Toggle navigation</span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                      </button>
+                      <a className="navbar-brand" href="#"><img src="/images/logo/sconely_logo_tiny.jpg"/></a>
+
+                        <p className="navbar-text">cart(<span id="cart_item_count"><a href="">{cart}</a></span>)</p>
+                      
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul className="nav navbar-nav">
+                        <li className="active"><a href="#">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/menu">Menu</a></li>
+                        <li><a href="/login">Logout</a></li>
+                        <li className="dropdown">
+                          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                          <ul className="dropdown-menu">
+                            <li><a href="#">Delivery Address</a></li>
+                            <li><a href="#">Payment</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li className="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+
+                      <ul className="nav navbar-nav navbar-right">
+                        <li><a href="../navbar/">Password</a></li>
+                        <li><a href="../navbar-static-top/">Static top</a></li>
+                        <li className="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-md-3">
@@ -258,7 +271,7 @@ user menu
                               <option value=""></option>
                               <option value="8">8</option>
                           </select></p>
-                          <p><a id="btnItem" class="btn btn-default" role="button" value="1">Add To Cart</a></p>
+                          <p><a id="btnItem" onClick={this.addItem} class="btn btn-default" role="button" value="1">Add To Cart</a></p>
                         </div>
                       </div>
                     </div>
