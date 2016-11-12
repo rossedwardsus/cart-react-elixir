@@ -120,10 +120,10 @@
 <div class="col-md-3">
 user menu
 </div>
-<div id="root"></div>
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-md-3">
+        <div id="root"></div>
         user menu on left
         <br>
         items
@@ -171,17 +171,11 @@ user menu
     </div>
 </div>
 <br>
-<div id="next">
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-          <div class="container-fluid">
-            <a id="btnNext" class="btn btn-default" role="button">Next</a></p>
-          </div>
-    </nav>
-</div>
+
 
 <script type="text/babel">
 
-    class C extends React.Component {
+    class Cart extends React.Component {
     //- - - - - - ^ - the magic happens here
 
         constructor(props) {
@@ -216,6 +210,244 @@ user menu
 
           return (
               <div>
+              cart-add more items
+              </div>
+          )
+
+        }
+    }
+
+    class Payment extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+        //componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+        //  alert();
+        //},
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        render() {
+
+          var cart = this.state.cart;
+
+          return (
+              <div>
+                  <form novalidate autocomplete="on" method="POST">
+                    <div class="form-group">
+                      <label for="cc-number" class="control-label">Card number formatting <small class="text-muted">[<span class="cc-brand"></span>]</small></label>
+                      <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-exp" class="control-label">Card expiry formatting</label>
+                      <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-cvc" class="control-label">Card CVC formatting</label>
+                      <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="numeric" class="control-label">Restrict numeric</label>
+                      <input id="numeric" type="tel" class="input-lg form-control" data-numeric/>
+                    </div>
+
+                    <h2 class="validation"></h2>
+                </form>
+              </div>
+          )
+
+        }
+    }
+
+    class Address extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+        //componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+        //  alert();
+        //},
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        render() {
+
+          var cart = this.state.cart;
+
+          return (
+              <div>
+                <form>
+                    <div class="form-group">
+                      <label for="cc-number" class="control-label">Address</label>
+                      <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-exp" class="control-label">Box</label>
+                      <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-cvc" class="control-label">City</label>
+                      <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="numeric" class="control-label">State</label>
+                      <input id="numeric" type="tel" class="input-lg form-control" data-numeric/>
+                    </div>
+
+                    <h2 class="validation"></h2>
+                </form>
+              </div>
+          )
+
+        }
+    }
+
+    class Order extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            items: [{id: 1}, {id: 2}],
+            cart: 0,
+            page: "",
+            user_id: "",
+            address: "",
+            payment: "",
+            cart: [],
+            selected_item: ""
+          }
+
+          this.addItem = this.addItem.bind(this);
+          this.btnNext = this.btnNext.bind(this);
+          this.btnCart = this.btnCart.bind(this);
+          this.selectedItem = this.selectedItem.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+
+          this.setState({selected_item: "selected"});
+
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+
+        selectedItem(id){
+
+            alert(id);
+
+        }
+
+        btnNext(){
+
+          //alert();
+          if(this.state.page == ""){
+
+              this.setState({page: "address"});
+
+          }else if(this.state.page == "address"){
+
+              this.setState({page: "payment"});
+
+          }else if(this.state.page == "payment"){
+
+
+          }
+
+        }
+
+        btnCart(){
+
+            this.setState({page: "cart"});
+
+        }
+
+        //componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+        //  alert();
+        //},
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        render() {
+
+          var cart = this.state.cart;
+
+          var page = "";
+
+          if(this.state.page == "items"){
+
+
+          }else if(this.state.page == "address"){
+
+              //alert();
+
+              page = <Address/>;
+
+          }else if(this.state.page == "payment"){
+
+              //alert();
+
+              page = <Payment/>;
+
+          }else if(this.state.page == "cart"){
+
+              page = <Cart/>;
+
+          }
+
+
+          return (
+              <div>
                 <nav className="navbar navbar-default navbar-fixed-top">
                   <div className="container-fluid">
                     <div className="navbar-header">
@@ -227,7 +459,7 @@ user menu
                       </button>
                       <a className="navbar-brand" href="#"><img src="/images/logo/sconely_logo_tiny.jpg"/></a>
 
-                        <p className="navbar-text">cart(<span id="cart_item_count"><a href="">{cart}</a></span>)</p>
+                        <p className="navbar-text">cart(<span id="cart_item_count"><a onClick={this.btnCart}>{cart}</a></span>)</p>
                       
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
@@ -260,14 +492,46 @@ user menu
                 </nav>
 
                 <div className="container-fluid">
+                            <div className="row">
+                              <div className="col-xs-12 col-md-3">
+                           
+
+                {this.state.items.map(function(item){
+
+
+
+                    return(
+
+                    //    var 
+
+                               <div className="thumbnail">
+                                  <img src="/images/strawberry_scones.png" alt="..."/>
+                                  <div className="caption">
+                                    <h3>Suzy Sunshine</h3>
+                                    <p><select onChange={this.selectedItem(item.id)} defaultValue={this.state.selected_item}>
+                                        <option value=""></option>
+                                        <option value="8">8</option>
+                                    </select></p>
+                                    <p><a id="btnItem" onClick={this.addItem} class="btn btn-default" role="button" value="1">Add To Cart</a></p>
+                                  </div>
+                                </div>
+                              
+                    )
+
+                }.bind(this))}
+                </div>
+                </div>
+                </div>
+
+                <div className="container-fluid">
                   <div className="row">
                     <div className="col-xs-12 col-md-3">
                       <div className="thumbnail">
                         <img src="/images/strawberry_scones.png" alt="..."/>
                         <div className="caption">
                           <h3>Suzy Sunshine</h3>
-                          <p><select id="amount">
-                              <option value=""></option>
+                          <p><select onChange={this.selectedItem}>
+                              <option value="" selected={this.state.selected_item}></option>
                               <option value="8">8</option>
                           </select></p>
                           <p><a id="btnItem" onClick={this.addItem} class="btn btn-default" role="button" value="1">Add To Cart</a></p>
@@ -286,13 +550,21 @@ user menu
                     </div>
                   </div>
                 </div>
+                {page}
+                <div id="next">
+                    <nav className="navbar navbar-default navbar-fixed-bottom">
+                          <div className="container-fluid">
+                            <p><a onClick={this.btnNext} className="btn btn-default" role="button">Next</a></p>
+                          </div>
+                    </nav>
+                </div>
               </div>
           );
         }
     };
 
     ReactDOM.render(
-      <C/>,
+      <Order/>,
       document.getElementById('root')
     );
 
