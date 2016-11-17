@@ -14,7 +14,7 @@ defmodule SconeHomeElixir.MobileUserSconelyYoursController do
     conn
     |> assign(:user, "ross")
     |> assign(:user_id, "12345")
-    |> render("mobile_user_sconely_social.html")
+    |> render("mobile_user_sconely_yours.html")
   end
 
   def create(conn, %{"photo" => user_params}) do

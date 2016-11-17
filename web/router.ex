@@ -43,24 +43,26 @@ defmodule SconeHomeElixir.Router do
   scope "/api/v_alpha", SconeHomeElixir do
     pipe_through :api # Use the default browser stack
 
-    post "/user/profile/photo", ApiUserProfilePhotoController, :create
-    get "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
-    post "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :create
-    get "/user/profile/guest_list", ApiUserProfileGuestListController, :index
-    post "/user/profile/guest_list", ApiUserProfileGuestListController, :create
-    get "/user/profile/datetime", ApiUserProfileDatetimeController, :index
-    post "/user/profile/datetime", ApiUserProfileDatetimeController, :create
+    #post "/user/profile/photo", ApiUserProfilePhotoController, :create
+    #get "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
+    #post "/user/sconely_yours/address", ApiUserSconelyYoursAddressController, :create
+    #get "/user/profile/guest_list", ApiUserProfileGuestListController, :index
+    #post "/user/profile/guest_list", ApiUserProfileGuestListController, :create
+    #get "/user/profile/datetime", ApiUserProfileDatetimeController, :index
+    #post "/user/profile/datetime", ApiUserProfileDatetimeController, :create
 
-    get "/user/orders/bulk/new", ApiUserOrderController, :index
-    get "/user/orders/create", ApiUserOrderController, :create
-    get "/user/orders/eventname", ApiUserOrderEventNameController, :index
+    get "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
+    post "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
 
-    get "/user/orders/bulk/delivery_address", ApiUserOrderEventNameController, :index    
-    get "/user/orders/bulk/datetime", ApiUserOrderEventNameController, :index
-    get "/user/orders/bulk/payment", ApiUserOrderEventNameController, :index
-    get "/user/orders/bulk/item/add", ApiUserOrderEventNameController, :index            
+    #get "/user/orders/create", ApiUserOrderController, :create
+    #get "/user/orders/eventname", ApiUserOrderEventNameController, :index
 
-    get "/menu/items", ApiMenuItemsController, :index
+    #get "/user/orders/bulk/delivery_address", ApiUserOrderEventNameController, :index    
+    #get "/user/orders/bulk/datetime", ApiUserOrderEventNameController, :index
+    #get "/user/orders/bulk/payment", ApiUserOrderEventNameController, :index
+    #get "/user/orders/bulk/item/add", ApiUserOrderEventNameController, :index            
+
+    #get "/menu/items", ApiMenuItemsController, :index
 
   end
 

@@ -178,9 +178,49 @@ user menu
 
 <script type="text/babel">
 
-  
+    class EventName extends React.Component {
+    //- - - - - - ^ - the magic happens here
 
-    class Cart extends React.Component {
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+        //componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+        //  alert();
+        //},
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        render() {
+
+          var cart = this.state.cart;
+
+          return (
+              <div>
+              cart-add more items
+              </div>
+          )
+
+        }
+    }
+
+    class DateTime extends React.Component {
     //- - - - - - ^ - the magic happens here
 
         constructor(props) {

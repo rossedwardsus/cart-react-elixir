@@ -40,3 +40,8 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   database: "scone_home_elixir_dev",
   hostname: "localhost",
   pool_size: 10
+
+
+
+config :stripity_stripe, secret_key: "sk_test_dRJI4lMQw1loYK6LmcDLBE41"
+config :stripity_stripe, platform_client_id: "YOUR CONNECT PLATFORM CLIENT ID"

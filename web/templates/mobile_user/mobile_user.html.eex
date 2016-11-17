@@ -149,7 +149,13 @@
     <div class="row">
         <div class="hidden-xs col-md-4">left hand menu on desktop</div>
         <div class="col-xs-6 col-md-4">
-            <a href="/mobile/user/order/yours">sconely yours</a>
+            <a href="/mobile/user/sconely_yours">sconely yours</a>
+            <br>
+            <a href="/mobile/user#order/sconely_yours">sconely yours</a>
+            <br>
+            dont show on mobile
+            <br>
+            <a href="/mobile/user#order/sconely_social">sconely yours</a>
             <br>
             order date-order number
         </div>

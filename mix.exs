@@ -19,7 +19,7 @@ defmodule SconeHomeElixir.Mixfile do
   def application do
     [mod: {SconeHomeElixir, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata]]
+                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe]]
   end
 
   # Specifies which paths to compile per environment.
@@ -47,7 +47,11 @@ defmodule SconeHomeElixir.Mixfile do
      {:uuid, "~> 1.1"},
      {:csv, "~> 1.4.2"},
      {:plug, "~> 1.0"},
-     {:timex, "~> 3.0"}]
+     {:timex, "~> 3.0"},
+     {:hackney, "~> 1.0", override: true},
+     {:stripity_stripe, "~> 1.4.0"},
+     {:httpoison, "~> 0.8.0"},
+     {:tzdata, "~> 0.5.8"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

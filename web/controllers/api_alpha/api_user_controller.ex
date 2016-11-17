@@ -1,19 +1,30 @@
-defmodule SconeHomeElixir.ApiUserProfileDeliveryAddressController do
+defmodule SconeHomeElixir.ApiUserOrderController do
   use SconeHomeElixir.Web, :controller
 
   alias SconeHomeElixir.UserProfileDeliveryAddress
 
-  def index(conn, _params) do
+  #def all(conn, _params) do
 
-  		#get from database
+      #get user order using id from database
+
+  #    IO.puts(_params)
+  #    json conn, %{id: "id1"}
+  #end
+
+
+  def one(conn, _params) do
+
+  		#get user order using id from database
 
   		IO.puts(_params)
   		json conn, %{id: "id1"}
   end
 
-  def create(conn, %{"address" => address}) do
+  def create(conn, %{"address" => address, "suite" => suite}) do
 
   		#insert into database
+
+      #create order
 
       #changeset = UserProfileDeliveryAddress.changeset(%UserProfileDeliveryAddress{}, %{question_id: "1", created_by: "1", title: "title"})
 
@@ -22,12 +33,12 @@ defmodule SconeHomeElixir.ApiUserProfileDeliveryAddressController do
       #    conn
     #      |> put_flash(:info, "User created successfully.")
     #      |> redirect(to: user_path(conn, :index))
-    #    {:error, changeset} ->
-    #      render(conn, "new.html", changeset: changeset)
-    #  end
+     #   {:error, changeset} ->
+     #     render(conn, "new.html", changeset: changeset)
+     # end
 
   		IO.puts(address)
-  		#IO.puts(suite)
+  		IO.puts(suite)
 
   		json conn, %{id: "id1"}
   end

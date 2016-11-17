@@ -1,21 +1,19 @@
-defmodule SconeHomeElixir.ApiUserProfileDeliveryAddressController do
+defmodule SconeHomeElixir.ApiUserSconelyYoursAddressController do
   use SconeHomeElixir.Web, :controller
-
-  alias SconeHomeElixir.UserProfileDeliveryAddress
 
   def index(conn, _params) do
 
-  		#get from database
+      #get from database
 
-  		IO.puts(_params)
-  		json conn, %{id: "id1"}
+      IO.puts(_params)
+      json conn, %{id: "id1"}
   end
 
   def create(conn, %{"address" => address}) do
 
-  		#insert into database
+      #insert into database
 
-      #changeset = UserProfileDeliveryAddress.changeset(%UserProfileDeliveryAddress{}, %{question_id: "1", created_by: "1", title: "title"})
+      #changeset = UserSconelyYoursAddress.changeset(%UserSconelyYoursAddress{}, %{question_id: "1", created_by: "1", title: "title"})
 
       #case Repo.insert(changeset) do
       #  {:ok, _user} ->
@@ -26,9 +24,12 @@ defmodule SconeHomeElixir.ApiUserProfileDeliveryAddressController do
     #      render(conn, "new.html", changeset: changeset)
     #  end
 
-  		IO.puts(address)
-  		#IO.puts(suite)
+      json conn, %{id: "id1"}
 
-  		json conn, %{id: "id1"}
+      IO.puts(address)
+      IO.puts("api")
+
+      json conn, %{id: "id1"}
   end
+
 end
