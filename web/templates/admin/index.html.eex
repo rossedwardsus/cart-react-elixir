@@ -5,6 +5,7 @@
 <script src="https://fb.me/react-15.0.0.js"></script>
 <script src="https://fb.me/react-dom-15.0.0.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
 
 
 <html>
@@ -73,7 +74,7 @@
           }
 
           this.addItem = this.addItem.bind(this);
-          this.getToken = this.getToken.bind(this);
+          //this.getToken = this.getToken.bind(this);
 
         }
         addItem() {
@@ -82,96 +83,65 @@
           var cart = this.state.cart;
           this.setState({cart: cart + 1});
         }
-        //componentDidMount() {
+        componentDidMount() {
           //SomeEvent.subscribe(this.myFunction);
-        //  alert();
-        //},
-        //componentWillUnmount() {
-          //SomeEvent.unsubscribe(this.myFunction);
-        //}
-
-        //handleSubmit(e) {
-        //  e.preventDefault();
-        //  Stripe.card.createToken(e.currentTarget, function (status, response) {
-        //    console.log( status, response );      
-        //  });
-        //}
-
-        getToken(){
-
-            Stripe.setPublishableKey('pk_test_rB0UvhlpdgEt4RJkInrwWhzg');
-            Stripe.createToken({
-                  number: "4242424242424242",
-                  cvc: "1234",
-                  exp_month: "01",
-                  exp_year: "2020"
-            }, function(status, response){
-
-                //alert(JSON.stringify(status))
-                //alert(JSON.stringify(response))
-
-                $.ajax({
-                  type: 'POST',
-                  url: '/api/v_alpha/user/sconely_yours/complete',
-                  headers: {
-                    stripeToken: response.id
-                  },
-                  data: {
-                    token: response.id,
-                    number: "ccNum",
-                    cvc: "ccCVC",
-                    exp_month: "ccMonth",
-                    exp_year: "ccYear"
-                  },
-                  success: (response) => {
-                    console.log('successful payment: ', response);
-                  },
-                  error: (response) => {
-                    console.log('error payment: ', response);
-                  }
-                })
-
-            });
-
+          alert("add item");
         }
+        onDrop(){
 
-        render() {
+		      var req = request.post('/upload');
+		      files.forEach((file)=> {
+		          req.attach(file.name, file);
+		      });
+		      req.end(callback);
 
-          var cart = this.state.cart;
+		      /*files.forEach((file)=> {
+		            //alert(JSON.stringify(file.getAsText("utf-8")));
+		            //req.attach(file.name, file);
+		            reader.onload = function(e) {
+		                // e.target.result should contain the text
+		                //alert(e.target.result);
+		                alert(e.target.result.split(",")[0]);
+		                //e.target.result.map(function(guest){
 
-          return (
-              <div>
-                  <b>Use existing payment method</b>
-                  <br/>
-                  Add new method
-                  <br/>
-                  <form novalidate autocomplete="on" method="POST">
-                    <div class="form-group">
-                      <label for="cc-number" class="control-label">Card number formatting <small class="text-muted">[<span class="cc-brand"></span>]</small></label>
-                      <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="" value="4242424242424242" required/>
-                    </div>
+		                  //  guest_list.push(guest);
 
-                    <div class="form-group">
-                      <label for="cc-exp" class="control-label">Card expiry formatting</label>
-                      <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required/>
-                    </div>
+		                //})
+		                this.setState({guest_list: guest_list});
+		            };
+		            reader.readAsText(file);
+		      });*/
 
-                    <div class="form-group">
-                      <label for="cc-cvc" class="control-label">Card CVC formatting</label>
-                      <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" value="1234" required/>
-                    </div>
+		}
+  
+		  render(){
 
-                    <div class="form-group">
-                      <label for="numeric" class="control-label">Restrict numeric</label>
-                      <input id="numeric" type="tel" class="input-lg form-control" data-numeric/>
-                    </div>
-                    <button onClick={this.getToken}>Save</button>
-                    <h2 class="validation"></h2>
-                </form>
-              </div>
-          )
+		  		    return(<div>
+		                    <br/>
+		                    <br/>
+		                    description-textarea<input/>
+		                    <br/>
+		                    category-select<select onChange={this.categoryChange}><option value=""></option><option value="scone">Scone</option><option value="tea">Tea</option><option value="assortment">Assortment</option></select>
+		                    <br/>
+		                    <br/>
+		                    add photo
+		                    <br/>
+		                    <Dropzone onDrop={this.onDrop}>
+		                      <div>Try dropping some files here, or click to select files to upload.</div>
+		                    </Dropzone>
+		                    <br/>
+		                    <button type="button" onClick={this.onOpenClick}>
+		                    Open Dropzone
+		                    </button>
+		                    {this.state.files.length > 0 ? <div>
+		                    <h2>Uploading {this.state.files.length} files...</h2>
+		                    <div>{this.state.files.map((file) => <img src={file.preview} /> )}</div>
+		                    </div> : null}
+		                    <br/>
+		                    <Button>Save</Button>
+		          </div>);
+		  }
 
-        }
     }
 
     class Orders extends React.Component {
@@ -192,14 +162,14 @@
         addItem() {
           // this
           //alert();
-          var cart = this.state.cart;
-          this.setState({cart: cart + 1});
+          //var cart = this.state.cart;
+          //this.setState({cart: cart + 1});
         }
         componentDidMount() {
           //SomeEvent.subscribe(this.myFunction);
-          alert("orders");
+          //alert("orders");
 
-          }
+        }
         //componentWillUnmount() {
           //SomeEvent.unsubscribe(this.myFunction);
         //}
@@ -260,9 +230,15 @@
          }
         componentDidMount(){
 
-            alert("admin");
+            //alert("admin");
 
          }
+
+        addItem(){
+
+        	this.setState({page: "add_item"});
+
+        }
 
         render(){
 
@@ -272,12 +248,19 @@
 
           		page = <Orders/>;
 
+          	}else if(this.state.page == "add_item"){
+
+
+          		page = <AddItem/>;
+
           	}
 
+
           	return(<div>
-              		Add item
+              		<a onClick={this.addItem.bind(this)}>Add item</a>
               		<br/>
               		Edit Item
+              		<br/>
               		<br/>
               		Orders
               		<br/>
