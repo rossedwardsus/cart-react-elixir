@@ -86,7 +86,7 @@ defmodule SconeHomeElixir.Router do
     get "/mobile/menu", MobileMenuController, :index
     get "/mobile/login", MobileLoginController, :index
   
-    #get "/mobile/user", MobileUserController, :index
+    get "/mobile/user", MobileUserController, :index
     
 
     get "/mobile", MobileController, :index

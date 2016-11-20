@@ -13,6 +13,11 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
 
   import Bamboo.Email
 
+  import Ecto.Query, only: [from: 2]
+
+  alias SconeHomeElixir.{Repo, Login}
+  
+
   #var api_key = 'key-22e98444fc043c1e72943865de283d39';
   #  var domain = 'sandbox60cd8c923f214e8b90257138647a028e.mailgun.org';
 
@@ -32,6 +37,10 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
   def index(conn, _params) do
 
     use Mix.Config
+
+    #changeset = Login.changeset(%Login{}, %{email: "mary@example.com", password: "password"})
+    ##{:error, changeset} = Repo.insert(changeset)
+
 
     #config :stripity_stripe, secret_key: "sk_test_dRJI4lMQw1loYK6LmcDLBE41"
     #config :stripity_stripe, platform_client_id: "ca_9ZRaRJdmIM5jw52Jk0KoFLfgzmV0hb1a"

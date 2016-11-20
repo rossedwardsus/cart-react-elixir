@@ -14,22 +14,7 @@
 
       <img src="/images/Scone_Home_logo_june_9_sm.jpg">
 
-      <table width="100%">
-        <tbody>
-          <tr>
-            <td valign="top" width="2%">
-            <td valign="top" width="35%">
-              Admin
-              <br>
-              Add Item
-              <br>
-              Orders
-            </td>
-            <td>
-              <%= render @view_module, @view_template, assigns %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </body>
+      <%= render @view_module, @view_template, assigns %>
+  
+  </body>
 </html>

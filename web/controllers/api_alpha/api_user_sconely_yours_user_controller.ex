@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
+defmodule SconeHomeElixir.ApiUserSconelyYoursUserController do
   use SconeHomeElixir.Web, :controller
 
   #def index(conn, _params) do

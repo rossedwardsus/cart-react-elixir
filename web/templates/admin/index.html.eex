@@ -1,14 +1,296 @@
-<a href="/admin/add_item">add item</a>
-<br>
-<a href="/admin/edit_item">edit item</a>
-<br>
-<a href="/admin/items">items</a>
-<br>
-<br>
-<a href="/admin/orders">view orders</a>
-<br>
-users
-<br>
-analytics
-<br>
-<br>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://fb.me/react-15.0.0.js"></script>
+<script src="https://fb.me/react-dom-15.0.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+
+<html>
+	<body>
+		<div id="root"></div>
+	</body>
+</html>
+
+
+<script type="text/babel">
+
+  
+
+    class EditItem extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+        //componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+        //  alert();
+        //},
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        render() {
+
+          var cart = this.state.cart;
+
+          return (
+              <div>
+              cart-add more items
+              </div>
+          )
+
+        }
+    }
+
+    class AddItem extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+          this.getToken = this.getToken.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+        //componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+        //  alert();
+        //},
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        //handleSubmit(e) {
+        //  e.preventDefault();
+        //  Stripe.card.createToken(e.currentTarget, function (status, response) {
+        //    console.log( status, response );      
+        //  });
+        //}
+
+        getToken(){
+
+            Stripe.setPublishableKey('pk_test_rB0UvhlpdgEt4RJkInrwWhzg');
+            Stripe.createToken({
+                  number: "4242424242424242",
+                  cvc: "1234",
+                  exp_month: "01",
+                  exp_year: "2020"
+            }, function(status, response){
+
+                //alert(JSON.stringify(status))
+                //alert(JSON.stringify(response))
+
+                $.ajax({
+                  type: 'POST',
+                  url: '/api/v_alpha/user/sconely_yours/complete',
+                  headers: {
+                    stripeToken: response.id
+                  },
+                  data: {
+                    token: response.id,
+                    number: "ccNum",
+                    cvc: "ccCVC",
+                    exp_month: "ccMonth",
+                    exp_year: "ccYear"
+                  },
+                  success: (response) => {
+                    console.log('successful payment: ', response);
+                  },
+                  error: (response) => {
+                    console.log('error payment: ', response);
+                  }
+                })
+
+            });
+
+        }
+
+        render() {
+
+          var cart = this.state.cart;
+
+          return (
+              <div>
+                  <b>Use existing payment method</b>
+                  <br/>
+                  Add new method
+                  <br/>
+                  <form novalidate autocomplete="on" method="POST">
+                    <div class="form-group">
+                      <label for="cc-number" class="control-label">Card number formatting <small class="text-muted">[<span class="cc-brand"></span>]</small></label>
+                      <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="" value="4242424242424242" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-exp" class="control-label">Card expiry formatting</label>
+                      <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-cvc" class="control-label">Card CVC formatting</label>
+                      <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" value="1234" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="numeric" class="control-label">Restrict numeric</label>
+                      <input id="numeric" type="tel" class="input-lg form-control" data-numeric/>
+                    </div>
+                    <button onClick={this.getToken}>Save</button>
+                    <h2 class="validation"></h2>
+                </form>
+              </div>
+          )
+
+        }
+    }
+
+    class Orders extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          alert("orders");
+          this.state = {
+            cart: 0
+          }
+
+          this.addItem = this.addItem.bind(this);
+
+        }
+        addItem() {
+          // this
+          //alert();
+          var cart = this.state.cart;
+          this.setState({cart: cart + 1});
+        }
+        componentDidMount() {
+          //SomeEvent.subscribe(this.myFunction);
+          alert("orders");
+
+          }
+        //componentWillUnmount() {
+          //SomeEvent.unsubscribe(this.myFunction);
+        //}
+
+        render() {
+
+          var cart = this.state.cart;
+
+          return (
+              <div>
+                Choose from existing address
+                <br/>
+                Or add new one
+                <br/>
+                Name
+                <br/>
+                <form method="post" onSubmit={this.handleSubmit}>
+                    <div class="form-group">
+                      <label for="cc-number" class="control-label">Address</label>
+                      <input id="cc-number" type="tel" class="input-lg form-control cc-number" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-exp" class="control-label">Box</label>
+                      <input id="cc-exp" type="tel" class="input-lg form-control cc-exp" autocomplete="cc-exp" placeholder="•• / ••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cc-cvc" class="control-label">City</label>
+                      <input id="cc-cvc" type="tel" class="input-lg form-control cc-cvc" autocomplete="off" placeholder="•••" required/>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="numeric" class="control-label">State</label>
+                      <input id="numeric" type="tel" class="input-lg form-control" data-numeric/>
+                    </div>
+
+                    <h2 class="validation"></h2>
+                </form>
+              </div>
+          )
+
+        }
+    }
+
+    class Admin extends React.Component {
+    //- - - - - - ^ - the magic happens here
+
+        constructor(props) {
+          super(props);
+          // bind it and make it an instance method instead of prototype method
+          //this.myFunction = this.myFunction.bind(this);
+          //alert();
+          this.state = {
+            page: "",
+          }
+
+         }
+        componentDidMount(){
+
+            alert("admin");
+
+         }
+
+        render(){
+
+        	var page = "";
+
+          	if(this.state.page == ""){
+
+          		page = <Orders/>;
+
+          	}
+
+          	return(<div>
+              		Add item
+              		<br/>
+              		Edit Item
+              		<br/>
+              		Orders
+              		<br/>
+              		{page}
+              </div>);
+        }
+    };
+
+    ReactDOM.render(
+      <Admin/>,
+      document.getElementById('root')
+    );
+
+    alert();
+
+</script>

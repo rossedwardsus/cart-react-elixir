@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.MobileUserSconelyYoursController do
+defmodule SconeHomeElixir.MobileUserSconelySocialController do
   use SconeHomeElixir.Web, :controller
 
   plug :put_layout, "mobile.html"
