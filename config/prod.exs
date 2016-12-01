@@ -14,8 +14,11 @@ use Mix.Config
 config :scone_home_elixir, SconeHomeElixir.Endpoint,
   http: [port: {:system, "PORT"}],
   #url: [host: "example.com", port: 80],
-  url: [scheme: "https", host: "scone-home-elixir.herokuapp.com", port: 443],
+  #url: [scheme: "https", host: "scone-home-elixir.herokuapp.com", port: 443],
+	#	force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [scheme: "https", host: "sconely.herokuapp.com", port: 443],
 		force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  
   cache_static_manifest: "priv/static/manifest.json"
 
 
