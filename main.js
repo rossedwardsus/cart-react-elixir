@@ -10,6 +10,6 @@
 //import UserProfilePayment from './user_profile_payment.jsx';
 //import UserProfileFoodPreferences from './user_profile_food_preferences.jsx';
 
-import UserOrder from './user_order.jsx';
+//import UserOrder from './user_order.jsx';
 
 //import UserOrderGuestChooseItem from "./user_order_guest_choose_item.jsx";

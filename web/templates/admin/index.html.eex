@@ -5,7 +5,10 @@
 <script src="https://fb.me/react-15.0.0.js"></script>
 <script src="https://fb.me/react-dom-15.0.0.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/0.34.0/react-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.js"></script>
 
 
 <html>
@@ -17,7 +20,7 @@
 
 <script type="text/babel">
 
-  
+  	//var Dropzone = require("Dropzone");
 
     class EditItem extends React.Component {
     //- - - - - - ^ - the magic happens here
@@ -70,7 +73,8 @@
           //this.myFunction = this.myFunction.bind(this);
           //alert();
           this.state = {
-            cart: 0
+            files: [],
+            startDate: moment()
           }
 
           this.addItem = this.addItem.bind(this);
@@ -85,7 +89,7 @@
         }
         componentDidMount() {
           //SomeEvent.subscribe(this.myFunction);
-          alert("add item");
+          //alert("add item");
         }
         onDrop(){
 
@@ -113,32 +117,28 @@
 		      });*/
 
 		}
+
+		handleChange: function(date) {
+		    this.setState({
+		      startDate: date
+		    });
+		},
   
 		  render(){
+
+
 
 		  		    return(<div>
 		                    <br/>
 		                    <br/>
-		                    description-textarea<input/>
+		              
 		                    <br/>
-		                    category-select<select onChange={this.categoryChange}><option value=""></option><option value="scone">Scone</option><option value="tea">Tea</option><option value="assortment">Assortment</option></select>
+		                    <DatePicker
+        selected={this.state.startDate}
+        onChange={this.handleChange} />;
 		                    <br/>
-		                    <br/>
-		                    add photo
-		                    <br/>
-		                    <Dropzone onDrop={this.onDrop}>
-		                      <div>Try dropping some files here, or click to select files to upload.</div>
-		                    </Dropzone>
-		                    <br/>
-		                    <button type="button" onClick={this.onOpenClick}>
-		                    Open Dropzone
-		                    </button>
-		                    {this.state.files.length > 0 ? <div>
-		                    <h2>Uploading {this.state.files.length} files...</h2>
-		                    <div>{this.state.files.map((file) => <img src={file.preview} /> )}</div>
-		                    </div> : null}
-		                    <br/>
-		                    <Button>Save</Button>
+		                     <br/>
+		                    <button>Save</button>
 		          </div>);
 		  }
 
@@ -151,7 +151,7 @@
           super(props);
           // bind it and make it an instance method instead of prototype method
           //this.myFunction = this.myFunction.bind(this);
-          alert("orders");
+          //alert("orders");
           this.state = {
             cart: 0
           }
@@ -274,6 +274,5 @@
       document.getElementById('root')
     );
 
-    alert();
-
+   
 </script>
