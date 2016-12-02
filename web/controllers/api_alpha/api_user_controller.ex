@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.ApiUserOrderController do
+defmodule SconeHomeElixir.ApiUserController do
   use SconeHomeElixir.Web, :controller
 
   alias SconeHomeElixir.UserProfileDeliveryAddress

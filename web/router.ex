@@ -51,8 +51,13 @@ defmodule SconeHomeElixir.Router do
     #get "/user/profile/datetime", ApiUserProfileDatetimeController, :index
     #post "/user/profile/datetime", ApiUserProfileDatetimeController, :create
 
+    #for testing
     get "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
+    get "/user/sconely_yours/start", ApiUserSconelyYoursCreateOrderController, :index
+
     post "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
+
+    
 
     #get "/user/orders/create", ApiUserOrderController, :create
     #get "/user/orders/eventname", ApiUserOrderEventNameController, :index

@@ -6,10 +6,13 @@ defmodule SconeHomeElixir.SconelyYours do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "order_items" do
-			#field :user_id, Ecto.UUID
+		schema "order" do
+			field :user_id, Ecto.UUID
 			field :order_id, :string
-			field :item_id, :string
+			field :order_type, :string
+			field :deliver_address, :string
+			field :order_created_date_time, :string
+			field :status, :string
 			
 			#timestamps()
 		end

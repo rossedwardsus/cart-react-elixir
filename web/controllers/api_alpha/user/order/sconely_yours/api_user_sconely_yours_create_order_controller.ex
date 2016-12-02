@@ -1,5 +1,7 @@
-defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
+defmodule SconeHomeElixir.ApiUserSconelyYoursCreateOrderController do
   use SconeHomeElixir.Web, :controller
+
+  #alias Sconely.Order
 
   #def index(conn, _params) do
   #json conn, %{id: "id"}
@@ -28,72 +30,10 @@ defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
 
   #end
    
-  #def create(conn, %{"address" => address}) do
+
   def index(conn, _params) do
 
-    use Mix.Config
-
-    #config :stripity_stripe, secret_key: "sk_test_dRJI4lMQw1loYK6LmcDLBE41"
-    #config :stripity_stripe, platform_client_id: "ca_9ZRaRJdmIM5jw52Jk0KoFLfgzmV0hb1a"
-
-    #{:ok, result} = Stripe.Customers.delete "some_id"
-
-    #IO.puts(result)
-
-    #Stripe.Charges.create({
-    #  amount: 2000,
-    #  currency: "usd",
-    #  source: "tok_1952MuA5rshKhWLCnnZlBDc6", // obtained with Stripe.js
-    #  description: "Charge for william.harris@example.com"
-    #}
-
-    #, function(err, charge) {
-      # asynchronously called
-    #});
-
-    params = [
-      source: [
-        object: "charge",
-        number: "4111111111111111",
-        exp_month: 10,
-        exp_year: 2020,
-        country: "US",
-        name: "Ducky Test",
-        cvc: 123,
-      ],
-      description: "1000 Widgets",
-      capture: false
-    ]
-
-    {:ok, charge} = Stripe.Charges.create(1000, params)
-
-    IO.puts(:ok)
-    IO.inspect(charge)
-    IO.inspect(charge[:status])
-
-    #new_customer = [
-    #email: "test@test.com",
-    #description: "An Test Account",
-    #metadata:[
-    #  app_order_id: "ABC123"
-    #  app_state_x: "xyz"
-    #],
-    #card: [
-    #  number: "4111111111111111",
-    #  exp_month: 01,
-    #  exp_year: 2018,
-    #  cvc: 123,
-    #  name: "Joe Test User"
-    #]
-  #]
-  #{:ok, res} = Stripe.Customers.create new_customer
-
-
-    #charge credit card
-    #if successful
-    #else error
     #save order
-    #send message to user
 
   	#send_email to: "rossedwards.us@gmail.com",
      #          from: "@from",
@@ -116,6 +56,7 @@ defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
     #|> html_body("<strong>Welcome</strong>")
     #|> text_body("welcome")
 
+    #works?
     #task = Task.async(fn ->  
 
     #		SconeHomeElixir.Email.welcome_email |> SconeHomeElixir.Mailer.deliver_now
@@ -124,8 +65,12 @@ defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
     
     #Enum.map([a: 1, b: 2, c: 3], fn({k, v}) -> {k, v * v} end)
 
-    
-    #working
+    #require session id for security
+    #create uuid for order and create new table
+    order_id = UUID.uuid1()
+    datetime = Timex.now
+
+    #works
     #SconeHomeElixir.UserOrderGuestEmail.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now
 
     
@@ -137,11 +82,8 @@ defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
     		#{:error, value} -> "value #{value}"
     		#{:batch_fetch, value} -> "value #{value}"
 
-    IO.puts("complete")
-    #IO.puts(_params["payment"])
 
-
-    json conn, %{id: "sent email"}
+    json conn, %{response: %{status: 200, order_id: order_id, order_datetime: datetime}}
 
   end
 end
