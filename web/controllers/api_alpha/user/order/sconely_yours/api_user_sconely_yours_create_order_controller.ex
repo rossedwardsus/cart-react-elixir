@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.ApiUserSconelyYoursCreateOrderController do
   use SconeHomeElixir.Web, :controller
 
-  #alias Sconely.Order
+  alias Sconely.Order
 
   #def index(conn, _params) do
   #json conn, %{id: "id"}
