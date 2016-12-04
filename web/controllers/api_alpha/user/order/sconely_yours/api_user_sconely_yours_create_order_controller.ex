@@ -1,8 +1,10 @@
 defmodule SconeHomeElixir.ApiUserSconelyYoursCreateOrderController do
   use SconeHomeElixir.Web, :controller
 
-  alias Sconely.Order
-
+  #alias Sconely.Order
+  alias SconeHomeElixir.Repo
+  alias Sconely.UserOrderSconelyYours
+  
   #def index(conn, _params) do
   #json conn, %{id: "id"}
 	#end
@@ -69,6 +71,38 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCreateOrderController do
     #create uuid for order and create new table
     order_id = UUID.uuid1()
     datetime = Timex.now
+
+    #from client
+    #%{order: %{user_id: "", order_id: 1234, delivery_address: "", delivery_notes: "", items: [], payment: ""}}
+    #process payment first
+    #if successful add order
+    #if adding order fails display sorry an error occured and refund transaction
+    #else save order and send email    
+
+    #changeset = UserOrderSconelyYours.changeset(%UserOrderSconelyYours{}, %{user_id: order_id, order_id: order_id, delivery_address: "da", order_created_datetime: "datetime", status: "paid"})
+
+    #case Repo.insert(changeset) do
+    #  {:ok, _user} ->
+    #    conn
+    #      |> put_flash(:info, "User created successfully.")
+    #      |> redirect(to: user_path(conn, :index))
+    #  {:error, changeset} ->
+    #    render(conn, "new.html", changeset: changeset)
+    #end
+
+    #MyRepo.get_by!(Post, title: "My post")
+    order = Repo.get_by!(UserOrderSconelyYours, delivery_address: "da")
+    changeset = UserOrderSconelyYours.changeset(order, %{id: "1", user_id: order_id, order_id: order_id, delivery_address: "delivery address", order_created_datetime: "datetime", status: "paid"})
+
+    case Repo.update(changeset) do
+      {:ok, _user} ->
+        conn
+    #      |> put_flash(:info, "User created successfully.")
+    #      |> redirect(to: user_path(conn, :index))
+    #  {:error, changeset} ->
+    #    render(conn, "new.html", changeset: changeset)
+    end
+
 
     #works
     #SconeHomeElixir.UserOrderGuestEmail.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now

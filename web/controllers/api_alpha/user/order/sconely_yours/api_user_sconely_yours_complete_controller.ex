@@ -15,7 +15,7 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
 
   import Ecto.Query, only: [from: 2]
 
-  alias SconeHomeElixir.{Repo, Login}
+  alias SconeHomeElixir.{Repo, UserOrderSconelyYours}
   
 
   #var api_key = 'key-22e98444fc043c1e72943865de283d39';
@@ -103,6 +103,23 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
     #else error
     #save order
     #send message to user
+
+    changeset = UserOrderSconelyYours.changeset(%{user_id: "1", order_id: "1", order_created_datetime: "datetime", paid: "yes"})
+
+    case Repo.insert(changeset) do
+      {:ok, _user} ->
+        conn
+    #      |> put_flash(:info, "User created successfully.")
+    #      |> redirect(to: user_path(conn, :index))
+    #  {:error, changeset} ->
+    #    render(conn, "new.html", changeset: changeset)
+    end
+
+    #field :user_id, Ecto.UUID
+    #  field :order_id, :string
+    #  field :deliver_address, :string
+    #  field :order_created_date_time, :string
+    #  field :status, :string
 
   	#send_email to: "rossedwards.us@gmail.com",
      #          from: "@from",

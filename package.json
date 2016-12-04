@@ -1,6 +1,8 @@
 {
   "repository": {},
   "dependencies": {
+    "@types/react": "^0.14.52",
+    "@types/react-dom": "^0.14.19",
     "babel": "^6.5.2",
     "babel-brunch": "^5.1.2",
     "brunch": "^1.8.5",
@@ -18,6 +20,9 @@
     "react-popup": "^0.4.2",
     "react-router": "^2.6.1",
     "superagent": "^2.2.0",
+    "ts-loader": "^1.2.2",
+    "typescript": "^2.0.10",
+    "typings": "^2.0.0",
     "uglify-js-brunch": ">= 1.0 < 1.8"
   },
   "devDependencies": {
@@ -44,8 +49,9 @@
     "redux": "^3.6.0",
     "redux-form": "^6.0.5",
     "redux-thunk": "^2.1.0",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.2.2",
     "webpack": "^1.13.1"
-    
   },
   "scripts": {
     "test": ""

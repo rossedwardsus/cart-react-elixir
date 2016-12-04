@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.SconelyYours do
+defmodule Sconely.UserOrderSconelyYours do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,16 +6,24 @@ defmodule SconeHomeElixir.SconelyYours do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "order" do
+		@primary_key {:id, :string, []}
+		#@primary_key false
+		schema "sconely_yours_orders" do
+			#field :id, :string
 			field :user_id, Ecto.UUID
-			field :order_id, :string
-			field :order_type, :string
-			field :deliver_address, :string
-			field :order_created_date_time, :string
+			field :order_id, Ecto.UUID
+			field :delivery_address, :string
+			field :order_created_datetime, :string
 			field :status, :string
 			
 			#timestamps()
 		end
 
+		#@required_fields ~w(user_id)
+    	#@optional_fields ~w(order_id delivery_address)
 
+		def changeset(struct, params \\ %{}) do
+		    struct
+		    |> cast(params, ~w(id user_id order_id delivery_address order_created_datetime status), [])
+	    end
 end 
