@@ -1,38 +1,36 @@
-var path = require('path');
-var webpack = require('webpack');
- 
 module.exports = {
-  entry: './main.js',
-  
-  //entry: {
-    //demo: './demo.js' //entry point for building scripts
-  //},
+    entry: "./web/static/js/typescript/index.tsx",
+    output: {
+        filename: "bundle.js",
+        path: __dirname + "/priv/static/js/typescript"
+    },
 
-  //output: { path: __dirname, filename: 'admin_orders.js' },
-  //output: { path: __dirname, filename: 'admin_order.js' },
-  //output: { path: __dirname, filename: '/priv/static/js/admin_add_item.js' },
-  
-  //output: { path: __dirname, filename: '/priv/static/js/user_profile_photo.js' },
-  //output: { path: __dirname, filename: '/priv/static/js/user_profile_delivery_address.js' },
-  //output: { path: __dirname, filename: '/priv/static/js/user_profile_payment.js' },
-  //output: { path: __dirname, filename: '/priv/static/js/user_profile_name.js' },
-  //output: { path: __dirname, filename: '/priv/static/js/user_profile_food_preferences.js' },
-  output: { path: __dirname, filename: '/priv/static/js/user_order.js' },
+    // Enable sourcemaps for debugging webpack's output.
+    devtool: "source-map",
 
-  //output: { path: __dirname, filename: '/priv/static/js/user_order_guest_choose_item.js' },
+    resolve: {
+        // Add '.ts' and '.tsx' as resolvable extensions.
+        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+    },
 
-  module: {
-    loaders: [
-      {test: /\.css$/, loader: "style-loader!css-loader"},
-      {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
-      },
-    ],
-  },
-  devtool : 'source-map'
+    module: {
+        loaders: [
+            // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
+            { test: /\.tsx?$/, loader: "ts-loader" }
+        ],
+
+        preLoaders: [
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            { test: /\.js$/, loader: "source-map-loader" }
+        ]
+    },
+
+    // When importing a module whose path matches one of the following, just
+    // assume a corresponding global variable exists and use that instead.
+    // This is important because it allows us to avoid bundling all of our
+    // dependencies, which allows browsers to cache those libraries between builds.
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    },
 };

@@ -26,6 +26,7 @@
     "uglify-js-brunch": ">= 1.0 < 1.8"
   },
   "devDependencies": {
+    "@types/react": "^0.14.52",
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-es2015-destructuring": "^6.16.0",

@@ -1,14 +1,16 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
+        "jsx": "react",
+        "module" :"es2015",
         "sourceMap": true,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "es5",
-        "jsx": "react"
+        "target": "es2015",
+        "jsx": "react",
+        "moduleResolution": "node"
     },
     "files": [
-        "./src/components/Hello.tsx",
-        "./src/index.tsx"
+        "./web/static/js/typescript/components/Hello.tsx",
+        "./web/static/js/typescript/index.tsx"
     ]
 }
