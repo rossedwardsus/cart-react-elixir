@@ -5,12 +5,13 @@
         "sourceMap": true,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "es2015",
+        "target": "es6",
         "jsx": "react",
         "moduleResolution": "node"
     },
     "files": [
-        "./web/static/js/typescript/components/Hello.tsx",
-        "./web/static/js/typescript/index.tsx"
+        "./web/static/js/typescript/components/Cart.tsx",
+        "./web/static/js/typescript/components/DeliveryAddress.tsx",
+        "./web/static/js/typescript/SconelyYours.tsx"
     ]
 }

@@ -8,6 +8,7 @@
 /// <reference path="globals/react-addons-test-utils/index.d.ts" />
 /// <reference path="globals/react-addons-transition-group/index.d.ts" />
 /// <reference path="globals/react-addons-update/index.d.ts" />
+/// <reference path="globals/react-datepicker/index.d.ts" />
 /// <reference path="globals/react-dom/index.d.ts" />
 /// <reference path="globals/react/index.d.ts" />
 /// <reference path="modules/react/index.d.ts" />

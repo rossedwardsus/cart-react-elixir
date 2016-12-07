@@ -47,8 +47,26 @@
 	"use strict";
 	const React = __webpack_require__(1);
 	const ReactDOM = __webpack_require__(2);
-	const Hello_1 = __webpack_require__(3);
-	ReactDOM.render(React.createElement(Hello_1.Hello, {compiler: "TypeScript", framework: "React"}), document.getElementById("example"));
+	//namespace app.components {
+	class SconelyYours extends React.Component {
+	    /*constructor(props : HelloProps) {
+	        super(props);
+	        this.state =
+	            menu: {},
+	            cart: {},
+	            page: "menu"
+	
+	        };
+	
+	        { editText: this.props.todo.title };
+	    }
+	    */
+	    render() {
+	        return React.createElement("h1", null, "Sconely Yours-start with menu - then delivery address - then payment");
+	    }
+	}
+	//}
+	ReactDOM.render(React.createElement(SconelyYours, {compiler: "TypeScript", framework: "React"}), document.getElementById("example"));
 
 
 /***/ },
@@ -62,25 +80,6 @@
 /***/ function(module, exports) {
 
 	module.exports = ReactDOM;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	const React = __webpack_require__(1);
-	class Hello extends React.Component {
-	    render() {
-	        return React.createElement("h1", null, 
-	            "Hello from ", 
-	            this.props.compiler, 
-	            " and ", 
-	            this.props.framework, 
-	            "!");
-	    }
-	}
-	exports.Hello = Hello;
-
 
 /***/ }
 /******/ ]);

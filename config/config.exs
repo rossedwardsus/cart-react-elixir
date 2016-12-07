@@ -14,6 +14,9 @@ config :scone_home_elixir, SconeHomeElixir.Endpoint,
   pubsub: [name: SconeHomeElixir.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+
+
+#database-local
 config :scone_home_elixir, SconeHomeElixir.Repo,
   adapter: Ecto.Adapters.Postgres,
   #database: "scone_home",
@@ -21,6 +24,20 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   #password: "",
   #hostname: "localhost"
   url: "postgres://postgres@localhost/scone_home"
+
+
+#database-heroku
+config :scone_home_elixir, SconeHomeElixir.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  #database: "scone_home",
+  #username: "postgres",
+  #password: "",
+  #hostname: "localhost"
+  url: "postgres://postgres@localhost/scone_home"
+
+
+
+
 
 # Configures Elixir's Logger
 config :logger, :console,
