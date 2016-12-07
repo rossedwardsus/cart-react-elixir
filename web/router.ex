@@ -123,45 +123,7 @@ defmodule SconeHomeElixir.Router do
 
     get "/order/:order_id/guests/item", UserOrderGuestChooseItemController, :index
     
-    get "/admin", AdminController, :index
-    get "/admin/add_item", AdminAddItemController, :index
-    get "/admin/items", AdminItemsController, :index
-    get "/admin/orders", AdminOrdersController, :index
-    get "/admin/item/photo", AdminItemPhotoController, :index
   end
-
-  
-
-  
-  #scope "/user", SconeHomeElixir do
-   # pipe_through :browser # Use the default browser stack
-
-    #get "/", Api1Controller, :index
-    #post "/", UserController, :create
-
-    #get "/", UserController, :index
-    #post "/order", UserOrderController, :create
-
-  #end
-
-
-  #scope "/user/order", SconeHomeElixir do
-   # pipe_through :browser # Use the default browser stack
-
-    #get "/", UserController, :index
-    #post "/", UserController, :create
-
-   # get "/", UserOrderController, :index
-   # post "/", UserOrderController, :create
-
-  #end
-
-  #scope "/admin", SconeHomeElixir do
-   # pipe_through :browser # Use the default browser stack
-
-   # get "/", AdminController, :index
-    #post "/", LoginController, :create
- # end
 
   scope "/api", SconeHomeElixir  do
     pipe_through :browser # Use the default browser stack
