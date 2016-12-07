@@ -30,16 +30,15 @@ export interface HelloProps { compiler: string; framework: string; }
 		  	*/
 
 		    render() {
-		        return <h1>Sconely Yours-start with menu - then delivery address - then payment</h1>;
+		        //return <h1>Sconely Yours-start with menu - then delivery address - then payment</h1>;
 
-		        	//return (
-      				//	<div>
-
-
-		        	//<div className="detail">
-			         // {this.props.children}
-			        //</div>
-			        //</div>)
+		       	return (
+      					<div>
+		        			<div className="detail">
+			          			{this.props.children}
+			        		</div>
+			        	</div>
+			    )
 
 		    }
 		}
@@ -54,14 +53,9 @@ export interface HelloProps { compiler: string; framework: string; }
 //);
 
 
-render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="about" component={About}/>
-      <Route path="users" component={Users}>
-        <Route path="/user/:userId" component={User}/>
-      </Route>
-      <Route path="*" component={NoMatch}/>
+ReactDom.render((
+  <Router history={hashHistory}>
+    <Route path="/" component={Sconely}>
     </Route>
   </Router>
 ), document.getElementById('root'))
