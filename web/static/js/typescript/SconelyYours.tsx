@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 //import { Cart } from "./components/Cart";
 //import { DeliveryAddress } from "./components/DeliveryAddress";
 
-import User from "./components/User";
+//import User from "./components/User";
 
 import { Router, Route, Link } from 'react-router'
 

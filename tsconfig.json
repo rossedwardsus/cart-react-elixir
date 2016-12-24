@@ -8,10 +8,11 @@
         "target": "es6",
         "jsx": "react",
         "moduleResolution": "node"
+        //"outDir": "./web/static/js/typescript"
     },
     "files": [
-        "./web/static/js/typescript/components/Cart.tsx",
-        "./web/static/js/typescript/components/DeliveryAddress.tsx",
+        //"./web/static/js/typescript/components/Cart.tsx",
+        //"./web/static/js/typescript/components/DeliveryAddress.tsx",
         "./web/static/js/typescript/SconelyYours.tsx"
     ]
 }

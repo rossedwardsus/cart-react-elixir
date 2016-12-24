@@ -961,9 +961,12 @@
 
     ReactDOM.render(
       <Order/>,
-      document.getElementById('root')
+      document.getElementById('root1')
     );
 
     //alert();
 
 </script>
+
+
+<script src="/priv/static/js/flow/bundle_flow.js"></script>
