@@ -8,6 +8,7 @@
 <script src="https://unpkg.com/react-router/umd/ReactRouter.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.js"></script>
 
+hello 
 
 <script>
 
@@ -15,12 +16,12 @@
 
   $(document).ready(function(){
 
-      $('body').on('click','img',function(e){
+      //$('body').on('click','img',function(e){
 
-          //alert('it works' + e.target.id);
-          $("#cart_amount").html(10);
+          alert('it works' + e.target.id);
+          //$("#cart_amount").html(10);
 
-      })
+      //})
 
   })
 
@@ -155,7 +156,7 @@
         <div class="hidden-xs col-md-4">
         left hand menu on desktop
         <br>
-        orders
+        orders1
         <br>
         messages
         <br>
@@ -174,17 +175,6 @@
         food preferences
         </div>
         <div class="col-xs-6 col-md-4">
-            <a href="/mobile/user/sconely_yours">sconely yours</a>
-            <br>
-            <a href="/mobile/user#order/sconely_yours">sconely yours</a>
-            <br>
-            dont show on mobile
-            <br>
-            <a href="/mobile/user#order/sconely_social">sconely yours</a>
-            <br>
-            order date-order number
-            <br>
-            <br>
             <div id="root"></div>
         </div>
     </div>
@@ -964,9 +954,12 @@
       document.getElementById('root1')
     );
 
-    //alert();
+    alert();
 
 </script>
 
 
-<script src="/priv/static/js/flow/bundle_flow.js"></script>
+
+<script src="/js/flow/bundle_flow.js"></script>
+
+hello

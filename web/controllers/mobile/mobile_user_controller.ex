@@ -6,7 +6,7 @@ defmodule SconeHomeElixir.MobileUserController do
   def index(conn, _params) do
   	#clear_session
   	#user_id = conn.cookies["user_id"]
-  	#IO.puts("user_id" <> user_id)
+  	IO.puts("user_id")
     conn
     |> assign(:user, "hello")
     |> render("mobile_user.html")

@@ -80,13 +80,12 @@ defmodule SconeHomeElixir.Router do
     get "/mobile/order/guest/choose/item", MobileOrderGuestChooseItemController, :index
     
     #sconely yours
-    get "/mobile/order/datetime", MobileOrderController, :index
-    get "/mobile/user/sconely_yours/items", MobileUserSconelyYoursItemsController, :index
-    get "/mobile/user/sconely_yours/payment", MobileUserSconelyYoursPaymentController, :index
-    get "/mobile/user/sconely_yours/address", MobileUserSconelyYoursAddressController, :index
-    get "/mobile/user/sconely_yours/datetime", MobileUserSconelyYoursDateTimeController, :index
-    get "/mobile/user/sconely_yours", MobileUserSconelyYoursController, :index
-    
+    #get "/mobile/order/datetime", MobileOrderController, :index
+    #get "/mobile/user/sconely_yours/items", MobileUserSconelyYoursItemsController, :index
+    #get "/mobile/user/sconely_yours/payment", MobileUserSconelyYoursPaymentController, :index
+    #get "/mobile/user/sconely_yours/address", MobileUserSconelyYoursAddressController, :index
+    #get "/mobile/user/sconely_yours/datetime", MobileUserSconelyYoursDateTimeController, :index
+    #get "/mobile/user/sconely_yours", MobileUserSconelyYoursController, :index
     
     get "/mobile/menu", MobileMenuController, :index
     get "/mobile/login", MobileLoginController, :index
@@ -97,7 +96,6 @@ defmodule SconeHomeElixir.Router do
     get "/mobile", MobileController, :index
 
     
-
     get "/redux", ReduxController, :index
 
 

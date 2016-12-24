@@ -9,7 +9,7 @@ defmodule Sconely.Session do
 		schema "sessions" do
 			field :session_id, Ecto.UUID
 			field :user_id, :string
-			field :logged_in_datetime :string
+			field :logged_in_datetime, :string
 			
 			#timestamps()
 		end
