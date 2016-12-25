@@ -23,7 +23,9 @@ module.exports = {
         loaders: ['babel'],
         include: './web/static/js/',
         exclude: /node_modules/,
-    }],
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" }
+    ],
   },
   resolve: {
     modules: [

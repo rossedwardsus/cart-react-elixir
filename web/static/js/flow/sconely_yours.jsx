@@ -1,5 +1,17 @@
 import React from 'react'
 
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+require('react-datepicker/dist/react-datepicker.css');
+
+import 'react-date-picker/index.css';
+import { DateField, Calendar } from 'react-date-picker';
+
+const onChange = (dateString, { dateMoment, timestamp }) => {
+  console.log(dateString)
+}
+
 export default class SconelyYours extends React.Component {
   //props: Props;
 
@@ -7,7 +19,24 @@ export default class SconelyYours extends React.Component {
     super(props);
     //this.getData();
   
-    alert("sconely yours1" + this.props.params.order_id);
+    //alert("sconely yours1" + this.props.params.order_id);
+
+    this.state = {
+
+        event_name: "",
+        event_datetime: "",
+        event_address: "",
+        number_of_guests: 0,
+        guest_choose: "",
+        additiobal_items: {},
+        code: 0,
+        startDate: moment()
+
+    };
+
+    this.changeEventName = this.changeEventName.bind(this);
+    this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
+    this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
 
   }
 
@@ -17,6 +46,38 @@ export default class SconelyYours extends React.Component {
     // do something to mark this todo as complete
   //}
 
+  changeEventName(e){
+
+    //alert();
+
+    this.setState({event_name: e.target.value})
+
+  }
+
+  changeDeliveryAddress(e){
+
+    this.setState({delivery_address: e.target.value})
+
+  }
+
+  changeNumberOfGuests(e){
+
+    this.setState({number_of_guests: e.target.value})
+
+  }
+
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
+
+  next(){
+
+    alert("next" + this.state.event_name);
+
+  }
+
   render(): React.Element {
     return (
       <ul>
@@ -24,22 +85,24 @@ export default class SconelyYours extends React.Component {
         <br/>
         To get start please enter an event name:
         <br/>
-        <input type= "text"/>
+        <input type= "text" onChange={this.changeEventName}/>
         <br/>
         To get start please enter an event datetime:
         <br/>
-        <input type= "text"/>
+        <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
+        <br/>
+        <Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={onChange}/>
         <br/>
         To get start please enter an event code:
         <br/>
         <input type= "text"/>
         To get start please enter number of guests:
         <br/>
-        <input type= "text"/>
+        <input type= "text" onChange={this.changeNumberOfGuests}/>
         <br/>
         To get start please enter an address:
         <br/>
-        <input type= "text"/>
+        <input type= "text" onChange={this.changeDeliveryAddress}/>
         <br/>
         To get start please choose extra items:
         <br/>
@@ -52,6 +115,8 @@ export default class SconelyYours extends React.Component {
         To get start please enter a payment method:
         <br/>
         <input type= "text"/>
+        <br/>
+        <button onClick={this.next.bind(this)}>Next</button>
       </ul>
     )
   }

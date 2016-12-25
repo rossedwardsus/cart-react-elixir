@@ -34,6 +34,17 @@ class Sconely extends React.Component {
   
     //alert("todolist");
 
+    this.state = {
+
+        payment: "",
+        password: "",
+        delivcery_address: "",
+        orders: [{}]
+
+    }
+
+    //call out to backend and get user info
+
   }
 
   // Yes, I could use an arrow function, I get it.
