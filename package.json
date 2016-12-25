@@ -45,6 +45,7 @@
     "babel-preset-stage-2": "^6.16.0",
     "css-loader": "^0.23.1",
     "flow-bin": "^0.37.4",
+    "history": "^4.5.0",
     "immutable": "^3.8.1",
     "jest": "^18.0.0",
     "jsdom": "^9.5.0",

@@ -1,11 +1,14 @@
 /* @flow */
 import React from 'react'
+import ReactDOM from 'react-dom';
+
 //import autobind from 'autobind-decorator'
 //import TodoListItem from './TodoListItem'
 
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory, hashHistory, Link } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, hashHistory, useRouterHistory, Link } from 'react-router';
+import createHistory from 'history';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 
@@ -23,7 +26,7 @@ const store = createStore(
   })
 )
 
-const history = syncHistoryWithStore(browserHistory, store)
+//const history = syncHistoryWithStore(browserHistory, store)
 
 class Sconely extends React.Component {
   //props: Props;
@@ -60,9 +63,10 @@ class Sconely extends React.Component {
   }
 
   handleClick(order_type) {
-    alert(order_type);
-    //this.context.router.push('/some-path');
-    browserHistory.push('#/order/12345');
+    //alert(order_type);
+    this.context.router.push('/order/12345');
+    //browserHistory.push('#/order/12345');
+    //browserHistory.push('/mobile/user#/order/12345');
     //save id in local storage
   
   }
@@ -71,17 +75,18 @@ class Sconely extends React.Component {
     return (
       <div>
       <ul>
-        <a onClick={this.handleClick.bind(this, "sconely_yours")}>Order</a>
+        <a onClick={this.handleClick.bind(this, "sconely_yours")}>Sconely Social</a>
         <br/>
-        <Link to="order/1234">Sconely Yours</Link>
-        <br/>
-        Sconely Social
       </ul>
       {this.props.children}
       </div>
     )
   }
 }
+
+//queryKey: false
+
+//const appHistory = useRouterHistory(createHistory)({ queryKey: false })
 
 const Root = () => (
   <Router history={hashHistory}>

@@ -8,9 +8,11 @@ require('react-datepicker/dist/react-datepicker.css');
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 
-const onChange = (dateString, { dateMoment, timestamp }) => {
-  console.log(dateString)
-}
+//const onChange = (dateString, { dateMoment, timestamp }) => {
+  //console.log(dateString)
+
+//  alert();
+//}
 
 export default class SconelyYours extends React.Component {
   //props: Props;
@@ -37,6 +39,7 @@ export default class SconelyYours extends React.Component {
     this.changeEventName = this.changeEventName.bind(this);
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
   }
 
@@ -66,10 +69,13 @@ export default class SconelyYours extends React.Component {
 
   }
 
-  handleChange(date) {
-    this.setState({
-      startDate: date
-    });
+  handleChange(dateString) {
+
+    alert(dateString);
+
+    //this.setState({
+      //startDate: date
+    //});
   }
 
   next(){
@@ -91,7 +97,9 @@ export default class SconelyYours extends React.Component {
         <br/>
         <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
         <br/>
-        <Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={onChange}/>
+        1
+        <br/>
+        <Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
         <br/>
         To get start please enter an event code:
         <br/>
