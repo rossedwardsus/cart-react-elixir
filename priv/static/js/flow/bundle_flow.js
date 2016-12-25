@@ -46,8 +46,6 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -68,24 +66,26 @@
 
 	var _reactRouterRedux = __webpack_require__(274);
 
-	var _sconely_yours = __webpack_require__(279);
+	var _app = __webpack_require__(279);
+
+	var _app2 = _interopRequireDefault(_app);
+
+	var _user = __webpack_require__(468);
+
+	var _user2 = _interopRequireDefault(_user);
+
+	var _sconely_yours = __webpack_require__(469);
 
 	var _sconely_yours2 = _interopRequireDefault(_sconely_yours);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	//import autobind from 'autobind-decorator'
-	//import TodoListItem from './TodoListItem'
-
 	//type Props = {
 	//  todos: Array<Object>,
 	//}
+
+	//import autobind from 'autobind-decorator'
+	//import TodoListItem from './TodoListItem'
 
 	var store = (0, _redux.createStore)((0, _redux.combineReducers)({
 	  //...reducers,
@@ -94,82 +94,61 @@
 
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 
-	var Sconely = function (_React$Component) {
-	  _inherits(Sconely, _React$Component);
-
+	/*class Sconely extends React.Component {
 	  //props: Props;
 
-	  function Sconely() {
-	    _classCallCheck(this, Sconely);
-
+	  constructor() {
+	    super();
 	    //this.getData();
-
+	  
 	    //alert("todolist");
 
-	    var _this = _possibleConstructorReturn(this, (Sconely.__proto__ || Object.getPrototypeOf(Sconely)).call(this));
+	    this.state = {
 
-	    _this.state = {
+	        payment: "",
+	        password: "",
+	        delivcery_address: "",
+	        orders: [{}]
 
-	      payment: "",
-	      password: "",
-	      delivcery_address: "",
-	      orders: [{}]
-
-	    };
+	    }
 
 	    //call out to backend and get user info
 
-	    return _this;
 	  }
 
 	  // Yes, I could use an arrow function, I get it.
 	  //@autobind
+	  _handleCompleteTodo(id: string): void {
+	    // do something to mark this todo as complete
+	  }
 
+	  static get contextTypes() {
+	    return {
+	      router: React.PropTypes.object.isRequired,
+	    };
+	  }
 
-	  _createClass(Sconely, [{
-	    key: '_handleCompleteTodo',
-	    value: function _handleCompleteTodo(id) {
-	      // do something to mark this todo as complete
-	    }
-	  }, {
-	    key: 'handleClick',
-	    value: function handleClick(order_type) {
-	      //alert(order_type);
-	      this.context.router.push('/order/12345');
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { onClick: this.handleClick.bind(this, "sconely_yours") },
-	            'Sconely Social'
-	          ),
-	          _react2.default.createElement('br', null)
-	        ),
-	        this.props.children
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: _react2.default.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
+	  handleClick(order_type) {
+	    //alert(order_type);
+	    this.context.router.push('/order/12345');
+	    //browserHistory.push('#/order/12345');
+	    //browserHistory.push('/mobile/user#/order/12345');
+	    //save id in local storage
+	  
+	  }
 
-	  return Sconely;
-	}(_react2.default.Component);
+	  render(): React.Element {
+	    return (
+	      <div>
+	      <ul>
+	        <a onClick={this.handleClick.bind(this, "sconely_yours")}>Sconely Social</a>
+	        <br/>
+	      </ul>
+	      {this.props.children}
+	      </div>
+	    )
+	  }
+	}*/
 
 	//queryKey: false
 
@@ -184,6 +163,10 @@
 	  </Router>  
 	);*/
 
+	//<Route path="/order/:order_id" component={SconelyYours} />
+	//<Route path="/user/delivery_address" component={SconelyYours} />
+
+
 	var Root = function Root() {
 	  return _react2.default.createElement(
 	    _reactRedux.Provider,
@@ -193,8 +176,8 @@
 	      { history: history },
 	      _react2.default.createElement(
 	        _reactRouter.Route,
-	        { path: '/', component: Sconely },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: Sconely }),
+	        { path: '/', component: _app2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _user2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_yours2.default })
 	      )
 	    )
@@ -30443,32 +30426,21 @@
 	//  alert();
 	//}
 
-	var SconelyYours = function (_React$Component) {
-	  _inherits(SconelyYours, _React$Component);
+	var App = function (_React$Component) {
+	  _inherits(App, _React$Component);
 
 	  //props: Props;
 
-	  function SconelyYours(props) {
-	    _classCallCheck(this, SconelyYours);
+	  function App(props) {
+	    _classCallCheck(this, App);
 
 	    //this.getData();
 
 	    //alert("sconely yours1" + this.props.params.order_id);
 
-	    var _this = _possibleConstructorReturn(this, (SconelyYours.__proto__ || Object.getPrototypeOf(SconelyYours)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-	    _this.state = {
-
-	      event_name: "",
-	      event_datetime: "",
-	      event_address: "",
-	      number_of_guests: 0,
-	      guest_choose: "",
-	      additiobal_items: {},
-	      code: 0,
-	      startDate: moment()
-
-	    };
+	    _this.state = {};
 
 	    _this.changeEventName = _this.changeEventName.bind(_this);
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
@@ -30484,7 +30456,7 @@
 	  // do something to mark this todo as complete
 	  //}
 
-	  _createClass(SconelyYours, [{
+	  _createClass(App, [{
 	    key: 'changeEventName',
 	    value: function changeEventName(e) {
 
@@ -30526,56 +30498,15 @@
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
-	        'Welcome to Sconely Yours.  With sconely yours you can order scones for an event.',
-	        _react2.default.createElement('br', null),
-	        'To get start please enter an event name:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', onChange: this.changeEventName }),
-	        _react2.default.createElement('br', null),
-	        'To get start please enter an event datetime:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(DatePicker, { selected: this.state.startDate, onChange: this.handleChange }),
-	        _react2.default.createElement('br', null),
-	        '1',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_reactDatePicker.Calendar, { dateFormat: 'YYYY-MM-DD', date: '2017-04-24', onChange: this.handleChange }),
-	        _react2.default.createElement('br', null),
-	        'To get start please enter an event code:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text' }),
-	        'To get start please enter number of guests:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', onChange: this.changeNumberOfGuests }),
-	        _react2.default.createElement('br', null),
-	        'To get start please enter an address:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
-	        _react2.default.createElement('br', null),
-	        'To get start please choose extra items:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text' }),
-	        _react2.default.createElement('br', null),
-	        'To get start please decide if guests choose item:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text' }),
-	        _react2.default.createElement('br', null),
-	        'To get start please enter a payment method:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text' }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.next.bind(this) },
-	          'Next'
-	        )
+	        this.props.children
 	      );
 	    }
 	  }]);
 
-	  return SconelyYours;
+	  return App;
 	}(_react2.default.Component);
 
-	exports.default = SconelyYours;
+	exports.default = App;
 
 /***/ },
 /* 280 */
@@ -58818,6 +58749,264 @@
 
 	// exports
 
+
+/***/ },
+/* 468 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(202);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var User = function (_React$Component) {
+	  _inherits(User, _React$Component);
+
+	  //props: Props;
+
+	  function User(props) {
+	    _classCallCheck(this, User);
+
+	    //this.getData();
+
+	    //alert("sconely yours1" + this.props.params.order_id);
+
+	    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+
+	    _this.state = {};
+
+	    return _this;
+	  }
+
+	  _createClass(User, [{
+	    key: 'createOrder',
+	    value: function createOrder(order_type) {
+	      //alert(order_type);
+	      this.context.router.push('/order/12345');
+	      //browserHistory.push('#/order/12345');
+	      //browserHistory.push('/mobile/user#/order/12345');
+	      //save id in local storage
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'ul',
+	        null,
+	        'links to create order',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: this.createOrder.bind(this, "sconely_yours") },
+	          'Sconely Social'
+	        ),
+	        _react2.default.createElement('br', null),
+	        'orsers'
+	      );
+	    }
+	  }], [{
+	    key: 'contextTypes',
+	    get: function get() {
+	      return {
+	        router: _react2.default.PropTypes.object.isRequired
+	      };
+	    }
+	  }]);
+
+	  return User;
+	}(_react2.default.Component);
+
+	exports.default = User;
+
+/***/ },
+/* 469 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(280);
+
+	var _reactDatePicker = __webpack_require__(284);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var DatePicker = __webpack_require__(464);
+	var moment = __webpack_require__(287);
+
+	__webpack_require__(466);
+
+	//const onChange = (dateString, { dateMoment, timestamp }) => {
+	//console.log(dateString)
+
+	//  alert();
+	//}
+
+	var SconelyYours = function (_React$Component) {
+	  _inherits(SconelyYours, _React$Component);
+
+	  //props: Props;
+
+	  function SconelyYours(props) {
+	    _classCallCheck(this, SconelyYours);
+
+	    //this.getData();
+
+	    //alert("sconely yours1" + this.props.params.order_id);
+
+	    var _this = _possibleConstructorReturn(this, (SconelyYours.__proto__ || Object.getPrototypeOf(SconelyYours)).call(this, props));
+
+	    _this.state = {
+
+	      event_name: "",
+	      event_datetime: "",
+	      event_address: "",
+	      number_of_guests: 0,
+	      guest_choose: "",
+	      additiobal_items: {},
+	      code: 0,
+	      startDate: moment()
+
+	    };
+
+	    _this.changeEventName = _this.changeEventName.bind(_this);
+	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
+	    _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
+	    _this.handleChange = _this.handleChange.bind(_this);
+
+	    return _this;
+	  }
+
+	  // Yes, I could use an arrow function, I get it.
+	  //@autobind
+	  //_handleCompleteTodo(id: string): void {
+	  // do something to mark this todo as complete
+	  //}
+
+	  _createClass(SconelyYours, [{
+	    key: 'changeEventName',
+	    value: function changeEventName(e) {
+
+	      //alert();
+
+	      this.setState({ event_name: e.target.value });
+	    }
+	  }, {
+	    key: 'changeDeliveryAddress',
+	    value: function changeDeliveryAddress(e) {
+
+	      this.setState({ delivery_address: e.target.value });
+	    }
+	  }, {
+	    key: 'changeNumberOfGuests',
+	    value: function changeNumberOfGuests(e) {
+
+	      this.setState({ number_of_guests: e.target.value });
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(dateString) {
+
+	      alert(dateString);
+
+	      //this.setState({
+	      //startDate: date
+	      //});
+	    }
+	  }, {
+	    key: 'next',
+	    value: function next() {
+
+	      alert("next" + this.state.event_name);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'ul',
+	        null,
+	        'Welcome to Sconely Yours.  With sconely yours you can order scones for an event.',
+	        _react2.default.createElement('br', null),
+	        'To get start please enter an event name:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text', onChange: this.changeEventName }),
+	        _react2.default.createElement('br', null),
+	        'To get start please enter an event datetime:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(DatePicker, { selected: this.state.startDate, onChange: this.handleChange }),
+	        _react2.default.createElement('br', null),
+	        '1',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(_reactDatePicker.Calendar, { dateFormat: 'YYYY-MM-DD', date: '2017-04-24', onChange: this.handleChange }),
+	        _react2.default.createElement('br', null),
+	        'To get start please enter an event code:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text' }),
+	        'To get start please enter number of guests:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text', onChange: this.changeNumberOfGuests }),
+	        _react2.default.createElement('br', null),
+	        'To get start please enter an address:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
+	        _react2.default.createElement('br', null),
+	        'To get start please choose extra items:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text' }),
+	        _react2.default.createElement('br', null),
+	        'To get start please decide if guests choose item:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text' }),
+	        _react2.default.createElement('br', null),
+	        'To get start please enter a payment method:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.next.bind(this) },
+	          'Next'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SconelyYours;
+	}(_react2.default.Component);
+
+	exports.default = SconelyYours;
 
 /***/ }
 /******/ ]);

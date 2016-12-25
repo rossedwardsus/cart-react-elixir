@@ -1,4 +1,6 @@
 /* @flow */
+
+
 import React from 'react'
 import ReactDOM from 'react-dom';
 
@@ -11,7 +13,8 @@ import { Router, Route, IndexRoute, browserHistory, hashHistory, useRouterHistor
 import createHistory from 'history';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-
+import App from "./app";
+import User from "./user";
 import SconelyYours from "./sconely_yours";
 
 
@@ -28,7 +31,7 @@ const store = createStore(
 
 const history = syncHistoryWithStore(hashHistory, store)
 
-class Sconely extends React.Component {
+/*class Sconely extends React.Component {
   //props: Props;
 
   constructor() {
@@ -41,7 +44,7 @@ class Sconely extends React.Component {
 
         payment: "",
         password: "",
-        delivcery_address: "",
+        delivery_address: "",
         orders: [{}]
 
     }
@@ -82,7 +85,7 @@ class Sconely extends React.Component {
       </div>
     )
   }
-}
+}*/
 
 //queryKey: false
 
@@ -97,11 +100,15 @@ class Sconely extends React.Component {
   </Router>  
 );*/
 
+//<Route path="/order/:order_id" component={SconelyYours} />
+//<Route path="/user/delivery_address" component={SconelyYours} />
+
+
 const Root = () => (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Sconely}>
-        <IndexRoute component={Sconely} />
+      <Route path="/" component={App}>
+        <IndexRoute component={User} />
         <Route path="/order/:order_id" component={SconelyYours} />
       </Route>
     </Router>
