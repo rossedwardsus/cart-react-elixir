@@ -26,7 +26,7 @@ const store = createStore(
   })
 )
 
-//const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(hashHistory, store)
 
 class Sconely extends React.Component {
   //props: Props;
@@ -88,24 +88,25 @@ class Sconely extends React.Component {
 
 //const appHistory = useRouterHistory(createHistory)({ queryKey: false })
 
-const Root = () => (
+/*const Root = () => (
   <Router history={hashHistory}>
     <Route path="/" component={Sconely}>
       <IndexRoute component={Sconely} />
       <Route path="/order/:order_id" component={SconelyYours}/>
     </Route>
   </Router>  
-);
+);*/
 
-/*const Root = () => (
+const Root = () => (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="" component={Sconely}>
-      <Route path="/order/:order_id" component={SconelyYours} />
+      <Route path="/" component={Sconely}>
+        <IndexRoute component={Sconely} />
+        <Route path="/order/:order_id" component={SconelyYours} />
       </Route>
     </Router>
   </Provider>
-);*/
+);
 
 ReactDOM.render(
       <Root/>,

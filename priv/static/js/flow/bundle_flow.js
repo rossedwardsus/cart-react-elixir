@@ -92,7 +92,7 @@
 	  routing: _reactRouterRedux.routerReducer
 	}));
 
-	//const history = syncHistoryWithStore(browserHistory, store)
+	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 
 	var Sconely = function (_React$Component) {
 	  _inherits(Sconely, _React$Component);
@@ -175,28 +175,31 @@
 
 	//const appHistory = useRouterHistory(createHistory)({ queryKey: false })
 
+	/*const Root = () => (
+	  <Router history={hashHistory}>
+	    <Route path="/" component={Sconely}>
+	      <IndexRoute component={Sconely} />
+	      <Route path="/order/:order_id" component={SconelyYours}/>
+	    </Route>
+	  </Router>  
+	);*/
+
 	var Root = function Root() {
 	  return _react2.default.createElement(
-	    _reactRouter.Router,
-	    { history: _reactRouter.hashHistory },
+	    _reactRedux.Provider,
+	    { store: store },
 	    _react2.default.createElement(
-	      _reactRouter.Route,
-	      { path: '/', component: Sconely },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: Sconely }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_yours2.default })
+	      _reactRouter.Router,
+	      { history: history },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/', component: Sconely },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: Sconely }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_yours2.default })
+	      )
 	    )
 	  );
 	};
-
-	/*const Root = () => (
-	  <Provider store={store}>
-	    <Router history={history}>
-	      <Route path="" component={Sconely}>
-	      <Route path="/order/:order_id" component={SconelyYours} />
-	      </Route>
-	    </Router>
-	  </Provider>
-	);*/
 
 	_reactDom2.default.render(_react2.default.createElement(Root, null), document.getElementById('root'));
 
