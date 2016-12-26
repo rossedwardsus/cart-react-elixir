@@ -107,7 +107,7 @@ export default class SconelyYours extends React.Component {
         <br/>
         Delivery Time
         <br/>
-        To get start please enter an address:
+        Event address:
         <br/>
         Select from existing address or add a new one
         <br/>
@@ -115,17 +115,18 @@ export default class SconelyYours extends React.Component {
         <br/>
         <br/>
         <br/>
-        Please tell us about your guests:
+        Guests:
         <br/>
         Enter an event code to send to your guests:
         <br/>
         <input type= "text"/>
         <br/>
-        To get start please enter number of guests:
+        Number of guests:
         <br/>
         <input type= "text" onChange={this.changeNumberOfGuests}/>
         <br/>
-        To get start please decide if guests choose item:
+        <br/>
+        Guests choose item:
         <br/>
         <input type= "text"/>
         <br/>
@@ -140,6 +141,7 @@ export default class SconelyYours extends React.Component {
         Now choose a payment
         <br/>
         To get start please enter a payment method:
+        <br/>
         <br/>
         <input type= "text"/>
         <br/>
