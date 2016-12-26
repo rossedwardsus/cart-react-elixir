@@ -14,8 +14,9 @@ import createHistory from 'history';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import App from "./app";
-import User from "./user";
+import Orders from "./orders";
 import SconelyYours from "./sconely_yours";
+import Payment from "./payment";
 
 
 //type Props = {
@@ -108,9 +109,11 @@ const Root = () => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={User} />
+        <IndexRoute component={Orders} />
         <Route path="/order/:order_id" component={SconelyYours} />
         <Route path="/user/delivery_address" component={SconelyYours} />
+        <Route path="/user/payment" component={Payment} />
+        <Route path="/user/orders" component={Orders} />
       </Route>
     </Router>
   </Provider>

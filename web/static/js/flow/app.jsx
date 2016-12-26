@@ -1,18 +1,6 @@
 import React from 'react'
 
-var DatePicker = require('react-datepicker');
-var moment = require('moment');
-
-require('react-datepicker/dist/react-datepicker.css');
-
-import 'react-date-picker/index.css';
-import { DateField, Calendar } from 'react-date-picker';
-
-//const onChange = (dateString, { dateMoment, timestamp }) => {
-  //console.log(dateString)
-
-//  alert();
-//}
+import { Link } from 'react-router'
 
 export default class App extends React.Component {
   //props: Props;
@@ -80,6 +68,12 @@ export default class App extends React.Component {
     return (
       <ul>
         add menu links here such as changing delivery address
+        <br/>
+        <Link to="/user/orders">Orders</Link>
+        <br/>
+        <Link to="/user/payment">Payment</Link>
+        <br/>
+        <br/>
         <br/>
         {this.props.children}
       </ul>

@@ -14,7 +14,7 @@ import { DateField, Calendar } from 'react-date-picker';
 //  alert();
 //}
 
-export default class Payment extends React.Component {
+export default class SconelyYours extends React.Component {
   //props: Props;
 
   constructor(props) {
@@ -87,16 +87,44 @@ export default class Payment extends React.Component {
   render(): React.Element {
     return (
       <ul>
-        Payment(credit card):
+        Welcome to Sconely Yours.  With sconely yours you can order scones for an event.
         <br/>
+        To get start please enter an event name:
         <br/>
-        Personal:
+        <input type= "text" onChange={this.changeEventName}/>
         <br/>
-        Enter Number
+        To get start please enter an event datetime:
         <br/>
-        Business:
+        <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
         <br/>
-        Add new card
+        1
+        <br/>
+        <Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+        <br/>
+        To get start please enter an event code:
+        <br/>
+        <input type= "text"/>
+        To get start please enter number of guests:
+        <br/>
+        <input type= "text" onChange={this.changeNumberOfGuests}/>
+        <br/>
+        To get start please enter an address:
+        <br/>
+        <input type= "text" onChange={this.changeDeliveryAddress}/>
+        <br/>
+        To get start please choose extra items:
+        <br/>
+        <input type= "text"/>
+        <br/>
+        To get start please decide if guests choose item:
+        <br/>
+        <input type= "text"/>
+        <br/>
+        To get start please enter a payment method:
+        <br/>
+        <input type= "text"/>
+        <br/>
+        <button onClick={this.next.bind(this)}>Next</button>
       </ul>
     )
   }
