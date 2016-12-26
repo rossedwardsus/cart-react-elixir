@@ -1,6 +1,10 @@
 [include]
+./web/static/js/flow/
 
 [options]
 
 [libs]
 flow-typed
+
+[ignore]
+.*node_modules*.
