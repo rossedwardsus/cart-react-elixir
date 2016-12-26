@@ -14,6 +14,15 @@ import { DateField, Calendar } from 'react-date-picker';
 //  alert();
 //}
 
+//var myTimer = () => console.log("hello");
+
+/*setInterval(function growUp() {
+    // In non-strict mode, the growUp() function defines `this` 
+    // as the global object, which is different from the `this`
+    // defined by the Person() constructor.
+    this.age++;
+  }, 1000);*/
+
 export default class SconelyYours extends React.Component {
   //props: Props;
 
@@ -40,6 +49,19 @@ export default class SconelyYours extends React.Component {
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    //autosave
+    //if event name has been added then start autosaving
+
+    //myTimer;
+    var myVar = setInterval(
+        () => 
+            //get the data from state and upload to server
+            console.log("hello")
+    , 10000);
+
+    //myVar;
+    //myTimer;
 
   }
 

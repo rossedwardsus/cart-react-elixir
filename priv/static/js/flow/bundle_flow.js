@@ -58874,6 +58874,15 @@
 	//  alert();
 	//}
 
+	//var myTimer = () => console.log("hello");
+
+	/*setInterval(function growUp() {
+	    // In non-strict mode, the growUp() function defines `this` 
+	    // as the global object, which is different from the `this`
+	    // defined by the Person() constructor.
+	    this.age++;
+	  }, 1000);*/
+
 	var SconelyYours = function (_React$Component) {
 	  _inherits(SconelyYours, _React$Component);
 
@@ -58905,6 +58914,20 @@
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
 	    _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
+
+	    //autosave
+	    //if event name has been added then start autosaving
+
+	    //myTimer;
+	    var myVar = setInterval(function () {
+	      return (
+	        //get the data from state and upload to server
+	        console.log("hello")
+	      );
+	    }, 10000);
+
+	    //myVar;
+	    //myTimer;
 
 	    return _this;
 	  }
