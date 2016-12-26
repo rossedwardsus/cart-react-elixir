@@ -1,8 +1,10 @@
 // @flow
 
-import React from 'react'
+import React from 'react';
 
-import { Link, browserHistory } from 'react-router'
+import { Link } from 'react-router';
+
+import OrdersList from './orders_list';
 
 export default class User extends React.Component {
   //props: Props;
@@ -42,7 +44,7 @@ export default class User extends React.Component {
         <br/>
         <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Social</a>
         <br/>
-        orders
+        <OrdersList />
       </ul>
     )
   }

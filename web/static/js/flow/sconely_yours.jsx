@@ -154,6 +154,7 @@ export default class SconelyYours extends React.Component {
         <br/>
         <input type= "text"/>
         <br/>
+        What guests have chosen
         <br/>
         Extra items
         <br/>

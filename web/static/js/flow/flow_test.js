@@ -32,6 +32,8 @@ const store = createStore(
 
 const history = syncHistoryWithStore(hashHistory, store)
 
+//store = {session_id: "", payment_methods: [{personal: ""}], orders: []}
+
 /*class Sconely extends React.Component {
   //props: Props;
 
