@@ -59007,6 +59007,8 @@
 	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
+	        'Add an image for this event:',
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        'Guests:',
 	        _react2.default.createElement('br', null),

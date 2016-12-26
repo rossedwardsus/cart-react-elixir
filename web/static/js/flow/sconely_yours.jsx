@@ -136,6 +136,8 @@ export default class SconelyYours extends React.Component {
         <input type= "text" onChange={this.changeDeliveryAddress}/>
         <br/>
         <br/>
+        Add an image for this event:
+        <br/>
         <br/>
         Guests:
         <br/>
