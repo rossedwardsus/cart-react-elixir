@@ -109,7 +109,7 @@ export default class SconelyYours extends React.Component {
   render(): React.Element {
     return (
       <ul>
-        Welcome to Sconely Yours.  With sconely yours you can order scones for an event.
+        Welcome to Sconely Social.  With sconely Social you can order scones for an event.  Allow guests to choose as well.  A minimum of 16 scones is required.
         <br/>
         To get start please tell us about your event:
         <br/>
