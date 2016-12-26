@@ -58980,7 +58980,7 @@
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
-	        'Welcome to Sconely Yours.  With sconely yours you can order scones for an event.',
+	        'Welcome to Sconely Social.  With sconely Social you can order scones for an event.  Allow guests to choose as well.  A minimum of 16 scones is required.',
 	        _react2.default.createElement('br', null),
 	        'To get start please tell us about your event:',
 	        _react2.default.createElement('br', null),
@@ -58990,7 +58990,7 @@
 	        _react2.default.createElement('br', null),
 	        'Event datetime:',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(DatePicker, { selected: this.state.startDate, onChange: this.handleChange }),
+	        _react2.default.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: this.handleChange }),
 	        _react2.default.createElement('br', null),
 	        'Or',
 	        _react2.default.createElement('br', null),

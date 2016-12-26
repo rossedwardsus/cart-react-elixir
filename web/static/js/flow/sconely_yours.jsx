@@ -119,7 +119,7 @@ export default class SconelyYours extends React.Component {
         <br/>
         Event datetime:
         <br/>
-        <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
+        <DatePicker inline selected={this.state.startDate} onChange={this.handleChange} />
         <br/>
         Or
         <br/>
