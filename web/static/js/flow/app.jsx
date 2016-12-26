@@ -79,6 +79,8 @@ export default class App extends React.Component {
   render(): React.Element {
     return (
       <ul>
+        add menu links here such as changing delivery address
+        <br/>
         {this.props.children}
       </ul>
     )

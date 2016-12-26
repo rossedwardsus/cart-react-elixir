@@ -178,7 +178,8 @@
 	        _reactRouter.Route,
 	        { path: '/', component: _app2.default },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _user2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_yours2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_yours2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_address', component: _sconely_yours2.default })
 	      )
 	    )
 	  );
@@ -30498,6 +30499,8 @@
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
+	        'add menu links here such as changing delivery address',
+	        _react2.default.createElement('br', null),
 	        this.props.children
 	      );
 	    }
@@ -58818,7 +58821,7 @@
 	          'Sconely Social'
 	        ),
 	        _react2.default.createElement('br', null),
-	        'orsers'
+	        'orders'
 	      );
 	    }
 	  }], [{

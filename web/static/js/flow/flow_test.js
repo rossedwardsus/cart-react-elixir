@@ -110,6 +110,7 @@ const Root = () => (
       <Route path="/" component={App}>
         <IndexRoute component={User} />
         <Route path="/order/:order_id" component={SconelyYours} />
+        <Route path="/user/delivery_address" component={SconelyYours} />
       </Route>
     </Router>
   </Provider>

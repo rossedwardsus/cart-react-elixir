@@ -42,7 +42,7 @@ export default class User extends React.Component {
         <br/>
         <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Social</a>
         <br/>
-        orsers
+        orders
       </ul>
     )
   }
