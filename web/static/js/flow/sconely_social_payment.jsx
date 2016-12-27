@@ -40,6 +40,10 @@ export default class Payment extends React.Component {
       <div>
         <b>Payment</b>
         <br/>
+        Subtotal: {this.props.total}
+        <br/>
+        Delivery Cost: 
+        <br/>
         Radio
         <br/>
         <select>

@@ -150,7 +150,7 @@ export default class SconelySocial extends React.Component {
         { this.state.order_total }
         <br/>
         <br/>
-        <Payment/>
+        <Payment total={this.state.order_total}/>
         <br/>
         <br/>
         <br/>

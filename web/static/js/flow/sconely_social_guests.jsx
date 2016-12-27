@@ -32,6 +32,7 @@ export default class Guests extends React.Component {
         <select onChange={this.props.changeNumberOfGuests}>
             <option value=""></option>
             <option value="20">20</option>
+            <option value="40">40</option>
         </select>
         <br/>
         <br/>

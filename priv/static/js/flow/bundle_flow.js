@@ -30881,7 +30881,7 @@
 	        this.state.order_total,
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_sconely_social_payment2.default, null),
+	        _react2.default.createElement(_sconely_social_payment2.default, { total: this.state.order_total }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
@@ -59403,6 +59403,11 @@
 	            'option',
 	            { value: '20' },
 	            '20'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            { value: '40' },
+	            '40'
 	          )
 	        ),
 	        _react2.default.createElement('br', null),
@@ -59506,6 +59511,11 @@
 	          null,
 	          'Payment'
 	        ),
+	        _react2.default.createElement('br', null),
+	        'Subtotal: ',
+	        this.props.total,
+	        _react2.default.createElement('br', null),
+	        'Delivery Cost:',
 	        _react2.default.createElement('br', null),
 	        'Radio',
 	        _react2.default.createElement('br', null),
