@@ -8,6 +8,8 @@ require('react-datepicker/dist/react-datepicker.css');
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 
+//import EventDetails from 'sconely_social_event_details';
+
 //const onChange = (dateString, { dateMoment, timestamp }) => {
   //console.log(dateString)
 
@@ -110,6 +112,8 @@ export default class SconelyYours extends React.Component {
     return (
       <ul>
         Welcome to Sconely Social.  With sconely Social you can order scones for an event.  Allow guests to choose as well.  A minimum of 16 scones is required.  You can change these details up to three days prior to the delivery date. 
+        <br/>
+        <EventDetails/>
         <br/>
         To get start please tell us about your event:
         <br/>

@@ -1,3 +1,3 @@
-declare module "./sconely_yours" {
+declare module "./sconely_social" {
   // ...
 }

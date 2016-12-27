@@ -15,7 +15,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import App from "./app";
 import Orders from "./orders";
-import SconelyYours from "./sconely_yours";
+import SconelySocial from "./sconely_social";
 import Payment from "./payment";
 
 
@@ -112,8 +112,8 @@ const Root = () => (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Orders} />
-        <Route path="/order/:order_id" component={SconelyYours} />
-        <Route path="/user/delivery_address" component={SconelyYours} />
+        <Route path="/order/:order_id" component={SconelySocial} />
+        <Route path="/user/delivery_address" component={SconelySocial} />
         <Route path="/user/payment" component={Payment} />
         <Route path="/user/orders" component={Orders} />
       </Route>

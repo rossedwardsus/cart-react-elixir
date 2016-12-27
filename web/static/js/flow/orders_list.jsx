@@ -13,7 +13,7 @@ export default class OrdersList extends React.Component {
 
     this.state = {
 
-     
+        orders: [order_id: 1234, order_date: ""]
 
     };
 
@@ -24,6 +24,8 @@ export default class OrdersList extends React.Component {
     return (
       <ul>
        List of orders
+       <br/>
+       Date-Order Type
       </ul>
     )
   }
