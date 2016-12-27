@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ToggleButton from 'react-toggle-button'
+
 export default class Guests extends React.Component {
   //props: Props;
 
@@ -10,6 +12,8 @@ export default class Guests extends React.Component {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
+
+        value: false
 
     };
 
@@ -23,12 +27,23 @@ export default class Guests extends React.Component {
         <br/>
         Tell us about your guests:
         <br/>
-        Number of guests:
+        Number of guests1:
         <br/>
-        <input type= "text" onChange={this.changeNumberOfGuests}/>
+        <select onChange={this.props.changeNumberOfGuests}>
+            <option value=""></option>
+            <option value="20">20</option>
+        </select>
         <br/>
         <br/>
         Guests choose item:
+        <br/>
+        <ToggleButton
+          value={ this.state.value || false }
+          onToggle={(value) => {
+            this.setState({
+              value: !value,
+            })
+          }} />
         <br/>
         <input type= "text"/>
         <br/>

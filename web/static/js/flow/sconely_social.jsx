@@ -45,6 +45,7 @@ export default class SconelySocial extends React.Component {
         guest_choose: "",
         additiobal_items: {},
         code: 0,
+        order_total: 0,
         startDate: moment()
 
     };
@@ -58,11 +59,11 @@ export default class SconelySocial extends React.Component {
     //if event name has been added then start autosaving
 
     //myTimer;
-    var myVar = setInterval(
-        () => 
+    //var myVar = setInterval(
+    //    () => 
             //get the data from state and upload to server
-            console.log("hello")
-    , 10000);
+    //        console.log("hello")
+    //, 10000);
 
     //myVar;
     //myTimer;
@@ -91,7 +92,14 @@ export default class SconelySocial extends React.Component {
 
   changeNumberOfGuests(e){
 
-    this.setState({number_of_guests: e.target.value})
+    //alert("guests" + e.target.value);
+
+    var total = e.target.value * 5;
+
+    //alert(total);
+
+    this.setState({number_of_guests: e.target.value});
+    this.setState({order_total: total});
 
   }
 
@@ -122,12 +130,12 @@ export default class SconelySocial extends React.Component {
         <EventDetails />
         <br/>
         <br/>
-        <Guests/>
+        <Guests changeNumberOfGuests={this.changeNumberOfGuests.bind(this)}/>
         <br/>
-        Choose items for the menu
+        <b>Choose items for the menu</b>
         <br/>
         <br/>
-        Additional items
+        <b>Additional items</b>
         <br/>
         <br/>
         item image
@@ -137,9 +145,9 @@ export default class SconelySocial extends React.Component {
         remove?
         <br/>
         <br/>
-        Total
+        <b>Total</b>
         <br/>
-        sutotal: 12x5.00
+        { this.state.order_total }
         <br/>
         <br/>
         <Payment/>
