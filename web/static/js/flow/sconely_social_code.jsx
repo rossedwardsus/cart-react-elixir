@@ -43,7 +43,7 @@ export default class Code extends React.Component {
         <br/>
         <input onChange={this.changeCode.bind(this)}/>
         <br/>
-        <button onClick={this.createCode.bind(this)}>Create</button>
+        <button onClick={this.createCode.bind(this)}>Save Code</button>
       </div>
     )
   }

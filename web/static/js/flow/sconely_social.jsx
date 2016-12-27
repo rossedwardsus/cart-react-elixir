@@ -46,10 +46,13 @@ export default class SconelySocial extends React.Component {
         event_address: "",
         number_of_guests: 0,
         guest_choose: "",
-        additiobal_items: {},
+        guest_responses: [],
+        menu: [],
+        additional_items: {},
         code: 0,
         order_total: 0,
-        startDate: moment()
+        startDate: moment(),
+        payment_method: ""
 
     };
 
@@ -162,9 +165,12 @@ export default class SconelySocial extends React.Component {
 
   }
 
-  createCode(e){
+  createCode(custom_code){
 
-    alert("create code" + e);
+    alert("create code" + custom_code);
+
+    this.setState({custom_code: custom_code});
+
     //order.menu.push({e});
     //this code has akeary been taken
 

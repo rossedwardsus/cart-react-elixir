@@ -16,7 +16,7 @@ import thunk from 'redux-thunk';
 
 
 import App from "./app";
-import Orders from "./orders";
+import Events from "./events";
 import SconelySocial from "./sconely_social";
 import Payment from "./user/payment";
 
@@ -118,11 +118,11 @@ const Root = () => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Orders} />
+        <IndexRoute component={Events} />
         <Route path="/order/:order_id" component={SconelySocial} />
         <Route path="/user/delivery_address" component={SconelySocial} />
         <Route path="/user/payment" component={Payment} />
-        <Route path="/user/orders" component={Orders} />
+        <Route path="/user/orders" component={Events} />
       </Route>
     </Router>
   </Provider>

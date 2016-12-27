@@ -74,9 +74,9 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _orders = __webpack_require__(281);
+	var _events = __webpack_require__(281);
 
-	var _orders2 = _interopRequireDefault(_orders);
+	var _events2 = _interopRequireDefault(_events);
 
 	var _sconely_social = __webpack_require__(288);
 
@@ -188,11 +188,11 @@
 	      _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/', component: _app2.default },
-	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _orders2.default }),
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _events2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_address', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment', component: _payment2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/user/orders', component: _orders2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: '/user/orders', component: _events2.default })
 	      )
 	    )
 	  );
@@ -30542,7 +30542,7 @@
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: '/user/orders' },
-	          'Orders'
+	          'Events'
 	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
@@ -30597,26 +30597,26 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var User = function (_React$Component) {
-	  _inherits(User, _React$Component);
+	var Events = function (_React$Component) {
+	  _inherits(Events, _React$Component);
 
 	  //props: Props;
 
-	  function User(props) {
-	    _classCallCheck(this, User);
+	  function Events(props) {
+	    _classCallCheck(this, Events);
 
 	    //this.getData();
 
 	    //alert("sconely yours1" + this.props.params.order_id);
 
-	    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Events.__proto__ || Object.getPrototypeOf(Events)).call(this, props));
 
 	    _this.state = {};
 
 	    return _this;
 	  }
 
-	  _createClass(User, [{
+	  _createClass(Events, [{
 	    key: 'createOrder',
 	    value: function createOrder(order_type) {
 
@@ -30662,10 +30662,10 @@
 	    }
 	  }]);
 
-	  return User;
+	  return Events;
 	}(_react2.default.Component);
 
-	exports.default = User;
+	exports.default = Events;
 
 /***/ },
 /* 282 */
@@ -32413,10 +32413,13 @@
 	      event_address: "",
 	      number_of_guests: 0,
 	      guest_choose: "",
-	      additiobal_items: {},
+	      guest_responses: [],
+	      menu: [],
+	      additional_items: {},
 	      code: 0,
 	      order_total: 0,
-	      startDate: moment()
+	      startDate: moment(),
+	      payment_method: ""
 
 	    };
 
@@ -32538,9 +32541,12 @@
 	    }
 	  }, {
 	    key: 'createCode',
-	    value: function createCode(e) {
+	    value: function createCode(custom_code) {
 
-	      alert("create code" + e);
+	      alert("create code" + custom_code);
+
+	      this.setState({ custom_code: custom_code });
+
 	      //order.menu.push({e});
 	      //this code has akeary been taken
 	    }
@@ -63897,7 +63903,7 @@
 	        _react2.default.createElement(
 	          'button',
 	          { onClick: this.createCode.bind(this) },
-	          'Create'
+	          'Save Code'
 	        )
 	      );
 	    }

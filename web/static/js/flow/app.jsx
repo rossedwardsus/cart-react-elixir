@@ -78,7 +78,7 @@ export default class App extends React.Component {
       <ul>
         add menu links here such as changing delivery address
         <br/>
-        <Link to="/user/orders">Orders</Link>
+        <Link to="/user/orders">Events</Link>
         <br/>
         <Link to="/user/payment">Payment</Link>
         <br/>
