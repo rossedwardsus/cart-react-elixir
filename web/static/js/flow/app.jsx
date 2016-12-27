@@ -13,6 +13,14 @@ export default class App extends React.Component {
 
     this.state = {
 
+        event_name: "",
+        event_date: "",
+        event_delivery_datetime: "",
+        event_delivery_address: "",
+        number_of_guests: "",
+        guest_choose: false,
+        total: "",
+
         
     };
 

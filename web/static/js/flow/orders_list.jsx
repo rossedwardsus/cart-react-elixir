@@ -13,7 +13,7 @@ export default class OrdersList extends React.Component {
 
     this.state = {
 
-        orders: [order_id: 1234, order_date: ""]
+        orders: [{order_id: 1234, order_date: ""}]
 
     };
 
