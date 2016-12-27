@@ -98,6 +98,8 @@
 
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
 
+	//store = {session_id: "", payment_methods: [{personal: ""}], orders: [subtotal: ""]}
+
 	/*class Sconely extends React.Component {
 	  //props: Props;
 
@@ -30843,11 +30845,7 @@
 	        'Add an image for this event:',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        'Guests-You will be given a code to share with your guests.  You must tell your guests about any updates to the order:',
-	        _react2.default.createElement('br', null),
-	        'Enter an event code to send to your guests:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text' }),
+	        'Tell us about your guests:',
 	        _react2.default.createElement('br', null),
 	        'Number of guests:',
 	        _react2.default.createElement('br', null),
@@ -30858,13 +30856,24 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('input', { type: 'text' }),
 	        _react2.default.createElement('br', null),
+	        'What guests have chosen',
 	        _react2.default.createElement('br', null),
-	        'Extra items',
 	        _react2.default.createElement('br', null),
-	        'To get start please choose extra items:',
+	        'Choose items for the menu',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'Now you can choose Extra items',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'item image',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('select', null),
+	        _react2.default.createElement('br', null),
+	        'remove?',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('input', { type: 'text' }),
 	        _react2.default.createElement('br', null),
+	        'sutotal: 12x5.00',
 	        _react2.default.createElement('br', null),
 	        'Now choose a payment',
 	        _react2.default.createElement('br', null),
@@ -30877,7 +30886,18 @@
 	          'button',
 	          { onClick: this.next.bind(this) },
 	          'Next'
-	        )
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'After payment is completed:',
+	        _react2.default.createElement('br', null),
+	        'Guests-You will be given a code to share with your guests.  You must tell your guests about any updates to the order:',
+	        _react2.default.createElement('br', null),
+	        'Enter an event code to send to your guests:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'text' }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null)
 	      );
 	    }
 	  }]);

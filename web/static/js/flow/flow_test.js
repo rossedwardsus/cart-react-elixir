@@ -32,7 +32,7 @@ const store = createStore(
 
 const history = syncHistoryWithStore(hashHistory, store)
 
-//store = {session_id: "", payment_methods: [{personal: ""}], orders: []}
+//store = {session_id: "", payment_methods: [{personal: ""}], orders: [subtotal: ""]}
 
 /*class Sconely extends React.Component {
   //props: Props;

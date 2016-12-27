@@ -139,11 +139,7 @@ export default class SconelyYours extends React.Component {
         Add an image for this event:
         <br/>
         <br/>
-        Guests-You will be given a code to share with your guests.  You must tell your guests about any updates to the order:
-        <br/>
-        Enter an event code to send to your guests:
-        <br/>
-        <input type= "text"/>
+        Tell us about your guests:
         <br/>
         Number of guests:
         <br/>
@@ -156,12 +152,22 @@ export default class SconelyYours extends React.Component {
         <br/>
         What guests have chosen
         <br/>
-        Extra items
         <br/>
-        To get start please choose extra items:
+        Choose items for the menu
+        <br/>
+        <br/>
+        Now you can choose Extra items
+        <br/>
+        <br/>
+        item image
+        <br/>
+        <select></select>
+        <br/>
+        remove?
         <br/>
         <input type= "text"/>
         <br/>
+        sutotal: 12x5.00
         <br/>
         Now choose a payment
         <br/>
@@ -171,7 +177,18 @@ export default class SconelyYours extends React.Component {
         <input type= "text"/>
         <br/>
         <button onClick={this.next.bind(this)}>Next</button>
-      </ul>
+        <br/>
+        <br/>
+        After payment is completed:
+        <br/>
+        Guests-You will be given a code to share with your guests.  You must tell your guests about any updates to the order:
+        <br/>
+        Enter an event code to send to your guests:
+        <br/>
+        <input type= "text"/>
+        <br/>
+        <br/>
+        </ul>
     )
   }
 }
