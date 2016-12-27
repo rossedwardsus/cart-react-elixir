@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Link, browserHistory } from 'react-router'
 
-export default class Payment extends React.Component {
+export default class Code extends React.Component {
   //props: Props;
 
   constructor(props) {
@@ -37,19 +37,12 @@ export default class Payment extends React.Component {
 
   render(): React.Element {
     return (
-      <ul>
-        <b>Payment</b>
+      <div>
+        <b>Code</b>
+        Default code
         <br/>
-        <select>
-          <option>Personal</option>
-        </select>
-        <br/>
-        Add another
-        <br/>
-        <button>submit</button>
-        <br/>
-        Payment complete.  You can now invite your guests to view the menu with the code.
-      </ul>
+        Custom Code
+      </div>
     )
   }
 }

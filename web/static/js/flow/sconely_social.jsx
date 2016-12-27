@@ -144,15 +144,6 @@ export default class SconelySocial extends React.Component {
         <br/>
         <Payment/>
         <br/>
-        Now choose a payment
-        <br/>
-        <br/>
-        After payment is completed:
-        <br/>
-        Guests-You will be given a code to share with your guests.  You must tell your guests about any updates to the order:
-        <br/>
-        Enter an event code to send to your guests:
-        <br/>
         <br/>
         <br/>
       </div>

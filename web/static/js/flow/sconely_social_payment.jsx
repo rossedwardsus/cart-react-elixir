@@ -15,6 +15,7 @@ export default class Payment extends React.Component {
 
     this.state = {
 
+        payment_complete: false
         
     };
 
@@ -26,19 +27,20 @@ export default class Payment extends React.Component {
     };
   }
 
-  createOrder(order_type) {
-    //alert(order_type);
-    this.context.router.push('/order/12345');
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
+  completePayment(order_type) {
+
+    //make payent through stripe
+    
+    this.setState({payment_complete});
   
   }
 
   render(): React.Element {
     return (
-      <ul>
+      <div>
         <b>Payment</b>
+        <br/>
+        Radio
         <br/>
         <select>
           <option>Personal</option>
@@ -46,10 +48,18 @@ export default class Payment extends React.Component {
         <br/>
         Add another
         <br/>
-        <button>submit</button>
+        Name this card:
         <br/>
-        Payment complete.  You can now invite your guests to view the menu with the code.
-      </ul>
+        Card Number
+        <br/>
+        Expiration
+        <br/>
+        Security Code
+        <br/>
+        <button>Complete order</button>
+        <br/>
+        If Payment complete.  You can now invite your guests to view the menu with the code.
+      </div>
     )
   }
 }

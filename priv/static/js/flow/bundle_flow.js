@@ -30864,15 +30864,6 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_sconely_social_payment2.default, null),
 	        _react2.default.createElement('br', null),
-	        'Now choose a payment',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'After payment is completed:',
-	        _react2.default.createElement('br', null),
-	        'Guests-You will be given a code to share with your guests.  You must tell your guests about any updates to the order:',
-	        _react2.default.createElement('br', null),
-	        'Enter an event code to send to your guests:',
-	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
 	      );
@@ -59435,31 +59426,36 @@
 
 	    var _this = _possibleConstructorReturn(this, (Payment.__proto__ || Object.getPrototypeOf(Payment)).call(this, props));
 
-	    _this.state = {};
+	    _this.state = {
+
+	      payment_complete: false
+
+	    };
 
 	    return _this;
 	  }
 
 	  _createClass(Payment, [{
-	    key: 'createOrder',
-	    value: function createOrder(order_type) {
-	      //alert(order_type);
-	      this.context.router.push('/order/12345');
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
+	    key: 'completePayment',
+	    value: function completePayment(order_type) {
+
+	      //make payent through stripe
+
+	      this.setState({ payment_complete: payment_complete });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'ul',
+	        'div',
 	        null,
 	        _react2.default.createElement(
 	          'b',
 	          null,
 	          'Payment'
 	        ),
+	        _react2.default.createElement('br', null),
+	        'Radio',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'select',
@@ -59473,11 +59469,21 @@
 	        _react2.default.createElement('br', null),
 	        'Add another',
 	        _react2.default.createElement('br', null),
+	        'Name this card:',
+	        _react2.default.createElement('br', null),
+	        'Card Number',
+	        _react2.default.createElement('br', null),
+	        'Expiration',
+	        _react2.default.createElement('br', null),
+	        'Security Code',
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'button',
 	          null,
-	          'submit'
-	        )
+	          'Complete order'
+	        ),
+	        _react2.default.createElement('br', null),
+	        'If Payment complete.  You can now invite your guests to view the menu with the code.'
 	      );
 	    }
 	  }], [{
