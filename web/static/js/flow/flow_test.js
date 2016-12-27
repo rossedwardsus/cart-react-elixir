@@ -7,11 +7,13 @@ import ReactDOM from 'react-dom';
 //import autobind from 'autobind-decorator'
 //import TodoListItem from './TodoListItem'
 
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory, hashHistory, useRouterHistory, Link } from 'react-router';
 import createHistory from 'history';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import thunk from 'redux-thunk';
+
 
 import App from "./app";
 import Orders from "./orders";
@@ -26,13 +28,18 @@ import Payment from "./payment";
 const store = createStore(
   combineReducers({
     //...reducers,
-    routing: routerReducer
-  })
+    routing: routerReducer,
+  }), applyMiddleware(thunk)
+  
 )
 
 const history = syncHistoryWithStore(hashHistory, store)
 
-//store = {session_id: "", payment_methods: [{personal: ""}], orders: [subtotal: ""]}
+
+//store = {session_id: "", event: {event_name: "", delivery_address: "", date: "", time: ""}, guests: {choose: "", number: 0}, payment_methods: [{personal: ""}], orders: [subtotal: ""], menu_items: [1234, 5678], additional_items:[{}], completed: "yes"}
+
+
+
 
 /*class Sconely extends React.Component {
   //props: Props;

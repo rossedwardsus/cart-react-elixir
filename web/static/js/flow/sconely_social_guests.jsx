@@ -30,6 +30,15 @@ export default class Guests extends React.Component {
   }
 
   render(): React.Element {
+
+    var guests_choices = "";
+
+    if(this.state.value == true){
+
+        guests_choices = "Ross Edwards rossedwards.us@gmail.com";
+
+    }
+
     return (
       <div>
         <b>Guests</b>
@@ -64,9 +73,7 @@ export default class Guests extends React.Component {
             })
           }} />
         <br/>
-        <input type= "text"/>
-        <br/>
-        What guests have chosen
+        {guests_choices}
         <br/>
         <br/>
         <br/>

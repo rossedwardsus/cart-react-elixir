@@ -15,6 +15,7 @@ export default class Payment extends React.Component {
 
     this.state = {
 
+        payment_options: [{name: "personal"}, {name: "work"}],
         payment_choice: "",
         payment_complete: false
         
@@ -50,6 +51,12 @@ export default class Payment extends React.Component {
     
   }
 
+  selectPaymentOption(e){
+
+    alert(e.target.value);
+
+  }
+
   render(): React.Element {
 
     var body = "";
@@ -61,12 +68,17 @@ export default class Payment extends React.Component {
                 <br/>
                 Subtotal: {this.props.total}
                 <br/>
-                Delivery Cost: 
+                Delivery Cost: based on distance needed to travel and tax
                 <br/>
                 Radio
                 <br/>
-                <select>
-                  <option>Personal</option>
+                <select onChange={this.selectPaymentOption.bind(this)}>
+                  <option value=""></option>
+                  {this.state.payment_options.map(function(option){
+                      return(
+                          <option value={option.name}>{option.name}</option>
+                      )
+                  })}
                 </select>
                 <br/>
                 Add another

@@ -39,7 +39,9 @@ export default class EventDetails extends React.Component {
 
         event_name: "",
         event_datetime: "",
-        event_address: "",
+        event_address_street: "",
+        event_address_city: "",
+        event_address_zipcode: "",
         number_of_guests: 0,
         guest_choose: "",
         additiobal_items: {},
@@ -141,6 +143,12 @@ export default class EventDetails extends React.Component {
         Delivery Time
         <br/>
         Event address:
+        <br/>
+        Street<input/>
+        <br/>
+        City<input/>
+        <br/>
+        Zipcode<input/>
         <br/>
         Select from existing address or add a new one
         <br/>

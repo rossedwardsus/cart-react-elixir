@@ -15,8 +15,11 @@ export default class Items extends React.Component {
 
     this.state = {
 
+        items: [{item_id: 1}]
         
     };
+
+    this.selectItem = this.selectItem.bind(this);
 
   }
 
@@ -35,23 +38,37 @@ export default class Items extends React.Component {
   
   }
 
+  selectItem(e){
+
+    //alert(e.target.value);
+    this.props.selectMenuItems(e.target.value);
+
+  }
+
   render(): React.Element {
     return (
       <div>
-        <b>Choose Items</b>
-        <br/> 
-        total items
-        <br/>
-        <br/>
-        item1 photo
-        <br/>
-        <input type="checkbox"/>
-        <br/>
-        item2 photo
-        <br/>
-        <input type="checkbox"/>
-        <br/>   
-        <br/>
+        <div id="" style={{overflowX: scroll, height:"200px"}}>
+          <b>Choose Items</b>
+          <br/> 
+          total items
+          <br/>
+          {this.state.items.map(function(item){
+              return(
+
+                  <div>
+                    item1 photo
+                    <br/>
+                    <input type="checkbox" value="1" onChange={this.selectItem.bind(this)}/>
+                  </div>
+
+              )
+          }.bind(this))}
+          <br/>
+          <br/>
+          <br/>   
+          <br/>
+        </div>
       </div>
     )
   }

@@ -114,6 +114,62 @@ export default class SconelySocial extends React.Component {
     //});
   }
 
+  selectMenuItems(e){
+
+    alert(e);
+
+  }
+
+  selectAdditionalItems(e){
+
+    //alert(e);
+    //order.menu.push({e});
+
+  }
+
+  saveAddress(e){
+
+    //alert(e);
+    //order.menu.push({e});
+
+  }
+
+  savepayment(e){
+
+    //alert(e);
+    //order.menu.push({e});
+
+  }
+
+  completeOrder(e){
+
+    //alert(e);
+    //order.menu.push({e});
+
+    //check if event name and address and menu have been added
+
+  }
+
+  validateEventName(e){
+
+    //20 charaters in length no spaces
+
+    //alert(e);
+    //order.menu.push({e});
+
+  }
+
+  generateCode(e){
+
+    //alert(e);
+    //order.menu.push({e});
+    //this code has akeary been taken
+
+  }
+
+
+
+
   next(){
 
     alert("next" + this.state.event_name);
@@ -136,7 +192,7 @@ export default class SconelySocial extends React.Component {
         <br/>
         <b>Choose items for the menu</b>
         <br/>
-        <ChooseMenu />
+        <ChooseMenu selectMenuItems={this.selectMenuItems.bind(this)}/>
         <br/>
         <AdditionalItems />
         <br/>
