@@ -8,6 +8,9 @@ require('react-datepicker/dist/react-datepicker.css');
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 
+var Dropzone = require('react-dropzone');
+
+
 //const onChange = (dateString, { dateMoment, timestamp }) => {
   //console.log(dateString)
 
@@ -100,6 +103,14 @@ export default class EventDetails extends React.Component {
     //});
   }
 
+  onDrop(acceptedFiles){
+        var req = request.post('/upload');
+        acceptedFiles.forEach((file)=> {
+            req.attach(file.name, file);
+        });
+        req.end(callback);
+  }
+
   next(){
 
     alert("next" + this.state.event_name);
@@ -138,6 +149,9 @@ export default class EventDetails extends React.Component {
         <br/>
         Add an image for this event:
         <br/>
+        <Dropzone onDrop={this.onDrop}>
+              <div>Try dropping some files here, or click to select files to upload.</div>
+        </Dropzone>
         <br/>
         <br/>
        </div>

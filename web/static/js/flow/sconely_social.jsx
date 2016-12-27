@@ -11,6 +11,7 @@ import { DateField, Calendar } from 'react-date-picker';
 import EventDetails from './sconely_social_event_details';
 import Guests from './sconely_social_guests';
 import ChooseMenu from './sconely_social_choose_menu';
+import AdditionalItems from './sconely_social_additional_items';
 import Payment from './sconely_social_payment';
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -137,8 +138,7 @@ export default class SconelySocial extends React.Component {
         <br/>
         <ChooseMenu />
         <br/>
-        <b>Additional items</b>
-        <br/>
+        <AdditionalItems />
         <br/>
         item image
         <br/>

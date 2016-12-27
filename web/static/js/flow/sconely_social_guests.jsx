@@ -1,6 +1,9 @@
 import React from 'react'
 
 import ToggleButton from 'react-toggle-button'
+import InputRange from 'react-input-range';
+
+//import 'react-input-range/react-input-range.css';
 
 export default class Guests extends React.Component {
   //props: Props;
@@ -13,10 +16,17 @@ export default class Guests extends React.Component {
 
     this.state = {
 
-        value: false
+        value: false,
+        values: 0
 
     };
 
+  }
+
+  handleValuesChange(component, values) {
+    this.setState({
+      values: values,
+    });
   }
 
   render(): React.Element {
@@ -35,8 +45,15 @@ export default class Guests extends React.Component {
             <option value="40">40</option>
         </select>
         <br/>
-        <input type="range" id="weight" min="10" value="10" max="2000" step="100"/>
+        <input type="range" id="weight" min="10" value={this.state.values} onChange={this.handleValuesChange.bind(this)}
+       max="2000" step="100"/>
         <br/>
+        <InputRange
+            maxValue={20}
+            minValue={0}
+            value={this.state.values}
+            onChange={this.handleValuesChange.bind(this)}
+          />
         Guests choose item:
         <br/>
         <ToggleButton
