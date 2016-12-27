@@ -12,6 +12,7 @@ import EventDetails from './sconely_social_event_details';
 import Guests from './sconely_social_guests';
 import ChooseMenu from './sconely_social_choose_menu';
 import AdditionalItems from './sconely_social_additional_items';
+import Code from './sconely_social_code';
 import Payment from './sconely_social_payment';
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -56,6 +57,8 @@ export default class SconelySocial extends React.Component {
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    this.createCode = this.createCode.bind(this);
 
     //autosave
     //if event name has been added then start autosaving
@@ -159,9 +162,9 @@ export default class SconelySocial extends React.Component {
 
   }
 
-  generateCode(e){
+  createCode(e){
 
-    //alert(e);
+    alert("create code" + e);
     //order.menu.push({e});
     //this code has akeary been taken
 
@@ -196,11 +199,8 @@ export default class SconelySocial extends React.Component {
         <br/>
         <AdditionalItems />
         <br/>
-        item image
         <br/>
-        <select></select>
-        <br/>
-        remove?
+        <Code createCode={this.createCode.bind(this)}/ >
         <br/>
         <br/>
         <b>Total</b>

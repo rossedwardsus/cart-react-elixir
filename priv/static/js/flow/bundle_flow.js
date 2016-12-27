@@ -82,7 +82,7 @@
 
 	var _sconely_social2 = _interopRequireDefault(_sconely_social);
 
-	var _payment = __webpack_require__(493);
+	var _payment = __webpack_require__(494);
 
 	var _payment2 = _interopRequireDefault(_payment);
 
@@ -32356,7 +32356,11 @@
 
 	var _sconely_social_additional_items2 = _interopRequireDefault(_sconely_social_additional_items);
 
-	var _sconely_social_payment = __webpack_require__(492);
+	var _sconely_social_code = __webpack_require__(492);
+
+	var _sconely_social_code2 = _interopRequireDefault(_sconely_social_code);
+
+	var _sconely_social_payment = __webpack_require__(493);
 
 	var _sconely_social_payment2 = _interopRequireDefault(_sconely_social_payment);
 
@@ -32420,6 +32424,8 @@
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
 	    _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
+
+	    _this.createCode = _this.createCode.bind(_this);
 
 	    //autosave
 	    //if event name has been added then start autosaving
@@ -32487,6 +32493,58 @@
 	      alert(e);
 	    }
 	  }, {
+	    key: 'selectAdditionalItems',
+	    value: function selectAdditionalItems(e) {
+
+	      //alert(e);
+	      //order.menu.push({e});
+
+	    }
+	  }, {
+	    key: 'saveAddress',
+	    value: function saveAddress(e) {
+
+	      //alert(e);
+	      //order.menu.push({e});
+
+	    }
+	  }, {
+	    key: 'savepayment',
+	    value: function savepayment(e) {
+
+	      //alert(e);
+	      //order.menu.push({e});
+
+	    }
+	  }, {
+	    key: 'completeOrder',
+	    value: function completeOrder(e) {
+
+	      //alert(e);
+	      //order.menu.push({e});
+
+	      //check if event name and address and menu have been added
+
+	    }
+	  }, {
+	    key: 'validateEventName',
+	    value: function validateEventName(e) {
+
+	      //20 charaters in length no spaces
+
+	      //alert(e);
+	      //order.menu.push({e});
+
+	    }
+	  }, {
+	    key: 'createCode',
+	    value: function createCode(e) {
+
+	      alert("create code" + e);
+	      //order.menu.push({e});
+	      //this code has akeary been taken
+	    }
+	  }, {
 	    key: 'next',
 	    value: function next() {
 
@@ -32519,11 +32577,8 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_sconely_social_additional_items2.default, null),
 	        _react2.default.createElement('br', null),
-	        'item image',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('select', null),
-	        _react2.default.createElement('br', null),
-	        'remove?',
+	        _react2.default.createElement(_sconely_social_code2.default, { createCode: this.createCode.bind(this) }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
@@ -63777,6 +63832,98 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(202);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Code = function (_React$Component) {
+	  _inherits(Code, _React$Component);
+
+	  //props: Props;
+
+	  function Code(props) {
+	    _classCallCheck(this, Code);
+
+	    //this.getData();
+
+	    //alert("sconely yours1" + this.props.params.order_id);
+
+	    var _this = _possibleConstructorReturn(this, (Code.__proto__ || Object.getPrototypeOf(Code)).call(this, props));
+
+	    _this.state = {
+
+	      custom_code: ""
+
+	    };
+
+	    return _this;
+	  }
+
+	  _createClass(Code, [{
+	    key: 'changeCode',
+	    value: function changeCode(e) {
+
+	      this.setState({ custom_code: e.target.value });
+	    }
+	  }, {
+	    key: 'createCode',
+	    value: function createCode() {
+
+	      this.props.createCode(this.state.custom_code);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'b',
+	          null,
+	          'Code'
+	        ),
+	        'Default code-12345',
+	        _react2.default.createElement('br', null),
+	        'Custom Code',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { onChange: this.changeCode.bind(this) }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.createCode.bind(this) },
+	          'Create'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Code;
+	}(_react2.default.Component);
+
+	exports.default = Code;
+
+/***/ },
+/* 493 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _superagent = __webpack_require__(283);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
@@ -63934,7 +64081,7 @@
 	exports.default = Payment;
 
 /***/ },
-/* 493 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

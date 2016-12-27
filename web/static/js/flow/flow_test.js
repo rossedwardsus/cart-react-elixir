@@ -18,7 +18,7 @@ import thunk from 'redux-thunk';
 import App from "./app";
 import Orders from "./orders";
 import SconelySocial from "./sconely_social";
-import Payment from "./payment";
+import Payment from "./user/payment";
 
 
 //type Props = {

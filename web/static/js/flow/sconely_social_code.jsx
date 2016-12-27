@@ -15,33 +15,35 @@ export default class Code extends React.Component {
 
     this.state = {
 
-        
+        custom_code: ""
+
     };
 
   }
 
-  static get contextTypes() {
-    return {
-      router: React.PropTypes.object.isRequired,
-    };
+  changeCode(e){
+
+    this.setState({custom_code: e.target.value});
+   
   }
 
-  createOrder(order_type) {
-    //alert(order_type);
-    this.context.router.push('/order/12345');
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
-  
+  createCode(){
+
+     this.props.createCode(this.state.custom_code);
+
   }
 
   render(): React.Element {
     return (
       <div>
         <b>Code</b>
-        Default code
+        Default code-12345
         <br/>
         Custom Code
+        <br/>
+        <input onChange={this.changeCode.bind(this)}/>
+        <br/>
+        <button onClick={this.createCode.bind(this)}>Create</button>
       </div>
     )
   }
