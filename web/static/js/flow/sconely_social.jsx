@@ -10,6 +10,7 @@ import { DateField, Calendar } from 'react-date-picker';
 
 import EventDetails from './sconely_social_event_details';
 import Guests from './sconely_social_guests';
+import ChooseMenu from './sconely_social_choose_menu';
 import Payment from './sconely_social_payment';
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -134,6 +135,7 @@ export default class SconelySocial extends React.Component {
         <br/>
         <b>Choose items for the menu</b>
         <br/>
+        <ChooseMenu />
         <br/>
         <b>Additional items</b>
         <br/>

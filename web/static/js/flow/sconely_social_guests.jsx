@@ -35,6 +35,7 @@ export default class Guests extends React.Component {
             <option value="40">40</option>
         </select>
         <br/>
+        <input type="range" id="weight" min="10" value="10" max="2000" step="100"/>
         <br/>
         Guests choose item:
         <br/>

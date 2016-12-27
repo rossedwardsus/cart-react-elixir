@@ -57,31 +57,36 @@ export default class Payment extends React.Component {
     if(this.state.payment_complete == false){
 
       body = <div>
-            <b>Payment</b>
-              <br/>
-              Subtotal: {this.props.total}
-              <br/>
-              Delivery Cost: 
-              <br/>
-              Radio
-              <br/>
-              <select>
-                <option>Personal</option>
-              </select>
-              <br/>
-              Add another
-              <br/>
-              Name this card:
-              <br/>
-              Card Number
-              <br/>
-              Expiration
-              <br/>
-              Security Code
-              <br/>
-              <br/>
-              <button onClick={this.completePayment.bind(this)}>Complete order</button>
-              <br/>
+              <b>Payment</b>
+                <br/>
+                Subtotal: {this.props.total}
+                <br/>
+                Delivery Cost: 
+                <br/>
+                Radio
+                <br/>
+                <select>
+                  <option>Personal</option>
+                </select>
+                <br/>
+                Add another
+                <br/>
+                Name this card:
+                <br/>
+                Card Number
+                <br/>
+                <input/>
+                <br/>
+                Expiration
+                <br/>
+                <input/>
+                <br/>
+                Security Code
+                <br/>
+                <input/>
+                <br/>
+                <button onClick={this.completePayment.bind(this)}>Complete order</button>
+                <br/>
               </div>
 
     }else{

@@ -37,13 +37,22 @@ export default class Items extends React.Component {
 
   render(): React.Element {
     return (
-      <ul>
-        links to create order
+      <div>
+        <b>Choose Items</b>
+        <br/> 
+        total items
         <br/>
-        <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Social</a>
         <br/>
-        orsers
-      </ul>
+        item1 photo
+        <br/>
+        <input type="checkbox"/>
+        <br/>
+        item2 photo
+        <br/>
+        <input type="checkbox"/>
+        <br/>   
+        <br/>
+      </div>
     )
   }
 }
