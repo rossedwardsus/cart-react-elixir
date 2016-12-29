@@ -37,13 +37,7 @@ export default class Code extends React.Component {
     return (
       <div>
         <b>Code</b>
-        Default code-12345
-        <br/>
-        Custom Code
-        <br/>
-        <input onChange={this.changeCode.bind(this)}/>
-        <br/>
-        <button onClick={this.createCode.bind(this)}>Save Code</button>
+        
       </div>
     )
   }

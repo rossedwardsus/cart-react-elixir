@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { connect } from 'react-redux'
+//import { increase, decrease } from '../actions/count'
+
+
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
@@ -7,6 +11,8 @@ require('react-datepicker/dist/react-datepicker.css');
 
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
+
+import { Link } from 'react-router';
 
 import EventDetails from './sconely_social_event_details';
 import Guests from './sconely_social_guests';
@@ -190,6 +196,8 @@ export default class SconelySocial extends React.Component {
       <div>
         Welcome to Sconely Social.  
         <br/>
+        <br/>
+        <br/>
         With sconely Social you can order scones for an event.  Allow guests to choose as well.  A minimum of 16 scones is required.  You can change these details up to three days prior to the delivery date. 
         <br/>
         <br/>
@@ -222,3 +230,13 @@ export default class SconelySocial extends React.Component {
     )
   }
 }
+
+//export default connect(
+//  state => ({ 
+//       event_id: state.count.number 
+//             
+//
+//
+//   }),
+//  { increase, decrease }
+//)(Home)

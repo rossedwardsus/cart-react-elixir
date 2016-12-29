@@ -8,28 +8,13 @@ require('react-datepicker/dist/react-datepicker.css');
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 
-var Dropzone = require('react-dropzone');
-
-import SconelySocialTopMenu from './sconely_social_top_menu'; 
-
-
-
 //const onChange = (dateString, { dateMoment, timestamp }) => {
   //console.log(dateString)
 
 //  alert();
 //}
 
-//var myTimer = () => console.log("hello");
-
-/*setInterval(function growUp() {
-    // In non-strict mode, the growUp() function defines `this` 
-    // as the global object, which is different from the `this`
-    // defined by the Person() constructor.
-    this.age++;
-  }, 1000);*/
-
-export default class EventDetails extends React.Component {
+export default class SconelyYours extends React.Component {
   //props: Props;
 
   constructor(props) {
@@ -42,9 +27,7 @@ export default class EventDetails extends React.Component {
 
         event_name: "",
         event_datetime: "",
-        event_address_street: "",
-        event_address_city: "",
-        event_address_zipcode: "",
+        event_address: "",
         number_of_guests: 0,
         guest_choose: "",
         additiobal_items: {},
@@ -57,21 +40,6 @@ export default class EventDetails extends React.Component {
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.createCode = this.createCode.bind(this);
-    this.changeCode = this.changeCode.bind(this);
-
-    //autosave
-    //if event name has been added then start autosaving
-
-    //myTimer;
-    var myVar = setInterval(
-        () => 
-            //get the data from state and upload to server
-            console.log("hello")
-    , 10000);
-
-    //myVar;
-    //myTimer;
 
   }
 
@@ -110,26 +78,6 @@ export default class EventDetails extends React.Component {
     //});
   }
 
-  onDrop(acceptedFiles){
-        var req = request.post('/upload');
-        acceptedFiles.forEach((file)=> {
-            req.attach(file.name, file);
-        });
-        req.end(callback);
-  }
-
-  changeCode(){
-
-
-
-  }
-
-  createCode(){
-
-
-
-  }
-
   next(){
 
     alert("next" + this.state.event_name);
@@ -138,58 +86,46 @@ export default class EventDetails extends React.Component {
 
   render(): React.Element {
     return (
-      <div>
-        <SconelySocialTopMenu />
+      <ul>
+        Welcome to Sconely Yours.  With sconely yours you can order scones for an event.
         <br/>
-        <br/>
-        <b>Event Details</b>
-        <br/>
-        To get start please tell us about your event:
-        <br/>
-        Event Name
+        To get start please enter an event name:
         <br/>
         <input type= "text" onChange={this.changeEventName}/>
         <br/>
-        Event datetime:
+        To get start please enter an event datetime:
         <br/>
-        <DatePicker inline selected={this.state.startDate} onChange={this.handleChange} />
+        <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
         <br/>
-        Or
+        1
         <br/>
         <Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
         <br/>
-        Event Time
+        To get start please enter an event code:
         <br/>
-        Delivery Time
+        <input type= "text"/>
+        To get start please enter number of guests:
         <br/>
-        Event address:
+        <input type= "text" onChange={this.changeNumberOfGuests}/>
         <br/>
-        Street<input/>
-        <br/>
-        City<input/>
-        <br/>
-        Zipcode<input/>
-        <br/>
-        Select from existing address or add a new one
+        To get start please enter an address:
         <br/>
         <input type= "text" onChange={this.changeDeliveryAddress}/>
         <br/>
+        To get start please choose extra items:
         <br/>
-        Add an image for this event:
+        <input type= "text"/>
         <br/>
-        <Dropzone onDrop={this.onDrop}>
-              <div>Try dropping some files here, or click to select files to upload.</div>
-        </Dropzone>
+        To get start please decide if guests choose item:
         <br/>
+        <input type= "text"/>
         <br/>
-        Default code-12345
+        To get start please enter a payment method:
         <br/>
-        Custom Code
+        <input type= "text"/>
         <br/>
-        <input onChange={this.changeCode.bind(this)}/>
-        <br/>
-        <button onClick={this.createCode.bind(this)}>Save Code</button>
-       </div>
+        <button onClick={this.next.bind(this)}>Next</button>
+      </ul>
     )
   }
 }

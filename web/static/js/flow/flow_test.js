@@ -1,5 +1,8 @@
 /* @flow */
 
+import { createDevTools } from 'redux-devtools'
+import LogMonitor from 'redux-devtools-log-monitor'
+import DockMonitor from 'redux-devtools-dock-monitor'
 
 import React from 'react'
 import ReactDOM from 'react-dom';
@@ -15,22 +18,34 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import thunk from 'redux-thunk';
 
 
-import App from "./app";
+import User from "./user";
 import Events from "./events";
 import SconelySocial from "./sconely_social";
+import SconelySocialEventDetails from "./sconely_social_event_details";
+import SconelySocialGuests from "./sconely_social_guests";
 import Payment from "./user/payment";
 
+//import * as reducers from './reducers'
 
 //type Props = {
 //  todos: Array<Object>,
 //}
 
+const reducer = combineReducers({
+  //...reducers,
+  routing: routerReducer
+})
+
+const DevTools = createDevTools(
+  <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
+    <LogMonitor theme="tomorrow" preserveScrollTop={false} />
+  </DockMonitor>
+)
+
 const store = createStore(
-  combineReducers({
-    //...reducers,
-    routing: routerReducer,
-  }), applyMiddleware(thunk)
-  
+    reducer,
+    DevTools.instrument(),
+    applyMiddleware(thunk)
 )
 
 const history = syncHistoryWithStore(hashHistory, store)
@@ -117,9 +132,14 @@ const history = syncHistoryWithStore(hashHistory, store)
 const Root = () => (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App}>
+      <Route path="/" component={User}>
         <IndexRoute component={Events} />
         <Route path="/order/:order_id" component={SconelySocial} />
+        <Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
+        <Route path="/order/:order_id/guests" component={SconelySocialGuests} />
+        <Route path="/order/:order_id/menu" component={SconelySocialGuests} />
+        <Route path="/order/:order_id/preview" component={SconelySocial} />
+        <Route path="/order/:order_id/payment" component={SconelySocial} />
         <Route path="/user/delivery_address" component={SconelySocial} />
         <Route path="/user/payment" component={Payment} />
         <Route path="/user/orders" component={Events} />

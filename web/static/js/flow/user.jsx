@@ -29,6 +29,22 @@ export default class App extends React.Component {
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
+    /*alert();
+
+    get all of the user information
+    store = {user_id, events, addresses, payments}
+
+    request
+      .post('/api/pet')
+      .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+      .set('X-API-Key', 'foobar')
+      .set('Accept', 'application/json')
+      .end(function(err, res){
+        // Calling the end function will send the request
+        //this.setState({payment_complete: true});
+  
+      });*/
+
   }
 
   // Yes, I could use an arrow function, I get it.
