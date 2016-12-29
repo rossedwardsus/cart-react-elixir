@@ -15,7 +15,7 @@ export default class Guests extends React.Component {
     super(props);
     //this.getData();
   
-    //alert("sconely yours1" + this.props.params.order_id);
+    //alert("sconely yours1" + this.props.guest_chooses);
 
     this.state = {
 

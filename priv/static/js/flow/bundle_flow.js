@@ -219,7 +219,9 @@
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _events2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_details', component: _sconely_social_event_details2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: _sconely_social_guests2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', guest_chooses: 'yes', component: function component() {
+	            return _react2.default.createElement(_sconely_social_guests2.default, { guest_chooses: 'value' });
+	          } }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/menu', component: _sconely_social_guests2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/preview', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: _sconely_social2.default }),
@@ -76570,7 +76572,7 @@
 
 	    //this.getData();
 
-	    //alert("sconely yours1" + this.props.params.order_id);
+	    //alert("sconely yours1" + this.props.guest_chooses);
 
 	    var _this = _possibleConstructorReturn(this, (Guests.__proto__ || Object.getPrototypeOf(Guests)).call(this, props));
 
