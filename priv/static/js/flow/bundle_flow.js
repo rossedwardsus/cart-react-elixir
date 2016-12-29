@@ -225,6 +225,7 @@
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/menu', component: _sconely_social_guests2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/preview', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: _sconely_social2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/user/profile', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_address', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment', component: _payment2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/orders', component: _events2.default })
@@ -45302,6 +45303,8 @@
 
 	    };
 
+	    window.links = [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }];
+
 	    _this.changeEventName = _this.changeEventName.bind(_this);
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
 	    _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
@@ -47253,7 +47256,7 @@
 	      event_datetime: "",
 	      event_address: "",
 	      number_of_guests: 0,
-	      guest_choose: "",
+	      guest_chooses: "",
 	      guest_responses: [],
 	      menu: [],
 	      additional_items: {},
@@ -47263,6 +47266,8 @@
 	      payment_method: ""
 
 	    };
+
+	    window.guest_chooses = "yes";
 
 	    _this.changeEventName = _this.changeEventName.bind(_this);
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
@@ -47390,6 +47395,12 @@
 
 	      //order.menu.push({e});
 	      //this code has akeary been taken
+	    }
+	  }, {
+	    key: 'guestChooses',
+	    value: function guestChooses(value) {
+
+	      this.setState({ guest_chooses: value });
 	    }
 	  }, {
 	    key: 'next',
@@ -75552,6 +75563,9 @@
 
 	__webpack_require__(831);
 
+	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+
+
 	var Dropzone = __webpack_require__(833);
 
 	//const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -75579,7 +75593,7 @@
 
 	    //this.getData();
 
-	    //alert("sconely yours1" + this.props.params.order_id);
+	    //alert("sconely yours1" + window.guest_chooses);
 
 	    var _this = _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props));
 
@@ -75696,9 +75710,9 @@
 	        _react2.default.createElement('br', null),
 	        'To get start please tell us about your event:',
 	        _react2.default.createElement('br', null),
-	        'Event Name',
+	        'Event Name (max 30 characters)',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', onChange: this.changeEventName }),
+	        _react2.default.createElement('input', { type: 'text', maxlength: '30', onChange: this.changeEventName }),
 	        _react2.default.createElement('br', null),
 	        'Event datetime:',
 	        _react2.default.createElement('br', null),
@@ -75706,7 +75720,6 @@
 	        _react2.default.createElement('br', null),
 	        'Or',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_reactDatePicker.Calendar, { dateFormat: 'YYYY-MM-DD', date: '2017-04-24', onChange: this.handleChange }),
 	        _react2.default.createElement('br', null),
 	        'Event Time',
 	        _react2.default.createElement('br', null),
@@ -75714,14 +75727,22 @@
 	        _react2.default.createElement('br', null),
 	        'Event address:',
 	        _react2.default.createElement('br', null),
-	        'Street',
+	        'Street-limit to downtown',
 	        _react2.default.createElement('input', null),
 	        _react2.default.createElement('br', null),
-	        'City',
-	        _react2.default.createElement('input', null),
+	        'City-',
+	        _react2.default.createElement(
+	          'select',
+	          null,
+	          _react2.default.createElement(
+	            'option',
+	            null,
+	            'Los Angeles'
+	          )
+	        ),
 	        _react2.default.createElement('br', null),
 	        'Zipcode',
-	        _react2.default.createElement('input', null),
+	        _react2.default.createElement('input', { max: true, length: '30' }),
 	        _react2.default.createElement('br', null),
 	        'Select from existing address or add a new one',
 	        _react2.default.createElement('br', null),
@@ -75741,11 +75762,13 @@
 	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
+	        'Event Code:',
+	        _react2.default.createElement('br', null),
 	        'Default code-12345',
 	        _react2.default.createElement('br', null),
-	        'Custom Code',
+	        'Custom Code (max 30 characters)',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { onChange: this.changeCode.bind(this) }),
+	        _react2.default.createElement('input', { maxlength: '30', onChange: this.changeCode.bind(this) }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'button',
@@ -75812,19 +75835,17 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'top menu with links to ',
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/order/12345/event_details' },
-	          'event details'
-	        ),
-	        ' and ',
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/order/12345/guests' },
-	          'guests'
-	        ),
-	        ' and payment'
+	        _react2.default.createElement('br', null),
+	        window.links.map(function (link) {
+
+	          var link_temp = "/order/12345/" + link.link;
+	          return _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: link_temp },
+	            link.text,
+	            ' '
+	          );
+	        })
 	      );
 	    }
 	  }]);
@@ -76572,9 +76593,21 @@
 
 	    //this.getData();
 
-	    //alert("sconely yours1" + this.props.guest_chooses);
+	    //alert(JSON.stringify(window.links));
 
 	    var _this = _possibleConstructorReturn(this, (Guests.__proto__ || Object.getPrototypeOf(Guests)).call(this, props));
+
+	    if (window.links.indexOf({ link: "menu", text: "Menu" }) == -1) {
+
+	      //alert("doesnt exist");
+
+	      window.links.push({ link: "menu", text: "Menu" });
+	    } else {
+
+	      alert("exists");
+	    }
+
+	    //alert("sconely yours1" + window.guest_chooses);
 
 	    _this.state = {
 
@@ -76592,6 +76625,9 @@
 	      this.setState({
 	        values: values
 	      });
+
+	      window.guest_chooses = "values";
+	      //alert(window.guest_chooses);
 	    }
 	  }, {
 	    key: 'render',
@@ -76609,6 +76645,12 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
+	        _react2.default.createElement('br', null),
+	        window.guest_chooses,
+	        _react2.default.createElement('br', null),
+	        'if window.guest_chooses == true then show both menus',
+	        _react2.default.createElement('br', null),
+	        'else just show the assortments',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
@@ -76655,6 +76697,7 @@
 	            _this2.setState({
 	              value: !value
 	            });
+	            window.guest_chooses = value;
 	          } }),
 	        _react2.default.createElement('br', null),
 	        guests_choices,

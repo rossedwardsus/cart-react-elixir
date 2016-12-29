@@ -14,8 +14,21 @@ export default class Guests extends React.Component {
   constructor(props) {
     super(props);
     //this.getData();
+
+    //alert(JSON.stringify(window.links));
+
+    if(window.links.indexOf({link: "menu", text: "Menu"}) == -1){
+
+        //alert("doesnt exist");
   
-    //alert("sconely yours1" + this.props.guest_chooses);
+        window.links.push({link: "menu", text: "Menu"});
+
+    }else{
+
+        alert("exists");
+    }
+
+    //alert("sconely yours1" + window.guest_chooses);
 
     this.state = {
 
@@ -30,6 +43,9 @@ export default class Guests extends React.Component {
     this.setState({
       values: values,
     });
+
+    window.guest_chooses = "values";
+    //alert(window.guest_chooses);
   }
 
   render(): React.Element {
@@ -45,6 +61,12 @@ export default class Guests extends React.Component {
     return (
       <div>
         <SconelySocialTopMenu />
+        <br/>
+        {window.guest_chooses}
+        <br/>
+        if window.guest_chooses == true then show both menus
+        <br/>
+        else just show the assortments
         <br/>
         <br/>
         <b>Guests</b>
@@ -76,7 +98,8 @@ export default class Guests extends React.Component {
           onToggle={(value) => {
             this.setState({
               value: !value,
-            })
+            });
+            window.guest_chooses = value;
           }} />
         <br/>
         {guests_choices}

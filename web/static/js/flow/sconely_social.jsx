@@ -51,7 +51,7 @@ export default class SconelySocial extends React.Component {
         event_datetime: "",
         event_address: "",
         number_of_guests: 0,
-        guest_choose: "",
+        guest_chooses: "",
         guest_responses: [],
         menu: [],
         additional_items: {},
@@ -61,6 +61,8 @@ export default class SconelySocial extends React.Component {
         payment_method: ""
 
     };
+
+    window.guest_chooses = "yes";
 
     this.changeEventName = this.changeEventName.bind(this);
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
@@ -182,7 +184,11 @@ export default class SconelySocial extends React.Component {
 
   }
 
+  guestChooses(value){
 
+    this.setState({guest_chooses: value});
+
+  }
 
 
   next(){

@@ -140,6 +140,7 @@ const Root = () => (
         <Route path="/order/:order_id/menu" component={SconelySocialGuests} />
         <Route path="/order/:order_id/preview" component={SconelySocial} />
         <Route path="/order/:order_id/payment" component={SconelySocial} />
+        <Route path="/user/profile" component={SconelySocial} />
         <Route path="/user/delivery_address" component={SconelySocial} />
         <Route path="/user/payment" component={Payment} />
         <Route path="/user/orders" component={Events} />

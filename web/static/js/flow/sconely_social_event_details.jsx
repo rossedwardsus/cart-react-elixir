@@ -8,6 +8,9 @@ require('react-datepicker/dist/react-datepicker.css');
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 
+//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+
+
 var Dropzone = require('react-dropzone');
 
 import SconelySocialTopMenu from './sconely_social_top_menu'; 
@@ -36,7 +39,7 @@ export default class EventDetails extends React.Component {
     super(props);
     //this.getData();
   
-    //alert("sconely yours1" + this.props.params.order_id);
+    //alert("sconely yours1" + window.guest_chooses);
 
     this.state = {
 
@@ -146,9 +149,9 @@ export default class EventDetails extends React.Component {
         <br/>
         To get start please tell us about your event:
         <br/>
-        Event Name
+        Event Name (max 30 characters)
         <br/>
-        <input type= "text" onChange={this.changeEventName}/>
+        <input type= "text" maxlength="30" onChange={this.changeEventName}/>
         <br/>
         Event datetime:
         <br/>
@@ -156,7 +159,6 @@ export default class EventDetails extends React.Component {
         <br/>
         Or
         <br/>
-        <Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
         <br/>
         Event Time
         <br/>
@@ -164,11 +166,13 @@ export default class EventDetails extends React.Component {
         <br/>
         Event address:
         <br/>
-        Street<input/>
+        Street-limit to downtown<input/>
         <br/>
-        City<input/>
+        City-<select>
+                <option>Los Angeles</option>
+              </select>
         <br/>
-        Zipcode<input/>
+        Zipcode<input max length="30"/>
         <br/>
         Select from existing address or add a new one
         <br/>
@@ -182,11 +186,13 @@ export default class EventDetails extends React.Component {
         </Dropzone>
         <br/>
         <br/>
+        Event Code:
+        <br/>
         Default code-12345
         <br/>
-        Custom Code
+        Custom Code (max 30 characters)
         <br/>
-        <input onChange={this.changeCode.bind(this)}/>
+        <input maxlength="30" onChange={this.changeCode.bind(this)}/>
         <br/>
         <button onClick={this.createCode.bind(this)}>Save Code</button>
        </div>

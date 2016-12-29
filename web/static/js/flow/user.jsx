@@ -24,6 +24,8 @@ export default class App extends React.Component {
         
     };
 
+    window.links = [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}];
+
     this.changeEventName = this.changeEventName.bind(this);
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
