@@ -100,6 +100,10 @@
 
 	var _sconely_social_guests2 = _interopRequireDefault(_sconely_social_guests);
 
+	var _sconely_social_menu = __webpack_require__(848);
+
+	var _sconely_social_menu2 = _interopRequireDefault(_sconely_social_menu);
+
 	var _payment = __webpack_require__(849);
 
 	var _payment2 = _interopRequireDefault(_payment);
@@ -112,13 +116,16 @@
 	//  todos: Array<Object>,
 	//}
 
-	//import autobind from 'autobind-decorator'
-	//import TodoListItem from './TodoListItem'
-
 	var reducer = (0, _redux.combineReducers)({
 	  //...reducers,
 	  routing: _reactRouterRedux.routerReducer
 	});
+	//import SconelySocialPreview from "./sconely_social_guests";
+	//import SconelySocialPayment from "./sconely_social_guests";
+
+
+	//import autobind from 'autobind-decorator'
+	//import TodoListItem from './TodoListItem'
 
 	var DevTools = (0, _reduxDevtools.createDevTools)(_react2.default.createElement(
 	  _reduxDevtoolsDockMonitor2.default,
@@ -222,7 +229,7 @@
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', guest_chooses: 'yes', component: function component() {
 	            return _react2.default.createElement(_sconely_social_guests2.default, { guest_chooses: 'value' });
 	          } }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/menu', component: _sconely_social_guests2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/menu', component: _sconely_social_menu2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/preview', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/profile', component: _sconely_social2.default }),
@@ -45457,6 +45464,8 @@
 	    key: 'createOrder',
 	    value: function createOrder(order_type) {
 
+	      window.event = { order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{ link: "event_details", text: "Event Details" }] };
+
 	      /*request
 	        .post('/api/order/new')
 	        .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
@@ -45468,7 +45477,9 @@
 	           });*/
 
 	      //alert(order_type);
-	      this.context.router.push('/order/12345');
+
+	      this.context.router.push('/order/12345/event_details');
+
 	      //browserHistory.push('#/order/12345');
 	      //browserHistory.push('/mobile/user#/order/12345');
 	      //save id in local storage
@@ -45484,7 +45495,7 @@
 	        _react2.default.createElement(
 	          'a',
 	          { onClick: this.createOrder.bind(this, "sconely_yours") },
-	          'Sconely Social'
+	          'Sconely Social1'
 	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_orders_list2.default, null)
@@ -47189,19 +47200,15 @@
 
 	var _sconely_social_guests2 = _interopRequireDefault(_sconely_social_guests);
 
-	var _sconely_social_choose_menu = __webpack_require__(845);
-
-	var _sconely_social_choose_menu2 = _interopRequireDefault(_sconely_social_choose_menu);
-
-	var _sconely_social_additional_items = __webpack_require__(846);
+	var _sconely_social_additional_items = __webpack_require__(845);
 
 	var _sconely_social_additional_items2 = _interopRequireDefault(_sconely_social_additional_items);
 
-	var _sconely_social_code = __webpack_require__(847);
+	var _sconely_social_code = __webpack_require__(846);
 
 	var _sconely_social_code2 = _interopRequireDefault(_sconely_social_code);
 
-	var _sconely_social_payment = __webpack_require__(848);
+	var _sconely_social_payment = __webpack_require__(847);
 
 	var _sconely_social_payment2 = _interopRequireDefault(_sconely_social_payment);
 
@@ -47220,6 +47227,7 @@
 	var moment = __webpack_require__(650);
 
 	__webpack_require__(831);
+	//import ChooseMenu from './sconely_social_choose_menu';
 
 	//const onChange = (dateString, { dateMoment, timestamp }) => {
 	//console.log(dateString)
@@ -47433,7 +47441,7 @@
 	          'Choose items for the menu'
 	        ),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_sconely_social_choose_menu2.default, { selectMenuItems: this.selectMenuItems.bind(this) }),
+	        _react2.default.createElement(ChooseMenu, { selectMenuItems: this.selectMenuItems.bind(this) }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_sconely_social_additional_items2.default, null),
 	        _react2.default.createElement('br', null),
@@ -75712,7 +75720,7 @@
 	        _react2.default.createElement('br', null),
 	        'Event Name (max 30 characters)',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', maxlength: '30', onChange: this.changeEventName }),
+	        _react2.default.createElement('input', { type: 'text', maxLength: '30', onChange: this.changeEventName }),
 	        _react2.default.createElement('br', null),
 	        'Event datetime:',
 	        _react2.default.createElement('br', null),
@@ -75727,6 +75735,28 @@
 	        _react2.default.createElement('br', null),
 	        'Event address:',
 	        _react2.default.createElement('br', null),
+	        'Choose existing address:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'radio', name: 'address' }),
+	        _react2.default.createElement(
+	          'select',
+	          null,
+	          _react2.default.createElement('option', null),
+	          _react2.default.createElement(
+	            'option',
+	            null,
+	            'Home'
+	          ),
+	          _react2.default.createElement(
+	            'option',
+	            null,
+	            'Office'
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
+	        'Or add a new address',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'radio', name: 'address' }),
 	        'Street-limit to downtown',
 	        _react2.default.createElement('input', null),
 	        _react2.default.createElement('br', null),
@@ -75742,9 +75772,7 @@
 	        ),
 	        _react2.default.createElement('br', null),
 	        'Zipcode',
-	        _react2.default.createElement('input', { max: true, length: '30' }),
-	        _react2.default.createElement('br', null),
-	        'Select from existing address or add a new one',
+	        _react2.default.createElement('input', { maxLength: '30' }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
 	        _react2.default.createElement('br', null),
@@ -75765,6 +75793,8 @@
 	        'Event Code:',
 	        _react2.default.createElement('br', null),
 	        'Default code-12345',
+	        _react2.default.createElement('br', null),
+	        'Or add a custom custom',
 	        _react2.default.createElement('br', null),
 	        'Custom Code (max 30 characters)',
 	        _react2.default.createElement('br', null),
@@ -75836,7 +75866,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement('br', null),
-	        window.links.map(function (link) {
+	        window.event.links.map(function (link) {
 
 	          var link_temp = "/order/12345/" + link.link;
 	          return _react2.default.createElement(
@@ -76593,19 +76623,31 @@
 
 	    //this.getData();
 
-	    //alert(JSON.stringify(window.links));
+	    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
 
 	    var _this = _possibleConstructorReturn(this, (Guests.__proto__ || Object.getPrototypeOf(Guests)).call(this, props));
 
-	    if (window.links.indexOf({ link: "menu", text: "Menu" }) == -1) {
+	    var exists = "no";
+
+	    window.event.links.map(function (link) {
+
+	      //alert("yes" + link.link);
+
+	      if (link.link == "menu") {
+
+	        exists = "yes";
+	      }
+	    });
+
+	    if (exists == "no") {
 
 	      //alert("doesnt exist");
 
 	      window.links.push({ link: "menu", text: "Menu" });
-	    } else {
+	    } else {}
 
-	      alert("exists");
-	    }
+	    //    alert("exists");
+
 
 	    //alert("sconely yours1" + window.guest_chooses);
 
@@ -78584,120 +78626,6 @@
 
 	var _reactRouter = __webpack_require__(556);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Items = function (_React$Component) {
-	  _inherits(Items, _React$Component);
-
-	  //props: Props;
-
-	  function Items(props) {
-	    _classCallCheck(this, Items);
-
-	    //this.getData();
-
-	    //alert("sconely yours1" + this.props.params.order_id);
-
-	    var _this = _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
-
-	    _this.state = {
-
-	      items: [{ item_id: 1 }]
-
-	    };
-
-	    _this.selectItem = _this.selectItem.bind(_this);
-
-	    return _this;
-	  }
-
-	  _createClass(Items, [{
-	    key: 'createOrder',
-	    value: function createOrder(order_type) {
-	      //alert(order_type);
-	      this.context.router.push('/order/12345');
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
-	    }
-	  }, {
-	    key: 'selectItem',
-	    value: function selectItem(e) {
-
-	      //alert(e.target.value);
-	      this.props.selectMenuItems(e.target.value);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { id: '', style: { overflowX: scroll, height: "200px" } },
-	          _react2.default.createElement(
-	            'b',
-	            null,
-	            'Choose Items'
-	          ),
-	          _react2.default.createElement('br', null),
-	          'total items',
-	          _react2.default.createElement('br', null),
-	          this.state.items.map(function (item) {
-	            return _react2.default.createElement(
-	              'div',
-	              null,
-	              'item1 photo',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('input', { type: 'checkbox', value: '1', onChange: this.selectItem.bind(this) })
-	            );
-	          }.bind(this)),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('br', null)
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: _react2.default.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-
-	  return Items;
-	}(_react2.default.Component);
-
-	exports.default = Items;
-
-/***/ },
-/* 846 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(142);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(556);
-
 	var _superagent = __webpack_require__(637);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
@@ -78826,7 +78754,7 @@
 	exports.default = Items;
 
 /***/ },
-/* 847 */
+/* 846 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78907,7 +78835,7 @@
 	exports.default = Code;
 
 /***/ },
-/* 848 */
+/* 847 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -79077,6 +79005,197 @@
 	}(_react2.default.Component);
 
 	exports.default = Payment;
+
+/***/ },
+/* 848 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(142);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(556);
+
+	var _sconely_social_top_menu = __webpack_require__(828);
+
+	var _sconely_social_top_menu2 = _interopRequireDefault(_sconely_social_top_menu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Menu = function (_React$Component) {
+	  _inherits(Menu, _React$Component);
+
+	  //props: Props;
+
+	  function Menu(props) {
+	    _classCallCheck(this, Menu);
+
+	    //this.getData();
+
+	    //alert("sconely yours1" + this.props.params.order_id);
+
+	    var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+
+	    _this.state = {
+
+	      items: [{ item_id: 1 }]
+
+	    };
+
+	    _this.selectNumberOfItem = _this.selectNumberOfItem.bind(_this);
+	    _this.selectItem = _this.selectItem.bind(_this);
+
+	    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
+
+	    if (window.event.links.indexOf({ link: "menu", text: "Menu" }) == -1) {
+
+	      //alert("doesnt exist");
+
+	      window.event.links.push({ link: "preview", text: "Preview" }, { link: "payment", text: "Payment" });
+	    } else {
+
+	      alert("exists");
+	    }
+
+	    return _this;
+	  }
+
+	  _createClass(Menu, [{
+	    key: 'createOrder',
+	    value: function createOrder(order_type) {
+	      //alert(order_type);
+	      this.context.router.push('/order/12345');
+	      //browserHistory.push('#/order/12345');
+	      //browserHistory.push('/mobile/user#/order/12345');
+	      //save id in local storage
+	    }
+	  }, {
+	    key: 'selectNumberOfItem',
+	    value: function selectNumberOfItem(e) {
+
+	      alert(e.target.value);
+	    }
+	  }, {
+	    key: 'selectItem',
+	    value: function selectItem(e) {
+
+	      //alert(e.target.value);
+	      this.props.selectMenuItems(e.target.value);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'if guests cant choose show this:',
+	        _react2.default.createElement('br', null),
+	        'total items',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'item1 photo',
+	        _react2.default.createElement('br', null),
+	        'amount-cost',
+	        _react2.default.createElement('br', null),
+	        this.state.items.map(function (item) {
+
+	          var value_8 = item.item_id + "_" + 8;
+	          var value_16 = item.item_id + "_" + 16;
+
+	          return _react2.default.createElement(
+	            'div',
+	            null,
+	            'total items',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            'item1 photo',
+	            _react2.default.createElement('br', null),
+	            'amount-cost',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'select',
+	              { onChange: this.selectNumberOfItem.bind(this) },
+	              _react2.default.createElement('option', { value: '' }),
+	              _react2.default.createElement(
+	                'option',
+	                { value: value_8 },
+	                '8'
+	              ),
+	              _react2.default.createElement(
+	                'option',
+	                { value: value_16 },
+	                '16'
+	              )
+	            ),
+	            _react2.default.createElement('br', null),
+	            'item2 photo',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('input', { type: 'checkbox' })
+	          );
+	        }.bind(this)),
+	        _react2.default.createElement('br', null),
+	        'item2 photo',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'checkbox' }),
+	        _react2.default.createElement(
+	          'div',
+	          { id: '', style: { overflowX: scroll, height: "200px" } },
+	          _react2.default.createElement(
+	            'b',
+	            null,
+	            'Choose Items'
+	          ),
+	          _react2.default.createElement('br', null),
+	          'total items',
+	          _react2.default.createElement('br', null),
+	          this.state.items.map(function (item) {
+	            return _react2.default.createElement(
+	              'div',
+	              null,
+	              'item1 photo',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('input', { type: 'checkbox', value: '1', onChange: this.selectItem.bind(this) })
+	            );
+	          }.bind(this)),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null)
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'contextTypes',
+	    get: function get() {
+	      return {
+	        router: _react2.default.PropTypes.object.isRequired
+	      };
+	    }
+	  }]);
+
+	  return Menu;
+	}(_react2.default.Component);
+
+	exports.default = Menu;
 
 /***/ },
 /* 849 */

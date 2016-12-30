@@ -15,9 +15,23 @@ export default class Guests extends React.Component {
     super(props);
     //this.getData();
 
-    //alert(JSON.stringify(window.links));
+    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
 
-    if(window.links.indexOf({link: "menu", text: "Menu"}) == -1){
+    var exists = "no";
+
+    window.event.links.map(function(link){
+
+        //alert("yes" + link.link);
+
+        if(link.link == "menu"){
+
+            exists = "yes";
+
+        }
+
+    })
+
+    if(exists == "no"){
 
         //alert("doesnt exist");
   
@@ -25,8 +39,9 @@ export default class Guests extends React.Component {
 
     }else{
 
-        alert("exists");
+    //    alert("exists");
     }
+
 
     //alert("sconely yours1" + window.guest_chooses);
 

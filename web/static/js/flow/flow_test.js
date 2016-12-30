@@ -23,6 +23,9 @@ import Events from "./events";
 import SconelySocial from "./sconely_social";
 import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySocialGuests from "./sconely_social_guests";
+import SconelySocialMenu from "./sconely_social_menu";
+//import SconelySocialPreview from "./sconely_social_guests";
+//import SconelySocialPayment from "./sconely_social_guests";
 import Payment from "./user/payment";
 
 //import * as reducers from './reducers'
@@ -137,7 +140,7 @@ const Root = () => (
         <Route path="/order/:order_id" component={SconelySocial} />
         <Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
         <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySocialGuests guest_chooses="value" />)} />
-        <Route path="/order/:order_id/menu" component={SconelySocialGuests} />
+        <Route path="/order/:order_id/menu" component={SconelySocialMenu} />
         <Route path="/order/:order_id/preview" component={SconelySocial} />
         <Route path="/order/:order_id/payment" component={SconelySocial} />
         <Route path="/user/profile" component={SconelySocial} />

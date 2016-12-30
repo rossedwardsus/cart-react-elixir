@@ -33,6 +33,8 @@ export default class Events extends React.Component {
 
   createOrder(order_type) {
 
+    window.event = {order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{link: "event_details", text: "Event Details"}]};
+
     /*request
       .post('/api/order/new')
       .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
@@ -46,7 +48,9 @@ export default class Events extends React.Component {
 
 
     //alert(order_type);
-    this.context.router.push('/order/12345');
+    
+    this.context.router.push('/order/12345/event_details');
+    
     //browserHistory.push('#/order/12345');
     //browserHistory.push('/mobile/user#/order/12345');
     //save id in local storage
@@ -58,7 +62,7 @@ export default class Events extends React.Component {
       <ul>
         links to create order
         <br/>
-        <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Social</a>
+        <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Social1</a>
         <br/>
         <OrdersList />
       </ul>

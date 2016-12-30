@@ -20,7 +20,7 @@ export default class SconelySocialTopMenu extends React.Component {
 		return (
 			<div>
 				<br/>
-				{window.links.map(function(link){
+				{window.event.links.map(function(link){
 
 					var link_temp = "/order/12345/" + link.link;
 					return(<Link to={link_temp}>{link.text} </Link>);	

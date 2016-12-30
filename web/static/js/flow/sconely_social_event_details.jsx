@@ -151,7 +151,7 @@ export default class EventDetails extends React.Component {
         <br/>
         Event Name (max 30 characters)
         <br/>
-        <input type= "text" maxlength="30" onChange={this.changeEventName}/>
+        <input type= "text" maxLength="30" onChange={this.changeEventName}/>
         <br/>
         Event datetime:
         <br/>
@@ -166,15 +166,23 @@ export default class EventDetails extends React.Component {
         <br/>
         Event address:
         <br/>
-        Street-limit to downtown<input/>
+        Choose existing address:
+        <br/>
+        <input type="radio" name="address"/><select>
+            <option></option>
+            <option>Home</option>
+            <option>Office</option>
+        </select>
+        <br/>
+        Or add a new address
+        <br/>
+        <input type="radio" name="address"/>Street-limit to downtown<input/>
         <br/>
         City-<select>
                 <option>Los Angeles</option>
               </select>
         <br/>
-        Zipcode<input max length="30"/>
-        <br/>
-        Select from existing address or add a new one
+        Zipcode<input maxLength="30"/>
         <br/>
         <input type= "text" onChange={this.changeDeliveryAddress}/>
         <br/>
@@ -189,6 +197,8 @@ export default class EventDetails extends React.Component {
         Event Code:
         <br/>
         Default code-12345
+        <br/>
+        Or add a custom custom
         <br/>
         Custom Code (max 30 characters)
         <br/>
