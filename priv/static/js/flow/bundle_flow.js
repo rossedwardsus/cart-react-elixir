@@ -45464,7 +45464,7 @@
 	    key: 'createOrder',
 	    value: function createOrder(order_type) {
 
-	      window.event = { order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{ link: "event_details", text: "Event Details" }] };
+	      localStorage.setItem("order", JSON.stringify({ order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }] }));
 
 	      /*request
 	        .post('/api/order/new')
@@ -75558,6 +75558,10 @@
 
 	var _sconely_social_top_menu2 = _interopRequireDefault(_sconely_social_top_menu);
 
+	var _superagent = __webpack_require__(637);
+
+	var _superagent2 = _interopRequireDefault(_superagent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75612,18 +75616,29 @@
 	      event_address_street: "",
 	      event_address_city: "",
 	      event_address_zipcode: "",
-	      number_of_guests: 0,
-	      guest_choose: "",
-	      additiobal_items: {},
 	      code: 0,
 	      startDate: moment()
 
 	    };
 
+	    //load the data from the database if this is not a new event/order
+
+	    //if window.event.status == "existing/saved"
+	    /*request
+	              .post('/api/order/new')
+	              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	              .set('X-API-Key', 'foobar')
+	              .set('Accept', 'application/json')
+	              .end(function(err, res){
+	                // Calling the end function will send the request
+	                //this.setState({payment_complete: true});
+	          
+	    });*/
+
 	    _this.changeEventName = _this.changeEventName.bind(_this);
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
 	    _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
-	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleDateChange = _this.handleDateChange.bind(_this);
 	    _this.createCode = _this.createCode.bind(_this);
 	    _this.changeCode = _this.changeCode.bind(_this);
 
@@ -75631,12 +75646,33 @@
 	    //if event name has been added then start autosaving
 
 	    //myTimer;
-	    var myVar = setInterval(function () {
-	      return (
-	        //get the data from state and upload to server
-	        console.log("hello")
-	      );
-	    }, 10000);
+	    //var myVar = setInterval(
+	    //    () => 
+	    //get the data from state and upload to server
+	    //only update if the data has been changed though
+	    //add a flag that updates when they change something
+
+	    //if this.state.changed == true then update
+	    //only update event details
+
+	    //window.event.event_name == this.state.event_name
+	    //window.address == "home"
+	    //window.event_date == "date"
+	    //window.event_time == "time"
+	    //window.custom_code = "custom_code"
+
+	    /*request
+	      .post('/api/order/new')
+	      .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	      .set('X-API-Key', 'foobar')
+	      .set('Accept', 'application/json')
+	      .end(function(err, res){
+	        // Calling the end function will send the request
+	        //this.setState({payment_complete: true});
+	                 });*/
+
+	    //console.log("hello")
+	    //, 10000);
 
 	    //myVar;
 	    //myTimer;
@@ -75656,6 +75692,8 @@
 
 	      //alert();
 
+	      //this.setState({changed: true});
+
 	      this.setState({ event_name: e.target.value });
 	    }
 	  }, {
@@ -75671,10 +75709,10 @@
 	      this.setState({ number_of_guests: e.target.value });
 	    }
 	  }, {
-	    key: 'handleChange',
-	    value: function handleChange(dateString) {
+	    key: 'handleDateChange',
+	    value: function handleDateChange(dateString) {
 
-	      alert(dateString);
+	      //alert(dateString);
 
 	      //this.setState({
 	      //startDate: date
@@ -75683,7 +75721,7 @@
 	  }, {
 	    key: 'onDrop',
 	    value: function onDrop(acceptedFiles) {
-	      var req = request.post('/upload');
+	      var req = _superagent2.default.post('/upload');
 	      acceptedFiles.forEach(function (file) {
 	        req.attach(file.name, file);
 	      });
@@ -75724,7 +75762,7 @@
 	        _react2.default.createElement('br', null),
 	        'Event datetime:',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: this.handleChange }),
+	        _react2.default.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: this.handleDateChange }),
 	        _react2.default.createElement('br', null),
 	        'Or',
 	        _react2.default.createElement('br', null),
@@ -75798,7 +75836,7 @@
 	        _react2.default.createElement('br', null),
 	        'Custom Code (max 30 characters)',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { maxlength: '30', onChange: this.changeCode.bind(this) }),
+	        _react2.default.createElement('input', { maxLength: '30', onChange: this.changeCode.bind(this) }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'button',
@@ -75851,6 +75889,7 @@
 	    //this.getData();
 
 	    //alert("sconely yours1" + this.props.params.order_id);
+	    //alert(JSON.stringify(JSON.parse(localStorage.getItem("order")).links));
 
 	    var _this = _possibleConstructorReturn(this, (SconelySocialTopMenu.__proto__ || Object.getPrototypeOf(SconelySocialTopMenu)).call(this, props));
 
@@ -75862,11 +75901,14 @@
 	  _createClass(SconelySocialTopMenu, [{
 	    key: 'render',
 	    value: function render() {
+
+	      var links = JSON.parse(localStorage.getItem("order")).links;
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement('br', null),
-	        window.event.links.map(function (link) {
+	        links.map(function (link) {
 
 	          var link_temp = "/order/12345/" + link.link;
 	          return _react2.default.createElement(
@@ -76629,7 +76671,7 @@
 
 	    var exists = "no";
 
-	    window.event.links.map(function (link) {
+	    JSON.parse(localStorage.getItem("order")).links.map(function (link) {
 
 	      //alert("yes" + link.link);
 
@@ -76643,7 +76685,7 @@
 
 	      //alert("doesnt exist");
 
-	      window.links.push({ link: "menu", text: "Menu" });
+	      JSON.parse(localStorage.getItem("order")).links.push({ link: "menu", text: "Menu" });
 	    } else {}
 
 	    //    alert("exists");
@@ -76651,12 +76693,49 @@
 
 	    //alert("sconely yours1" + window.guest_chooses);
 
+	    //window.event.number_of_guests = 20;
+	    //window.event.guests_choose = false;
+
 	    _this.state = {
 
 	      value: false,
 	      values: 0
 
 	    };
+
+	    _this.handleValuesChange = _this.handleValuesChange.bind(_this);
+
+	    //myTimer;
+	    //var myVar = setInterval(
+	    //    () => 
+	    //get the data from state and upload to server
+	    //only update if the data has been changed though
+	    //add a flag that updates when they change something
+
+	    //if this.state.changed == true then update
+	    //only update guest details
+
+	    //window.event.event_name == this.state.event_name
+	    //window.address == "home"
+	    //window.event_date == "date"
+	    //window.event_time == "time"
+	    //window.custom_code = "custom_code"
+
+	    /*request
+	      .post('/api/order/new')
+	      .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	      .set('X-API-Key', 'foobar')
+	      .set('Accept', 'application/json')
+	      .end(function(err, res){
+	        // Calling the end function will send the request
+	        //this.setState({payment_complete: true});
+	                 });*/
+
+	    //console.log("hello")
+	    //, 10000);
+
+	    //myVar;
+	    //myTimer;
 
 	    return _this;
 	  }
@@ -76668,7 +76747,7 @@
 	        values: values
 	      });
 
-	      window.guest_chooses = "values";
+	      window.event.number_of_guests = "values";
 	      //alert(window.guest_chooses);
 	    }
 	  }, {
@@ -76722,8 +76801,11 @@
 	          )
 	        ),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'range', id: 'weight', min: '10', value: this.state.values, onChange: this.handleValuesChange.bind(this),
-	          max: '2000', step: '100' }),
+	        _react2.default.createElement('input', { type: 'range', id: 'weight', min: '20', value: this.state.values, onChange: this.handleValuesChange.bind(this),
+	          max: '500', step: '10' }),
+	        this.state.values,
+	        _react2.default.createElement('br', null),
+	        'if you change this you will also have to change the menu',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_reactInputRange2.default, {
 	          maxValue: 20,
@@ -79070,6 +79152,38 @@
 
 	      alert("exists");
 	    }
+
+	    //myTimer;
+	    //var myVar = setInterval(
+	    //    () => 
+	    //get the data from state and upload to server
+	    //only update if the data has been changed though
+	    //add a flag that updates when they change something
+
+	    //if this.state.changed == true then update
+	    //only update menu
+
+	    //window.event.event_name == this.state.event_name
+	    //window.address == "home"
+	    //window.event_date == "date"
+	    //window.event_time == "time"
+	    //window.custom_code = "custom_code"
+
+	    /*request
+	      .post('/api/order/new')
+	      .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	      .set('X-API-Key', 'foobar')
+	      .set('Accept', 'application/json')
+	      .end(function(err, res){
+	        // Calling the end function will send the request
+	        //this.setState({payment_complete: true});
+	                 });*/
+
+	    //console.log("hello")
+	    //, 10000);
+
+	    //myVar;
+	    //myTimer;
 
 	    return _this;
 	  }

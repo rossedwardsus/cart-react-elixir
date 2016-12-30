@@ -15,6 +15,7 @@ var Dropzone = require('react-dropzone');
 
 import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
+import request from 'superagent';
 
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -48,18 +49,29 @@ export default class EventDetails extends React.Component {
         event_address_street: "",
         event_address_city: "",
         event_address_zipcode: "",
-        number_of_guests: 0,
-        guest_choose: "",
-        additiobal_items: {},
         code: 0,
         startDate: moment()
 
     };
 
+    //load the data from the database if this is not a new event/order
+
+    //if window.event.status == "existing/saved"
+    /*request
+              .post('/api/order/new')
+              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+              .set('X-API-Key', 'foobar')
+              .set('Accept', 'application/json')
+              .end(function(err, res){
+                // Calling the end function will send the request
+                //this.setState({payment_complete: true});
+          
+    });*/
+
     this.changeEventName = this.changeEventName.bind(this);
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.createCode = this.createCode.bind(this);
     this.changeCode = this.changeCode.bind(this);
 
@@ -67,11 +79,34 @@ export default class EventDetails extends React.Component {
     //if event name has been added then start autosaving
 
     //myTimer;
-    var myVar = setInterval(
-        () => 
+    //var myVar = setInterval(
+    //    () => 
             //get the data from state and upload to server
-            console.log("hello")
-    , 10000);
+            //only update if the data has been changed though
+            //add a flag that updates when they change something
+            
+            //if this.state.changed == true then update
+            //only update event details
+
+            //window.event.event_name == this.state.event_name
+            //window.address == "home"
+            //window.event_date == "date"
+            //window.event_time == "time"
+            //window.custom_code = "custom_code"
+
+            /*request
+              .post('/api/order/new')
+              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+              .set('X-API-Key', 'foobar')
+              .set('Accept', 'application/json')
+              .end(function(err, res){
+                // Calling the end function will send the request
+                //this.setState({payment_complete: true});
+          
+              });*/
+
+            //console.log("hello")
+    //, 10000);
 
     //myVar;
     //myTimer;
@@ -87,6 +122,8 @@ export default class EventDetails extends React.Component {
   changeEventName(e){
 
     //alert();
+
+    //this.setState({changed: true});
 
     this.setState({event_name: e.target.value})
 
@@ -104,9 +141,9 @@ export default class EventDetails extends React.Component {
 
   }
 
-  handleChange(dateString) {
+  handleDateChange(dateString) {
 
-    alert(dateString);
+    //alert(dateString);
 
     //this.setState({
       //startDate: date
@@ -155,7 +192,7 @@ export default class EventDetails extends React.Component {
         <br/>
         Event datetime:
         <br/>
-        <DatePicker inline selected={this.state.startDate} onChange={this.handleChange} />
+        <DatePicker inline selected={this.state.startDate} onChange={this.handleDateChange} />
         <br/>
         Or
         <br/>
@@ -202,7 +239,7 @@ export default class EventDetails extends React.Component {
         <br/>
         Custom Code (max 30 characters)
         <br/>
-        <input maxlength="30" onChange={this.changeCode.bind(this)}/>
+        <input maxLength="30" onChange={this.changeCode.bind(this)}/>
         <br/>
         <button onClick={this.createCode.bind(this)}>Save Code</button>
        </div>

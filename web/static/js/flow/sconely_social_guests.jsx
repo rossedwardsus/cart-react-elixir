@@ -19,7 +19,7 @@ export default class Guests extends React.Component {
 
     var exists = "no";
 
-    window.event.links.map(function(link){
+    JSON.parse(localStorage.getItem("order")).links.map(function(link){
 
         //alert("yes" + link.link);
 
@@ -29,13 +29,13 @@ export default class Guests extends React.Component {
 
         }
 
-    })
+    });
 
     if(exists == "no"){
 
         //alert("doesnt exist");
   
-        window.links.push({link: "menu", text: "Menu"});
+        JSON.parse(localStorage.getItem("order")).links.push({link: "menu", text: "Menu"});
 
     }else{
 
@@ -45,12 +45,50 @@ export default class Guests extends React.Component {
 
     //alert("sconely yours1" + window.guest_chooses);
 
+    //window.event.number_of_guests = 20;
+    //window.event.guests_choose = false;
+
     this.state = {
 
         value: false,
         values: 0
 
     };
+
+    this.handleValuesChange = this.handleValuesChange.bind(this);
+
+    //myTimer;
+    //var myVar = setInterval(
+    //    () => 
+            //get the data from state and upload to server
+            //only update if the data has been changed though
+            //add a flag that updates when they change something
+            
+            //if this.state.changed == true then update
+            //only update guest details
+
+            //window.event.event_name == this.state.event_name
+            //window.address == "home"
+            //window.event_date == "date"
+            //window.event_time == "time"
+            //window.custom_code = "custom_code"
+
+            /*request
+              .post('/api/order/new')
+              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+              .set('X-API-Key', 'foobar')
+              .set('Accept', 'application/json')
+              .end(function(err, res){
+                // Calling the end function will send the request
+                //this.setState({payment_complete: true});
+          
+              });*/
+
+            //console.log("hello")
+    //, 10000);
+
+    //myVar;
+    //myTimer;
 
   }
 
@@ -59,7 +97,7 @@ export default class Guests extends React.Component {
       values: values,
     });
 
-    window.guest_chooses = "values";
+    window.event.number_of_guests = "values";
     //alert(window.guest_chooses);
   }
 
@@ -97,8 +135,10 @@ export default class Guests extends React.Component {
             <option value="40">40</option>
         </select>
         <br/>
-        <input type="range" id="weight" min="10" value={this.state.values} onChange={this.handleValuesChange.bind(this)}
-       max="2000" step="100"/>
+        <input type="range" id="weight" min="20" value={this.state.values} onChange={this.handleValuesChange.bind(this)}
+       max="500" step="10"/>{this.state.values}
+        <br/>
+        if you change this you will also have to change the menu
         <br/>
         <InputRange
             maxValue={20}

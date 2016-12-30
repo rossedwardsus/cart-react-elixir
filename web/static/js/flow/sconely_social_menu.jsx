@@ -38,6 +38,39 @@ export default class Menu extends React.Component {
         alert("exists");
     }
 
+    //myTimer;
+    //var myVar = setInterval(
+    //    () => 
+            //get the data from state and upload to server
+            //only update if the data has been changed though
+            //add a flag that updates when they change something
+            
+            //if this.state.changed == true then update
+            //only update menu
+
+            //window.event.event_name == this.state.event_name
+            //window.address == "home"
+            //window.event_date == "date"
+            //window.event_time == "time"
+            //window.custom_code = "custom_code"
+
+            /*request
+              .post('/api/order/new')
+              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+              .set('X-API-Key', 'foobar')
+              .set('Accept', 'application/json')
+              .end(function(err, res){
+                // Calling the end function will send the request
+                //this.setState({payment_complete: true});
+          
+              });*/
+
+            //console.log("hello")
+    //, 10000);
+
+    //myVar;
+    //myTimer;
+
   }
 
   static get contextTypes() {

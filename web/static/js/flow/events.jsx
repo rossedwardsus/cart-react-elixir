@@ -33,7 +33,7 @@ export default class Events extends React.Component {
 
   createOrder(order_type) {
 
-    window.event = {order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{link: "event_details", text: "Event Details"}]};
+    localStorage.setItem("order", JSON.stringify({order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}]}));
 
     /*request
       .post('/api/order/new')

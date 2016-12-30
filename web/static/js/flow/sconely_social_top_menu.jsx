@@ -10,6 +10,7 @@ export default class SconelySocialTopMenu extends React.Component {
     //this.getData();
   
     //alert("sconely yours1" + this.props.params.order_id);
+    //alert(JSON.stringify(JSON.parse(localStorage.getItem("order")).links));
 
     this.state = {
     }
@@ -17,10 +18,13 @@ export default class SconelySocialTopMenu extends React.Component {
   }
 
   render(){
+
+  		var links = JSON.parse(localStorage.getItem("order")).links;
+
 		return (
 			<div>
 				<br/>
-				{window.event.links.map(function(link){
+				{links.map(function(link){
 
 					var link_temp = "/order/12345/" + link.link;
 					return(<Link to={link_temp}>{link.text} </Link>);	
