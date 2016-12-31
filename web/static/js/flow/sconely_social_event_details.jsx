@@ -179,7 +179,7 @@ export default class EventDetails extends React.Component {
   render(): React.Element {
     return (
       <div>
-        <SconelySocialTopMenu />
+        <SconelySocialTopMenu order_id={this.props.params.order_id}/>
         <br/>
         <br/>
         <b>Event Details</b>
@@ -222,6 +222,8 @@ export default class EventDetails extends React.Component {
         Zipcode<input maxLength="30"/>
         <br/>
         <input type= "text" onChange={this.changeDeliveryAddress}/>
+        <br/>
+        additional delivery details 
         <br/>
         <br/>
         Add an image for this event:

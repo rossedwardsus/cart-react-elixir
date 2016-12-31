@@ -50,8 +50,8 @@ export default class Guests extends React.Component {
 
     this.state = {
 
-        value: false,
-        values: 0
+        value: 0,
+        //values: 0
 
     };
 
@@ -92,12 +92,11 @@ export default class Guests extends React.Component {
 
   }
 
-  handleValuesChange(component, values) {
-    this.setState({
-      values: values,
-    });
+  handleValuesChange(e) {
+    //alert(JSON.stringify(e.target.value));
+    this.setState({value: e.target.value});
 
-    window.event.number_of_guests = "values";
+    //localStorage.getItem("number_of_guests = "values";
     //alert(window.guest_chooses);
   }
 
@@ -115,13 +114,6 @@ export default class Guests extends React.Component {
       <div>
         <SconelySocialTopMenu />
         <br/>
-        {window.guest_chooses}
-        <br/>
-        if window.guest_chooses == true then show both menus
-        <br/>
-        else just show the assortments
-        <br/>
-        <br/>
         <b>Guests</b>
         <br/>
         <br/>
@@ -129,36 +121,12 @@ export default class Guests extends React.Component {
         <br/>
         Number of guests1:
         <br/>
-        <select onChange={this.props.changeNumberOfGuests}>
-            <option value=""></option>
-            <option value="20">20</option>
-            <option value="40">40</option>
-        </select>
         <br/>
         <input type="range" id="weight" min="20" value={this.state.values} onChange={this.handleValuesChange.bind(this)}
-       max="500" step="10"/>{this.state.values}
+       max="500" step="10"/>{this.state.value}
         <br/>
-        if you change this you will also have to change the menu
         <br/>
-        <InputRange
-            maxValue={20}
-            minValue={0}
-            value={this.state.values}
-            onChange={this.handleValuesChange.bind(this)}
-          />
-        Guests choose item:
-        <br/>
-        <ToggleButton
-          value={ this.state.value || false }
-          onToggle={(value) => {
-            this.setState({
-              value: !value,
-            });
-            window.guest_chooses = value;
-          }} />
-        <br/>
-        {guests_choices}
-        <br/>
+        Guest responses
         <br/>
         <br/>
       </div>

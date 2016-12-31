@@ -23,6 +23,8 @@ export default class Events extends React.Component {
         
     };
 
+     localStorage.setItem("user", JSON.stringify({name: "ross", orders: [{order_id: 12345, type: "order_type", links: [{link: "event_details", text: "Event Details"}], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new"}]}));
+
   }
 
   static get contextTypes() {
@@ -33,7 +35,21 @@ export default class Events extends React.Component {
 
   createOrder(order_type) {
 
-    localStorage.setItem("order", JSON.stringify({order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}]}));
+    if(order_type == "sconely_social"){
+
+        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        orders.push({order_id: 54321, type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+       
+
+    }else if(order_type == "sconely_signature"){
+
+        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        orders.push({order_id: 54321, type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+         
+    }
+
 
     /*request
       .post('/api/order/new')
@@ -58,13 +74,18 @@ export default class Events extends React.Component {
   }
 
   render(): React.Element {
+
+    var orders = JSON.parse(localStorage.getItem("user")).orders;
+
     return (
       <ul>
         links to create order
         <br/>
-        <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Social1</a>
+        <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
         <br/>
-        <OrdersList />
+        <a onClick={this.createOrder.bind(this, "sconely_signature")}>Sconely Signature</a>
+        <br/>
+        <OrdersList orders={orders}/>
       </ul>
     )
   }

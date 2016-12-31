@@ -25,9 +25,11 @@ export default class Menu extends React.Component {
     this.selectNumberOfItem = this.selectNumberOfItem.bind(this);
     this.selectItem = this.selectItem.bind(this);
 
+    alert(JSON.parse(localStorage.getItem("order")).type);
+
     //alert(window.links.indexOf({link: "menu", text: "Menu"}));
 
-    if(window.event.links.indexOf({link: "menu", text: "Menu"}) == -1){
+    /*if(window.event.links.indexOf({link: "menu", text: "Menu"}) == -1){
 
         //alert("doesnt exist");
   
@@ -36,7 +38,7 @@ export default class Menu extends React.Component {
     }else{
 
         alert("exists");
-    }
+    }*/
 
     //myTimer;
     //var myVar = setInterval(
@@ -107,9 +109,11 @@ export default class Menu extends React.Component {
         <SconelySocialTopMenu />
         <br/>
         <br/>
-        if guests cant choose show this:
+        if social guests cant choose
         <br/>
-        total items
+        if signature guests can choose
+        <br/>
+        total items-subtotal
         <br/>
         <br/>
         item1 photo

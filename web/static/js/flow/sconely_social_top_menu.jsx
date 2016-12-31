@@ -9,7 +9,7 @@ export default class SconelySocialTopMenu extends React.Component {
     super(props);
     //this.getData();
   
-    //alert("sconely yours1" + this.props.params.order_id);
+    //alert("sconely yours1" + this.props.order_id);
     //alert(JSON.stringify(JSON.parse(localStorage.getItem("order")).links));
 
     this.state = {
@@ -17,9 +17,22 @@ export default class SconelySocialTopMenu extends React.Component {
 
   }
 
+  static get contextTypes() {
+    return {
+      router: React.PropTypes.object.isRequired,
+    };
+  }
+
   render(){
 
-  		var links = JSON.parse(localStorage.getItem("order")).links;
+  		var orders = JSON.parse(localStorage.getItem("user")).orders;
+
+  		function findOrder(order) { 
+  			//alert(order.order_id);
+		    return order.order_id === 12345;
+		}
+
+		var links = orders.find(findOrder).links; 
 
 		return (
 			<div>

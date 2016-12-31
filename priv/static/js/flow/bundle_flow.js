@@ -45457,6 +45457,8 @@
 
 	    _this.state = {};
 
+	    localStorage.setItem("user", JSON.stringify({ name: "ross", orders: [{ order_id: 12345, type: "order_type", links: [{ link: "event_details", text: "Event Details" }], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new" }] }));
+
 	    return _this;
 	  }
 
@@ -45464,7 +45466,17 @@
 	    key: 'createOrder',
 	    value: function createOrder(order_type) {
 
-	      localStorage.setItem("order", JSON.stringify({ order_id: 1234, type: "social", address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new", links: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }] }));
+	      if (order_type == "sconely_social") {
+
+	        var orders = JSON.parse(localStorage.getItem("user")).orders;
+	        //alert(orders);
+	        orders.push({ order_id: 54321, type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "menu", text: "Menu" }], status: "new" });
+	      } else if (order_type == "sconely_signature") {
+
+	        var orders = JSON.parse(localStorage.getItem("user")).orders;
+	        //alert(orders);
+	        orders.push({ order_id: 54321, type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
+	      }
 
 	      /*request
 	        .post('/api/order/new')
@@ -45487,6 +45499,9 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+
+	      var orders = JSON.parse(localStorage.getItem("user")).orders;
+
 	      return _react2.default.createElement(
 	        'ul',
 	        null,
@@ -45494,11 +45509,17 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'a',
-	          { onClick: this.createOrder.bind(this, "sconely_yours") },
-	          'Sconely Social1'
+	          { onClick: this.createOrder.bind(this, "sconely_social") },
+	          'Sconely Social'
 	        ),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_orders_list2.default, null)
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: this.createOrder.bind(this, "sconely_signature") },
+	          'Sconely Signature'
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(_orders_list2.default, { orders: orders })
 	      );
 	    }
 	  }], [{
@@ -45572,7 +45593,22 @@
 	        null,
 	        'List of orders',
 	        _react2.default.createElement('br', null),
-	        'Date-Order Type'
+	        'Date-Order Type',
+	        _react2.default.createElement('br', null),
+	        this.props.orders.map(function (order) {
+
+	          var link = "/order/" + order.order_id + "/event_details";
+
+	          return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: link },
+	              order.type
+	            )
+	          );
+	        })
 	      );
 	    }
 	  }]);
@@ -75745,7 +75781,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
+	        _react2.default.createElement(_sconely_social_top_menu2.default, { order_id: this.props.params.order_id }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
@@ -75813,6 +75849,8 @@
 	        _react2.default.createElement('input', { maxLength: '30' }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
+	        _react2.default.createElement('br', null),
+	        'additional delivery details',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        'Add an image for this event:',
@@ -75888,7 +75926,7 @@
 
 	    //this.getData();
 
-	    //alert("sconely yours1" + this.props.params.order_id);
+	    //alert("sconely yours1" + this.props.order_id);
 	    //alert(JSON.stringify(JSON.parse(localStorage.getItem("order")).links));
 
 	    var _this = _possibleConstructorReturn(this, (SconelySocialTopMenu.__proto__ || Object.getPrototypeOf(SconelySocialTopMenu)).call(this, props));
@@ -75902,7 +75940,14 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var links = JSON.parse(localStorage.getItem("order")).links;
+	      var orders = JSON.parse(localStorage.getItem("user")).orders;
+
+	      function findOrder(order) {
+	        //alert(order.order_id);
+	        return order.order_id === 12345;
+	      }
+
+	      var links = orders.find(findOrder).links;
 
 	      return _react2.default.createElement(
 	        'div',
@@ -75919,6 +75964,13 @@
 	          );
 	        })
 	      );
+	    }
+	  }], [{
+	    key: 'contextTypes',
+	    get: function get() {
+	      return {
+	        router: _react2.default.PropTypes.object.isRequired
+	      };
 	    }
 	  }]);
 
@@ -76698,9 +76750,7 @@
 
 	    _this.state = {
 
-	      value: false,
-	      values: 0
-
+	      value: 0
 	    };
 
 	    _this.handleValuesChange = _this.handleValuesChange.bind(_this);
@@ -76742,18 +76792,16 @@
 
 	  _createClass(Guests, [{
 	    key: 'handleValuesChange',
-	    value: function handleValuesChange(component, values) {
-	      this.setState({
-	        values: values
-	      });
+	    value: function handleValuesChange(e) {
+	      //alert(JSON.stringify(e.target.value));
+	      this.setState({ value: e.target.value });
 
-	      window.event.number_of_guests = "values";
+	      //localStorage.getItem("number_of_guests = "values";
 	      //alert(window.guest_chooses);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
 
 	      var guests_choices = "";
 
@@ -76767,13 +76815,6 @@
 	        null,
 	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
 	        _react2.default.createElement('br', null),
-	        window.guest_chooses,
-	        _react2.default.createElement('br', null),
-	        'if window.guest_chooses == true then show both menus',
-	        _react2.default.createElement('br', null),
-	        'else just show the assortments',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'b',
 	          null,
@@ -76785,47 +76826,13 @@
 	        _react2.default.createElement('br', null),
 	        'Number of guests1:',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'select',
-	          { onChange: this.props.changeNumberOfGuests },
-	          _react2.default.createElement('option', { value: '' }),
-	          _react2.default.createElement(
-	            'option',
-	            { value: '20' },
-	            '20'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            { value: '40' },
-	            '40'
-	          )
-	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('input', { type: 'range', id: 'weight', min: '20', value: this.state.values, onChange: this.handleValuesChange.bind(this),
 	          max: '500', step: '10' }),
-	        this.state.values,
+	        this.state.value,
 	        _react2.default.createElement('br', null),
-	        'if you change this you will also have to change the menu',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_reactInputRange2.default, {
-	          maxValue: 20,
-	          minValue: 0,
-	          value: this.state.values,
-	          onChange: this.handleValuesChange.bind(this)
-	        }),
-	        'Guests choose item:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_reactToggleButton2.default, {
-	          value: this.state.value || false,
-	          onToggle: function onToggle(value) {
-	            _this2.setState({
-	              value: !value
-	            });
-	            window.guest_chooses = value;
-	          } }),
-	        _react2.default.createElement('br', null),
-	        guests_choices,
-	        _react2.default.createElement('br', null),
+	        'Guest responses',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
 	      );
@@ -79141,17 +79148,16 @@
 	    _this.selectNumberOfItem = _this.selectNumberOfItem.bind(_this);
 	    _this.selectItem = _this.selectItem.bind(_this);
 
+	    alert(JSON.parse(localStorage.getItem("order")).type);
+
 	    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
 
-	    if (window.event.links.indexOf({ link: "menu", text: "Menu" }) == -1) {
-
-	      //alert("doesnt exist");
-
-	      window.event.links.push({ link: "preview", text: "Preview" }, { link: "payment", text: "Payment" });
-	    } else {
-
-	      alert("exists");
-	    }
+	    /*if(window.event.links.indexOf({link: "menu", text: "Menu"}) == -1){
+	         //alert("doesnt exist");
+	           window.event.links.push({link: "preview", text: "Preview"}, {link: "payment", text: "Payment"});
+	     }else{
+	         alert("exists");
+	    }*/
 
 	    //myTimer;
 	    //var myVar = setInterval(
@@ -79219,9 +79225,11 @@
 	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        'if guests cant choose show this:',
+	        'if social guests cant choose',
 	        _react2.default.createElement('br', null),
-	        'total items',
+	        'if signature guests can choose',
+	        _react2.default.createElement('br', null),
+	        'total items-subtotal',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        'item1 photo',
