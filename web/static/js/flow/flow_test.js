@@ -22,11 +22,11 @@ import User from "./user";
 import Events from "./events";
 import SconelySocial from "./sconely_social";
 import SconelySocialEventDetails from "./sconely_social_event_details";
-import SconelySocialGuests from "./sconely_social_guests";
+import SconelySignatureGuests from "./sconely_signature_guests";
 import SconelySocialMenu from "./sconely_social_menu";
 import SconelySignaturePreview from "./sconely_signature_preview";
-//import SconelySocialPayment from "./sconely_social_guests";
-import Payment from "./user/payment";
+import OrderPayment from "./order_payment";
+import ProfilePayment from "./user/payment";
 
 //import * as reducers from './reducers'
 
@@ -139,13 +139,13 @@ const Root = () => (
         <IndexRoute component={Events} />
         <Route path="/order/:order_id" component={SconelySocial} />
         <Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
-        <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySocialGuests guest_chooses="value" />)} />
+        <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySignatureGuests guest_chooses="value" />)} />
         <Route path="/order/:order_id/menu" component={SconelySocialMenu} />
         <Route path="/order/:order_id/preview" component={SconelySignaturePreview} />
-        <Route path="/order/:order_id/payment" component={SconelySocial} />
+        <Route path="/order/:order_id/payment" component={OrderPayment} />
         <Route path="/user/profile" component={SconelySocial} />
         <Route path="/user/delivery_address" component={SconelySocial} />
-        <Route path="/user/payment" component={Payment} />
+        <Route path="/user/payment" component={ProfilePayment} />
         <Route path="/user/orders" component={Events} />
       </Route>
     </Router>

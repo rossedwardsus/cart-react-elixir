@@ -96,9 +96,9 @@
 
 	var _sconely_social_event_details2 = _interopRequireDefault(_sconely_social_event_details);
 
-	var _sconely_social_guests = __webpack_require__(834);
+	var _sconely_signature_guests = __webpack_require__(834);
 
-	var _sconely_social_guests2 = _interopRequireDefault(_sconely_social_guests);
+	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 
 	var _sconely_social_menu = __webpack_require__(848);
 
@@ -107,6 +107,10 @@
 	var _sconely_signature_preview = __webpack_require__(849);
 
 	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
+
+	var _order_payment = __webpack_require__(847);
+
+	var _order_payment2 = _interopRequireDefault(_order_payment);
 
 	var _payment = __webpack_require__(850);
 
@@ -120,15 +124,13 @@
 	//  todos: Array<Object>,
 	//}
 
-	//import autobind from 'autobind-decorator'
-	//import TodoListItem from './TodoListItem'
-
 	var reducer = (0, _redux.combineReducers)({
 	  //...reducers,
 	  routing: _reactRouterRedux.routerReducer
 	});
-	//import SconelySocialPayment from "./sconely_social_guests";
 
+	//import autobind from 'autobind-decorator'
+	//import TodoListItem from './TodoListItem'
 
 	var DevTools = (0, _reduxDevtools.createDevTools)(_react2.default.createElement(
 	  _reduxDevtoolsDockMonitor2.default,
@@ -230,11 +232,11 @@
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/event_details', component: _sconely_social_event_details2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', guest_chooses: 'yes', component: function component() {
-	            return _react2.default.createElement(_sconely_social_guests2.default, { guest_chooses: 'value' });
+	            return _react2.default.createElement(_sconely_signature_guests2.default, { guest_chooses: 'value' });
 	          } }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/menu', component: _sconely_social_menu2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/preview', component: _sconely_signature_preview2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: _sconely_social2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: _order_payment2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/profile', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_address', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment', component: _payment2.default }),
@@ -45460,7 +45462,7 @@
 
 	    _this.state = {};
 
-	    localStorage.setItem("user", JSON.stringify({ name: "ross", orders: [{ order_id: 12345, type: "signature", links: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "preview", text: "Preview" }, { link: "payment", text: "Payment" }], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "paid" }] }));
+	    localStorage.setItem("user", JSON.stringify({ name: "ross", orders: [{ order_id: 12345, type: "signature", links: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }, { link: "preview", text: "Preview" }, { link: "payment", text: "Payment" }], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "paid" }] }));
 
 	    return _this;
 	  }
@@ -47235,9 +47237,9 @@
 
 	var _sconely_social_event_details2 = _interopRequireDefault(_sconely_social_event_details);
 
-	var _sconely_social_guests = __webpack_require__(834);
+	var _sconely_signature_guests = __webpack_require__(834);
 
-	var _sconely_social_guests2 = _interopRequireDefault(_sconely_social_guests);
+	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 
 	var _sconely_social_additional_items = __webpack_require__(845);
 
@@ -47247,9 +47249,9 @@
 
 	var _sconely_social_code2 = _interopRequireDefault(_sconely_social_code);
 
-	var _sconely_social_payment = __webpack_require__(847);
+	var _order_payment = __webpack_require__(847);
 
-	var _sconely_social_payment2 = _interopRequireDefault(_sconely_social_payment);
+	var _order_payment2 = _interopRequireDefault(_order_payment);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47472,7 +47474,7 @@
 	        _react2.default.createElement(_sconely_social_event_details2.default, null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_sconely_social_guests2.default, { changeNumberOfGuests: this.changeNumberOfGuests.bind(this) }),
+	        _react2.default.createElement(_sconely_signature_guests2.default, { changeNumberOfGuests: this.changeNumberOfGuests.bind(this) }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'b',
@@ -47497,7 +47499,7 @@
 	        this.state.order_total,
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_sconely_social_payment2.default, { total: this.state.order_total }),
+	        _react2.default.createElement(_order_payment2.default, { total: this.state.order_total }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
@@ -75810,7 +75812,7 @@
 	        _react2.default.createElement('br', null),
 	        'Delivery Time',
 	        _react2.default.createElement('br', null),
-	        'Event address:',
+	        'Delivery address:',
 	        _react2.default.createElement('br', null),
 	        'Choose existing address:',
 	        _react2.default.createElement('br', null),
@@ -75854,6 +75856,8 @@
 	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
 	        _react2.default.createElement('br', null),
 	        'additional delivery details',
+	        _react2.default.createElement('br', null),
+	        'message to guests for signature',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        'Add an image for this event:',
@@ -78946,6 +78950,10 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
+	var _sconely_social_top_menu = __webpack_require__(828);
+
+	var _sconely_social_top_menu2 = _interopRequireDefault(_sconely_social_top_menu);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -78975,6 +78983,17 @@
 	      payment_complete: false
 
 	    };
+
+	    //localstorage get order info uasing props
+	    //function findOrder(order) { 
+	    //alert(order.order_id);
+	    //    return order.order_id === 12345;
+	    //}
+
+	    //var links = orders.find(findOrder).links; 
+	    //get the total items and multiply plus tax and delivery
+	    //if type == signature get guest amount
+	    //else get items
 
 	    return _this;
 	  }
@@ -79009,23 +79028,35 @@
 	    value: function render() {
 
 	      var body = "";
+	      var subtotal = 0.00;
+	      var total = 0.00;
+
+	      if (true) {
+
+	        subtotal = "Subtotal: " + 5.00 * 5.00;
+	        total = "Total: " + 5.00 * 5.00 + 10.00;
+	      }
 
 	      if (this.state.payment_complete == false) {
 
 	        body = _react2.default.createElement(
 	          'div',
 	          null,
+	          _react2.default.createElement(_sconely_social_top_menu2.default, null),
+	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
 	            'b',
 	            null,
 	            'Payment'
 	          ),
 	          _react2.default.createElement('br', null),
-	          'Subtotal: ',
-	          this.props.total,
+	          _react2.default.createElement('br', null),
+	          subtotal,
 	          _react2.default.createElement('br', null),
 	          'Delivery Cost: based on distance needed to travel and tax',
 	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          total,
 	          'Radio',
 	          _react2.default.createElement('br', null),
 	          _react2.default.createElement(
@@ -79218,6 +79249,8 @@
 
 	      //alert(e.target.value);
 	      this.props.selectMenuItems(e.target.value);
+
+	      //localstorage push items
 	    }
 	  }, {
 	    key: 'render',
@@ -79471,21 +79504,16 @@
 	        _react2.default.createElement(
 	          'b',
 	          null,
-	          'Guests'
+	          'Event Name'
 	        ),
 	        _react2.default.createElement('br', null),
+	        'Date time:',
 	        _react2.default.createElement('br', null),
-	        'Tell us about your guests:',
+	        'Address:',
 	        _react2.default.createElement('br', null),
-	        'Number of guests1:',
+	        'Your host:',
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'range', id: 'weight', min: '20', value: this.state.values, onChange: this.handleValuesChange.bind(this),
-	          max: '500', step: '10' }),
-	        this.state.value,
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'Guest responses',
+	        'Please select from the following items:',
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null)
 	      );

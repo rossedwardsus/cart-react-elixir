@@ -4,6 +4,8 @@ import React from 'react'
 
 import request from 'superagent';
 
+import SconelySocialTopMenu from './sconely_social_top_menu';
+
 export default class Payment extends React.Component {
   //props: Props;
 
@@ -20,6 +22,17 @@ export default class Payment extends React.Component {
         payment_complete: false
         
     };
+
+    //localstorage get order info uasing props
+    //function findOrder(order) { 
+        //alert(order.order_id);
+    //    return order.order_id === 12345;
+    //}
+
+    //var links = orders.find(findOrder).links; 
+    //get the total items and multiply plus tax and delivery
+    //if type == signature get guest amount
+    //else get items
 
   }
 
@@ -60,16 +73,30 @@ export default class Payment extends React.Component {
   render(): React.Element {
 
     var body = "";
+    var subtotal = 0.00;
+    var total = 0.00;
+
+    if("order_type" == "order_type"){
+        
+        subtotal = "Subtotal: " + (5.00 * 5.00);
+        total = "Total: " + (5.00 * 5.00) + 10.00;
+    
+    }
 
     if(this.state.payment_complete == false){
 
       body = <div>
+              <SconelySocialTopMenu />
+              <br/>
               <b>Payment</b>
-                <br/>
-                Subtotal: {this.props.total}
-                <br/>
+              <br/>
+              <br/>
+                {subtotal}           
+                <br/>     
                 Delivery Cost: based on distance needed to travel and tax
                 <br/>
+                <br/>
+                {total}
                 Radio
                 <br/>
                 <select onChange={this.selectPaymentOption.bind(this)}>

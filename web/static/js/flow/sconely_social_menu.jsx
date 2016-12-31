@@ -101,6 +101,8 @@ export default class Menu extends React.Component {
     //alert(e.target.value);
     this.props.selectMenuItems(e.target.value);
 
+    //localstorage push items
+
   }
 
   render(): React.Element {

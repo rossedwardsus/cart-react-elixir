@@ -201,7 +201,7 @@ export default class EventDetails extends React.Component {
         <br/>
         Delivery Time
         <br/>
-        Event address:
+        Delivery address:
         <br/>
         Choose existing address:
         <br/>
@@ -224,6 +224,8 @@ export default class EventDetails extends React.Component {
         <input type= "text" onChange={this.changeDeliveryAddress}/>
         <br/>
         additional delivery details 
+        <br/>
+        message to guests for signature
         <br/>
         <br/>
         Add an image for this event:

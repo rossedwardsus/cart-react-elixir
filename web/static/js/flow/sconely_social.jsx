@@ -15,11 +15,11 @@ import { DateField, Calendar } from 'react-date-picker';
 import { Link } from 'react-router';
 
 import EventDetails from './sconely_social_event_details';
-import Guests from './sconely_social_guests';
+import Guests from './sconely_signature_guests';
 //import ChooseMenu from './sconely_social_choose_menu';
 import AdditionalItems from './sconely_social_additional_items';
 import Code from './sconely_social_code';
-import Payment from './sconely_social_payment';
+import Payment from './order_payment';
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
   //console.log(dateString)
