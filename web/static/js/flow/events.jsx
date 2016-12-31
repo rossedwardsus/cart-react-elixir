@@ -23,7 +23,7 @@ export default class Events extends React.Component {
         
     };
 
-     localStorage.setItem("user", JSON.stringify({name: "ross", orders: [{order_id: 12345, type: "signature", links: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}, {link: "preview", text: "Preview"}, {link: "payment", text: "Payment"}], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "paid"}]}));
+     localStorage.setItem("user", JSON.stringify({name: "ross", orders: [{order_id: 12345, order_type: "signature", links: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}, {link: "preview", text: "Preview"}, {link: "payment", text: "Payment"}], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "paid"}]}));
 
   }
 
@@ -39,14 +39,14 @@ export default class Events extends React.Component {
 
         var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        orders.push({order_id: 54321, type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
        
 
     }else if(order_type == "sconely_signature"){
 
         var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        orders.push({order_id: 54321, type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
          
     }
 

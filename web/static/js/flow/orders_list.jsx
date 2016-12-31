@@ -32,7 +32,7 @@ export default class OrdersList extends React.Component {
           var link = "/order/" + order.order_id + "/event_details";
 
           return(
-              <div><Link to={link}>{order.type}</Link></div>
+              <div><Link to={link}>{order.order_type}</Link></div>
           )
         })}
       </ul>

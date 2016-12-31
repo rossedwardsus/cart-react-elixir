@@ -7,6 +7,8 @@ require('react-datepicker/dist/react-datepicker.css');
 
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
+import Autocomplete from 'react-google-autocomplete';
+
 
 //<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
 
@@ -44,6 +46,8 @@ export default class EventDetails extends React.Component {
 
     this.state = {
 
+        order_id: this.props.params.order_id,
+        order_type: "",
         event_name: "",
         event_datetime: "",
         event_address_street: "",
@@ -53,6 +57,8 @@ export default class EventDetails extends React.Component {
         startDate: moment()
 
     };
+
+    
 
     //load the data from the database if this is not a new event/order
 
@@ -74,6 +80,7 @@ export default class EventDetails extends React.Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.createCode = this.createCode.bind(this);
     this.changeCode = this.changeCode.bind(this);
+    //this.findOrder = this.findOrder.bind(this);
 
     //autosave
     //if event name has been added then start autosaving
@@ -118,6 +125,21 @@ export default class EventDetails extends React.Component {
   //_handleCompleteTodo(id: string): void {
     // do something to mark this todo as complete
   //}
+
+  componentDidMount(){
+
+    var orders = JSON.parse(localStorage.getItem("user")).orders;    
+
+    function findOrder(order) { 
+            //alert(order.order_id);
+            return order.order_id === 12345;
+    };
+
+    var order_type = orders.find(findOrder).order_type; 
+    //alert(order_type);
+    this.setState({order_type: order_type});
+
+  }
 
   changeEventName(e){
 
@@ -182,15 +204,17 @@ export default class EventDetails extends React.Component {
         <SconelySocialTopMenu order_id={this.props.params.order_id}/>
         <br/>
         <br/>
-        <b>Event Details</b>
+        {this.state.order_type == "signature" &&
+        <b>Event Details-only show for signature</b>
+        }
         <br/>
         To get start please tell us about your event:
         <br/>
-        Event Name (max 30 characters)
+        Event Name (max 30 characters)only show for signature
         <br/>
         <input type= "text" maxLength="30" onChange={this.changeEventName}/>
         <br/>
-        Event datetime:
+        Event datetime:only show for signature
         <br/>
         <DatePicker inline selected={this.state.startDate} onChange={this.handleDateChange} />
         <br/>
@@ -199,9 +223,22 @@ export default class EventDetails extends React.Component {
         <br/>
         Event Time
         <br/>
-        Delivery Time
+        Delivery Date Time
         <br/>
-        Delivery address:
+        <br/>
+        Automcomplete test:
+        <br/>
+        <Autocomplete
+            style={{width: '90%'}}
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+            types={['address']}
+            componentRestrictions={{country: "us"}}
+        />
+        <br/>
+        <br/>
+        Event/Delivery Address address:
         <br/>
         Choose existing address:
         <br/>
@@ -228,12 +265,14 @@ export default class EventDetails extends React.Component {
         message to guests for signature
         <br/>
         <br/>
-        Add an image for this event:
+        Add an image for this event: only for signature
         <br/>
         <Dropzone onDrop={this.onDrop}>
               <div>Try dropping some files here, or click to select files to upload.</div>
         </Dropzone>
         <br/>
+        <br/>
+        Only for signature:
         <br/>
         Event Code:
         <br/>

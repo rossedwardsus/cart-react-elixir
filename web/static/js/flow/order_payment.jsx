@@ -97,7 +97,11 @@ export default class Payment extends React.Component {
                 <br/>
                 <br/>
                 {total}
-                Radio
+                <br/>
+                <br/>
+                Choose payent method:
+                <br/>
+                <input type="radio" name="payment"/>
                 <br/>
                 <select onChange={this.selectPaymentOption.bind(this)}>
                   <option value=""></option>
@@ -108,7 +112,9 @@ export default class Payment extends React.Component {
                   })}
                 </select>
                 <br/>
-                Add another
+                Or
+                <br/>
+                <input type="radio" name="payment"/>Add another
                 <br/>
                 Name this card:
                 <br/>
