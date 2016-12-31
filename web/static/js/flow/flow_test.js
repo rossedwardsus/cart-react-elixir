@@ -24,7 +24,7 @@ import SconelySocial from "./sconely_social";
 import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySocialGuests from "./sconely_social_guests";
 import SconelySocialMenu from "./sconely_social_menu";
-//import SconelySocialPreview from "./sconely_social_guests";
+import SconelySignaturePreview from "./sconely_signature_preview";
 //import SconelySocialPayment from "./sconely_social_guests";
 import Payment from "./user/payment";
 
@@ -141,7 +141,7 @@ const Root = () => (
         <Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
         <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySocialGuests guest_chooses="value" />)} />
         <Route path="/order/:order_id/menu" component={SconelySocialMenu} />
-        <Route path="/order/:order_id/preview" component={SconelySocial} />
+        <Route path="/order/:order_id/preview" component={SconelySignaturePreview} />
         <Route path="/order/:order_id/payment" component={SconelySocial} />
         <Route path="/user/profile" component={SconelySocial} />
         <Route path="/user/delivery_address" component={SconelySocial} />

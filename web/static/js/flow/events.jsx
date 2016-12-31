@@ -23,7 +23,7 @@ export default class Events extends React.Component {
         
     };
 
-     localStorage.setItem("user", JSON.stringify({name: "ross", orders: [{order_id: 12345, type: "order_type", links: [{link: "event_details", text: "Event Details"}], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new"}]}));
+     localStorage.setItem("user", JSON.stringify({name: "ross", orders: [{order_id: 12345, type: "signature", links: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "preview", text: "Preview"}, {link: "payment", text: "Payment"}], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "paid"}]}));
 
   }
 

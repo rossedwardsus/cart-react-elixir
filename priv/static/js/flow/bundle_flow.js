@@ -104,7 +104,11 @@
 
 	var _sconely_social_menu2 = _interopRequireDefault(_sconely_social_menu);
 
-	var _payment = __webpack_require__(849);
+	var _sconely_signature_preview = __webpack_require__(849);
+
+	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
+
+	var _payment = __webpack_require__(850);
 
 	var _payment2 = _interopRequireDefault(_payment);
 
@@ -116,16 +120,15 @@
 	//  todos: Array<Object>,
 	//}
 
+	//import autobind from 'autobind-decorator'
+	//import TodoListItem from './TodoListItem'
+
 	var reducer = (0, _redux.combineReducers)({
 	  //...reducers,
 	  routing: _reactRouterRedux.routerReducer
 	});
-	//import SconelySocialPreview from "./sconely_social_guests";
 	//import SconelySocialPayment from "./sconely_social_guests";
 
-
-	//import autobind from 'autobind-decorator'
-	//import TodoListItem from './TodoListItem'
 
 	var DevTools = (0, _reduxDevtools.createDevTools)(_react2.default.createElement(
 	  _reduxDevtoolsDockMonitor2.default,
@@ -230,7 +233,7 @@
 	            return _react2.default.createElement(_sconely_social_guests2.default, { guest_chooses: 'value' });
 	          } }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/menu', component: _sconely_social_menu2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/preview', component: _sconely_social2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/preview', component: _sconely_signature_preview2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/payment', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/profile', component: _sconely_social2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_address', component: _sconely_social2.default }),
@@ -45457,7 +45460,7 @@
 
 	    _this.state = {};
 
-	    localStorage.setItem("user", JSON.stringify({ name: "ross", orders: [{ order_id: 12345, type: "order_type", links: [{ link: "event_details", text: "Event Details" }], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "new" }] }));
+	    localStorage.setItem("user", JSON.stringify({ name: "ross", orders: [{ order_id: 12345, type: "signature", links: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "preview", text: "Preview" }, { link: "payment", text: "Payment" }], delivery_address: "", event_name: "", guest_chooses: false, number_of_guests: 0, menu: [], status: "paid" }] }));
 
 	    return _this;
 	  }
@@ -79321,6 +79324,181 @@
 
 /***/ },
 /* 849 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(142);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactToggleButton = __webpack_require__(835);
+
+	var _reactToggleButton2 = _interopRequireDefault(_reactToggleButton);
+
+	var _reactInputRange = __webpack_require__(836);
+
+	var _reactInputRange2 = _interopRequireDefault(_reactInputRange);
+
+	var _sconely_social_top_menu = __webpack_require__(828);
+
+	var _sconely_social_top_menu2 = _interopRequireDefault(_sconely_social_top_menu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//import 'react-input-range/react-input-range.css';
+
+	var SconelySignaturePreview = function (_React$Component) {
+	  _inherits(SconelySignaturePreview, _React$Component);
+
+	  //props: Props;
+
+	  function SconelySignaturePreview(props) {
+	    _classCallCheck(this, SconelySignaturePreview);
+
+	    //this.getData();
+
+	    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
+
+	    var _this = _possibleConstructorReturn(this, (SconelySignaturePreview.__proto__ || Object.getPrototypeOf(SconelySignaturePreview)).call(this, props));
+
+	    var exists = "no";
+
+	    JSON.parse(localStorage.getItem("order")).links.map(function (link) {
+
+	      //alert("yes" + link.link);
+
+	      if (link.link == "menu") {
+
+	        exists = "yes";
+	      }
+	    });
+
+	    if (exists == "no") {
+
+	      //alert("doesnt exist");
+
+	      JSON.parse(localStorage.getItem("order")).links.push({ link: "menu", text: "Menu" });
+	    } else {}
+
+	    //    alert("exists");
+
+
+	    //alert("sconely yours1" + window.guest_chooses);
+
+	    //window.event.number_of_guests = 20;
+	    //window.event.guests_choose = false;
+
+	    _this.state = {
+
+	      value: 0
+	    };
+
+	    _this.handleValuesChange = _this.handleValuesChange.bind(_this);
+
+	    //myTimer;
+	    //var myVar = setInterval(
+	    //    () => 
+	    //get the data from state and upload to server
+	    //only update if the data has been changed though
+	    //add a flag that updates when they change something
+
+	    //if this.state.changed == true then update
+	    //only update guest details
+
+	    //window.event.event_name == this.state.event_name
+	    //window.address == "home"
+	    //window.event_date == "date"
+	    //window.event_time == "time"
+	    //window.custom_code = "custom_code"
+
+	    /*request
+	      .post('/api/order/new')
+	      .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	      .set('X-API-Key', 'foobar')
+	      .set('Accept', 'application/json')
+	      .end(function(err, res){
+	        // Calling the end function will send the request
+	        //this.setState({payment_complete: true});
+	                 });*/
+
+	    //console.log("hello")
+	    //, 10000);
+
+	    //myVar;
+	    //myTimer;
+
+	    return _this;
+	  }
+
+	  _createClass(SconelySignaturePreview, [{
+	    key: 'handleValuesChange',
+	    value: function handleValuesChange(e) {
+	      //alert(JSON.stringify(e.target.value));
+	      this.setState({ value: e.target.value });
+
+	      //localStorage.getItem("number_of_guests = "values";
+	      //alert(window.guest_chooses);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var guests_choices = "";
+
+	      if (this.state.value == true) {
+
+	        guests_choices = "Ross Edwards rossedwards.us@gmail.com";
+	      }
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'b',
+	          null,
+	          'Guests'
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'Tell us about your guests:',
+	        _react2.default.createElement('br', null),
+	        'Number of guests1:',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('input', { type: 'range', id: 'weight', min: '20', value: this.state.values, onChange: this.handleValuesChange.bind(this),
+	          max: '500', step: '10' }),
+	        this.state.value,
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null),
+	        'Guest responses',
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement('br', null)
+	      );
+	    }
+	  }]);
+
+	  return SconelySignaturePreview;
+	}(_react2.default.Component);
+
+	exports.default = SconelySignaturePreview;
+
+/***/ },
+/* 850 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
