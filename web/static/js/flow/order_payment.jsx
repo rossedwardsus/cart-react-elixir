@@ -79,7 +79,7 @@ export default class Payment extends React.Component {
     if("order_type" == "order_type"){
         
         subtotal = "Subtotal: " + (5.00 * 5.00);
-        total = "Total: " + (5.00 * 5.00) + 10.00;
+        total = "Total: " + ((5.00 * 5.00) + 10.00);
     
     }
 
