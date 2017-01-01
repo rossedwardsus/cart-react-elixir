@@ -75995,6 +75995,60 @@
 	        _react2.default.createElement('br', null),
 	        'Only for signature:',
 	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-horizontal' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'checkbox col-sm-2' },
+	              _react2.default.createElement(
+	                'label',
+	                null,
+	                _react2.default.createElement('input', { type: 'radio' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              'Code'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-6' },
+	              _react2.default.createElement(
+	                'label',
+	                { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	                this.props.params.order_id
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'checkbox col-sm-2' },
+	              _react2.default.createElement(
+	                'label',
+	                null,
+	                _react2.default.createElement('input', { type: 'radio' })
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputPassword3', className: 'col-sm-2 control-label' },
+	              'Custom'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-6' },
+	              _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'inputPassword3', placeholder: 'Password' })
+	            )
+	          )
+	        ),
 	        'Event Code:',
 	        _react2.default.createElement('br', null),
 	        'Default code-12345',

@@ -325,6 +325,30 @@ export default class EventDetails extends React.Component {
         <br/>
         Only for signature:
         <br/>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="checkbox col-sm-2">
+                <label>
+                  <input type="radio"/>
+                </label>
+            </div>
+            <label for="inputEmail3" className="col-sm-2 control-label">Code</label>
+            <div className="col-sm-6">
+              <label for="inputEmail3" className="col-sm-2 control-label">{this.props.params.order_id}</label>
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="checkbox col-sm-2">
+                <label>
+                  <input type="radio"/>
+                </label>
+            </div>
+            <label for="inputPassword3" className="col-sm-2 control-label">Custom</label>
+            <div className="col-sm-6">
+              <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+            </div>
+          </div>
+        </form>
         Event Code:
         <br/>
         Default code-12345
