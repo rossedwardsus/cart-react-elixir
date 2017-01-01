@@ -75797,6 +75797,26 @@
 	    key: 'createCode',
 	    value: function createCode() {}
 	  }, {
+	    key: 'onFocus',
+	    value: function onFocus() {
+
+	      /*alert();
+	       //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
+	      
+	      request
+	            .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
+	            .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	            .set('X-API-Key', 'foobar')
+	            .set('Accept', 'application/json')
+	            .end(function(err, res){
+	              // Calling the end function will send the request
+	              //this.setState({payment_complete: true});
+	              console.log(res);
+	        
+	            });*/
+
+	    }
+	  }, {
 	    key: 'next',
 	    value: function next() {
 
@@ -75809,6 +75829,71 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_sconely_social_top_menu2.default, { order_id: this.props.params.order_id }),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'form',
+	          { 'class': 'form-horizontal' },
+	          _react2.default.createElement(
+	            'div',
+	            { 'class': 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', 'class': 'col-sm-2 control-label' },
+	              'Email'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { 'class': 'col-sm-10' },
+	              _react2.default.createElement('input', { type: 'email', 'class': 'form-control', id: 'inputEmail3', placeholder: 'Email' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { 'class': 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputPassword3', 'class': 'col-sm-2 control-label' },
+	              'Password'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { 'class': 'col-sm-10' },
+	              _react2.default.createElement('input', { type: 'password', 'class': 'form-control', id: 'inputPassword3', placeholder: 'Password' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { 'class': 'form-group' },
+	            _react2.default.createElement(
+	              'div',
+	              { 'class': 'col-sm-offset-2 col-sm-10' },
+	              _react2.default.createElement(
+	                'div',
+	                { 'class': 'checkbox' },
+	                _react2.default.createElement(
+	                  'label',
+	                  null,
+	                  _react2.default.createElement('input', { type: 'checkbox' }),
+	                  ' Remember me'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { 'class': 'form-group' },
+	            _react2.default.createElement(
+	              'div',
+	              { 'class': 'col-sm-offset-2 col-sm-10' },
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'submit', 'class': 'btn btn-default' },
+	                'Sign in'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        this.state.order_type == "signature" && _react2.default.createElement(
@@ -75840,7 +75925,7 @@
 	        _react2.default.createElement(_reactGoogleAutocomplete2.default, {
 	          style: { width: '90%' },
 	          onPlaceSelected: function onPlaceSelected(place) {
-	            console.log(place);
+	            console.log(place.formatted_address.split(",")[2]);
 	          },
 	          types: ['address'],
 	          componentRestrictions: { country: "us" }
@@ -75872,7 +75957,7 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('input', { type: 'radio', name: 'address' }),
 	        'Street-limit to downtown',
-	        _react2.default.createElement('input', null),
+	        _react2.default.createElement('input', { onFocus: this.onFocus.bind(this) }),
 	        _react2.default.createElement('br', null),
 	        'City-',
 	        _react2.default.createElement(

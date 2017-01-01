@@ -192,6 +192,27 @@ export default class EventDetails extends React.Component {
 
   }
 
+  onFocus(){
+
+        /*alert();
+
+        //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
+        
+        request
+              .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
+              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+              .set('X-API-Key', 'foobar')
+              .set('Accept', 'application/json')
+              .end(function(err, res){
+                // Calling the end function will send the request
+                //this.setState({payment_complete: true});
+                console.log(res);
+          
+              });*/
+
+
+  }
+
   next(){
 
     alert("next" + this.state.event_name);
@@ -202,6 +223,36 @@ export default class EventDetails extends React.Component {
     return (
       <div>
         <SconelySocialTopMenu order_id={this.props.params.order_id}/>
+        <br/>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail3" placeholder="Email"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"/> Remember me
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Sign in</button>
+            </div>
+          </div>
+        </form>
+        <br/>
         <br/>
         <br/>
         {this.state.order_type == "signature" &&
@@ -231,7 +282,7 @@ export default class EventDetails extends React.Component {
         <Autocomplete
             style={{width: '90%'}}
             onPlaceSelected={(place) => {
-              console.log(place);
+              console.log(place.formatted_address.split(",")[2]);
             }}
             types={['address']}
             componentRestrictions={{country: "us"}}
@@ -250,7 +301,7 @@ export default class EventDetails extends React.Component {
         <br/>
         Or add a new address
         <br/>
-        <input type="radio" name="address"/>Street-limit to downtown<input/>
+        <input type="radio" name="address"/>Street-limit to downtown<input onFocus={this.onFocus.bind(this)}/>
         <br/>
         City-<select>
                 <option>Los Angeles</option>
