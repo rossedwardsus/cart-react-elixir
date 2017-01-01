@@ -75832,44 +75832,44 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'form',
-	          { 'class': 'form-horizontal' },
+	          { className: 'form-horizontal' },
 	          _react2.default.createElement(
 	            'div',
-	            { 'class': 'form-group' },
+	            { className: 'form-group' },
 	            _react2.default.createElement(
 	              'label',
-	              { 'for': 'inputEmail3', 'class': 'col-sm-2 control-label' },
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
 	              'Email'
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { 'class': 'col-sm-10' },
-	              _react2.default.createElement('input', { type: 'email', 'class': 'form-control', id: 'inputEmail3', placeholder: 'Email' })
+	              { className: 'col-sm-10' },
+	              _react2.default.createElement('input', { type: 'email', className: 'form-control', id: 'inputEmail3', placeholder: 'Email' })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { 'class': 'form-group' },
+	            { className: 'form-group' },
 	            _react2.default.createElement(
 	              'label',
-	              { 'for': 'inputPassword3', 'class': 'col-sm-2 control-label' },
+	              { 'for': 'inputPassword3', className: 'col-sm-2 control-label' },
 	              'Password'
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { 'class': 'col-sm-10' },
-	              _react2.default.createElement('input', { type: 'password', 'class': 'form-control', id: 'inputPassword3', placeholder: 'Password' })
+	              { className: 'col-sm-10' },
+	              _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'inputPassword3', placeholder: 'Password' })
 	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { 'class': 'form-group' },
+	            { className: 'form-group' },
 	            _react2.default.createElement(
 	              'div',
-	              { 'class': 'col-sm-offset-2 col-sm-10' },
+	              { className: 'col-sm-offset-2 col-sm-10' },
 	              _react2.default.createElement(
 	                'div',
-	                { 'class': 'checkbox' },
+	                { className: 'checkbox' },
 	                _react2.default.createElement(
 	                  'label',
 	                  null,
@@ -75881,13 +75881,13 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { 'class': 'form-group' },
+	            { className: 'form-group' },
 	            _react2.default.createElement(
 	              'div',
-	              { 'class': 'col-sm-offset-2 col-sm-10' },
+	              { className: 'col-sm-offset-2 col-sm-10' },
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'submit', 'class': 'btn btn-default' },
+	                { type: 'submit', className: 'btn btn-default' },
 	                'Sign in'
 	              )
 	            )
