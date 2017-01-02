@@ -6,6 +6,8 @@ import { Link, browserHistory } from 'react-router'
 
 import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
+import Dialog from "rc-dialog";
+
 
 export default class Menu extends React.Component {
   //props: Props;
@@ -25,7 +27,7 @@ export default class Menu extends React.Component {
     this.selectNumberOfItem = this.selectNumberOfItem.bind(this);
     this.selectItem = this.selectItem.bind(this);
 
-    alert(JSON.parse(localStorage.getItem("order")).type);
+    //alert(JSON.parse(localStorage.getItem("order")).type);
 
     //alert(window.links.indexOf({link: "menu", text: "Menu"}));
 
@@ -96,12 +98,37 @@ export default class Menu extends React.Component {
 
   }
 
-  selectItem(e){
+  selectItem(){
 
-    //alert(e.target.value);
-    this.props.selectMenuItems(e.target.value);
+    //alert("e.target.value");
+    //this.props.selectMenuItems(e.target.value);
 
     //localstorage push items
+
+    //$('#myModal').on('shown.bs.modal', function () {
+      //$('#myInput').focus()
+    //})
+
+    $('#myModal').modal({});
+
+
+  }
+
+  addItem(){
+
+    //alert("e.target.value");
+    //this.props.selectMenuItems(e.target.value);
+
+    //localstorage push items
+
+    //$('#myModal').on('shown.bs.modal', function () {
+      //$('#myInput').focus()
+    //})
+
+    //$('#myModal').modal({});
+
+
+    //add to title?
 
   }
 
@@ -118,6 +145,29 @@ export default class Menu extends React.Component {
         total items-subtotal
         <br/>
         <br/>
+        <div className="container-fluid">
+            <div className="row">
+              <div className="col-xs-12 col-md-8">
+                <div className="thumbnail" >
+                  <img onClick={this.selectItem.bind(this)} src="/images/strawberry_scones.png" data-target="myModal" alt="..."/>
+                  <div className="caption" onClick={this.selectItem.bind(this)}>
+                    <h3>Strawberry Scone1</h3>
+                    <p>Cost</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-md-8">
+                <div className="thumbnail">
+                  <img src="/images/strawberry_scones.png" alt="..."/>
+                  <div className="caption">
+                    <h3>Strawberry Scone2</h3>
+                    <p>Cost</p>
+                    <button onClick={this.addItem.bind(this)}>Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
         item1 photo
         <br/>
         amount-cost
@@ -176,6 +226,23 @@ export default class Menu extends React.Component {
           <br/>
           <br/>   
           <br/>
+        </div>
+        <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div className="modal-body">
+                ...
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )

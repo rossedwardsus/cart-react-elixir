@@ -226,29 +226,9 @@ export default class EventDetails extends React.Component {
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Email</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">Event Name</label>
             <div className="col-sm-10">
-              <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
-            </div>
-          </div>
-          <div className="form-group">
-            <label for="inputPassword3" className="col-sm-2 control-label">Password</label>
-            <div className="col-sm-10">
-              <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-offset-2 col-sm-10">
-              <div className="checkbox">
-                <label>
-                  <input type="checkbox"/> Remember me
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-offset-2 col-sm-10">
-              <button type="submit" className="btn btn-default">Sign in</button>
+              <input type="email" className="form-control" id="inputEmail3" placeholder="Event Name"/>
             </div>
           </div>
         </form>
@@ -258,12 +238,6 @@ export default class EventDetails extends React.Component {
         {this.state.order_type == "signature" &&
         <b>Event Details-only show for signature</b>
         }
-        <br/>
-        To get start please tell us about your event:
-        <br/>
-        Event Name (max 30 characters)only show for signature
-        <br/>
-        <input type= "text" maxLength="30" onChange={this.changeEventName}/>
         <br/>
         Event datetime:only show for signature
         <br/>
@@ -325,6 +299,8 @@ export default class EventDetails extends React.Component {
         <br/>
         Only for signature:
         <br/>
+        Event Code:
+        <br/>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="checkbox col-sm-2">
@@ -349,17 +325,7 @@ export default class EventDetails extends React.Component {
             </div>
           </div>
         </form>
-        Event Code:
         <br/>
-        Default code-12345
-        <br/>
-        Or add a custom custom
-        <br/>
-        Custom Code (max 30 characters)
-        <br/>
-        <input maxLength="30" onChange={this.changeCode.bind(this)}/>
-        <br/>
-        <button onClick={this.createCode.bind(this)}>Save Code</button>
        </div>
     )
   }

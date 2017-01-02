@@ -54,6 +54,7 @@
     "mocha-jsdom": "^1.1.0",
     "moment": "^2.15.1",
     "node-libs-browser": "^1.0.0",
+    "rc-dialog": "^6.5.5",
     "react-addons-test-utils": "^15.3.2",
     "react-date-picker": "^5.3.28",
     "react-datepicker": "^0.29.0",
