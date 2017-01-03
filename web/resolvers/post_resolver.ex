@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.PostResolver do
+defmodule SconeHomeElixir.OrderResolver do
   alias Sconely.SconelySignatureOrder
   
   def all(_args, _info) do
@@ -8,8 +8,10 @@ defmodule SconeHomeElixir.PostResolver do
 
 
   def create(args, _info) do
-	  %SconelySocialOrder{}
-	  |> SconelySocialOrder.changeset(args)
+  	IO.puts("create graphql")
+	  #%SconelySignatureOrder{}
+	  #|> SconelySignatureOrder.changeset(args)
 	  #|> Blog.Repo.insert
+	  {:ok, %{order_id: 1}}
   end
 end

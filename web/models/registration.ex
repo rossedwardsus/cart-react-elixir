@@ -10,7 +10,7 @@ defmodule Sconely.Registration do
 			field :user_id, Ecto.UUID
 			field :email, :string
 			field :password, :string
-			field :registration_date, :date
+			field :registration_date, Ecto.Date
 
 			#timestamps()
 		end

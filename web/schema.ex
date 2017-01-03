@@ -3,19 +3,18 @@ defmodule SconeHomeElixir.Schema do
   import_types SconeHomeElixir.Schema.Types
  
   query do
-    field :posts, list_of(:post) do
-      resolve &SconeHomeElixir.PostResolver.all/2
+    field :list_orders, list_of(:sconely_signature_order) do
+      resolve &SconeHomeElixir.OrderResolver.all/2
     end
   end
 
   mutation do
-  @desc "Create a post"
-  field :post, type: :post do
-    arg :title, non_null(:string)
-    arg :body, non_null(:string)
-    arg :posted_at, non_null(:string)
+  		field :create_order, type: :sconely_signature_order do
+    		arg :id, (:integer)
+    		arg :event_name, (:string)
+    		
 
-    resolve &SconeHomeElixir.PostResolver.create/2
+    resolve &SconeHomeElixir.OrderResolver.create/2
   end
 end
 end

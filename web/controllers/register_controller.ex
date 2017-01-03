@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.RegisterController do
 
   import Ecto.Query, only: [from: 2]
 
-  alias Sconely.{Repo, Register}
+  alias Sconely.{Repo, Registration}
 
   #plug :action
 
@@ -20,7 +20,7 @@ defmodule SconeHomeElixir.RegisterController do
 
     IO.puts(email <> password)
 
-    changeset = Login.changeset(%Login{}, %{email: "mary@example.com", password: "password"})
+    changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})
     #{:error, changeset} = Repo.insert(changeset)
     
 

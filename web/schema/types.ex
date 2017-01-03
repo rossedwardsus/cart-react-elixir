@@ -1,9 +1,9 @@
 defmodule SconeHomeElixir.Schema.Types do
   use Absinthe.Schema.Notation
  
-  object :post do
-    field :id, :id
-    field :title, :string
-    field :body, :string
+  object :sconely_signature_order do
+    field :order_id, :integer
+    field :event_name, :string
+    
   end
 end
