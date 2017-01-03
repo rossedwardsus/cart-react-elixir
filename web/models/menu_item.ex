@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.MenuItem do
+defmodule Sconely.MenuItem do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 

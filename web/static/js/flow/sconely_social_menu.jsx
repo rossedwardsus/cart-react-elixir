@@ -27,20 +27,16 @@ export default class Menu extends React.Component {
     this.selectNumberOfItem = this.selectNumberOfItem.bind(this);
     this.selectItem = this.selectItem.bind(this);
 
-    //alert(JSON.parse(localStorage.getItem("order")).type);
+    /*var orders = JSON.parse(localStorage.getItem("user")).orders;    
 
-    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
+    function findOrder(order) { 
+            //alert(order.order_id);
+            return order.order_id === 12345;
+    };
 
-    /*if(window.event.links.indexOf({link: "menu", text: "Menu"}) == -1){
-
-        //alert("doesnt exist");
-  
-        window.event.links.push({link: "preview", text: "Preview"}, {link: "payment", text: "Payment"});
-
-    }else{
-
-        alert("exists");
-    }*/
+    var order_type = orders.find(findOrder).order_type; 
+    //alert(order_type);
+    this.setState({order_type: order_type});*/
 
     //myTimer;
     //var myVar = setInterval(

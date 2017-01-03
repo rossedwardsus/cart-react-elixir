@@ -120,6 +120,8 @@ defmodule SconeHomeElixir.Router do
     get "/user/profile/payment", UserProfilePaymentController, :index
 
     get "/order/:order_id/guests/item", UserOrderGuestChooseItemController, :index
+
+    resources "/posts", PostController
     
   end
 
@@ -134,4 +136,9 @@ defmodule SconeHomeElixir.Router do
   # scope "/api", SconeHomeElixir do
   #   pipe_through :api
   # end
+
+  get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
+  forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
+ 
+
 end

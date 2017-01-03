@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserSettings do
+defmodule Sconely.UserSettings do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,10 +6,10 @@ defmodule SconeHomeElixir.UserSettings do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "orders" do
+		schema "user_settings" do
 			field :user_id, Ecto.UUID
-			field :email, :string
-			field :password, :string
+			#field :email, :string
+			#field :password, :string
 			
 			#timestamps()
 		end

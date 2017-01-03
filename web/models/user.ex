@@ -8,7 +8,8 @@ defmodule SconeHomeElixir.User do
 
 		schema "users" do
 			field :user_id, Ecto.UUID
-			field :payment, :string
+			field :name, :string
+			field :about_me, :string
 			
 			#timestamps()
 		end

@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.RegisterController do
 
   import Ecto.Query, only: [from: 2]
 
-  alias SconeHomeElixir.{Repo, Login}
+  alias Sconely.{Repo, Register}
 
   #plug :action
 
