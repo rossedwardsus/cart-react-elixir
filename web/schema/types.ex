@@ -6,7 +6,6 @@ defmodule SconeHomeElixir.Schema.Types do
     field :host_id, :string
     field :event_name, :string
     field :event_datetime, :string
-    
   end
 
   input_object :update_order_params do

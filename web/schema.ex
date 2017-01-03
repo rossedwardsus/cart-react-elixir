@@ -16,7 +16,7 @@ defmodule SconeHomeElixir.Schema do
   	field :create_order, type: :sconely_signature_order do
     	arg :host_id, (:string)
     	arg :event_name, (:string)
-    	arg :event_datetime, (:string)
+    	#arg :event_datetime, (:string)
     		
     	resolve &SconeHomeElixir.OrderResolver.create/2
   	end
