@@ -8,13 +8,24 @@ defmodule SconeHomeElixir.Schema do
     end
   end
 
-  mutation do
-  		field :create_order, type: :sconely_signature_order do
-    		arg :id, (:integer)
-    		arg :event_name, (:string)
-    		
+  #input_object :update_order_params do
+	#field :event_name, (:string)
+  #end
 
-    resolve &SconeHomeElixir.OrderResolver.create/2
+  mutation do
+  	field :create_order, type: :sconely_signature_order do
+    	arg :host_id, (:string)
+    	arg :event_name, (:string)
+    	arg :event_datetime, (:string)
+    		
+    	resolve &SconeHomeElixir.OrderResolver.create/2
+  	end
+  
+	field :update_order, type: :sconely_signature_order do
+	    arg :order_id, non_null(:string)
+	    arg :order, :update_order_params
+	 
+	    resolve &SconeHomeElixir.OrderResolver.update/2
+	end
   end
-end
 end
