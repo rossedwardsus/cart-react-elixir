@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<table bgcolor="#00FF00" width="100%">
+	<table width="100%">
 	<tr><td>order processed from email <%= @key["address"] %></td></tr>
 	<tr><td>event name</td></tr>
 	<tr><td>order items</td></tr>
 	<tr><td>total</td></tr>
+	<tr><td>Thank you for choosing Sconely Signature for your event. We are excited to start preparing your order!</td></tr>
+	<tr><td>Sconely Signature allows your guests to choose there preferred scone before your event. Please send the event code: xxxxxx to your guests so they can make their personal selection by xxxxxx (xxxx=requested date, which is 3 days prior to delivery).</td></tr>
+	<tr><td>Contact us with any questions, comments or feedback. We'd love to hear from you.</td></tr>
+	<tr><td>Thanks,</td></tr> 
+	<tr><td>The Sconely Team</td></tr>
 	</table>
 
 </html>

@@ -12,6 +12,12 @@ defmodule SconeHomeElixir.Schema do
 	    
         resolve &SconeHomeElixir.OrderResolver.get_order/2
     end
+
+    field :user_orders, list_of(:sconely_signature_order) do
+        arg :host_id, non_null(:string)
+	    
+        resolve &SconeHomeElixir.OrderResolver.user_orders/2
+    end
   end
 
   #input_object :update_order_params do
