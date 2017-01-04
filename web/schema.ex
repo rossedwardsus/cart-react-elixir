@@ -6,6 +6,12 @@ defmodule SconeHomeElixir.Schema do
     field :list_orders, list_of(:sconely_signature_order) do
       resolve &SconeHomeElixir.OrderResolver.all/2
     end
+
+    field :get_order, type: :sconely_signature_order do
+        arg :order_id, non_null(:string)
+	    
+        resolve &SconeHomeElixir.OrderResolver.get_order/2
+    end
   end
 
   #input_object :update_order_params do
