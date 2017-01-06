@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.RegisterController do
+defmodule SconeHomeElixir.MobileRegistration2faController do
   use SconeHomeElixir.Web, :controller
   use Timex
 
@@ -11,15 +11,18 @@ defmodule SconeHomeElixir.RegisterController do
 
   require Logger
 
-  plug :put_layout, "home.html"
+  #plug :put_layout, "mobile_registration2fa.html"
 
   def index(conn, _params) do
-    render conn, "register.html"
+    conn
+    |> assign(:user, "hello")
+    |> render("mobile_registration2fa.html")
+    #render conn, "mobile_registration2fa.html"
   end
 
-  def create(conn, %{"email" => email, "password" => password}) do
+  def create(conn, %{"code" => code}) do
 
-    IO.puts(email <> password)
+    IO.puts(code)
 
     #changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})
     #{:error, changeset} = Repo.insert(changeset)
@@ -41,6 +44,11 @@ defmodule SconeHomeElixir.RegisterController do
 
     #IO.puts(Repo.all(query))
 
+
+
+
+
+
     datetime = Timex.now
     #datetime_formatted = Timex.format!(datetime, "%FT%T%:z", :strftime)
     datetime_temp = to_string(datetime.year) <> " " <> to_string(datetime.month) <> " " <> to_string(datetime.hour) <> " " <> to_string(datetime.minute)
@@ -57,7 +65,7 @@ defmodule SconeHomeElixir.RegisterController do
     #    |> JSON.encode
     #end)
 
-    render conn, "index.json", logins: "logins"
+    text conn, "activated"
 
     #render conn, "index.json", data: logins
 

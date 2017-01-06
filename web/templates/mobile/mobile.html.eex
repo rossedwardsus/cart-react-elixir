@@ -10,10 +10,19 @@
 
   $(document).ready(function(){
 
-      $('body').on('click','img',function(e){
+      $('#btnLoginSubmit').on('click',function(e){
 
-          //alert('it works' + e.target.id);
-          $("#cart_amount").html(10);
+          alert('it works' + e.target.id);
+          //$("#cart_amount").html(10);
+
+          //check if email and password are correct
+
+          if("email" != "email"){
+
+              e.preventDefault();
+          }
+          
+          //$("#formLogin").submit();
 
       })
 
@@ -144,7 +153,38 @@
 
 <br>
 <br>
-
+Login:
+<br/>
+<form id="formSubmit" action="/mobile/login" method="post">
+<input name="email">
+<br/>
+<input name="password">
+<br>
+<button id="btnLoginSubmit">Submit</button>
+</form>
+<br/>
+or click here to register
+<br/>
+<form action="/mobile/registration" method="post" enctype="multipart/form-data">
+<input type="file" name="image">
+<br>
+name
+<br>
+<input name="first_name"><input name="last_name">
+<br/>
+email
+<br>
+<input name="email">
+<br/>
+password
+<input name="password">
+<br>
+password again
+<br>
+<button >Submit</button>
+<br/>
+</form>
+<br/>
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-md-3">

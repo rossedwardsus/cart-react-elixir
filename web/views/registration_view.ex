@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.RegisterView do
+defmodule Sconely.RegisterView do
   use SconeHomeElixir.Web, :view
 
   @attributes ~W(email)

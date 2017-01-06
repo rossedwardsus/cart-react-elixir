@@ -19,7 +19,7 @@ defmodule SconeHomeElixir.Mixfile do
   def application do
     [mod: {SconeHomeElixir, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :graphql, :absinthe, :absinthe_plug]]
+                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :graphql, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,12 +37,13 @@ defmodule SconeHomeElixir.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:poison, "~> 2.1", override: true},
-     {:arc, "~> 0.5.2"},
+     {:comeonin, "~> 3.0"},
+     {:arc, "~> 0.6.0"},
      {:bamboo, "~> 0.6"},
      {:mailgun, "~> 0.1.2"},
      {:mogrify, "~> 0.3.2"},
      {:gm, "~> 0.0.1"},
-     {:ex_aws, "~> 0.5.0"},
+     {:ex_aws, "~> 1.0.0"},
      #{:erlcloud, git: "https://github.com/gleber/erlcloud"},
      {:uuid, "~> 1.1"},
      {:csv, "~> 1.4.2"},

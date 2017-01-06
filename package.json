@@ -13,6 +13,7 @@
     "immutable": "^3.8.1",
     "javascript-brunch": ">= 1.0 < 1.8",
     "mocha": "^3.2.0",
+    "native-base": "^0.5.20",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.2",
     "react-bootstrap-modal": "^2.1.0",

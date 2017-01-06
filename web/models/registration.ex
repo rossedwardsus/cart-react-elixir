@@ -7,17 +7,17 @@ defmodule Sconely.Registration do
 		@derive {Poison.Encoder, only: [:email, :password]}
 
 		schema "registration" do
-			field :user_id, Ecto.UUID
+			field :user_id, :string
 			field :email, :string
 			field :password, :string
-			field :registration_date, Ecto.Date
+			field :registration_datetime, :string
 
 			#timestamps()
 		end
 
-		def changeset(struct, params \\ %{}) do
-		    #struct
-		    #|> cast(params, [:name, :email, :bio, :number_of_pets])
+		def changeset(model, params \\ %{}) do
+		    model
+		    |> cast(params, [:email, :password, :registration_datetime])
 		    #|> validate_required([:name, :email, :bio, :number_of_pets])
 		end
 

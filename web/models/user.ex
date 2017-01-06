@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.User do
+defmodule Sconely.User do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -7,8 +7,9 @@ defmodule SconeHomeElixir.User do
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "users" do
-			field :user_id, Ecto.UUID
-			field :name, :string
+			field :user_id, :string
+			field :first_name, :string
+			field :last_name, :string
 			field :about_me, :string
 			
 			#timestamps()
