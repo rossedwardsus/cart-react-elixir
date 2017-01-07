@@ -9,6 +9,7 @@ import OrdersList from './orders_list';
 import request from 'superagent';
 
 var fetch = require('graphql-fetch')('http://domain.com/graphql')
+import { GQLClient } from 'graphql-http';
 
 
 export default class Events extends React.Component {
@@ -57,6 +58,32 @@ export default class Events extends React.Component {
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
          
     }
+
+
+    /*const client = GQLClient('http://localhost:3000', {
+      // anything passed here is merged with 
+      // the options passed to fetch() 
+      credentials: true,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    });*/
+
+    /*client.mutate(`
+      mutation ($id: RecordID!, $name: String!) {
+        updateUser(input: {id: $id, name: $name}) {
+          user {
+            id
+            name
+          }
+        }
+      }
+    `, { id: 1234, name: 'Danny' }).then((result) => {
+      console.log(result.data.user);
+      // => { id: 1234, name: 'Danny' } 
+    });*/
+
+
 
     /*var query = `
       query q (id: String!) {

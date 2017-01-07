@@ -6,8 +6,9 @@ defmodule Sconely.SconelySignatureGuestResponse do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
+		@primary_key {:order_id, :binary_id, autogenerate: true}
+
 		schema "orders" do
-			field :order_id, Ecto.UUID
 			field :first_name, :string
 			field :last_name, :string
 			field :item, :string

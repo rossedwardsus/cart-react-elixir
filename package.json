@@ -47,6 +47,7 @@
     "css-loader": "^0.23.1",
     "flow-bin": "^0.37.4",
     "graphql-fetch": "^1.0.1",
+    "graphql-http": "^0.1.1",
     "history": "^4.5.0",
     "immutable": "^3.8.1",
     "jest": "^18.0.0",

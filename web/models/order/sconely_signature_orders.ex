@@ -6,13 +6,15 @@ defmodule Sconely.SconelySignatureOrder do
 
 		@derive {Poison.Encoder, only: [:order_id, :event_name]}
 
+		@primary_key {:order_id, :binary_id, autogenerate: true}
+
 		schema "sconely_signature_orders" do
 			field :host_id, :string
 			field :number_of_guests, :string
 			field :event_datetime, :string
 			field :event_name, :string
 			field :custom_code, :string
-			field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
+			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
 			field :status, :string
 
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])

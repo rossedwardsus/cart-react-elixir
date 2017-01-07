@@ -50,6 +50,9 @@ defmodule SconeHomeElixir.OrderResolver do
   def create_order(args, _info) do
   	IO.puts("create order graphql")
     IO.inspect(args)
+
+    #if order_type == "yours", "social", "signature"
+
 	  %SconelySignatureOrder{}
 	  |> SconelySignatureOrder.changeset(args)
 	  |> Repo.insert

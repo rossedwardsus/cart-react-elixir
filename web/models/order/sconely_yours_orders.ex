@@ -6,10 +6,12 @@ defmodule SconeHomeElixir.SconelyYoursPayment do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
+		@primary_key {:order_id, :binary_id, autogenerate: true}
+
 		schema "order_items" do
 			field :user_id, Ecto.UUID
 			field :order_id, :string
-			field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
+			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
 			field :status, :string
 
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
