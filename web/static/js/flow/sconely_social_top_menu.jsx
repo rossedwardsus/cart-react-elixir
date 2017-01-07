@@ -41,6 +41,11 @@ export default class SconelySocialTopMenu extends React.Component {
 
 					var link_temp = "/order/12345/" + link.link;
 					return(<Link to={link_temp}>{link.text} </Link>);	
+					/*return(<form className="form-horizontal">
+			          <div className="form-group">
+			            <label for="inputEmail3" className="col-sm-2 control-label"><Link to={link_temp}>{link.text} </Link>)</label>
+			          </div>
+			        </form>)*/
 
 				})}
 			</div>

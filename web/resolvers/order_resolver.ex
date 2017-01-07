@@ -47,14 +47,14 @@ defmodule SconeHomeElixir.OrderResolver do
   end
 
 
-  def create(args, _info) do
+  def create_order(args, _info) do
   	IO.puts("create order graphql")
 	  %SconelySignatureOrder{}
 	  |> SconelySignatureOrder.changeset(args)
 	  |> Repo.insert
   end
 
-  def update(%{order_id: order_id, order: order_params}, _info) do
+  def auto_save(%{order_id: order_id, order: order_params}, _info) do
     Repo.get!(SconelySignatureOrder, order_id)
     |> SconelySignatureOrder.changeset(order_params)
     |> Repo.update
@@ -64,6 +64,11 @@ defmodule SconeHomeElixir.OrderResolver do
   #order completed
   #update profile
   #guest chooses scone
+  #login
+  #register
+  #order code
+  #menu
+  #payment
 
 
 

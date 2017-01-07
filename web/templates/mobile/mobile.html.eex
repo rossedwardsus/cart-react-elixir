@@ -21,26 +21,53 @@
 
               e.preventDefault();
 
-              //var valid_email = True;
+              var valid_email = true;
 
-              var email = $("#email").val();
+              var email = $("#login_email").val();
 
               //if(email.length <= 30){
 
                   //alert("please enter a valid email");
 
+                  var at_sign = RegExp('@');
                   var upperCase= new RegExp('[A-Z]');
                   var numbers = new RegExp('[0-9]')
 
-                  if(email.match(upperCase).length > 0){
+                  if(email.length < 2){
 
-                      alert("good");
-
-                      if(str.indexOf("!") >= 0);
-
-                      //there is no email with that password in our database
+                      valid_email = false;
 
                   }
+
+                  if(email == null){
+
+                      valid_email = false;
+
+                  }
+
+                  if(email && email.match(upperCase).length == 0){
+
+                          //has a domain attached to it
+
+                          //alert("good");
+
+                          valid_email = false;
+
+                          //there is no email with that password in our database
+
+                  }
+
+                  if(email.indexOf("!") >= 0){
+
+                            valid_email = false;
+
+                  }
+
+                  //also check password
+                  
+                  //if email is valid call the backend to check for password
+                  //redirect to user if good
+                  //else alert bad email
 
 
 
@@ -48,6 +75,14 @@
           }
           
           //$("#formLogin").submit();
+
+          alert(valid_email);
+
+      })
+
+      $('#btnRegistrationSubmit').on('click',function(e){
+
+          alert();
 
       })
 
@@ -199,11 +234,11 @@ Login:
 <form id="formSubmit" action="/mobile/login" method="post">
 email
 <br>
-<input id="email" name="email">
+<input id="login_email" name="email">
 <br/>
 password
 <br>
-<input name="password">
+<input id="login_email" name="password">
 <br>
 <button id="btnLoginSubmit">Submit</button>
 </form>
@@ -215,26 +250,26 @@ or click here to register
 <br>
 first name
 <br>
-<input name="first_name">
+<input id="registration_first_name" name="first_name">
 <br>
 last name
 <br>
-<input name="last_name">
+<input id="registration_last_name" name="last_name">
 <br/>
 email
 <br>
-<input id="email" name="email">
+<input id="registration_email" name="email">
 <br/>
 password
 <br>
-<input name="password">
+<input id="registration_password" name="password">
 <br>
 password again
 <br>
-<input name="password">
+<input id="registration_password_again" name="password">
 <br>
 <br>
-<button >Submit</button>
+<button id="btnRegistrationSubmit">Submit</button>
 <br/>
 </form>
 <br/>
@@ -244,7 +279,7 @@ or enter a code
 <input name="code">
 <br>
 <br>
-<button >Submit</button>
+<button id="btnCodeSubmit">Submit</button>
 <br>
 </form>
 <br>

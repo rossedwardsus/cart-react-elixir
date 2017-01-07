@@ -48,6 +48,12 @@ export default class Events extends React.Component {
         //alert(orders);
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
          
+    }else if(order_type == "sconely_yours"){
+
+        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+         
     }
 
 
@@ -80,6 +86,8 @@ export default class Events extends React.Component {
     return (
       <div>
         links to create order
+        <br/>
+        <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a>
         <br/>
         <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
         <br/>
