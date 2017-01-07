@@ -68,3 +68,8 @@ config :scone_home_elixir, mailgun_domain: "sandbox60cd8c923f214e8b90257138647a0
 
 config :absinthe,
   adapter: Absinthe.Adapter.LanguageConventions
+
+
+config :twilex,
+  sid: "AC235140db287805a778ac7818aa5a3a37",
+  token: "fe9f28931893620d4d8110d3659da685"

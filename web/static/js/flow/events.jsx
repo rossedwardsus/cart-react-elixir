@@ -78,7 +78,7 @@ export default class Events extends React.Component {
     var orders = JSON.parse(localStorage.getItem("user")).orders;
 
     return (
-      <ul>
+      <div>
         links to create order
         <br/>
         <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
@@ -86,7 +86,7 @@ export default class Events extends React.Component {
         <a onClick={this.createOrder.bind(this, "sconely_signature")}>Sconely Signature</a>
         <br/>
         <OrdersList orders={orders}/>
-      </ul>
+      </div>
     )
   }
 }

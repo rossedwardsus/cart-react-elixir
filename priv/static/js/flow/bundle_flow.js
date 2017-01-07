@@ -45384,24 +45384,8 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'ul',
+	        'div',
 	        null,
-	        'add menu links here such as changing delivery address',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/user/orders' },
-	          'Events'
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/user/payment' },
-	          'Payment'
-	        ),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
 	        this.props.children
 	      );
 	    }
@@ -45508,7 +45492,7 @@
 	      var orders = JSON.parse(localStorage.getItem("user")).orders;
 
 	      return _react2.default.createElement(
-	        'ul',
+	        'div',
 	        null,
 	        'links to create order',
 	        _react2.default.createElement('br', null),
@@ -45594,7 +45578,7 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'ul',
+	        'div',
 	        null,
 	        'List of orders',
 	        _react2.default.createElement('br', null),
@@ -79490,16 +79474,14 @@
 	    _this.selectNumberOfItem = _this.selectNumberOfItem.bind(_this);
 	    _this.selectItem = _this.selectItem.bind(_this);
 
-	    //alert(JSON.parse(localStorage.getItem("order")).type);
-
-	    //alert(window.links.indexOf({link: "menu", text: "Menu"}));
-
-	    /*if(window.event.links.indexOf({link: "menu", text: "Menu"}) == -1){
-	         //alert("doesnt exist");
-	           window.event.links.push({link: "preview", text: "Preview"}, {link: "payment", text: "Payment"});
-	     }else{
-	         alert("exists");
-	    }*/
+	    /*var orders = JSON.parse(localStorage.getItem("user")).orders;    
+	     function findOrder(order) { 
+	            //alert(order.order_id);
+	            return order.order_id === 12345;
+	    };
+	     var order_type = orders.find(findOrder).order_type; 
+	    //alert(order_type);
+	    this.setState({order_type: order_type});*/
 
 	    //myTimer;
 	    //var myVar = setInterval(

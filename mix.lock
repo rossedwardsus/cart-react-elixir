@@ -41,5 +41,6 @@
   "ssl_verify_fun": {:hex, :ssl_verify_fun, "1.1.1", "28a4d65b7f59893bc2c7de786dec1e1555bd742d336043fe644ae956c3497fbe", [:make, :rebar], []},
   "stripity_stripe": {:hex, :stripity_stripe, "1.4.0", "32ce7aa0c6a8f794c6c25aa9c4834d0cf2586116eea569ecb32aa0ac45375bc7", [:mix], [{:hackney, "~> 1.4.8", [hex: :hackney, optional: false]}, {:httpoison, "~> 0.8.0", [hex: :httpoison, optional: false]}, {:poison, "~> 2.0.1", [hex: :poison, optional: true]}]},
   "timex": {:hex, :timex, "3.0.4", "672fd9cf6d887759d801a404e7b5072a1161e1ca6d8f2977b7e3e40b1d6d65e1", [:mix], [{:combine, "~> 0.7", [hex: :combine, optional: false]}, {:gettext, "~> 0.10", [hex: :gettext, optional: false]}, {:tzdata, "~> 0.1.8 or ~> 0.5", [hex: :tzdata, optional: false]}]},
+  "twilex": {:hex, :twilex, "0.0.2", "be6798c96caa3925d0865c8c1c5a44cf092a4d5d1798ea64a9f02ae52633e07d", [:mix], [{:httpoison, "~> 0.8.0", [hex: :httpoison, optional: false]}, {:poison, "~> 2.0", [hex: :poison, optional: false]}]},
   "tzdata": {:hex, :tzdata, "0.5.8", "a4ffe564783c6519e4df230a5d0e1cf44b7db7f576bcae76d05540b5da5b6143", [:mix], [{:hackney, "~> 1.0", [hex: :hackney, optional: false]}]},
   "uuid": {:hex, :uuid, "1.1.4", "36c7734e4c8e357f2f67ba57fb61799d60c20a7f817b104896cca64b857e3686", [:mix], []}}

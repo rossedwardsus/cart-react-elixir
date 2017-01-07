@@ -7,7 +7,7 @@ defmodule SconeHomeElixir.Router do
     plug :fetch_flash
     #plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :logged_in
+    #plug :logged_in
     #plug SconeHomeElixir.Plugs.RedirectsPlug, "nil"
     #plug :redirects_plug, "nil"
     #plug SconeHomeElixir.RedirectEndpoint
@@ -43,6 +43,7 @@ defmodule SconeHomeElixir.Router do
   scope "/api/v_alpha", SconeHomeElixir do
     pipe_through :api # Use the default browser stack
 
+    #not used anymore
     #post "/user/profile/photo", ApiUserProfilePhotoController, :create
     #get "/user/profile/delivery_address", ApiUserProfileDeliveryAddressController, :index
     #post "/user/sconely_yours/address", ApiUserSconelyYoursAddressController, :create
@@ -58,7 +59,7 @@ defmodule SconeHomeElixir.Router do
     post "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
 
     
-
+    #not used anymore
     #get "/user/orders/create", ApiUserOrderController, :create
     #get "/user/orders/eventname", ApiUserOrderEventNameController, :index
 

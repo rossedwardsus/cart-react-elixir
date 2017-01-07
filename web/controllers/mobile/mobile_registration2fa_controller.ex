@@ -24,6 +24,16 @@ defmodule SconeHomeElixir.MobileRegistration2faController do
 
     IO.puts(code)
 
+    response = Twilex.Messenger.create("+14243227392", "13107755566", "body_text", "optional_media_url")
+    case response.error_code do
+      nil ->
+      #  IO.puts(:error)
+      #{:ok, response} ->
+       IO.puts("sent message")
+      _ ->
+       IO.puts("error") 
+    end
+
     #changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})
     #{:error, changeset} = Repo.insert(changeset)
     

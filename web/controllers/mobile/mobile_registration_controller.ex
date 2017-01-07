@@ -28,7 +28,10 @@ defmodule SconeHomeElixir.MobileRegistrationController do
     #  {:ok, post} ->
 
         #Repo.insert(changeset_profile)
-        Task.start_link(fn -> Sconely.RegistrationEmail.welcome_email(%{"email" => email, "address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now end); 
+        #Task.start_link(fn -> Sconely.RegistrationEmail.welcome_email(%{"email" => email, "address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now end); 
+
+        IO.inspect(Sconely.RegistrationEmail.welcome_email(%{"email" => email, "address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now); 
+
 
         #{:ok, data, _conn} = Plug.Conn.read_body(conn)
         #Sconely.Event.store(%Plug.Upload{filename: "Sconely02.png", path: "/Users/rossedwards/Desktop/julia/scone_home/scone_home_elixir/uploads/"})

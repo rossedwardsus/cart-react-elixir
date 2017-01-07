@@ -22,7 +22,7 @@ export default class OrdersList extends React.Component {
   
   render(): React.Element {
     return (
-      <ul>
+      <div>
        List of orders
        <br/>
        Date-Order Type
@@ -35,7 +35,7 @@ export default class OrdersList extends React.Component {
               <div><Link to={link}>{order.order_type}</Link></div>
           )
         })}
-      </ul>
+      </div>
     )
   }
 }
