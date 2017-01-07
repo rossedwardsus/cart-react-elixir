@@ -75834,101 +75834,197 @@
 	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        this.state.order_type == "signature" && _react2.default.createElement(
-	          'b',
-	          null,
-	          'Event Details-only show for signature'
-	        ),
-	        _react2.default.createElement('br', null),
-	        'Event datetime:only show for signature',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: this.handleDateChange }),
-	        _react2.default.createElement('br', null),
-	        'Or',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'Event Time',
-	        _react2.default.createElement('br', null),
-	        'Delivery Date Time',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'Automcomplete test:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_reactGoogleAutocomplete2.default, {
-	          style: { width: '90%' },
-	          onPlaceSelected: function onPlaceSelected(place) {
-	            console.log(place.formatted_address.split(",")[2]);
-	          },
-	          types: ['address'],
-	          componentRestrictions: { country: "us" }
-	        }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'Event/Delivery Address address:',
-	        _react2.default.createElement('br', null),
-	        'Choose existing address:',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'radio', name: 'address' }),
 	        _react2.default.createElement(
-	          'select',
-	          null,
-	          _react2.default.createElement('option', null),
-	          _react2.default.createElement(
-	            'option',
-	            null,
-	            'Home'
-	          ),
-	          _react2.default.createElement(
-	            'option',
-	            null,
-	            'Office'
-	          )
-	        ),
-	        _react2.default.createElement('br', null),
-	        'Or add a new address',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'radio', name: 'address' }),
-	        'Street-limit to downtown',
-	        _react2.default.createElement('input', { onFocus: this.onFocus.bind(this) }),
-	        _react2.default.createElement('br', null),
-	        'City-',
-	        _react2.default.createElement(
-	          'select',
-	          null,
-	          _react2.default.createElement(
-	            'option',
-	            null,
-	            'Los Angeles'
-	          )
-	        ),
-	        _react2.default.createElement('br', null),
-	        'Zipcode',
-	        _react2.default.createElement('input', { maxLength: '30' }),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('input', { type: 'text', onChange: this.changeDeliveryAddress }),
-	        _react2.default.createElement('br', null),
-	        'additional delivery details',
-	        _react2.default.createElement('br', null),
-	        'message to guests for signature',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'Add an image for this event: only for signature',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          Dropzone,
-	          { onDrop: this.onDrop },
+	          'form',
+	          { className: 'form-horizontal' },
 	          _react2.default.createElement(
 	            'div',
-	            null,
-	            'Try dropping some files here, or click to select files to upload.'
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement(
+	                'b',
+	                null,
+	                'Date/Time-only for signature'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-10' },
+	              _react2.default.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: this.handleDateChange }),
+	              _react2.default.createElement('br', null)
+	            )
 	          )
 	        ),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        'Only for signature:',
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-horizontal' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement(
+	                'b',
+	                null,
+	                'Address-autocomplete'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-10' },
+	              'Automcomplete test:',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(_reactGoogleAutocomplete2.default, {
+	                style: { width: '90%' },
+	                onPlaceSelected: function onPlaceSelected(place) {
+	                  console.log(place.formatted_address.split(",")[2]);
+	                },
+	                types: ['address'],
+	                componentRestrictions: { country: "us" }
+	              }),
+	              _react2.default.createElement('br', null)
+	            )
+	          )
+	        ),
 	        _react2.default.createElement('br', null),
-	        'Event Code:',
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-horizontal' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null),
+	              'Address'
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null),
+	              _react2.default.createElement('input', { type: 'radio', name: 'address' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-5' },
+	              _react2.default.createElement(
+	                'select',
+	                null,
+	                _react2.default.createElement('option', null),
+	                _react2.default.createElement(
+	                  'option',
+	                  null,
+	                  'Home'
+	                ),
+	                _react2.default.createElement(
+	                  'option',
+	                  null,
+	                  'Office'
+	                )
+	              ),
+	              _react2.default.createElement('br', null)
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null)
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null),
+	              _react2.default.createElement('input', { type: 'radio', name: 'address' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-10' },
+	                _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'inputPassword3', placeholder: 'Street' })
+	              ),
+	              _react2.default.createElement('br', null)
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null)
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-5' },
+	                _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'inputPassword3', placeholder: 'City' })
+	              ),
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-5' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-5' },
+	                _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'inputPassword3', placeholder: 'Zipcode' })
+	              ),
+	              _react2.default.createElement('br', null)
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'form-horizontal' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null),
+	              'Image'
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
+	              this.state.order_type == "signature" && _react2.default.createElement('b', null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-5' },
+	              _react2.default.createElement(
+	                Dropzone,
+	                { onDrop: this.onDrop },
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  'Try dropping some files here, or click to select files to upload.'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'form',
@@ -75938,6 +76034,15 @@
 	            { className: 'form-group' },
 	            _react2.default.createElement(
 	              'div',
+	              { className: 'col-sm-2 control-label' },
+	              _react2.default.createElement(
+	                'label',
+	                null,
+	                'Event Code:'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
 	              { className: 'checkbox col-sm-2' },
 	              _react2.default.createElement(
 	                'label',
@@ -75945,14 +76050,10 @@
 	                _react2.default.createElement('input', { type: 'radio' })
 	              )
 	            ),
-	            _react2.default.createElement(
-	              'label',
-	              { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
-	              'Code'
-	            ),
+	            _react2.default.createElement('label', { 'for': 'inputEmail3', className: 'col-sm-2 control-label' }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-sm-6' },
+	              { className: 'col-sm-3' },
 	              _react2.default.createElement(
 	                'label',
 	                { 'for': 'inputEmail3', className: 'col-sm-2 control-label' },
@@ -75966,6 +76067,11 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'checkbox col-sm-2' },
+	              _react2.default.createElement('label', null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'checkbox col-sm-1' },
 	              _react2.default.createElement(
 	                'label',
 	                null,
@@ -75979,7 +76085,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-sm-6' },
+	              { className: 'col-sm-5' },
 	              _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'inputPassword3', placeholder: 'Password' })
 	            )
 	          )

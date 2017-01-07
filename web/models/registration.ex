@@ -11,6 +11,13 @@ defmodule Sconely.Registration do
 			field :email, :string
 			field :password, :string
 			field :registration_datetime, :string
+			field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
+			field :active, :string
+
+			#timestamps([{:inserted_at, false}, {:updated_at, false}])
+			#timestamps([{:updated_at, false}])
+			#timestamps([{:created_at}])
+			
 
 			#timestamps()
 		end

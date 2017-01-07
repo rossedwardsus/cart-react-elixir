@@ -238,6 +238,16 @@ password again
 <br/>
 </form>
 <br/>
+or enter a code
+<br>
+<form action="/order/guests/code" method="post">
+<input name="code">
+<br>
+<br>
+<button >Submit</button>
+<br>
+</form>
+<br>
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-md-3">

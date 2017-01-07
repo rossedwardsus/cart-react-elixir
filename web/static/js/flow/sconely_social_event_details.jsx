@@ -234,93 +234,135 @@ export default class EventDetails extends React.Component {
         </form>
         <br/>
         <br/>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b>Date/Time-only for signature</b>
+        }</label>
+            <div className="col-sm-10">
+              <DatePicker inline selected={this.state.startDate} onChange={this.handleDateChange} />
+              <br/>
+            </div>
+          </div>
+        </form>
         <br/>
-        {this.state.order_type == "signature" &&
-        <b>Event Details-only show for signature</b>
-        }
-        <br/>
-        Event datetime:only show for signature
-        <br/>
-        <DatePicker inline selected={this.state.startDate} onChange={this.handleDateChange} />
-        <br/>
-        Or
-        <br/>
-        <br/>
-        Event Time
-        <br/>
-        Delivery Date Time
-        <br/>
-        <br/>
-        Automcomplete test:
-        <br/>
-        <Autocomplete
-            style={{width: '90%'}}
-            onPlaceSelected={(place) => {
-              console.log(place.formatted_address.split(",")[2]);
-            }}
-            types={['address']}
-            componentRestrictions={{country: "us"}}
-        />
-        <br/>
-        <br/>
-        Event/Delivery Address address:
-        <br/>
-        Choose existing address:
-        <br/>
-        <input type="radio" name="address"/><select>
-            <option></option>
-            <option>Home</option>
-            <option>Office</option>
-        </select>
-        <br/>
-        Or add a new address
-        <br/>
-        <input type="radio" name="address"/>Street-limit to downtown<input onFocus={this.onFocus.bind(this)}/>
-        <br/>
-        City-<select>
-                <option>Los Angeles</option>
-              </select>
-        <br/>
-        Zipcode<input maxLength="30"/>
-        <br/>
-        <input type= "text" onChange={this.changeDeliveryAddress}/>
-        <br/>
-        additional delivery details 
-        <br/>
-        message to guests for signature
-        <br/>
-        <br/>
-        Add an image for this event: only for signature
-        <br/>
-        <Dropzone onDrop={this.onDrop}>
-              <div>Try dropping some files here, or click to select files to upload.</div>
-        </Dropzone>
-        <br/>
-        <br/>
-        Only for signature:
-        <br/>
-        Event Code:
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b>Address-autocomplete</b>
+        }</label>
+            <div className="col-sm-10">
+                Automcomplete test:
+                <br/>
+                <Autocomplete
+                    style={{width: '90%'}}
+                    onPlaceSelected={(place) => {
+                      console.log(place.formatted_address.split(",")[2]);
+                    }}
+                    types={['address']}
+                    componentRestrictions={{country: "us"}}
+                />
+              <br/>
+            </div>
+          </div>
+        </form>
+        <br/>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>}Address</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>
+        }<input type="radio" name="address"/></label>
+            <div className="col-sm-5">
+                <select>
+                    <option></option>
+                    <option>Home</option>
+                    <option>Office</option>
+                </select>
+                <br/>
+            </div>
+          </div>
+          <div className="form-group">
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>}</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>
+        }<input type="radio" name="address"/></label>
+            <div className="col-sm-5">
+                <div className="col-sm-10">
+                  <input type="password" className="form-control" id="inputPassword3" placeholder="Street"/>
+                </div>
+                <br/>
+            </div>
+          </div>
+          <div className="form-group">
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>}</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>
+        }</label>
+            <div className="col-sm-5">
+                <div className="col-sm-5">
+                  <input type="password" className="form-control" id="inputPassword3" placeholder="City"/>
+                </div>
+                <br/>
+            </div>
+            <div className="col-sm-5">
+                <div className="col-sm-5">
+                  <input type="password" className="form-control" id="inputPassword3" placeholder="Zipcode"/>
+                </div>
+                <br/>
+            </div>
+          </div>
+        </form>
+        <br/>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>}Image</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
+        <b></b>
+        }</label>
+            <div className="col-sm-5">
+                <Dropzone onDrop={this.onDrop}>
+                  <div>Try dropping some files here, or click to select files to upload.</div>
+                </Dropzone>
+            </div>
+          </div>
+        </form>
+        <br/>
+        <br/>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-2 control-label">
+                <label>
+                  Event Code:
+                </label>
+            </div>
             <div className="checkbox col-sm-2">
                 <label>
                   <input type="radio"/>
                 </label>
             </div>
-            <label for="inputEmail3" className="col-sm-2 control-label">Code</label>
-            <div className="col-sm-6">
+            <label for="inputEmail3" className="col-sm-2 control-label"></label>
+            <div className="col-sm-3">
               <label for="inputEmail3" className="col-sm-2 control-label">{this.props.params.order_id}</label>
             </div>
           </div>
           <div className="form-group">
             <div className="checkbox col-sm-2">
                 <label>
+                </label>
+            </div>
+            <div className="checkbox col-sm-1">
+                <label>
                   <input type="radio"/>
                 </label>
             </div>
             <label for="inputPassword3" className="col-sm-2 control-label">Custom</label>
-            <div className="col-sm-6">
+            <div className="col-sm-5">
               <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
             </div>
           </div>
