@@ -243,6 +243,9 @@ export default class EventDetails extends React.Component {
               <DatePicker inline selected={this.state.startDate} onChange={this.handleDateChange} />
               <br/>
             </div>
+            <div className="col-sm-10">
+              <label for="inputEmail3" className="col-sm-2 control-label">Morning or evening</label>
+            </div>
           </div>
         </form>
         <br/>

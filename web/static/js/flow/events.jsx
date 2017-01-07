@@ -8,6 +8,8 @@ import OrdersList from './orders_list';
 
 import request from 'superagent';
 
+var fetch = require('graphql-fetch')('http://domain.com/graphql')
+
 
 export default class Events extends React.Component {
   //props: Props;
@@ -55,6 +57,36 @@ export default class Events extends React.Component {
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
          
     }
+
+    /*var query = `
+      query q (id: String!) {
+        user(id: $id) {
+          id,
+          email,
+          name
+        }
+      }
+    `
+    var queryVars = {
+      id: 'abcdef'
+    }
+    var opts = {
+      // custom fetch options 
+    }*/
+     
+    /**
+     * @param  {Query} query graphql query
+     * @param  {Object} [vars]  graphql query args, optional
+     * @param  {Object} [opts]  fetch options, optional
+     */
+    /*fetch(query, queryVars, opts).then(function (results) {
+      if (results.errors) {
+        //... 
+        return
+      }
+      var user = result.data.user
+      //... 
+    })*/
 
 
     /*request
