@@ -76,7 +76,7 @@
     }
 
     html, body {
-      width: 110%;
+      width: 100%;
       overflow-x: hidden;
     }
 
@@ -91,7 +91,7 @@
     }
 
    .row {
-      width: 100%;
+      width: 110%;
       padding:0;
       margin:0;
       padding-right: -100px;
@@ -163,6 +163,28 @@
         </div>
         <div class="col-xs-6 col-md-8">
             <div id="root"></div>
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                  <div class="thumbnail">
+                    <img src="/images/strawberry_scones.png" alt="...">
+                    <div class="caption">
+                      <h3>Strawberry Scone</h3>
+                      <p>Cost</p>
+                      <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                  <div class="thumbnail">
+                    <img src="/images/strawberry_scones.png" alt="...">
+                    <div class="caption">
+                      <h3>Strawberry Scone</h3>
+                      <p>Cost</p>
+                      <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
+                    </div>
+                  </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-6 col-md-2">
             maybe put something here
