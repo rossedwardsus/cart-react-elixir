@@ -1,4 +1,4 @@
-defmodule Sconely.Session do
+defmodule Sconely.Sessions do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,8 +6,10 @@ defmodule Sconely.Session do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
+		@primary_key {:session_id, :binary_id, autogenerate: true}
+
 		schema "sessions" do
-			field :session_id, Ecto.UUID
+			#field :session_id, Ecto.UUID
 			field :user_id, :string
 			field :logged_in_datetime, :string
 			
