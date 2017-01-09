@@ -4,7 +4,38 @@ defmodule Sconely.OrderResolver do
 
   import Ecto.Query
 
-  def get_order(%{order_id: order_id}, _info) do
+
+  def get_user(%{host_id: host_id}, _info) do
+    IO.puts("user orders");
+    query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
+    orders = Repo.all(query)
+    {:ok, orders}
+    #{:ok, [%{event_name: "hello"}]}
+  end
+
+  def order_json(order) do
+    %{
+      order_id: "order.order_id",
+      host_id: "order.host_id",
+      event_name: "order.event_name",
+      created_at: "order.created_at",
+    }
+  end
+
+  def get_user_orders(%{host_id: host_id}, _info) do
+    IO.puts("user orders");
+    query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
+    orders = Repo.all(query)
+    {:ok, orders}
+    #{:ok, [%{event_name: "hello"}]}
+  end
+  
+  def all(_args, _info) do
+    {:ok, Repo.all(SconelySignatureOrder)}
+    #{:ok, [%{order_id: 1, event_name: "hello", body: "there"}]}
+  end
+
+  def get_user_order(%{order_id: order_id}, _info) do
     #{:ok, Enum.map(Repo.get_by!(SconelySignatureOrder, order_id: order_id), &order_json/1)}
     #{:ok, %{eventName: "event"}}
     case Repo.get(SconelySignatureOrder, order_id) do
@@ -24,30 +55,8 @@ defmodule Sconely.OrderResolver do
     end
   end
 
-  def order_json(order) do
-    %{
-      order_id: "order.order_id",
-      host_id: "order.host_id",
-      event_name: "order.event_name",
-      created_at: "order.created_at",
-    }
-  end
 
-  def user_orders(%{host_id: host_id}, _info) do
-    IO.puts("user orders");
-    query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
-    orders = Repo.all(query)
-    {:ok, orders}
-    #{:ok, [%{event_name: "hello"}]}
-  end
-  
-  def all(_args, _info) do
-    {:ok, Repo.all(SconelySignatureOrder)}
-    #{:ok, [%{order_id: 1, event_name: "hello", body: "there"}]}
-  end
-
-
-  def create_order(args, _info) do
+  def create_user_order(args, _info) do
   	IO.puts("create order graphql")
     IO.inspect(args)
 
@@ -63,7 +72,19 @@ defmodule Sconely.OrderResolver do
 
   end
 
-  def auto_save(%{order_id: order_id, order: order_params}, _info) do
+  def save_sconely_yours_order(%{order_id: order_id, order: order_params}, _info) do
+    Repo.get!(SconelySignatureOrder, order_id)
+    |> SconelySignatureOrder.changeset(order_params)
+    |> Repo.update
+  end
+
+  def save_sconely_social_order(%{order_id: order_id, order: order_params}, _info) do
+    Repo.get!(SconelySignatureOrder, order_id)
+    |> SconelySignatureOrder.changeset(order_params)
+    |> Repo.update
+  end
+
+  def save_sconely_signature_order(%{order_id: order_id, order: order_params}, _info) do
     Repo.get!(SconelySignatureOrder, order_id)
     |> SconelySignatureOrder.changeset(order_params)
     |> Repo.update
