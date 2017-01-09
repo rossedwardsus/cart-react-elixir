@@ -1,22 +1,22 @@
 defmodule SconeHomeElixir.Schema do
   use Absinthe.Schema
-  import_types SconeHomeElixir.Schema.Types
+  import_types Sconely.Schema.Types
  
   query do
     field :list_orders, list_of(:sconely_signature_order) do
-      resolve &SconeHomeElixir.OrderResolver.all/2
+      resolve &Sconely.OrderResolver.all/2
     end
 
     field :get_order, type: :sconely_signature_order do
         arg :order_id, non_null(:string)
 	    
-        resolve &SconeHomeElixir.OrderResolver.get_order/2
+        resolve &Sconely.OrderResolver.get_order/2
     end
 
     field :user_orders, list_of(:sconely_signature_order) do
         arg :host_id, non_null(:string)
 	    
-        resolve &SconeHomeElixir.OrderResolver.user_orders/2
+        resolve &Sconely.OrderResolver.user_orders/2
     end
   end
 
@@ -27,17 +27,16 @@ defmodule SconeHomeElixir.Schema do
   mutation do
   	field :create_order, type: :sconely_signature_order do
     	arg :host_id, (:string)
-    	arg :event_name, (:string)
-    	#arg :event_datetime, (:string)
+    	arg :event_type
     		
-    	resolve &SconeHomeElixir.OrderResolver.create/2
+    	resolve &Sconely.OrderResolver.create/2
   	end
   
 	field :update_order, type: :sconely_signature_order do
 	    arg :order_id, non_null(:string)
 	    arg :order, :update_order_params
 	 
-	    resolve &SconeHomeElixir.OrderResolver.update/2
+	    resolve &Sconely.OrderResolver.update/2
 	end
   end
 end

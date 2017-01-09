@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.OrderResolver do
+defmodule Sconely.OrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
 
@@ -51,11 +51,16 @@ defmodule SconeHomeElixir.OrderResolver do
   	IO.puts("create order graphql")
     IO.inspect(args)
 
-    #if order_type == "yours", "social", "signature"
+    #if args.order_type == "yours", "social", "signature"
 
-	  %SconelySignatureOrder{}
-	  |> SconelySignatureOrder.changeset(args)
-	  |> Repo.insert
+	  #%SconelySignatureOrder{}
+	  #|> SconelySignatureOrder.changeset(args)
+	  #|> Repo.insert
+
+    #%SconelyOrder{}
+    #|> SconelyOrder.changeset(args)
+    #|> Repo.insert
+
   end
 
   def auto_save(%{order_id: order_id, order: order_params}, _info) do

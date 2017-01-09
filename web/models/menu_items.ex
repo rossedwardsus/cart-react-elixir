@@ -4,7 +4,7 @@ defmodule Sconely.MenuItems do
 
 		use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "menu_items" do
 			field :item_id, Ecto.UUID
@@ -14,6 +14,5 @@ defmodule Sconely.MenuItems do
 			
 			#timestamps()
 		end
-
 
 end 

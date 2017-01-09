@@ -10,10 +10,21 @@ defmodule Sconely.User do
 			field :user_id, :string
 			field :first_name, :string
 			field :last_name, :string
-			field :about_me, :string
+			field :about_me, :string, default: ""
+			field :email, :string
+			field :mobile, :string, default: ""
+			field :company_name, :string, default: ""
+			field :delivery_address_street, :string, default: ""
+			field :delivery_address_city, :string, default: ""
+			field :delivery_address_state, :string, default: ""
+			field :delivery_address_zipcode, :string, default: ""
+			field :delivery_address_comment, :string, default: ""
+			
 			
 			#timestamps()
 		end
 
+
+		#has_many_orders
 
 end 
