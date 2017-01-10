@@ -25,11 +25,6 @@ defmodule SconeHomeElixir.RegisterController do
     #{:error, changeset} = Repo.insert(changeset)
     
 
-    #{:ok, pid} = Postgrex.start_link(hostname: "localhost", username: "postgres", password: "", database: "scone_home")
-    #{:ok, #PID<0.69.0>}
-    #Postgrex.query!(pid, "SELECT * FROM items", [])
-    #%Postgrex.Result{command: :select, empty?: false, columns: ["item_id", "title"], rows: [[3,"hey"],[4,"there"]], size: 2}}
-
     #insert into users/registration return user_id
     #uuid
     #send verification email

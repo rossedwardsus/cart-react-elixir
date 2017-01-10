@@ -73,3 +73,11 @@ config :absinthe,
 config :twilex,
   sid: "AC235140db287805a778ac7818aa5a3a37",
   token: "fe9f28931893620d4d8110d3659da685"
+
+
+
+#test secret key sk_test_Bmak0PLr7NSsKLjZeFvRPptz
+#test publishable key pk_test_pY3YMi18Gcw0iUB3BSfmPtpb
+
+config :stripity_stripe, secret_key: "sk_test_Bmak0PLr7NSsKLjZeFvRPptz"
+config :stripity_stripe, platform_client_id: "pk_test_pY3YMi18Gcw0iUB3BSfmPtpb"

@@ -31,12 +31,33 @@ defmodule SconeHomeElixir.Schema do
     		
     	resolve &Sconely.OrderResolver.create/2
   	end
+
+
   
-	field :update_order, type: :sconely_signature_order do
+	field :save_sconely_signature_order_event_details, type: :sconely_signature_order_event_details do
 	    arg :order_id, non_null(:string)
-	    arg :order, :update_order_params
+	    arg :event_name, :string
+	    arg :event_date, :string
+	    arg :event_time, :string
 	 
-	    resolve &Sconely.OrderResolver.update/2
+	    resolve &Sconely.OrderResolver.save_sconely_signature_order_event_details/2
+	end
+
+
+	field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_item do
+	    arg :order_id, non_null(:string)
+	    arg :item_id, :string
+	    arg :quantity, :string
+	 
+	    resolve &Sconely.OrderResolver.save_sconely_signature_order_additional_items/2
+	end
+
+
+	field :complete_sconely_signature_order, type: :sconely_signature_order do
+	    arg :order_id, :string
+	    arg :amount, :integer
+	 
+	    resolve &Sconely.OrderResolver.complete_sconely_signature_order/2
 	end
   end
 end

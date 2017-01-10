@@ -10,8 +10,14 @@ defmodule Sconely.SconelySocialOrders do
 
 		schema "sconely_social_orders" do
 			field :user_id, Ecto.UUID
-			field :delivery_datetime, :string
-			field :delivery_address, :string
+			field :delivery_date, :string, default: ""
+			field :delivery_time, :string, default: ""
+			field :delivery_address_street, :string, default: ""
+			field :delivery_address_city, :string, default: ""
+			field :delivery_address_state, :string, default: ""
+			field :delivery_address_zipcode, :string, default: ""
+			field :delivery_address_comment, :string, default: ""
+			
 			
 			#timestamps()
 		end

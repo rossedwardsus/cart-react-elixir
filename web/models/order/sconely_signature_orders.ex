@@ -9,13 +9,20 @@ defmodule Sconely.SconelySignatureOrder do
 		@primary_key {:order_id, :binary_id, autogenerate: true}
 
 		schema "sconely_signature_orders" do
-			field :host_id, :string
-			field :number_of_guests, :string
-			field :event_datetime, :string
 			field :event_name, :string
+			#field :number_of_guests, :string
+			field :event_date, :string
+			field :event_time, :string
 			field :custom_code, :string
+			field :guest_count, :string
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
-			field :status, :string
+			#field :delivery_address_street, :string, default: ""
+			#field :delivery_address_city, :string, default: ""
+			#field :delivery_address_state, :string, default: ""
+			#field :delivery_address_zipcode, :string, default: ""
+			#field :delivery_address_comment, :string, default: ""
+			#field :status, :string
+			field :total, :string
 
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
 			#timestamps([{:updated_at, false}])
@@ -25,7 +32,7 @@ defmodule Sconely.SconelySignatureOrder do
 
 		def changeset(struct, params \\ %{}) do
 		    struct
-		    |> cast(params, [])
+		    |> cast(params, [:event_name, :event_date, :event_time])
 	    end
 
 end 

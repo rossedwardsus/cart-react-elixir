@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.SconelyYoursPayment do
+defmodule Sconely.SconelySignatureOrderAdditionalItem do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -8,16 +8,12 @@ defmodule SconeHomeElixir.SconelyYoursPayment do
 
 		@primary_key {:order_id, :binary_id, autogenerate: true}
 
-		schema "order_items" do
-			field :user_id, Ecto.UUID
+		schema "sconely_signature_order_additional_items" do
 			#field :order_id, :string
+			field :item_id, :string
+			field :quantity, :string
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
-			#field :status, :string
-			field :delivery_address_street, :string, default: ""
-			field :delivery_address_city, :string, default: ""
-			field :delivery_address_state, :string, default: ""
-			field :delivery_address_zipcode, :string, default: ""
-
+			
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
 			#timestamps([{:updated_at, false}])
 			#timestamps([{:created_at}])

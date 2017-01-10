@@ -2,7 +2,7 @@ defmodule SconeHomeElixir.LoginController do
   use SconeHomeElixir.Web, :controller
   import Ecto.Query, only: [from: 2]
 
-  alias SconeHomeElixir.{Repo, Login}
+  alias SconeHomeElixir.{Repo, Registration, Session}
 
   require Logger
 
@@ -19,9 +19,20 @@ defmodule SconeHomeElixir.LoginController do
 
     #IO.puts("email" <> email)
     #IO.puts("password" <> password)
+    IO.puts(UUID.uuid1())
 
     #query = from l in Login, where: l.email == "email1"
-    #result1 = Repo.get_by(Login, email: "email1")
+    #user = Repo.get_by(Login, email: "email1")
+
+    #comeonin
+    #if result1.salt(password) == result1.password
+    #uuid
+    #add to session table and redirect to user
+    #add the cookie
+    #session_changeset = Session.changeset(%Session{}, %{session_id: session_id, user_id: user.user_id})
+    #{:error, changeset} = Repo.insert(session_changeset)
+    
+
 
     #result = Repo.all(query)
     #IO.puts(first(result).email)
@@ -33,12 +44,7 @@ defmodule SconeHomeElixir.LoginController do
     #    IO.puts("password1" <> result1.password)
     #end)
 
-    
-    #{:ok, pid} = Postgrex.start_link(hostname: "localhost", username: "postgres", password: "", database: "scone_home")
-    #{:ok, #PID<0.69.0>}
-    #Postgrex.query!(pid, "SELECT * FROM items", [])
-    #%Postgrex.Result{command: :select, empty?: false, columns: ["item_id", "title"], rows: [[3,"hey"],[4,"there"]], size: 2}}
-
+  
     #get password and check it against the passworded entered
     #else redirect to login
     #add to session store
@@ -51,8 +57,8 @@ defmodule SconeHomeElixir.LoginController do
 
     #conn = Plug.Conn.put_resp_cookie(conn, "user_id", "12345")
 
-    #text conn, "hello"
-     redirect conn, to: "/user"
+    text conn, "hello"
+    #redirect conn, to: "/user"
   end
 
   defp authenticate(conn, _) do

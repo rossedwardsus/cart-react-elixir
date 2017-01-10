@@ -6,8 +6,10 @@ defmodule Sconely.User do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
+		@primary_key {:user_id, :binary_id, autogenerate: true}
+
 		schema "users" do
-			field :user_id, :string
+			#field :user_id, :string
 			field :first_name, :string
 			field :last_name, :string
 			field :about_me, :string, default: ""

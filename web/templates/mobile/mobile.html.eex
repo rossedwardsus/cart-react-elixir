@@ -19,7 +19,7 @@
 
           if("email" == "email"){
 
-              e.preventDefault();
+              //e.preventDefault();
 
               var valid_email = true;
 

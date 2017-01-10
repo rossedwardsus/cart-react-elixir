@@ -1,4 +1,4 @@
-defmodule Sconely.SconelySignatureAdditionalItems do
+defmodule SconeHomeElixir.SconelyYoursPayment do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,10 +6,10 @@ defmodule Sconely.SconelySignatureAdditionalItems do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "orders" do
-			field :order_id, Ecto.UUID
-			field :host_id, :string
-			field :item_id, :string
+		@primary_key {:order_id, :binary_id, autogenerate: true}
+
+		schema "order_items" do
+			field :user_id, Ecto.UUID
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
 			
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])

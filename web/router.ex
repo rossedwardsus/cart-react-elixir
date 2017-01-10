@@ -30,6 +30,13 @@ defmodule SconeHomeElixir.Router do
 
   #get "/", PageController, :index
   #get "/user", UserController, :index
+
+
+  
+  get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
+  forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
+
+
    
 
   #scope "/login", SconeHomeElixir do
@@ -103,11 +110,6 @@ defmodule SconeHomeElixir.Router do
     get "/mobile", MobileController, :index
 
 
-
-
-
-
-
     
     get "/", HomeController, :index
     get "/login", LoginController, :index
@@ -153,8 +155,8 @@ defmodule SconeHomeElixir.Router do
   #   pipe_through :api
   # end
 
-  get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
-  forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
  
 
 end
+
+

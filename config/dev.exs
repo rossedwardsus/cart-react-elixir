@@ -43,5 +43,5 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
 
 
 
-config :stripity_stripe, secret_key: "sk_test_dRJI4lMQw1loYK6LmcDLBE41"
-config :stripity_stripe, platform_client_id: "YOUR CONNECT PLATFORM CLIENT ID"
+#config :stripity_stripe, secret_key: "sk_test_dRJI4lMQw1loYK6LmcDLBE41"
+#config :stripity_stripe, platform_client_id: "YOUR CONNECT PLATFORM CLIENT ID"
