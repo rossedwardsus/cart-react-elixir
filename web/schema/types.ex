@@ -1,5 +1,12 @@
 defmodule Sconely.Schema.Types do
   use Absinthe.Schema.Notation
+
+  object :sconely_menu_item do
+    field :item_id, :string
+    field :title, :string
+    field :description, :string
+  #  field :event_datetime, :string
+  #end
  
   object :sconely_signature_order do
     field :order_id, :string

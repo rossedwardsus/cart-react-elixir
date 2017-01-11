@@ -2,14 +2,16 @@ defmodule Sconely.OrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
+  #alias Sconely.MenuItem
 
   import Ecto.Query
 
-  #def get_user(%{host_id: host_id}, _info) do
+  def get_menu_items(%{host_id: host_id}, _info) do
+    items = Repo.all(MenuItem)
    # IO.puts("user orders");
    # query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
    # orders = Repo.all(query)
-   # {:ok, orders}
+    {:ok, items}
     #{:ok, [%{event_name: "hello"}]}
   #end
 

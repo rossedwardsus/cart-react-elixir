@@ -3,6 +3,12 @@ defmodule SconeHomeElixir.Schema do
   import_types Sconely.Schema.Types
  
   query do
+
+  	field :get_menu_items, list_of(:menu_item) do
+      resolve &Sconely.OrderResolver.get_menu_items/2
+    end
+
+
     field :list_orders, list_of(:sconely_signature_order) do
       resolve &Sconely.OrderResolver.all/2
     end
@@ -24,6 +30,8 @@ defmodule SconeHomeElixir.Schema do
 	#field :event_name, (:string)
   #end
 
+
+
   mutation do
   	field :create_order, type: :sconely_signature_order do
     	arg :host_id, (:string)
@@ -44,7 +52,7 @@ defmodule SconeHomeElixir.Schema do
 	end
 
 
-	field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_item do
+	field :save_sconely_signature_order_additional_items, list_of(:sconely_signature_order_additional_item) do
 	    arg :order_id, non_null(:string)
 	    arg :item_id, :string
 	    arg :quantity, :string
