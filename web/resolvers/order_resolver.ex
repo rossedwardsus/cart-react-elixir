@@ -13,7 +13,7 @@ defmodule Sconely.OrderResolver do
    # orders = Repo.all(query)
     {:ok, items}
     #{:ok, [%{event_name: "hello"}]}
-  #end
+  end
 
 
   def get_user(%{host_id: host_id}, _info) do
@@ -196,12 +196,12 @@ defmodule Sconely.OrderResolver do
   #}
   #}
 
-  #save event details
-  def save_sconely_signature_order_additional_items(%{order_id: order_id, item_id: item_id, quantity: quantity}, _info) do
+  #save additional items
+  def save_sconely_signature_order_additional_items(args, _info) do
      
      #multiple items
 
-     IO.inspect(item_id)
+     IO.inspect(args)
 
      #Enum.each(items, fn(item) ->
      #   IO.puts("item" <> item.item_id)
@@ -215,8 +215,8 @@ defmodule Sconely.OrderResolver do
 
      #order_total = guest_count * 6
   
-     sconely_signature_order_additional_item_changeset = SconelySignatureOrderAdditionalItem.changeset(%SconelySignatureOrderAdditionalItem{}, %{item_id: item_id, quantity: quantity})
-     {:error, sconely_signature_order_additional_item} = Repo.insert(sconely_signature_order_additional_item_changeset)
+     #sconely_signature_order_additional_item_changeset = SconelySignatureOrderAdditionalItem.changeset(%SconelySignatureOrderAdditionalItem{}, %{item_id: item_id, quantity: quantity})
+     #{:error, sconely_signature_order_additional_item} = Repo.insert(sconely_signature_order_additional_item_changeset)
 
      #case Repo.insert(sconely_signature_order_additional_item_changeset) do
       #  {:ok, sconely_signature_order} -> IO.inspect("sconely_signature_order_changeset")

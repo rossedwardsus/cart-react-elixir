@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.OrderResolver do
+defmodule Sconely.UserResolver do
   alias Sconely.SconelySignatureOrder
   
   def all(_args, _info) do

@@ -52,10 +52,10 @@ defmodule SconeHomeElixir.Schema do
 	end
 
 
-	field :save_sconely_signature_order_additional_items, list_of(:sconely_signature_order_additional_item) do
-	    arg :order_id, non_null(:string)
-	    arg :item_id, :string
-	    arg :quantity, :string
+	field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_items do
+	    #arg :order_id, non_null(:string)
+	    arg :items, list_of(:menu_item)
+	    #arg :quantity, :string
 	 
 	    resolve &Sconely.OrderResolver.save_sconely_signature_order_additional_items/2
 	end
