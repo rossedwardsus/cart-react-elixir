@@ -53,7 +53,7 @@ defmodule SconeHomeElixir.Schema do
 
 
 	field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_items do
-	    #arg :order_id, non_null(:string)
+	    arg :order_id, non_null(:string)
 	    arg :items, list_of(:menu_item)
 	    #arg :quantity, :string
 	 

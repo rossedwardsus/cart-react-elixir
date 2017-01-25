@@ -117,13 +117,9 @@ export default class Guests extends React.Component {
         <b>Guests</b>
         <br/>
         <br/>
-        Tell us about your guests:
-        <br/>
         Number of guests1:
         <br/>
-        <br/>
-        <input type="range" id="weight" min="20" value={this.state.values} onChange={this.handleValuesChange.bind(this)}
-       max="500" step="10"/>{this.state.value}
+        <input type="range" id="weight" min="20" max="500" step="10" value={this.state.values} onChange={this.handleValuesChange.bind(this)} style={{width: "200px", height: "10px"}}/>{this.state.value}
         <br/>
         <br/>
         Guest responses

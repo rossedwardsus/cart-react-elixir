@@ -22,5 +22,10 @@ defmodule Sconely.SconelySignatureOrderAdditionalItem do
 			#timestamps()
 		end
 
+		#def changeset(struct, params \\ %{}) do
+		#    struct
+		#    |> cast(params, [:order_id, :item_id, :quantity])
+	    #end
+
 
 end 

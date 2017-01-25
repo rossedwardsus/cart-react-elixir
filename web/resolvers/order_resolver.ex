@@ -201,11 +201,12 @@ defmodule Sconely.OrderResolver do
      
      #multiple items
 
-     IO.inspect(args)
+     IO.inspect(args[:order_id])
+     #IO.inspect(args[:items])
 
-     #Enum.each(items, fn(item) ->
-     #   IO.puts("item" <> item.item_id)
-     #end)
+     Enum.each(args[:items], fn(item) ->
+        IO.inspect(item.item_id)
+     end)
 
 
 

@@ -4,7 +4,6 @@ var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
 require('react-datepicker/dist/react-datepicker.css');
-
 import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 import Autocomplete from 'react-google-autocomplete';
@@ -14,10 +13,10 @@ import Autocomplete from 'react-google-autocomplete';
 
 
 var Dropzone = require('react-dropzone');
-
 import SconelySocialTopMenu from './sconely_social_top_menu'; 
-
 import request from 'superagent';
+
+
 
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -46,7 +45,8 @@ export default class EventDetails extends React.Component {
 
     this.state = {
 
-        order_id: this.props.params.order_id,
+        //order_id: this.props.params.order_id,
+        order_id: this.props.order_id,
         order_type: "",
         event_name: "",
         event_datetime: "",
@@ -222,7 +222,7 @@ export default class EventDetails extends React.Component {
   render(): React.Element {
     return (
       <div>
-        <SconelySocialTopMenu order_id={this.props.params.order_id}/>
+        <SconelySocialTopMenu order_id={this.state.order_id}/>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
@@ -232,52 +232,29 @@ export default class EventDetails extends React.Component {
             </div>
           </div>
         </form>
-        <br/>
-        <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b>Date/Time-only for signature</b>
-        }</label>
-            <div className="col-sm-10">
-              <DatePicker inline selected={this.state.startDate} onChange={this.handleDateChange} />
-              <br/>
-            </div>
-            <div className="col-sm-10">
-              <label for="inputEmail3" className="col-sm-2 control-label">Morning or evening</label>
-            </div>
-          </div>
-        </form>
-        <br/>
-        <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b>Address-autocomplete</b>
-        }</label>
-            <div className="col-sm-10">
-                Automcomplete test:
+            <label for="inputEmail3" className="col-sm-2 control-label">Date Time</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">
+                <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
+            </label>
+            <label for="inputEmail3" className="col-sm-2 control-label">Time<input type="radio" name="time"/>
+            </label>
+            <div className="col-sm-5">
+                <select>
+                    <option></option>
+                    <option>9-11</option>
+                    <option>3-5</option>
+                </select>
                 <br/>
-                <Autocomplete
-                    style={{width: '90%'}}
-                    onPlaceSelected={(place) => {
-                      console.log(place.formatted_address.split(",")[2]);
-                    }}
-                    types={['address']}
-                    componentRestrictions={{country: "us"}}
-                />
-              <br/>
             </div>
+            <br/>
           </div>
         </form>
-        <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>}Address</label>
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>
-        }<input type="radio" name="address"/></label>
+            <label for="inputEmail3" className="col-sm-2 control-label">Delivery Address</label>
+            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
             <div className="col-sm-5">
                 <select>
                     <option></option>
@@ -288,46 +265,25 @@ export default class EventDetails extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>}</label>
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>
-        }<input type="radio" name="address"/></label>
+            <label for="inputEmail3" className="col-sm-2 control-label"></label>
+            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
             <div className="col-sm-5">
-                <div className="col-sm-10">
-                  <input type="password" className="form-control" id="inputPassword3" placeholder="Street"/>
-                </div>
-                <br/>
-            </div>
-          </div>
-          <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>}</label>
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>
-        }</label>
-            <div className="col-sm-5">
-                <div className="col-sm-5">
-                  <input type="password" className="form-control" id="inputPassword3" placeholder="City"/>
-                </div>
-                <br/>
-            </div>
-            <div className="col-sm-5">
-                <div className="col-sm-5">
-                  <input type="password" className="form-control" id="inputPassword3" placeholder="Zipcode"/>
-                </div>
-                <br/>
+                <Autocomplete
+                    style={{width: '90%'}}
+                    onPlaceSelected={(place) => {
+                      console.log(place.formatted_address.split(",")[2]);
+                    }}
+                    types={['address']}
+                    componentRestrictions={{country: "us"}}
+                />
             </div>
           </div>
         </form>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>}Image</label>
-            <label for="inputEmail3" className="col-sm-2 control-label">{this.state.order_type == "signature" &&
-        <b></b>
-        }</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">Image</label>
+            <label for="inputEmail3" className="col-sm-2 control-label"></label>
             <div className="col-sm-5">
                 <Dropzone onDrop={this.onDrop}>
                   <div>Try dropping some files here, or click to select files to upload.</div>
@@ -335,36 +291,9 @@ export default class EventDetails extends React.Component {
             </div>
           </div>
         </form>
-        <br/>
-        <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <div className="col-sm-2 control-label">
-                <label>
-                  Event Code:
-                </label>
-            </div>
-            <div className="checkbox col-sm-2">
-                <label>
-                  <input type="radio"/>
-                </label>
-            </div>
-            <label for="inputEmail3" className="col-sm-2 control-label"></label>
-            <div className="col-sm-3">
-              <label for="inputEmail3" className="col-sm-2 control-label">{this.props.params.order_id}</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="checkbox col-sm-2">
-                <label>
-                </label>
-            </div>
-            <div className="checkbox col-sm-1">
-                <label>
-                  <input type="radio"/>
-                </label>
-            </div>
-            <label for="inputPassword3" className="col-sm-2 control-label">Custom</label>
+            <label className="col-sm-2 control-label">Event Code:</label>
             <div className="col-sm-5">
               <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
             </div>

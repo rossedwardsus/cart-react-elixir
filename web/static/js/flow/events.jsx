@@ -50,6 +50,16 @@ export default class Events extends React.Component {
         var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+
+         
+    }else if(order_type == "sconely_signature_single_page"){
+
+        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+
+        this.context.router.push('/order/12345/sconely_signature_single_page');
+        
          
     }else if(order_type == "sconely_yours"){
 
@@ -130,7 +140,7 @@ export default class Events extends React.Component {
 
     //alert(order_type);
     
-    this.context.router.push('/order/12345/event_details');
+    //this.context.router.push('/order/12345/event_details');
     
     //browserHistory.push('#/order/12345');
     //browserHistory.push('/mobile/user#/order/12345');
@@ -144,7 +154,9 @@ export default class Events extends React.Component {
 
     return (
       <div>
-        links to create order
+        <a onClick={this.createOrder.bind(this, "sconely_signature_single_page")}>Sconely Signature Single Page</a>
+        <br/>
+        <br/>
         <br/>
         <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a>
         <br/>

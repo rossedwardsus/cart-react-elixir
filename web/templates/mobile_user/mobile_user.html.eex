@@ -145,46 +145,21 @@
 <div class="container-fluid">
     <div class="row">
         <div class="hidden-xs col-md-2">
-        messages
+        Profile
         <br>
-        create order
+        Delivery addresses
         <br>
-        delivery address
+        Payments
         <br>
-        payment
+        Password
         <br>
-        password
+        Image
         <br>
-        image
+        About me
         <br>
-        about me???
-        <br>
-        food preferences
         </div>
         <div class="col-xs-6 col-md-8">
             <div id="root"></div>
-            <div class="row">
-                <div class="col-xs-12 col-md-3">
-                  <div class="thumbnail">
-                    <img src="/images/strawberry_scones.png" alt="...">
-                    <div class="caption">
-                      <h3>Strawberry Scone</h3>
-                      <p>Cost</p>
-                      <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-3">
-                  <div class="thumbnail">
-                    <img src="/images/strawberry_scones.png" alt="...">
-                    <div class="caption">
-                      <h3>Strawberry Scone</h3>
-                      <p>Cost</p>
-                      <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
-                    </div>
-                  </div>
-                </div>
-            </div>
         </div>
         <div class="col-xs-6 col-md-2">
             maybe put something here
