@@ -2,10 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
  
 module.exports = {
-  entry: './web/static/js/flow/flow_test.js',
+  entry: './web/static/js/flow/guest_view_menu/guest.jsx',
   
   //output: { path: __dirname, filename: './web/static/js/flow/bundle_flow.js' },
-  output: { path: __dirname, filename: './priv/static/js/flow/bundle_flow.js' },
+  output: { path: __dirname, filename: './priv/static/js/flow/bundle_flow_guest.js' },
   
   module: {
     loaders: [

@@ -87,7 +87,7 @@ defmodule SconeHomeElixir.Router do
 
 
     #social
-    get "/mobile/order/guest/choose/item", MobileOrderGuestChooseItemController, :index
+    get "/mobile/guest", MobileSconelySignatureGuestChooseItemController, :index
     
     #sconely yours
     #get "/mobile/order/datetime", MobileOrderController, :index

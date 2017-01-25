@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.MobileOrderGuestChooseItemController do
+defmodule SconeHomeElixir.MobileSconelySignatureGuestChooseItemController do
   use SconeHomeElixir.Web, :controller
 
   plug :put_layout, "mobile_user.html"
@@ -9,7 +9,7 @@ defmodule SconeHomeElixir.MobileOrderGuestChooseItemController do
   	#IO.puts("user_id" <> user_id)
     conn
     |> assign(:user, "hello")
-    |> render("mobile_order_guest_choose_item.html")
+    |> render("mobile_sconely_signature_guest_choose_item.html")
   end
 
   def create(conn, %{"photo" => user_params}) do

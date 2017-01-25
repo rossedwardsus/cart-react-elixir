@@ -142,32 +142,7 @@
 <br>
 <br>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="hidden-xs col-md-2">
-        Profile
-        <br>
-        Delivery addresses
-        <br>
-        Payments
-        <br>
-        Password
-        <br>
-        Image
-        <br>
-        About me
-        <br>
-        </div>
-        <div class="col-xs-6 col-md-8">
-            <div id="root"></div>
-        </div>
-        <div class="col-xs-6 col-md-2">
-            maybe put something here
-        </div>
-    </div>
-</div>
-
-
+<div id="root"></div>
 
 
 <script src="/js/flow/bundle_flow.js"></script>

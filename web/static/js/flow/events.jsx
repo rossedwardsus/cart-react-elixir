@@ -1,16 +1,11 @@
 // @flow
 
 import React from 'react';
-
 import { Link } from 'react-router';
-
 import OrdersList from './orders_list';
-
 import request from 'superagent';
-
 var fetch = require('graphql-fetch')('http://domain.com/graphql')
 import { GQLClient } from 'graphql-http';
-
 
 export default class Events extends React.Component {
   //props: Props;

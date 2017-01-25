@@ -45391,7 +45391,44 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        this.props.children
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'hidden-xs col-md-2' },
+	              'Profile',
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/user/delivery_address' },
+	                'Delivery addresses'
+	              ),
+	              _react2.default.createElement('br', null),
+	              'Payments',
+	              _react2.default.createElement('br', null),
+	              'Password',
+	              _react2.default.createElement('br', null),
+	              'Image',
+	              _react2.default.createElement('br', null),
+	              'About me',
+	              _react2.default.createElement('br', null)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-6 col-md-8' },
+	              this.props.children
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-xs-6 col-md-2' },
+	              'maybe put something here'
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
