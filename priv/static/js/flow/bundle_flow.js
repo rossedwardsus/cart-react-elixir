@@ -82750,30 +82750,28 @@
 
 	    var exists = "no";
 
-	    JSON.parse(localStorage.getItem("order")).links.map(function (link) {
-
-	      //alert("yes" + link.link);
-
-	      if (link.link == "menu") {
-
-	        exists = "yes";
-	      }
-	    });
+	    /*JSON.parse(localStorage.getItem("order")).links.map(function(link){
+	         //alert("yes" + link.link);
+	         if(link.link == "menu"){
+	             exists = "yes";
+	         }
+	     });*/
 
 	    if (exists == "no") {
 
 	      //alert("doesnt exist");
 
-	      JSON.parse(localStorage.getItem("order")).links.push({ link: "menu", text: "Menu" });
+	      //JSON.parse(localStorage.getItem("order")).links.push({link: "menu", text: "Menu"});
+
 	    } else {}
 
-	    //    alert("exists");
+	      //    alert("exists");
 
 
-	    //alert("sconely yours1" + window.guest_chooses);
+	      //alert("sconely yours1" + window.guest_chooses);
 
-	    //window.event.number_of_guests = 20;
-	    //window.event.guests_choose = false;
+	      //window.event.number_of_guests = 20;
+	      //window.event.guests_choose = false;
 
 	    _this.state = {
 

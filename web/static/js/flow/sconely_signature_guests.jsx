@@ -19,7 +19,7 @@ export default class Guests extends React.Component {
 
     var exists = "no";
 
-    JSON.parse(localStorage.getItem("order")).links.map(function(link){
+    /*JSON.parse(localStorage.getItem("order")).links.map(function(link){
 
         //alert("yes" + link.link);
 
@@ -29,13 +29,13 @@ export default class Guests extends React.Component {
 
         }
 
-    });
+    });*/
 
     if(exists == "no"){
 
         //alert("doesnt exist");
   
-        JSON.parse(localStorage.getItem("order")).links.push({link: "menu", text: "Menu"});
+        //JSON.parse(localStorage.getItem("order")).links.push({link: "menu", text: "Menu"});
 
     }else{
 
