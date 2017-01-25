@@ -222,7 +222,6 @@ export default class EventDetails extends React.Component {
   render(): React.Element {
     return (
       <div>
-        <SconelySocialTopMenu order_id={this.state.order_id}/>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">

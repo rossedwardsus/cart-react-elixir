@@ -81548,7 +81548,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_sconely_social_top_menu2.default, { order_id: this.state.order_id }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'form',
@@ -82841,7 +82840,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_sconely_social_top_menu2.default, null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'b',

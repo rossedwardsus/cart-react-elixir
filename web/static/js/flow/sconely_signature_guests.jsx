@@ -112,7 +112,6 @@ export default class Guests extends React.Component {
 
     return (
       <div>
-        <SconelySocialTopMenu />
         <br/>
         <b>Guests</b>
         <br/>
