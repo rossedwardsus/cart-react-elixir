@@ -27,30 +27,21 @@ export default class DateTime extends React.Component {
       <div>
           <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Delivery Address</label>
-            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
+            <label for="inputEmail3" className="col-sm-2 control-label">Date Time</label>
+            <label for="inputEmail3" className="col-sm-2 control-label">
+                <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
+            </label>
+            <label for="inputEmail3" className="col-sm-2 control-label">Time<input type="radio" name="time"/>
+            </label>
             <div className="col-sm-5">
                 <select>
                     <option></option>
-                    <option>Home</option>
-                    <option>Office</option>
+                    <option>9-11</option>
+                    <option>3-5</option>
                 </select>
                 <br/>
             </div>
-          </div>
-          <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label"></label>
-            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                <Autocomplete
-                    style={{width: '90%'}}
-                    onPlaceSelected={(place) => {
-                      console.log(place.formatted_address.split(",")[2]);
-                    }}
-                    types={['address']}
-                    componentRestrictions={{country: "us"}}
-                />
-            </div>
+            <br/>
           </div>
         </form>
       </div>
