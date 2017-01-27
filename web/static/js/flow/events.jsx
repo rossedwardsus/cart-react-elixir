@@ -33,34 +33,30 @@ export default class Events extends React.Component {
 
   createOrder(order_type) {
 
-    if(order_type == "sconely_social"){
+    if(order_type == "sconely_yours"){
 
         var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
        
+        this.context.router.push('/order/12345/sconely_yours');
 
+    }else if(order_type == "sconely_social"){
+
+        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+
+        this.context.router.push('/order/12345/sconely_social');
+         
     }else if(order_type == "sconely_signature"){
 
         var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-         
-    }else if(order_type == "sconely_signature_single_page"){
-
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        this.context.router.push('/order/12345/sconely_signature_single_page');
+        this.context.router.push('/order/12345/sconely_signature');
         
-         
-    }else if(order_type == "sconely_yours"){
-
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
          
     }
 
@@ -149,7 +145,6 @@ export default class Events extends React.Component {
 
     return (
       <div>
-        <a onClick={this.createOrder.bind(this, "sconely_signature_single_page")}>Sconely Signature Single Page</a>
         <br/>
         <br/>
         <br/>

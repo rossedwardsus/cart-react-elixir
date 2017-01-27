@@ -1,11 +1,12 @@
 import React from 'react'
 
-import EventDetails from './sconely_social_event_details';
-import Guests from './sconely_signature_guests';
+import Menu from './sconely_yours_menu';
+import DeliveryAddress from './sconely_social_delivery_address';
+//import Payment from './sconely_social_payment';
 
 import request from 'superagent';
 
-export default class SconelySignature extends React.Component {
+export default class SconelySocial extends React.Component {
   //props: Props;
 
   constructor(props) {
@@ -55,7 +56,7 @@ export default class SconelySignature extends React.Component {
   }
 
   save(){
-
+  
       /*fetch('http://192.168.1.148:4000/graphql', {
           method: 'POST',
           headers: {
@@ -119,9 +120,9 @@ export default class SconelySignature extends React.Component {
   render(): React.Element {
     return (
       <div>
-        <EventDetails order_id={this.props.params.order_id}/>
+        <Menu order_id={this.props.params.order_id}/>
         <br/>
-        <Guests order_id={this.props.params.order_id}/>
+        <DeliveryAddress/>
        </div>
     )
   }

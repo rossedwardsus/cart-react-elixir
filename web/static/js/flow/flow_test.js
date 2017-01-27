@@ -20,7 +20,11 @@ import thunk from 'redux-thunk';
 
 import User from "./user";
 import Events from "./events";
-import SconelySocial from "./sconely_social";
+//import SconelySocial from "./sconely_social";
+import SconelyYours from "./sconely_yours_single_page";
+import SconelySocial from "./sconely_social_single_page";
+import SconelySignature from "./sconely_signature_single_page";
+
 import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySignatureGuests from "./sconely_signature_guests";
 import SconelySocialMenu from "./sconely_social_menu";
@@ -138,8 +142,9 @@ const Root = () => (
     <Router history={history}>
       <Route path="/" component={User}>
         <IndexRoute component={Events} />
-        <Route path="/order/:order_id" component={SconelySocial} />
-        <Route path="/order/:order_id/sconely_signature_single_page" component={SconelySignatureSinglePage} />
+        <Route path="/order/:order_id/sconely_yours" component={SconelyYours} />
+        <Route path="/order/:order_id/sconely_social" component={SconelySocial} />
+        <Route path="/order/:order_id/sconely_signature" component={SconelySignature} />
         <Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
         <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySignatureGuests guest_chooses="value" />)} />
         <Route path="/order/:order_id/menu" component={SconelySocialMenu} />

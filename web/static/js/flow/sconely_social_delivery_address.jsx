@@ -9,7 +9,7 @@ import { Link, browserHistory } from 'react-router'
 import Dialog from "rc-dialog";
 
 
-export default class Menu extends React.Component {
+export default class DeliveryAddress extends React.Component {
   //props: Props;
 
   constructor(props) {

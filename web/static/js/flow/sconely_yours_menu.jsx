@@ -94,7 +94,9 @@ export default class Menu extends React.Component {
 
   }
 
-  selectItem(){
+  selectItem(item_id){
+
+    //alert(item_id);
 
     //alert("e.target.value");
     //this.props.selectMenuItems(e.target.value);
@@ -129,6 +131,22 @@ export default class Menu extends React.Component {
   }
 
   render(): React.Element {
+
+    var value_12 = "";     
+    var value_24 = "";
+    var mini_12 = "";
+
+    this.state.items.map(function(item){
+
+
+        value_12 = item.item_id + "_" + 12;     
+        value_24 = item.item_id + "_" + 24;
+        mini_12 = value_12 + "_mini";
+
+    });
+
+
+
     return (
       <div>
         <br/>
@@ -136,11 +154,13 @@ export default class Menu extends React.Component {
         total items-subtotal
         <br/>
         <br/>
+        <br/>
+        <br/>
         <div className="container-fluid">
             <div className="row">
               <div className="col-xs-12 col-md-2">
                 <div className="thumbnail" >
-                  <img onClick={this.selectItem.bind(this)} src="/images/strawberry_scones.png" data-target="myModal" alt="..."/>
+                  <img onClick={this.selectItem.bind(this, 1)} src="/images/strawberry_scones.png" data-target="myModal" alt="..."/>
                   <div className="caption" onClick={this.selectItem.bind(this)}>
                     <h3>Strawberry Scone1</h3>
                     <p>Cost</p>
@@ -153,7 +173,6 @@ export default class Menu extends React.Component {
                   <div className="caption">
                     <h3>Strawberry Scone2</h3>
                     <p>Cost</p>
-                    <button onClick={this.addItem.bind(this)}>Add</button>
                   </div>
                 </div>
               </div>
@@ -163,7 +182,6 @@ export default class Menu extends React.Component {
                   <div className="caption">
                     <h3>Strawberry Scone2</h3>
                     <p>Cost</p>
-                    <button onClick={this.addItem.bind(this)}>Add</button>
                   </div>
                 </div>
               </div>
@@ -175,12 +193,15 @@ export default class Menu extends React.Component {
         <br/>
         {this.state.items.map(function(item){
 
-            var value_8 = item.item_id + "_" + 8;
-            var value_16 = item.item_id + "_" + 16;
+            var value_12 = item.item_id + "_" + 12;
+            var value_24 = item.item_id + "_" + 24;
+            var mini_12 = value_12 + "_mini";
 
 
             return(
                 <div>
+                click the image for popup
+                <br/>
                 total items
                 <br/>
                 <br/>
@@ -190,13 +211,18 @@ export default class Menu extends React.Component {
                 <br/>
                 <select onChange={this.selectNumberOfItem.bind(this)}>
                   <option value=""></option>
-                  <option value={value_8}>8</option>
-                  <option value={value_16}>16</option>
+                  <option value={value_12}>12</option>
+                  <option value={mini_12}>Mini 12</option>
+                  <option value={value_24}>24</option>
                 </select>
                 <br/>
-                item2 photo
+                X
                 <br/>
-                <input type="checkbox"/>
+                  <select onChange={this.selectNumberOfItem.bind(this)}>
+                  <option value="">1</option>
+                  <option value={value_12}>2</option>
+        
+                </select>
                 </div>
             )
 
@@ -236,11 +262,25 @@ export default class Menu extends React.Component {
                 <h4 className="modal-title" id="myModalLabel">Modal title</h4>
               </div>
               <div className="modal-body">
+
                 ...
+                <img src="/images/strawberry_scones.png"></img>
               </div>
               <div className="modal-footer">
+                <select onChange={this.selectNumberOfItem.bind(this)}>
+                  <option value=""></option>
+                  <option value={value_12}>12</option>
+                  <option value={mini_12}>Mini 12</option>
+                  <option value={value_24}>24</option>
+                </select>
+                <br/>
+                X
+                <br/>
+                  <select onChange={this.selectNumberOfItem.bind(this)}>
+                  <option value="">1</option>
+                  <option value={value_12}>2</option>
+                </select>
                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>

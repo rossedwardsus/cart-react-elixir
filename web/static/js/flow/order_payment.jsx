@@ -4,7 +4,7 @@ import React from 'react'
 
 import request from 'superagent';
 
-import SconelySocialTopMenu from './sconely_social_top_menu';
+//import SconelySocialTopMenu from './sconely_social_top_menu';
 
 export default class Payment extends React.Component {
   //props: Props;
@@ -86,7 +86,6 @@ export default class Payment extends React.Component {
     if(this.state.payment_complete == false){
 
       body = <div>
-              <SconelySocialTopMenu />
               <br/>
               <b>Payment</b>
               <br/>

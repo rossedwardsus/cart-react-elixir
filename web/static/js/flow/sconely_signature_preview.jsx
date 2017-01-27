@@ -3,7 +3,7 @@ import React from 'react'
 import ToggleButton from 'react-toggle-button'
 import InputRange from 'react-input-range';
 
-import SconelySocialTopMenu from './sconely_social_top_menu'; 
+//import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
 
 //import 'react-input-range/react-input-range.css';

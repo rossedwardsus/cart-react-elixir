@@ -8,6 +8,7 @@ defmodule Sconely.MenuItems do
 
 		schema "menu_items" do
 			field :item_id, Ecto.UUID
+			field :title, :string
 			field :description, :string
 			field :active, :string
 			field :cost, :string
