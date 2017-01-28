@@ -64,20 +64,22 @@ export default class Payment extends React.Component {
   }
 
   render(): React.Element {
+
+          var subtotal = this.props.total_item * 5;
+
           return(<div>
               <br/>
               <b>Payment</b>
               <br/>
               <br/>
-                {this.props.subtotal}           
+                {this.props.total_items * 5}           
                 <br/>     
                 <br/>
-                {this.props.total}
+                {this.props.sub_total}
                 <br/>
                 <br/>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <label for="inputEmail3" className="col-sm-2 control-label">Payment</label>
                     <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="existing"/></label>
                     <div className="col-sm-2">
                         <select>
@@ -87,31 +89,29 @@ export default class Payment extends React.Component {
                         </select>
                         <br/>
                     </div>
-                    <label for="inputEmail3" className="col-sm-2 control-label"></label>
                     <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="new"/></label>
                     <div className="col-sm-2">
-                        <input type="radio" name="payment"/>Add another
+                        <input type="checkbox"/>save
                         <br/>
                         Name this card:
-                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <input type="text" size="20" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
                         <br/>
                         Card Number
                         <br/>
-                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <input type="text" size="20" onChange={(e) => this.props.setNewCardNumber(e.target.value)}/>
                         <br/>
-                        Expiration
+                        Expiration Date
                         <br/>
-                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <input type="text" onChange={(e) => this.props.setNewCardExpiryDate(e.target.value)}/>
                         <br/>
                         Security Code
                         <br/>
-                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
-                        <input type="checkbox"/>save<input type="text"/>
+                        <input type="text" size="4" onChange={(e) => this.props.setNewCardSecurityCode(e.target.value)}/>
                         
                     </div>
-                    <button onClick={this.completePayment.bind(this)}>Complete order</button>
-                  </div>
+                    </div>
                 </form>
+                <button onClick={this.completePayment.bind(this)}>Complete order</button>
               </div>
           )
     }

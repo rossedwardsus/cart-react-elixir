@@ -39,10 +39,10 @@ export default class DeliveryAddress extends React.Component {
             <label for="inputEmail3" className="col-sm-2 control-label">Delivery Address</label>
             <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
             <div className="col-sm-5">
-                <select>
-                    <option></option>
-                    <option>Home</option>
-                    <option>Office</option>
+                <select onChange={(value) => this.props.setExistingDeliveryAddress(value)}>
+                    <option value=""></option>
+                    <option value="home">Home</option>
+                    <option value="office">Office</option>
                 </select>
                 <br/>
             </div>

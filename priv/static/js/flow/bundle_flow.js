@@ -53034,7 +53034,9 @@
 	    _this.state = {
 
 	      order_id: _this.props.params.order_id,
-	      cart: [{ item_id: 1, quantity: 1 }, { item_id: 1, quantity: 1 }],
+	      cart: [{ item_id: 1, quantity: 1 }, { item_id: 2, quantity: 1 }],
+	      total_items: 0,
+	      delivery_addresses: [{ existing: [{ name: "home", street: "" }] }, { new: [{ name: "home", street: "" }] }],
 	      delivery_address_street: "",
 	      delivery_address_city: "",
 	      delivery_address_zipcode: "",
@@ -53068,14 +53070,21 @@
 	    })
 	    .done();*/
 
-	    _this.selectitem = _this.selectItem.bind(_this);
-	    _this.selectQuantity = _this.selectQuantity.bind(_this);
+	    _this.addItemToCart = _this.addItemToCart.bind(_this);
+	    _this.removeItemFromCart = _this.removeItemFromCart.bind(_this);
+	    _this.selectItem = _this.selectItemQuantity.bind(_this);
 	    _this.completeOrder = _this.completeOrder.bind(_this);
-	    _this.eventName = _this.eventName.bind(_this);
 	    _this.setDate = _this.setDate.bind(_this);
-	    _this.setDeliveryAddress = _this.setDeliveryAddress.bind(_this);
+	    _this.setTime = _this.setTime.bind(_this);
+	    _this.setExistingDeliveryAddress = _this.setExistingDeliveryAddress.bind(_this);
+	    _this.setNewDeliveryAddressStreet = _this.setNewDeliveryAddressStreet.bind(_this);
+	    _this.setNewDeliveryAddressCity = _this.setNewDeliveryAddressCity.bind(_this);
 	    _this.setPaymentMethod = _this.setPaymentMethod.bind(_this);
 	    _this.setNewCardName = _this.setNewCardName.bind(_this);
+	    _this.setNewCardNameOnCard = _this.setNewCardNameOnCard.bind(_this);
+	    _this.setNewCardNumber = _this.setNewCardNumber.bind(_this);
+	    _this.setNewCardExpiryDate = _this.setNewCardExpiryDate.bind(_this);
+	    _this.setNewCardSecurityCode = _this.setNewCardSecurityCode.bind(_this);
 
 	    return _this;
 	  }
@@ -53086,6 +53095,150 @@
 
 	      //get users payment methods
 	      //delivery addresses
+
+	    }
+	  }, {
+	    key: 'selectItemQuantity',
+	    value: function selectItemQuantity(value) {
+
+	      var value = "" + value;
+
+	      //alert(value.split("_"));
+
+	      //get cart and push item and quantity to it.
+	      //update the total
+
+	      var cart_temp = this.state.cart;
+	      cart_temp.push({ item_id: 10, quantity: 24 });
+	      this.setState({ cart: cart_temp });
+
+	      this.setState({ total_items: value.split("_")[1] });
+	    }
+	  }, {
+	    key: 'addItemToCart',
+	    value: function addItemToCart(value) {
+
+	      var value = "" + value;
+
+	      var item_id = value.split("_")[0];
+	      var quantity = value.split("_")[1];
+
+	      //alert(value);
+	      var cart_temp = this.state.cart;
+	      cart_temp.push({ item_id: 3, quantity: 12 });
+	      this.setState({ cart: cart_temp });
+
+	      //var subtotal_temp = this.state.subtotal;
+	      //this.setState({subtotal: subtotal_temp + quantity});
+	      //add to subtotal
+	      this.setState({ total_items: value.split("_")[1] });
+	    }
+	  }, {
+	    key: 'showItem',
+	    value: function showItem() {
+
+	      //calculate subtotal
+	      //quantity X 5 == total
+
+	    }
+	  }, {
+	    key: 'removeItemFromCart',
+	    value: function removeItemFromCart(value) {
+
+	      //find by id and
+	      //split
+	      //subtract from subtotal
+
+	      alert(JSON.stringify(value));
+	    }
+	  }, {
+	    key: 'showcart',
+	    value: function showcart() {}
+	  }, {
+	    key: 'setDate',
+	    value: function setDate(value) {
+
+	      alert(value);
+	      this.setState({ selected_date: value });
+	    }
+	  }, {
+	    key: 'setTime',
+	    value: function setTime(value) {
+
+	      alert(value);
+	    }
+	  }, {
+	    key: 'setExistingDeliveryAddress',
+	    value: function setExistingDeliveryAddress(value) {
+
+	      //if new add flag of address that it is new so its saved with the name
+
+	      alert(JSON.stringify(value));
+	      //or get the address by name?
+	    }
+	  }, {
+	    key: 'setNewDeliveryAddressStreet',
+	    value: function setNewDeliveryAddressStreet(value) {
+
+	      //if new add flag of address that it is new so its saved with the name
+
+	      alert(JSON.stringify(value));
+	    }
+	  }, {
+	    key: 'setNewDeliveryAddressCity',
+	    value: function setNewDeliveryAddressCity(value) {
+
+	      //if new add flag of address that it is new so its saved with the name
+
+	      alert(JSON.stringify(value));
+	    }
+	  }, {
+	    key: 'setPaymentMethod',
+	    value: function setPaymentMethod(e) {
+
+	      //if new add flag of method that it is new so its saved with the name
+	      //save the token of stripe actually
+
+	      alert(JSON.stringify(e.target.value));
+	    }
+	  }, {
+	    key: 'setNewCardName',
+	    value: function setNewCardName(value) {
+
+	      alert(value);
+	    }
+	  }, {
+	    key: 'setNewCardNameOnCard',
+	    value: function setNewCardNameOnCard(value) {
+
+	      alert(value);
+	    }
+	  }, {
+	    key: 'setNewCardNumber',
+	    value: function setNewCardNumber(value) {
+
+	      alert(value);
+	    }
+	  }, {
+	    key: 'setNewCardExpiryDate',
+	    value: function setNewCardExpiryDate(value) {
+
+	      alert(value);
+	    }
+	  }, {
+	    key: 'setNewCardSecurityCode',
+	    value: function setNewCardSecurityCode(value) {
+
+	      alert(value);
+	    }
+	  }, {
+	    key: 'pay',
+	    value: function pay() {
+
+	      //cart
+	      //payment method
+	      //delivery address
+	      //complete on the api
 
 	    }
 	  }, {
@@ -53114,93 +53267,6 @@
 
 	    }
 	  }, {
-	    key: 'eventName',
-	    value: function eventName(value) {
-
-	      alert(value.target.value);
-	      //this.setState({event_name: e.target.value});
-	    }
-	  }, {
-	    key: 'selectItem',
-	    value: function selectItem(value) {
-
-	      alert(value);
-	    }
-	  }, {
-	    key: 'selectQuantity',
-	    value: function selectQuantity(value) {
-
-	      alert(value);
-	    }
-	  }, {
-	    key: 'addItemToCart',
-	    value: function addItemToCart() {
-
-	      //var cart = cart;
-	      //cart.push({item_id: 1, mini: false, quantity: 12});
-
-	    }
-	  }, {
-	    key: 'showItem',
-	    value: function showItem() {
-
-	      //calculate subtotal
-	      //quantity X 5 == total
-
-	    }
-	  }, {
-	    key: 'removeItem',
-	    value: function removeItem() {}
-	  }, {
-	    key: 'showcart',
-	    value: function showcart() {}
-	  }, {
-	    key: 'setDate',
-	    value: function setDate(value) {
-
-	      alert(value);
-	      this.setState({ selected_date: value });
-	    }
-	  }, {
-	    key: 'setDeliveryAddress',
-	    value: function setDeliveryAddress(value) {
-
-	      //if new add flag of address that it is new so its saved with the name
-
-	      alert(JSON.stringify(value));
-	    }
-	  }, {
-	    key: 'setTime',
-	    value: function setTime(value) {
-
-	      alert(value);
-	    }
-	  }, {
-	    key: 'setPaymentMethod',
-	    value: function setPaymentMethod(e) {
-
-	      //if new add flag of method that it is new so its saved with the name
-	      //save the token of stripe actually
-
-	      alert(JSON.stringify(e.target.value));
-	    }
-	  }, {
-	    key: 'setNewCardName',
-	    value: function setNewCardName(value) {
-
-	      alert(value);
-	    }
-	  }, {
-	    key: 'pay',
-	    value: function pay() {
-
-	      //cart
-	      //payment method
-	      //delivery address
-	      //complete on the api
-
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -53208,10 +53274,12 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_sconely_yours_menu2.default, { selectItem: function selectItem(value) {
+	        _react2.default.createElement(_sconely_yours_menu2.default, { cart: this.state.cart, subtotal: this.state.subtotal, total_items: this.state.total_items, selectItem: function selectItem(value) {
 	            return _this2.selectItem(value);
-	          }, selectQuantity: function selectQuantity(value) {
-	            return _this2.selectQuantity(value);
+	          }, addItemToCart: function addItemToCart(value) {
+	            return _this2.addItemToCart(value);
+	          }, removeItemFromCart: function removeItemFromCart(value) {
+	            return _this2.removeItemFromCart(value);
 	          }, order_id: this.props.params.order_id }),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(_sconely_yours_datetime2.default, { selected_date: this.state.selected_date, setDate: function setDate(value) {
@@ -53220,14 +53288,26 @@
 	            return _this2.setTime(value);
 	          } }),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_sconely_yours_delivery_address2.default, { user_id: "1", setDeliveryAddress: function setDeliveryAddress(value) {
-	            return _this2.setDeliveryAddress(value);
+	        _react2.default.createElement(_sconely_yours_delivery_address2.default, { user_id: "1", setExistingDeliveryAddress: function setExistingDeliveryAddress(value) {
+	            return _this2.setExistingDeliveryAddress(value);
+	          }, setNewDeliveryAddressStreet: function setNewDeliveryAddressStreet(value) {
+	            return _this2.setDeliveryAddressStreet(value);
+	          }, setNewDeliveryAddressCity: function setNewDeliveryAddressCity(value) {
+	            return _this2.setDeliveryAddressCity(value);
 	          } }),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_order_payment2.default, { user_id: "1", subtotal: this.state.subtotal, total: this.props.total, setPaymentMethod: function setPaymentMethod(value) {
+	        _react2.default.createElement(_order_payment2.default, { user_id: "1", total_items: this.state.total_items, total: this.props.total, setPaymentMethod: function setPaymentMethod(value) {
 	            return _this2.setPaymentMethod(value);
 	          }, setNewCardName: function setNewCardName(value) {
 	            return _this2.setNewCardName(value);
+	          }, setNewCardNameOnCard: function setNewCardNameOnCard(value) {
+	            return _this2.setNewCardNameOnCard(value);
+	          }, setNewCardNumber: function setNewCardNumber(value) {
+	            return _this2.setNewCardNumber(value);
+	          }, setNewCardExpiryDate: function setNewCardExpiryDate(value) {
+	            return _this2.setNewCardExpiryDate(value);
+	          }, setNewCardSecurityCode: function setNewCardSecurityCode(value) {
+	            return _this2.setNewCardSecurityCode(value);
 	          } })
 	      );
 	    }
@@ -53283,10 +53363,12 @@
 	    var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
 
 	    _this.state = {
-
-	      items: [{ item_id: 1 }]
-
+	      page: "items",
+	      items: [{ item_id: 1 }],
+	      cart: _this.props.cart
 	    };
+
+	    _this.loadCart = _this.loadCart.bind(_this);
 
 	    return _this;
 	  }
@@ -53299,8 +53381,57 @@
 
 	    }
 	  }, {
+	    key: 'loadCart',
+	    value: function loadCart() {
+
+	      this.setState({ page: "cart" });
+	      //remove/change quantity
+	    }
+	  }, {
+	    key: 'loadItems',
+	    value: function loadItems() {
+
+	      this.setState({ page: "items" });
+	      //remove/change quantity
+	    }
+
+	    /*removeitem(item_id){
+	       //find item and remove it via split maybe
+	      //this.setState({cart: cart_temp});
+	       var cart_temp = this.state.cart;
+	      var cart_temp1 = "";
+	      
+	      //var cart_temp = cart_temp.filter(function(item) {
+	      //    return item.name !== "John";
+	      //});
+	       //cart_temp.map(function(i, v){
+	               //if v.item_id == item_id{
+	                 //.splice(0,1);
+	               //}
+	            
+	      //}
+	      
+	    }*/
+
+	  }, {
+	    key: 'mouseOver',
+	    value: function mouseOver(e) {
+
+	      e.target.src = "/images/menu/DWK_greenrollover3.jpg";
+	    }
+	  }, {
+	    key: 'mouseOut',
+	    value: function mouseOut(e) {
+
+	      e.target.src = "/images/menu/DWK_greenrollover1.jpg";
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var that = this;
+	      var page = "";
 
 	      var value_12 = "";
 	      var value_24 = "";
@@ -53313,253 +53444,264 @@
 	        mini_12 = value_12 + "_mini";
 	      });
 
+	      if (this.state.page == "items") {
+
+	        page = _react2.default.createElement(
+	          'div',
+	          null,
+	          'cart(',
+	          _react2.default.createElement(
+	            'a',
+	            { onClick: function onClick() {
+	                return that.loadCart();
+	              } },
+	            this.props.total_items
+	          ),
+	          ')',
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'container-fluid' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-12 col-md-4' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'thumbnail' },
+	                  _react2.default.createElement('img', { id: '1', onMouseOver: function onMouseOver(e) {
+	                      return _this2.mouseOver(e);
+	                    }, onMouseOut: function onMouseOut(e) {
+	                      return _this2.mouseOut(e);
+	                    }, onClick: function onClick() {
+	                      return _this2.props.selectItem(1);
+	                    }, src: '/images/menu/DWK_greenrollover1.jpg', 'data-target': 'myModal', alt: '...' }),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'caption', onClick: function onClick() {
+	                        return _this2.props.selectItem;
+	                      } },
+	                    _react2.default.createElement(
+	                      'h3',
+	                      null,
+	                      'Strawberry Scone1'
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Cost'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-12 col-md-4' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'thumbnail' },
+	                  _react2.default.createElement('img', { src: '/images/strawberry_scones.png', alt: '...' }),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'caption' },
+	                    _react2.default.createElement(
+	                      'h3',
+	                      null,
+	                      'Strawberry Scone2'
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Cost'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-xs-12 col-md-4' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'thumbnail' },
+	                  _react2.default.createElement('img', { src: '/images/strawberry_scones.png', alt: '...' }),
+	                  _react2.default.createElement(
+	                    'div',
+	                    { className: 'caption' },
+	                    _react2.default.createElement(
+	                      'h3',
+	                      null,
+	                      'Strawberry Scone2'
+	                    ),
+	                    _react2.default.createElement(
+	                      'p',
+	                      null,
+	                      'Cost'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          this.state.items.map(function (item) {
+	            var _this3 = this;
+
+	            var value_12 = item.item_id + "_" + 12;
+	            var value_24 = item.item_id + "_" + 24;
+
+	            return _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'select',
+	                { onChange: function onChange(e) {
+	                    return _this3.props.addItemToCart(e.target.value);
+	                  } },
+	                _react2.default.createElement('option', { value: '' }),
+	                _react2.default.createElement(
+	                  'option',
+	                  { value: value_12 },
+	                  '12'
+	                ),
+	                _react2.default.createElement(
+	                  'option',
+	                  { value: value_24 },
+	                  '24'
+	                )
+	              ),
+	              _react2.default.createElement('br', null)
+	            );
+	          }.bind(this)),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'modal fade', id: 'myModal', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'modal-dialog', role: 'document' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'modal-content' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'modal-header' },
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+	                    _react2.default.createElement(
+	                      'span',
+	                      { 'aria-hidden': 'true' },
+	                      '\xD7'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'h4',
+	                    { className: 'modal-title', id: 'myModalLabel' },
+	                    'Modal title'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'modal-body' },
+	                  '...',
+	                  _react2.default.createElement('img', { src: '/images/strawberry_scones.png' })
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'modal-footer' },
+	                  _react2.default.createElement(
+	                    'select',
+	                    { onChange: function onChange(value) {
+	                        return _this2.props.addItemToCart(value);
+	                      } },
+	                    _react2.default.createElement('option', { value: '' }),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: value_12 },
+	                      '12'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: mini_12 },
+	                      'Mini 12'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: value_24 },
+	                      '24'
+	                    )
+	                  ),
+	                  _react2.default.createElement('br', null),
+	                  'X',
+	                  _react2.default.createElement('br', null),
+	                  _react2.default.createElement(
+	                    'select',
+	                    { onChange: this.props.selectQuantity },
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: '' },
+	                      '1'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: value_12 },
+	                      '2'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                    'Close'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        );
+	      } else {
+
+	        page = _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'a',
+	            { onClick: function onClick() {
+	                return _this2.loadItems();
+	              } },
+	            'items'
+	          ),
+	          _react2.default.createElement('br', null),
+	          this.props.cart.map(function (item) {
+
+	            var item_id = item.item_id;
+
+	            return _react2.default.createElement(
+	              'div',
+	              null,
+	              'description',
+	              item.item_id,
+	              'xquantity-',
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: function onClick() {
+	                    return that.props.removeItemFromCart(item_id);
+	                  } },
+	                'remove'
+	              )
+	            );
+	          })
+	        );
+	      }
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        'total items-subtotal',
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12 col-md-4' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'thumbnail' },
-	                _react2.default.createElement('img', { onClick: this.props.selectItem(1), src: '/images/strawberry_scones.png', 'data-target': 'myModal', alt: '...' }),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'caption', onClick: this.props.selectItem },
-	                  _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Strawberry Scone1'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Cost'
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12 col-md-4' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'thumbnail' },
-	                _react2.default.createElement('img', { src: '/images/strawberry_scones.png', alt: '...' }),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'caption' },
-	                  _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Strawberry Scone2'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Cost'
-	                  )
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-xs-12 col-md-4' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'thumbnail' },
-	                _react2.default.createElement('img', { src: '/images/strawberry_scones.png', alt: '...' }),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'caption' },
-	                  _react2.default.createElement(
-	                    'h3',
-	                    null,
-	                    'Strawberry Scone2'
-	                  ),
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    'Cost'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        'item1 photo',
-	        _react2.default.createElement('br', null),
-	        'amount-cost',
-	        _react2.default.createElement('br', null),
-	        this.state.items.map(function (item) {
-	          var _this2 = this;
-
-	          var value_12 = item.item_id + "_" + 12;
-	          var value_24 = item.item_id + "_" + 24;
-	          var mini_12 = value_12 + "_mini";
-
-	          return _react2.default.createElement(
-	            'div',
-	            null,
-	            'event name',
-	            _react2.default.createElement('input', { onChange: function onChange(value) {
-	                return _this2.props.event_name(value);
-	              } }),
-	            _react2.default.createElement('br', null),
-	            'click the image for popup',
-	            _react2.default.createElement('br', null),
-	            'total items',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            'item1 photo',
-	            _react2.default.createElement('br', null),
-	            'amount-cost',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              'select',
-	              { onChange: function onChange(e) {
-	                  return _this2.props.selectItem(e.target.value);
-	                } },
-	              _react2.default.createElement('option', { value: '' }),
-	              _react2.default.createElement(
-	                'option',
-	                { value: value_12 },
-	                '12'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: mini_12 },
-	                'Mini 12'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: value_24 },
-	                '24'
-	              )
-	            ),
-	            _react2.default.createElement('br', null),
-	            'X',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              'select',
-	              { onChange: function onChange(e) {
-	                  return _this2.props.selectQuantity(e.target.value);
-	                } },
-	              _react2.default.createElement(
-	                'option',
-	                { value: '' },
-	                '1'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: value_12 },
-	                '2'
-	              )
-	            )
-	          );
-	        }.bind(this)),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'modal fade', id: 'myModal', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'modal-dialog', role: 'document' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'modal-content' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'modal-header' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
-	                  _react2.default.createElement(
-	                    'span',
-	                    { 'aria-hidden': 'true' },
-	                    '\xD7'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'h4',
-	                  { className: 'modal-title', id: 'myModalLabel' },
-	                  'Modal title'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'modal-body' },
-	                '...',
-	                _react2.default.createElement('img', { src: '/images/strawberry_scones.png' })
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'modal-footer' },
-	                _react2.default.createElement(
-	                  'select',
-	                  { onChange: this.props.selectItem },
-	                  _react2.default.createElement('option', { value: '' }),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: value_12 },
-	                    '12'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: mini_12 },
-	                    'Mini 12'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: value_24 },
-	                    '24'
-	                  )
-	                ),
-	                _react2.default.createElement('br', null),
-	                'X',
-	                _react2.default.createElement('br', null),
-	                _react2.default.createElement(
-	                  'select',
-	                  { onChange: this.props.selectQuantity },
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: '' },
-	                    '1'
-	                  ),
-	                  _react2.default.createElement(
-	                    'option',
-	                    { value: value_12 },
-	                    '2'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
-	                  'Close'
-	                )
-	              )
-	            )
-	          )
-	        )
+	        page,
+	        _react2.default.createElement('br', null)
 	      );
 	    }
 	  }], [{
@@ -69161,16 +69303,18 @@
 	              { className: 'col-sm-5' },
 	              _react2.default.createElement(
 	                'select',
-	                null,
-	                _react2.default.createElement('option', null),
+	                { onChange: function onChange(value) {
+	                    return _this2.props.setExistingDeliveryAddress(value);
+	                  } },
+	                _react2.default.createElement('option', { value: '' }),
 	                _react2.default.createElement(
 	                  'option',
-	                  null,
+	                  { value: 'home' },
 	                  'Home'
 	                ),
 	                _react2.default.createElement(
 	                  'option',
-	                  null,
+	                  { value: 'office' },
 	                  'Office'
 	                )
 	              ),
@@ -71712,6 +71856,8 @@
 	    value: function render() {
 	      var _this2 = this;
 
+	      var subtotal = this.props.total_item * 5;
+
 	      return _react2.default.createElement(
 	        "div",
 	        null,
@@ -71723,10 +71869,10 @@
 	        ),
 	        _react2.default.createElement("br", null),
 	        _react2.default.createElement("br", null),
-	        this.props.subtotal,
+	        this.props.total_items * 5,
 	        _react2.default.createElement("br", null),
 	        _react2.default.createElement("br", null),
-	        this.props.total,
+	        this.props.sub_total,
 	        _react2.default.createElement("br", null),
 	        _react2.default.createElement("br", null),
 	        _react2.default.createElement(
@@ -71735,11 +71881,6 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "form-group" },
-	            _react2.default.createElement(
-	              "label",
-	              { "for": "inputEmail3", className: "col-sm-2 control-label" },
-	              "Payment"
-	            ),
 	            _react2.default.createElement(
 	              "label",
 	              { "for": "inputEmail3", className: "col-sm-2 control-label" },
@@ -71765,7 +71906,6 @@
 	              ),
 	              _react2.default.createElement("br", null)
 	            ),
-	            _react2.default.createElement("label", { "for": "inputEmail3", className: "col-sm-2 control-label" }),
 	            _react2.default.createElement(
 	              "label",
 	              { "for": "inputEmail3", className: "col-sm-2 control-label" },
@@ -71774,41 +71914,38 @@
 	            _react2.default.createElement(
 	              "div",
 	              { className: "col-sm-2" },
-	              _react2.default.createElement("input", { type: "radio", name: "payment" }),
-	              "Add another",
+	              _react2.default.createElement("input", { type: "checkbox" }),
+	              "save",
 	              _react2.default.createElement("br", null),
 	              "Name this card:",
-	              _react2.default.createElement("input", { type: "text", onChange: function onChange(e) {
+	              _react2.default.createElement("input", { type: "text", size: "20", onChange: function onChange(e) {
 	                  return _this2.props.setNewCardName(e.target.value);
 	                } }),
 	              _react2.default.createElement("br", null),
 	              "Card Number",
 	              _react2.default.createElement("br", null),
-	              _react2.default.createElement("input", { type: "text", onChange: function onChange(e) {
-	                  return _this2.props.setNewCardName(e.target.value);
+	              _react2.default.createElement("input", { type: "text", size: "20", onChange: function onChange(e) {
+	                  return _this2.props.setNewCardNumber(e.target.value);
 	                } }),
 	              _react2.default.createElement("br", null),
-	              "Expiration",
+	              "Expiration Date",
 	              _react2.default.createElement("br", null),
 	              _react2.default.createElement("input", { type: "text", onChange: function onChange(e) {
-	                  return _this2.props.setNewCardName(e.target.value);
+	                  return _this2.props.setNewCardExpiryDate(e.target.value);
 	                } }),
 	              _react2.default.createElement("br", null),
 	              "Security Code",
 	              _react2.default.createElement("br", null),
-	              _react2.default.createElement("input", { type: "text", onChange: function onChange(e) {
-	                  return _this2.props.setNewCardName(e.target.value);
-	                } }),
-	              _react2.default.createElement("input", { type: "checkbox" }),
-	              "save",
-	              _react2.default.createElement("input", { type: "text" })
-	            ),
-	            _react2.default.createElement(
-	              "button",
-	              { onClick: this.completePayment.bind(this) },
-	              "Complete order"
+	              _react2.default.createElement("input", { type: "text", size: "4", onChange: function onChange(e) {
+	                  return _this2.props.setNewCardSecurityCode(e.target.value);
+	                } })
 	            )
 	          )
+	        ),
+	        _react2.default.createElement(
+	          "button",
+	          { onClick: this.completePayment.bind(this) },
+	          "Complete order"
 	        )
 	      );
 	    }
