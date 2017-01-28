@@ -3,8 +3,19 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
 require('react-datepicker/dist/react-datepicker.css');
-import 'react-date-picker/index.css';
-import { DateField, Calendar } from 'react-date-picker';
+//import 'react-date-picker/index.css';
+//import { DateField, Calendar } from 'react-date-picker';
+
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+type Props = {
+  //title: string,
+  //visited: boolean,
+  setDate: () => void,
+  setTime: () => void,
+};
+
 
 export default class DateTime extends React.Component {
   //props: Props;
@@ -17,7 +28,7 @@ export default class DateTime extends React.Component {
 
     this.state = {
 
-        items: [{item_id: 1}]
+        selected_date: ""
         
     };
   }
@@ -29,12 +40,11 @@ export default class DateTime extends React.Component {
           <div className="form-group">
             <label for="inputEmail3" className="col-sm-2 control-label">Date Time</label>
             <label for="inputEmail3" className="col-sm-2 control-label">
-                <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
+                <DatePicker selected={this.props.selected_date} onChange={(value) => this.props.setDate(value)} />
             </label>
-            <label for="inputEmail3" className="col-sm-2 control-label">Time<input type="radio" name="time"/>
-            </label>
+            <label for="inputEmail3" className="col-sm-2 control-label"></label>
             <div className="col-sm-5">
-                <select>
+                <select onChange={(e) => this.props.setTime(e.target.value)}>
                     <option></option>
                     <option>9-11</option>
                     <option>3-5</option>

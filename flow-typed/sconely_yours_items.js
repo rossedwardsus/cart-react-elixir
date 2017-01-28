@@ -1,0 +1,3 @@
+declare module "./sconely_yours_items" {
+  // ...
+}

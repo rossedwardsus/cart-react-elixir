@@ -3,9 +3,12 @@ import React from 'react'
 import Menu from './sconely_yours_menu';
 import DateTime from './sconely_yours_datetime';
 import DeliveryAddress from './sconely_yours_delivery_address'
-//import Payment from './sconely_social_payment';
+import Payment from './order_payment';
 
 import request from 'superagent';
+
+//proptype
+//prop == params id/orderid
 
 export default class SconelyYours extends React.Component {
   //props: Props;
@@ -16,12 +19,25 @@ export default class SconelyYours extends React.Component {
   
     //alert("sconely yours1" + window.guest_chooses);
 
+    //state: {
+    //  display: 'static' | 'hover' | 'active',
+    //};
+
     this.state = {
 
         order_id: this.props.params.order_id,
-        cart: [{item_id: 1, quantity: 1, mini: true}, {item_id: 1, quantity: 1, mini: true}],
-        delivery_address: "",
-        delvery_datetime: ""
+        cart: [{item_id: 1, quantity: 1}, {item_id: 1, quantity: 1}],
+        delivery_address_street: "",
+        delivery_address_city: "",
+        delivery_address_zipcode: "",
+        delivery_address_suite: "",
+        delivery_address_comment: "",
+        selected_date: "",
+        selected_time: "",
+        subtotal: 0,
+        total: 0,
+        payment_method_new_existing: "",
+        payment_method: ""
     };
 
     /*fetch('http://192.168.1.148:4000/graphql', {
@@ -44,6 +60,15 @@ export default class SconelyYours extends React.Component {
     })
     .done();*/
 
+    this.selectitem = this.selectItem.bind(this);
+    this.selectQuantity = this.selectQuantity.bind(this);
+    this.completeOrder = this.completeOrder.bind(this);
+    this.eventName = this.eventName.bind(this);
+    this.setDate = this.setDate.bind(this);
+    this.setDeliveryAddress = this.setDeliveryAddress.bind(this);
+    this.setPaymentMethod = this.setPaymentMethod.bind(this);
+    this.setNewCardName = this.setNewCardName.bind(this);
+
   }
 
   componentDidMount(){
@@ -53,7 +78,7 @@ export default class SconelyYours extends React.Component {
 
   }
 
-  save(){
+  completeOrder(){
   
       /*fetch('http://192.168.1.148:4000/graphql', {
           method: 'POST',
@@ -77,14 +102,36 @@ export default class SconelyYours extends React.Component {
 
   }
 
+  eventName(value){
+
+    alert(value.target.value);
+    //this.setState({event_name: e.target.value});
+
+  }
+
+  selectItem(value){
+
+    alert(value);
+
+  }
+
+  selectQuantity(value){
+
+    alert(value);
+
+  }
+
   addItemToCart(){
 
-
+      //var cart = cart;
+      //cart.push({item_id: 1, mini: false, quantity: 12});
 
   }
 
   showItem(){
 
+      //calculate subtotal
+      //quantity X 5 == total
 
   }
 
@@ -99,19 +146,40 @@ export default class SconelyYours extends React.Component {
   }
 
   
-  setDate(){
+  setDate(value){
 
-
-
-  }
-
-  setTime(){
-
-    //if time is extra then add to total
+    alert(value);
+    this.setState({selected_date: value});
 
   }
 
-  setDeliveryAddress(){
+  setDeliveryAddress(value){
+
+    //if new add flag of address that it is new so its saved with the name
+
+    alert(JSON.stringify(value));
+
+  }
+
+  setTime(value){
+
+    alert(value);
+    
+  }
+
+  setPaymentMethod(e){
+
+    //if new add flag of method that it is new so its saved with the name
+    //save the token of stripe actually
+
+    alert(JSON.stringify(e.target.value));
+
+  }
+
+  setNewCardName(value){
+
+
+    alert(value);
 
 
   }
@@ -119,20 +187,24 @@ export default class SconelyYours extends React.Component {
 
   pay(){
 
+      //cart
+      //payment method
+      //delivery address
+      //complete on the api
 
   }
-
-
 
 
   render(): React.Element {
     return (
       <div>
-        <Menu order_id={this.props.params.order_id}/>
+        <Menu selectItem={(value) => this.selectItem(value)} selectQuantity={(value) => this.selectQuantity(value)} order_id={this.props.params.order_id}/>
         <br/>
-        <DateTime/>
+        <DateTime selected_date={this.state.selected_date} setDate={(value) => this.setDate(value)} setTime={(value) => this.setTime(value)}/>
         <br/>
-        <DeliveryAddress />
+        <DeliveryAddress user_id={"1"} setDeliveryAddress={(value) => this.setDeliveryAddress(value)}/>
+        <br/>
+        <Payment user_id={"1"} subtotal={this.state.subtotal} total={this.props.total} setPaymentMethod={(value) => this.setPaymentMethod(value)} setNewCardName={(value) => this.setNewCardName(value)}/>
       </div>
     )
   }

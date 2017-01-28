@@ -6,7 +6,13 @@ import { Link, browserHistory } from 'react-router'
 
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
-import Dialog from "rc-dialog";
+//import Dialog from "rc-dialog";
+
+type Props = {
+  //title: string,
+  //visited: boolean,
+  setDeliveryAddrss: () => void,
+};
 
 
 export default class Menu extends React.Component {
@@ -24,52 +30,14 @@ export default class Menu extends React.Component {
         
     };
 
-    this.selectNumberOfItem = this.selectNumberOfItem.bind(this);
-    this.selectItem = this.selectItem.bind(this);
+    
 
-    /*var orders = JSON.parse(localStorage.getItem("user")).orders;    
+    
+  }
 
-    function findOrder(order) { 
-            //alert(order.order_id);
-            return order.order_id === 12345;
-    };
+  componentDidMount(){
 
-    var order_type = orders.find(findOrder).order_type; 
-    //alert(order_type);
-    this.setState({order_type: order_type});*/
-
-    //myTimer;
-    //var myVar = setInterval(
-    //    () => 
-            //get the data from state and upload to server
-            //only update if the data has been changed though
-            //add a flag that updates when they change something
-            
-            //if this.state.changed == true then update
-            //only update menu
-
-            //window.event.event_name == this.state.event_name
-            //window.address == "home"
-            //window.event_date == "date"
-            //window.event_time == "time"
-            //window.custom_code = "custom_code"
-
-            /*request
-              .post('/api/order/new')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-          
-              });*/
-
-            //console.log("hello")
-    //, 10000);
-
-    //myVar;
-    //myTimer;
+    //get active items from the database
 
   }
 
@@ -79,56 +47,6 @@ export default class Menu extends React.Component {
     };
   }
 
-  createOrder(order_type) {
-    //alert(order_type);
-    this.context.router.push('/order/12345');
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
-  
-  }
-
-  selectNumberOfItem(e){
-
-    alert(e.target.value);
-
-  }
-
-  selectItem(item_id){
-
-    //alert(item_id);
-
-    //alert("e.target.value");
-    //this.props.selectMenuItems(e.target.value);
-
-    //localstorage push items
-
-    //$('#myModal').on('shown.bs.modal', function () {
-      //$('#myInput').focus()
-    //})
-
-    $('#myModal').modal({});
-
-
-  }
-
-  addItem(){
-
-    //alert("e.target.value");
-    //this.props.selectMenuItems(e.target.value);
-
-    //localstorage push items
-
-    //$('#myModal').on('shown.bs.modal', function () {
-      //$('#myInput').focus()
-    //})
-
-    //$('#myModal').modal({});
-
-
-    //add to title?
-
-  }
 
   render(): React.Element {
 
@@ -158,16 +76,16 @@ export default class Menu extends React.Component {
         <br/>
         <div className="container-fluid">
             <div className="row">
-              <div className="col-xs-12 col-md-2">
+              <div className="col-xs-12 col-md-4">
                 <div className="thumbnail" >
-                  <img onClick={this.selectItem.bind(this, 1)} src="/images/strawberry_scones.png" data-target="myModal" alt="..."/>
-                  <div className="caption" onClick={this.selectItem.bind(this)}>
+                  <img onClick={this.props.selectItem(1)} src="/images/strawberry_scones.png" data-target="myModal" alt="..."/>
+                  <div className="caption" onClick={this.props.selectItem}>
                     <h3>Strawberry Scone1</h3>
                     <p>Cost</p>
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12 col-md-2">
+              <div className="col-xs-12 col-md-4">
                 <div className="thumbnail">
                   <img src="/images/strawberry_scones.png" alt="..."/>
                   <div className="caption">
@@ -176,7 +94,7 @@ export default class Menu extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12 col-md-2">
+              <div className="col-xs-12 col-md-4">
                 <div className="thumbnail">
                   <img src="/images/strawberry_scones.png" alt="..."/>
                   <div className="caption">
@@ -200,6 +118,8 @@ export default class Menu extends React.Component {
 
             return(
                 <div>
+                event name<input onChange={(value) => this.props.event_name(value)}/>
+                <br/>
                 click the image for popup
                 <br/>
                 total items
@@ -209,7 +129,7 @@ export default class Menu extends React.Component {
                 <br/>
                 amount-cost
                 <br/>
-                <select onChange={this.selectNumberOfItem.bind(this)}>
+                <select onChange={(e) => this.props.selectItem(e.target.value)}>
                   <option value=""></option>
                   <option value={value_12}>12</option>
                   <option value={mini_12}>Mini 12</option>
@@ -218,7 +138,7 @@ export default class Menu extends React.Component {
                 <br/>
                 X
                 <br/>
-                  <select onChange={this.selectNumberOfItem.bind(this)}>
+                  <select onChange={(e) => this.props.selectQuantity(e.target.value)}>
                   <option value="">1</option>
                   <option value={value_12}>2</option>
         
@@ -228,32 +148,12 @@ export default class Menu extends React.Component {
 
         }.bind(this))}
         <br/>
-        item2 photo
         <br/>
         <br/>
         <br/>
-        <input type="checkbox"/>
-        <div id="" style={{overflowX: scroll, height:"200px"}}>
-          <b>Choose Items</b>
-          <br/> 
-          total items
-          <br/>
-          {this.state.items.map(function(item){
-              return(
-
-                  <div>
-                    item1 photo
-                    <br/>
-                    <input type="checkbox" value="1" onChange={this.selectItem.bind(this)}/>
-                  </div>
-
-              )
-          }.bind(this))}
-          <br/>
-          <br/>
-          <br/>   
-          <br/>
-        </div>
+        <br/>
+        <br/>   
+        <br/>
         <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -267,7 +167,7 @@ export default class Menu extends React.Component {
                 <img src="/images/strawberry_scones.png"></img>
               </div>
               <div className="modal-footer">
-                <select onChange={this.selectNumberOfItem.bind(this)}>
+                <select onChange={this.props.selectItem}>
                   <option value=""></option>
                   <option value={value_12}>12</option>
                   <option value={mini_12}>Mini 12</option>
@@ -276,7 +176,7 @@ export default class Menu extends React.Component {
                 <br/>
                 X
                 <br/>
-                  <select onChange={this.selectNumberOfItem.bind(this)}>
+                  <select onChange={this.props.selectQuantity}>
                   <option value="">1</option>
                   <option value={value_12}>2</option>
                 </select>

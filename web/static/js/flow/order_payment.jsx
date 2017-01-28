@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import request from 'superagent';
+//import request from 'superagent';
 
 //import SconelySocialTopMenu from './sconely_social_top_menu';
 
@@ -17,9 +17,8 @@ export default class Payment extends React.Component {
 
     this.state = {
 
-        payment_options: [{name: "personal"}, {name: "work"}],
-        payment_choice: "",
-        payment_complete: false
+        payment_options: [{payment_id: 1, name: "personal"}, {payment_id: 2, name: "work"}],
+      
         
     };
 
@@ -64,88 +63,57 @@ export default class Payment extends React.Component {
     
   }
 
-  selectPaymentOption(e){
-
-    alert(e.target.value);
-
-  }
-
   render(): React.Element {
-
-    var body = "";
-    var subtotal = 0.00;
-    var total = 0.00;
-
-    if("order_type" == "order_type"){
-        
-        subtotal = "Subtotal: " + (5.00 * 5.00);
-        total = "Total: " + ((5.00 * 5.00) + 10.00);
-    
-    }
-
-    if(this.state.payment_complete == false){
-
-      body = <div>
+          return(<div>
               <br/>
               <b>Payment</b>
               <br/>
               <br/>
-                {subtotal}           
+                {this.props.subtotal}           
                 <br/>     
-                Delivery Cost: based on distance needed to travel and tax
+                <br/>
+                {this.props.total}
                 <br/>
                 <br/>
-                {total}
-                <br/>
-                <br/>
-                Choose payent method:
-                <br/>
-                <input type="radio" name="payment"/>
-                <br/>
-                <select onChange={this.selectPaymentOption.bind(this)}>
-                  <option value=""></option>
-                  {this.state.payment_options.map(function(option){
-                      return(
-                          <option value={option.name}>{option.name}</option>
-                      )
-                  })}
-                </select>
-                <br/>
-                Or
-                <br/>
-                <input type="radio" name="payment"/>Add another
-                <br/>
-                Name this card:
-                <br/>
-                Card Number
-                <br/>
-                <input/>
-                <br/>
-                Expiration
-                <br/>
-                <input/>
-                <br/>
-                Security Code
-                <br/>
-                <input/>
-                <br/>
-                <button onClick={this.completePayment.bind(this)}>Complete order</button>
-                <br/>
+                <form className="form-horizontal">
+                  <div className="form-group">
+                    <label for="inputEmail3" className="col-sm-2 control-label">Payment</label>
+                    <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="existing"/></label>
+                    <div className="col-sm-2">
+                        <select>
+                            <option></option>
+                            <option>Home</option>
+                            <option>Office</option>
+                        </select>
+                        <br/>
+                    </div>
+                    <label for="inputEmail3" className="col-sm-2 control-label"></label>
+                    <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="new"/></label>
+                    <div className="col-sm-2">
+                        <input type="radio" name="payment"/>Add another
+                        <br/>
+                        Name this card:
+                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <br/>
+                        Card Number
+                        <br/>
+                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <br/>
+                        Expiration
+                        <br/>
+                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <br/>
+                        Security Code
+                        <br/>
+                        <input type="text" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                        <input type="checkbox"/>save<input type="text"/>
+                        
+                    </div>
+                    <button onClick={this.completePayment.bind(this)}>Complete order</button>
+                  </div>
+                </form>
               </div>
-
-    }else{
-
-      body = <div><b>Payment complete!</b>.  You can now invite your guests to view the menu with the code.</div>
-
+          )
     }
     
-
-    return (
-      <div>
-        
-        {body}
-       
-      </div>
-    )
-  }
 }
