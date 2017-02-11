@@ -19,12 +19,12 @@ import thunk from 'redux-thunk';
 
 
 import User from "./user";
-import Events from "./events";
-//import SconelySocial from "./sconely_social";
-import SconelyYours from "./sconely_yours_single_page";
+import UserOrder from "./user_order";
+import SconelySocial from "./sconely_yours_social_single_page";
+import SconelyYours from "./sconely_yours_social_single_page";
 //import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
 
-import SconelySocial from "./sconely_social_single_page";
+//import SconelySocial from "./sconely_social_single_page";
 import SconelySignature from "./sconely_signature_single_page";
 
 import SconelySocialEventDetails from "./sconely_social_event_details";
@@ -32,7 +32,7 @@ import SconelySignatureGuests from "./sconely_signature_guests";
 import SconelySocialMenu from "./sconely_social_menu";
 import SconelySignaturePreview from "./sconely_signature_preview";
 import SconelySignatureSinglePage from "./sconely_signature_single_page";
-import OrderPayment from "./order_payment";
+import OrderPayment from "./sconely_yours_social_order_payment";
 import ProfilePayment from "./user/payment";
 
 //import * as reducers from './reducers'
@@ -143,7 +143,7 @@ const Root = () => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={User}>
-        <IndexRoute component={Events} />
+        <IndexRoute component={UserOrder} />
         <Route path="/order/:order_id/sconely_yours" component={SconelyYours} />
         <Route path="/order/:order_id/sconely_social" component={SconelySocial} />
         <Route path="/order/:order_id/sconely_signature" component={SconelySignature} />
@@ -155,7 +155,7 @@ const Root = () => (
         <Route path="/user/profile" component={SconelySocial} />
         <Route path="/user/delivery_address" component={SconelySocial} />
         <Route path="/user/payment" component={ProfilePayment} />
-        <Route path="/user/orders" component={Events} />
+        <Route path="/user/orders" component={UserOrder} />
       </Route>
     </Router>
   </Provider>

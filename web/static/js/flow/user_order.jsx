@@ -7,7 +7,7 @@ import request from 'superagent';
 var fetch = require('graphql-fetch')('http://domain.com/graphql')
 import { GQLClient } from 'graphql-http';
 
-export default class Events extends React.Component {
+export default class UserOrder extends React.Component {
   //props: Props;
 
   constructor(props) {
@@ -18,6 +18,7 @@ export default class Events extends React.Component {
 
     this.state = {
 
+        user_type: "guest"
         
     };
 
@@ -143,46 +144,87 @@ export default class Events extends React.Component {
 
     var orders = JSON.parse(localStorage.getItem("user")).orders;
 
+
+    let body = null;
+
+    if(this.state.user_type == "guest"){
+
+        body =  <div className="container-fluid">
+                    <div className="row">
+                        <div className="hidden-xs col-md-4">
+                          <br/>
+                          <br/>
+                        </div>
+                        <div className="col-xs-6 col-md-6">
+                                <div>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a>
+                                  <br/>
+                                  <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
+                                  <br/>
+                                  <br/>
+                                </div>
+                        </div>
+                        <div className="col-xs-6 col-md-2">
+                              maybe put something here
+                        </div>
+                    </div>
+                </div>
+                    
+    }else{
+
+        body =  <div className="container-fluid">
+                    <div className="row">
+                        <div className="hidden-xs col-md-4">
+                          <br/>
+                          <br/>
+                          Profile
+                          <br/>
+                          <Link to="/user/delivery_address">Delivery addresses</Link>
+                          <br/>
+                          Payments
+                          <br/>
+                          Password
+                          <br/>
+                          Image
+                          <br/>
+                          About me
+                          <br/>
+                          <br/>
+                          Cart
+                        </div>
+                        <div className="col-xs-6 col-md-6">
+                                <div>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a>
+                                  <br/>
+                                  <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
+                                  <br/>
+                                  <br/>
+                                  if guest dont show
+                                  <br/>
+                                  <br/>
+                                  <a onClick={this.createOrder.bind(this, "sconely_signature")}>Sconely Signature</a>
+                                  <br/>
+                                  <OrdersList orders={orders}/>
+                                </div>
+                        </div>
+                        <div className="col-xs-6 col-md-2">
+                              maybe put something here
+                        </div>
+                    </div>
+                </div>
+
+    }
+
     return (
 
           <div>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="hidden-xs col-md-2">
-                    Profile
-                    <br/>
-                    <Link to="/user/delivery_address">Delivery addresses</Link>
-                    <br/>
-                    Payments
-                    <br/>
-                    Password
-                    <br/>
-                    Image
-                    <br/>
-                    About me
-                    <br/>
-                    <br/>
-                    Cart
-                    </div>
-                    <div className="col-xs-6 col-md-8">
-                          <div>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a>
-                            <br/>
-                            <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
-                            <br/>
-                            <a onClick={this.createOrder.bind(this, "sconely_signature")}>Sconely Signature</a>
-                            <br/>
-                            <OrdersList orders={orders}/>
-                          </div>
-                    </div>
-                    <div className="col-xs-6 col-md-2">
-                        maybe put something here
-                    </div>
-                </div>
-              </div>
+              {body}
           </div>
       
     )

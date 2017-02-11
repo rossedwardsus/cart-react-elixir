@@ -291,7 +291,6 @@ or enter a code
           <div class="caption">
             <h3>Strawberry Scone</h3>
             <p>Cost</p>
-            <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
           </div>
         </div>
       </div>
@@ -301,7 +300,6 @@ or enter a code
           <div class="caption">
             <h3>Strawberry Scone2</h3>
             <p>Cost</p>
-            <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Add To cart</a></p>
           </div>
         </div>
       </div>
@@ -331,7 +329,6 @@ or enter a code
           <div class="caption">
             <h3>Strawberry Scone5</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
           </div>
         </div>
       </div>
@@ -341,7 +338,6 @@ or enter a code
           <div class="caption">
             <h3>Strawberry Scone6</h3>
             <p>Cost</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To cart</a></p>
           </div>
         </div>
       </div>
@@ -365,5 +361,6 @@ or enter a code
           </div>
         </div>
       </div>
+      <a href="/mobile/order">Start your order here</a>
   </div>
 </div>

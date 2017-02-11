@@ -103,6 +103,7 @@ defmodule SconeHomeElixir.Router do
     #get "/mobile/user/sconely_yours", MobileUserSconelyYoursController, :index
     
     get "/mobile/menu", MobileMenuController, :index
+    get "/mobile/order", MobileOrderController, :index
     get "/mobile/login", MobileLoginController, :index    
     post "/mobile/login", MobileLoginController, :create   
     post "/mobile/registration", MobileRegistrationController, :create

@@ -1,9 +1,11 @@
+'use script'
+
 import React from 'react'
 
 import Menu from './sconely_yours_menu';
-import DateTime from './sconely_yours_datetime';
-import DeliveryAddress from './sconely_yours_delivery_address'
-import Payment from './order_payment';
+import DateTime from './sconely_yours_social_datetime';
+import DeliveryAddress from './sconely_yours_social_delivery_address';
+import Payment from './sconely_yours_social_order_payment';
 
 import request from 'superagent';
 import { Link } from 'react-router';
@@ -407,6 +409,13 @@ export default class SconelyYours extends React.Component {
                   <button className="btn btn-default" onClick={() => this.btnNext()}>Next</button>
                 </div>
     
+
+    //if registered_user
+    //else if guest show screen for continuing as guest or signing up
+    //if guest they cant choose from a previous entered payment or address
+    //show screen that only allows them to enter these
+
+
     }else if(this.state.page == "delivery_address_payment"){
 
         body =  <div>
@@ -428,6 +437,8 @@ export default class SconelyYours extends React.Component {
                 <div className="hidden-xs col-md-2">
                   <br/>
                   <br/>
+                  if user type == registered_user:
+                  <br/>
                   Profile
                   <br/>
                   <Link to="/user/delivery_address">Delivery addresses</Link>
@@ -444,6 +455,8 @@ export default class SconelyYours extends React.Component {
                   <br/>
                   <br/>
                   Cart
+                  <br/>
+                  else if guest:
                   <br/>
                   itemxquantity-delete
                   {this.state.cart.map(function(item){
