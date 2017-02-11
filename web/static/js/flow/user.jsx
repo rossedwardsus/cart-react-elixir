@@ -94,30 +94,7 @@ export default class App extends React.Component {
   render(): React.Element {
     return (
       <div>
-        <div className="container-fluid">
-            <div className="row">
-                <div className="hidden-xs col-md-2">
-                Profile
-                <br/>
-                <Link to="/user/delivery_address">Delivery addresses</Link>
-                <br/>
-                Payments
-                <br/>
-                Password
-                <br/>
-                Image
-                <br/>
-                About me
-                <br/>
-                </div>
-                <div className="col-xs-6 col-md-8">
-                      {this.props.children}
-                </div>
-                <div className="col-xs-6 col-md-2">
-                    maybe put something here
-                </div>
-            </div>
-          </div>
+        {this.props.children}
       </div>
     )
   }

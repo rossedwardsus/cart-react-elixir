@@ -86,7 +86,14 @@ defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
     #  name: "Joe Test User"
     #]
   #]
-  #{:ok, res} = Stripe.Customers.create new_customer
+  
+  #{:ok, res} = Stripe.Customers.source
+
+  #save the card associated with customer
+  #sertup as graphql resolver
+  #pass the customer id saved in the database
+  #send email confirmation
+  #customer.source?
 
 
     #charge credit card
@@ -141,7 +148,7 @@ defmodule SconeHomeElixir.ApiUserSconelySocialCompleteController do
     #IO.puts(_params["payment"])
 
 
-    json conn, %{id: "sent email"}
+    json conn, %{id: "sconely social sent email"}
 
   end
 end

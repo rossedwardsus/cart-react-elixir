@@ -65,6 +65,9 @@ defmodule SconeHomeElixir.Router do
 
     post "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
 
+
+    post "/signature/upload", SconelySignaturePhotoController, :create
+
     
     #not used anymore
     #get "/user/orders/create", ApiUserOrderController, :create

@@ -37,22 +37,28 @@ export default class DateTime extends React.Component {
     return (
       <div>
           <form className="form-horizontal">
-          <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Date Time</label>
-            <label for="inputEmail3" className="col-sm-2 control-label">
+            <div className="form-group">
+              <label for="inputEmail3" className="col-sm-2 control-label"></label>
+              <br/>
+              <div className="col-sm-10">
+                <b>Date Time</b>
+                <br/>
                 <DatePicker selected={this.props.selected_date} onChange={(value) => this.props.setDate(value)} />
-            </label>
-            <label for="inputEmail3" className="col-sm-2 control-label"></label>
-            <div className="col-sm-5">
+                <br/>
+              </div>
+            </div>
+            <div className="form-group">
+              <label for="inputEmail3" className="col-sm-2 control-label"></label>
+              <br/>
+              <div className="col-sm-10">
                 <select onChange={(e) => this.props.setTime(e.target.value)}>
                     <option></option>
                     <option>9-11</option>
                     <option>3-5</option>
                 </select>
                 <br/>
+              </div>
             </div>
-            <br/>
-          </div>
         </form>
       </div>
     )

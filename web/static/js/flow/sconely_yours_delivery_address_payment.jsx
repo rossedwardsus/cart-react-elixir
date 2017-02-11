@@ -7,17 +7,7 @@ import Payment from './order_payment';
 
 import request from 'superagent';
 import { Link } from 'react-router';
-import { Map, List, fromJS } from 'immutable';
-import { GQLClient } from 'graphql-http';
 
-const client = GQLClient('http://localhost:4000/graphql', {
-  // anything passed here is merged with 
-  // the options passed to fetch() 
-  credentials: true,
-  headers: {
-    'X-Requested-With': 'XMLHttpRequest'
-  }
-});
 
 //proptype
 //prop == params id/orderid
@@ -36,7 +26,7 @@ export default class SconelyYours extends React.Component {
     //};
 
     this.state = {
-        page: "menu",
+
         order_id: this.props.params.order_id,
         cart: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 1}],
         total_items: 0,
@@ -89,7 +79,6 @@ export default class SconelyYours extends React.Component {
     this.setNewCardNumber = this.setNewCardNumber.bind(this);
     this.setNewCardExpiryDate = this.setNewCardExpiryDate.bind(this);
     this.setNewCardSecurityCode = this.setNewCardSecurityCode.bind(this);
-    this.btnNext = this.btnNext.bind(this);
 
   }
 
@@ -98,26 +87,7 @@ export default class SconelyYours extends React.Component {
     //get users payment methods
     //delivery addresses
 
-
-    //get the menu items
-    client.query(`
-          query {
-            get_menu_items {
-              item_id,
-              title
-            }
-          }
-        `).then((result) => {
-          //console.log(result.data.user);
-          alert(JSON.stringify(result));
-          // => { id: 1234, name: ... } 
-        }
-    );
-
   }
-
-
-
 
  
 
@@ -138,49 +108,22 @@ export default class SconelyYours extends React.Component {
 
   }
 
-  addItemToCart(e){
+  addItemToCart(value){
 
-      /*const myMap = Immutable.fromJS({
-        nested: {
-          someKey: ['hello', 'world'],
-        },
-      });
-
-      const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));
-
-      console.log(myNewMap.toJS());
-      // {
-      //  nested: {
-      //    someKey: ["hello", "world", "bye"]
-      //  }
-      // }*/
-
-      //alert(e.target.id + " + " + e.target.value);
-
-      /*var value = "" + value;
+      var value = "" + value;
 
       var item_id = value.split("_")[0];
-      var quantity = value.split("_")[1];*/
+      var quantity = value.split("_")[1];
 
       //alert(value);
       var cart_temp = this.state.cart;
-
-      if(e.target.value == "12"){
-
-          cart_temp.push({item_id: e.target.id, description: "1 Dozen Freedom Scones", quantity: e.target.value});
-          this.setState({cart: cart_temp});
-      
-      }else if(e.target.value == "24"){
-      
-          cart_temp.push({item_id: e.target.id, description: "2 Dozen Freedom Scones", quantity: e.target.value});
-          this.setState({cart: cart_temp});
-
-      }
+      cart_temp.push({item_id: 3, quantity: 12});
+      this.setState({cart: cart_temp});
 
       //var subtotal_temp = this.state.subtotal;
       //this.setState({subtotal: subtotal_temp + quantity});
       //add to subtotal
-      //this.setState({total_items: value.split("_")[1]});
+      this.setState({total_items: value.split("_")[1]});
 
   }
 
@@ -193,49 +136,18 @@ export default class SconelyYours extends React.Component {
 
   removeItemFromCart(value){
 
-      let immutable_list = fromJS([{item_id: 100000, title: "test"}]);
-
-      alert(immutable_list.getIn([0, "item_id"]));
-
-
-
-      /*var test = Immutable.List.of(Immutable.Map({a: '1'}), Immutable.Map({a: '2'}));
-      test = test.filter(function(item) { return item.get('a') !== '1' });
-      However, filter on non-empty List would result a different immutable list, thus you may want to check the occurrence of {a: 1} first:
-
-      if (test.some(function(item) { return item.get('a') === '1'; })) {
-          test = test.filter(function(item) { return item.get('a') !== '1' });
-      }*/
-
-      //{item_id: 1, quantity: 1}
       //find by id and
       //split
       //subtract from subtotal
 
-      let cart_temp = this.state.cart;
-
-      var johnRemoved = cart_temp.filter(function(el) {
-          return el.item_id !== 1;
-      });
-
-      alert(JSON.stringify(johnRemoved));
-
-      //alert(cart_temp.indexOf({item_id: 1, quantity: 1}));
-
-      //alert(JSON.stringify(value));
-
-
+      alert(JSON.stringify(value));
 
   }
 
-  displayItem(){
+  showcart(){
 
 
   }
-
-
-
-
 
   
   setDate(value){
@@ -250,11 +162,6 @@ export default class SconelyYours extends React.Component {
     alert(value);
     
   }
-
-  
-
-
-
 
   setExistingDeliveryAddress(value){
 
@@ -331,42 +238,16 @@ export default class SconelyYours extends React.Component {
 
   }
 
-  btnNext(){
-
-    this.setState({page: "delivery_address_payment"});
-
-  }
-
-
-  //pay(){
+  pay(){
 
       //cart
       //payment method
       //delivery address
       //complete on the api
 
-  //}
+  }
 
-  completeOrder(){
-
-      alert("complete order");
-
-      /*import { GQLClient } from 'graphql-http';
-
-      /*client.mutate(`
-        mutation ($id: RecordID!, $name: String!) {
-          updateUser(input: {id: $id, name: $name}) {
-            user {
-              id
-              name
-            }
-          }
-        }
-      `, { id: 1234, name: 'Danny' }).then((result) => {
-        console.log(result.data.user);
-        // => { id: 1234, name: 'Danny' } 
-      });*/
-
+   completeOrder(){
   
       /*fetch('http://192.168.1.148:4000/graphql', {
           method: 'POST',
@@ -392,41 +273,11 @@ export default class SconelyYours extends React.Component {
 
 
   render(): React.Element {
-
-    let body = null;
-
-    //alert(this.state.page);
-
-    if(this.state.page == "menu"){
-
-    //    alert();
-
-        body =  <div>
-                  here
-                  <Menu cart={this.state.cart} subtotal={this.state.subtotal} total_items={this.state.total_items} selectItem={(value) => this.selectItem(value)} addItemToCart={(value) => this.addItemToCart(value)} removeItemFromCart={(value) => this.removeItemFromCart(value)} order_id={this.props.params.order_id}/>
-                  <br/>
-                  <button className="btn btn-default" onClick={() => this.btnNext()}>Next</button>
-                </div>
-    
-    }else if(this.state.page == "delivery_address_payment"){
-
-        body =  <div>
-                  <DateTime selected_date={this.state.selected_date} setDate={(value) => this.setDate(value)} setTime={(value) => this.setTime(value)}/>
-                  <br/>
-                  <DeliveryAddress user_id={"1"} setExistingDeliveryAddress={(value) => this.setExistingDeliveryAddress(value)} setNewDeliveryAddressStreet={(value) => this.setDeliveryAddressStreet(value)} setNewDeliveryAddressCity={(value) => this.setDeliveryAddressCity(value)}/>
-                  <br/>
-                  <Payment user_id={"1"} total_items={this.state.total_items} total={this.props.total} setPaymentMethod={(value) => this.setPaymentMethod(value)} setNewCardName={(value) => this.setNewCardName(value)} setNewCardNameOnCard={(value) => this.setNewCardNameOnCard(value)} setNewCardNumber={(value) => this.setNewCardNumber(value)} setNewCardExpiryDate={(value) => this.setNewCardExpiryDate(value)} setNewCardSecurityCode={(value) => this.setNewCardSecurityCode(value)} completeOrder={this.completeOrder}/>
-                </div>
-          
-    }
-
-
-
     return (
       <div>
         <div className="container-fluid">
             <div className="row">
-                <div className="hidden-xs col-md-3">
+                <div className="hidden-xs col-md-2">
                   Profile
                   <br/>
                   <Link to="/user/delivery_address">Delivery addresses</Link>
@@ -440,8 +291,6 @@ export default class SconelyYours extends React.Component {
                   About me
                   <br/>
                   <br/>
-                  <br/>
-                  <br/>
                   Cart
                   <br/>
                   itemxquantity-delete
@@ -449,19 +298,22 @@ export default class SconelyYours extends React.Component {
 
                       return(
 
-                          <div>{item.description}-change-<a onClick={() => this.removeItemFromCart(1)}>remove</a></div>
+                          <div>here</div>
 
                       )
 
-                  }.bind(this))}
-                  <br/>
-                  <br/>
-                  total due
+                  })}
                 </div>
-                <div className="col-xs-6 col-md-6">
+                <div className="col-xs-6 col-md-8">
 
-                    {body}
-
+                    <Menu cart={this.state.cart} subtotal={this.state.subtotal} total_items={this.state.total_items} selectItem={(value) => this.selectItem(value)} addItemToCart={(value) => this.addItemToCart(value)} removeItemFromCart={(value) => this.removeItemFromCart(value)} order_id={this.props.params.order_id}/>
+                    <br/>
+                    <DateTime selected_date={this.state.selected_date} setDate={(value) => this.setDate(value)} setTime={(value) => this.setTime(value)}/>
+                    <br/>
+                    <DeliveryAddress user_id={"1"} setExistingDeliveryAddress={(value) => this.setExistingDeliveryAddress(value)} setNewDeliveryAddressStreet={(value) => this.setDeliveryAddressStreet(value)} setNewDeliveryAddressCity={(value) => this.setDeliveryAddressCity(value)}/>
+                    <br/>
+                    <Payment user_id={"1"} total_items={this.state.total_items} total={this.props.total} setPaymentMethod={(value) => this.setPaymentMethod(value)} setNewCardName={(value) => this.setNewCardName(value)} setNewCardNameOnCard={(value) => this.setNewCardNameOnCard(value)} setNewCardNumber={(value) => this.setNewCardNumber(value)} setNewCardExpiryDate={(value) => this.setNewCardExpiryDate(value)} setNewCardSecurityCode={(value) => this.setNewCardSecurityCode(value)}/>
+        
                  </div>
                 <div className="col-xs-6 col-md-2">
                     maybe put something here

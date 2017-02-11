@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
  
 module.exports = {
+  devtool: "source-map",
   entry: './web/static/js/flow/flow_test.js',
   
   //output: { path: __dirname, filename: './web/static/js/flow/bundle_flow.js' },

@@ -35,22 +35,24 @@ export default class DeliveryAddress extends React.Component {
     return (
       <div>
           <form className="form-horizontal">
-          <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Delivery Address</label>
-            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                <select onChange={(value) => this.props.setExistingDeliveryAddress(value)}>
-                    <option value=""></option>
-                    <option value="home">Home</option>
-                    <option value="office">Office</option>
-                </select>
-                <br/>
+            <div className="form-group">
+              <label for="inputEmail3" className="col-sm-2 control-label"></label>
+              <br/>
+              <div className="col-sm-10">
+                  <b>Delivery Address</b>
+                  <br/>
+                  <select onChange={(value) => this.props.setExistingDeliveryAddress(value)}>
+                      <option value=""></option>
+                      <option value="home">Home</option>
+                      <option value="office">Office</option>
+                  </select>
+                  <br/>
+              </div>
             </div>
-          </div>
-          <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label"></label>
-            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
+            <div className="form-group">
+              <label for="inputEmail3" className="col-sm-2 control-label"></label>
+              <br/>
+              <div className="col-sm-10">
                 <Autocomplete
                     style={{width: '90%'}}
                     onPlaceSelected={(place) => {
@@ -61,8 +63,7 @@ export default class DeliveryAddress extends React.Component {
                     componentRestrictions={{country: "us"}}
                 />
                 <input type="text"/>street/city/zipcode/floor/delivery comments
-                <input type="checkbox"/>save<input type="text"/>
-            </div>
+              </div>
           </div>
         </form>
       </div>

@@ -1,9 +1,9 @@
-defmodule Sconely.MenuItemResolver do
+defmodule Sconely.MenuItemsResolver do
   alias Sconely.SconelySignatureOrder
   
-  def all(_args, _info) do
+  def get_menu_items(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
-    {:ok, [%{id: 1, title: "hello", body: "there"}]}
+    {:ok, [%{item_id: 1000, title: "hello", body: "there"}]}
   end
 
 

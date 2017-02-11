@@ -173,11 +173,13 @@ export default class EventDetails extends React.Component {
   }
 
   onDrop(acceptedFiles){
-        var req = request.post('/upload');
+        var req = request.post('/api/v_alpha/signature/upload');
         acceptedFiles.forEach((file)=> {
-            req.attach(file.name, file);
+            //alert(file.name);
+            req.attach("file", file);
         });
-        req.end(callback);
+        req.field("event_id", 123545);
+        req.end((response) => {alert(JSON.stringify(response))});
   }
 
   changeCode(){

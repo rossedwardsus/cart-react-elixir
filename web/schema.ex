@@ -5,7 +5,7 @@ defmodule SconeHomeElixir.Schema do
   query do
 
   	field :get_menu_items, list_of(:menu_item) do
-      resolve &Sconely.OrderResolver.get_menu_items/2
+      resolve &Sconely.MenuItemsResolver.get_menu_items/2
     end
 
 
@@ -40,8 +40,17 @@ defmodule SconeHomeElixir.Schema do
     	resolve &Sconely.OrderResolver.create/2
   	end
 
+  	#field :create_sconely_yours_order, type: :sconely_yours_order do
+    #	arg :host_id, (:string)
+    #	arg :address
+    #   arg :new_address
+    #   arg :old_address
+    #	arg :new_payment
+    #	arg :cart
+    		
+    #	resolve &Sconely.OrderResolver.create/2
+  	#end
 
-  
 	field :save_sconely_signature_order_event_details, type: :sconely_signature_order_event_details do
 	    arg :order_id, non_null(:string)
 	    arg :event_name, :string

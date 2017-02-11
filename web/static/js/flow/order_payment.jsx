@@ -41,7 +41,7 @@ export default class Payment extends React.Component {
     };
   }
 
-  completePayment(order_type) {
+  //completePayment(order_type) {
 
     //make payment through stripe
 
@@ -58,10 +58,10 @@ export default class Payment extends React.Component {
   
       });*/
     
-      this.setState({payment_complete: true});
+      //this.setState({payment_complete: true});
   
     
-  }
+  //}
 
   render(): React.Element {
 
@@ -69,32 +69,26 @@ export default class Payment extends React.Component {
 
           return(<div>
               <br/>
-              <b>Payment</b>
-              <br/>
-              <br/>
-                {this.props.total_items * 5}           
-                <br/>     
-                <br/>
-                {this.props.sub_total}
+              
                 <br/>
                 <br/>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="existing"/></label>
-                    <div className="col-sm-2">
+                    <label for="inputEmail3" className="col-sm-0 control-label"></label>
+                    <div className="col-sm-8">
+                        <b>Payment Metho</b>
+                        <br/>
                         <select>
                             <option></option>
-                            <option>Home</option>
-                            <option>Office</option>
+                            <option>Card ending in 9876</option>
+                            <option>Card ending in 1234</option>
                         </select>
                         <br/>
                     </div>
-                    <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="new"/></label>
-                    <div className="col-sm-2">
-                        <input type="checkbox"/>save
-                        <br/>
-                        Name this card:
-                        <input type="text" size="20" onChange={(e) => this.props.setNewCardName(e.target.value)}/>
+                  </div>
+                  <div className="form-group">
+                    <label for="inputEmail3" className="col-sm-0 control-label"></label>
+                    <div className="col-sm-10">
                         <br/>
                         Card Number
                         <br/>
@@ -107,11 +101,10 @@ export default class Payment extends React.Component {
                         Security Code
                         <br/>
                         <input type="text" size="4" onChange={(e) => this.props.setNewCardSecurityCode(e.target.value)}/>
-                        
                     </div>
                     </div>
                 </form>
-                <button onClick={this.completePayment.bind(this)}>Complete order</button>
+                <button className="btn btn-default" onClick={() => this.props.completeOrder()}>Complete order</button>
               </div>
           )
     }

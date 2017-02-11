@@ -26,12 +26,11 @@ export default class Menu extends React.Component {
 
     this.state = {
         page: "items",
-        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
+        items: [{item_id: 1}],
         cart: this.props.cart,
     };
 
     this.loadCart = this.loadCart.bind(this);
-    this.showItem = this.showItem.bind(this);
     
   }
 
@@ -97,14 +96,6 @@ export default class Menu extends React.Component {
 
   }
 
-  showItem(item_id){
-
-      alert(item_id);
-
-      $('#myModal').modal('show');
-
-  }
-
   render(): React.Element {
 
     var that = this;
@@ -114,50 +105,69 @@ export default class Menu extends React.Component {
     var value_24 = "";
     var mini_12 = "";
 
-    /*this.state.items.map(function(item){
+    this.state.items.map(function(item){
 
 
         value_12 = item.item_id + "_" + 12;     
         value_24 = item.item_id + "_" + 24;
         mini_12 = value_12 + "_mini";
 
-    });*/
+    });
 
-    //if(this.state.page == "items"){
+    if(this.state.page == "items"){
 
           page = <div>
+                  cart(<a onClick={() => that.loadCart()}>{this.props.total_items}</a>)
                   <br/>
                   <br/>
                   <div className="container-fluid">
                       <div className="row">
-
-                        {this.state.menu_items.map(function(item){
-                            return(<div className="col-xs-12 col-md-4">
-                              <div className="thumbnail" >
-                                <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
-                                <div className="caption">
-                                  <h3>Strawberry Scone1</h3>
-                                  <p>
-                                    <div>
-                                      <select onChange={this.props.addItemToCart} id={item.item_id}>
-                                        <option value=""></option>
-                                        <option value="12">12</option>
-                                        <option value="24">24</option>
-                                      </select>
-                                      <br/>
-                                    </div>
-                                  </p>
-                                </div>
-                                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                    Launch demo modal
-                                 </button>
-                              </div>
-                            </div>)
-                        }.bind(this))}
-
-                    </div>
+                        <div className="col-xs-12 col-md-4">
+                          <div className="thumbnail" >
+                            <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.props.selectItem(1)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
+                            <div className="caption" onClick={() => this.props.selectItem}>
+                              <h3>Strawberry Scone1</h3>
+                              <p>Cost</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xs-12 col-md-4">
+                          <div className="thumbnail">
+                            <img src="/images/strawberry_scones.png" alt="..."/>
+                            <div className="caption">
+                              <h3>Strawberry Scone2</h3>
+                              <p>Cost</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xs-12 col-md-4">
+                          <div className="thumbnail">
+                            <img src="/images/strawberry_scones.png" alt="..."/>
+                            <div className="caption">
+                              <h3>Strawberry Scone2</h3>
+                              <p>Cost</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                   </div>
-                  
+                  {this.state.items.map(function(item){
+
+                      var value_12 = item.item_id + "_" + 12;
+                      var value_24 = item.item_id + "_" + 24;
+                      
+                      return(
+                          <div>
+                          <select onChange={(e) => this.props.addItemToCart(e.target.value)}>
+                            <option value=""></option>
+                            <option value={value_12}>12</option>
+                            <option value={value_24}>24</option>
+                          </select>
+                          <br/>
+                          </div>
+                      )
+
+                  }.bind(this))}
                   <br/>
                   <br/>
                   <br/>
@@ -194,7 +204,7 @@ export default class Menu extends React.Component {
                   </div>
                 </div>
 
-    /*}else{
+    }else{
 
           page = <div>
                     <a onClick={() => this.loadItems()}>items</a>
@@ -208,7 +218,7 @@ export default class Menu extends React.Component {
                     })}
                   </div>
 
-    }*/
+    }
 
     
 

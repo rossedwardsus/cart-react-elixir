@@ -22,6 +22,8 @@ import User from "./user";
 import Events from "./events";
 //import SconelySocial from "./sconely_social";
 import SconelyYours from "./sconely_yours_single_page";
+//import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
+
 import SconelySocial from "./sconely_social_single_page";
 import SconelySignature from "./sconely_signature_single_page";
 

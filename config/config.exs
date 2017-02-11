@@ -36,6 +36,15 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   url: "postgres://postgres@localhost/scone_home"
 
 
+#database-local
+config :scone_home_elixir, SconeHomeElixir.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  #database: "scone_home",
+  #username: "postgres",
+  #password: "",
+  #hostname: "localhost"
+  url: "postgres://postgres@localhost/sconely_dev"
+
 
 
 

@@ -74,11 +74,11 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
       capture: false
     ]
 
-    {:ok, charge} = Stripe.Charges.create(1000, params)
+    #{:ok, charge} = Stripe.Charges.create(1000, params)
 
-    IO.puts(:ok)
-    IO.inspect(charge)
-    IO.inspect(charge[:status])
+    #IO.puts(:ok)
+    #IO.inspect(charge)
+    #IO.inspect(charge[:status])
 
     #new_customer = [
     #email: "test@test.com",
@@ -94,8 +94,27 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
     #  cvc: 123,
     #  name: "Joe Test User"
     #]
-  #]
-  #{:ok, res} = Stripe.Customers.create new_customer
+    #]
+
+    params = [
+      source: [
+        object: "card",
+        number: "4111111111111111",
+        cvc: 123,
+        exp_month: 12,
+        exp_year: 2020,
+        metadata: [
+          test_field: "test val"
+        ]
+      ]
+    ]
+
+    #get customer id from local database and the card id thats used
+    
+    {:ok, card} = Stripe.Cards.create(:customer, "1", params)
+
+    IO.inspect(card)
+
 
 
     #charge credit card
@@ -104,16 +123,16 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
     #save order
     #send message to user
 
-    changeset = UserOrderSconelyYours.changeset(%{user_id: "1", order_id: "1", order_created_datetime: "datetime", paid: "yes"})
+    #changeset = UserOrderSconelyYours.changeset(%{user_id: "1", order_id: "1", order_created_datetime: "datetime", paid: "yes"})
 
-    case Repo.insert(changeset) do
-      {:ok, _user} ->
-        conn
+    #case Repo.insert(changeset) do
+    #  {:ok, _user} ->
+    #    conn
     #      |> put_flash(:info, "User created successfully.")
     #      |> redirect(to: user_path(conn, :index))
     #  {:error, changeset} ->
     #    render(conn, "new.html", changeset: changeset)
-    end
+    #end
 
     #field :user_id, Ecto.UUID
     #  field :order_id, :string
@@ -167,7 +186,7 @@ defmodule SconeHomeElixir.ApiUserSconelyYoursCompleteController do
     #IO.puts(_params["payment"])
 
 
-    json conn, %{id: "sent email"}
+    json conn, %{id: "sent email sconely yours"}
 
   end
 end

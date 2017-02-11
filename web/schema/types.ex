@@ -1,11 +1,11 @@
 defmodule Sconely.Schema.Types do
   use Absinthe.Schema.Notation
 
-  #object :menu_item do
-  #  field :item_id, :string
-  #  field :title, :string
+  object :menu_item do
+    field :item_id, :string
+    field :title, :string
   #  field :description, :string
-  #end
+  end
  
   object :sconely_signature_order do
     field :order_id, :string
@@ -75,10 +75,10 @@ defmodule Sconely.Schema.Types do
 	field :event_name, (:string)
   end
 
-  input_object :menu_item do
-  	field :order_id, (:string)
-	field :item_id, (:string)
-	field :quantity, (:string)
-  end
+  #input_object :menu_item do
+  #	field :order_id, (:string)
+	#field :item_id, (:string)
+	#field :quantity, (:string)
+  #end
 
 end
