@@ -95,6 +95,7 @@
     html, body {
       width: 100%;
       overflow-x: hidden;
+      font-family: "Helvetica-Light"
     }
 
     .container-fluid {
@@ -140,9 +141,7 @@
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </nav>
-
-
+</nav>
 
 <br>
 <br>
@@ -150,6 +149,5 @@
 <br>
 
 <div id="root"></div>
-
 
 <script src="/js/flow/bundle_flow.js"></script>

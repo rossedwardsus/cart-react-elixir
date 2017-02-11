@@ -53379,7 +53379,6 @@
 	        body = _react2.default.createElement(
 	          'div',
 	          null,
-	          'here',
 	          _react2.default.createElement(_sconely_yours_menu2.default, { cart: this.state.cart, subtotal: this.state.subtotal, total_items: this.state.total_items, selectItem: function selectItem(value) {
 	              return _this2.selectItem(value);
 	            }, addItemToCart: function addItemToCart(value) {
@@ -53442,7 +53441,7 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'hidden-xs col-md-1' },
+	              { className: 'hidden-xs col-md-2' },
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null),
 	              'Profile',

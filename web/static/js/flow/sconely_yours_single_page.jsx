@@ -402,7 +402,6 @@ export default class SconelyYours extends React.Component {
     //    alert();
 
         body =  <div>
-                  here
                   <Menu cart={this.state.cart} subtotal={this.state.subtotal} total_items={this.state.total_items} selectItem={(value) => this.selectItem(value)} addItemToCart={(value) => this.addItemToCart(value)} removeItemFromCart={(value) => this.removeItemFromCart(value)} order_id={this.props.params.order_id}/>
                   <br/>
                   <button className="btn btn-default" onClick={() => this.btnNext()}>Next</button>
@@ -426,7 +425,7 @@ export default class SconelyYours extends React.Component {
       <div>
         <div className="container-fluid">
             <div className="row">
-                <div className="hidden-xs col-md-1">
+                <div className="hidden-xs col-md-2">
                   <br/>
                   <br/>
                   Profile
