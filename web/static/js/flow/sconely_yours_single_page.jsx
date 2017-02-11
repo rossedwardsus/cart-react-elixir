@@ -426,7 +426,9 @@ export default class SconelyYours extends React.Component {
       <div>
         <div className="container-fluid">
             <div className="row">
-                <div className="hidden-xs col-md-3">
+                <div className="hidden-xs col-md-1">
+                  <br/>
+                  <br/>
                   Profile
                   <br/>
                   <Link to="/user/delivery_address">Delivery addresses</Link>
