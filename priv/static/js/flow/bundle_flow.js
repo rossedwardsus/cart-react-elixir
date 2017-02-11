@@ -53442,7 +53442,9 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'hidden-xs col-md-3' },
+	              { className: 'hidden-xs col-md-1' },
+	              _react2.default.createElement('br', null),
+	              _react2.default.createElement('br', null),
 	              'Profile',
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(
