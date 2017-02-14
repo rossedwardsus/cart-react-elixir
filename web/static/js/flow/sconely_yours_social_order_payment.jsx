@@ -102,7 +102,24 @@ export default class Payment extends React.Component {
                         <br/>
                         <input type="text" size="4" onChange={(e) => this.props.setNewCardSecurityCode(e.target.value)}/>
                     </div>
+                  </div>
+                  <div className="form-group">
+                    <label for="inputEmail3" className="col-sm-0 control-label">only show if guest</label>
+                    <div className="col-sm-10">
+                        <br/>
+                        Email/name
+                        <br/>
+                        <input type="text" size="20" onChange={(e) => this.props.setNewCardNumber(e.target.value)}/>
+                        <br/>
+                        Password
+                        <br/>
+                        <input type="text" onChange={(e) => this.props.setNewCardExpiryDate(e.target.value)}/>
+                        <br/>
+                        Password Again
+                        <br/>
+                        <input type="text" size="4" onChange={(e) => this.props.setNewCardSecurityCode(e.target.value)}/>
                     </div>
+                  </div>
                 </form>
                 <button className="btn btn-default" onClick={() => this.props.completeOrder()}>Complete order</button>
               </div>

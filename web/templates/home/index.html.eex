@@ -1,30 +1,126 @@
-<body>
-<table width="100%">
-  <tr>
-    <td width="2%">
-    <td width="25%" valign="top">
-        About Us
-        <br>
-        Menu
-    </td>
-    <td>
-      <div id="gallery"></div>
-    </td>
-    <td valign="top">
-        <form action="/login" method="post">
-            Login:
-            <br>
-            <input name="email">
-            <br>
-            <input name="password">
-            <br>
-            <input type="submit">
-        </form>
-        <br>
-        <a href="/register">Register</a>
-    </td>
-  </tr>
-</table>
-</body>
-<br>
-<script src="/js/gallery.js">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<style type="text/css">
+   .navbar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    left: 0;
+    z-index: 20;
+    min-height:38px; 
+    height: 48px;
+    }
+
+    /* Flip around the padding for proper display in narrow viewports */
+    .navbar-wrapper > .container {
+        padding-right: 0;
+        padding-left: 0;
+        width: inherit;
+    }
+
+    .navbar-wrapper .navbar {
+        width: 100% !important;
+    }
+
+    .navbar-inverse {
+      width: 100% !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+      border-radius: 0;
+    }
+
+    .navbar-inverse .nav > li > a {
+        color: #FFFFFF;
+    }
+
+    .navbar-inverse .nav > li > a:hover {
+        background: none;
+    }
+
+    .navbar-brand {
+        padding-top: 5px;
+        padding-left: .5;
+        color: #FFFFFF;
+    }
+
+    .dropdown {
+        padding-top: 25px;
+        padding-left: .5;
+        color: #FFFFFF;
+    }
+
+    .navbar-right {
+        padding-top: 25px;
+        padding-left: .5;
+        color: #FFFFFF;
+    }
+
+    .navbar-default {
+    background-color: white;
+    border-color: #E7E7E7;
+    min-height:80px; 
+    height: 80px;
+    border: 0;
+    }
+
+    .main-header-background {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center; 
+        background-image: url('http://www.riwakawebsitedesigns.com/external/images/stars/img-stars-2.jpg');
+      height: 620px;
+      width: 100%;
+      margin-bottom: 60px;
+    }
+
+    .full-width {
+                max-width:100%;
+                top:0;
+                left:0;
+                min-height: 100%;
+                min-width: 1024px;
+                background-color: #808080;
+            }
+
+    body {
+    margin: 0,
+    padding-right: -60px !important;
+    padding-left: 0 !important;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: "Helvetica-Light"
+    }
+
+    .container-fluid {
+      width: 100%;
+      padding:0px;
+      margin:0px;
+      padding-right: -60px;
+      padding-left: 30px;
+      margin-right: -60px;
+      margin-left: 15px;
+    }
+
+   .row {
+      width: 110%;
+      padding:0;
+      margin:0;
+      padding-right: -100px;
+      padding-left: 30px;
+      margin-right: -100px;
+      margin-left: 15px;
+    }
+</style>
+
+<img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg">
+
+<div id="root"></div>
+
+<script src="/js/flow/bundle_flow.js"></script>

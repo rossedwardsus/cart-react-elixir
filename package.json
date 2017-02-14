@@ -87,10 +87,23 @@
   },
   "scripts": {
     "//": "Rosss-MacBook-Pro:scone_home_elixir rossedwards$ uglifyjs ./priv/static/js/typescript/script-compiled.js -o ./priv/static/js/typescript/bundle.min.js",
-    "flow": "flow check",
-    "test": "mocha $(find ./web/static/js/tests/*.js -name '*.js')",
+    "//flow": "flow check",
+    "//test": "mocha $(find ./web/static/js/tests/*.js -name '*.js')",
     "uglify": "uglifyjs ./web/static/js/flow/bundle.js -o ./web/static/js/flow/bundle.min.js",
     "eslint": "",
-    "jest": ""
+    "jest": "",
+    "typescript": "",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }

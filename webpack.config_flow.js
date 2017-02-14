@@ -27,8 +27,16 @@ module.exports = {
         query: {
           presets: ['es2015', 'react', 'stage-2']
         },
-      },
-      { test: /\.css$/, loader: "style-loader!css-loader" }
+      },{ 
+        test: /\.css$/, 
+        loader: "style-loader!css-loader" 
+      },{
+    // use `test` to split a single file
+    // or `include` to split a whole folder
+    //  test: /.*/,
+        include: [path.resolve(__dirname, 'public')],
+        loader: 'bundle?lazy&name=public'
+      }
     ],
   },
   resolve: {

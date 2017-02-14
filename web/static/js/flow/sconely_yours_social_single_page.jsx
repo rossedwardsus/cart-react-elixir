@@ -421,9 +421,9 @@ export default class SconelyYours extends React.Component {
         body =  <div>
                   <DateTime selected_date={this.state.selected_date} setDate={(value) => this.setDate(value)} setTime={(value) => this.setTime(value)}/>
                   <br/>
-                  <DeliveryAddress user_id={"1"} setExistingDeliveryAddress={(value) => this.setExistingDeliveryAddress(value)} setNewDeliveryAddressStreet={(value) => this.setDeliveryAddressStreet(value)} setNewDeliveryAddressCity={(value) => this.setDeliveryAddressCity(value)}/>
+                  <DeliveryAddress user_type={"guest"} user_id={"1"} setExistingDeliveryAddress={(value) => this.setExistingDeliveryAddress(value)} setNewDeliveryAddressStreet={(value) => this.setDeliveryAddressStreet(value)} setNewDeliveryAddressCity={(value) => this.setDeliveryAddressCity(value)}/>
                   <br/>
-                  <Payment user_id={"1"} total_items={this.state.total_items} total={this.props.total} setPaymentMethod={(value) => this.setPaymentMethod(value)} setNewCardName={(value) => this.setNewCardName(value)} setNewCardNameOnCard={(value) => this.setNewCardNameOnCard(value)} setNewCardNumber={(value) => this.setNewCardNumber(value)} setNewCardExpiryDate={(value) => this.setNewCardExpiryDate(value)} setNewCardSecurityCode={(value) => this.setNewCardSecurityCode(value)} completeOrder={this.completeOrder}/>
+                  <Payment user_type={"guest"} user_id={"1"} total_items={this.state.total_items} total={this.props.total} setPaymentMethod={(value) => this.setPaymentMethod(value)} setNewCardName={(value) => this.setNewCardName(value)} setNewCardNameOnCard={(value) => this.setNewCardNameOnCard(value)} setNewCardNumber={(value) => this.setNewCardNumber(value)} setNewCardExpiryDate={(value) => this.setNewCardExpiryDate(value)} setNewCardSecurityCode={(value) => this.setNewCardSecurityCode(value)} completeOrder={this.completeOrder}/>
                 </div>
           
     }
