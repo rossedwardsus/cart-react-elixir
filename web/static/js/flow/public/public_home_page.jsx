@@ -195,7 +195,7 @@ export default class Homepage extends React.Component {
                     <div className="row">
                         <div className="hidden-xs col-md-4">
                           <br/>
-                          <a onClick={this.guestCode.bind(this)}>Code</a>
+                          <Link to="/public/menu">Menu</Link>
                           <br/>
                           Home
                           <br/>

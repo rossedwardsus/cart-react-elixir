@@ -45636,9 +45636,9 @@
 	            { className: 'hidden-xs col-md-4' },
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
-	              'a',
-	              { onClick: this.guestCode.bind(this) },
-	              'Code'
+	              _reactRouter.Link,
+	              { to: '/public/menu' },
+	              'Menu'
 	            ),
 	            _react2.default.createElement('br', null),
 	            'Home',
