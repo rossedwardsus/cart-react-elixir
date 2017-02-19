@@ -1,4 +1,5 @@
-/* @flow */
+'use strict'
+
 
 import { createDevTools } from 'redux-devtools'
 import LogMonitor from 'redux-devtools-log-monitor'
@@ -18,10 +19,11 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import thunk from 'redux-thunk';
 
 
-import PublicHomePage from './public_home_page';
-import PublicMenu from './public_menu';
-import PublicAboutUs from './public_about_us';
+import PublicHomePage from './public/public_home_page';
+import PublicMenu from './public/public_menu';
+import PublicAboutUs from './public/public_about_us';
 
+import Order from "./order";
 import User from "./user";
 import UserOrder from "./user_order";
 import SconelySocial from "./sconely_yours_social_single_page";
@@ -46,14 +48,14 @@ import ProfilePayment from "./user/payment";
 //}
 
 
-/*const isReactComponent = (obj) => Boolean(obj && obj.prototype && Boolean(obj.prototype.isReactComponent));
+const isReactComponent = (obj) => Boolean(obj && obj.prototype && Boolean(obj.prototype.isReactComponent));
 
 const component = (component) => {
   return isReactComponent(component)
     ? {component}
     : {getComponent: (loc, cb)=> component(
          comp=> cb(null, comp.default || comp))}
-};*/
+};
 
 
 
@@ -158,10 +160,16 @@ const history = syncHistoryWithStore(hashHistory, store)
 const Root = () => (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={User}>
+      <Route path="/" getComponent={(nextState, cb) => {
+   // async work to find components
+  cb(null, User)
+}} >
         <IndexRoute component={PublicHomePage} />
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
+        <Route path="/order/:order_id/menu" component={Order} />
+        <Route path="/order/:order_id/deliveryaddresspayment" component={Order} />
+        <Route path="/order/:order_id/guest" component={SconelyYours} />
         <Route path="/order/:order_id/sconely_yours" component={SconelyYours} />
         <Route path="/order/:order_id/sconely_social" component={SconelySocial} />
         <Route path="/order/:order_id/sconely_signature" component={SconelySignature} />

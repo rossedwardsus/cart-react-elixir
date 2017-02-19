@@ -3,7 +3,7 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
 import Autocomplete from 'react-google-autocomplete';
-import Dialog from "rc-dialog";
+//import Dialog from "rc-dialog";
 
 type Props = {
   //title: string,

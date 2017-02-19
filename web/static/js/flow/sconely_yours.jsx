@@ -3,9 +3,9 @@ import React from 'react'
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
-require('react-datepicker/dist/react-datepicker.css');
+//require('react-datepicker/dist/react-datepicker.css');
 
-import 'react-date-picker/index.css';
+//import 'react-date-picker/index.css';
 import { DateField, Calendar } from 'react-date-picker';
 
 //import EventDetails from 'sconely_social_event_details';

@@ -7,11 +7,12 @@ defmodule Sconely.Orders do
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "order_items" do
+			field :order_id, :string #primary key
 			field :user_id, Ecto.UUID
-			field :order_id, :string
+			#field :guest, :string
+			field :order_type, :string
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
-			field :status, :string
-
+			
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
 			#timestamps([{:updated_at, false}])
 			#timestamps([{:created_at}])

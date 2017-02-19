@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
-require('react-datepicker/dist/react-datepicker.css');
+//require('react-datepicker/dist/react-datepicker.css');
 //import 'react-date-picker/index.css';
 //import { DateField, Calendar } from 'react-date-picker';
 

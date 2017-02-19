@@ -6,7 +6,7 @@ import { Link, browserHistory } from 'react-router'
 
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
-import Dialog from "rc-dialog";
+//import Dialog from "rc-dialog";
 
 
 export default class DeliveryAddress extends React.Component {
