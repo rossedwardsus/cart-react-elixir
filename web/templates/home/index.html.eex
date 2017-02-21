@@ -182,5 +182,5 @@
 <script type="text/javascript" src="https://sconely.herokuapp.com/js/bundle.js"></script>
 <script type="text/javascript" src="https://sconely.herokuapp.com/js/1.bundle.js"></script>
 <script>
-    document.write('<script>alert();<\/script>');
+    document.write('<script src="/js/test.js"><\/script>');
 </script>
