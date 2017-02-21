@@ -179,7 +179,7 @@ export default class Homepage extends React.Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                               </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jp"/></a>
                             </div>
                             <form onClick={this.guestCode.bind(this)} className="navbar-form navbar-left">
                               <div className="form-group">
