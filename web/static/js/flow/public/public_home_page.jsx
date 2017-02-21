@@ -198,7 +198,7 @@ export default class Homepage extends React.Component {
                           </div>
                     </nav>
                     <div className="row">
-                        <div className="hidden-xs col-md-4">
+                        <div className="col-md-4">
                           <br/>
                           <Link to="/public/menu">Menu</Link>
                           <br/>
