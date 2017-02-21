@@ -2,12 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Expires" CONTENT="-1">
     <META charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
 </head>
 
 <style type="text/css">
@@ -144,7 +145,7 @@
 
 <script>
 
-    alert();
+    //alert();
 
     /*if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
          var msViewportStyle = document.createElement("style");
@@ -180,3 +181,6 @@
 <script type="text/javascript" src="https://sconely.herokuapp.com/js/vendor.bundle.js"></script>
 <script type="text/javascript" src="https://sconely.herokuapp.com/js/bundle.js"></script>
 <script type="text/javascript" src="https://sconely.herokuapp.com/js/1.bundle.js"></script>
+<script>
+    //document.write('<script src="js/vendor.bundle.js"><\/script>');
+</script>
