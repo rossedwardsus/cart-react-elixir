@@ -45582,12 +45582,12 @@
 	              _react2.default.createElement(
 	                'a',
 	                { className: 'navbar-brand', href: '#' },
-	                _react2.default.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
+	                _react2.default.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jp' })
 	              )
 	            ),
 	            _react2.default.createElement(
 	              'form',
-	              { onClick: this.guestCode.bind(this), className: 'hidden-xs navbar-form navbar-left' },
+	              { onClick: this.guestCode.bind(this), className: 'navbar-form navbar-left' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'form-group' },
@@ -45646,7 +45646,7 @@
 	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'hidden-xs col-md-4' },
+	            { className: 'col-md-4' },
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              _reactRouter.Link,
@@ -45672,7 +45672,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-6 col-md-6' },
+	            { className: 'col-md-6' },
 	            _react2.default.createElement(
 	              'div',
 	              null,
@@ -45684,7 +45684,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-6 col-md-2' },
+	            { className: 'col-md-2' },
 	            'maybe put something here'
 	          )
 	        )
