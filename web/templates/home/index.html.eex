@@ -143,9 +143,9 @@
 
 <script>
 
-    alert();
+    //alert();
 
-    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    /*if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
          var msViewportStyle = document.createElement("style");
          msViewportStyle.appendChild(
              document.createTextNode(
@@ -154,13 +154,13 @@
          );
          document.getElementsByTagName("head")[0].
              appendChild(msViewportStyle);
-    }
+    }*/
 
 </script>
 
 <script type="text/javascript"> 
 <!-- 
-(function() { 
+/*(function() { 
     if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) { 
         var msViewportStyle = document.createElement("style"); 
         msViewportStyle.appendChild( 
@@ -169,10 +169,8 @@
         document.getElementsByTagName("head")[0].appendChild(msViewportStyle); 
     } 
 })(); 
-//--> 
+//--> */
 </script>
-
-<img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg">
 
 <div id="root"></div>
 
