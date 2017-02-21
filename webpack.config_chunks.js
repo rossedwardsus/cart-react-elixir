@@ -50,8 +50,14 @@ module.exports = {
     // use `test` to split a single file
     // or `include` to split a whole folder
     //  test: /.*/,
-        include: [path.resolve(__dirname, '/public')],
+        include: [path.resolve(__dirname, '/public'), ],
         loaders: ['bundle?lazy&name=public', 'babel-loader']
+      },{
+    // use `test` to split a single file
+    // or `include` to split a whole folder
+    //  test: /.*/,
+        include: [path.resolve(__dirname, '/sconely_signature_guest'), ],
+        loaders: ['bundle?lazy&name=sconely_signature_guest', 'babel-loader']
       }
     ],
   },

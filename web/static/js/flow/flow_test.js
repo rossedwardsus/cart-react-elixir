@@ -34,6 +34,7 @@ import SconelyYours from "./sconely_yours_social_single_page";
 import SconelySignature from "./sconely_signature_single_page";
 
 import SconelySocialEventDetails from "./sconely_social_event_details";
+import SconelySignatureGuest from "./sconely_signature_guest/guest";
 import SconelySignatureGuests from "./sconely_signature_guests";
 import SconelySocialMenu from "./sconely_social_menu";
 import SconelySignaturePreview from "./sconely_signature_preview";
@@ -164,12 +165,22 @@ const Root = () => (
    // async work to find components
   cb(null, User)
 }} >
-        <IndexRoute component={PublicHomePage} />
+        <IndexRoute getComponent={(nextState, cb) => {
+   // async work to find components
+  cb(null, PublicHomePage)
+}} />
+
+
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id/menu" component={Order} />
         <Route path="/order/:order_id/deliveryaddresspayment" component={Order} />
-        <Route path="/order/:order_id/guest" component={SconelyYours} />
+        <Route path="/order/:order_id/guest" getComponent={(nextState, cb) => {
+   // async work to find components
+  cb(null, SconelySignatureGuest)
+}} />
+
+
         <Route path="/order/:order_id/sconely_yours" component={SconelyYours} />
         <Route path="/order/:order_id/sconely_social" component={SconelySocial} />
         <Route path="/order/:order_id/sconely_signature" component={SconelySignature} />

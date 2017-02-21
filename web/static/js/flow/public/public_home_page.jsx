@@ -54,12 +54,17 @@ export default class Homepage extends React.Component {
 
         //var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //if user is logged in then 
-        this.context.router.push('/order/12345/sconely_yours');
 
-        //this.context.router.push('/guest/order/12345/sconely_yours');
+        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+       
+        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+
+
+
+        //if user is logged in then 
+        this.context.router.push('/order/12345/menu');
+
+        //this.context.router.push('/order/12345');
 
 
     }else if(order_type == "sconely_social"){
