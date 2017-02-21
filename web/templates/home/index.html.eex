@@ -118,6 +118,10 @@
       margin-right: -100px;
       margin-left: 15px;
     }
+
+    @-ms-viewport {
+        width: device-width;
+    }
 </style>
 
 <script>
