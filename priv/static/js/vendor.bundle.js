@@ -45587,7 +45587,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'form',
-	              { onClick: this.guestCode.bind(this), className: 'navbar-form navbar-left' },
+	              { onClick: this.guestCode.bind(this), className: 'hidden-xs navbar-form navbar-left' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'form-group' },
@@ -46378,6 +46378,8 @@
 	
 	var _sconely_yours_menu2 = _interopRequireDefault(_sconely_yours_menu);
 	
+	var _reactRouter = __webpack_require__(556);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46385,7 +46387,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	
 	
@@ -46405,6 +46406,14 @@
 	
 	    _this.state = {};
 	
+	    //user_type=guest
+	    //order_type=yours load 
+	    //state==menu
+	    //yours_menu
+	    //just show cart if guest
+	    //or separate into order_menu and order_delivery_address_payment objects
+	    //or have everything work of a "pages" flag
+	
 	    return _this;
 	  }
 	
@@ -46421,6 +46430,10 @@
 	            'div',
 	            { className: 'hidden-xs col-md-2' },
 	            _react2.default.createElement('br', null),
+	            'if yours',
+	            _react2.default.createElement('br', null),
+	            'else social',
+	            _react2.default.createElement('br', null),
 	            'cart in left sidebar',
 	            _react2.default.createElement('br', null),
 	            'item_id-item_description-quantity-remove-edit',
@@ -46433,7 +46446,9 @@
 	            _react2.default.createElement(
 	              'div',
 	              null,
-	              'check localstorage or redux and the order information and display it here.  ie guest sconely yours, social, registered user, signature',
+	              'if registered user show registered left user menu and topnavbar',
+	              _react2.default.createElement('br', null),
+	              'if order type == yours && page == menu',
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement(_sconely_yours_menu2.default, null),
 	              _react2.default.createElement('br', null),
