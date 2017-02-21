@@ -162,7 +162,7 @@
 </script>
 
 <script type="text/javascript"> 
-/*<!-- 
+<!-- 
 (function() { 
     if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) { 
         var msViewportStyle = document.createElement("style"); 
@@ -172,11 +172,11 @@
         document.getElementsByTagName("head")[0].appendChild(msViewportStyle); 
     } 
 })(); 
-//--> */
+//-->
 </script>
 
 <div id="root"></div>
 
-<script type="text/javascript" src="/js/vendor.bundle.js"></script>
-<script type="text/javascript" src="/js/bundle.js"></script>
-<script type="text/javascript" src="/js/1.bundle.js"></script>
+<script type="text/javascript" src="https://sconely.herokuapp.com/js/vendor.bundle.js"></script>
+<script type="text/javascript" src="https://sconely.herokuapp.com/js/bundle.js"></script>
+<script type="text/javascript" src="https://sconely.herokuapp.com/js/1.bundle.js"></script>
