@@ -21,6 +21,8 @@ export default class Homepage extends React.Component {
 
   componentDidMount(){
 
+    alert();
+
     //get active items from the database
 
   }
