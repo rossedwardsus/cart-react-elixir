@@ -21,7 +21,7 @@ export default class Homepage extends React.Component {
 
   componentDidMount(){
 
-    alert();
+    alert("jsx");
 
     //get active items from the database
 
