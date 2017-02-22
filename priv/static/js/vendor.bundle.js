@@ -45681,18 +45681,25 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col-md-6' },
-	            _react2.default.createElement(
-	              'div',
-	              null,
-	              _react2.default.createElement('br', null),
-	              'gallery1',
-	              _react2.default.createElement('br', null),
-	              _react2.default.createElement('br', null)
-	            )
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            'gallery1',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null)
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-md-2' },
+	            { className: 'hidden-xs col-md-2' },
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
 	            'maybe put something here'
 	          )
 	        )

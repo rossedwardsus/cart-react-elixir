@@ -218,15 +218,25 @@ export default class Homepage extends React.Component {
                           <br/>
                         </div>
                         <div className="col-md-6">
-                                <div>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
                                   <br/>
                                   gallery1
                                   <br/>
                                   <br/>
                                   
-                                </div>
+                                
                         </div>
-                        <div className="col-md-2">
+                        <div className="hidden-xs col-md-2">
+                              <br/>
+                              <br/>
+                              <br/>
+                              <br/>
+                              <br/>
+                              <br/>
                               maybe put something here
                         </div>
                     </div>
