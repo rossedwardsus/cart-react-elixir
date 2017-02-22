@@ -18671,7 +18671,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse' },
+	              { id: 'navbar', className: 'navbar-collapse collapse', style: { zIndex: 1000 } },
 	              _react2.default.createElement(
 	                'ul',
 	                { className: 'nav navbar-nav' },

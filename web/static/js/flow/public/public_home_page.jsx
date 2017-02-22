@@ -190,7 +190,7 @@ export default class Homepage extends React.Component {
                               </div>
                               <button type="submit" className="hidden-xs btn btn-default">Submit</button>
                             </form>
-                            <div id="navbar" className="navbar-collapse collapse">
+                            <div id="navbar" className="navbar-collapse collapse" style={{zIndex: 1000}}>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                               </ul>
