@@ -184,11 +184,11 @@ export default class Homepage extends React.Component {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <form onClick={this.guestCode.bind(this)} className="navbar-form navbar-left">
-                              <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Guest Code"/>
+                            <form onClick={this.guestCode.bind(this)} className="hidden-xs navbar-form navbar-left">
+                              <div className="hidden-xs form-group">
+                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code"/>
                               </div>
-                              <button type="submit" className="btn btn-default">Submit</button>
+                              <button type="submit" className="hidden-xs btn btn-default">Submit</button>
                             </form>
                             <div id="navbar" className="navbar-collapse collapse">
                               <ul className="nav navbar-nav">
@@ -201,7 +201,7 @@ export default class Homepage extends React.Component {
                           </div>
                     </nav>
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="hidden-xs col-md-4">
                           <br/>
                           <br/>
                           <br/>

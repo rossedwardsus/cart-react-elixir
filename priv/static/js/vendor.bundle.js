@@ -45591,15 +45591,15 @@
 	            ),
 	            _react2.default.createElement(
 	              'form',
-	              { onClick: this.guestCode.bind(this), className: 'navbar-form navbar-left' },
+	              { onClick: this.guestCode.bind(this), className: 'hidden-xs navbar-form navbar-left' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code' })
+	                { className: 'hidden-xs form-group' },
+	                _react2.default.createElement('input', { type: 'text', className: 'hidden-xs form-control', placeholder: 'Guest Code' })
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'submit', className: 'btn btn-default' },
+	                { type: 'submit', className: 'hidden-xs btn btn-default' },
 	                'Submit'
 	              )
 	            ),
@@ -45650,7 +45650,7 @@
 	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-md-4' },
+	            { className: 'hidden-xs col-md-4' },
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null),
