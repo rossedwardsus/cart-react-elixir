@@ -173,7 +173,7 @@ export default class Homepage extends React.Component {
 
     return (
               <div className="container-fluid">
-                    <nav className="navbar navbar-default navbar-fixed-top" style={{position: relative}}>
+                    <nav className="navbar navbar-default navbar-fixed-top" style={{position: "relative"}}>
                           <div className="container-fluid">
                             <div className="navbar-header">
                               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
