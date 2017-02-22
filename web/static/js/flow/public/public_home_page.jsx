@@ -223,7 +223,7 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <form onClick={this.guestCode.bind(this)} className="form">
+                                  <form onClick={this.guestCode.bind(this)} className="navbar-form">
                                     <div className="form-group">
                                       <input type="text" className="form-control" placeholder="Guest Code"/>
                                     </div>
