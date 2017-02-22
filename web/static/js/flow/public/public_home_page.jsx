@@ -173,7 +173,7 @@ export default class Homepage extends React.Component {
 
     return (
               <div className="container-fluid">
-                    <nav className="navbar navbar-default navbar-fixed-top" style={{position: "relative"}}>
+                    <nav className="navbar navbar-default navbar-fixed-top" style={{zIndex: 1}}>
                           <div className="container-fluid">
                             <div className="navbar-header">
                               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -190,7 +190,7 @@ export default class Homepage extends React.Component {
                               </div>
                               <button type="submit" className="hidden-xs btn btn-default">Submit</button>
                             </form>
-                            <div id="navbar" className="navbar-collapse collapse" style={{zIndex: 1000}}>
+                            <div id="navbar" className="navbar-collapse collapse" style={{zIndex: 1}}>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                               </ul>
