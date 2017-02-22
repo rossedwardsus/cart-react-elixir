@@ -220,7 +220,7 @@ export default class Homepage extends React.Component {
                         <div className="col-md-6">
                                 <div>
                                   <br/>
-                                  gallery
+                                  gallery1
                                   <br/>
                                   <br/>
                                   

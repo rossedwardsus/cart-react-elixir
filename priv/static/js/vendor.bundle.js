@@ -45685,7 +45685,7 @@
 	              'div',
 	              null,
 	              _react2.default.createElement('br', null),
-	              'gallery',
+	              'gallery1',
 	              _react2.default.createElement('br', null),
 	              _react2.default.createElement('br', null)
 	            )
