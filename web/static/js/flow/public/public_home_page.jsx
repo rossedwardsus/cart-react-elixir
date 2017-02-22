@@ -1,4 +1,6 @@
-import React from 'react'
+//import React from 'react'
+import exec from 'script-loader!./script.js';
+import 'script!react-polyfill';
 import { Link } from 'react-router';
 
 export default class Homepage extends React.Component {
@@ -21,7 +23,7 @@ export default class Homepage extends React.Component {
 
   componentDidMount(){
 
-    alert("jsx");
+    //alert("jsx");
 
     //get active items from the database
 

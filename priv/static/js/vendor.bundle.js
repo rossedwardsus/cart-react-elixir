@@ -45426,6 +45426,8 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	
+	      //alert("jsx");
+	
 	      //get active items from the database
 	
 	    }
@@ -45582,7 +45584,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { className: 'navbar-brand', href: '#' },
-	                _react2.default.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jp' })
+	                _react2.default.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
 	              )
 	            ),
 	            _react2.default.createElement(
