@@ -1,4 +1,4 @@
-
+//import "babel-polyfill";
 import React from 'react'
 import { Link } from 'react-router';
 
@@ -202,6 +202,10 @@ export default class Homepage extends React.Component {
                     </nav>
                     <div className="row">
                         <div className="col-md-4">
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
                           <br/>
                           <Link to="/public/menu">Menu</Link>
                           <br/>
