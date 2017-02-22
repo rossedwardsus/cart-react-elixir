@@ -14,13 +14,13 @@ module.exports = {
   //output: { path: __dirname, filename: './priv/static/js/flow/bundle_flow.js' },
   output: {
         path: __dirname + '/priv/static/js/',
-        filename: "bundle.js"
+        //filename: "bundle.js"
         //filename: './priv/static/js/flow/[name].js'
 
-        /*path: path.join(__dirname, 'public/dist'),
-        publicPath: '/dist/',
-        filename: 'bundles/[name].bundle.js',
-        chunkFilename: 'chunks/[name].chunk.js',*/
+        //path: path.join(__dirname, 'public/dist'),
+        //publicPath: '/dist/',
+        filename: '[name].js',
+        //chunkFilename: 'chunks/[name].chunk.js',
     
   },
   
@@ -62,7 +62,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', 'public', 'public.bundle.js', Infinity),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
   //  new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }}),
     new webpack.NoErrorsPlugin(),
   //  new webpack.DefinePlugin({ 'process.env.NODE_ENV': `"${config.env}"` })
