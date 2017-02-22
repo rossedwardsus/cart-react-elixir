@@ -1,6 +1,5 @@
-//import React from 'react'
-import exec from 'script-loader!./script.js';
-import 'script!react-polyfill';
+import "babel-polyfill";
+import React from 'react'
 import { Link } from 'react-router';
 
 export default class Homepage extends React.Component {

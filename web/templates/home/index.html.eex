@@ -176,55 +176,8 @@
 
 <div id="root"></div>
 
-<div class="container-fluid">
-                    <nav class="navbar navbar-default navbar-fixed-top">
-                          <div class="container-fluid">
-                            <div class="navbar-header">
-                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                              </button>
-                              <a class="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-                            <form onClick={this.guestCode.bind(this)} className="navbar-form navbar-left">
-                              <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Guest Code"/>
-                              </div>
-                              <button type="submit" class="btn btn-default">Submit</button>
-                            </form>
-                            <div id="navbar" class="navbar-collapse collapse">
-                              <ul class="nav navbar-nav">
-                                <li class="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                              <ul class="nav navbar-nav">
-                                <li class="inactive"><a href="./">Login/Register<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                            </div>
-                          </div>
-                    </nav>
-                    <div class="row">
-                        <div className="col-md-4">
-                          <br/>
-                          <br/>
-                          hello
-                          <br/>
-                          <br/>
-                        </div>
-                        <div class="col-md-6">
-                                <div>
-                                  <br/>
-                                  gallery
-                                  <br/>
-                                  <br/>
-                                  
-                                </div>
-                        </div>
-                        <div class="col-md-2">
-                              maybe put something here
-                        </div>
-                    </div>
-              </div>
-
-
+<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/vendor.bundle.js"></script>
+<script type="text/javascript" src="/js/bundle.js"></script>
+<script type="text/javascript" src="/js/1.bundle.js"></script>
