@@ -18630,7 +18630,7 @@ webpackJsonp([0],[
 	        { className: 'container-fluid' },
 	        _react2.default.createElement(
 	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top', style: { zIndex: 1 } },
+	          { className: 'navbar navbar-default navbar-fixed-top', style: { zIndex: 1001 } },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'container-fluid' },
@@ -18671,7 +18671,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse', style: { zIndex: 1 } },
+	              { id: 'navbar', className: 'navbar-collapse collapse', style: { zIndex: 1001 } },
 	              _react2.default.createElement(
 	                'ul',
 	                { className: 'nav navbar-nav' },
