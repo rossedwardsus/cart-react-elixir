@@ -223,11 +223,11 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <form onClick={this.guestCode.bind(this)} className="hidden-md navbar-form navbar-left">
-                                    <div className="hidden-md form-group">
-                                      <input type="text" className="hidden-md form-control" placeholder="Guest Code"/>
+                                  <form onClick={this.guestCode.bind(this)} className="form">
+                                    <div className="form-group">
+                                      <input type="text" className="form-control" placeholder="Guest Code"/>
                                     </div>
-                                    <button type="submit" className="hidden-md btn btn-default">Submit</button>
+                                    <button type="submit" className="btn btn-default">Submit</button>
                                   </form>
                                   <br/>
                                   <br/>

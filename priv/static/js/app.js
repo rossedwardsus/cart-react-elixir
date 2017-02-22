@@ -18749,17 +18749,20 @@ webpackJsonp([0],[
 	            { className: 'col-md-6' },
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'form',
-	              { onClick: this.guestCode.bind(this), className: 'hidden-md navbar-form navbar-left' },
+	              { onClick: this.guestCode.bind(this), className: 'form' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'hidden-md form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'hidden-md form-control', placeholder: 'Guest Code' })
+	                { className: 'form-group' },
+	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code' })
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'submit', className: 'hidden-md btn btn-default' },
+	                { type: 'submit', className: 'btn btn-default' },
 	                'Submit'
 	              )
 	            ),
