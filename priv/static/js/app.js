@@ -18754,7 +18754,7 @@ webpackJsonp([0],[
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'form',
-	              { onClick: this.guestCode.bind(this), className: 'form' },
+	              { onClick: this.guestCode.bind(this), className: 'navbar-form' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'form-group' },
