@@ -18630,7 +18630,7 @@ webpackJsonp([0],[
 	        { className: 'container-fluid' },
 	        _react2.default.createElement(
 	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top', style: { zIndex: 1001 } },
+	          { className: 'navbar navbar-default navbar-fixed-top' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'container-fluid' },
