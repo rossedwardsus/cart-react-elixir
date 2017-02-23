@@ -93,13 +93,12 @@
 
     body {
     margin: 0,
-    padding-right: -60px !important;
+    padding-right: 0px !important;
     padding-left: 0 !important;
     }
 
     html, body {
-      width: 99%;
-      overflow-x: hidden;
+      width: 96%;
       font-family: "Helvetica-Light"
     }
 

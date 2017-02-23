@@ -172,7 +172,7 @@ export default class Homepage extends React.Component {
   render(){
 
     return (
-              <div className="container-fluid">
+              <div>
                     <nav className="navbar navbar-default navbar-fixed-top">
                           <div className="container-fluid">
                             <div className="navbar-header">
