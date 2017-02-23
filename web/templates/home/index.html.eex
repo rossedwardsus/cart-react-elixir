@@ -86,7 +86,7 @@
             max-height: 340px;
             padding-top: 0px;
             margin-top: 0px;
-            bordeer: 0px;
+            border: 0px;
             max-height: 100% !important; 
             height: 100% !important; 
     } 
