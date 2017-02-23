@@ -18657,7 +18657,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2.default.createElement(
 	              'form',
-	              { onClick: this.guestCode.bind(this), className: 'hidden-xs navbar-form navbar-left' },
+	              { onClick: this.guestCode.bind(this), className: 'hidden-xs navbar-form navbar-right' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'hidden-xs form-group' },
@@ -18671,7 +18671,7 @@ webpackJsonp([0],[
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse', style: { zIndex: 10010, background: "white" } },
+	              { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
 	              _react2.default.createElement(
 	                'ul',
 	                { className: 'nav navbar-nav' },

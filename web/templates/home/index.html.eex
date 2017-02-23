@@ -70,6 +70,7 @@
     border-color: #E7E7E7;
     min-height:80px; 
     border: 0;
+    padding-right: 20px;
     }
 
     .main-header-background {
@@ -93,7 +94,7 @@
 
     body {
     margin: 0,
-    padding-right: 0px !important;
+    padding-right: 100px !important;
     padding-left: 0 !important;
     }
 
@@ -106,14 +107,14 @@
       width: 100%;
       padding:0px;
       margin:0px;
-      padding-right: -60px;
+      padding-right: 0px;
       padding-left: 30px;
-      margin-right: -60px;
+      margin-right: 0px;
       margin-left: 15px;
     }
 
    .row {
-      width: 110%;
+      width: 100%;
       padding:0;
       margin:0;
       padding-right: -100px;

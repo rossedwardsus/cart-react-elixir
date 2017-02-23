@@ -184,13 +184,13 @@ export default class Homepage extends React.Component {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <form onClick={this.guestCode.bind(this)} className="hidden-xs navbar-form navbar-left">
+                            <form onClick={this.guestCode.bind(this)} className="hidden-xs navbar-form navbar-right">
                               <div className="hidden-xs form-group">
                                 <input type="text" className="hidden-xs form-control" placeholder="Guest Code"/>
                               </div>
                               <button type="submit" className="hidden-xs btn btn-default">Submit</button>
                             </form>
-                            <div id="navbar" className="navbar-collapse collapse" style={{zIndex: 10010, background: "white"}}>
+                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                               </ul>
