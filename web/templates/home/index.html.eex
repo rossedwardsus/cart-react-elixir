@@ -76,6 +76,13 @@
     .navbar-collapse {
             max-height: 340px;
             padding-top: 0px;
+            margin-top: 0px;
+    } 
+
+    .collapse {
+            max-height: 340px;
+            padding-top: 0px;
+            margin-top: 0px;
     } 
 
     .main-header-background {
