@@ -254,6 +254,9 @@ export default class Homepage extends React.Component {
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a href="./">Login/Register<span className="sr-only">(current)</span></a></li>
                               </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></a></li>
+                              </ul>
                             </div>
                           </div>
                     </nav>
@@ -290,7 +293,7 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Swipeable onSwipingLeft={this.onSwipedLeft}><img width="300" height="300" src={this.state.image}/></Swipeable>
+                                  <Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
                                   <br/>
                                   <br/>
                                   
