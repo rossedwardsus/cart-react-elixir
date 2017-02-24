@@ -18550,17 +18550,17 @@ webpackJsonp([0],[
 	    key: 'onSwipedLeft',
 	    value: function onSwipedLeft() {
 	
-	      //alert("left");
+	      alert("left");
 	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage;
+	      this.changeImage();
 	    }
 	  }, {
 	    key: 'onSwipedRight',
 	    value: function onSwipedRight() {
 	
-	      //alert("left");
+	      alert("right");
 	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage;
+	      this.changeImage();
 	    }
 	  }, {
 	    key: 'changeImage',

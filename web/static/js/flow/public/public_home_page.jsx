@@ -79,17 +79,17 @@ export default class Homepage extends React.Component {
 
   onSwipedLeft(){
 
-    //alert("left");
+    alert("left");
     //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage;
+    this.changeImage();
 
   }
 
   onSwipedRight(){
 
-    //alert("left");
+    alert("right");
     //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage;
+    this.changeImage();
 
   }
 
