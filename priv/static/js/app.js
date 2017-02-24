@@ -18486,7 +18486,11 @@ webpackJsonp([0],[
 	
 	    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
 	
-	    _this.state = {};
+	    _this.state = {
+	
+	      image: "/images/gallery/sconely group_HPb.jpg"
+	
+	    };
 	
 	    _this.createOrder = _this.createOrder.bind(_this);
 	    _this.guestCode = _this.guestCode.bind(_this);
@@ -18535,7 +18539,8 @@ webpackJsonp([0],[
 	    key: 'onSwipedLeft',
 	    value: function onSwipedLeft() {
 	
-	      alert("left");
+	      //alert("left");
+	      this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
 	    }
 	  }, {
 	    key: 'createOrder',
@@ -18798,7 +18803,7 @@ webpackJsonp([0],[
 	            _react2.default.createElement(
 	              _reactSwipeable2.default,
 	              { onSwipingLeft: this.onSwipedLeft },
-	              'gallery'
+	              _react2.default.createElement('img', { src: this.state.image })
 	            ),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null)

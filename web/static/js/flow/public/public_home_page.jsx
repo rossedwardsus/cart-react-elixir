@@ -13,6 +13,8 @@ export default class Homepage extends React.Component {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
+
+        image: "/images/gallery/sconely group_HPb.jpg"
         
     };
 
@@ -65,7 +67,8 @@ export default class Homepage extends React.Component {
 
   onSwipedLeft(){
 
-    alert("left");
+    //alert("left");
+    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
 
   }
 
@@ -252,7 +255,7 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Swipeable onSwipingLeft={this.onSwipedLeft}>gallery</Swipeable>
+                                  <Swipeable onSwipingLeft={this.onSwipedLeft}><img src={this.state.image}/></Swipeable>
                                   <br/>
                                   <br/>
                                   
