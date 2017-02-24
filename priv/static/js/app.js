@@ -28003,7 +28003,7 @@ webpackJsonp([0],[
 	    key: 'showItem',
 	    value: function showItem(item_id) {
 	
-	      alert(item_id);
+	      //alert(item_id);
 	
 	      $('#myModal').modal('show');
 	    }
@@ -28077,11 +28077,6 @@ webpackJsonp([0],[
 	                  _react2.default.createElement('br', null)
 	                )
 	              )
-	            ),
-	            _react2.default.createElement(
-	              'button',
-	              { type: 'button', 'class': 'btn btn-primary btn-lg', 'data-toggle': 'modal', 'data-target': '#myModal' },
-	              'Launch demo modal'
 	            )
 	          );
 	        }.bind(this)),

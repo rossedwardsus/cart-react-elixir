@@ -99,7 +99,7 @@ export default class Menu extends React.Component {
 
   showItem(item_id){
 
-      alert(item_id);
+      //alert(item_id);
 
       $('#myModal').modal('show');
 
@@ -144,9 +144,6 @@ export default class Menu extends React.Component {
                                     </div>
                                   </p>
                                 </div>
-                                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                    Launch demo modal
-                                 </button>
                             </div>)
                         }.bind(this))}
 
