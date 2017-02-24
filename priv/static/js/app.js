@@ -18488,7 +18488,7 @@ webpackJsonp([0],[
 	
 	    _this.state = {
 	
-	      image: "/images/gallery/sconely group_HPb.jpg",
+	      image: "/images/gallery/sconely_group_HPb.jpg",
 	      guest_code: ""
 	
 	    };
@@ -18498,6 +18498,7 @@ webpackJsonp([0],[
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
 	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	    _this.changeImage = _this.changeImage.bind(_this);
 	
 	    return _this;
 	  }
@@ -18510,6 +18511,7 @@ webpackJsonp([0],[
 	
 	      //get active items from the database
 	
+	      setInterval(this.changeImage, 10000);
 	    }
 	  }, {
 	    key: 'onSubmit',
@@ -18549,6 +18551,18 @@ webpackJsonp([0],[
 	
 	      //alert("left");
 	      this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	    }
+	  }, {
+	    key: 'changeImage',
+	    value: function changeImage() {
+	
+	      if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
+	
+	        this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	      } else {
+	
+	        this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
+	      }
 	    }
 	  }, {
 	    key: 'createOrder',

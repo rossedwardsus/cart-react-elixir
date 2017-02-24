@@ -14,7 +14,7 @@ export default class Homepage extends React.Component {
 
     this.state = {
 
-        image: "/images/gallery/sconely group_HPb.jpg",
+        image: "/images/gallery/sconely_group_HPb.jpg",
         guest_code: ""
         
     };
@@ -24,6 +24,7 @@ export default class Homepage extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
     this.guestCodeChange = this.guestCodeChange.bind(this);
+    this.changeImage = this.changeImage.bind(this);
 
   }
 
@@ -32,6 +33,8 @@ export default class Homepage extends React.Component {
     //alert("jsx");
 
     //get active items from the database
+
+    setInterval(this.changeImage, 10000);
 
   }
 
@@ -77,6 +80,20 @@ export default class Homepage extends React.Component {
 
     //alert("left");
     this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+
+  }
+
+  changeImage(){
+
+    if(this.state.image == "/images/gallery/sconely_group_HPb.jpg"){
+
+        this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
+
+    }else{
+
+        this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
+
+    }
 
   }
 
