@@ -18717,11 +18717,11 @@ webpackJsonp([0],[
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'navbar-form navbar-right' },
+	              { className: 'hidden-xs navbar-form navbar-right' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
+	                { className: 'hidden-xs form-group' },
+	                _react2.default.createElement('input', { type: 'text', className: 'hidden-xs form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
 	              ),
 	              _react2.default.createElement(
 	                'button',

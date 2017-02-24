@@ -241,9 +241,9 @@ export default class Homepage extends React.Component {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <div className="navbar-form navbar-right">
-                              <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
+                            <div className="hidden-xs navbar-form navbar-right">
+                              <div className="hidden-xs form-group">
+                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
                               </div>
                               <button type="button" className="hidden-xs btn btn-default">Submit</button>
                             </div>
