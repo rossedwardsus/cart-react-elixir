@@ -18497,6 +18497,7 @@ webpackJsonp([0],[
 	    _this.guestCode = _this.guestCode.bind(_this);
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	    _this.onSwipedRight = _this.onSwipedRight.bind(_this);
 	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
 	    _this.changeImage = _this.changeImage.bind(_this);
 	
@@ -18550,7 +18551,16 @@ webpackJsonp([0],[
 	    value: function onSwipedLeft() {
 	
 	      //alert("left");
-	      this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	      this.changeImage;
+	    }
+	  }, {
+	    key: 'onSwipedRight',
+	    value: function onSwipedRight() {
+	
+	      //alert("left");
+	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	      this.changeImage;
 	    }
 	  }, {
 	    key: 'changeImage',

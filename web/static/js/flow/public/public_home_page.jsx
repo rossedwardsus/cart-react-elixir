@@ -23,6 +23,7 @@ export default class Homepage extends React.Component {
     this.guestCode = this.guestCode.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
+    this.onSwipedRight = this.onSwipedRight.bind(this);
     this.guestCodeChange = this.guestCodeChange.bind(this);
     this.changeImage = this.changeImage.bind(this);
 
@@ -79,7 +80,16 @@ export default class Homepage extends React.Component {
   onSwipedLeft(){
 
     //alert("left");
-    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+    this.changeImage;
+
+  }
+
+  onSwipedRight(){
+
+    //alert("left");
+    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+    this.changeImage;
 
   }
 

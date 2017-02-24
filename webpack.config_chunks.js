@@ -63,7 +63,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
-  //  new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }}),
+    //new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }}),
     new webpack.NoErrorsPlugin(),
   //  new webpack.DefinePlugin({ 'process.env.NODE_ENV': `"${config.env}"` })
   ],
