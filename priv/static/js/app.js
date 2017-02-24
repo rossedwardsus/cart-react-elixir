@@ -28114,7 +28114,7 @@ webpackJsonp([0],[
 	                'div',
 	                { className: 'modal-body' },
 	                '...',
-	                _react2.default.createElement('img', { width: '100', height: '100', src: '/images/strawberry_scones.png' })
+	                _react2.default.createElement('img', { width: '200', height: '200', src: '/images/strawberry_scones.png' })
 	              ),
 	              _react2.default.createElement(
 	                'div',
