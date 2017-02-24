@@ -61,7 +61,7 @@ export default class Order extends React.Component {
                                   
                                 </div>
                         </div>
-                        <div className="col-xs-6 col-md-6">
+                        <div className="hidden-xs col-xs-6 col-md-6">
                               maybe put something here
                         </div>
                 </div>
