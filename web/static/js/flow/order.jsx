@@ -49,7 +49,7 @@ export default class Order extends React.Component {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-xs-8 col-md-8">
+                        <div className="col-md-8">
                                 <div>
                                   if registered user show registered left user menu and topnavbar
                                   <br/>
@@ -61,7 +61,7 @@ export default class Order extends React.Component {
                                   
                                 </div>
                         </div>
-                        <div className="hidden-xs col-md-6">
+                        <div className="hidden-xs col-md-4">
                               maybe put something here
                         </div>
                 </div>

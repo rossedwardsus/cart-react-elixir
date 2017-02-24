@@ -27863,7 +27863,7 @@ webpackJsonp([0],[
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-8 col-md-8' },
+	            { className: 'col-md-8' },
 	            _react2.default.createElement(
 	              'div',
 	              null,
@@ -27878,7 +27878,7 @@ webpackJsonp([0],[
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'hidden-xs col-md-6' },
+	            { className: 'hidden-xs col-md-4' },
 	            'maybe put something here'
 	          )
 	        )
