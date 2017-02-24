@@ -27863,7 +27863,7 @@ webpackJsonp([0],[
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-6 col-md-4' },
+	            { className: 'col-xs-6 col-md-6' },
 	            _react2.default.createElement(
 	              'div',
 	              null,
