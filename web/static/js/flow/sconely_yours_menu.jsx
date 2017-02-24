@@ -128,9 +128,6 @@ export default class Menu extends React.Component {
           page = <div>
                   <br/>
                   <br/>
-                  <div className="container-fluid">
-                      <div className="row">
-
                         {this.state.menu_items.map(function(item){
                             return(<div className="col-xs-12 col-md-4">
                               <div className="thumbnail" >
@@ -155,9 +152,6 @@ export default class Menu extends React.Component {
                             </div>)
                         }.bind(this))}
 
-                    </div>
-                  </div>
-                  
                   <br/>
                   <br/>
                   <br/>

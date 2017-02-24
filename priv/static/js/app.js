@@ -28032,71 +28032,63 @@ webpackJsonp([0],[
 	        null,
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            this.state.menu_items.map(function (item) {
-	              var _this2 = this;
+	        this.state.menu_items.map(function (item) {
+	          var _this2 = this;
 	
-	              return _react2.default.createElement(
+	          return _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12 col-md-4' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'thumbnail' },
+	              _react2.default.createElement('img', { id: '1', onMouseOver: function onMouseOver(e) {
+	                  return _this2.mouseOver(e);
+	                }, onMouseOut: function onMouseOut(e) {
+	                  return _this2.mouseOut(e);
+	                }, onClick: function onClick() {
+	                  return _this2.showItem(item.item_id);
+	                }, src: '/images/menu/DWK_greenrollover1.jpg', 'data-target': 'myModal', alt: '...' }),
+	              _react2.default.createElement(
 	                'div',
-	                { className: 'col-xs-12 col-md-4' },
+	                { className: 'caption' },
 	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'thumbnail' },
-	                  _react2.default.createElement('img', { id: '1', onMouseOver: function onMouseOver(e) {
-	                      return _this2.mouseOver(e);
-	                    }, onMouseOut: function onMouseOut(e) {
-	                      return _this2.mouseOut(e);
-	                    }, onClick: function onClick() {
-	                      return _this2.showItem(item.item_id);
-	                    }, src: '/images/menu/DWK_greenrollover1.jpg', 'data-target': 'myModal', alt: '...' }),
+	                  'h3',
+	                  null,
+	                  'Strawberry Scone1'
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
 	                  _react2.default.createElement(
 	                    'div',
-	                    { className: 'caption' },
+	                    null,
 	                    _react2.default.createElement(
-	                      'h3',
-	                      null,
-	                      'Strawberry Scone1'
-	                    ),
-	                    _react2.default.createElement(
-	                      'p',
-	                      null,
+	                      'select',
+	                      { onChange: this.props.addItemToCart, id: item.item_id },
+	                      _react2.default.createElement('option', { value: '' }),
 	                      _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        _react2.default.createElement(
-	                          'select',
-	                          { onChange: this.props.addItemToCart, id: item.item_id },
-	                          _react2.default.createElement('option', { value: '' }),
-	                          _react2.default.createElement(
-	                            'option',
-	                            { value: '12' },
-	                            '12'
-	                          ),
-	                          _react2.default.createElement(
-	                            'option',
-	                            { value: '24' },
-	                            '24'
-	                          )
-	                        ),
-	                        _react2.default.createElement('br', null)
+	                        'option',
+	                        { value: '12' },
+	                        '12'
+	                      ),
+	                      _react2.default.createElement(
+	                        'option',
+	                        { value: '24' },
+	                        '24'
 	                      )
-	                    )
-	                  ),
-	                  _react2.default.createElement(
-	                    'button',
-	                    { type: 'button', 'class': 'btn btn-primary btn-lg', 'data-toggle': 'modal', 'data-target': '#myModal' },
-	                    'Launch demo modal'
+	                    ),
+	                    _react2.default.createElement('br', null)
 	                  )
 	                )
-	              );
-	            }.bind(this))
-	          )
-	        ),
+	              ),
+	              _react2.default.createElement(
+	                'button',
+	                { type: 'button', 'class': 'btn btn-primary btn-lg', 'data-toggle': 'modal', 'data-target': '#myModal' },
+	                'Launch demo modal'
+	              )
+	            )
+	          );
+	        }.bind(this)),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement('br', null),
