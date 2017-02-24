@@ -18811,7 +18811,7 @@ webpackJsonp([0],[
 	            _react2.default.createElement(
 	              _reactSwipeable2.default,
 	              { onSwipingLeft: this.onSwipedLeft },
-	              _react2.default.createElement('img', { width: '400', height: '400', src: this.state.image })
+	              _react2.default.createElement('img', { width: '100', height: '100', src: this.state.image })
 	            ),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null)
