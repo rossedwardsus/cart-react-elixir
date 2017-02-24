@@ -71,6 +71,7 @@
     "react-input-range": "^0.9.3",
     "react-redux": "^4.4.5",
     "react-router-redux": "^4.0.6",
+    "react-swipeable": "^3.9.2",
     "react-test-renderer": "^15.4.1",
     "react-toggle-button": "^2.1.0",
     "react-tools": "^0.13.3",

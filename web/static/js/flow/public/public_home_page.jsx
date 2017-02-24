@@ -1,6 +1,7 @@
 import "babel-polyfill";
 import React from 'react'
 import { Link } from 'react-router';
+import Swipeable from 'react-swipeable';
 
 export default class Homepage extends React.Component {
   //props: Props;
@@ -17,6 +18,8 @@ export default class Homepage extends React.Component {
 
     this.createOrder = this.createOrder.bind(this);
     this.guestCode = this.guestCode.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onSwipedLeft = this.onSwipedLeft.bind(this);
 
   }
 
@@ -34,7 +37,17 @@ export default class Homepage extends React.Component {
     };
   }
 
+  onSubmit(e){
+
+    e,preventDefault();
+
+  }
+
   guestCode(order_type) {
+
+    //e.preventDefault();
+
+    alert(order_type);
 
     //if(order_type == "sconely_yours"){
 
@@ -43,10 +56,16 @@ export default class Homepage extends React.Component {
         //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
        
         //if user is logged in then 
-        this.context.router.push('/order/1234/guest');
+        //this.context.router.push('/order/1234/guest');
 
         //this.context.router.push('/guest/order/12345/sconely_yours');
     //}
+
+  }
+
+  onSwipedLeft(){
+
+    alert("left");
 
   }
 
@@ -184,12 +203,12 @@ export default class Homepage extends React.Component {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <form onClick={this.guestCode.bind(this)} className="hidden-xs navbar-form navbar-right">
+                            <div className="hidden-xs navbar-form navbar-right">
                               <div className="hidden-xs form-group">
                                 <input type="text" className="hidden-xs form-control" placeholder="Guest Code"/>
                               </div>
-                              <button type="submit" className="hidden-xs btn btn-default">Submit</button>
-                            </form>
+                              <button type="button" className="hidden-xs btn btn-default">Submit</button>
+                            </div>
                             <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
@@ -223,17 +242,17 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <form onClick={this.guestCode.bind(this)} className="navbar-form">
+                                  <div className="navbar-form">
                                     <div className="form-group">
                                       <input type="text" className="form-control" placeholder="Guest Code"/>
                                     </div>
-                                    <button type="submit" className="btn btn-default">Submit</button>
-                                  </form>
+                                    <button type="button" onClick={() => this.guestCode("yours")} className="btn btn-default">Submit</button>
+                                  </div>
                                   <br/>
                                   <br/>
                                   <br/>
                                   <br/>
-                                  gallery1
+                                  <Swipeable onSwipingLeft={this.onSwipedLeft}>gallery</Swipeable>
                                   <br/>
                                   <br/>
                                   
