@@ -160,7 +160,7 @@ export default class Menu extends React.Component {
                         <div className="modal-body">
 
                           ...
-                          <img src="/images/strawberry_scones.png"></img>
+                          <img width="100" height="100" src="/images/strawberry_scones.png"></img>
                         </div>
                         <div className="modal-footer">
                           <select onChange={(value) => this.props.addItemToCart(value)}>
