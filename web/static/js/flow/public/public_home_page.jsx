@@ -263,7 +263,7 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Swipeable onSwipingLeft={this.onSwipedLeft}><img width="100" height="100" src={this.state.image}/></Swipeable>
+                                  <Swipeable onSwipingLeft={this.onSwipedLeft}><img width="300" height="300" src={this.state.image}/></Swipeable>
                                   <br/>
                                   <br/>
                                   
