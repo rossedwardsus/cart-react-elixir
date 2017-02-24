@@ -18775,8 +18775,21 @@ webpackJsonp([0],[
 	                  'li',
 	                  { className: 'inactive' },
 	                  _react2.default.createElement(
+	                    'a',
+	                    { onClick: this.createOrder.bind(this, "sconely_yours") },
+	                    'Sconely Yours'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'nav navbar-nav' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'inactive' },
+	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
+	                    { to: '/order' },
 	                    'Menu'
 	                  ),
 	                  _react2.default.createElement(
