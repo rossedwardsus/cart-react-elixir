@@ -55,7 +55,7 @@ export default class Homepage extends React.Component {
 
     //e.preventDefault();
 
-    alert(order_type);
+    //alert(order_type);
 
     //if(order_type == "sconely_yours"){
 
@@ -64,7 +64,7 @@ export default class Homepage extends React.Component {
         //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
        
         //if user is logged in then 
-        //this.context.router.push('/order/1234/guest/' + this.state.guest_code);
+        this.context.router.push('/order/1234/guest/' + this.state.guest_code);
 
         //this.context.router.push('/guest/order/12345/sconely_yours');
     //}
@@ -241,9 +241,9 @@ export default class Homepage extends React.Component {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                              <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
+                            <div className="navbar-form navbar-right">
+                              <div className="form-group">
+                                <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
                               </div>
                               <button type="button" className="hidden-xs btn btn-default">Submit</button>
                             </div>
