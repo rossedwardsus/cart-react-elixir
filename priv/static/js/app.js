@@ -18767,6 +18767,24 @@ webpackJsonp([0],[
 	                    )
 	                  )
 	                )
+	              ),
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'nav navbar-nav' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'inactive' },
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/public/menu' },
+	                    'Menu'
+	                  ),
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'sr-only' },
+	                    '(current)'
+	                  )
+	                )
 	              )
 	            )
 	          )
@@ -18834,7 +18852,7 @@ webpackJsonp([0],[
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              _reactSwipeable2.default,
-	              { onSwipingLeft: this.onSwipedLeft },
+	              { onSwipingLeft: this.onSwipedLeft, onSwipingRight: this.onSwipedRight },
 	              _react2.default.createElement('img', { width: '300', height: '300', src: this.state.image })
 	            ),
 	            _react2.default.createElement('br', null),

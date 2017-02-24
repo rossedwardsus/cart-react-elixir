@@ -255,7 +255,7 @@ export default class Homepage extends React.Component {
                                 <li className="inactive"><a href="./">Login/Register<span className="sr-only">(current)</span></a></li>
                               </ul>
                               <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></a></li>
+                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
                               </ul>
                             </div>
                           </div>
