@@ -18488,7 +18488,8 @@ webpackJsonp([0],[
 	
 	    _this.state = {
 	
-	      image: "/images/gallery/sconely group_HPb.jpg"
+	      image: "/images/gallery/sconely group_HPb.jpg",
+	      guest_code: ""
 	
 	    };
 	
@@ -18496,6 +18497,7 @@ webpackJsonp([0],[
 	    _this.guestCode = _this.guestCode.bind(_this);
 	    _this.onSubmit = _this.onSubmit.bind(_this);
 	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
 	
 	    return _this;
 	  }
@@ -18530,10 +18532,16 @@ webpackJsonp([0],[
 	      //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
 	
 	      //if user is logged in then 
-	      //this.context.router.push('/order/1234/guest');
+	      //this.context.router.push('/order/1234/guest/' + this.state.guest_code);
 	
 	      //this.context.router.push('/guest/order/12345/sconely_yours');
 	      //}
+	    }
+	  }, {
+	    key: 'guestCodeChange',
+	    value: function guestCodeChange(e) {
+	
+	      this.setState({ guest_code: e.target.value });
 	    }
 	  }, {
 	    key: 'onSwipedLeft',
@@ -18689,7 +18697,7 @@ webpackJsonp([0],[
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'hidden-xs form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'hidden-xs form-control', placeholder: 'Guest Code' })
+	                _react2.default.createElement('input', { type: 'text', className: 'hidden-xs form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
 	              ),
 	              _react2.default.createElement(
 	                'button',
@@ -18782,16 +18790,16 @@ webpackJsonp([0],[
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'navbar-form' },
+	              { className: 'hidden-lg navbar-form' },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code' })
+	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
 	              ),
 	              _react2.default.createElement(
 	                'button',
 	                { type: 'button', onClick: function onClick() {
-	                    return _this2.guestCode("yours");
+	                    return _this2.guestCode();
 	                  }, className: 'btn btn-default' },
 	                'Submit'
 	              )
@@ -18803,7 +18811,7 @@ webpackJsonp([0],[
 	            _react2.default.createElement(
 	              _reactSwipeable2.default,
 	              { onSwipingLeft: this.onSwipedLeft },
-	              _react2.default.createElement('img', { src: this.state.image })
+	              _react2.default.createElement('img', { width: '400', height: '400', src: this.state.image })
 	            ),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null)

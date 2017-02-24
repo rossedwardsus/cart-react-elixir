@@ -14,7 +14,8 @@ export default class Homepage extends React.Component {
 
     this.state = {
 
-        image: "/images/gallery/sconely group_HPb.jpg"
+        image: "/images/gallery/sconely group_HPb.jpg",
+        guest_code: ""
         
     };
 
@@ -22,6 +23,7 @@ export default class Homepage extends React.Component {
     this.guestCode = this.guestCode.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
+    this.guestCodeChange = this.guestCodeChange.bind(this);
 
   }
 
@@ -58,10 +60,16 @@ export default class Homepage extends React.Component {
         //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
        
         //if user is logged in then 
-        //this.context.router.push('/order/1234/guest');
+        //this.context.router.push('/order/1234/guest/' + this.state.guest_code);
 
         //this.context.router.push('/guest/order/12345/sconely_yours');
     //}
+
+  }
+
+  guestCodeChange(e){
+
+      this.setState({guest_code: e.target.value});
 
   }
 
@@ -208,7 +216,7 @@ export default class Homepage extends React.Component {
                             </div>
                             <div className="hidden-xs navbar-form navbar-right">
                               <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code"/>
+                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
                               </div>
                               <button type="button" className="hidden-xs btn btn-default">Submit</button>
                             </div>
@@ -245,17 +253,17 @@ export default class Homepage extends React.Component {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <div className="navbar-form">
+                                  <div className="hidden-lg navbar-form">
                                     <div className="form-group">
-                                      <input type="text" className="form-control" placeholder="Guest Code"/>
+                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
                                     </div>
-                                    <button type="button" onClick={() => this.guestCode("yours")} className="btn btn-default">Submit</button>
+                                    <button type="button" onClick={() => this.guestCode()} className="btn btn-default">Submit</button>
                                   </div>
                                   <br/>
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Swipeable onSwipingLeft={this.onSwipedLeft}><img src={this.state.image}/></Swipeable>
+                                  <Swipeable onSwipingLeft={this.onSwipedLeft}><img width="400" height="400" src={this.state.image}/></Swipeable>
                                   <br/>
                                   <br/>
                                   
