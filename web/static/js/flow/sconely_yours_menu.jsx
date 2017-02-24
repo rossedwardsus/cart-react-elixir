@@ -129,8 +129,7 @@ export default class Menu extends React.Component {
                   <br/>
                   <br/>
                         {this.state.menu_items.map(function(item){
-                            return(<div className="col-xs-12 col-md-4">
-                              <div className="thumbnail" >
+                            return(<div className="thumbnail" >
                                 <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                 <div className="caption">
                                   <h3>Strawberry Scone1</h3>
@@ -148,7 +147,6 @@ export default class Menu extends React.Component {
                                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                                     Launch demo modal
                                  </button>
-                              </div>
                             </div>)
                         }.bind(this))}
 

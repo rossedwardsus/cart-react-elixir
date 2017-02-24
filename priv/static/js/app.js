@@ -28037,55 +28037,51 @@ webpackJsonp([0],[
 	
 	          return _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-12 col-md-4' },
+	            { className: 'thumbnail' },
+	            _react2.default.createElement('img', { id: '1', onMouseOver: function onMouseOver(e) {
+	                return _this2.mouseOver(e);
+	              }, onMouseOut: function onMouseOut(e) {
+	                return _this2.mouseOut(e);
+	              }, onClick: function onClick() {
+	                return _this2.showItem(item.item_id);
+	              }, src: '/images/menu/DWK_greenrollover1.jpg', 'data-target': 'myModal', alt: '...' }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'thumbnail' },
-	              _react2.default.createElement('img', { id: '1', onMouseOver: function onMouseOver(e) {
-	                  return _this2.mouseOver(e);
-	                }, onMouseOut: function onMouseOut(e) {
-	                  return _this2.mouseOut(e);
-	                }, onClick: function onClick() {
-	                  return _this2.showItem(item.item_id);
-	                }, src: '/images/menu/DWK_greenrollover1.jpg', 'data-target': 'myModal', alt: '...' }),
+	              { className: 'caption' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'caption' },
-	                _react2.default.createElement(
-	                  'h3',
-	                  null,
-	                  'Strawberry Scone1'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                      'select',
-	                      { onChange: this.props.addItemToCart, id: item.item_id },
-	                      _react2.default.createElement('option', { value: '' }),
-	                      _react2.default.createElement(
-	                        'option',
-	                        { value: '12' },
-	                        '12'
-	                      ),
-	                      _react2.default.createElement(
-	                        'option',
-	                        { value: '24' },
-	                        '24'
-	                      )
-	                    ),
-	                    _react2.default.createElement('br', null)
-	                  )
-	                )
+	                'h3',
+	                null,
+	                'Strawberry Scone1'
 	              ),
 	              _react2.default.createElement(
-	                'button',
-	                { type: 'button', 'class': 'btn btn-primary btn-lg', 'data-toggle': 'modal', 'data-target': '#myModal' },
-	                'Launch demo modal'
+	                'p',
+	                null,
+	                _react2.default.createElement(
+	                  'div',
+	                  null,
+	                  _react2.default.createElement(
+	                    'select',
+	                    { onChange: this.props.addItemToCart, id: item.item_id },
+	                    _react2.default.createElement('option', { value: '' }),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: '12' },
+	                      '12'
+	                    ),
+	                    _react2.default.createElement(
+	                      'option',
+	                      { value: '24' },
+	                      '24'
+	                    )
+	                  ),
+	                  _react2.default.createElement('br', null)
+	                )
 	              )
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'button', 'class': 'btn btn-primary btn-lg', 'data-toggle': 'modal', 'data-target': '#myModal' },
+	              'Launch demo modal'
 	            )
 	          );
 	        }.bind(this)),
