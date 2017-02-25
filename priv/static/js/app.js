@@ -28176,7 +28176,7 @@ webpackJsonp([0],[
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', onClick: this.addToCart(this.state.item), className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                  { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
 	                  'Add'
 	                )
 	              )
