@@ -28,6 +28,7 @@ export default class Menu extends React.Component {
         page: "items",
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
         cart: this.props.cart,
+        count: 0
     };
 
     this.loadCart = this.loadCart.bind(this);
@@ -99,9 +100,17 @@ export default class Menu extends React.Component {
 
   showItem(item_id){
 
-      //alert(item_id);
+      alert(item_id);
 
       $('#myModal').modal('show');
+
+  }
+
+  addItemToCart(item_id){
+
+    alert();
+
+    //this.setState({count: 1});
 
   }
 
@@ -127,6 +136,7 @@ export default class Menu extends React.Component {
 
           page = <div>
                   <br/>
+                  <a>cart({this.state.count})</a>
                   <br/>
                         {this.state.menu_items.map(function(item){
                             return(<div className="thumbnail" >
@@ -176,7 +186,7 @@ export default class Menu extends React.Component {
                             <option value="">1</option>
                             <option value={value_12}>2</option>
                           </select>
-                          <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" onClick={this.addToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>

@@ -27938,7 +27938,8 @@ webpackJsonp([0],[
 	    _this.state = {
 	      page: "items",
 	      menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }],
-	      cart: _this.props.cart
+	      cart: _this.props.cart,
+	      count: 0
 	    };
 	
 	    _this.loadCart = _this.loadCart.bind(_this);
@@ -28003,9 +28004,17 @@ webpackJsonp([0],[
 	    key: 'showItem',
 	    value: function showItem(item_id) {
 	
-	      //alert(item_id);
+	      alert(item_id);
 	
 	      $('#myModal').modal('show');
+	    }
+	  }, {
+	    key: 'addItemToCart',
+	    value: function addItemToCart(item_id) {
+	
+	      alert();
+	
+	      //this.setState({count: 1});
 	    }
 	  }, {
 	    key: 'render',
@@ -28031,6 +28040,13 @@ webpackJsonp([0],[
 	        'div',
 	        null,
 	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          'a',
+	          null,
+	          'cart(',
+	          this.state.count,
+	          ')'
+	        ),
 	        _react2.default.createElement('br', null),
 	        this.state.menu_items.map(function (item) {
 	          var _this2 = this;
@@ -28160,8 +28176,8 @@ webpackJsonp([0],[
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
-	                  'Close'
+	                  { type: 'button', onClick: this.addToCart(this.state.item), className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                  'Add'
 	                )
 	              )
 	            )
