@@ -18726,7 +18726,9 @@ webpackJsonp([0],[
 	              ),
 	              _react2.default.createElement(
 	                'button',
-	                { type: 'button', className: 'hidden-xs btn btn-default' },
+	                { type: 'button', className: 'hidden-xs btn btn-default', onClick: function onClick() {
+	                    return _this2.guestCode();
+	                  } },
 	                'Submit'
 	              )
 	            ),
