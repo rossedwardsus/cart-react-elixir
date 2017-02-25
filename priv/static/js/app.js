@@ -27944,6 +27944,7 @@ webpackJsonp([0],[
 	
 	    _this.loadCart = _this.loadCart.bind(_this);
 	    _this.showItem = _this.showItem.bind(_this);
+	    _this.addToCart = _this.addToCart.bind(_this);
 	
 	    return _this;
 	  }

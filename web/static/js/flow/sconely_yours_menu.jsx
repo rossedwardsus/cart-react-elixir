@@ -33,6 +33,7 @@ export default class Menu extends React.Component {
 
     this.loadCart = this.loadCart.bind(this);
     this.showItem = this.showItem.bind(this);
+    this.addToCart = this.addToCart.bind(this);
     
   }
 
