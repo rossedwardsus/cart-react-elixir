@@ -186,7 +186,7 @@ export default class Menu extends React.Component {
                             <option value="">1</option>
                             <option value={value_12}>2</option>
                           </select>
-                          <button type="button" className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={this.addToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>
