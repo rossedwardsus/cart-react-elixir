@@ -33,7 +33,7 @@ export default class Menu extends React.Component {
 
     this.loadCart = this.loadCart.bind(this);
     this.showItem = this.showItem.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+    this.addItemToCart = this.addItemToCart.bind(this);
     
   }
 
@@ -101,7 +101,7 @@ export default class Menu extends React.Component {
 
   showItem(item_id){
 
-      alert(item_id);
+      //alert(item_id);
 
       $('#myModal').modal('show');
 
@@ -109,9 +109,9 @@ export default class Menu extends React.Component {
 
   addItemToCart(item_id){
 
-    alert();
+    //alert();
 
-    //this.setState({count: 1});
+    this.setState({count: 1});
 
   }
 
@@ -187,7 +187,7 @@ export default class Menu extends React.Component {
                             <option value="">1</option>
                             <option value={value_12}>2</option>
                           </select>
-                          <button type="button" onClick={this.addToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.addItemToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>

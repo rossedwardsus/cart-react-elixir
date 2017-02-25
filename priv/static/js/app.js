@@ -27944,7 +27944,7 @@ webpackJsonp([0],[
 	
 	    _this.loadCart = _this.loadCart.bind(_this);
 	    _this.showItem = _this.showItem.bind(_this);
-	    _this.addToCart = _this.addToCart.bind(_this);
+	    _this.addItemToCart = _this.addItemToCart.bind(_this);
 	
 	    return _this;
 	  }
@@ -28005,7 +28005,7 @@ webpackJsonp([0],[
 	    key: 'showItem',
 	    value: function showItem(item_id) {
 	
-	      alert(item_id);
+	      //alert(item_id);
 	
 	      $('#myModal').modal('show');
 	    }
@@ -28013,9 +28013,9 @@ webpackJsonp([0],[
 	    key: 'addItemToCart',
 	    value: function addItemToCart(item_id) {
 	
-	      alert();
+	      //alert();
 	
-	      //this.setState({count: 1});
+	      this.setState({ count: 1 });
 	    }
 	  }, {
 	    key: 'render',
@@ -28177,7 +28177,9 @@ webpackJsonp([0],[
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', onClick: this.addToCart(this.state.item), className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                  { type: 'button', onClick: function onClick() {
+	                      return _this3.addItemToCart(_this3.state.item);
+	                    }, className: 'btn btn-default', 'data-dismiss': 'modal' },
 	                  'Add'
 	                )
 	              )
