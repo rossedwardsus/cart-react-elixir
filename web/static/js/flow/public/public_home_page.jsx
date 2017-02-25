@@ -246,7 +246,7 @@ export default class Homepage extends React.Component {
                               <div className="hidden-xs form-group">
                                 <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
                               </div>
-                              <button type="button" className="hidden-xs btn btn-default">Submit</button>
+                              <button type="button" className="hidden-xs btn btn-default" onClick={() => this.guestCode()}>Submit</button>
                             </div>
                             <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
                               <ul className="nav navbar-nav">
