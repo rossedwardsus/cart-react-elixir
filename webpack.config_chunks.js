@@ -32,7 +32,8 @@ module.exports = {
         include: __dirname,
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react', 'stage-2']
+          presets: ['es2015', 'react', 'stage-2'],
+          plugins: ["transform-decorators-legacy"]
         },
         //plugins: ['transform-object-rest-spread']
       },{
@@ -41,7 +42,8 @@ module.exports = {
         include: __dirname,
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react', 'stage-2']
+          presets: ['es2015', 'react', 'stage-2'],
+          plugins: ["transform-decorators-legacy"]
         },
       },{ 
         test: /\.css$/, 
@@ -58,7 +60,8 @@ module.exports = {
     //  test: /.*/,
         include: [path.resolve(__dirname, '/sconely_signature_guest'), ],
         loaders: ['bundle?lazy&name=sconely_signature_guest', 'babel-loader']
-      }
+      },
+      { test: /\.ts(x?)$/, loader: 'babel-loader!ts-loader' }
     ],
   },
   plugins: [

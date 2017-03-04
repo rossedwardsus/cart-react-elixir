@@ -1,15 +1,45 @@
-import React from 'react'
+
+
+'use strict';
+
+
+import * as React from 'react';
 
 import SconelyYoursMenu from './sconely_yours_menu';
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 import { Link } from 'react-router'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as getAllProducts from './actions/menu';
+//import {addItemToCart, addAddress} from './actions/order';
+import { getPublicMenu } from './reducers/menu';
 
 
+function addTodoWithDispatch() {
+  const action = {
+    type: "VIEW_PUBLIC_MENU",
+    //text
+  }
+  //dispatch(action)
+}
 
-export default class Order extends React.Component {
+export interface HelloProps { 
+    compiler: string; 
+    framework: string; 
+}
+
+declare var module: { Order: any };
+
+interface Order {
+  state: any,
+  props: any,
+  //completed: boolean
+}
+
+class Order extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -17,7 +47,8 @@ export default class Order extends React.Component {
 
     this.state = {
 
-        
+        menu_items: this.props.menu_items,
+        here: ""
 
     };
 
@@ -31,9 +62,23 @@ export default class Order extends React.Component {
     
   }
 
+  componentDidMount(){
+
+    //this.props;
+
+    //alert(JSON.stringify(this.state.menu_items));
+
+    //alert("products" + JSON.stringify(this.props.menu_items));
+    //console.log(this.props.getAllProducts());
+    //this.setState({here: this.props.getAllProducts()});
+    //console.log(this.props.dispatch(addTodoWithDispatch));
+    this.props.getAllProducts();
+
+  }
+
   
 
-  render(): React.Element {
+  /*render(): React.Element {
     return (  
             <div className="container-fluid">
                   <div className="row">
@@ -67,5 +112,32 @@ export default class Order extends React.Component {
                 </div>
             </div>
                 )
+  }*/
+
+  render(){
+    alert(JSON.stringify(this.props.menu_items));
+    return (  
+          <div>here{this.state.here}</div>
+    )
   }
+
 }
+
+
+
+
+function mapStateToProps(state: any) {
+  return {
+   menu_items: state.default.menu_items
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Order);
+

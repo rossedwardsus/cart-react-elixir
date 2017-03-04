@@ -2,7 +2,20 @@ import "babel-polyfill";
 import React from 'react'
 import { Link } from 'react-router';
 import Swipeable from 'react-swipeable';
+import { routeActions, push } from 'react-router-redux'
+import {connect} from 'react-redux';
+//import {startOrder} from './actions/order';
 
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onNavigateTo(dest) {
+      dispatch(push(dest));
+    }
+  };
+};
+
+@connect(null, mapDispatchToProps)
 export default class Homepage extends React.Component {
   //props: Props;
 
@@ -65,9 +78,19 @@ export default class Homepage extends React.Component {
        
         //if user is logged in then 
         //guest code is right then
-        this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+        //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
 
         //this.context.router.push('/guest/order/12345/sconely_yours');
+
+        //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+
+        //this.props.dispatch(routeActions.push('/foo'));
+
+        //push("/foo");
+
+        this.props.onNavigateTo('/hello');
+
+
     //}
 
   }
