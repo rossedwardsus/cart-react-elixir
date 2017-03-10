@@ -112,6 +112,23 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </select>
             </div>
           </form>
+          <br/>
+          <br/>
+          <form className="form-inline">
+            <div className="form-group">
+              <label htmlFor="exampleInputName2">Card Number</label>
+              <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputName2">Expiry Date</label>
+              <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputEmail2">Security Code</label>
+              <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
+            </div>
+          </form>
+          <button type="button" className="btn" onClick={() => {}}>Complete Payment</button> 
       </div>
     )
   }

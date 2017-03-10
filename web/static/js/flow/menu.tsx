@@ -152,6 +152,7 @@ export default class Menu extends React.Component<any, any> {
                             </div>)
                         }.bind(this))}
                   <br/>
+                  <button type="button" className="btn" onClick={() => {}}>Delivery Address and Payment-submit payment</button> 
                   <br/>
                   <br/>
                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
