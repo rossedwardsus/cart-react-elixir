@@ -93,9 +93,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
             </div>
           </form>
           <form className="form-inline">
-            <DatePicker
-              selected={() => {}}
-              onChange={() => {}} />
+            
             <div className="form-group">
               <label htmlFor="exampleInputName2">Street</label>
               <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
