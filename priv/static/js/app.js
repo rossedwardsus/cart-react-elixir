@@ -27980,7 +27980,7 @@ webpackJsonp([0],[
 	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item) {
 	                var _this2 = this;
 	
-	                return React.createElement("div", { className: "thumbnail", style: { paddingRight: 50 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
+	                return React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
 	                        return _this2.mouseOver(e);
 	                    }, onMouseOut: function onMouseOut(e) {
 	                        return _this2.mouseOut(e);
