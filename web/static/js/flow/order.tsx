@@ -148,7 +148,7 @@ class Order extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-4">
                                 <div>
                                   <br/>
                                   <div>
