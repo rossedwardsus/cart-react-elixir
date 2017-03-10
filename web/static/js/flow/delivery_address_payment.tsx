@@ -81,16 +81,9 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
       <div>
           <form className="form-horizontal">
             <div className="form-group">
-              if registered user show
-              <br/>
-              if not then dont sho1
-              <br/>
-              <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
-              <br/>
               <div className="col-sm-10">
                   <b>Delivery Address</b>
                   <br/>
-                  
                   <br/>
               </div>
             </div>
@@ -100,8 +93,32 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <div className="col-sm-10">
                 <input type="text"/>street/city/zipcode/floor/delivery comments
               </div>
-          </div>
-        </form>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputEmail1">Street</label>
+              <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email"/>
+            </div>
+          </form>
+          <form className="form-inline">
+            <div className="form-group">
+              <label htmlFor="exampleInputName2">City</label>
+              <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputEmail2">State</label>
+              <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleInputEmail2">Zipcode</label>
+              <select className="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+              </select>
+            </div>
+          </form>
       </div>
     )
   }
