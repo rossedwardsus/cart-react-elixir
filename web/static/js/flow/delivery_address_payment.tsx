@@ -83,6 +83,9 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
 
     return (
       <div>
+          <DatePicker
+              selected={this.state.startDate}
+              onChange={() => {}} />
           <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
@@ -93,9 +96,6 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
             </div>
           </form>
           <form className="form-inline">
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={() => {}} />
             <div className="form-group">
               <label htmlFor="exampleInputName2">Street</label>
               <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
