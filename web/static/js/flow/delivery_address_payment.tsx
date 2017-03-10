@@ -87,19 +87,12 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   <br/>
               </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
-              <br/>
-              <div className="col-sm-10">
-                <input type="text"/>street/city/zipcode/floor/delivery comments
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Street</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email"/>
-            </div>
           </form>
           <form className="form-inline">
+            <div className="form-group">
+              <label htmlFor="exampleInputName2">City</label>
+              <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+            </div>
             <div className="form-group">
               <label htmlFor="exampleInputName2">City</label>
               <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
