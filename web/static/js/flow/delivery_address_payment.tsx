@@ -6,6 +6,10 @@ import { Link, browserHistory } from 'react-router'
 //import Dialog from "rc-dialog";
 //let Autocomplete = require('react-google-autocomplete');
 //const Autocomplete = Autocomplete: any;
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+require('react-datepicker/dist/react-datepicker.css');
 
 //declare module 'react-google-autocomplete' {
 //    const x: any;
@@ -89,6 +93,9 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
             </div>
           </form>
           <form className="form-inline">
+            <DatePicker
+              selected={() => {}}
+              onChange={() => {}} />
             <div className="form-group">
               <label htmlFor="exampleInputName2">Street</label>
               <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
