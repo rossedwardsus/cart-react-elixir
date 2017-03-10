@@ -18742,7 +18742,7 @@ webpackJsonp([0],[
 	                  _react2.default.createElement(
 	                    'a',
 	                    { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                    'Sconely Yours'
+	                    'Start Order'
 	                  )
 	                )
 	              ),
@@ -27844,7 +27844,7 @@ webpackJsonp([0],[
 	            } else {
 	                body = React.createElement(cart_tsx_1.default, null); //cart
 	            }
-	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("div", { className: "hidden-xs" }, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("div", null, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.showCart();
 	                } }, "cart(", this.state.item_count, ")")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: ".btn", onClick: function onClick() {
 	                    return _this2.showDeliveryAddressPayment();
@@ -28207,6 +28207,7 @@ webpackJsonp([0],[
 	                            types={['address']}
 	                            componentRestrictions={{country: "us"}}
 	                        />*/
+	            //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, "if registered user show", React.createElement("br", null), "if not then dont sho1", React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("br", null), React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("br", null))), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("br", null), React.createElement("div", { className: "col-sm-10" }, React.createElement("input", { type: "text" }), "street/city/zipcode/floor/delivery comments"))));
 	        }
 	    }]);
