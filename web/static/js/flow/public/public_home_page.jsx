@@ -276,7 +276,10 @@ export default class Homepage extends React.Component {
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                               </ul>
                               <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login_register">Login/Register<span className="sr-only">(current)</span></Link></li>
+                                <li className="inactive"><Link to="/login_register">Login<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/login_register">Signup<span className="sr-only">(current)</span></Link></li>
                               </ul>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
@@ -305,6 +308,13 @@ export default class Homepage extends React.Component {
                         <div className="col-md-6">
                                   <br/>
                                   <br/>
+                                  <div>
+                                    <a href="./">Profile<span className="sr-only">(current)</span></a>
+                                    <Link to="/login_register">Login<span className="sr-only">(current)</span></Link>
+                                    <Link to="/login_register">Signup<span className="sr-only">(current)</span></Link>
+                                    <a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a>
+                                    <Link to="/public/menu">Menu</Link>
+                                  </div>
                                   <br/>
                                   <br/>
                                   <br/>

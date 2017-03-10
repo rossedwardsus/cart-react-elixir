@@ -18724,7 +18724,25 @@ webpackJsonp([0],[
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
 	                    { to: '/login_register' },
-	                    'Login/Register',
+	                    'Login',
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'sr-only' },
+	                      '(current)'
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'nav navbar-nav' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'inactive' },
+	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/login_register' },
+	                    'Signup',
 	                    _react2.default.createElement(
 	                      'span',
 	                      { className: 'sr-only' },
@@ -18799,6 +18817,50 @@ webpackJsonp([0],[
 	            { className: 'col-md-6' },
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: './' },
+	                'Profile',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  '(current)'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/login_register' },
+	                'Login',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  '(current)'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/login_register' },
+	                'Signup',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  '(current)'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: this.createOrder.bind(this, "sconely_yours") },
+	                'Start Order'
+	              ),
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/public/menu' },
+	                'Menu'
+	              )
+	            ),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('br', null),
