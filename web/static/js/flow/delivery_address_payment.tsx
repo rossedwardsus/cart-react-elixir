@@ -90,7 +90,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
           </form>
           <form className="form-inline">
             <div className="form-group">
-              <label htmlFor="exampleInputName2">City</label>
+              <label htmlFor="exampleInputName2">Street</label>
               <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
             </div>
             <div className="form-group">
