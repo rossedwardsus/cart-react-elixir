@@ -151,7 +151,7 @@ class Order extends React.Component<any, any> {
                         <div className="col-md-8">
                                 <div>
                                   <br/>
-                                  <div className="hidden-xs">
+                                  <div className="hidden-lg">
                                     only show on mobile
                                     <br/>
                                     <a onClick={() => this.showCart()}>cart({this.state.item_count})</a>
