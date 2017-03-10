@@ -28043,7 +28043,7 @@ webpackJsonp([0],[
 	                mini_12 = value_12 + "_mini";
 	                 });*/
 	            //if(this.state.page == "items"){
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-2" }, this.state.menu_items.map(function (item) {
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-xs-2" }, this.state.menu_items.map(function (item) {
 	                var _this2 = this;
 	
 	                return React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
