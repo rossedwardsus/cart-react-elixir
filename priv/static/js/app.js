@@ -18754,7 +18754,7 @@ webpackJsonp([0],[
 	                  { className: 'inactive' },
 	                  _react2.default.createElement(
 	                    _reactRouter.Link,
-	                    { to: '/order' },
+	                    { to: '/menu' },
 	                    'Menu'
 	                  ),
 	                  _react2.default.createElement(
