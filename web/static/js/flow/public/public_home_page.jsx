@@ -308,6 +308,10 @@ export default class Homepage extends React.Component {
                         <div className="col-md-6">
                                   <br/>
                                   <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
                                   <div>
                                     <a href="./">Profile<span className="sr-only">(current)</span></a>
                                     <Link to="/login_register">Login<span className="sr-only">(current)</span></Link>
