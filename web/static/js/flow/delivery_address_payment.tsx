@@ -83,7 +83,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
 
     return (
       <div>
-          <DatePicker
+          <DatePicker inline 
               selected={this.state.startDate}
               onChange={() => {}} />
           <form className="form-horizontal">
