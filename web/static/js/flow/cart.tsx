@@ -153,9 +153,9 @@ class Cart extends React.Component<any, any> {
                   Total Items = 5
                    <br/>
                   <br/>
-                  <button className=".btn">Delivery Address and Payment</button> 
+                  <button className="btn btn-default">Delivery Address and Payment</button> 
                   <br/>
-                  <button className=".btn">add more items</button>
+                  <button className="btn btn-default">add more items</button>
             </div>
     )
   }

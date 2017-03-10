@@ -134,7 +134,7 @@ export default class Menu extends React.Component<any, any> {
                   <br/>
                   <br/>
                         {this.state.menu_items.map(function(item: any){
-                            return(<div className="thumbnail" >
+                            return(<div className="thumbnail" style={{paddingRight: 5}}>
                                 <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                 <div className="caption">
                                   <h3>Strawberry Scone1</h3>
@@ -155,7 +155,7 @@ export default class Menu extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 800px">
+                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
                     <div className="modal-dialog" role="document">
                       <div className="modal-content">
                         <div className="modal-header">
@@ -165,7 +165,7 @@ export default class Menu extends React.Component<any, any> {
                         <div className="modal-body">
 
                           ...
-                          <img width="400" height="400" src="/images/strawberry_scones.png"></img>
+                          <img width="300" height="300" src="/images/strawberry_scones.png"></img>
                         </div>
                         <div className="modal-footer">
                           <select onChange={(value) => this.props.addItemToCart(value)}>
