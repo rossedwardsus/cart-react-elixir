@@ -155,7 +155,7 @@ export default class Menu extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 800px">
                     <div className="modal-dialog" role="document">
                       <div className="modal-content">
                         <div className="modal-header">
@@ -165,7 +165,7 @@ export default class Menu extends React.Component<any, any> {
                         <div className="modal-body">
 
                           ...
-                          <img width="200" height="200" src="/images/strawberry_scones.png"></img>
+                          <img width="400" height="400" src="/images/strawberry_scones.png"></img>
                         </div>
                         <div className="modal-footer">
                           <select onChange={(value) => this.props.addItemToCart(value)}>
