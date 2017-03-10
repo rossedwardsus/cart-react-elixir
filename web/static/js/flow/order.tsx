@@ -148,7 +148,7 @@ class Order extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-8">
                                 <div>
                                   <br/>
                                   <div>
@@ -162,7 +162,7 @@ class Order extends React.Component<any, any> {
                                   {body}
                                   <br/>
                                   <br/>
-                                  <button type="button" className="btn btn-default" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</button> 
+                                  <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</button> 
                                 </div>
                         </div>
                         <div className="hidden-xs col-md-4">
