@@ -146,7 +146,7 @@ export default class Homepage extends React.Component {
 
 
         //if user is logged in then 
-        this.context.router.push('/order/12345/menu');
+        this.context.router.push('/order/12345');
 
         //this.context.router.push('/order/12345');
 
@@ -157,7 +157,7 @@ export default class Homepage extends React.Component {
         //alert(orders);
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.context.router.push('/order/12345/sconely_social');
+        this.context.router.push('/order/12345');
          
     }else if(order_type == "sconely_signature"){
 
@@ -276,7 +276,7 @@ export default class Homepage extends React.Component {
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                               </ul>
                               <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Login/Register<span className="sr-only">(current)</span></a></li>
+                                <li className="inactive"><Link to="/login_register">Login/Register<span className="sr-only">(current)</span></Link></li>
                               </ul>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a></li>
@@ -298,9 +298,7 @@ export default class Homepage extends React.Component {
                           <br/>
                           Home
                           <br/>
-                          <a onClick={this.createOrder.bind(this, "sconely_yours")}>Sconely Yours</a>
-                          <br/>
-                          <a onClick={this.createOrder.bind(this, "sconely_social")}>Sconely Social</a>
+                          <a onClick={this.createOrder.bind(this, "sconely_social")}>Start Order</a>
                           <br/>
                           <br/>
                         </div>

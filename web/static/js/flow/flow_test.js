@@ -24,8 +24,12 @@ import PublicMenu from './public/public_menu';
 import PublicAboutUs from './public/public_about_us';
 
 import Order from "./order.tsx";
+
+import LoginRegister from './login_register';
+
 import User from "./user";
-import UserOrder from "./user_order";
+
+/*import UserOrder from "./user_order";
 import SconelySocial from "./sconely_yours_social_single_page";
 import SconelyYours from "./sconely_yours_social_single_page";
 //import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
@@ -40,15 +44,15 @@ import SconelySocialMenu from "./sconely_social_menu";
 import SconelySignaturePreview from "./sconely_signature_preview";
 import SconelySignatureSinglePage from "./sconely_signature_single_page";
 import OrderPayment from "./sconely_yours_social_order_payment";
-import ProfilePayment from "./user/payment";
+import ProfilePayment from "./user/payment";*/
 
-import * as reducers from './reducers/menu';
+import * as reducers from './reducers/menu.ts';
 
 //type Props = {
 //  todos: Array<Object>,
 //}
 
-import { getAllProducts } from './actions/viewPublicMenu'
+//import { getAllProducts } from './actions/viewPublicMenu'
 
 
 const isReactComponent = (obj) => Boolean(obj && obj.prototype && Boolean(obj.prototype.isReactComponent));
@@ -112,6 +116,18 @@ const history = syncHistoryWithStore(hashHistory, store)
 
 //store.dispatch({type: "VIEW_PUBLIC_MENU"});
 
+
+/*<Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
+        <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySignatureGuests guest_chooses="value" />)} />
+        <Route path="/order/:order_id/menu" component={SconelySocialMenu} />
+        <Route path="/order/:order_id/preview" component={SconelySignaturePreview} />
+        <Route path="/order/:order_id/payment" component={OrderPayment} />
+        
+        <Route path="/user/profile" component={SconelySocial} />
+        <Route path="/user/delivery_address" component={SconelySocial} />
+        <Route path="/user/payment" component={ProfilePayment} />
+        <Route path="/user/orders" component={UserOrder} />*/
+
 const Root = () => (
   <Provider store={store}>
     <Router history={history}>
@@ -124,28 +140,18 @@ const Root = () => (
                                       cb(null, PublicHomePage)
                                     }} />
 
+        <Route path="/login_register" component={LoginRegister} />
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
-        <Route path="/order/:order_id/menu" component={Order} />
-        <Route path="/order/:order_id/deliveryaddresspayment" component={Order} />
-        <Route path="/order/:order_id/guest" getComponent={(nextState, cb) => {
+        <Route path="/order/:order_id" component={Order} />
+        //<Route path="/order/:order_id/deliveryaddresspayment" component={Order} />
+        //<Route path="/order/:order_id/guest" getComponent={(nextState, cb) => {
                                      // async work to find components
                                     cb(null, SconelySignatureGuest)
                                   }} />
 
-        <Route path="/order/:order_id/sconely_yours" component={SconelyYours} />
-        <Route path="/order/:order_id/sconely_social" component={SconelySocial} />
-        <Route path="/order/:order_id/sconely_signature" component={SconelySignature} />
-        <Route path="/order/:order_id/event_details" component={SconelySocialEventDetails} />
-        <Route path="/order/:order_id/guests" guest_chooses="yes" component={() => (<SconelySignatureGuests guest_chooses="value" />)} />
-        <Route path="/order/:order_id/menu" component={SconelySocialMenu} />
-        <Route path="/order/:order_id/preview" component={SconelySignaturePreview} />
-        <Route path="/order/:order_id/payment" component={OrderPayment} />
-        <Route path="/user/profile" component={SconelySocial} />
-        <Route path="/user/delivery_address" component={SconelySocial} />
-        <Route path="/user/payment" component={ProfilePayment} />
-        <Route path="/user/orders" component={UserOrder} />
-        //<Route path="/public/home" component={PublicHomePage} />
+        
+        
       </Route>
     </Router>
   </Provider>

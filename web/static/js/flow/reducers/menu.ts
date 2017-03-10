@@ -1,14 +1,26 @@
-import { VIEW_PUBLIC_MENU } from '../constants/actionTypes';
+import { VIEW_PUBLIC_MENU } from '../constants/actionTypes.ts';
 
-const initialState = {
-  user_type: "guest",
+let menu_items: any;
+
+interface OrderState {
+  user_type: string;
+  address: string;
+  payment_method: string;
+  menu_items: any;
+  cart: any;
+};
+
+let inititalState: OrderState = {
+
+  user_type: "",
   address: "",
   payment_method: "",
   menu_items: [],
-  cart: []
-};
+  cart: [],
 
-export default (state = initialState, action) => {
+}
+
+export default (state:any = [], action: any) => {
   switch (action.type) {
     case VIEW_PUBLIC_MENU:
       //alert("view public menu reducer" + JSON.stringify(action));

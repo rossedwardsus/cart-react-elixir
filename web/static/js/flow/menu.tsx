@@ -1,6 +1,4 @@
-// @flow
-
-import React from 'react'
+import * as React from 'react'
 
 import { Link, browserHistory } from 'react-router'
 
@@ -15,25 +13,22 @@ type Props = {
 };
 
 
-export default class Menu extends React.Component {
+export default class Menu extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        page: "items",
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
-        cart: this.props.cart,
-        count: 0
     };
 
-    this.loadCart = this.loadCart.bind(this);
+    //this.loadCart = this.loadCart.bind(this);
     this.showItem = this.showItem.bind(this);
-    this.addItemToCart = this.addItemToCart.bind(this);
+    //this.addItemToCart = this.addItemToCart.bind(this);
     
   }
 
@@ -49,7 +44,7 @@ export default class Menu extends React.Component {
     };
   }
 
-  loadCart(){
+  /*loadCart(){
 
     this.setState({page: "cart"});
     //remove/change quantity
@@ -61,7 +56,7 @@ export default class Menu extends React.Component {
     this.setState({page: "items"});
     //remove/change quantity
 
-  }
+  }*/
 
   /*removeitem(item_id){
 
@@ -87,19 +82,19 @@ export default class Menu extends React.Component {
     
   }*/
 
-  mouseOver(e){
+  mouseOver(e:any){
 
       e.target.src = "/images/menu/DWK_greenrollover3.jpg";
 
   }
 
-  mouseOut(e){
+  mouseOut(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover1.jpg";
 
   }
 
-  showItem(item_id){
+  showItem(item_id: any){
 
       //alert(item_id);
 
@@ -107,7 +102,7 @@ export default class Menu extends React.Component {
 
   }
 
-  addItemToCart(item_id){
+  addItemToCart(item_id: any){
 
     //alert();
 
@@ -115,7 +110,7 @@ export default class Menu extends React.Component {
 
   }
 
-  render(): React.Element {
+  render(): JSX.Element{
 
     var that = this;
     var page = "";
@@ -135,11 +130,10 @@ export default class Menu extends React.Component {
 
     //if(this.state.page == "items"){
 
-          page = <div>
+          return(<div>
                   <br/>
-                  <a>cart({this.state.count})</a>
                   <br/>
-                        {this.state.menu_items.map(function(item){
+                        {this.state.menu_items.map(function(item: any){
                             return(<div className="thumbnail" >
                                 <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                 <div className="caption">
@@ -180,45 +174,19 @@ export default class Menu extends React.Component {
                             <option value={mini_12}>Mini 12</option>
                             <option value={value_24}>24</option>
                           </select>
-                          <br/>
                           X
-                          <br/>
+                          
                             <select onChange={this.props.selectQuantity}>
                             <option value="">1</option>
                             <option value={value_12}>2</option>
                           </select>
-                          <button type="button" onClick={() => this.addItemToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.props.addItemToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-    /*}else{
-
-          page = <div>
-                    <a onClick={() => this.loadItems()}>items</a>
-                    <br/>
-                    {this.props.cart.map(function(item){
-
-                          var item_id = item.item_id;
-
-                          return(<div>description{item.item_id}xquantity-<a onClick={() => that.props.removeItemFromCart(item_id)}>remove</a></div>)
-
-                    })}
-                  </div>
-
-    }*/
+                </div>)
 
     
-
-
-
-    return (
-      <div>
-        {page}
-        <br/>
-      </div>
-    )
   }
 }

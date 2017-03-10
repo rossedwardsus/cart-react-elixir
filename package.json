@@ -35,6 +35,7 @@
     "uglify-js-brunch": ">= 1.0 < 1.8"
   },
   "devDependencies": {
+    "@types/jquery": "^2.0.40",
     "@types/react": "^0.14.52",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.11.4",

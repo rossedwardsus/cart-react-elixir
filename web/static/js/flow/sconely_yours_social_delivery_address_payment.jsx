@@ -2,8 +2,8 @@ import React from 'react'
 
 import Menu from './sconely_yours_menu';
 import DateTime from './sconely_yours_datetime';
-import DeliveryAddress from './sconely_yours_delivery_address'
-import Payment from './order_payment';
+import DeliveryAddress from './delivery_address'
+import Payment from './payment';
 
 import request from 'superagent';
 import { Link } from 'react-router';

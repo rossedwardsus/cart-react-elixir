@@ -1,0 +1,108 @@
+'use sctrict'
+
+import * as React from 'react'
+import { Link, browserHistory } from 'react-router'
+//import Autocomplete as any from 'react-google-autocomplete';
+//import Dialog from "rc-dialog";
+//let Autocomplete = require('react-google-autocomplete');
+//const Autocomplete = Autocomplete: any;
+
+//declare module 'react-google-autocomplete' {
+//    const x: any;
+//    export = x; 
+//}
+
+type Props = {
+  //title: string,
+  //visited: boolean,
+  //setDeliveryAddress: () => void,
+};
+
+export default class DeliveryAddressPayment extends React.Component<any, any> {
+  props: Props;
+  state: any;
+
+  constructor(props: Props) {
+    super(props);
+    //this.getData();
+  
+    //alert("sconely yours1" + this.props.params.order_id);
+
+    //state: {
+      //display: 'static' | 'hover' | 'active',
+    //};
+
+    this.state = {
+
+        delivery_addresses: [{street: "santa monica blvd"}],
+        
+    };
+  }
+   
+  /*<Autocomplete
+                    style={{width: '90%'}}
+                    onPlaceSelected={(place: any) => {
+                      //console.log(place.formatted_address.split(",")[2]);
+                      //this.props.setDeliveryAddress(place); 
+                    }}
+                    types={['address']}
+                    componentRestrictions={{country: "us"}}
+                  />*/
+
+  render(): JSX.Element {
+
+    let delivery_addresses = null;
+
+    //alert(this.props.user_type);
+
+    /*if(this.props.user_type == "registered"){
+
+        delivery_addresses = <select onChange={(value) => this.props.setExistingDeliveryAddress(value)}>
+                                  <option value=""></option>
+                                  <option value="home">Home</option>
+                                  <option value="office">Office</option>
+                              </select>
+
+    }*/
+
+
+    /*<Autocomplete
+                    style={{width: '90%'}}
+                    onPlaceSelected={(place) => {
+                      //console.log(place.formatted_address.split(",")[2]);
+                      this.props.setDeliveryAddress(place); 
+                    }}
+                    types={['address']}
+                    componentRestrictions={{country: "us"}}
+                />*/
+//AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
+
+    return (
+      <div>
+          <form className="form-horizontal">
+            <div className="form-group">
+              if registered user show
+              <br/>
+              if not then dont sho1
+              <br/>
+              <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
+              <br/>
+              <div className="col-sm-10">
+                  <b>Delivery Address</b>
+                  <br/>
+                  
+                  <br/>
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
+              <br/>
+              <div className="col-sm-10">
+                <input type="text"/>street/city/zipcode/floor/delivery comments
+              </div>
+          </div>
+        </form>
+      </div>
+    )
+  }
+}

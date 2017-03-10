@@ -1,18 +1,19 @@
 
-
 'use strict';
 
 
 import * as React from 'react';
 
-import SconelyYoursMenu from './sconely_yours_menu';
-//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
+import SconelyYoursMenu from './menu.tsx';
+import Cart from './cart.tsx';
+import DeliveryAddressPayment from './delivery_address_payment.tsx';
+
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as getAllProducts from './actions/menu';
-//import {addItemToCart, addAddress} from './actions/order';
-import { getPublicMenu } from './reducers/menu';
+//import * as getAllProducts from './actions/menu';
+//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+//import { getPublicMenu } from './reducers/menu';
 
 
 function addTodoWithDispatch() {
@@ -47,8 +48,10 @@ class Order extends React.Component<any, any> {
 
     this.state = {
 
-        menu_items: this.props.menu_items,
-        here: ""
+        page: "menu",
+        //menu_items: this.props.menu_items,
+        //here: ""
+        item_count: 0
 
     };
 
@@ -60,9 +63,15 @@ class Order extends React.Component<any, any> {
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
     
+    this.addItemToCart = this.addItemToCart.bind(this);
+
   }
 
   componentDidMount(){
+
+
+    //get menu items
+
 
     //this.props;
 
@@ -72,13 +81,58 @@ class Order extends React.Component<any, any> {
     //console.log(this.props.getAllProducts());
     //this.setState({here: this.props.getAllProducts()});
     //console.log(this.props.dispatch(addTodoWithDispatch));
-    this.props.getAllProducts();
+    //this.props.getAllProducts();
+
+  }
+
+  /*showMenu(){
+
+      this.setState({page: ""})
+
+  }*/
+
+  showDeliveryAddressPayment(){
+
+      this.setState({page: "delivery_address_payment"})
+
+  }
+
+  showCart(){
+
+      this.setState({page: "cart"})
+
+  }
+
+  addItemToCart(){
+
+    this.setState({item_count: 1});
 
   }
 
   
 
-  /*render(): React.Element {
+  render(): JSX.Element{
+
+    let body: any = "";
+    let item_count = this.state.item_count;
+
+    //alert(item_count);
+
+    if(this.state.page == "menu"){
+
+        body = <SconelyYoursMenu addItemToCart={() => this.addItemToCart()}/>;
+
+    }else if(this.state.page == "delivery_address_payment"){
+
+        body = <DeliveryAddressPayment/>;
+
+    }else{
+
+        body = <Cart/>;//cart
+
+    }
+
+
     return (  
             <div className="container-fluid">
                   <div className="row">
@@ -96,14 +150,19 @@ class Order extends React.Component<any, any> {
                         </div>
                         <div className="col-md-8">
                                 <div>
-                                  if registered user show registered left user menu and topnavbar
                                   <br/>
-                                  if order type == yours && page == menu
+                                  <div className="hidden-xs">
+                                    only show on mobile
+                                    <br/>
+                                    <a onClick={() => this.showCart()}>cart({this.state.item_count})</a>
+                                  </div>
                                   <br/>
-                                 <SconelyYoursMenu/>
                                   <br/>
                                   <br/>
-                                  
+                                  {body}
+                                  <br/>
+                                  <br/>
+                                  <button className=".btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</button> 
                                 </div>
                         </div>
                         <div className="hidden-xs col-md-4">
@@ -111,22 +170,22 @@ class Order extends React.Component<any, any> {
                         </div>
                 </div>
             </div>
-                )
-  }*/
+    )
+  }
 
-  render(){
+  /*render(){
     alert(JSON.stringify(this.props.menu_items));
     return (  
           <div>here{this.state.here}</div>
     )
-  }
+  }*/
 
 }
 
 
 
 
-function mapStateToProps(state: any) {
+/*function mapStateToProps(state: any) {
   return {
    menu_items: state.default.menu_items
    //menu_items: getPublicMenu
@@ -136,8 +195,10 @@ function mapStateToProps(state: any) {
 
 function mapDispatchToProps(dispatch: any) {
   return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-}
+}*/
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Order);
+//export default connect(mapStateToProps, mapDispatchToProps)(Order);
+
+export default Order;
 

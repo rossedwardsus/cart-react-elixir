@@ -1,4 +1,4 @@
-import { VIEW_PUBLIC_MENU } from '../constants/actionTypes';
+import { VIEW_PUBLIC_MENU } from '../constants/actionTypes.ts';
 
 declare var module: { viewPublicMenu: any };
 
