@@ -129,28 +129,33 @@ export default class Menu extends React.Component<any, any> {
     });*/
 
     //if(this.state.page == "items"){
+    //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
           return(<div>
                   <br/>
                   <br/>
+                  <div className="row">
+                        
                         {this.state.menu_items.map(function(item: any){
-                            return(<div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
-                                <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
-                                <div className="caption">
-                                  <h3>Strawberry Scone1</h3>
-                                  <p>
-                                    <div>
-                                      <select onChange={this.props.addItemToCart} id={item.item_id}>
-                                        <option value=""></option>
-                                        <option value="12">12</option>
-                                        <option value="24">24</option>
-                                      </select>
-                                      <br/>
-                                    </div>
-                                  </p>
-                                </div>
+                            return(<div className="col-xs-2 col-md-4">
+                                      <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
+                                          <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
+                                          <div className="caption">
+                                            <h3>Strawberry Scone1</h3>
+                                            <p>
+                                                <select onChange={this.props.addItemToCart} id={item.item_id}>
+                                                  <option value=""></option>
+                                                  <option value="12">12</option>
+                                                  <option value="24">24</option>
+                                                </select>
+                                                <br/>
+                                            </p>
+                                          </div>
+                                      </div>
                             </div>)
                         }.bind(this))}
+                    
+                  </div>
                   <br/>
                   <button type="button" className="btn" onClick={() => {}}>Delivery Address and Payment-submit payment</button> 
                   <br/>

@@ -64,6 +64,8 @@ class Order extends React.Component<any, any> {
     //or have everything work of a "pages" flag
     
     this.addItemToCart = this.addItemToCart.bind(this);
+    this.showMenu = this.showMenu.bind(this);
+    this.showCart = this.showCart.bind(this);
 
   }
 
@@ -85,11 +87,13 @@ class Order extends React.Component<any, any> {
 
   }
 
-  /*showMenu(){
+  showMenu(){
 
-      this.setState({page: ""})
+      //alert();
 
-  }*/
+      this.setState({page: "menu"});
+
+  }
 
   showDeliveryAddressPayment(){
 
@@ -120,7 +124,7 @@ class Order extends React.Component<any, any> {
 
     if(this.state.page == "menu"){
 
-        body = <SconelyYoursMenu addItemToCart={() => this.addItemToCart()}/>;
+        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addItemToCart={() => this.addItemToCart()}/>;
 
     }else if(this.state.page == "delivery_address_payment"){
 
@@ -128,7 +132,7 @@ class Order extends React.Component<any, any> {
 
     }else{
 
-        body = <Cart/>;//cart
+        body = <Cart showMenu={() => this.showMenu()}/>;//cart
 
     }
 
@@ -149,21 +153,20 @@ class Order extends React.Component<any, any> {
                           <br/>
                         </div>
                         <div className="col-md-8">
-                                <div>
-                                  <br/>
-                                  <div>
-                                    only show on mobile
-                                    <br/>
-                                    <a onClick={() => this.showCart()}>cart({this.state.item_count})</a>
-                                  </div>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  {body}
-                                  <br/>
-                                  <br/>
-                                  <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> 
-                                </div>
+                            <br/>
+                            <div>
+                              only show on mobile
+                              <br/>
+                              <a onClick={() => this.showCart()}>cart({this.state.item_count})</a>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            {body}
+                            <br/>
+                            <br/>
+                            <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> 
+                          
                         </div>
                         <div className="hidden-xs col-md-4">
                               maybe put something here

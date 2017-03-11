@@ -146,7 +146,7 @@ class Cart extends React.Component<any, any> {
     return (<div> 
                   {this.state.cart_items.map(function(item: any){
                       
-                      return(<div>{item.item_id}-{item.item_title}-{item.quantity}<a onClick={() => this.removeItemFromCart(item.item_id)}>remove</a><a onClick={() => this.updateCartItemQuantity(item.item_id, 10)}>update</a></div>)
+                      return(<div>image{item.item_id}-{item.item_title}-dozen-mini-{item.quantity}<a onClick={() => this.removeItemFromCart(item.item_id)}>remove</a><a onClick={() => this.updateCartItemQuantity(item.item_id, 10)}>increase</a><a onClick={() => this.updateCartItemQuantity(item.item_id, 10)}>decrease</a></div>)
 
                   }.bind(this))}
                   <br/>
@@ -155,7 +155,7 @@ class Cart extends React.Component<any, any> {
                   <br/>
                   <button className="btn btn-default">Delivery Address and Payment</button> 
                   <br/>
-                  <button className="btn btn-default">add more items</button>
+                  <button onClick={this.props.showMenu} className="btn btn-default">add more items</button>
             </div>
     )
   }

@@ -27859,25 +27859,29 @@ webpackJsonp([0],[
 	        //or separate into order_menu and order_delivery_address_payment objects
 	        //or have everything work of a "pages" flag
 	        _this.addItemToCart = _this.addItemToCart.bind(_this);
+	        _this.showMenu = _this.showMenu.bind(_this);
+	        _this.showCart = _this.showCart.bind(_this);
 	        return _this;
 	    }
 	
 	    _createClass(Order, [{
 	        key: "componentDidMount",
-	        value: function componentDidMount() {}
-	        //get menu items
-	        //this.props;
-	        //alert(JSON.stringify(this.state.menu_items));
-	        //alert("products" + JSON.stringify(this.props.menu_items));
-	        //console.log(this.props.getAllProducts());
-	        //this.setState({here: this.props.getAllProducts()});
-	        //console.log(this.props.dispatch(addTodoWithDispatch));
-	        //this.props.getAllProducts();
-	
-	        /*showMenu(){
-	               this.setState({page: ""})
-	           }*/
-	
+	        value: function componentDidMount() {
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "showMenu",
+	        value: function showMenu() {
+	            //alert();
+	            this.setState({ page: "menu" });
+	        }
 	    }, {
 	        key: "showDeliveryAddressPayment",
 	        value: function showDeliveryAddressPayment() {
@@ -27902,19 +27906,23 @@ webpackJsonp([0],[
 	            var item_count = this.state.item_count;
 	            //alert(item_count);
 	            if (this.state.page == "menu") {
-	                body = React.createElement(menu_tsx_1.default, { addItemToCart: function addItemToCart() {
+	                body = React.createElement(menu_tsx_1.default, { showDeliveryAddressPayment: function showDeliveryAddressPayment() {
+	                        return _this2.showDeliveryAddressPayment();
+	                    }, addItemToCart: function addItemToCart() {
 	                        return _this2.addItemToCart();
 	                    } });
 	            } else if (this.state.page == "delivery_address_payment") {
 	                body = React.createElement(delivery_address_payment_tsx_1.default, null);
 	            } else {
-	                body = React.createElement(cart_tsx_1.default, null); //cart
+	                body = React.createElement(cart_tsx_1.default, { showMenu: function showMenu() {
+	                        return _this2.showMenu();
+	                    } }); //cart
 	            }
-	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("div", null, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("div", null, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.showCart();
 	                } }, "cart(", this.state.item_count, ")")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
 	                    return _this2.showDeliveryAddressPayment();
-	                } }, "Delivery Address and Payment-submit payment"))), React.createElement("div", { className: "hidden-xs col-md-4" }, "maybe put something here")));
+	                } }, "Delivery Address and Payment-submit payment")), React.createElement("div", { className: "hidden-xs col-md-4" }, "maybe put something here")));
 	        }
 	    }]);
 	
@@ -28043,17 +28051,18 @@ webpackJsonp([0],[
 	                mini_12 = value_12 + "_mini";
 	                 });*/
 	            //if(this.state.page == "items"){
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item) {
+	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "row" }, this.state.menu_items.map(function (item) {
 	                var _this2 = this;
 	
-	                return React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
+	                return React.createElement("div", { className: "col-xs-2 col-md-4" }, React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
 	                        return _this2.mouseOver(e);
 	                    }, onMouseOut: function onMouseOut(e) {
 	                        return _this2.mouseOut(e);
 	                    }, onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
-	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone1"), React.createElement("p", null, React.createElement("div", null, React.createElement("select", { onChange: this.props.addItemToCart, id: item.item_id }, React.createElement("option", { value: "" }), React.createElement("option", { value: "12" }, "12"), React.createElement("option", { value: "24" }, "24")), React.createElement("br", null)))));
-	            }.bind(this)), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {} }, "Delivery Address and Payment-submit payment"), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "...", React.createElement("img", { width: "300", height: "300", src: "/images/strawberry_scones.png" })), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { onChange: function onChange(value) {
+	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone1"), React.createElement("p", null, React.createElement("select", { onChange: this.props.addItemToCart, id: item.item_id }, React.createElement("option", { value: "" }), React.createElement("option", { value: "12" }, "12"), React.createElement("option", { value: "24" }, "24")), React.createElement("br", null)))));
+	            }.bind(this))), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {} }, "Delivery Address and Payment-submit payment"), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "...", React.createElement("img", { width: "300", height: "300", src: "/images/strawberry_scones.png" })), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { onChange: function onChange(value) {
 	                    return _this3.props.addItemToCart(value);
 	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: value_12 }, "12"), React.createElement("option", { value: mini_12 }, "Mini 12"), React.createElement("option", { value: value_24 }, "24")), "X", React.createElement("select", { onChange: this.props.selectQuantity }, React.createElement("option", { value: "" }, "1"), React.createElement("option", { value: value_12 }, "2")), React.createElement("button", { type: "button", onClick: function onClick() {
 	                    return _this3.props.addItemToCart(_this3.state.item);
@@ -28178,12 +28187,14 @@ webpackJsonp([0],[
 	            return React.createElement("div", null, this.state.cart_items.map(function (item) {
 	                var _this2 = this;
 	
-	                return React.createElement("div", null, item.item_id, "-", item.item_title, "-", item.quantity, React.createElement("a", { onClick: function onClick() {
+	                return React.createElement("div", null, "image", item.item_id, "-", item.item_title, "-dozen-mini-", item.quantity, React.createElement("a", { onClick: function onClick() {
 	                        return _this2.removeItemFromCart(item.item_id);
 	                    } }, "remove"), React.createElement("a", { onClick: function onClick() {
 	                        return _this2.updateCartItemQuantity(item.item_id, 10);
-	                    } }, "update"));
-	            }.bind(this)), React.createElement("br", null), "Total Items = 5", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default" }, "Delivery Address and Payment"), React.createElement("br", null), React.createElement("button", { className: "btn btn-default" }, "add more items"));
+	                    } }, "increase"), React.createElement("a", { onClick: function onClick() {
+	                        return _this2.updateCartItemQuantity(item.item_id, 10);
+	                    } }, "decrease"));
+	            }.bind(this)), React.createElement("br", null), "Total Items = 5", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default" }, "Delivery Address and Payment"), React.createElement("br", null), React.createElement("button", { onClick: this.props.showMenu, className: "btn btn-default" }, "add more items"));
 	        }
 	    }]);
 	
