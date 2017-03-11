@@ -137,7 +137,7 @@ export default class Menu extends React.Component<any, any> {
                   <div className="row">
                         
                         {this.state.menu_items.map(function(item: any){
-                            return(<div className="col-xs-2 col-md-4">
+                            return(<div className="col-md-4">
                                       <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
                                           <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                           <div className="caption">
