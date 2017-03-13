@@ -143,13 +143,16 @@ export default class Menu extends React.Component<any, any> {
                                           <div className="caption">
                                             <h3>Strawberry Scone1</h3>
                                             <p>
-                                                <select onChange={this.props.addItemToCart} id={item.item_id}>
+                                                <select onChange={this.props.selectCartItemQuantity} id={item.item_id}>
                                                   <option value=""></option>
                                                   <option value="12">12</option>
+                                                  <option value="12_mini">12 Scones</option>
                                                   <option value="24">24</option>
+                                                  <option value="24_mini">24 Mini Scones</option>
                                                 </select>
                                                 <br/>
                                             </p>
+                                            <button onClick={this.props.addCartItem(item.item_id)}>Add</button>
                                           </div>
                                       </div>
                             </div>)
@@ -185,7 +188,7 @@ export default class Menu extends React.Component<any, any> {
                             <option value="">1</option>
                             <option value={value_12}>2</option>
                           </select>
-                          <button type="button" onClick={() => this.props.addItemToCart(this.state.item)} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.props.addCartItem(1, 1, 1)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>

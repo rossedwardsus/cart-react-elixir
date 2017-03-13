@@ -131,6 +131,8 @@ class Cart extends React.Component<any, any> {
   render(){
 
     let body: any = "";
+    let { removeCartItem, increaseCartItemQuantity, decreaseCartItemQuantity } = this.props;
+    
 
     if(this.state.page == "menu"){
 
@@ -144,9 +146,11 @@ class Cart extends React.Component<any, any> {
 
 
     return (<div> 
-                  {this.state.cart_items.map(function(item: any){
+                  there are no items in your cart
+                  <br/>
+                  {this.props.cart_items.toJS().map(function(item: any, index: any){
                       
-                      return(<div>image{item.item_id}-{item.item_title}-dozen-mini-{item.quantity}<a onClick={() => this.removeItemFromCart(item.item_id)}>remove</a><a onClick={() => this.updateCartItemQuantity(item.item_id, 10)}>increase</a><a onClick={() => this.updateCartItemQuantity(item.item_id, 10)}>decrease</a></div>)
+                      return(<div><div className="col-md-2">image</div><div className="col-md-2">{item.title}</div><div className="col-md-2">Dozen</div><div className="col-md-2">{item.mini}</div><div className="col-md-2">{item.quantity}</div><div className="col-md-2"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
 
                   }.bind(this))}
                   <br/>

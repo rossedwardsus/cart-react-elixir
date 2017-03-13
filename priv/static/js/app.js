@@ -76,15 +76,15 @@ webpackJsonp([0],[
 	
 	var _order2 = _interopRequireDefault(_order);
 	
-	var _login_register = __webpack_require__(1054);
+	var _login_register = __webpack_require__(1055);
 	
 	var _login_register2 = _interopRequireDefault(_login_register);
 	
-	var _user = __webpack_require__(1057);
+	var _user = __webpack_require__(1058);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu = __webpack_require__(1058);
+	var _menu = __webpack_require__(1059);
 	
 	var reducers = _interopRequireWildcard(_menu);
 	
@@ -27827,6 +27827,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(1054);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -27848,8 +27849,11 @@ webpackJsonp([0],[
 	        _this.state = {
 	            page: "menu",
 	            //menu_items: this.props.menu_items,
-	            //here: ""
-	            item_count: 0
+	            //here: "",
+	            delivery_date: "",
+	            delivery_address: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, title: "Julia Freedom", quantity: 1 }, { item_id: 2, title: "Another One", quantity: 1 }])
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -27858,15 +27862,87 @@ webpackJsonp([0],[
 	        //just show cart if guest
 	        //or separate into order_menu and order_delivery_address_payment objects
 	        //or have everything work of a "pages" flag
-	        _this.addItemToCart = _this.addItemToCart.bind(_this);
+	        _this.addCartItem = _this.addCartItem.bind(_this);
+	        _this.increaseCartItemQuantity = _this.increaseCartItemQuantity.bind(_this);
+	        _this.decreaseCartItemQuantity = _this.decreaseCartItemQuantity.bind(_this);
+	        _this.removeCartItem = _this.removeCartItem.bind(_this);
+	        _this.addDeliveryAddress = _this.addDeliveryAddress.bind(_this);
 	        _this.showMenu = _this.showMenu.bind(_this);
 	        _this.showCart = _this.showCart.bind(_this);
+	        _this.completeOrder = _this.completeOrder.bind(_this);
 	        return _this;
 	    }
 	
 	    _createClass(Order, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
+	            alert();
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
 	            //get menu items
 	            //this.props;
 	            //alert(JSON.stringify(this.state.menu_items));
@@ -27893,9 +27969,60 @@ webpackJsonp([0],[
 	            this.setState({ page: "cart" });
 	        }
 	    }, {
-	        key: "addItemToCart",
-	        value: function addItemToCart() {
-	            this.setState({ item_count: 1 });
+	        key: "addCartItem",
+	        value: function addCartItem(item_id, quantity, mini) {
+	            alert(item_id);
+	            var cart_items_temp = this.state.cart_items;
+	            //item_id, quanity, mini
+	            var cart_items_temp_updated = cart_items_temp.push;
+	            /*const myMap = Immutable.fromJS({
+	              nested: {
+	                someKey: ['hello', 'world'],
+	              },
+	            });
+	                 //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
+	            //var newMap = myMap.set('key', myMap.get('key').push(newData))
+	            //let cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
+	            this.setState({ cart_items: cart_items_temp_updated });
+	        }
+	    }, {
+	        key: "addDeliveryAddress",
+	        value: function addDeliveryAddress(street, city, state, zipcode) {
+	            alert(street);
+	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
+	        }
+	    }, {
+	        key: "removeCartItem",
+	        value: function removeCartItem(index) {
+	            var cart_items_temp = this.state.cart_items;
+	            var cart_items_temp_updated = cart_items_temp.delete(index);
+	            this.setState({ cart_items: cart_items_temp_updated });
+	        }
+	    }, {
+	        key: "increaseCartItemQuantity",
+	        value: function increaseCartItemQuantity(item_id, index) {
+	            //alert(JSON.stringify(item_id + "" + index));
+	            var cart_items_temp = this.state.cart_items;
+	            var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
+	                var quantity_updated = item.get("quantity") + 1;return item.set("quantity", quantity_updated);
+	            });
+	            this.setState({ cart_items: cart_items_temp_updated });
+	        }
+	    }, {
+	        key: "decreaseCartItemQuantity",
+	        value: function decreaseCartItemQuantity(item_id, index) {
+	            var cart_items_temp = this.state.cart_items;
+	            var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
+	                var quantity_updated = item.get("quantity") - 1;return item.set("quantity", quantity_updated);
+	            });
+	            this.setState({ cart_items: cart_items_temp_updated });
+	        }
+	    }, {
+	        key: "completeOrder",
+	        value: function completeOrder() {
+	            alert("order complete");
+	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 	        }
 	    }, {
 	        key: "render",
@@ -27908,19 +28035,31 @@ webpackJsonp([0],[
 	            if (this.state.page == "menu") {
 	                body = React.createElement(menu_tsx_1.default, { showDeliveryAddressPayment: function showDeliveryAddressPayment() {
 	                        return _this2.showDeliveryAddressPayment();
-	                    }, addItemToCart: function addItemToCart() {
-	                        return _this2.addItemToCart();
+	                    }, addCartItem: function addCartItem() {
+	                        return _this2.addCartItem;
 	                    } });
 	            } else if (this.state.page == "delivery_address_payment") {
-	                body = React.createElement(delivery_address_payment_tsx_1.default, null);
+	                body = React.createElement(delivery_address_payment_tsx_1.default, { addDeliveryAddress: function addDeliveryAddress(street, city, state, zipcode) {
+	                        return _this2.addDeliveryAddress(street, city, state, zipcode);
+	                    }, completeOrder: function completeOrder() {
+	                        return _this2.completeOrder;
+	                    } });
 	            } else {
-	                body = React.createElement(cart_tsx_1.default, { showMenu: function showMenu() {
+	                body = React.createElement(cart_tsx_1.default, { cart_items: this.state.cart_items, showMenu: function showMenu() {
 	                        return _this2.showMenu();
+	                    }, removeCartItem: function removeCartItem(index) {
+	                        return _this2.removeCartItem(index);
+	                    }, showDeliveryAddressPayment: function showDeliveryAddressPayment() {
+	                        return _this2.showDeliveryAddressPayment();
+	                    }, increaseCartItemQuantity: function increaseCartItemQuantity(item_id, index) {
+	                        return _this2.increaseCartItemQuantity(item_id, index);
+	                    }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id, index) {
+	                        return _this2.decreaseCartItemQuantity(item_id, index);
 	                    } }); //cart
 	            }
 	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("div", null, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart(", this.state.item_count, ")")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                } }, "cart(", this.state.cart_items.toJS().length, ")")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
 	                    return _this2.showDeliveryAddressPayment();
 	                } }, "Delivery Address and Payment-submit payment")), React.createElement("div", { className: "hidden-xs col-md-4" }, "maybe put something here")));
 	        }
@@ -28061,11 +28200,11 @@ webpackJsonp([0],[
 	                        return _this2.mouseOut(e);
 	                    }, onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
-	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone1"), React.createElement("p", null, React.createElement("select", { onChange: this.props.addItemToCart, id: item.item_id }, React.createElement("option", { value: "" }), React.createElement("option", { value: "12" }, "12"), React.createElement("option", { value: "24" }, "24")), React.createElement("br", null)))));
+	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone1"), React.createElement("p", null, React.createElement("select", { onChange: this.props.selectCartItemQuantity, id: item.item_id }, React.createElement("option", { value: "" }), React.createElement("option", { value: "12" }, "12"), React.createElement("option", { value: "12_mini" }, "12 Scones"), React.createElement("option", { value: "24" }, "24"), React.createElement("option", { value: "24_mini" }, "24 Mini Scones")), React.createElement("br", null)), React.createElement("button", { onClick: this.props.addCartItem(item.item_id) }, "Add"))));
 	            }.bind(this))), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {} }, "Delivery Address and Payment-submit payment"), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "...", React.createElement("img", { width: "300", height: "300", src: "/images/strawberry_scones.png" })), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { onChange: function onChange(value) {
 	                    return _this3.props.addItemToCart(value);
 	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: value_12 }, "12"), React.createElement("option", { value: mini_12 }, "Mini 12"), React.createElement("option", { value: value_24 }, "24")), "X", React.createElement("select", { onChange: this.props.selectQuantity }, React.createElement("option", { value: "" }, "1"), React.createElement("option", { value: value_12 }, "2")), React.createElement("button", { type: "button", onClick: function onClick() {
-	                    return _this3.props.addItemToCart(_this3.state.item);
+	                    return _this3.props.addCartItem(1, 1, 1);
 	                }, className: "btn btn-default", "data-dismiss": "modal" }, "Add"))))));
 	        }
 	    }], [{
@@ -28179,21 +28318,18 @@ webpackJsonp([0],[
 	        key: "render",
 	        value: function render() {
 	            var body = "";
+	            var _props = this.props,
+	                removeCartItem = _props.removeCartItem,
+	                increaseCartItemQuantity = _props.increaseCartItemQuantity,
+	                decreaseCartItemQuantity = _props.decreaseCartItemQuantity;
+	
 	            if (this.state.page == "menu") {
 	                //body = <SconelyYoursMenu/>;
 	            } else {
 	                body = "delivery address payment";
 	            }
-	            return React.createElement("div", null, this.state.cart_items.map(function (item) {
-	                var _this2 = this;
-	
-	                return React.createElement("div", null, "image", item.item_id, "-", item.item_title, "-dozen-mini-", item.quantity, React.createElement("a", { onClick: function onClick() {
-	                        return _this2.removeItemFromCart(item.item_id);
-	                    } }, "remove"), React.createElement("a", { onClick: function onClick() {
-	                        return _this2.updateCartItemQuantity(item.item_id, 10);
-	                    } }, "increase"), React.createElement("a", { onClick: function onClick() {
-	                        return _this2.updateCartItemQuantity(item.item_id, 10);
-	                    } }, "decrease"));
+	            return React.createElement("div", null, "there are no items in your cart", React.createElement("br", null), this.props.cart_items.toJS().map(function (item, index) {
+	                return React.createElement("div", null, React.createElement("div", { className: "col-md-2" }, "image"), React.createElement("div", { className: "col-md-2" }, item.title), React.createElement("div", { className: "col-md-2" }, "Dozen"), React.createElement("div", { className: "col-md-2" }, item.mini), React.createElement("div", { className: "col-md-2" }, item.quantity), React.createElement("div", { className: "col-md-2" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
 	            }.bind(this)), React.createElement("br", null), "Total Items = 5", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default" }, "Delivery Address and Payment"), React.createElement("br", null), React.createElement("button", { onClick: this.props.showMenu, className: "btn btn-default" }, "add more items"));
 	        }
 	    }]);
@@ -28220,8 +28356,7 @@ webpackJsonp([0],[
 /* 937 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use sctrict';
-	"use strict";
+	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -28240,10 +28375,21 @@ webpackJsonp([0],[
 	var DatePicker = __webpack_require__(938);
 	var moment = __webpack_require__(939);
 	__webpack_require__(1050);
+	//declare module 'react-google-autocomplete' {
+	//    const x: any;
+	//    export = x; 
+	//}
+	//type Props = {
+	//title: string,
+	//visited: boolean,
+	//  addDeliveryAddress: () => void,
+	//};
 	
 	var DeliveryAddressPayment = function (_React$Component) {
 	    _inherits(DeliveryAddressPayment, _React$Component);
 	
+	    //props: any;
+	    //state: any;
 	    function DeliveryAddressPayment(props) {
 	        _classCallCheck(this, DeliveryAddressPayment);
 	
@@ -28255,44 +28401,39 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (DeliveryAddressPayment.__proto__ || Object.getPrototypeOf(DeliveryAddressPayment)).call(this, props));
 	
 	        _this.state = {
-	            delivery_addresses: [{ street: "santa monica blvd" }]
+	            delivery_addresses: [{ street: "santa monica blvd" }],
+	            street: "",
+	            city: "",
+	            state: "",
+	            zipcode: "",
+	            startDate: moment()
 	        };
+	        _this.completeOrder = _this.completeOrder.bind(_this);
 	        return _this;
 	    }
-	    /*<Autocomplete
-	                      style={{width: '90%'}}
-	                      onPlaceSelected={(place: any) => {
-	                        //console.log(place.formatted_address.split(",")[2]);
-	                        //this.props.setDeliveryAddress(place);
-	                      }}
-	                      types={['address']}
-	                      componentRestrictions={{country: "us"}}
-	                    />*/
-	
 	
 	    _createClass(DeliveryAddressPayment, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            alert();
+	        }
+	    }, {
+	        key: "completeOrder",
+	        value: function completeOrder() {
+	            alert();
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
-	            var delivery_addresses = null;
-	            //alert(this.props.user_type);
-	            /*if(this.props.user_type == "registered"){
-	                     delivery_addresses = <select onChange={(value) => this.props.setExistingDeliveryAddress(value)}>
-	                                          <option value=""></option>
-	                                          <option value="home">Home</option>
-	                                          <option value="office">Office</option>
-	                                      </select>
-	                 }*/
-	            /*<Autocomplete
-	                            style={{width: '90%'}}
-	                            onPlaceSelected={(place) => {
-	                              //console.log(place.formatted_address.split(",")[2]);
-	                              this.props.setDeliveryAddress(place);
-	                            }}
-	                            types={['address']}
-	                            componentRestrictions={{country: "us"}}
-	                        />*/
-	            //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
-	            return React.createElement("div", null, React.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: function onChange() {} }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Street"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "City"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "State"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Zipcode"), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "1"), React.createElement("option", null, "2"), React.createElement("option", null, "3"), React.createElement("option", null, "4"), React.createElement("option", null, "5")))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Card Number"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Expiry Date"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Security Code"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" }))), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {} }, "Complete Payment"));
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement(DatePicker, { inline: true, selected: this.state.startDate, onChange: function onChange() {
+	                    return alert();
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Street"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "City"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "State"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Zipcode"), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "1"), React.createElement("option", null, "2"), React.createElement("option", null, "3"), React.createElement("option", null, "4"), React.createElement("option", null, "5")))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                    return _this2.completeOrder();
+	                } }, "Complete Payment"), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                    return alert();
+	                } }, "Delivery Address and Payment-submit payment"));
 	        }
 	    }]);
 	
@@ -28762,7 +28903,8 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1054 */
+/* 1054 */,
+/* 1055 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -28783,7 +28925,7 @@ webpackJsonp([0],[
 	
 	var _redux = __webpack_require__(180);
 	
-	var _reactGoogleAutocomplete = __webpack_require__(1055);
+	var _reactGoogleAutocomplete = __webpack_require__(1056);
 	
 	var Autocomplete = _interopRequireWildcard(_reactGoogleAutocomplete);
 	
@@ -28973,16 +29115,16 @@ webpackJsonp([0],[
 	exports.default = LoginRegister;
 
 /***/ },
-/* 1055 */
+/* 1056 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(1056);
+	module.exports = __webpack_require__(1057);
 
 
 /***/ },
-/* 1056 */
+/* 1057 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29157,7 +29299,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1057 */
+/* 1058 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29291,13 +29433,13 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ },
-/* 1058 */
+/* 1059 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(1059);
+	var actionTypes_ts_1 = __webpack_require__(1060);
 	var menu_items = void 0;
 	;
 	var inititalState = {
@@ -29332,7 +29474,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ },
-/* 1059 */
+/* 1060 */
 /***/ function(module, exports) {
 
 	"use strict";
