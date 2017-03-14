@@ -80,6 +80,7 @@ class Order extends React.Component<any, any> {
     this.setSecurityCode = this.setSecurityCode.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.showCart = this.showCart.bind(this);
+    this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
     this.completeOrder = this.completeOrder.bind(this);
 
   }
@@ -204,6 +205,8 @@ class Order extends React.Component<any, any> {
 
   showDeliveryAddressPayment(){
 
+      //alert();
+
       this.setState({page: "delivery_address_payment"})
 
   }
@@ -260,7 +263,7 @@ class Order extends React.Component<any, any> {
 
   addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
 
-      alert(street);
+      //alert(street);
 
       //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
@@ -278,7 +281,7 @@ class Order extends React.Component<any, any> {
 
   increaseCartItemQuantity(item_id: any, index: any){
 
-    alert(JSON.stringify(item_id + "" + index));
+    //alert(JSON.stringify(item_id + "" + index));
 
     let cart_items_temp = this.state.cart_items;
 
@@ -387,19 +390,19 @@ class Order extends React.Component<any, any> {
 
     let button: any = "";
 
-      if(this.state.menu === "menu"){
-                            
-          button = <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> 
-          
-      }else if(this.state.page === "cart"){
-          
-          button = <div><button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button></div>
-      
-      }else if(this.state.page === "delivery_address_payment"){
+    if(this.state.page === "menu"){
+                          
+        button = <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</button> 
+        
+    }else if(this.state.page === "cart"){
+        
+        button = <div><button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button></div>
+    
+    }else if(this.state.page === "delivery_address_payment"){
 
-          button = <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button> 
-      
-      }
+        button = <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button> 
+    
+    }
 
 
     return (  
