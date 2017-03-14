@@ -6,11 +6,11 @@ import { Link, browserHistory } from 'react-router'
 
 //import Dialog from "rc-dialog";
 
-type Props = {
+//type Props = {
   //title: string,
   //visited: boolean,
-  setDeliveryAddrss: () => void,
-};
+//  setDeliveryAddrss: () => void,
+//};
 
 
 export default class Menu extends React.Component<any, any> {
@@ -24,11 +24,16 @@ export default class Menu extends React.Component<any, any> {
 
     this.state = {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
+        item: "",
+        item_quantity: "",
+        item_quantity_multiplier: ""
+
     };
 
     //this.loadCart = this.loadCart.bind(this);
     this.showItem = this.showItem.bind(this);
-    //this.addItemToCart = this.addItemToCart.bind(this);
+    this.selectedCartItem = this.selectedCartItem.bind(this);
+    this.selectedCartItemQuantityMultiplier = this.selectedCartItemQuantityMultiplier.bind(this);
     
   }
 
@@ -102,11 +107,32 @@ export default class Menu extends React.Component<any, any> {
 
   }
 
-  addItemToCart(item_id: any){
+  selectedCartItem(e: any){
 
-    //alert();
+    //alert(e.target.value);
 
-    this.setState({count: 1});
+    if(e.target.value.indexOf("mini") > -1){
+
+      //alert("true");
+
+      this.setState({mini: true});
+
+    }else{
+
+      this.setState({mini: false});
+
+    }
+
+    this.setState({item: e.target.id});
+    this.setState({item_quantity: e.target.value});
+    
+  }
+
+  selectedCartItemQuantityMultiplier(e: any){
+
+    //alert(e.target.value);
+
+    this.setState({item_quantity_multiplier: e.target.value});
 
   }
 
@@ -118,6 +144,8 @@ export default class Menu extends React.Component<any, any> {
     var value_12 = "";     
     var value_24 = "";
     var mini_12 = "";
+
+    let { addCartItem } = this.props;
 
     /*this.state.items.map(function(item){
 
@@ -143,16 +171,21 @@ export default class Menu extends React.Component<any, any> {
                                           <div className="caption">
                                             <h3>Strawberry Scone1</h3>
                                             <p>
-                                                <select onChange={this.props.selectCartItemQuantity} id={item.item_id}>
+                                                <select onChange={this.selectedCartItem} id={item.item_id}>
                                                   <option value=""></option>
-                                                  <option value="12">12</option>
-                                                  <option value="12_mini">12 Scones</option>
-                                                  <option value="24">24</option>
-                                                  <option value="24_mini">24 Mini Scones</option>
+                                                  <option value="12">Dozen</option>
+                                                  <option value="24_mini">2 Dozen Mini Scones</option>
                                                 </select>
                                                 <br/>
+                                                <select onChange={this.selectedCartItemQuantityMultiplier} id={item.item_id}>
+                                                  <option value=""></option>
+                                                  <option value="1">1</option>
+                                                  <option value="2">2</option>
+                                                  <option value="3">3</option>
+                                                  <option value="4">4</option>
+                                                </select>
                                             </p>
-                                            <button onClick={this.props.addCartItem(item.item_id)}>Add</button>
+                                            <button onClick={addCartItem.bind(this, this.state.item, this.state.item_quantity, this.state.item_quantity_multiplier, this.state.mini)}>Add</button>
                                           </div>
                                       </div>
                             </div>)

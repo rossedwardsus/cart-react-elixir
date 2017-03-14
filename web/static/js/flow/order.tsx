@@ -52,10 +52,10 @@ class Order extends React.Component<any, any> {
         page: "menu",
         //menu_items: this.props.menu_items,
         //here: "",
-        delivery_date: "",
-        delivery_address: "",
+        delivery_address: Immutable.Map(),
+        delivery_address_street: "",
         item_count: 0,
-        cart_items: Immutable.fromJS([{item_id: 1, title: "Julia Freedom", quantity: 1}, {item_id: 2, title: "Another One", quantity: 1}]),
+        cart_items: Immutable.fromJS([{item_id: 1, quantity: 1, quantity_multiplier: 2, mini: true}, {item_id: 2, quantity: 2, quantity_multipler: 5}]),
 
     };
 
@@ -72,6 +72,12 @@ class Order extends React.Component<any, any> {
     this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
     this.addDeliveryAddress = this.addDeliveryAddress.bind(this);
+    this.setDeliveryAddressStreet = this.setDeliveryAddressStreet.bind(this);
+    this.setDeliveryAddressCity = this.setDeliveryAddressCity.bind(this);
+    this.setDeliveryAddressZipcode = this.setDeliveryAddressZipcode.bind(this);
+    this.setCardNumber = this.setCardNumber.bind(this);
+    this.setExpiryDate = this.setExpiryDate.bind(this);
+    this.setSecurityCode = this.setSecurityCode.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.showCart = this.showCart.bind(this);
     this.completeOrder = this.completeOrder.bind(this);
@@ -80,7 +86,7 @@ class Order extends React.Component<any, any> {
 
   componentDidMount(){
 
-    alert();
+    //alert();
 
     //var result = map.find(function(obj){return obj.get('id') === 4;});
 
@@ -208,15 +214,21 @@ class Order extends React.Component<any, any> {
 
   }
 
-  addCartItem(item_id: any, quantity: any, mini: any){
+  addCartItem(item: any, item_quantity: any, item_quantity_multiplier: any, mini: any){
 
-    alert(item_id);
+    //alert(item + "" + item_quantity + "" + item_quantity_multiplier);
 
     let cart_items_temp = this.state.cart_items;
 
     //item_id, quanity, mini
 
-    let cart_items_temp_updated = cart_items_temp.push;
+    let new_cart_items = [];
+
+    for(let i: any = 0; i <= item_quantity_multiplier - 1; i++){
+
+      //alert();
+
+      new_cart_items.push({item: 1, quantity: item_quantity, item_quantity_multiplier: item_quantity_multiplier, mini: mini});
 
     /*const myMap = Immutable.fromJS({
       nested: {
@@ -232,7 +244,17 @@ class Order extends React.Component<any, any> {
     //let cart_items_temp = this.state.cart_items;
     //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
 
-    this.setState({cart_items: cart_items_temp_updated});
+      
+     }
+
+     //alert(JSON.stringify(new_cart_items));
+
+     let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
+
+     //alert(JSON.stringify(cart_items_temp_updated));
+
+     this.setState({cart_items: cart_items_temp_updated});
+
 
   }
 
@@ -256,7 +278,7 @@ class Order extends React.Component<any, any> {
 
   increaseCartItemQuantity(item_id: any, index: any){
 
-    //alert(JSON.stringify(item_id + "" + index));
+    alert(JSON.stringify(item_id + "" + index));
 
     let cart_items_temp = this.state.cart_items;
 
@@ -276,10 +298,67 @@ class Order extends React.Component<any, any> {
 
   }  
 
+  setDeliveryAddressStreet(e: any){
+
+     //alert(e.target.value);
+
+     let delivery_address_temp = this.state.delivery_address;
+
+     let delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
+
+     //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+
+     this.setState({delivery_address: delivery_address_temp_updated});
+
+  }
+
+  setDeliveryAddressCity(e: any){
+
+     let delivery_address_temp = this.state.delivery_address;
+
+     let delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
+
+     //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+
+     this.setState({delivery_address: delivery_address_temp_updated});
+
+
+  }
+
+  setDeliveryAddressZipcode(e: any){
+
+    let delivery_address_temp = this.state.delivery_address;
+
+     let delivery_address_temp_updated = delivery_address_temp.set("zipcode", e.target.value);
+
+     //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+
+     this.setState({delivery_address: delivery_address_temp_updated});
+
+
+  }
+
+  setCardNumber(e: any){
+
+
+
+  }
+
+  setExpiryDate(e: any){
+
+
+
+  }
+
+  setSecurityCode(e: any){
+
+
+
+  }
 
   completeOrder(){
 
-      alert("order complete");
+      //alert(JSON.stringify(this.state.delivery_address_street));
 
       //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
@@ -294,17 +373,33 @@ class Order extends React.Component<any, any> {
 
     if(this.state.page == "menu"){
 
-        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={() => this.addCartItem}/>;
+        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={(item: any, item_quantity: any, item_quantity_multiplier: any, mini: any) => this.addCartItem(item, item_quantity, item_quantity_multiplier, mini)}/>;
 
     }else if(this.state.page == "delivery_address_payment"){
 
-        body = <DeliveryAddressPayment addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} completeOrder={() => this.completeOrder}/>;
+        body = <DeliveryAddressPayment addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 
     }else{
 
         body = <Cart cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
     }
+
+    let button: any = "";
+
+      if(this.state.menu === "menu"){
+                            
+          button = <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> 
+          
+      }else if(this.state.page === "cart"){
+          
+          button = <div><button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button></div>
+      
+      }else if(this.state.page === "delivery_address_payment"){
+
+          button = <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button> 
+      
+      }
 
 
     return (  
@@ -327,7 +422,7 @@ class Order extends React.Component<any, any> {
                             <div>
                               only show on mobile
                               <br/>
-                              <a onClick={() => this.showCart()}>cart({this.state.cart_items.toJS().length})</a>
+                              <a onClick={() => this.showCart()}>cart({this.state.cart_items.size})</a>
                             </div>
                             <br/>
                             <br/>
@@ -335,8 +430,7 @@ class Order extends React.Component<any, any> {
                             {body}
                             <br/>
                             <br/>
-                            <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> 
-                          
+                            {button}
                         </div>
                         <div className="hidden-xs col-md-4">
                               maybe put something here

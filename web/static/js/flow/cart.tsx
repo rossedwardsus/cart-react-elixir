@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 
+import Immutable  = require('immutable');
+//import _ from 'lodash';
+
 
 function addTodoWithDispatch() {
   const action = {
@@ -44,6 +47,7 @@ class Cart extends React.Component<any, any> {
 
     this.state = {
 
+        menu_items: Immutable.fromJS([{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}]),
         cart_items: [{item_id: 1, item_title: "Susie Sunshine", quantity: 1}, {item_id: 2, item_title: "Julie Freedom", quantity: 1}],
         here: ""
 
@@ -144,22 +148,57 @@ class Cart extends React.Component<any, any> {
 
     }
 
+    let total_cost = 0;
+
+    this.props.cart_items.toJS().map(function(item: any){
+
+        if(item.mini == true){
+                      
+          total_cost = item.quantity * item.quantity_multiplier * 2;
+
+        }else{
+
+          total_cost = item.quantity * item.quantity_multiplier * 5;
+
+        }
+                      
+    });
+
+
+    let item_count = 0;
+
+    this.props.cart_items.toJS().map(function(item: any){
+
+        item_count = item.quantity * item.quantity_multiplier;
+              
+    });
+
 
     return (<div> 
                   there are no items in your cart
                   <br/>
                   {this.props.cart_items.toJS().map(function(item: any, index: any){
-                      
-                      return(<div><div className="col-md-2">image</div><div className="col-md-2">{item.title}</div><div className="col-md-2">Dozen</div><div className="col-md-2">{item.mini}</div><div className="col-md-2">{item.quantity}</div><div className="col-md-2"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
 
+                      //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
+                      let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
+                      let item_title = result.get("title");
+
+                      if(item.mini == true){
+                      
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">2 Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity_multiplier}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+
+                      }else{
+
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity_multiplier}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+
+                      }
+                  
                   }.bind(this))}
                   <br/>
-                  Total Items = 5
-                   <br/>
+                  Total Items = {this.props.cart_items.size}
                   <br/>
-                  <button className="btn btn-default">Delivery Address and Payment</button> 
-                  <br/>
-                  <button onClick={this.props.showMenu} className="btn btn-default">add more items</button>
+                  Sub Total {total_cost}
+                 
             </div>
     )
   }

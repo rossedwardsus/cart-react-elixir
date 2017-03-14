@@ -34,10 +34,10 @@ import SconelySocial from "./sconely_yours_social_single_page";
 import SconelyYours from "./sconely_yours_social_single_page";
 //import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
 
-//import SconelySocial from "./sconely_social_single_page";
+//import SconelySocial from "./sconely_social_single_page";*/
 import SconelySignature from "./sconely_signature_single_page";
 
-import SconelySocialEventDetails from "./sconely_social_event_details";
+/*import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySignatureGuest from "./sconely_signature_guest/guest";
 import SconelySignatureGuests from "./sconely_signature_guests";
 import SconelySocialMenu from "./sconely_social_menu";
@@ -135,7 +135,7 @@ const Root = () => (
                                        // async work to find components
                                       cb(null, User)
                                     }} >
-                                            <IndexRoute getComponent={(nextState, cb) => {
+      <IndexRoute getComponent={(nextState, cb) => {
                                        // async work to find components
                                       cb(null, PublicHomePage)
                                     }} />
@@ -149,9 +149,9 @@ const Root = () => (
                                      // async work to find components
                                     cb(null, SconelySignatureGuest)
                                   }} />
+        <Route path="/order/:order_id/signature" component={SconelySignature} />
+        
 
-        
-        
       </Route>
     </Router>
   </Provider>

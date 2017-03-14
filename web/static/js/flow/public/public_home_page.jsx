@@ -165,7 +165,7 @@ export default class Homepage extends React.Component {
         //alert(orders);
         orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.context.router.push('/order/12345/sconely_signature');
+        this.context.router.push('/order/12345/signature');
         
          
     }
@@ -303,6 +303,7 @@ export default class Homepage extends React.Component {
                           <br/>
                           <a onClick={this.createOrder.bind(this, "sconely_social")}>Start Order</a>
                           <br/>
+                          <a onClick={this.createOrder.bind(this, "sconely_signature")}>Signture</a>
                           <br/>
                         </div>
                         <div className="col-md-6">
