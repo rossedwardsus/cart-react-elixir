@@ -92,9 +92,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
 
         return (
           <div>
-              <DatePicker
-                  selected={this.state.startDate}
-                  onChange={() => {}} />
+              
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
@@ -107,7 +105,9 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <form className="form-inline">
                 <div className="form-group">
                   <label htmlFor="exampleInputName2"></label>
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                  <DatePicker
+                    selected={this.state.startDate}
+                    onChange={() => {}} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail2"></label>
@@ -138,6 +138,20 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-inline">
                 <div className="form-group">
+                  <label htmlFor="exampleInputName2">Name</label>
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleInputName2">Email</label>
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="exampleInputName2">Mobile</label>
+                  <select className="form-control">
+                      <option>1</option>
+                  </select>
+                </div>
+                <div className="form-group">
                   <label htmlFor="exampleInputName2">Street</label>
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                 </div>
@@ -158,32 +172,13 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   </select>
                 </div>
               </form>
-               <form className="form-horizontal">
-                <div className="form-group">
-                  <div className="col-sm-10">
-                      <b>Contact</b>
-                      <br/>
-                      <br/>
-                  </div>
-                </div>
-              </form>
-              <form className="form-inline">
-                <div className="form-group">
-                  <label htmlFor="exampleInputName2">Email</label>
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputName2">Mobile</label>
-                  <select className="form-control">
-                      <option>1</option>
-                  </select>
-                </div>
-              </form>
+               
+              
               <br/>
               <br/>
               <form className="form-inline">
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Total Amount Due</label>
+                  <label htmlFor="exampleInputName2"></label>
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                 </div>
               </form>
