@@ -1,7 +1,0 @@
-          Upload profile photo
-          <br>
-          <div id="user_profile_photo"></div>
-          <br>
-          <script src="/js/user_profile_photo.js"></script>
-
-          

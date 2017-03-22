@@ -1,11 +1,29 @@
 defmodule Sconely.Schema.Types do
   use Absinthe.Schema.Notation
 
+  object :order do
+  	field :session_id, :string
+  	field :delivery_address_street, :string
+  	field :delivery_address_city, :string
+  	field :order_items, :menu_item_input
+  end
+
+
+  input_object :menu_item_input do
+    field :item_id, :string
+    #field :title, :string
+    #field :description, :string
+  end
+
   object :menu_item do
     field :item_id, :string
-    field :title, :string
+  #  field :title, :string
   #  field :description, :string
   end
+
+
+
+
  
   object :sconely_signature_order do
     field :order_id, :string
@@ -24,19 +42,23 @@ defmodule Sconely.Schema.Types do
 
 
 
-  #object :sconely_yours_order do
+  #object :user_payment do
   #  field :order_id, :string
   #  field :host_id, :string
   #  field :event_name, :string
   #  field :event_datetime, :string
   #end
 
-  #object :sconely_yours_order_items do
+  #object :user_delivery_address do
   #  field :order_id, :string
   #  field :host_id, :string
   #  field :event_name, :string
   #  field :event_datetime, :string
   #end
+
+
+
+
 
   object :sconely_signature_order_event_details do
     field :order_id, :string
@@ -48,18 +70,8 @@ defmodule Sconely.Schema.Types do
   	field :code, :string
   end
 
-  object :sconely_signature_order_additional_items do
-    field :items, :menu_item
-  end
-
-  #object :sconely_social_order do
-  #  field :order_id, :string
-  #  field :host_id, :string
-  #  field :event_name, :string
-  #  field :event_date, :string
-  #	 field :event_time, :string
-  #  field :delivery_address, :string
-  #	 field :items, :string
+  #object :sconely_signature_order_additional_items do
+  #  field :items, :menu_item
   #end
 
 
