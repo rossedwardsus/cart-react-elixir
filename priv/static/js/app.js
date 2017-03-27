@@ -18658,6 +18658,52 @@ webpackJsonp([0],[
 	    value: function render() {
 	      var _this2 = this;
 	
+	      var logged_in = "";
+	
+	      if (true) {
+	
+	        logged_in = _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'inactive' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/login_register' },
+	                'Login',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  '(current)'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'inactive' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/login_register' },
+	                'Signup',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  '(current)'
+	                )
+	              )
+	            )
+	          )
+	        );
+	      }
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -18725,42 +18771,7 @@ webpackJsonp([0],[
 	                  )
 	                )
 	              ),
-	              _react2.default.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login_register' },
-	                    'Login',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login_register' },
-	                    'Signup',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
+	              logged_in,
 	              _react2.default.createElement(
 	                'ul',
 	                { className: 'nav navbar-nav' },

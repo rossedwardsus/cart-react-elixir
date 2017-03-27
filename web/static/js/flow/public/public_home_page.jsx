@@ -252,6 +252,20 @@ export default class Homepage extends React.Component {
 
   render(){
 
+    let logged_in = "";
+    
+    if("logged_in_true" == "logged_in_true"){
+        
+        logged_in = <div>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/login_register">Login<span className="sr-only">(current)</span></Link></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/login_register">Signup<span className="sr-only">(current)</span></Link></li>
+                      </ul>
+                    </div>
+    }
+
     return (
               <div>
                     <nav className="navbar navbar-default navbar-fixed-top">
@@ -275,18 +289,16 @@ export default class Homepage extends React.Component {
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                               </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login_register">Login<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login_register">Signup<span className="sr-only">(current)</span></Link></li>
-                              </ul>
+
+                              {logged_in}
+
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
                               </ul>
                               <ul className="nav navbar-nav">
                                 <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
                               </ul>
+
                             </div>
                           </div>
                     </nav>

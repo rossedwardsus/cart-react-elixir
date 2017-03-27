@@ -22,9 +22,18 @@ defmodule Sconely.Schema.Types do
   end
 
 
+  object :login do
+  	field :email, :string
+  	field :password, :string
+  end
+
+  object :registration do
+ 	field :email, :string
+ 	field :password, :string
+ 	field :password_again, :string
+  object
 
 
- 
   object :sconely_signature_order do
     field :order_id, :string
     field :host_id, :string
