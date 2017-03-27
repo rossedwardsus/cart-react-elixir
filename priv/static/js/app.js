@@ -76,19 +76,23 @@ webpackJsonp([0],[
 	
 	var _order2 = _interopRequireDefault(_order);
 	
-	var _login_register = __webpack_require__(1055);
+	var _login = __webpack_require__(1055);
 	
-	var _login_register2 = _interopRequireDefault(_login_register);
+	var _login2 = _interopRequireDefault(_login);
 	
-	var _user = __webpack_require__(1058);
+	var _register = __webpack_require__(1056);
+	
+	var _register2 = _interopRequireDefault(_register);
+	
+	var _user = __webpack_require__(1057);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _sconely_signature_single_page = __webpack_require__(1059);
+	var _sconely_signature_single_page = __webpack_require__(1058);
 	
 	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
 	
-	var _menu = __webpack_require__(1138);
+	var _menu = __webpack_require__(1139);
 	
 	var reducers = _interopRequireWildcard(_menu);
 	
@@ -186,7 +190,8 @@ webpackJsonp([0],[
 	            // async work to find components
 	            cb(null, _public_home_page2.default);
 	          } }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/login_register', component: _login_register2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/register', component: _register2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/menu', component: _public_menu2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/about_us', component: _public_about_us2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _order2.default }),
@@ -27834,6 +27839,7 @@ webpackJsonp([0],[
 	var menu_tsx_1 = __webpack_require__(935);
 	var cart_tsx_1 = __webpack_require__(936);
 	var delivery_address_payment_tsx_1 = __webpack_require__(938);
+	var react_router_1 = __webpack_require__(556);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
@@ -28136,9 +28142,9 @@ webpackJsonp([0],[
 	                        return _this2.completeOrder();
 	                    } }, "Complete Payment");
 	            }
-	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("div", null, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), "if yours", React.createElement("br", null), "else social", React.createElement("br", null), "cart in left sidebar", React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("div", null, "only show on mobile", React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart(", this.state.cart_items.size, ")")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), button), React.createElement("div", { className: "hidden-xs col-md-4" }, "maybe put something here")));
+	                } }, "cart(", this.state.cart_items.size, ")")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), button), React.createElement("div", { className: "hidden-xs col-md-4" }, "maybe put something here"))));
 	        }
 	    }]);
 	
@@ -28580,15 +28586,21 @@ webpackJsonp([0],[
 	                        />*/
 	            //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Time"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }), React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9-11"), React.createElement("option", null, "1-3"))), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:15"), React.createElement("option", null, "9:30"), React.createElement("option", null, "9:45"), React.createElement("option", null, "10:00")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Name"), React.createElement("input", { type: "text", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Time"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }), React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9-11"), React.createElement("option", null, "1-3"))), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:15"), React.createElement("option", null, "9:30"), React.createElement("option", null, "9:45"), React.createElement("option", null, "10:00")))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Name"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Email"), React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Mobile"), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "1"))), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Street"), React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "City")), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "State-CA")), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Zipcode"), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9-11"), React.createElement("option", null, "1-3"), React.createElement("option", null, "3"), React.createElement("option", null, "4"), React.createElement("option", null, "5")))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }), React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Address"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Card Number"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Expiry Date"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Security Code"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" }))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return setDeliveryAddressStreet(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "90025"), React.createElement("option", null, "1-3"), React.createElement("option", null, "3"), React.createElement("option", null, "4"), React.createElement("option", null, "5")))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Customer Info"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return setDeliveryAddressStreet(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return setDeliveryAddressStreet(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Card Number"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Expiry Date"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Security Code"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" }))));
 	        }
 	    }]);
 	
@@ -29061,29 +29073,9 @@ webpackJsonp([0],[
 /* 1055 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(142);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(556);
-	
-	var _redux = __webpack_require__(180);
-	
-	var _reactGoogleAutocomplete = __webpack_require__(1056);
-	
-	var Autocomplete = _interopRequireWildcard(_reactGoogleAutocomplete);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -29091,165 +29083,101 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import SconelyYoursMenu from './sconely_yours_menu';
-	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
-	
-	//import { connect } from 'react-redux';
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, addAddress} from './actions/order';
-	//import { getPublicMenu } from './reducers/menu';
-	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
 	//declare var module: { Order: any };
-	
 	//interface LoginRegister {
 	//  state: any,
 	//  props: any,
 	//completed: boolean
 	//}
 	
-	//const Autocomplete = require("react-google-autocomplete");
+	var Login = function (_React$Component) {
+	    _inherits(Login, _React$Component);
 	
+	    //props: Props;
+	    function Login(props) {
+	        _classCallCheck(this, Login);
 	
-	/*function addTodoWithDispatch() {
-	  const action = {
-	    type: "VIEW_PUBLIC_MENU",
-	    //text
-	  }
-	  //dispatch(action)
-	}*/
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 	
-	var LoginRegister = function (_React$Component) {
-	  _inherits(LoginRegister, _React$Component);
-	
-	  //props: Props;
-	
-	  function LoginRegister(props) {
-	    _classCallCheck(this, LoginRegister);
-	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (LoginRegister.__proto__ || Object.getPrototypeOf(LoginRegister)).call(this, props));
-	
-	    _this.state = {
-	
-	      //menu_items: this.props.menu_items,
-	      here: ""
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(LoginRegister, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	
+	        _this.state = {
+	            //menu_items: this.props.menu_items,
+	            here: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
 	
-	      return React.createElement(
-	        'div',
-	        { className: 'container-fluid' },
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-2' },
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-8' },
-	            React.createElement(
-	              'div',
-	              null,
-	              'Login/register',
-	              React.createElement('br', null),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  'if registered user show',
-	                  React.createElement('br', null),
-	                  'if not then dont sho1',
-	                  React.createElement('br', null),
-	                  React.createElement('label', { htmlFor: 'inputEmail3', className: 'col-sm-2 control-label' }),
-	                  React.createElement('br', null),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-10' },
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Delivery Address'
-	                    ),
-	                    React.createElement('br', null),
-	                    React.createElement('br', null)
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('label', { htmlFor: 'inputEmail3', className: 'col-sm-2 control-label' }),
-	                  React.createElement('br', null),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-10' },
-	                    React.createElement(Autocomplete, {
-	                      style: { width: '90%' },
-	                      onPlaceSelected: function onPlaceSelected(place) {
-	                        //console.log(place.formatted_address.split(",")[2]);
-	                        _this2.props.setDeliveryAddress(place);
-	                      },
-	                      types: ['address'],
-	                      componentRestrictions: { country: "us" }
-	                    }),
-	                    React.createElement('input', { type: 'text' }),
-	                    'street/city/zipcode/floor/delivery comments'
-	                  )
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-4' },
-	            'maybe put something here'
-	          )
-	        )
-	      );
-	    }
-	  }]);
+	    _createClass(Login, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "login",
+	        value: function login() {
+	            alert("login");
+	            /*axios.post('http://192.168.0.10:4000/graphql', {
+	                   query: 'mutation {make_payment (session_id: \"\", card_number: \"' + this.state.card_number + '\", expiry_date_month: \"' + this.state.expiry_date_month + '\", expiry_date_year: \"' + this.state.expiry_date_year + '\", security_code: \"' + this.state.security_code + '\") {status,}}'
+	            })
+	            .then( response => {
+	                     alert(JSON.stringify(response.data.data.makePayment));
+	                  //go to code/payment screen
+	            //        this.props.loadView();
+	                  this.props.setSubscription();
+	                     //addtosubscribedblocklist
+	                     //setsubscriptiontype == 1 block
+	                  //setsubscriptionpaid == true
+	                  //setsusbcriptindatetime
+	            
+	            })
+	            .catch( error => {
+	                     alert("error" + JSON.stringify(error));
+	                  //go to code/payment screen
+	            //        this.props.loadView();
+	              //if (!error.status) {
+	              // network error
+	            //}
+	               })*/
+	            //error
+	            //}
+	            this.context.router.push('/order/12345/signature');
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	  return LoginRegister;
+	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), "Login/register-hello", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email" }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password" }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                    return _this2.login();
+	                } }, "Login")))))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return Login;
 	}(React.Component);
-	
 	//function mapStateToProps(state: any) {
 	//  return {
 	//   menu_items: state.default.menu_items
@@ -29257,16 +29185,13 @@ webpackJsonp([0],[
 	//menu_items: dispatch()
 	//  };
 	//}
-	
 	//function mapDispatchToProps(dispatch: any) {
 	//  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	//}
-	
-	
 	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
 	
 	
-	exports.default = LoginRegister;
+	exports.default = Login;
 
 /***/ },
 /* 1056 */
@@ -29274,31 +29199,7 @@ webpackJsonp([0],[
 
 	'use strict';
 	
-	module.exports = __webpack_require__(1057);
-
-
-/***/ },
-/* 1057 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.ReactCustomGoogleAutocomplete = undefined;
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(142);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -29306,154 +29207,77 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var ReactGoogleAutocomplete = function (_React$Component) {
-	  _inherits(ReactGoogleAutocomplete, _React$Component);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
+	//declare var module: { Order: any };
+	//interface LoginRegister {
+	//  state: any,
+	//  props: any,
+	//completed: boolean
+	//}
 	
-	  function ReactGoogleAutocomplete(props) {
-	    _classCallCheck(this, ReactGoogleAutocomplete);
+	var Register = function (_React$Component) {
+	    _inherits(Register, _React$Component);
 	
-	    var _this = _possibleConstructorReturn(this, (ReactGoogleAutocomplete.__proto__ || Object.getPrototypeOf(ReactGoogleAutocomplete)).call(this, props));
+	    //props: Props;
+	    function Register(props) {
+	        _classCallCheck(this, Register);
 	
-	    _this.autocomplete = null;
-	    return _this;
-	  }
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
 	
-	  _createClass(ReactGoogleAutocomplete, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _props = this.props,
-	          _props$types = _props.types,
-	          types = _props$types === undefined ? ['(cities)'] : _props$types,
-	          _props$componentRestr = _props.componentRestrictions,
-	          componentRestrictions = _props$componentRestr === undefined ? {} : _props$componentRestr,
-	          bounds = _props.bounds;
-	
-	
-	      this.autocomplete = new google.maps.places.Autocomplete(this.refs.input, {
-	        types: types,
-	        componentRestrictions: componentRestrictions,
-	        bounds: bounds
-	      });
-	
-	      this.autocomplete.addListener('place_changed', this.onSelected.bind(this));
+	        _this.state = {
+	            //menu_items: this.props.menu_items,
+	            here: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
 	    }
-	  }, {
-	    key: 'onSelected',
-	    value: function onSelected() {
-	      if (this.props.onPlaceSelected) {
-	        this.props.onPlaceSelected(this.autocomplete.getPlace());
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props2 = this.props,
-	          onPlaceSelected = _props2.onPlaceSelected,
-	          types = _props2.types,
-	          componentRestrictions = _props2.componentRestrictions,
-	          bounds = _props2.bounds,
-	          rest = _objectWithoutProperties(_props2, ['onPlaceSelected', 'types', 'componentRestrictions', 'bounds']);
 	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement('input', _extends({
-	          ref: 'input'
-	        }, rest))
-	      );
-	    }
-	  }]);
+	    _createClass(Register, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, "register", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email" }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password" }), React.createElement("br", null)))))));
+	        }
+	    }]);
 	
-	  return ReactGoogleAutocomplete;
-	}(_react2.default.Component);
-	
-	ReactGoogleAutocomplete.propTypes = {
-	  onPlaceSelected: _react.PropTypes.func,
-	  types: _react.PropTypes.array,
-	  componentRestrictions: _react.PropTypes.object,
-	  bounds: _react.PropTypes.object
-	};
-	exports.default = ReactGoogleAutocomplete;
-	
-	var ReactCustomGoogleAutocomplete = exports.ReactCustomGoogleAutocomplete = function (_React$Component2) {
-	  _inherits(ReactCustomGoogleAutocomplete, _React$Component2);
-	
-	  function ReactCustomGoogleAutocomplete(props) {
-	    _classCallCheck(this, ReactCustomGoogleAutocomplete);
-	
-	    var _this2 = _possibleConstructorReturn(this, (ReactCustomGoogleAutocomplete.__proto__ || Object.getPrototypeOf(ReactCustomGoogleAutocomplete)).call(this, props));
-	
-	    _this2.service = new google.maps.places.AutocompleteService();
-	    return _this2;
-	  }
-	
-	  _createClass(ReactCustomGoogleAutocomplete, [{
-	    key: 'onChange',
-	    value: function onChange(e) {
-	      var _this3 = this;
-	
-	      var _props$types2 = this.props.types,
-	          types = _props$types2 === undefined ? ['(cities)'] : _props$types2;
+	    return Register;
+	}(React.Component);
+	//function mapStateToProps(state: any) {
+	//  return {
+	//   menu_items: state.default.menu_items
+	//menu_items: getPublicMenu
+	//menu_items: dispatch()
+	//  };
+	//}
+	//function mapDispatchToProps(dispatch: any) {
+	//  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	//}
+	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
 	
 	
-	      if (e.target.value) {
-	        this.service.getPlacePredictions({ input: e.target.value, types: types }, function (predictions, status) {
-	          if (status === 'OK' && predictions && predictions.length > 0) {
-	            _this3.props.onOpen(predictions);
-	            console.log(predictions);
-	          } else {
-	            _this3.props.onClose();
-	          }
-	        });
-	      } else {
-	        this.props.onClose();
-	      }
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this4 = this;
-	
-	      if (this.props.input.value) {
-	        this.placeService = new google.maps.places.PlacesService(this.refs.div);
-	        this.placeService.getDetails({ placeId: this.props.input.value }, function (e, status) {
-	          if (status === 'OK') {
-	            _this4.refs.input.value = e.formatted_address;
-	          }
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this5 = this;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.cloneElement(this.props.input, _extends({}, this.props, {
-	          ref: 'input',
-	          onChange: function onChange(e) {
-	            _this5.onChange(e);
-	          }
-	        })),
-	        _react2.default.createElement('div', { ref: 'div' })
-	      );
-	    }
-	  }]);
-	
-	  return ReactCustomGoogleAutocomplete;
-	}(_react2.default.Component);
-	
-	ReactCustomGoogleAutocomplete.propTypes = {
-	  input: _react.PropTypes.node.isRequired,
-	  onOpen: _react.PropTypes.func.isRequired,
-	  onClose: _react.PropTypes.func.isRequired
-	};
-
+	exports.default = Register;
 
 /***/ },
-/* 1058 */
+/* 1057 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29587,7 +29411,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ },
-/* 1059 */
+/* 1058 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29603,15 +29427,15 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _sconely_social_event_details = __webpack_require__(1060);
+	var _sconely_social_event_details = __webpack_require__(1059);
 	
 	var _sconely_social_event_details2 = _interopRequireDefault(_sconely_social_event_details);
 	
-	var _sconely_signature_guests = __webpack_require__(1137);
+	var _sconely_signature_guests = __webpack_require__(1138);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _superagent = __webpack_require__(1131);
+	var _superagent = __webpack_require__(1132);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
@@ -29742,7 +29566,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignature;
 
 /***/ },
-/* 1060 */
+/* 1059 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29758,13 +29582,13 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDatePicker = __webpack_require__(1061);
+	var _reactDatePicker = __webpack_require__(1060);
 	
-	var _reactGoogleAutocomplete = __webpack_require__(1056);
+	var _reactGoogleAutocomplete = __webpack_require__(1130);
 	
 	var _reactGoogleAutocomplete2 = _interopRequireDefault(_reactGoogleAutocomplete);
 	
-	var _superagent = __webpack_require__(1131);
+	var _superagent = __webpack_require__(1132);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
@@ -29786,7 +29610,7 @@ webpackJsonp([0],[
 	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
 	
 	
-	var Dropzone = __webpack_require__(1136);
+	var Dropzone = __webpack_require__(1137);
 	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
 	
 	//const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -30178,7 +30002,7 @@ webpackJsonp([0],[
 	exports.default = EventDetails;
 
 /***/ },
-/* 1061 */
+/* 1060 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30188,67 +30012,67 @@ webpackJsonp([0],[
 	});
 	exports.TimeInput = exports.TimePicker = exports.Calendar = exports.DateField = exports.ClockInput = exports.Clock = exports.Footer = exports.NavBar = exports.MultiMonthView = exports.TransitionView = exports.DateFormatSpinnerInput = exports.DateFormatInput = exports.HistoryView = exports.DecadeView = exports.YearView = exports.MonthView = exports.DateEditor = exports.DatePicker = undefined;
 	
-	var _MonthView = __webpack_require__(1062);
+	var _MonthView = __webpack_require__(1061);
 	
 	var _MonthView2 = _interopRequireDefault(_MonthView);
 	
-	var _TimePicker = __webpack_require__(1092);
+	var _TimePicker = __webpack_require__(1091);
 	
 	var _TimePicker2 = _interopRequireDefault(_TimePicker);
 	
-	var _TimeInput = __webpack_require__(1093);
+	var _TimeInput = __webpack_require__(1092);
 	
 	var _TimeInput2 = _interopRequireDefault(_TimeInput);
 	
-	var _TransitionView = __webpack_require__(1117);
+	var _TransitionView = __webpack_require__(1116);
 	
 	var _TransitionView2 = _interopRequireDefault(_TransitionView);
 	
-	var _MultiMonthView = __webpack_require__(1120);
+	var _MultiMonthView = __webpack_require__(1119);
 	
 	var _MultiMonthView2 = _interopRequireDefault(_MultiMonthView);
 	
-	var _HistoryView = __webpack_require__(1081);
+	var _HistoryView = __webpack_require__(1080);
 	
 	var _HistoryView2 = _interopRequireDefault(_HistoryView);
 	
-	var _YearView = __webpack_require__(1084);
+	var _YearView = __webpack_require__(1083);
 	
 	var _YearView2 = _interopRequireDefault(_YearView);
 	
-	var _DecadeView = __webpack_require__(1086);
+	var _DecadeView = __webpack_require__(1085);
 	
 	var _DecadeView2 = _interopRequireDefault(_DecadeView);
 	
-	var _NavBar = __webpack_require__(1069);
+	var _NavBar = __webpack_require__(1068);
 	
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 	
-	var _Footer = __webpack_require__(1083);
+	var _Footer = __webpack_require__(1082);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Clock = __webpack_require__(1096);
+	var _Clock = __webpack_require__(1095);
 	
 	var _Clock2 = _interopRequireDefault(_Clock);
 	
-	var _ClockInput = __webpack_require__(1121);
+	var _ClockInput = __webpack_require__(1120);
 	
 	var _ClockInput2 = _interopRequireDefault(_ClockInput);
 	
-	var _DateField = __webpack_require__(1127);
+	var _DateField = __webpack_require__(1126);
 	
 	var _DateField2 = _interopRequireDefault(_DateField);
 	
-	var _Calendar = __webpack_require__(1130);
+	var _Calendar = __webpack_require__(1129);
 	
 	var _Calendar2 = _interopRequireDefault(_Calendar);
 	
-	var _DateFormatInput = __webpack_require__(1124);
+	var _DateFormatInput = __webpack_require__(1123);
 	
 	var _DateFormatInput2 = _interopRequireDefault(_DateFormatInput);
 	
-	var _DateFormatSpinnerInput = __webpack_require__(1123);
+	var _DateFormatSpinnerInput = __webpack_require__(1122);
 	
 	var _DateFormatSpinnerInput2 = _interopRequireDefault(_DateFormatSpinnerInput);
 	
@@ -30279,7 +30103,7 @@ webpackJsonp([0],[
 	exports.TimeInput = _TimeInput2.default;
 
 /***/ },
-/* 1062 */
+/* 1061 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30301,7 +30125,7 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
@@ -30309,55 +30133,55 @@ webpackJsonp([0],[
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _clampRange = __webpack_require__(1065);
+	var _clampRange = __webpack_require__(1064);
 	
 	var _clampRange2 = _interopRequireDefault(_clampRange);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _isInRange = __webpack_require__(1068);
+	var _isInRange = __webpack_require__(1067);
 	
 	var _isInRange2 = _interopRequireDefault(_isInRange);
 	
-	var _NavBar = __webpack_require__(1069);
+	var _NavBar = __webpack_require__(1068);
 	
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 	
-	var _Footer = __webpack_require__(1083);
+	var _Footer = __webpack_require__(1082);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
-	var _joinFunctions = __webpack_require__(1082);
+	var _joinFunctions = __webpack_require__(1081);
 	
 	var _joinFunctions2 = _interopRequireDefault(_joinFunctions);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _BasicMonthView = __webpack_require__(1089);
+	var _BasicMonthView = __webpack_require__(1088);
 	
 	var _BasicMonthView2 = _interopRequireDefault(_BasicMonthView);
 	
-	var _onKeyDown = __webpack_require__(1087);
+	var _onKeyDown = __webpack_require__(1086);
 	
 	var _onKeyDown2 = _interopRequireDefault(_onKeyDown);
 	
-	var _navKeys = __webpack_require__(1088);
+	var _navKeys = __webpack_require__(1087);
 	
 	var _navKeys2 = _interopRequireDefault(_navKeys);
 	
@@ -31634,7 +31458,7 @@ webpackJsonp([0],[
 	exports.renderFooter = _renderFooter;
 
 /***/ },
-/* 1063 */
+/* 1062 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31718,7 +31542,7 @@ webpackJsonp([0],[
 	module.exports = ReactClass;
 
 /***/ },
-/* 1064 */
+/* 1063 */
 /***/ function(module, exports) {
 
 	/* eslint-disable no-unused-vars */
@@ -31763,7 +31587,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1065 */
+/* 1064 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -31781,7 +31605,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1066 */
+/* 1065 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31839,7 +31663,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1067 */
+/* 1066 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31863,7 +31687,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1068 */
+/* 1067 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31904,7 +31728,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1069 */
+/* 1068 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31921,37 +31745,37 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _reactInlineBlock = __webpack_require__(1078);
+	var _reactInlineBlock = __webpack_require__(1077);
 	
 	var _reactInlineBlock2 = _interopRequireDefault(_reactInlineBlock);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
-	var _HistoryView = __webpack_require__(1081);
+	var _HistoryView = __webpack_require__(1080);
 	
 	var _HistoryView2 = _interopRequireDefault(_HistoryView);
 	
@@ -32365,7 +32189,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1070 */
+/* 1069 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32375,7 +32199,7 @@ webpackJsonp([0],[
 	});
 	exports.Item = exports.Flex = undefined;
 	
-	var _Flex = __webpack_require__(1071);
+	var _Flex = __webpack_require__(1070);
 	
 	Object.defineProperty(exports, 'Flex', {
 	  enumerable: true,
@@ -32384,7 +32208,7 @@ webpackJsonp([0],[
 	  }
 	});
 	
-	var _Item = __webpack_require__(1077);
+	var _Item = __webpack_require__(1076);
 	
 	Object.defineProperty(exports, 'Item', {
 	  enumerable: true,
@@ -32405,7 +32229,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1071 */
+/* 1070 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32424,19 +32248,19 @@ webpackJsonp([0],[
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _join = __webpack_require__(1072);
+	var _join = __webpack_require__(1071);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _props2className = __webpack_require__(1073);
+	var _props2className = __webpack_require__(1072);
 	
 	var _props2className2 = _interopRequireDefault(_props2className);
 	
-	var _cleanup = __webpack_require__(1076);
+	var _cleanup = __webpack_require__(1075);
 	
 	var _cleanup2 = _interopRequireDefault(_cleanup);
 	
@@ -32509,7 +32333,7 @@ webpackJsonp([0],[
 	exports.default = Flex;
 
 /***/ },
-/* 1072 */
+/* 1071 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32530,7 +32354,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1073 */
+/* 1072 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32539,15 +32363,15 @@ webpackJsonp([0],[
 	  value: true
 	});
 	
-	var _join = __webpack_require__(1072);
+	var _join = __webpack_require__(1071);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _props2flex = __webpack_require__(1074);
+	var _props2flex = __webpack_require__(1073);
 	
 	var _props2flex2 = _interopRequireDefault(_props2flex);
 	
-	var _prefix = __webpack_require__(1075);
+	var _prefix = __webpack_require__(1074);
 	
 	var _prefix2 = _interopRequireDefault(_prefix);
 	
@@ -32577,7 +32401,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1074 */
+/* 1073 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32591,7 +32415,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1075 */
+/* 1074 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32602,7 +32426,7 @@ webpackJsonp([0],[
 	exports.default = 'react-flex-v2';
 
 /***/ },
-/* 1076 */
+/* 1075 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -32629,7 +32453,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1077 */
+/* 1076 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32648,19 +32472,19 @@ webpackJsonp([0],[
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _join = __webpack_require__(1072);
+	var _join = __webpack_require__(1071);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _props2className = __webpack_require__(1073);
+	var _props2className = __webpack_require__(1072);
 	
 	var _props2className2 = _interopRequireDefault(_props2className);
 	
-	var _cleanup = __webpack_require__(1076);
+	var _cleanup = __webpack_require__(1075);
 	
 	var _cleanup2 = _interopRequireDefault(_cleanup);
 	
@@ -32726,7 +32550,7 @@ webpackJsonp([0],[
 	exports.default = FlexItem;
 
 /***/ },
-/* 1078 */
+/* 1077 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32751,7 +32575,7 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 1079 */
+/* 1078 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32760,7 +32584,7 @@ webpackJsonp([0],[
 	  value: true
 	});
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
@@ -32789,7 +32613,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1080 */
+/* 1079 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32809,7 +32633,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1081 */
+/* 1080 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32826,45 +32650,45 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _joinFunctions = __webpack_require__(1082);
+	var _joinFunctions = __webpack_require__(1081);
 	
 	var _joinFunctions2 = _interopRequireDefault(_joinFunctions);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
-	var _Footer = __webpack_require__(1083);
+	var _Footer = __webpack_require__(1082);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _YearView = __webpack_require__(1084);
+	var _YearView = __webpack_require__(1083);
 	
 	var _YearView2 = _interopRequireDefault(_YearView);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _DecadeView = __webpack_require__(1086);
+	var _DecadeView = __webpack_require__(1085);
 	
 	var _DecadeView2 = _interopRequireDefault(_DecadeView);
 	
@@ -33312,7 +33136,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1082 */
+/* 1081 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -33333,7 +33157,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1083 */
+/* 1082 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33351,29 +33175,29 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _reactInlineBlock = __webpack_require__(1078);
+	var _reactInlineBlock = __webpack_require__(1077);
 	
 	var _reactInlineBlock2 = _interopRequireDefault(_reactInlineBlock);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _joinFunctions = __webpack_require__(1082);
+	var _joinFunctions = __webpack_require__(1081);
 	
 	var _joinFunctions2 = _interopRequireDefault(_joinFunctions);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
@@ -33582,7 +33406,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1084 */
+/* 1083 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33601,33 +33425,33 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _times = __webpack_require__(1085);
+	var _times = __webpack_require__(1084);
 	
 	var _times2 = _interopRequireDefault(_times);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
-	var _DecadeView = __webpack_require__(1086);
+	var _DecadeView = __webpack_require__(1085);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33975,7 +33799,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1085 */
+/* 1084 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -33994,7 +33818,7 @@ webpackJsonp([0],[
 	exports.default = times;
 
 /***/ },
-/* 1086 */
+/* 1085 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34014,37 +33838,37 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
 	var _moment = __webpack_require__(940);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _times = __webpack_require__(1085);
+	var _times = __webpack_require__(1084);
 	
 	var _times2 = _interopRequireDefault(_times);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
-	var _onKeyDown = __webpack_require__(1087);
+	var _onKeyDown = __webpack_require__(1086);
 	
 	var _onKeyDown2 = _interopRequireDefault(_onKeyDown);
 	
@@ -34680,7 +34504,7 @@ webpackJsonp([0],[
 	exports.getInitialState = getInitialState;
 
 /***/ },
-/* 1087 */
+/* 1086 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34713,14 +34537,14 @@ webpackJsonp([0],[
 	  this.navigate(dir, event);
 	};
 	
-	var _navKeys = __webpack_require__(1088);
+	var _navKeys = __webpack_require__(1087);
 	
 	var _navKeys2 = _interopRequireDefault(_navKeys);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 1088 */
+/* 1087 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -34749,7 +34573,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1089 */
+/* 1088 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34767,7 +34591,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
@@ -34775,29 +34599,29 @@ webpackJsonp([0],[
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _format = __webpack_require__(1090);
+	var _format = __webpack_require__(1089);
 	
 	var _format2 = _interopRequireDefault(_format);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _getWeekDayNames = __webpack_require__(1091);
+	var _getWeekDayNames = __webpack_require__(1090);
 	
 	var _getWeekDayNames2 = _interopRequireDefault(_getWeekDayNames);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _bemFactory = __webpack_require__(1080);
+	var _bemFactory = __webpack_require__(1079);
 	
 	var _bemFactory2 = _interopRequireDefault(_bemFactory);
 	
@@ -35310,7 +35134,7 @@ webpackJsonp([0],[
 	exports.getDaysInMonthView = getDaysInMonthView;
 
 /***/ },
-/* 1090 */
+/* 1089 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35319,7 +35143,7 @@ webpackJsonp([0],[
 	  value: true
 	});
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
@@ -35353,7 +35177,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1091 */
+/* 1090 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35394,7 +35218,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1092 */
+/* 1091 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35413,11 +35237,11 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _TimeInput = __webpack_require__(1093);
+	var _TimeInput = __webpack_require__(1092);
 	
 	var _TimeInput2 = _interopRequireDefault(_TimeInput);
 	
@@ -35425,23 +35249,23 @@ webpackJsonp([0],[
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _Clock = __webpack_require__(1096);
+	var _Clock = __webpack_require__(1095);
 	
 	var _Clock2 = _interopRequireDefault(_Clock);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -35559,7 +35383,7 @@ webpackJsonp([0],[
 	TimePicker.propTypes = {};
 
 /***/ },
-/* 1093 */
+/* 1092 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35579,11 +35403,11 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _raf = __webpack_require__(1094);
+	var _raf = __webpack_require__(1093);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
@@ -35591,41 +35415,41 @@ webpackJsonp([0],[
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _Clock = __webpack_require__(1096);
+	var _Clock = __webpack_require__(1095);
 	
 	var _Clock2 = _interopRequireDefault(_Clock);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _getSelectionStart = __webpack_require__(1110);
+	var _getSelectionStart = __webpack_require__(1109);
 	
 	var _getSelectionStart2 = _interopRequireDefault(_getSelectionStart);
 	
-	var _getSelectionEnd = __webpack_require__(1111);
+	var _getSelectionEnd = __webpack_require__(1110);
 	
 	var _getSelectionEnd2 = _interopRequireDefault(_getSelectionEnd);
 	
-	var _setCaretPosition2 = __webpack_require__(1112);
+	var _setCaretPosition2 = __webpack_require__(1111);
 	
 	var _setCaretPosition3 = _interopRequireDefault(_setCaretPosition2);
 	
-	var _getNewValue2 = __webpack_require__(1113);
+	var _getNewValue2 = __webpack_require__(1112);
 	
 	var _getNewValue3 = _interopRequireDefault(_getNewValue2);
 	
-	var _toTimeValue = __webpack_require__(1114);
+	var _toTimeValue = __webpack_require__(1113);
 	
 	var _toTimeValue2 = _interopRequireDefault(_toTimeValue);
 	
@@ -35877,10 +35701,10 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1094 */
+/* 1093 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(1095)
+	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(1094)
 	  , root = typeof window === 'undefined' ? global : window
 	  , vendors = ['moz', 'webkit']
 	  , suffix = 'AnimationFrame'
@@ -35956,7 +35780,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 1095 */
+/* 1094 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.7.1
@@ -35995,7 +35819,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(144)))
 
 /***/ },
-/* 1096 */
+/* 1095 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36012,25 +35836,25 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactNotifyResize = __webpack_require__(1097);
+	var _reactNotifyResize = __webpack_require__(1096);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _reactStyleNormalizer = __webpack_require__(1098);
+	var _reactStyleNormalizer = __webpack_require__(1097);
 	
 	var _reactStyleNormalizer2 = _interopRequireDefault(_reactStyleNormalizer);
 	
@@ -36527,7 +36351,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1097 */
+/* 1096 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36545,7 +36369,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
@@ -36858,16 +36682,16 @@ webpackJsonp([0],[
 	exports.NotifyResize = NotifyResize;
 
 /***/ },
-/* 1098 */
+/* 1097 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var hasOwn      = __webpack_require__(1099)
-	var getPrefixed = __webpack_require__(1100)
+	var hasOwn      = __webpack_require__(1098)
+	var getPrefixed = __webpack_require__(1099)
 	
-	var map      = __webpack_require__(1106)
-	var plugable = __webpack_require__(1107)
+	var map      = __webpack_require__(1105)
+	var plugable = __webpack_require__(1106)
 	
 	function plugins(key, value){
 	
@@ -36928,7 +36752,7 @@ webpackJsonp([0],[
 	module.exports = plugable(RESULT)
 
 /***/ },
-/* 1099 */
+/* 1098 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36939,13 +36763,13 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1100 */
+/* 1099 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getStylePrefixed = __webpack_require__(1101)
-	var properties       = __webpack_require__(1105)
+	var getStylePrefixed = __webpack_require__(1100)
+	var properties       = __webpack_require__(1104)
 	
 	module.exports = function(key, value){
 	
@@ -36957,14 +36781,14 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1101 */
+/* 1100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var toUpperFirst = __webpack_require__(1102)
-	var getPrefix    = __webpack_require__(1103)
-	var el           = __webpack_require__(1104)
+	var toUpperFirst = __webpack_require__(1101)
+	var getPrefix    = __webpack_require__(1102)
+	var el           = __webpack_require__(1103)
 	
 	var MEMORY = {}
 	var STYLE
@@ -37013,7 +36837,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1102 */
+/* 1101 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37025,15 +36849,15 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1103 */
+/* 1102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var toUpperFirst = __webpack_require__(1102)
+	var toUpperFirst = __webpack_require__(1101)
 	var prefixes     = ["ms", "Moz", "Webkit", "O"]
 	
-	var el = __webpack_require__(1104)
+	var el = __webpack_require__(1103)
 	
 	var ELEMENT
 	var PREFIX
@@ -37064,7 +36888,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1104 */
+/* 1103 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -37086,7 +36910,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 1105 */
+/* 1104 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37134,7 +36958,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1106 */
+/* 1105 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37155,12 +36979,12 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1107 */
+/* 1106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getCssPrefixedValue = __webpack_require__(1108)
+	var getCssPrefixedValue = __webpack_require__(1107)
 	
 	module.exports = function(target){
 		target.plugins = target.plugins || [
@@ -37191,14 +37015,14 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1108 */
+/* 1107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var getPrefix     = __webpack_require__(1103)
-	var forcePrefixed = __webpack_require__(1109)
-	var el            = __webpack_require__(1104)
+	var getPrefix     = __webpack_require__(1102)
+	var forcePrefixed = __webpack_require__(1108)
+	var el            = __webpack_require__(1103)
 	
 	var MEMORY = {}
 	var STYLE
@@ -37245,14 +37069,14 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1109 */
+/* 1108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var toUpperFirst = __webpack_require__(1102)
-	var getPrefix    = __webpack_require__(1103)
-	var properties   = __webpack_require__(1105)
+	var toUpperFirst = __webpack_require__(1101)
+	var getPrefix    = __webpack_require__(1102)
+	var properties   = __webpack_require__(1104)
 	
 	/**
 	 * Returns the given key prefixed, if the property is found in the prefixProps map.
@@ -37274,7 +37098,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1110 */
+/* 1109 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -37298,7 +37122,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 1111 */
+/* 1110 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -37319,7 +37143,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 1112 */
+/* 1111 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37351,7 +37175,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1113 */
+/* 1112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37421,19 +37245,19 @@ webpackJsonp([0],[
 	  };
 	};
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _toTimeValue = __webpack_require__(1114);
+	var _toTimeValue = __webpack_require__(1113);
 	
 	var _toTimeValue2 = _interopRequireDefault(_toTimeValue);
 	
-	var _leftPad = __webpack_require__(1115);
+	var _leftPad = __webpack_require__(1114);
 	
 	var _leftPad2 = _interopRequireDefault(_leftPad);
 	
-	var _clamp = __webpack_require__(1116);
+	var _clamp = __webpack_require__(1115);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -37786,7 +37610,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1114 */
+/* 1113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37795,7 +37619,7 @@ webpackJsonp([0],[
 	  value: true
 	});
 	
-	var _leftPad = __webpack_require__(1115);
+	var _leftPad = __webpack_require__(1114);
 	
 	var _leftPad2 = _interopRequireDefault(_leftPad);
 	
@@ -37846,7 +37670,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1115 */
+/* 1114 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37869,7 +37693,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1116 */
+/* 1115 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -37926,7 +37750,7 @@ webpackJsonp([0],[
 	exports.default = clamp;
 
 /***/ },
-/* 1117 */
+/* 1116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37947,51 +37771,51 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _forwardTime = __webpack_require__(1118);
+	var _forwardTime = __webpack_require__(1117);
 	
 	var _forwardTime2 = _interopRequireDefault(_forwardTime);
 	
-	var _getTransitionEnd = __webpack_require__(1119);
+	var _getTransitionEnd = __webpack_require__(1118);
 	
 	var _getTransitionEnd2 = _interopRequireDefault(_getTransitionEnd);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _MonthView = __webpack_require__(1062);
+	var _MonthView = __webpack_require__(1061);
 	
-	var _NavBar = __webpack_require__(1069);
+	var _NavBar = __webpack_require__(1068);
 	
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _times = __webpack_require__(1085);
+	var _times = __webpack_require__(1084);
 	
 	var _times2 = _interopRequireDefault(_times);
 	
-	var _reactInlineBlock = __webpack_require__(1078);
+	var _reactInlineBlock = __webpack_require__(1077);
 	
 	var _reactInlineBlock2 = _interopRequireDefault(_reactInlineBlock);
 	
-	var _reactStyleNormalizer = __webpack_require__(1098);
+	var _reactStyleNormalizer = __webpack_require__(1097);
 	
 	var _reactStyleNormalizer2 = _interopRequireDefault(_reactStyleNormalizer);
 	
@@ -38667,7 +38491,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1118 */
+/* 1117 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38687,7 +38511,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1119 */
+/* 1118 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38730,7 +38554,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1120 */
+/* 1119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38748,43 +38572,43 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _reactInlineBlock = __webpack_require__(1078);
+	var _reactInlineBlock = __webpack_require__(1077);
 	
 	var _reactInlineBlock2 = _interopRequireDefault(_reactInlineBlock);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _clampRange = __webpack_require__(1065);
+	var _clampRange = __webpack_require__(1064);
 	
 	var _clampRange2 = _interopRequireDefault(_clampRange);
 	
-	var _NavBar = __webpack_require__(1069);
+	var _NavBar = __webpack_require__(1068);
 	
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _isInRange2 = __webpack_require__(1068);
+	var _isInRange2 = __webpack_require__(1067);
 	
 	var _isInRange3 = _interopRequireDefault(_isInRange2);
 	
-	var _BasicMonthView = __webpack_require__(1089);
+	var _BasicMonthView = __webpack_require__(1088);
 	
-	var _MonthView = __webpack_require__(1062);
+	var _MonthView = __webpack_require__(1061);
 	
 	var _MonthView2 = _interopRequireDefault(_MonthView);
 	
@@ -39485,7 +39309,7 @@ webpackJsonp([0],[
 	MultiMonthView.propTypes = {};
 
 /***/ },
-/* 1121 */
+/* 1120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39502,33 +39326,33 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _lodash = __webpack_require__(1122);
+	var _lodash = __webpack_require__(1121);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _Clock = __webpack_require__(1096);
+	var _Clock = __webpack_require__(1095);
 	
 	var _Clock2 = _interopRequireDefault(_Clock);
 	
-	var _DateFormatSpinnerInput = __webpack_require__(1123);
+	var _DateFormatSpinnerInput = __webpack_require__(1122);
 	
 	var _DateFormatSpinnerInput2 = _interopRequireDefault(_DateFormatSpinnerInput);
 	
@@ -39729,7 +39553,7 @@ webpackJsonp([0],[
 	ClockInput.propTypes = {};
 
 /***/ },
-/* 1122 */
+/* 1121 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -40175,7 +39999,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 1123 */
+/* 1122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -40192,29 +40016,29 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _DateFormatInput = __webpack_require__(1124);
+	var _DateFormatInput = __webpack_require__(1123);
 	
 	var _DateFormatInput2 = _interopRequireDefault(_DateFormatInput);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _joinFunctions = __webpack_require__(1082);
+	var _joinFunctions = __webpack_require__(1081);
 	
 	var _joinFunctions2 = _interopRequireDefault(_joinFunctions);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
@@ -40500,7 +40324,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 1124 */
+/* 1123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40519,29 +40343,29 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _lodash = __webpack_require__(1122);
+	var _lodash = __webpack_require__(1121);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _TimeInput = __webpack_require__(1093);
+	var _TimeInput = __webpack_require__(1092);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _parseFormat2 = __webpack_require__(1125);
+	var _parseFormat2 = __webpack_require__(1124);
 	
 	var _parseFormat3 = _interopRequireDefault(_parseFormat2);
 	
-	var _forwardTime = __webpack_require__(1118);
+	var _forwardTime = __webpack_require__(1117);
 	
 	var _forwardTime2 = _interopRequireDefault(_forwardTime);
 	
@@ -41030,7 +40854,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1125 */
+/* 1124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41039,11 +40863,11 @@ webpackJsonp([0],[
 	  value: true
 	});
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _formats = __webpack_require__(1126);
+	var _formats = __webpack_require__(1125);
 	
 	var _formats2 = _interopRequireDefault(_formats);
 	
@@ -41139,7 +40963,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1126 */
+/* 1125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41149,15 +40973,15 @@ webpackJsonp([0],[
 	});
 	exports.getFormats = undefined;
 	
-	var _leftPad = __webpack_require__(1115);
+	var _leftPad = __webpack_require__(1114);
 	
 	var _leftPad2 = _interopRequireDefault(_leftPad);
 	
-	var _clamp = __webpack_require__(1116);
+	var _clamp = __webpack_require__(1115);
 	
 	var _clamp2 = _interopRequireDefault(_clamp);
 	
-	var _times = __webpack_require__(1085);
+	var _times = __webpack_require__(1084);
 	
 	var _times2 = _interopRequireDefault(_times);
 	
@@ -41532,7 +41356,7 @@ webpackJsonp([0],[
 	exports.default = getFormats();
 
 /***/ },
-/* 1127 */
+/* 1126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41551,55 +41375,55 @@ webpackJsonp([0],[
 	
 	var _reactDom = __webpack_require__(410);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
-	var _reactField = __webpack_require__(1128);
+	var _reactField = __webpack_require__(1127);
 	
 	var _reactField2 = _interopRequireDefault(_reactField);
 	
-	var _DateFormatInput = __webpack_require__(1124);
+	var _DateFormatInput = __webpack_require__(1123);
 	
 	var _DateFormatInput2 = _interopRequireDefault(_DateFormatInput);
 	
-	var _reactInlineBlock = __webpack_require__(1078);
+	var _reactInlineBlock = __webpack_require__(1077);
 	
 	var _reactInlineBlock2 = _interopRequireDefault(_reactInlineBlock);
 	
-	var _icons = __webpack_require__(1129);
+	var _icons = __webpack_require__(1128);
 	
 	var _moment = __webpack_require__(940);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _toMoment2 = __webpack_require__(1066);
+	var _toMoment2 = __webpack_require__(1065);
 	
 	var _toMoment3 = _interopRequireDefault(_toMoment2);
 	
-	var _Calendar = __webpack_require__(1130);
+	var _Calendar = __webpack_require__(1129);
 	
 	var _Calendar2 = _interopRequireDefault(_Calendar);
 	
-	var _joinFunctions = __webpack_require__(1082);
+	var _joinFunctions = __webpack_require__(1081);
 	
 	var _joinFunctions2 = _interopRequireDefault(_joinFunctions);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _forwardTime = __webpack_require__(1118);
+	var _forwardTime = __webpack_require__(1117);
 	
 	var _forwardTime2 = _interopRequireDefault(_forwardTime);
 	
@@ -42569,7 +42393,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1128 */
+/* 1127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42636,7 +42460,7 @@ webpackJsonp([0],[
 	});
 
 /***/ },
-/* 1129 */
+/* 1128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42660,7 +42484,7 @@ webpackJsonp([0],[
 	);
 
 /***/ },
-/* 1130 */
+/* 1129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42680,39 +42504,39 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactClass = __webpack_require__(1063);
+	var _reactClass = __webpack_require__(1062);
 	
 	var _reactClass2 = _interopRequireDefault(_reactClass);
 	
-	var _objectAssign = __webpack_require__(1064);
+	var _objectAssign = __webpack_require__(1063);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var _assignDefined = __webpack_require__(1079);
+	var _assignDefined = __webpack_require__(1078);
 	
 	var _assignDefined2 = _interopRequireDefault(_assignDefined);
 	
-	var _MonthView = __webpack_require__(1062);
+	var _MonthView = __webpack_require__(1061);
 	
 	var _MonthView2 = _interopRequireDefault(_MonthView);
 	
-	var _toMoment = __webpack_require__(1066);
+	var _toMoment = __webpack_require__(1065);
 	
 	var _toMoment2 = _interopRequireDefault(_toMoment);
 	
-	var _join = __webpack_require__(1067);
+	var _join = __webpack_require__(1066);
 	
 	var _join2 = _interopRequireDefault(_join);
 	
-	var _ClockInput = __webpack_require__(1121);
+	var _ClockInput = __webpack_require__(1120);
 	
 	var _ClockInput2 = _interopRequireDefault(_ClockInput);
 	
-	var _forwardTime = __webpack_require__(1118);
+	var _forwardTime = __webpack_require__(1117);
 	
 	var _forwardTime2 = _interopRequireDefault(_forwardTime);
 	
-	var _reactFlex = __webpack_require__(1070);
+	var _reactFlex = __webpack_require__(1069);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -42998,7 +42822,191 @@ webpackJsonp([0],[
 	exports.NAV_KEYS = _MonthView.NAV_KEYS;
 
 /***/ },
+/* 1130 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	module.exports = __webpack_require__(1131);
+
+
+/***/ },
 /* 1131 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.ReactCustomGoogleAutocomplete = undefined;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(142);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ReactGoogleAutocomplete = function (_React$Component) {
+	  _inherits(ReactGoogleAutocomplete, _React$Component);
+	
+	  function ReactGoogleAutocomplete(props) {
+	    _classCallCheck(this, ReactGoogleAutocomplete);
+	
+	    var _this = _possibleConstructorReturn(this, (ReactGoogleAutocomplete.__proto__ || Object.getPrototypeOf(ReactGoogleAutocomplete)).call(this, props));
+	
+	    _this.autocomplete = null;
+	    return _this;
+	  }
+	
+	  _createClass(ReactGoogleAutocomplete, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _props = this.props,
+	          _props$types = _props.types,
+	          types = _props$types === undefined ? ['(cities)'] : _props$types,
+	          _props$componentRestr = _props.componentRestrictions,
+	          componentRestrictions = _props$componentRestr === undefined ? {} : _props$componentRestr,
+	          bounds = _props.bounds;
+	
+	
+	      this.autocomplete = new google.maps.places.Autocomplete(this.refs.input, {
+	        types: types,
+	        componentRestrictions: componentRestrictions,
+	        bounds: bounds
+	      });
+	
+	      this.autocomplete.addListener('place_changed', this.onSelected.bind(this));
+	    }
+	  }, {
+	    key: 'onSelected',
+	    value: function onSelected() {
+	      if (this.props.onPlaceSelected) {
+	        this.props.onPlaceSelected(this.autocomplete.getPlace());
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props2 = this.props,
+	          onPlaceSelected = _props2.onPlaceSelected,
+	          types = _props2.types,
+	          componentRestrictions = _props2.componentRestrictions,
+	          bounds = _props2.bounds,
+	          rest = _objectWithoutProperties(_props2, ['onPlaceSelected', 'types', 'componentRestrictions', 'bounds']);
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement('input', _extends({
+	          ref: 'input'
+	        }, rest))
+	      );
+	    }
+	  }]);
+	
+	  return ReactGoogleAutocomplete;
+	}(_react2.default.Component);
+	
+	ReactGoogleAutocomplete.propTypes = {
+	  onPlaceSelected: _react.PropTypes.func,
+	  types: _react.PropTypes.array,
+	  componentRestrictions: _react.PropTypes.object,
+	  bounds: _react.PropTypes.object
+	};
+	exports.default = ReactGoogleAutocomplete;
+	
+	var ReactCustomGoogleAutocomplete = exports.ReactCustomGoogleAutocomplete = function (_React$Component2) {
+	  _inherits(ReactCustomGoogleAutocomplete, _React$Component2);
+	
+	  function ReactCustomGoogleAutocomplete(props) {
+	    _classCallCheck(this, ReactCustomGoogleAutocomplete);
+	
+	    var _this2 = _possibleConstructorReturn(this, (ReactCustomGoogleAutocomplete.__proto__ || Object.getPrototypeOf(ReactCustomGoogleAutocomplete)).call(this, props));
+	
+	    _this2.service = new google.maps.places.AutocompleteService();
+	    return _this2;
+	  }
+	
+	  _createClass(ReactCustomGoogleAutocomplete, [{
+	    key: 'onChange',
+	    value: function onChange(e) {
+	      var _this3 = this;
+	
+	      var _props$types2 = this.props.types,
+	          types = _props$types2 === undefined ? ['(cities)'] : _props$types2;
+	
+	
+	      if (e.target.value) {
+	        this.service.getPlacePredictions({ input: e.target.value, types: types }, function (predictions, status) {
+	          if (status === 'OK' && predictions && predictions.length > 0) {
+	            _this3.props.onOpen(predictions);
+	            console.log(predictions);
+	          } else {
+	            _this3.props.onClose();
+	          }
+	        });
+	      } else {
+	        this.props.onClose();
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this4 = this;
+	
+	      if (this.props.input.value) {
+	        this.placeService = new google.maps.places.PlacesService(this.refs.div);
+	        this.placeService.getDetails({ placeId: this.props.input.value }, function (e, status) {
+	          if (status === 'OK') {
+	            _this4.refs.input.value = e.formatted_address;
+	          }
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this5 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.cloneElement(this.props.input, _extends({}, this.props, {
+	          ref: 'input',
+	          onChange: function onChange(e) {
+	            _this5.onChange(e);
+	          }
+	        })),
+	        _react2.default.createElement('div', { ref: 'div' })
+	      );
+	    }
+	  }]);
+	
+	  return ReactCustomGoogleAutocomplete;
+	}(_react2.default.Component);
+	
+	ReactCustomGoogleAutocomplete.propTypes = {
+	  input: _react.PropTypes.node.isRequired,
+	  onOpen: _react.PropTypes.func.isRequired,
+	  onClose: _react.PropTypes.func.isRequired
+	};
+
+
+/***/ },
+/* 1132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43015,9 +43023,9 @@ webpackJsonp([0],[
 	  root = this;
 	}
 	
-	var Emitter = __webpack_require__(1132);
-	var requestBase = __webpack_require__(1133);
-	var isObject = __webpack_require__(1134);
+	var Emitter = __webpack_require__(1133);
+	var requestBase = __webpack_require__(1134);
+	var isObject = __webpack_require__(1135);
 	
 	/**
 	 * Noop.
@@ -43029,7 +43037,7 @@ webpackJsonp([0],[
 	 * Expose `request`.
 	 */
 	
-	var request = module.exports = __webpack_require__(1135).bind(null, Request);
+	var request = module.exports = __webpack_require__(1136).bind(null, Request);
 	
 	/**
 	 * Determine XHR.
@@ -43980,7 +43988,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1132 */
+/* 1133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -44149,13 +44157,13 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1133 */
+/* 1134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(1134);
+	var isObject = __webpack_require__(1135);
 	
 	/**
 	 * Clear previous timeout.
@@ -44527,7 +44535,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1134 */
+/* 1135 */
 /***/ function(module, exports) {
 
 	/**
@@ -44546,7 +44554,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1135 */
+/* 1136 */
 /***/ function(module, exports) {
 
 	// The node and browser modules expose versions of this with the
@@ -44584,7 +44592,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1136 */
+/* 1137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -45084,7 +45092,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 1137 */
+/* 1138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45247,13 +45255,13 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ },
-/* 1138 */
+/* 1139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(1139);
+	var actionTypes_ts_1 = __webpack_require__(1140);
 	var menu_items = void 0;
 	;
 	var inititalState = {
@@ -45288,7 +45296,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ },
-/* 1139 */
+/* 1140 */
 /***/ function(module, exports) {
 
 	"use strict";

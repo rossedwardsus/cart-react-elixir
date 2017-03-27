@@ -22,6 +22,9 @@ defmodule Sconely.RegistrationResolver do
     #    render(conn, "new.html", changeset: changeset)
     #end
 
+
+    
+
     #create session for user and return session id
     #also auth tokens
     #changeset = Session.changeset(%{order_id: "1", order_id: "", time: "", quantity: "", quantity_multiplier: ""})
@@ -45,7 +48,7 @@ defmodule Sconely.RegistrationResolver do
     #admin
     #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
 
-    {:ok, %{order_id: 1}}
+    {:ok, %{session_id: 1}}
 
   end
 end

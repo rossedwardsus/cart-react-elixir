@@ -6,23 +6,23 @@ defmodule SconeHomeElixir.Schema do
 
   query do
 
-  	#field :login, list_of(:menu_item) do
-    #  resolve &Sconely.MenuItemsResolver.get_menu_items/2
-    #end
+  	field :login, :login do
+      resolve &Sconely.LoginResolver.login/2
+    end
 
 
     #field :get_user_delivery_addresses, list_of(:sconely_signature_order) do
     #  resolve &Sconely.OrderResolver.all/2
     #end
 
-    #field :get_user_payment_methids, type: :sconely_signature_order do
+    #field :get_user_payment_methods, type: :sconely_signature_order do
     #    arg :order_id, non_null(:string)
 	    
     #    resolve &Sconely.OrderResolver.get_order/2
     #end
 
 
-    
+
 
     #field :user_orders, list_of(:sconely_signature_order) do
     #    arg :host_id, non_null(:string)
@@ -43,14 +43,17 @@ defmodule SconeHomeElixir.Schema do
 
 
   mutation do
-  	field :create_sconely_social_order, type: :order do
-    	arg :session_id, (:string)
-    	arg :delivery_address_street, (:string)
-    	arg :delivery_address_city, (:string)
-    	arg :order_items, list_of(:menu_item_input)
+
+
+
+  	#field :register, type: :registration do
+    	#arg :email, (:string)
+    	#arg :mobile, (:string)
+    	#arg :delivery_address_city, (:string)
+    	#arg :order_items, list_of(:menu_item_input)
     		
-    	resolve &Sconely.SconelySocialOrderResolver.create_order/2
-  	end
+    	#resolve &Sconely.SconelySocialOrderResolver.create_order/2
+  	#end
 
 
   	#field :create_user, type: :registration do

@@ -25,7 +25,8 @@ import PublicAboutUs from './public/public_about_us';
 
 import Order from "./order.tsx";
 
-import LoginRegister from './login_register';
+import Login from './login.tsx';
+import Register from './register.tsx';
 
 import User from "./user";
 
@@ -140,7 +141,8 @@ const Root = () => (
                                       cb(null, PublicHomePage)
                                     }} />
 
-        <Route path="/login_register" component={LoginRegister} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id" component={Order} />

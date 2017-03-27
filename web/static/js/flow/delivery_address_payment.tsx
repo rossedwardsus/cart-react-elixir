@@ -127,10 +127,12 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   </select>
                 </div>
               </form>
+              <br/>
+              <br/>
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
-                      <b>Delivery Address</b>
+                      <b>Name</b>
                       <br/>
                       <br/>
                   </div>
@@ -138,33 +140,49 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-inline">
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Name</label>
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                </div>
+                <div className="form-group">
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                </div>
+              </form>
+              <form className="form-inline">
+                <div className="form-group">
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                </div>
+              </form>
+              <br/>
+              <form className="form-horizontal">
+                <div className="form-group">
+                  <div className="col-sm-10">
+                      <b>Address</b>
+                      <br/>
+                      <br/>
+                  </div>
+                </div>
+              </form>
+              <form className="form-inline">
+                <div className="form-group">
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Email</label>
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
                 </div>
+              </form>
+              <form className="form-inline">
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Mobile</label>
                   <select className="form-control">
-                      <option>1</option>
+                      <option>Los Angeles</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Street</label>
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail2">City</label>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail2">State-CA</label>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail2">Zipcode</label>
                   <select className="form-control">
-                      <option>9-11</option>
+                      <option>CA</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <select className="form-control">
+                      <option>90025</option>
                       <option>1-3</option>
                       <option>3</option>
                       <option>4</option>
@@ -172,16 +190,27 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   </select>
                 </div>
               </form>
-               
-              
               <br/>
               <br/>
-              <form className="form-inline">
+              <form className="form-horizontal">
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2"></label>
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                  <div className="col-sm-10">
+                      <b>Customer Info</b>
+                      <br/>
+                      <br/>
+                  </div>
                 </div>
               </form>
+              <form className="form-inline">
+                <div className="form-group">
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                </div>
+                <div className="form-group">
+                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                </div>
+              </form> 
+              <br/>
+              <br/>
               <br/>
               <form className="form-horizontal">
                 <div className="form-group">
@@ -193,7 +222,6 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-
               <form className="form-inline">
                 <div className="form-group">
                   <label htmlFor="exampleInputName2">Card Number</label>
@@ -208,7 +236,6 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
                 </div>
               </form>
-              
           </div>
     )
   }

@@ -405,8 +405,37 @@ class Order extends React.Component<any, any> {
     }
 
 
-    return (  
-            <div className="container-fluid">
+    return ( <div>
+                    <nav className="navbar navbar-default navbar-fixed-top">
+                          <div className="container-fluid">
+                            <div className="navbar-header">
+                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                              </button>
+                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                            </div>
+                            <div className="hidden-xs navbar-form navbar-right">
+                            </div>
+                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                    </nav> 
+                <div className="container-fluid">
                   <div className="row">
                         <div className="hidden-xs col-md-2">
                           <br/>
@@ -439,6 +468,7 @@ class Order extends React.Component<any, any> {
                               maybe put something here
                         </div>
                 </div>
+            </div>
             </div>
     )
   }

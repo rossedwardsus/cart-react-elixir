@@ -7,20 +7,20 @@ defmodule Sconely.RegistrationResolver do
   end
 
 
-  def create_user(args, _info) do
+  def login(args, _info) do
 
     #userid password email
 
-  	#changeset = Registration.changeset(%{user_type: "guest", order_id: "1", email: "", mobile: "", delivery_date: "datetime", time: "", paid: "yes", stripe_receipt})
+    #user = Repo.get_by(Registration, email: "Lew")  
+    #lew.name  
+    #user.password_salt comeonein.checkpassword
 
-    #case Repo.insert(changeset) do
-    #  {:ok, _user} ->
-    #    conn
-    #      |> put_flash(:info, "User created successfully.")
-    #      |> redirect(to: user_path(conn, :index))
-    #  {:error, changeset} ->
-    #    render(conn, "new.html", changeset: changeset)
-    #end
+
+    #user = Login.get_by(email)
+    #if user.password == args["password"]
+
+    #auth token
+
 
     #create session for user and return session id
     #also auth tokens
@@ -45,7 +45,7 @@ defmodule Sconely.RegistrationResolver do
     #admin
     #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
 
-    {:ok, %{order_id: 1}}
+    {:ok, %{session_id: 1}}
 
   end
 end
