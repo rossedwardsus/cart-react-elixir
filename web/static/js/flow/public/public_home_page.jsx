@@ -256,12 +256,21 @@ export default class Homepage extends React.Component {
     
     if("logged_in_true" == "logged_in_true"){
         
-        logged_in = <div>
+        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login_register">Login<span className="sr-only">(current)</span></Link></li>
+                        <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login_register">Signup<span className="sr-only">(current)</span></Link></li>
+                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
                       </ul>
                     </div>
     }
@@ -285,21 +294,9 @@ export default class Homepage extends React.Component {
                               </div>
                               <button type="button" className="hidden-xs btn btn-default" onClick={() => this.guestCode()}>Submit</button>
                             </div>
-                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-
+                            
                               {logged_in}
-
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                              </ul>
-
-                            </div>
+                             
                           </div>
                     </nav>
                     <div className="row">

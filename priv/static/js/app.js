@@ -18664,7 +18664,25 @@ webpackJsonp([0],[
 	
 	        logged_in = _react2.default.createElement(
 	          'div',
-	          null,
+	          { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'inactive' },
+	              _react2.default.createElement(
+	                'a',
+	                { href: './' },
+	                'Profile',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  '(current)'
+	                )
+	              )
+	            )
+	          ),
 	          _react2.default.createElement(
 	            'ul',
 	            { className: 'nav navbar-nav' },
@@ -18673,7 +18691,7 @@ webpackJsonp([0],[
 	              { className: 'inactive' },
 	              _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/login_register' },
+	                { to: '/login' },
 	                'Login',
 	                _react2.default.createElement(
 	                  'span',
@@ -18691,13 +18709,44 @@ webpackJsonp([0],[
 	              { className: 'inactive' },
 	              _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/login_register' },
+	                { to: '/register' },
 	                'Signup',
 	                _react2.default.createElement(
 	                  'span',
 	                  { className: 'sr-only' },
 	                  '(current)'
 	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'inactive' },
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: this.createOrder.bind(this, "sconely_yours") },
+	                'Start Order'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav' },
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'inactive' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/public/menu' },
+	                'Menu'
+	              ),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'sr-only' },
+	                '(current)'
 	              )
 	            )
 	          )
@@ -18750,60 +18799,7 @@ webpackJsonp([0],[
 	                'Submit'
 	              )
 	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
-	              _react2.default.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  _react2.default.createElement(
-	                    'a',
-	                    { href: './' },
-	                    'Profile',
-	                    _react2.default.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              logged_in,
-	              _react2.default.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  _react2.default.createElement(
-	                    'a',
-	                    { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                    'Start Order'
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                _react2.default.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
-	                    'Menu'
-	                  ),
-	                  _react2.default.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              )
-	            )
+	            logged_in
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -28597,13 +28593,13 @@ webpackJsonp([0],[
 	                        />*/
 	            //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Time"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }), React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9-11"), React.createElement("option", null, "1-3"))), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:15"), React.createElement("option", null, "9:30"), React.createElement("option", null, "9:45"), React.createElement("option", null, "10:00")))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Name"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Time"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }), React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9-11"), React.createElement("option", null, "1-3"))), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "specific time for a charge"), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:15"), React.createElement("option", null, "9:30"), React.createElement("option", null, "9:45"), React.createElement("option", null, "10:00")))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Name"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Address"), React.createElement("br", null), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true ? React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:15"), React.createElement("option", null, "9:30"), React.createElement("option", null, "9:45"), React.createElement("option", null, "10:00")) : React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:15"), React.createElement("option", null, "9:30"), React.createElement("option", null, "9:45"), React.createElement("option", null, "10:00")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
@@ -28611,7 +28607,7 @@ webpackJsonp([0],[
 	                    return setDeliveryAddressStreet(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Card Number"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Expiry Date"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Security Code"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" }))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Card Number"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Expiry Date"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "Security Code"), React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "jane.doe@example.com" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "Register me"), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Jane Doe" }))));
 	        }
 	    }]);
 	

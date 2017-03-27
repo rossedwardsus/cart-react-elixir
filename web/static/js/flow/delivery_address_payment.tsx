@@ -117,7 +117,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   </select>
                 </div>
                  <div className="form-group">
-                  <label htmlFor="exampleInputEmail2"></label>
+                  <label htmlFor="exampleInputEmail2">specific time for a charge</label>
                   <select className="form-control">
                       <option>9:00</option>
                       <option>9:15</option>
@@ -155,13 +155,31 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
-                      <b>Address</b>
+                      <b>Address-if logged in</b>
                       <br/>
+                      {true ? (
+                        <select className="form-control">
+                            <option>9:00</option>
+                            <option>9:15</option>
+                            <option>9:30</option>
+                            <option>9:45</option>
+                            <option>10:00</option>
+                        </select>
+                      ) : (
+                         <select className="form-control">
+                            <option>9:00</option>
+                            <option>9:15</option>
+                            <option>9:30</option>
+                            <option>9:45</option>
+                            <option>10:00</option>
+                        </select>
+                      )}
                       <br/>
                   </div>
                 </div>
               </form>
               <form className="form-inline">
+
                 <div className="form-group">
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                 </div>
@@ -234,6 +252,12 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail2">Security Code</label>
                   <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
+                </div>
+              </form>
+              <form className="form-inline">
+                <div className="form-group">
+                  <label htmlFor="exampleInputName2">Register me</label>
+                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
                 </div>
               </form>
           </div>

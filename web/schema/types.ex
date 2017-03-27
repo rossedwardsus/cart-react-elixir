@@ -31,7 +31,7 @@ defmodule Sconely.Schema.Types do
  	field :email, :string
  	field :password, :string
  	field :password_again, :string
-  object
+  end
 
 
   object :sconely_signature_order do
