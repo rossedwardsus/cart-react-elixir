@@ -199,7 +199,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
-                      <b>Customer Info</b>
+                      <b>Contact</b>
                       <br/>
                   </div>
                 </div>
@@ -237,12 +237,6 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail2">Security Code</label>
                   <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
-                </div>
-              </form>
-              <form className="form-inline">
-                <div className="form-group">
-                  <label htmlFor="exampleInputName2">Register me</label>
-                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
                 </div>
               </form>
           </div>
