@@ -187,22 +187,23 @@ export default class Menu extends React.Component<any, any> {
                           <h4 className="modal-title" id="myModalLabel">Modal title</h4>
                         </div>
                         <div className="modal-body">
-
-                          ...
-                          <img width="300" height="300" src="/images/strawberry_scones.png"></img>
+                            Story
+                            <br/>
+                            Ingredients
                         </div>
                         <div className="modal-footer">
                           <select onChange={(value) => this.props.addItemToCart(value)}>
-                            <option value=""></option>
-                            <option value={value_12}>12</option>
-                            <option value={mini_12}>Mini 12</option>
-                            <option value={value_24}>24</option>
+                            <option value="">Quantity</option>
+                            <option value="12">Dozen</option>
+                            <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
                           
                             <select onChange={this.props.selectQuantity}>
-                            <option value="">1</option>
-                            <option value={value_12}>2</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                           </select>
                           <button type="button" onClick={() => this.props.addCartItem(1, 1, 1)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>

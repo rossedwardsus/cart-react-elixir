@@ -96,8 +96,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
-                      <b>Time</b>
-                      <br/>
+                      <b>DateTime</b>
                       <br/>
                   </div>
                 </div>
@@ -124,16 +123,17 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                       <option>9:30</option>
                       <option>9:45</option>
                       <option>10:00</option>
+                      <option>10:15</option>
+                      <option>10:30</option>
+                      <option>10:45</option>
                   </select>
                 </div>
               </form>
-              <br/>
               <br/>
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
                       <b>Name</b>
-                      <br/>
                       <br/>
                   </div>
                 </div>
@@ -157,29 +157,17 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   <div className="col-sm-10">
                       <b>Address-if logged in</b>
                       <br/>
-                      {true ? (
+                      {true &&
                         <select className="form-control">
-                            <option>9:00</option>
-                            <option>9:15</option>
-                            <option>9:30</option>
-                            <option>9:45</option>
-                            <option>10:00</option>
+                            <option>Home</option>
+                            <option>Office</option>
                         </select>
-                      ) : (
-                         <select className="form-control">
-                            <option>9:00</option>
-                            <option>9:15</option>
-                            <option>9:30</option>
-                            <option>9:45</option>
-                            <option>10:00</option>
-                        </select>
-                      )}
+                      }
                       <br/>
                   </div>
                 </div>
               </form>
               <form className="form-inline">
-
                 <div className="form-group">
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                 </div>
