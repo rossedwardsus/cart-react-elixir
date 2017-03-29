@@ -113,9 +113,9 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                       <option>9-11</option>
                       <option>1-3</option>
                   </select>
+                  <label htmlFor="exampleInputEmail2">(free)</label>
                 </div>
                  <div className="form-group">
-                  <label htmlFor="exampleInputEmail2">specific time for a charge</label>
                   <select className="form-control">
                       <option>9:00</option>
                       <option>9:15</option>
@@ -126,6 +126,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                       <option>10:30</option>
                       <option>10:45</option>
                   </select>
+                  <label htmlFor="exampleInputEmail2">($2 extra)</label>
                 </div>
               </form>
               <form className="form-horizontal">
