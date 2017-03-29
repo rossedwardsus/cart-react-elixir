@@ -169,23 +169,7 @@ export default class Menu extends React.Component<any, any> {
                                       <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
                                           <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                           <div className="caption">
-                                            <h3>Strawberry Scone1</h3>
-                                            <p>
-                                                <select onChange={this.selectedCartItem} id={item.item_id}>
-                                                  <option value=""></option>
-                                                  <option value="12">Dozen</option>
-                                                  <option value="24_mini">2 Dozen Mini Scones</option>
-                                                </select>
-                                                <br/>
-                                                <select onChange={this.selectedCartItemQuantityMultiplier} id={item.item_id}>
-                                                  <option value=""></option>
-                                                  <option value="1">1</option>
-                                                  <option value="2">2</option>
-                                                  <option value="3">3</option>
-                                                  <option value="4">4</option>
-                                                </select>
-                                            </p>
-                                            <button onClick={addCartItem.bind(this, this.state.item, this.state.item_quantity, this.state.item_quantity_multiplier, this.state.mini)}>Add</button>
+                                            <h3>Strawberry Scone</h3>
                                           </div>
                                       </div>
                             </div>)
