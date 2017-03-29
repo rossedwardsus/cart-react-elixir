@@ -520,14 +520,9 @@ class Order extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          if yours
-                          <br/>
-                          else social
-                          <br/>
-                          cart in left sidebar
-                          <br/>
                           item_id-item_description-quantity-remove-edit
                           <br/>
+                          {button}
                           <br/>
                         </div>
                         <div className="col-md-8">

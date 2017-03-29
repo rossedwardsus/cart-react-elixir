@@ -110,21 +110,21 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail2"></label>
                   <select className="form-control">
-                      <option>9:00-11:00</option>
-                      <option>1:00-3:00</option>
+                      <option>9:00-11:00 am</option>
+                      <option>1:00-3:00 pm</option>
                   </select>
                   <label htmlFor="exampleInputEmail2">(free)</label>
                 </div>
                  <div className="form-group">
                   <select className="form-control">
                       <option>9:00</option>
-                      <option>9:15</option>
                       <option>9:30</option>
-                      <option>9:45</option>
                       <option>10:00</option>
-                      <option>10:15</option>
                       <option>10:30</option>
-                      <option>10:45</option>
+                      <option>11:00</option>
+                      <option>11:30</option>
+                      <option>12:00</option>
+                      <option>12:30</option>
                   </select>
                   <label htmlFor="exampleInputEmail2">($2 extra)</label>
                 </div>
@@ -227,16 +227,13 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-inline">
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Card Number</label>
-                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number"/>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">Expiry Date</label>
-                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Jane Doe"/>
+                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiry"/>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail2">Security Code</label>
-                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"/>
+                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code"/>
                 </div>
               </form>
           </div>
