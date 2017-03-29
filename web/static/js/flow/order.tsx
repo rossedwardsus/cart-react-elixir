@@ -517,13 +517,16 @@ class Order extends React.Component<any, any> {
                   <div className="row">
                         <div className="hidden-xs col-md-2">
                           <br/>
+                          <br/>
+                          <br/>
+                          <br/>
                           if yours
                           <br/>
                           else social
                           <br/>
                           cart in left sidebar
                           <br/>
-                          item_id-item_description-quantity-remove-edi
+                          item_id-item_description-quantity-remove-edit
                           <br/>
                           <br/>
                         </div>
