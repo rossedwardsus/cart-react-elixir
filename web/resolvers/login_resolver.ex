@@ -1,4 +1,4 @@
-defmodule Sconely.RegistrationResolver do
+defmodule Sconely.LoginResolver do
   alias Sconely.SconelySignatureOrder
   
   def all(_args, _info) do

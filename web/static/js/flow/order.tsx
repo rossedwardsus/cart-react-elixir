@@ -56,6 +56,7 @@ class Order extends React.Component<any, any> {
         delivery_address_street: "",
         item_count: 0,
         cart_items: Immutable.fromJS([{item_id: 1, quantity: 1, quantity_multiplier: 2, mini: true}, {item_id: 2, quantity: 2, quantity_multipler: 5}]),
+        order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""})
 
     };
 
@@ -301,9 +302,73 @@ class Order extends React.Component<any, any> {
 
   }  
 
+  
+  setFirstName(e: any){
+
+      //let order_temp = this.state.order;
+      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
+      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+
+      alert(e.target.value);
+
+      //this.setState({order: order_temp_udated});
+
+  }
+
+  setLastName(e: any){
+
+      //let order_temp = this.state.order;
+      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
+      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+
+      alert(e.target.value);
+
+      //this.setState({order: order_temp_udated});
+
+  }
+
+  setContactEmail(e: any){
+
+      //let order_temp = this.state.order;
+      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
+      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+
+      alert(e.target.value);
+
+      //this.setState({order: order_temp_udated});
+
+  }
+
+  setContactMobile(e: any){
+
+      //let order_temp = this.state.order;
+      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
+      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+
+      alert(e.target.value);
+
+      //this.setState({order: order_temp_udated});
+
+  }
+
+  setCompanyName(e: any){
+
+      //let order_temp = this.state.order;
+      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
+      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+
+      alert(e.target.value);
+
+      //this.setState({order: order_temp_udated});
+
+  }
+
+
   setDeliveryAddressStreet(e: any){
 
      //alert(e.target.value);
+
+     //this.state.order
 
      let delivery_address_temp = this.state.delivery_address;
 
@@ -312,6 +377,19 @@ class Order extends React.Component<any, any> {
      //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
 
      this.setState({delivery_address: delivery_address_temp_updated});
+
+  }
+
+  setDeliveryAddressState(e: any){
+
+     let delivery_address_temp = this.state.delivery_address;
+
+     let delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
+
+     //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+
+     this.setState({delivery_address: delivery_address_temp_updated});
+
 
   }
 
@@ -380,7 +458,7 @@ class Order extends React.Component<any, any> {
 
     }else if(this.state.page == "delivery_address_payment"){
 
-        body = <DeliveryAddressPayment addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
+        body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 
     }else{
 
@@ -445,7 +523,7 @@ class Order extends React.Component<any, any> {
                           <br/>
                           cart in left sidebar
                           <br/>
-                          item_id-item_description-quantity-remove-edit
+                          item_id-item_description-quantity-remove-edi
                           <br/>
                           <br/>
                         </div>

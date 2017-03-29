@@ -23,7 +23,7 @@ defmodule Sconely.RegistrationResolver do
     #end
 
 
-    
+
 
     #create session for user and return session id
     #also auth tokens
@@ -43,10 +43,10 @@ defmodule Sconely.RegistrationResolver do
     #{order_id, name, delivery_address, items with names 1 dozen quantity, paid with, total amount, date of order}
 
     #working
-    #Sconely.SconelySocialOrderEmail.welcome_email(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
+    #Sconely.SconelySocialOrderEmail.welcome_email(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
     #admin
-    #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
+    #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
     {:ok, %{session_id: 1}}
 

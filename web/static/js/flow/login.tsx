@@ -53,7 +53,10 @@ class Login extends React.Component<any, any> {
     this.state = {
 
         //menu_items: this.props.menu_items,
-        here: ""
+        //here: "",
+        email: "",
+        password: "",
+        password_again: ""
 
     };
 
@@ -91,17 +94,17 @@ class Login extends React.Component<any, any> {
 
   login(){
 
-      alert("login");
+      //alert(this.state.email);
 
-      /*axios.post('http://192.168.0.10:4000/graphql', {
-             query: 'mutation {make_payment (session_id: \"\", card_number: \"' + this.state.card_number + '\", expiry_date_month: \"' + this.state.expiry_date_month + '\", expiry_date_year: \"' + this.state.expiry_date_year + '\", security_code: \"' + this.state.security_code + '\") {status,}}'
+      axios.post('http://localhost:4000/graphql', {
+             query: 'query {login (email: \"' + this.state.email + '\", password: \"' + this.state.password + '\") {session_id,}}'
       })
       .then( response => {
 
-            alert(JSON.stringify(response.data.data.makePayment));
+            alert(JSON.stringify(response));
             //go to code/payment screen
     //        this.props.loadView();
-            this.props.setSubscription();
+            //this.props.setSubscription();
 
             //addtosubscribedblocklist
 
@@ -110,11 +113,14 @@ class Login extends React.Component<any, any> {
             //setsusbcriptindatetime
 
 
+            //store in cookie
+
+
 
       })
       .catch( error => {
 
-            alert("error" + JSON.stringify(error));
+            alert("error");
             //go to code/payment screen
     //        this.props.loadView();
 
@@ -122,16 +128,27 @@ class Login extends React.Component<any, any> {
         // network error
       //}
 
-      })*/
+      })
 
           //error
       //}
 
-      this.context.router.push('/order/12345/signature');
+      //this.context.router.push('/order/12345/signature');
 
 
   }
 
+  setEmail(e: any){
+
+      this.setState({email: e.target.value})
+
+  }
+
+  setPassword(e: any){
+
+      this.setState({password: e.target.value})
+
+  }
   
 
   render(){
@@ -148,8 +165,8 @@ class Login extends React.Component<any, any> {
                                       <div className="form-group">
                                          <br/>
                                         <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Password"/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
                                         <button type="button" className="btn" onClick={() => this.login()}>Login</button> 
                                      </div>
                                     </form>

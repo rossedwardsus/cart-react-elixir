@@ -76,7 +76,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
 
   render(): JSX.Element {
 
-    let { setDeliveryAddressStreet, setDeliveryAddressCity, setDeliveryAddressZipcode, setCardNumber, setExpiryDate, setSecurityCode } = this.props;
+    let { setFirstName, setContactEmail, setDeliveryAddressStreet, setDeliveryAddressCity, setDeliveryAddressZipcode, setCardNumber, setExpiryDate, setSecurityCode } = this.props;
 
 
     /*<Autocomplete
@@ -140,7 +140,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-inline">
                 <div className="form-group">
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                  <input type="text" onChange={(e: any) => setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
                 </div>
                 <div className="form-group">
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
@@ -221,7 +221,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-inline">
                 <div className="form-group">
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                  <input type="text" onChange={(e: any) => setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
                 </div>
                 <div className="form-group">
                   <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>

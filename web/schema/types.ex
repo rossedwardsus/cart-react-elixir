@@ -25,6 +25,7 @@ defmodule Sconely.Schema.Types do
   object :login do
   	field :email, :string
   	field :password, :string
+  	field :session_id, :string
   end
 
   object :registration do

@@ -17,6 +17,7 @@ import { bindActionCreators } from 'redux';
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");
 
+import axios from 'axios';
 
 /*function addTodoWithDispatch() {
   const action = {
@@ -51,7 +52,12 @@ class Register extends React.Component<any, any> {
     this.state = {
 
         //menu_items: this.props.menu_items,
-        here: ""
+        //here: ""
+        name: "",
+        email: "",
+        mobile: "",
+        password: "",
+        password_again: ""
 
     };
 
@@ -79,7 +85,73 @@ class Register extends React.Component<any, any> {
 
   }
 
-  
+  register(){
+
+     axios.post('http://localhost:4000/graphql', {
+               query: 'mutation {register (name: \"' + this.state.email + '\", email: \"' + this.state.email + '\", mobile: \"' + this.state.mobile + '\", password: \"' + this.state.password + '\") {session_id,}}'
+        })
+        .then( response => {
+
+              //alert(JSON.stringify(response));
+              //go to code/payment screen
+      //        this.props.loadView();
+              //this.props.setSubscription();
+
+              //addtosubscribedblocklist
+
+              //setsubscriptiontype == 1 block
+              //setsubscriptionpaid == true
+              //setsusbcriptindatetime
+
+
+              //store in cookie
+
+
+
+        })
+        .catch( error => {
+
+              alert("error");
+              //go to code/payment screen
+      //        this.props.loadView();
+
+       //if (!error.status) {
+          // network error
+        //}
+
+        })
+  }
+
+  setName(e: any){
+
+      this.setState({name: e.target.value})
+
+  }
+
+  setEmail(e: any){
+
+      this.setState({email: e.target.value})
+
+  }
+
+  setMobile(e: any){
+
+      this.setState({mobile: e.target.value})
+
+  }
+
+  setPassword(e: any){
+
+      this.setState({password: e.target.value})
+
+  }
+
+  setPasswordAgain(e: any){
+
+      this.setState({password_again: e.target.value})
+
+  }
+
 
   render(){
     return (  
@@ -93,8 +165,11 @@ class Register extends React.Component<any, any> {
                                       <div className="form-group">
                                         <br/>
                                         <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Password"/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name" onChange={(e) => this.setName(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile" onChange={(e) => this.setMobile(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e) => this.setPasswordAgain(e)}/>
                                         <br/>
                                       </div>
                                   </form>

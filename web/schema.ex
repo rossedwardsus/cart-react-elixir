@@ -7,6 +7,8 @@ defmodule SconeHomeElixir.Schema do
   query do
 
   	field :login, :login do
+  	  arg :email, :string
+  	  arg :password, :string
       resolve &Sconely.LoginResolver.login/2
     end
 
