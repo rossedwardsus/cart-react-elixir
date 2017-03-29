@@ -110,8 +110,8 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail2"></label>
                   <select className="form-control">
-                      <option>9-11</option>
-                      <option>1-3</option>
+                      <option>9:00-11:00</option>
+                      <option>1:00-3:00</option>
                   </select>
                   <label htmlFor="exampleInputEmail2">(free)</label>
                 </div>
@@ -131,7 +131,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-sm-10">
+                  <div className="col-sm-8">
                       <b>Name</b>
                       <br/>
                   </div>
@@ -153,7 +153,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <br/>
               <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-sm-10">
+                  <div className="col-sm-8">
                       <b>Address-if logged in</b>
                       <br/>
                       {true &&
