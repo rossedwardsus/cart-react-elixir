@@ -306,11 +306,9 @@ export default class Homepage extends React.Component {
                           <br/>
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
                           Home
                           <br/>
-                          <a onClick={this.createOrder.bind(this, "sconely_social")}>Start Order</a>
+                          <a onClick={this.createOrder.bind(this, "sconely_social")}>Menu</a>
                           <br/>
                           <a onClick={this.createOrder.bind(this, "sconely_signature")}>Signture</a>
                           <br/>

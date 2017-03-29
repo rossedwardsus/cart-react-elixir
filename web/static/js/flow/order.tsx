@@ -470,11 +470,11 @@ class Order extends React.Component<any, any> {
 
     if(this.state.page === "menu"){
                           
-        button = <button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</button> 
+        button = <a type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</a> 
         
     }else if(this.state.page === "cart"){
         
-        button = <div><button type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</button> <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button></div>
+        button = <div><a type="button" className="btn" onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</a> <button type="button" className="btn" onClick={() => this.completeOrder()}>Complete Payment</button></div>
     
     }else if(this.state.page === "delivery_address_payment"){
 
@@ -520,6 +520,16 @@ class Order extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
                           item_id-item_description-quantity-remove-edit
                           <br/>
                           {button}
@@ -533,7 +543,7 @@ class Order extends React.Component<any, any> {
                             <br/>
                             only show on mobile
                             <br/>
-                            <a onClick={() => this.showCart()}>cart({this.state.cart_items.size})</a>
+                            <button onClick={() => this.showCart()}>cart({this.state.cart_items.size})</button>
                             <br/>
                             <br/>
                             <br/>

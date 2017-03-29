@@ -102,18 +102,20 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               </form>
               <form className="form-inline">
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2"></label>
+                  <label htmlFor="exampleInputName2">   </label>
                   <DatePicker
                     selected={this.state.startDate}
                     onChange={() => {}} />
+                  <label htmlFor="exampleInputName2">   </label>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail2"></label>
+                  <label htmlFor="exampleInputEmail2">    </label>
                   <select className="form-control">
                       <option>9:00 am - 11:00 am</option>
                       <option>1:00 pm - 3:00 pm</option>
                   </select>
                   <label htmlFor="exampleInputEmail2">(free)</label>
+                  <label htmlFor="exampleInputName2">   </label>
                 </div>
                  <div className="form-group">
                   <select className="form-control">
