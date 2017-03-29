@@ -96,7 +96,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
-                      <b>DateTime</b>
+                      <b>Delivery Date and Time</b>
                   </div>
                 </div>
               </form>
@@ -110,8 +110,8 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail2"></label>
                   <select className="form-control">
-                      <option>9:00-11:00 am</option>
-                      <option>1:00-3:00 pm</option>
+                      <option>9:00 am - 11:00 am</option>
+                      <option>1:00 pm - 3:00 pm</option>
                   </select>
                   <label htmlFor="exampleInputEmail2">(free)</label>
                 </div>
@@ -226,11 +226,14 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 </div>
               </form>
               <form className="form-inline">
+              <div className="form-group">
+                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card"/>
+                </div>
                 <div className="form-group">
                   <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number"/>
                 </div>
                 <div className="form-group">
-                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiry"/>
+                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date"/>
                 </div>
                 <div className="form-group">
                   <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code"/>
