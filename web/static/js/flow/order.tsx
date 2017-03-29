@@ -532,11 +532,13 @@ class Order extends React.Component<any, any> {
                         </div>
                         <div className="col-md-8">
                             <br/>
-                            <div>
-                              only show on mobile
-                              <br/>
-                              <a onClick={() => this.showCart()}>cart({this.state.cart_items.size})</a>
-                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            only show on mobile
+                            <br/>
+                            <a onClick={() => this.showCart()}>cart({this.state.cart_items.size})</a>
                             <br/>
                             <br/>
                             <br/>
