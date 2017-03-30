@@ -93,42 +93,42 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
         return (
           <div>
               
-              <form className="form-horizontal">
+              <form className="form-inline">
                 <div className="form-group">
-                  <div className="col-sm-10">
+                  <div className="col-sm-12">
                       <b>Delivery Date and Time</b>
                   </div>
                 </div>
               </form>
               <form className="form-inline">
+                  <div className="col-md-2">
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={() => {}} />
+                  </div>
+                  <div className="col-md-2">
+                    <select className="form-control" id="exampleInputEmail2">
+                        <option>9:00 am - 11:00 am</option>
+                        <option>1:00 pm - 3:00 pm</option>
+                    </select>
+                  </div>
+                  <div className="col-md-2">
+                    <label htmlFor="exampleInputEmail2">(free)</label>
+                  </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputName2">   </label>
-                  <DatePicker
-                    selected={this.state.startDate}
-                    onChange={() => {}} />
-                  <label htmlFor="exampleInputName2">   </label>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInputEmail2">    </label>
-                  <select className="form-control">
-                      <option>9:00 am - 11:00 am</option>
-                      <option>1:00 pm - 3:00 pm</option>
-                  </select>
-                  <label htmlFor="exampleInputEmail2">(free)</label>
-                  <label htmlFor="exampleInputName2">   </label>
-                </div>
-                 <div className="form-group">
-                  <select className="form-control">
-                      <option>9:00</option>
-                      <option>9:30</option>
-                      <option>10:00</option>
-                      <option>10:30</option>
-                      <option>11:00</option>
-                      <option>11:30</option>
-                      <option>12:00</option>
-                      <option>12:30</option>
-                  </select>
-                  <label htmlFor="exampleInputEmail2">($2 extra)</label>
+                  <div className="col-md-4">
+                      <select className="form-control">
+                          <option>9:00</option>
+                          <option>9:30</option>
+                          <option>10:00</option>
+                          <option>10:30</option>
+                          <option>11:00</option>
+                          <option>11:30</option>
+                          <option>12:00</option>
+                          <option>12:30</option>
+                      </select>
+                      <label htmlFor="exampleInputEmail2">($2 extra)</label>
+                  </div>
                 </div>
               </form>
               <form className="form-horizontal">
@@ -222,6 +222,8 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   <div className="col-sm-10">
                       <b>Payment</b>
                       <br/>
+                      <b>Cart Items</b>
+                      <br/>
                       <b>Total Due</b>
                       <br/>
                   </div>
@@ -231,6 +233,8 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
               <div className="form-group">
                   <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card"/>
                 </div>
+              </form>
+              <form className="form-inline">
                 <div className="form-group">
                   <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number"/>
                 </div>

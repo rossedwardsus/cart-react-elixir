@@ -27870,8 +27870,9 @@ webpackJsonp([0],[
 	            delivery_address: Immutable.Map(),
 	            delivery_address_street: "",
 	            item_count: 0,
-	            cart_items: Immutable.fromJS([{ item_id: 1, quantity: 1, quantity_multiplier: 2, mini: true }, { item_id: 2, quantity: 2, quantity_multipler: 5 }]),
-	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }], delivery_address: { street: "" }, payment: "" })
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -27902,6 +27903,10 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
 	            //var result = map.find(function(obj){return obj.get('id') === 4;});
 	            //var result = [{'id': 'a'}, {'id': 'b'}];
 	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
@@ -28160,6 +28165,7 @@ webpackJsonp([0],[
 	                        return _this2.addCartItem(item, item_quantity, item_quantity_multiplier, mini);
 	                    } });
 	            } else if (this.state.page == "delivery_address_payment") {
+	                //alert();
 	                body = React.createElement(delivery_address_payment_tsx_1.default, { order: this.state.order, setContactEmail: function setContactEmail(contact_name) {
 	                        return _this2.setFirstName(name);
 	                    }, setFirstName: function setFirstName(first_name) {
@@ -28174,7 +28180,7 @@ webpackJsonp([0],[
 	                        return _this2.setDeliveryAddressZipcode(zipcode);
 	                    } });
 	            } else {
-	                body = React.createElement(cart_tsx_1.default, { cart_items: this.state.cart_items, showMenu: function showMenu() {
+	                body = React.createElement(cart_tsx_1.default, { order: this.state.order, cart_items: this.state.cart_items, showMenu: function showMenu() {
 	                        return _this2.showMenu();
 	                    }, removeCartItem: function removeCartItem(index) {
 	                        return _this2.removeCartItem(index);
@@ -28188,23 +28194,31 @@ webpackJsonp([0],[
 	            }
 	            var button = "";
 	            if (this.state.page === "menu") {
-	                button = React.createElement("a", { type: "button", className: "btn", onClick: function onClick() {
+	                button = React.createElement("a", { onClick: function onClick() {
 	                        return _this2.showDeliveryAddressPayment();
 	                    } }, "Delivery Address and Payment");
 	            } else if (this.state.page === "cart") {
-	                button = React.createElement("div", null, React.createElement("a", { type: "button", className: "btn", onClick: function onClick() {
+	                button = React.createElement("div", null, React.createElement("a", { onClick: function onClick() {
 	                        return _this2.showDeliveryAddressPayment();
-	                    } }, "Delivery Address and Payment-submit payment"), " ", React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
-	                        return _this2.completeOrder();
-	                    } }, "Complete Payment"));
+	                    } }, "Delivery Address and Payment-submit payment"));
 	            } else if (this.state.page === "delivery_address_payment") {
-	                button = React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                button = React.createElement("a", { onClick: function onClick() {
 	                        return _this2.completeOrder();
-	                    } }, "Complete Payment");
+	                    } }, "Complete Payment-only active if all elements are filled in");
 	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "item_id-item_description-quantity-remove-edit", React.createElement("br", null), button, React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(cart_tsx_1.default, { order: this.state.order, cart_items: this.state.cart_items, showMenu: function showMenu() {
+	                    return _this2.showMenu();
+	                }, removeCartItem: function removeCartItem(index) {
+	                    return _this2.removeCartItem(index);
+	                }, showDeliveryAddressPayment: function showDeliveryAddressPayment() {
+	                    return _this2.showDeliveryAddressPayment();
+	                }, increaseCartItemQuantity: function increaseCartItemQuantity(item_id, index) {
+	                    return _this2.increaseCartItemQuantity(item_id, index);
+	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id, index) {
+	                    return _this2.decreaseCartItemQuantity(item_id, index);
+	                } }), ";//cart", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart(", this.state.cart_items.size, ")"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), button), React.createElement("div", { className: "hidden-xs col-md-4" }, "maybe put something here"))));
+	                } }, "cart(", this.state.cart_items.size, ")"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), button), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
 	    }]);
 	
@@ -28501,29 +28515,38 @@ webpackJsonp([0],[
 	                body = "delivery address payment";
 	            }
 	            var total_cost = 0;
-	            this.props.cart_items.toJS().map(function (item) {
+	            //alert(JSON.stringify(this.props.order.toJS()));
+	            this.props.order.toJS().cart.map(function (item) {
+	                //alert(JSON.stringify(item));
 	                if (item.mini == true) {
-	                    total_cost = item.quantity * item.quantity_multiplier * 2;
+	                    total_cost = total_cost + item.dozen * item.quantity * 2;
 	                } else {
-	                    total_cost = item.quantity * item.quantity_multiplier * 5;
+	                    total_cost = total_cost + item.dozen * item.quantity * 5;
 	                }
 	            });
+	            //alert(total_cost);
 	            var item_count = 0;
-	            this.props.cart_items.toJS().map(function (item) {
-	                item_count = item.quantity * item.quantity_multiplier;
+	            this.props.order.toJS().cart.map(function (item) {
+	                item_count = item.dozen * item.quantity;
 	            });
-	            return React.createElement("div", null, "there are no items in your cart", React.createElement("br", null), this.props.cart_items.toJS().map(function (item, index) {
-	                //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-	                var result = this.state.menu_items.find(function (obj) {
-	                    return obj.get('item_id') === 1;
-	                });
-	                var item_title = result.get("title");
-	                if (item.mini == true) {
-	                    return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, "2 Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity_multiplier), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
-	                } else {
-	                    return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, "Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity_multiplier), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
-	                }
-	            }.bind(this)), React.createElement("br", null), "Total Items = ", this.props.cart_items.size, React.createElement("br", null), "Sub Total ", total_cost);
+	            var cart = "";
+	            if (item_count == 0) {
+	                cart = "there are no items in your cart";
+	            } else {
+	                cart = this.props.order.toJS().cart.map(function (item, index) {
+	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
+	                    var result = this.state.menu_items.find(function (obj) {
+	                        return obj.get('item_id') === 1;
+	                    });
+	                    var item_title = result.get("title");
+	                    if (item.mini == true) {
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
+	                    } else {
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
+	                    }
+	                }.bind(this));
+	            }
+	            return React.createElement("div", null, cart, React.createElement("br", null), "Total Items = ", item_count, React.createElement("br", null), "Sub Total ", total_cost, React.createElement("br", null), "show delivery address button if cart item count is larger then 0");
 	        }
 	    }]);
 	
@@ -28648,7 +28671,7 @@ webpackJsonp([0],[
 	                        />*/
 	            //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputName2" }, "   "), React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} }), React.createElement("label", { htmlFor: "exampleInputName2" }, "   ")), React.createElement("div", { className: "form-group" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "    "), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)"), React.createElement("label", { htmlFor: "exampleInputName2" }, "   ")), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2" }, React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setFirstName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
@@ -28662,7 +28685,7 @@ webpackJsonp([0],[
 	                    return setContactEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return setDeliveryAddressStreet(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code" }))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code" }))));
 	        }
 	    }]);
 	

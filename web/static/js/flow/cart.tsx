@@ -150,34 +150,45 @@ class Cart extends React.Component<any, any> {
 
     let total_cost = 0;
 
-    this.props.cart_items.toJS().map(function(item: any){
+    //alert(JSON.stringify(this.props.order.toJS()));
+
+    this.props.order.toJS().cart.map(function(item: any){
+
+        //alert(JSON.stringify(item));
 
         if(item.mini == true){
                       
-          total_cost = item.quantity * item.quantity_multiplier * 2;
+          total_cost = total_cost + ((item.dozen * item.quantity) * 2);
 
         }else{
 
-          total_cost = item.quantity * item.quantity_multiplier * 5;
+          total_cost = total_cost + ((item.dozen * item.quantity) * 5);
 
         }
                       
     });
 
+    //alert(total_cost);
+
 
     let item_count = 0;
 
-    this.props.cart_items.toJS().map(function(item: any){
+    this.props.order.toJS().cart.map(function(item: any){
 
-        item_count = item.quantity * item.quantity_multiplier;
+        item_count = item.dozen * item.quantity;
               
     });
 
+    let cart = "";
 
-    return (<div> 
-                  there are no items in your cart
-                  <br/>
-                  {this.props.cart_items.toJS().map(function(item: any, index: any){
+    if(item_count == 0){
+
+        cart = "there are no items in your cart";
+
+    }else{
+
+
+        cart = this.props.order.toJS().cart.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
                       let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
@@ -185,20 +196,27 @@ class Cart extends React.Component<any, any> {
 
                       if(item.mini == true){
                       
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">2 Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity_multiplier}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
 
                       }else{
 
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity_multiplier}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
 
                       }
                   
-                  }.bind(this))}
+                }.bind(this))
+
+    }
+
+
+    return (<div> 
+                  {cart}
                   <br/>
-                  Total Items = {this.props.cart_items.size}
+                  Total Items = {item_count}
                   <br/>
                   Sub Total {total_cost}
-                 
+                  <br/>
+                  show delivery address button if cart item count is larger then 0
             </div>
     )
   }
