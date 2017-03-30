@@ -24,9 +24,9 @@ export default class Menu extends React.Component<any, any> {
 
     this.state = {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
-        item: "",
-        item_quantity: "",
-        item_quantity_multiplier: ""
+        selected_item_id: "1111",
+        selected_item_dozens: "2222",
+        selected_item_quantity: "3333"
 
     };
 
@@ -211,7 +211,7 @@ export default class Menu extends React.Component<any, any> {
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" onClick={() => this.props.addCartItem(1, 1, 1)} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.props.addCartItem(this.state.item_id, this.state.selected_item_dozens, this.state.selected_item_quantity)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>

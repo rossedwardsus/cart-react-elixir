@@ -224,21 +224,23 @@ class Order extends React.Component<any, any> {
 
   }
 
-  addCartItem(item: any, item_quantity: any, item_quantity_multiplier: any, mini: any){
+  addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
 
-    //alert(item + "" + item_quantity + "" + item_quantity_multiplier);
+    alert(item_id + "" + item_dozens + "" + item_quantity);
 
-    let cart_items_temp = this.state.cart_items;
+    let order_temp = this.state.order;
 
     //item_id, quanity, mini
 
-    let new_cart_items = [];
+    let new_cart_items: any = [];
 
-    for(let i: any = 0; i <= item_quantity_multiplier - 1; i++){
+    for(let i: any = 0; i <= item_quantity - 1; i++){
 
       //alert();
 
-      new_cart_items.push({item: 1, quantity: item_quantity, item_quantity_multiplier: item_quantity_multiplier, mini: mini});
+      //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});
+
+    
 
     /*const myMap = Immutable.fromJS({
       nested: {
@@ -466,7 +468,7 @@ class Order extends React.Component<any, any> {
 
     if(this.state.page == "menu"){
 
-        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={(item: any, item_quantity: any, item_quantity_multiplier: any, mini: any) => this.addCartItem(item, item_quantity, item_quantity_multiplier, mini)}/>;
+        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={(item_id: any, item_dozens: any, item_quantity: any, mini: any) => this.addCartItem(item_id, item_dozens, item_quantity, mini)}/>;
 
     }else if(this.state.page == "delivery_address_payment"){
 
