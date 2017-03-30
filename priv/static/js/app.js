@@ -28024,6 +28024,10 @@ webpackJsonp([0],[
 	            //alert(JSON.stringify(cart_items_temp_updated));
 	            this.setState({ cart_items: cart_items_temp_updated });
 	        }
+	        //selectItemDozens(e: any){
+	        //    alert(e.target.value);
+	        //}
+	
 	    }, {
 	        key: "addDeliveryAddress",
 	        value: function addDeliveryAddress(street, city, state, zipcode) {
@@ -28216,7 +28220,7 @@ webpackJsonp([0],[
 	                    return _this2.increaseCartItemQuantity(item_id, index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id, index) {
 	                    return _this2.decreaseCartItemQuantity(item_id, index);
-	                } }), ";//cart", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
+	                } }), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
 	                } }, "cart(", this.state.cart_items.size, ")"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), body, React.createElement("br", null), React.createElement("br", null), button), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
@@ -28284,7 +28288,7 @@ webpackJsonp([0],[
 	        //this.loadCart = this.loadCart.bind(this);
 	        _this.showItem = _this.showItem.bind(_this);
 	        _this.selectedCartItem = _this.selectedCartItem.bind(_this);
-	        _this.selectedCartItemQuantityMultiplier = _this.selectedCartItemQuantityMultiplier.bind(_this);
+	        //this.selectedItemQuantity = this.selectedQuantity.bind(this);
 	        return _this;
 	    }
 	
@@ -28336,6 +28340,11 @@ webpackJsonp([0],[
 	            $('#myModal').modal('show');
 	        }
 	    }, {
+	        key: "selectedItemDozens",
+	        value: function selectedItemDozens(e) {
+	            alert(e.target.value);
+	        }
+	    }, {
 	        key: "selectedCartItem",
 	        value: function selectedCartItem(e) {
 	            //alert(e.target.value);
@@ -28349,10 +28358,10 @@ webpackJsonp([0],[
 	            this.setState({ item_quantity: e.target.value });
 	        }
 	    }, {
-	        key: "selectedCartItemQuantityMultiplier",
-	        value: function selectedCartItemQuantityMultiplier(e) {
-	            //alert(e.target.value);
-	            this.setState({ item_quantity_multiplier: e.target.value });
+	        key: "selectedItemQuantity",
+	        value: function selectedItemQuantity(e) {
+	            alert(e.target.value);
+	            //this.setState({item_quantity_multiplier: e.target.value});
 	        }
 	    }, {
 	        key: "render",
@@ -28385,8 +28394,10 @@ webpackJsonp([0],[
 	                        return _this2.showItem(item.item_id);
 	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone"))));
 	            }.bind(this))), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { onChange: function onChange(value) {
-	                    return _this3.props.addItemToCart(value);
-	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { onChange: this.props.selectQuantity }, React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", onClick: function onClick() {
+	                    return _this3.selectedItemDozens(value);
+	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { onChange: function onChange(value) {
+	                    return _this3.selectedItemQuantity(value);
+	                } }, React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", onClick: function onClick() {
 	                    return _this3.props.addCartItem(1, 1, 1);
 	                }, className: "btn btn-default", "data-dismiss": "modal" }, "Add"))))));
 	        }

@@ -268,6 +268,12 @@ class Order extends React.Component<any, any> {
 
   }
 
+  //selectItemDozens(e: any){
+
+  //    alert(e.target.value);
+
+  //}
+
   addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
 
       //alert(street);

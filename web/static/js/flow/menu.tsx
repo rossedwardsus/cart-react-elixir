@@ -33,7 +33,7 @@ export default class Menu extends React.Component<any, any> {
     //this.loadCart = this.loadCart.bind(this);
     this.showItem = this.showItem.bind(this);
     this.selectedCartItem = this.selectedCartItem.bind(this);
-    this.selectedCartItemQuantityMultiplier = this.selectedCartItemQuantityMultiplier.bind(this);
+    //this.selectedItemQuantity = this.selectedQuantity.bind(this);
     
   }
 
@@ -107,6 +107,12 @@ export default class Menu extends React.Component<any, any> {
 
   }
 
+  selectedItemDozens(e: any){
+
+      alert(e.target.value);
+
+  }
+
   selectedCartItem(e: any){
 
     //alert(e.target.value);
@@ -128,11 +134,11 @@ export default class Menu extends React.Component<any, any> {
     
   }
 
-  selectedCartItemQuantityMultiplier(e: any){
+  selectedItemQuantity(e: any){
 
-    //alert(e.target.value);
+    alert(e.target.value);
 
-    this.setState({item_quantity_multiplier: e.target.value});
+    //this.setState({item_quantity_multiplier: e.target.value});
 
   }
 
@@ -192,14 +198,14 @@ export default class Menu extends React.Component<any, any> {
                             Ingredients
                         </div>
                         <div className="modal-footer">
-                          <select onChange={(value) => this.props.addItemToCart(value)}>
+                          <select onChange={(value) => this.selectedItemDozens(value)}>
                             <option value="">Quantity</option>
                             <option value="12">Dozen</option>
                             <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
                           
-                            <select onChange={this.props.selectQuantity}>
+                            <select onChange={(value) => this.selectedItemQuantity(value)}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
