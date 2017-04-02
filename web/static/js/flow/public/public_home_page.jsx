@@ -5,6 +5,7 @@ import Swipeable from 'react-swipeable';
 import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
+import {List, Map} from 'immutable';
 
 
 const mapDispatchToProps = dispatch => {
@@ -143,8 +144,6 @@ export default class Homepage extends React.Component {
        
         //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
 
-
-
         //if user is logged in then 
         this.context.router.push('/order/12345');
 
@@ -153,9 +152,11 @@ export default class Homepage extends React.Component {
 
     }else if(order_type == "sconely_social"){
 
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+
+        localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
 
         this.context.router.push('/order/12345');
          
@@ -308,7 +309,7 @@ export default class Homepage extends React.Component {
                           <br/>
                           Home
                           <br/>
-                          <a onClick={this.createOrder.bind(this, "sconely_social")}>Menu</a>
+                          <Link to="/public/menu">Menu</Link>
                           <br/>
                           <a onClick={this.createOrder.bind(this, "sconely_signature")}>Signture</a>
                           <br/>

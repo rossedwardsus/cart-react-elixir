@@ -38,13 +38,28 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
 
     this.state = {
 
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
+        business_name: "",
         delivery_addresses: [{street: "santa monica blvd"}],
         street: "",
         city: "",
         state: "",
         zipcode: "",
-        startDate: moment()
-        
+        startDate: moment(),
+        form_inputs_validated: false,
+        first_name_classname: "form-group has-error",
+        first_name_validated: false,
+        last_name_classname: "form-group has-error",
+        last_name_validated: false,
+        contact_email_classname: "form-group has-error", 
+        contact_email_validated: false,
+        contact_mobile_classname: "form-group has-error",
+        comtact_mobile_validated: false,
+        name_on_card: "form-group has-error",
+
     };
 
     this.completeOrder = this.completeOrder.bind(this);
@@ -68,11 +83,107 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
 
   }
 
+  setFirstName(e: any){
+
+      if(e.target.value.length > 0){
+
+        //alert();
+
+        if(/^[a-zA-Z]/.test(e.target.value)){
+
+            //alert();
+
+            this.setState({"first_name": e.target.value});
+            this.setState({"first_name_classname": "form-group"});
+            this.setState({"first_name_validated": true});
+
+        }
+      }      
+  }
+
+  setLastName(e: any){
+
+      if(e.target.value.length > 0){
+
+        //alert();
+
+        if(/^[a-zA-Z]/.test(e.target.value)){
+
+            //alert();
+
+            this.setState({"last_name": e.target.value});
+            this.setState({"last_name_classname": "form-group"});
+            this.setState({"last_name_validated": true});
+
+        }
+      }
+  }
+
+  setContactEmail(e: any){
+
+      if(e.target.value.length > 0){
+
+        //alert();
+
+        //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        //return re.test(email);
+
+        if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
+
+            //alert();
+
+            this.setState({"contact_email": e.target.value});
+            this.setState({"contact_email_classname": "form-group"});
+            this.setState({"contact_email_validated": true});
+
+        }
+      }   
+  }
+
+  setContactMobile(e: any){
+
+      if(e.target.value.length > 0){
+
+        //alert();
+
+        if(/^[a-zA-Z]/.test(e.target.value)){
+
+            //alert();
+
+            this.setState({"first_name": e.target.value});
+            this.setState({"first_name_classname": "form-group"});
+
+        }
+      }   
+  }
+
   setDeliveryAddressStreet(e: any){
 
     alert(e.target.value);
 
   }
+
+
+
+  /*cart = this.props.order.toJS().cart.map(function(item: any, index: any){
+
+                      //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
+                      let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
+                      let item_title = result.get("title");
+
+                      if(item.mini == true){
+                      
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1">cost</div></div>)
+
+                      }else{
+
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div></div>)
+
+                      }
+                  
+                }.bind(this))*/
+
+
 
   render(): JSX.Element {
 
@@ -140,11 +251,11 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 </div>
               </form>
               <form className="form-inline">
-                <div className="form-group">
-                  <input type="text" onChange={(e: any) => setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                <div className={this.state.first_name_classname}>
+                  <input type="text" onChange={(e: any) => this.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
                 </div>
-                <div className="form-group">
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                <div className={this.state.last_name_classname}>
+                  <input type="text" onChange={(e: any) => this.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
                 </div>
               </form>
               <form className="form-inline">
@@ -207,22 +318,19 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                 </div>
               </form>
               <form className="form-inline">
-                <div className="form-group">
-                  <input type="text" onChange={(e: any) => setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                <div className={this.state.contact_email_classname}>
+                  <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
                 </div>
-                <div className="form-group">
-                  <input type="text" onChange={(e: any) => setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                <div className={this.state.contact_mobile_classname}>
+                  <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
                 </div>
               </form> 
-              <br/>
-              <br/>
               <br/>
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-sm-10">
-                      <b>Payment</b>
-                      <br/>
                       <b>Cart Items</b>
+                      <br/>
                       <br/>
                       <b>Total Due</b>
                       <br/>
@@ -245,6 +353,7 @@ export default class DeliveryAddressPayment extends React.Component<any, any> {
                   <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code"/>
                 </div>
               </form>
+              <button onClick={() => this.completeOrder()}>Complete Order</button>
           </div>
     )
   }

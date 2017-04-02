@@ -26,7 +26,8 @@ export default class Menu extends React.Component<any, any> {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
         selected_item_id: "1111",
         selected_item_dozens: "2222",
-        selected_item_quantity: "3333"
+        selected_item_quantity: "3333",
+        selected_item_mini: false,
 
     };
 
@@ -103,14 +104,29 @@ export default class Menu extends React.Component<any, any> {
 
       //alert(item_id);
 
+      //this.setState({selected_item_id: item_id});
+
       $('#myModal').modal('show');
 
   }
 
   selectedItemDozens(e: any){
 
-      alert(e.target.value);
+      //alert(e.target.value);
 
+      this.setState({selected_item_dozens: e.target.value});
+
+      if(e.target.value == "12"){
+
+          this.setState({selected_item_mini: false});
+
+      }else{
+
+          //this.setState({selected_item_mini: true});
+
+      }
+
+      
   }
 
   selectedCartItem(e: any){
@@ -136,11 +152,17 @@ export default class Menu extends React.Component<any, any> {
 
   selectedItemQuantity(e: any){
 
-    alert(e.target.value);
+    //alert(e.target.value);
 
-    //this.setState({item_quantity_multiplier: e.target.value});
+    //this.setState({selected_item_quantity: e.target.value});
 
   }
+
+  goToDateTimeContact(){
+
+      this.context.router.push('/order/12345/signature');
+      
+  }  
 
   render(): JSX.Element{
 
@@ -198,20 +220,20 @@ export default class Menu extends React.Component<any, any> {
                             Ingredients
                         </div>
                         <div className="modal-footer">
-                          <select onChange={(value) => this.selectedItemDozens(value)}>
+                          <select value="" onChange={(value) => this.selectedItemDozens(value)}>
                             <option value="">Quantity</option>
                             <option value="12">Dozen</option>
                             <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
-                          
-                            <select onChange={(value) => this.selectedItemQuantity(value)}>
+                          <select value="" onChange={(value) => this.selectedItemQuantity(value)}>
+                            <option value=""></option> 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" onClick={() => this.props.addCartItem(this.state.item_id, this.state.selected_item_dozens, this.state.selected_item_quantity)} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini)} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>

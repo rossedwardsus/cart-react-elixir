@@ -15,7 +15,10 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 import Immutable  = require('immutable');
-import {Map, List} from 'immutable';
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+require('react-datepicker/dist/react-datepicker.css');
 
 
 function addTodoWithDispatch() {
@@ -39,7 +42,7 @@ interface Order {
   //completed: boolean
 }
 
-class Order extends React.Component<any, any> {
+class OrderDateTimeContact extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -50,14 +53,27 @@ class Order extends React.Component<any, any> {
 
     this.state = {
 
-        page: "menu",
-        //menu_items: this.props.menu_items,
-        //here: "",
-        delivery_address: Immutable.Map(),
-        delivery_address_street: "",
-        item_count: 0,
-        cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-        //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
+        business_name: "",
+        delivery_addresses: [{street: "santa monica blvd"}],
+        street: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        startDate: moment(),
+        form_inputs_validated: false,
+        first_name_classname: "form-group has-error",
+        first_name_validated: false,
+        last_name_classname: "form-group has-error",
+        last_name_validated: false,
+        contact_email_classname: "form-group has-error", 
+        contact_email_validated: false,
+        contact_mobile_classname: "form-group has-error",
+        comtact_mobile_validated: false,
+        name_on_card: "form-group has-error",
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
 
     };
@@ -70,7 +86,7 @@ class Order extends React.Component<any, any> {
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
     
-    this.addCartItem = this.addCartItem.bind(this);
+    /*this.addCartItem = this.addCartItem.bind(this);
     this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
     this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
@@ -84,7 +100,7 @@ class Order extends React.Component<any, any> {
     this.showMenu = this.showMenu.bind(this);
     this.showCart = this.showCart.bind(this);
     this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
-    this.completeOrder = this.completeOrder.bind(this);
+    this.completeOrder = this.completeOrder.bind(this);*/
 
   }
 
@@ -95,6 +111,21 @@ class Order extends React.Component<any, any> {
   }
 
   componentDidMount(){
+
+    /*this._isMounted = true;
+    window.onpopstate = ()=> {
+      if(this._isMounted) {
+        const { hash } = location;
+        if(hash.indexOf('home')>-1 && this.state.value!==0)
+          this.setState({value: 0})
+        if(hash.indexOf('users')>-1 && this.state.value!==1)
+          this.setState({value: 1})
+        if(hash.indexOf('data')>-1 && this.state.value!==2)
+          this.setState({value: 2})
+      }
+    }*/
+
+
 
     //alert();
 
@@ -242,16 +273,6 @@ class Order extends React.Component<any, any> {
 
     //alert(item_id + "" + item_dozens + "" + item_quantity);
 
-
-    //add to localstorage
-
-
-    //if order doesnt exist yet
-    localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-
-    //this.context.router.push('/order/12345');
-
-    
     let order_temp = this.state.order;
 
     //item_id, quanity, mini
@@ -347,50 +368,84 @@ class Order extends React.Component<any, any> {
   
   setFirstName(e: any){
 
-      //let order_temp = this.state.order;
-      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+     if(e.target.value.length > 0){
 
-      alert(e.target.value);
+        //alert();
 
-      //this.setState({order: order_temp_udated});
+        if(/^[a-zA-Z]/.test(e.target.value)){
+
+            //alert();
+
+            this.setState({"first_name": e.target.value});
+            this.setState({"first_name_classname": "form-group"});
+            this.setState({"first_name_validated": true});
+
+        }
+      }   
+
+  }
+
+  onBlurFirstName(){
+
+      alert();
 
   }
 
   setLastName(e: any){
 
-      //let order_temp = this.state.order;
-      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+     if(e.target.value.length > 0){
 
-      alert(e.target.value);
+        //alert();
 
-      //this.setState({order: order_temp_udated});
+        if(/^[a-zA-Z]/.test(e.target.value)){
 
+            //alert();
+
+            this.setState({"last_name": e.target.value});
+            this.setState({"last_name_classname": "form-group"});
+            this.setState({"last_name_validated": true});
+
+        }
+      }
   }
 
   setContactEmail(e: any){
 
-      //let order_temp = this.state.order;
-      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+      if(e.target.value.length > 0){
 
-      alert(e.target.value);
+        //alert();
 
-      //this.setState({order: order_temp_udated});
+        //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        //return re.test(email);
+
+        if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
+
+            //alert();
+
+            this.setState({"contact_email": e.target.value});
+            this.setState({"contact_email_classname": "form-group"});
+            this.setState({"contact_email_validated": true});
+
+        }
+      }   
 
   }
 
   setContactMobile(e: any){
 
-      //let order_temp = this.state.order;
-      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+     if(e.target.value.length > 0){
 
-      alert(e.target.value);
+        //alert();
 
-      //this.setState({order: order_temp_udated});
+        if(/^[a-zA-Z]/.test(e.target.value)){
 
+            //alert();
+
+            this.setState({"first_name": e.target.value});
+            this.setState({"first_name_classname": "form-group"});
+
+        }
+      }   
   }
 
   setCompanyName(e: any){
@@ -406,7 +461,23 @@ class Order extends React.Component<any, any> {
   }
 
 
-  setDeliveryAddressStreet(e: any){
+  setDeliveryAddressStreet1(e: any){
+
+     //alert(e.target.value);
+
+     //this.state.order
+
+     let delivery_address_temp = this.state.delivery_address;
+
+     let delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
+
+     //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+
+     this.setState({delivery_address: delivery_address_temp_updated});
+
+  }
+
+   setDeliveryAddressStreet2(e: any){
 
      //alert(e.target.value);
 
@@ -481,21 +552,19 @@ class Order extends React.Component<any, any> {
 
   completeOrder(){
 
+      //if first_name_validated == true && last_name_validated == true
+      //process order/dispatch
+      this.context.router.push('/order/12345/order_complete');
+
       //alert(JSON.stringify(this.state.delivery_address_street));
 
       //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
   }
 
-  goToCart(){
+  goToMenu(){
 
-      this.context.router.push('/order/12345/cart');
-      
-  }  
-
-  goToDateTimeContact(){
-
-      this.context.router.push('/order/12345/datetime_contact');
+      this.context.router.push('/order/12345');
       
   }  
 
@@ -506,37 +575,7 @@ class Order extends React.Component<any, any> {
 
     //alert(item_count);
 
-    //if(this.state.page == "menu"){
-
-        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={(item_id: any, item_dozens: any, item_quantity: any, mini: any) => this.addCartItem(item_id, item_dozens, item_quantity, mini)}/>;
-
-    //}else if(this.state.page == "delivery_address_payment"){
-
-        //alert();
-
-        //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
-
-    //}else{
-
-        //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
-
-    //}
-
-    let button: any = "";
-
-    if(this.state.page === "menu"){
-                          
-        button = <a onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</a> 
-        
-    }else if(this.state.page === "cart"){
-        
-        button = <div><a onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</a></div>
-    
-    }else if(this.state.page === "delivery_address_payment"){
-
-        button = <a onClick={() => this.completeOrder()}>Complete Payment-only active if all elements are filled in</a> 
-    
-    }
+    //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 
 
     return ( <div>
@@ -599,16 +638,162 @@ class Order extends React.Component<any, any> {
                             <br/>
                             only show on mobile
                             <br/>
-                            <button onClick={() => this.goToCart()}>cart({this.state.order.toJS().cart.length})</button>
+                            <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
                             <br/>
                             <br/>
-                            {body}
+                            <form className="form-inline">
+                              <div className="form-group">
+                                <div className="col-sm-12">
+                                    <b>Delivery Date and Time</b>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                                <div className="col-md-2">
+                                  <DatePicker
+                                    selected={this.state.startDate}
+                                    onChange={() => {}} />
+                                </div>
+                                <div className="col-md-2">
+                                  <select className="form-control" id="exampleInputEmail2">
+                                      <option>9:00 am - 11:00 am</option>
+                                      <option>1:00 pm - 3:00 pm</option>
+                                  </select>
+                                </div>
+                                <div className="col-md-2">
+                                  <label htmlFor="exampleInputEmail2">(free)</label>
+                                </div>
+                              <div className="form-group">
+                                <div className="col-md-4">
+                                    <select className="form-control">
+                                        <option>9:00</option>
+                                        <option>9:30</option>
+                                        <option>10:00</option>
+                                        <option>10:30</option>
+                                        <option>11:00</option>
+                                        <option>11:30</option>
+                                        <option>12:00</option>
+                                        <option>12:30</option>
+                                    </select>
+                                    <label htmlFor="exampleInputEmail2">($2 extra)</label>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-8">
+                                    <b>Name</b>
+                                    <br/>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                              <div className={this.state.first_name_classname}>
+                                <input type="text" onChange={(e: any) => this.setFirstName(e)} onBlur={() => this.onBlurFirstName()} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                              </div>
+                              <div className={this.state.last_name_classname}>
+                                <input type="text" onChange={(e: any) => this.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                              <div className="form-group">
+                                <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                              </div>
+                            </form>
                             <br/>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-8">
+                                    <b>Address-if logged in</b>
+                                    <br/>
+                                    {true &&
+                                      <select className="form-control">
+                                          <option>Home</option>
+                                          <option>Office</option>
+                                      </select>
+                                    }
+                                    <br/>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                              <div className="form-group">
+                                <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                              </div>
+                              <div className="form-group">
+                                <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                              <div className="form-group">
+                                <select className="form-control">
+                                    <option>Los Angeles</option>
+                                </select>
+                              </div>
+                              <div className="form-group">
+                                <select className="form-control">
+                                    <option>CA</option>
+                                </select>
+                              </div>
+                              <div className="form-group">
+                                <select className="form-control">
+                                    <option>90025</option>
+                                    <option>1-3</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                              </div>
+                            </form>
                             <br/>
-                            {button}
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-10">
+                                    <b>Contact</b>
+                                    <br/>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                              <div className={this.state.contact_email_classname}>
+                                <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                              </div>
+                              <div className={this.state.contact_mobile_classname}>
+                                <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                              </div>
+                            </form> 
                             <br/>
-                            <button onClick={() => this.goToDateTimeContact()}>datetime</button>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-10">
+                                    <b>Cart Items</b>
+                                    <br/>
+                                    <br/>
+                                    <b>Total Due</b>
+                                    <br/>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                            <div className="form-group">
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card"/>
+                              </div>
+                            </form>
+                            <form className="form-inline">
+                              <div className="form-group">
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number"/>
+                              </div>
+                              <div className="form-group">
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date"/>
+                              </div>
+                              <div className="form-group">
+                                <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code"/>
+                              </div>
+                            </form>
+                            <button onClick={() => this.completeOrder()}>Complete Order</button>
+                            <br/>
+                            <button onClick={() => this.goToMenu()}>menu</button>
                         </div>
                         <div className="hidden-xs col-md-2">
                               maybe put something here
@@ -646,5 +831,5 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default Order;
+export default OrderDateTimeContact;
 

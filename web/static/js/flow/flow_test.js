@@ -24,6 +24,9 @@ import PublicMenu from './public/public_menu';
 import PublicAboutUs from './public/public_about_us';
 
 import Order from "./order.tsx";
+import OrderDateTimeContact from "./order_datetime_contact.tsx";
+import OrderCart from "./order_cart.tsx";
+import OrderComplete from './order_complete.tsx';
 
 import Login from './login.tsx';
 import Register from './register.tsx';
@@ -143,13 +146,14 @@ const Root = () => (
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/public/menu" component={PublicMenu} />
+        <Route path="/public/menu" component={Order} />
         <Route path="/public/about_us" component={PublicAboutUs} />
+        <Route path="/order/:order_id/cart" component={OrderCart} />
+        <Route path="/order/:order_id/datetime_contact" component={OrderDateTimeContact} />
         <Route path="/order/:order_id" component={Order} />
-        //<Route path="/order/:order_id/deliveryaddresspayment" component={Order} />
-        //<Route path="/order/:order_id/guest" getComponent={(nextState, cb) => {
+        //<Route path="/order/:order_id/order_complete" getComponent={(nextState, cb) => {
                                      // async work to find components
-                                    cb(null, SconelySignatureGuest)
+                                    cb(null, OrderComplete)
                                   }} />
         <Route path="/order/:order_id/signature" component={SconelySignature} />
         

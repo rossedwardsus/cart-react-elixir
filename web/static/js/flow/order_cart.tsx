@@ -15,7 +15,6 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 import Immutable  = require('immutable');
-import {Map, List} from 'immutable';
 
 
 function addTodoWithDispatch() {
@@ -39,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class Order extends React.Component<any, any> {
+class OrderDateTimeContact extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -242,16 +241,6 @@ class Order extends React.Component<any, any> {
 
     //alert(item_id + "" + item_dozens + "" + item_quantity);
 
-
-    //add to localstorage
-
-
-    //if order doesnt exist yet
-    localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-
-    //this.context.router.push('/order/12345');
-
-    
     let order_temp = this.state.order;
 
     //item_id, quanity, mini
@@ -487,15 +476,21 @@ class Order extends React.Component<any, any> {
 
   }
 
-  goToCart(){
+  goMenu(){
 
-      this.context.router.push('/order/12345/cart');
+      this.context.router.push('/order/12345');
+      
+  }  
+
+  goToDeliveryAddressPayment(){
+
+      this.context.router.push('/order/12345/datetime_contact');
       
   }  
 
   goToDateTimeContact(){
 
-      this.context.router.push('/order/12345/datetime_contact');
+      this.context.router.push('/order/12345/signature');
       
   }  
 
@@ -506,39 +501,9 @@ class Order extends React.Component<any, any> {
 
     //alert(item_count);
 
-    //if(this.state.page == "menu"){
+    body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
-        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={(item_id: any, item_dozens: any, item_quantity: any, mini: any) => this.addCartItem(item_id, item_dozens, item_quantity, mini)}/>;
-
-    //}else if(this.state.page == "delivery_address_payment"){
-
-        //alert();
-
-        //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
-
-    //}else{
-
-        //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
-
-    //}
-
-    let button: any = "";
-
-    if(this.state.page === "menu"){
-                          
-        button = <a onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</a> 
-        
-    }else if(this.state.page === "cart"){
-        
-        button = <div><a onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</a></div>
     
-    }else if(this.state.page === "delivery_address_payment"){
-
-        button = <a onClick={() => this.completeOrder()}>Complete Payment-only active if all elements are filled in</a> 
-    
-    }
-
-
     return ( <div>
                     <nav className="navbar navbar-default navbar-fixed-top">
                           <div className="container-fluid">
@@ -599,14 +564,14 @@ class Order extends React.Component<any, any> {
                             <br/>
                             only show on mobile
                             <br/>
-                            <button onClick={() => this.goToCart()}>cart({this.state.order.toJS().cart.length})</button>
+                            <button onClick={() => this.showCart()}>cart({this.state.order.toJS().cart.length})</button>
                             <br/>
                             <br/>
                             <br/>
                             {body}
                             <br/>
                             <br/>
-                            {button}
+                            <a onClick={() => this.goToDeliveryAddressPayment()}>Delivery Address and Payment</a> 
                             <br/>
                             <button onClick={() => this.goToDateTimeContact()}>datetime</button>
                         </div>
@@ -646,5 +611,5 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default Order;
+export default OrderDateTimeContact;
 

@@ -66,6 +66,12 @@ class Cart extends React.Component<any, any> {
     
   }
 
+  static get contextTypes() {
+    return {
+      router: React.PropTypes.object.isRequired,
+    };
+  }
+
   componentDidMount(){
 
 
@@ -154,15 +160,15 @@ class Cart extends React.Component<any, any> {
 
     this.props.order.toJS().cart.map(function(item: any){
 
-        //alert(JSON.stringify(item));
+        alert(JSON.stringify(item));
 
         if(item.mini == true){
                       
-          total_cost = total_cost + ((item.dozen * item.quantity) * 2);
+          total_cost = total_cost + ((item.dozens * item.quantity) * 2);
 
         }else{
 
-          total_cost = total_cost + ((item.dozen * item.quantity) * 5);
+          total_cost = total_cost + ((item.dozens * item.quantity) * 5);
 
         }
                       
@@ -175,7 +181,7 @@ class Cart extends React.Component<any, any> {
 
     this.props.order.toJS().cart.map(function(item: any){
 
-        item_count = item.dozen * item.quantity;
+        item_count = item.dozens * item.quantity;
               
     });
 
@@ -217,6 +223,11 @@ class Cart extends React.Component<any, any> {
                   Sub Total {total_cost}
                   <br/>
                   show delivery address button if cart item count is larger then 0
+                  <br/>
+                  <Link to="/public/menu">Menu</Link>
+                  <br/>
+                  {this.props.params.repoName}
+                  <Link to="/order/12345//order_datetime_contact">Menu</Link>
             </div>
     )
   }
