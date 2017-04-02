@@ -214,6 +214,7 @@ class Cart extends React.Component<any, any> {
 
     }
 
+    //{this.props.params.repoName}
 
     return (<div> 
                   {cart}
@@ -226,7 +227,6 @@ class Cart extends React.Component<any, any> {
                   <br/>
                   <Link to="/public/menu">Menu</Link>
                   <br/>
-                  {this.props.params.repoName}
                   <Link to="/order/12345//order_datetime_contact">Menu</Link>
             </div>
     )
