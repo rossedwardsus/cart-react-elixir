@@ -64,13 +64,17 @@ webpackJsonp([0],[
 	
 	var _public_home_page2 = _interopRequireDefault(_public_home_page);
 	
-	var _public_menu = __webpack_require__(933);
+	var _public_menu = __webpack_require__(932);
 	
 	var _public_menu2 = _interopRequireDefault(_public_menu);
 	
-	var _public_about_us = __webpack_require__(934);
+	var _public_about_us = __webpack_require__(933);
 	
 	var _public_about_us2 = _interopRequireDefault(_public_about_us);
+	
+	var _user_home_page = __webpack_require__(934);
+	
+	var _user_home_page2 = _interopRequireDefault(_user_home_page);
 	
 	var _order = __webpack_require__(935);
 	
@@ -214,6 +218,7 @@ webpackJsonp([0],[
 	            // async work to find components
 	            cb(null, _order_complete2.default);
 	          } }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/user', component: _user_home_page2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/signature', component: _sconely_signature_single_page2.default })
 	      )
 	    )
@@ -18401,38 +18406,9 @@ webpackJsonp([0],[
 /* 634 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
+	"use strict";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _dec, _class;
-	//import {startOrder} from './actions/order';
-	
-	
-	__webpack_require__(635);
-	
-	var _react = __webpack_require__(142);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(556);
-	
-	var _reactSwipeable = __webpack_require__(931);
-	
-	var _reactSwipeable2 = _interopRequireDefault(_reactSwipeable);
-	
-	var _reactRouterRedux = __webpack_require__(628);
-	
-	var _reactRedux = __webpack_require__(173);
-	
-	var _immutable = __webpack_require__(932);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -18440,517 +18416,210 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	  return {
-	    onNavigateTo: function onNavigateTo(dest) {
-	      dispatch((0, _reactRouterRedux.push)(dest));
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__webpack_require__(635);
+	var React = __webpack_require__(142);
+	var react_router_1 = __webpack_require__(556);
+	//import {startOrder} from './actions/order';
+	var immutable_1 = __webpack_require__(931);
+	//const mapDispatchToProps = dispatch => {
+	//  return {
+	//    onNavigateTo(dest) {
+	//      dispatch(push(dest));
+	//    }
+	//  };
+	//};
+	//@connect(null, mapDispatchToProps)
+	
+	var Homepage = function (_React$Component) {
+	    _inherits(Homepage, _React$Component);
+	
+	    //props: Props;
+	    function Homepage(props) {
+	        _classCallCheck(this, Homepage);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
+	
+	        _this.state = {
+	            image: "/images/gallery/sconely_group_HPb.jpg",
+	            guest_code: ""
+	        };
+	        _this.createOrder = _this.createOrder.bind(_this);
+	        _this.guestCode = _this.guestCode.bind(_this);
+	        _this.onSubmit = _this.onSubmit.bind(_this);
+	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	        _this.onSwipedRight = _this.onSwipedRight.bind(_this);
+	        _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	        _this.changeImage = _this.changeImage.bind(_this);
+	        return _this;
 	    }
-	  };
-	};
 	
-	var Homepage = (_dec = (0, _reactRedux.connect)(null, mapDispatchToProps), _dec(_class = function (_React$Component) {
-	  _inherits(Homepage, _React$Component);
-	
-	  //props: Props;
-	
-	  function Homepage(props) {
-	    _classCallCheck(this, Homepage);
-	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
-	
-	    _this.state = {
-	
-	      image: "/images/gallery/sconely_group_HPb.jpg",
-	      guest_code: ""
-	
-	    };
-	
-	    _this.createOrder = _this.createOrder.bind(_this);
-	    _this.guestCode = _this.guestCode.bind(_this);
-	    _this.onSubmit = _this.onSubmit.bind(_this);
-	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
-	    _this.onSwipedRight = _this.onSwipedRight.bind(_this);
-	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
-	    _this.changeImage = _this.changeImage.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  _createClass(Homepage, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert("jsx");
-	
-	      //get active items from the database
-	
-	      setInterval(this.changeImage, 10000);
-	    }
-	  }, {
-	    key: 'onSubmit',
-	    value: function onSubmit(e) {
-	
-	      e, preventDefault();
-	    }
-	  }, {
-	    key: 'guestCode',
-	    value: function guestCode(order_type) {
-	
-	      //e.preventDefault();
-	
-	      //alert(order_type);
-	
-	      //if(order_type == "sconely_yours"){
-	
-	      //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	      //alert(orders);
-	      //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	      //if user is logged in then 
-	      //guest code is right then
-	      //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-	
-	      //this.context.router.push('/guest/order/12345/sconely_yours');
-	
-	      //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-	
-	      //this.props.dispatch(routeActions.push('/foo'));
-	
-	      //push("/foo");
-	
-	      this.props.onNavigateTo('/hello');
-	
-	      //}
-	    }
-	  }, {
-	    key: 'guestCodeChange',
-	    value: function guestCodeChange(e) {
-	
-	      this.setState({ guest_code: e.target.value });
-	    }
-	  }, {
-	    key: 'onSwipedLeft',
-	    value: function onSwipedLeft() {
-	
-	      //alert("left");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'onSwipedRight',
-	    value: function onSwipedRight() {
-	
-	      //alert("right");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'changeImage',
-	    value: function changeImage() {
-	
-	      if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
-	
-	        this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
-	      } else {
-	
-	        this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
-	      }
-	    }
-	  }, {
-	    key: 'createOrder',
-	    value: function createOrder(order_type) {
-	
-	      if (order_type == "sconely_yours") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	
-	        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //if user is logged in then 
-	        this.context.router.push('/order/12345');
-	
-	        //this.context.router.push('/order/12345');
-	
-	      } else if (order_type == "sconely_social") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        localStorage.setState("order", (0, _immutable.Map)({ name: "name", contact: "contact", cart: (0, _immutable.List)([]), delivery_address: { street: "" }, payment: "" }));
-	
-	        this.context.router.push('/order/12345');
-	      } else if (order_type == "sconely_signature") {
-	
-	        var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
-	
-	        this.context.router.push('/order/12345/signature');
-	      }
-	
-	      /*const client = GQLClient('http://localhost:3000', {
-	        // anything passed here is merged with 
-	        // the options passed to fetch() 
-	        credentials: true,
-	        headers: {
-	          'X-Requested-With': 'XMLHttpRequest'
+	    _createClass(Homepage, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert("jsx");
+	            //get active items from the database
+	            setInterval(this.changeImage, 10000);
 	        }
-	      });*/
-	
-	      /*client.mutate(`
-	        mutation ($id: RecordID!, $name: String!) {
-	          updateUser(input: {id: $id, name: $name}) {
-	            user {
-	              id
-	              name
+	    }, {
+	        key: "onSubmit",
+	        value: function onSubmit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: "guestCode",
+	        value: function guestCode() {
+	            //e.preventDefault();
+	            //alert(order_type);
+	            //if(order_type == "sconely_yours"){
+	            //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            //alert(orders);
+	            //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	            //if user is logged in then 
+	            //guest code is right then
+	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	            //this.context.router.push('/guest/order/12345/sconely_yours');
+	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	            //this.props.dispatch(routeActions.push('/foo'));
+	            //push("/foo");
+	            this.props.onNavigateTo('/hello');
+	            //}
+	        }
+	    }, {
+	        key: "guestCodeChange",
+	        value: function guestCodeChange(e) {
+	            this.setState({ guest_code: e.target.value });
+	        }
+	    }, {
+	        key: "onSwipedLeft",
+	        value: function onSwipedLeft() {
+	            //alert("left");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "onSwipedRight",
+	        value: function onSwipedRight() {
+	            //alert("right");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "changeImage",
+	        value: function changeImage() {
+	            if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
+	                this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	            } else {
+	                this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
 	            }
-	          }
 	        }
-	      `, { id: 1234, name: 'Danny' }).then((result) => {
-	        console.log(result.data.user);
-	        // => { id: 1234, name: 'Danny' } 
-	      });*/
-	
-	      /*var query = `
-	        query q (id: String!) {
-	          user(id: $id) {
-	            id,
-	            email,
-	            name
-	          }
+	    }, {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                this.context.router.push('/order/12345');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
+	                this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
+	                this.context.router.push('/order/12345/signature');
+	            }
+	            /*const client = GQLClient('http://localhost:3000', {
+	              // anything passed here is merged with
+	              // the options passed to fetch()
+	              credentials: true,
+	              headers: {
+	                'X-Requested-With': 'XMLHttpRequest'
+	              }
+	            });*/
+	            /*client.mutate(`
+	              mutation ($id: RecordID!, $name: String!) {
+	                updateUser(input: {id: $id, name: $name}) {
+	                  user {
+	                    id
+	                    name
+	                  }
+	                }
+	              }
+	            `, { id: 1234, name: 'Danny' }).then((result) => {
+	              console.log(result.data.user);
+	              // => { id: 1234, name: 'Danny' }
+	            });*/
+	            /*var query = `
+	              query q (id: String!) {
+	                user(id: $id) {
+	                  id,
+	                  email,
+	                  name
+	                }
+	              }
+	            `
+	            var queryVars = {
+	              id: 'abcdef'
+	            }
+	            var opts = {
+	              // custom fetch options
+	            }*/
+	            /**
+	             * @param  {Query} query graphql query
+	             * @param  {Object} [vars]  graphql query args, optional
+	             * @param  {Object} [opts]  fetch options, optional
+	             */
+	            /*fetch(query, queryVars, opts).then(function (results) {
+	              if (results.errors) {
+	                //...
+	                return
+	              }
+	              var user = result.data.user
+	              //...
+	            })*/
+	            //alert(order_type);
+	            //this.context.router.push('/order/12345/event_details');
+	            //browserHistory.push('#/order/12345');
+	            //browserHistory.push('/mobile/user#/order/12345');
+	            //save id in local storage
 	        }
-	      `
-	      var queryVars = {
-	        id: 'abcdef'
-	      }
-	      var opts = {
-	        // custom fetch options 
-	      }*/
+	        //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
 	
-	      /**
-	       * @param  {Query} query graphql query
-	       * @param  {Object} [vars]  graphql query args, optional
-	       * @param  {Object} [opts]  fetch options, optional
-	       */
-	      /*fetch(query, queryVars, opts).then(function (results) {
-	        if (results.errors) {
-	          //... 
-	          return
-	        }
-	        var user = result.data.user
-	        //... 
-	      })*/
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	      /*request
-	        .post('/api/order/new')
-	        .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-	        .set('X-API-Key', 'foobar')
-	        .set('Accept', 'application/json')
-	        .end(function(err, res){
-	          // Calling the end function will send the request
-	          //this.setState({payment_complete: true});
-	           });*/
-	
-	      //alert(order_type);
-	
-	      //this.context.router.push('/order/12345/event_details');
-	
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var logged_in = "";
-	
-	      if (true) {
-	
-	        logged_in = _react2.default.createElement(
-	          'div',
-	          { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              _react2.default.createElement(
-	                'a',
-	                { href: './' },
-	                'Profile',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/login' },
-	                'Login',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/register' },
-	                'Signup',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              _react2.default.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            _react2.default.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              ),
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          )
-	        );
-	      }
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              _react2.default.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                _react2.default.createElement('span', { className: 'icon-bar' }),
-	                _react2.default.createElement('span', { className: 'icon-bar' }),
-	                _react2.default.createElement('span', { className: 'icon-bar' })
-	              ),
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                _react2.default.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'hidden-xs navbar-form navbar-right' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'hidden-xs form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'hidden-xs form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
-	              ),
-	              _react2.default.createElement(
-	                'button',
-	                { type: 'button', className: 'hidden-xs btn btn-default', onClick: function onClick() {
+	            var logged_in = null;
+	            if (true) {
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	            }
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }, React.createElement("div", { className: "hidden-xs form-group" }, React.createElement("input", { type: "text", className: "hidden-xs form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange })), React.createElement("button", { type: "button", className: "hidden-xs btn btn-default", onClick: function onClick() {
 	                    return _this2.guestCode();
-	                  } },
-	                'Submit'
-	              )
-	            ),
-	            logged_in
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-4' },
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            'Home',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/public/menu' },
-	              'Menu'
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              'a',
-	              { onClick: this.createOrder.bind(this, "sconely_signature") },
-	              'Signture'
-	            ),
-	            _react2.default.createElement('br', null)
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              'div',
-	              null,
-	              _react2.default.createElement(
-	                'a',
-	                { href: './' },
-	                'Profile',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/login_register' },
-	                'Login',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/login_register' },
-	                'Signup',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              ),
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              )
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'hidden-lg navbar-form' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'form-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
-	              ),
-	              _react2.default.createElement(
-	                'button',
-	                { type: 'button', onClick: function onClick() {
-	                    return _this2.guestCode();
-	                  }, className: 'btn btn-default' },
-	                'Submit'
-	              )
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              _reactSwipeable2.default,
-	              { onSwipingLeft: this.onSwipedLeft, onSwipingRight: this.onSwipedRight },
-	              _react2.default.createElement('img', { width: '300', height: '300', src: this.state.image })
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null)
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-2' },
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            'maybe put something here'
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: _react2.default.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
+	                } }, "Submit")), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_signature") }, "Signture"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg navbar-form" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	  return Homepage;
-	}(_react2.default.Component)) || _class);
+	    return Homepage;
+	}(React.Component);
+	
 	exports.default = Homepage;
 
 /***/ },
@@ -26948,240 +26617,8 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 931 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var React = __webpack_require__(142);
-	
-	function getInitialState() {
-	  return {
-	    x: null,
-	    y: null,
-	    swiping: false,
-	    start: 0
-	  };
-	}
-	
-	var Swipeable = React.createClass({
-	  displayName: 'Swipeable',
-	
-	  propTypes: {
-	    onSwiped: React.PropTypes.func,
-	    onSwiping: React.PropTypes.func,
-	    onSwipingUp: React.PropTypes.func,
-	    onSwipingRight: React.PropTypes.func,
-	    onSwipingDown: React.PropTypes.func,
-	    onSwipingLeft: React.PropTypes.func,
-	    onSwipedUp: React.PropTypes.func,
-	    onSwipedRight: React.PropTypes.func,
-	    onSwipedDown: React.PropTypes.func,
-	    onSwipedLeft: React.PropTypes.func,
-	    onTap: React.PropTypes.func,
-	    flickThreshold: React.PropTypes.number,
-	    delta: React.PropTypes.number,
-	    preventDefaultTouchmoveEvent: React.PropTypes.bool,
-	    stopPropagation: React.PropTypes.bool,
-	    nodeName: React.PropTypes.string,
-	    trackMouse: React.PropTypes.bool,
-	    children: React.PropTypes.node
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      flickThreshold: 0.6,
-	      delta: 10,
-	      preventDefaultTouchmoveEvent: true,
-	      stopPropagation: false,
-	      nodeName: 'div'
-	    };
-	  },
-	  componentWillMount: function componentWillMount() {
-	    this.swipeable = getInitialState();
-	  },
-	  calculatePos: function calculatePos(e) {
-	    var x = void 0;
-	    var y = void 0;
-	
-	    if (e.changedTouches) {
-	      x = e.changedTouches[0].clientX;
-	      y = e.changedTouches[0].clientY;
-	    } else {
-	      x = e.clientX;
-	      y = e.clientY;
-	    }
-	
-	    var xd = this.swipeable.x - x;
-	    var yd = this.swipeable.y - y;
-	
-	    var axd = Math.abs(xd);
-	    var ayd = Math.abs(yd);
-	
-	    var time = Date.now() - this.swipeable.start;
-	    var velocity = Math.sqrt(axd * axd + ayd * ayd) / time;
-	
-	    return {
-	      deltaX: xd,
-	      deltaY: yd,
-	      absX: axd,
-	      absY: ayd,
-	      velocity: velocity
-	    };
-	  },
-	  eventStart: function eventStart(e) {
-	    if (typeof this.props.onMouseDown === 'function') {
-	      this.props.onMouseDown(e);
-	    }
-	
-	    if (e.type === 'mousedown' && !this.props.trackMouse) {
-	      return;
-	    }
-	
-	    if (e.touches && e.touches.length > 1) {
-	      return;
-	    }
-	
-	    var touches = e.touches;
-	    if (!touches) {
-	      touches = [{ clientX: e.clientX, clientY: e.clientY }];
-	    }
-	    if (this.props.stopPropagation) e.stopPropagation();
-	
-	    this.swipeable = {
-	      start: Date.now(),
-	      x: touches[0].clientX,
-	      y: touches[0].clientY,
-	      swiping: false
-	    };
-	  },
-	  eventMove: function eventMove(e) {
-	    if (typeof this.props.onMouseMove === 'function') {
-	      this.props.onMouseMove(e);
-	    }
-	
-	    if (e.type === 'mousemove' && !this.props.trackMouse) {
-	      return;
-	    }
-	
-	    if (!this.swipeable.x || !this.swipeable.y || e.touches && e.touches.length > 1) {
-	      return;
-	    }
-	
-	    var cancelPageSwipe = false;
-	    var pos = this.calculatePos(e);
-	
-	    if (pos.absX < this.props.delta && pos.absY < this.props.delta) {
-	      return;
-	    }
-	
-	    if (this.props.stopPropagation) e.stopPropagation();
-	
-	    if (this.props.onSwiping) {
-	      this.props.onSwiping(e, pos.deltaX, pos.deltaY, pos.absX, pos.absY, pos.velocity);
-	    }
-	
-	    if (pos.absX > pos.absY) {
-	      if (pos.deltaX > 0) {
-	        if (this.props.onSwipingLeft || this.props.onSwipedLeft) {
-	          this.props.onSwipingLeft && this.props.onSwipingLeft(e, pos.absX);
-	          cancelPageSwipe = true;
-	        }
-	      } else if (this.props.onSwipingRight || this.props.onSwipedRight) {
-	        this.props.onSwipingRight && this.props.onSwipingRight(e, pos.absX);
-	        cancelPageSwipe = true;
-	      }
-	    } else if (pos.deltaY > 0) {
-	      if (this.props.onSwipingUp || this.props.onSwipedUp) {
-	        this.props.onSwipingUp && this.props.onSwipingUp(e, pos.absY);
-	        cancelPageSwipe = true;
-	      }
-	    } else if (this.props.onSwipingDown || this.props.onSwipedDown) {
-	      this.props.onSwipingDown && this.props.onSwipingDown(e, pos.absY);
-	      cancelPageSwipe = true;
-	    }
-	
-	    this.swipeable.swiping = true;
-	
-	    if (cancelPageSwipe && this.props.preventDefaultTouchmoveEvent) {
-	      e.preventDefault();
-	    }
-	  },
-	  eventEnd: function eventEnd(e) {
-	    if (typeof this.props.onMouseUp === 'function') {
-	      this.props.onMouseUp(e);
-	    }
-	
-	    if (e.type === 'mouseup' && !this.props.trackMouse) {
-	      return;
-	    }
-	
-	    if (this.swipeable.swiping) {
-	      var pos = this.calculatePos(e);
-	
-	      if (this.props.stopPropagation) e.stopPropagation();
-	
-	      var isFlick = pos.velocity > this.props.flickThreshold;
-	
-	      this.props.onSwiped && this.props.onSwiped(e, pos.deltaX, pos.deltaY, isFlick, pos.velocity);
-	
-	      if (pos.absX > pos.absY) {
-	        if (pos.deltaX > 0) {
-	          this.props.onSwipedLeft && this.props.onSwipedLeft(e, pos.deltaX, isFlick);
-	        } else {
-	          this.props.onSwipedRight && this.props.onSwipedRight(e, pos.deltaX, isFlick);
-	        }
-	      } else if (pos.deltaY > 0) {
-	        this.props.onSwipedUp && this.props.onSwipedUp(e, pos.deltaY, isFlick);
-	      } else {
-	        this.props.onSwipedDown && this.props.onSwipedDown(e, pos.deltaY, isFlick);
-	      }
-	    } else {
-	      this.props.onTap && this.props.onTap(e);
-	    }
-	
-	    this.swipeable = getInitialState();
-	  },
-	  render: function render() {
-	    var newProps = _extends({}, this.props, {
-	      onTouchStart: this.eventStart,
-	      onTouchMove: this.eventMove,
-	      onTouchEnd: this.eventEnd,
-	      onMouseDown: this.eventStart,
-	      onMouseMove: this.eventMove,
-	      onMouseUp: this.eventEnd
-	    });
-	
-	    delete newProps.onSwiped;
-	    delete newProps.onSwiping;
-	    delete newProps.onSwipingUp;
-	    delete newProps.onSwipingRight;
-	    delete newProps.onSwipingDown;
-	    delete newProps.onSwipingLeft;
-	    delete newProps.onSwipedUp;
-	    delete newProps.onSwipedRight;
-	    delete newProps.onSwipedDown;
-	    delete newProps.onSwipedLeft;
-	    delete newProps.onTap;
-	    delete newProps.flickThreshold;
-	    delete newProps.delta;
-	    delete newProps.preventDefaultTouchmoveEvent;
-	    delete newProps.stopPropagation;
-	    delete newProps.nodeName;
-	    delete newProps.children;
-	    delete newProps.trackMouse;
-	
-	    return React.createElement(this.props.nodeName, newProps, this.props.children);
-	  }
-	});
-	
-	module.exports = Swipeable;
-
-/***/ },
-/* 932 */,
-/* 933 */
+/* 931 */,
+/* 932 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27436,7 +26873,7 @@ webpackJsonp([0],[
 	exports.default = Menu;
 
 /***/ },
-/* 934 */
+/* 933 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27837,6 +27274,222 @@ webpackJsonp([0],[
 	exports.default = Menu;
 
 /***/ },
+/* 934 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__webpack_require__(635);
+	var React = __webpack_require__(142);
+	var react_router_1 = __webpack_require__(556);
+	//import {startOrder} from './actions/order';
+	var immutable_1 = __webpack_require__(931);
+	//const mapDispatchToProps = dispatch => {
+	//  return {
+	//    onNavigateTo(dest) {
+	//      dispatch(push(dest));
+	//    }
+	//  };
+	//};
+	//@connect(null, mapDispatchToProps)
+	
+	var Homepage = function (_React$Component) {
+	    _inherits(Homepage, _React$Component);
+	
+	    //props: Props;
+	    function Homepage(props) {
+	        _classCallCheck(this, Homepage);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
+	
+	        _this.state = {
+	            image: "/images/gallery/sconely_group_HPb.jpg",
+	            guest_code: ""
+	        };
+	        _this.createOrder = _this.createOrder.bind(_this);
+	        _this.guestCode = _this.guestCode.bind(_this);
+	        _this.onSubmit = _this.onSubmit.bind(_this);
+	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	        _this.onSwipedRight = _this.onSwipedRight.bind(_this);
+	        _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	        _this.changeImage = _this.changeImage.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(Homepage, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert("jsx");
+	            //get active items from the database
+	            setInterval(this.changeImage, 10000);
+	        }
+	    }, {
+	        key: "onSubmit",
+	        value: function onSubmit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: "guestCode",
+	        value: function guestCode() {
+	            //e.preventDefault();
+	            //alert(order_type);
+	            //if(order_type == "sconely_yours"){
+	            //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            //alert(orders);
+	            //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	            //if user is logged in then 
+	            //guest code is right then
+	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	            //this.context.router.push('/guest/order/12345/sconely_yours');
+	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	            //this.props.dispatch(routeActions.push('/foo'));
+	            //push("/foo");
+	            this.props.onNavigateTo('/hello');
+	            //}
+	        }
+	    }, {
+	        key: "guestCodeChange",
+	        value: function guestCodeChange(e) {
+	            this.setState({ guest_code: e.target.value });
+	        }
+	    }, {
+	        key: "onSwipedLeft",
+	        value: function onSwipedLeft() {
+	            //alert("left");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "onSwipedRight",
+	        value: function onSwipedRight() {
+	            //alert("right");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "changeImage",
+	        value: function changeImage() {
+	            if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
+	                this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	            } else {
+	                this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
+	            }
+	        }
+	    }, {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                this.context.router.push('/order/12345');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
+	                this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
+	                this.context.router.push('/order/12345/signature');
+	            }
+	            /*const client = GQLClient('http://localhost:3000', {
+	              // anything passed here is merged with
+	              // the options passed to fetch()
+	              credentials: true,
+	              headers: {
+	                'X-Requested-With': 'XMLHttpRequest'
+	              }
+	            });*/
+	            /*client.mutate(`
+	              mutation ($id: RecordID!, $name: String!) {
+	                updateUser(input: {id: $id, name: $name}) {
+	                  user {
+	                    id
+	                    name
+	                  }
+	                }
+	              }
+	            `, { id: 1234, name: 'Danny' }).then((result) => {
+	              console.log(result.data.user);
+	              // => { id: 1234, name: 'Danny' }
+	            });*/
+	            /*var query = `
+	              query q (id: String!) {
+	                user(id: $id) {
+	                  id,
+	                  email,
+	                  name
+	                }
+	              }
+	            `
+	            var queryVars = {
+	              id: 'abcdef'
+	            }
+	            var opts = {
+	              // custom fetch options
+	            }*/
+	            /**
+	             * @param  {Query} query graphql query
+	             * @param  {Object} [vars]  graphql query args, optional
+	             * @param  {Object} [opts]  fetch options, optional
+	             */
+	            /*fetch(query, queryVars, opts).then(function (results) {
+	              if (results.errors) {
+	                //...
+	                return
+	              }
+	              var user = result.data.user
+	              //...
+	            })*/
+	            //alert(order_type);
+	            //this.context.router.push('/order/12345/event_details');
+	            //browserHistory.push('#/order/12345');
+	            //browserHistory.push('/mobile/user#/order/12345');
+	            //save id in local storage
+	        }
+	        //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
+	
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var logged_in = null;
+	            if (true) {
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	            }
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }, React.createElement("div", { className: "hidden-xs form-group" }, React.createElement("input", { type: "text", className: "hidden-xs form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_signature") }, "Signture"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, "Your Orders"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return Homepage;
+	}(React.Component);
+	
+	exports.default = Homepage;
+
+/***/ },
 /* 935 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27859,8 +27512,8 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(932);
-	var immutable_1 = __webpack_require__(932);
+	var Immutable = __webpack_require__(931);
+	var immutable_1 = __webpack_require__(931);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -28323,6 +27976,7 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //get active items from the database
+	            alert(this.props.params);
 	        }
 	    }, {
 	        key: "mouseOver",
@@ -28476,7 +28130,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(932);
+	var Immutable = __webpack_require__(931);
 	//import _ from 'lodash';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -28599,7 +28253,8 @@ webpackJsonp([0],[
 	                    }
 	                }.bind(this));
 	            }
-	            return React.createElement("div", null, cart, React.createElement("br", null), "Total Items = ", item_count, React.createElement("br", null), "Sub Total ", total_cost, React.createElement("br", null), "show delivery address button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), this.props.params.repoName, React.createElement(react_router_1.Link, { to: "/order/12345//order_datetime_contact" }, "Menu"));
+	            //{this.props.params.repoName}
+	            return React.createElement("div", null, cart, React.createElement("br", null), "Total Items = ", item_count, React.createElement("br", null), "Sub Total ", total_cost, React.createElement("br", null), "show delivery address button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/datetime_contact" }, "Menu"));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -28650,7 +28305,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(932);
+	var Immutable = __webpack_require__(931);
 	var DatePicker = __webpack_require__(939);
 	var moment = __webpack_require__(940);
 	__webpack_require__(1051);
@@ -28724,6 +28379,7 @@ webpackJsonp([0],[
 	    _createClass(OrderDateTimeContact, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
+	            alert(this.props.params.order_id);
 	            /*this._isMounted = true;
 	            window.onpopstate = ()=> {
 	              if(this._isMounted) {
@@ -29589,7 +29245,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(932);
+	var Immutable = __webpack_require__(931);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30010,7 +29666,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(932);
+	var Immutable = __webpack_require__(931);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"

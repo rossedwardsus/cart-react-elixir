@@ -227,7 +227,7 @@ class Cart extends React.Component<any, any> {
                   <br/>
                   <Link to="/public/menu">Menu</Link>
                   <br/>
-                  <Link to="/order/12345//order_datetime_contact">Menu</Link>
+                  <Link to="/order/12345/datetime_contact">Menu</Link>
             </div>
     )
   }

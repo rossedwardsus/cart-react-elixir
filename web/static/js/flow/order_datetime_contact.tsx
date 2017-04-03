@@ -112,6 +112,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   componentDidMount(){
 
+    alert(this.props.params.order_id);
+
     /*this._isMounted = true;
     window.onpopstate = ()=> {
       if(this._isMounted) {

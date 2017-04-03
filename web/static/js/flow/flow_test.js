@@ -19,9 +19,11 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-rou
 import thunk from 'redux-thunk';
 
 
-import PublicHomePage from './public/public_home_page';
+import PublicHomePage from './public/public_home_page.tsx';
 import PublicMenu from './public/public_menu';
 import PublicAboutUs from './public/public_about_us';
+
+import UserHomePage from './user/user_home_page.tsx';
 
 import Order from "./order.tsx";
 import OrderDateTimeContact from "./order_datetime_contact.tsx";
@@ -155,6 +157,7 @@ const Root = () => (
                                      // async work to find components
                                     cb(null, OrderComplete)
                                   }} />
+        <Route path="/user" component={UserHomePage} />
         <Route path="/order/:order_id/signature" component={SconelySignature} />
         
 

@@ -41,6 +41,7 @@ export default class Menu extends React.Component<any, any> {
   componentDidMount(){
 
     //get active items from the database
+    alert(this.props.params);
 
   }
 

@@ -1,26 +1,26 @@
 import "babel-polyfill";
-import React from 'react'
+import * as React from 'react'
 import { Link } from 'react-router';
-import Swipeable from 'react-swipeable';
-import { routeActions, push } from 'react-router-redux'
+//import Swipeable from 'react-swipeable';
+//import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onNavigateTo(dest) {
-      dispatch(push(dest));
-    }
-  };
-};
+//const mapDispatchToProps = dispatch => {
+//  return {
+//    onNavigateTo(dest) {
+//      dispatch(push(dest));
+//    }
+//  };
+//};
 
-@connect(null, mapDispatchToProps)
-export default class Homepage extends React.Component {
+//@connect(null, mapDispatchToProps)
+export default class Homepage extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -59,13 +59,13 @@ export default class Homepage extends React.Component {
     };
   }
 
-  onSubmit(e){
+  onSubmit(e: any){
 
-    e,preventDefault();
+    e.preventDefault();
 
   }
 
-  guestCode(order_type) {
+  guestCode() {
 
     //e.preventDefault();
 
@@ -96,7 +96,7 @@ export default class Homepage extends React.Component {
 
   }
 
-  guestCodeChange(e){
+  guestCodeChange(e: any){
 
       this.setState({guest_code: e.target.value});
 
@@ -133,7 +133,7 @@ export default class Homepage extends React.Component {
   }
 
 
-  createOrder(order_type) {
+  createOrder(order_type: any) {
 
     if(order_type == "sconely_yours"){
 
@@ -228,17 +228,7 @@ export default class Homepage extends React.Component {
     })*/
 
 
-    /*request
-      .post('/api/order/new')
-      .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-      .set('X-API-Key', 'foobar')
-      .set('Accept', 'application/json')
-      .end(function(err, res){
-        // Calling the end function will send the request
-        //this.setState({payment_complete: true});
   
-      });*/
-
 
     //alert(order_type);
     
@@ -250,16 +240,19 @@ export default class Homepage extends React.Component {
   
   }
 
+  //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
+                                  
+
 
   render(){
 
-    let logged_in = "";
+    let logged_in = null;
     
     if("logged_in_true" == "logged_in_true"){
         
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
@@ -335,13 +328,12 @@ export default class Homepage extends React.Component {
                                     <div className="form-group">
                                       <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
                                     </div>
-                                    <button type="button" onClick={() => this.guestCode()} className="btn btn-default">Submit</button>
+                                    
                                   </div>
                                   <br/>
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
                                   <br/>
                                   <br/>
                                   
