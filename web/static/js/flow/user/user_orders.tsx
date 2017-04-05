@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
-import UserOrders from './user_orders.tsx';
+
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -17,7 +17,7 @@ import UserOrders from './user_orders.tsx';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class Homepage extends React.Component<any, any> {
+class UserOrders extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -306,8 +306,6 @@ export default class Homepage extends React.Component<any, any> {
                                   <br/>
                                   <div>
                                     Your Orders
-                                    <br/>
-                                    <UserOrders />
                                   </div>
                                   <br/>
                                   <br/>
@@ -333,3 +331,5 @@ export default class Homepage extends React.Component<any, any> {
     )
   }
 }
+
+export default UserOrders;

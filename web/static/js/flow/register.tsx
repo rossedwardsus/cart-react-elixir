@@ -40,6 +40,13 @@ export interface HelloProps {
   //completed: boolean
 //}
 
+//function setCookie(cname, cvalue, exdays) {
+//   var d = new Date();
+//   d.setTime(d.getTime() + (exdays*24*60*60*1000));
+//   var expires = "expires="+ d.toUTCString();
+//   document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
+//}
+
 class Register extends React.Component<any, any> {
   //props: Props;
 
@@ -88,7 +95,7 @@ class Register extends React.Component<any, any> {
   register(){
 
      axios.post('http://localhost:4000/graphql', {
-               query: 'mutation {register (name: \"' + this.state.email + '\", email: \"' + this.state.email + '\", mobile: \"' + this.state.mobile + '\", password: \"' + this.state.password + '\") {session_id,}}'
+               query: 'mutation {register (first_name: \"' + this.state.email + '\", email: \"' + this.state.email + '\", mobile: \"' + this.state.mobile + '\", password: \"' + this.state.password + '\") {session_id,}}'
         })
         .then( response => {
 
@@ -105,8 +112,9 @@ class Register extends React.Component<any, any> {
 
 
               //store in cookie
-
-
+              //setCookie("sconely_session_id", 1, 1)
+              //setCookie("sconely_first_name", 1, 1)
+              //setCookie("sconely_last_name", 1, 1)
 
         })
         .catch( error => {

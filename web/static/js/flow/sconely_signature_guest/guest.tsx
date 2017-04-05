@@ -1,14 +1,14 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 
 import { Link, browserHistory } from 'react-router';
-import MenuItems from './menu_items';
+//import MenuItems from './menu_items';
 
-export default class SconelySignatureGuest extends React.Component {
+export default class SconelySignatureGuest extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -34,7 +34,7 @@ export default class SconelySignatureGuest extends React.Component {
     };
   }
 
-  guestChoice(order_type) {
+  guestChoice(order_type: any) {
     //alert(order_type);
     this.context.router.push('/order/12345');
     //browserHistory.push('#/order/12345');
@@ -43,32 +43,55 @@ export default class SconelySignatureGuest extends React.Component {
   
   }
 
-  mouseOver(e){
+  mouseOver(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover3.jpg";
 
   }
 
-  mouseOut(e){
+  mouseOut(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover1.jpg";
 
   }
 
-  showItem(item_id){
+  showItem(item_id: any){
 
-      alert(item_id);
+      //alert(item_id);
 
       $('#myModal').modal('show');
 
   }
 
-  render(): React.Element {
+  render(){
     return (
       <div>
-        <div className="container-fluid">
-            <div className="row">               
-                  {this.state.menu_items.map(function(item){
+            <nav className="navbar navbar-default navbar-fixed-top">
+                <div className="container-fluid">
+                  <div className="navbar-header">
+                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span className="sr-only">Toggle navigation</span>
+                      <span className="icon-bar"></span>
+                      <span className="icon-bar"></span>
+                      <span className="icon-bar"></span>
+                    </button>
+                    <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                  </div>
+                </div>
+            </nav>
+            <div className="row">      
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <br/>
+                  
+                  {this.state.menu_items.map(function(item: any){
                     return(<div className="col-xs-12 col-md-3">
                               <div className="thumbnail" >
                                 <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
@@ -93,7 +116,6 @@ export default class SconelySignatureGuest extends React.Component {
                   }.bind(this))}
             </div>
         </div>
-      </div>
     )
   }
 }

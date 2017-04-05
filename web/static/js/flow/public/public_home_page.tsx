@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
+//import * as Cookie from 'js-cookie';
+//const cookie: any = require('react-cookie');
 
 
 //const mapDispatchToProps = dispatch => {
@@ -15,6 +17,20 @@ import {List, Map} from 'immutable';
 //    }
 //  };
 //};
+
+
+function getCookie(name: string): string {
+        const nameLenPlus = (name.length + 1);
+        return document.cookie
+          .split(';')
+          .map(c => c.trim())
+          .filter(cookie => {
+            return cookie.substring(0, nameLenPlus) === `${name}=`;
+          })
+          .map(cookie => {
+            return decodeURIComponent(cookie.substring(nameLenPlus));
+          })[0] || null;
+}
 
 //@connect(null, mapDispatchToProps)
 export default class Homepage extends React.Component<any, any> {
@@ -51,6 +67,25 @@ export default class Homepage extends React.Component<any, any> {
 
     setInterval(this.changeImage, 10000);
 
+    //Cookies.set('name', 'value');
+    //alert(Cookies.get('name'));
+
+    //function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (1*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
+    //}
+
+    //alert(document.cookie);
+
+    
+
+    //alert(getCookie("mommy_id"));
+
+    //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
   }
 
   static get contextTypes() {
@@ -73,24 +108,17 @@ export default class Homepage extends React.Component<any, any> {
 
     //if(order_type == "sconely_yours"){
 
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //if user is logged in then 
+          //if user is logged in then 
         //guest code is right then
         //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
 
-        //this.context.router.push('/guest/order/12345/sconely_yours');
+        this.context.router.push('/order/12345/guest');
 
         //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
 
         //this.props.dispatch(routeActions.push('/foo'));
 
-        //push("/foo");
-
-        this.props.onNavigateTo('/hello');
-
+        
 
     //}
 
@@ -247,9 +275,27 @@ export default class Homepage extends React.Component<any, any> {
   render(){
 
     let logged_in = null;
+
+
     
-    if("logged_in_true" == "logged_in_true"){
+    if(getCookie("sconely_session_id") == null){
         
+        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
+                      <ul className="nav navbar-nav">
+                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/user">My Sconely<span className="sr-only">(current)</span></Link></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                      </ul>
+                    </div>
+    }else{
+
         logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-nav">
                         <li className="inactive">Profile<span className="sr-only">(current)</span></li>
@@ -267,6 +313,7 @@ export default class Homepage extends React.Component<any, any> {
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
                       </ul>
                     </div>
+
     }
 
     return (

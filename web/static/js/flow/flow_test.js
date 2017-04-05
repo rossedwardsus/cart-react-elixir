@@ -41,7 +41,7 @@ import SconelyYours from "./sconely_yours_social_single_page";
 //import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
 
 //import SconelySocial from "./sconely_social_single_page";*/
-import SconelySignature from "./sconely_signature_single_page";
+import SconelySignatureGuest from "./sconely_signature_guest/guest.tsx";
 
 /*import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySignatureGuest from "./sconely_signature_guest/guest";
@@ -158,7 +158,7 @@ const Root = () => (
                                     cb(null, OrderComplete)
                                   }} />
         <Route path="/user" component={UserHomePage} />
-        <Route path="/order/:order_id/signature" component={SconelySignature} />
+        <Route path="/order/:order_id/guest" component={SconelySignatureGuest} />
         
 
       </Route>
