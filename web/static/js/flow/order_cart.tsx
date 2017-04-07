@@ -4,8 +4,8 @@
 
 import * as React from 'react';
 
-import SconelyYoursMenu from './menu.tsx';
-import Cart from './cart.tsx';
+//import SconelyYoursMenu from './menu.tsx';
+//import Cart from './cart.tsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'
@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderDateTimeContact extends React.Component<any, any> {
+class OrderCart extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -494,6 +494,53 @@ class OrderDateTimeContact extends React.Component<any, any> {
       
   }  
 
+
+  updateCartItemQuantity(item_id:any, quantity: any){
+
+      //alert(item_id);
+
+      let cart_items_temp = this.state.cart_items;
+
+      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+
+          let new_item: any = "";
+
+          if(item.item_id == item_id){
+
+              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+
+          }else{
+
+              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+
+          }
+
+          return new_item;
+
+      });
+
+      //cart_items_temp.
+
+      //alert(JSON.stringify(cart_items_temp_updated));
+
+      this.setState({cart_items: cart_items_temp_updated});
+
+  }
+
+  removeItemFromCart(item_id:any){
+
+      //alert(item_id);
+
+      let cart_items_temp = this.state.cart_items;
+
+      let cart_items_temp_updated = cart_items_temp.filter(function(item: any) {
+          return item.item_id !== item_id;
+      });
+
+      this.setState({cart_items: cart_items_temp_updated});
+
+  }
+
   render(): JSX.Element{
 
     let body: any = "";
@@ -501,85 +548,39 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //alert(item_count);
 
-    body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
+    //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
+    let cart = "";
+
+    if(item_count == 0){
+
+        cart = "there are no items in your cart";
+
+    }else{
+
+
+        cart = this.props.order.toJS().cart.map(function(item: any, index: any){
+
+                      //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
+                      let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
+                      let item_title = result.get("title");
+
+                      if(item.mini == true){
+                      
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={this.props.removeCartItem.bind(this, index)}>X</a></div><div><a onClick={this.props.increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={this.props.decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+
+                      }else{
+
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={this.props.removeCartItem.bind(this, index)}>X</a></div><div><a onClick={this.props.increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={this.props.decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+
+                      }
+                  
+                }.bind(this))
+
+    }
     
     return ( <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                            </div>
-                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                              </ul>
-                            </div>
-                          </div>
-                    </nav> 
-                <div className="container-fluid">
-                  <div className="row">
-                        <div className="hidden-xs col-md-2">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>
-                          <br/>
-                          <br/>
-                        </div>
-                        <div className="col-md-10">
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            only show on mobile
-                            <br/>
-                            <button onClick={() => this.showCart()}>cart({this.state.order.toJS().cart.length})</button>
-                            <br/>
-                            <br/>
-                            <br/>
-                            {body}
-                            <br/>
-                            <br/>
-                            <a onClick={() => this.goToDeliveryAddressPayment()}>Delivery Address and Payment</a> 
-                            <br/>
-                            <button onClick={() => this.goToDateTimeContact()}>datetime</button>
-                        </div>
-                        <div className="hidden-xs col-md-2">
-                              maybe put something here
-                        </div>
-                </div>
-            </div>
+               {cart}
             </div>
     )
   }
@@ -611,5 +612,5 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderDateTimeContact;
+export default OrderCart;
 

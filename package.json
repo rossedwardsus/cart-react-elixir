@@ -61,6 +61,7 @@
     "immutable": "^3.8.1",
     "jest": "^18.1.0",
     "jsdom": "^9.5.0",
+    "jsdom-global": "^2.1.1",
     "jshint": "^2.9.2",
     "jshint-loader": "^0.8.3",
     "mocha-jsdom": "^1.1.0",
@@ -86,6 +87,7 @@
     "redux-form": "^6.0.5",
     "redux-thunk": "^2.1.0",
     "script-loader": "^0.7.0",
+    "sinon": "^2.1.0",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "ts-jest": "^19.0.7",
@@ -98,16 +100,14 @@
   "scripts": {
     "//": "Rosss-MacBook-Pro:scone_home_elixir rossedwards$ uglifyjs ./priv/static/js/typescript/script-compiled.js -o ./priv/static/js/typescript/bundle.min.js",
     "//flow": "flow check",
-    "//test": "mocha $(find ./web/static/js/tests/*.js -name '*.js')",
+    "//test": "mocha --compilers ts:./node_modules/ts-node/register,tsx:./node_modules/ts-node/register,js:babel-core/register web/static/js/tests/test.tsx",
     "uglify": "uglifyjs ./web/static/js/flow/bundle.js -o ./web/static/js/flow/bundle.min.js",
     "eslint": "",
     "jest": "",
     "typescript": "",
-    "test": "mocha -r ./node_modules/ts-node/register web/static/js/tests/test.tsx",
-    "//test": "mocha --compilers ts:./node_modules/ts-node/register,tsx:./node_modules/ts-node/register,js:babel-core/register web/static/js/tests/test.tsx"
+    "test": "mocha -r ./node_modules/ts-node/register web/static/js/tests/test.tsx"
   },
   "jest": {
-    
     "testRegex": "(/web/static/js/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",

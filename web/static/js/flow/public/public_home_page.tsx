@@ -4,19 +4,11 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-//import {startOrder} from './actions/order';
+import {checkLoggedIn} from '../actions/login.ts';
 import {List, Map} from 'immutable';
 //import * as Cookie from 'js-cookie';
 //const cookie: any = require('react-cookie');
 
-
-//const mapDispatchToProps = dispatch => {
-//  return {
-//    onNavigateTo(dest) {
-//      dispatch(push(dest));
-//    }
-//  };
-//};
 
 
 function getCookie(name: string): string {
@@ -33,7 +25,7 @@ function getCookie(name: string): string {
 }
 
 //@connect(null, mapDispatchToProps)
-export default class Homepage extends React.Component<any, any> {
+class PublicHomePage extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -60,6 +52,10 @@ export default class Homepage extends React.Component<any, any> {
   }
 
   componentDidMount(){
+
+    //dispatch(checkLoggedIn);
+
+    this.props.checkLoggedIn();
 
     //alert("jsx");
 
@@ -278,7 +274,7 @@ export default class Homepage extends React.Component<any, any> {
 
 
     
-    if(getCookie("sconely_session_id") == null){
+    if(this.props.logged_in){
         
         logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-nav">
@@ -400,3 +396,27 @@ export default class Homepage extends React.Component<any, any> {
     )
   }
 }
+
+const mapStateToProps = (state: any, ownProps: any) => {
+  alert(JSON.stringify(state));
+  return {
+    //active: ownProps.filter === state.visibilityFilter
+    logged_in: state.default.logged_in
+  }
+}
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    checkLoggedIn: () => {
+      alert("check");
+      dispatch(checkLoggedIn())
+    }
+  }
+}
+
+const PublicHomePage1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PublicHomePage)
+
+export default PublicHomePage1

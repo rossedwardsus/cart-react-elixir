@@ -5,13 +5,13 @@
 import * as React from 'react';
 
 import SconelyYoursMenu from './menu.tsx';
-import Cart from './order_datetime_contact_cart.tsx';
+import Cart from './cart.tsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {setDeliveryAddressStreet, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+//import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 import Immutable  = require('immutable');
@@ -112,7 +112,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //alert(this.props.params.order_id);
+    alert(this.props.params.order_id);
 
     /*this._isMounted = true;
     window.onpopstate = ()=> {
@@ -190,10 +190,10 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
 
-    //let cart_items_temp = this.state.cart_items;
+    let cart_items_temp = this.state.cart_items;
     //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
     //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-    //const myNewMap = cart_items_temp.push({item_id: 5});
+    const myNewMap = cart_items_temp.push({item_id: 5});
     //let hello = cart_items_temp.push({item_id: 5});
 
     //alert(JSON.stringify(myNewMap));
@@ -700,7 +700,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             </form>
                             <form className="form-inline">
                               <div className="form-group">
-                                <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                                <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
                               </div>
                             </form>
                             <br/>
@@ -721,7 +721,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             </form>
                             <form className="form-inline">
                               <div className="form-group">
-                                <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                                <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                               </div>
                               <div className="form-group">
                                 <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
@@ -729,8 +729,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             </form>
                             <form className="form-inline">
                               <div className="form-group">
-                                <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                                    <option></option>
+                                <select className="form-control">
                                     <option>Los Angeles</option>
                                 </select>
                               </div>
@@ -819,40 +818,20 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
 
-function mapStateToProps(state: any) {
-  alert("state" + JSON.stringify(state));
+/*function mapStateToProps(state: any) {
   return {
-   //menu_items: state.default.menu_items
+   menu_items: state.default.menu_items
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
 }
 
 function mapDispatchToProps(dispatch: any) {
-  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-  return {
-    setDeliveryAddressStreet: (e: any) => {
-      dispatch(setDeliveryAddressStreet(e.target.value))
-    },
-    setDeliveryAddressCity: (e: any) => {
-      dispatch(setDeliveryAddressCity(e.target.value))
-    },
-    setDeliveryAddressState: (e: any) => {
-      dispatch(setDeliveryAddressState(e.target.value))
-    },
-    setDeliveryAddressZipcode: (e: any) => {
-      dispatch(setDeliveryAddressZipcode(e.target.value))
-    }
-  }
-}
+  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+}*/
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const OrderDateTimeContact1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OrderDateTimeContact)
-
-export default OrderDateTimeContact1;
+export default OrderDateTimeContact;
 

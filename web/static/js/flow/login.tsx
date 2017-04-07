@@ -192,7 +192,7 @@ class Login extends React.Component<any, any> {
                                       <div className="form-group">
                                          <br/>
                                         <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
+                                        <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
                                         <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
                                         <button type="button" className="btn" onClick={() => this.login()}>Login</button> 
                                      </div>

@@ -36,7 +36,7 @@ interface Order {
   //completed: boolean
 }
 
-class Cart extends React.Component<any, any> {
+class MenuCart extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -61,8 +61,8 @@ class Cart extends React.Component<any, any> {
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
 
-    this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
-    this.removeItemFromCart = this.removeItemFromCart.bind(this);
+    //this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
+    //this.removeItemFromCart = this.removeItemFromCart.bind(this);
     
   }
 
@@ -90,11 +90,14 @@ class Cart extends React.Component<any, any> {
 
   }
 
-  updateCartItemQuantity(item_id:any, quantity: any){
+  increaseCartItemQuantity(item_id:any){
 
       //alert(item_id);
 
-      let cart_items_temp = this.state.cart_items;
+      this.props.increaseCartItemQuantity(item_id);
+
+
+      /*let cart_items_temp = this.state.cart_items;
 
       let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
 
@@ -118,7 +121,42 @@ class Cart extends React.Component<any, any> {
 
       //alert(JSON.stringify(cart_items_temp_updated));
 
-      this.setState({cart_items: cart_items_temp_updated});
+      this.setState({cart_items: cart_items_temp_updated});*/
+
+  }
+
+  decreaseCartItemQuantity(item_id:any){
+
+      //alert(item_id);
+
+      this.props.decreaseCartItemQuantity(item_id);
+
+
+      /*let cart_items_temp = this.state.cart_items;
+
+      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+
+          let new_item: any = "";
+
+          if(item.item_id == item_id){
+
+              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+
+          }else{
+
+              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+
+          }
+
+          return new_item;
+
+      });
+
+      //cart_items_temp.
+
+      //alert(JSON.stringify(cart_items_temp_updated));
+
+      this.setState({cart_items: cart_items_temp_updated});*/
 
   }
 
@@ -158,7 +196,7 @@ class Cart extends React.Component<any, any> {
 
     //alert(JSON.stringify(this.props.order.toJS()));
 
-    this.props.order.toJS().cart.map(function(item: any){
+    /*this.props.order.toJS().cart.map(function(item: any){
 
         alert(JSON.stringify(item));
 
@@ -172,41 +210,44 @@ class Cart extends React.Component<any, any> {
 
         }
                       
-    });
+    });*/
 
     //alert(total_cost);
 
 
     let item_count = 0;
 
-    this.props.order.toJS().cart.map(function(item: any){
+    //this.props.order.toJS().cart.map(function(item: any){
 
-        item_count = item.dozens * item.quantity;
+    //    item_count = item.dozens * item.quantity;
               
-    });
+    //});
 
     let cart = "";
 
-    if(item_count == 0){
+    if(this.props.order.length === 0){
 
         cart = "there are no items in your cart";
 
     }else{
 
+        alert("menu cart" + JSON.stringify(this.props.order.order.cart_items));
 
-        cart = this.props.order.toJS().cart.map(function(item: any, index: any){
+
+        cart = this.props.order.order.cart_items.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-                      let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
-                      let item_title = result.get("title");
+                      //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
+                      //let item_title = result.get("title");
+                      let item_title = "";
 
                       if(item.mini == true){
                       
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
 
                       }else{
 
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={removeCartItem.bind(this, index)}>X</a></div><div><a onClick={increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
 
                       }
                   
@@ -258,4 +299,4 @@ function mapDispatchToProps(dispatch: any) {
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
-export default Cart;
+export default MenuCart;

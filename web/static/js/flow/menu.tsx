@@ -1,10 +1,12 @@
-import * as React from 'react'
+'use strict'
 
+import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 
-//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+import {connect} from 'react-redux';
+import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+import MenuCart from './menu_cart.tsx';
 
-//import Dialog from "rc-dialog";
 
 //type Props = {
   //title: string,
@@ -13,7 +15,7 @@ import { Link, browserHistory } from 'react-router'
 //};
 
 
-export default class Menu extends React.Component<any, any> {
+class PublicMenu extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -24,7 +26,7 @@ export default class Menu extends React.Component<any, any> {
 
     this.state = {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
-        selected_item_id: "1111",
+        selected_item_id: 1111,
         selected_item_dozens: "2222",
         selected_item_quantity: "3333",
         selected_item_mini: false,
@@ -41,7 +43,10 @@ export default class Menu extends React.Component<any, any> {
   componentDidMount(){
 
     //get active items from the database
-    alert(this.props.params);
+    //alert(this.props.params);
+
+    //alert(JSON.stringify(this.props.cart_items));
+    //this.props.dispatch();
 
   }
 
@@ -163,7 +168,13 @@ export default class Menu extends React.Component<any, any> {
 
       this.context.router.push('/order/12345/signature');
       
-  }  
+  } 
+
+  addCartItem(){
+
+    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
+
+  }
 
   render(): JSX.Element{
 
@@ -188,8 +199,13 @@ export default class Menu extends React.Component<any, any> {
     //if(this.state.page == "items"){
     //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
+    //alert(this.props.cart_items.length);
+
           return(<div>
                   <br/>
+                  <button>Cart(0)</button>
+                  <br/>
+                  <MenuCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
                   <br/>
                   <div className="row">
                         
@@ -234,7 +250,7 @@ export default class Menu extends React.Component<any, any> {
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" onClick={() => this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini)} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.addCartItem()} className="btn btn-default" data-dismiss="modal">Add</button>
                         </div>
                       </div>
                     </div>
@@ -244,3 +260,37 @@ export default class Menu extends React.Component<any, any> {
     
   }
 }
+
+const mapStateToProps = (state: any, ownProps: any) => {
+  alert("mapstatetoprops " + JSON.stringify(state));
+  return {
+    //active: ownProps.filter === state.visibilityFilter
+
+    //if(state.default.order.cart_items != undefined){
+        
+        order: state.default
+
+    //}
+  }
+}
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    addCartItem: () => {
+      dispatch(addCartItem(1))
+    },
+    increaseCartItemQuantity: () => {
+      dispatch(increaseCartItemQuantity(1))
+    },
+    decreaseCartItemQuantity: () => {
+      dispatch(decreaseCartItemQuantity(1))
+    }
+  }
+}
+
+const PublicMenu1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PublicMenu)
+
+export default PublicMenu1

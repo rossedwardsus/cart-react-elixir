@@ -10,13 +10,19 @@ import * as TestUtils from "react-addons-test-utils";
 
 import { assert, expect } from 'chai';
 //import assert from 'assert';
+import * as sinon from 'sinon';
+import 'jsdom-global/register';
 
+//import jsdom from 'jsdom'
+//const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
+//global.document = doc
+//global.window = doc.defaultView
 
 describe("Hello", () => {
 
 	let renderer: any;
 
-	beforeEach(() => {
+	/*beforeEach(() => {
 
 		renderer = TestUtils.createRenderer();
 		renderer.render(<Login />);
@@ -26,7 +32,54 @@ describe("Hello", () => {
 	it("should render correctly", () => {
         const result = renderer.getRenderOutput();
         assert.strictEqual(result.type, "div");
-    });
+    });*/
+
+
+     it('calls componentDidMount', () => {
+	    //const wrapper = mount(<Login />);
+	    //expect(wrapper.find('.icon-star')).to.have.length(1);
+
+	    //const component = shallow(<Login />)
+	  
+	    //assert.equal(
+	    //	component.find('span').text(), '', 'the visit component has no text'
+	  	//)
+
+	  	//expect(component.prototype.componentDidMount.calledOnce).to.equal(true);
+
+	  	
+	  	//const onButtonClick = sinon.spy();
+	    //const wrapper = shallow(
+	    //  <Foo onButtonClick={onButtonClick} />
+	    //);
+	    //wrapper.find('button').simulate('click');
+	    //expect(onButtonClick).to.have.property('callCount', 1);
+
+	    
+	    sinon.spy(Login.prototype, 'componentDidMount');
+	    const wrapper = mount(<Login />);
+	    expect(Login.prototype.componentDidMount).to.have.property('callCount', 1);
+	    //Foo.prototype.componentDidMount.restore();
+
+	    
+	    //const wrapper = mount(<Login />);
+	    //wrapper.find('button').simulate('click');
+	    //expect(onButtonClick).to.have.property('callCount', 1);
+
+	    //const wrapper = shallow(<Login />);
+		//const email = wrapper.find({id: 'email'});
+		//assert.equal(email.length, 1);
+
+
+	  });
+
+      it('email', () => {
+
+      	const wrapper = shallow(<Login />);
+		const email = wrapper.find({id: 'email'});
+		assert.equal(email.length, 1);
+	 
+	  });
 
 
 	/*var assert = require('assert');

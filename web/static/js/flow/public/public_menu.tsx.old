@@ -1,12 +1,12 @@
 // @flow
 
-import React from 'react'
-
+import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 
-//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+import {connect} from 'react-redux';
+import {addCartItem} from '../actions/cart.ts';
 
-//import Dialog from "rc-dialog";
+
 
 type Props = {
   //title: string,
@@ -15,10 +15,10 @@ type Props = {
 };
 
 
-export default class Menu extends React.Component {
+class PublicMenu extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -83,25 +83,25 @@ export default class Menu extends React.Component {
     
   }*/
 
-  mouseOver(e){
+  mouseOver(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover3.jpg";
 
   }
 
-  mouseOut(e){
+  mouseOut(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover1.jpg";
 
   }
 
-  selectItem(e){
+  selectItem(e: any){
 
     $('#myModal').modal('show'); 
 
   }
 
-  render(): React.Element {
+  render(){
 
               return(
                 <div>
@@ -125,7 +125,7 @@ export default class Menu extends React.Component {
                   <br/>
                   <div className="container-fluid">
                         <div className="row">
-                          {this.state.items.map(function(item){
+                          {this.state.items.map(function(item: any){
 
                             return(
                                     <div className="col-xs-12 col-md-2">
@@ -172,3 +172,25 @@ export default class Menu extends React.Component {
     )
   }
 }
+
+
+const mapStateToProps = (state: any, ownProps: any) => {
+  return {
+    active: ownProps.filter === state.visibilityFilter
+  }
+}
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    addCartItem: () => {
+      dispatch(addCartItem(ownProps.filter))
+    }
+  }
+}
+
+const PublicMenu1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PublicMenu)
+
+export default PublicMenu1

@@ -20,7 +20,7 @@ import thunk from 'redux-thunk';
 
 
 import PublicHomePage from './public/public_home_page.tsx';
-import PublicMenu from './public/public_menu';
+import PublicMenu from './menu.tsx';
 import PublicAboutUs from './public/public_about_us';
 
 import UserHomePage from './user/user_home_page.tsx';
@@ -52,7 +52,9 @@ import SconelySignatureSinglePage from "./sconely_signature_single_page";
 import OrderPayment from "./sconely_yours_social_order_payment";
 import ProfilePayment from "./user/payment";*/
 
-import * as reducers from './reducers/menu.ts';
+import * as cart_reducers from './reducers/cart.ts';
+import * as login_reducers from './reducers/login.ts';
+import * as delivery_address_reducer from './reducers/order_delivery_address.ts';
 
 //type Props = {
 //  todos: Array<Object>,
@@ -73,7 +75,9 @@ const component = (component) => {
 
 
 const reducer = combineReducers({
-  ...reducers,
+  //...cart_reducers,
+  //...login_reducers,
+  ...delivery_address_reducer,
   routing: routerReducer
 })
 
@@ -148,7 +152,7 @@ const Root = () => (
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/public/menu" component={Order} />
+        <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id/cart" component={OrderCart} />
         <Route path="/order/:order_id/datetime_contact" component={OrderDateTimeContact} />
