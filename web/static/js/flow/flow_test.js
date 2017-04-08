@@ -52,9 +52,11 @@ import SconelySignatureSinglePage from "./sconely_signature_single_page";
 import OrderPayment from "./sconely_yours_social_order_payment";
 import ProfilePayment from "./user/payment";*/
 
-import * as cart_reducers from './reducers/cart.ts';
-import * as login_reducers from './reducers/login.ts';
+import * as cart_reducer from './reducers/cart.ts';
+import * as login_reducer from './reducers/login.ts';
 import * as delivery_address_reducer from './reducers/order_delivery_address.ts';
+import * as name_reducer from './reducers/name.ts';
+import * as root_reducer from './reducers/root.ts';
 
 //type Props = {
 //  todos: Array<Object>,
@@ -75,9 +77,11 @@ const component = (component) => {
 
 
 const reducer = combineReducers({
-  //...cart_reducers,
-  //...login_reducers,
-  ...delivery_address_reducer,
+  //...cart_reducer,
+  //...login_reducer,
+  //delivery_address: delivery_address_reducer,
+  //name: name_reducer,
+  ...root_reducer,
   routing: routerReducer
 })
 

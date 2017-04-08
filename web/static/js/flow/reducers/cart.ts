@@ -1,6 +1,6 @@
 import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY } from '../constants/actionTypes.ts';
 
-let menu_items: any;
+/*let menu_items: any;
 
 interface CartState {
   user_type: string;
@@ -18,9 +18,9 @@ let inititalState: CartState = {
   menu_items: [],
   cart: [],
 
-}
+}*/
 
-export default (state:any = inititalState, action: any) => {
+export default (state:any = [], action: any) => {
   switch (action.type) {
     case ADD_CART_ITEM:
       //alert("CartState " + action.item_id);
@@ -45,7 +45,7 @@ export default (state:any = inititalState, action: any) => {
 
       //return Object.assign({}, state, new_state);
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-      return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+      return {order: {order_id: "", name: {first: "", last: ""}, datetime: {date: "", time: ""}, contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
     
 
     case INCREASE_CART_ITEM_QUANTITY:
@@ -178,6 +178,6 @@ export default (state:any = inititalState, action: any) => {
     default:
       //alert();
       //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      return []
+      return state
   }
 };

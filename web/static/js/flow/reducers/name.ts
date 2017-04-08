@@ -1,9 +1,8 @@
-import { CHECK_LOGGED_IN, LOG_IN } from '../constants/actionTypes.ts';
+import { SET_FIRST_NAME, SET_LAST_NAME } from '../constants/actionTypes.ts';
 
-let menu_items: any;
+/*let menu_items: any;
 
 interface CartState {
-  logged_in: string,
   user_type: string;
   address: string;
   payment_method: string;
@@ -11,9 +10,8 @@ interface CartState {
   cart: any;
 };
 
-/*let inititalState: CartState = {
+let inititalState: CartState = {
 
-  logged_in: "",
   user_type: "",
   address: "",
   payment_method: "",
@@ -24,14 +22,9 @@ interface CartState {
 
 export default (state:any = [], action: any) => {
   switch (action.type) {
-    case CHECK_LOGGED_IN:
+    case SET_FIRST_NAME:
       //alert("CartState " + action.item_id);
-      return Object.assign({}, {...state.default, logged_in: true, order: []})
-      //return []
-    
-    case LOG_IN:
-      alert("CartState " + action.item_id);
-      //alert("add cart item " + JSON.stringify(state));
+      alert("furst name" + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -50,13 +43,17 @@ export default (state:any = [], action: any) => {
 
       //let new_state = {cart_items: cart_items_temp};
 
-      //return Object.assign({}, state, new_state);
-      //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
-      //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
+      return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
+
+      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+      //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+    
+
+    
+
     default:
       //alert();
-      //return Object.assign({}, state, {logged_in: true, cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return Object.assign({}, state.default, {})
+      //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
       return state
   }
 };

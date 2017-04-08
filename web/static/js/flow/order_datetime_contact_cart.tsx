@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import OrderDateTimeContactCart from './order_datetime_contact_cart.tsx';
+//import OrderDateTimeContactCart from './order_datetime_contact_cart.tsx';
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 
 //import * as getAllProducts from './actions/menu';

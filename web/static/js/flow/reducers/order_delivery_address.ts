@@ -1,6 +1,6 @@
-import { SET_DELIVERY_ADDRESS_STREET, SET_DELIVERY_ADDRESS_CITY } from '../constants/actionTypes.ts';
+import { SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_CITY } from '../constants/actionTypes.ts';
 
-let menu_items: any;
+/*let menu_items: any;
 
 interface CartState {
   user_type: string;
@@ -18,13 +18,16 @@ let inititalState: CartState = {
   menu_items: [],
   cart: [],
 
-}
+}*/
 
-export default (state:any = inititalState, action: any) => {
+export default (state:any = [], action: any) => {
+
+  let delivery_address_updated = null;
+
   switch (action.type) {
-    case SET_DELIVERY_ADDRESS_STREET:
+    case SET_DELIVERY_ADDRESS_STREET1:
       //alert("CartState " + action.item_id);
-      //alert("add cart item " + JSON.stringify(state));
+      alert("reducer " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -46,7 +49,12 @@ export default (state:any = inititalState, action: any) => {
       //return Object.assign({}, state, new_state);
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-      return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value}})
+      
+      delivery_address_updated = {delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
+
+      //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
+      return Object.assign({}, state, {delivery_address: delivery_address_updated});
+    
 
     case SET_DELIVERY_ADDRESS_CITY:
       //alert("CartState " + action.item_id);
@@ -69,10 +77,12 @@ export default (state:any = inititalState, action: any) => {
 
       //let new_state = {cart_items: cart_items_temp};
 
+      delivery_address_updated = {delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
+
       //return Object.assign({}, state, new_state);
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-      return Object.assign({}, state, {delivery_address: {delivery_address_city: action.value}})
+      return Object.assign({}, state, {delivery_address: delivery_address_updated})
 
 
     
@@ -80,6 +90,6 @@ export default (state:any = inititalState, action: any) => {
     default:
       //alert();
       //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      return []
+      return state
   }
 };

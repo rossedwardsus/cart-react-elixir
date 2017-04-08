@@ -1,6 +1,6 @@
 import { VIEW_PUBLIC_MENU } from '../constants/actionTypes.ts';
 
-let menu_items: any;
+/*let menu_items: any;
 
 interface OrderState {
   user_type: string;
@@ -18,7 +18,7 @@ let inititalState: OrderState = {
   menu_items: [],
   cart: [],
 
-}
+}*/
 
 export default (state:any = [], action: any) => {
   switch (action.type) {

@@ -4,16 +4,18 @@
 
 import * as React from 'react';
 
-import SconelyYoursMenu from './menu.tsx';
+//import SconelyYoursMenu from './menu.tsx';
 import Cart from './order_datetime_contact_cart.tsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {setDeliveryAddressStreet, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
-//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-//import { getPublicMenu } from './reducers/menu';
+import {setDeliveryAddressStreet1, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+import {completeOrder} from './actions/complete_order.ts';
+import {setFirstName} from './actions/order_name.ts';
+import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
+//import { getPublicMenu } from './reducers/name';
 import Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
@@ -269,7 +271,20 @@ class OrderDateTimeContact extends React.Component<any, any> {
   
       //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
       
-  }  
+  }
+
+  setTime(e: any){
+
+      //alert(e.target.value);
+      this.props.setTime(e);
+
+  }
+
+  setSpecificTime(e: any){
+
+      //alert(e.target.value);
+      this.props.setSpecificTime(e);
+  }
 
   addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
 
@@ -556,6 +571,10 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       //if first_name_validated == true && last_name_validated == true
       //process order/dispatch
+
+      //if this.props.order_state = "completed"?
+      //else error
+
       this.context.router.push('/order/12345/order_complete');
 
       //alert(JSON.stringify(this.state.delivery_address_street));
@@ -658,7 +677,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     onChange={() => {}} />
                                 </div>
                                 <div className="col-md-2">
-                                  <select className="form-control" id="exampleInputEmail2">
+                                  <select className="form-control" id="exampleInputEmail2" onChange={(e: any) => this.setTime(e)}>
+                                      <option></option>
                                       <option>9:00 am - 11:00 am</option>
                                       <option>1:00 pm - 3:00 pm</option>
                                   </select>
@@ -668,7 +688,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                               <div className="form-group">
                                 <div className="col-md-4">
-                                    <select className="form-control">
+                                    <select className="form-control" onChange={(e: any) => this.setSpecificTime(e)}>
+                                        <option></option>
                                         <option>9:00</option>
                                         <option>9:30</option>
                                         <option>10:00</option>
@@ -692,7 +713,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             </form>
                             <form className="form-inline">
                               <div className={this.state.first_name_classname}>
-                                <input type="text" onChange={(e: any) => this.setFirstName(e)} onBlur={() => this.onBlurFirstName()} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                                <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
                               </div>
                               <div className={this.state.last_name_classname}>
                                 <input type="text" onChange={(e: any) => this.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
@@ -831,8 +852,20 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setDeliveryAddressStreet: (e: any) => {
-      dispatch(setDeliveryAddressStreet(e.target.value))
+    setDate: (e: any) => {
+      dispatch(setDate(e.target.value))
+    },
+    setTime: (e: any) => {
+      dispatch(setTime(e.target.value))
+    },
+    setSpecificTime: (e: any) => {
+      dispatch(setSpecificTime(e.target.value))
+    },
+    setFirstName: (e: any) => {
+      dispatch(setFirstName(e.target.value))
+    },
+    setDeliveryAddressStreet1: (e: any) => {
+      dispatch(setDeliveryAddressStreet1(e.target.value))
     },
     setDeliveryAddressCity: (e: any) => {
       dispatch(setDeliveryAddressCity(e.target.value))
@@ -842,6 +875,11 @@ function mapDispatchToProps(dispatch: any) {
     },
     setDeliveryAddressZipcode: (e: any) => {
       dispatch(setDeliveryAddressZipcode(e.target.value))
+    },
+    completeOrder: () => {
+
+      dispatch(completeOrder());
+
     }
   }
 }

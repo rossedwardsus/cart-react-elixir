@@ -1,9 +1,9 @@
-import {SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_DELIVERY_ADDRESS_STREET, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
 
-export function setDeliveryAddressStreet1(value: any) {
-  alert("setDeliveryAddressStreet");
+export function setDeliveryAddressStreet(value: any) {
+  alert("addCartItem from redux");
   return {
-    type: SET_DELIVERY_ADDRESS_STREET1,
+    type: SET_DELIVERY_ADDRESS_STREET,
     value
   }
 }
