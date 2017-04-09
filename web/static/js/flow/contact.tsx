@@ -193,34 +193,10 @@ class DeliveryAddress extends React.Component<any, any> {
   }
 
   
-  setDeliveryAddressStreet1(){
 
-
-
-  }
-
-  setDeliveryAddressStreet2(){
-
-
-  }
   
 
-  setDeliveryAddressCity(){
-
-
-  }
-
-
-  setDeliveryAddressState(){
-
-
-  }
-
-  setDeliveryAddressZipCode(){
-
-
-  }
-
+  
   
   
   render(): JSX.Element{

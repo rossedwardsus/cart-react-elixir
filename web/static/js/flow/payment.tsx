@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class DeliveryAddress extends React.Component<any, any> {
+class Payment extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -192,35 +192,23 @@ class DeliveryAddress extends React.Component<any, any> {
 
   }
 
-  
-  setDeliveryAddressStreet1(){
+  setCardNumber(){
 
 
 
   }
 
-  setDeliveryAddressStreet2(){
+  setExpiryDate(){
 
-
-  }
-  
-
-  setDeliveryAddressCity(){
 
 
   }
 
+  setSecurityCode(){
 
-  setDeliveryAddressState(){
 
-
+    
   }
-
-  setDeliveryAddressZipCode(){
-
-
-  }
-
   
   
   render(): JSX.Element{
@@ -271,5 +259,5 @@ class DeliveryAddress extends React.Component<any, any> {
 }
 
 
-export default DeliveryAddress;
+export default DateTime;
 

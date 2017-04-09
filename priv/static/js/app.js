@@ -29705,12 +29705,6 @@ webpackJsonp([0],[
 	var cart_ts_1 = __webpack_require__(935);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(933);
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
 	
 	var OrderCart = function (_React$Component) {
 	    _inherits(OrderCart, _React$Component);
@@ -29741,21 +29735,21 @@ webpackJsonp([0],[
 	        //just show cart if guest
 	        //or separate into order_menu and order_delivery_address_payment objects
 	        //or have everything work of a "pages" flag
-	        _this.addCartItem = _this.addCartItem.bind(_this);
-	        _this.increaseCartItemQuantity = _this.increaseCartItemQuantity.bind(_this);
-	        _this.decreaseCartItemQuantity = _this.decreaseCartItemQuantity.bind(_this);
-	        _this.removeCartItem = _this.removeCartItem.bind(_this);
-	        _this.addDeliveryAddress = _this.addDeliveryAddress.bind(_this);
-	        _this.setDeliveryAddressStreet = _this.setDeliveryAddressStreet.bind(_this);
-	        _this.setDeliveryAddressCity = _this.setDeliveryAddressCity.bind(_this);
-	        _this.setDeliveryAddressZipcode = _this.setDeliveryAddressZipcode.bind(_this);
-	        _this.setCardNumber = _this.setCardNumber.bind(_this);
-	        _this.setExpiryDate = _this.setExpiryDate.bind(_this);
-	        _this.setSecurityCode = _this.setSecurityCode.bind(_this);
-	        _this.showMenu = _this.showMenu.bind(_this);
-	        _this.showCart = _this.showCart.bind(_this);
-	        _this.showDeliveryAddressPayment = _this.showDeliveryAddressPayment.bind(_this);
-	        _this.completeOrder = _this.completeOrder.bind(_this);
+	        /*this.addCartItem = this.addCartItem.bind(this);
+	        this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
+	        this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
+	        this.removeCartItem = this.removeCartItem.bind(this);
+	        this.addDeliveryAddress = this.addDeliveryAddress.bind(this);
+	        this.setDeliveryAddressStreet = this.setDeliveryAddressStreet.bind(this);
+	        this.setDeliveryAddressCity = this.setDeliveryAddressCity.bind(this);
+	        this.setDeliveryAddressZipcode = this.setDeliveryAddressZipcode.bind(this);
+	        this.setCardNumber = this.setCardNumber.bind(this);
+	        this.setExpiryDate = this.setExpiryDate.bind(this);
+	        this.setSecurityCode = this.setSecurityCode.bind(this);
+	        this.showMenu = this.showMenu.bind(this);
+	        this.showCart = this.showCart.bind(this);
+	        this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
+	        this.completeOrder = this.completeOrder.bind(this);*/
 	        return _this;
 	    }
 	
@@ -29842,67 +29836,56 @@ webpackJsonp([0],[
 	            //console.log(this.props.dispatch(addTodoWithDispatch));
 	            //this.props.getAllProducts();
 	        }
-	    }, {
-	        key: "showMenu",
-	        value: function showMenu() {
-	            //alert();
-	            this.setState({ page: "menu" });
-	        }
-	    }, {
-	        key: "showDeliveryAddressPayment",
-	        value: function showDeliveryAddressPayment() {
-	            //alert();
-	            this.setState({ page: "delivery_address_payment" });
-	        }
-	    }, {
-	        key: "showCart",
-	        value: function showCart() {
-	            this.setState({ page: "cart" });
-	        }
-	    }, {
-	        key: "goToDateTime",
-	        value: function goToDateTime() {
+	        /*showMenu(){
+	               //alert();
+	               this.setState({page: "menu"});
+	           }
+	           showDeliveryAddressPayment(){
+	               //alert();
+	               this.setState({page: "delivery_address_payment"})
+	           }
+	           showCart(){
+	               this.setState({page: "cart"})
+	           }
+	         
+	        goToDateTime(){
+	        
 	            //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
-	        }
-	    }, {
-	        key: "addCartItem",
-	        value: function addCartItem(item_id, item_dozens, item_quantity, mini) {
-	            //alert(item_id + "" + item_dozens + "" + item_quantity);
-	            var order_temp = this.state.order;
-	            //item_id, quanity, mini
-	            var new_cart_items = [];
-	            //order_temp.set('key', .get('key').push
-	            var order_temp_updated = order_temp.updateIn(['cart'], function (arr) {
-	                return arr.push({ item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini });
-	            });
-	            //for(let i: any = 0; i <= item_quantity - 1; i++){
-	            //alert();
-	            //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});
-	            /*const myMap = Immutable.fromJS({
-	              nested: {
-	                someKey: ['hello', 'world'],
-	              },
-	            });
-	                 //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
-	            //var newMap = myMap.set('key', myMap.get('key').push(newData))
-	            //let cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
-	            //}
-	            //alert(JSON.stringify(new_cart_items));
-	            //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
-	            //alert(JSON.stringify(cart_items_temp_updated));
-	            this.setState({ order: order_temp_updated });
-	        }
+	            
+	        }*/
+	        /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
+	             //alert(item_id + "" + item_dozens + "" + item_quantity);
+	             let order_temp = this.state.order;
+	             //item_id, quanity, mini
+	             let new_cart_items: any = [];
+	             //order_temp.set('key', .get('key').push
+	          let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));*/
+	        //for(let i: any = 0; i <= item_quantity - 1; i++){
+	        //alert();
+	        //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});
+	        /*const myMap = Immutable.fromJS({
+	          nested: {
+	            someKey: ['hello', 'world'],
+	          },
+	        });
+	         //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
+	        //var newMap = myMap.set('key', myMap.get('key').push(newData))
+	        //let cart_items_temp = this.state.cart_items;
+	        //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
+	        //}
+	        //alert(JSON.stringify(new_cart_items));
+	        //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
+	        //alert(JSON.stringify(cart_items_temp_updated));
+	        //this.setState({order: order_temp_updated});
+	        //}
 	        //selectItemDozens(e: any){
 	        //    alert(e.target.value);
 	        //}
+	        /*addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
+	               //alert(street);
+	               //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
+	           }*/
 	
-	    }, {
-	        key: "addDeliveryAddress",
-	        value: function addDeliveryAddress(street, city, state, zipcode) {
-	            //alert(street);
-	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	        }
 	    }, {
 	        key: "removeCartItem",
 	        value: function removeCartItem(index) {
@@ -29929,94 +29912,81 @@ webpackJsonp([0],[
 	            });
 	            this.setState({ cart_items: cart_items_temp_updated });
 	        }
-	    }, {
-	        key: "setFirstName",
-	        value: function setFirstName(e) {
-	            //let order_temp = this.state.order;
+	        /*setFirstName(e: any){
+	               //let order_temp = this.state.order;
 	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
 	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	            alert(e.target.value);
-	            //this.setState({order: order_temp_udated});
-	        }
-	    }, {
-	        key: "setLastName",
-	        value: function setLastName(e) {
-	            //let order_temp = this.state.order;
+	               alert(e.target.value);
+	               //this.setState({order: order_temp_udated});
+	           }
+	           setLastName(e: any){
+	               //let order_temp = this.state.order;
 	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
 	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	            alert(e.target.value);
-	            //this.setState({order: order_temp_udated});
-	        }
-	    }, {
-	        key: "setContactEmail",
-	        value: function setContactEmail(e) {
-	            //let order_temp = this.state.order;
+	               alert(e.target.value);
+	               //this.setState({order: order_temp_udated});
+	           }
+	           setContactEmail(e: any){
+	               //let order_temp = this.state.order;
 	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
 	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	            alert(e.target.value);
-	            //this.setState({order: order_temp_udated});
-	        }
-	    }, {
-	        key: "setContactMobile",
-	        value: function setContactMobile(e) {
-	            //let order_temp = this.state.order;
+	               alert(e.target.value);
+	               //this.setState({order: order_temp_udated});
+	           }
+	           setContactMobile(e: any){
+	               //let order_temp = this.state.order;
 	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
 	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	            alert(e.target.value);
-	            //this.setState({order: order_temp_udated});
-	        }
-	    }, {
-	        key: "setCompanyName",
-	        value: function setCompanyName(e) {
-	            //let order_temp = this.state.order;
+	               alert(e.target.value);
+	               //this.setState({order: order_temp_udated});
+	           }
+	           setCompanyName(e: any){
+	               //let order_temp = this.state.order;
 	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
 	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	            alert(e.target.value);
-	            //this.setState({order: order_temp_udated});
+	               alert(e.target.value);
+	               //this.setState({order: order_temp_udated});
+	           }
+	         
+	        setDeliveryAddressStreet(e: any){
+	              //alert(e.target.value);
+	              //this.state.order
+	              let delivery_address_temp = this.state.delivery_address;
+	              let delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
+	              //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+	              this.setState({delivery_address: delivery_address_temp_updated});
+	           }
+	           setDeliveryAddressState(e: any){
+	              let delivery_address_temp = this.state.delivery_address;
+	              let delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
+	              //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+	              this.setState({delivery_address: delivery_address_temp_updated});
+	         
 	        }
-	    }, {
-	        key: "setDeliveryAddressStreet",
-	        value: function setDeliveryAddressStreet(e) {
-	            //alert(e.target.value);
-	            //this.state.order
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
+	           setDeliveryAddressCity(e: any){
+	              let delivery_address_temp = this.state.delivery_address;
+	              let delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
+	              //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+	              this.setState({delivery_address: delivery_address_temp_updated});
+	         
 	        }
-	    }, {
-	        key: "setDeliveryAddressState",
-	        value: function setDeliveryAddressState(e) {
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
+	           setDeliveryAddressZipcode(e: any){
+	              let delivery_address_temp = this.state.delivery_address;
+	              let delivery_address_temp_updated = delivery_address_temp.set("zipcode", e.target.value);
+	              //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
+	              this.setState({delivery_address: delivery_address_temp_updated});
+	         
 	        }
-	    }, {
-	        key: "setDeliveryAddressCity",
-	        value: function setDeliveryAddressCity(e) {
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
-	        }
-	    }, {
-	        key: "setDeliveryAddressZipcode",
-	        value: function setDeliveryAddressZipcode(e) {
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("zipcode", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
-	        }
-	    }, {
-	        key: "setCardNumber",
-	        value: function setCardNumber(e) {}
-	    }, {
-	        key: "setExpiryDate",
-	        value: function setExpiryDate(e) {}
-	    }, {
-	        key: "setSecurityCode",
-	        value: function setSecurityCode(e) {}
+	           setCardNumber(e: any){
+	         
+	           }
+	           setExpiryDate(e: any){
+	         
+	           }
+	           setSecurityCode(e: any){
+	         
+	           }*/
+	
 	    }, {
 	        key: "completeOrder",
 	        value: function completeOrder() {

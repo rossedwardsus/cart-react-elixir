@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class DeliveryAddress extends React.Component<any, any> {
+class Name extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -192,36 +192,17 @@ class DeliveryAddress extends React.Component<any, any> {
 
   }
 
-  
-  setDeliveryAddressStreet1(){
+  setFirstName(){
+
+
+  }
+
+  setLastName(){
 
 
 
   }
 
-  setDeliveryAddressStreet2(){
-
-
-  }
-  
-
-  setDeliveryAddressCity(){
-
-
-  }
-
-
-  setDeliveryAddressState(){
-
-
-  }
-
-  setDeliveryAddressZipCode(){
-
-
-  }
-
-  
   
   render(): JSX.Element{
 
@@ -271,5 +252,5 @@ class DeliveryAddress extends React.Component<any, any> {
 }
 
 
-export default DeliveryAddress;
+export default Name;
 

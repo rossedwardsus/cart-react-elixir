@@ -3,22 +3,27 @@
 
 
 import * as React from 'react';
+
+//import SconelyYoursMenu from './menu.tsx';
+//import Cart from './cart.tsx';
+//import DeliveryAddressPayment from './delivery_address_payment.tsx';
+
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 import Immutable  = require('immutable');
 
 
-/*function addTodoWithDispatch() {
+function addTodoWithDispatch() {
   const action = {
     type: "VIEW_PUBLIC_MENU",
     //text
   }
   //dispatch(action)
-}*/
+}
 
 export interface HelloProps { 
     compiler: string; 
@@ -64,7 +69,7 @@ class OrderCart extends React.Component<any, any> {
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
     
-    /*this.addCartItem = this.addCartItem.bind(this);
+    this.addCartItem = this.addCartItem.bind(this);
     this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
     this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
@@ -78,7 +83,7 @@ class OrderCart extends React.Component<any, any> {
     this.showMenu = this.showMenu.bind(this);
     this.showCart = this.showCart.bind(this);
     this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
-    this.completeOrder = this.completeOrder.bind(this);*/
+    this.completeOrder = this.completeOrder.bind(this);
 
   }
 
@@ -203,7 +208,7 @@ class OrderCart extends React.Component<any, any> {
 
   }
 
-  /*showMenu(){
+  showMenu(){
 
       //alert();
 
@@ -230,9 +235,9 @@ class OrderCart extends React.Component<any, any> {
   
       //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
       
-  }*/
+  }  
 
-  /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
+  addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
 
     //alert(item_id + "" + item_dozens + "" + item_quantity);
 
@@ -243,7 +248,7 @@ class OrderCart extends React.Component<any, any> {
     let new_cart_items: any = [];
 
     //order_temp.set('key', .get('key').push
-    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));*/
+    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
 
 
     //for(let i: any = 0; i <= item_quantity - 1; i++){
@@ -277,10 +282,10 @@ class OrderCart extends React.Component<any, any> {
 
      //alert(JSON.stringify(cart_items_temp_updated));
 
-     //this.setState({order: order_temp_updated});
+     this.setState({order: order_temp_updated});
 
 
-  //}
+  }
 
   //selectItemDozens(e: any){
 
@@ -288,13 +293,13 @@ class OrderCart extends React.Component<any, any> {
 
   //}
 
-  /*addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
+  addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
 
       //alert(street);
 
       //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
-  }*/
+  }
 
   removeCartItem(index: any){
 
@@ -329,7 +334,7 @@ class OrderCart extends React.Component<any, any> {
   }  
 
   
-  /*setFirstName(e: any){
+  setFirstName(e: any){
 
       //let order_temp = this.state.order;
       //.setIn([ 'user', 'profile', 'name' ], 'Jack')
@@ -461,7 +466,7 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-  }*/
+  }
 
   completeOrder(){
 
@@ -592,40 +597,20 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  alert("mapstatetoprops " + JSON.stringify(state));
+/*function mapStateToProps(state: any) {
   return {
-    //active: ownProps.filter === state.visibilityFilter
-
-    //if(state.default.order.cart_items != undefined){
-        
-        order: state.default
-
-    //}
-  }
+   menu_items: state.default.menu_items
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
 }
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1))
-    },
-    increaseCartItemQuantity: () => {
-      dispatch(increaseCartItemQuantity(1))
-    },
-    decreaseCartItemQuantity: () => {
-      dispatch(decreaseCartItemQuantity(1))
-    }
-  }
-}
-
-const OrderCart1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OrderCart)
+function mapDispatchToProps(dispatch: any) {
+  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+}*/
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderCart1;
+export default OrderCart;
 
