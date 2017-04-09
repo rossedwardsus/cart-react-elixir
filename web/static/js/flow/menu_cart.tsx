@@ -193,29 +193,10 @@ class MenuCart extends React.Component<any, any> {
     }
 
     let total_cost = 0;
+    let item_count = 0;
 
     //alert(JSON.stringify(this.props.order.toJS()));
-
-    /*this.props.order.toJS().cart.map(function(item: any){
-
-        alert(JSON.stringify(item));
-
-        if(item.mini == true){
-                      
-          total_cost = total_cost + ((item.dozens * item.quantity) * 2);
-
-        }else{
-
-          total_cost = total_cost + ((item.dozens * item.quantity) * 5);
-
-        }
-                      
-    });*/
-
-    //alert(total_cost);
-
-
-    let item_count = 0;
+   
 
     //this.props.order.toJS().cart.map(function(item: any){
 
@@ -225,14 +206,36 @@ class MenuCart extends React.Component<any, any> {
 
     let cart = "";
 
-    if(this.props.order.length === 0){
+    alert("length order" + JSON.stringify(this.props.order));
+
+
+    if(this.props.order.length == 0){
 
         cart = "there are no items in your cart";
 
     }else{
 
-        alert("menu cart" + JSON.stringify(this.props.order.order.cart_items));
+        alert("order " + JSON.stringify(this.props.order));
 
+        this.props.order.order.cart_items.map(function(item: any){
+
+            alert("item " + JSON.stringify(item));
+
+            if(item.mini == true){
+                          
+              total_cost = total_cost + ((item.dozens * item.quantity) * 2);
+              item_count = item_count + (item.dozens * item.quantity);
+
+            }else{
+
+              total_cost = total_cost + ((item.dozens * item.quantity) * 5);
+              item_count = item_count + (item.dozens * 12 * item.quantity);
+
+            }
+                          
+        });
+
+    //alert(total_cost);
 
         cart = this.props.order.order.cart_items.map(function(item: any, index: any){
 
@@ -243,11 +246,11 @@ class MenuCart extends React.Component<any, any> {
 
                       if(item.mini == true){
                       
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
 
                       }else{
 
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
 
                       }
                   
@@ -258,17 +261,21 @@ class MenuCart extends React.Component<any, any> {
     //{this.props.params.repoName}
 
     return (<div> 
+                  <br/>
+                  <br/>
                   {cart}
                   <br/>
-                  Total Items = {item_count}
                   <br/>
-                  Sub Total {total_cost}
+                  Total Items = {item_count} Scones
+                  <br/>
+                  Sub Total ${total_cost}.00
+                  <br/>
                   <br/>
                   show delivery address button if cart item count is larger then 0
                   <br/>
-                  <Link to="/public/menu">Menu</Link>
+                  <Link to="/public/menu">Menu-dont show if on menu page</Link>
                   <br/>
-                  <Link to="/order/12345/datetime_contact">Menu</Link>
+                  <Link to="/order/12345/datetime_contact">Date Time and Payment</Link>
             </div>
     )
   }

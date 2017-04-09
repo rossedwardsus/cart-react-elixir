@@ -26699,7 +26699,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.CREATE_ORDER = 'CREATE_ORDER';
-	exports.ADD_CART_ITEM = 'ADD_ITEM_TO_CART';
+	exports.ADD_CART_ITEM = 'ADD_CART_ITEM';
 	exports.REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
 	exports.INCREASE_CART_ITEM_QUANTITY = 'INCREASE_CART_ITEM_QUANTITY';
 	exports.DECREASE_CART_ITEM_QUANTITY = 'DECREASE_CART_ITEM_QUANTITY';
@@ -26740,6 +26740,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(142);
+	var react_router_1 = __webpack_require__(556);
 	var react_redux_1 = __webpack_require__(173);
 	var cart_ts_1 = __webpack_require__(935);
 	var menu_cart_tsx_1 = __webpack_require__(936);
@@ -26763,13 +26764,13 @@ webpackJsonp([0],[
 	        _this.state = {
 	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }],
 	            selected_item_id: 1111,
-	            selected_item_dozens: "2222",
+	            selected_item_dozens: "12",
 	            selected_item_quantity: "3333",
 	            selected_item_mini: false
 	        };
 	        //this.loadCart = this.loadCart.bind(this);
-	        _this.showItem = _this.showItem.bind(_this);
-	        _this.selectedCartItem = _this.selectedCartItem.bind(_this);
+	        //this.showItem = this.showItem.bind(this);
+	        //this.selectedCartItem = this.selectedCartItem.bind(this);
 	        //this.selectedItemQuantity = this.selectedQuantity.bind(this);
 	        return _this;
 	    }
@@ -26784,32 +26785,6 @@ webpackJsonp([0],[
 	        }
 	    }, {
 	        key: "mouseOver",
-	
-	        /*loadCart(){
-	             this.setState({page: "cart"});
-	          //remove/change quantity
-	           }
-	           loadItems(){
-	             this.setState({page: "items"});
-	          //remove/change quantity
-	           }*/
-	        /*removeitem(item_id){
-	             //find item and remove it via split maybe
-	          //this.setState({cart: cart_temp});
-	             var cart_temp = this.state.cart;
-	          var cart_temp1 = "";
-	          
-	          //var cart_temp = cart_temp.filter(function(item) {
-	          //    return item.name !== "John";
-	          //});
-	             //cart_temp.map(function(i, v){
-	                     //if v.item_id == item_id{
-	                       //.splice(0,1);
-	                     //}
-	                
-	          //}
-	          
-	        }*/
 	        value: function mouseOver(e) {
 	            e.target.src = "/images/menu/DWK_greenrollover3.jpg";
 	        }
@@ -26821,49 +26796,37 @@ webpackJsonp([0],[
 	    }, {
 	        key: "showItem",
 	        value: function showItem(item_id) {
-	            //alert(item_id);
-	            //this.setState({selected_item_id: item_id});
+	            alert(item_id);
+	            this.setState({ selected_item_id: item_id });
 	            $('#myModal').modal('show');
 	        }
 	    }, {
 	        key: "selectedItemDozens",
 	        value: function selectedItemDozens(e) {
-	            //alert(e.target.value);
+	            alert(e.target.value);
 	            this.setState({ selected_item_dozens: e.target.value });
-	            if (e.target.value == "12") {
-	                this.setState({ selected_item_mini: false });
-	            } else {
-	                //this.setState({selected_item_mini: true});
-	            }
-	        }
-	    }, {
-	        key: "selectedCartItem",
-	        value: function selectedCartItem(e) {
-	            //alert(e.target.value);
-	            if (e.target.value.indexOf("mini") > -1) {
-	                //alert("true");
-	                this.setState({ mini: true });
-	            } else {
-	                this.setState({ mini: false });
-	            }
-	            this.setState({ item: e.target.id });
-	            this.setState({ item_quantity: e.target.value });
+	            /*if(e.target.value == "12"){
+	                   this.setState({selected_item_mini: false});
+	               }else{
+	                   //this.setState({selected_item_mini: true});
+	               }*/
 	        }
 	    }, {
 	        key: "selectedItemQuantity",
 	        value: function selectedItemQuantity(e) {
-	            //alert(e.target.value);
-	            //this.setState({selected_item_quantity: e.target.value});
+	            alert(e.target.value);
+	            this.setState({ selected_item_quantity: e.target.value });
+	        }
+	    }, {
+	        key: "addCartItem",
+	        value: function addCartItem() {
+	            //if they haven't selected quantity and dozens dont submit
+	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 	        }
 	    }, {
 	        key: "goToDateTimeContact",
 	        value: function goToDateTimeContact() {
 	            this.context.router.push('/order/12345/signature');
-	        }
-	    }, {
-	        key: "addCartItem",
-	        value: function addCartItem() {
-	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 	        }
 	    }, {
 	        key: "render",
@@ -26872,21 +26835,10 @@ webpackJsonp([0],[
 	
 	            var that = this;
 	            var page = "";
-	            var value_12 = "";
-	            var value_24 = "";
-	            var mini_12 = "";
-	            var addCartItem = this.props.addCartItem;
-	            /*this.state.items.map(function(item){
-	             
-	                value_12 = item.item_id + "_" + 12;
-	                value_24 = item.item_id + "_" + 24;
-	                mini_12 = value_12 + "_mini";
-	                 });*/
 	            //if(this.state.page == "items"){
 	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	            //alert(this.props.cart_items.length);
-	
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("button", null, "Cart(0)"), React.createElement("br", null), React.createElement(menu_cart_tsx_1.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }), React.createElement("br", null), React.createElement("div", { className: "row" }, this.state.menu_items.map(function (item) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(menu_cart_tsx_1.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/1234/cart" }, "Login"), React.createElement("br", null), this.state.menu_items.map(function (item) {
 	                var _this2 = this;
 	
 	                return React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
@@ -26896,13 +26848,13 @@ webpackJsonp([0],[
 	                    }, onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
 	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone"))));
-	            }.bind(this))), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: "", onChange: function onChange(value) {
+	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(value) {
 	                    return _this3.selectedItemDozens(value);
-	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: "", onChange: function onChange(value) {
+	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity, onChange: function onChange(value) {
 	                    return _this3.selectedItemQuantity(value);
 	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", onClick: function onClick() {
 	                    return _this3.addCartItem();
-	                }, className: "btn btn-default", "data-dismiss": "modal" }, "Add"))))));
+	                }, className: "btn btn-default", "data-dismiss": "modal" }, "Add-only show if cart items larger then 1"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -26927,7 +26879,7 @@ webpackJsonp([0],[
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {
-	        addCartItem: function addCartItem() {
+	        addCartItem: function addCartItem(item_id, dozens, quantity) {
 	            dispatch(cart_ts_1.addCartItem(1));
 	        },
 	        increaseCartItemQuantity: function increaseCartItemQuantity() {
@@ -27115,27 +27067,28 @@ webpackJsonp([0],[
 	                body = "delivery address payment";
 	            }
 	            var total_cost = 0;
-	            //alert(JSON.stringify(this.props.order.toJS()));
-	            /*this.props.order.toJS().cart.map(function(item: any){
-	                     alert(JSON.stringify(item));
-	                     if(item.mini == true){
-	                              
-	                  total_cost = total_cost + ((item.dozens * item.quantity) * 2);
-	                     }else{
-	                       total_cost = total_cost + ((item.dozens * item.quantity) * 5);
-	                     }
-	                              
-	            });*/
-	            //alert(total_cost);
 	            var item_count = 0;
+	            //alert(JSON.stringify(this.props.order.toJS()));
 	            //this.props.order.toJS().cart.map(function(item: any){
 	            //    item_count = item.dozens * item.quantity;
 	            //});
 	            var cart = "";
-	            if (this.props.order.length === 0) {
+	            alert("length order" + JSON.stringify(this.props.order));
+	            if (this.props.order.length == 0) {
 	                cart = "there are no items in your cart";
 	            } else {
-	                alert("menu cart" + JSON.stringify(this.props.order.order.cart_items));
+	                alert("order " + JSON.stringify(this.props.order));
+	                this.props.order.order.cart_items.map(function (item) {
+	                    alert("item " + JSON.stringify(item));
+	                    if (item.mini == true) {
+	                        total_cost = total_cost + item.dozens * item.quantity * 2;
+	                        item_count = item_count + item.dozens * item.quantity;
+	                    } else {
+	                        total_cost = total_cost + item.dozens * item.quantity * 5;
+	                        item_count = item_count + item.dozens * 12 * item.quantity;
+	                    }
+	                });
+	                //alert(total_cost);
 	                cart = this.props.order.order.cart_items.map(function (item, index) {
 	                    var _this2 = this;
 	
@@ -27144,13 +27097,13 @@ webpackJsonp([0],[
 	                    //let item_title = result.get("title");
 	                    var item_title = "";
 	                    if (item.mini == true) {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "X")), React.createElement("div", null, React.createElement("a", { className: "col-md-1", onClick: function onClick() {
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "Cost")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "X")), React.createElement("div", null, React.createElement("a", { className: "col-md-1", onClick: function onClick() {
 	                                return _this2.increaseCartItemQuantity(1);
 	                            } }, "+"), React.createElement("a", { className: "col-md-1", onClick: function onClick() {
 	                                return _this2.decreaseCartItemQuantity(1);
 	                            } }, "-")));
 	                    } else {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "X")), React.createElement("div", null, React.createElement("a", { className: "col-md-1", onClick: function onClick() {
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "Cost")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "X")), React.createElement("div", null, React.createElement("a", { className: "col-md-1", onClick: function onClick() {
 	                                return _this2.increaseCartItemQuantity(1);
 	                            } }, "+"), React.createElement("a", { className: "col-md-1", onClick: function onClick() {
 	                                return _this2.decreaseCartItemQuantity(1);
@@ -27159,7 +27112,7 @@ webpackJsonp([0],[
 	                }.bind(this));
 	            }
 	            //{this.props.params.repoName}
-	            return React.createElement("div", null, cart, React.createElement("br", null), "Total Items = ", item_count, React.createElement("br", null), "Sub Total ", total_cost, React.createElement("br", null), "show delivery address button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/datetime_contact" }, "Menu"));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("br", null), "Total Items = ", item_count, " Scones", React.createElement("br", null), "Sub Total $", total_cost, ".00", React.createElement("br", null), React.createElement("br", null), "show delivery address button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-dont show if on menu page"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/datetime_contact" }, "Date Time and Payment"));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -29747,8 +29700,9 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(142);
+	var react_redux_1 = __webpack_require__(173);
 	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	var cart_ts_1 = __webpack_require__(935);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(933);
 	function addTodoWithDispatch() {
@@ -30149,21 +30103,32 @@ webpackJsonp([0],[
 	
 	    return OrderCart;
 	}(React.Component);
-	/*function mapStateToProps(state: any) {
-	  return {
-	   menu_items: state.default.menu_items
-	   //menu_items: getPublicMenu
-	   //menu_items: dispatch()
-	  };
-	}
 	
-	function mapDispatchToProps(dispatch: any) {
-	  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	}*/
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    alert("mapstatetoprops " + JSON.stringify(state));
+	    return {
+	        //active: ownProps.filter === state.visibilityFilter
+	        //if(state.default.order.cart_items != undefined){
+	        order: state.default
+	        //}
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	    return {
+	        addCartItem: function addCartItem(item_id, dozens, quantity) {
+	            dispatch(cart_ts_1.addCartItem(1));
+	        },
+	        increaseCartItemQuantity: function increaseCartItemQuantity() {
+	            dispatch(cart_ts_1.increaseCartItemQuantity(1));
+	        },
+	        decreaseCartItemQuantity: function decreaseCartItemQuantity() {
+	            dispatch(cart_ts_1.decreaseCartItemQuantity(1));
+	        }
+	    };
+	};
+	var OrderCart1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderCart);
 	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-	
-	
-	exports.default = OrderCart;
+	exports.default = OrderCart1;
 
 /***/ },
 /* 1064 */
@@ -32934,6 +32899,8 @@ webpackJsonp([0],[
 
 	"use strict";
 	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(932);
 	/*let menu_items: any;
@@ -32961,9 +32928,35 @@ webpackJsonp([0],[
 	
 	    var delivery_address_updated = null;
 	    switch (action.type) {
+	        case actionTypes_ts_1.ADD_CART_ITEM:
+	            //alert("CartState " + action.item_id);
+	            alert("add cart item" + JSON.stringify(state.order));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            if (state.order === undefined) {
+	                alert("cart items");
+	                return { order: { cart_items: [{ item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true }] } };
+	            } else {
+	                alert("else");
+	                //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
+	                return { order: { cart_items: [].concat(_toConsumableArray(state.order.cart_items), [{ item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true }]) } };
+	            }
 	        case actionTypes_ts_1.SET_FIRST_NAME:
 	            //alert("CartState " + action.item_id);
-	            alert("furst name" + JSON.stringify(state));
+	            alert("set first name" + JSON.stringify(state));
 	            //alert("view public menu reducer" + JSON.stringify(action));
 	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
 	            //return "hello";

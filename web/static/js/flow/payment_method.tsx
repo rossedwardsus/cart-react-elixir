@@ -3,11 +3,16 @@
 
 
 import * as React from 'react';
+
+//import SconelyYoursMenu from './menu.tsx';
+//import Cart from './cart.tsx';
+//import DeliveryAddressPayment from './delivery_address_payment.tsx';
+
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 import Immutable  = require('immutable');
 
@@ -592,40 +597,20 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  alert("mapstatetoprops " + JSON.stringify(state));
+/*function mapStateToProps(state: any) {
   return {
-    //active: ownProps.filter === state.visibilityFilter
-
-    //if(state.default.order.cart_items != undefined){
-        
-        order: state.default
-
-    //}
-  }
+   menu_items: state.default.menu_items
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
 }
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1))
-    },
-    increaseCartItemQuantity: () => {
-      dispatch(increaseCartItemQuantity(1))
-    },
-    decreaseCartItemQuantity: () => {
-      dispatch(decreaseCartItemQuantity(1))
-    }
-  }
-}
-
-const OrderCart1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OrderCart)
+function mapDispatchToProps(dispatch: any) {
+  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+}*/
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderCart1;
+export default OrderCart;
 

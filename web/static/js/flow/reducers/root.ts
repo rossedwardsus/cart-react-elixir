@@ -1,4 +1,4 @@
-import { SET_DATE, SET_TIME, SET_SPECIFIC_TIME, SET_FIRST_NAME, SET_LAST_NAME, SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE, SET_PAYMENT_CARD_NUMBER } from '../constants/actionTypes.ts';
+import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, SET_DATE, SET_TIME, SET_SPECIFIC_TIME, SET_FIRST_NAME, SET_LAST_NAME, SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE, SET_PAYMENT_CARD_NUMBER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -26,7 +26,7 @@ export default (state:any = [], action: any) => {
   switch (action.type) {
     case ADD_CART_ITEM:
       //alert("CartState " + action.item_id);
-      alert("furst name" + JSON.stringify(state));
+      alert("add cart item" + JSON.stringify(state.order));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -50,19 +50,23 @@ export default (state:any = [], action: any) => {
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
     
-      //ifstate.order.cart_items.length == 0{
+      if(state.order === undefined){
 
-          //return Object.assign({}, state, {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]});
+          alert("cart items");
 
-      //}else{
+          return {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
 
-          //return Object.assign({}, state, {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+      }else{
 
-      //}
+          alert("else");
+
+          //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
+          return {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
+      }
 
     case SET_FIRST_NAME:
       //alert("CartState " + action.item_id);
-      alert("furst name" + JSON.stringify(state));
+      alert("set first name" + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})

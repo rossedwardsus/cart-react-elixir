@@ -27,15 +27,15 @@ class PublicMenu extends React.Component<any, any> {
     this.state = {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
         selected_item_id: 1111,
-        selected_item_dozens: "2222",
+        selected_item_dozens: "12",
         selected_item_quantity: "3333",
         selected_item_mini: false,
 
     };
 
     //this.loadCart = this.loadCart.bind(this);
-    this.showItem = this.showItem.bind(this);
-    this.selectedCartItem = this.selectedCartItem.bind(this);
+    //this.showItem = this.showItem.bind(this);
+    //this.selectedCartItem = this.selectedCartItem.bind(this);
     //this.selectedItemQuantity = this.selectedQuantity.bind(this);
     
   }
@@ -55,45 +55,7 @@ class PublicMenu extends React.Component<any, any> {
       router: React.PropTypes.object.isRequired,
     };
   }
-
-  /*loadCart(){
-
-    this.setState({page: "cart"});
-    //remove/change quantity
-
-  }
-
-  loadItems(){
-
-    this.setState({page: "items"});
-    //remove/change quantity
-
-  }*/
-
-  /*removeitem(item_id){
-
-    //find item and remove it via split maybe
-    //this.setState({cart: cart_temp});
-
-    var cart_temp = this.state.cart;
-    var cart_temp1 = "";
-    
-    //var cart_temp = cart_temp.filter(function(item) {
-    //    return item.name !== "John";
-    //});
-
-    //cart_temp.map(function(i, v){
-
-            //if v.item_id == item_id{
-
-              //.splice(0,1);
-
-            //}
-          
-    //}
-    
-  }*/
-
+ 
   mouseOver(e:any){
 
       e.target.src = "/images/menu/DWK_greenrollover3.jpg";
@@ -108,9 +70,9 @@ class PublicMenu extends React.Component<any, any> {
 
   showItem(item_id: any){
 
-      //alert(item_id);
+      alert(item_id);
 
-      //this.setState({selected_item_id: item_id});
+      this.setState({selected_item_id: item_id});
 
       $('#myModal').modal('show');
 
@@ -118,11 +80,11 @@ class PublicMenu extends React.Component<any, any> {
 
   selectedItemDozens(e: any){
 
-      //alert(e.target.value);
+      alert(e.target.value);
 
       this.setState({selected_item_dozens: e.target.value});
 
-      if(e.target.value == "12"){
+      /*if(e.target.value == "12"){
 
           this.setState({selected_item_mini: false});
 
@@ -130,37 +92,25 @@ class PublicMenu extends React.Component<any, any> {
 
           //this.setState({selected_item_mini: true});
 
-      }
+      }*/
 
       
   }
 
-  selectedCartItem(e: any){
-
-    //alert(e.target.value);
-
-    if(e.target.value.indexOf("mini") > -1){
-
-      //alert("true");
-
-      this.setState({mini: true});
-
-    }else{
-
-      this.setState({mini: false});
-
-    }
-
-    this.setState({item: e.target.id});
-    this.setState({item_quantity: e.target.value});
-    
-  }
 
   selectedItemQuantity(e: any){
 
-    //alert(e.target.value);
+    alert(e.target.value);
 
-    //this.setState({selected_item_quantity: e.target.value});
+    this.setState({selected_item_quantity: e.target.value});
+
+  }
+
+  addCartItem(){
+
+    //if they haven't selected quantity and dozens dont submit
+
+    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 
   }
 
@@ -170,31 +120,11 @@ class PublicMenu extends React.Component<any, any> {
       
   } 
 
-  addCartItem(){
-
-    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
-
-  }
-
   render(): JSX.Element{
 
     var that = this;
     var page = "";
 
-    var value_12 = "";     
-    var value_24 = "";
-    var mini_12 = "";
-
-    let { addCartItem } = this.props;
-
-    /*this.state.items.map(function(item){
-
-
-        value_12 = item.item_id + "_" + 12;     
-        value_24 = item.item_id + "_" + 24;
-        mini_12 = value_12 + "_mini";
-
-    });*/
 
     //if(this.state.page == "items"){
     //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -202,27 +132,66 @@ class PublicMenu extends React.Component<any, any> {
     //alert(this.props.cart_items.length);
 
           return(<div>
-                  <br/>
-                  <button>Cart(0)</button>
-                  <br/>
-                  <MenuCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
-                  <br/>
-                  <div className="row">
-                        
-                        {this.state.menu_items.map(function(item: any){
-                            return(<div className="col-md-4">
-                                      <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
-                                          <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
-                                          <div className="caption">
-                                            <h3>Strawberry Scone</h3>
+                  <nav className="navbar navbar-default navbar-fixed-top">
+                          <div className="container-fluid">
+                            <div className="navbar-header">
+                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                              </button>
+                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                            </div>
+                            <div className="hidden-xs navbar-form navbar-right">
+                            </div>
+                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                  </nav>
+                  <div className="container-fluid">
+                    <div className="row">
+                          <div className="hidden-xs col-md-2">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <MenuCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+                            <br/>
+                          </div>
+                          <div className="hidden-xs col-md-10">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <Link to="/order/1234/cart">Login</Link>
+                            <br/>
+                            {this.state.menu_items.map(function(item: any){
+                                return(<div className="col-md-4">
+                                          <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
+                                              <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
+                                              <div className="caption">
+                                                <h3>Strawberry Scone</h3>
+                                              </div>
                                           </div>
-                                      </div>
-                            </div>)
-                        }.bind(this))}
-                    
+                                </div>)
+                            }.bind(this))}
+                              
+                            <br/>
+                          </div>
+                    </div>
                   </div>
-                  <br/>
-                  
                   <br/>
                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
                     <div className="modal-dialog" role="document">
@@ -237,20 +206,20 @@ class PublicMenu extends React.Component<any, any> {
                             Ingredients
                         </div>
                         <div className="modal-footer">
-                          <select value="" onChange={(value) => this.selectedItemDozens(value)}>
+                          <select value={this.state.selected_item_dozens} onChange={(value) => this.selectedItemDozens(value)}>
                             <option value="">Quantity</option>
                             <option value="12">Dozen</option>
                             <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
-                          <select value="" onChange={(value) => this.selectedItemQuantity(value)}>
+                          <select value={this.state.selected_item_quantity} onChange={(value) => this.selectedItemQuantity(value)}>
                             <option value=""></option> 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" onClick={() => this.addCartItem()} className="btn btn-default" data-dismiss="modal">Add</button>
+                          <button type="button" onClick={() => this.addCartItem()} className="btn btn-default" data-dismiss="modal">Add-only show if cart items larger then 1</button>
                         </div>
                       </div>
                     </div>
@@ -276,7 +245,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    addCartItem: () => {
+    addCartItem: (item_id: any, dozens: any, quantity: any) => {
       dispatch(addCartItem(1))
     },
     increaseCartItemQuantity: () => {
