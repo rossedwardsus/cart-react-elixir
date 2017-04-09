@@ -12,13 +12,13 @@ import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from '.
 import Immutable  = require('immutable');
 
 
-function addTodoWithDispatch() {
+/*function addTodoWithDispatch() {
   const action = {
     type: "VIEW_PUBLIC_MENU",
     //text
   }
   //dispatch(action)
-}
+}*/
 
 export interface HelloProps { 
     compiler: string; 
@@ -203,7 +203,7 @@ class OrderCart extends React.Component<any, any> {
 
   }
 
-  showMenu(){
+  /*showMenu(){
 
       //alert();
 
@@ -230,9 +230,9 @@ class OrderCart extends React.Component<any, any> {
   
       //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
       
-  }  
+  }*/
 
-  addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
+  /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
 
     //alert(item_id + "" + item_dozens + "" + item_quantity);
 
@@ -243,7 +243,7 @@ class OrderCart extends React.Component<any, any> {
     let new_cart_items: any = [];
 
     //order_temp.set('key', .get('key').push
-    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
+    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));*/
 
 
     //for(let i: any = 0; i <= item_quantity - 1; i++){
@@ -277,10 +277,10 @@ class OrderCart extends React.Component<any, any> {
 
      //alert(JSON.stringify(cart_items_temp_updated));
 
-     this.setState({order: order_temp_updated});
+     //this.setState({order: order_temp_updated});
 
 
-  }
+  //}
 
   //selectItemDozens(e: any){
 
@@ -288,13 +288,13 @@ class OrderCart extends React.Component<any, any> {
 
   //}
 
-  addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
+  /*addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
 
       //alert(street);
 
       //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
-  }
+  }*/
 
   removeCartItem(index: any){
 
@@ -329,7 +329,7 @@ class OrderCart extends React.Component<any, any> {
   }  
 
   
-  setFirstName(e: any){
+  /*setFirstName(e: any){
 
       //let order_temp = this.state.order;
       //.setIn([ 'user', 'profile', 'name' ], 'Jack')
@@ -461,7 +461,7 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-  }
+  }*/
 
   completeOrder(){
 
