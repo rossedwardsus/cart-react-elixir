@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class Payment extends React.Component<any, any> {
+class PaymentMethod extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -207,7 +207,7 @@ class Payment extends React.Component<any, any> {
   setSecurityCode(){
 
 
-    
+
   }
   
   
@@ -216,35 +216,21 @@ class Payment extends React.Component<any, any> {
    
     return ( <div>
                <form className="form-inline">
-                    <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                    </div>
-                    <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                    </div>
-                  </form>
-                  <form className="form-inline">
-                    <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                          <option></option>
-                          <option>Los Angeles</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <select className="form-control">
-                          <option>CA</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <select className="form-control">
-                          <option>90025</option>
-                          <option>1-3</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                      </select>
-                    </div>
-                  </form>
+                <div className="form-group">
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                  </div>
+                </form>
+                <form className="form-inline">
+                  <div className="form-group">
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.props.setPaymentCardNumber(e)}/>
+                  </div>
+                  <div className="form-group">
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date" onChange={(e) => this.props.setPaymentExpiryDate(e)}/>
+                  </div>
+                  <div className="form-group">
+                    <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.props.setPaymentSecurityCode(e)}/>
+                  </div>
+                </form>
             </div>
     )
   }
@@ -259,5 +245,5 @@ class Payment extends React.Component<any, any> {
 }
 
 
-export default DateTime;
+export default PaymentMethod;
 

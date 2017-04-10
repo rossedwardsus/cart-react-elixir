@@ -8,5 +8,11 @@ export function setFirstName(value: any) {
   }
 }
 
-
+export function setLastName(value: any) {
+  alert("last name");
+  return {
+    type: SET_LAST_NAME,
+    value
+  }
+}
 

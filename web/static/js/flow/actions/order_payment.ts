@@ -1,33 +1,33 @@
-import {SET_DELIVERY_ADDRESS_STREET, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_PAYMENT_EXPIRY_DATE, SET_PAYMENT_SECURITY_CODE} from '../constants/actionTypes.ts';
 
-export function setDeliveryAddressStreet(value: any) {
+export function setPaymentNameOnCard(value: any) {
   alert("addCartItem from redux");
   return {
-    type: SET_DELIVERY_ADDRESS_STREET,
+    type: SET_PAYMENT_NAME_ON_CARD,
     value
   }
 }
 
-export function setDeliveryAddressCity(value: any) {
+export function setPaymentCardNumber(value: any) {
+  alert("addCartItem from redux");
+  return {
+    type: SET_PAYMENT_CARD_NUMBER,
+    value
+  }
+}
+
+export function setPaymentExpiryDate(value: any) {
   alert("addCartItem from redux" + value);
   return {
-    type: SET_DELIVERY_ADDRESS_CITY,
+    type: SET_PAYMENT_EXPIRY_DATE,
     value
   }
 }
 
-export function setDeliveryAddressState(value: any) {
+export function setPaymentSecurityCode(value: any) {
   alert("addCartItem from redux");
   return {
-    type: SET_DELIVERY_ADDRESS_STATE,
-    value
-  }
-}
-
-export function setDeliveryAddressZipcode(value: any) {
-  alert("addCartItem from redux");
-  return {
-    type: SET_DELIVERY_ADDRESS_ZIPCODE,
+    type: SET_PAYMENT_SECURITY_CODE,
     value
   }
 }

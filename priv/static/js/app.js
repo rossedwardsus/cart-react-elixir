@@ -84,47 +84,47 @@ webpackJsonp([0],[
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _order_cart = __webpack_require__(1063);
+	var _order_cart = __webpack_require__(1093);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_complete = __webpack_require__(1064);
+	var _order_complete = __webpack_require__(1094);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1065);
+	var _login = __webpack_require__(1095);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1091);
+	var _register = __webpack_require__(1096);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _user = __webpack_require__(1092);
+	var _user = __webpack_require__(1097);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _guest = __webpack_require__(1093);
+	var _guest = __webpack_require__(1098);
 	
 	var _guest2 = _interopRequireDefault(_guest);
 	
-	var _cart = __webpack_require__(1094);
+	var _cart = __webpack_require__(1099);
 	
 	var cart_reducer = _interopRequireWildcard(_cart);
 	
-	var _login3 = __webpack_require__(1095);
+	var _login3 = __webpack_require__(1100);
 	
 	var login_reducer = _interopRequireWildcard(_login3);
 	
-	var _order_delivery_address = __webpack_require__(1096);
+	var _order_delivery_address = __webpack_require__(1101);
 	
 	var delivery_address_reducer = _interopRequireWildcard(_order_delivery_address);
 	
-	var _name = __webpack_require__(1097);
+	var _name = __webpack_require__(1102);
 	
 	var name_reducer = _interopRequireWildcard(_name);
 	
-	var _root = __webpack_require__(1098);
+	var _root = __webpack_require__(1103);
 	
 	var root_reducer = _interopRequireWildcard(_root);
 	
@@ -26713,15 +26713,16 @@ webpackJsonp([0],[
 	exports.CHECK_LOGGED_IN = 'CHECK_LOGGED_IN';
 	exports.LOG_IN = 'LOG_IN';
 	exports.SET_FIRST_NAME = 'SET_FIRST_NAME';
-	exports.SET_LAST_NAME = 'SET_FIRST_NAME';
+	exports.SET_LAST_NAME = 'SET_LAST_NAME';
 	exports.SET_CONTACT_EMAIL = 'SET_CONTACT_EMAIL';
 	exports.SET_CONTACT_PHONE = 'SET_CONTACT_PHONE';
 	exports.SET_DATE = 'SET_DATE';
 	exports.SET_TIME = 'SET_TIME';
 	exports.SET_SPECIFIC_TIME = 'SET_SPECIFIC_TIME';
+	exports.SET_PAYMENT_NAME_ON_CARD = 'SET_PAYMENT_NAME_ON_CARD';
 	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
 	exports.SET_PAYMENT_EXPIRY_DATE = 'SET_PAYMENT_EXPIRY_DATE';
-	exports.SET_PAYMENT_SECURY_CODE = 'SET_PAYMENT_SECURY_CODE';
+	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
 
 /***/ },
 /* 933 */,
@@ -28427,20 +28428,25 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(142);
-	//import SconelyYoursMenu from './menu.tsx';
-	var order_datetime_contact_cart_tsx_1 = __webpack_require__(942);
 	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
 	var react_router_1 = __webpack_require__(556);
 	var react_redux_1 = __webpack_require__(173);
-	var order_delivery_address_ts_1 = __webpack_require__(943);
-	var complete_order_ts_1 = __webpack_require__(944);
-	var order_name_ts_1 = __webpack_require__(945);
-	var order_delivery_datetime_ts_1 = __webpack_require__(946);
+	var order_delivery_address_ts_1 = __webpack_require__(942);
+	var order_name_ts_1 = __webpack_require__(943);
+	var order_delivery_datetime_ts_1 = __webpack_require__(944);
+	var order_payment_ts_1 = __webpack_require__(945);
+	var order_contact_ts_1 = __webpack_require__(946);
+	var delivery_address_tsx_1 = __webpack_require__(947);
+	var contact_tsx_1 = __webpack_require__(948);
+	var datetime_tsx_1 = __webpack_require__(949);
+	var name_tsx_1 = __webpack_require__(1066);
+	var payment_method_tsx_1 = __webpack_require__(1067);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(933);
-	var DatePicker = __webpack_require__(947);
-	var moment = __webpack_require__(948);
-	__webpack_require__(1059);
+	var DatePicker = __webpack_require__(950);
+	var moment = __webpack_require__(951);
+	var axios_1 = __webpack_require__(1068);
+	__webpack_require__(1062);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -28604,161 +28610,160 @@ webpackJsonp([0],[
 	            //console.log(this.props.dispatch(addTodoWithDispatch));
 	            //this.props.getAllProducts();
 	        }
-	    }, {
-	        key: "showMenu",
-	        value: function showMenu() {
-	            //alert();
-	            this.setState({ page: "menu" });
-	        }
-	    }, {
-	        key: "showDeliveryAddressPayment",
-	        value: function showDeliveryAddressPayment() {
-	            //alert();
-	            this.setState({ page: "delivery_address_payment" });
-	        }
+	        /*showMenu(){
+	               //alert();
+	               this.setState({page: "menu"});
+	           }
+	           showDeliveryAddressPayment(){
+	               //alert();
+	               this.setState({page: "delivery_address_payment"})
+	           }*/
+	
 	    }, {
 	        key: "showCart",
 	        value: function showCart() {
 	            this.setState({ page: "cart" });
 	        }
+	        //goToDateTime(){
+	        //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
+	        //}
+	        /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
+	             //alert(item_id + "" + item_dozens + "" + item_quantity);
+	             let order_temp = this.state.order;
+	             //item_id, quanity, mini
+	             let new_cart_items: any = [];
+	             //order_temp.set('key', .get('key').push
+	          let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
+	         
+	          //for(let i: any = 0; i <= item_quantity - 1; i++){
+	               //alert();
+	               //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});*/
+	        /*const myMap = Immutable.fromJS({
+	          nested: {
+	            someKey: ['hello', 'world'],
+	          },
+	        });
+	         //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
+	        //var newMap = myMap.set('key', myMap.get('key').push(newData))
+	        //let cart_items_temp = this.state.cart_items;
+	        //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
+	        //}
+	        //alert(JSON.stringify(new_cart_items));
+	        //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
+	        //alert(JSON.stringify(cart_items_temp_updated));
+	        //this.setState({order: order_temp_updated});
+	        //}
+	        //selectItemDozens(e: any){
+	        //    alert(e.target.value);
+	        //}
+	        //addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
+	        //alert(street);
+	        //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
+	        //}
+	        /*removeCartItem(index: any){
+	               let cart_items_temp = this.state.cart_items;
+	               let cart_items_temp_updated = cart_items_temp.delete(index);
+	               this.setState({cart_items: cart_items_temp_updated});
+	           }
+	           increaseCartItemQuantity(item_id: any, index: any){
+	             //alert(JSON.stringify(item_id + "" + index));
+	             let cart_items_temp = this.state.cart_items;
+	             let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
+	             this.setState({cart_items: cart_items_temp_updated});
+	           }
+	           decreaseCartItemQuantity(item_id: any, index: any){
+	             let cart_items_temp = this.state.cart_items;
+	             let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") - 1; return item.set("quantity", quantity_updated)});
+	             this.setState({cart_items: cart_items_temp_updated});
+	           }*/
+	
 	    }, {
-	        key: "goToDateTime",
-	        value: function goToDateTime() {
-	            //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
+	        key: "setDate",
+	        value: function setDate(e) {
+	            alert(e);
+	            //if value is not ""
+	            this.props.setDate(e);
 	        }
 	    }, {
 	        key: "setTime",
 	        value: function setTime(e) {
-	            //alert(e.target.value);
+	            alert(e.target.value);
+	            //if value is not ""
 	            this.props.setTime(e);
 	        }
 	    }, {
 	        key: "setSpecificTime",
 	        value: function setSpecificTime(e) {
-	            //alert(e.target.value);
+	            alert(e.target.value);
 	            this.props.setSpecificTime(e);
-	        }
-	    }, {
-	        key: "addCartItem",
-	        value: function addCartItem(item_id, item_dozens, item_quantity, mini) {
-	            //alert(item_id + "" + item_dozens + "" + item_quantity);
-	            var order_temp = this.state.order;
-	            //item_id, quanity, mini
-	            var new_cart_items = [];
-	            //order_temp.set('key', .get('key').push
-	            var order_temp_updated = order_temp.updateIn(['cart'], function (arr) {
-	                return arr.push({ item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini });
-	            });
-	            //for(let i: any = 0; i <= item_quantity - 1; i++){
-	            //alert();
-	            //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});
-	            /*const myMap = Immutable.fromJS({
-	              nested: {
-	                someKey: ['hello', 'world'],
-	              },
-	            });
-	                 //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
-	            //var newMap = myMap.set('key', myMap.get('key').push(newData))
-	            //let cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
-	            //}
-	            //alert(JSON.stringify(new_cart_items));
-	            //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
-	            //alert(JSON.stringify(cart_items_temp_updated));
-	            this.setState({ order: order_temp_updated });
-	        }
-	        //selectItemDozens(e: any){
-	        //    alert(e.target.value);
-	        //}
-	
-	    }, {
-	        key: "addDeliveryAddress",
-	        value: function addDeliveryAddress(street, city, state, zipcode) {
-	            //alert(street);
-	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	        }
-	    }, {
-	        key: "removeCartItem",
-	        value: function removeCartItem(index) {
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.delete(index);
-	            this.setState({ cart_items: cart_items_temp_updated });
-	        }
-	    }, {
-	        key: "increaseCartItemQuantity",
-	        value: function increaseCartItemQuantity(item_id, index) {
-	            //alert(JSON.stringify(item_id + "" + index));
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
-	                var quantity_updated = item.get("quantity") + 1;return item.set("quantity", quantity_updated);
-	            });
-	            this.setState({ cart_items: cart_items_temp_updated });
-	        }
-	    }, {
-	        key: "decreaseCartItemQuantity",
-	        value: function decreaseCartItemQuantity(item_id, index) {
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
-	                var quantity_updated = item.get("quantity") - 1;return item.set("quantity", quantity_updated);
-	            });
-	            this.setState({ cart_items: cart_items_temp_updated });
 	        }
 	    }, {
 	        key: "setFirstName",
 	        value: function setFirstName(e) {
+	            //alert(e.target.value);
 	            if (e.target.value.length > 0) {
-	                //alert();
-	                if (/^[a-zA-Z]/.test(e.target.value)) {
-	                    //alert();
-	                    this.setState({ "first_name": e.target.value });
+	                //alert(/^[a-zA-Z]+$/.test(e.target.value));
+	                if (/^[a-zA-Z]+$/.test(e.target.value)) {
+	                    //alert("correct");
+	                    //this.setState({"first_name": e.target.value});
 	                    this.setState({ "first_name_classname": "form-group" });
-	                    this.setState({ "first_name_validated": true });
+	                    //this.setState({"first_name_validated": true});
+	                    this.props.setFirstName(e);
+	                } else {
+	                    alert("error");
+	                    this.setState({ "first_name_classname": "form-group has-error" });
 	                }
 	            }
 	        }
 	    }, {
 	        key: "onBlurFirstName",
 	        value: function onBlurFirstName() {
-	            alert();
+	            //alert();
 	        }
 	    }, {
 	        key: "setLastName",
 	        value: function setLastName(e) {
+	            alert(e.target.value);
 	            if (e.target.value.length > 0) {
 	                //alert();
 	                if (/^[a-zA-Z]/.test(e.target.value)) {
 	                    //alert();
-	                    this.setState({ "last_name": e.target.value });
-	                    this.setState({ "last_name_classname": "form-group" });
-	                    this.setState({ "last_name_validated": true });
+	                    //this.setState({"last_name": e.target.value});
+	                    //this.setState({"last_name_classname": "form-group"});
+	                    //this.setState({"last_name_validated": true});
+	                    this.props.setLastName(e);
 	                }
 	            }
 	        }
 	    }, {
 	        key: "setContactEmail",
 	        value: function setContactEmail(e) {
+	            alert(e.target.value);
 	            if (e.target.value.length > 0) {
 	                //alert();
 	                //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	                //return re.test(email);
-	                if (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e.target.value)) {
-	                    //alert();
-	                    this.setState({ "contact_email": e.target.value });
-	                    this.setState({ "contact_email_classname": "form-group" });
-	                    this.setState({ "contact_email_validated": true });
-	                }
+	                //if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
+	                //alert();
+	                //this.setState({"contact_email": e.target.value});
+	                //this.setState({"contact_email_classname": "form-group"});
+	                //this.setState({"contact_email_validated": true});
+	                this.props.setContactEmail(e);
+	                //}
 	            }
 	        }
 	    }, {
-	        key: "setContactMobile",
-	        value: function setContactMobile(e) {
+	        key: "setContactPhone",
+	        value: function setContactPhone(e) {
+	            alert(e.target.value);
 	            if (e.target.value.length > 0) {
 	                //alert();
-	                if (/^[a-zA-Z]/.test(e.target.value)) {
-	                    //alert();
-	                    this.setState({ "first_name": e.target.value });
-	                    this.setState({ "first_name_classname": "form-group" });
-	                }
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                //alert();
+	                //this.setState({"first_name": e.target.value});
+	                //this.setState({"first_name_classname": "form-group"});
+	                this.props.setContactPhone(e);
+	                //}
 	            }
 	        }
 	    }, {
@@ -28767,70 +28772,176 @@ webpackJsonp([0],[
 	            //let order_temp = this.state.order;
 	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
 	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	            alert(e.target.value);
+	            //alert(e.target.value);
 	            //this.setState({order: order_temp_udated});
+	            //validate and this.props
 	        }
 	    }, {
 	        key: "setDeliveryAddressStreet1",
 	        value: function setDeliveryAddressStreet1(e) {
-	            //alert(e.target.value);
-	            //this.state.order
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressStreet1(e);
+	                //}
+	            }
 	        }
 	    }, {
 	        key: "setDeliveryAddressStreet2",
 	        value: function setDeliveryAddressStreet2(e) {
-	            //alert(e.target.value);
-	            //this.state.order
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
-	        }
-	    }, {
-	        key: "setDeliveryAddressState",
-	        value: function setDeliveryAddressState(e) {
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressStreet2(e);
+	                //}
+	            }
 	        }
 	    }, {
 	        key: "setDeliveryAddressCity",
 	        value: function setDeliveryAddressCity(e) {
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressCity(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setDeliveryAddressState",
+	        value: function setDeliveryAddressState(e) {
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressState(e);
+	                //}
+	            }
 	        }
 	    }, {
 	        key: "setDeliveryAddressZipcode",
 	        value: function setDeliveryAddressZipcode(e) {
-	            var delivery_address_temp = this.state.delivery_address;
-	            var delivery_address_temp_updated = delivery_address_temp.set("zipcode", e.target.value);
-	            //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	            this.setState({ delivery_address: delivery_address_temp_updated });
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressZipcode(e);
+	                //}
+	            }
 	        }
 	    }, {
-	        key: "setCardNumber",
-	        value: function setCardNumber(e) {}
+	        key: "setPaymentNameOnCard",
+	        value: function setPaymentNameOnCard(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentNameOnCard(e);
+	                //}
+	            }
+	        }
 	    }, {
-	        key: "setExpiryDate",
-	        value: function setExpiryDate(e) {}
+	        key: "setPaymentCardNumber",
+	        value: function setPaymentCardNumber(e) {
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentCardNumber(e);
+	                //}
+	            }
+	        }
 	    }, {
-	        key: "setSecurityCode",
-	        value: function setSecurityCode(e) {}
+	        key: "setPaymentExpiryDate",
+	        value: function setPaymentExpiryDate(e) {
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentExpiryDate(e);
+	                //}
+	            }
+	            //this.props.setExpiry
+	        }
+	    }, {
+	        key: "setPaymentSecurityCode",
+	        value: function setPaymentSecurityCode(e) {
+	            //this.props.setSecurityCode
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setSecurityCode(e);
+	                //}
+	            }
+	        }
 	    }, {
 	        key: "completeOrder",
 	        value: function completeOrder() {
+	            alert("order complete this.props.order");
 	            //if first_name_validated == true && last_name_validated == true
 	            //process order/dispatch
 	            //if this.props.order_state = "completed"?
 	            //else error
-	            this.context.router.push('/order/12345/order_complete');
+	            //export default function getBook(dispatch) {
+	            /*  $.ajax({
+	                  method: "GET",
+	                  url: "/api/data",
+	                  dataType: "json"
+	                }).success(function(data){
+	                  //return dispatch({type:'GET_BOOK', data: data});
+	                  this.context.router.push('/order/12345/order_complete');
+	                   });
+	            //}
+	               this.context.router.push('/order/12345/order_complete');*/
+	            axios_1.default.post('http://localhost:4000/graphql', {
+	                query: 'mutation {create_order (first_name: "this.props.first_name", last_name: "this.props.last_name", contact_email: "this.props.contact_email", contact_phone: "this.props.contact_phone", delivery_date: "this.props.delivery_date", delivery_time: "this.props.delivery_time", contact: "this.props.contact", delivery_address_street1: "this.props.order.delivery_address_street1", delivery_address_street2: "this.props.order.delivery_address_street2", delivery_address_city: "this.props.order.delivery_address_city", delivery_address_state: "this.props.order.delivery_address_state", delivery_address_zipcode: "this.props.order.delivery_address_zipcode", payment_method_card_number: "", cart_items: "[this.props.order]") {session_id, first_name, last_name}}'
+	            }).then(function (response) {
+	                alert(JSON.stringify(response));
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //this.props.setSubscription();
+	                //addtosubscribedblocklist
+	                //setsubscriptiontype == 1 block
+	                //setsubscriptionpaid == true
+	                //setsusbcriptindatetime
+	                //store in cookie
+	                //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
+	                //setCookie("sconely_session_id", 1, 1)
+	                //setCookie("sconely_first_name", 1, 1)
+	                //setCookie("sconely_last_name", 1, 1)
+	            }).catch(function (error) {
+	                alert("error");
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
 	            //alert(JSON.stringify(this.state.delivery_address_street));
 	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 	        }
@@ -28848,39 +28959,61 @@ webpackJsonp([0],[
 	            var item_count = this.state.item_count;
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(order_datetime_contact_cart_tsx_1.default, { order: this.state.order, cart_items: this.state.cart_items, showMenu: function showMenu() {
-	                    return _this2.showMenu();
-	                }, removeCartItem: function removeCartItem(index) {
-	                    return _this2.removeCartItem(index);
-	                }, showDeliveryAddressPayment: function showDeliveryAddressPayment() {
-	                    return _this2.showDeliveryAddressPayment();
-	                }, increaseCartItemQuantity: function increaseCartItemQuantity(item_id, index) {
-	                    return _this2.increaseCartItemQuantity(item_id, index);
-	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id, index) {
-	                    return _this2.decreaseCartItemQuantity(item_id, index);
-	                } }), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
+	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(datetime_tsx_1.default, { setDate: function setDate(e) {
+	                    return _this2.setDate(e);
+	                }, setTime: function setTime(e) {
+	                    return _this2.setTime(e);
+	                }, setSpecificTime: function setSpecificTime(e) {
+	                    return _this2.setSpecificTime(e);
+	                } }), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
 	                    return _this2.setTime(e);
 	                } }, React.createElement("option", null), React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", onChange: function onChange(e) {
 	                    return _this2.setSpecificTime(e);
-	                } }, React.createElement("option", null), React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                } }, React.createElement("option", null), React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))), React.createElement(name_tsx_1.default, { firstNameClassName: this.state.first_name_classname, setFirstName: function setFirstName(e) {
+	                    return _this2.setFirstName(e);
+	                }, setLastName: function setLastName(e) {
+	                    return _this2.setLastName(e);
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setFirstName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setLastName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	                    return _this2.setDeliveryAddressStreet1(e);
+	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
+	                    return _this2.setDeliveryAddressStreet2(e);
+	                }, setDeliveryAddressCity: function setDeliveryAddressCity(e) {
+	                    return _this2.setDeliveryAddressCity(e);
+	                }, setDeliveryAddressState: function setDeliveryAddressState(e) {
+	                    return _this2.setDeliveryAddressState(e);
+	                }, setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
+	                    return _this2.setDeliveryAddressZipcode(e);
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setDeliveryAddressStreet(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setDeliveryAddressStreet2(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.props.setDeliveryAddressCity(value);
-	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "90025"), React.createElement("option", null, "1-3"), React.createElement("option", null, "3"), React.createElement("option", null, "4"), React.createElement("option", null, "5")))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "zipcode"), React.createElement("option", null, "90025")))), React.createElement("br", null), React.createElement(contact_tsx_1.default, { setContactEmail: function setContactEmail(e) {
+	                    return _this2.setContactEmail(e);
+	                }, setContactPhone: function setContactPhone(e) {
+	                    return _this2.setContactPhone(e);
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setContactEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.setContactMobile(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code" }))), React.createElement("button", { onClick: function onClick() {
+	                    return _this2.setContactPhone(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	                    return _this2.setPaymentNameOnCard(e);
+	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
+	                    return _this2.setPaymentCardNumber(e);
+	                }, setPaymentExpiryDate: function setPaymentExpiryDate(e) {
+	                    return _this2.setPaymentExpiryDate(e);
+	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	                    return _this2.setPaymentSecurityCode(e);
+	                } }), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code" }))), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
 	                } }, "Complete Order"), React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.goToMenu();
@@ -28906,7 +29039,7 @@ webpackJsonp([0],[
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
 	        setDate: function setDate(e) {
-	            dispatch(order_delivery_datetime_ts_1.setDate(e.target.value));
+	            dispatch(order_delivery_datetime_ts_1.setDate(e));
 	        },
 	        setTime: function setTime(e) {
 	            dispatch(order_delivery_datetime_ts_1.setTime(e.target.value));
@@ -28917,7 +29050,19 @@ webpackJsonp([0],[
 	        setFirstName: function setFirstName(e) {
 	            dispatch(order_name_ts_1.setFirstName(e.target.value));
 	        },
+	        setLastName: function setLastName(e) {
+	            dispatch(order_name_ts_1.setLastName(e.target.value));
+	        },
+	        setContactEmail: function setContactEmail(e) {
+	            dispatch(order_contact_ts_1.setContactEmail(e.target.value));
+	        },
+	        setContactPhone: function setContactPhone(e) {
+	            dispatch(order_contact_ts_1.setContactPhone(e.target.value));
+	        },
 	        setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value));
+	        },
+	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
 	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value));
 	        },
 	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {
@@ -28929,8 +29074,28 @@ webpackJsonp([0],[
 	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
 	            dispatch(order_delivery_address_ts_1.setDeliveryAddressZipcode(e.target.value));
 	        },
+	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
+	        },
+	        setPaymentCarNumber: function setPaymentCarNumber(e) {
+	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value));
+	        },
+	        setPaymentExpiryDate: function setPaymentExpiryDate(e) {
+	            dispatch(order_payment_ts_1.setPaymentExpiryDate(e.target.value));
+	        },
+	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value));
+	        },
 	        completeOrder: function completeOrder() {
-	            dispatch(complete_order_ts_1.completeOrder());
+	            /*$.ajax({
+	                 method: "GET",
+	                 url: "/api/data",
+	                 dataType: "json"
+	               }).success(function(data){
+	                 return dispatch({type:'GET_BOOK', data: data});
+	               });
+	            }*/
+	            //dispatch(completeOrder());
 	        }
 	    };
 	}
@@ -28940,181 +29105,6 @@ webpackJsonp([0],[
 
 /***/ },
 /* 942 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(142);
-	var react_router_1 = __webpack_require__(556);
-	//import OrderDateTimeContactCart from './order_datetime_contact_cart.tsx';
-	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(933);
-	//import _ from 'lodash';
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var OrderDateTimeCart = function (_React$Component) {
-	    _inherits(OrderDateTimeCart, _React$Component);
-	
-	    //props: Props;
-	    function OrderDateTimeCart(props) {
-	        _classCallCheck(this, OrderDateTimeCart);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (OrderDateTimeCart.__proto__ || Object.getPrototypeOf(OrderDateTimeCart)).call(this, props));
-	
-	        _this.state = {
-	            menu_items: Immutable.fromJS([{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 3, title: "freedom", description: "let freedom ring!" }, { item_id: 4, title: "freedom", description: "let freedom ring!" }, { item_id: 5, title: "freedom", description: "let freedom ring!" }, { item_id: 6, title: "freedom", description: "let freedom ring!" }, { item_id: 7, title: "freedom", description: "let freedom ring!" }]),
-	            cart_items: [{ item_id: 1, item_title: "Susie Sunshine", quantity: 1 }, { item_id: 2, item_title: "Julie Freedom", quantity: 1 }],
-	            here: ""
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        _this.updateCartItemQuantity = _this.updateCartItemQuantity.bind(_this);
-	        _this.removeItemFromCart = _this.removeItemFromCart.bind(_this);
-	        return _this;
-	    }
-	
-	    _createClass(OrderDateTimeCart, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //get menu items
-	            //this.props;
-	            //alert(JSON.stringify(this.state.menu_items));
-	            //alert("products" + JSON.stringify(this.props.menu_items));
-	            //console.log(this.props.getAllProducts());
-	            //this.setState({here: this.props.getAllProducts()});
-	            //console.log(this.props.dispatch(addTodoWithDispatch));
-	            //this.props.getAllProducts();
-	        }
-	    }, {
-	        key: "updateCartItemQuantity",
-	        value: function updateCartItemQuantity(item_id, quantity) {
-	            //alert(item_id);
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.map(function (item) {
-	                var new_item = "";
-	                if (item.item_id == item_id) {
-	                    new_item = { item_id: item.item_id, item_title: item.item_title, quantity: quantity };
-	                } else {
-	                    new_item = { item_id: item.item_id, item_title: item.item_title, quantity: item.quantity };
-	                }
-	                return new_item;
-	            });
-	            //cart_items_temp.
-	            //alert(JSON.stringify(cart_items_temp_updated));
-	            this.setState({ cart_items: cart_items_temp_updated });
-	        }
-	    }, {
-	        key: "removeItemFromCart",
-	        value: function removeItemFromCart(item_id) {
-	            //alert(item_id);
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.filter(function (item) {
-	                return item.item_id !== item_id;
-	            });
-	            this.setState({ cart_items: cart_items_temp_updated });
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var body = "";
-	            var _props = this.props,
-	                removeCartItem = _props.removeCartItem,
-	                increaseCartItemQuantity = _props.increaseCartItemQuantity,
-	                decreaseCartItemQuantity = _props.decreaseCartItemQuantity;
-	
-	            if (this.state.page == "menu") {
-	                //body = <SconelyYoursMenu/>;
-	            } else {
-	                body = "delivery address payment";
-	            }
-	            var total_cost = 0;
-	            //alert(JSON.stringify(this.props.order.toJS()));
-	            this.props.order.toJS().cart.map(function (item) {
-	                alert(JSON.stringify(item));
-	                if (item.mini == true) {
-	                    total_cost = total_cost + item.dozens * item.quantity * 2;
-	                } else {
-	                    total_cost = total_cost + item.dozens * item.quantity * 5;
-	                }
-	            });
-	            //alert(total_cost);
-	            var item_count = 0;
-	            this.props.order.toJS().cart.map(function (item) {
-	                item_count = item.dozens * item.quantity;
-	            });
-	            var cart = "";
-	            if (item_count == 0) {
-	                cart = "there are no items in your cart";
-	            } else {
-	                cart = this.props.order.toJS().cart.map(function (item, index) {
-	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-	                    var result = this.state.menu_items.find(function (obj) {
-	                        return obj.get('item_id') === 1;
-	                    });
-	                    var item_title = result.get("title");
-	                    if (item.mini == true) {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
-	                    } else {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
-	                    }
-	                }.bind(this));
-	            }
-	            //{this.props.params.repoName}
-	            return React.createElement("div", null, cart, React.createElement("br", null), "Total Items = ", item_count, React.createElement("br", null), "Sub Total ", total_cost, React.createElement("br", null), "show delivery address button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/datetime_contact" }, "Menu"));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return OrderDateTimeCart;
-	}(React.Component);
-	/*function mapStateToProps(state: any) {
-	  return {
-	   menu_items: state.default.menu_items
-	   //menu_items: getPublicMenu
-	   //menu_items: dispatch()
-	  };
-	}
-	
-	function mapDispatchToProps(dispatch: any) {
-	  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	}*/
-	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-	
-	
-	exports.default = OrderDateTimeCart;
-
-/***/ },
-/* 943 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29129,6 +29119,14 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setDeliveryAddressStreet1 = setDeliveryAddressStreet1;
+	function setDeliveryAddressStreet2(value) {
+	    alert("setDeliveryAddressStreet");
+	    return {
+	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET2,
+	        value: value
+	    };
+	}
+	exports.setDeliveryAddressStreet2 = setDeliveryAddressStreet2;
 	function setDeliveryAddressCity(value) {
 	    alert("addCartItem from redux" + value);
 	    return {
@@ -29155,27 +29153,7 @@ webpackJsonp([0],[
 	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
 
 /***/ },
-/* 944 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	//import { store, history } from './redux/store';
-	function completeOrder() {
-	    //alert("addCartItem from redux");
-	    //return {
-	    //  type: ADD_CART_ITEM,
-	    //  item_id
-	    //}
-	    //browserHistory.push('/registrationStep2')
-	    //store.dispatch(push('/foo'))
-	    //push('/url')
-	}
-	exports.completeOrder = completeOrder;
-
-/***/ },
-/* 945 */
+/* 943 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29190,9 +29168,17 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setFirstName = setFirstName;
+	function setLastName(value) {
+	    alert("last name");
+	    return {
+	        type: actionTypes_ts_1.SET_LAST_NAME,
+	        value: value
+	    };
+	}
+	exports.setLastName = setLastName;
 
 /***/ },
-/* 946 */
+/* 944 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29225,9 +29211,606 @@ webpackJsonp([0],[
 	exports.setSpecificTime = setSpecificTime;
 
 /***/ },
-/* 947 */,
-/* 948 */,
-/* 949 */,
+/* 945 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(932);
+	function setPaymentNameOnCard(value) {
+	    alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD,
+	        value: value
+	    };
+	}
+	exports.setPaymentNameOnCard = setPaymentNameOnCard;
+	function setPaymentCardNumber(value) {
+	    alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER,
+	        value: value
+	    };
+	}
+	exports.setPaymentCardNumber = setPaymentCardNumber;
+	function setPaymentExpiryDate(value) {
+	    alert("addCartItem from redux" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE,
+	        value: value
+	    };
+	}
+	exports.setPaymentExpiryDate = setPaymentExpiryDate;
+	function setPaymentSecurityCode(value) {
+	    alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
+	        value: value
+	    };
+	}
+	exports.setPaymentSecurityCode = setPaymentSecurityCode;
+
+/***/ },
+/* 946 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(932);
+	function setContactEmail(value) {
+	    alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_CONTACT_EMAIL,
+	        value: value
+	    };
+	}
+	exports.setContactEmail = setContactEmail;
+	function setContactPhone(value) {
+	    alert("addCartItem from redux" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_CONTACT_PHONE,
+	        value: value
+	    };
+	}
+	exports.setContactPhone = setContactPhone;
+
+/***/ },
+/* 947 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(933);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var DeliveryAddress = function (_React$Component) {
+	    _inherits(DeliveryAddress, _React$Component);
+	
+	    //props: Props;
+	    function DeliveryAddress(props) {
+	        _classCallCheck(this, DeliveryAddress);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (DeliveryAddress.__proto__ || Object.getPrototypeOf(DeliveryAddress)).call(this, props));
+	
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(DeliveryAddress, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "setDeliveryAddressStreet1",
+	        value: function setDeliveryAddressStreet1() {}
+	    }, {
+	        key: "setDeliveryAddressStreet2",
+	        value: function setDeliveryAddressStreet2() {}
+	    }, {
+	        key: "setDeliveryAddressCity",
+	        value: function setDeliveryAddressCity() {}
+	    }, {
+	        key: "setDeliveryAddressState",
+	        value: function setDeliveryAddressState() {}
+	    }, {
+	        key: "setDeliveryAddressZipCode",
+	        value: function setDeliveryAddressZipCode() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet1(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet2(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressCity(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressState(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressZipcode(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "90025")))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return DeliveryAddress;
+	}(React.Component);
+	
+	exports.default = DeliveryAddress;
+
+/***/ },
+/* 948 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(933);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var Contact = function (_React$Component) {
+	    _inherits(Contact, _React$Component);
+	
+	    //props: Props;
+	    function Contact(props) {
+	        _classCallCheck(this, Contact);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
+	
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(Contact, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "setContactEmail",
+	        value: function setContactEmail(e) {}
+	    }, {
+	        key: "setContactMobile",
+	        value: function setContactMobile(e) {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setContactEmail(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setContactPhone(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return Contact;
+	}(React.Component);
+	
+	exports.default = Contact;
+
+/***/ },
+/* 949 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(933);
+	var DatePicker = __webpack_require__(950);
+	var moment = __webpack_require__(951);
+	__webpack_require__(1062);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var DateTime = function (_React$Component) {
+	    _inherits(DateTime, _React$Component);
+	
+	    //props: Props;
+	    function DateTime(props) {
+	        _classCallCheck(this, DateTime);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
+	
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
+	            startDate: moment()
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(DateTime, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange(e) {
+	                    _this2.props.setDate(e);
+	                } })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
+	                    return _this2.props.setTime(e);
+	                } }, React.createElement("option", null), React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", onChange: function onChange(e) {
+	                    return _this2.props.setSpecificTime(e);
+	                } }, React.createElement("option", null), React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return DateTime;
+	}(React.Component);
+	
+	exports.default = DateTime;
+
+/***/ },
 /* 950 */,
 /* 951 */,
 /* 952 */,
@@ -29337,16 +29920,19 @@ webpackJsonp([0],[
 /* 1056 */,
 /* 1057 */,
 /* 1058 */,
-/* 1059 */
+/* 1059 */,
+/* 1060 */,
+/* 1061 */,
+/* 1062 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(1060);
+	var content = __webpack_require__(1063);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(1062)(content, {});
+	var update = __webpack_require__(1065)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -29363,10 +29949,10 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 1060 */
+/* 1063 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(1061)();
+	exports = module.exports = __webpack_require__(1064)();
 	// imports
 	
 	
@@ -29377,7 +29963,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1061 */
+/* 1064 */
 /***/ function(module, exports) {
 
 	/*
@@ -29433,7 +30019,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1062 */
+/* 1065 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -29685,7 +30271,1849 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 1063 */
+/* 1066 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(933);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var Name = function (_React$Component) {
+	    _inherits(Name, _React$Component);
+	
+	    //props: Props;
+	    function Name(props) {
+	        _classCallCheck(this, Name);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
+	
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(Name, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "setFirstName",
+	        value: function setFirstName() {}
+	    }, {
+	        key: "setLastName",
+	        value: function setLastName() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setFirstName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setLastName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return Name;
+	}(React.Component);
+	
+	exports.default = Name;
+
+/***/ },
+/* 1067 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(142);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(933);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var PaymentMethod = function (_React$Component) {
+	    _inherits(PaymentMethod, _React$Component);
+	
+	    //props: Props;
+	    function PaymentMethod(props) {
+	        _classCallCheck(this, PaymentMethod);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
+	
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(PaymentMethod, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "setCardNumber",
+	        value: function setCardNumber() {}
+	    }, {
+	        key: "setExpiryDate",
+	        value: function setExpiryDate() {}
+	    }, {
+	        key: "setSecurityCode",
+	        value: function setSecurityCode() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentNameOnCard(e);
+	                } }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentCardNumber(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentExpiryDate(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentSecurityCode(e);
+	                } }))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return PaymentMethod;
+	}(React.Component);
+	
+	exports.default = PaymentMethod;
+
+/***/ },
+/* 1068 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(1069);
+
+/***/ },
+/* 1069 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var bind = __webpack_require__(1071);
+	var Axios = __webpack_require__(1072);
+	var defaults = __webpack_require__(1073);
+	
+	/**
+	 * Create an instance of Axios
+	 *
+	 * @param {Object} defaultConfig The default config for the instance
+	 * @return {Axios} A new instance of Axios
+	 */
+	function createInstance(defaultConfig) {
+	  var context = new Axios(defaultConfig);
+	  var instance = bind(Axios.prototype.request, context);
+	
+	  // Copy axios.prototype to instance
+	  utils.extend(instance, Axios.prototype, context);
+	
+	  // Copy context to instance
+	  utils.extend(instance, context);
+	
+	  return instance;
+	}
+	
+	// Create the default instance to be exported
+	var axios = createInstance(defaults);
+	
+	// Expose Axios class to allow class inheritance
+	axios.Axios = Axios;
+	
+	// Factory for creating new instances
+	axios.create = function create(instanceConfig) {
+	  return createInstance(utils.merge(defaults, instanceConfig));
+	};
+	
+	// Expose Cancel & CancelToken
+	axios.Cancel = __webpack_require__(1090);
+	axios.CancelToken = __webpack_require__(1091);
+	axios.isCancel = __webpack_require__(1087);
+	
+	// Expose all/spread
+	axios.all = function all(promises) {
+	  return Promise.all(promises);
+	};
+	axios.spread = __webpack_require__(1092);
+	
+	module.exports = axios;
+	
+	// Allow use of default import syntax in TypeScript
+	module.exports.default = axios;
+
+
+/***/ },
+/* 1070 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var bind = __webpack_require__(1071);
+	
+	/*global toString:true*/
+	
+	// utils is a library of generic helper functions non-specific to axios
+	
+	var toString = Object.prototype.toString;
+	
+	/**
+	 * Determine if a value is an Array
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Array, otherwise false
+	 */
+	function isArray(val) {
+	  return toString.call(val) === '[object Array]';
+	}
+	
+	/**
+	 * Determine if a value is an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+	 */
+	function isArrayBuffer(val) {
+	  return toString.call(val) === '[object ArrayBuffer]';
+	}
+	
+	/**
+	 * Determine if a value is a FormData
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an FormData, otherwise false
+	 */
+	function isFormData(val) {
+	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+	}
+	
+	/**
+	 * Determine if a value is a view on an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+	 */
+	function isArrayBufferView(val) {
+	  var result;
+	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+	    result = ArrayBuffer.isView(val);
+	  } else {
+	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Determine if a value is a String
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a String, otherwise false
+	 */
+	function isString(val) {
+	  return typeof val === 'string';
+	}
+	
+	/**
+	 * Determine if a value is a Number
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Number, otherwise false
+	 */
+	function isNumber(val) {
+	  return typeof val === 'number';
+	}
+	
+	/**
+	 * Determine if a value is undefined
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if the value is undefined, otherwise false
+	 */
+	function isUndefined(val) {
+	  return typeof val === 'undefined';
+	}
+	
+	/**
+	 * Determine if a value is an Object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Object, otherwise false
+	 */
+	function isObject(val) {
+	  return val !== null && typeof val === 'object';
+	}
+	
+	/**
+	 * Determine if a value is a Date
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Date, otherwise false
+	 */
+	function isDate(val) {
+	  return toString.call(val) === '[object Date]';
+	}
+	
+	/**
+	 * Determine if a value is a File
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a File, otherwise false
+	 */
+	function isFile(val) {
+	  return toString.call(val) === '[object File]';
+	}
+	
+	/**
+	 * Determine if a value is a Blob
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Blob, otherwise false
+	 */
+	function isBlob(val) {
+	  return toString.call(val) === '[object Blob]';
+	}
+	
+	/**
+	 * Determine if a value is a Function
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Function, otherwise false
+	 */
+	function isFunction(val) {
+	  return toString.call(val) === '[object Function]';
+	}
+	
+	/**
+	 * Determine if a value is a Stream
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Stream, otherwise false
+	 */
+	function isStream(val) {
+	  return isObject(val) && isFunction(val.pipe);
+	}
+	
+	/**
+	 * Determine if a value is a URLSearchParams object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+	 */
+	function isURLSearchParams(val) {
+	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+	}
+	
+	/**
+	 * Trim excess whitespace off the beginning and end of a string
+	 *
+	 * @param {String} str The String to trim
+	 * @returns {String} The String freed of excess whitespace
+	 */
+	function trim(str) {
+	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+	}
+	
+	/**
+	 * Determine if we're running in a standard browser environment
+	 *
+	 * This allows axios to run in a web worker, and react-native.
+	 * Both environments support XMLHttpRequest, but not fully standard globals.
+	 *
+	 * web workers:
+	 *  typeof window -> undefined
+	 *  typeof document -> undefined
+	 *
+	 * react-native:
+	 *  typeof document.createElement -> undefined
+	 */
+	function isStandardBrowserEnv() {
+	  return (
+	    typeof window !== 'undefined' &&
+	    typeof document !== 'undefined' &&
+	    typeof document.createElement === 'function'
+	  );
+	}
+	
+	/**
+	 * Iterate over an Array or an Object invoking a function for each item.
+	 *
+	 * If `obj` is an Array callback will be called passing
+	 * the value, index, and complete array for each item.
+	 *
+	 * If 'obj' is an Object callback will be called passing
+	 * the value, key, and complete object for each property.
+	 *
+	 * @param {Object|Array} obj The object to iterate
+	 * @param {Function} fn The callback to invoke for each item
+	 */
+	function forEach(obj, fn) {
+	  // Don't bother if no value provided
+	  if (obj === null || typeof obj === 'undefined') {
+	    return;
+	  }
+	
+	  // Force an array if not already something iterable
+	  if (typeof obj !== 'object' && !isArray(obj)) {
+	    /*eslint no-param-reassign:0*/
+	    obj = [obj];
+	  }
+	
+	  if (isArray(obj)) {
+	    // Iterate over array values
+	    for (var i = 0, l = obj.length; i < l; i++) {
+	      fn.call(null, obj[i], i, obj);
+	    }
+	  } else {
+	    // Iterate over object keys
+	    for (var key in obj) {
+	      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+	        fn.call(null, obj[key], key, obj);
+	      }
+	    }
+	  }
+	}
+	
+	/**
+	 * Accepts varargs expecting each argument to be an object, then
+	 * immutably merges the properties of each object and returns result.
+	 *
+	 * When multiple objects contain the same key the later object in
+	 * the arguments list will take precedence.
+	 *
+	 * Example:
+	 *
+	 * ```js
+	 * var result = merge({foo: 123}, {foo: 456});
+	 * console.log(result.foo); // outputs 456
+	 * ```
+	 *
+	 * @param {Object} obj1 Object to merge
+	 * @returns {Object} Result of all merge properties
+	 */
+	function merge(/* obj1, obj2, obj3, ... */) {
+	  var result = {};
+	  function assignValue(val, key) {
+	    if (typeof result[key] === 'object' && typeof val === 'object') {
+	      result[key] = merge(result[key], val);
+	    } else {
+	      result[key] = val;
+	    }
+	  }
+	
+	  for (var i = 0, l = arguments.length; i < l; i++) {
+	    forEach(arguments[i], assignValue);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Extends object a by mutably adding to it the properties of object b.
+	 *
+	 * @param {Object} a The object to be extended
+	 * @param {Object} b The object to copy properties from
+	 * @param {Object} thisArg The object to bind function to
+	 * @return {Object} The resulting value of object a
+	 */
+	function extend(a, b, thisArg) {
+	  forEach(b, function assignValue(val, key) {
+	    if (thisArg && typeof val === 'function') {
+	      a[key] = bind(val, thisArg);
+	    } else {
+	      a[key] = val;
+	    }
+	  });
+	  return a;
+	}
+	
+	module.exports = {
+	  isArray: isArray,
+	  isArrayBuffer: isArrayBuffer,
+	  isFormData: isFormData,
+	  isArrayBufferView: isArrayBufferView,
+	  isString: isString,
+	  isNumber: isNumber,
+	  isObject: isObject,
+	  isUndefined: isUndefined,
+	  isDate: isDate,
+	  isFile: isFile,
+	  isBlob: isBlob,
+	  isFunction: isFunction,
+	  isStream: isStream,
+	  isURLSearchParams: isURLSearchParams,
+	  isStandardBrowserEnv: isStandardBrowserEnv,
+	  forEach: forEach,
+	  merge: merge,
+	  extend: extend,
+	  trim: trim
+	};
+
+
+/***/ },
+/* 1071 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function bind(fn, thisArg) {
+	  return function wrap() {
+	    var args = new Array(arguments.length);
+	    for (var i = 0; i < args.length; i++) {
+	      args[i] = arguments[i];
+	    }
+	    return fn.apply(thisArg, args);
+	  };
+	};
+
+
+/***/ },
+/* 1072 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var defaults = __webpack_require__(1073);
+	var utils = __webpack_require__(1070);
+	var InterceptorManager = __webpack_require__(1084);
+	var dispatchRequest = __webpack_require__(1085);
+	var isAbsoluteURL = __webpack_require__(1088);
+	var combineURLs = __webpack_require__(1089);
+	
+	/**
+	 * Create a new instance of Axios
+	 *
+	 * @param {Object} instanceConfig The default config for the instance
+	 */
+	function Axios(instanceConfig) {
+	  this.defaults = instanceConfig;
+	  this.interceptors = {
+	    request: new InterceptorManager(),
+	    response: new InterceptorManager()
+	  };
+	}
+	
+	/**
+	 * Dispatch a request
+	 *
+	 * @param {Object} config The config specific for this request (merged with this.defaults)
+	 */
+	Axios.prototype.request = function request(config) {
+	  /*eslint no-param-reassign:0*/
+	  // Allow for axios('example/url'[, config]) a la fetch API
+	  if (typeof config === 'string') {
+	    config = utils.merge({
+	      url: arguments[0]
+	    }, arguments[1]);
+	  }
+	
+	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+	
+	  // Support baseURL config
+	  if (config.baseURL && !isAbsoluteURL(config.url)) {
+	    config.url = combineURLs(config.baseURL, config.url);
+	  }
+	
+	  // Hook up interceptors middleware
+	  var chain = [dispatchRequest, undefined];
+	  var promise = Promise.resolve(config);
+	
+	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+	    chain.push(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  while (chain.length) {
+	    promise = promise.then(chain.shift(), chain.shift());
+	  }
+	
+	  return promise;
+	};
+	
+	// Provide aliases for supported request methods
+	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url
+	    }));
+	  };
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, data, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url,
+	      data: data
+	    }));
+	  };
+	});
+	
+	module.exports = Axios;
+
+
+/***/ },
+/* 1073 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var normalizeHeaderName = __webpack_require__(1074);
+	
+	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
+	var DEFAULT_CONTENT_TYPE = {
+	  'Content-Type': 'application/x-www-form-urlencoded'
+	};
+	
+	function setContentTypeIfUnset(headers, value) {
+	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+	    headers['Content-Type'] = value;
+	  }
+	}
+	
+	function getDefaultAdapter() {
+	  var adapter;
+	  if (typeof XMLHttpRequest !== 'undefined') {
+	    // For browsers use XHR adapter
+	    adapter = __webpack_require__(1075);
+	  } else if (typeof process !== 'undefined') {
+	    // For node use HTTP adapter
+	    adapter = __webpack_require__(1075);
+	  }
+	  return adapter;
+	}
+	
+	var defaults = {
+	  adapter: getDefaultAdapter(),
+	
+	  transformRequest: [function transformRequest(data, headers) {
+	    normalizeHeaderName(headers, 'Content-Type');
+	    if (utils.isFormData(data) ||
+	      utils.isArrayBuffer(data) ||
+	      utils.isStream(data) ||
+	      utils.isFile(data) ||
+	      utils.isBlob(data)
+	    ) {
+	      return data;
+	    }
+	    if (utils.isArrayBufferView(data)) {
+	      return data.buffer;
+	    }
+	    if (utils.isURLSearchParams(data)) {
+	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+	      return data.toString();
+	    }
+	    if (utils.isObject(data)) {
+	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+	      return JSON.stringify(data);
+	    }
+	    return data;
+	  }],
+	
+	  transformResponse: [function transformResponse(data) {
+	    /*eslint no-param-reassign:0*/
+	    if (typeof data === 'string') {
+	      data = data.replace(PROTECTION_PREFIX, '');
+	      try {
+	        data = JSON.parse(data);
+	      } catch (e) { /* Ignore */ }
+	    }
+	    return data;
+	  }],
+	
+	  timeout: 0,
+	
+	  xsrfCookieName: 'XSRF-TOKEN',
+	  xsrfHeaderName: 'X-XSRF-TOKEN',
+	
+	  maxContentLength: -1,
+	
+	  validateStatus: function validateStatus(status) {
+	    return status >= 200 && status < 300;
+	  }
+	};
+	
+	defaults.headers = {
+	  common: {
+	    'Accept': 'application/json, text/plain, */*'
+	  }
+	};
+	
+	utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
+	  defaults.headers[method] = {};
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+	});
+	
+	module.exports = defaults;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(144)))
+
+/***/ },
+/* 1074 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	module.exports = function normalizeHeaderName(headers, normalizedName) {
+	  utils.forEach(headers, function processHeader(value, name) {
+	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+	      headers[normalizedName] = value;
+	      delete headers[name];
+	    }
+	  });
+	};
+
+
+/***/ },
+/* 1075 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var settle = __webpack_require__(1076);
+	var buildURL = __webpack_require__(1079);
+	var parseHeaders = __webpack_require__(1080);
+	var isURLSameOrigin = __webpack_require__(1081);
+	var createError = __webpack_require__(1077);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1082);
+	
+	module.exports = function xhrAdapter(config) {
+	  return new Promise(function dispatchXhrRequest(resolve, reject) {
+	    var requestData = config.data;
+	    var requestHeaders = config.headers;
+	
+	    if (utils.isFormData(requestData)) {
+	      delete requestHeaders['Content-Type']; // Let the browser set it
+	    }
+	
+	    var request = new XMLHttpRequest();
+	    var loadEvent = 'onreadystatechange';
+	    var xDomain = false;
+	
+	    // For IE 8/9 CORS support
+	    // Only supports POST and GET calls and doesn't returns the response headers.
+	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
+	    if (process.env.NODE_ENV !== 'test' &&
+	        typeof window !== 'undefined' &&
+	        window.XDomainRequest && !('withCredentials' in request) &&
+	        !isURLSameOrigin(config.url)) {
+	      request = new window.XDomainRequest();
+	      loadEvent = 'onload';
+	      xDomain = true;
+	      request.onprogress = function handleProgress() {};
+	      request.ontimeout = function handleTimeout() {};
+	    }
+	
+	    // HTTP basic authentication
+	    if (config.auth) {
+	      var username = config.auth.username || '';
+	      var password = config.auth.password || '';
+	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+	    }
+	
+	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+	
+	    // Set the request timeout in MS
+	    request.timeout = config.timeout;
+	
+	    // Listen for ready state
+	    request[loadEvent] = function handleLoad() {
+	      if (!request || (request.readyState !== 4 && !xDomain)) {
+	        return;
+	      }
+	
+	      // The request errored out and we didn't get a response, this will be
+	      // handled by onerror instead
+	      // With one exception: request that using file: protocol, most browsers
+	      // will return status as 0 even though it's a successful request
+	      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+	        return;
+	      }
+	
+	      // Prepare the response
+	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+	      var response = {
+	        data: responseData,
+	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
+	        status: request.status === 1223 ? 204 : request.status,
+	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+	        headers: responseHeaders,
+	        config: config,
+	        request: request
+	      };
+	
+	      settle(resolve, reject, response);
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle low level network errors
+	    request.onerror = function handleError() {
+	      // Real errors are hidden from us by the browser
+	      // onerror should only fire if it's a network error
+	      reject(createError('Network Error', config));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle timeout
+	    request.ontimeout = function handleTimeout() {
+	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Add xsrf header
+	    // This is only done if running in a standard browser environment.
+	    // Specifically not if we're in a web worker, or react-native.
+	    if (utils.isStandardBrowserEnv()) {
+	      var cookies = __webpack_require__(1083);
+	
+	      // Add xsrf header
+	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+	          cookies.read(config.xsrfCookieName) :
+	          undefined;
+	
+	      if (xsrfValue) {
+	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+	      }
+	    }
+	
+	    // Add headers to the request
+	    if ('setRequestHeader' in request) {
+	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+	          // Remove Content-Type if data is undefined
+	          delete requestHeaders[key];
+	        } else {
+	          // Otherwise add header to the request
+	          request.setRequestHeader(key, val);
+	        }
+	      });
+	    }
+	
+	    // Add withCredentials to request if needed
+	    if (config.withCredentials) {
+	      request.withCredentials = true;
+	    }
+	
+	    // Add responseType to request if needed
+	    if (config.responseType) {
+	      try {
+	        request.responseType = config.responseType;
+	      } catch (e) {
+	        if (request.responseType !== 'json') {
+	          throw e;
+	        }
+	      }
+	    }
+	
+	    // Handle progress if needed
+	    if (typeof config.onDownloadProgress === 'function') {
+	      request.addEventListener('progress', config.onDownloadProgress);
+	    }
+	
+	    // Not all browsers support upload events
+	    if (typeof config.onUploadProgress === 'function' && request.upload) {
+	      request.upload.addEventListener('progress', config.onUploadProgress);
+	    }
+	
+	    if (config.cancelToken) {
+	      // Handle cancellation
+	      config.cancelToken.promise.then(function onCanceled(cancel) {
+	        if (!request) {
+	          return;
+	        }
+	
+	        request.abort();
+	        reject(cancel);
+	        // Clean up request
+	        request = null;
+	      });
+	    }
+	
+	    if (requestData === undefined) {
+	      requestData = null;
+	    }
+	
+	    // Send the request
+	    request.send(requestData);
+	  });
+	};
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(144)))
+
+/***/ },
+/* 1076 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var createError = __webpack_require__(1077);
+	
+	/**
+	 * Resolve or reject a Promise based on response status.
+	 *
+	 * @param {Function} resolve A function that resolves the promise.
+	 * @param {Function} reject A function that rejects the promise.
+	 * @param {object} response The response.
+	 */
+	module.exports = function settle(resolve, reject, response) {
+	  var validateStatus = response.config.validateStatus;
+	  // Note: status is not exposed by XDomainRequest
+	  if (!response.status || !validateStatus || validateStatus(response.status)) {
+	    resolve(response);
+	  } else {
+	    reject(createError(
+	      'Request failed with status code ' + response.status,
+	      response.config,
+	      null,
+	      response
+	    ));
+	  }
+	};
+
+
+/***/ },
+/* 1077 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var enhanceError = __webpack_require__(1078);
+	
+	/**
+	 * Create an Error with the specified message, config, error code, and response.
+	 *
+	 * @param {string} message The error message.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The created error.
+	 */
+	module.exports = function createError(message, config, code, response) {
+	  var error = new Error(message);
+	  return enhanceError(error, config, code, response);
+	};
+
+
+/***/ },
+/* 1078 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Update an Error with the specified config, error code, and response.
+	 *
+	 * @param {Error} error The error to update.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The error.
+	 */
+	module.exports = function enhanceError(error, config, code, response) {
+	  error.config = config;
+	  if (code) {
+	    error.code = code;
+	  }
+	  error.response = response;
+	  return error;
+	};
+
+
+/***/ },
+/* 1079 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	function encode(val) {
+	  return encodeURIComponent(val).
+	    replace(/%40/gi, '@').
+	    replace(/%3A/gi, ':').
+	    replace(/%24/g, '$').
+	    replace(/%2C/gi, ',').
+	    replace(/%20/g, '+').
+	    replace(/%5B/gi, '[').
+	    replace(/%5D/gi, ']');
+	}
+	
+	/**
+	 * Build a URL by appending params to the end
+	 *
+	 * @param {string} url The base of the url (e.g., http://www.google.com)
+	 * @param {object} [params] The params to be appended
+	 * @returns {string} The formatted url
+	 */
+	module.exports = function buildURL(url, params, paramsSerializer) {
+	  /*eslint no-param-reassign:0*/
+	  if (!params) {
+	    return url;
+	  }
+	
+	  var serializedParams;
+	  if (paramsSerializer) {
+	    serializedParams = paramsSerializer(params);
+	  } else if (utils.isURLSearchParams(params)) {
+	    serializedParams = params.toString();
+	  } else {
+	    var parts = [];
+	
+	    utils.forEach(params, function serialize(val, key) {
+	      if (val === null || typeof val === 'undefined') {
+	        return;
+	      }
+	
+	      if (utils.isArray(val)) {
+	        key = key + '[]';
+	      }
+	
+	      if (!utils.isArray(val)) {
+	        val = [val];
+	      }
+	
+	      utils.forEach(val, function parseValue(v) {
+	        if (utils.isDate(v)) {
+	          v = v.toISOString();
+	        } else if (utils.isObject(v)) {
+	          v = JSON.stringify(v);
+	        }
+	        parts.push(encode(key) + '=' + encode(v));
+	      });
+	    });
+	
+	    serializedParams = parts.join('&');
+	  }
+	
+	  if (serializedParams) {
+	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+	  }
+	
+	  return url;
+	};
+
+
+/***/ },
+/* 1080 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	/**
+	 * Parse headers into an object
+	 *
+	 * ```
+	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
+	 * Content-Type: application/json
+	 * Connection: keep-alive
+	 * Transfer-Encoding: chunked
+	 * ```
+	 *
+	 * @param {String} headers Headers needing to be parsed
+	 * @returns {Object} Headers parsed into an object
+	 */
+	module.exports = function parseHeaders(headers) {
+	  var parsed = {};
+	  var key;
+	  var val;
+	  var i;
+	
+	  if (!headers) { return parsed; }
+	
+	  utils.forEach(headers.split('\n'), function parser(line) {
+	    i = line.indexOf(':');
+	    key = utils.trim(line.substr(0, i)).toLowerCase();
+	    val = utils.trim(line.substr(i + 1));
+	
+	    if (key) {
+	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+	    }
+	  });
+	
+	  return parsed;
+	};
+
+
+/***/ },
+/* 1081 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs have full support of the APIs needed to test
+	  // whether the request URL is of the same origin as current location.
+	  (function standardBrowserEnv() {
+	    var msie = /(msie|trident)/i.test(navigator.userAgent);
+	    var urlParsingNode = document.createElement('a');
+	    var originURL;
+	
+	    /**
+	    * Parse a URL to discover it's components
+	    *
+	    * @param {String} url The URL to be parsed
+	    * @returns {Object}
+	    */
+	    function resolveURL(url) {
+	      var href = url;
+	
+	      if (msie) {
+	        // IE needs attribute set twice to normalize properties
+	        urlParsingNode.setAttribute('href', href);
+	        href = urlParsingNode.href;
+	      }
+	
+	      urlParsingNode.setAttribute('href', href);
+	
+	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+	      return {
+	        href: urlParsingNode.href,
+	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+	        host: urlParsingNode.host,
+	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+	        hostname: urlParsingNode.hostname,
+	        port: urlParsingNode.port,
+	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+	                  urlParsingNode.pathname :
+	                  '/' + urlParsingNode.pathname
+	      };
+	    }
+	
+	    originURL = resolveURL(window.location.href);
+	
+	    /**
+	    * Determine if a URL shares the same origin as the current location
+	    *
+	    * @param {String} requestURL The URL to test
+	    * @returns {boolean} True if URL shares the same origin, otherwise false
+	    */
+	    return function isURLSameOrigin(requestURL) {
+	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+	      return (parsed.protocol === originURL.protocol &&
+	            parsed.host === originURL.host);
+	    };
+	  })() :
+	
+	  // Non standard browser envs (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return function isURLSameOrigin() {
+	      return true;
+	    };
+	  })()
+	);
+
+
+/***/ },
+/* 1082 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+	
+	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	
+	function E() {
+	  this.message = 'String contains an invalid character';
+	}
+	E.prototype = new Error;
+	E.prototype.code = 5;
+	E.prototype.name = 'InvalidCharacterError';
+	
+	function btoa(input) {
+	  var str = String(input);
+	  var output = '';
+	  for (
+	    // initialize result and counter
+	    var block, charCode, idx = 0, map = chars;
+	    // if the next str index does not exist:
+	    //   change the mapping table to "="
+	    //   check if d has no fractional digits
+	    str.charAt(idx | 0) || (map = '=', idx % 1);
+	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+	  ) {
+	    charCode = str.charCodeAt(idx += 3 / 4);
+	    if (charCode > 0xFF) {
+	      throw new E();
+	    }
+	    block = block << 8 | charCode;
+	  }
+	  return output;
+	}
+	
+	module.exports = btoa;
+
+
+/***/ },
+/* 1083 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs support document.cookie
+	  (function standardBrowserEnv() {
+	    return {
+	      write: function write(name, value, expires, path, domain, secure) {
+	        var cookie = [];
+	        cookie.push(name + '=' + encodeURIComponent(value));
+	
+	        if (utils.isNumber(expires)) {
+	          cookie.push('expires=' + new Date(expires).toGMTString());
+	        }
+	
+	        if (utils.isString(path)) {
+	          cookie.push('path=' + path);
+	        }
+	
+	        if (utils.isString(domain)) {
+	          cookie.push('domain=' + domain);
+	        }
+	
+	        if (secure === true) {
+	          cookie.push('secure');
+	        }
+	
+	        document.cookie = cookie.join('; ');
+	      },
+	
+	      read: function read(name) {
+	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+	        return (match ? decodeURIComponent(match[3]) : null);
+	      },
+	
+	      remove: function remove(name) {
+	        this.write(name, '', Date.now() - 86400000);
+	      }
+	    };
+	  })() :
+	
+	  // Non standard browser env (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return {
+	      write: function write() {},
+	      read: function read() { return null; },
+	      remove: function remove() {}
+	    };
+	  })()
+	);
+
+
+/***/ },
+/* 1084 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	function InterceptorManager() {
+	  this.handlers = [];
+	}
+	
+	/**
+	 * Add a new interceptor to the stack
+	 *
+	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
+	 * @param {Function} rejected The function to handle `reject` for a `Promise`
+	 *
+	 * @return {Number} An ID used to remove interceptor later
+	 */
+	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+	  this.handlers.push({
+	    fulfilled: fulfilled,
+	    rejected: rejected
+	  });
+	  return this.handlers.length - 1;
+	};
+	
+	/**
+	 * Remove an interceptor from the stack
+	 *
+	 * @param {Number} id The ID that was returned by `use`
+	 */
+	InterceptorManager.prototype.eject = function eject(id) {
+	  if (this.handlers[id]) {
+	    this.handlers[id] = null;
+	  }
+	};
+	
+	/**
+	 * Iterate over all the registered interceptors
+	 *
+	 * This method is particularly useful for skipping over any
+	 * interceptors that may have become `null` calling `eject`.
+	 *
+	 * @param {Function} fn The function to call for each interceptor
+	 */
+	InterceptorManager.prototype.forEach = function forEach(fn) {
+	  utils.forEach(this.handlers, function forEachHandler(h) {
+	    if (h !== null) {
+	      fn(h);
+	    }
+	  });
+	};
+	
+	module.exports = InterceptorManager;
+
+
+/***/ },
+/* 1085 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var transformData = __webpack_require__(1086);
+	var isCancel = __webpack_require__(1087);
+	var defaults = __webpack_require__(1073);
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	function throwIfCancellationRequested(config) {
+	  if (config.cancelToken) {
+	    config.cancelToken.throwIfRequested();
+	  }
+	}
+	
+	/**
+	 * Dispatch a request to the server using the configured adapter.
+	 *
+	 * @param {object} config The config that is to be used for the request
+	 * @returns {Promise} The Promise to be fulfilled
+	 */
+	module.exports = function dispatchRequest(config) {
+	  throwIfCancellationRequested(config);
+	
+	  // Ensure headers exist
+	  config.headers = config.headers || {};
+	
+	  // Transform request data
+	  config.data = transformData(
+	    config.data,
+	    config.headers,
+	    config.transformRequest
+	  );
+	
+	  // Flatten headers
+	  config.headers = utils.merge(
+	    config.headers.common || {},
+	    config.headers[config.method] || {},
+	    config.headers || {}
+	  );
+	
+	  utils.forEach(
+	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+	    function cleanHeaderConfig(method) {
+	      delete config.headers[method];
+	    }
+	  );
+	
+	  var adapter = config.adapter || defaults.adapter;
+	
+	  return adapter(config).then(function onAdapterResolution(response) {
+	    throwIfCancellationRequested(config);
+	
+	    // Transform response data
+	    response.data = transformData(
+	      response.data,
+	      response.headers,
+	      config.transformResponse
+	    );
+	
+	    return response;
+	  }, function onAdapterRejection(reason) {
+	    if (!isCancel(reason)) {
+	      throwIfCancellationRequested(config);
+	
+	      // Transform response data
+	      if (reason && reason.response) {
+	        reason.response.data = transformData(
+	          reason.response.data,
+	          reason.response.headers,
+	          config.transformResponse
+	        );
+	      }
+	    }
+	
+	    return Promise.reject(reason);
+	  });
+	};
+
+
+/***/ },
+/* 1086 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	/**
+	 * Transform the data for a request or a response
+	 *
+	 * @param {Object|String} data The data to be transformed
+	 * @param {Array} headers The headers for the request or response
+	 * @param {Array|Function} fns A single function or Array of functions
+	 * @returns {*} The resulting transformed data
+	 */
+	module.exports = function transformData(data, headers, fns) {
+	  /*eslint no-param-reassign:0*/
+	  utils.forEach(fns, function transform(fn) {
+	    data = fn(data, headers);
+	  });
+	
+	  return data;
+	};
+
+
+/***/ },
+/* 1087 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function isCancel(value) {
+	  return !!(value && value.__CANCEL__);
+	};
+
+
+/***/ },
+/* 1088 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Determines whether the specified URL is absolute
+	 *
+	 * @param {string} url The URL to test
+	 * @returns {boolean} True if the specified URL is absolute, otherwise false
+	 */
+	module.exports = function isAbsoluteURL(url) {
+	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+	  // by any combination of letters, digits, plus, period, or hyphen.
+	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+	};
+
+
+/***/ },
+/* 1089 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Creates a new URL by combining the specified URLs
+	 *
+	 * @param {string} baseURL The base URL
+	 * @param {string} relativeURL The relative URL
+	 * @returns {string} The combined URL
+	 */
+	module.exports = function combineURLs(baseURL, relativeURL) {
+	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
+	};
+
+
+/***/ },
+/* 1090 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * A `Cancel` is an object that is thrown when an operation is canceled.
+	 *
+	 * @class
+	 * @param {string=} message The message.
+	 */
+	function Cancel(message) {
+	  this.message = message;
+	}
+	
+	Cancel.prototype.toString = function toString() {
+	  return 'Cancel' + (this.message ? ': ' + this.message : '');
+	};
+	
+	Cancel.prototype.__CANCEL__ = true;
+	
+	module.exports = Cancel;
+
+
+/***/ },
+/* 1091 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var Cancel = __webpack_require__(1090);
+	
+	/**
+	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
+	 *
+	 * @class
+	 * @param {Function} executor The executor function.
+	 */
+	function CancelToken(executor) {
+	  if (typeof executor !== 'function') {
+	    throw new TypeError('executor must be a function.');
+	  }
+	
+	  var resolvePromise;
+	  this.promise = new Promise(function promiseExecutor(resolve) {
+	    resolvePromise = resolve;
+	  });
+	
+	  var token = this;
+	  executor(function cancel(message) {
+	    if (token.reason) {
+	      // Cancellation has already been requested
+	      return;
+	    }
+	
+	    token.reason = new Cancel(message);
+	    resolvePromise(token.reason);
+	  });
+	}
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+	  if (this.reason) {
+	    throw this.reason;
+	  }
+	};
+	
+	/**
+	 * Returns an object that contains a new `CancelToken` and a function that, when called,
+	 * cancels the `CancelToken`.
+	 */
+	CancelToken.source = function source() {
+	  var cancel;
+	  var token = new CancelToken(function executor(c) {
+	    cancel = c;
+	  });
+	  return {
+	    token: token,
+	    cancel: cancel
+	  };
+	};
+	
+	module.exports = CancelToken;
+
+
+/***/ },
+/* 1092 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Syntactic sugar for invoking a function and expanding an array for arguments.
+	 *
+	 * Common use case would be to use `Function.prototype.apply`.
+	 *
+	 *  ```js
+	 *  function f(x, y, z) {}
+	 *  var args = [1, 2, 3];
+	 *  f.apply(null, args);
+	 *  ```
+	 *
+	 * With `spread` this example can be re-written.
+	 *
+	 *  ```js
+	 *  spread(function(x, y, z) {})([1, 2, 3]);
+	 *  ```
+	 *
+	 * @param {Function} callback
+	 * @returns {Function}
+	 */
+	module.exports = function spread(callback) {
+	  return function wrap(arr) {
+	    return callback.apply(null, arr);
+	  };
+	};
+
+
+/***/ },
+/* 1093 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30101,7 +32529,7 @@ webpackJsonp([0],[
 	exports.default = OrderCart1;
 
 /***/ },
-/* 1064 */
+/* 1094 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30487,7 +32915,7 @@ webpackJsonp([0],[
 	exports.default = OrderDateTimeContact;
 
 /***/ },
-/* 1065 */
+/* 1095 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30508,7 +32936,7 @@ webpackJsonp([0],[
 	//import { getPublicMenu } from './reducers/menu';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1066);
+	var axios_1 = __webpack_require__(1068);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -30637,1496 +33065,7 @@ webpackJsonp([0],[
 	exports.default = Login;
 
 /***/ },
-/* 1066 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(1067);
-
-/***/ },
-/* 1067 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	var bind = __webpack_require__(1069);
-	var Axios = __webpack_require__(1070);
-	var defaults = __webpack_require__(1071);
-	
-	/**
-	 * Create an instance of Axios
-	 *
-	 * @param {Object} defaultConfig The default config for the instance
-	 * @return {Axios} A new instance of Axios
-	 */
-	function createInstance(defaultConfig) {
-	  var context = new Axios(defaultConfig);
-	  var instance = bind(Axios.prototype.request, context);
-	
-	  // Copy axios.prototype to instance
-	  utils.extend(instance, Axios.prototype, context);
-	
-	  // Copy context to instance
-	  utils.extend(instance, context);
-	
-	  return instance;
-	}
-	
-	// Create the default instance to be exported
-	var axios = createInstance(defaults);
-	
-	// Expose Axios class to allow class inheritance
-	axios.Axios = Axios;
-	
-	// Factory for creating new instances
-	axios.create = function create(instanceConfig) {
-	  return createInstance(utils.merge(defaults, instanceConfig));
-	};
-	
-	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(1088);
-	axios.CancelToken = __webpack_require__(1089);
-	axios.isCancel = __webpack_require__(1085);
-	
-	// Expose all/spread
-	axios.all = function all(promises) {
-	  return Promise.all(promises);
-	};
-	axios.spread = __webpack_require__(1090);
-	
-	module.exports = axios;
-	
-	// Allow use of default import syntax in TypeScript
-	module.exports.default = axios;
-
-
-/***/ },
-/* 1068 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var bind = __webpack_require__(1069);
-	
-	/*global toString:true*/
-	
-	// utils is a library of generic helper functions non-specific to axios
-	
-	var toString = Object.prototype.toString;
-	
-	/**
-	 * Determine if a value is an Array
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an Array, otherwise false
-	 */
-	function isArray(val) {
-	  return toString.call(val) === '[object Array]';
-	}
-	
-	/**
-	 * Determine if a value is an ArrayBuffer
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
-	 */
-	function isArrayBuffer(val) {
-	  return toString.call(val) === '[object ArrayBuffer]';
-	}
-	
-	/**
-	 * Determine if a value is a FormData
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an FormData, otherwise false
-	 */
-	function isFormData(val) {
-	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
-	}
-	
-	/**
-	 * Determine if a value is a view on an ArrayBuffer
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
-	 */
-	function isArrayBufferView(val) {
-	  var result;
-	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
-	    result = ArrayBuffer.isView(val);
-	  } else {
-	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Determine if a value is a String
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a String, otherwise false
-	 */
-	function isString(val) {
-	  return typeof val === 'string';
-	}
-	
-	/**
-	 * Determine if a value is a Number
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Number, otherwise false
-	 */
-	function isNumber(val) {
-	  return typeof val === 'number';
-	}
-	
-	/**
-	 * Determine if a value is undefined
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if the value is undefined, otherwise false
-	 */
-	function isUndefined(val) {
-	  return typeof val === 'undefined';
-	}
-	
-	/**
-	 * Determine if a value is an Object
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an Object, otherwise false
-	 */
-	function isObject(val) {
-	  return val !== null && typeof val === 'object';
-	}
-	
-	/**
-	 * Determine if a value is a Date
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Date, otherwise false
-	 */
-	function isDate(val) {
-	  return toString.call(val) === '[object Date]';
-	}
-	
-	/**
-	 * Determine if a value is a File
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a File, otherwise false
-	 */
-	function isFile(val) {
-	  return toString.call(val) === '[object File]';
-	}
-	
-	/**
-	 * Determine if a value is a Blob
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Blob, otherwise false
-	 */
-	function isBlob(val) {
-	  return toString.call(val) === '[object Blob]';
-	}
-	
-	/**
-	 * Determine if a value is a Function
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Function, otherwise false
-	 */
-	function isFunction(val) {
-	  return toString.call(val) === '[object Function]';
-	}
-	
-	/**
-	 * Determine if a value is a Stream
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Stream, otherwise false
-	 */
-	function isStream(val) {
-	  return isObject(val) && isFunction(val.pipe);
-	}
-	
-	/**
-	 * Determine if a value is a URLSearchParams object
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
-	 */
-	function isURLSearchParams(val) {
-	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
-	}
-	
-	/**
-	 * Trim excess whitespace off the beginning and end of a string
-	 *
-	 * @param {String} str The String to trim
-	 * @returns {String} The String freed of excess whitespace
-	 */
-	function trim(str) {
-	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-	}
-	
-	/**
-	 * Determine if we're running in a standard browser environment
-	 *
-	 * This allows axios to run in a web worker, and react-native.
-	 * Both environments support XMLHttpRequest, but not fully standard globals.
-	 *
-	 * web workers:
-	 *  typeof window -> undefined
-	 *  typeof document -> undefined
-	 *
-	 * react-native:
-	 *  typeof document.createElement -> undefined
-	 */
-	function isStandardBrowserEnv() {
-	  return (
-	    typeof window !== 'undefined' &&
-	    typeof document !== 'undefined' &&
-	    typeof document.createElement === 'function'
-	  );
-	}
-	
-	/**
-	 * Iterate over an Array or an Object invoking a function for each item.
-	 *
-	 * If `obj` is an Array callback will be called passing
-	 * the value, index, and complete array for each item.
-	 *
-	 * If 'obj' is an Object callback will be called passing
-	 * the value, key, and complete object for each property.
-	 *
-	 * @param {Object|Array} obj The object to iterate
-	 * @param {Function} fn The callback to invoke for each item
-	 */
-	function forEach(obj, fn) {
-	  // Don't bother if no value provided
-	  if (obj === null || typeof obj === 'undefined') {
-	    return;
-	  }
-	
-	  // Force an array if not already something iterable
-	  if (typeof obj !== 'object' && !isArray(obj)) {
-	    /*eslint no-param-reassign:0*/
-	    obj = [obj];
-	  }
-	
-	  if (isArray(obj)) {
-	    // Iterate over array values
-	    for (var i = 0, l = obj.length; i < l; i++) {
-	      fn.call(null, obj[i], i, obj);
-	    }
-	  } else {
-	    // Iterate over object keys
-	    for (var key in obj) {
-	      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-	        fn.call(null, obj[key], key, obj);
-	      }
-	    }
-	  }
-	}
-	
-	/**
-	 * Accepts varargs expecting each argument to be an object, then
-	 * immutably merges the properties of each object and returns result.
-	 *
-	 * When multiple objects contain the same key the later object in
-	 * the arguments list will take precedence.
-	 *
-	 * Example:
-	 *
-	 * ```js
-	 * var result = merge({foo: 123}, {foo: 456});
-	 * console.log(result.foo); // outputs 456
-	 * ```
-	 *
-	 * @param {Object} obj1 Object to merge
-	 * @returns {Object} Result of all merge properties
-	 */
-	function merge(/* obj1, obj2, obj3, ... */) {
-	  var result = {};
-	  function assignValue(val, key) {
-	    if (typeof result[key] === 'object' && typeof val === 'object') {
-	      result[key] = merge(result[key], val);
-	    } else {
-	      result[key] = val;
-	    }
-	  }
-	
-	  for (var i = 0, l = arguments.length; i < l; i++) {
-	    forEach(arguments[i], assignValue);
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Extends object a by mutably adding to it the properties of object b.
-	 *
-	 * @param {Object} a The object to be extended
-	 * @param {Object} b The object to copy properties from
-	 * @param {Object} thisArg The object to bind function to
-	 * @return {Object} The resulting value of object a
-	 */
-	function extend(a, b, thisArg) {
-	  forEach(b, function assignValue(val, key) {
-	    if (thisArg && typeof val === 'function') {
-	      a[key] = bind(val, thisArg);
-	    } else {
-	      a[key] = val;
-	    }
-	  });
-	  return a;
-	}
-	
-	module.exports = {
-	  isArray: isArray,
-	  isArrayBuffer: isArrayBuffer,
-	  isFormData: isFormData,
-	  isArrayBufferView: isArrayBufferView,
-	  isString: isString,
-	  isNumber: isNumber,
-	  isObject: isObject,
-	  isUndefined: isUndefined,
-	  isDate: isDate,
-	  isFile: isFile,
-	  isBlob: isBlob,
-	  isFunction: isFunction,
-	  isStream: isStream,
-	  isURLSearchParams: isURLSearchParams,
-	  isStandardBrowserEnv: isStandardBrowserEnv,
-	  forEach: forEach,
-	  merge: merge,
-	  extend: extend,
-	  trim: trim
-	};
-
-
-/***/ },
-/* 1069 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function bind(fn, thisArg) {
-	  return function wrap() {
-	    var args = new Array(arguments.length);
-	    for (var i = 0; i < args.length; i++) {
-	      args[i] = arguments[i];
-	    }
-	    return fn.apply(thisArg, args);
-	  };
-	};
-
-
-/***/ },
-/* 1070 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var defaults = __webpack_require__(1071);
-	var utils = __webpack_require__(1068);
-	var InterceptorManager = __webpack_require__(1082);
-	var dispatchRequest = __webpack_require__(1083);
-	var isAbsoluteURL = __webpack_require__(1086);
-	var combineURLs = __webpack_require__(1087);
-	
-	/**
-	 * Create a new instance of Axios
-	 *
-	 * @param {Object} instanceConfig The default config for the instance
-	 */
-	function Axios(instanceConfig) {
-	  this.defaults = instanceConfig;
-	  this.interceptors = {
-	    request: new InterceptorManager(),
-	    response: new InterceptorManager()
-	  };
-	}
-	
-	/**
-	 * Dispatch a request
-	 *
-	 * @param {Object} config The config specific for this request (merged with this.defaults)
-	 */
-	Axios.prototype.request = function request(config) {
-	  /*eslint no-param-reassign:0*/
-	  // Allow for axios('example/url'[, config]) a la fetch API
-	  if (typeof config === 'string') {
-	    config = utils.merge({
-	      url: arguments[0]
-	    }, arguments[1]);
-	  }
-	
-	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-	
-	  // Support baseURL config
-	  if (config.baseURL && !isAbsoluteURL(config.url)) {
-	    config.url = combineURLs(config.baseURL, config.url);
-	  }
-	
-	  // Hook up interceptors middleware
-	  var chain = [dispatchRequest, undefined];
-	  var promise = Promise.resolve(config);
-	
-	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-	  });
-	
-	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-	    chain.push(interceptor.fulfilled, interceptor.rejected);
-	  });
-	
-	  while (chain.length) {
-	    promise = promise.then(chain.shift(), chain.shift());
-	  }
-	
-	  return promise;
-	};
-	
-	// Provide aliases for supported request methods
-	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-	  /*eslint func-names:0*/
-	  Axios.prototype[method] = function(url, config) {
-	    return this.request(utils.merge(config || {}, {
-	      method: method,
-	      url: url
-	    }));
-	  };
-	});
-	
-	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-	  /*eslint func-names:0*/
-	  Axios.prototype[method] = function(url, data, config) {
-	    return this.request(utils.merge(config || {}, {
-	      method: method,
-	      url: url,
-	      data: data
-	    }));
-	  };
-	});
-	
-	module.exports = Axios;
-
-
-/***/ },
-/* 1071 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	var utils = __webpack_require__(1068);
-	var normalizeHeaderName = __webpack_require__(1072);
-	
-	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
-	var DEFAULT_CONTENT_TYPE = {
-	  'Content-Type': 'application/x-www-form-urlencoded'
-	};
-	
-	function setContentTypeIfUnset(headers, value) {
-	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-	    headers['Content-Type'] = value;
-	  }
-	}
-	
-	function getDefaultAdapter() {
-	  var adapter;
-	  if (typeof XMLHttpRequest !== 'undefined') {
-	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(1073);
-	  } else if (typeof process !== 'undefined') {
-	    // For node use HTTP adapter
-	    adapter = __webpack_require__(1073);
-	  }
-	  return adapter;
-	}
-	
-	var defaults = {
-	  adapter: getDefaultAdapter(),
-	
-	  transformRequest: [function transformRequest(data, headers) {
-	    normalizeHeaderName(headers, 'Content-Type');
-	    if (utils.isFormData(data) ||
-	      utils.isArrayBuffer(data) ||
-	      utils.isStream(data) ||
-	      utils.isFile(data) ||
-	      utils.isBlob(data)
-	    ) {
-	      return data;
-	    }
-	    if (utils.isArrayBufferView(data)) {
-	      return data.buffer;
-	    }
-	    if (utils.isURLSearchParams(data)) {
-	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-	      return data.toString();
-	    }
-	    if (utils.isObject(data)) {
-	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-	      return JSON.stringify(data);
-	    }
-	    return data;
-	  }],
-	
-	  transformResponse: [function transformResponse(data) {
-	    /*eslint no-param-reassign:0*/
-	    if (typeof data === 'string') {
-	      data = data.replace(PROTECTION_PREFIX, '');
-	      try {
-	        data = JSON.parse(data);
-	      } catch (e) { /* Ignore */ }
-	    }
-	    return data;
-	  }],
-	
-	  timeout: 0,
-	
-	  xsrfCookieName: 'XSRF-TOKEN',
-	  xsrfHeaderName: 'X-XSRF-TOKEN',
-	
-	  maxContentLength: -1,
-	
-	  validateStatus: function validateStatus(status) {
-	    return status >= 200 && status < 300;
-	  }
-	};
-	
-	defaults.headers = {
-	  common: {
-	    'Accept': 'application/json, text/plain, */*'
-	  }
-	};
-	
-	utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
-	  defaults.headers[method] = {};
-	});
-	
-	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-	  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-	});
-	
-	module.exports = defaults;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(144)))
-
-/***/ },
-/* 1072 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	module.exports = function normalizeHeaderName(headers, normalizedName) {
-	  utils.forEach(headers, function processHeader(value, name) {
-	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-	      headers[normalizedName] = value;
-	      delete headers[name];
-	    }
-	  });
-	};
-
-
-/***/ },
-/* 1073 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	var utils = __webpack_require__(1068);
-	var settle = __webpack_require__(1074);
-	var buildURL = __webpack_require__(1077);
-	var parseHeaders = __webpack_require__(1078);
-	var isURLSameOrigin = __webpack_require__(1079);
-	var createError = __webpack_require__(1075);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1080);
-	
-	module.exports = function xhrAdapter(config) {
-	  return new Promise(function dispatchXhrRequest(resolve, reject) {
-	    var requestData = config.data;
-	    var requestHeaders = config.headers;
-	
-	    if (utils.isFormData(requestData)) {
-	      delete requestHeaders['Content-Type']; // Let the browser set it
-	    }
-	
-	    var request = new XMLHttpRequest();
-	    var loadEvent = 'onreadystatechange';
-	    var xDomain = false;
-	
-	    // For IE 8/9 CORS support
-	    // Only supports POST and GET calls and doesn't returns the response headers.
-	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-	    if (process.env.NODE_ENV !== 'test' &&
-	        typeof window !== 'undefined' &&
-	        window.XDomainRequest && !('withCredentials' in request) &&
-	        !isURLSameOrigin(config.url)) {
-	      request = new window.XDomainRequest();
-	      loadEvent = 'onload';
-	      xDomain = true;
-	      request.onprogress = function handleProgress() {};
-	      request.ontimeout = function handleTimeout() {};
-	    }
-	
-	    // HTTP basic authentication
-	    if (config.auth) {
-	      var username = config.auth.username || '';
-	      var password = config.auth.password || '';
-	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-	    }
-	
-	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-	
-	    // Set the request timeout in MS
-	    request.timeout = config.timeout;
-	
-	    // Listen for ready state
-	    request[loadEvent] = function handleLoad() {
-	      if (!request || (request.readyState !== 4 && !xDomain)) {
-	        return;
-	      }
-	
-	      // The request errored out and we didn't get a response, this will be
-	      // handled by onerror instead
-	      // With one exception: request that using file: protocol, most browsers
-	      // will return status as 0 even though it's a successful request
-	      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-	        return;
-	      }
-	
-	      // Prepare the response
-	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-	      var response = {
-	        data: responseData,
-	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
-	        status: request.status === 1223 ? 204 : request.status,
-	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
-	        headers: responseHeaders,
-	        config: config,
-	        request: request
-	      };
-	
-	      settle(resolve, reject, response);
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Handle low level network errors
-	    request.onerror = function handleError() {
-	      // Real errors are hidden from us by the browser
-	      // onerror should only fire if it's a network error
-	      reject(createError('Network Error', config));
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Handle timeout
-	    request.ontimeout = function handleTimeout() {
-	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Add xsrf header
-	    // This is only done if running in a standard browser environment.
-	    // Specifically not if we're in a web worker, or react-native.
-	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(1081);
-	
-	      // Add xsrf header
-	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-	          cookies.read(config.xsrfCookieName) :
-	          undefined;
-	
-	      if (xsrfValue) {
-	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-	      }
-	    }
-	
-	    // Add headers to the request
-	    if ('setRequestHeader' in request) {
-	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-	          // Remove Content-Type if data is undefined
-	          delete requestHeaders[key];
-	        } else {
-	          // Otherwise add header to the request
-	          request.setRequestHeader(key, val);
-	        }
-	      });
-	    }
-	
-	    // Add withCredentials to request if needed
-	    if (config.withCredentials) {
-	      request.withCredentials = true;
-	    }
-	
-	    // Add responseType to request if needed
-	    if (config.responseType) {
-	      try {
-	        request.responseType = config.responseType;
-	      } catch (e) {
-	        if (request.responseType !== 'json') {
-	          throw e;
-	        }
-	      }
-	    }
-	
-	    // Handle progress if needed
-	    if (typeof config.onDownloadProgress === 'function') {
-	      request.addEventListener('progress', config.onDownloadProgress);
-	    }
-	
-	    // Not all browsers support upload events
-	    if (typeof config.onUploadProgress === 'function' && request.upload) {
-	      request.upload.addEventListener('progress', config.onUploadProgress);
-	    }
-	
-	    if (config.cancelToken) {
-	      // Handle cancellation
-	      config.cancelToken.promise.then(function onCanceled(cancel) {
-	        if (!request) {
-	          return;
-	        }
-	
-	        request.abort();
-	        reject(cancel);
-	        // Clean up request
-	        request = null;
-	      });
-	    }
-	
-	    if (requestData === undefined) {
-	      requestData = null;
-	    }
-	
-	    // Send the request
-	    request.send(requestData);
-	  });
-	};
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(144)))
-
-/***/ },
-/* 1074 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var createError = __webpack_require__(1075);
-	
-	/**
-	 * Resolve or reject a Promise based on response status.
-	 *
-	 * @param {Function} resolve A function that resolves the promise.
-	 * @param {Function} reject A function that rejects the promise.
-	 * @param {object} response The response.
-	 */
-	module.exports = function settle(resolve, reject, response) {
-	  var validateStatus = response.config.validateStatus;
-	  // Note: status is not exposed by XDomainRequest
-	  if (!response.status || !validateStatus || validateStatus(response.status)) {
-	    resolve(response);
-	  } else {
-	    reject(createError(
-	      'Request failed with status code ' + response.status,
-	      response.config,
-	      null,
-	      response
-	    ));
-	  }
-	};
-
-
-/***/ },
-/* 1075 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var enhanceError = __webpack_require__(1076);
-	
-	/**
-	 * Create an Error with the specified message, config, error code, and response.
-	 *
-	 * @param {string} message The error message.
-	 * @param {Object} config The config.
-	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
-	 @ @param {Object} [response] The response.
-	 * @returns {Error} The created error.
-	 */
-	module.exports = function createError(message, config, code, response) {
-	  var error = new Error(message);
-	  return enhanceError(error, config, code, response);
-	};
-
-
-/***/ },
-/* 1076 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Update an Error with the specified config, error code, and response.
-	 *
-	 * @param {Error} error The error to update.
-	 * @param {Object} config The config.
-	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
-	 @ @param {Object} [response] The response.
-	 * @returns {Error} The error.
-	 */
-	module.exports = function enhanceError(error, config, code, response) {
-	  error.config = config;
-	  if (code) {
-	    error.code = code;
-	  }
-	  error.response = response;
-	  return error;
-	};
-
-
-/***/ },
-/* 1077 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	function encode(val) {
-	  return encodeURIComponent(val).
-	    replace(/%40/gi, '@').
-	    replace(/%3A/gi, ':').
-	    replace(/%24/g, '$').
-	    replace(/%2C/gi, ',').
-	    replace(/%20/g, '+').
-	    replace(/%5B/gi, '[').
-	    replace(/%5D/gi, ']');
-	}
-	
-	/**
-	 * Build a URL by appending params to the end
-	 *
-	 * @param {string} url The base of the url (e.g., http://www.google.com)
-	 * @param {object} [params] The params to be appended
-	 * @returns {string} The formatted url
-	 */
-	module.exports = function buildURL(url, params, paramsSerializer) {
-	  /*eslint no-param-reassign:0*/
-	  if (!params) {
-	    return url;
-	  }
-	
-	  var serializedParams;
-	  if (paramsSerializer) {
-	    serializedParams = paramsSerializer(params);
-	  } else if (utils.isURLSearchParams(params)) {
-	    serializedParams = params.toString();
-	  } else {
-	    var parts = [];
-	
-	    utils.forEach(params, function serialize(val, key) {
-	      if (val === null || typeof val === 'undefined') {
-	        return;
-	      }
-	
-	      if (utils.isArray(val)) {
-	        key = key + '[]';
-	      }
-	
-	      if (!utils.isArray(val)) {
-	        val = [val];
-	      }
-	
-	      utils.forEach(val, function parseValue(v) {
-	        if (utils.isDate(v)) {
-	          v = v.toISOString();
-	        } else if (utils.isObject(v)) {
-	          v = JSON.stringify(v);
-	        }
-	        parts.push(encode(key) + '=' + encode(v));
-	      });
-	    });
-	
-	    serializedParams = parts.join('&');
-	  }
-	
-	  if (serializedParams) {
-	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-	  }
-	
-	  return url;
-	};
-
-
-/***/ },
-/* 1078 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	/**
-	 * Parse headers into an object
-	 *
-	 * ```
-	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
-	 * Content-Type: application/json
-	 * Connection: keep-alive
-	 * Transfer-Encoding: chunked
-	 * ```
-	 *
-	 * @param {String} headers Headers needing to be parsed
-	 * @returns {Object} Headers parsed into an object
-	 */
-	module.exports = function parseHeaders(headers) {
-	  var parsed = {};
-	  var key;
-	  var val;
-	  var i;
-	
-	  if (!headers) { return parsed; }
-	
-	  utils.forEach(headers.split('\n'), function parser(line) {
-	    i = line.indexOf(':');
-	    key = utils.trim(line.substr(0, i)).toLowerCase();
-	    val = utils.trim(line.substr(i + 1));
-	
-	    if (key) {
-	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-	    }
-	  });
-	
-	  return parsed;
-	};
-
-
-/***/ },
-/* 1079 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	module.exports = (
-	  utils.isStandardBrowserEnv() ?
-	
-	  // Standard browser envs have full support of the APIs needed to test
-	  // whether the request URL is of the same origin as current location.
-	  (function standardBrowserEnv() {
-	    var msie = /(msie|trident)/i.test(navigator.userAgent);
-	    var urlParsingNode = document.createElement('a');
-	    var originURL;
-	
-	    /**
-	    * Parse a URL to discover it's components
-	    *
-	    * @param {String} url The URL to be parsed
-	    * @returns {Object}
-	    */
-	    function resolveURL(url) {
-	      var href = url;
-	
-	      if (msie) {
-	        // IE needs attribute set twice to normalize properties
-	        urlParsingNode.setAttribute('href', href);
-	        href = urlParsingNode.href;
-	      }
-	
-	      urlParsingNode.setAttribute('href', href);
-	
-	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-	      return {
-	        href: urlParsingNode.href,
-	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-	        host: urlParsingNode.host,
-	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-	        hostname: urlParsingNode.hostname,
-	        port: urlParsingNode.port,
-	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-	                  urlParsingNode.pathname :
-	                  '/' + urlParsingNode.pathname
-	      };
-	    }
-	
-	    originURL = resolveURL(window.location.href);
-	
-	    /**
-	    * Determine if a URL shares the same origin as the current location
-	    *
-	    * @param {String} requestURL The URL to test
-	    * @returns {boolean} True if URL shares the same origin, otherwise false
-	    */
-	    return function isURLSameOrigin(requestURL) {
-	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-	      return (parsed.protocol === originURL.protocol &&
-	            parsed.host === originURL.host);
-	    };
-	  })() :
-	
-	  // Non standard browser envs (web workers, react-native) lack needed support.
-	  (function nonStandardBrowserEnv() {
-	    return function isURLSameOrigin() {
-	      return true;
-	    };
-	  })()
-	);
-
-
-/***/ },
-/* 1080 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-	
-	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-	
-	function E() {
-	  this.message = 'String contains an invalid character';
-	}
-	E.prototype = new Error;
-	E.prototype.code = 5;
-	E.prototype.name = 'InvalidCharacterError';
-	
-	function btoa(input) {
-	  var str = String(input);
-	  var output = '';
-	  for (
-	    // initialize result and counter
-	    var block, charCode, idx = 0, map = chars;
-	    // if the next str index does not exist:
-	    //   change the mapping table to "="
-	    //   check if d has no fractional digits
-	    str.charAt(idx | 0) || (map = '=', idx % 1);
-	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-	  ) {
-	    charCode = str.charCodeAt(idx += 3 / 4);
-	    if (charCode > 0xFF) {
-	      throw new E();
-	    }
-	    block = block << 8 | charCode;
-	  }
-	  return output;
-	}
-	
-	module.exports = btoa;
-
-
-/***/ },
-/* 1081 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	module.exports = (
-	  utils.isStandardBrowserEnv() ?
-	
-	  // Standard browser envs support document.cookie
-	  (function standardBrowserEnv() {
-	    return {
-	      write: function write(name, value, expires, path, domain, secure) {
-	        var cookie = [];
-	        cookie.push(name + '=' + encodeURIComponent(value));
-	
-	        if (utils.isNumber(expires)) {
-	          cookie.push('expires=' + new Date(expires).toGMTString());
-	        }
-	
-	        if (utils.isString(path)) {
-	          cookie.push('path=' + path);
-	        }
-	
-	        if (utils.isString(domain)) {
-	          cookie.push('domain=' + domain);
-	        }
-	
-	        if (secure === true) {
-	          cookie.push('secure');
-	        }
-	
-	        document.cookie = cookie.join('; ');
-	      },
-	
-	      read: function read(name) {
-	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-	        return (match ? decodeURIComponent(match[3]) : null);
-	      },
-	
-	      remove: function remove(name) {
-	        this.write(name, '', Date.now() - 86400000);
-	      }
-	    };
-	  })() :
-	
-	  // Non standard browser env (web workers, react-native) lack needed support.
-	  (function nonStandardBrowserEnv() {
-	    return {
-	      write: function write() {},
-	      read: function read() { return null; },
-	      remove: function remove() {}
-	    };
-	  })()
-	);
-
-
-/***/ },
-/* 1082 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	function InterceptorManager() {
-	  this.handlers = [];
-	}
-	
-	/**
-	 * Add a new interceptor to the stack
-	 *
-	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
-	 * @param {Function} rejected The function to handle `reject` for a `Promise`
-	 *
-	 * @return {Number} An ID used to remove interceptor later
-	 */
-	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-	  this.handlers.push({
-	    fulfilled: fulfilled,
-	    rejected: rejected
-	  });
-	  return this.handlers.length - 1;
-	};
-	
-	/**
-	 * Remove an interceptor from the stack
-	 *
-	 * @param {Number} id The ID that was returned by `use`
-	 */
-	InterceptorManager.prototype.eject = function eject(id) {
-	  if (this.handlers[id]) {
-	    this.handlers[id] = null;
-	  }
-	};
-	
-	/**
-	 * Iterate over all the registered interceptors
-	 *
-	 * This method is particularly useful for skipping over any
-	 * interceptors that may have become `null` calling `eject`.
-	 *
-	 * @param {Function} fn The function to call for each interceptor
-	 */
-	InterceptorManager.prototype.forEach = function forEach(fn) {
-	  utils.forEach(this.handlers, function forEachHandler(h) {
-	    if (h !== null) {
-	      fn(h);
-	    }
-	  });
-	};
-	
-	module.exports = InterceptorManager;
-
-
-/***/ },
-/* 1083 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	var transformData = __webpack_require__(1084);
-	var isCancel = __webpack_require__(1085);
-	var defaults = __webpack_require__(1071);
-	
-	/**
-	 * Throws a `Cancel` if cancellation has been requested.
-	 */
-	function throwIfCancellationRequested(config) {
-	  if (config.cancelToken) {
-	    config.cancelToken.throwIfRequested();
-	  }
-	}
-	
-	/**
-	 * Dispatch a request to the server using the configured adapter.
-	 *
-	 * @param {object} config The config that is to be used for the request
-	 * @returns {Promise} The Promise to be fulfilled
-	 */
-	module.exports = function dispatchRequest(config) {
-	  throwIfCancellationRequested(config);
-	
-	  // Ensure headers exist
-	  config.headers = config.headers || {};
-	
-	  // Transform request data
-	  config.data = transformData(
-	    config.data,
-	    config.headers,
-	    config.transformRequest
-	  );
-	
-	  // Flatten headers
-	  config.headers = utils.merge(
-	    config.headers.common || {},
-	    config.headers[config.method] || {},
-	    config.headers || {}
-	  );
-	
-	  utils.forEach(
-	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-	    function cleanHeaderConfig(method) {
-	      delete config.headers[method];
-	    }
-	  );
-	
-	  var adapter = config.adapter || defaults.adapter;
-	
-	  return adapter(config).then(function onAdapterResolution(response) {
-	    throwIfCancellationRequested(config);
-	
-	    // Transform response data
-	    response.data = transformData(
-	      response.data,
-	      response.headers,
-	      config.transformResponse
-	    );
-	
-	    return response;
-	  }, function onAdapterRejection(reason) {
-	    if (!isCancel(reason)) {
-	      throwIfCancellationRequested(config);
-	
-	      // Transform response data
-	      if (reason && reason.response) {
-	        reason.response.data = transformData(
-	          reason.response.data,
-	          reason.response.headers,
-	          config.transformResponse
-	        );
-	      }
-	    }
-	
-	    return Promise.reject(reason);
-	  });
-	};
-
-
-/***/ },
-/* 1084 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1068);
-	
-	/**
-	 * Transform the data for a request or a response
-	 *
-	 * @param {Object|String} data The data to be transformed
-	 * @param {Array} headers The headers for the request or response
-	 * @param {Array|Function} fns A single function or Array of functions
-	 * @returns {*} The resulting transformed data
-	 */
-	module.exports = function transformData(data, headers, fns) {
-	  /*eslint no-param-reassign:0*/
-	  utils.forEach(fns, function transform(fn) {
-	    data = fn(data, headers);
-	  });
-	
-	  return data;
-	};
-
-
-/***/ },
-/* 1085 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function isCancel(value) {
-	  return !!(value && value.__CANCEL__);
-	};
-
-
-/***/ },
-/* 1086 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Determines whether the specified URL is absolute
-	 *
-	 * @param {string} url The URL to test
-	 * @returns {boolean} True if the specified URL is absolute, otherwise false
-	 */
-	module.exports = function isAbsoluteURL(url) {
-	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-	  // by any combination of letters, digits, plus, period, or hyphen.
-	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-	};
-
-
-/***/ },
-/* 1087 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Creates a new URL by combining the specified URLs
-	 *
-	 * @param {string} baseURL The base URL
-	 * @param {string} relativeURL The relative URL
-	 * @returns {string} The combined URL
-	 */
-	module.exports = function combineURLs(baseURL, relativeURL) {
-	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
-	};
-
-
-/***/ },
-/* 1088 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * A `Cancel` is an object that is thrown when an operation is canceled.
-	 *
-	 * @class
-	 * @param {string=} message The message.
-	 */
-	function Cancel(message) {
-	  this.message = message;
-	}
-	
-	Cancel.prototype.toString = function toString() {
-	  return 'Cancel' + (this.message ? ': ' + this.message : '');
-	};
-	
-	Cancel.prototype.__CANCEL__ = true;
-	
-	module.exports = Cancel;
-
-
-/***/ },
-/* 1089 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var Cancel = __webpack_require__(1088);
-	
-	/**
-	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
-	 *
-	 * @class
-	 * @param {Function} executor The executor function.
-	 */
-	function CancelToken(executor) {
-	  if (typeof executor !== 'function') {
-	    throw new TypeError('executor must be a function.');
-	  }
-	
-	  var resolvePromise;
-	  this.promise = new Promise(function promiseExecutor(resolve) {
-	    resolvePromise = resolve;
-	  });
-	
-	  var token = this;
-	  executor(function cancel(message) {
-	    if (token.reason) {
-	      // Cancellation has already been requested
-	      return;
-	    }
-	
-	    token.reason = new Cancel(message);
-	    resolvePromise(token.reason);
-	  });
-	}
-	
-	/**
-	 * Throws a `Cancel` if cancellation has been requested.
-	 */
-	CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-	  if (this.reason) {
-	    throw this.reason;
-	  }
-	};
-	
-	/**
-	 * Returns an object that contains a new `CancelToken` and a function that, when called,
-	 * cancels the `CancelToken`.
-	 */
-	CancelToken.source = function source() {
-	  var cancel;
-	  var token = new CancelToken(function executor(c) {
-	    cancel = c;
-	  });
-	  return {
-	    token: token,
-	    cancel: cancel
-	  };
-	};
-	
-	module.exports = CancelToken;
-
-
-/***/ },
-/* 1090 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Syntactic sugar for invoking a function and expanding an array for arguments.
-	 *
-	 * Common use case would be to use `Function.prototype.apply`.
-	 *
-	 *  ```js
-	 *  function f(x, y, z) {}
-	 *  var args = [1, 2, 3];
-	 *  f.apply(null, args);
-	 *  ```
-	 *
-	 * With `spread` this example can be re-written.
-	 *
-	 *  ```js
-	 *  spread(function(x, y, z) {})([1, 2, 3]);
-	 *  ```
-	 *
-	 * @param {Function} callback
-	 * @returns {Function}
-	 */
-	module.exports = function spread(callback) {
-	  return function wrap(arr) {
-	    return callback.apply(null, arr);
-	  };
-	};
-
-
-/***/ },
-/* 1091 */
+/* 1096 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32147,7 +33086,7 @@ webpackJsonp([0],[
 	//import { getPublicMenu } from './reducers/menu';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1066);
+	var axios_1 = __webpack_require__(1068);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -32291,7 +33230,7 @@ webpackJsonp([0],[
 	exports.default = Register;
 
 /***/ },
-/* 1092 */
+/* 1097 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32425,7 +33364,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ },
-/* 1093 */
+/* 1098 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32518,7 +33457,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureGuest;
 
 /***/ },
-/* 1094 */
+/* 1099 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32671,7 +33610,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1095 */
+/* 1100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32726,7 +33665,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1096 */
+/* 1101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32807,7 +33746,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1097 */
+/* 1102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32864,12 +33803,10 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 1098 */
+/* 1103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(932);
@@ -32883,17 +33820,26 @@ webpackJsonp([0],[
 	  cart: any;
 	};
 	
+	interface Name {
+	  
+	  first_name: string;
+	  last_name: string;
+	
+	}
+	
 	let inititalState: CartState = {
 	
-	  user_type: "",
-	  address: "",
+	  name: {},
+	  delivery_address: "",
 	  payment_method: "",
+	  contact: "",
 	  menu_items: [],
-	  cart: [],
+	  cart_items: [],
 	
 	}*/
+	var initialState = { order: { delivery_address: { street1: "", street2: "", city: "", state: "", zipcode: "" }, name: { first: "", last: "" }, datetime: { date: "", time: "", specific_time: "" }, contact: { email: "", phone: "" }, cart_items: [], payment_method: { name_on_card: "", card_number: "", expiry_date: "", security_code: "" } } };
 	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 	
 	    var delivery_address_updated = null;
@@ -32916,14 +33862,14 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            if (state.order === undefined) {
-	                alert("cart items");
-	                return { order: { cart_items: [{ item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true }] } };
-	            } else {
-	                alert("else");
-	                //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
-	                return { order: { cart_items: [].concat(_toConsumableArray(state.order.cart_items), [{ item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true }]) } };
-	            }
+	            //if(state.order === undefined){
+	            alert("cart items");
+	            return { order: { cart_items: [{ item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true }] } };
+	        //}else{
+	        //  alert("else");
+	        //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
+	        //return {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
+	        //}
 	        case actionTypes_ts_1.SET_FIRST_NAME:
 	            //alert("CartState " + action.item_id);
 	            alert("set first name" + JSON.stringify(state));
@@ -32939,12 +33885,35 @@ webpackJsonp([0],[
 	            //cart_items_temp.push({item_id: 2, title: "another item"});
 	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
 	            //let new_state = {cart_items: cart_items_temp};
-	            return Object.assign({}, state, { name: { first_name: action.value, last_name: "state.default.name.last_name" } });
+	            //if(state.name == undefined){
+	            return Object.assign({}, state, { order: { name: { first: action.value, last: state.order.name.last }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	        //}else{
+	        //    return Object.assign({}, state, {name: {first_name: action.value, last_name: state.name.last_name}});
+	        //}
 	        //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	        //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	        case actionTypes_ts_1.SET_LAST_NAME:
+	            //alert("CartState " + action.item_id);
+	            alert("set last name" + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: { first_name: state.name.first_name, last_name: action.value }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1:
 	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
+	            alert("delivery address street1 " + JSON.stringify(state));
 	            //alert("view public menu reducer" + JSON.stringify(action));
 	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
 	            //return "hello";
@@ -32960,9 +33929,9 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_address_updated = { delivery_address_street1: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
+	            //delivery_address_updated = {delivery_address_street1: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
 	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { delivery_address: delivery_address_updated });
+	            return Object.assign({}, state, { order: { name: state.order.name, delivery_address: { street1: action.value, street2: state.order.delivery_address.street2, city: state.order.delivery_address.city, state: state.order.delivery_address.state, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET2:
 	            //alert("CartState " + action.item_id);
 	            alert("reducer " + JSON.stringify(state));
@@ -32981,9 +33950,66 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_address_updated = { delivery_address_street2: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
 	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { delivery_address: delivery_address_updated });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: action.value, city: state.order.delivery_address.city, state: state.order.delivery_address.state, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: state.order.delivery_address.street2, city: action.value, state: state.order.delivery_address.state, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STATE:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: state.order.delivery_address.street2, city: state.order.delivery_address.city, state: action.value, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_ZIPCODE:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: state.order.delivery_address.street2, city: state.order.delivery_address.city, state: state.order.delivery_address.state, zipcode: action.value }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_DATE:
 	            //alert("CartState " + action.item_id);
 	            alert("reducer " + JSON.stringify(state));
@@ -33002,9 +34028,7 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_address_updated = { delivery_address_street2: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { delivery_address: delivery_address_updated });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: action.value, time: state.order.datetime.time }, delivery_address: state.order.delivery_address, contact: state.order.contact, cart_items: state.order.cart_items, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_TIME:
 	            //alert("CartState " + action.item_id);
 	            alert("reducer " + JSON.stringify(state));
@@ -33023,9 +34047,7 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_address_updated = { delivery_address_street2: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { time: action.value });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: action.value, specific_time: "" }, delivery_address: state.order.delivery_address, contact: state.order.contact, cart_items: state.order.cart_items, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_SPECIFIC_TIME:
 	            //alert("CartState " + action.item_id);
 	            alert("reducer " + JSON.stringify(state));
@@ -33044,9 +34066,121 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_address_updated = { delivery_address_street2: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { time: action.value });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: state.order.datetime.time, specific_time: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	        case actionTypes_ts_1.SET_CONTACT_EMAIL:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: { email: action.value, phone: state.order.contact.email }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: state.order.payment_method } });
+	        case actionTypes_ts_1.SET_CONTACT_PHONE:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: { email: state.order.contact.email, phone: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: state.order.payent_method } });
+	        case actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
+	        case actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: action.value, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
+	        case actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
+	        case actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})

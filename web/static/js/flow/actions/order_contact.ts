@@ -1,33 +1,17 @@
-import {SET_DELIVERY_ADDRESS_STREET, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_CONTACT_EMAIL, SET_CONTACT_PHONE} from '../constants/actionTypes.ts';
 
-export function setDeliveryAddressStreet(value: any) {
+export function setContactEmail(value: any) {
   alert("addCartItem from redux");
   return {
-    type: SET_DELIVERY_ADDRESS_STREET,
+    type: SET_CONTACT_EMAIL,
     value
   }
 }
 
-export function setDeliveryAddressCity(value: any) {
+export function setContactPhone(value: any) {
   alert("addCartItem from redux" + value);
   return {
-    type: SET_DELIVERY_ADDRESS_CITY,
-    value
-  }
-}
-
-export function setDeliveryAddressState(value: any) {
-  alert("addCartItem from redux");
-  return {
-    type: SET_DELIVERY_ADDRESS_STATE,
-    value
-  }
-}
-
-export function setDeliveryAddressZipcode(value: any) {
-  alert("addCartItem from redux");
-  return {
-    type: SET_DELIVERY_ADDRESS_ZIPCODE,
+    type: SET_CONTACT_PHONE,
     value
   }
 }

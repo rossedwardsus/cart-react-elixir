@@ -15,6 +15,11 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 import Immutable  = require('immutable');
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+require('react-datepicker/dist/react-datepicker.css');
+
 
 
 function addTodoWithDispatch() {
@@ -58,7 +63,8 @@ class DateTime extends React.Component<any, any> {
         cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-
+        startDate: moment(),
+        
     };
 
     //user_type=guest
@@ -205,32 +211,42 @@ class DateTime extends React.Component<any, any> {
     return ( <div>
                <form className="form-inline">
                     <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                    </div>
-                    <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                      <div className="col-sm-12">
+                          <b>Delivery Date and Time</b>
+                      </div>
                     </div>
                   </form>
                   <form className="form-inline">
+                      <div className="col-md-2">
+                        <DatePicker
+                          selected={this.state.startDate}
+                          onChange={(e: any) => {this.props.setDate(e)}} />
+                      </div>
+                      <div className="col-md-2">
+                        <select className="form-control" id="exampleInputEmail2" onChange={(e: any) => this.props.setTime(e)}>
+                            <option></option>
+                            <option>9:00 am - 11:00 am</option>
+                            <option>1:00 pm - 3:00 pm</option>
+                        </select>
+                      </div>
+                      <div className="col-md-2">
+                        <label htmlFor="exampleInputEmail2">(free)</label>
+                      </div>
                     <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                          <option></option>
-                          <option>Los Angeles</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <select className="form-control">
-                          <option>CA</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <select className="form-control">
-                          <option>90025</option>
-                          <option>1-3</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                      </select>
+                      <div className="col-md-4">
+                          <select className="form-control" onChange={(e: any) => this.props.setSpecificTime(e)}>
+                              <option></option>
+                              <option>9:00</option>
+                              <option>9:30</option>
+                              <option>10:00</option>
+                              <option>10:30</option>
+                              <option>11:00</option>
+                              <option>11:30</option>
+                              <option>12:00</option>
+                              <option>12:30</option>
+                          </select>
+                          <label htmlFor="exampleInputEmail2">($2 extra)</label>
+                      </div>
                     </div>
                   </form>
             </div>

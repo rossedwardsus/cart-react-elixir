@@ -1,9 +1,17 @@
-import {SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
 
 export function setDeliveryAddressStreet1(value: any) {
   alert("setDeliveryAddressStreet");
   return {
     type: SET_DELIVERY_ADDRESS_STREET1,
+    value
+  }
+}
+
+export function setDeliveryAddressStreet2(value: any) {
+  alert("setDeliveryAddressStreet");
+  return {
+    type: SET_DELIVERY_ADDRESS_STREET2,
     value
   }
 }
