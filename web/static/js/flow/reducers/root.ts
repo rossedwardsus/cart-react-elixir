@@ -497,7 +497,7 @@ export default (state:any = initialState, action: any) => {
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
       
-      return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code}}});
+      return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: action.value, security_code: state.order.payment_method.security_code}}});
 
 
     case SET_PAYMENT_SECURITY_CODE:
@@ -525,7 +525,7 @@ export default (state:any = initialState, action: any) => {
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
       
-      return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code}}});
+      return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value}}});
 
 
     default:
