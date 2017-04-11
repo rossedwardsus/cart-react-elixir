@@ -1,41 +1,48 @@
-import {GET_USER_DETAILS, GET_USER_ORDERS} from '../constants/actionTypes.ts';
+import {GET_USER_DETAILS, GET_DELIVERY_ADDRESSES, SET_DELIVERY_ADDRESS, GET_USER_ORDERS} from '../constants/actionTypes.ts';
 
-export function setDeliveryAddressStreet1(value: any) {
-  alert("setDeliveryAddressStreet");
+export function getUserDetails(value: any) {
+  alert("GET USER details");
   return {
-    type: SET_DELIVERY_ADDRESS_STREET1,
+    type: GET_USER_DETAILS,
     value
   }
 }
 
-export function setDeliveryAddressStreet2(value: any) {
+export function getUserOrders(value: any) {
   alert("setDeliveryAddressStreet");
   return {
-    type: SET_DELIVERY_ADDRESS_STREET2,
+    type: GET_USER_ORDERS,
     value
   }
 }
 
-export function setDeliveryAddressCity(value: any) {
+export function getUserOrder(value: any) {
+  alert("setDeliveryAddressStreet");
+  return {
+    type: GET_USER_ORDERS,
+    value
+  }
+
+export function getDeliveryAddresses(value: any) {
   alert("addCartItem from redux" + value);
   return {
-    type: SET_DELIVERY_ADDRESS_CITY,
+    type: SET_DELIVERY_ADDRESS,
     value
   }
 }
 
-export function setDeliveryAddressState(value: any) {
-  alert("addCartItem from redux");
+export function setDeliveryAddress(value: any) {
+  alert("addCartItem from redux" + value);
   return {
-    type: SET_DELIVERY_ADDRESS_STATE,
+    type: GET_DELIVERY_ADDRESS,
     value
   }
 }
 
-export function setDeliveryAddressZipcode(value: any) {
+export function setPaymentMethods(value: any) {
   alert("addCartItem from redux");
   return {
-    type: SET_DELIVERY_ADDRESS_ZIPCODE,
+    type: SET_PAYMENT_METHODS,
     value
   }
 }

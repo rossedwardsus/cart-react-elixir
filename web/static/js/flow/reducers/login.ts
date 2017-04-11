@@ -1,4 +1,4 @@
-import { CHECK_LOGGED_IN, LOG_IN } from '../constants/actionTypes.ts';
+import { CHECK_LOGGED_IN, LOGIN } from '../constants/actionTypes.ts';
 
 let menu_items: any;
 
@@ -29,7 +29,7 @@ export default (state:any = [], action: any) => {
       return Object.assign({}, {...state.default, logged_in: true, order: []})
       //return []
     
-    case LOG_IN:
+    case LOGIN:
       alert("CartState " + action.item_id);
       //alert("add cart item " + JSON.stringify(state));
 

@@ -80,7 +80,7 @@ defmodule SconeHomeElixir.Router do
 
     #get "/menu/items", ApiMenuItemsController, :index
 
-  end
+  #end
 
 
   #mobile

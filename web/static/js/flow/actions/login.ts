@@ -1,6 +1,6 @@
 //get the order total
 
-import {CHECK_LOGGED_IN, LOG_IN} from '../constants/actionTypes.ts';
+import {CHECK_LOGGED_IN, LOGIN} from '../constants/actionTypes.ts';
 
 export function checkLoggedIn() {
   //alert("addCartItem from redux");
@@ -10,10 +10,10 @@ export function checkLoggedIn() {
 }
 
 
-export function logIn(email: any) {
+export function login(email: any) {
   //alert("addCartItem from redux");
   return {
-    type: LOG_IN,
+    type: LOGIN,
     //redux saga to login user in
     //redirect
   }

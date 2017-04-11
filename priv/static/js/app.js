@@ -26683,13 +26683,13 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.checkLoggedIn = checkLoggedIn;
-	function logIn(email) {
+	function login(email) {
 	    //alert("addCartItem from redux");
 	    return {
-	        type: actionTypes_ts_1.LOG_IN
+	        type: actionTypes_ts_1.LOGIN
 	    };
 	}
-	exports.logIn = logIn;
+	exports.login = login;
 
 /***/ },
 /* 932 */
@@ -26711,7 +26711,7 @@ webpackJsonp([0],[
 	exports.SET_DELIVERY_ADDRESS_ZIPCODE = 'SET_DELIVERY_ADDRESS_ZIPCODE';
 	exports.VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU';
 	exports.CHECK_LOGGED_IN = 'CHECK_LOGGED_IN';
-	exports.LOG_IN = 'LOG_IN';
+	exports.LOGIN = 'LOGIN';
 	exports.SET_FIRST_NAME = 'SET_FIRST_NAME';
 	exports.SET_LAST_NAME = 'SET_LAST_NAME';
 	exports.SET_CONTACT_EMAIL = 'SET_CONTACT_EMAIL';
@@ -26723,6 +26723,11 @@ webpackJsonp([0],[
 	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
 	exports.SET_PAYMENT_EXPIRY_DATE = 'SET_PAYMENT_EXPIRY_DATE';
 	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
+	exports.GET_USER_DETAILS = 'GET_USER_DETAILS';
+	exports.GET_USER_ORDERS = 'GET_USER_ORDERS';
+	exports.GET_USER_DELIVERY_ADDRESSES = 'GET_USER_DELIVERY_ADDRESSES';
+	exports.SET_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS';
+	exports.SET_USER_PAYMENT_METHODS = 'SET_USER_PAYMENT_METHODS';
 
 /***/ },
 /* 933 */,
@@ -29124,7 +29129,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(932);
 	function setDeliveryAddressStreet1(value) {
-	    alert("setDeliveryAddressStreet");
+	    //alert("addCartItem from redux");
 	    return {
 	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1,
 	        value: value
@@ -29132,7 +29137,7 @@ webpackJsonp([0],[
 	}
 	exports.setDeliveryAddressStreet1 = setDeliveryAddressStreet1;
 	function setDeliveryAddressStreet2(value) {
-	    alert("setDeliveryAddressStreet");
+	    //alert("addCartItem from redux");
 	    return {
 	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET2,
 	        value: value
@@ -29140,7 +29145,7 @@ webpackJsonp([0],[
 	}
 	exports.setDeliveryAddressStreet2 = setDeliveryAddressStreet2;
 	function setDeliveryAddressCity(value) {
-	    alert("addCartItem from redux" + value);
+	    //alert("addCartItem from redux");
 	    return {
 	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY,
 	        value: value
@@ -29148,7 +29153,7 @@ webpackJsonp([0],[
 	}
 	exports.setDeliveryAddressCity = setDeliveryAddressCity;
 	function setDeliveryAddressState(value) {
-	    alert("addCartItem from redux");
+	    //alert("addCartItem from redux");
 	    return {
 	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STATE,
 	        value: value
@@ -29156,7 +29161,7 @@ webpackJsonp([0],[
 	}
 	exports.setDeliveryAddressState = setDeliveryAddressState;
 	function setDeliveryAddressZipcode(value) {
-	    alert("addCartItem from redux");
+	    //alert("addCartItem from redux");
 	    return {
 	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_ZIPCODE,
 	        value: value
@@ -33652,7 +33657,7 @@ webpackJsonp([0],[
 	            //alert("CartState " + action.item_id);
 	            return Object.assign({}, Object.assign({}, state.default, { logged_in: true, order: [] }));
 	        //return []
-	        case actionTypes_ts_1.LOG_IN:
+	        case actionTypes_ts_1.LOGIN:
 	            alert("CartState " + action.item_id);
 	        //alert("add cart item " + JSON.stringify(state));
 	        //alert("view public menu reducer" + JSON.stringify(action));
@@ -33851,7 +33856,9 @@ webpackJsonp([0],[
 	  cart_items: [],
 	
 	}*/
+	//gustOrderState
 	var initialState = { order: { delivery_address: { street1: "", street2: "", city: "", state: "", zipcode: "" }, name: { first: "", last: "" }, datetime: { date: "", time: "", specific_time: "" }, contact: { email: "", phone: "" }, cart_items: [], payment_method: { name_on_card: "", card_number: "", expiry_date: "", security_code: "" } } };
+	var userState = { session_id: "", name: "", orders: [], delivery_address: [], payment_methods: [] };
 	exports.default = function () {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
@@ -34194,6 +34201,29 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
+	        case actionTypes_ts_1.LOGIN:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
+	        case actionTypes_ts_1.GET_USER_DETAILS:
+	            //alert("CartState " + action.item_id);
+	            alert("reducer get user details" + JSON.stringify(state));
 	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
 	        default:
 	            //alert();

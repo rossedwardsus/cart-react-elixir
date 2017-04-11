@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, SET_CONTACT_EMAIL, SET_CONTACT_PHONE, SET_DATE, SET_TIME, SET_SPECIFIC_TIME, SET_FIRST_NAME, SET_LAST_NAME, SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE, SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_PAYMENT_EXPIRY_DATE, SET_PAYMENT_SECURITY_CODE } from '../constants/actionTypes.ts';
+import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, SET_CONTACT_EMAIL, SET_CONTACT_PHONE, SET_DATE, SET_TIME, SET_SPECIFIC_TIME, SET_FIRST_NAME, SET_LAST_NAME, SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE, SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_PAYMENT_EXPIRY_DATE, SET_PAYMENT_SECURITY_CODE, LOGIN, GET_USER_DETAILS } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -28,8 +28,10 @@ let inititalState: CartState = {
 
 }*/
 
-
+//gustOrderState
 let initialState: any = {order: {delivery_address: {street1: "", street2: "", city: "", state: "", zipcode: ""}, name: {first: "", last: ""}, datetime: {date: "", time: "", specific_time: ""}, contact: {email: "", phone: ""}, cart_items: [], payment_method: {name_on_card: "", card_number: "", expiry_date: "", security_code: ""}}};
+let userState: any= {session_id: "", name: "", orders: [], delivery_address: [], payment_methods: []};
+
 
 export default (state:any = initialState, action: any) => {
   let delivery_address_updated = null;
@@ -528,9 +530,49 @@ export default (state:any = initialState, action: any) => {
       return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value}}});
 
 
+    case LOGIN:
+      //alert("CartState " + action.item_id);
+      alert("reducer " + JSON.stringify(state));
+
+      //alert("view public menu reducer" + JSON.stringify(action));
+      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+      //return "hello";
+      //alertObject.assign({}, state);
+      //alert(state);
+      //return Object.assign({}, ...state);
+
+      //return Object.assign({}, ...state, action.menu_items)
+      //return Object.assign({}, {menu_items: action.menu_items});
+
+      //let cart_items_temp = state.cart_items;
+      //cart_items_temp.push({item_id: 2, title: "another item"});
+
+      //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+
+      //let new_state = {cart_items: cart_items_temp};
+
+      //return Object.assign({}, state, new_state);
+      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+      //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+      
+      return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value}}});
+
+    case GET_USER_DETAILS:
+      //alert("CartState " + action.item_id);
+      alert("reducer get user details" + JSON.stringify(state));
+
+      
+
+      return Object.assign({}, state, {order: {name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: {name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value}}});
+
+
     default:
       //alert();
       //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
       return state
+
+
+
+
   }
 };
