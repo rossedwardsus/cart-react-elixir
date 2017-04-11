@@ -7,7 +7,7 @@ defmodule Sconely.SconelySocialOrderResolver do
   end
 
 
-  def create_order(args, _info) do
+  def complete_sconely_social_order(args, _info) do
   	IO.puts("create graphql")
     IO.inspect(args)
 
@@ -92,10 +92,10 @@ defmodule Sconely.SconelySocialOrderResolver do
           #{order_id, name, delivery_address, items with names 1 dozen quantity, paid with, total amount, date of order}
 
           #working
-          Sconely.SconelySocialOrderEmail.welcome_email(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
+          Sconely.SconelySocialCompleteOrderEmail.complete_order(%{"delivery_address_street" => args[:street], "city" => args[:city], "cart_items" => args[:cart_items]}) |> SconeHomeElixir.Mailer.deliver_now
 
           #admin
-          #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
+          #Sconely.SconelySocialCompleteOrderAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street], "delivery_address_city" => args[:delivery_address_city], "order_items" => args[:order_items]}) |> SconeHomeElixir.Mailer.deliver_now
 
           {:ok, %{order_id: 1}}
 

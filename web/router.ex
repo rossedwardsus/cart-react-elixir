@@ -47,8 +47,8 @@ defmodule SconeHomeElixir.Router do
   #end
 
 
-  scope "/api/v_alpha", SconeHomeElixir do
-    pipe_through :api # Use the default browser stack
+  #scope "/api/v_alpha", SconeHomeElixir do
+  #  pipe_through :api # Use the default browser stack
 
     #not used anymore
     #post "/user/profile/photo", ApiUserProfilePhotoController, :create
@@ -60,13 +60,13 @@ defmodule SconeHomeElixir.Router do
     #post "/user/profile/datetime", ApiUserProfileDatetimeController, :create
 
     #for testing
-    get "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
-    get "/user/sconely_yours/start", ApiUserSconelyYoursCreateOrderController, :index
+  #  get "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
+   # get "/user/sconely_yours/start", ApiUserSconelyYoursCreateOrderController, :index
 
-    post "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
+   # post "/user/sconely_yours/complete", ApiUserSconelyYoursCompleteController, :index
 
 
-    post "/signature/upload", SconelySignaturePhotoController, :create
+   # post "/signature/upload", SconelySignaturePhotoController, :create
 
     
     #not used anymore

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<table width="100%">
+		<tr>
+			<td width="25%"></td>
+			<td>
+				<table>
+					<tr><td>Thank you ross for your order!</td></tr>
+					<tr><td>Order number - 1234!</td></tr>
+					<tr><td>name</td></tr>
+					<tr><td>contact</td></tr>
+					<tr><td>The delivery will be sent to:</td></tr>
+					<tr><td>street <%= @key["street"] %></td></tr>
+					<tr><td>city <%= @key["city"] %></td></tr>
+					<tr><td>state <%= @key["state"] %></td></tr>
+					<tr><td>address zipcode <%= @key["zipcode"] %></td></tr>
+					<tr><td></td></tr>
+					<tr><td>delivery date <%= @key["date"] %></td></tr>
+					<tr><td>delivery time <%= @key["time"] %></td></tr>
+					<tr><td></td></tr>
+					<tr><td>Your order items:</td></tr>
+					<tr><td>total-1 dozenx2-mini</td></tr>
+					<tr><td>total scones-subtotal</td><tr>
+					<tr><td>you paid with card ending</td></tr>
+					<tr><td>card number</td></tr>
+					<tr><td>any questions please contact us</td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</html>

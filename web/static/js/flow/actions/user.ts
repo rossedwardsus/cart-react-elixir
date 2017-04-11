@@ -1,4 +1,4 @@
-import {SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {GET_USER_DETAILS, GET_USER_ORDERS} from '../constants/actionTypes.ts';
 
 export function setDeliveryAddressStreet1(value: any) {
   alert("setDeliveryAddressStreet");

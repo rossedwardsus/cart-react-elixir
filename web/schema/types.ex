@@ -62,6 +62,13 @@ defmodule Sconely.Schema.Types do
     field :time, :string
     field :street1, :string
     field :street2, :string
+    field :city, :string
+    field :state, :string
+    field :zipcode, :string
+    field :name_on_card, :string
+    field :card_number, :string
+    field :expiry_date, :string
+    field :security_code, :string
   	field :cart_items, list_of(:item)
   end
 
