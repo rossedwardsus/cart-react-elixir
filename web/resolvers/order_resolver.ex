@@ -269,7 +269,40 @@ defmodule Sconely.OrderResolver do
   #}
 
 
-  def complete_sconely_signature_order(%{order_id: order_id, amount: amount}, _info) do
+
+
+
+
+
+
+  defmodule Person do
+      @derive [Poison.Encoder]
+      defstruct [:id]
+  end
+
+
+
+
+
+
+
+
+  def complete_sconely_social_order(args, _info) do
+
+    IO.inspect(args)
+
+    #Poison.Parser.parse!(args)
+
+    Enum.each(args[:cart_items], fn(item) ->
+        IO.inspect(item.item_id)
+    end)
+
+    
+    #Poison.encode!(%Person{name: "Devin Torres", age: 27})
+    #=> "{\"name\":\"Devin Torres\",\"age\":27}"
+
+    #IO.inspect(Poison.decode!(~s(args["cart"]), as: %Person{}))
+    
     #order_total = guest count * 6 + tax
 
     #save token

@@ -28910,6 +28910,7 @@ webpackJsonp([0],[
 	        key: "completeOrder",
 	        value: function completeOrder() {
 	            alert("order complete this.props.order");
+	            alert(JSON.stringify(this.props.order));
 	            //if first_name_validated == true && last_name_validated == true
 	            //process order/dispatch
 	            //if this.props.order_state = "completed"?
@@ -28926,7 +28927,7 @@ webpackJsonp([0],[
 	            //}
 	               this.context.router.push('/order/12345/order_complete');*/
 	            axios_1.default.post('http://localhost:4000/graphql', {
-	                query: 'mutation {create_order (first_name: "this.props.first_name", last_name: "this.props.last_name", contact_email: "this.props.contact_email", contact_phone: "this.props.contact_phone", delivery_date: "this.props.delivery_date", delivery_time: "this.props.delivery_time", contact: "this.props.contact", delivery_address_street1: "this.props.order.delivery_address_street1", delivery_address_street2: "this.props.order.delivery_address_street2", delivery_address_city: "this.props.order.delivery_address_city", delivery_address_state: "this.props.order.delivery_address_state", delivery_address_zipcode: "this.props.order.delivery_address_zipcode", payment_method_card_number: "", cart_items: "[this.props.order]") {session_id, first_name, last_name}}'
+	                query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", cart_items: [{item_id: "9"}]) {session_id, first_name, last_name}}'
 	            }).then(function (response) {
 	                alert(JSON.stringify(response));
 	                //go to code/payment screen
@@ -29040,7 +29041,11 @@ webpackJsonp([0],[
 	
 	function mapStateToProps(state) {
 	    alert("state" + JSON.stringify(state));
-	    return {};
+	    return {
+	        order: state.default.order
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
@@ -33919,7 +33924,7 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: { first_name: state.name.first_name, last_name: action.value }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	            return Object.assign({}, state, { order: { name: { first: state.order.name.first, last: action.value }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1:
 	            //alert("CartState " + action.item_id);
 	            alert("delivery address street1 " + JSON.stringify(state));
@@ -34075,7 +34080,7 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: state.order.datetime.time, specific_time: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: "", specific_time: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_CONTACT_EMAIL:
 	            //alert("CartState " + action.item_id);
 	            alert("reducer " + JSON.stringify(state));

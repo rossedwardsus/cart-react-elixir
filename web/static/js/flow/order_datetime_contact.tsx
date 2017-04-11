@@ -732,6 +732,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       alert("order complete this.props.order");
 
+      alert(JSON.stringify(this.props.order));
+
       //if first_name_validated == true && last_name_validated == true
       //process order/dispatch
 
@@ -755,7 +757,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
       axios.post('http://localhost:4000/graphql', {
-             query: 'mutation {create_order (first_name: "this.props.first_name", last_name: "this.props.last_name", contact_email: "this.props.contact_email", contact_phone: "this.props.contact_phone", delivery_date: "this.props.delivery_date", delivery_time: "this.props.delivery_time", contact: "this.props.contact", delivery_address_street1: "this.props.order.delivery_address_street1", delivery_address_street2: "this.props.order.delivery_address_street2", delivery_address_city: "this.props.order.delivery_address_city", delivery_address_state: "this.props.order.delivery_address_state", delivery_address_zipcode: "this.props.order.delivery_address_zipcode", payment_method_card_number: "", cart_items: "[this.props.order]") {session_id, first_name, last_name}}'
+             query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", cart_items: [{item_id: "9"}]) {session_id, first_name, last_name}}'
       })
       .then( response => {
 
@@ -1060,7 +1062,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   alert("state" + JSON.stringify(state));
   return {
-   //menu_items: state.default.menu_items
+   order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };

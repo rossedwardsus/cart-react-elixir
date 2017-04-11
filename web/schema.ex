@@ -69,7 +69,26 @@ defmodule SconeHomeElixir.Schema do
     #	resolve &Sconely.OrderResolver.create/2
   	#end
 
+  	field :complete_sconely_social_order, type: :sconely_social_order do
+  		arg :first, (:string)
+  		arg :last, (:string)
+  		arg :contact_email, :string
+  		arg :contact_phone, :string
+    	arg :date, :string
+    	arg :time, :string
+    	arg :street1, :string
+    	arg :street2, :string
+    #	arg :city, :string
+    #	arg :state, :string
+    #	arg :zipcode, :string
+    #	arg :payment_name_on_card, :string
+    #   arg :payment_card_number, :string
+    #	arg :payment_expiry_date, :string
+    #	arg :payment_security_code, :string
+  		arg :cart_items, list_of(:item)
 
+  		resolve &Sconely.OrderResolver.complete_sconely_social_order/2
+  	end
 
 
 

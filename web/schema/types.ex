@@ -43,12 +43,27 @@ defmodule Sconely.Schema.Types do
     field :status, :string
   end
 
-  #object :sconely_order do
-  #  field :order_id, :string
-  #  field :host_id, :string
-  #  field :event_name, :string
-  #  field :event_datetime, :string
+
+
+  #object :item do
+  #	field :item_id, :string
   #end
+
+  input_object :item do
+	field :item_id, (:string)
+  end
+
+  object :sconely_social_order do
+    field :first, :string
+    field :last, :string
+    field :email, :string
+    field :phone, :string
+    field :date, :string
+    field :time, :string
+    field :street1, :string
+    field :street2, :string
+  	field :cart_items, list_of(:item)
+  end
 
 
 
