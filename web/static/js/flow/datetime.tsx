@@ -64,6 +64,8 @@ class DateTime extends React.Component<any, any> {
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         startDate: moment(),
+        selected_time: "",
+        selected_specific_time: "",
         
     };
 
@@ -223,10 +225,10 @@ class DateTime extends React.Component<any, any> {
                           onChange={(e: any) => {this.props.setDate(e)}} />
                       </div>
                       <div className="col-md-2">
-                        <select className="form-control" id="exampleInputEmail2" onChange={(e: any) => this.props.setTime(e)}>
-                            <option></option>
-                            <option>9:00 am - 11:00 am</option>
-                            <option>1:00 pm - 3:00 pm</option>
+                        <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)}>
+                            <option value=""></option>
+                            <option value="900">9:00 am - 11:00 am</option>
+                            <option value="100">1:00 pm - 3:00 pm</option>
                         </select>
                       </div>
                       <div className="col-md-2">
@@ -234,16 +236,10 @@ class DateTime extends React.Component<any, any> {
                       </div>
                     <div className="form-group">
                       <div className="col-md-4">
-                          <select className="form-control" onChange={(e: any) => this.props.setSpecificTime(e)}>
+                          <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
                               <option></option>
-                              <option>9:00</option>
-                              <option>9:30</option>
-                              <option>10:00</option>
-                              <option>10:30</option>
-                              <option>11:00</option>
-                              <option>11:30</option>
-                              <option>12:00</option>
-                              <option>12:30</option>
+                              <option value="900">9:00</option>
+                              <option value="930">9:30</option>
                           </select>
                           <label htmlFor="exampleInputEmail2">($2 extra)</label>
                       </div>

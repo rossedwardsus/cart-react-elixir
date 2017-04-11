@@ -359,7 +359,7 @@ export default (state:any = initialState, action: any) => {
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
       
-      return Object.assign({}, state, {order: {name: state.order.name, datetime: {date: state.order.datetime.date, time: state.order.datetime.time, specific_time: action.value}, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method}});
+      return Object.assign({}, state, {order: {name: state.order.name, datetime: {date: state.order.datetime.date, time: "", specific_time: action.value}, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method}});
 
 
     case SET_CONTACT_EMAIL:

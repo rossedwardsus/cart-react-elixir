@@ -86,6 +86,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
         comtact_mobile_validated: false,
         name_on_card: "form-group has-error",
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
+        selected_time: "",
+        selected_specific_time: ""
 
     };
 
@@ -396,14 +398,19 @@ class OrderDateTimeContact extends React.Component<any, any> {
       alert(e.target.value);
 
       //if value is not ""
-      this.props.setTime(e);
+      this.setState({selected_time: e.target.value});
+      this.setState({selected_specific_time: ""});
+      //this.props.setTime(e);
 
   }
 
   setSpecificTime(e: any){
 
       alert(e.target.value);
-      this.props.setSpecificTime(e);
+
+      this.setState({selected_specific_time: e.target.value});
+      this.setState({selected_time: ""});
+      //this.props.setSpecificTime(e);
   }
 
   setFirstName(e: any){
@@ -677,6 +684,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   setPaymentExpiryDate(e: any){
 
+      //01/17
+
       if(e.target.value.length > 0){
 
         //alert();
@@ -712,7 +721,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
             //this.setState({"delivery_address_street1": e.target.value});
             //this.setState({"delivery_address_street1_classname": "form-group"});
 
-            this.props.setSecurityCode(e);
+            this.props.setPaymentSecurityCode(e);
 
         //}
       }   
@@ -867,7 +876,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
                             <br/>
-                            <DateTime setDate={(e: any) => this.setDate(e)} setTime={(e: any) => this.setTime(e)} setSpecificTime={(e: any) => this.setSpecificTime(e)}/>
+                            <DateTime setDate={(e: any) => this.setDate(e)} setTime={(e: any) => this.setTime(e)} selectedTime={this.state.selected_time} setSpecificTime={(e: any) => this.setSpecificTime(e)} selectedSpecificTime={this.state.selected_specific_time} />
                             <br/>
                             <form className="form-inline">
                               <div className="form-group">
@@ -1102,7 +1111,7 @@ function mapDispatchToProps(dispatch: any) {
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value))
     },
-    setPaymentCarNumber: (e: any) => {
+    setPaymentCardNumber: (e: any) => {
       dispatch(setPaymentCardNumber(e.target.value))
     },
     setPaymentExpiryDate: (e: any) => {

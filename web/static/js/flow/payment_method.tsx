@@ -225,7 +225,7 @@ class PaymentMethod extends React.Component<any, any> {
                     <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.props.setPaymentCardNumber(e)}/>
                   </div>
                   <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date" onChange={(e) => this.props.setPaymentExpiryDate(e)}/>
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date-01/2017" onChange={(e) => this.props.setPaymentExpiryDate(e)}/>
                   </div>
                   <div className="form-group">
                     <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.props.setPaymentSecurityCode(e)}/>

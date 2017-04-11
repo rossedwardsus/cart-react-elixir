@@ -28487,7 +28487,9 @@ webpackJsonp([0],[
 	            contact_mobile_classname: "form-group has-error",
 	            comtact_mobile_validated: false,
 	            name_on_card: "form-group has-error",
-	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
+	            selected_time: "",
+	            selected_specific_time: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -28689,13 +28691,17 @@ webpackJsonp([0],[
 	        value: function setTime(e) {
 	            alert(e.target.value);
 	            //if value is not ""
-	            this.props.setTime(e);
+	            this.setState({ selected_time: e.target.value });
+	            this.setState({ selected_specific_time: "" });
+	            //this.props.setTime(e);
 	        }
 	    }, {
 	        key: "setSpecificTime",
 	        value: function setSpecificTime(e) {
 	            alert(e.target.value);
-	            this.props.setSpecificTime(e);
+	            this.setState({ selected_specific_time: e.target.value });
+	            this.setState({ selected_time: "" });
+	            //this.props.setSpecificTime(e);
 	        }
 	    }, {
 	        key: "setFirstName",
@@ -28874,6 +28880,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setPaymentExpiryDate",
 	        value: function setPaymentExpiryDate(e) {
+	            //01/17
 	            if (e.target.value.length > 0) {
 	                //alert();
 	                //if(/^[a-zA-Z]/.test(e.target.value)){
@@ -28895,7 +28902,7 @@ webpackJsonp([0],[
 	                alert();
 	                //this.setState({"delivery_address_street1": e.target.value});
 	                //this.setState({"delivery_address_street1_classname": "form-group"});
-	                this.props.setSecurityCode(e);
+	                this.props.setPaymentSecurityCode(e);
 	                //}
 	            }
 	        }
@@ -28965,9 +28972,9 @@ webpackJsonp([0],[
 	                    return _this2.setDate(e);
 	                }, setTime: function setTime(e) {
 	                    return _this2.setTime(e);
-	                }, setSpecificTime: function setSpecificTime(e) {
+	                }, selectedTime: this.state.selected_time, setSpecificTime: function setSpecificTime(e) {
 	                    return _this2.setSpecificTime(e);
-	                } }), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
+	                }, selectedSpecificTime: this.state.selected_specific_time }), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
 	                    return _this2.setTime(e);
 	                } }, React.createElement("option", null), React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", onChange: function onChange(e) {
 	                    return _this2.setSpecificTime(e);
@@ -29077,7 +29084,7 @@ webpackJsonp([0],[
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
 	        },
-	        setPaymentCarNumber: function setPaymentCarNumber(e) {
+	        setPaymentCardNumber: function setPaymentCardNumber(e) {
 	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value));
 	        },
 	        setPaymentExpiryDate: function setPaymentExpiryDate(e) {
@@ -29688,7 +29695,9 @@ webpackJsonp([0],[
 	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
 	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
 	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
-	            startDate: moment()
+	            startDate: moment(),
+	            selected_time: "",
+	            selected_specific_time: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -29790,11 +29799,11 @@ webpackJsonp([0],[
 	
 	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange(e) {
 	                    _this2.props.setDate(e);
-	                } })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
+	                } })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
 	                    return _this2.props.setTime(e);
-	                } }, React.createElement("option", null), React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", onChange: function onChange(e) {
+	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "900" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "100" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
-	                } }, React.createElement("option", null), React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))));
+	                } }, React.createElement("option", null), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -30603,7 +30612,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                } }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
-	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date", onChange: function onChange(e) {
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date-01/2017", onChange: function onChange(e) {
 	                    return _this2.props.setPaymentExpiryDate(e);
 	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code", onChange: function onChange(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
@@ -34161,7 +34170,7 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: action.value, security_code: state.order.payment_method.security_code } } });
 	        case actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE:
 	            //alert("CartState " + action.item_id);
 	            alert("reducer " + JSON.stringify(state));
@@ -34180,7 +34189,7 @@ webpackJsonp([0],[
 	            //return Object.assign({}, state, new_state);
 	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
 	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
+	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
