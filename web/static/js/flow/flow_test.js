@@ -26,7 +26,7 @@ import PublicAboutUs from './public/public_about_us';
 import UserHomePage from './user/user_home_page.tsx';
 
 import Order from "./order.tsx";
-import OrderDateTimeContact from "./order_datetime_contact.tsx";
+import Checkout from "./order_datetime_contact.tsx";
 import OrderCart from "./order_cart.tsx";
 import OrderComplete from './order_complete.tsx';
 
@@ -57,6 +57,7 @@ import * as login_reducer from './reducers/login.ts';
 import * as delivery_address_reducer from './reducers/order_delivery_address.ts';
 import * as name_reducer from './reducers/name.ts';
 import * as root_reducer from './reducers/root.ts';
+import reducers from './reducers/index.ts';
 
 //type Props = {
 //  todos: Array<Object>,
@@ -76,14 +77,17 @@ const component = (component) => {
 
 
 
-const reducer = combineReducers({
+//const reducer = combineReducers(
+//{
   //...cart_reducer,
-  //...login_reducer,
+  //login_reducer,
   //delivery_address: delivery_address_reducer,
   //name: name_reducer,
-  ...root_reducer,
-  routing: routerReducer
-})
+  //...reducers,
+  //routing: routerReducer
+//}
+
+//)
 
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
@@ -98,7 +102,7 @@ const middleware = applyMiddleware(
 );
 
 const store = createStore(
-    reducer,
+    reducers,
     DevTools.instrument(),
     middleware
 )
@@ -159,7 +163,7 @@ const Root = () => (
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id/cart" component={OrderCart} />
-        <Route path="/order/:order_id/datetime_contact" component={OrderDateTimeContact} />
+        <Route path="/order/checkout" component={Checkout} />
         <Route path="/order/:order_id" component={Order} />
         //<Route path="/order/:order_id/order_complete" getComponent={(nextState, cb) => {
                                      // async work to find components

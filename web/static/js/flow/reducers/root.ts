@@ -1,5 +1,5 @@
 import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, SET_CONTACT_EMAIL, SET_CONTACT_PHONE, SET_DATE, SET_TIME, SET_SPECIFIC_TIME, SET_FIRST_NAME, SET_LAST_NAME, SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE, SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_PAYMENT_EXPIRY_DATE, SET_PAYMENT_SECURITY_CODE, LOGIN, GET_USER_DETAILS } from '../constants/actionTypes.ts';
-
+import {Map} from 'immutable'
 /*let menu_items: any;
 
 interface CartState {
@@ -31,15 +31,18 @@ let inititalState: CartState = {
 //gustOrderState
 let initialState: any = {order: {delivery_address: {street1: "", street2: "", city: "", state: "", zipcode: ""}, name: {first: "", last: ""}, datetime: {date: "", time: "", specific_time: ""}, contact: {email: "", phone: ""}, cart_items: [], payment_method: {name_on_card: "", card_number: "", expiry_date: "", security_code: ""}}};
 let userState: any= {session_id: "", name: "", orders: [], delivery_address: [], payment_methods: []};
+const initialStateTest = Map({ counter: 0 });
+
+//state.set('counter', state.get('counter') + 1);
 
 
-export default (state:any = initialState, action: any) => {
+export default function root(state:any = initialState, action: any) {
   let delivery_address_updated = null;
 
   switch (action.type) {
     case ADD_CART_ITEM:
       //alert("CartState " + action.item_id);
-      alert("add cart item" + JSON.stringify(state.order));
+      console.log("add cart item" + JSON.stringify(state.order));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -65,7 +68,7 @@ export default (state:any = initialState, action: any) => {
     
       //if(state.order === undefined){
 
-          alert("cart items");
+          console.log("cart items");
 
           return {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
 
@@ -78,8 +81,12 @@ export default (state:any = initialState, action: any) => {
       //}
 
     case SET_FIRST_NAME:
+
+      //state.set('counter', state.get('counter') + 1);
+
+
       //alert("CartState " + action.item_id);
-      alert("set first name" + JSON.stringify(state));
+      console.log("set first name" + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -113,7 +120,7 @@ export default (state:any = initialState, action: any) => {
     
     case SET_LAST_NAME:
       //alert("CartState " + action.item_id);
-      alert("set last name" + JSON.stringify(state));
+      console.log("set last name" + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})

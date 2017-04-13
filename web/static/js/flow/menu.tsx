@@ -4,8 +4,10 @@ import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 
 import {connect} from 'react-redux';
+//import {viewMenu} from './action/cart.ts';
+//import {checklogin} from './action/cart.ts';
 import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
-import MenuCart from './menu_cart.tsx';
+import SidebarCart from './sidebar_cart.tsx';
 
 
 //type Props = {
@@ -26,9 +28,9 @@ class PublicMenu extends React.Component<any, any> {
 
     this.state = {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
-        selected_item_id: 1111,
-        selected_item_dozens: "12",
-        selected_item_quantity: "3333",
+        selected_item_id: "",
+        selected_item_dozens: "",
+        selected_item_quantity: "",
         selected_item_mini: false,
 
     };
@@ -84,16 +86,11 @@ class PublicMenu extends React.Component<any, any> {
 
       this.setState({selected_item_dozens: e.target.value});
 
-      /*if(e.target.value == "12"){
+      if(e.target.value == "34"){
 
-          this.setState({selected_item_mini: false});
+          this.setState({selected_item_mini: true});
 
-      }else{
-
-          //this.setState({selected_item_mini: true});
-
-      }*/
-
+      }
       
   }
 
@@ -103,12 +100,13 @@ class PublicMenu extends React.Component<any, any> {
     alert(e.target.value);
 
     this.setState({selected_item_quantity: e.target.value});
+    //set add cart button == active
 
   }
 
   addCartItem(){
 
-    //if they haven't selected quantity and dozens dont submit
+    //if they haven't selected quantity and dozens dont submit and show them an error
 
     this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 
@@ -167,7 +165,8 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <MenuCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+                            <br/>
+                            <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
                             <br/>
                           </div>
                           <div className="hidden-xs col-md-10">
@@ -175,7 +174,7 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <Link to="/order/1234/cart">Login</Link>
+                            <br/>
                             <br/>
                             {this.state.menu_items.map(function(item: any){
                                 return(<div className="col-md-4">
@@ -231,13 +230,13 @@ class PublicMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  alert("mapstatetoprops " + JSON.stringify(state));
+  console.log("mapstatetoprops " + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        order: state.default
+        order: state.default.order
 
     //}
   }
@@ -245,6 +244,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
+    //viewmenuthunk
+
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
       dispatch(addCartItem(1))
     },

@@ -217,13 +217,24 @@ class Name extends React.Component<any, any> {
                 </div>
               </form>
               <form className="form-inline">
-                <div className={this.props.firstNameClassName}>
-                  <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                <div className="col-md-4">
+                  <div className={this.props.firstNameClassName}>
+                    <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                  </div>
                 </div>
-                <div className={this.state.last_name_classname}>
-                  <input type="text" onChange={(e: any) => this.props.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                <div className="col-md-4">
+                  <div className={this.state.last_name_classname}>
+                    <input type="text" onChange={(e: any) => this.props.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                  </div>
                 </div>
               </form>
+              <form className="form-inline">
+                <div className="col-md-4">
+                  <div className={this.props.firstNameClassName}>
+                    <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                  </div>
+                </div>
+               </form>
             </div>
     )
   }

@@ -5,7 +5,7 @@
 import * as React from 'react';
 
 //import SconelyYoursMenu from './menu.tsx';
-import Cart from './order_datetime_contact_cart.tsx';
+//import Cart from './order_datetime_contact_cart.tsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'
@@ -17,6 +17,7 @@ import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';
 import DateTime from './datetime.tsx';
@@ -389,6 +390,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       //if value is not ""
       this.props.setDate(e);
+      //date validated
 
   }
 
@@ -401,6 +403,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
       this.setState({selected_time: e.target.value});
       this.setState({selected_specific_time: ""});
       //this.props.setTime(e);
+      //time validated
 
   }
 
@@ -411,6 +414,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
       this.setState({selected_specific_time: e.target.value});
       this.setState({selected_time: ""});
       //this.props.setSpecificTime(e);
+      //specific time validated
   }
 
   setFirstName(e: any){
@@ -430,6 +434,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
             //this.setState({"first_name_validated": true});
 
             this.props.setFirstName(e)
+            //first name validated
 
         }else{
 
@@ -481,17 +486,17 @@ class OrderDateTimeContact extends React.Component<any, any> {
         //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //return re.test(email);
 
-        //if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
+        if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
 
             //alert();
 
             //this.setState({"contact_email": e.target.value});
-            //this.setState({"contact_email_classname": "form-group"});
-            //this.setState({"contact_email_validated": true});
+            this.setState({"contact_email_classname": "form-group"});
+            this.setState({"contact_email_validated": true});
 
             this.props.setContactEmail(e);
 
-        //}
+        }
       }   
 
   }
@@ -732,6 +737,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       alert("order complete this.props.order");
 
+      //if all inputs are validated
+
       alert(JSON.stringify(this.props.order));
 
       //if first_name_validated == true && last_name_validated == true
@@ -757,11 +764,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
       axios.post('http://localhost:4000/graphql', {
-             query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {session_id, first_name, last_name}}'
+             query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
       })
       .then( response => {
 
-            alert(JSON.stringify(response));
+            console.log(JSON.stringify(response));
             //go to code/payment screen
     //        this.props.loadView();
             //this.props.setSubscription();
@@ -784,7 +791,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
       })
       .catch( error => {
 
-            alert("error");
+            console.log("error");
             //go to code/payment screen
     //        this.props.loadView();
 
@@ -857,6 +864,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
                           <br/>
                           <br/>
                           <br/>
@@ -964,7 +972,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                               </div>
                               <div className="form-group">
-                                <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                                <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
                               </div>
                             </form>
                             <form className="form-inline">
@@ -1036,7 +1044,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             </form>
                             <button onClick={() => this.completeOrder()}>Complete Order</button>
                             <br/>
-                            <button onClick={() => this.goToMenu()}>menu</button>
                         </div>
                         <div className="hidden-xs col-md-2">
                               maybe put something here
@@ -1060,7 +1067,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  alert("state" + JSON.stringify(state));
+  console.log("state" + JSON.stringify(state));
   return {
    order: state.default.order
    //menu_items: getPublicMenu
@@ -1123,6 +1130,8 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(setPaymentSecurityCode(e.target.value))
     },
     
+    //complete order thunk
+
     completeOrder: () => {
 
        /*$.ajax({
@@ -1143,10 +1152,10 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const OrderDateTimeContact1 = connect(
+const Checkout = connect(
   mapStateToProps,
   mapDispatchToProps
 )(OrderDateTimeContact)
 
-export default OrderDateTimeContact1;
+export default Checkout;
 

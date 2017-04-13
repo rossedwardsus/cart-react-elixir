@@ -593,7 +593,7 @@ class OrderCart extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  alert("mapstatetoprops " + JSON.stringify(state));
+  console.log("mapstatetoprops " + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 

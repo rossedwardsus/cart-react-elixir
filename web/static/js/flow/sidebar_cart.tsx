@@ -36,7 +36,7 @@ interface Order {
   //completed: boolean
 }
 
-class MenuCart extends React.Component<any, any> {
+class SidebarCart extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -206,20 +206,20 @@ class MenuCart extends React.Component<any, any> {
 
     let cart = "";
 
-    alert("length order" + JSON.stringify(this.props.order));
+    console.log("length order" + JSON.stringify(this.props.order));
 
 
-    if(this.props.order.length == 0){
+    if(this.props.order.cart_items.length == 0){
 
-        cart = "there are no items in your cart";
+        cart = "There are no items in your cart.";
 
     }else{
 
-        alert("order " + JSON.stringify(this.props.order));
+        console.log("order " + JSON.stringify(this.props.order));
 
-        this.props.order.order.cart_items.map(function(item: any){
+        this.props.order.cart_items.map(function(item: any){
 
-            alert("item " + JSON.stringify(item));
+            console.log("item " + JSON.stringify(item));
 
             if(item.mini == true){
                           
@@ -246,7 +246,7 @@ class MenuCart extends React.Component<any, any> {
 
                       if(item.mini == true){
                       
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">thumbnail</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div></div>)
 
                       }else{
 
@@ -263,19 +263,24 @@ class MenuCart extends React.Component<any, any> {
     return (<div> 
                   <br/>
                   <br/>
+                  <br/>
+                  <br/>
+                  <br/>
                   {cart}
                   <br/>
                   <br/>
-                  Total Items = {item_count} Scones
+                  <div className="col-md-1"><b>Total Items</b></div><div className="col-md-1">{item_count} Scones</div>
                   <br/>
-                  Sub Total ${total_cost}.00
+                  <b>Sub Total</b> ${total_cost}.00
                   <br/>
                   <br/>
-                  show delivery address button if cart item count is larger then 0
+                  show checkout button if cart item count is larger then 0
                   <br/>
                   <Link to="/public/menu">Menu-dont show if on menu page</Link>
                   <br/>
-                  <Link to="/order/12345/datetime_contact">Date Time and Payment</Link>
+                  <Link to="/order/checkout">Checkout-only show id cart items != 0</Link>
+                  <br/>
+                  <Link to="/order/cart">Cart</Link>
             </div>
     )
   }
@@ -292,18 +297,8 @@ class MenuCart extends React.Component<any, any> {
 
 
 
-/*function mapStateToProps(state: any) {
-  return {
-   menu_items: state.default.menu_items
-   //menu_items: getPublicMenu
-   //menu_items: dispatch()
-  };
-}
 
-function mapDispatchToProps(dispatch: any) {
-  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-}*/
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
-export default MenuCart;
+export default SidebarCart;

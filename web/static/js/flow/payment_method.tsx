@@ -192,21 +192,50 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
-  setCardNumber(){
+  setPaymentCardNumber(e: any){
 
+      //Amex Card: ^3[47][0-9]{13}$
+      if(/^[a-zA-Z]/.test(e.target.value)){
+
+          alert("amex");
+
+      //
+      }else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
+      //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
+
+          alert("visa");
+      //
+      }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
+          alert("discovery");
+      //
+      //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
+      }
 
 
   }
 
-  setExpiryDate(){
+  setPaymentExpiryDateMonth(e: any){
 
+      alert(e.target.value);
 
+      //01-12, only numbers
+      if(/^[0-9]/.test(e.target.value)){
+
+          alert("ok");
+
+      }
 
   }
 
-  setSecurityCode(){
+  setPaymentExpiryDateYear(e: any){
 
+      //2017-only numbers
 
+  }
+
+  setPaymentSecurityCode(e: any){
+
+      //if length > 0 or less then 4, only numbers
 
   }
   
@@ -222,13 +251,19 @@ class PaymentMethod extends React.Component<any, any> {
                 </form>
                 <form className="form-inline">
                   <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.props.setPaymentCardNumber(e)}/>
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)}/>
                   </div>
                   <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date-01/2017" onChange={(e) => this.props.setPaymentExpiryDate(e)}/>
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Type" onChange={(e) => this.props.setPaymentCardNumber(e)}/>
                   </div>
                   <div className="form-group">
-                    <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.props.setPaymentSecurityCode(e)}/>
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
+                  </div>
+                  <div className="form-group">
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
+                  </div>
+                  <div className="form-group">
+                    <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
                   </div>
                 </form>
             </div>

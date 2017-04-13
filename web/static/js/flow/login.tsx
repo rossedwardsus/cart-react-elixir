@@ -9,10 +9,8 @@ import * as React from 'react';
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
-//import { connect } from 'react-redux';
-//import * as getAllProducts from './actions/menu';
-//import {addItemToCart, addAddress} from './actions/order';
-//import { getPublicMenu } from './reducers/menu';
+import { connect } from 'react-redux';
+import {setEmail} from './actions/login.ts';
 
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");
@@ -169,11 +167,23 @@ class Login extends React.Component<any, any> {
 
       this.setState({email: e.target.value})
 
+      this.props.setEmail(e);
+
   }
 
   setPassword(e: any){
 
       this.setState({password: e.target.value})
+
+      //this.props.passwprd
+
+  }
+
+  setPasswordAgain(e: any){
+
+      this.setState({password: e.target.value})
+
+      //this.props.password_again
 
   }
   
@@ -212,19 +222,34 @@ class Login extends React.Component<any, any> {
 
 
 
-//function mapStateToProps(state: any) {
-//  return {
+function mapStateToProps(state: any) {
+  console.log(JSON.stringify(state));
+  return {
+
+    state: state,
+    //login thunk
 //   menu_items: state.default.menu_items
    //menu_items: getPublicMenu
    //menu_items: dispatch()
-//  };
-//}
+  };
+}
 
-//function mapDispatchToProps(dispatch: any) {
-//  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-//}
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //loginthunk
+
+      
+    setEmail: (e: any) => {
+      dispatch(setEmail(1))
+    },
+    
+  }
+}
 
 
-//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-export default Login;
+const Login1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)
 
+export default Login1

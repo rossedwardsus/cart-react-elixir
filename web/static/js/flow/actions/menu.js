@@ -2,6 +2,10 @@ import { VIEW_PUBLIC_MENU } from '../constants/actionTypes.ts';
 
 declare var module: { viewPublicMenu: any };
 
+
+//check login
+
+
 const viewPublicMenu = (data) =>
   ({ 
 		type: "VIEW_PUBLIC_MENU", 

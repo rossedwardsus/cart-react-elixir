@@ -54,6 +54,7 @@ defmodule Sconely.Schema.Types do
   end
 
   object :sconely_social_order do
+  	field :order_id, :string
     field :first, :string
     field :last, :string
     field :email, :string
