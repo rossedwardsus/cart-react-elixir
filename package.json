@@ -83,6 +83,7 @@
     "ts-loader": "^1.2.2",
     "tslint": "^4.0.2",
     "tslint-loader": "^3.3.0",
+    "tslint-react": "^2.5.0",
     "typescript": "^2.0.10",
     "webpack": "^1.13.1"
   },
@@ -94,6 +95,7 @@
     "eslint": "",
     "jest": "",
     "typescript": "",
+    "lint": "tslint --config tslint.json --project tsconfig.json || exit 0",
     "test": "mocha -r ./node_modules/ts-node/register web/static/js/tests/test.tsx"
   },
   "jest": {

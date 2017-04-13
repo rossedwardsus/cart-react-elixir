@@ -11,8 +11,12 @@
         "moduleResolution": "node"
         //"outDir": "./web/static/js/typescript"
     },
+     "exclude": [
+        "node_modules"
+    ],
+    
     "files": [
-        "./web/static/js/flow/order.tsx"
+        "./web/static/js/flow/menu.tsx"
         //"./web/static/js/typescript/components/DeliveryAddress.tsx",
         //"./web/static/js/typescript/SconelyYours.tsx"
     ]
