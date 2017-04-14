@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-import * as React from 'react'
-import { Link, browserHistory } from 'react-router'
+import * as React from 'react';
+import { Link, browserHistory } from 'react-router';
 
 import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
@@ -114,14 +114,14 @@ class PublicMenu extends React.Component<any, any> {
 
   goToDateTimeContact(){
 
-      this.context.router.push('/order/12345/signature');
+      this.context.router.push("/order/12345/signature");
       
   } 
 
   render(): JSX.Element{
 
-    var that = this;
-    var page = "";
+          //var that = this;
+          //var page = "";
 
 
     //if(this.state.page == "items"){
@@ -184,7 +184,7 @@ class PublicMenu extends React.Component<any, any> {
                                                 <h3>Strawberry Scone</h3>
                                               </div>
                                           </div>
-                                </div>)
+                                </div>);
                             }.bind(this))}
                               
                             <br/>
@@ -236,24 +236,24 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        order: state.default.order
+        order: state.default.order;
 
     //}
   }
-}
+};
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1))
+      dispatch(addCartItem(1));
     },
     increaseCartItemQuantity: () => {
-      dispatch(increaseCartItemQuantity(1))
+      dispatch(increaseCartItemQuantity(1));
     },
     decreaseCartItemQuantity: () => {
-      dispatch(decreaseCartItemQuantity(1))
+      dispatch(decreaseCartItemQuantity(1));
     }
   }
 }
@@ -261,6 +261,6 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 const PublicMenu1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PublicMenu)
+)(PublicMenu);
 
-export default PublicMenu1
+export default PublicMenu1;
