@@ -33,10 +33,6 @@ defmodule SconeHomeElixir.Router do
 
 
   
-  get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
-  forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
-
-
    
 
   #scope "/login", SconeHomeElixir do
@@ -50,10 +46,12 @@ defmodule SconeHomeElixir.Router do
 
 
   #mobile
-  scope "/", SconeHomeElixir do
+  scope "/", do
     pipe_through :browser # Use the default browser stack
 
-
+    get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
+    forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
+  
     
   end
 
