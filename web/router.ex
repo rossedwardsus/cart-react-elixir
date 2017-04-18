@@ -31,8 +31,9 @@ defmodule SconeHomeElixir.Router do
   #get "/", PageController, :index
   #get "/user", UserController, :index
 
-   
 
+  
+ 
   #scope "/login", SconeHomeElixir do
  #   pipe_through :browser # Use the default browser stack
 
@@ -44,9 +45,12 @@ defmodule SconeHomeElixir.Router do
 
 
   #mobile
-  scope "/" do
+  scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
 
+
+    
+    get "/", HomeController, :index
     get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
     #forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
     
