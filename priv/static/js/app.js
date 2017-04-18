@@ -26825,10 +26825,17 @@ webpackJsonp([0],[
 	    function PublicMenu(props) {
 	        _classCallCheck(this, PublicMenu);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (PublicMenu.__proto__ || Object.getPrototypeOf(PublicMenu)).call(this, props));
 	
+	        _this.selectedItemDozens = function (e) {
+	            alert(e.target.value);
+	            _this.setState({ selected_item_dozens: e.target.value });
+	            if (e.target.value == "34") {
+	                _this.setState({ selected_item_mini: true });
+	            }
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }],
 	            selected_item_id: "",
@@ -26837,9 +26844,10 @@ webpackJsonp([0],[
 	            selected_item_mini: false
 	        };
 	        //this.loadCart = this.loadCart.bind(this);
-	        //this.showItem = this.showItem.bind(this);
-	        //this.selectedCartItem = this.selectedCartItem.bind(this);
-	        //this.selectedItemQuantity = this.selectedQuantity.bind(this);
+	        _this.showItem = _this.showItem.bind(_this);
+	        //this.selectedItemDozens = this.selectedItemDozens.bind(this);
+	        _this.selectedItemQuantity = _this.selectedItemQuantity.bind(_this);
+	        _this.addCartItem = _this.addCartItem.bind(_this);
 	        return _this;
 	    }
 	
@@ -26852,30 +26860,11 @@ webpackJsonp([0],[
 	            //this.props.dispatch();
 	        }
 	    }, {
-	        key: "mouseOver",
-	        value: function mouseOver(e) {
-	            e.target.src = "/images/menu/DWK_greenrollover3.jpg";
-	        }
-	    }, {
-	        key: "mouseOut",
-	        value: function mouseOut(e) {
-	            e.target.src = "/images/menu/DWK_greenrollover1.jpg";
-	        }
-	    }, {
 	        key: "showItem",
 	        value: function showItem(item_id) {
 	            alert(item_id);
 	            this.setState({ selected_item_id: item_id });
 	            $('#myModal').modal('show');
-	        }
-	    }, {
-	        key: "selectedItemDozens",
-	        value: function selectedItemDozens(e) {
-	            alert(e.target.value);
-	            this.setState({ selected_item_dozens: e.target.value });
-	            if (e.target.value == "34") {
-	                this.setState({ selected_item_mini: true });
-	            }
 	        }
 	    }, {
 	        key: "selectedItemQuantity",
@@ -26893,35 +26882,19 @@ webpackJsonp([0],[
 	    }, {
 	        key: "goToDateTimeContact",
 	        value: function goToDateTimeContact() {
-	            this.context.router.push('/order/12345/signature');
+	            this.context.router.push("/order/12345/signature");
 	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
-	
-	            var that = this;
-	            var page = "";
+	            //var that = this;
+	            //var page = "";
 	            //if(this.state.page == "items"){
 	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	            //alert(this.props.cart_items.length);
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sidebar_cart_tsx_1.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item) {
-	                var _this2 = this;
-	
-	                return React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onMouseOver: function onMouseOver(e) {
-	                        return _this2.mouseOver(e);
-	                    }, onMouseOut: function onMouseOut(e) {
-	                        return _this2.mouseOut(e);
-	                    }, onClick: function onClick() {
-	                        return _this2.showItem(item.item_id);
-	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone"))));
-	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(value) {
-	                    return _this3.selectedItemDozens(value);
-	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity, onChange: function onChange(value) {
-	                    return _this3.selectedItemQuantity(value);
-	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", onClick: function onClick() {
-	                    return _this3.addCartItem();
-	                }, className: "btn btn-default", "data-dismiss": "modal" }, "Add-only show if cart items larger then 1"))))));
+	                return React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onClick: this.showItem(item.item_id), src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone"))));
+	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: this.selectedItemDozens }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", onClick: this.addCartItem, className: "btn btn-default", "data-dismiss": "modal" }, "Add-only show if cart items larger then 1"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",

@@ -36,10 +36,11 @@ class PublicMenu extends React.Component<any, any> {
     };
 
     //this.loadCart = this.loadCart.bind(this);
-    //this.showItem = this.showItem.bind(this);
-    //this.selectedCartItem = this.selectedCartItem.bind(this);
-    //this.selectedItemQuantity = this.selectedQuantity.bind(this);
-    
+    this.showItem = this.showItem.bind(this);
+    //this.selectedItemDozens = this.selectedItemDozens.bind(this);
+    this.selectedItemQuantity = this.selectedItemQuantity.bind(this);
+    this.addCartItem = this.addCartItem.bind(this);
+   
   }
 
   componentDidMount(){
@@ -57,18 +58,6 @@ class PublicMenu extends React.Component<any, any> {
       router: React.PropTypes.object.isRequired,
     };
   }
- 
-  mouseOver(e:any){
-
-      e.target.src = "/images/menu/DWK_greenrollover3.jpg";
-
-  }
-
-  mouseOut(e: any){
-
-      e.target.src = "/images/menu/DWK_greenrollover1.jpg";
-
-  }
 
   showItem(item_id: any){
 
@@ -80,7 +69,7 @@ class PublicMenu extends React.Component<any, any> {
 
   }
 
-  selectedItemDozens(e: any){
+  selectedItemDozens = (e: any) => {
 
       alert(e.target.value);
 
@@ -179,7 +168,7 @@ class PublicMenu extends React.Component<any, any> {
                             {this.state.menu_items.map(function(item: any){
                                 return(<div className="col-md-4">
                                           <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
-                                              <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
+                                              <img id="1" onClick={this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                               <div className="caption">
                                                 <h3>Strawberry Scone</h3>
                                               </div>
@@ -205,20 +194,20 @@ class PublicMenu extends React.Component<any, any> {
                             Ingredients
                         </div>
                         <div className="modal-footer">
-                          <select value={this.state.selected_item_dozens} onChange={(value) => this.selectedItemDozens(value)}>
+                          <select value={this.state.selected_item_dozens} onChange={this.selectedItemDozens}>
                             <option value="">Quantity</option>
                             <option value="12">Dozen</option>
                             <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
-                          <select value={this.state.selected_item_quantity} onChange={(value) => this.selectedItemQuantity(value)}>
+                          <select value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity}>
                             <option value=""></option> 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" onClick={() => this.addCartItem()} className="btn btn-default" data-dismiss="modal">Add-only show if cart items larger then 1</button>
+                          <button type="button" onClick={this.addCartItem} className="btn btn-default" data-dismiss="modal">Add-only show if cart items larger then 1</button>
                         </div>
                       </div>
                     </div>
@@ -236,7 +225,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        order: state.default.order;
+        order: state.default.order
 
     //}
   }

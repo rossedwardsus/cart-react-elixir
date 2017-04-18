@@ -1,4 +1,4 @@
-defmodule Sconely.Registration do
+defmodule Sconely.Login do
 		use Ecto.Schema
 		import Ecto.Changeset
 
@@ -31,9 +31,9 @@ defmodule Sconely.Registration do
 
 		def changeset(struct, params \\ %{}) do
 		    struct
-		    |> cast(params, [:first_name, :email, :password])
+		    |> cast(params, [:email, :password])
 		    #|> validate_required([:email, :password])
-		    |> validate_length(:first_name, min: 2)
+		    #|> validate_length(:first_name, min: 2)
 		    #|> validate_length(:email, min: 2)
 		end
 

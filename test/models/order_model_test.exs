@@ -1,8 +1,8 @@
-defmodule Sconely.UserTest do
-  alias Sconely.User
+defmodule SconeHomeElixir.OrderTest do
+  #alias SconeHomeElixir.User
   use ExUnit.Case
 
-  test "user exists" do
+  test "adding and retrieving todo items" do
     #assert [] == Sconely.SconelySocialOrder
 
     #TodoItems.add("Make example app")

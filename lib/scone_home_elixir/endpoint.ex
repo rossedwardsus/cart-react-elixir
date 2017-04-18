@@ -37,7 +37,7 @@ defmodule SconeHomeElixir.Endpoint do
     key: "_scone_home_elixir_key",
     signing_salt: "GSBcXlGw"
 
-  plug SconeHomeElixir.Plugs.Redirect.RedirectsPlug
+  #plug SconeHomeElixir.Plugs.Redirect.RedirectsPlug
 
   plug SconeHomeElixir.Router
 

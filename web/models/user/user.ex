@@ -1,12 +1,12 @@
 defmodule Sconely.User do
-		#use Ecto.Schema
-		#import Ecto.Changeset
+		use Ecto.Schema
+		import Ecto.Changeset
 
-		use SconeHomeElixir.Web, :model
+		#use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		@primary_key {:user_id, :binary_id, autogenerate: true}
+		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "users" do
 			#field :user_id, :string
@@ -28,5 +28,13 @@ defmodule Sconely.User do
 
 
 		#has_many_orders
+
+		def changeset(model, params \\ %{}) do
+		    model
+		    |> cast(params, [:email, :password, :registration_datetime])
+		    #|> cast(params, [])
+		    #|> validate_required(params, [:name])
+		end
+
 
 end 

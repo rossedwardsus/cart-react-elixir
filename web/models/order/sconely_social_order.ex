@@ -1,4 +1,4 @@
-defmodule Sconely.SconelySocialOrders do
+defmodule Sconely.SconelySocialOrder do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -17,9 +17,20 @@ defmodule Sconely.SconelySocialOrders do
 			field :delivery_address_state, :string, default: ""
 			field :delivery_address_zipcode, :string, default: ""
 			field :delivery_address_comment, :string, default: ""
+			#contact
+			#name
+			#payment
+			#stripe transaction id
 			
 			
 			#timestamps()
+		end
+
+		def changeset(model, params \\ %{}) do
+		    model
+		    |> cast(params, [:email, :password, :registration_datetime])
+		    #|> cast(params, [])
+		    #|> validate_required([:name, :email, :bio, :number_of_pets])
 		end
 
 
