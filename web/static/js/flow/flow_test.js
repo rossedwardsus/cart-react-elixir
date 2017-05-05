@@ -20,7 +20,7 @@ import thunk from 'redux-thunk';
 
 
 import PublicHomePage from './public/public_home_page.jsx';
-import PublicMenu from './menu.tsx';
+import PublicMenu from './menu.jsx';
 import PublicAboutUs from './public/public_about_us';
 
 import UserHomePage from './user/user_home_page.jsx';
@@ -41,7 +41,7 @@ import SconelyYours from "./sconely_yours_social_single_page";
 //import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
 
 //import SconelySocial from "./sconely_social_single_page";*/
-import SconelySignatureGuest from "./sconely_signature_guest/guest.tsx";
+import SconelySignatureGuest from "./sconely_signature_guest/guest.jsx";
 
 /*import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySignatureGuest from "./sconely_signature_guest/guest";

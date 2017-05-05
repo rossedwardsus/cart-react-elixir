@@ -17,7 +17,7 @@ import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
-import SidebarCart from './sidebar_cart.tsx';
+import SidebarCart from './sidebar_cart.jsx';
 import DeliveryAddress from './delivery_address.jsx';
 import Contact from './contact.jsx';
 import DateTime from './datetime.jsx';

@@ -1,5 +1,5 @@
 import {ADD_CART_ITEM, REMOVE_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY} from '../constants/actionTypes.ts';
-import { browserHistory } from 'react-router'
+//import { browserHistory } from 'react-router'
 import { push, replace } from 'react-router-redux'
 //import { store, history } from './redux/store';
 

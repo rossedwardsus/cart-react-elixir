@@ -4,8 +4,8 @@
 
 import * as React from 'react';
 
-import SconelyYoursMenu from './menu.tsx';
-import SidebarCart from './sidebar_cart.tsx';
+import SconelyYoursMenu from './menu.jsx';
+import SidebarCart from './sidebar_cart.jsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'
@@ -33,7 +33,7 @@ export interface HelloProps {
 
 declare var module: { Order: any };
 
-interface Order {
+interface Order1 {
   state: any,
   props: any,
   //completed: boolean

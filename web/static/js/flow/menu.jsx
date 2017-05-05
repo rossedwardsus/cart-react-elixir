@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
 //import {checklogin} from './action/cart.ts';
 import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
-import SidebarCart from './sidebar_cart.tsx';
+import SidebarCart from './sidebar_cart.jsx';
 
 
 //type Props = {
