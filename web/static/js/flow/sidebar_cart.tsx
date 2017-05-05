@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 
-//import Immutable  = require('immutable');
+const Immutable  = require('immutable');
 //import _ from 'lodash';
 
 
@@ -47,7 +47,7 @@ class SidebarCart extends React.Component<any, any> {
 
     this.state = {
 
-        menu_items: Immutable.fromJS([{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}]),
+        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}],
         cart_items: [{item_id: 1, item_title: "Susie Sunshine", quantity: 1}, {item_id: 2, item_title: "Julie Freedom", quantity: 1}],
         here: ""
 
@@ -250,7 +250,7 @@ class SidebarCart extends React.Component<any, any> {
 
                       }else{
 
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1" onClick={() => this.increaseCartItemQuantity(1)}>+</a><a className="col-md-1" onClick={() => this.decreaseCartItemQuantity(1)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1">+</a><a className="col-md-1">-</a></div></div>)
 
                       }
                   

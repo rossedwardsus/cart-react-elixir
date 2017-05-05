@@ -62,51 +62,51 @@ webpackJsonp([0],[
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _order_cart = __webpack_require__(1090);
+	var _order_cart = __webpack_require__(1089);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_complete = __webpack_require__(1091);
+	var _order_complete = __webpack_require__(1090);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1092);
+	var _login = __webpack_require__(1091);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1093);
+	var _register = __webpack_require__(1092);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _user = __webpack_require__(1094);
+	var _user = __webpack_require__(1093);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _guest = __webpack_require__(1095);
+	var _guest = __webpack_require__(1094);
 	
 	var _guest2 = _interopRequireDefault(_guest);
 	
-	var _cart = __webpack_require__(1096);
+	var _cart = __webpack_require__(1095);
 	
 	var cart_reducer = _interopRequireWildcard(_cart);
 	
-	var _login3 = __webpack_require__(1097);
+	var _login3 = __webpack_require__(1096);
 	
 	var login_reducer = _interopRequireWildcard(_login3);
 	
-	var _order_delivery_address = __webpack_require__(1098);
+	var _order_delivery_address = __webpack_require__(1097);
 	
 	var delivery_address_reducer = _interopRequireWildcard(_order_delivery_address);
 	
-	var _name = __webpack_require__(1099);
+	var _name = __webpack_require__(1098);
 	
 	var name_reducer = _interopRequireWildcard(_name);
 	
-	var _root = __webpack_require__(1100);
+	var _root = __webpack_require__(1099);
 	
 	var root_reducer = _interopRequireWildcard(_root);
 	
-	var _index = __webpack_require__(1101);
+	var _index = __webpack_require__(1100);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -18785,641 +18785,252 @@ webpackJsonp([0],[
 /* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	"use strict";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	__webpack_require__(624);
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _login = __webpack_require__(920);
-	
-	var _immutable = __webpack_require__(922);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__webpack_require__(624);
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
 	//import Swipeable from 'react-swipeable';
 	//import { routeActions, push } from 'react-router-redux'
-	
-	
+	var react_redux_1 = __webpack_require__(190);
+	var login_ts_1 = __webpack_require__(920);
+	var immutable_1 = __webpack_require__(922);
 	//import * as Cookie from 'js-cookie';
 	//const cookie: any = require('react-cookie');
-	
-	
 	function getCookie(name) {
-	  var nameLenPlus = name.length + 1;
-	  return document.cookie.split(';').map(function (c) {
-	    return c.trim();
-	  }).filter(function (cookie) {
-	    return cookie.substring(0, nameLenPlus) === name + '=';
-	  }).map(function (cookie) {
-	    return decodeURIComponent(cookie.substring(nameLenPlus));
-	  })[0] || null;
+	    var nameLenPlus = name.length + 1;
+	    return document.cookie.split(';').map(function (c) {
+	        return c.trim();
+	    }).filter(function (cookie) {
+	        return cookie.substring(0, nameLenPlus) === name + "=";
+	    }).map(function (cookie) {
+	        return decodeURIComponent(cookie.substring(nameLenPlus));
+	    })[0] || null;
 	}
-	
 	//@connect(null, mapDispatchToProps)
 	
 	var PublicHomePage = function (_React$Component) {
-	  _inherits(PublicHomePage, _React$Component);
+	    _inherits(PublicHomePage, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function PublicHomePage(props) {
+	        _classCallCheck(this, PublicHomePage);
 	
-	  function PublicHomePage(props) {
-	    _classCallCheck(this, PublicHomePage);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (PublicHomePage.__proto__ || Object.getPrototypeOf(PublicHomePage)).call(this, props));
 	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (PublicHomePage.__proto__ || Object.getPrototypeOf(PublicHomePage)).call(this, props));
-	
-	    _this.state = {
-	
-	      image: "/images/gallery/sconely_group_HPb.jpg",
-	      guest_code: ""
-	
-	    };
-	
-	    _this.createOrder = _this.createOrder.bind(_this);
-	    _this.guestCode = _this.guestCode.bind(_this);
-	    _this.onSubmit = _this.onSubmit.bind(_this);
-	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
-	    _this.onSwipedRight = _this.onSwipedRight.bind(_this);
-	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
-	    _this.changeImage = _this.changeImage.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  _createClass(PublicHomePage, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //dispatch(checkLoggedIn);
-	
-	      this.props.checkLoggedIn();
-	
-	      //alert("jsx");
-	
-	      //get active items from the database
-	
-	      setInterval(this.changeImage, 10000);
-	
-	      //Cookies.set('name', 'value');
-	      //alert(Cookies.get('name'));
-	
-	      //function setCookie(cname, cvalue, exdays) {
-	      var d = new Date();
-	      d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
-	      var expires = "expires=" + d.toUTCString();
-	      document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
-	      //}
-	
-	      //alert(document.cookie);
-	
-	
-	      //alert(getCookie("mommy_id"));
-	
-	      //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-	      //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	        _this.state = {
+	            image: "/images/gallery/sconely_group_HPb.jpg",
+	            guest_code: ""
+	        };
+	        _this.createOrder = _this.createOrder.bind(_this);
+	        _this.guestCode = _this.guestCode.bind(_this);
+	        _this.onSubmit = _this.onSubmit.bind(_this);
+	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	        _this.onSwipedRight = _this.onSwipedRight.bind(_this);
+	        _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	        _this.changeImage = _this.changeImage.bind(_this);
+	        return _this;
 	    }
-	  }, {
-	    key: 'onSubmit',
-	    value: function onSubmit(e) {
 	
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'guestCode',
-	    value: function guestCode() {
-	
-	      //e.preventDefault();
-	
-	      //alert(order_type);
-	
-	      //if(order_type == "sconely_yours"){
-	
-	      //if user is logged in then 
-	      //guest code is right then
-	      //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-	
-	      this.context.router.push('/order/12345/guest');
-	
-	      //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-	
-	      //this.props.dispatch(routeActions.push('/foo'));
-	
-	
-	      //}
-	    }
-	  }, {
-	    key: 'guestCodeChange',
-	    value: function guestCodeChange(e) {
-	
-	      this.setState({ guest_code: e.target.value });
-	    }
-	  }, {
-	    key: 'onSwipedLeft',
-	    value: function onSwipedLeft() {
-	
-	      //alert("left");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'onSwipedRight',
-	    value: function onSwipedRight() {
-	
-	      //alert("right");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'changeImage',
-	    value: function changeImage() {
-	
-	      if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
-	
-	        this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
-	      } else {
-	
-	        this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
-	      }
-	    }
-	  }, {
-	    key: 'createOrder',
-	    value: function createOrder(order_type) {
-	
-	      if (order_type == "sconely_yours") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	
-	        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //if user is logged in then 
-	        this.context.router.push('/order/12345');
-	
-	        //this.context.router.push('/order/12345');
-	
-	      } else if (order_type == "sconely_social") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        localStorage.setState("order", (0, _immutable.Map)({ name: "name", contact: "contact", cart: (0, _immutable.List)([]), delivery_address: { street: "" }, payment: "" }));
-	
-	        this.context.router.push('/order/12345');
-	      } else if (order_type == "sconely_signature") {
-	
-	        var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
-	
-	        this.context.router.push('/order/12345/signature');
-	      }
-	
-	      /*const client = GQLClient('http://localhost:3000', {
-	        // anything passed here is merged with 
-	        // the options passed to fetch() 
-	        credentials: true,
-	        headers: {
-	          'X-Requested-With': 'XMLHttpRequest'
+	    _createClass(PublicHomePage, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //dispatch(checkLoggedIn);
+	            this.props.checkLoggedIn();
+	            //alert("jsx");
+	            //get active items from the database
+	            setInterval(this.changeImage, 10000);
+	            //Cookies.set('name', 'value');
+	            //alert(Cookies.get('name'));
+	            //function setCookie(cname, cvalue, exdays) {
+	            var d = new Date();
+	            d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
+	            var expires = "expires=" + d.toUTCString();
+	            document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
+	            //}
+	            //alert(document.cookie);
+	            //alert(getCookie("mommy_id"));
+	            //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	            //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 	        }
-	      });*/
-	
-	      /*client.mutate(`
-	        mutation ($id: RecordID!, $name: String!) {
-	          updateUser(input: {id: $id, name: $name}) {
-	            user {
-	              id
-	              name
+	    }, {
+	        key: "onSubmit",
+	        value: function onSubmit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: "guestCode",
+	        value: function guestCode() {
+	            //e.preventDefault();
+	            //alert(order_type);
+	            //if(order_type == "sconely_yours"){
+	            //if user is logged in then 
+	            //guest code is right then
+	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	            this.context.router.push('/order/12345/guest');
+	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	            //this.props.dispatch(routeActions.push('/foo'));
+	            //}
+	        }
+	    }, {
+	        key: "guestCodeChange",
+	        value: function guestCodeChange(e) {
+	            this.setState({ guest_code: e.target.value });
+	        }
+	    }, {
+	        key: "onSwipedLeft",
+	        value: function onSwipedLeft() {
+	            //alert("left");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "onSwipedRight",
+	        value: function onSwipedRight() {
+	            //alert("right");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "changeImage",
+	        value: function changeImage() {
+	            if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
+	                this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	            } else {
+	                this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
 	            }
-	          }
 	        }
-	      `, { id: 1234, name: 'Danny' }).then((result) => {
-	        console.log(result.data.user);
-	        // => { id: 1234, name: 'Danny' } 
-	      });*/
-	
-	      /*var query = `
-	        query q (id: String!) {
-	          user(id: $id) {
-	            id,
-	            email,
-	            name
-	          }
+	    }, {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                this.context.router.push('/order/12345');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
+	                this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
+	                this.context.router.push('/order/12345/signature');
+	            }
+	            /*const client = GQLClient('http://localhost:3000', {
+	              // anything passed here is merged with
+	              // the options passed to fetch()
+	              credentials: true,
+	              headers: {
+	                'X-Requested-With': 'XMLHttpRequest'
+	              }
+	            });*/
+	            /*client.mutate(`
+	              mutation ($id: RecordID!, $name: String!) {
+	                updateUser(input: {id: $id, name: $name}) {
+	                  user {
+	                    id
+	                    name
+	                  }
+	                }
+	              }
+	            `, { id: 1234, name: 'Danny' }).then((result) => {
+	              console.log(result.data.user);
+	              // => { id: 1234, name: 'Danny' }
+	            });*/
+	            /*var query = `
+	              query q (id: String!) {
+	                user(id: $id) {
+	                  id,
+	                  email,
+	                  name
+	                }
+	              }
+	            `
+	            var queryVars = {
+	              id: 'abcdef'
+	            }
+	            var opts = {
+	              // custom fetch options
+	            }*/
+	            /**
+	             * @param  {Query} query graphql query
+	             * @param  {Object} [vars]  graphql query args, optional
+	             * @param  {Object} [opts]  fetch options, optional
+	             */
+	            /*fetch(query, queryVars, opts).then(function (results) {
+	              if (results.errors) {
+	                //...
+	                return
+	              }
+	              var user = result.data.user
+	              //...
+	            })*/
+	            //alert(order_type);
+	            //this.context.router.push('/order/12345/event_details');
+	            //browserHistory.push('#/order/12345');
+	            //browserHistory.push('/mobile/user#/order/12345');
+	            //save id in local storage
 	        }
-	      `
-	      var queryVars = {
-	        id: 'abcdef'
-	      }
-	      var opts = {
-	        // custom fetch options 
-	      }*/
+	        //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
 	
-	      /**
-	       * @param  {Query} query graphql query
-	       * @param  {Object} [vars]  graphql query args, optional
-	       * @param  {Object} [opts]  fetch options, optional
-	       */
-	      /*fetch(query, queryVars, opts).then(function (results) {
-	        if (results.errors) {
-	          //... 
-	          return
-	        }
-	        var user = result.data.user
-	        //... 
-	      })*/
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	      //alert(order_type);
-	
-	      //this.context.router.push('/order/12345/event_details');
-	
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
-	    }
-	
-	    //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
-	
-	
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var logged_in = null;
-	
-	      if (this.props.logged_in) {
-	
-	        logged_in = React.createElement(
-	          'div',
-	          { id: 'navbar', className: 'navbar-collapse collapse navbar-right' },
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              'Profile',
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/user' },
-	                'My Sconely',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              ),
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          )
-	        );
-	      } else {
-	
-	        logged_in = React.createElement(
-	          'div',
-	          { id: 'navbar', className: 'navbar-collapse collapse navbar-right' },
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              'Profile',
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/login' },
-	                'Login',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/register' },
-	                'Signup',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              ),
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          )
-	        );
-	      }
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs navbar-form navbar-right' },
-	              React.createElement(
-	                'div',
-	                { className: 'hidden-xs form-group' },
-	                React.createElement('input', { type: 'text', className: 'hidden-xs form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
-	              ),
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'hidden-xs btn btn-default', onClick: function onClick() {
+	            var logged_in = null;
+	            if (this.props.logged_in) {
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/user" }, "My Sconely", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	            } else {
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	            }
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }, React.createElement("div", { className: "hidden-xs form-group" }, React.createElement("input", { type: "text", className: "hidden-xs form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange })), React.createElement("button", { type: "button", className: "hidden-xs btn btn-default", onClick: function onClick() {
 	                    return _this2.guestCode();
-	                  } },
-	                'Submit'
-	              )
-	            ),
-	            logged_in
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-4' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            'Home',
-	            React.createElement('br', null),
-	            React.createElement(
-	              _reactRouter.Link,
-	              { to: '/public/menu' },
-	              'Menu'
-	            ),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'a',
-	              { onClick: this.createOrder.bind(this, "sconely_signature") },
-	              'Signture'
-	            ),
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'div',
-	              null,
-	              React.createElement(
-	                'a',
-	                { href: './' },
-	                'Profile',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/login_register' },
-	                'Login',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/login_register' },
-	                'Signup',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              React.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              ),
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              )
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-lg navbar-form' },
-	              React.createElement(
-	                'div',
-	                { className: 'form-group' },
-	                React.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Guest Code', value: this.state.guest_code, onChange: this.guestCodeChange })
-	              )
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-2' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            'maybe put something here'
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
+	                } }, "Submit")), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_signature") }, "Signture"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg navbar-form" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	  return PublicHomePage;
+	    return PublicHomePage;
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	  alert(JSON.stringify(state));
-	  return {
-	    //active: ownProps.filter === state.visibilityFilter
-	    logged_in: state.default.logged_in
-	  };
+	    //alert(JSON.stringify(state));
+	    return {};
 	};
-	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	  return {
-	    checkLoggedIn: function checkLoggedIn() {
-	      alert("check");
-	      dispatch((0, _login.checkLoggedIn)());
-	    }
-	  };
+	    return {
+	        checkLoggedIn: function checkLoggedIn() {
+	            //alert("check");
+	            dispatch(login_ts_1.checkLoggedIn());
+	        }
+	    };
 	};
-	
-	var PublicHomePage1 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PublicHomePage);
-	
+	var PublicHomePage1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PublicHomePage);
 	exports.default = PublicHomePage1;
 
 /***/ }),
@@ -27548,442 +27159,146 @@ webpackJsonp([0],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _cart = __webpack_require__(924);
-	
-	var _sidebar_cart = __webpack_require__(925);
-	
-	var _sidebar_cart2 = _interopRequireDefault(_sidebar_cart);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
 	//import {viewMenu} from './action/cart.ts';
 	//import {checklogin} from './action/cart.ts';
-	
-	
+	var cart_ts_1 = __webpack_require__(924);
+	var sidebar_cart_tsx_1 = __webpack_require__(925);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
 	//  setDeliveryAddrss: () => void,
 	//};
 	
-	
 	var PublicMenu = function (_React$Component) {
-	  _inherits(PublicMenu, _React$Component);
+	    _inherits(PublicMenu, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function PublicMenu(props) {
+	        _classCallCheck(this, PublicMenu);
 	
-	  function PublicMenu(props) {
-	    _classCallCheck(this, PublicMenu);
+	        var _this = _possibleConstructorReturn(this, (PublicMenu.__proto__ || Object.getPrototypeOf(PublicMenu)).call(this, props));
 	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (PublicMenu.__proto__ || Object.getPrototypeOf(PublicMenu)).call(this, props));
-	
-	    _this.selectedItemDozens = function (e) {
-	
-	      alert(e.target.value);
-	
-	      _this.setState({ selected_item_dozens: e.target.value });
-	
-	      if (e.target.value == "34") {
-	
-	        _this.setState({ selected_item_mini: true });
-	      }
-	    };
-	
-	    _this.state = {
-	      menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }],
-	      selected_item_id: "",
-	      selected_item_dozens: "",
-	      selected_item_quantity: "",
-	      selected_item_mini: false
-	
-	    };
-	
-	    //this.loadCart = this.loadCart.bind(this);
-	    _this.showItem = _this.showItem.bind(_this);
-	    //this.selectedItemDozens = this.selectedItemDozens.bind(this);
-	    _this.selectedItemQuantity = _this.selectedItemQuantity.bind(_this);
-	    _this.addCartItem = _this.addCartItem.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  _createClass(PublicMenu, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //get active items from the database
-	      //alert(this.props.params);
-	
-	      //alert(JSON.stringify(this.props.cart_items));
-	      //this.props.dispatch();
-	
+	        _this.selectedItemDozens = function (e) {
+	            //alert(e.target.value);
+	            _this.setState({ selected_item_dozens: e.target.value });
+	            if (e.target.value == "34") {
+	                _this.setState({ selected_item_mini: true });
+	            }
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        _this.state = {
+	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }],
+	            selected_item_id: "",
+	            selected_item_dozens: "",
+	            selected_item_quantity: "",
+	            selected_item_mini: false
+	        };
+	        //this.loadCart = this.loadCart.bind(this);
+	        _this.showItem = _this.showItem.bind(_this);
+	        //this.selectedItemDozens = this.selectedItemDozens.bind(this);
+	        _this.selectedItemQuantity = _this.selectedItemQuantity.bind(_this);
+	        _this.addCartItem = _this.addCartItem.bind(_this);
+	        return _this;
 	    }
-	  }, {
-	    key: 'showItem',
-	    value: function showItem(item_id) {
 	
-	      alert(item_id);
+	    _createClass(PublicMenu, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //get active items from the database
+	            //alert(this.props.params);
+	            //alert(JSON.stringify(this.props.cart_items));
+	            //this.props.dispatch();
+	        }
+	    }, {
+	        key: "showItem",
+	        value: function showItem(item_id) {
+	            //alert(item_id);
+	            this.setState({ selected_item_id: item_id });
+	            $('#myModal').modal('show');
+	        }
+	    }, {
+	        key: "selectedItemQuantity",
+	        value: function selectedItemQuantity(e) {
+	            //alert(e.target.value);
+	            this.setState({ selected_item_quantity: e.target.value });
+	            //set add cart button == active
+	        }
+	    }, {
+	        key: "addCartItem",
+	        value: function addCartItem() {
+	            //if they haven't selected quantity and dozens dont submit and show them an error
+	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
+	        }
+	    }, {
+	        key: "goToDateTimeContact",
+	        value: function goToDateTimeContact() {
+	            this.context.router.push("/order/12345/signature");
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            //var that = this;
+	            //var page = "";
+	            //if(this.state.page == "items"){
+	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            //alert(this.props.cart_items.length);
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sidebar_cart_tsx_1.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item) {
+	                var _this2 = this;
 	
-	      this.setState({ selected_item_id: item_id });
+	                return React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: "thumbnail", style: { paddingRight: 50, paddingLeft: 10 } }, React.createElement("img", { id: "1", onClick: function onClick() {
+	                        return _this2.showItem(item.item_id);
+	                    }, src: "/images/menu/DWK_greenrollover1.jpg", "data-target": "myModal", alt: "..." }), React.createElement("div", { className: "caption" }, React.createElement("h3", null, "Strawberry Scone"))));
+	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", className: "btn btn-default", "data-dismiss": "modal" }, "Add-only show if cart items larger then 1"))))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      $('#myModal').modal('show');
-	    }
-	  }, {
-	    key: 'selectedItemQuantity',
-	    value: function selectedItemQuantity(e) {
-	
-	      alert(e.target.value);
-	
-	      this.setState({ selected_item_quantity: e.target.value });
-	      //set add cart button == active
-	    }
-	  }, {
-	    key: 'addCartItem',
-	    value: function addCartItem() {
-	
-	      //if they haven't selected quantity and dozens dont submit and show them an error
-	
-	      this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
-	    }
-	  }, {
-	    key: 'goToDateTimeContact',
-	    value: function goToDateTimeContact() {
-	
-	      this.context.router.push("/order/12345/signature");
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	
-	      //var that = this;
-	      //var page = "";
-	
-	
-	      //if(this.state.page == "items"){
-	      //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	
-	      //alert(this.props.cart_items.length);
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            React.createElement('div', { className: 'hidden-xs navbar-form navbar-right' }),
-	            React.createElement(
-	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    'a',
-	                    { href: './' },
-	                    'Profile',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login' },
-	                    'Login',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/register' },
-	                    'Signup',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
-	                    'Menu'
-	                  ),
-	                  React.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs col-md-2' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement(_sidebar_cart2.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }),
-	              React.createElement('br', null)
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs col-md-10' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              this.state.menu_items.map(function (item) {
-	                return React.createElement(
-	                  'div',
-	                  { className: 'col-md-4' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'thumbnail', style: { paddingRight: 50, paddingLeft: 10 } },
-	                    React.createElement('img', { id: '1', onClick: this.showItem(item.item_id), src: '/images/menu/DWK_greenrollover1.jpg', 'data-target': 'myModal', alt: '...' }),
-	                    React.createElement(
-	                      'div',
-	                      { className: 'caption' },
-	                      React.createElement(
-	                        'h3',
-	                        null,
-	                        'Strawberry Scone'
-	                      )
-	                    )
-	                  )
-	                );
-	              }.bind(this)),
-	              React.createElement('br', null)
-	            )
-	          )
-	        ),
-	        React.createElement('br', null),
-	        React.createElement(
-	          'div',
-	          { className: 'modal fade', id: 'myModal', role: 'dialog', 'aria-labelledby': 'myModalLabel', 'max-height': ' 700px' },
-	          React.createElement(
-	            'div',
-	            { className: 'modal-dialog', role: 'document' },
-	            React.createElement(
-	              'div',
-	              { className: 'modal-content' },
-	              React.createElement(
-	                'div',
-	                { className: 'modal-header' },
-	                React.createElement(
-	                  'button',
-	                  { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
-	                  React.createElement(
-	                    'span',
-	                    { 'aria-hidden': 'true' },
-	                    '\xD7'
-	                  )
-	                ),
-	                React.createElement(
-	                  'h4',
-	                  { className: 'modal-title', id: 'myModalLabel' },
-	                  'Modal title'
-	                )
-	              ),
-	              React.createElement(
-	                'div',
-	                { className: 'modal-body' },
-	                'Story',
-	                React.createElement('br', null),
-	                'Ingredients'
-	              ),
-	              React.createElement(
-	                'div',
-	                { className: 'modal-footer' },
-	                React.createElement(
-	                  'select',
-	                  { value: this.state.selected_item_dozens, onChange: this.selectedItemDozens },
-	                  React.createElement(
-	                    'option',
-	                    { value: '' },
-	                    'Quantity'
-	                  ),
-	                  React.createElement(
-	                    'option',
-	                    { value: '12' },
-	                    'Dozen'
-	                  ),
-	                  React.createElement(
-	                    'option',
-	                    { value: 'mini_24' },
-	                    '2 Dozen Mini'
-	                  )
-	                ),
-	                'X',
-	                React.createElement(
-	                  'select',
-	                  { value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity },
-	                  React.createElement('option', { value: '' }),
-	                  React.createElement(
-	                    'option',
-	                    { value: '1' },
-	                    '1'
-	                  ),
-	                  React.createElement(
-	                    'option',
-	                    { value: '2' },
-	                    '2'
-	                  ),
-	                  React.createElement(
-	                    'option',
-	                    { value: '3' },
-	                    '3'
-	                  ),
-	                  React.createElement(
-	                    'option',
-	                    { value: '4' },
-	                    '4'
-	                  )
-	                ),
-	                React.createElement(
-	                  'button',
-	                  { type: 'button', onClick: this.addCartItem, className: 'btn btn-default', 'data-dismiss': 'modal' },
-	                  'Add-only show if cart items larger then 1'
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return PublicMenu;
+	    return PublicMenu;
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	  console.log("mapstatetoprops " + JSON.stringify(state));
-	  return {
-	    //active: ownProps.filter === state.visibilityFilter
-	
-	    //if(state.default.order.cart_items != undefined){
-	
-	    order: state.default.order
-	
-	    //}
-	  };
+	    console.log("mapstatetoprops " + JSON.stringify(state));
+	    return {
+	        //active: ownProps.filter === state.visibilityFilter
+	        //if(state.default.order.cart_items != undefined){
+	        order: state.root.order
+	        //}
+	    };
 	};
-	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	  return {
-	    //viewmenuthunk
-	
-	    addCartItem: function addCartItem(item_id, dozens, quantity) {
-	      dispatch((0, _cart.addCartItem)(1));
-	    },
-	    increaseCartItemQuantity: function increaseCartItemQuantity() {
-	      dispatch((0, _cart.increaseCartItemQuantity)(1));
-	    },
-	    decreaseCartItemQuantity: function decreaseCartItemQuantity() {
-	      dispatch((0, _cart.decreaseCartItemQuantity)(1));
-	    }
-	  };
+	    return {
+	        //viewmenuthunk
+	        addCartItem: function addCartItem(item_id, dozens, quantity) {
+	            dispatch(cart_ts_1.addCartItem(1));
+	        },
+	        increaseCartItemQuantity: function increaseCartItemQuantity() {
+	            dispatch(cart_ts_1.increaseCartItemQuantity(1));
+	        },
+	        decreaseCartItemQuantity: function decreaseCartItemQuantity() {
+	            dispatch(cart_ts_1.decreaseCartItemQuantity(1));
+	        }
+	    };
 	};
-	
-	var PublicMenu1 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PublicMenu);
-	
+	var PublicMenu1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PublicMenu);
 	exports.default = PublicMenu1;
 
 /***/ }),
@@ -28032,23 +27347,7 @@ webpackJsonp([0],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -28056,46 +27355,39 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
-	
-	
+	var react_router_1 = __webpack_require__(546);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	
-	//import Immutable  = require('immutable');
+	var Immutable = __webpack_require__(922);
 	//import _ from 'lodash';
-	
-	
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
 	    };
+	    //dispatch(action)
 	}
 	
 	var SidebarCart = function (_React$Component) {
 	    _inherits(SidebarCart, _React$Component);
 	
 	    //props: Props;
-	
 	    function SidebarCart(props) {
 	        _classCallCheck(this, SidebarCart);
 	
 	        //this.getData();
-	
 	        //alert("sconely yours1" + this.props.params.order_id);
-	
 	        var _this = _possibleConstructorReturn(this, (SidebarCart.__proto__ || Object.getPrototypeOf(SidebarCart)).call(this, props));
 	
 	        _this.state = {
-	
-	            menu_items: Immutable.fromJS([{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 3, title: "freedom", description: "let freedom ring!" }, { item_id: 4, title: "freedom", description: "let freedom ring!" }, { item_id: 5, title: "freedom", description: "let freedom ring!" }, { item_id: 6, title: "freedom", description: "let freedom ring!" }, { item_id: 7, title: "freedom", description: "let freedom ring!" }]),
+	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 3, title: "freedom", description: "let freedom ring!" }, { item_id: 4, title: "freedom", description: "let freedom ring!" }, { item_id: 5, title: "freedom", description: "let freedom ring!" }, { item_id: 6, title: "freedom", description: "let freedom ring!" }, { item_id: 7, title: "freedom", description: "let freedom ring!" }],
 	            cart_items: [{ item_id: 1, item_title: "Susie Sunshine", quantity: 1 }, { item_id: 2, item_title: "Julie Freedom", quantity: 1 }],
 	            here: ""
-	
 	        };
-	
 	        //user_type=guest
 	        //order_type=yours load 
 	        //state==menu
@@ -28103,345 +27395,125 @@ webpackJsonp([0],[
 	        //just show cart if guest
 	        //or separate into order_menu and order_delivery_address_payment objects
 	        //or have everything work of a "pages" flag
-	
 	        //this.updateCartItemQuantity = this.updateCartItemQuantity.bind(this);
 	        //this.removeItemFromCart = this.removeItemFromCart.bind(this);
-	
 	        return _this;
 	    }
 	
 	    _createClass(SidebarCart, [{
-	        key: 'componentDidMount',
+	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	
 	            //get menu items
-	
-	
 	            //this.props;
-	
 	            //alert(JSON.stringify(this.state.menu_items));
-	
 	            //alert("products" + JSON.stringify(this.props.menu_items));
 	            //console.log(this.props.getAllProducts());
 	            //this.setState({here: this.props.getAllProducts()});
 	            //console.log(this.props.dispatch(addTodoWithDispatch));
 	            //this.props.getAllProducts();
-	
 	        }
 	    }, {
-	        key: 'increaseCartItemQuantity',
+	        key: "increaseCartItemQuantity",
 	        value: function increaseCartItemQuantity(item_id) {
-	
 	            //alert(item_id);
-	
 	            this.props.increaseCartItemQuantity(item_id);
-	
 	            /*let cart_items_temp = this.state.cart_items;
-	             let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-	                 let new_item: any = "";
-	                 if(item.item_id == item_id){
-	                     new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-	                 }else{
-	                     new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-	                 }
-	                 return new_item;
-	             });
-	             //cart_items_temp.
-	             //alert(JSON.stringify(cart_items_temp_updated));
-	             this.setState({cart_items: cart_items_temp_updated});*/
+	               let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+	                   let new_item: any = "";
+	                   if(item.item_id == item_id){
+	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+	                   }else{
+	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+	                   }
+	                   return new_item;
+	               });
+	               //cart_items_temp.
+	               //alert(JSON.stringify(cart_items_temp_updated));
+	               this.setState({cart_items: cart_items_temp_updated});*/
 	        }
 	    }, {
-	        key: 'decreaseCartItemQuantity',
+	        key: "decreaseCartItemQuantity",
 	        value: function decreaseCartItemQuantity(item_id) {
-	
 	            //alert(item_id);
-	
 	            this.props.decreaseCartItemQuantity(item_id);
-	
 	            /*let cart_items_temp = this.state.cart_items;
-	             let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-	                 let new_item: any = "";
-	                 if(item.item_id == item_id){
-	                     new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-	                 }else{
-	                     new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-	                 }
-	                 return new_item;
-	             });
-	             //cart_items_temp.
-	             //alert(JSON.stringify(cart_items_temp_updated));
-	             this.setState({cart_items: cart_items_temp_updated});*/
+	               let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+	                   let new_item: any = "";
+	                   if(item.item_id == item_id){
+	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+	                   }else{
+	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+	                   }
+	                   return new_item;
+	               });
+	               //cart_items_temp.
+	               //alert(JSON.stringify(cart_items_temp_updated));
+	               this.setState({cart_items: cart_items_temp_updated});*/
 	        }
 	    }, {
-	        key: 'removeItemFromCart',
+	        key: "removeItemFromCart",
 	        value: function removeItemFromCart(item_id) {
-	
 	            //alert(item_id);
-	
 	            var cart_items_temp = this.state.cart_items;
-	
 	            var cart_items_temp_updated = cart_items_temp.filter(function (item) {
 	                return item.item_id !== item_id;
 	            });
-	
 	            this.setState({ cart_items: cart_items_temp_updated });
 	        }
 	    }, {
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
-	
 	            var body = "";
 	            var _props = this.props,
 	                removeCartItem = _props.removeCartItem,
 	                increaseCartItemQuantity = _props.increaseCartItemQuantity,
 	                decreaseCartItemQuantity = _props.decreaseCartItemQuantity;
 	
-	
 	            if (this.state.page == "menu") {
-	
 	                //body = <SconelyYoursMenu/>;
-	
 	            } else {
-	
 	                body = "delivery address payment";
 	            }
-	
 	            var total_cost = 0;
 	            var item_count = 0;
-	
 	            //alert(JSON.stringify(this.props.order.toJS()));
-	
-	
 	            //this.props.order.toJS().cart.map(function(item: any){
-	
 	            //    item_count = item.dozens * item.quantity;
-	
 	            //});
-	
 	            var cart = "";
-	
 	            console.log("length order" + JSON.stringify(this.props.order));
-	
 	            if (this.props.order.cart_items.length == 0) {
-	
 	                cart = "There are no items in your cart.";
 	            } else {
-	
 	                console.log("order " + JSON.stringify(this.props.order));
-	
 	                this.props.order.cart_items.map(function (item) {
-	
 	                    console.log("item " + JSON.stringify(item));
-	
 	                    if (item.mini == true) {
-	
 	                        total_cost = total_cost + item.dozens * item.quantity * 2;
 	                        item_count = item_count + item.dozens * item.quantity;
 	                    } else {
-	
 	                        total_cost = total_cost + item.dozens * item.quantity * 5;
 	                        item_count = item_count + item.dozens * 12 * item.quantity;
 	                    }
 	                });
-	
 	                //alert(total_cost);
-	
 	                cart = this.props.order.order.cart_items.map(function (item, index) {
-	                    var _this2 = this;
-	
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
 	                    //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
 	                    //let item_title = result.get("title");
 	                    var item_title = "";
-	
 	                    if (item.mini == true) {
-	
-	                        return React.createElement(
-	                            'div',
-	                            null,
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                'thumbnail'
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                item_title
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                item.quantity,
-	                                ' Dozen'
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                'Mini'
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                item.quantity
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                React.createElement(
-	                                    'a',
-	                                    null,
-	                                    'Cost'
-	                                )
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                React.createElement(
-	                                    'a',
-	                                    null,
-	                                    'X'
-	                                )
-	                            )
-	                        );
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "thumbnail"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "Cost")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "X")));
 	                    } else {
-	
-	                        return React.createElement(
-	                            'div',
-	                            null,
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                'image'
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                item_title
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                item.quantity,
-	                                ' Dozen'
-	                            ),
-	                            React.createElement('div', { className: 'col-md-1' }),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                item.quantity
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                React.createElement(
-	                                    'a',
-	                                    null,
-	                                    'Cost'
-	                                )
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                { className: 'col-md-1' },
-	                                React.createElement(
-	                                    'a',
-	                                    null,
-	                                    'X'
-	                                )
-	                            ),
-	                            React.createElement(
-	                                'div',
-	                                null,
-	                                React.createElement(
-	                                    'a',
-	                                    { className: 'col-md-1', onClick: function onClick() {
-	                                            return _this2.increaseCartItemQuantity(1);
-	                                        } },
-	                                    '+'
-	                                ),
-	                                React.createElement(
-	                                    'a',
-	                                    { className: 'col-md-1', onClick: function onClick() {
-	                                            return _this2.decreaseCartItemQuantity(1);
-	                                        } },
-	                                    '-'
-	                                )
-	                            )
-	                        );
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "Cost")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "X")), React.createElement("div", null, React.createElement("a", { className: "col-md-1" }, "+"), React.createElement("a", { className: "col-md-1" }, "-")));
 	                    }
 	                }.bind(this));
 	            }
-	
 	            //{this.props.params.repoName}
-	
-	            return React.createElement(
-	                'div',
-	                null,
-	                React.createElement('br', null),
-	                React.createElement('br', null),
-	                React.createElement('br', null),
-	                React.createElement('br', null),
-	                React.createElement('br', null),
-	                cart,
-	                React.createElement('br', null),
-	                React.createElement('br', null),
-	                React.createElement(
-	                    'div',
-	                    { className: 'col-md-1' },
-	                    React.createElement(
-	                        'b',
-	                        null,
-	                        'Total Items'
-	                    )
-	                ),
-	                React.createElement(
-	                    'div',
-	                    { className: 'col-md-1' },
-	                    item_count,
-	                    ' Scones'
-	                ),
-	                React.createElement('br', null),
-	                React.createElement(
-	                    'b',
-	                    null,
-	                    'Sub Total'
-	                ),
-	                ' $',
-	                total_cost,
-	                '.00',
-	                React.createElement('br', null),
-	                React.createElement('br', null),
-	                'show checkout button if cart item count is larger then 0',
-	                React.createElement('br', null),
-	                React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
-	                    'Menu-dont show if on menu page'
-	                ),
-	                React.createElement('br', null),
-	                React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/order/checkout' },
-	                    'Checkout-only show id cart items != 0'
-	                ),
-	                React.createElement('br', null),
-	                React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/order/cart' },
-	                    'Cart'
-	                )
-	            );
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-1" }, item_count, " Scones"), React.createElement("br", null), React.createElement("b", null, "Sub Total"), " $", total_cost, ".00", React.createElement("br", null), React.createElement("br", null), "show checkout button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-dont show if on menu page"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout-only show id cart items != 0"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"));
 	        }
-	
-	        /*render(){
-	          alert(JSON.stringify(this.props.menu_items));
-	          return (  
-	                <div>here{this.state.here}</div>
-	          )
-	        }*/
-	
 	    }], [{
-	        key: 'contextTypes',
+	        key: "contextTypes",
 	        get: function get() {
 	            return {
 	                router: React.PropTypes.object.isRequired
@@ -28451,7 +27523,6 @@ webpackJsonp([0],[
 	
 	    return SidebarCart;
 	}(React.Component);
-	
 	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
 	
 	
@@ -30553,68 +29624,9 @@ webpackJsonp([0],[
 /* 930 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _order_delivery_address = __webpack_require__(931);
-	
-	var _complete_order = __webpack_require__(932);
-	
-	var _order_name = __webpack_require__(933);
-	
-	var _order_delivery_datetime = __webpack_require__(934);
-	
-	var _order_payment = __webpack_require__(935);
-	
-	var _order_contact = __webpack_require__(936);
-	
-	var _sidebar_cart = __webpack_require__(925);
-	
-	var _sidebar_cart2 = _interopRequireDefault(_sidebar_cart);
-	
-	var _delivery_address = __webpack_require__(937);
-	
-	var _delivery_address2 = _interopRequireDefault(_delivery_address);
-	
-	var _contact = __webpack_require__(938);
-	
-	var _contact2 = _interopRequireDefault(_contact);
-	
-	var _datetime = __webpack_require__(939);
-	
-	var _datetime2 = _interopRequireDefault(_datetime);
-	
-	var _name = __webpack_require__(1063);
-	
-	var _name2 = _interopRequireDefault(_name);
-	
-	var _payment_method = __webpack_require__(1064);
-	
-	var _payment_method2 = _interopRequireDefault(_payment_method);
-	
-	var _axios = __webpack_require__(1065);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -30622,1424 +29634,700 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import SconelyYoursMenu from './menu.tsx';
 	//import Cart from './order_datetime_contact_cart.tsx';
 	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
+	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
+	var order_delivery_address_ts_1 = __webpack_require__(931);
+	var order_name_ts_1 = __webpack_require__(932);
+	var order_delivery_datetime_ts_1 = __webpack_require__(933);
+	var order_payment_ts_1 = __webpack_require__(934);
+	var order_contact_ts_1 = __webpack_require__(935);
+	var sidebar_cart_tsx_1 = __webpack_require__(925);
+	var delivery_address_tsx_1 = __webpack_require__(936);
+	var contact_tsx_1 = __webpack_require__(937);
+	var datetime_tsx_1 = __webpack_require__(938);
+	var name_tsx_1 = __webpack_require__(1062);
+	var payment_method_tsx_1 = __webpack_require__(1063);
 	//import { getPublicMenu } from './reducers/name';
-	//import Immutable  = require('immutable');
-	var DatePicker = __webpack_require__(940);
-	var moment = __webpack_require__(941);
-	
-	
-	__webpack_require__(1059);
-	
+	var Immutable = __webpack_require__(922);
+	var DatePicker = __webpack_require__(939);
+	var moment = __webpack_require__(940);
+	var axios_1 = __webpack_require__(1064);
+	__webpack_require__(1058);
 	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
 	}
 	
 	var OrderDateTimeContact = function (_React$Component) {
-	  _inherits(OrderDateTimeContact, _React$Component);
+	    _inherits(OrderDateTimeContact, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function OrderDateTimeContact(props) {
+	        _classCallCheck(this, OrderDateTimeContact);
 	
-	  function OrderDateTimeContact(props) {
-	    _classCallCheck(this, OrderDateTimeContact);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (OrderDateTimeContact.__proto__ || Object.getPrototypeOf(OrderDateTimeContact)).call(this, props));
 	
-	    //this.getData();
+	        _this.state = {
+	            first_name: "",
+	            last_name: "",
+	            email: "",
+	            mobile: "",
+	            business_name: "",
+	            delivery_addresses: [{ street: "santa monica blvd" }],
+	            street: "",
+	            city: "",
+	            state: "",
+	            zipcode: "",
+	            startDate: moment(),
+	            form_inputs_validated: false,
+	            first_name_classname: "form-group has-error",
+	            first_name_validated: false,
+	            last_name_classname: "form-group has-error",
+	            last_name_validated: false,
+	            contact_email_classname: "form-group has-error",
+	            contact_email_validated: false,
+	            contact_mobile_classname: "form-group has-error",
+	            comtact_mobile_validated: false,
+	            name_on_card: "form-group has-error",
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
+	            selected_time: "",
+	            selected_specific_time: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        /*this.addCartItem = this.addCartItem.bind(this);
+	        this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
+	        this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
+	        this.removeCartItem = this.removeCartItem.bind(this);
+	        this.addDeliveryAddress = this.addDeliveryAddress.bind(this);
+	        this.setDeliveryAddressStreet = this.setDeliveryAddressStreet.bind(this);
+	        this.setDeliveryAddressCity = this.setDeliveryAddressCity.bind(this);
+	        this.setDeliveryAddressZipcode = this.setDeliveryAddressZipcode.bind(this);
+	        this.setCardNumber = this.setCardNumber.bind(this);
+	        this.setExpiryDate = this.setExpiryDate.bind(this);
+	        this.setSecurityCode = this.setSecurityCode.bind(this);
+	        this.showMenu = this.showMenu.bind(this);
+	        this.showCart = this.showCart.bind(this);
+	        this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
+	        this.completeOrder = this.completeOrder.bind(this);*/
+	        return _this;
+	    }
 	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (OrderDateTimeContact.__proto__ || Object.getPrototypeOf(OrderDateTimeContact)).call(this, props));
-	
-	    _this.state = {
-	
-	      first_name: "",
-	      last_name: "",
-	      email: "",
-	      mobile: "",
-	      business_name: "",
-	      delivery_addresses: [{ street: "santa monica blvd" }],
-	      street: "",
-	      city: "",
-	      state: "",
-	      zipcode: "",
-	      startDate: moment(),
-	      form_inputs_validated: false,
-	      first_name_classname: "form-group has-error",
-	      first_name_validated: false,
-	      last_name_classname: "form-group has-error",
-	      last_name_validated: false,
-	      contact_email_classname: "form-group has-error",
-	      contact_email_validated: false,
-	      contact_mobile_classname: "form-group has-error",
-	      comtact_mobile_validated: false,
-	      name_on_card: "form-group has-error",
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
-	      selected_time: "",
-	      selected_specific_time: ""
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    /*this.addCartItem = this.addCartItem.bind(this);
-	    this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
-	    this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
-	    this.removeCartItem = this.removeCartItem.bind(this);
-	    this.addDeliveryAddress = this.addDeliveryAddress.bind(this);
-	    this.setDeliveryAddressStreet = this.setDeliveryAddressStreet.bind(this);
-	    this.setDeliveryAddressCity = this.setDeliveryAddressCity.bind(this);
-	    this.setDeliveryAddressZipcode = this.setDeliveryAddressZipcode.bind(this);
-	    this.setCardNumber = this.setCardNumber.bind(this);
-	    this.setExpiryDate = this.setExpiryDate.bind(this);
-	    this.setSecurityCode = this.setSecurityCode.bind(this);
-	    this.showMenu = this.showMenu.bind(this);
-	    this.showCart = this.showCart.bind(this);
-	    this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
-	    this.completeOrder = this.completeOrder.bind(this);*/
-	
-	    return _this;
-	  }
-	
-	  _createClass(OrderDateTimeContact, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert(this.props.params.order_id);
-	
-	      /*this._isMounted = true;
-	      window.onpopstate = ()=> {
-	        if(this._isMounted) {
-	          const { hash } = location;
-	          if(hash.indexOf('home')>-1 && this.state.value!==0)
-	            this.setState({value: 0})
-	          if(hash.indexOf('users')>-1 && this.state.value!==1)
-	            this.setState({value: 1})
-	          if(hash.indexOf('data')>-1 && this.state.value!==2)
-	            this.setState({value: 2})
+	    _createClass(OrderDateTimeContact, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert(this.props.params.order_id);
+	            /*this._isMounted = true;
+	            window.onpopstate = ()=> {
+	              if(this._isMounted) {
+	                const { hash } = location;
+	                if(hash.indexOf('home')>-1 && this.state.value!==0)
+	                  this.setState({value: 0})
+	                if(hash.indexOf('users')>-1 && this.state.value!==1)
+	                  this.setState({value: 1})
+	                if(hash.indexOf('data')>-1 && this.state.value!==2)
+	                  this.setState({value: 2})
+	              }
+	            }*/
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            //let cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            //const myNewMap = cart_items_temp.push({item_id: 5});
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
 	        }
-	      }*/
+	        /*showMenu(){
+	               //alert();
+	               this.setState({page: "menu"});
+	           }
+	           showDeliveryAddressPayment(){
+	               //alert();
+	               this.setState({page: "delivery_address_payment"})
+	           }*/
 	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
+	    }, {
+	        key: "showCart",
+	        value: function showCart() {
+	            this.setState({ page: "cart" });
 	        }
-	      );*/
+	        //goToDateTime(){
+	        //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
+	        //}
+	        /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
+	             //alert(item_id + "" + item_dozens + "" + item_quantity);
+	             let order_temp = this.state.order;
+	             //item_id, quanity, mini
+	             let new_cart_items: any = [];
+	             //order_temp.set('key', .get('key').push
+	          let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
+	         
+	          //for(let i: any = 0; i <= item_quantity - 1; i++){
+	               //alert();
+	               //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});*/
+	        /*const myMap = Immutable.fromJS({
+	          nested: {
+	            someKey: ['hello', 'world'],
+	          },
+	        });
+	         //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
+	        //var newMap = myMap.set('key', myMap.get('key').push(newData))
+	        //let cart_items_temp = this.state.cart_items;
+	        //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
+	        //}
+	        //alert(JSON.stringify(new_cart_items));
+	        //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
+	        //alert(JSON.stringify(cart_items_temp_updated));
+	        //this.setState({order: order_temp_updated});
+	        //}
+	        //selectItemDozens(e: any){
+	        //    alert(e.target.value);
+	        //}
+	        //addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
+	        //alert(street);
+	        //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
+	        //}
+	        /*removeCartItem(index: any){
+	               let cart_items_temp = this.state.cart_items;
+	               let cart_items_temp_updated = cart_items_temp.delete(index);
+	               this.setState({cart_items: cart_items_temp_updated});
+	           }
+	           increaseCartItemQuantity(item_id: any, index: any){
+	             //alert(JSON.stringify(item_id + "" + index));
+	             let cart_items_temp = this.state.cart_items;
+	             let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
+	             this.setState({cart_items: cart_items_temp_updated});
+	           }
+	           decreaseCartItemQuantity(item_id: any, index: any){
+	             let cart_items_temp = this.state.cart_items;
+	             let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") - 1; return item.set("quantity", quantity_updated)});
+	             this.setState({cart_items: cart_items_temp_updated});
+	           }*/
 	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      //let cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      //const myNewMap = cart_items_temp.push({item_id: 5});
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
+	    }, {
+	        key: "setDate",
+	        value: function setDate(e) {
+	            alert(e);
+	            //if value is not ""
+	            this.props.setDate(e);
+	            //date validated
 	        }
-	      );*/
-	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
-	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	    }
-	
-	    /*showMenu(){
-	         //alert();
-	         this.setState({page: "menu"});
-	     }
-	     showDeliveryAddressPayment(){
-	         //alert();
-	         this.setState({page: "delivery_address_payment"})
-	     }*/
-	
-	  }, {
-	    key: 'showCart',
-	    value: function showCart() {
-	
-	      this.setState({ page: "cart" });
-	    }
-	
-	    //goToDateTime(){
-	
-	    //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
-	
-	    //}
-	
-	
-	    /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
-	       //alert(item_id + "" + item_dozens + "" + item_quantity);
-	       let order_temp = this.state.order;
-	       //item_id, quanity, mini
-	       let new_cart_items: any = [];
-	       //order_temp.set('key', .get('key').push
-	      let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
-	        //for(let i: any = 0; i <= item_quantity - 1; i++){
-	         //alert();
-	         //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});*/
-	
-	    /*const myMap = Immutable.fromJS({
-	      nested: {
-	        someKey: ['hello', 'world'],
-	      },
-	    });
-	     //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
-	
-	    //var newMap = myMap.set('key', myMap.get('key').push(newData))
-	
-	
-	    //let cart_items_temp = this.state.cart_items;
-	    //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
-	
-	
-	    //}
-	
-	    //alert(JSON.stringify(new_cart_items));
-	
-	    //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
-	
-	    //alert(JSON.stringify(cart_items_temp_updated));
-	
-	    //this.setState({order: order_temp_updated});
-	
-	
-	    //}
-	
-	    //selectItemDozens(e: any){
-	
-	    //    alert(e.target.value);
-	
-	    //}
-	
-	    //addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
-	
-	    //alert(street);
-	
-	    //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	
-	    //}
-	
-	    /*removeCartItem(index: any){
-	         let cart_items_temp = this.state.cart_items;
-	         let cart_items_temp_updated = cart_items_temp.delete(index);
-	         this.setState({cart_items: cart_items_temp_updated});
-	     }
-	     increaseCartItemQuantity(item_id: any, index: any){
-	       //alert(JSON.stringify(item_id + "" + index));
-	       let cart_items_temp = this.state.cart_items;
-	       let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
-	       this.setState({cart_items: cart_items_temp_updated});
-	     }  
-	     decreaseCartItemQuantity(item_id: any, index: any){
-	       let cart_items_temp = this.state.cart_items;
-	       let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") - 1; return item.set("quantity", quantity_updated)});
-	       this.setState({cart_items: cart_items_temp_updated});
-	     }*/
-	
-	  }, {
-	    key: 'setDate',
-	    value: function setDate(e) {
-	
-	      alert(e);
-	
-	      //if value is not ""
-	      this.props.setDate(e);
-	      //date validated
-	    }
-	  }, {
-	    key: 'setTime',
-	    value: function setTime(e) {
-	
-	      alert(e.target.value);
-	
-	      //if value is not ""
-	      this.setState({ selected_time: e.target.value });
-	      this.setState({ selected_specific_time: "" });
-	      //this.props.setTime(e);
-	      //time validated
-	    }
-	  }, {
-	    key: 'setSpecificTime',
-	    value: function setSpecificTime(e) {
-	
-	      alert(e.target.value);
-	
-	      this.setState({ selected_specific_time: e.target.value });
-	      this.setState({ selected_time: "" });
-	      //this.props.setSpecificTime(e);
-	      //specific time validated
-	    }
-	  }, {
-	    key: 'setFirstName',
-	    value: function setFirstName(e) {
-	
-	      //alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert(/^[a-zA-Z]+$/.test(e.target.value));
-	
-	        if (/^[a-zA-Z]+$/.test(e.target.value)) {
-	
-	          //alert("correct");
-	
-	          //this.setState({"first_name": e.target.value});
-	          this.setState({ "first_name_classname": "form-group" });
-	          //this.setState({"first_name_validated": true});
-	
-	          this.props.setFirstName(e);
-	          //first name validated
-	        } else {
-	
-	          alert("error");
-	
-	          this.setState({ "first_name_classname": "form-group has-error" });
+	    }, {
+	        key: "setTime",
+	        value: function setTime(e) {
+	            alert(e.target.value);
+	            //if value is not ""
+	            this.setState({ selected_time: e.target.value });
+	            this.setState({ selected_specific_time: "" });
+	            //this.props.setTime(e);
+	            //time validated
 	        }
-	      }
-	    }
-	  }, {
-	    key: 'onBlurFirstName',
-	    value: function onBlurFirstName() {
-	
-	      //alert();
-	
-	    }
-	  }, {
-	    key: 'setLastName',
-	    value: function setLastName(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        if (/^[a-zA-Z]/.test(e.target.value)) {
-	
-	          //alert();
-	
-	          //this.setState({"last_name": e.target.value});
-	          //this.setState({"last_name_classname": "form-group"});
-	          //this.setState({"last_name_validated": true});
-	
-	          this.props.setLastName(e);
+	    }, {
+	        key: "setSpecificTime",
+	        value: function setSpecificTime(e) {
+	            alert(e.target.value);
+	            this.setState({ selected_specific_time: e.target.value });
+	            this.setState({ selected_time: "" });
+	            //this.props.setSpecificTime(e);
+	            //specific time validated
 	        }
-	      }
-	    }
-	  }, {
-	    key: 'setContactEmail',
-	    value: function setContactEmail(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	        //return re.test(email);
-	
-	        if (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e.target.value)) {
-	
-	          //alert();
-	
-	          //this.setState({"contact_email": e.target.value});
-	          this.setState({ "contact_email_classname": "form-group" });
-	          this.setState({ "contact_email_validated": true });
-	
-	          this.props.setContactEmail(e);
+	    }, {
+	        key: "setFirstName",
+	        value: function setFirstName(e) {
+	            //alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert(/^[a-zA-Z]+$/.test(e.target.value));
+	                if (/^[a-zA-Z]+$/.test(e.target.value)) {
+	                    //alert("correct");
+	                    //this.setState({"first_name": e.target.value});
+	                    this.setState({ "first_name_classname": "form-group" });
+	                    //this.setState({"first_name_validated": true});
+	                    this.props.setFirstName(e);
+	                    //first name validated
+	                } else {
+	                    alert("error");
+	                    this.setState({ "first_name_classname": "form-group has-error" });
+	                }
+	            }
 	        }
-	      }
-	    }
-	  }, {
-	    key: 'setContactPhone',
-	    value: function setContactPhone(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        //alert();
-	
-	        //this.setState({"first_name": e.target.value});
-	        //this.setState({"first_name_classname": "form-group"});
-	
-	        this.props.setContactPhone(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setCompanyName',
-	    value: function setCompanyName(e) {
-	
-	      //let order_temp = this.state.order;
-	      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-	      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	
-	      //alert(e.target.value);
-	
-	      //this.setState({order: order_temp_udated});
-	
-	      //validate and this.props
-	
-	    }
-	  }, {
-	    key: 'setDeliveryAddressStreet1',
-	    value: function setDeliveryAddressStreet1(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setDeliveryAddressStreet1(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setDeliveryAddressStreet2',
-	    value: function setDeliveryAddressStreet2(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setDeliveryAddressStreet2(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setDeliveryAddressCity',
-	    value: function setDeliveryAddressCity(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setDeliveryAddressCity(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setDeliveryAddressState',
-	    value: function setDeliveryAddressState(e) {
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setDeliveryAddressState(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setDeliveryAddressZipcode',
-	    value: function setDeliveryAddressZipcode(e) {
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setDeliveryAddressZipcode(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setPaymentNameOnCard',
-	    value: function setPaymentNameOnCard(e) {
-	
-	      alert(e.target.value);
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setPaymentNameOnCard(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setPaymentCardNumber',
-	    value: function setPaymentCardNumber(e) {
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setPaymentCardNumber(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'setPaymentExpiryDate',
-	    value: function setPaymentExpiryDate(e) {
-	
-	      //01/17
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setPaymentExpiryDate(e);
-	
-	        //}
-	      }
-	
-	      //this.props.setExpiry
-	    }
-	  }, {
-	    key: 'setPaymentSecurityCode',
-	    value: function setPaymentSecurityCode(e) {
-	
-	      //this.props.setSecurityCode
-	
-	      if (e.target.value.length > 0) {
-	
-	        //alert();
-	
-	        //if(/^[a-zA-Z]/.test(e.target.value)){
-	
-	        alert();
-	
-	        //this.setState({"delivery_address_street1": e.target.value});
-	        //this.setState({"delivery_address_street1_classname": "form-group"});
-	
-	        this.props.setPaymentSecurityCode(e);
-	
-	        //}
-	      }
-	    }
-	  }, {
-	    key: 'completeOrder',
-	    value: function completeOrder() {
-	
-	      alert("order complete this.props.order");
-	
-	      //if all inputs are validated
-	
-	      alert(JSON.stringify(this.props.order));
-	
-	      //if first_name_validated == true && last_name_validated == true
-	      //process order/dispatch
-	
-	      //if this.props.order_state = "completed"?
-	      //else error
-	
-	
-	      //export default function getBook(dispatch) {
-	      /*  $.ajax({
-	            method: "GET",
-	            url: "/api/data",
-	            dataType: "json"
-	          }).success(function(data){
-	            //return dispatch({type:'GET_BOOK', data: data});
-	            this.context.router.push('/order/12345/order_complete');
-	           });
-	      //}
-	       this.context.router.push('/order/12345/order_complete');*/
-	
-	      _axios2.default.post('http://localhost:4000/graphql', {
-	        query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
-	      }).then(function (response) {
-	
-	        console.log(JSON.stringify(response));
-	        //go to code/payment screen
-	        //        this.props.loadView();
-	        //this.props.setSubscription();
-	
-	        //addtosubscribedblocklist
-	
-	        //setsubscriptiontype == 1 block
-	        //setsubscriptionpaid == true
-	        //setsusbcriptindatetime
-	
-	
-	        //store in cookie
-	
-	        //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	        //setCookie("sconely_session_id", 1, 1)
-	        //setCookie("sconely_first_name", 1, 1)
-	        //setCookie("sconely_last_name", 1, 1)
-	
-	      }).catch(function (error) {
-	
-	        console.log("error");
-	        //go to code/payment screen
-	        //        this.props.loadView();
-	
-	        //if (!error.status) {
-	        // network error
-	        //}
-	      });
-	
-	      //alert(JSON.stringify(this.state.delivery_address_street));
-	
-	      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	    }
-	  }, {
-	    key: 'goToMenu',
-	    value: function goToMenu() {
-	
-	      this.context.router.push('/order/12345');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var body = "";
-	      var item_count = this.state.item_count;
-	
-	      //alert(item_count);
-	
-	      //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
-	
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            React.createElement('div', { className: 'hidden-xs navbar-form navbar-right' }),
-	            React.createElement(
-	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    'a',
-	                    { href: './' },
-	                    'Profile',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login' },
-	                    'Login',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/register' },
-	                    'Signup',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
-	                    'Menu'
-	                  ),
-	                  React.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs col-md-2' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement(_sidebar_cart2.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null)
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'col-md-10' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              'only show on mobile',
-	              React.createElement('br', null),
-	              React.createElement(
-	                'button',
-	                { onClick: function onClick() {
+	    }, {
+	        key: "onBlurFirstName",
+	        value: function onBlurFirstName() {
+	            //alert();
+	        }
+	    }, {
+	        key: "setLastName",
+	        value: function setLastName(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                if (/^[a-zA-Z]/.test(e.target.value)) {
+	                    //alert();
+	                    //this.setState({"last_name": e.target.value});
+	                    //this.setState({"last_name_classname": "form-group"});
+	                    //this.setState({"last_name_validated": true});
+	                    this.props.setLastName(e);
+	                }
+	            }
+	        }
+	    }, {
+	        key: "setContactEmail",
+	        value: function setContactEmail(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	                //return re.test(email);
+	                if (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e.target.value)) {
+	                    //alert();
+	                    //this.setState({"contact_email": e.target.value});
+	                    this.setState({ "contact_email_classname": "form-group" });
+	                    this.setState({ "contact_email_validated": true });
+	                    this.props.setContactEmail(e);
+	                }
+	            }
+	        }
+	    }, {
+	        key: "setContactPhone",
+	        value: function setContactPhone(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                //alert();
+	                //this.setState({"first_name": e.target.value});
+	                //this.setState({"first_name_classname": "form-group"});
+	                this.props.setContactPhone(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setCompanyName",
+	        value: function setCompanyName(e) {
+	            //let order_temp = this.state.order;
+	            //.setIn([ 'user', 'profile', 'name' ], 'Jack')
+	            //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
+	            //alert(e.target.value);
+	            //this.setState({order: order_temp_udated});
+	            //validate and this.props
+	        }
+	    }, {
+	        key: "setDeliveryAddressStreet1",
+	        value: function setDeliveryAddressStreet1(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressStreet1(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setDeliveryAddressStreet2",
+	        value: function setDeliveryAddressStreet2(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressStreet2(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setDeliveryAddressCity",
+	        value: function setDeliveryAddressCity(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressCity(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setDeliveryAddressState",
+	        value: function setDeliveryAddressState(e) {
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressState(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setDeliveryAddressZipcode",
+	        value: function setDeliveryAddressZipcode(e) {
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setDeliveryAddressZipcode(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setPaymentNameOnCard",
+	        value: function setPaymentNameOnCard(e) {
+	            alert(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentNameOnCard(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setPaymentCardNumber",
+	        value: function setPaymentCardNumber(e) {
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentCardNumber(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setPaymentExpiryDate",
+	        value: function setPaymentExpiryDate(e) {
+	            //01/17
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentExpiryDate(e);
+	                //}
+	            }
+	            //this.props.setExpiry
+	        }
+	    }, {
+	        key: "setPaymentSecurityCode",
+	        value: function setPaymentSecurityCode(e) {
+	            //this.props.setSecurityCode
+	            if (e.target.value.length > 0) {
+	                //alert();
+	                //if(/^[a-zA-Z]/.test(e.target.value)){
+	                alert();
+	                //this.setState({"delivery_address_street1": e.target.value});
+	                //this.setState({"delivery_address_street1_classname": "form-group"});
+	                this.props.setPaymentSecurityCode(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "completeOrder",
+	        value: function completeOrder() {
+	            alert("order complete this.props.order");
+	            //if all inputs are validated
+	            alert(JSON.stringify(this.props.order));
+	            //if first_name_validated == true && last_name_validated == true
+	            //process order/dispatch
+	            //if this.props.order_state = "completed"?
+	            //else error
+	            //export default function getBook(dispatch) {
+	            /*  $.ajax({
+	                  method: "GET",
+	                  url: "/api/data",
+	                  dataType: "json"
+	                }).success(function(data){
+	                  //return dispatch({type:'GET_BOOK', data: data});
+	                  this.context.router.push('/order/12345/order_complete');
+	                   });
+	            //}
+	               this.context.router.push('/order/12345/order_complete');*/
+	            axios_1.default.post('http://localhost:4000/graphql', {
+	                query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
+	            }).then(function (response) {
+	                console.log(JSON.stringify(response));
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //this.props.setSubscription();
+	                //addtosubscribedblocklist
+	                //setsubscriptiontype == 1 block
+	                //setsubscriptionpaid == true
+	                //setsusbcriptindatetime
+	                //store in cookie
+	                //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
+	                //setCookie("sconely_session_id", 1, 1)
+	                //setCookie("sconely_first_name", 1, 1)
+	                //setCookie("sconely_last_name", 1, 1)
+	            }).catch(function (error) {
+	                console.log("error");
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	            //alert(JSON.stringify(this.state.delivery_address_street));
+	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
+	        }
+	    }, {
+	        key: "goToMenu",
+	        value: function goToMenu() {
+	            this.context.router.push('/order/12345');
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var body = "";
+	            var item_count = this.state.item_count;
+	            //alert(item_count);
+	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sidebar_cart_tsx_1.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                  } },
-	                'cart()'
-	              ),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement(_datetime2.default, { setDate: function setDate(e) {
-	                  return _this2.setDate(e);
+	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(datetime_tsx_1.default, { setDate: function setDate(e) {
+	                    return _this2.setDate(e);
 	                }, setTime: function setTime(e) {
-	                  return _this2.setTime(e);
+	                    return _this2.setTime(e);
 	                }, selectedTime: this.state.selected_time, setSpecificTime: function setSpecificTime(e) {
-	                  return _this2.setSpecificTime(e);
-	                }, selectedSpecificTime: this.state.selected_specific_time }),
-	              React.createElement('br', null),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-12' },
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Delivery Date and Time'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'col-md-2' },
-	                  React.createElement(DatePicker, {
-	                    selected: this.state.startDate,
-	                    onChange: function onChange() {} })
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'col-md-2' },
-	                  React.createElement(
-	                    'select',
-	                    { className: 'form-control', id: 'exampleInputEmail2', onChange: function onChange(e) {
-	                        return _this2.setTime(e);
-	                      } },
-	                    React.createElement('option', null),
-	                    React.createElement(
-	                      'option',
-	                      null,
-	                      '9:00 am - 11:00 am'
-	                    ),
-	                    React.createElement(
-	                      'option',
-	                      null,
-	                      '1:00 pm - 3:00 pm'
-	                    )
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'col-md-2' },
-	                  React.createElement(
-	                    'label',
-	                    { htmlFor: 'exampleInputEmail2' },
-	                    '(free)'
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-md-4' },
-	                    React.createElement(
-	                      'select',
-	                      { className: 'form-control', onChange: function onChange(e) {
-	                          return _this2.setSpecificTime(e);
-	                        } },
-	                      React.createElement('option', null),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '9:00'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '9:30'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '10:00'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '10:30'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '11:00'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '11:30'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '12:00'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        '12:30'
-	                      )
-	                    ),
-	                    React.createElement(
-	                      'label',
-	                      { htmlFor: 'exampleInputEmail2' },
-	                      '($2 extra)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(_name2.default, { firstNameClassName: this.state.first_name_classname, setFirstName: function setFirstName(e) {
-	                  return _this2.setFirstName(e);
+	                    return _this2.setSpecificTime(e);
+	                }, selectedSpecificTime: this.state.selected_specific_time }), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
+	                    return _this2.setTime(e);
+	                } }, React.createElement("option", null), React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", onChange: function onChange(e) {
+	                    return _this2.setSpecificTime(e);
+	                } }, React.createElement("option", null), React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))), React.createElement(name_tsx_1.default, { firstNameClassName: this.state.first_name_classname, setFirstName: function setFirstName(e) {
+	                    return _this2.setFirstName(e);
 	                }, setLastName: function setLastName(e) {
-	                  return _this2.setLastName(e);
-	                } }),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-8' },
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Name'
-	                    ),
-	                    React.createElement('br', null)
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: this.state.first_name_classname },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.props.setFirstName(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'First Name' })
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: this.state.last_name_classname },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.setLastName(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Last Name' })
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.props.setDeliveryAddressStreet1(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Company Name' })
-	                )
-	              ),
-	              React.createElement('br', null),
-	              React.createElement(_delivery_address2.default, { setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
-	                  return _this2.setDeliveryAddressStreet1(e);
+	                    return _this2.setLastName(e);
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setFirstName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setLastName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet1(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	                    return _this2.setDeliveryAddressStreet1(e);
 	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
-	                  return _this2.setDeliveryAddressStreet2(e);
+	                    return _this2.setDeliveryAddressStreet2(e);
 	                }, setDeliveryAddressCity: function setDeliveryAddressCity(e) {
-	                  return _this2.setDeliveryAddressCity(e);
+	                    return _this2.setDeliveryAddressCity(e);
 	                }, setDeliveryAddressState: function setDeliveryAddressState(e) {
-	                  return _this2.setDeliveryAddressState(e);
+	                    return _this2.setDeliveryAddressState(e);
 	                }, setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
-	                  return _this2.setDeliveryAddressZipcode(e);
-	                } }),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-8' },
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Address-if logged in'
-	                    ),
-	                    React.createElement('br', null),
-	                    true && React.createElement(
-	                      'select',
-	                      { className: 'form-control' },
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        'Home'
-	                      ),
-	                      React.createElement(
-	                        'option',
-	                        null,
-	                        'Office'
-	                      )
-	                    ),
-	                    React.createElement('br', null)
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.props.setDeliveryAddressStreet(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Street' })
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.props.setDeliveryAddressStreet2(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Street 2' })
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'select',
-	                    { className: 'form-control', onChange: function onChange(value) {
-	                        return _this2.props.setDeliveryAddressCity(value);
-	                      } },
-	                    React.createElement('option', null),
-	                    React.createElement(
-	                      'option',
-	                      null,
-	                      'Los Angeles'
-	                    )
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'select',
-	                    { className: 'form-control' },
-	                    React.createElement(
-	                      'option',
-	                      null,
-	                      'CA'
-	                    )
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'select',
-	                    { className: 'form-control' },
-	                    React.createElement(
-	                      'option',
-	                      null,
-	                      'zipcode'
-	                    ),
-	                    React.createElement(
-	                      'option',
-	                      null,
-	                      '90025'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement('br', null),
-	              React.createElement(_contact2.default, { setContactEmail: function setContactEmail(e) {
-	                  return _this2.setContactEmail(e);
+	                    return _this2.setDeliveryAddressZipcode(e);
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet2(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressCity(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "zipcode"), React.createElement("option", null, "90025")))), React.createElement("br", null), React.createElement(contact_tsx_1.default, { setContactEmail: function setContactEmail(e) {
+	                    return _this2.setContactEmail(e);
 	                }, setContactPhone: function setContactPhone(e) {
-	                  return _this2.setContactPhone(e);
-	                } }),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-10' },
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Contact'
-	                    ),
-	                    React.createElement('br', null)
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: this.state.contact_email_classname },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.setContactEmail(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Email' })
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: this.state.contact_mobile_classname },
-	                  React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                      return _this2.setContactPhone(e);
-	                    }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Mobile' })
-	                )
-	              ),
-	              React.createElement('br', null),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-sm-10' },
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Cart Items'
-	                    ),
-	                    React.createElement('br', null),
-	                    React.createElement('br', null),
-	                    React.createElement(
-	                      'b',
-	                      null,
-	                      'Total Due'
-	                    ),
-	                    React.createElement('br', null)
-	                  )
-	                )
-	              ),
-	              React.createElement(_payment_method2.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
-	                  return _this2.setPaymentNameOnCard(e);
+	                    return _this2.setContactPhone(e);
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setContactEmail(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setContactPhone(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	                    return _this2.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
-	                  return _this2.setPaymentCardNumber(e);
+	                    return _this2.setPaymentCardNumber(e);
 	                }, setPaymentExpiryDate: function setPaymentExpiryDate(e) {
-	                  return _this2.setPaymentExpiryDate(e);
+	                    return _this2.setPaymentExpiryDate(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	                  return _this2.setPaymentSecurityCode(e);
-	                } }),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Name on Card' })
-	                )
-	              ),
-	              React.createElement(
-	                'form',
-	                { className: 'form-inline' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Card Number' })
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Expiration Date' })
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('input', { type: 'email', className: 'form-control', id: 'exampleInputEmail2', placeholder: 'Security Code' })
-	                )
-	              ),
-	              React.createElement(
-	                'button',
-	                { onClick: function onClick() {
+	                    return _this2.setPaymentSecurityCode(e);
+	                } }), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Expiration Date" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code" }))), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
-	                  } },
-	                'Complete Order'
-	              ),
-	              React.createElement('br', null)
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs col-md-2' },
-	              'maybe put something here'
-	            )
-	          )
-	        )
-	      );
-	    }
+	                } }, "Complete Order"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return OrderDateTimeContact;
+	    return OrderDateTimeContact;
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	  console.log("state" + JSON.stringify(state));
-	  return {
-	    order: state.default.order
-	    //menu_items: getPublicMenu
-	    //menu_items: dispatch()
-	  };
+	    console.log("state" + JSON.stringify(state));
+	    return {
+	        order: state.default.order
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
 	}
-	
 	function mapDispatchToProps(dispatch) {
-	  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	  return {
-	    setDate: function setDate(e) {
-	      dispatch((0, _order_delivery_datetime.setDate)(e));
-	    },
-	    setTime: function setTime(e) {
-	      dispatch((0, _order_delivery_datetime.setTime)(e.target.value));
-	    },
-	    setSpecificTime: function setSpecificTime(e) {
-	      dispatch((0, _order_delivery_datetime.setSpecificTime)(e.target.value));
-	    },
-	    setFirstName: function setFirstName(e) {
-	      dispatch((0, _order_name.setFirstName)(e.target.value));
-	    },
-	    setLastName: function setLastName(e) {
-	      dispatch((0, _order_name.setLastName)(e.target.value));
-	    },
-	    setContactEmail: function setContactEmail(e) {
-	      dispatch((0, _order_contact.setContactEmail)(e.target.value));
-	    },
-	    setContactPhone: function setContactPhone(e) {
-	      dispatch((0, _order_contact.setContactPhone)(e.target.value));
-	    },
-	
-	    setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
-	      dispatch((0, _order_delivery_address.setDeliveryAddressStreet1)(e.target.value));
-	    },
-	
-	    setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
-	      dispatch((0, _order_delivery_address.setDeliveryAddressStreet1)(e.target.value));
-	    },
-	
-	    setDeliveryAddressCity: function setDeliveryAddressCity(e) {
-	      dispatch((0, _order_delivery_address.setDeliveryAddressCity)(e.target.value));
-	    },
-	    setDeliveryAddressState: function setDeliveryAddressState(e) {
-	      dispatch((0, _order_delivery_address.setDeliveryAddressState)(e.target.value));
-	    },
-	    setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
-	      dispatch((0, _order_delivery_address.setDeliveryAddressZipcode)(e.target.value));
-	    },
-	    setPaymentNameOnCard: function setPaymentNameOnCard(e) {
-	      dispatch((0, _order_payment.setPaymentNameOnCard)(e.target.value));
-	    },
-	    setPaymentCardNumber: function setPaymentCardNumber(e) {
-	      dispatch((0, _order_payment.setPaymentCardNumber)(e.target.value));
-	    },
-	    setPaymentExpiryDate: function setPaymentExpiryDate(e) {
-	      dispatch((0, _order_payment.setPaymentExpiryDate)(e.target.value));
-	    },
-	    setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	      dispatch((0, _order_payment.setPaymentSecurityCode)(e.target.value));
-	    },
-	
-	    //complete order thunk
-	
-	    completeOrder: function completeOrder() {
-	
-	      /*$.ajax({
-	           method: "GET",
-	           url: "/api/data",
-	           dataType: "json"
-	         }).success(function(data){
-	           return dispatch({type:'GET_BOOK', data: data});
-	         });
-	      }*/
-	
-	      //dispatch(completeOrder());
-	
-	    }
-	  };
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {
+	        setDate: function setDate(e) {
+	            dispatch(order_delivery_datetime_ts_1.setDate(e));
+	        },
+	        setTime: function setTime(e) {
+	            dispatch(order_delivery_datetime_ts_1.setTime(e.target.value));
+	        },
+	        setSpecificTime: function setSpecificTime(e) {
+	            dispatch(order_delivery_datetime_ts_1.setSpecificTime(e.target.value));
+	        },
+	        setFirstName: function setFirstName(e) {
+	            dispatch(order_name_ts_1.setFirstName(e.target.value));
+	        },
+	        setLastName: function setLastName(e) {
+	            dispatch(order_name_ts_1.setLastName(e.target.value));
+	        },
+	        setContactEmail: function setContactEmail(e) {
+	            dispatch(order_contact_ts_1.setContactEmail(e.target.value));
+	        },
+	        setContactPhone: function setContactPhone(e) {
+	            dispatch(order_contact_ts_1.setContactPhone(e.target.value));
+	        },
+	        setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value));
+	        },
+	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value));
+	        },
+	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressCity(e.target.value));
+	        },
+	        setDeliveryAddressState: function setDeliveryAddressState(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressState(e.target.value));
+	        },
+	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressZipcode(e.target.value));
+	        },
+	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
+	        },
+	        setPaymentCardNumber: function setPaymentCardNumber(e) {
+	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value));
+	        },
+	        setPaymentExpiryDate: function setPaymentExpiryDate(e) {
+	            dispatch(order_payment_ts_1.setPaymentExpiryDate(e.target.value));
+	        },
+	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value));
+	        },
+	        //complete order thunk
+	        completeOrder: function completeOrder() {
+	            /*$.ajax({
+	                 method: "GET",
+	                 url: "/api/data",
+	                 dataType: "json"
+	               }).success(function(data){
+	                 return dispatch({type:'GET_BOOK', data: data});
+	               });
+	            }*/
+	            //dispatch(completeOrder());
+	        }
+	    };
 	}
-	
 	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-	
-	var Checkout = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(OrderDateTimeContact);
-	
+	var Checkout = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderDateTimeContact);
 	exports.default = Checkout;
 
 /***/ }),
@@ -32093,26 +30381,6 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 932 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	//import { store, history } from './redux/store';
-	function completeOrder() {
-	    //alert("addCartItem from redux");
-	    //return {
-	    //  type: ADD_CART_ITEM,
-	    //  item_id
-	    //}
-	    //browserHistory.push('/registrationStep2')
-	    //store.dispatch(push('/foo'))
-	    //push('/url')
-	}
-	exports.completeOrder = completeOrder;
-
-/***/ }),
-/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32137,7 +30405,7 @@ webpackJsonp([0],[
 	exports.setLastName = setLastName;
 
 /***/ }),
-/* 934 */
+/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32170,7 +30438,7 @@ webpackJsonp([0],[
 	exports.setSpecificTime = setSpecificTime;
 
 /***/ }),
-/* 935 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32211,7 +30479,7 @@ webpackJsonp([0],[
 	exports.setPaymentSecurityCode = setPaymentSecurityCode;
 
 /***/ }),
-/* 936 */
+/* 935 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32236,29 +30504,12 @@ webpackJsonp([0],[
 	exports.setContactPhone = setContactPhone;
 
 /***/ }),
-/* 937 */
+/* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -32266,347 +30517,187 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	//import Immutable  = require('immutable');
-	
-	
+	var Immutable = __webpack_require__(922);
 	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
 	}
 	
 	var DeliveryAddress = function (_React$Component) {
-	  _inherits(DeliveryAddress, _React$Component);
+	    _inherits(DeliveryAddress, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function DeliveryAddress(props) {
+	        _classCallCheck(this, DeliveryAddress);
 	
-	  function DeliveryAddress(props) {
-	    _classCallCheck(this, DeliveryAddress);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (DeliveryAddress.__proto__ || Object.getPrototypeOf(DeliveryAddress)).call(this, props));
 	
-	    //this.getData();
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
 	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (DeliveryAddress.__proto__ || Object.getPrototypeOf(DeliveryAddress)).call(this, props));
-	
-	    _this.state = {
-	
-	      page: "menu",
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      delivery_address: Immutable.Map(),
-	      delivery_address_street: "",
-	      item_count: 0,
-	      cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	      //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(DeliveryAddress, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
+	    _createClass(DeliveryAddress, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
 	        }
-	      );*/
+	    }, {
+	        key: "setDeliveryAddressStreet1",
+	        value: function setDeliveryAddressStreet1() {}
+	    }, {
+	        key: "setDeliveryAddressStreet2",
+	        value: function setDeliveryAddressStreet2() {}
+	    }, {
+	        key: "setDeliveryAddressCity",
+	        value: function setDeliveryAddressCity() {}
+	    }, {
+	        key: "setDeliveryAddressState",
+	        value: function setDeliveryAddressState() {}
+	    }, {
+	        key: "setDeliveryAddressZipCode",
+	        value: function setDeliveryAddressZipCode() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      var cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      var myNewMap = cart_items_temp.push({ item_id: 5 });
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet1(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setDeliveryAddressStreet2(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressCity(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressState(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    return _this2.props.setDeliveryAddressZipcode(value);
+	                } }, React.createElement("option", null), React.createElement("option", null, "90025")))));
 	        }
-	      );*/
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
-	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	    }
-	  }, {
-	    key: 'setDeliveryAddressStreet1',
-	    value: function setDeliveryAddressStreet1() {}
-	  }, {
-	    key: 'setDeliveryAddressStreet2',
-	    value: function setDeliveryAddressStreet2() {}
-	  }, {
-	    key: 'setDeliveryAddressCity',
-	    value: function setDeliveryAddressCity() {}
-	  }, {
-	    key: 'setDeliveryAddressState',
-	    value: function setDeliveryAddressState() {}
-	  }, {
-	    key: 'setDeliveryAddressZipCode',
-	    value: function setDeliveryAddressZipCode() {}
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { className: 'form-horizontal' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'col-sm-8' },
-	              React.createElement(
-	                'b',
-	                null,
-	                'Address-if logged in'
-	              ),
-	              React.createElement('br', null),
-	              true && React.createElement(
-	                'select',
-	                { className: 'form-control' },
-	                React.createElement(
-	                  'option',
-	                  null,
-	                  'Home'
-	                ),
-	                React.createElement(
-	                  'option',
-	                  null,
-	                  'Office'
-	                )
-	              ),
-	              React.createElement('br', null)
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                return _this2.props.setDeliveryAddressStreet1(e);
-	              }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Street' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                return _this2.props.setDeliveryAddressStreet2(e);
-	              }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Street 2' })
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'select',
-	              { className: 'form-control', onChange: function onChange(value) {
-	                  return _this2.props.setDeliveryAddressCity(value);
-	                } },
-	              React.createElement('option', null),
-	              React.createElement(
-	                'option',
-	                null,
-	                'Los Angeles'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'select',
-	              { className: 'form-control', onChange: function onChange(value) {
-	                  return _this2.props.setDeliveryAddressState(value);
-	                } },
-	              React.createElement('option', null),
-	              React.createElement(
-	                'option',
-	                null,
-	                'CA'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'select',
-	              { className: 'form-control', onChange: function onChange(value) {
-	                  return _this2.props.setDeliveryAddressZipcode(value);
-	                } },
-	              React.createElement('option', null),
-	              React.createElement(
-	                'option',
-	                null,
-	                '90025'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return DeliveryAddress;
+	    return DeliveryAddress;
 	}(React.Component);
 	
 	exports.default = DeliveryAddress;
 
 /***/ }),
-/* 938 */
+/* 937 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -32614,271 +30705,172 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	//import Immutable  = require('immutable');
-	
-	
+	var Immutable = __webpack_require__(922);
 	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
 	}
 	
 	var Contact = function (_React$Component) {
-	  _inherits(Contact, _React$Component);
+	    _inherits(Contact, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function Contact(props) {
+	        _classCallCheck(this, Contact);
 	
-	  function Contact(props) {
-	    _classCallCheck(this, Contact);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
 	
-	    //this.getData();
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
 	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
-	
-	    _this.state = {
-	
-	      page: "menu",
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      delivery_address: Immutable.Map(),
-	      delivery_address_street: "",
-	      item_count: 0,
-	      cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	      //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(Contact, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
+	    _createClass(Contact, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
 	        }
-	      );*/
+	    }, {
+	        key: "setContactEmail",
+	        value: function setContactEmail(e) {}
+	    }, {
+	        key: "setContactMobile",
+	        value: function setContactMobile(e) {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      var cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      var myNewMap = cart_items_temp.push({ item_id: 5 });
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setContactEmail(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "email@email.com" })), React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setContactPhone(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "111-111-1111" }))));
 	        }
-	      );*/
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
-	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	    }
-	  }, {
-	    key: 'setContactEmail',
-	    value: function setContactEmail(e) {}
-	  }, {
-	    key: 'setContactMobile',
-	    value: function setContactMobile(e) {}
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { className: 'form-horizontal' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'col-sm-10' },
-	              React.createElement(
-	                'b',
-	                null,
-	                'Contact'
-	              ),
-	              React.createElement('br', null)
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: this.state.contact_email_classname },
-	            React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                return _this2.props.setContactEmail(e);
-	              }, className: 'form-control', id: 'exampleInputName2', placeholder: 'email@email.com' })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: this.state.contact_mobile_classname },
-	            React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                return _this2.props.setContactPhone(e);
-	              }, className: 'form-control', id: 'exampleInputName2', placeholder: '111-111-1111' })
-	          )
-	        )
-	      );
-	    }
-	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return Contact;
+	    return Contact;
 	}(React.Component);
 	
 	exports.default = Contact;
 
 /***/ }),
-/* 939 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -32886,302 +30878,169 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	//import Immutable  = require('immutable');
-	var DatePicker = __webpack_require__(940);
-	var moment = __webpack_require__(941);
-	
-	__webpack_require__(1059);
-	
+	var Immutable = __webpack_require__(922);
+	var DatePicker = __webpack_require__(939);
+	var moment = __webpack_require__(940);
+	__webpack_require__(1058);
 	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
 	}
 	
 	var DateTime = function (_React$Component) {
-	  _inherits(DateTime, _React$Component);
+	    _inherits(DateTime, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function DateTime(props) {
+	        _classCallCheck(this, DateTime);
 	
-	  function DateTime(props) {
-	    _classCallCheck(this, DateTime);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
 	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
-	
-	    _this.state = {
-	
-	      page: "menu",
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      delivery_address: Immutable.Map(),
-	      delivery_address_street: "",
-	      item_count: 0,
-	      cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	      //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
-	      startDate: moment(),
-	      selected_time: "",
-	      selected_specific_time: ""
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(DateTime, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
-	        }
-	      );*/
-	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      var cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      var myNewMap = cart_items_temp.push({ item_id: 5 });
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
-	        }
-	      );*/
-	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
-	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
+	            startDate: moment(),
+	            selected_time: "",
+	            selected_specific_time: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
 	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
 	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'col-sm-12' },
-	              React.createElement(
-	                'b',
-	                null,
-	                'Delivery Date and Time'
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-2' },
-	            React.createElement(DatePicker, {
-	              selected: this.state.startDate,
-	              onChange: function onChange(e) {
-	                _this2.props.setDate(e);
-	              } })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-2' },
-	            React.createElement(
-	              'select',
-	              { className: 'form-control', id: 'exampleInputEmail2', value: this.props.selectedTime, onChange: function onChange(e) {
-	                  return _this2.props.setTime(e);
-	                } },
-	              React.createElement('option', { value: '' }),
-	              React.createElement(
-	                'option',
-	                { value: '900' },
-	                '9:00 am - 11:00 am'
-	              ),
-	              React.createElement(
-	                'option',
-	                { value: '100' },
-	                '1:00 pm - 3:00 pm'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-2' },
-	            React.createElement(
-	              'label',
-	              { htmlFor: 'exampleInputEmail2' },
-	              '(free)'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'col-md-4' },
-	              React.createElement(
-	                'select',
-	                { className: 'form-control', value: this.props.selectedSpecificTime, onChange: function onChange(e) {
+	    _createClass(DateTime, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange(e) {
+	                    _this2.props.setDate(e);
+	                } })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
+	                    return _this2.props.setTime(e);
+	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "900" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "100" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
-	                  } },
-	                React.createElement('option', null),
-	                React.createElement(
-	                  'option',
-	                  { value: '900' },
-	                  '9:00'
-	                ),
-	                React.createElement(
-	                  'option',
-	                  { value: '930' },
-	                  '9:30'
-	                )
-	              ),
-	              React.createElement(
-	                'label',
-	                { htmlFor: 'exampleInputEmail2' },
-	                '($2 extra)'
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
+	                } }, React.createElement("option", null), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return DateTime;
+	    return DateTime;
 	}(React.Component);
 	
 	exports.default = DateTime;
 
 /***/ }),
+/* 939 */,
 /* 940 */,
 /* 941 */,
 /* 942 */,
@@ -33300,17 +31159,16 @@ webpackJsonp([0],[
 /* 1055 */,
 /* 1056 */,
 /* 1057 */,
-/* 1058 */,
-/* 1059 */
+/* 1058 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(1060);
+	var content = __webpack_require__(1059);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(1062)(content, {});
+	var update = __webpack_require__(1061)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -33327,10 +31185,10 @@ webpackJsonp([0],[
 	}
 
 /***/ }),
-/* 1060 */
+/* 1059 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(1061)();
+	exports = module.exports = __webpack_require__(1060)();
 	// imports
 	
 	
@@ -33341,7 +31199,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1061 */
+/* 1060 */
 /***/ (function(module, exports) {
 
 	/*
@@ -33397,7 +31255,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1062 */
+/* 1061 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -33649,29 +31507,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1063 */
+/* 1062 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -33679,294 +31520,174 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	//import Immutable  = require('immutable');
-	
-	
+	var Immutable = __webpack_require__(922);
 	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
 	}
 	
 	var Name = function (_React$Component) {
-	  _inherits(Name, _React$Component);
+	    _inherits(Name, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function Name(props) {
+	        _classCallCheck(this, Name);
 	
-	  function Name(props) {
-	    _classCallCheck(this, Name);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
 	
-	    //this.getData();
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
 	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
-	
-	    _this.state = {
-	
-	      page: "menu",
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      delivery_address: Immutable.Map(),
-	      delivery_address_street: "",
-	      item_count: 0,
-	      cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	      //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(Name, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
+	    _createClass(Name, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
 	        }
-	      );*/
+	    }, {
+	        key: "setFirstName",
+	        value: function setFirstName() {}
+	    }, {
+	        key: "setLastName",
+	        value: function setLastName() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      var cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      var myNewMap = cart_items_temp.push({ item_id: 5 });
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setFirstName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" }))), React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setLastName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" })))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.props.setFirstName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" })))));
 	        }
-	      );*/
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
-	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	    }
-	  }, {
-	    key: 'setFirstName',
-	    value: function setFirstName() {}
-	  }, {
-	    key: 'setLastName',
-	    value: function setLastName() {}
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { className: 'form-horizontal' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement(
-	              'div',
-	              { className: 'col-sm-8' },
-	              React.createElement(
-	                'b',
-	                null,
-	                'Name'
-	              ),
-	              React.createElement('br', null)
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-4' },
-	            React.createElement(
-	              'div',
-	              { className: this.props.firstNameClassName },
-	              React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                  return _this2.props.setFirstName(e);
-	                }, className: 'form-control', id: 'exampleInputName2', placeholder: 'First Name' })
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-4' },
-	            React.createElement(
-	              'div',
-	              { className: this.state.last_name_classname },
-	              React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                  return _this2.props.setLastName(e);
-	                }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Last Name' })
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-4' },
-	            React.createElement(
-	              'div',
-	              { className: this.props.firstNameClassName },
-	              React.createElement('input', { type: 'text', onChange: function onChange(e) {
-	                  return _this2.props.setFirstName(e);
-	                }, className: 'form-control', id: 'exampleInputName2', placeholder: 'Company Name' })
-	            )
-	          )
-	        )
-	      );
-	    }
-	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return Name;
+	    return Name;
 	}(React.Component);
 	
 	exports.default = Name;
 
 /***/ }),
-/* 1064 */
+/* 1063 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -33974,318 +31695,219 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	//import Immutable  = require('immutable');
-	
-	
+	var Immutable = __webpack_require__(922);
 	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
 	}
 	
 	var PaymentMethod = function (_React$Component) {
-	  _inherits(PaymentMethod, _React$Component);
+	    _inherits(PaymentMethod, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function PaymentMethod(props) {
+	        _classCallCheck(this, PaymentMethod);
 	
-	  function PaymentMethod(props) {
-	    _classCallCheck(this, PaymentMethod);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
 	
-	    //this.getData();
+	        _this.state = {
+	            page: "menu",
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            delivery_address: Immutable.Map(),
+	            delivery_address_street: "",
+	            item_count: 0,
+	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
+	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
 	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
-	
-	    _this.state = {
-	
-	      page: "menu",
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      delivery_address: Immutable.Map(),
-	      delivery_address_street: "",
-	      item_count: 0,
-	      cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	      //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(PaymentMethod, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
+	    _createClass(PaymentMethod, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert();
+	            //window.onhashchange = function() {
+	            //blah blah blah
+	            //alert(this.state.page);
+	            //}.bind(this);
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //var result = [{'id': 'a'}, {'id': 'b'}];
+	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
+	            //    previous[ current.id ] = current;
+	            //    return previous;
+	            //}, {}));
+	            var demoRecord = Immutable.List.of(Immutable.Record({
+	                property: 'defaultValue',
+	                index: 0,
+	                works: true,
+	                valueList: Immutable.List([])
+	            }));
+	            //alert(demoRecord.getIn(["0"], "index"));
+	            /*let list = demoRecord.update(
+	              demoRecord.findIndex(function(item: any) {
+	                return item.get("index") === "0";
+	              }), function(item: any) {
+	                return item.set("index", 4);
+	              }
+	            );*/
+	            var result = [{ 'id': 2 }, { 'id': 4 }];
+	            var map = Immutable.fromJS(result);
+	            var map_updated = map.set();
+	            var result1 = map.find(function (obj) {
+	                return obj.get('id') === 4;
+	            });
+	            //alert(result1.get("id"));
+	            /*let arr = fromJS(
+	              elem: [
+	                {id: 1, name: "first", count: 2},
+	                {id: 2, name: "second", count: 1},
+	                {id: 3, name: "third", count: 2},
+	                {id: 4, name: "fourth", count: 1}
+	              ]
+	            );
+	                 arr = arr.setIn(['elem', 3, 'count'], 4);
+	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
+	                 
+	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
+	              return listItem.get('name') === 'third';
+	            });
+	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
+	            var cart_items_temp = this.state.cart_items;
+	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
+	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
+	            var myNewMap = cart_items_temp.push({ item_id: 5 });
+	            //let hello = cart_items_temp.push({item_id: 5});
+	            //alert(JSON.stringify(myNewMap));
+	            //alert(JSON.stringify(myNewMap.delete("0")));
+	            //hello.findIndex(function(item: any) { 
+	            //    return item.get("item_id") === "1"; 
+	            //})
+	            //var result = map.find(function(obj){return obj.get('id') === 4;});
+	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
+	            /*let list = hello.update(
+	              hello.findIndex(function(item: any) {
+	                return item.get("item_id") === "1";
+	              }), function(item: any) {
+	                return item.set("quantity", 44444444444444);
+	              }
+	            );*/
+	            //let list = hello.update(0, function(v: any) {
+	            //    return {quantity: 44444444444};
+	            //});
+	            //alert(JSON.stringify(list.toJS()));
+	            //alert(cart_items_temp_updated);
+	            //get menu items
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
 	        }
-	      );*/
-	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      var cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      var myNewMap = cart_items_temp.push({ item_id: 5 });
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
+	    }, {
+	        key: "setPaymentCardNumber",
+	        value: function setPaymentCardNumber(e) {
+	            //Amex Card: ^3[47][0-9]{13}$
+	            if (/^[a-zA-Z]/.test(e.target.value)) {
+	                alert("amex");
+	                //
+	            } else if (/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)) {
+	                //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
+	                alert("visa");
+	                //
+	            } else if (/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)) {
+	                alert("discovery");
+	                //
+	                //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
+	            }
 	        }
-	      );*/
+	    }, {
+	        key: "setPaymentExpiryDateMonth",
+	        value: function setPaymentExpiryDateMonth(e) {
+	            alert(e.target.value);
+	            //01-12, only numbers
+	            if (/^[0-9]/.test(e.target.value)) {
+	                alert("ok");
+	            }
+	        }
+	    }, {
+	        key: "setPaymentExpiryDateYear",
+	        value: function setPaymentExpiryDateYear(e) {
+	            //2017-only numbers
+	        }
+	    }, {
+	        key: "setPaymentSecurityCode",
+	        value: function setPaymentSecurityCode(e) {
+	            //if length > 0 or less then 4, only numbers
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
+	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentNameOnCard(e);
+	                } }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                    return _this2.setPaymentCardNumber(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Type", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentCardNumber(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Month", onChange: function onChange(e) {
+	                    return _this2.setPaymentExpiryDateMonth(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Year", onChange: function onChange(e) {
+	                    return _this2.setPaymentExpiryDateYear(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "Security Code", onChange: function onChange(e) {
+	                    return _this2.setPaymentSecurityCode(e);
+	                } }))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	    }
-	  }, {
-	    key: 'setPaymentCardNumber',
-	    value: function setPaymentCardNumber(e) {
-	
-	      //Amex Card: ^3[47][0-9]{13}$
-	      if (/^[a-zA-Z]/.test(e.target.value)) {
-	
-	        alert("amex");
-	
-	        //
-	      } else if (/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)) {
-	        //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
-	
-	        alert("visa");
-	        //
-	      } else if (/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)) {
-	        alert("discovery");
-	        //
-	        //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
-	      }
-	    }
-	  }, {
-	    key: 'setPaymentExpiryDateMonth',
-	    value: function setPaymentExpiryDateMonth(e) {
-	
-	      alert(e.target.value);
-	
-	      //01-12, only numbers
-	      if (/^[0-9]/.test(e.target.value)) {
-	
-	        alert("ok");
-	      }
-	    }
-	  }, {
-	    key: 'setPaymentExpiryDateYear',
-	    value: function setPaymentExpiryDateYear(e) {
-	
-	      //2017-only numbers
-	
-	    }
-	  }, {
-	    key: 'setPaymentSecurityCode',
-	    value: function setPaymentSecurityCode(e) {
-	
-	      //if length > 0 or less then 4, only numbers
-	
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Name on Card', onChange: function onChange(e) {
-	                return _this2.props.setPaymentNameOnCard(e);
-	              } })
-	          )
-	        ),
-	        React.createElement(
-	          'form',
-	          { className: 'form-inline' },
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Card Number', onChange: function onChange(e) {
-	                return _this2.setPaymentCardNumber(e);
-	              } })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Card Type', onChange: function onChange(e) {
-	                return _this2.props.setPaymentCardNumber(e);
-	              } })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Month', onChange: function onChange(e) {
-	                return _this2.setPaymentExpiryDateMonth(e);
-	              } })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Year', onChange: function onChange(e) {
-	                return _this2.setPaymentExpiryDateYear(e);
-	              } })
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'form-group' },
-	            React.createElement('input', { type: 'email', className: 'form-control', id: 'exampleInputEmail2', placeholder: 'Security Code', onChange: function onChange(e) {
-	                return _this2.setPaymentSecurityCode(e);
-	              } })
-	          )
-	        )
-	      );
-	    }
-	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return PaymentMethod;
+	    return PaymentMethod;
 	}(React.Component);
 	
 	exports.default = PaymentMethod;
 
 /***/ }),
-/* 1065 */
+/* 1064 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1066);
+	module.exports = __webpack_require__(1065);
 
 /***/ }),
-/* 1066 */
+/* 1065 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
-	var bind = __webpack_require__(1068);
-	var Axios = __webpack_require__(1069);
-	var defaults = __webpack_require__(1070);
+	var utils = __webpack_require__(1066);
+	var bind = __webpack_require__(1067);
+	var Axios = __webpack_require__(1068);
+	var defaults = __webpack_require__(1069);
 	
 	/**
 	 * Create an instance of Axios
@@ -34318,15 +31940,15 @@ webpackJsonp([0],[
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(1087);
-	axios.CancelToken = __webpack_require__(1088);
-	axios.isCancel = __webpack_require__(1084);
+	axios.Cancel = __webpack_require__(1086);
+	axios.CancelToken = __webpack_require__(1087);
+	axios.isCancel = __webpack_require__(1083);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(1089);
+	axios.spread = __webpack_require__(1088);
 	
 	module.exports = axios;
 	
@@ -34335,12 +31957,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1067 */
+/* 1066 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bind = __webpack_require__(1068);
+	var bind = __webpack_require__(1067);
 	
 	/*global toString:true*/
 	
@@ -34640,7 +32262,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1068 */
+/* 1067 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -34657,17 +32279,17 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1069 */
+/* 1068 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(1070);
-	var utils = __webpack_require__(1067);
-	var InterceptorManager = __webpack_require__(1081);
-	var dispatchRequest = __webpack_require__(1082);
-	var isAbsoluteURL = __webpack_require__(1085);
-	var combineURLs = __webpack_require__(1086);
+	var defaults = __webpack_require__(1069);
+	var utils = __webpack_require__(1066);
+	var InterceptorManager = __webpack_require__(1080);
+	var dispatchRequest = __webpack_require__(1081);
+	var isAbsoluteURL = __webpack_require__(1084);
+	var combineURLs = __webpack_require__(1085);
 	
 	/**
 	 * Create a new instance of Axios
@@ -34748,13 +32370,13 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1070 */
+/* 1069 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1067);
-	var normalizeHeaderName = __webpack_require__(1071);
+	var utils = __webpack_require__(1066);
+	var normalizeHeaderName = __webpack_require__(1070);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -34771,10 +32393,10 @@ webpackJsonp([0],[
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(1072);
+	    adapter = __webpack_require__(1071);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(1072);
+	    adapter = __webpack_require__(1071);
 	  }
 	  return adapter;
 	}
@@ -34848,12 +32470,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1071 */
+/* 1070 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -34866,18 +32488,18 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1072 */
+/* 1071 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1067);
-	var settle = __webpack_require__(1073);
-	var buildURL = __webpack_require__(1076);
-	var parseHeaders = __webpack_require__(1077);
-	var isURLSameOrigin = __webpack_require__(1078);
-	var createError = __webpack_require__(1074);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1079);
+	var utils = __webpack_require__(1066);
+	var settle = __webpack_require__(1072);
+	var buildURL = __webpack_require__(1075);
+	var parseHeaders = __webpack_require__(1076);
+	var isURLSameOrigin = __webpack_require__(1077);
+	var createError = __webpack_require__(1073);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1078);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -34973,7 +32595,7 @@ webpackJsonp([0],[
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(1080);
+	      var cookies = __webpack_require__(1079);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -35050,12 +32672,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1073 */
+/* 1072 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(1074);
+	var createError = __webpack_require__(1073);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -35081,12 +32703,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1074 */
+/* 1073 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(1075);
+	var enhanceError = __webpack_require__(1074);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -35104,7 +32726,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1075 */
+/* 1074 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35129,12 +32751,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1076 */
+/* 1075 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -35203,12 +32825,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1077 */
+/* 1076 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	/**
 	 * Parse headers into an object
@@ -35246,12 +32868,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1078 */
+/* 1077 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -35320,7 +32942,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1079 */
+/* 1078 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35362,12 +32984,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1080 */
+/* 1079 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -35421,12 +33043,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1081 */
+/* 1080 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -35479,15 +33101,15 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1082 */
+/* 1081 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
-	var transformData = __webpack_require__(1083);
-	var isCancel = __webpack_require__(1084);
-	var defaults = __webpack_require__(1070);
+	var utils = __webpack_require__(1066);
+	var transformData = __webpack_require__(1082);
+	var isCancel = __webpack_require__(1083);
+	var defaults = __webpack_require__(1069);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -35564,12 +33186,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1083 */
+/* 1082 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1067);
+	var utils = __webpack_require__(1066);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -35590,7 +33212,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1084 */
+/* 1083 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35601,7 +33223,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1085 */
+/* 1084 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35621,7 +33243,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1086 */
+/* 1085 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35639,7 +33261,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1087 */
+/* 1086 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35664,12 +33286,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1088 */
+/* 1087 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(1087);
+	var Cancel = __webpack_require__(1086);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -35727,7 +33349,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1089 */
+/* 1088 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -35760,7 +33382,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1090 */
+/* 1089 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -36418,7 +34040,7 @@ webpackJsonp([0],[
 	exports.default = OrderCart1;
 
 /***/ }),
-/* 1091 */
+/* 1090 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -37108,6 +34730,165 @@ webpackJsonp([0],[
 	exports.default = OrderDateTimeContact;
 
 /***/ }),
+/* 1091 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_redux_1 = __webpack_require__(190);
+	var login_ts_1 = __webpack_require__(920);
+	//import * as Autocomplete from "react-google-autocomplete";
+	//const Autocomplete = require("react-google-autocomplete");
+	var axios_1 = __webpack_require__(1064);
+	//declare var module: { Order: any };
+	//interface LoginRegister {
+	//  state: any,
+	//  props: any,
+	//completed: boolean
+	//}
+	
+	var Login = function (_React$Component) {
+	    _inherits(Login, _React$Component);
+	
+	    //props: Props;
+	    function Login(props) {
+	        _classCallCheck(this, Login);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	
+	        _this.state = {
+	            //menu_items: this.props.menu_items,
+	            //here: "",
+	            email: "",
+	            password: "",
+	            password_again: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(Login, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "login",
+	        value: function login() {
+	            //alert(this.state.email);
+	            axios_1.default.post('http://localhost:4000/graphql', {
+	                query: 'query {login (email: \"' + this.state.email + '\", password: \"' + this.state.password + '\") {session_id, first_name, last_name}}'
+	            }).then(function (response) {
+	                //alert(JSON.stringify(response));
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //this.props.setSubscription();
+	                //addtosubscribedblocklist
+	                //setsubscriptiontype == 1 block
+	                //setsubscriptionpaid == true
+	                //setsusbcriptindatetime
+	                //store in cookie
+	                //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
+	                //setCookie("sconely_session_id", 1, 1)
+	                //setCookie("sconely_first_name", 1, 1)
+	                //setCookie("sconely_last_name", 1, 1)
+	            }).catch(function (error) {
+	                alert("error");
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	            //error
+	            //}
+	            //this.context.router.push('/order/12345/signature');
+	        }
+	    }, {
+	        key: "setEmail",
+	        value: function setEmail(e) {
+	            this.setState({ email: e.target.value });
+	            this.props.setEmail(e);
+	        }
+	    }, {
+	        key: "setPassword",
+	        value: function setPassword(e) {
+	            this.setState({ password: e.target.value });
+	            //this.props.passwprd
+	        }
+	    }, {
+	        key: "setPasswordAgain",
+	        value: function setPasswordAgain(e) {
+	            this.setState({ password: e.target.value });
+	            //this.props.password_again
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), "Login/register-hello", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
+	                    return _this2.setEmail(e);
+	                } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
+	                    return _this2.setPassword(e);
+	                } }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                    return _this2.login();
+	                } }, "Login")))))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return Login;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    console.log(JSON.stringify(state));
+	    return {
+	        state: state
+	    };
+	}
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	    return {
+	        //loginthunk
+	        setEmail: function setEmail(e) {
+	            dispatch(login_ts_1.setEmail(1));
+	        }
+	    };
+	};
+	var Login1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Login);
+	exports.default = Login1;
+
+/***/ }),
 /* 1092 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37129,301 +34910,7 @@ webpackJsonp([0],[
 	
 	var _redux = __webpack_require__(197);
 	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _login = __webpack_require__(920);
-	
-	var _axios = __webpack_require__(1065);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	//import SconelyYoursMenu from './sconely_yours_menu';
-	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
-	
-	
-	//import * as Autocomplete from "react-google-autocomplete";
-	//const Autocomplete = require("react-google-autocomplete");
-	
-	//declare var module: { Order: any };
-	
-	//interface LoginRegister {
-	//  state: any,
-	//  props: any,
-	//completed: boolean
-	//}
-	
-	//import cookie from 'react-cookie';
-	
-	/*function getCookie(name: string): string {
-	  const nameLenPlus = (name.length + 1);
-	  return document.cookie
-	    .split(';')
-	    .map(c => c.trim())
-	    .filter(cookie => {
-	      return cookie.substring(0, nameLenPlus) === `${name}=`;
-	    })
-	    .map(cookie => {
-	      return decodeURIComponent(cookie.substring(nameLenPlus));
-	    })[0] || null;
-	}*/
-	
-	//import * as Cookie from 'js-cookie';
-	
-	
-	/*function addTodoWithDispatch() {
-	  const action = {
-	    type: "VIEW_PUBLIC_MENU",
-	    //text
-	  }
-	  //dispatch(action)
-	}*/
-	
-	//function setCookie(cname, cvalue, exdays) {
-	//   var d = new Date();
-	//   d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	//   var expires = "expires="+ d.toUTCString();
-	//   document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
-	//}
-	
-	var Login = function (_React$Component) {
-	  _inherits(Login, _React$Component);
-	
-	  //props: Props;
-	
-	  function Login(props) {
-	    _classCallCheck(this, Login);
-	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-	
-	    _this.state = {
-	
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      email: "",
-	      password: "",
-	      password_again: ""
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(Login, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	
-	    }
-	  }, {
-	    key: 'login',
-	    value: function login() {
-	
-	      //alert(this.state.email);
-	
-	      _axios2.default.post('http://localhost:4000/graphql', {
-	        query: 'query {login (email: \"' + this.state.email + '\", password: \"' + this.state.password + '\") {session_id, first_name, last_name}}'
-	      }).then(function (response) {
-	
-	        //alert(JSON.stringify(response));
-	        //go to code/payment screen
-	        //        this.props.loadView();
-	        //this.props.setSubscription();
-	
-	        //addtosubscribedblocklist
-	
-	        //setsubscriptiontype == 1 block
-	        //setsubscriptionpaid == true
-	        //setsusbcriptindatetime
-	
-	
-	        //store in cookie
-	
-	        //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	        //setCookie("sconely_session_id", 1, 1)
-	        //setCookie("sconely_first_name", 1, 1)
-	        //setCookie("sconely_last_name", 1, 1)
-	
-	
-	      }).catch(function (error) {
-	
-	        alert("error");
-	        //go to code/payment screen
-	        //        this.props.loadView();
-	
-	        //if (!error.status) {
-	        // network error
-	        //}
-	      });
-	
-	      //error
-	      //}
-	
-	      //this.context.router.push('/order/12345/signature');
-	
-	    }
-	  }, {
-	    key: 'setEmail',
-	    value: function setEmail(e) {
-	
-	      this.setState({ email: e.target.value });
-	
-	      this.props.setEmail(e);
-	    }
-	  }, {
-	    key: 'setPassword',
-	    value: function setPassword(e) {
-	
-	      this.setState({ password: e.target.value });
-	
-	      //this.props.passwprd
-	    }
-	  }, {
-	    key: 'setPasswordAgain',
-	    value: function setPasswordAgain(e) {
-	
-	      this.setState({ password: e.target.value });
-	
-	      //this.props.password_again
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return React.createElement(
-	        'div',
-	        { className: 'container-fluid' },
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-8' },
-	            React.createElement(
-	              'div',
-	              null,
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              'Login/register-hello',
-	              React.createElement('br', null),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement('br', null),
-	                  React.createElement('label', { htmlFor: 'inputEmail3', className: 'col-sm-2 control-label' }),
-	                  React.createElement('input', { type: 'text', className: 'form-control', id: 'email', placeholder: 'Email', onChange: function onChange(e) {
-	                      return _this2.setEmail(e);
-	                    } }),
-	                  React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Password', onChange: function onChange(e) {
-	                      return _this2.setPassword(e);
-	                    } }),
-	                  React.createElement(
-	                    'button',
-	                    { type: 'button', className: 'btn', onClick: function onClick() {
-	                        return _this2.login();
-	                      } },
-	                    'Login'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return Login;
-	}(React.Component);
-	
-	function mapStateToProps(state) {
-	  console.log(JSON.stringify(state));
-	  return {
-	
-	    state: state
-	  };
-	}
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	  return {
-	    //loginthunk
-	
-	
-	    setEmail: function setEmail(e) {
-	      dispatch((0, _login.setEmail)(1));
-	    }
-	
-	  };
-	};
-	
-	var Login1 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Login);
-	
-	exports.default = Login1;
-
-/***/ }),
-/* 1093 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	
-	
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _axios = __webpack_require__(1065);
+	var _axios = __webpack_require__(1064);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
@@ -37663,7 +35150,7 @@ webpackJsonp([0],[
 	exports.default = Register;
 
 /***/ }),
-/* 1094 */
+/* 1093 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37797,7 +35284,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1095 */
+/* 1094 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38006,7 +35493,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureGuest;
 
 /***/ }),
-/* 1096 */
+/* 1095 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38159,7 +35646,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1097 */
+/* 1096 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38270,7 +35757,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1098 */
+/* 1097 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38351,7 +35838,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1099 */
+/* 1098 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38408,7 +35895,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1100 */
+/* 1099 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38825,7 +36312,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1101 */
+/* 1100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38833,8 +36320,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var login_ts_1 = __webpack_require__(1097);
-	var root_ts_1 = __webpack_require__(1100);
+	var login_ts_1 = __webpack_require__(1096);
+	var root_ts_1 = __webpack_require__(1099);
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
 	    root: root_ts_1.default,

@@ -398,17 +398,17 @@ class PublicHomePage extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  alert(JSON.stringify(state));
+  //alert(JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
-    logged_in: state.default.logged_in
+    //logged_in: state.default.logged_in
   }
 }
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     checkLoggedIn: () => {
-      alert("check");
+      //alert("check");
       dispatch(checkLoggedIn())
     }
   }

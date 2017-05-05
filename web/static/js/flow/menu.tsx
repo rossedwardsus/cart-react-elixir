@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
 //import {checklogin} from './action/cart.ts';
 import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
-import SidebarCart from './sidebar_cart.jsx';
+import SidebarCart from './sidebar_cart.tsx';
 
 
 //type Props = {
@@ -61,7 +61,7 @@ class PublicMenu extends React.Component<any, any> {
 
   showItem(item_id: any){
 
-      alert(item_id);
+      //alert(item_id);
 
       this.setState({selected_item_id: item_id});
 
@@ -71,7 +71,7 @@ class PublicMenu extends React.Component<any, any> {
 
   selectedItemDozens = (e: any) => {
 
-      alert(e.target.value);
+      //alert(e.target.value);
 
       this.setState({selected_item_dozens: e.target.value});
 
@@ -86,7 +86,7 @@ class PublicMenu extends React.Component<any, any> {
 
   selectedItemQuantity(e: any){
 
-    alert(e.target.value);
+    //alert(e.target.value);
 
     this.setState({selected_item_quantity: e.target.value});
     //set add cart button == active
@@ -168,7 +168,7 @@ class PublicMenu extends React.Component<any, any> {
                             {this.state.menu_items.map(function(item: any){
                                 return(<div className="col-md-4">
                                           <div className="thumbnail" style={{paddingRight: 50, paddingLeft: 10}}>
-                                              <img id="1" onClick={this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
+                                              <img id="1" onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
                                               <div className="caption">
                                                 <h3>Strawberry Scone</h3>
                                               </div>
@@ -194,20 +194,20 @@ class PublicMenu extends React.Component<any, any> {
                             Ingredients
                         </div>
                         <div className="modal-footer">
-                          <select value={this.state.selected_item_dozens} onChange={this.selectedItemDozens}>
+                          <select value={this.state.selected_item_dozens} >
                             <option value="">Quantity</option>
                             <option value="12">Dozen</option>
                             <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
-                          <select value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity}>
+                          <select value={this.state.selected_item_quantity} >
                             <option value=""></option> 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" onClick={this.addCartItem} className="btn btn-default" data-dismiss="modal">Add-only show if cart items larger then 1</button>
+                          <button type="button" className="btn btn-default" data-dismiss="modal">Add-only show if cart items larger then 1</button>
                         </div>
                       </div>
                     </div>
@@ -225,7 +225,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        order: state.default.order
+        order: state.root.order
 
     //}
   }

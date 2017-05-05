@@ -14,7 +14,12 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-//import Immutable  = require('immutable');
+const Immutable  = require('immutable');
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+require('react-datepicker/dist/react-datepicker.css');
+
 
 
 function addTodoWithDispatch() {
@@ -38,7 +43,7 @@ interface Order {
   //completed: boolean
 }
 
-class DeliveryAddress extends React.Component<any, any> {
+class DateTime extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -58,7 +63,10 @@ class DeliveryAddress extends React.Component<any, any> {
         cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-
+        startDate: moment(),
+        selected_time: "",
+        selected_specific_time: "",
+        
     };
 
     //user_type=guest
@@ -193,81 +201,48 @@ class DeliveryAddress extends React.Component<any, any> {
   }
 
   
-  setDeliveryAddressStreet1(){
 
-
-
-  }
-
-  setDeliveryAddressStreet2(){
-
-
-  }
   
 
-  setDeliveryAddressCity(){
-
-
-  }
-
-
-  setDeliveryAddressState(){
-
-
-  }
-
-  setDeliveryAddressZipCode(){
-
-
-  }
-
+  
   
   
   render(): JSX.Element{
 
    
     return ( <div>
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-sm-8">
-                        <b>Address-if logged in</b>
-                        <br/>
-                        {true &&
-                          <select className="form-control">
-                              <option>Home</option>
-                              <option>Office</option>
-                          </select>
-                        }
-                        <br/>
-                    </div>
-                  </div>
-               </form>
                <form className="form-inline">
                     <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                    </div>
-                    <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                      <div className="col-sm-12">
+                          <b>Delivery Date and Time</b>
+                      </div>
                     </div>
                   </form>
                   <form className="form-inline">
+                      <div className="col-md-2">
+                        <DatePicker
+                          selected={this.state.startDate}
+                          onChange={(e: any) => {this.props.setDate(e)}} />
+                      </div>
+                      <div className="col-md-2">
+                        <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)}>
+                            <option value=""></option>
+                            <option value="900">9:00 am - 11:00 am</option>
+                            <option value="100">1:00 pm - 3:00 pm</option>
+                        </select>
+                      </div>
+                      <div className="col-md-2">
+                        <label htmlFor="exampleInputEmail2">(free)</label>
+                      </div>
                     <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                          <option></option>
-                          <option>Los Angeles</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
-                          <option></option>
-                          <option>CA</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
-                          <option></option>
-                          <option>90025</option>
-                      </select>
+                      <div className="col-md-4">
+                          <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
+                              <option></option>
+                              <option value="900">9:00</option>
+                              <option value="930">9:30</option>
+                          </select>
+                          <label htmlFor="exampleInputEmail2">($2 extra)</label>
+                      </div>
                     </div>
                   </form>
             </div>
@@ -284,5 +259,5 @@ class DeliveryAddress extends React.Component<any, any> {
 }
 
 
-export default DeliveryAddress;
+export default DateTime;
 

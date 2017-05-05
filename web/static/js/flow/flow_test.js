@@ -19,18 +19,18 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-rou
 import thunk from 'redux-thunk';
 
 
-import PublicHomePage from './public/public_home_page.jsx';
-import PublicMenu from './menu.jsx';
+import PublicHomePage from './public/public_home_page.tsx';
+import PublicMenu from './menu.tsx';
 import PublicAboutUs from './public/public_about_us';
 
 import UserHomePage from './user/user_home_page.jsx';
 
 import Order from "./order.jsx";
-import Checkout from "./order_datetime_contact.jsx";
+import Checkout from "./order_datetime_contact.tsx";
 import OrderCart from "./order_cart.jsx";
 import OrderComplete from './order_complete.jsx';
 
-import Login from './login.jsx';
+import Login from './login.tsx';
 import Register from './register.jsx';
 
 import User from "./user";

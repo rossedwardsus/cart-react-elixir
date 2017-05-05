@@ -4,8 +4,8 @@
 
 import * as React from 'react';
 
-import SconelyYoursMenu from './menu.jsx';
-import SidebarCart from './sidebar_cart.jsx';
+import SconelyYoursMenu from './menu.tsx';
+import SidebarCart from './sidebar_cart.tsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'

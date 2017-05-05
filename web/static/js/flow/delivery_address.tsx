@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-//import Immutable  = require('immutable');
+const Immutable  = require('immutable');
 
 
 function addTodoWithDispatch() {
@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class Name extends React.Component<any, any> {
+class DeliveryAddress extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -192,49 +192,84 @@ class Name extends React.Component<any, any> {
 
   }
 
-  setFirstName(){
+  
+  setDeliveryAddressStreet1(){
+
 
 
   }
 
-  setLastName(){
+  setDeliveryAddressStreet2(){
 
+
+  }
+  
+
+  setDeliveryAddressCity(){
+
+
+  }
+
+
+  setDeliveryAddressState(){
+
+
+  }
+
+  setDeliveryAddressZipCode(){
 
 
   }
 
   
+  
   render(): JSX.Element{
 
    
     return ( <div>
-               <form className="form-horizontal">
-                <div className="form-group">
-                  <div className="col-sm-8">
-                      <b>Name</b>
-                      <br/>
+                <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-sm-8">
+                        <b>Address-if logged in</b>
+                        <br/>
+                        {true &&
+                          <select className="form-control">
+                              <option>Home</option>
+                              <option>Office</option>
+                          </select>
+                        }
+                        <br/>
+                    </div>
                   </div>
-                </div>
-              </form>
-              <form className="form-inline">
-                <div className="col-md-4">
-                  <div className={this.props.firstNameClassName}>
-                    <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className={this.state.last_name_classname}>
-                    <input type="text" onChange={(e: any) => this.props.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
-                  </div>
-                </div>
-              </form>
-              <form className="form-inline">
-                <div className="col-md-4">
-                  <div className={this.props.firstNameClassName}>
-                    <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
-                  </div>
-                </div>
                </form>
+               <form className="form-inline">
+                    <div className="form-group">
+                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                    </div>
+                    <div className="form-group">
+                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                    </div>
+                  </form>
+                  <form className="form-inline">
+                    <div className="form-group">
+                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
+                          <option></option>
+                          <option>Los Angeles</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
+                          <option></option>
+                          <option>CA</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
+                          <option></option>
+                          <option>90025</option>
+                      </select>
+                    </div>
+                  </form>
             </div>
     )
   }
@@ -249,5 +284,5 @@ class Name extends React.Component<any, any> {
 }
 
 
-export default Name;
+export default DeliveryAddress;
 
