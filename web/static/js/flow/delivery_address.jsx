@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-import Immutable  = require('immutable');
+//import Immutable  = require('immutable');
 
 
 function addTodoWithDispatch() {
@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class Contact extends React.Component<any, any> {
+class DeliveryAddress extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -192,38 +192,84 @@ class Contact extends React.Component<any, any> {
 
   }
 
-  setContactEmail(e: any){
+  
+  setDeliveryAddressStreet1(){
 
 
 
   }
 
-  setContactMobile(e: any){
-
+  setDeliveryAddressStreet2(){
 
 
   }
+  
+
+  setDeliveryAddressCity(){
+
+
+  }
+
+
+  setDeliveryAddressState(){
+
+
+  }
+
+  setDeliveryAddressZipCode(){
+
+
+  }
+
+  
   
   render(): JSX.Element{
 
    
     return ( <div>
-               <form className="form-horizontal">
-                <div className="form-group">
-                  <div className="col-sm-10">
-                      <b>Contact</b>
-                      <br/>
+                <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-sm-8">
+                        <b>Address-if logged in</b>
+                        <br/>
+                        {true &&
+                          <select className="form-control">
+                              <option>Home</option>
+                              <option>Office</option>
+                          </select>
+                        }
+                        <br/>
+                    </div>
                   </div>
-                </div>
-              </form>
-              <form className="form-inline">
-                <div className={this.state.contact_email_classname}>
-                  <input type="text" onChange={(e: any) => this.props.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="email@email.com"/>
-                </div>
-                <div className={this.state.contact_mobile_classname}>
-                  <input type="text" onChange={(e: any) => this.props.setContactPhone(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111"/>
-                </div>
-              </form> 
+               </form>
+               <form className="form-inline">
+                    <div className="form-group">
+                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                    </div>
+                    <div className="form-group">
+                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                    </div>
+                  </form>
+                  <form className="form-inline">
+                    <div className="form-group">
+                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
+                          <option></option>
+                          <option>Los Angeles</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
+                          <option></option>
+                          <option>CA</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
+                          <option></option>
+                          <option>90025</option>
+                      </select>
+                    </div>
+                  </form>
             </div>
     )
   }
@@ -238,5 +284,5 @@ class Contact extends React.Component<any, any> {
 }
 
 
-export default Contact;
+export default DeliveryAddress;
 

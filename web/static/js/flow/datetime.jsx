@@ -14,7 +14,12 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-import Immutable  = require('immutable');
+//import Immutable  = require('immutable');
+var DatePicker = require('react-datepicker');
+var moment = require('moment');
+
+require('react-datepicker/dist/react-datepicker.css');
+
 
 
 function addTodoWithDispatch() {
@@ -38,7 +43,7 @@ interface Order {
   //completed: boolean
 }
 
-class PaymentMethod extends React.Component<any, any> {
+class DateTime extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -58,7 +63,10 @@ class PaymentMethod extends React.Component<any, any> {
         cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-
+        startDate: moment(),
+        selected_time: "",
+        selected_specific_time: "",
+        
     };
 
     //user_type=guest
@@ -192,52 +200,11 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
-  setPaymentCardNumber(e: any){
+  
 
-      //Amex Card: ^3[47][0-9]{13}$
-      if(/^[a-zA-Z]/.test(e.target.value)){
+  
 
-          alert("amex");
-
-      //
-      }else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
-      //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
-
-          alert("visa");
-      //
-      }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
-          alert("discovery");
-      //
-      //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
-      }
-
-
-  }
-
-  setPaymentExpiryDateMonth(e: any){
-
-      alert(e.target.value);
-
-      //01-12, only numbers
-      if(/^[0-9]/.test(e.target.value)){
-
-          alert("ok");
-
-      }
-
-  }
-
-  setPaymentExpiryDateYear(e: any){
-
-      //2017-only numbers
-
-  }
-
-  setPaymentSecurityCode(e: any){
-
-      //if length > 0 or less then 4, only numbers
-
-  }
+  
   
   
   render(): JSX.Element{
@@ -245,27 +212,39 @@ class PaymentMethod extends React.Component<any, any> {
    
     return ( <div>
                <form className="form-inline">
-                <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
-                  </div>
-                </form>
-                <form className="form-inline">
-                  <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Type" onChange={(e) => this.props.setPaymentCardNumber(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
-                  </div>
-                </form>
+                    <div className="form-group">
+                      <div className="col-sm-12">
+                          <b>Delivery Date and Time</b>
+                      </div>
+                    </div>
+                  </form>
+                  <form className="form-inline">
+                      <div className="col-md-2">
+                        <DatePicker
+                          selected={this.state.startDate}
+                          onChange={(e: any) => {this.props.setDate(e)}} />
+                      </div>
+                      <div className="col-md-2">
+                        <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)}>
+                            <option value=""></option>
+                            <option value="900">9:00 am - 11:00 am</option>
+                            <option value="100">1:00 pm - 3:00 pm</option>
+                        </select>
+                      </div>
+                      <div className="col-md-2">
+                        <label htmlFor="exampleInputEmail2">(free)</label>
+                      </div>
+                    <div className="form-group">
+                      <div className="col-md-4">
+                          <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
+                              <option></option>
+                              <option value="900">9:00</option>
+                              <option value="930">9:30</option>
+                          </select>
+                          <label htmlFor="exampleInputEmail2">($2 extra)</label>
+                      </div>
+                    </div>
+                  </form>
             </div>
     )
   }
@@ -280,5 +259,5 @@ class PaymentMethod extends React.Component<any, any> {
 }
 
 
-export default PaymentMethod;
+export default DateTime;
 

@@ -18,14 +18,14 @@ import {setDate, setTime, setSpecificTime} from './actions/order_delivery_dateti
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 import SidebarCart from './sidebar_cart.tsx';
-import DeliveryAddress from './delivery_address.tsx';
-import Contact from './contact.tsx';
-import DateTime from './datetime.tsx';
-import Name from './name.tsx';
-import PaymentMethod from './payment_method.tsx';
+import DeliveryAddress from './delivery_address.jsx';
+import Contact from './contact.jsx';
+import DateTime from './datetime.jsx';
+import Name from './name.jsx';
+import PaymentMethod from './payment_method.jsx';
 
 //import { getPublicMenu } from './reducers/name';
-import Immutable  = require('immutable');
+//import Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 import axios from 'axios';

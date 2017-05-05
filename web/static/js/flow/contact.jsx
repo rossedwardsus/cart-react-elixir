@@ -14,12 +14,7 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-import Immutable  = require('immutable');
-var DatePicker = require('react-datepicker');
-var moment = require('moment');
-
-require('react-datepicker/dist/react-datepicker.css');
-
+//import Immutable  = require('immutable');
 
 
 function addTodoWithDispatch() {
@@ -43,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class DateTime extends React.Component<any, any> {
+class Contact extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -63,10 +58,7 @@ class DateTime extends React.Component<any, any> {
         cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-        startDate: moment(),
-        selected_time: "",
-        selected_specific_time: "",
-        
+
     };
 
     //user_type=guest
@@ -200,51 +192,38 @@ class DateTime extends React.Component<any, any> {
 
   }
 
-  
+  setContactEmail(e: any){
 
-  
 
-  
-  
+
+  }
+
+  setContactMobile(e: any){
+
+
+
+  }
   
   render(): JSX.Element{
 
    
     return ( <div>
-               <form className="form-inline">
-                    <div className="form-group">
-                      <div className="col-sm-12">
-                          <b>Delivery Date and Time</b>
-                      </div>
-                    </div>
-                  </form>
-                  <form className="form-inline">
-                      <div className="col-md-2">
-                        <DatePicker
-                          selected={this.state.startDate}
-                          onChange={(e: any) => {this.props.setDate(e)}} />
-                      </div>
-                      <div className="col-md-2">
-                        <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)}>
-                            <option value=""></option>
-                            <option value="900">9:00 am - 11:00 am</option>
-                            <option value="100">1:00 pm - 3:00 pm</option>
-                        </select>
-                      </div>
-                      <div className="col-md-2">
-                        <label htmlFor="exampleInputEmail2">(free)</label>
-                      </div>
-                    <div className="form-group">
-                      <div className="col-md-4">
-                          <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
-                              <option></option>
-                              <option value="900">9:00</option>
-                              <option value="930">9:30</option>
-                          </select>
-                          <label htmlFor="exampleInputEmail2">($2 extra)</label>
-                      </div>
-                    </div>
-                  </form>
+               <form className="form-horizontal">
+                <div className="form-group">
+                  <div className="col-sm-10">
+                      <b>Contact</b>
+                      <br/>
+                  </div>
+                </div>
+              </form>
+              <form className="form-inline">
+                <div className={this.state.contact_email_classname}>
+                  <input type="text" onChange={(e: any) => this.props.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="email@email.com"/>
+                </div>
+                <div className={this.state.contact_mobile_classname}>
+                  <input type="text" onChange={(e: any) => this.props.setContactPhone(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111"/>
+                </div>
+              </form> 
             </div>
     )
   }
@@ -259,5 +238,5 @@ class DateTime extends React.Component<any, any> {
 }
 
 
-export default DateTime;
+export default Contact;
 

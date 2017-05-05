@@ -16,7 +16,8 @@
     ],
     
     "files": [
-        "./web/static/js/flow/menu.tsx"
+        "./web/static/js/flow/reducers/menu.ts"
+        //"./web/static/js/flow/menu.tsx"
         //"./web/static/js/typescript/components/DeliveryAddress.tsx",
         //"./web/static/js/typescript/SconelyYours.tsx"
     ]

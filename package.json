@@ -28,8 +28,11 @@
     "uglify-js-brunch": ">= 1.0 < 1.8"
   },
   "devDependencies": {
+    "@types/history": "^2.0.48",
     "@types/jquery": "^2.0.40",
     "@types/react": "^0.14.52",
+    "@types/react-router": "^4.0.6",
+    "@types/react-router-redux": "^5.0.1",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.11.4",
     "babel-jest": "^18.0.0",

@@ -3,22 +3,28 @@
 
 
 import * as React from 'react';
+
+import SconelyYoursMenu from './menu.tsx';
+import SidebarCart from './sidebar_cart.tsx';
+//import DeliveryAddressPayment from './delivery_address_payment.tsx';
+
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-import Immutable  = require('immutable');
+//import Immutable  = require('immutable');
+import {Map, List} from 'immutable';
 
 
-/*function addTodoWithDispatch() {
+function addTodoWithDispatch() {
   const action = {
     type: "VIEW_PUBLIC_MENU",
     //text
   }
   //dispatch(action)
-}*/
+}
 
 export interface HelloProps { 
     compiler: string; 
@@ -33,7 +39,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderCart extends React.Component<any, any> {
+class Order extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -64,7 +70,7 @@ class OrderCart extends React.Component<any, any> {
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
     
-    /*this.addCartItem = this.addCartItem.bind(this);
+    this.addCartItem = this.addCartItem.bind(this);
     this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
     this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
     this.removeCartItem = this.removeCartItem.bind(this);
@@ -78,7 +84,7 @@ class OrderCart extends React.Component<any, any> {
     this.showMenu = this.showMenu.bind(this);
     this.showCart = this.showCart.bind(this);
     this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
-    this.completeOrder = this.completeOrder.bind(this);*/
+    this.completeOrder = this.completeOrder.bind(this);
 
   }
 
@@ -203,7 +209,7 @@ class OrderCart extends React.Component<any, any> {
 
   }
 
-  /*showMenu(){
+  showMenu(){
 
       //alert();
 
@@ -230,12 +236,22 @@ class OrderCart extends React.Component<any, any> {
   
       //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
       
-  }*/
+  }  
 
-  /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
+  addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
 
     //alert(item_id + "" + item_dozens + "" + item_quantity);
 
+
+    //add to localstorage
+
+
+    //if order doesnt exist yet
+    localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+
+    //this.context.router.push('/order/12345');
+
+    
     let order_temp = this.state.order;
 
     //item_id, quanity, mini
@@ -243,7 +259,7 @@ class OrderCart extends React.Component<any, any> {
     let new_cart_items: any = [];
 
     //order_temp.set('key', .get('key').push
-    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));*/
+    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
 
 
     //for(let i: any = 0; i <= item_quantity - 1; i++){
@@ -277,10 +293,10 @@ class OrderCart extends React.Component<any, any> {
 
      //alert(JSON.stringify(cart_items_temp_updated));
 
-     //this.setState({order: order_temp_updated});
+     this.setState({order: order_temp_updated});
 
 
-  //}
+  }
 
   //selectItemDozens(e: any){
 
@@ -288,13 +304,13 @@ class OrderCart extends React.Component<any, any> {
 
   //}
 
-  /*addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
+  addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
 
       //alert(street);
 
       //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
-  }*/
+  }
 
   removeCartItem(index: any){
 
@@ -329,7 +345,7 @@ class OrderCart extends React.Component<any, any> {
   }  
 
   
-  /*setFirstName(e: any){
+  setFirstName(e: any){
 
       //let order_temp = this.state.order;
       //.setIn([ 'user', 'profile', 'name' ], 'Jack')
@@ -461,7 +477,7 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-  }*/
+  }
 
   completeOrder(){
 
@@ -471,70 +487,17 @@ class OrderCart extends React.Component<any, any> {
 
   }
 
-  goMenu(){
+  goToCart(){
 
-      this.context.router.push('/order/12345');
-      
-  }  
-
-  goToDeliveryAddressPayment(){
-
-      this.context.router.push('/order/12345/datetime_contact');
+      this.context.router.push('/order/12345/cart');
       
   }  
 
   goToDateTimeContact(){
 
-      this.context.router.push('/order/12345/signature');
+      this.context.router.push('/order/12345/datetime_contact');
       
   }  
-
-
-  updateCartItemQuantity(item_id:any, quantity: any){
-
-      //alert(item_id);
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-
-          let new_item: any = "";
-
-          if(item.item_id == item_id){
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-
-          }else{
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-
-          }
-
-          return new_item;
-
-      });
-
-      //cart_items_temp.
-
-      //alert(JSON.stringify(cart_items_temp_updated));
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
-
-  removeItemFromCart(item_id:any){
-
-      //alert(item_id);
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.filter(function(item: any) {
-          return item.item_id !== item_id;
-      });
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
 
   render(): JSX.Element{
 
@@ -543,39 +506,115 @@ class OrderCart extends React.Component<any, any> {
 
     //alert(item_count);
 
-    //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
+    //if(this.state.page == "menu"){
 
-    let cart = "";
+        body = <SconelyYoursMenu showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} addCartItem={(item_id: any, item_dozens: any, item_quantity: any, mini: any) => this.addCartItem(item_id, item_dozens, item_quantity, mini)}/>;
 
-    if(item_count == 0){
+    //}else if(this.state.page == "delivery_address_payment"){
 
-        cart = "there are no items in your cart";
+        //alert();
 
-    }else{
+        //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 
+    //}else{
 
-        cart = this.props.order.toJS().cart.map(function(item: any, index: any){
+        //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
-                      //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-                      let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
-                      let item_title = result.get("title");
+    //}
 
-                      if(item.mini == true){
-                      
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={this.props.removeCartItem.bind(this, index)}>X</a></div><div><a onClick={this.props.increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={this.props.decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+    let button: any = "";
 
-                      }else{
-
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={this.props.removeCartItem.bind(this, index)}>X</a></div><div><a onClick={this.props.increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={this.props.decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
-
-                      }
-                  
-                }.bind(this))
-
-    }
+    if(this.state.page === "menu"){
+                          
+        button = <a onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment</a> 
+        
+    }else if(this.state.page === "cart"){
+        
+        button = <div><a onClick={() => this.showDeliveryAddressPayment()}>Delivery Address and Payment-submit payment</a></div>
     
+    }else if(this.state.page === "delivery_address_payment"){
+
+        button = <a onClick={() => this.completeOrder()}>Complete Payment-only active if all elements are filled in</a> 
+    
+    }
+
+
     return ( <div>
-               {cart}
+                    <nav className="navbar navbar-default navbar-fixed-top">
+                          <div className="container-fluid">
+                            <div className="navbar-header">
+                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                              </button>
+                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                            </div>
+                            <div className="hidden-xs navbar-form navbar-right">
+                            </div>
+                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                    </nav> 
+                <div className="container-fluid">
+                  <div className="row">
+                        <div className="hidden-xs col-md-2">
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <SidebarCart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>
+                          <br/>
+                          <br/>
+                        </div>
+                        <div className="col-md-10">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            only show on mobile
+                            <br/>
+                            <button onClick={() => this.goToCart()}>cart({this.state.order.toJS().cart.length})</button>
+                            <br/>
+                            <br/>
+                            <br/>
+                            {body}
+                            <br/>
+                            <br/>
+                            {button}
+                            <br/>
+                            <button onClick={() => this.goToDateTimeContact()}>datetime</button>
+                        </div>
+                        <div className="hidden-xs col-md-2">
+                              maybe put something here
+                        </div>
+                </div>
+            </div>
             </div>
     )
   }
@@ -592,40 +631,20 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops " + JSON.stringify(state));
+/*function mapStateToProps(state: any) {
   return {
-    //active: ownProps.filter === state.visibilityFilter
-
-    //if(state.default.order.cart_items != undefined){
-        
-        order: state.default
-
-    //}
-  }
+   menu_items: state.default.menu_items
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
 }
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1))
-    },
-    increaseCartItemQuantity: () => {
-      dispatch(increaseCartItemQuantity(1))
-    },
-    decreaseCartItemQuantity: () => {
-      dispatch(decreaseCartItemQuantity(1))
-    }
-  }
-}
-
-const OrderCart1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OrderCart)
+function mapDispatchToProps(dispatch: any) {
+  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+}*/
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderCart1;
+export default Order;
 

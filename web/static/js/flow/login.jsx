@@ -31,7 +31,7 @@ import axios from 'axios';
     })[0] || null;
 }*/
 
-import * as Cookie from 'js-cookie';
+//import * as Cookie from 'js-cookie';
 
 
 /*function addTodoWithDispatch() {

@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	//import AdminOrders from './admin_orders.jsx';
 	//import AdminOrder from './admin_order.jsx';
@@ -61,6 +61,6 @@
 	//import UserOrderGuestChooseItem from "./user_order_guest_choose_item.jsx";
 	"use strict";
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=user_order.js.map
