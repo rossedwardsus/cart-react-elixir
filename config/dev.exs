@@ -33,13 +33,13 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :scone_home_elixir, SconeHomeElixir.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "scone_home_elixir_dev",
-  hostname: "localhost",
-  pool_size: 10
+#config :scone_home_elixir, SconeHomeElixir.Repo,
+#  adapter: Ecto.Adapters.Postgres,
+#  username: "postgres",
+#  password: "postgres",
+#  database: "scone_home_elixir_dev",
+#  hostname: "localhost",
+#  pool_size: 10
 
 
 

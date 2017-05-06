@@ -100,7 +100,8 @@
     "jest": "",
     "typescript": "",
     "lint": "tslint --config tslint.json --project tsconfig.json || exit 0",
-    "test": "mocha -r ./node_modules/ts-node/register web/static/js/tests/test.tsx"
+    "test": "mocha -r ./node_modules/ts-node/register web/static/js/tests/test.tsx",
+    "build": "webpack --config webpack.config_chunks.js"
   },
   "jest": {
     "testRegex": "(/web/static/js/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
