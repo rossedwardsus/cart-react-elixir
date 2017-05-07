@@ -6,7 +6,8 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
-import UserOrders from './user_orders.jsx';
+
+import UserOrders from './user_orders.tsx';
 
 //const mapDispatchToProps = dispatch => {
 //  return {

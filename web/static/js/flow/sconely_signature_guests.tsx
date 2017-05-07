@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 //import ToggleButton from 'react-toggle-button'
 //import InputRange from 'react-input-range';
@@ -8,10 +8,10 @@ import React from 'react'
 
 //import 'react-input-range/react-input-range.css';
 
-export default class Guests extends React.Component {
+export default class Guests extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
 
@@ -92,7 +92,7 @@ export default class Guests extends React.Component {
 
   }
 
-  handleValuesChange(e) {
+  handleValuesChange(e: any) {
     //alert(JSON.stringify(e.target.value));
     this.setState({value: e.target.value});
 
@@ -100,7 +100,7 @@ export default class Guests extends React.Component {
     //alert(window.guest_chooses);
   }
 
-  render(): React.Element {
+  render(): JSX.Element {
 
     var guests_choices = "";
 

@@ -1,12 +1,12 @@
-import React from 'react'
+import * as React from 'react'
 
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
 //require('react-datepicker/dist/react-datepicker.css');
 //import 'react-date-picker/index.css';
-import { DateField, Calendar } from 'react-date-picker';
-import Autocomplete from 'react-google-autocomplete';
+//import { DateField, Calendar } from 'react-date-picker';
+//import Autocomplete from 'react-google-autocomplete';
 
 
 //<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
@@ -14,9 +14,7 @@ import Autocomplete from 'react-google-autocomplete';
 
 var Dropzone = require('react-dropzone');
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
-import request from 'superagent';
-
-
+//import request from 'superagent';
 
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -34,10 +32,10 @@ import request from 'superagent';
     this.age++;
   }, 1000);*/
 
-export default class EventDetails extends React.Component {
+export default class EventDetailsDatetime extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -130,7 +128,7 @@ export default class EventDetails extends React.Component {
 
     var orders = JSON.parse(localStorage.getItem("user")).orders;    
 
-    function findOrder(order) { 
+    function findOrder(order: any) { 
             //alert(order.order_id);
             return order.order_id === 12345;
     };
@@ -141,7 +139,7 @@ export default class EventDetails extends React.Component {
 
   }
 
-  changeEventName(e){
+  changeEventName(e: any){
 
     //alert();
 
@@ -151,19 +149,19 @@ export default class EventDetails extends React.Component {
 
   }
 
-  changeDeliveryAddress(e){
+  changeDeliveryAddress(e: any){
 
     this.setState({delivery_address: e.target.value})
 
   }
 
-  changeNumberOfGuests(e){
+  changeNumberOfGuests(e:any){
 
     this.setState({number_of_guests: e.target.value})
 
   }
 
-  handleDateChange(dateString) {
+  handleDateChange(dateString: any) {
 
     //alert(dateString);
 
@@ -172,14 +170,14 @@ export default class EventDetails extends React.Component {
     //});
   }
 
-  onDrop(acceptedFiles){
-        var req = request.post('/api/v_alpha/signature/upload');
-        acceptedFiles.forEach((file)=> {
+  onDrop(acceptedFiles: any){
+        /*var req = request.post('/api/v_alpha/signature/upload');
+        acceptedFiles.forEach((file: any)=> {
             //alert(file.name);
             req.attach("file", file);
         });
         req.field("event_id", 123545);
-        req.end((response) => {alert(JSON.stringify(response))});
+        req.end((response: any) => {alert(JSON.stringify(response))});*/
   }
 
   changeCode(){
@@ -221,13 +219,13 @@ export default class EventDetails extends React.Component {
 
   }
 
-  render(): React.Element {
+  render(): JSX.Element {
     return (
       <div>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Event Name</label>
+            <label className="col-sm-2 control-label">Event Name</label>
             <div className="col-sm-10">
               <input type="email" className="form-control" id="inputEmail3" placeholder="Event Name"/>
             </div>
@@ -235,11 +233,11 @@ export default class EventDetails extends React.Component {
         </form>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Date Time</label>
-            <label for="inputEmail3" className="col-sm-2 control-label">
+            <label className="col-sm-2 control-label">Date Time</label>
+            <label className="col-sm-2 control-label">
                 <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
             </label>
-            <label for="inputEmail3" className="col-sm-2 control-label">Time<input type="radio" name="time"/>
+            <label className="col-sm-2 control-label">Time<input type="radio" name="time"/>
             </label>
             <div className="col-sm-5">
                 <select>
@@ -254,8 +252,8 @@ export default class EventDetails extends React.Component {
         </form>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Delivery Address</label>
-            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
+            <label className="col-sm-2 control-label">Delivery Address</label>
+            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
             <div className="col-sm-5">
                 <select>
                     <option></option>
@@ -266,25 +264,18 @@ export default class EventDetails extends React.Component {
             </div>
           </div>
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label"></label>
-            <label for="inputEmail3" className="col-sm-2 control-label"><input type="radio" name="address"/></label>
+            <label className="col-sm-2 control-label"></label>
+            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
             <div className="col-sm-5">
-                <Autocomplete
-                    style={{width: '90%'}}
-                    onPlaceSelected={(place) => {
-                      console.log(place.formatted_address.split(",")[2]);
-                    }}
-                    types={['address']}
-                    componentRestrictions={{country: "us"}}
-                />
+                
             </div>
           </div>
         </form>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label for="inputEmail3" className="col-sm-2 control-label">Image</label>
-            <label for="inputEmail3" className="col-sm-2 control-label"></label>
+            <label className="col-sm-2 control-label">Image</label>
+            <label className="col-sm-2 control-label"></label>
             <div className="col-sm-5">
                 <Dropzone onDrop={this.onDrop}>
                   <div>Try dropping some files here, or click to select files to upload.</div>

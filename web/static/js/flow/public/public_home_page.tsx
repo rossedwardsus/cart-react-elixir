@@ -41,7 +41,7 @@ class PublicHomePage extends React.Component<any, any> {
         
     };
 
-    this.createOrder = this.createOrder.bind(this);
+    this.createSignatureOrder = this.createSignatureOrder.bind(this);
     this.guestCode = this.guestCode.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
@@ -157,7 +157,7 @@ class PublicHomePage extends React.Component<any, any> {
   }
 
 
-  createOrder(order_type: any) {
+  createSignatureOrder(order_type: any) {
 
     if(order_type == "sconely_yours"){
 
@@ -186,11 +186,11 @@ class PublicHomePage extends React.Component<any, any> {
          
     }else if(order_type == "sconely_signature"){
 
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.context.router.push('/order/12345/signature');
+        this.context.router.push('/order/signature');
         
          
     }
@@ -284,7 +284,7 @@ class PublicHomePage extends React.Component<any, any> {
                         <li className="inactive"><Link to="/user">My Sconely<span className="sr-only">(current)</span></Link></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                        <li className="inactive">Start Order</li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
@@ -303,7 +303,7 @@ class PublicHomePage extends React.Component<any, any> {
                         <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                        <li className="inactive">Start Order</li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
@@ -345,9 +345,9 @@ class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           Home
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
+                          <Link to="/public/menu">Menu/Social</Link>
                           <br/>
-                          <a onClick={this.createOrder.bind(this, "sconely_signature")}>Signture</a>
+                          <a onClick={this.createSignatureOrder.bind(this, "sconely_signature")}>Signature</a>
                           <br/>
                         </div>
                         <div className="col-md-6">
@@ -361,7 +361,6 @@ class PublicHomePage extends React.Component<any, any> {
                                     <a href="./">Profile<span className="sr-only">(current)</span></a>
                                     <Link to="/login_register">Login<span className="sr-only">(current)</span></Link>
                                     <Link to="/login_register">Signup<span className="sr-only">(current)</span></Link>
-                                    <a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a>
                                     <Link to="/public/menu">Menu</Link>
                                   </div>
                                   <br/>

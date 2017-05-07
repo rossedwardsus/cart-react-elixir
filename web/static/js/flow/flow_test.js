@@ -23,9 +23,9 @@ import PublicHomePage from './public/public_home_page.tsx';
 import PublicMenu from './menu.tsx';
 import PublicAboutUs from './public/public_about_us';
 
-import UserHomePage from './user/user_home_page.jsx';
+import UserHomePage from './user/user_home_page.tsx';
 
-import Order from "./order.jsx";
+//import Order from "./order.jsx";
 import Checkout from "./order_datetime_contact.tsx";
 import OrderCart from "./order_cart.jsx";
 import OrderComplete from './order_complete.jsx';
@@ -47,9 +47,9 @@ import SconelySignatureGuest from "./sconely_signature_guest/guest.jsx";
 import SconelySignatureGuest from "./sconely_signature_guest/guest";
 import SconelySignatureGuests from "./sconely_signature_guests";
 import SconelySocialMenu from "./sconely_social_menu";
-import SconelySignaturePreview from "./sconely_signature_preview";
-import SconelySignatureSinglePage from "./sconely_signature_single_page";
-import OrderPayment from "./sconely_yours_social_order_payment";
+import SconelySignaturePreview from "./sconely_signature_preview";*/
+import SconelySignature from "./sconely_signature_single_page.tsx";
+/*import OrderPayment from "./sconely_yours_social_order_payment";
 import ProfilePayment from "./user/payment";*/
 
 import * as cart_reducer from './reducers/cart.ts';
@@ -164,14 +164,10 @@ const Root = () => (
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id/cart" component={OrderCart} />
         <Route path="/order/checkout" component={Checkout} />
-        <Route path="/order/:order_id" component={Order} />
-        //<Route path="/order/:order_id/order_complete" getComponent={(nextState, cb) => {
-                                     // async work to find components
-                                    cb(null, OrderComplete)
-                                  }} />
         <Route path="/user" component={UserHomePage} />
         <Route path="/order/:order_id/guest" component={SconelySignatureGuest} />
-        
+        <Route path="/order/signature" component={SconelySignature} />
+                
 
       </Route>
     </Router>

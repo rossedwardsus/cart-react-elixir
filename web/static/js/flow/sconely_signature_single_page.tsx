@@ -1,18 +1,20 @@
-import React from 'react'
+import * as React from 'react'
 
-import EventDetails from './sconely_social_event_details';
-import Guests from './sconely_signature_guests';
+import EventDetails from './sconely_signature_event_details.tsx';
+import Guests from './sconely_signature_guests.tsx';
 
-import request from 'superagent';
+//import request from 'superagent';
 
-export default class SconelySignature extends React.Component {
+export default class SconelySignature extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
     //alert("sconely yours1" + window.guest_chooses);
+
+    //state: any;
 
     this.state = {
 
@@ -116,12 +118,12 @@ export default class SconelySignature extends React.Component {
 
 
 
-  render(): React.Element {
+  render(): JSX.Element {
     return (
       <div>
-        <EventDetails order_id={this.props.params.order_id}/>
+        <EventDetails/>
         <br/>
-        <Guests order_id={this.props.params.order_id}/>
+        <Guests/>
        </div>
     )
   }

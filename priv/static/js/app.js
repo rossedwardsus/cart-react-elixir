@@ -54,59 +54,59 @@ webpackJsonp([0],[
 	
 	var _user_home_page2 = _interopRequireDefault(_user_home_page);
 	
-	var _order = __webpack_require__(929);
-	
-	var _order2 = _interopRequireDefault(_order);
-	
-	var _order_datetime_contact = __webpack_require__(930);
+	var _order_datetime_contact = __webpack_require__(929);
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _order_cart = __webpack_require__(1089);
+	var _order_cart = __webpack_require__(1088);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_complete = __webpack_require__(1090);
+	var _order_complete = __webpack_require__(1089);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1091);
+	var _login = __webpack_require__(1090);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1092);
+	var _register = __webpack_require__(1091);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _user = __webpack_require__(1093);
+	var _user = __webpack_require__(1092);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _guest = __webpack_require__(1094);
+	var _guest = __webpack_require__(1093);
 	
 	var _guest2 = _interopRequireDefault(_guest);
 	
-	var _cart = __webpack_require__(1095);
+	var _sconely_signature_single_page = __webpack_require__(1094);
+	
+	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
+	
+	var _cart = __webpack_require__(1098);
 	
 	var cart_reducer = _interopRequireWildcard(_cart);
 	
-	var _login3 = __webpack_require__(1096);
+	var _login3 = __webpack_require__(1099);
 	
 	var login_reducer = _interopRequireWildcard(_login3);
 	
-	var _order_delivery_address = __webpack_require__(1097);
+	var _order_delivery_address = __webpack_require__(1100);
 	
 	var delivery_address_reducer = _interopRequireWildcard(_order_delivery_address);
 	
-	var _name = __webpack_require__(1098);
+	var _name = __webpack_require__(1101);
 	
 	var name_reducer = _interopRequireWildcard(_name);
 	
-	var _root = __webpack_require__(1099);
+	var _root = __webpack_require__(1102);
 	
 	var root_reducer = _interopRequireWildcard(_root);
 	
-	var _index = __webpack_require__(1100);
+	var _index = __webpack_require__(1103);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -121,14 +121,19 @@ webpackJsonp([0],[
 	//import { getAllProducts } from './actions/viewPublicMenu'
 	
 	
-	/*import SconelySocialEventDetails from "./sconely_social_event_details";
-	import SconelySignatureGuest from "./sconely_signature_guest/guest";
-	import SconelySignatureGuests from "./sconely_signature_guests";
-	import SconelySocialMenu from "./sconely_social_menu";
-	import SconelySignaturePreview from "./sconely_signature_preview";
-	import SconelySignatureSinglePage from "./sconely_signature_single_page";
-	import OrderPayment from "./sconely_yours_social_order_payment";
+	/*import OrderPayment from "./sconely_yours_social_order_payment";
 	import ProfilePayment from "./user/payment";*/
+	
+	/*import UserOrder from "./user_order";
+	import SconelySocial from "./sconely_yours_social_single_page";
+	import SconelyYours from "./sconely_yours_social_single_page";
+	//import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
+	
+	//import SconelySocial from "./sconely_social_single_page";*/
+	
+	
+	//import Order from "./order.jsx";
+	
 	
 	//import autobind from 'autobind-decorator'
 	//import TodoListItem from './TodoListItem'
@@ -137,12 +142,11 @@ webpackJsonp([0],[
 	  return Boolean(obj && obj.prototype && Boolean(obj.prototype.isReactComponent));
 	};
 	
-	/*import UserOrder from "./user_order";
-	import SconelySocial from "./sconely_yours_social_single_page";
-	import SconelyYours from "./sconely_yours_social_single_page";
-	//import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
-	
-	//import SconelySocial from "./sconely_social_single_page";*/
+	/*import SconelySocialEventDetails from "./sconely_social_event_details";
+	import SconelySignatureGuest from "./sconely_signature_guest/guest";
+	import SconelySignatureGuests from "./sconely_signature_guests";
+	import SconelySocialMenu from "./sconely_social_menu";
+	import SconelySignaturePreview from "./sconely_signature_preview";*/
 	
 	
 	var component = function component(_component) {
@@ -238,14 +242,9 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/about_us', component: _public_about_us2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/cart', component: _order_cart2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/checkout', component: _order_datetime_contact2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id', component: _order2.default }),
-	        '//',
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/order_complete', getComponent: function getComponent(nextState, cb) {
-	            // async work to find components
-	            cb(null, _order_complete2.default);
-	          } }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user', component: _user_home_page2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest', component: _guest2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest', component: _guest2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/signature', component: _sconely_signature_single_page2.default })
 	      )
 	    )
 	  );
@@ -18833,7 +18832,7 @@ webpackJsonp([0],[
 	            image: "/images/gallery/sconely_group_HPb.jpg",
 	            guest_code: ""
 	        };
-	        _this.createOrder = _this.createOrder.bind(_this);
+	        _this.createSignatureOrder = _this.createSignatureOrder.bind(_this);
 	        _this.guestCode = _this.guestCode.bind(_this);
 	        _this.onSubmit = _this.onSubmit.bind(_this);
 	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
@@ -18912,8 +18911,8 @@ webpackJsonp([0],[
 	            }
 	        }
 	    }, {
-	        key: "createOrder",
-	        value: function createOrder(order_type) {
+	        key: "createSignatureOrder",
+	        value: function createSignatureOrder(order_type) {
 	            if (order_type == "sconely_yours") {
 	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
 	                //alert(orders);
@@ -18929,10 +18928,10 @@ webpackJsonp([0],[
 	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
 	                this.context.router.push('/order/12345');
 	            } else if (order_type == "sconely_signature") {
-	                var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
 	                //alert(orders);
-	                orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
-	                this.context.router.push('/order/12345/signature');
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                this.context.router.push('/order/signature');
 	            }
 	            /*const client = GQLClient('http://localhost:3000', {
 	              // anything passed here is merged with
@@ -18998,13 +18997,13 @@ webpackJsonp([0],[
 	
 	            var logged_in = null;
 	            if (this.props.logged_in) {
-	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/user" }, "My Sconely", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/user" }, "My Sconely", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Start Order")), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            } else {
-	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Start Order")), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }, React.createElement("div", { className: "hidden-xs form-group" }, React.createElement("input", { type: "text", className: "hidden-xs form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange })), React.createElement("button", { type: "button", className: "hidden-xs btn btn-default", onClick: function onClick() {
 	                    return _this2.guestCode();
-	                } }, "Submit")), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_signature") }, "Signture"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg navbar-form" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	                } }, "Submit")), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu/Social"), React.createElement("br", null), React.createElement("a", { onClick: this.createSignatureOrder.bind(this, "sconely_signature") }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg navbar-form" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -27933,46 +27932,23 @@ webpackJsonp([0],[
 /* 927 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
+	"use strict";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	__webpack_require__(624);
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _immutable = __webpack_require__(922);
-	
-	var _user_orders = __webpack_require__(928);
-	
-	var _user_orders2 = _interopRequireDefault(_user_orders);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import Swipeable from 'react-swipeable';
-	//import { routeActions, push } from 'react-router-redux'
 	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__webpack_require__(624);
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
 	//import {startOrder} from './actions/order';
-	
-	
+	var immutable_1 = __webpack_require__(922);
+	var user_orders_tsx_1 = __webpack_require__(928);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -27980,403 +27956,192 @@ webpackJsonp([0],[
 	//    }
 	//  };
 	//};
-	
 	//@connect(null, mapDispatchToProps)
+	
 	var Homepage = function (_React$Component) {
-	  _inherits(Homepage, _React$Component);
+	    _inherits(Homepage, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function Homepage(props) {
+	        _classCallCheck(this, Homepage);
 	
-	  function Homepage(props) {
-	    _classCallCheck(this, Homepage);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
 	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
-	
-	    _this.state = {
-	
-	      image: "/images/gallery/sconely_group_HPb.jpg",
-	      guest_code: ""
-	
-	    };
-	
-	    //this.createOrder = this.createOrder.bind(this);
-	    _this.guestCode = _this.guestCode.bind(_this);
-	    _this.onSubmit = _this.onSubmit.bind(_this);
-	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
-	    _this.onSwipedRight = _this.onSwipedRight.bind(_this);
-	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
-	    _this.changeImage = _this.changeImage.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  _createClass(Homepage, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert("jsx");
-	      //get active items from the database
-	      //setInterval(this.changeImage, 10000);
-	
-	      //localStorage.get('user');
-	
+	        _this.state = {
+	            image: "/images/gallery/sconely_group_HPb.jpg",
+	            guest_code: ""
+	        };
+	        //this.createOrder = this.createOrder.bind(this);
+	        _this.guestCode = _this.guestCode.bind(_this);
+	        _this.onSubmit = _this.onSubmit.bind(_this);
+	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	        _this.onSwipedRight = _this.onSwipedRight.bind(_this);
+	        _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	        _this.changeImage = _this.changeImage.bind(_this);
+	        return _this;
 	    }
-	  }, {
-	    key: 'onSubmit',
-	    value: function onSubmit(e) {
 	
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'guestCode',
-	    value: function guestCode() {
-	
-	      //e.preventDefault();
-	
-	      //alert(order_type);
-	
-	      //if(order_type == "sconely_yours"){
-	
-	      //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	      //alert(orders);
-	      //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	      //if user is logged in then 
-	      //guest code is right then
-	      //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-	
-	      //this.context.router.push('/guest/order/12345/sconely_yours');
-	
-	      //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-	
-	      //this.props.dispatch(routeActions.push('/foo'));
-	
-	      //push("/foo");
-	
-	      this.props.onNavigateTo('/hello');
-	
-	      //}
-	    }
-	  }, {
-	    key: 'guestCodeChange',
-	    value: function guestCodeChange(e) {
-	
-	      this.setState({ guest_code: e.target.value });
-	    }
-	  }, {
-	    key: 'onSwipedLeft',
-	    value: function onSwipedLeft() {
-	
-	      //alert("left");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'onSwipedRight',
-	    value: function onSwipedRight() {
-	
-	      //alert("right");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'changeImage',
-	    value: function changeImage() {
-	
-	      if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
-	
-	        this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
-	      } else {
-	
-	        this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
-	      }
-	    }
-	  }, {
-	    key: 'createOrder',
-	    value: function createOrder(order_type) {
-	
-	      if (order_type == "sconely_yours") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	
-	        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //if user is logged in then 
-	        this.context.router.push('/order/12345');
-	
-	        //this.context.router.push('/order/12345');
-	
-	      } else if (order_type == "sconely_social") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        localStorage.setState("order", (0, _immutable.Map)({ name: "name", contact: "contact", cart: (0, _immutable.List)([]), delivery_address: { street: "" }, payment: "" }));
-	
-	        this.context.router.push('/order/12345');
-	      } else if (order_type == "sconely_signature") {
-	
-	        var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
-	
-	        this.context.router.push('/order/12345/signature');
-	      }
-	
-	      /*const client = GQLClient('http://localhost:3000', {
-	        // anything passed here is merged with 
-	        // the options passed to fetch() 
-	        credentials: true,
-	        headers: {
-	          'X-Requested-With': 'XMLHttpRequest'
+	    _createClass(Homepage, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert("jsx");
+	            //get active items from the database
+	            //setInterval(this.changeImage, 10000);
+	            //localStorage.get('user');
 	        }
-	      });*/
-	
-	      /*client.mutate(`
-	        mutation ($id: RecordID!, $name: String!) {
-	          updateUser(input: {id: $id, name: $name}) {
-	            user {
-	              id
-	              name
+	    }, {
+	        key: "onSubmit",
+	        value: function onSubmit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: "guestCode",
+	        value: function guestCode() {
+	            //e.preventDefault();
+	            //alert(order_type);
+	            //if(order_type == "sconely_yours"){
+	            //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            //alert(orders);
+	            //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	            //if user is logged in then 
+	            //guest code is right then
+	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	            //this.context.router.push('/guest/order/12345/sconely_yours');
+	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	            //this.props.dispatch(routeActions.push('/foo'));
+	            //push("/foo");
+	            this.props.onNavigateTo('/hello');
+	            //}
+	        }
+	    }, {
+	        key: "guestCodeChange",
+	        value: function guestCodeChange(e) {
+	            this.setState({ guest_code: e.target.value });
+	        }
+	    }, {
+	        key: "onSwipedLeft",
+	        value: function onSwipedLeft() {
+	            //alert("left");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "onSwipedRight",
+	        value: function onSwipedRight() {
+	            //alert("right");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "changeImage",
+	        value: function changeImage() {
+	            if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
+	                this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	            } else {
+	                this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
 	            }
-	          }
 	        }
-	      `, { id: 1234, name: 'Danny' }).then((result) => {
-	        console.log(result.data.user);
-	        // => { id: 1234, name: 'Danny' } 
-	      });*/
-	
-	      /*var query = `
-	        query q (id: String!) {
-	          user(id: $id) {
-	            id,
-	            email,
-	            name
-	          }
+	    }, {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                this.context.router.push('/order/12345');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
+	                this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
+	                this.context.router.push('/order/12345/signature');
+	            }
+	            /*const client = GQLClient('http://localhost:3000', {
+	              // anything passed here is merged with
+	              // the options passed to fetch()
+	              credentials: true,
+	              headers: {
+	                'X-Requested-With': 'XMLHttpRequest'
+	              }
+	            });*/
+	            /*client.mutate(`
+	              mutation ($id: RecordID!, $name: String!) {
+	                updateUser(input: {id: $id, name: $name}) {
+	                  user {
+	                    id
+	                    name
+	                  }
+	                }
+	              }
+	            `, { id: 1234, name: 'Danny' }).then((result) => {
+	              console.log(result.data.user);
+	              // => { id: 1234, name: 'Danny' }
+	            });*/
+	            /*var query = `
+	              query q (id: String!) {
+	                user(id: $id) {
+	                  id,
+	                  email,
+	                  name
+	                }
+	              }
+	            `
+	            var queryVars = {
+	              id: 'abcdef'
+	            }
+	            var opts = {
+	              // custom fetch options
+	            }*/
+	            /**
+	             * @param  {Query} query graphql query
+	             * @param  {Object} [vars]  graphql query args, optional
+	             * @param  {Object} [opts]  fetch options, optional
+	             */
+	            /*fetch(query, queryVars, opts).then(function (results) {
+	              if (results.errors) {
+	                //...
+	                return
+	              }
+	              var user = result.data.user
+	              //...
+	            })*/
+	            //alert(order_type);
+	            //this.context.router.push('/order/12345/event_details');
+	            //browserHistory.push('#/order/12345');
+	            //browserHistory.push('/mobile/user#/order/12345');
+	            //save id in local storage
 	        }
-	      `
-	      var queryVars = {
-	        id: 'abcdef'
-	      }
-	      var opts = {
-	        // custom fetch options 
-	      }*/
+	        //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
 	
-	      /**
-	       * @param  {Query} query graphql query
-	       * @param  {Object} [vars]  graphql query args, optional
-	       * @param  {Object} [opts]  fetch options, optional
-	       */
-	      /*fetch(query, queryVars, opts).then(function (results) {
-	        if (results.errors) {
-	          //... 
-	          return
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var logged_in = null;
+	            if (true) {
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	            }
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, "Your Orders", React.createElement("br", null), React.createElement(user_orders_tsx_1.default, null)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
-	        var user = result.data.user
-	        //... 
-	      })*/
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      //alert(order_type);
-	
-	      //this.context.router.push('/order/12345/event_details');
-	
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
-	    }
-	
-	    //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
-	
-	
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	
-	      var logged_in = null;
-	
-	      if (true) {
-	
-	        logged_in = React.createElement(
-	          'div',
-	          { id: 'navbar', className: 'navbar-collapse collapse navbar-right' },
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              'Profile',
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/login' },
-	                'Login',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              ),
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          )
-	        );
-	      }
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            logged_in
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-4' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            'Home',
-	            React.createElement('br', null),
-	            React.createElement(
-	              _reactRouter.Link,
-	              { to: '/public/menu' },
-	              'Menu'
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'div',
-	              null,
-	              'Your Orders',
-	              React.createElement('br', null),
-	              React.createElement(_user_orders2.default, null)
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-2' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            'maybe put something here'
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return Homepage;
+	    return Homepage;
 	}(React.Component);
 	
 	exports.default = Homepage;
@@ -28385,39 +28150,22 @@ webpackJsonp([0],[
 /* 928 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
+	"use strict";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	__webpack_require__(624);
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _immutable = __webpack_require__(922);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import Swipeable from 'react-swipeable';
-	//import { routeActions, push } from 'react-router-redux'
 	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__webpack_require__(624);
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
 	//import {startOrder} from './actions/order';
-	
-	
+	var immutable_1 = __webpack_require__(922);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -28425,1203 +28173,198 @@ webpackJsonp([0],[
 	//    }
 	//  };
 	//};
-	
 	//@connect(null, mapDispatchToProps)
+	
 	var UserOrders = function (_React$Component) {
-	  _inherits(UserOrders, _React$Component);
+	    _inherits(UserOrders, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function UserOrders(props) {
+	        _classCallCheck(this, UserOrders);
 	
-	  function UserOrders(props) {
-	    _classCallCheck(this, UserOrders);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (UserOrders.__proto__ || Object.getPrototypeOf(UserOrders)).call(this, props));
 	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (UserOrders.__proto__ || Object.getPrototypeOf(UserOrders)).call(this, props));
-	
-	    _this.state = {
-	
-	      image: "/images/gallery/sconely_group_HPb.jpg",
-	      guest_code: ""
-	
-	    };
-	
-	    //this.createOrder = this.createOrder.bind(this);
-	    _this.guestCode = _this.guestCode.bind(_this);
-	    _this.onSubmit = _this.onSubmit.bind(_this);
-	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
-	    _this.onSwipedRight = _this.onSwipedRight.bind(_this);
-	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
-	    _this.changeImage = _this.changeImage.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  _createClass(UserOrders, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert("jsx");
-	      //get active items from the database
-	      //setInterval(this.changeImage, 10000);
-	
-	      //localStorage.get('user');
-	
+	        _this.state = {
+	            image: "/images/gallery/sconely_group_HPb.jpg",
+	            guest_code: ""
+	        };
+	        //this.createOrder = this.createOrder.bind(this);
+	        _this.guestCode = _this.guestCode.bind(_this);
+	        _this.onSubmit = _this.onSubmit.bind(_this);
+	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	        _this.onSwipedRight = _this.onSwipedRight.bind(_this);
+	        _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	        _this.changeImage = _this.changeImage.bind(_this);
+	        return _this;
 	    }
-	  }, {
-	    key: 'onSubmit',
-	    value: function onSubmit(e) {
 	
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'guestCode',
-	    value: function guestCode() {
-	
-	      //e.preventDefault();
-	
-	      //alert(order_type);
-	
-	      //if(order_type == "sconely_yours"){
-	
-	      //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	      //alert(orders);
-	      //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	      //if user is logged in then 
-	      //guest code is right then
-	      //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-	
-	      //this.context.router.push('/guest/order/12345/sconely_yours');
-	
-	      //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-	
-	      //this.props.dispatch(routeActions.push('/foo'));
-	
-	      //push("/foo");
-	
-	      this.props.onNavigateTo('/hello');
-	
-	      //}
-	    }
-	  }, {
-	    key: 'guestCodeChange',
-	    value: function guestCodeChange(e) {
-	
-	      this.setState({ guest_code: e.target.value });
-	    }
-	  }, {
-	    key: 'onSwipedLeft',
-	    value: function onSwipedLeft() {
-	
-	      //alert("left");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'onSwipedRight',
-	    value: function onSwipedRight() {
-	
-	      //alert("right");
-	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	      this.changeImage();
-	    }
-	  }, {
-	    key: 'changeImage',
-	    value: function changeImage() {
-	
-	      if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
-	
-	        this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
-	      } else {
-	
-	        this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
-	      }
-	    }
-	  }, {
-	    key: 'createOrder',
-	    value: function createOrder(order_type) {
-	
-	      if (order_type == "sconely_yours") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	
-	        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        //if user is logged in then 
-	        this.context.router.push('/order/12345');
-	
-	        //this.context.router.push('/order/12345');
-	
-	      } else if (order_type == "sconely_social") {
-	
-	        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	
-	        localStorage.setState("order", (0, _immutable.Map)({ name: "name", contact: "contact", cart: (0, _immutable.List)([]), delivery_address: { street: "" }, payment: "" }));
-	
-	        this.context.router.push('/order/12345');
-	      } else if (order_type == "sconely_signature") {
-	
-	        var orders = JSON.parse(localStorage.getItem("user")).orders;
-	        //alert(orders);
-	        orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
-	
-	        this.context.router.push('/order/12345/signature');
-	      }
-	
-	      /*const client = GQLClient('http://localhost:3000', {
-	        // anything passed here is merged with 
-	        // the options passed to fetch() 
-	        credentials: true,
-	        headers: {
-	          'X-Requested-With': 'XMLHttpRequest'
+	    _createClass(UserOrders, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //alert("jsx");
+	            //get active items from the database
+	            //setInterval(this.changeImage, 10000);
+	            //localStorage.get('user');
 	        }
-	      });*/
-	
-	      /*client.mutate(`
-	        mutation ($id: RecordID!, $name: String!) {
-	          updateUser(input: {id: $id, name: $name}) {
-	            user {
-	              id
-	              name
+	    }, {
+	        key: "onSubmit",
+	        value: function onSubmit(e) {
+	            e.preventDefault();
+	        }
+	    }, {
+	        key: "guestCode",
+	        value: function guestCode() {
+	            //e.preventDefault();
+	            //alert(order_type);
+	            //if(order_type == "sconely_yours"){
+	            //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            //alert(orders);
+	            //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	            //if user is logged in then 
+	            //guest code is right then
+	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	            //this.context.router.push('/guest/order/12345/sconely_yours');
+	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	            //this.props.dispatch(routeActions.push('/foo'));
+	            //push("/foo");
+	            this.props.onNavigateTo('/hello');
+	            //}
+	        }
+	    }, {
+	        key: "guestCodeChange",
+	        value: function guestCodeChange(e) {
+	            this.setState({ guest_code: e.target.value });
+	        }
+	    }, {
+	        key: "onSwipedLeft",
+	        value: function onSwipedLeft() {
+	            //alert("left");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "onSwipedRight",
+	        value: function onSwipedRight() {
+	            //alert("right");
+	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	            this.changeImage();
+	        }
+	    }, {
+	        key: "changeImage",
+	        value: function changeImage() {
+	            if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
+	                this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	            } else {
+	                this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
 	            }
-	          }
 	        }
-	      `, { id: 1234, name: 'Danny' }).then((result) => {
-	        console.log(result.data.user);
-	        // => { id: 1234, name: 'Danny' } 
-	      });*/
-	
-	      /*var query = `
-	        query q (id: String!) {
-	          user(id: $id) {
-	            id,
-	            email,
-	            name
-	          }
+	    }, {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                this.context.router.push('/order/12345');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
+	                this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                orders.push({ order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }, { link: "menu", text: "Menu" }], status: "new" });
+	                this.context.router.push('/order/12345/signature');
+	            }
+	            /*const client = GQLClient('http://localhost:3000', {
+	              // anything passed here is merged with
+	              // the options passed to fetch()
+	              credentials: true,
+	              headers: {
+	                'X-Requested-With': 'XMLHttpRequest'
+	              }
+	            });*/
+	            /*client.mutate(`
+	              mutation ($id: RecordID!, $name: String!) {
+	                updateUser(input: {id: $id, name: $name}) {
+	                  user {
+	                    id
+	                    name
+	                  }
+	                }
+	              }
+	            `, { id: 1234, name: 'Danny' }).then((result) => {
+	              console.log(result.data.user);
+	              // => { id: 1234, name: 'Danny' }
+	            });*/
+	            /*var query = `
+	              query q (id: String!) {
+	                user(id: $id) {
+	                  id,
+	                  email,
+	                  name
+	                }
+	              }
+	            `
+	            var queryVars = {
+	              id: 'abcdef'
+	            }
+	            var opts = {
+	              // custom fetch options
+	            }*/
+	            /**
+	             * @param  {Query} query graphql query
+	             * @param  {Object} [vars]  graphql query args, optional
+	             * @param  {Object} [opts]  fetch options, optional
+	             */
+	            /*fetch(query, queryVars, opts).then(function (results) {
+	              if (results.errors) {
+	                //...
+	                return
+	              }
+	              var user = result.data.user
+	              //...
+	            })*/
+	            //alert(order_type);
+	            //this.context.router.push('/order/12345/event_details');
+	            //browserHistory.push('#/order/12345');
+	            //browserHistory.push('/mobile/user#/order/12345');
+	            //save id in local storage
 	        }
-	      `
-	      var queryVars = {
-	        id: 'abcdef'
-	      }
-	      var opts = {
-	        // custom fetch options 
-	      }*/
+	        //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
 	
-	      /**
-	       * @param  {Query} query graphql query
-	       * @param  {Object} [vars]  graphql query args, optional
-	       * @param  {Object} [opts]  fetch options, optional
-	       */
-	      /*fetch(query, queryVars, opts).then(function (results) {
-	        if (results.errors) {
-	          //... 
-	          return
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var logged_in = null;
+	            if (true) {
+	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
+	            }
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, "Your Orders"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
-	        var user = result.data.user
-	        //... 
-	      })*/
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
 	
-	      //alert(order_type);
-	
-	      //this.context.router.push('/order/12345/event_details');
-	
-	      //browserHistory.push('#/order/12345');
-	      //browserHistory.push('/mobile/user#/order/12345');
-	      //save id in local storage
-	    }
-	
-	    //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
-	
-	
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	
-	      var logged_in = null;
-	
-	      if (true) {
-	
-	        logged_in = React.createElement(
-	          'div',
-	          { id: 'navbar', className: 'navbar-collapse collapse navbar-right' },
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              'Profile',
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/login' },
-	                'Login',
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                'a',
-	                { onClick: this.createOrder.bind(this, "sconely_yours") },
-	                'Start Order'
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'ul',
-	            { className: 'nav navbar-nav' },
-	            React.createElement(
-	              'li',
-	              { className: 'inactive' },
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/public/menu' },
-	                'Menu'
-	              ),
-	              React.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                '(current)'
-	              )
-	            )
-	          )
-	        );
-	      }
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            logged_in
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'row' },
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-4' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            'Home',
-	            React.createElement('br', null),
-	            React.createElement(
-	              _reactRouter.Link,
-	              { to: '/public/menu' },
-	              'Menu'
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'col-md-6' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement(
-	              'div',
-	              null,
-	              'Your Orders'
-	            ),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null)
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'hidden-xs col-md-2' },
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            React.createElement('br', null),
-	            'maybe put something here'
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return UserOrders;
+	    return UserOrders;
 	}(React.Component);
 	
 	exports.default = UserOrders;
 
 /***/ }),
 /* 929 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _menu = __webpack_require__(923);
-	
-	var _menu2 = _interopRequireDefault(_menu);
-	
-	var _sidebar_cart = __webpack_require__(925);
-	
-	var _sidebar_cart2 = _interopRequireDefault(_sidebar_cart);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _immutable = __webpack_require__(922);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
-	//import Immutable  = require('immutable');
-	
-	
-	function addTodoWithDispatch() {
-	  var action = {
-	    type: "VIEW_PUBLIC_MENU"
-	  };
-	}
-	
-	var Order = function (_React$Component) {
-	  _inherits(Order, _React$Component);
-	
-	  //props: Props;
-	
-	  function Order(props) {
-	    _classCallCheck(this, Order);
-	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Order.__proto__ || Object.getPrototypeOf(Order)).call(this, props));
-	
-	    _this.state = {
-	
-	      page: "menu",
-	      //menu_items: this.props.menu_items,
-	      //here: "",
-	      delivery_address: Immutable.Map(),
-	      delivery_address_street: "",
-	      item_count: 0,
-	      cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	      //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	      order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    _this.addCartItem = _this.addCartItem.bind(_this);
-	    _this.increaseCartItemQuantity = _this.increaseCartItemQuantity.bind(_this);
-	    _this.decreaseCartItemQuantity = _this.decreaseCartItemQuantity.bind(_this);
-	    _this.removeCartItem = _this.removeCartItem.bind(_this);
-	    _this.addDeliveryAddress = _this.addDeliveryAddress.bind(_this);
-	    _this.setDeliveryAddressStreet = _this.setDeliveryAddressStreet.bind(_this);
-	    _this.setDeliveryAddressCity = _this.setDeliveryAddressCity.bind(_this);
-	    _this.setDeliveryAddressZipcode = _this.setDeliveryAddressZipcode.bind(_this);
-	    _this.setCardNumber = _this.setCardNumber.bind(_this);
-	    _this.setExpiryDate = _this.setExpiryDate.bind(_this);
-	    _this.setSecurityCode = _this.setSecurityCode.bind(_this);
-	    _this.showMenu = _this.showMenu.bind(_this);
-	    _this.showCart = _this.showCart.bind(_this);
-	    _this.showDeliveryAddressPayment = _this.showDeliveryAddressPayment.bind(_this);
-	    _this.completeOrder = _this.completeOrder.bind(_this);
-	
-	    return _this;
-	  }
-	
-	  _createClass(Order, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //alert();
-	
-	      //window.onhashchange = function() {
-	      //blah blah blah
-	      //alert(this.state.page);
-	      //}.bind(this);
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //var result = [{'id': 'a'}, {'id': 'b'}];
-	      //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	      //    previous[ current.id ] = current;
-	      //    return previous;
-	      //}, {}));
-	
-	
-	      var demoRecord = Immutable.List.of(Immutable.Record({
-	        property: 'defaultValue',
-	        index: 0,
-	        works: true,
-	        valueList: Immutable.List([])
-	      }));
-	
-	      //alert(demoRecord.getIn(["0"], "index"));
-	
-	      /*let list = demoRecord.update(
-	        demoRecord.findIndex(function(item: any) { 
-	          return item.get("index") === "0"; 
-	        }), function(item: any) {
-	          return item.set("index", 4);
-	        }
-	      );*/
-	
-	      var result = [{ 'id': 2 }, { 'id': 4 }];
-	      var map = Immutable.fromJS(result);
-	      var map_updated = map.set();
-	      var result1 = map.find(function (obj) {
-	        return obj.get('id') === 4;
-	      });
-	
-	      //alert(result1.get("id"));
-	
-	      /*let arr = fromJS(
-	        elem: [
-	          {id: 1, name: "first", count: 2},
-	          {id: 2, name: "second", count: 1},
-	          {id: 3, name: "third", count: 2},
-	          {id: 4, name: "fourth", count: 1}
-	        ]
-	      );
-	       arr = arr.setIn(['elem', 3, 'count'], 4);
-	      If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	       
-	      const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	        return listItem.get('name') === 'third';
-	      });
-	      arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	
-	      var cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	      //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	      var myNewMap = cart_items_temp.push({ item_id: 5 });
-	      //let hello = cart_items_temp.push({item_id: 5});
-	
-	      //alert(JSON.stringify(myNewMap));
-	
-	      //alert(JSON.stringify(myNewMap.delete("0")));
-	
-	      //hello.findIndex(function(item: any) { 
-	      //    return item.get("item_id") === "1"; 
-	      //})
-	
-	      //var result = map.find(function(obj){return obj.get('id') === 4;});
-	
-	      //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	
-	
-	      /*let list = hello.update(
-	        hello.findIndex(function(item: any) { 
-	          return item.get("item_id") === "1"; 
-	        }), function(item: any) {
-	          return item.set("quantity", 44444444444444);
-	        }
-	      );*/
-	
-	      //let list = hello.update(0, function(v: any) {
-	      //    return {quantity: 44444444444};
-	      //});
-	
-	      //alert(JSON.stringify(list.toJS()));
-	
-	
-	      //alert(cart_items_temp_updated);
-	
-	
-	      //get menu items
-	
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	    }
-	  }, {
-	    key: 'showMenu',
-	    value: function showMenu() {
-	
-	      //alert();
-	
-	      this.setState({ page: "menu" });
-	    }
-	  }, {
-	    key: 'showDeliveryAddressPayment',
-	    value: function showDeliveryAddressPayment() {
-	
-	      //alert();
-	
-	      this.setState({ page: "delivery_address_payment" });
-	    }
-	  }, {
-	    key: 'showCart',
-	    value: function showCart() {
-	
-	      this.setState({ page: "cart" });
-	    }
-	  }, {
-	    key: 'goToDateTime',
-	    value: function goToDateTime() {
-	
-	      //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
-	
-	    }
-	  }, {
-	    key: 'addCartItem',
-	    value: function addCartItem(item_id, item_dozens, item_quantity, mini) {
-	
-	      //alert(item_id + "" + item_dozens + "" + item_quantity);
-	
-	
-	      //add to localstorage
-	
-	
-	      //if order doesnt exist yet
-	      localStorage.setState("order", (0, _immutable.Map)({ name: "name", contact: "contact", cart: (0, _immutable.List)([]), delivery_address: { street: "" }, payment: "" }));
-	
-	      //this.context.router.push('/order/12345');
-	
-	
-	      var order_temp = this.state.order;
-	
-	      //item_id, quanity, mini
-	
-	      var new_cart_items = [];
-	
-	      //order_temp.set('key', .get('key').push
-	      var order_temp_updated = order_temp.updateIn(['cart'], function (arr) {
-	        return arr.push({ item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini });
-	      });
-	
-	      //for(let i: any = 0; i <= item_quantity - 1; i++){
-	
-	      //alert();
-	
-	      //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});
-	
-	
-	      /*const myMap = Immutable.fromJS({
-	        nested: {
-	          someKey: ['hello', 'world'],
-	        },
-	      });
-	       //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
-	
-	      //var newMap = myMap.set('key', myMap.get('key').push(newData))
-	
-	
-	      //let cart_items_temp = this.state.cart_items;
-	      //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
-	
-	
-	      //}
-	
-	      //alert(JSON.stringify(new_cart_items));
-	
-	      //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
-	
-	      //alert(JSON.stringify(cart_items_temp_updated));
-	
-	      this.setState({ order: order_temp_updated });
-	    }
-	
-	    //selectItemDozens(e: any){
-	
-	    //    alert(e.target.value);
-	
-	    //}
-	
-	  }, {
-	    key: 'addDeliveryAddress',
-	    value: function addDeliveryAddress(street, city, state, zipcode) {
-	
-	      //alert(street);
-	
-	      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	
-	    }
-	  }, {
-	    key: 'removeCartItem',
-	    value: function removeCartItem(index) {
-	
-	      var cart_items_temp = this.state.cart_items;
-	
-	      var cart_items_temp_updated = cart_items_temp.delete(index);
-	
-	      this.setState({ cart_items: cart_items_temp_updated });
-	    }
-	  }, {
-	    key: 'increaseCartItemQuantity',
-	    value: function increaseCartItemQuantity(item_id, index) {
-	
-	      //alert(JSON.stringify(item_id + "" + index));
-	
-	      var cart_items_temp = this.state.cart_items;
-	
-	      var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
-	        var quantity_updated = item.get("quantity") + 1;return item.set("quantity", quantity_updated);
-	      });
-	
-	      this.setState({ cart_items: cart_items_temp_updated });
-	    }
-	  }, {
-	    key: 'decreaseCartItemQuantity',
-	    value: function decreaseCartItemQuantity(item_id, index) {
-	
-	      var cart_items_temp = this.state.cart_items;
-	
-	      var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
-	        var quantity_updated = item.get("quantity") - 1;return item.set("quantity", quantity_updated);
-	      });
-	
-	      this.setState({ cart_items: cart_items_temp_updated });
-	    }
-	  }, {
-	    key: 'setFirstName',
-	    value: function setFirstName(e) {
-	
-	      //let order_temp = this.state.order;
-	      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-	      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	
-	      alert(e.target.value);
-	
-	      //this.setState({order: order_temp_udated});
-	    }
-	  }, {
-	    key: 'setLastName',
-	    value: function setLastName(e) {
-	
-	      //let order_temp = this.state.order;
-	      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-	      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	
-	      alert(e.target.value);
-	
-	      //this.setState({order: order_temp_udated});
-	    }
-	  }, {
-	    key: 'setContactEmail',
-	    value: function setContactEmail(e) {
-	
-	      //let order_temp = this.state.order;
-	      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-	      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	
-	      alert(e.target.value);
-	
-	      //this.setState({order: order_temp_udated});
-	    }
-	  }, {
-	    key: 'setContactMobile',
-	    value: function setContactMobile(e) {
-	
-	      //let order_temp = this.state.order;
-	      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-	      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	
-	      alert(e.target.value);
-	
-	      //this.setState({order: order_temp_udated});
-	    }
-	  }, {
-	    key: 'setCompanyName',
-	    value: function setCompanyName(e) {
-	
-	      //let order_temp = this.state.order;
-	      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-	      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-	
-	      alert(e.target.value);
-	
-	      //this.setState({order: order_temp_udated});
-	    }
-	  }, {
-	    key: 'setDeliveryAddressStreet',
-	    value: function setDeliveryAddressStreet(e) {
-	
-	      //alert(e.target.value);
-	
-	      //this.state.order
-	
-	      var delivery_address_temp = this.state.delivery_address;
-	
-	      var delivery_address_temp_updated = delivery_address_temp.set("street", e.target.value);
-	
-	      //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	
-	      this.setState({ delivery_address: delivery_address_temp_updated });
-	    }
-	  }, {
-	    key: 'setDeliveryAddressState',
-	    value: function setDeliveryAddressState(e) {
-	
-	      var delivery_address_temp = this.state.delivery_address;
-	
-	      var delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
-	
-	      //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	
-	      this.setState({ delivery_address: delivery_address_temp_updated });
-	    }
-	  }, {
-	    key: 'setDeliveryAddressCity',
-	    value: function setDeliveryAddressCity(e) {
-	
-	      var delivery_address_temp = this.state.delivery_address;
-	
-	      var delivery_address_temp_updated = delivery_address_temp.set("city", e.target.value);
-	
-	      //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	
-	      this.setState({ delivery_address: delivery_address_temp_updated });
-	    }
-	  }, {
-	    key: 'setDeliveryAddressZipcode',
-	    value: function setDeliveryAddressZipcode(e) {
-	
-	      var delivery_address_temp = this.state.delivery_address;
-	
-	      var delivery_address_temp_updated = delivery_address_temp.set("zipcode", e.target.value);
-	
-	      //alert(JSON.stringify(delivery_address_temp_updated.toJS()));
-	
-	      this.setState({ delivery_address: delivery_address_temp_updated });
-	    }
-	  }, {
-	    key: 'setCardNumber',
-	    value: function setCardNumber(e) {}
-	  }, {
-	    key: 'setExpiryDate',
-	    value: function setExpiryDate(e) {}
-	  }, {
-	    key: 'setSecurityCode',
-	    value: function setSecurityCode(e) {}
-	  }, {
-	    key: 'completeOrder',
-	    value: function completeOrder() {
-	
-	      //alert(JSON.stringify(this.state.delivery_address_street));
-	
-	      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	
-	    }
-	  }, {
-	    key: 'goToCart',
-	    value: function goToCart() {
-	
-	      this.context.router.push('/order/12345/cart');
-	    }
-	  }, {
-	    key: 'goToDateTimeContact',
-	    value: function goToDateTimeContact() {
-	
-	      this.context.router.push('/order/12345/datetime_contact');
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      var body = "";
-	      var item_count = this.state.item_count;
-	
-	      //alert(item_count);
-	
-	      //if(this.state.page == "menu"){
-	
-	      body = React.createElement(_menu2.default, { showDeliveryAddressPayment: function showDeliveryAddressPayment() {
-	          return _this2.showDeliveryAddressPayment();
-	        }, addCartItem: function addCartItem(item_id, item_dozens, item_quantity, mini) {
-	          return _this2.addCartItem(item_id, item_dozens, item_quantity, mini);
-	        } });
-	
-	      //}else if(this.state.page == "delivery_address_payment"){
-	
-	      //alert();
-	
-	      //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
-	
-	      //}else{
-	
-	      //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
-	
-	      //}
-	
-	      var button = "";
-	
-	      if (this.state.page === "menu") {
-	
-	        button = React.createElement(
-	          'a',
-	          { onClick: function onClick() {
-	              return _this2.showDeliveryAddressPayment();
-	            } },
-	          'Delivery Address and Payment'
-	        );
-	      } else if (this.state.page === "cart") {
-	
-	        button = React.createElement(
-	          'div',
-	          null,
-	          React.createElement(
-	            'a',
-	            { onClick: function onClick() {
-	                return _this2.showDeliveryAddressPayment();
-	              } },
-	            'Delivery Address and Payment-submit payment'
-	          )
-	        );
-	      } else if (this.state.page === "delivery_address_payment") {
-	
-	        button = React.createElement(
-	          'a',
-	          { onClick: function onClick() {
-	              return _this2.completeOrder();
-	            } },
-	          'Complete Payment-only active if all elements are filled in'
-	        );
-	      }
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            React.createElement('div', { className: 'hidden-xs navbar-form navbar-right' }),
-	            React.createElement(
-	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse navbar-right', style: { zIndex: 10010, background: "white" } },
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    'a',
-	                    { href: './' },
-	                    'Profile',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login' },
-	                    'Login',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/register' },
-	                    'Signup',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
-	                    'Menu'
-	                  ),
-	                  React.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs col-md-2' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement(_sidebar_cart2.default, { order: this.state.order, cart_items: this.state.cart_items, showMenu: function showMenu() {
-	                  return _this2.showMenu();
-	                }, removeCartItem: function removeCartItem(index) {
-	                  return _this2.removeCartItem(index);
-	                }, showDeliveryAddressPayment: function showDeliveryAddressPayment() {
-	                  return _this2.showDeliveryAddressPayment();
-	                }, increaseCartItemQuantity: function increaseCartItemQuantity(item_id, index) {
-	                  return _this2.increaseCartItemQuantity(item_id, index);
-	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id, index) {
-	                  return _this2.decreaseCartItemQuantity(item_id, index);
-	                } }),
-	              React.createElement('br', null),
-	              React.createElement('br', null)
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'col-md-10' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              'only show on mobile',
-	              React.createElement('br', null),
-	              React.createElement(
-	                'button',
-	                { onClick: function onClick() {
-	                    return _this2.goToCart();
-	                  } },
-	                'cart(',
-	                this.state.order.toJS().cart.length,
-	                ')'
-	              ),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              body,
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              button,
-	              React.createElement('br', null),
-	              React.createElement(
-	                'button',
-	                { onClick: function onClick() {
-	                    return _this2.goToDateTimeContact();
-	                  } },
-	                'datetime'
-	              )
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'hidden-xs col-md-2' },
-	              'maybe put something here'
-	            )
-	          )
-	        )
-	      );
-	    }
-	
-	    /*render(){
-	      alert(JSON.stringify(this.props.menu_items));
-	      return (  
-	            <div>here{this.state.here}</div>
-	      )
-	    }*/
-	
-	  }], [{
-	    key: 'contextTypes',
-	    get: function get() {
-	      return {
-	        router: React.PropTypes.object.isRequired
-	      };
-	    }
-	  }]);
-	
-	  return Order;
-	}(React.Component);
-	
-	/*function mapStateToProps(state: any) {
-	  return {
-	   menu_items: state.default.menu_items
-	   //menu_items: getPublicMenu
-	   //menu_items: dispatch()
-	  };
-	}
-	
-	function mapDispatchToProps(dispatch: any) {
-	  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	}*/
-	
-	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-	
-	exports.default = Order;
-
-/***/ }),
-/* 930 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29641,23 +28384,23 @@ webpackJsonp([0],[
 	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var order_delivery_address_ts_1 = __webpack_require__(931);
-	var order_name_ts_1 = __webpack_require__(932);
-	var order_delivery_datetime_ts_1 = __webpack_require__(933);
-	var order_payment_ts_1 = __webpack_require__(934);
-	var order_contact_ts_1 = __webpack_require__(935);
+	var order_delivery_address_ts_1 = __webpack_require__(930);
+	var order_name_ts_1 = __webpack_require__(931);
+	var order_delivery_datetime_ts_1 = __webpack_require__(932);
+	var order_payment_ts_1 = __webpack_require__(933);
+	var order_contact_ts_1 = __webpack_require__(934);
 	var sidebar_cart_tsx_1 = __webpack_require__(925);
-	var delivery_address_tsx_1 = __webpack_require__(936);
-	var contact_tsx_1 = __webpack_require__(937);
-	var datetime_tsx_1 = __webpack_require__(938);
-	var name_tsx_1 = __webpack_require__(1062);
-	var payment_method_tsx_1 = __webpack_require__(1063);
+	var delivery_address_tsx_1 = __webpack_require__(935);
+	var contact_tsx_1 = __webpack_require__(936);
+	var datetime_tsx_1 = __webpack_require__(937);
+	var name_tsx_1 = __webpack_require__(1061);
+	var payment_method_tsx_1 = __webpack_require__(1062);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(922);
-	var DatePicker = __webpack_require__(939);
-	var moment = __webpack_require__(940);
-	var axios_1 = __webpack_require__(1064);
-	__webpack_require__(1058);
+	var DatePicker = __webpack_require__(938);
+	var moment = __webpack_require__(939);
+	var axios_1 = __webpack_require__(1063);
+	__webpack_require__(1057);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30331,7 +29074,7 @@ webpackJsonp([0],[
 	exports.default = Checkout;
 
 /***/ }),
-/* 931 */
+/* 930 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30380,7 +29123,7 @@ webpackJsonp([0],[
 	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
 
 /***/ }),
-/* 932 */
+/* 931 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30405,7 +29148,7 @@ webpackJsonp([0],[
 	exports.setLastName = setLastName;
 
 /***/ }),
-/* 933 */
+/* 932 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30438,7 +29181,7 @@ webpackJsonp([0],[
 	exports.setSpecificTime = setSpecificTime;
 
 /***/ }),
-/* 934 */
+/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30479,7 +29222,7 @@ webpackJsonp([0],[
 	exports.setPaymentSecurityCode = setPaymentSecurityCode;
 
 /***/ }),
-/* 935 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30504,7 +29247,7 @@ webpackJsonp([0],[
 	exports.setContactPhone = setContactPhone;
 
 /***/ }),
-/* 936 */
+/* 935 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30692,7 +29435,7 @@ webpackJsonp([0],[
 	exports.default = DeliveryAddress;
 
 /***/ }),
-/* 937 */
+/* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30865,7 +29608,7 @@ webpackJsonp([0],[
 	exports.default = Contact;
 
 /***/ }),
-/* 938 */
+/* 937 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30884,9 +29627,9 @@ webpackJsonp([0],[
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(922);
-	var DatePicker = __webpack_require__(939);
-	var moment = __webpack_require__(940);
-	__webpack_require__(1058);
+	var DatePicker = __webpack_require__(938);
+	var moment = __webpack_require__(939);
+	__webpack_require__(1057);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -31040,6 +29783,7 @@ webpackJsonp([0],[
 	exports.default = DateTime;
 
 /***/ }),
+/* 938 */,
 /* 939 */,
 /* 940 */,
 /* 941 */,
@@ -31158,17 +29902,16 @@ webpackJsonp([0],[
 /* 1054 */,
 /* 1055 */,
 /* 1056 */,
-/* 1057 */,
-/* 1058 */
+/* 1057 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(1059);
+	var content = __webpack_require__(1058);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(1061)(content, {});
+	var update = __webpack_require__(1060)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31185,10 +29928,10 @@ webpackJsonp([0],[
 	}
 
 /***/ }),
-/* 1059 */
+/* 1058 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(1060)();
+	exports = module.exports = __webpack_require__(1059)();
 	// imports
 	
 	
@@ -31199,7 +29942,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1060 */
+/* 1059 */
 /***/ (function(module, exports) {
 
 	/*
@@ -31255,7 +29998,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1061 */
+/* 1060 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -31507,7 +30250,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1062 */
+/* 1061 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31682,7 +30425,7 @@ webpackJsonp([0],[
 	exports.default = Name;
 
 /***/ }),
-/* 1063 */
+/* 1062 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31893,21 +30636,21 @@ webpackJsonp([0],[
 	exports.default = PaymentMethod;
 
 /***/ }),
-/* 1064 */
+/* 1063 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1065);
+	module.exports = __webpack_require__(1064);
 
 /***/ }),
-/* 1065 */
+/* 1064 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
-	var bind = __webpack_require__(1067);
-	var Axios = __webpack_require__(1068);
-	var defaults = __webpack_require__(1069);
+	var utils = __webpack_require__(1065);
+	var bind = __webpack_require__(1066);
+	var Axios = __webpack_require__(1067);
+	var defaults = __webpack_require__(1068);
 	
 	/**
 	 * Create an instance of Axios
@@ -31940,15 +30683,15 @@ webpackJsonp([0],[
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(1086);
-	axios.CancelToken = __webpack_require__(1087);
-	axios.isCancel = __webpack_require__(1083);
+	axios.Cancel = __webpack_require__(1085);
+	axios.CancelToken = __webpack_require__(1086);
+	axios.isCancel = __webpack_require__(1082);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(1088);
+	axios.spread = __webpack_require__(1087);
 	
 	module.exports = axios;
 	
@@ -31957,12 +30700,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1066 */
+/* 1065 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bind = __webpack_require__(1067);
+	var bind = __webpack_require__(1066);
 	
 	/*global toString:true*/
 	
@@ -32262,7 +31005,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1067 */
+/* 1066 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32279,17 +31022,17 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1068 */
+/* 1067 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(1069);
-	var utils = __webpack_require__(1066);
-	var InterceptorManager = __webpack_require__(1080);
-	var dispatchRequest = __webpack_require__(1081);
-	var isAbsoluteURL = __webpack_require__(1084);
-	var combineURLs = __webpack_require__(1085);
+	var defaults = __webpack_require__(1068);
+	var utils = __webpack_require__(1065);
+	var InterceptorManager = __webpack_require__(1079);
+	var dispatchRequest = __webpack_require__(1080);
+	var isAbsoluteURL = __webpack_require__(1083);
+	var combineURLs = __webpack_require__(1084);
 	
 	/**
 	 * Create a new instance of Axios
@@ -32370,13 +31113,13 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1069 */
+/* 1068 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1066);
-	var normalizeHeaderName = __webpack_require__(1070);
+	var utils = __webpack_require__(1065);
+	var normalizeHeaderName = __webpack_require__(1069);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -32393,10 +31136,10 @@ webpackJsonp([0],[
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(1071);
+	    adapter = __webpack_require__(1070);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(1071);
+	    adapter = __webpack_require__(1070);
 	  }
 	  return adapter;
 	}
@@ -32470,12 +31213,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1070 */
+/* 1069 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -32488,18 +31231,18 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1071 */
+/* 1070 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1066);
-	var settle = __webpack_require__(1072);
-	var buildURL = __webpack_require__(1075);
-	var parseHeaders = __webpack_require__(1076);
-	var isURLSameOrigin = __webpack_require__(1077);
-	var createError = __webpack_require__(1073);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1078);
+	var utils = __webpack_require__(1065);
+	var settle = __webpack_require__(1071);
+	var buildURL = __webpack_require__(1074);
+	var parseHeaders = __webpack_require__(1075);
+	var isURLSameOrigin = __webpack_require__(1076);
+	var createError = __webpack_require__(1072);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1077);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -32595,7 +31338,7 @@ webpackJsonp([0],[
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(1079);
+	      var cookies = __webpack_require__(1078);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -32672,12 +31415,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1072 */
+/* 1071 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(1073);
+	var createError = __webpack_require__(1072);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -32703,12 +31446,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1073 */
+/* 1072 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(1074);
+	var enhanceError = __webpack_require__(1073);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -32726,7 +31469,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1074 */
+/* 1073 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32751,12 +31494,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1075 */
+/* 1074 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -32825,12 +31568,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1076 */
+/* 1075 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	/**
 	 * Parse headers into an object
@@ -32868,12 +31611,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1077 */
+/* 1076 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -32942,7 +31685,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1078 */
+/* 1077 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32984,12 +31727,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1079 */
+/* 1078 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -33043,12 +31786,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1080 */
+/* 1079 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -33101,15 +31844,15 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1081 */
+/* 1080 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
-	var transformData = __webpack_require__(1082);
-	var isCancel = __webpack_require__(1083);
-	var defaults = __webpack_require__(1069);
+	var utils = __webpack_require__(1065);
+	var transformData = __webpack_require__(1081);
+	var isCancel = __webpack_require__(1082);
+	var defaults = __webpack_require__(1068);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -33186,12 +31929,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1082 */
+/* 1081 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1066);
+	var utils = __webpack_require__(1065);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -33212,7 +31955,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1083 */
+/* 1082 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33223,7 +31966,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1084 */
+/* 1083 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33243,7 +31986,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1085 */
+/* 1084 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33261,7 +32004,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1086 */
+/* 1085 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33286,12 +32029,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1087 */
+/* 1086 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(1086);
+	var Cancel = __webpack_require__(1085);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -33349,7 +32092,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1088 */
+/* 1087 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33382,7 +32125,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1089 */
+/* 1088 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -34040,7 +32783,7 @@ webpackJsonp([0],[
 	exports.default = OrderCart1;
 
 /***/ }),
-/* 1090 */
+/* 1089 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -34730,7 +33473,7 @@ webpackJsonp([0],[
 	exports.default = OrderDateTimeContact;
 
 /***/ }),
-/* 1091 */
+/* 1090 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34749,7 +33492,7 @@ webpackJsonp([0],[
 	var login_ts_1 = __webpack_require__(920);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1064);
+	var axios_1 = __webpack_require__(1063);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -34889,7 +33632,7 @@ webpackJsonp([0],[
 	exports.default = Login1;
 
 /***/ }),
-/* 1092 */
+/* 1091 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -34910,7 +33653,7 @@ webpackJsonp([0],[
 	
 	var _redux = __webpack_require__(197);
 	
-	var _axios = __webpack_require__(1064);
+	var _axios = __webpack_require__(1063);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
@@ -35150,7 +33893,7 @@ webpackJsonp([0],[
 	exports.default = Register;
 
 /***/ }),
-/* 1093 */
+/* 1092 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35284,7 +34027,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1094 */
+/* 1093 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35493,7 +34236,1324 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureGuest;
 
 /***/ }),
+/* 1094 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var sconely_signature_event_details_tsx_1 = __webpack_require__(1095);
+	var sconely_signature_guests_tsx_1 = __webpack_require__(1097);
+	//import request from 'superagent';
+	
+	var SconelySignature = function (_React$Component) {
+	    _inherits(SconelySignature, _React$Component);
+	
+	    //props: Props;
+	    function SconelySignature(props) {
+	        _classCallCheck(this, SconelySignature);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + window.guest_chooses);
+	        //state: any;
+	        var _this = _possibleConstructorReturn(this, (SconelySignature.__proto__ || Object.getPrototypeOf(SconelySignature)).call(this, props));
+	
+	        _this.state = {
+	            order_id: _this.props.params.order_id,
+	            order_type: "",
+	            host_id: "",
+	            event_name: "",
+	            event_date: "",
+	            event_time: "",
+	            event_address_street: "",
+	            event_address_city: "",
+	            event_address_zipcode: "",
+	            code: 0,
+	            delivery_time: "",
+	            image_uploaded: ""
+	        };
+	        /*fetch('http://192.168.1.148:4000/graphql', {
+	          method: 'POST',
+	          headers: {
+	            'Accept': 'application/json',
+	            'Authorization': 'Bearer ',
+	            'Content-Type': 'application/json',
+	          },
+	          body: JSON.stringify({query: 'guery GetOrder { create_user_beam(user_id: \"\", beam_name: \"\") { status }}'})
+	        }).then((response) => response.json())
+	          .then((responseData) => {
+	              alert("success");
+	              console.log(JSON.stringify(responseData.body))
+	          })
+	          .catch((err)=> {
+	            alert("error" + JSON.stringify(err));
+	            console.log('Some errors occured');
+	            console.log(err);
+	        })
+	        .done();*/
+	        return _this;
+	    }
+	
+	    _createClass(SconelySignature, [{
+	        key: "save",
+	        value: function save() {
+	            /*fetch('http://192.168.1.148:4000/graphql', {
+	                method: 'POST',
+	                headers: {
+	                  'Accept': 'application/json',
+	                  'Authorization': 'Bearer ',
+	                  'Content-Type': 'application/json',
+	                },
+	                body: JSON.stringify({query: 'mutation CreateUserBeam { create_user_beam(user_id: \"\", beam_name: \"\") { status }}'})
+	              }).then((response) => response.json())
+	                .then((responseData) => {
+	                    alert("success");
+	                    console.log(JSON.stringify(responseData.body))
+	                })
+	                .catch((err)=> {
+	                  alert("error" + JSON.stringify(err));
+	                  console.log('Some errors occured');
+	                  console.log(err);
+	              })
+	              .done();*/
+	        }
+	    }, {
+	        key: "changeEventName",
+	        value: function changeEventName() {}
+	    }, {
+	        key: "setDate",
+	        value: function setDate() {}
+	    }, {
+	        key: "setTime",
+	        value: function setTime() {
+	            //if time is extra then add to total
+	        }
+	    }, {
+	        key: "uploadImage",
+	        value: function uploadImage() {}
+	    }, {
+	        key: "setGuestCount",
+	        value: function setGuestCount() {}
+	    }, {
+	        key: "pay",
+	        value: function pay() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, React.createElement(sconely_signature_event_details_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_guests_tsx_1.default, null));
+	        }
+	    }]);
+	
+	    return SconelySignature;
+	}(React.Component);
+	
+	exports.default = SconelySignature;
+
+/***/ }),
 /* 1095 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var DatePicker = __webpack_require__(938);
+	var moment = __webpack_require__(939);
+	//require('react-datepicker/dist/react-datepicker.css');
+	//import 'react-date-picker/index.css';
+	//import { DateField, Calendar } from 'react-date-picker';
+	//import Autocomplete from 'react-google-autocomplete';
+	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+	var Dropzone = __webpack_require__(1096);
+	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	//import request from 'superagent';
+	//const onChange = (dateString, { dateMoment, timestamp }) => {
+	//console.log(dateString)
+	//  alert();
+	//}
+	//var myTimer = () => console.log("hello");
+	/*setInterval(function growUp() {
+	    // In non-strict mode, the growUp() function defines `this`
+	    // as the global object, which is different from the `this`
+	    // defined by the Person() constructor.
+	    this.age++;
+	  }, 1000);*/
+	
+	var EventDetails = function (_React$Component) {
+	    _inherits(EventDetails, _React$Component);
+	
+	    //props: Props;
+	    function EventDetails(props) {
+	        _classCallCheck(this, EventDetails);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + window.guest_chooses);
+	        var _this = _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props));
+	
+	        _this.state = {
+	            //order_id: this.props.params.order_id,
+	            order_id: _this.props.order_id,
+	            order_type: "",
+	            event_name: "",
+	            event_datetime: "",
+	            event_address_street: "",
+	            event_address_city: "",
+	            event_address_zipcode: "",
+	            code: 0,
+	            startDate: moment()
+	        };
+	        //load the data from the database if this is not a new event/order
+	        //if window.event.status == "existing/saved"
+	        /*request
+	                  .post('/api/order/new')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	              
+	        });*/
+	        _this.changeEventName = _this.changeEventName.bind(_this);
+	        _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
+	        _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
+	        _this.handleDateChange = _this.handleDateChange.bind(_this);
+	        _this.createCode = _this.createCode.bind(_this);
+	        _this.changeCode = _this.changeCode.bind(_this);
+	        //this.findOrder = this.findOrder.bind(this);
+	        //autosave
+	        //if event name has been added then start autosaving
+	        //myTimer;
+	        //var myVar = setInterval(
+	        //    () => 
+	        //get the data from state and upload to server
+	        //only update if the data has been changed though
+	        //add a flag that updates when they change something
+	        //if this.state.changed == true then update
+	        //only update event details
+	        //window.event.event_name == this.state.event_name
+	        //window.address == "home"
+	        //window.event_date == "date"
+	        //window.event_time == "time"
+	        //window.custom_code = "custom_code"
+	        /*request
+	          .post('/api/order/new')
+	          .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	          .set('X-API-Key', 'foobar')
+	          .set('Accept', 'application/json')
+	          .end(function(err, res){
+	            // Calling the end function will send the request
+	            //this.setState({payment_complete: true});
+	                 });*/
+	        //console.log("hello")
+	        //, 10000);
+	        //myVar;
+	        //myTimer;
+	        return _this;
+	    }
+	    // Yes, I could use an arrow function, I get it.
+	    //@autobind
+	    //_handleCompleteTodo(id: string): void {
+	    // do something to mark this todo as complete
+	    //}
+	
+	
+	    _createClass(EventDetails, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            function findOrder(order) {
+	                //alert(order.order_id);
+	                return order.order_id === 12345;
+	            }
+	            ;
+	            var order_type = orders.find(findOrder).order_type;
+	            //alert(order_type);
+	            this.setState({ order_type: order_type });
+	        }
+	    }, {
+	        key: "changeEventName",
+	        value: function changeEventName(e) {
+	            //alert();
+	            //this.setState({changed: true});
+	            this.setState({ event_name: e.target.value });
+	        }
+	    }, {
+	        key: "changeDeliveryAddress",
+	        value: function changeDeliveryAddress(e) {
+	            this.setState({ delivery_address: e.target.value });
+	        }
+	    }, {
+	        key: "changeNumberOfGuests",
+	        value: function changeNumberOfGuests(e) {
+	            this.setState({ number_of_guests: e.target.value });
+	        }
+	    }, {
+	        key: "handleDateChange",
+	        value: function handleDateChange(dateString) {
+	            //alert(dateString);
+	            //this.setState({
+	            //startDate: date
+	            //});
+	        }
+	    }, {
+	        key: "onDrop",
+	        value: function onDrop(acceptedFiles) {
+	            /*var req = request.post('/api/v_alpha/signature/upload');
+	            acceptedFiles.forEach((file: any)=> {
+	                //alert(file.name);
+	                req.attach("file", file);
+	            });
+	            req.field("event_id", 123545);
+	            req.end((response: any) => {alert(JSON.stringify(response))});*/
+	        }
+	    }, {
+	        key: "changeCode",
+	        value: function changeCode() {}
+	    }, {
+	        key: "createCode",
+	        value: function createCode() {}
+	    }, {
+	        key: "onFocus",
+	        value: function onFocus() {
+	            /*alert();
+	             //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
+	            
+	            request
+	                  .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	                    console.log(res);
+	              
+	                  });*/
+	        }
+	    }, {
+	        key: "next",
+	        value: function next() {
+	            alert("next" + this.state.event_name);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }, "Event Name"), React.createElement("div", { className: "col-sm-10" }, React.createElement("input", { type: "email", className: "form-control", id: "inputEmail3", placeholder: "Event Name" })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }, "Date Time"), React.createElement("label", { className: "col-sm-2 control-label" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: this.handleDateChange })), React.createElement("label", { className: "col-sm-2 control-label" }, "Time", React.createElement("input", { type: "radio", name: "time" })), React.createElement("div", { className: "col-sm-5" }, React.createElement("select", null, React.createElement("option", null), React.createElement("option", null, "9-11"), React.createElement("option", null, "3-5")), React.createElement("br", null)), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }, "Delivery Address"), React.createElement("label", { className: "col-sm-2 control-label" }, React.createElement("input", { type: "radio", name: "address" })), React.createElement("div", { className: "col-sm-5" }, React.createElement("select", null, React.createElement("option", null), React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null))), React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }), React.createElement("label", { className: "col-sm-2 control-label" }, React.createElement("input", { type: "radio", name: "address" })), React.createElement("div", { className: "col-sm-5" }))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }, "Image"), React.createElement("label", { className: "col-sm-2 control-label" }), React.createElement("div", { className: "col-sm-5" }, React.createElement(Dropzone, { onDrop: this.onDrop }, React.createElement("div", null, "Try dropping some files here, or click to select files to upload."))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }, "Event Code:"), React.createElement("div", { className: "col-sm-5" }, React.createElement("input", { type: "password", className: "form-control", id: "inputPassword3", placeholder: "Password" })))), React.createElement("br", null));
+	        }
+	    }]);
+	
+	    return EventDetails;
+	}(React.Component);
+	
+	exports.default = EventDetails;
+
+/***/ }),
+/* 1096 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	(function webpackUniversalModuleDefinition(root, factory) {
+		if(true)
+			module.exports = factory(__webpack_require__(153), __webpack_require__(188));
+		else if(typeof define === 'function' && define.amd)
+			define(["react", "prop-types"], factory);
+		else if(typeof exports === 'object')
+			exports["Dropzone"] = factory(require("react"), require("prop-types"));
+		else
+			root["Dropzone"] = factory(root["react"], root["prop-types"]);
+	})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
+	return /******/ (function(modules) { // webpackBootstrap
+	/******/ 	// The module cache
+	/******/ 	var installedModules = {};
+	/******/
+	/******/ 	// The require function
+	/******/ 	function __webpack_require__(moduleId) {
+	/******/
+	/******/ 		// Check if module is in cache
+	/******/ 		if(installedModules[moduleId])
+	/******/ 			return installedModules[moduleId].exports;
+	/******/
+	/******/ 		// Create a new module (and put it into the cache)
+	/******/ 		var module = installedModules[moduleId] = {
+	/******/ 			exports: {},
+	/******/ 			id: moduleId,
+	/******/ 			loaded: false
+	/******/ 		};
+	/******/
+	/******/ 		// Execute the module function
+	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+	/******/
+	/******/ 		// Flag the module as loaded
+	/******/ 		module.loaded = true;
+	/******/
+	/******/ 		// Return the exports of the module
+	/******/ 		return module.exports;
+	/******/ 	}
+	/******/
+	/******/
+	/******/ 	// expose the modules object (__webpack_modules__)
+	/******/ 	__webpack_require__.m = modules;
+	/******/
+	/******/ 	// expose the module cache
+	/******/ 	__webpack_require__.c = installedModules;
+	/******/
+	/******/ 	// __webpack_public_path__
+	/******/ 	__webpack_require__.p = "";
+	/******/
+	/******/ 	// Load entry module and return exports
+	/******/ 	return __webpack_require__(0);
+	/******/ })
+	/************************************************************************/
+	/******/ ([
+	/* 0 */
+	/***/ (function(module, exports, __webpack_require__) {
+	
+		/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+		
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
+		
+		var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+		
+		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+		
+		var _react = __webpack_require__(2);
+		
+		var _react2 = _interopRequireDefault(_react);
+		
+		var _propTypes = __webpack_require__(3);
+		
+		var _propTypes2 = _interopRequireDefault(_propTypes);
+		
+		var _attrAccept = __webpack_require__(4);
+		
+		var _attrAccept2 = _interopRequireDefault(_attrAccept);
+		
+		var _getDataTransferItems = __webpack_require__(5);
+		
+		var _getDataTransferItems2 = _interopRequireDefault(_getDataTransferItems);
+		
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+		
+		function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+		
+		function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+		
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+		
+		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+		
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint prefer-template: 0 */
+		
+		var supportMultiple = typeof document !== 'undefined' && document && document.createElement ? 'multiple' in document.createElement('input') : true;
+		
+		var Dropzone = function (_React$Component) {
+		  _inherits(Dropzone, _React$Component);
+		
+		  _createClass(Dropzone, null, [{
+		    key: 'onDocumentDragOver',
+		    value: function onDocumentDragOver(e) {
+		      // allow the entire document to be a drag target
+		      e.preventDefault();
+		    }
+		  }]);
+		
+		  function Dropzone(props, context) {
+		    _classCallCheck(this, Dropzone);
+		
+		    var _this = _possibleConstructorReturn(this, (Dropzone.__proto__ || Object.getPrototypeOf(Dropzone)).call(this, props, context));
+		
+		    _this.renderChildren = function (children) {
+		      if (typeof children === 'function') {
+		        return children(_this.state);
+		      }
+		      return children;
+		    };
+		
+		    _this.onClick = _this.onClick.bind(_this);
+		    _this.onDocumentDrop = _this.onDocumentDrop.bind(_this);
+		    _this.onDragStart = _this.onDragStart.bind(_this);
+		    _this.onDragEnter = _this.onDragEnter.bind(_this);
+		    _this.onDragLeave = _this.onDragLeave.bind(_this);
+		    _this.onDragOver = _this.onDragOver.bind(_this);
+		    _this.onDrop = _this.onDrop.bind(_this);
+		    _this.onFileDialogCancel = _this.onFileDialogCancel.bind(_this);
+		    _this.fileAccepted = _this.fileAccepted.bind(_this);
+		    _this.setRef = _this.setRef.bind(_this);
+		    _this.isFileDialogActive = false;
+		    _this.state = {
+		      isDragActive: false,
+		      acceptedFiles: [],
+		      rejectedFiles: []
+		    };
+		    return _this;
+		  }
+		
+		  _createClass(Dropzone, [{
+		    key: 'componentDidMount',
+		    value: function componentDidMount() {
+		      var preventDropOnDocument = this.props.preventDropOnDocument;
+		
+		      this.dragTargets = [];
+		
+		      if (preventDropOnDocument) {
+		        document.addEventListener('dragover', Dropzone.onDocumentDragOver, false);
+		        document.addEventListener('drop', this.onDocumentDrop, false);
+		      }
+		      // Tried implementing addEventListener, but didn't work out
+		      document.body.onfocus = this.onFileDialogCancel;
+		    }
+		  }, {
+		    key: 'componentWillUnmount',
+		    value: function componentWillUnmount() {
+		      var preventDropOnDocument = this.props.preventDropOnDocument;
+		
+		      if (preventDropOnDocument) {
+		        document.removeEventListener('dragover', Dropzone.onDocumentDragOver);
+		        document.removeEventListener('drop', this.onDocumentDrop);
+		      }
+		      // Can be replaced with removeEventListener, if addEventListener works
+		      document.body.onfocus = null;
+		    }
+		  }, {
+		    key: 'onDocumentDrop',
+		    value: function onDocumentDrop(e) {
+		      if (this.node.contains(e.target)) {
+		        // if we intercepted an event for our instance, let it propagate down to the instance's onDrop handler
+		        return;
+		      }
+		      e.preventDefault();
+		      this.dragTargets = [];
+		    }
+		  }, {
+		    key: 'onDragStart',
+		    value: function onDragStart(e) {
+		      if (this.props.onDragStart) {
+		        this.props.onDragStart.call(this, e);
+		      }
+		    }
+		  }, {
+		    key: 'onDragEnter',
+		    value: function onDragEnter(e) {
+		      e.preventDefault();
+		
+		      // Count the dropzone and any children that are entered.
+		      if (this.dragTargets.indexOf(e.target) === -1) {
+		        this.dragTargets.push(e.target);
+		      }
+		
+		      var files = (0, _getDataTransferItems2.default)(e);
+		      var allFilesAccepted = this.allFilesAccepted(files);
+		      var isMultipleAllowed = this.props.multiple || files.length <= 1;
+		
+		      this.setState({
+		        isDragActive: allFilesAccepted,
+		        isDragReject: !allFilesAccepted || !isMultipleAllowed
+		      });
+		
+		      if (this.props.onDragEnter) {
+		        this.props.onDragEnter.call(this, e);
+		      }
+		    }
+		  }, {
+		    key: 'onDragOver',
+		    value: function onDragOver(e) {
+		      // eslint-disable-line class-methods-use-this
+		      e.preventDefault();
+		      e.stopPropagation();
+		      try {
+		        e.dataTransfer.dropEffect = 'copy'; // eslint-disable-line no-param-reassign
+		      } catch (err) {
+		        // continue regardless of error
+		      }
+		
+		      if (this.props.onDragOver) {
+		        this.props.onDragOver.call(this, e);
+		      }
+		      return false;
+		    }
+		  }, {
+		    key: 'onDragLeave',
+		    value: function onDragLeave(e) {
+		      var _this2 = this;
+		
+		      e.preventDefault();
+		
+		      // Only deactivate once the dropzone and all children have been left.
+		      this.dragTargets = this.dragTargets.filter(function (el) {
+		        return el !== e.target && _this2.node.contains(el);
+		      });
+		      if (this.dragTargets.length > 0) {
+		        return;
+		      }
+		
+		      this.setState({
+		        isDragActive: false,
+		        isDragReject: false
+		      });
+		
+		      if (this.props.onDragLeave) {
+		        this.props.onDragLeave.call(this, e);
+		      }
+		    }
+		  }, {
+		    key: 'onDrop',
+		    value: function onDrop(e) {
+		      var _this3 = this;
+		
+		      var _props = this.props,
+		          onDrop = _props.onDrop,
+		          onDropAccepted = _props.onDropAccepted,
+		          onDropRejected = _props.onDropRejected,
+		          multiple = _props.multiple,
+		          disablePreview = _props.disablePreview;
+		
+		      var fileList = (0, _getDataTransferItems2.default)(e);
+		      var acceptedFiles = [];
+		      var rejectedFiles = [];
+		
+		      // Stop default browser behavior
+		      e.preventDefault();
+		
+		      // Reset the counter along with the drag on a drop.
+		      this.dragTargets = [];
+		      this.isFileDialogActive = false;
+		
+		      fileList.forEach(function (file) {
+		        if (!disablePreview) {
+		          try {
+		            file.preview = window.URL.createObjectURL(file); // eslint-disable-line no-param-reassign
+		          } catch (err) {
+		            if (process.env.NODE_ENV !== 'production') {
+		              console.error('Failed to generate preview for file', file, err); // eslint-disable-line no-console
+		            }
+		          }
+		        }
+		
+		        if (_this3.fileAccepted(file) && _this3.fileMatchSize(file)) {
+		          acceptedFiles.push(file);
+		        } else {
+		          rejectedFiles.push(file);
+		        }
+		      });
+		
+		      if (!multiple) {
+		        // if not in multi mode add any extra accepted files to rejected.
+		        // This will allow end users to easily ignore a multi file drop in "single" mode.
+		        rejectedFiles.push.apply(rejectedFiles, _toConsumableArray(acceptedFiles.splice(1)));
+		      }
+		
+		      if (onDrop) {
+		        onDrop.call(this, acceptedFiles, rejectedFiles, e);
+		      }
+		
+		      if (rejectedFiles.length > 0 && onDropRejected) {
+		        onDropRejected.call(this, rejectedFiles, e);
+		      }
+		
+		      if (acceptedFiles.length > 0 && onDropAccepted) {
+		        onDropAccepted.call(this, acceptedFiles, e);
+		      }
+		
+		      // Reset drag state
+		      this.setState({
+		        isDragActive: false,
+		        isDragReject: false,
+		        acceptedFiles: acceptedFiles,
+		        rejectedFiles: rejectedFiles
+		      });
+		    }
+		  }, {
+		    key: 'onClick',
+		    value: function onClick(e) {
+		      var _props2 = this.props,
+		          onClick = _props2.onClick,
+		          disableClick = _props2.disableClick;
+		
+		      if (!disableClick) {
+		        e.stopPropagation();
+		        this.open();
+		        if (onClick) {
+		          onClick.call(this, e);
+		        }
+		      }
+		    }
+		  }, {
+		    key: 'onFileDialogCancel',
+		    value: function onFileDialogCancel() {
+		      // timeout will not recognize context of this method
+		      var onFileDialogCancel = this.props.onFileDialogCancel;
+		      var fileInputEl = this.fileInputEl;
+		      var isFileDialogActive = this.isFileDialogActive;
+		      // execute the timeout only if the onFileDialogCancel is defined and FileDialog
+		      // is opened in the browser
+		
+		      if (onFileDialogCancel && isFileDialogActive) {
+		        setTimeout(function () {
+		          // Returns an object as FileList
+		          var FileList = fileInputEl.files;
+		          if (!FileList.length) {
+		            isFileDialogActive = false;
+		            onFileDialogCancel();
+		          }
+		        }, 300);
+		      }
+		    }
+		  }, {
+		    key: 'setRef',
+		    value: function setRef(ref) {
+		      this.node = ref;
+		    }
+		  }, {
+		    key: 'fileAccepted',
+		    value: function fileAccepted(file) {
+		      // Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with
+		      // that MIME type will always be accepted
+		      return file.type === 'application/x-moz-file' || (0, _attrAccept2.default)(file, this.props.accept);
+		    }
+		  }, {
+		    key: 'fileMatchSize',
+		    value: function fileMatchSize(file) {
+		      return file.size <= this.props.maxSize && file.size >= this.props.minSize;
+		    }
+		  }, {
+		    key: 'allFilesAccepted',
+		    value: function allFilesAccepted(files) {
+		      return files.every(this.fileAccepted);
+		    }
+		
+		    /**
+		     * Open system file upload dialog.
+		     *
+		     * @public
+		     */
+		
+		  }, {
+		    key: 'open',
+		    value: function open() {
+		      this.isFileDialogActive = true;
+		      this.fileInputEl.value = null;
+		      this.fileInputEl.click();
+		    }
+		  }, {
+		    key: 'render',
+		    value: function render() {
+		      var _this4 = this;
+		
+		      var _props3 = this.props,
+		          accept = _props3.accept,
+		          activeClassName = _props3.activeClassName,
+		          inputProps = _props3.inputProps,
+		          multiple = _props3.multiple,
+		          name = _props3.name,
+		          rejectClassName = _props3.rejectClassName,
+		          children = _props3.children,
+		          rest = _objectWithoutProperties(_props3, ['accept', 'activeClassName', 'inputProps', 'multiple', 'name', 'rejectClassName', 'children']);
+		
+		      var activeStyle = rest.activeStyle,
+		          className = rest.className,
+		          rejectStyle = rest.rejectStyle,
+		          style = rest.style,
+		          props = _objectWithoutProperties(rest, ['activeStyle', 'className', 'rejectStyle', 'style']);
+		
+		      var _state = this.state,
+		          isDragActive = _state.isDragActive,
+		          isDragReject = _state.isDragReject;
+		
+		
+		      className = className || '';
+		
+		      if (isDragActive && activeClassName) {
+		        className += ' ' + activeClassName;
+		      }
+		      if (isDragReject && rejectClassName) {
+		        className += ' ' + rejectClassName;
+		      }
+		
+		      if (!className && !style && !activeStyle && !rejectStyle) {
+		        style = {
+		          width: 200,
+		          height: 200,
+		          borderWidth: 2,
+		          borderColor: '#666',
+		          borderStyle: 'dashed',
+		          borderRadius: 5
+		        };
+		        activeStyle = {
+		          borderStyle: 'solid',
+		          borderColor: '#6c6',
+		          backgroundColor: '#eee'
+		        };
+		        rejectStyle = {
+		          borderStyle: 'solid',
+		          borderColor: '#c66',
+		          backgroundColor: '#eee'
+		        };
+		      }
+		
+		      var appliedStyle = void 0;
+		      if (activeStyle && isDragActive) {
+		        appliedStyle = _extends({}, style, activeStyle);
+		      } else if (rejectStyle && isDragReject) {
+		        appliedStyle = _extends({}, style, rejectStyle);
+		      } else {
+		        appliedStyle = _extends({}, style);
+		      }
+		
+		      var inputAttributes = {
+		        accept: accept,
+		        type: 'file',
+		        style: { display: 'none' },
+		        multiple: supportMultiple && multiple,
+		        ref: function ref(el) {
+		          return _this4.fileInputEl = el;
+		        }, // eslint-disable-line
+		        onChange: this.onDrop
+		      };
+		
+		      if (name && name.length) {
+		        inputAttributes.name = name;
+		      }
+		
+		      // Remove custom properties before passing them to the wrapper div element
+		      var customProps = ['acceptedFiles', 'preventDropOnDocument', 'disablePreview', 'disableClick', 'onDropAccepted', 'onDropRejected', 'onFileDialogCancel', 'maxSize', 'minSize'];
+		      var divProps = _extends({}, props);
+		      customProps.forEach(function (prop) {
+		        return delete divProps[prop];
+		      });
+		
+		      return _react2.default.createElement(
+		        'div',
+		        _extends({
+		          className: className,
+		          style: appliedStyle
+		        }, divProps /* expand user provided props first so event handlers are never overridden */, {
+		          onClick: this.onClick,
+		          onDragStart: this.onDragStart,
+		          onDragEnter: this.onDragEnter,
+		          onDragOver: this.onDragOver,
+		          onDragLeave: this.onDragLeave,
+		          onDrop: this.onDrop,
+		          ref: this.setRef
+		        }),
+		        this.renderChildren(children),
+		        _react2.default.createElement('input', _extends({}, inputProps /* expand user provided inputProps first so inputAttributes override them */, inputAttributes))
+		      );
+		    }
+		  }]);
+		
+		  return Dropzone;
+		}(_react2.default.Component);
+		
+		Dropzone.propTypes = {
+		  /**
+		   * Allow specific types of files. See https://github.com/okonet/attr-accept for more information.
+		   * Keep in mind that mime type determination is not reliable accross platforms. CSV files,
+		   * for example, are reported as text/plain under macOS but as application/vnd.ms-excel under
+		   * Windows. In some cases there might not be a mime type set at all.
+		   * See: https://github.com/okonet/react-dropzone/issues/276
+		   */
+		  accept: _propTypes2.default.string,
+		
+		  /**
+		   * Contents of the dropzone
+		   */
+		  children: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.func]),
+		
+		  /**
+		   * Disallow clicking on the dropzone container to open file dialog
+		   */
+		  disableClick: _propTypes2.default.bool,
+		
+		  /**
+		   * Enable/disable preview generation
+		   */
+		  disablePreview: _propTypes2.default.bool,
+		
+		  /**
+		   * If false, allow dropped items to take over the current browser window
+		   */
+		  preventDropOnDocument: _propTypes2.default.bool,
+		
+		  /**
+		   * Pass additional attributes to the `<input type="file"/>` tag
+		   */
+		  inputProps: _propTypes2.default.object,
+		
+		  /**
+		   * Allow dropping multiple files
+		   */
+		  multiple: _propTypes2.default.bool,
+		
+		  /**
+		   * `name` attribute for the input tag
+		   */
+		  name: _propTypes2.default.string,
+		
+		  /**
+		   * Maximum file size
+		   */
+		  maxSize: _propTypes2.default.number,
+		
+		  /**
+		   * Minimum file size
+		   */
+		  minSize: _propTypes2.default.number,
+		
+		  /**
+		   * className
+		   */
+		  className: _propTypes2.default.string,
+		
+		  /**
+		   * className for accepted state
+		   */
+		  activeClassName: _propTypes2.default.string,
+		
+		  /**
+		   * className for rejected state
+		   */
+		  rejectClassName: _propTypes2.default.string,
+		
+		  /**
+		   * CSS styles to apply
+		   */
+		  style: _propTypes2.default.object,
+		
+		  /**
+		   * CSS styles to apply when drop will be accepted
+		   */
+		  activeStyle: _propTypes2.default.object,
+		
+		  /**
+		   * CSS styles to apply when drop will be rejected
+		   */
+		  rejectStyle: _propTypes2.default.object,
+		
+		  /**
+		   * onClick callback
+		   * @param {Event} event
+		   */
+		  onClick: _propTypes2.default.func,
+		
+		  /**
+		   * onDrop callback
+		   */
+		  onDrop: _propTypes2.default.func,
+		
+		  /**
+		   * onDropAccepted callback
+		   */
+		  onDropAccepted: _propTypes2.default.func,
+		
+		  /**
+		   * onDropRejected callback
+		   */
+		  onDropRejected: _propTypes2.default.func,
+		
+		  /**
+		   * onDragStart callback
+		   */
+		  onDragStart: _propTypes2.default.func,
+		
+		  /**
+		   * onDragEnter callback
+		   */
+		  onDragEnter: _propTypes2.default.func,
+		
+		  /**
+		   * onDragOver callback
+		   */
+		  onDragOver: _propTypes2.default.func,
+		
+		  /**
+		   * onDragLeave callback
+		   */
+		  onDragLeave: _propTypes2.default.func,
+		
+		  /**
+		   * Provide a callback on clicking the cancel button of the file dialog
+		   */
+		  onFileDialogCancel: _propTypes2.default.func
+		};
+		
+		Dropzone.defaultProps = {
+		  preventDropOnDocument: true,
+		  disablePreview: false,
+		  disableClick: false,
+		  multiple: true,
+		  maxSize: Infinity,
+		  minSize: 0
+		};
+		
+		exports.default = Dropzone;
+		module.exports = exports['default'];
+		/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+	
+	/***/ }),
+	/* 1 */
+	/***/ (function(module, exports) {
+	
+		// shim for using process in browser
+		var process = module.exports = {};
+		
+		// cached from whatever global is present so that test runners that stub it
+		// don't break things.  But we need to wrap it in a try catch in case it is
+		// wrapped in strict mode code which doesn't define any globals.  It's inside a
+		// function because try/catches deoptimize in certain engines.
+		
+		var cachedSetTimeout;
+		var cachedClearTimeout;
+		
+		function defaultSetTimout() {
+		    throw new Error('setTimeout has not been defined');
+		}
+		function defaultClearTimeout () {
+		    throw new Error('clearTimeout has not been defined');
+		}
+		(function () {
+		    try {
+		        if (typeof setTimeout === 'function') {
+		            cachedSetTimeout = setTimeout;
+		        } else {
+		            cachedSetTimeout = defaultSetTimout;
+		        }
+		    } catch (e) {
+		        cachedSetTimeout = defaultSetTimout;
+		    }
+		    try {
+		        if (typeof clearTimeout === 'function') {
+		            cachedClearTimeout = clearTimeout;
+		        } else {
+		            cachedClearTimeout = defaultClearTimeout;
+		        }
+		    } catch (e) {
+		        cachedClearTimeout = defaultClearTimeout;
+		    }
+		} ())
+		function runTimeout(fun) {
+		    if (cachedSetTimeout === setTimeout) {
+		        //normal enviroments in sane situations
+		        return setTimeout(fun, 0);
+		    }
+		    // if setTimeout wasn't available but was latter defined
+		    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+		        cachedSetTimeout = setTimeout;
+		        return setTimeout(fun, 0);
+		    }
+		    try {
+		        // when when somebody has screwed with setTimeout but no I.E. maddness
+		        return cachedSetTimeout(fun, 0);
+		    } catch(e){
+		        try {
+		            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+		            return cachedSetTimeout.call(null, fun, 0);
+		        } catch(e){
+		            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+		            return cachedSetTimeout.call(this, fun, 0);
+		        }
+		    }
+		
+		
+		}
+		function runClearTimeout(marker) {
+		    if (cachedClearTimeout === clearTimeout) {
+		        //normal enviroments in sane situations
+		        return clearTimeout(marker);
+		    }
+		    // if clearTimeout wasn't available but was latter defined
+		    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+		        cachedClearTimeout = clearTimeout;
+		        return clearTimeout(marker);
+		    }
+		    try {
+		        // when when somebody has screwed with setTimeout but no I.E. maddness
+		        return cachedClearTimeout(marker);
+		    } catch (e){
+		        try {
+		            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+		            return cachedClearTimeout.call(null, marker);
+		        } catch (e){
+		            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+		            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+		            return cachedClearTimeout.call(this, marker);
+		        }
+		    }
+		
+		
+		
+		}
+		var queue = [];
+		var draining = false;
+		var currentQueue;
+		var queueIndex = -1;
+		
+		function cleanUpNextTick() {
+		    if (!draining || !currentQueue) {
+		        return;
+		    }
+		    draining = false;
+		    if (currentQueue.length) {
+		        queue = currentQueue.concat(queue);
+		    } else {
+		        queueIndex = -1;
+		    }
+		    if (queue.length) {
+		        drainQueue();
+		    }
+		}
+		
+		function drainQueue() {
+		    if (draining) {
+		        return;
+		    }
+		    var timeout = runTimeout(cleanUpNextTick);
+		    draining = true;
+		
+		    var len = queue.length;
+		    while(len) {
+		        currentQueue = queue;
+		        queue = [];
+		        while (++queueIndex < len) {
+		            if (currentQueue) {
+		                currentQueue[queueIndex].run();
+		            }
+		        }
+		        queueIndex = -1;
+		        len = queue.length;
+		    }
+		    currentQueue = null;
+		    draining = false;
+		    runClearTimeout(timeout);
+		}
+		
+		process.nextTick = function (fun) {
+		    var args = new Array(arguments.length - 1);
+		    if (arguments.length > 1) {
+		        for (var i = 1; i < arguments.length; i++) {
+		            args[i - 1] = arguments[i];
+		        }
+		    }
+		    queue.push(new Item(fun, args));
+		    if (queue.length === 1 && !draining) {
+		        runTimeout(drainQueue);
+		    }
+		};
+		
+		// v8 likes predictible objects
+		function Item(fun, array) {
+		    this.fun = fun;
+		    this.array = array;
+		}
+		Item.prototype.run = function () {
+		    this.fun.apply(null, this.array);
+		};
+		process.title = 'browser';
+		process.browser = true;
+		process.env = {};
+		process.argv = [];
+		process.version = ''; // empty string to avoid regexp issues
+		process.versions = {};
+		
+		function noop() {}
+		
+		process.on = noop;
+		process.addListener = noop;
+		process.once = noop;
+		process.off = noop;
+		process.removeListener = noop;
+		process.removeAllListeners = noop;
+		process.emit = noop;
+		
+		process.binding = function (name) {
+		    throw new Error('process.binding is not supported');
+		};
+		
+		process.cwd = function () { return '/' };
+		process.chdir = function (dir) {
+		    throw new Error('process.chdir is not supported');
+		};
+		process.umask = function() { return 0; };
+	
+	
+	/***/ }),
+	/* 2 */
+	/***/ (function(module, exports) {
+	
+		module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+	
+	/***/ }),
+	/* 3 */
+	/***/ (function(module, exports) {
+	
+		module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+	
+	/***/ }),
+	/* 4 */
+	/***/ (function(module, exports) {
+	
+		module.exports=function(t){function n(e){if(r[e])return r[e].exports;var o=r[e]={exports:{},id:e,loaded:!1};return t[e].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var r={};return n.m=t,n.c=r,n.p="",n(0)}([function(t,n,r){"use strict";n.__esModule=!0,r(8),r(9),n["default"]=function(t,n){if(t&&n){var r=function(){var r=Array.isArray(n)?n:n.split(","),e=t.name||"",o=t.type||"",i=o.replace(/\/.*$/,"");return{v:r.some(function(t){var n=t.trim();return"."===n.charAt(0)?e.toLowerCase().endsWith(n.toLowerCase()):/\/\*$/.test(n)?i===n.replace(/\/.*$/,""):o===n})}}();if("object"==typeof r)return r.v}return!0},t.exports=n["default"]},function(t,n){var r=t.exports={version:"1.2.2"};"number"==typeof __e&&(__e=r)},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n,r){var e=r(2),o=r(1),i=r(4),u=r(19),c="prototype",f=function(t,n){return function(){return t.apply(n,arguments)}},s=function(t,n,r){var a,p,l,y,d=t&s.G,h=t&s.P,v=d?e:t&s.S?e[n]||(e[n]={}):(e[n]||{})[c],x=d?o:o[n]||(o[n]={});d&&(r=n);for(a in r)p=!(t&s.F)&&v&&a in v,l=(p?v:r)[a],y=t&s.B&&p?f(l,e):h&&"function"==typeof l?f(Function.call,l):l,v&&!p&&u(v,a,l),x[a]!=l&&i(x,a,y),h&&((x[c]||(x[c]={}))[a]=l)};e.core=o,s.F=1,s.G=2,s.S=4,s.P=8,s.B=16,s.W=32,t.exports=s},function(t,n,r){var e=r(5),o=r(18);t.exports=r(22)?function(t,n,r){return e.setDesc(t,n,o(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n){var r=Object;t.exports={create:r.create,getProto:r.getPrototypeOf,isEnum:{}.propertyIsEnumerable,getDesc:r.getOwnPropertyDescriptor,setDesc:r.defineProperty,setDescs:r.defineProperties,getKeys:r.keys,getNames:r.getOwnPropertyNames,getSymbols:r.getOwnPropertySymbols,each:[].forEach}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(20)("wks"),o=r(2).Symbol;t.exports=function(t){return e[t]||(e[t]=o&&o[t]||(o||r(6))("Symbol."+t))}},function(t,n,r){r(26),t.exports=r(1).Array.some},function(t,n,r){r(25),t.exports=r(1).String.endsWith},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(10);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,o){return t.call(n,r,e,o)}}return function(){return t.apply(n,arguments)}}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(e){try{return n[r(7)("match")]=!1,!"/./"[t](n)}catch(o){}}return!0}},function(t,n){t.exports=function(t){try{return!!t()}catch(n){return!0}}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n,r){var e=r(16),o=r(11),i=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[i])?!!n:"RegExp"==o(t))}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var e=r(2),o=r(4),i=r(6)("src"),u="toString",c=Function[u],f=(""+c).split(u);r(1).inspectSource=function(t){return c.call(t)},(t.exports=function(t,n,r,u){"function"==typeof r&&(o(r,i,t[n]?""+t[n]:f.join(String(n))),"name"in r||(r.name=n)),t===e?t[n]=r:(u||delete t[n],o(t,n,r))})(Function.prototype,u,function(){return"function"==typeof this&&this[i]||c.call(this)})},function(t,n,r){var e=r(2),o="__core-js_shared__",i=e[o]||(e[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n,r){var e=r(17),o=r(13);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(o(t))}},function(t,n,r){t.exports=!r(15)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(23),o=Math.min;t.exports=function(t){return t>0?o(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(3),o=r(24),i=r(21),u="endsWith",c=""[u];e(e.P+e.F*r(14)(u),"String",{endsWith:function(t){var n=i(this,t,u),r=arguments,e=r.length>1?r[1]:void 0,f=o(n.length),s=void 0===e?f:Math.min(o(e),f),a=String(t);return c?c.call(n,a,s):n.slice(s-a.length,s)===a}})},function(t,n,r){var e=r(5),o=r(3),i=r(1).Array||Array,u={},c=function(t,n){e.each.call(t.split(","),function(t){void 0==n&&t in i?u[t]=i[t]:t in[]&&(u[t]=r(12)(Function.call,[][t],n))})};c("pop,reverse,shift,keys,values,entries",1),c("indexOf,every,some,forEach,map,filter,find,findIndex,includes",3),c("join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill"),o(o.S,"Array",u)}]);
+	
+	/***/ }),
+	/* 5 */
+	/***/ (function(module, exports) {
+	
+		"use strict";
+		
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
+		exports.default = getDataTransferFiles;
+		function getDataTransferFiles(event) {
+		  var dataTransferItemsList = [];
+		  if (event.dataTransfer) {
+		    var dt = event.dataTransfer;
+		    if (dt.files && dt.files.length) {
+		      dataTransferItemsList = dt.files;
+		    } else if (dt.items && dt.items.length) {
+		      // During the drag even the dataTransfer.files is null
+		      // but Chrome implements some drag store, which is accesible via dataTransfer.items
+		      dataTransferItemsList = dt.items;
+		    }
+		  } else if (event.target && event.target.files) {
+		    dataTransferItemsList = event.target.files;
+		  }
+		  // Convert from DataTransferItemsList to the native Array
+		  return Array.prototype.slice.call(dataTransferItemsList);
+		}
+		module.exports = exports["default"];
+	
+	/***/ })
+	/******/ ])
+	});
+	;
+	//# sourceMappingURL=index.js.map
+
+/***/ }),
+/* 1097 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	//import ToggleButton from 'react-toggle-button'
+	//import InputRange from 'react-input-range';
+	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	//import 'react-input-range/react-input-range.css';
+	
+	var Guests = function (_React$Component) {
+	    _inherits(Guests, _React$Component);
+	
+	    //props: Props;
+	    function Guests(props) {
+	        _classCallCheck(this, Guests);
+	
+	        //this.getData();
+	        //alert(window.links.indexOf({link: "menu", text: "Menu"}));
+	        var _this = _possibleConstructorReturn(this, (Guests.__proto__ || Object.getPrototypeOf(Guests)).call(this, props));
+	
+	        var exists = "no";
+	        /*JSON.parse(localStorage.getItem("order")).links.map(function(link){
+	                 //alert("yes" + link.link);
+	                 if(link.link == "menu"){
+	                     exists = "yes";
+	                 }
+	             });*/
+	        if (exists == "no") {
+	            //alert("doesnt exist");
+	            //JSON.parse(localStorage.getItem("order")).links.push({link: "menu", text: "Menu"});
+	        } else {}
+	            //    alert("exists");
+	
+	            //alert("sconely yours1" + window.guest_chooses);
+	            //window.event.number_of_guests = 20;
+	            //window.event.guests_choose = false;
+	        _this.state = {
+	            value: 0
+	        };
+	        _this.handleValuesChange = _this.handleValuesChange.bind(_this);
+	        //myTimer;
+	        //var myVar = setInterval(
+	        //    () => 
+	        //get the data from state and upload to server
+	        //only update if the data has been changed though
+	        //add a flag that updates when they change something
+	        //if this.state.changed == true then update
+	        //only update guest details
+	        //window.event.event_name == this.state.event_name
+	        //window.address == "home"
+	        //window.event_date == "date"
+	        //window.event_time == "time"
+	        //window.custom_code = "custom_code"
+	        /*request
+	          .post('/api/order/new')
+	          .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	          .set('X-API-Key', 'foobar')
+	          .set('Accept', 'application/json')
+	          .end(function(err, res){
+	            // Calling the end function will send the request
+	            //this.setState({payment_complete: true});
+	                 });*/
+	        //console.log("hello")
+	        //, 10000);
+	        //myVar;
+	        //myTimer;
+	        return _this;
+	    }
+	
+	    _createClass(Guests, [{
+	        key: "handleValuesChange",
+	        value: function handleValuesChange(e) {
+	            //alert(JSON.stringify(e.target.value));
+	            this.setState({ value: e.target.value });
+	            //localStorage.getItem("number_of_guests = "values";
+	            //alert(window.guest_chooses);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var guests_choices = "";
+	            if (this.state.value == true) {
+	                guests_choices = "Ross Edwards rossedwards.us@gmail.com";
+	            }
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("b", null, "Guests"), React.createElement("br", null), React.createElement("br", null), "Number of guests1:", React.createElement("br", null), React.createElement("input", { type: "range", id: "weight", min: "20", max: "500", step: "10", value: this.state.values, onChange: this.handleValuesChange.bind(this), style: { width: "200px", height: "10px" } }), this.state.value, React.createElement("br", null), React.createElement("br", null), "Guest responses", React.createElement("br", null), React.createElement("br", null));
+	        }
+	    }]);
+	
+	    return Guests;
+	}(React.Component);
+	
+	exports.default = Guests;
+
+/***/ }),
+/* 1098 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35646,7 +35706,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1096 */
+/* 1099 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35757,7 +35817,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1097 */
+/* 1100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35838,7 +35898,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1098 */
+/* 1101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35895,7 +35955,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1099 */
+/* 1102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36312,7 +36372,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1100 */
+/* 1103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36320,8 +36380,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var login_ts_1 = __webpack_require__(1096);
-	var root_ts_1 = __webpack_require__(1099);
+	var login_ts_1 = __webpack_require__(1099);
+	var root_ts_1 = __webpack_require__(1102);
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
 	    root: root_ts_1.default,
