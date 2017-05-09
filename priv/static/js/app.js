@@ -29691,7 +29691,7 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("state" + JSON.stringify(state));
+	    console.log("delivery address component/state" + JSON.stringify(state));
 	    return {};
 	}
 	function mapDispatchToProps(dispatch) {
@@ -29929,7 +29929,7 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("state" + JSON.stringify(state));
+	    console.log("contact component/state" + JSON.stringify(state));
 	    return {};
 	}
 	function mapDispatchToProps(dispatch) {
@@ -29941,7 +29941,7 @@ webpackJsonp([0],[
 	        },
 	        setContactPhone: function setContactPhone(e) {
 	            //  console.log(e.target.value);
-	            //  dispatch(setContactPhone(e.target.value));
+	            dispatch(order_contact_ts_1.setContactPhone(e.target.value));
 	        }
 	    };
 	}
@@ -29957,7 +29957,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	function setContactEmail(value) {
-	    alert("addCartItem from redux");
+	    console.log("contact email");
 	    return {
 	        type: actionTypes_ts_1.SET_CONTACT_EMAIL,
 	        value: value
@@ -29965,7 +29965,7 @@ webpackJsonp([0],[
 	}
 	exports.setContactEmail = setContactEmail;
 	function setContactPhone(value) {
-	    alert("addCartItem from redux" + value);
+	    //alert("addCartItem from redux" + value);
 	    return {
 	        type: actionTypes_ts_1.SET_CONTACT_PHONE,
 	        value: value
@@ -30791,7 +30791,7 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("state" + JSON.stringify(state));
+	    console.log("name component/state" + JSON.stringify(state));
 	    return {};
 	}
 	function mapDispatchToProps(dispatch) {
@@ -31058,7 +31058,7 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("state" + JSON.stringify(state));
+	    console.log("payment method component/state" + JSON.stringify(state));
 	    return {};
 	}
 	function mapDispatchToProps(dispatch) {
@@ -36307,7 +36307,7 @@ webpackJsonp([0],[
 	    switch (action.type) {
 	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1:
 	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
+	            //console.log("reducer " + JSON.stringify(state));
 	            //alert("view public menu reducer" + JSON.stringify(action));
 	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
 	            //return "hello";
@@ -36527,7 +36527,7 @@ webpackJsonp([0],[
 	            return Object.assign({}, state, { order: { name: { first: state.order.name.first, last: action.value }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1:
 	            //alert("CartState " + action.item_id);
-	            alert("delivery address street1 " + JSON.stringify(state));
+	            console.log("root reducer/delivery address street1 " + JSON.stringify(state));
 	            //alert("view public menu reducer" + JSON.stringify(action));
 	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
 	            //return "hello";
@@ -36683,7 +36683,7 @@ webpackJsonp([0],[
 	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: "", specific_time: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
 	        case actionTypes_ts_1.SET_CONTACT_EMAIL:
 	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
+	            console.log("root reducer/contact email " + JSON.stringify(state));
 	            //alert("view public menu reducer" + JSON.stringify(action));
 	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
 	            //return "hello";
@@ -36838,6 +36838,7 @@ webpackJsonp([0],[
 	var react_router_redux_1 = __webpack_require__(617);
 	var login_ts_1 = __webpack_require__(1100);
 	var root_ts_1 = __webpack_require__(1103);
+	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
 	    root: root_ts_1.default,

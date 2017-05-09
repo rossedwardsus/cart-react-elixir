@@ -146,7 +146,7 @@ export default function root(state:any = initialState, action: any) {
 
     case SET_DELIVERY_ADDRESS_STREET1:
       //alert("CartState " + action.item_id);
-      alert("delivery address street1 " + JSON.stringify(state));
+      console.log("root reducer/delivery address street1 " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -373,7 +373,7 @@ export default function root(state:any = initialState, action: any) {
 
     case SET_CONTACT_EMAIL:
       //alert("CartState " + action.item_id);
-      alert("reducer " + JSON.stringify(state));
+      console.log("root reducer/contact email " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
       //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})

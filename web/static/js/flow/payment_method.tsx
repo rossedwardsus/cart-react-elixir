@@ -282,7 +282,7 @@ class PaymentMethod extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("state" + JSON.stringify(state));
+  console.log("payment method component/state" + JSON.stringify(state));
   return {
    //order: state.default.order
    //menu_items: getPublicMenu
