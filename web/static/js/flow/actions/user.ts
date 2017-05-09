@@ -1,7 +1,7 @@
 import {GET_USER_DETAILS, GET_DELIVERY_ADDRESSES, SET_DELIVERY_ADDRESS, GET_USER_ORDERS} from '../constants/actionTypes.ts';
 
 export function getUserDetails(value: any) {
-  alert("GET USER details");
+  //alert("GET USER details");
   return {
     type: GET_USER_DETAILS,
     value
@@ -9,15 +9,15 @@ export function getUserDetails(value: any) {
 }
 
 export function getUserOrders(value: any) {
-  alert("setDeliveryAddressStreet");
+  //alert("setDeliveryAddressStreet");
   return {
     type: GET_USER_ORDERS,
     value
   }
 }
 
-export function getUserOrder(value: any) {
-  alert("setDeliveryAddressStreet");
+export function setUserOrder(value: any) {
+  //alert("setDeliveryAddressStreet");
   return {
     type: GET_USER_ORDERS,
     value

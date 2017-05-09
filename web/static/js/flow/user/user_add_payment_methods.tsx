@@ -17,7 +17,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class UserDeliveryAddresses extends React.Component<any, any> {
+export default class UserPaymentMethods extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -297,7 +297,7 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
-                          <Link to="/user/payments">Payment Methods</Link>
+                          <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
                           <Link to="/public/menu">About Me</Link>
                           <br/>
@@ -310,43 +310,13 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  Delivery Addresses
+                                  Payment Methods
                                   <br/>
                                   Home-Edit
                                   <br/>
                                   Office
                                   <br/>
                                   Add
-                                  <br/>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                                      </div>
-                                    </form>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                                            <option></option>
-                                            <option>Los Angeles</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
-                                            <option></option>
-                                            <option>CA</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
-                                            <option></option>
-                                            <option>90025</option>
-                                        </select>
-                                      </div>
-                                    </form>
-
                         </div>
                         <div className="hidden-xs col-md-2">
                               <br/>
@@ -362,34 +332,3 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
     )
   }
 }
-
-function mapStateToProps(state: any) {
-  console.log("contact component/state" + JSON.stringify(state));
-  return {
-   //order: state.default.order
-   //menu_items: getPublicMenu
-   //menu_items: dispatch()
-  };
-}
-
-function mapDispatchToProps(dispatch: any) {
-  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-  return {
-    //getUserDeliveryAddresses: (e: any) => {
-    //  console.log(e.target.value);
-      //dispatch(setContactEmail(e.target.value));
-    //},
-    //setContactPhone: (e: any) => {
-    //  console.log(e.target.value);
-      //dispatch(setContactPhone(e.target.value));
-    //},
-   
-  }
-}
-
-const UserDeliveryAddresses1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserDeliveryAddresses)
-
-//export default Contact1;

@@ -17,7 +17,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class UserDeliveryAddresses extends React.Component<any, any> {
+export default class UserDeliveryAddress extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -387,9 +387,9 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const UserDeliveryAddresses1 = connect(
+const UserDeliveryAddress1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserDeliveryAddresses)
+)(UserDeliveryAddress)
 
 //export default Contact1;
