@@ -268,65 +268,9 @@ class UserOrders extends React.Component<any, any> {
 
     return (
               <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-      
-                              {logged_in}
-                             
-                          </div>
-                    </nav>
-                    <div className="row">
-                        <div className="hidden-xs col-md-4">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          Home
-                          <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
-                           <br/>
-                        </div>
-                        <div className="col-md-6">
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <div>
-                                    Your Orders
-                                  </div>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                        </div>
-                        <div className="hidden-xs col-md-2">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              maybe put something here
-                        </div>
-                    </div>
+                    
+                    Your Orders1
+                    
               </div>
     )
   }

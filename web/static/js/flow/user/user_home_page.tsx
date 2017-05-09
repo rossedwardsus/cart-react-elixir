@@ -296,7 +296,14 @@ export default class Homepage extends React.Component<any, any> {
                           <br/>
                           <Link to="/public/menu">Menu</Link>
                           <br/>
-                           <br/>
+                          <Link to="/public/menu">Delivery Addresses</Link>
+                          <br/>
+                          <Link to="/public/menu">Payment Methods</Link>
+                          <br/>
+                          <Link to="/public/menu">About Me</Link>
+                          <br/>
+                          <Link to="/public/menu">Photo</Link>
+                          
                         </div>
                         <div className="col-md-6">
                                   <br/>
@@ -304,6 +311,7 @@ export default class Homepage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
+                                  <Link to="/public/menu">Social</Link>-<Link to="/order/signature">Signature</Link>
                                   <br/>
                                   <div>
                                     Your Orders

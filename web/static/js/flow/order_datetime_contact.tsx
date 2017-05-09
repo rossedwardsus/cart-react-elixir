@@ -721,7 +721,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
         //if(/^[a-zA-Z]/.test(e.target.value)){
 
-            alert();
+            //alert();
 
             //this.setState({"delivery_address_street1": e.target.value});
             //this.setState({"delivery_address_street1_classname": "form-group"});
@@ -735,11 +735,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   completeOrder(){
 
-      alert("order complete this.props.order");
+      //alert("order complete this.props.order");
 
       //if all inputs are validated
 
-      alert(JSON.stringify(this.props.order));
+      //alert(JSON.stringify(this.props.order));
 
       //if first_name_validated == true && last_name_validated == true
       //process order/dispatch
@@ -822,6 +822,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 
+    //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+
 
     return ( <div>
                     <nav className="navbar navbar-default navbar-fixed-top">
@@ -864,7 +866,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+                          
                           <br/>
                           <br/>
                           <br/>
@@ -1069,7 +1071,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("state" + JSON.stringify(state));
   return {
-   order: state.default.order
+   //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };

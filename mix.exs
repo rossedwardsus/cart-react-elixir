@@ -19,7 +19,7 @@ defmodule SconeHomeElixir.Mixfile do
   def application do
     [mod: {SconeHomeElixir, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :graphql, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin, :twilex]]
+                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin, :twilex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,9 +31,9 @@ defmodule SconeHomeElixir.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.0"},
-     {:phoenix_ecto, "~> 1.1"},
+     {:phoenix_ecto, "~> 2.0.1"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 2.1"},
+     {:phoenix_html, "~> 2.6.0"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:poison, "~> 2.1", override: true},
@@ -54,7 +54,7 @@ defmodule SconeHomeElixir.Mixfile do
      {:hackney, "~> 1.0", override: true},
      {:httpoison, "~> 0.8.0"},
      {:tzdata, "~> 0.5.8"},
-     {:graphql, "~> 0.3"},
+     #{:graphql, "~> 0.3"},
      {:absinthe, "~> 1.1.0"},
      {:absinthe_plug, "~> 1.1"}]
   end
