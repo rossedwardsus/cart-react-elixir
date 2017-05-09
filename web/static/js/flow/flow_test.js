@@ -24,6 +24,8 @@ import PublicMenu from './menu.tsx';
 import PublicAboutUs from './public/public_about_us';
 
 import UserHomePage from './user/user_home_page.tsx';
+import UserDeliveryAddresses from './user/user_delivery_addresses.tsx';
+import UserPaymentMethods from './user/user_payment_methods.tsx';
 
 //import Order from "./order.jsx";
 import Checkout from "./order_datetime_contact.tsx";
@@ -34,6 +36,7 @@ import Login from './login.tsx';
 import Register from './register.jsx';
 
 import User from "./user";
+
 
 /*import UserOrder from "./user_order";
 import SconelySocial from "./sconely_yours_social_single_page";
@@ -165,6 +168,8 @@ const Root = () => (
         <Route path="/order/:order_id/cart" component={OrderCart} />
         <Route path="/order/checkout" component={Checkout} />
         <Route path="/user" component={UserHomePage} />
+        <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
+        <Route path="/user/payment_methods" component={UserPaymentMethods} />
         <Route path="/order/:order_id/guest" component={SconelySignatureGuest} />
         <Route path="/order/signature" component={SconelySignature} />
                 

@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
 
-import UserOrders from './user_orders.tsx';
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -18,7 +17,7 @@ import UserOrders from './user_orders.tsx';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class Homepage extends React.Component<any, any> {
+export default class UserDeliveryAddresses extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -298,12 +297,11 @@ export default class Homepage extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
-                          <Link to="/user/payment_methods">Payment Methods</Link>
+                          <Link to="/user/payments">Payment Methods</Link>
                           <br/>
                           <Link to="/public/menu">About Me</Link>
                           <br/>
                           <Link to="/user/photo">Photo</Link>
-                          
                         </div>
                         <div className="col-md-6">
                                   <br/>
@@ -311,22 +309,14 @@ export default class Homepage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Link to="/public/menu">Social</Link>-<Link to="/order/signature">Signature</Link>
                                   <br/>
-                                  <div>
-                                    Your Orders
-                                    <br/>
-                                    <UserOrders />
-                                  </div>
+                                  Delivery Addresses
                                   <br/>
+                                  Home-Edit
                                   <br/>
+                                  Office
                                   <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
+                                  Add
                         </div>
                         <div className="hidden-xs col-md-2">
                               <br/>

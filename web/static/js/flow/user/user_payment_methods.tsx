@@ -17,7 +17,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class UserDeliveryAddresses extends React.Component<any, any> {
+export default class UserPaymentMethods extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -295,7 +295,13 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
                           <br/>
                           <Link to="/public/menu">Menu</Link>
                           <br/>
-                           <br/>
+                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
+                          <br/>
+                          <Link to="/user/payment_methods">Payment Methods</Link>
+                          <br/>
+                          <Link to="/public/menu">About Me</Link>
+                          <br/>
+                          <Link to="/user/photo">Photo</Link>
                         </div>
                         <div className="col-md-6">
                                   <br/>
@@ -304,18 +310,13 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <div>
-                                    Your Orders
-                                  </div>
+                                  Payment Methods
                                   <br/>
+                                  Home-Edit
                                   <br/>
+                                  Office
                                   <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
+                                  Add
                         </div>
                         <div className="hidden-xs col-md-2">
                               <br/>
