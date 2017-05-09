@@ -16,6 +16,9 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 
+import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+
+
 
 function addTodoWithDispatch() {
   const action = {
@@ -284,5 +287,37 @@ class DeliveryAddress extends React.Component<any, any> {
 }
 
 
-export default DeliveryAddress;
+function mapStateToProps(state: any) {
+  console.log("state" + JSON.stringify(state));
+  return {
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    setDeliveryAddressStreet1: (e: any) => {
+      console.log(e.target.value);
+      dispatch(setDeliveryAddressStreet1(e.target.value));
+    },
+    //setLastName: (e: any) => {
+    //  console.log(e.target.value);
+    //  dispatch(setLastName(e.target.value));
+    //},
+    //setBusinessName: (e: any) => {
+    //  console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    //}
+  }
+}
+
+const DeliveryAddress1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeliveryAddress)
+
+export default DeliveryAddress1;
 

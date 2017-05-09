@@ -11,12 +11,12 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+//import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 import {completeOrder} from './actions/complete_order.ts';
-import {setFirstName, setLastName} from './actions/order_name.ts';
+//import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
-import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
+//import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';
@@ -930,91 +930,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                               </div>
                             </form>
-                            <Name firstNameClassName={this.state.first_name_classname} setFirstName={(e: any) => this.setFirstName(e)} setLastName={(e: any) => this.setLastName(e)}/>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-8">
-                                    <b>Name</b>
-                                    <br/>
-                                </div>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                              <div className={this.state.first_name_classname}>
-                                <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
-                              </div>
-                              <div className={this.state.last_name_classname}>
-                                <input type="text" onChange={(e: any) => this.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                              <div className="form-group">
-                                <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
-                              </div>
-                            </form>
+                            <Name />
                             <br/>
-                            <DeliveryAddress setDeliveryAddressStreet1={(e: any) => this.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.setDeliveryAddressZipcode(e)}/>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-8">
-                                    <b>Address-if logged in</b>
-                                    <br/>
-                                    {true &&
-                                      <select className="form-control">
-                                          <option>Home</option>
-                                          <option>Office</option>
-                                      </select>
-                                    }
-                                    <br/>
-                                </div>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                              <div className="form-group">
-                                <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                              </div>
-                              <div className="form-group">
-                                <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                              <div className="form-group">
-                                <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                                    <option></option>
-                                    <option>Los Angeles</option>
-                                </select>
-                              </div>
-                              <div className="form-group">
-                                <select className="form-control">
-                                    <option>CA</option>
-                                </select>
-                              </div>
-                              <div className="form-group">
-                                <select className="form-control">
-                                    <option>zipcode</option>
-                                    <option>90025</option>
-                                    
-                                </select>
-                              </div>
-                            </form>
+                            <DeliveryAddress />
                             <br/>
-                            <Contact setContactEmail={(e: any) => this.setContactEmail(e)} setContactPhone={(e: any) => this.setContactPhone(e)}/>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-10">
-                                    <b>Contact</b>
-                                    <br/>
-                                </div>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                              <div className={this.state.contact_email_classname}>
-                                <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
-                              </div>
-                              <div className={this.state.contact_mobile_classname}>
-                                <input type="text" onChange={(e: any) => this.setContactPhone(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
-                              </div>
-                            </form> 
+                            <Contact />
                             <br/>
                             <form className="form-horizontal">
                               <div className="form-group">
@@ -1027,23 +947,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                               </div>
                             </form>
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.setPaymentCardNumber(e)} setPaymentExpiryDate={(e: any) => this.setPaymentExpiryDate(e)} setPaymentSecurityCode={(e: any) => this.setPaymentSecurityCode(e)}/>
-                            <form className="form-inline">
-                            <div className="form-group">
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card"/>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                              <div className="form-group">
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number"/>
-                              </div>
-                              <div className="form-group">
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Expiration Date"/>
-                              </div>
-                              <div className="form-group">
-                                <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code"/>
-                              </div>
-                            </form>
+                            <PaymentMethod />
                             <button onClick={() => this.completeOrder()}>Complete Order</button>
                             <br/>
                         </div>
@@ -1089,48 +993,48 @@ function mapDispatchToProps(dispatch: any) {
     setSpecificTime: (e: any) => {
       dispatch(setSpecificTime(e.target.value))
     },
-    setFirstName: (e: any) => {
-      dispatch(setFirstName(e.target.value))
-    },
-    setLastName: (e: any) => {
-      dispatch(setLastName(e.target.value))
-    },
-    setContactEmail: (e: any) => {
-      dispatch(setContactEmail(e.target.value))
-    },
-    setContactPhone: (e: any) => {
-      dispatch(setContactPhone(e.target.value))
-    },
+    //setFirstName: (e: any) => {
+    //  dispatch(setFirstName(e.target.value))
+    //},
+    //setLastName: (e: any) => {
+    //  dispatch(setLastName(e.target.value))
+    //},
+    //setContactEmail: (e: any) => {
+    //  dispatch(setContactEmail(e.target.value))
+    //},
+    //setContactPhone: (e: any) => {
+    //  dispatch(setContactPhone(e.target.value))
+    //},
     
-    setDeliveryAddressStreet1: (e: any) => {
-      dispatch(setDeliveryAddressStreet1(e.target.value))
-    },
+    //setDeliveryAddressStreet1: (e: any) => {
+    //  dispatch(setDeliveryAddressStreet1(e.target.value))
+    //},
     
-    setDeliveryAddressStreet2: (e: any) => {
-      dispatch(setDeliveryAddressStreet1(e.target.value))
-    },
+    //setDeliveryAddressStreet2: (e: any) => {
+    //  dispatch(setDeliveryAddressStreet1(e.target.value))
+    //},
     
-    setDeliveryAddressCity: (e: any) => {
-      dispatch(setDeliveryAddressCity(e.target.value))
-    },
-    setDeliveryAddressState: (e: any) => {
-      dispatch(setDeliveryAddressState(e.target.value))
-    },
-    setDeliveryAddressZipcode: (e: any) => {
-      dispatch(setDeliveryAddressZipcode(e.target.value))
-    },
-    setPaymentNameOnCard: (e: any) => {
-      dispatch(setPaymentNameOnCard(e.target.value))
-    },
-    setPaymentCardNumber: (e: any) => {
-      dispatch(setPaymentCardNumber(e.target.value))
-    },
-    setPaymentExpiryDate: (e: any) => {
-      dispatch(setPaymentExpiryDate(e.target.value))
-    },
-    setPaymentSecurityCode: (e: any) => {
-      dispatch(setPaymentSecurityCode(e.target.value))
-    },
+    //setDeliveryAddressCity: (e: any) => {
+    //  dispatch(setDeliveryAddressCity(e.target.value))
+    //},
+    //setDeliveryAddressState: (e: any) => {
+    //  dispatch(setDeliveryAddressState(e.target.value))
+    //},
+    //setDeliveryAddressZipcode: (e: any) => {
+    //  dispatch(setDeliveryAddressZipcode(e.target.value))
+    //},
+    //setPaymentNameOnCard: (e: any) => {
+    //  dispatch(setPaymentNameOnCard(e.target.value))
+    //},
+    //setPaymentCardNumber: (e: any) => {
+    //  dispatch(setPaymentCardNumber(e.target.value))
+    //},
+    //setPaymentExpiryDate: (e: any) => {
+    //  dispatch(setPaymentExpiryDate(e.target.value))
+    //},
+    //setPaymentSecurityCode: (e: any) => {
+    //  dispatch(setPaymentSecurityCode(e.target.value))
+    //},
     
     //complete order thunk
 

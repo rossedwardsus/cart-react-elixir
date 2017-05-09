@@ -15,6 +15,8 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
+import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
+
 
 
 function addTodoWithDispatch() {
@@ -231,7 +233,7 @@ class Name extends React.Component<any, any> {
               <form className="form-inline">
                 <div className="col-md-4">
                   <div className={this.props.firstNameClassName}>
-                    <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                    <input type="text" onChange={(e: any) => this.props.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
                   </div>
                 </div>
                </form>
@@ -248,6 +250,38 @@ class Name extends React.Component<any, any> {
 
 }
 
+function mapStateToProps(state: any) {
+  console.log("state" + JSON.stringify(state));
+  return {
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
 
-export default Name;
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    setFirstName: (e: any) => {
+      console.log(e.target.value);
+      dispatch(setFirstName(e.target.value));
+    },
+    setLastName: (e: any) => {
+      console.log(e.target.value);
+      dispatch(setLastName(e.target.value));
+    },
+    setBusinessName: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    }
+  }
+}
+
+const Name1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Name)
+
+export default Name1;
+
 

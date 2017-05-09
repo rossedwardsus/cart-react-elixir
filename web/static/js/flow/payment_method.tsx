@@ -16,6 +16,8 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 
+import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
+
 
 function addTodoWithDispatch() {
   const action = {
@@ -279,6 +281,41 @@ class PaymentMethod extends React.Component<any, any> {
 
 }
 
+function mapStateToProps(state: any) {
+  console.log("state" + JSON.stringify(state));
+  return {
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
 
-export default PaymentMethod;
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    setNameOnCard: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setFirstName(e.target.value));
+    },
+    setCardNumber: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    },
+    setExpiryDate: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    },
+    setSecurityCode: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    }
+  }
+}
+
+const PaymentMethod1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PaymentMethod)
+
+export default PaymentMethod1;
 

@@ -16,6 +16,8 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 
+import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+
 
 function addTodoWithDispatch() {
   const action = {
@@ -238,5 +240,36 @@ class Contact extends React.Component<any, any> {
 }
 
 
-export default Contact;
+function mapStateToProps(state: any) {
+  console.log("state" + JSON.stringify(state));
+  return {
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    setContactEmail: (e: any) => {
+      console.log(e.target.value);
+      dispatch(setContactEmail(e.target.value));
+    },
+    setContactPhone: (e: any) => {
+    //  console.log(e.target.value);
+    //  dispatch(setContactPhone(e.target.value));
+    },
+   
+  }
+}
+
+const Contact1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Contact)
+
+export default Contact1;
+
+
 
