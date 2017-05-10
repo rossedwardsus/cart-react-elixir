@@ -4,8 +4,10 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-//import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
+
+import { getUserDeliveryAddresses } from '../actions/user.ts';
+import UserDeliveryAddress from './user_delivery_address.tsx';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -17,7 +19,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class UserDeliveryAddresses extends React.Component<any, any> {
+class UserDeliveryAddresses extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -28,18 +30,16 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
 
     this.state = {
 
-        image: "/images/gallery/sconely_group_HPb.jpg",
-        guest_code: ""
-        
+        delivery_addresses: "",
     };
 
     //this.createOrder = this.createOrder.bind(this);
-    this.guestCode = this.guestCode.bind(this);
+    /*this.guestCode = this.guestCode.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
     this.onSwipedRight = this.onSwipedRight.bind(this);
     this.guestCodeChange = this.guestCodeChange.bind(this);
-    this.changeImage = this.changeImage.bind(this);
+    this.changeImage = this.changeImage.bind(this);*/
 
   }
 
@@ -50,6 +50,13 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
     //setInterval(this.changeImage, 10000);
 
     //localStorage.get('user');
+
+    //this.setState({orders: this.props.getUserDeliveryAddresses});
+
+    //this.props.getUserDeliveryAddresses;
+
+    const { getUserDeliveryAddresses } = this.props
+    getUserDeliveryAddresses();
 
   }
 
@@ -65,73 +72,7 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
 
   }
 
-  guestCode() {
-
-    //e.preventDefault();
-
-    //alert(order_type);
-
-    //if(order_type == "sconely_yours"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //if user is logged in then 
-        //guest code is right then
-        //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-
-        //this.context.router.push('/guest/order/12345/sconely_yours');
-
-        //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-
-        //this.props.dispatch(routeActions.push('/foo'));
-
-        //push("/foo");
-
-        this.props.onNavigateTo('/hello');
-
-
-    //}
-
-  }
-
-  guestCodeChange(e: any){
-
-      this.setState({guest_code: e.target.value});
-
-  }
-
-  onSwipedLeft(){
-
-    //alert("left");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  onSwipedRight(){
-
-    //alert("right");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  changeImage(){
-
-    if(this.state.image == "/images/gallery/sconely_group_HPb.jpg"){
-
-        this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
-
-    }else{
-
-        this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
-
-    }
-
-  }
-
+  
 
   createOrder(order_type: any) {
 
@@ -297,7 +238,7 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
-                          <Link to="/user/payments">Payment Methods</Link>
+                          <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
                           <Link to="/public/menu">About Me</Link>
                           <br/>
@@ -318,35 +259,8 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   Add
                                   <br/>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                                      </div>
-                                    </form>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                                            <option></option>
-                                            <option>Los Angeles</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
-                                            <option></option>
-                                            <option>CA</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
-                                            <option></option>
-                                            <option>90025</option>
-                                        </select>
-                                      </div>
-                                    </form>
-
+                                  <UserDeliveryAddress />
+                                 
                         </div>
                         <div className="hidden-xs col-md-2">
                               <br/>
@@ -364,7 +278,7 @@ export default class UserDeliveryAddresses extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("contact component/state" + JSON.stringify(state));
+  console.log("delivery addresses component/state" + JSON.stringify(state));
   return {
    //order: state.default.order
    //menu_items: getPublicMenu
@@ -375,10 +289,10 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    //getUserDeliveryAddresses: (e: any) => {
-    //  console.log(e.target.value);
-      //dispatch(setContactEmail(e.target.value));
-    //},
+    getUserDeliveryAddresses: () => {
+      console.log("e.target.value");
+      dispatch(getUserDeliveryAddresses());
+    },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);
       //dispatch(setContactPhone(e.target.value));
@@ -392,4 +306,4 @@ const UserDeliveryAddresses1 = connect(
   mapDispatchToProps
 )(UserDeliveryAddresses)
 
-//export default Contact1;
+export default UserDeliveryAddresses1;

@@ -317,6 +317,30 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                                   Office
                                   <br/>
                                   Add
+                                  <br/>
+                                  <form className="form-inline">
+                                    <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                                      </div>
+                                    </form>
+                                    <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" />
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Type" />
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" />
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" />
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" />
+                                      </div>
+                                    </form>
+                                
                         </div>
                         <div className="hidden-xs col-md-2">
                               <br/>

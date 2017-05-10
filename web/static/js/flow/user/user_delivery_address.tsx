@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
 
+import { setUserDeliveryAddressStreet1 } from '../actions/user.ts';
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -17,7 +18,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class UserDeliveryAddress extends React.Component<any, any> {
+class UserDeliveryAddress extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -268,103 +269,43 @@ export default class UserDeliveryAddress extends React.Component<any, any> {
 
     return (
               <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-      
-                              {logged_in}
-                             
+                    
+                        <form className="form-inline">
+                          <div className="form-group">
+                            <input type="text" onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                           </div>
-                    </nav>
-                    <div className="row">
-                        <div className="hidden-xs col-md-4">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          Home
-                          <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
-                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
-                          <br/>
-                          <Link to="/user/payments">Payment Methods</Link>
-                          <br/>
-                          <Link to="/public/menu">About Me</Link>
-                          <br/>
-                          <Link to="/user/photo">Photo</Link>
-                        </div>
-                        <div className="col-md-6">
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  Delivery Addresses
-                                  <br/>
-                                  Home-Edit
-                                  <br/>
-                                  Office
-                                  <br/>
-                                  Add
-                                  <br/>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                                      </div>
-                                    </form>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
-                                            <option></option>
-                                            <option>Los Angeles</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
-                                            <option></option>
-                                            <option>CA</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
-                                            <option></option>
-                                            <option>90025</option>
-                                        </select>
-                                      </div>
-                                    </form>
+                          <div className="form-group">
+                            <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                          </div>
+                        </form>
+                        <form className="form-inline">
+                          <div className="form-group">
+                            <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
+                                <option></option>
+                                <option>Los Angeles</option>
+                            </select>
+                          </div>
+                          <div className="form-group">
+                            <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
+                                <option></option>
+                                <option>CA</option>
+                            </select>
+                          </div>
+                          <div className="form-group">
+                            <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
+                                <option></option>
+                                <option>90025</option>
+                            </select>
+                          </div>
+                        </form>
 
-                        </div>
-                        <div className="hidden-xs col-md-2">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              maybe put something here
-                        </div>
-                    </div>
               </div>
     )
   }
 }
 
 function mapStateToProps(state: any) {
-  console.log("contact component/state" + JSON.stringify(state));
+  console.log("delivery address component/state" + JSON.stringify(state));
   return {
    //order: state.default.order
    //menu_items: getPublicMenu
@@ -375,10 +316,10 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    //getUserDeliveryAddresses: (e: any) => {
-    //  console.log(e.target.value);
-      //dispatch(setContactEmail(e.target.value));
-    //},
+    setUserDeliveryAddressStreet1: (e: any) => {
+      //console.log(e.target.value);
+      dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+    },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);
       //dispatch(setContactPhone(e.target.value));
@@ -392,4 +333,4 @@ const UserDeliveryAddress1 = connect(
   mapDispatchToProps
 )(UserDeliveryAddress)
 
-//export default Contact1;
+export default UserDeliveryAddress1;

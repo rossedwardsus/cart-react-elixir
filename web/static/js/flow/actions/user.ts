@@ -1,4 +1,4 @@
-import {GET_USER_DETAILS, GET_DELIVERY_ADDRESSES, SET_DELIVERY_ADDRESS, GET_USER_ORDERS} from '../constants/actionTypes.ts';
+import {GET_USER_DETAILS, GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, SET_USER_DELIVERY_ADDRESS_STREET1} from '../constants/actionTypes.ts';
 
 export function getUserDetails(value: any) {
   //alert("GET USER details");
@@ -22,27 +22,21 @@ export function setUserOrder(value: any) {
     type: GET_USER_ORDERS,
     value
   }
+}
 
-export function getDeliveryAddresses(value: any) {
-  alert("addCartItem from redux" + value);
+export function getUserDeliveryAddresses() {
+  console.log("get user delivery addresses");
   return {
-    type: SET_DELIVERY_ADDRESS,
+    type: GET_USER_DELIVERY_ADDRESSES
+  }
+}
+
+export function setUserDeliveryAddressStreet1(address_id: any, value: any) {
+  console.log("set user delivery address street1" + address_id + " " + value);
+  return {
+    type: SET_USER_DELIVERY_ADDRESS_STREET1,
+    address_id,
     value
   }
 }
 
-export function setDeliveryAddress(value: any) {
-  alert("addCartItem from redux" + value);
-  return {
-    type: GET_DELIVERY_ADDRESS,
-    value
-  }
-}
-
-export function setPaymentMethods(value: any) {
-  alert("addCartItem from redux");
-  return {
-    type: SET_PAYMENT_METHODS,
-    value
-  }
-}

@@ -30,6 +30,7 @@ let inititalState: CartState = {
 
 //gustOrderState
 let initialState: any = {order: {delivery_address: {street1: "", street2: "", city: "", state: "", zipcode: ""}, name: {first: "", last: ""}, datetime: {date: "", time: "", specific_time: ""}, contact: {email: "", phone: ""}, cart_items: [], payment_method: {name_on_card: "", card_number: "", expiry_date: "", security_code: ""}}};
+
 let userState: any= {session_id: "", name: "", orders: [], delivery_address: [], payment_methods: []};
 const initialStateTest = Map({ counter: 0 });
 
@@ -142,6 +143,7 @@ export default function root(state:any = initialState, action: any) {
       //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
       //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
       //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+      
       return Object.assign({}, state, {order: {name: {first: state.order.name.first, last: action.value}, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method}});
 
     case SET_DELIVERY_ADDRESS_STREET1:
