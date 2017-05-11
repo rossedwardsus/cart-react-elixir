@@ -211,40 +211,36 @@ class DateTime extends React.Component<any, any> {
 
    
     return ( <div>
-               <form className="form-inline">
+                <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-12">
                           <b>Delivery Date and Time</b>
                       </div>
                     </div>
-                  </form>
-                  <form className="form-inline">
-                      <div className="col-md-2">
-                        <DatePicker
-                          selected={this.state.startDate}
-                          onChange={(e: any) => {this.props.setDate(e)}} />
-                      </div>
-                      <div className="col-md-2">
-                        <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)}>
-                            <option value=""></option>
-                            <option value="900">9:00 am - 11:00 am</option>
-                            <option value="100">1:00 pm - 3:00 pm</option>
-                        </select>
-                      </div>
-                      <div className="col-md-2">
-                        <label htmlFor="exampleInputEmail2">(free)</label>
-                      </div>
-                    <div className="form-group">
-                      <div className="col-md-4">
-                          <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
-                              <option></option>
-                              <option value="900">9:00</option>
-                              <option value="930">9:30</option>
-                          </select>
-                          <label htmlFor="exampleInputEmail2">($2 extra)</label>
-                      </div>
+                </form>
+                <form className="form-horizontal" style={{border: 0}}>
+                  <div className="form-group" style={{borderRadius: 0}}>
+                    <div className="col-md-2">
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={(e: any) => {this.props.setDate(e)}} />
                     </div>
-                  </form>
+                    <div className="col-md-2">
+                      <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, "-webkit-appearance": "none"}}>
+                          <option value="">Free</option>
+                          <option value="900">9:00 am - 11:00 am</option>
+                          <option value="100">1:00 pm - 3:00 pm</option>
+                      </select>
+                    </div>
+                    <div className="col-md-2">
+                        <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
+                            <option value="">Extra</option>
+                            <option value="900">9:00</option>
+                            <option value="930">9:30</option>
+                        </select>
+                    </div>
+                  </div>
+                </form>
             </div>
     )
   }
@@ -259,5 +255,37 @@ class DateTime extends React.Component<any, any> {
 }
 
 
-export default DateTime;
+function mapStateToProps(state: any) {
+  console.log("name component/state" + JSON.stringify(state));
+  return {
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    /*setFirstName: (e: any) => {
+      console.log(e.target.value);
+      dispatch(setFirstName(e.target.value));
+    },
+    setLastName: (e: any) => {
+      console.log(e.target.value);
+      dispatch(setLastName(e.target.value));
+    },
+    setBusinessName: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    }*/
+  }
+}
+
+const DateTime1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DateTime)
+
+export default DateTime1;
 

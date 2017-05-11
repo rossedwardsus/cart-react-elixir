@@ -6,7 +6,7 @@ import { Link, browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
 //import {checklogin} from './action/cart.ts';
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+import {addCartItem} from './actions/cart_items.ts';
 import SidebarCart from './sidebar_cart.tsx';
 
 
@@ -56,7 +56,7 @@ class PublicMenu extends React.Component<any, any> {
 
     this.state.menu_items.map(function(value: any, index: any){
 
-          console.log(value.item_id);
+          //console.log(value.item_id);
           let image_src = "image_src_" + value.item_id;
           this.setState({[image_src]: value.image_id});
 
@@ -121,7 +121,7 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseEnter(item_id: any){
 
-      console.log("mouse" + item_id);
+      //console.log("mouse" + item_id);
 
       this.setState({["image_src_" + item_id]: "MenuRubyQ4b"});
 
@@ -189,7 +189,7 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             {this.state.menu_items.map(function(item: any){
 
-                                console.log("hello " + this.state["image_src_" + item.item_id]);
+                                //console.log("hello " + this.state["image_src_" + item.item_id]);
 
                                 let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
@@ -225,20 +225,20 @@ class PublicMenu extends React.Component<any, any> {
                             Ingredients
                         </div>
                         <div className="modal-footer">
-                          <select value={this.state.selected_item_dozens} >
+                          <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)}>
                             <option value="">Quantity</option>
                             <option value="12">Dozen</option>
                             <option value="mini_24">2 Dozen Mini</option>
                           </select>
                           X
-                          <select value={this.state.selected_item_quantity} >
+                          <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)}>
                             <option value=""></option> 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                           </select>
-                          <button type="button" className="btn btn-default" data-dismiss="modal">Add-only show if cart items larger then 1</button>
+                          <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => this.addCartItem()}>Add-only show if cart items larger then 1</button>
                         </div>
                       </div>
                     </div>
@@ -267,14 +267,14 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1));
+      dispatch(addCartItem(1, 12, 1));
     },
-    increaseCartItemQuantity: () => {
-      dispatch(increaseCartItemQuantity(1));
-    },
-    decreaseCartItemQuantity: () => {
-      dispatch(decreaseCartItemQuantity(1));
-    }
+    //increaseCartItemQuantity: () => {
+    //  dispatch(increaseCartItemQuantity(1));
+    //},
+    //decreaseCartItemQuantity: () => {
+    //  dispatch(decreaseCartItemQuantity(1));
+    //}
   }
 }
 

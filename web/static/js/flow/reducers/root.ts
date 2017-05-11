@@ -29,7 +29,7 @@ let inititalState: CartState = {
 }*/
 
 //gustOrderState
-let initialState: any = {order: {delivery_address: {street1: "", street2: "", city: "", state: "", zipcode: ""}, name: {first: "", last: ""}, datetime: {date: "", time: "", specific_time: ""}, contact: {email: "", phone: ""}, cart_items: [], payment_method: {name_on_card: "", card_number: "", expiry_date: "", security_code: ""}}};
+let initialState: any = {order: {delivery_address: {street1: "", street2: "", city: "", state: "", zipcode: ""}, name: {first: "", last: ""}, datetime: {date: "", time: "", specific_time: ""}, contact: {email: "", phone: ""}, payment_method: {name_on_card: "", card_number: "", expiry_date: "", security_code: ""}}};
 
 let userState: any= {session_id: "", name: "", orders: [], delivery_address: [], payment_methods: []};
 const initialStateTest = Map({ counter: 0 });
@@ -41,7 +41,7 @@ export default function root(state:any = initialState, action: any) {
   let delivery_address_updated = null;
 
   switch (action.type) {
-    case ADD_CART_ITEM:
+    /*case ADD_CART_ITEM:
       //alert("CartState " + action.item_id);
       console.log("add cart item" + JSON.stringify(state.order));
 
@@ -79,7 +79,7 @@ export default function root(state:any = initialState, action: any) {
 
           //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
           //return {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
-      //}
+      //}*/
 
     case SET_FIRST_NAME:
 

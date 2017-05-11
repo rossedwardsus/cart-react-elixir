@@ -27170,7 +27170,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {viewMenu} from './action/cart.ts';
 	//import {checklogin} from './action/cart.ts';
-	var cart_ts_1 = __webpack_require__(924);
+	var cart_items_ts_1 = __webpack_require__(924);
 	var sidebar_cart_tsx_1 = __webpack_require__(925);
 	//type Props = {
 	//title: string,
@@ -27221,7 +27221,7 @@ webpackJsonp([0],[
 	            //this.props.dispatch();
 	            //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
 	            this.state.menu_items.map(function (value, index) {
-	                console.log(value.item_id);
+	                //console.log(value.item_id);
 	                var image_src = "image_src_" + value.item_id;
 	                this.setState(_defineProperty({}, image_src, value.image_id));
 	            }.bind(this));
@@ -27254,12 +27254,14 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onMouseEnter",
 	        value: function onMouseEnter(item_id) {
-	            console.log("mouse" + item_id);
+	            //console.log("mouse" + item_id);
 	            this.setState(_defineProperty({}, "image_src_" + item_id, "MenuRubyQ4b"));
 	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
+	            var _this3 = this;
+	
 	            //var that = this;
 	            //var page = "";
 	            //if(this.state.page == "items"){
@@ -27268,14 +27270,20 @@ webpackJsonp([0],[
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sidebar_cart_tsx_1.default, { order: this.props.order, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity }), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item) {
 	                var _this2 = this;
 	
-	                console.log("hello " + this.state["image_src_" + item.item_id]);
+	                //console.log("hello " + this.state["image_src_" + item.item_id]);
 	                var image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 	                return React.createElement("div", { className: "col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("div", { className: "thumbnail", style: { paddingRight: 0, paddingLeft: 0, paddingTop: 0, paddingBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
 	                    }, onMouseEnter: function onMouseEnter() {
 	                        return _this2.onMouseEnter(item.item_id);
 	                    }, src: "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg", "data-target": "myModal", alt: "..." })), React.createElement("div", null, React.createElement("b", null, item.title), "/", item.description), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", className: "btn btn-default", "data-dismiss": "modal" }, "Add-only show if cart items larger then 1"))))));
+	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(e) {
+	                    return _this3.selectedItemDozens(e);
+	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity, onChange: function onChange(e) {
+	                    return _this3.selectedItemQuantity(e);
+	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4")), React.createElement("button", { type: "button", className: "btn btn-default", "data-dismiss": "modal", onClick: function onClick() {
+	                    return _this3.addCartItem();
+	                } }, "Add-only show if cart items larger then 1"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -27302,13 +27310,7 @@ webpackJsonp([0],[
 	    return {
 	        //viewmenuthunk
 	        addCartItem: function addCartItem(item_id, dozens, quantity) {
-	            dispatch(cart_ts_1.addCartItem(1));
-	        },
-	        increaseCartItemQuantity: function increaseCartItemQuantity() {
-	            dispatch(cart_ts_1.increaseCartItemQuantity(1));
-	        },
-	        decreaseCartItemQuantity: function decreaseCartItemQuantity() {
-	            dispatch(cart_ts_1.decreaseCartItemQuantity(1));
+	            dispatch(cart_items_ts_1.addCartItem(1, 12, 1));
 	        }
 	    };
 	};
@@ -27323,7 +27325,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	function addCartItem(item_id) {
+	function addCartItem(item_id, dozens, quantity_multipler) {
 	    //alert("addCartItem from redux");
 	    return {
 	        type: actionTypes_ts_1.ADD_CART_ITEM,
@@ -27374,8 +27376,8 @@ webpackJsonp([0],[
 	//import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { bindActionCreators } from 'redux';
+	var react_redux_1 = __webpack_require__(190);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(922);
 	//import _ from 'lodash';
@@ -27496,11 +27498,11 @@ webpackJsonp([0],[
 	            //});
 	            var cart = "";
 	            console.log("length order" + JSON.stringify(this.props.order));
-	            if (this.props.order.cart_items.length == 0) {
+	            if (this.props.cart_items.length === 0) {
 	                cart = "There are no items in your cart.";
 	            } else {
 	                console.log("order " + JSON.stringify(this.props.order));
-	                this.props.order.cart_items.map(function (item) {
+	                this.props.cart_items.map(function (item) {
 	                    console.log("item " + JSON.stringify(item));
 	                    if (item.mini == true) {
 	                        total_cost = total_cost + item.dozens * item.quantity * 2;
@@ -27511,15 +27513,15 @@ webpackJsonp([0],[
 	                    }
 	                });
 	                //alert(total_cost);
-	                cart = this.props.order.order.cart_items.map(function (item, index) {
+	                cart = this.props.cart_items.map(function (item, index) {
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
 	                    //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
 	                    //let item_title = result.get("title");
 	                    var item_title = "";
 	                    if (item.mini == true) {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "Cost")));
+	                        return React.createElement("div", null, item.quantity, " Dozen Mini", item.quantity);
 	                    } else {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", null, "Cost")));
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity));
 	                    }
 	                }.bind(this));
 	            }
@@ -27537,10 +27539,21 @@ webpackJsonp([0],[
 	
 	    return SidebarCart;
 	}(React.Component);
-	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
 	
-	
-	exports.default = SidebarCart;
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.cart_items));
+	    return {
+	        //active: ownProps.filter === state.visibilityFilter
+	        //if(state.default.order.cart_items != undefined){
+	        cart_items: state.cart_items
+	        //}
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	    return {};
+	};
+	var SidebarCart1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarCart);
+	exports.default = SidebarCart1;
 
 /***/ }),
 /* 926 */
@@ -29650,17 +29663,7 @@ webpackJsonp([0],[
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(datetime_tsx_1.default, { setDate: function setDate(e) {
-	                    return _this2.setDate(e);
-	                }, setTime: function setTime(e) {
-	                    return _this2.setTime(e);
-	                }, selectedTime: this.state.selected_time, setSpecificTime: function setSpecificTime(e) {
-	                    return _this2.setSpecificTime(e);
-	                }, selectedSpecificTime: this.state.selected_specific_time }), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange() {} })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", onChange: function onChange(e) {
-	                    return _this2.setTime(e);
-	                } }, React.createElement("option", null), React.createElement("option", null, "9:00 am - 11:00 am"), React.createElement("option", null, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", onChange: function onChange(e) {
-	                    return _this2.setSpecificTime(e);
-	                } }, React.createElement("option", null), React.createElement("option", null, "9:00"), React.createElement("option", null, "9:30"), React.createElement("option", null, "10:00"), React.createElement("option", null, "10:30"), React.createElement("option", null, "11:00"), React.createElement("option", null, "11:30"), React.createElement("option", null, "12:00"), React.createElement("option", null, "12:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))), React.createElement(name_tsx_1.default, null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, null), React.createElement("br", null), React.createElement(contact_tsx_1.default, null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement(payment_method_tsx_1.default, null), React.createElement("button", { onClick: function onClick() {
+	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(datetime_tsx_1.default, null), React.createElement("br", null), React.createElement(name_tsx_1.default, null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, null), React.createElement("br", null), React.createElement(contact_tsx_1.default, null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement(payment_method_tsx_1.default, null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
 	                } }, "Complete Order"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
@@ -29946,7 +29949,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Address-if logged in"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Address"), React.createElement("br", null), true && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setDeliveryAddressStreet2(e);
@@ -30190,11 +30193,11 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setContactEmail(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "email@email.com" })), React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setContactPhone(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "111-111-1111" }))));
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setContactEmail(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "email@email.com", style: { borderRadius: 0 } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setContactMobile(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "111-111-1111" }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -30269,6 +30272,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
+	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
@@ -30406,13 +30410,13 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange(e) {
 	                    _this2.props.setDate(e);
 	                } })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
 	                    return _this2.props.setTime(e);
-	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "900" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "100" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("label", { htmlFor: "exampleInputEmail2" }, "(free)")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, "-webkit-appearance": "none" } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "900" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "100" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
-	                } }, React.createElement("option", null), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30")), React.createElement("label", { htmlFor: "exampleInputEmail2" }, "($2 extra)")))));
+	                } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -30426,7 +30430,16 @@ webpackJsonp([0],[
 	    return DateTime;
 	}(React.Component);
 	
-	exports.default = DateTime;
+	function mapStateToProps(state) {
+	    console.log("name component/state" + JSON.stringify(state));
+	    return {};
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {};
+	}
+	var DateTime1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(DateTime);
+	exports.default = DateTime1;
 
 /***/ }),
 /* 940 */,
@@ -31050,13 +31063,13 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setFirstName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" }))), React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setLastName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" })))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setCompanyName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" })))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -32877,7 +32890,7 @@ webpackJsonp([0],[
 	
 	var _reactRedux = __webpack_require__(190);
 	
-	var _cart = __webpack_require__(924);
+	var _cart_items = __webpack_require__(924);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -33495,13 +33508,13 @@ webpackJsonp([0],[
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	  return {
 	    addCartItem: function addCartItem(item_id, dozens, quantity) {
-	      dispatch((0, _cart.addCartItem)(1));
+	      dispatch((0, _cart_items.addCartItem)(1));
 	    },
 	    increaseCartItemQuantity: function increaseCartItemQuantity() {
-	      dispatch((0, _cart.increaseCartItemQuantity)(1));
+	      dispatch((0, _cart_items.increaseCartItemQuantity)(1));
 	    },
 	    decreaseCartItemQuantity: function decreaseCartItemQuantity() {
-	      dispatch((0, _cart.decreaseCartItemQuantity)(1));
+	      dispatch((0, _cart_items.decreaseCartItemQuantity)(1));
 	    }
 	  };
 	};
@@ -36162,12 +36175,14 @@ webpackJsonp([0],[
 	var root_ts_1 = __webpack_require__(1103);
 	var user_ts_1 = __webpack_require__(1104);
 	var user_delivery_addresses_ts_1 = __webpack_require__(1105);
+	var cart_items_ts_1 = __webpack_require__(1106);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
 	    root: root_ts_1.default,
 	    user: user_ts_1.default,
 	    user_delivery_addresses: user_delivery_addresses_ts_1.default,
+	    cart_items: cart_items_ts_1.default,
 	    routing: react_router_redux_1.routerReducer
 	});
 
@@ -36319,7 +36334,7 @@ webpackJsonp([0],[
 	
 	}*/
 	//gustOrderState
-	var initialState = { order: { delivery_address: { street1: "", street2: "", city: "", state: "", zipcode: "" }, name: { first: "", last: "" }, datetime: { date: "", time: "", specific_time: "" }, contact: { email: "", phone: "" }, cart_items: [], payment_method: { name_on_card: "", card_number: "", expiry_date: "", security_code: "" } } };
+	var initialState = { order: { delivery_address: { street1: "", street2: "", city: "", state: "", zipcode: "" }, name: { first: "", last: "" }, datetime: { date: "", time: "", specific_time: "" }, contact: { email: "", phone: "" }, payment_method: { name_on_card: "", card_number: "", expiry_date: "", security_code: "" } } };
 	var userState = { session_id: "", name: "", orders: [], delivery_address: [], payment_methods: [] };
 	var initialStateTest = immutable_1.Map({ counter: 0 });
 	//state.set('counter', state.get('counter') + 1);
@@ -36329,32 +36344,33 @@ webpackJsonp([0],[
 	
 	    var delivery_address_updated = null;
 	    switch (action.type) {
-	        case actionTypes_ts_1.ADD_CART_ITEM:
-	            //alert("CartState " + action.item_id);
-	            console.log("add cart item" + JSON.stringify(state.order));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            //if(state.order === undefined){
-	            console.log("cart items");
-	            return { order: { cart_items: [{ item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true }] } };
-	        //}else{
-	        //  alert("else");
-	        //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
-	        //return {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
-	        //}
+	        /*case ADD_CART_ITEM:
+	          //alert("CartState " + action.item_id);
+	          console.log("add cart item" + JSON.stringify(state.order));
+	               //alert("view public menu reducer" + JSON.stringify(action));
+	          //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	          //return "hello";
+	          //alertObject.assign({}, state);
+	          //alert(state);
+	          //return Object.assign({}, ...state);
+	               //return Object.assign({}, ...state, action.menu_items)
+	          //return Object.assign({}, {menu_items: action.menu_items});
+	               //let cart_items_temp = state.cart_items;
+	          //cart_items_temp.push({item_id: 2, title: "another item"});
+	               //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	               //let new_state = {cart_items: cart_items_temp};
+	               //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
+	               //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	          //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	        
+	          //if(state.order === undefined){
+	                   console.log("cart items");
+	                   return {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
+	               //}else{
+	                 //  alert("else");
+	                   //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
+	              //return {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
+	          //}*/
 	        case actionTypes_ts_1.SET_FIRST_NAME:
 	            //state.set('counter', state.get('counter') + 1);
 	            //alert("CartState " + action.item_id);
@@ -36867,6 +36883,146 @@ webpackJsonp([0],[
 	    }
 	}
 	exports.default = user_delivery_addresses;
+	;
+
+/***/ }),
+/* 1106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function cart_items() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case actionTypes_ts_1.ADD_CART_ITEM:
+	            console.log("add cart item" + JSON.stringify(state));
+	            return [{ item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true }];
+	        case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
+	            //alert("CartState " + action.item_id);
+	            //alert("add cart item " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //get the item, increase the quantity replace it the cart item
+	            /*return array.map( (item, index) => {
+	                if(index !== action.index) {
+	                    // This isn't the item we care about - keep it as-is
+	                    return item;
+	                }
+	                       // Otherwise, this is the one we want - return an updated value
+	                return {
+	                    ...item,
+	                    ...action.item
+	                };
+	            });*/
+	            //return Object.assign({})
+	            //return Object.assign({}, [{order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 2, mini: true}]}}]);
+	            //return {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 2, mini: true}]}};
+	            //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
+	            //return {...state, {default: {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 2, mini: true}]}}};
+	            //return Object.assign({}, state)
+	            return Object.assign({}, state, { order: {
+	                    cart_items: state.order.cart_items.map(function (item, index) {
+	                        if (item.item_id === action.item_id) {
+	                            return Object.assign({}, item, {
+	                                quantity: item.quantity + 1
+	                            });
+	                        }
+	                        return item;
+	                    })
+	                } });
+	        case actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY:
+	            alert("CartState " + action.item_id);
+	            //alert("add cart item " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //get the item, increase the quantity replace it the cart item
+	            /*return array.map( (item, index) => {
+	                if(index !== action.index) {
+	                    // This isn't the item we care about - keep it as-is
+	                    return item;
+	                }
+	                       // Otherwise, this is the one we want - return an updated value
+	                return {
+	                    ...item,
+	                    ...action.item
+	                };
+	            });*/
+	            //return Object.assign({})
+	            //return Object.assign({}, [{order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 2, mini: true}]}}]);
+	            //return {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 2, mini: true}]}};
+	            //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
+	            //return {...state, {default: {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 2, mini: true}]}}};
+	            //return Object.assign({}, state)
+	            /*return Object.assign({}, state, {order: {
+	              cart_items: state.order.cart_items.map((item: any, index: any) => {
+	                if (item.item_id === action.item_id) {
+	                  return Object.assign({}, item, {
+	                    quantity: item.quantity + 1
+	                  })
+	                }
+	                return item
+	              })
+	            }})*/
+	            return Object.assign({}, state, { order: {
+	                    cart_items: state.order.cart_items.map(function (item, index) {
+	                        if (item.item_id === action.item_id) {
+	                            return Object.assign({}, item, {
+	                                quantity: item.quantity - 1
+	                            });
+	                        }
+	                        return item;
+	                    })
+	                } });
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
+	}
+	exports.default = cart_items;
 	;
 
 /***/ })

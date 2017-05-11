@@ -218,12 +218,20 @@ class Contact extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-inline">
-                <div className={this.state.contact_email_classname}>
-                  <input type="text" onChange={(e: any) => this.props.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="email@email.com"/>
+              <form className="form-horizontal">
+                <div className="form-group">
+                
+                  <div className="col-md-3">
+                     <div className={this.state.contact_email_classname}>
+                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="email@email.com" style={{borderRadius: 0}}/>
+                      </div>
+                  </div>
+                  <div className="col-md-3">
+                  
+                      <div className={this.state.contact_mobile_classname}>
+                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111"/>
+                      </div>
                 </div>
-                <div className={this.state.contact_mobile_classname}>
-                  <input type="text" onChange={(e: any) => this.props.setContactPhone(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111"/>
                 </div>
               </form> 
             </div>

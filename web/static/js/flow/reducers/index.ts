@@ -6,7 +6,7 @@ import root from './root.ts';
 import OrderDeliveryAddress from './order_delivery_Address.ts';
 import user from './user.ts';
 import user_delivery_addresses from './user_delivery_addresses.ts';
-import cart_items from './cart_items';
+import cart_items from './cart_items.ts';
 //import OrderContact from './order_contact';
 
 export default combineReducers({
@@ -14,5 +14,6 @@ export default combineReducers({
   root,
   user,
   user_delivery_addresses,
+  cart_items,
   routing: routerReducer
 })

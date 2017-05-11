@@ -1,6 +1,6 @@
 import {ADD_CART_ITEM, REMOVE_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY} from '../constants/actionTypes.ts';
 
-export function addCartItem(item_id: any) {
+export function addCartItem(item_id: any, dozens: any, quantity_multipler: any) {
   //alert("addCartItem from redux");
   return {
     type: ADD_CART_ITEM,

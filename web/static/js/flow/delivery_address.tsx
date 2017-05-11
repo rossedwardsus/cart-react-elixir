@@ -232,8 +232,8 @@ class DeliveryAddress extends React.Component<any, any> {
     return ( <div>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-sm-8">
-                        <b>Address-if logged in</b>
+                    <div className="col-sm-12">
+                        <b>Address</b>
                         <br/>
                         {true &&
                           <select className="form-control">

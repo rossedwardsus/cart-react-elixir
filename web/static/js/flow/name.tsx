@@ -210,33 +210,34 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-               <form className="form-horizontal">
+              <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-sm-8">
+                  <div className="col-sm-12">
                       <b>Name</b>
                       <br/>
                   </div>
                 </div>
               </form>
-              <form className="form-inline">
-                <div className="col-md-4">
-                  <div className={this.props.firstNameClassName}>
-                    <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+              <form className="form-horizontal">
+                <div className="form-group">
+                
+                  <div className="col-md-3">
+                    <div className={this.props.firstNameClassName}>
+                      <input type="text" onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                    </div>
                   </div>
-                </div>
-                <div className="col-md-4">
-                  <div className={this.state.last_name_classname}>
-                    <input type="text" onChange={(e: any) => this.props.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                  <div className="col-md-3">
+                    <div className={this.state.last_name_classname}>
+                      <input type="text" onChange={(e: any) => this.props.setLastName(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className={this.props.firstNameClassName}>
+                      <input type="text" onChange={(e: any) => this.props.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                    </div>
                   </div>
                 </div>
               </form>
-              <form className="form-inline">
-                <div className="col-md-4">
-                  <div className={this.props.firstNameClassName}>
-                    <input type="text" onChange={(e: any) => this.props.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
-                  </div>
-                </div>
-               </form>
             </div>
     )
   }

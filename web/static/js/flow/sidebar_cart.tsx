@@ -5,10 +5,10 @@ import * as React from 'react';
 //import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 import { Link } from 'react-router'
-import { bindActionCreators } from 'redux';
+//import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 //import { getPublicMenu } from './reducers/menu';
 
 const Immutable  = require('immutable');
@@ -209,7 +209,7 @@ class SidebarCart extends React.Component<any, any> {
     console.log("length order" + JSON.stringify(this.props.order));
 
 
-    if(this.props.order.cart_items.length == 0){
+    if(this.props.cart_items.length === 0){
 
         cart = "There are no items in your cart.";
 
@@ -217,7 +217,7 @@ class SidebarCart extends React.Component<any, any> {
 
         console.log("order " + JSON.stringify(this.props.order));
 
-        this.props.order.cart_items.map(function(item: any){
+        this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
 
@@ -237,7 +237,7 @@ class SidebarCart extends React.Component<any, any> {
 
     //alert(total_cost);
 
-        cart = this.props.order.order.cart_items.map(function(item: any, index: any){
+        cart = this.props.cart_items.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
@@ -247,11 +247,10 @@ class SidebarCart extends React.Component<any, any> {
                       if(item.mini == true){
                       
                           return(<div>
-                                    <div className="col-md-1">{item_title}</div>
-                                    <div className="col-md-1">{item.quantity} Dozen</div>
-                                    <div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div>
-                                    <div className="col-md-1"><a>Cost</a></div>
-                                </div>)
+                                      {item.quantity} Dozen
+                                      Mini{item.quantity}
+                                    </div>
+                                 )
 
                       }else{
 
@@ -260,8 +259,7 @@ class SidebarCart extends React.Component<any, any> {
                                     <div className="col-md-1">{item.quantity} Dozen</div>
                                     <div className="col-md-1"></div>
                                     <div className="col-md-1">{item.quantity}</div>
-                                    <div className="col-md-1"><a>Cost</a></div>
-                                  </div>)
+                                </div>)
 
                       }
                   
@@ -307,10 +305,38 @@ class SidebarCart extends React.Component<any, any> {
 }
 
 
+const mapStateToProps = (state: any, ownProps: any) => {
+  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.cart_items));
+  return {
+    //active: ownProps.filter === state.visibilityFilter
 
+    //if(state.default.order.cart_items != undefined){
+        
+        cart_items: state.cart_items
 
+    //}
+  }
+};
 
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //viewmenuthunk
 
+    //addCartItem: (item_id: any, dozens: any, quantity: any) => {
+    //  dispatch(addCartItem(1));
+    //},
+    //increaseCartItemQuantity: () => {
+    //  dispatch(increaseCartItemQuantity(1, 12));
+    //},
+    //decreaseCartItemQuantity: () => {
+    //  dispatch(decreaseCartItemQuantity(1, 12));
+    //}
+  }
+}
 
-//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-export default SidebarCart;
+const SidebarCart1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SidebarCart);
+
+export default SidebarCart1;

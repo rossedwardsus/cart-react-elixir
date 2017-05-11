@@ -888,48 +888,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
                             <br/>
-                            <DateTime setDate={(e: any) => this.setDate(e)} setTime={(e: any) => this.setTime(e)} selectedTime={this.state.selected_time} setSpecificTime={(e: any) => this.setSpecificTime(e)} selectedSpecificTime={this.state.selected_specific_time} />
+                            <DateTime />
                             <br/>
-                            <form className="form-inline">
-                              <div className="form-group">
-                                <div className="col-sm-12">
-                                    <b>Delivery Date and Time</b>
-                                </div>
-                              </div>
-                            </form>
-                            <form className="form-inline">
-                                <div className="col-md-2">
-                                  <DatePicker
-                                    selected={this.state.startDate}
-                                    onChange={() => {}} />
-                                </div>
-                                <div className="col-md-2">
-                                  <select className="form-control" id="exampleInputEmail2" onChange={(e: any) => this.setTime(e)}>
-                                      <option></option>
-                                      <option>9:00 am - 11:00 am</option>
-                                      <option>1:00 pm - 3:00 pm</option>
-                                  </select>
-                                </div>
-                                <div className="col-md-2">
-                                  <label htmlFor="exampleInputEmail2">(free)</label>
-                                </div>
-                              <div className="form-group">
-                                <div className="col-md-4">
-                                    <select className="form-control" onChange={(e: any) => this.setSpecificTime(e)}>
-                                        <option></option>
-                                        <option>9:00</option>
-                                        <option>9:30</option>
-                                        <option>10:00</option>
-                                        <option>10:30</option>
-                                        <option>11:00</option>
-                                        <option>11:30</option>
-                                        <option>12:00</option>
-                                        <option>12:30</option>
-                                    </select>
-                                    <label htmlFor="exampleInputEmail2">($2 extra)</label>
-                                </div>
-                              </div>
-                            </form>
                             <Name />
                             <br/>
                             <DeliveryAddress />
