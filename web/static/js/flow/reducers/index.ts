@@ -12,7 +12,6 @@ import user_payment_methods from './user_payment_methods.ts';
 
 export default combineReducers({
   login,
-  root,
   user,
   user_delivery_addresses,
   cart_items,

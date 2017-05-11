@@ -87,7 +87,7 @@ class PublicMenu extends React.Component<any, any> {
 
       this.setState({selected_item_dozens: e.target.value});
 
-      if(e.target.value == "34"){
+      if(e.target.value == "24_mini"){
 
           this.setState({selected_item_mini: true});
 
@@ -282,7 +282,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1, 12, 1));
+      dispatch(addCartItem(item_id, dozens, quantity));
     },
     //increaseCartItemQuantity: () => {
     //  dispatch(increaseCartItemQuantity(1));

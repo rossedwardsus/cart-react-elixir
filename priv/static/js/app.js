@@ -27043,47 +27043,8 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	//export function login() {
-	/*axios.post('http://localhost:4000/graphql', {
-	             query: 'query {login (email: \"' + this.state.email + '\", password: \"' + this.state.password + '\") {session_id, first_name, last_name}}'
-	})
-	.then( response => {
-	
-	    //alert(JSON.stringify(response));
-	    //go to code/payment screen
-	//        this.props.loadView();
-	    //this.props.setSubscription();
-	
-	    //addtosubscribedblocklist
-	
-	    //setsubscriptiontype == 1 block
-	    //setsubscriptionpaid == true
-	    //setsusbcriptindatetime
-	
-	
-	    //store in cookie
-	
-	    //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	    //setCookie("sconely_session_id", 1, 1)
-	    //setCookie("sconely_first_name", 1, 1)
-	    //setCookie("sconely_last_name", 1, 1)
-	
-	
-	})
-	.catch( error => {
-	
-	    alert("error");
-	    //go to code/payment screen
-	//        this.props.loadView();
-	
-	//if (!error.status) {
-	// network error
-	//}
-	
-	})*/
-	//}
 	function setEmail(value) {
-	    //alert("addCartItem from redux");
+	    console.log("setemail action");
 	    return {
 	        type: actionTypes_ts_1.SET_EMAIL,
 	        value: value
@@ -27097,8 +27058,8 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.checkLoggedIn = checkLoggedIn;
-	function login(email) {
-	    //alert("addCartItem from redux");
+	function login(email, password) {
+	    console.log("login action");
 	    return {
 	        type: actionTypes_ts_1.LOGIN
 	    };
@@ -27191,7 +27152,7 @@ webpackJsonp([0],[
 	        _this.selectedItemDozens = function (e) {
 	            //alert(e.target.value);
 	            _this.setState({ selected_item_dozens: e.target.value });
-	            if (e.target.value == "34") {
+	            if (e.target.value == "24_mini") {
 	                _this.setState({ selected_item_mini: true });
 	            }
 	        };
@@ -27331,7 +27292,7 @@ webpackJsonp([0],[
 	    return {
 	        //viewmenuthunk
 	        addCartItem: function addCartItem(item_id, dozens, quantity) {
-	            dispatch(cart_items_ts_1.addCartItem(1, 12, 1));
+	            dispatch(cart_items_ts_1.addCartItem(item_id, dozens, quantity));
 	        }
 	    };
 	};
@@ -27540,14 +27501,14 @@ webpackJsonp([0],[
 	                    //let item_title = result.get("title");
 	                    var item_title = "";
 	                    if (item.mini == true) {
-	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-6" }, item.quantity, " Dozen"), "Mini", item.quantity));
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-6" }, item.quantity, " Dozen"), "Mini", item.quantity));
 	                    } else {
 	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity));
 	                    }
 	                }.bind(this));
 	            }
 	            //{this.props.params.repoName}
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-5" }, "1 Dozen"), React.createElement("div", { className: "col-xs-5" }, "x 2"))), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Total Items"), item_count, " Scones"), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Sub Total"), " $", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "show checkout button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-dont show if on menu page"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout-only show id cart items != 0"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-5" }, "1 Dozen"), React.createElement("div", { className: "col-xs-5" }, "x 2"))), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Total Items"), item_count, " Scones"), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Sub Total"), " $", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "show checkout button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-dont show if on menu page"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout-only show id cart items != 0"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -28175,11 +28136,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var logged_in = null;
-	            if (true) {
-	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
-	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), "-", React.createElement(react_router_1.Link, { to: "/order/signature" }, "Signature"), React.createElement("br", null), React.createElement("div", null, "Your Orders", React.createElement("br", null), React.createElement(user_orders_tsx_1.default, null)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), "-", React.createElement(react_router_1.Link, { to: "/order/signature" }, "Signature"), React.createElement("br", null), React.createElement("div", null, "Your Orders", React.createElement("br", null), React.createElement(user_orders_tsx_1.default, null)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -31351,7 +31308,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Payment Methods"), React.createElement("br", null), this.props.login.user_id === "guest" && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("b", null, "Payment Methods"), React.createElement("br", null), this.props.login.user_id === "guest" && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
@@ -34260,11 +34217,11 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
+	//import SconelyYoursMenu from './sconely_yours_menu';
+	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
+	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var login_ts_1 = __webpack_require__(920);
-	//import * as Autocomplete from "react-google-autocomplete";
-	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1066);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -34312,46 +34269,16 @@ webpackJsonp([0],[
 	            //this.props.getAllProducts();
 	        }
 	    }, {
-	        key: "login",
-	        value: function login() {
-	            //alert(this.state.email);
-	            axios_1.default.post('http://localhost:4000/graphql', {
-	                query: 'query {login (email: \"' + this.state.email + '\", password: \"' + this.state.password + '\") {session_id, first_name, last_name}}'
-	            }).then(function (response) {
-	                //alert(JSON.stringify(response));
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //this.props.setSubscription();
-	                //addtosubscribedblocklist
-	                //setsubscriptiontype == 1 block
-	                //setsubscriptionpaid == true
-	                //setsusbcriptindatetime
-	                //store in cookie
-	                //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	                //setCookie("sconely_session_id", 1, 1)
-	                //setCookie("sconely_first_name", 1, 1)
-	                //setCookie("sconely_last_name", 1, 1)
-	            }).catch(function (error) {
-	                alert("error");
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //if (!error.status) {
-	                // network error
-	                //}
-	            });
-	            //error
-	            //}
-	            //this.context.router.push('/order/12345/signature');
-	        }
-	    }, {
 	        key: "setEmail",
 	        value: function setEmail(e) {
+	            //if email includes @ and .
 	            this.setState({ email: e.target.value });
-	            this.props.setEmail(e);
+	            //this.props.setEmail(e);
 	        }
 	    }, {
 	        key: "setPassword",
 	        value: function setPassword(e) {
+	            //capitals and numbers? 10 characters
 	            this.setState({ password: e.target.value });
 	            //this.props.passwprd
 	        }
@@ -34362,17 +34289,22 @@ webpackJsonp([0],[
 	            //this.props.password_again
 	        }
 	    }, {
+	        key: "login",
+	        value: function login() {
+	            this.props.login("1", "2");
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), "Login/register-hello", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), "Login/register-hello", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
 	                    return _this2.setEmail(e);
 	                } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
 	                    return _this2.setPassword(e);
 	                } }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
 	                    return _this2.login();
-	                } }, "Login")))))));
+	                } }, "Login"))))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -34396,7 +34328,10 @@ webpackJsonp([0],[
 	    return {
 	        //loginthunk
 	        setEmail: function setEmail(e) {
-	            dispatch(login_ts_1.setEmail(1));
+	            dispatch(login_ts_1.setEmail(e.target.value));
+	        },
+	        login: function login(email, password) {
+	            dispatch(login_ts_1.login(email, password));
 	        }
 	    };
 	};
@@ -36201,15 +36136,13 @@ webpackJsonp([0],[
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
 	var login_ts_1 = __webpack_require__(1102);
-	var root_ts_1 = __webpack_require__(1103);
-	var user_ts_1 = __webpack_require__(1104);
-	var user_delivery_addresses_ts_1 = __webpack_require__(1105);
-	var cart_items_ts_1 = __webpack_require__(1106);
-	var user_payment_methods_ts_1 = __webpack_require__(1107);
+	var user_ts_1 = __webpack_require__(1103);
+	var user_delivery_addresses_ts_1 = __webpack_require__(1104);
+	var cart_items_ts_1 = __webpack_require__(1105);
+	var user_payment_methods_ts_1 = __webpack_require__(1106);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
-	    root: root_ts_1.default,
 	    user: user_ts_1.default,
 	    user_delivery_addresses: user_delivery_addresses_ts_1.default,
 	    cart_items: cart_items_ts_1.default,
@@ -36246,26 +36179,11 @@ webpackJsonp([0],[
 	            //alert("CartState " + action.item_id);
 	            return Object.assign({}, { user_id: "guest" });
 	        case actionTypes_ts_1.SET_EMAIL:
-	            console.log("CartState " + action.value);
-	        //alert("add cart item " + JSON.stringify(state));
-	        //alert("view public menu reducer" + JSON.stringify(action));
-	        //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	        //return "hello";
-	        //alertObject.assign({}, state);
-	        //alert(state);
-	        //return Object.assign({}, ...state);
-	        //return Object.assign({}, ...state, action.menu_items)
-	        //return Object.assign({}, {menu_items: action.menu_items});
-	        //let cart_items_temp = state.cart_items;
-	        //cart_items_temp.push({item_id: 2, title: "another item"});
-	        //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	        //let new_state = {cart_items: cart_items_temp};
-	        //return Object.assign({}, state, new_state);
-	        //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
-	        //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
-	        //return []
+	            console.log("setemail reducer" + action.value);
+	            //alert("add cart item " + JSON.stringify(state));
+	            return [];
 	        case actionTypes_ts_1.SET_PASSWORD:
-	            alert("CartState " + action.value);
+	            alert("set password reducer" + action.value);
 	        //alert("add cart item " + JSON.stringify(state));
 	        //alert("view public menu reducer" + JSON.stringify(action));
 	        //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -36283,7 +36201,7 @@ webpackJsonp([0],[
 	        //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
 	        //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
 	        case actionTypes_ts_1.SET_PASSWORD_AGAIN:
-	            alert("CartState " + action.item_id);
+	            alert("CartState set password again " + action.value);
 	        //alert("add cart item " + JSON.stringify(state));
 	        //alert("view public menu reducer" + JSON.stringify(action));
 	        //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -36301,23 +36219,9 @@ webpackJsonp([0],[
 	        //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
 	        //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
 	        case actionTypes_ts_1.LOGIN:
-	            alert("CartState " + action.item_id);
-	        //alert("add cart item " + JSON.stringify(state));
-	        //alert("view public menu reducer" + JSON.stringify(action));
-	        //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	        //return "hello";
-	        //alertObject.assign({}, state);
-	        //alert(state);
-	        //return Object.assign({}, ...state);
-	        //return Object.assign({}, ...state, action.menu_items)
-	        //return Object.assign({}, {menu_items: action.menu_items});
-	        //let cart_items_temp = state.cart_items;
-	        //cart_items_temp.push({item_id: 2, title: "another item"});
-	        //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	        //let new_state = {cart_items: cart_items_temp};
-	        //return Object.assign({}, state, new_state);
-	        //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
-	        //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
+	            console.log("login reducer" + action.value);
+	            //alert("add cart item " + JSON.stringify(state));
+	            return { user_id: 1 };
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {logged_in: true, cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -36330,424 +36234,6 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	var immutable_1 = __webpack_require__(922);
-	/*let menu_items: any;
-	
-	interface CartState {
-	  user_type: string;
-	  address: string;
-	  payment_method: string;
-	  menu_items: any;
-	  cart: any;
-	};
-	
-	interface Name {
-	  
-	  first_name: string;
-	  last_name: string;
-	
-	}
-	
-	let inititalState: CartState = {
-	
-	  name: {},
-	  delivery_address: "",
-	  payment_method: "",
-	  contact: "",
-	  menu_items: [],
-	  cart_items: [],
-	
-	}*/
-	//gustOrderState
-	var initialState = { order: { delivery_address: { street1: "", street2: "", city: "", state: "", zipcode: "" }, name: { first: "", last: "" }, datetime: { date: "", time: "", specific_time: "" }, contact: { email: "", phone: "" }, payment_method: { name_on_card: "", card_number: "", expiry_date: "", security_code: "" } } };
-	var userState = { session_id: "", name: "", orders: [], delivery_address: [], payment_methods: [] };
-	var initialStateTest = immutable_1.Map({ counter: 0 });
-	//state.set('counter', state.get('counter') + 1);
-	function root() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	    var action = arguments[1];
-	
-	    var delivery_address_updated = null;
-	    switch (action.type) {
-	        /*case ADD_CART_ITEM:
-	          //alert("CartState " + action.item_id);
-	          console.log("add cart item" + JSON.stringify(state.order));
-	               //alert("view public menu reducer" + JSON.stringify(action));
-	          //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	          //return "hello";
-	          //alertObject.assign({}, state);
-	          //alert(state);
-	          //return Object.assign({}, ...state);
-	               //return Object.assign({}, ...state, action.menu_items)
-	          //return Object.assign({}, {menu_items: action.menu_items});
-	               //let cart_items_temp = state.cart_items;
-	          //cart_items_temp.push({item_id: 2, title: "another item"});
-	               //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	               //let new_state = {cart_items: cart_items_temp};
-	               //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
-	               //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	          //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	        
-	          //if(state.order === undefined){
-	                   console.log("cart items");
-	                   return {order: {cart_items: [{item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
-	               //}else{
-	                 //  alert("else");
-	                   //return Object.assign({}, state, {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]}}});
-	              //return {order: {cart_items: [...state.order.cart_items, {item_id: action.item_id, title: "another item", dozens: 1, quantity: 1, mini: true}]}};
-	          //}*/
-	        case actionTypes_ts_1.SET_FIRST_NAME:
-	            //state.set('counter', state.get('counter') + 1);
-	            //alert("CartState " + action.item_id);
-	            console.log("set first name" + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //if(state.name == undefined){
-	            return Object.assign({}, state, { order: { name: { first: action.value, last: state.order.name.last }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        //}else{
-	        //    return Object.assign({}, state, {name: {first_name: action.value, last_name: state.name.last_name}});
-	        //}
-	        //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	        //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	        case actionTypes_ts_1.SET_LAST_NAME:
-	            //alert("CartState " + action.item_id);
-	            console.log("set last name" + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, {name: {first_name: action.value, last_name: "state.default.name.last_name"}});
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: { first: state.order.name.first, last: action.value }, datetime: state.order.datetime, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1:
-	            //alert("CartState " + action.item_id);
-	            console.log("root reducer/delivery address street1 " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            //delivery_address_updated = {delivery_address_street1: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { order: { name: state.order.name, delivery_address: { street1: action.value, street2: state.order.delivery_address.street2, city: state.order.delivery_address.city, state: state.order.delivery_address.state, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET2:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: action.value, city: state.order.delivery_address.city, state: state.order.delivery_address.state, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: state.order.delivery_address.street2, city: action.value, state: state.order.delivery_address.state, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STATE:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: state.order.delivery_address.street2, city: state.order.delivery_address.city, state: action.value, zipcode: state.order.delivery_address.zipcode }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_ZIPCODE:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, delivery_address: { street1: state.order.delivery_address.street1, street2: state.order.delivery_address.street2, city: state.order.delivery_address.city, state: state.order.delivery_address.state, zipcode: action.value }, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_DATE:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: action.value, time: state.order.datetime.time }, delivery_address: state.order.delivery_address, contact: state.order.contact, cart_items: state.order.cart_items, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_TIME:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: action.value, specific_time: "" }, delivery_address: state.order.delivery_address, contact: state.order.contact, cart_items: state.order.cart_items, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_SPECIFIC_TIME:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: { date: state.order.datetime.date, time: "", specific_time: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, contact: state.order.contact, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_CONTACT_EMAIL:
-	            //alert("CartState " + action.item_id);
-	            console.log("root reducer/contact email " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: { email: action.value, phone: state.order.contact.email }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: state.order.payment_method } });
-	        case actionTypes_ts_1.SET_CONTACT_PHONE:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: { email: state.order.contact.email, phone: action.value }, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: state.order.payent_method } });
-	        case actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: action.value, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
-	        case actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: action.value, expiry_date: state.order.payment_method.expiry_date, security_code: state.order.payment_method.security_code } } });
-	        case actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: action.value, security_code: state.order.payment_method.security_code } } });
-	        case actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
-	        case actionTypes_ts_1.LOGIN:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
-	        case actionTypes_ts_1.GET_USER_DETAILS:
-	            //alert("CartState " + action.item_id);
-	            alert("reducer get user details" + JSON.stringify(state));
-	            return Object.assign({}, state, { order: { name: state.order.name, datetime: state.order.datetime, contact: state.order.contact, delivery_address: state.order.delivery_address, cart_items: state.order.cart_items, payment_method: { name_on_card: state.order.payment_method.name_on_card, card_number: state.order.payment_method.card_number, expiry_date: state.order.payment_method.expiry_date, security_code: action.value } } });
-	        default:
-	            //alert();
-	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            return state;
-	    }
-	}
-	exports.default = root;
-	;
-
-/***/ }),
-/* 1104 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -36831,7 +36317,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1105 */
+/* 1104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36917,7 +36403,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1106 */
+/* 1105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37057,7 +36543,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1107 */
+/* 1106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

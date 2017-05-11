@@ -30,34 +30,13 @@ export default function login(state:any = {user_id: "guest"}, action: any){
 
 
     case SET_EMAIL:
-      console.log("CartState " + action.value);
+      console.log("setemail reducer" + action.value);
       //alert("add cart item " + JSON.stringify(state));
-
-      //alert("view public menu reducer" + JSON.stringify(action));
-      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return "hello";
-      //alertObject.assign({}, state);
-      //alert(state);
-      //return Object.assign({}, ...state);
-
-      //return Object.assign({}, ...state, action.menu_items)
-      //return Object.assign({}, {menu_items: action.menu_items});
-
-      //let cart_items_temp = state.cart_items;
-      //cart_items_temp.push({item_id: 2, title: "another item"});
-
-      //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-
-      //let new_state = {cart_items: cart_items_temp};
-
-      //return Object.assign({}, state, new_state);
-      //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
-      //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
     
-      //return []
+      return []
 
     case SET_PASSWORD:
-      alert("CartState " + action.value);
+      alert("set password reducer" + action.value);
       //alert("add cart item " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
@@ -83,7 +62,7 @@ export default function login(state:any = {user_id: "guest"}, action: any){
     
 
     case SET_PASSWORD_AGAIN:
-      alert("CartState " + action.item_id);
+      alert("CartState set password again " + action.value);
       //alert("add cart item " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
@@ -109,29 +88,11 @@ export default function login(state:any = {user_id: "guest"}, action: any){
     
     
     case LOGIN:
-      alert("CartState " + action.item_id);
+      console.log("login reducer" + action.value);
       //alert("add cart item " + JSON.stringify(state));
 
-      //alert("view public menu reducer" + JSON.stringify(action));
-      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return "hello";
-      //alertObject.assign({}, state);
-      //alert(state);
-      //return Object.assign({}, ...state);
+      return {user_id: 1};
 
-      //return Object.assign({}, ...state, action.menu_items)
-      //return Object.assign({}, {menu_items: action.menu_items});
-
-      //let cart_items_temp = state.cart_items;
-      //cart_items_temp.push({item_id: 2, title: "another item"});
-
-      //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-
-      //let new_state = {cart_items: cart_items_temp};
-
-      //return Object.assign({}, state, new_state);
-      //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
-      //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
     default:
       //alert();
       //return Object.assign({}, state, {logged_in: true, cart_items: [{item_id: 1, title: "from reducer view public menu"}]})

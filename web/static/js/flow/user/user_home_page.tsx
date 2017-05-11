@@ -247,26 +247,7 @@ export default class Homepage extends React.Component<any, any> {
 
   render(){
 
-    let logged_in = null;
     
-    if("logged_in_true" == "logged_in_true"){
-        
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </div>
-    }
-
     return (
               <div>
                     <nav className="navbar navbar-default navbar-fixed-top">
@@ -280,9 +261,20 @@ export default class Homepage extends React.Component<any, any> {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-      
-                              {logged_in}
-                             
+                              <div id="navbar" className="navbar-collapse collapse navbar-right">
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive">Profile<span className="sr-only">(current)</span></li>
+                                </ul>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                                </ul>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                                </ul>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                                </ul>
+                              </div>
                           </div>
                     </nav>
                     <div className="row">

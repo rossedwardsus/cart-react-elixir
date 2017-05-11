@@ -246,7 +246,7 @@ class SidebarCart extends React.Component<any, any> {
 
                       if(item.mini == true){
                       
-                          return(<form className="form-horizontal" style={{border: 1}}>
+                          return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-xs-6">{item.quantity} Dozen</div>
                                         Mini{item.quantity}
@@ -276,7 +276,9 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
+                  <div style={{border: 1, position: "static"}}>
                   {cart}
+                  </div>
                   <br/>
                     <form className="form-horizontal" style={{border: 1}}>
                       <div className="form-group" style={{border: 1}}>
