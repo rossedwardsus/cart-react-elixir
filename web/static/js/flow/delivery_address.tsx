@@ -235,7 +235,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="col-sm-12">
                         <b>Address</b>
                         <br/>
-                        {true &&
+                        {this.props.login.user_id === "guest1" &&
                           <select className="form-control">
                               <option>Home</option>
                               <option>Office</option>
@@ -290,6 +290,8 @@ class DeliveryAddress extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery address component/state" + JSON.stringify(state));
   return {
+   login: state.login,
+   user_delivery_addresses: state.user_delivery_addresses
    //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()

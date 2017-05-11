@@ -246,26 +246,51 @@ class PaymentMethod extends React.Component<any, any> {
 
    
     return ( <div>
-               <form className="form-inline">
-                <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+
+                <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-sm-5">
+                        <b>Payment Methods</b>
+                        <br/>
+                        {this.props.login.user_id === "guest" &&
+                          <select className="form-control">
+                              <option>Home</option>
+                              <option>Office</option>
+                          </select>
+                        }
+                    </div>
                   </div>
                 </form>
-                <form className="form-inline">
+                <form className="form-horizontal">
+                <div className="form-group">
+                    <div className="col-sm-10">
+                    
+                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                  </div>
+                  </div>
+                </form>
+                <form className="form-horizontal">
                   <div className="form-group">
+                    <div className="col-sm-10">
+                    
                     <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)}/>
+                    </div>
                   </div>
+                </form>
+                <form className="form-horizontal">
                   <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Type" onChange={(e) => this.props.setPaymentCardNumber(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
-                  </div>
-                  <div className="form-group">
-                    <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
+                    <div className="col-md-3">
+                  
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
+                    </div>
+                    <div className="col-md-3">
+                  
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
+                    </div>
+                    <div className="col-md-3">
+                  
+                      <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
+                    </div>
                   </div>
                 </form>
             </div>
@@ -284,8 +309,8 @@ class PaymentMethod extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("payment method component/state" + JSON.stringify(state));
   return {
-   //order: state.default.order
-   //menu_items: getPublicMenu
+   login: state.login,
+   user_payment_methods: state.user_payment_methods
    //menu_items: dispatch()
   };
 }

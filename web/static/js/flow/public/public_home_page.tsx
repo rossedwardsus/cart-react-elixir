@@ -274,41 +274,38 @@ class PublicHomePage extends React.Component<any, any> {
 
 
     
-    if(this.props.logged_in){
+    if(this.props.logged_in.user_id != "guest"){
         
         logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
+                      <ul className="nav navbar-header">
                         <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/user">My Sconely<span className="sr-only">(current)</span></Link></li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive">Start Order</li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                      </ul>
+                      <ul className="nav navbar-nav">
+                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">Home</span></li>
                       </ul>
                     </div>
     }else{
 
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Start Order</li>
-                      </ul>
+        logged_in = <div><ul id="navbar" className="nav navbar-nav navbar-left">
+                      <li className="inactive"><Link to="/login">Login</Link></li>
+                      <li className="inactive"><Link to="/register">Signup</Link></li>
+                      <li className="inactive">Start Orde</li>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
                       </ul>
-                    </div>
+                    </ul>
+                    <div id="navbar" className="navbar-form nav navbar-right">
+                              <div className="hidden-xs form-group">
+                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
+                              </div>
+                              
+                    </div></div>
 
     }
 
@@ -325,12 +322,7 @@ class PublicHomePage extends React.Component<any, any> {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                              <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                              </div>
-                              <button type="button" className="hidden-xs btn btn-default" onClick={() => this.guestCode()}>Submit</button>
-                            </div>
+                            
                             
                               {logged_in}
                              
@@ -397,10 +389,10 @@ class PublicHomePage extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  //alert(JSON.stringify(state));
+  console.log("homepage" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
-    //logged_in: state.default.logged_in
+    logged_in: state.login
   }
 }
 

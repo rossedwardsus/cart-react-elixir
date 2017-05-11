@@ -22,15 +22,15 @@ interface CartState {
 
 }*/
 
-export default function login(state:any = {user_id: 1}, action: any){
+export default function login(state:any = {user_id: "guest"}, action: any){
   switch (action.type) {
     case CHECK_LOGGED_IN:
       //alert("CartState " + action.item_id);
-      return Object.assign({}, {...state.default, logged_in: true, order: []})
+      return Object.assign({}, {user_id: "guest"})
 
 
     case SET_EMAIL:
-      alert("CartState " + action.value);
+      console.log("CartState " + action.value);
       //alert("add cart item " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
