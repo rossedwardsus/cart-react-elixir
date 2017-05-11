@@ -27,7 +27,7 @@ class PublicMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4in"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Sun-dried Tomato Goat Cheese Herb", image_id: "MenuSavvy4in"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
+        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4in", hover_image_id: "MenuRubyQ4b"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Sun-dried Tomato Goat Cheese Herb", image_id: "MenuSavvy4in"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
         selected_item_id: "",
         selected_item_dozens: "",
         selected_item_quantity: "",
@@ -121,9 +121,25 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseEnter(item_id: any){
 
-      //console.log("mouse" + item_id);
+      console.log("mouse" + item_id);
 
-      this.setState({["image_src_" + item_id]: "MenuRubyQ4b"});
+      console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+
+      let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
+
+      this.setState({["image_src_" + item_id]: image_id});
+
+  }
+
+  onMouseLeave(item_id: any){
+
+      console.log("mouse" + item_id);
+
+      console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+
+      let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
+
+      this.setState({["image_src_" + item_id]: image_id});
 
   }
 
@@ -195,7 +211,7 @@ class PublicMenu extends React.Component<any, any> {
 
                                 return(<div className="col-md-4" style={{marginTop: 0, marginBottom: 0}}>
                                           <div className="thumbnail" style={{paddingRight: 0, paddingLeft: 0, paddingTop: 0, paddingBottom: 0}}>
-                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={() => this.onMouseEnter(item.item_id)} src={"/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg"} data-target="myModal" alt="..."/>
+                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={() => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg"} data-target="myModal" alt="..."/>
                                               
                                           </div>
                                           <div>

@@ -27197,7 +27197,7 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4in" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Sun-dried Tomato Goat Cheese Herb", image_id: "MenuSavvy4in" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
+	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4in", hover_image_id: "MenuRubyQ4b" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Sun-dried Tomato Goat Cheese Herb", image_id: "MenuSavvy4in" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
 	            selected_item_id: "",
 	            selected_item_dozens: "",
 	            selected_item_quantity: "",
@@ -27254,8 +27254,26 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onMouseEnter",
 	        value: function onMouseEnter(item_id) {
-	            //console.log("mouse" + item_id);
-	            this.setState(_defineProperty({}, "image_src_" + item_id, "MenuRubyQ4b"));
+	            console.log("mouse" + item_id);
+	            console.log(this.state.menu_items.find(function (item) {
+	                return item.item_id === item_id;
+	            }).hover_image_id);
+	            var image_id = this.state.menu_items.find(function (item) {
+	                return item.item_id === item_id;
+	            }).hover_image_id;
+	            this.setState(_defineProperty({}, "image_src_" + item_id, image_id));
+	        }
+	    }, {
+	        key: "onMouseLeave",
+	        value: function onMouseLeave(item_id) {
+	            console.log("mouse" + item_id);
+	            console.log(this.state.menu_items.find(function (item) {
+	                return item.item_id === item_id;
+	            }).hover_image_id);
+	            var image_id = this.state.menu_items.find(function (item) {
+	                return item.item_id === item_id;
+	            }).hover_image_id;
+	            this.setState(_defineProperty({}, "image_src_" + item_id, image_id));
 	        }
 	    }, {
 	        key: "render",
@@ -27276,6 +27294,8 @@ webpackJsonp([0],[
 	                        return _this2.showItem(item.item_id);
 	                    }, onMouseEnter: function onMouseEnter() {
 	                        return _this2.onMouseEnter(item.item_id);
+	                    }, onMouseLeave: function onMouseLeave() {
+	                        return _this2.onMouseLeave(item.item_id);
 	                    }, src: "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg", "data-target": "myModal", alt: "..." })), React.createElement("div", null, React.createElement("b", null, item.title), "/", item.description), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
 	            }.bind(this)), React.createElement("br", null)))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(e) {
 	                    return _this3.selectedItemDozens(e);
@@ -27519,14 +27539,14 @@ webpackJsonp([0],[
 	                    //let item_title = result.get("title");
 	                    var item_title = "";
 	                    if (item.mini == true) {
-	                        return React.createElement("div", null, item.quantity, " Dozen Mini", item.quantity);
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-6" }, item.quantity, " Dozen"), "Mini", item.quantity));
 	                    } else {
 	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity));
 	                    }
 	                }.bind(this));
 	            }
 	            //{this.props.params.repoName}
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Total Items"), item_count, " Scones"), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Sub Total"), " $", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "show checkout button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-dont show if on menu page"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout-only show id cart items != 0"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-5" }, "1 Dozen"), React.createElement("div", { className: "col-xs-5" }, "x 2"))), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Total Items"), item_count, " Scones"), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Sub Total"), " $", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "show checkout button if cart item count is larger then 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-dont show if on menu page"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout-only show id cart items != 0"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"));
 	        }
 	    }], [{
 	        key: "contextTypes",
