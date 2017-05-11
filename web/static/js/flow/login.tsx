@@ -8,7 +8,7 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {setEmail, login} from './actions/login.ts';
+import {setEmail, loginUser} from './actions/login.ts';
 
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");
@@ -179,15 +179,18 @@ class Login extends React.Component<any, any> {
                                 <div>
                                     <br/>
                                     <br/>
-                                    Login/register-hello
+                                    <br/>
+                                    <br/>
+                                    Login
                                     <br/>
                                     <form className="form-horizontal">
                                       <div className="form-group">
+                                        <div className="col-md-6">
                                          <br/>
-                                        <label htmlFor="inputEmail3" className="col-sm-2 control-label"></label>
-                                        <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
+                                          <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
+                                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
                                         <button type="button" className="btn" onClick={() => this.login()}>Login</button> 
+                                        </div>
                                      </div>
                                     </form>
                                 </div>
@@ -228,7 +231,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     },
 
     login: (email: any, password: any) => {
-      dispatch(login(email, password))
+      dispatch(loginUser(email, password))
     },
     
   }

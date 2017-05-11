@@ -27043,6 +27043,24 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	function loginUser(email, password) {
+	    var url = "";
+	    return function (dispatch) {
+	        /*axios.get(url)
+	          .then((response) => dispatch({
+	            type: types.FETCH_WEATHER_SUCCESS,
+	            data: response.data
+	          }).error((response) => dispatch({
+	            type: types.FETCH_WEATHER_FAILURE,
+	            error: response.error
+	          })*/
+	        dispatch({
+	            type: actionTypes_ts_1.LOGIN,
+	            data: "response.data"
+	        });
+	    };
+	}
+	exports.loginUser = loginUser;
 	function setEmail(value) {
 	    console.log("setemail action");
 	    return {
@@ -34298,13 +34316,13 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), "Login/register-hello", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("br", null), React.createElement("label", { htmlFor: "inputEmail3", className: "col-sm-2 control-label" }), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-8" }, React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Login", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
 	                    return _this2.setEmail(e);
 	                } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
 	                    return _this2.setPassword(e);
 	                } }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
 	                    return _this2.login();
-	                } }, "Login"))))))));
+	                } }, "Login")))))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -34331,7 +34349,7 @@ webpackJsonp([0],[
 	            dispatch(login_ts_1.setEmail(e.target.value));
 	        },
 	        login: function login(email, password) {
-	            dispatch(login_ts_1.login(email, password));
+	            dispatch(login_ts_1.loginUser(email, password));
 	        }
 	    };
 	};
@@ -36201,7 +36219,7 @@ webpackJsonp([0],[
 	        //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
 	        //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
 	        case actionTypes_ts_1.SET_PASSWORD_AGAIN:
-	            alert("CartState set password again " + action.value);
+	            alert("CartState set password again " + action.data);
 	        //alert("add cart item " + JSON.stringify(state));
 	        //alert("view public menu reducer" + JSON.stringify(action));
 	        //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -36219,7 +36237,7 @@ webpackJsonp([0],[
 	        //return Object.assign({}, state, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item"}]});
 	        //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
 	        case actionTypes_ts_1.LOGIN:
-	            console.log("login reducer" + action.value);
+	            console.log("login reducer" + action.data);
 	            //alert("add cart item " + JSON.stringify(state));
 	            return { user_id: 1 };
 	        default:

@@ -3,6 +3,24 @@
 import {SET_EMAIL, CHECK_LOGGED_IN, LOGIN} from '../constants/actionTypes.ts';
 
 
+export function loginUser(email: any, password: any) {
+  let url = "";
+  return function (dispatch: any) { 
+    /*axios.get(url)
+      .then((response) => dispatch({
+        type: types.FETCH_WEATHER_SUCCESS,
+        data: response.data
+      }).error((response) => dispatch({
+        type: types.FETCH_WEATHER_FAILURE,
+        error: response.error
+      })*/
+      dispatch({
+        type: LOGIN,
+        data: "response.data"
+      })
+  }
+}
+
 export function setEmail(value: any) {
   console.log("setemail action");
   return {

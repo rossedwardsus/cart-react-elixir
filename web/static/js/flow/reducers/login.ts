@@ -62,7 +62,7 @@ export default function login(state:any = {user_id: "guest"}, action: any){
     
 
     case SET_PASSWORD_AGAIN:
-      alert("CartState set password again " + action.value);
+      alert("CartState set password again " + action.data);
       //alert("add cart item " + JSON.stringify(state));
 
       //alert("view public menu reducer" + JSON.stringify(action));
@@ -88,7 +88,7 @@ export default function login(state:any = {user_id: "guest"}, action: any){
     
     
     case LOGIN:
-      console.log("login reducer" + action.value);
+      console.log("login reducer" + action.data);
       //alert("add cart item " + JSON.stringify(state));
 
       return {user_id: 1};
