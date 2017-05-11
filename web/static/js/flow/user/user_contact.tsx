@@ -4,28 +4,22 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-import {checkLoggedIn} from '../actions/login.ts';
 import {List, Map} from 'immutable';
-//import * as Cookie from 'js-cookie';
-//const cookie: any = require('react-cookie');
+
+import { getUserDeliveryAddresses } from '../actions/user.ts';
+import UserDeliveryAddress from './user_delivery_address.tsx';
 
 
-
-function getCookie(name: string): string {
-        const nameLenPlus = (name.length + 1);
-        return document.cookie
-          .split(';')
-          .map(c => c.trim())
-          .filter(cookie => {
-            return cookie.substring(0, nameLenPlus) === `${name}=`;
-          })
-          .map(cookie => {
-            return decodeURIComponent(cookie.substring(nameLenPlus));
-          })[0] || null;
-}
+//const mapDispatchToProps = dispatch => {
+//  return {
+//    onNavigateTo(dest) {
+//      dispatch(push(dest));
+//    }
+//  };
+//};
 
 //@connect(null, mapDispatchToProps)
-class PublicHomePage extends React.Component<any, any> {
+class UserDeliveryAddresses extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -36,51 +30,33 @@ class PublicHomePage extends React.Component<any, any> {
 
     this.state = {
 
-        image: "/images/gallery/sconely_group_HPb.jpg",
-        guest_code: ""
-        
+        delivery_addresses: "",
     };
 
-    this.createSignatureOrder = this.createSignatureOrder.bind(this);
-    this.guestCode = this.guestCode.bind(this);
+    //this.createOrder = this.createOrder.bind(this);
+    /*this.guestCode = this.guestCode.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
     this.onSwipedRight = this.onSwipedRight.bind(this);
     this.guestCodeChange = this.guestCodeChange.bind(this);
-    this.changeImage = this.changeImage.bind(this);
+    this.changeImage = this.changeImage.bind(this);*/
 
   }
 
   componentDidMount(){
 
-    //dispatch(checkLoggedIn);
-
-    this.props.checkLoggedIn();
-
     //alert("jsx");
-
     //get active items from the database
+    //setInterval(this.changeImage, 10000);
 
-    setInterval(this.changeImage, 10000);
+    //localStorage.get('user');
 
-    //Cookies.set('name', 'value');
-    //alert(Cookies.get('name'));
+    //this.setState({orders: this.props.getUserDeliveryAddresses});
 
-    //function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (1*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
-    //}
+    //this.props.getUserDeliveryAddresses;
 
-    //alert(document.cookie);
-
-    
-
-    //alert(getCookie("mommy_id"));
-
-    //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    const { getUserDeliveryAddresses } = this.props
+    getUserDeliveryAddresses();
 
   }
 
@@ -96,68 +72,9 @@ class PublicHomePage extends React.Component<any, any> {
 
   }
 
-  guestCode() {
+  
 
-    //e.preventDefault();
-
-    //alert(order_type);
-
-    //if(order_type == "sconely_yours"){
-
-          //if user is logged in then 
-        //guest code is right then
-        //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-
-        this.context.router.push('/order/' + this.state.guest_code + '/guest/event');
-
-        //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-
-        //this.props.dispatch(routeActions.push('/foo'));
-
-        
-
-    //}
-
-  }
-
-  guestCodeChange(e: any){
-
-      this.setState({guest_code: e.target.value});
-
-  }
-
-  onSwipedLeft(){
-
-    //alert("left");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  onSwipedRight(){
-
-    //alert("right");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  changeImage(){
-
-    if(this.state.image == "/images/gallery/sconely_group_HPb.jpg"){
-
-        this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
-
-    }else{
-
-        this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
-
-    }
-
-  }
-
-
-  createSignatureOrder(order_type: any) {
+  createOrder(order_type: any) {
 
     if(order_type == "sconely_yours"){
 
@@ -186,11 +103,11 @@ class PublicHomePage extends React.Component<any, any> {
          
     }else if(order_type == "sconely_signature"){
 
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
+        var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.context.router.push('/order/signature');
+        this.context.router.push('/order/12345/signature');
         
          
     }
@@ -271,27 +188,9 @@ class PublicHomePage extends React.Component<any, any> {
   render(){
 
     let logged_in = null;
-
-
     
-    if(this.props.logged_in){
+    if("logged_in_true" == "logged_in_true"){
         
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/user">My Sconely<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Start Order</li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </div>
-    }else{
-
         logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-nav">
                         <li className="inactive">Profile<span className="sr-only">(current)</span></li>
@@ -300,16 +199,12 @@ class PublicHomePage extends React.Component<any, any> {
                         <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Start Order</li>
+                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
                       </ul>
                     </div>
-
     }
 
     return (
@@ -325,13 +220,7 @@ class PublicHomePage extends React.Component<any, any> {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                              <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                              </div>
-                              <button type="button" className="hidden-xs btn btn-default" onClick={() => this.guestCode()}>Submit</button>
-                            </div>
-                            
+      
                               {logged_in}
                              
                           </div>
@@ -345,10 +234,15 @@ class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           Home
                           <br/>
-                          <Link to="/public/menu">Menu/Social</Link>
+                          <Link to="/public/menu">Menu</Link>
                           <br/>
-                          <a onClick={this.createSignatureOrder.bind(this, "sconely_signature")}>Signature</a>
+                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
+                          <Link to="/user/payment_methods">Payment Methods</Link>
+                          <br/>
+                          <Link to="/public/menu">About Me</Link>
+                          <br/>
+                          <Link to="/user/photo">Photo</Link>
                         </div>
                         <div className="col-md-6">
                                   <br/>
@@ -357,29 +251,16 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <div>
-                                    <a href="./">Profile<span className="sr-only">(current)</span></a>
-                                    <Link to="/login_register">Login<span className="sr-only">(current)</span></Link>
-                                    <Link to="/login_register">Signup<span className="sr-only">(current)</span></Link>
-                                    <Link to="/public/menu">Menu</Link>
-                                  </div>
+                                  Delivery Addresses
                                   <br/>
+                                  Home-Edit
                                   <br/>
+                                  Office
                                   <br/>
-                                  <div className="hidden-lg navbar-form">
-                                    <div className="form-group">
-                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
-                                    </div>
-                                    
-                                  </div>
+                                  Add
                                   <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  
-                                
+                                  <UserDeliveryAddress />
+                                 
                         </div>
                         <div className="hidden-xs col-md-2">
                               <br/>
@@ -396,26 +277,33 @@ class PublicHomePage extends React.Component<any, any> {
   }
 }
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  //alert(JSON.stringify(state));
+function mapStateToProps(state: any) {
+  console.log("delivery addresses component/state" + JSON.stringify(state));
   return {
-    //active: ownProps.filter === state.visibilityFilter
-    //logged_in: state.default.logged_in
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    getUserDeliveryAddresses: () => {
+      console.log("e.target.value");
+      dispatch(getUserDeliveryAddresses());
+    },
+    //setContactPhone: (e: any) => {
+    //  console.log(e.target.value);
+      //dispatch(setContactPhone(e.target.value));
+    //},
+   
   }
 }
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    checkLoggedIn: () => {
-      //alert("check");
-      dispatch(checkLoggedIn())
-    }
-  }
-}
-
-const PublicHomePage1 = connect(
+const UserDeliveryAddresses1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PublicHomePage)
+)(UserDeliveryAddresses)
 
-export default PublicHomePage1
+export default UserDeliveryAddresses1;

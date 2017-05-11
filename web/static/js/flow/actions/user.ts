@@ -32,6 +32,7 @@ export function getUserDeliveryAddresses() {
 }
 
 export function setUserDeliveryAddressStreet1(address_id: any, value: any) {
+  //console.log("state" + JSON.stringify(state));
   console.log("set user delivery address street1" + address_id + " " + value);
   return {
     type: SET_USER_DELIVERY_ADDRESS_STREET1,

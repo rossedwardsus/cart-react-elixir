@@ -22,7 +22,7 @@ interface CartState {
 
 }*/
 
-export default function login(state:any = [], action: any){
+export default function login(state:any = {user_id: 1}, action: any){
   switch (action.type) {
     case CHECK_LOGGED_IN:
       //alert("CartState " + action.item_id);

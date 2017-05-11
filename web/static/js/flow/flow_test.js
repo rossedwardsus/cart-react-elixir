@@ -44,7 +44,7 @@ import SconelyYours from "./sconely_yours_social_single_page";
 //import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
 
 //import SconelySocial from "./sconely_social_single_page";*/
-import SconelySignatureGuest from "./sconely_signature_guest/guest.jsx";
+import SconelySignatureGuestEvent from "./sconely_signature_guest/event.tsx";
 
 /*import SconelySocialEventDetails from "./sconely_social_event_details";
 import SconelySignatureGuest from "./sconely_signature_guest/guest";
@@ -55,11 +55,11 @@ import SconelySignature from "./sconely_signature_single_page.tsx";
 /*import OrderPayment from "./sconely_yours_social_order_payment";
 import ProfilePayment from "./user/payment";*/
 
-import * as cart_reducer from './reducers/cart.ts';
-import * as login_reducer from './reducers/login.ts';
-import * as delivery_address_reducer from './reducers/order_delivery_address.ts';
-import * as name_reducer from './reducers/name.ts';
-import * as root_reducer from './reducers/root.ts';
+//import * as cart_reducer from './reducers/cart.ts';
+//import * as login_reducer from './reducers/login.ts';
+//import * as delivery_address_reducer from './reducers/order_delivery_address.ts';
+//import * as name_reducer from './reducers/name.ts';
+//import * as root_reducer from './reducers/root.ts';
 import reducers from './reducers/index.ts';
 
 //type Props = {
@@ -170,10 +170,9 @@ const Root = () => (
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
-        <Route path="/order/:order_id/guest" component={SconelySignatureGuest} />
         <Route path="/order/signature" component={SconelySignature} />
-                
-
+        <Route path="/order/:order_id/guest/event" component={SconelySignatureGuestEvent} />
+                        
       </Route>
     </Router>
   </Provider>

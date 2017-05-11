@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default (state:any = [], action: any) => {
+export default function cart_items(state:any = [], action: any){
   switch (action.type) {
     case ADD_CART_ITEM:
       //alert("CartState " + action.item_id);

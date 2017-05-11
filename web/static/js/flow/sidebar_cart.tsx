@@ -246,11 +246,22 @@ class SidebarCart extends React.Component<any, any> {
 
                       if(item.mini == true){
                       
-                          return(<div><div className="col-md-1">thumbnail</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div></div>)
+                          return(<div>
+                                    <div className="col-md-1">{item_title}</div>
+                                    <div className="col-md-1">{item.quantity} Dozen</div>
+                                    <div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div>
+                                    <div className="col-md-1"><a>Cost</a></div>
+                                </div>)
 
                       }else{
 
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a>Cost</a></div><div className="col-md-1"><a>X</a></div><div><a className="col-md-1">+</a><a className="col-md-1">-</a></div></div>)
+                          return(<div>
+                                    <div className="col-md-1">{item_title}</div>
+                                    <div className="col-md-1">{item.quantity} Dozen</div>
+                                    <div className="col-md-1"></div>
+                                    <div className="col-md-1">{item.quantity}</div>
+                                    <div className="col-md-1"><a>Cost</a></div>
+                                  </div>)
 
                       }
                   
@@ -269,9 +280,10 @@ class SidebarCart extends React.Component<any, any> {
                   {cart}
                   <br/>
                   <br/>
-                  <div className="col-md-1"><b>Total Items</b></div><div className="col-md-1">{item_count} Scones</div>
+                  <div style={{fontSize: "14"}}><b>Total Items</b>{item_count} Scones</div>
                   <br/>
-                  <b>Sub Total</b> ${total_cost}.00
+                  <div style={{fontSize: "14"}}><b>Sub Total</b> ${total_cost}.00</div>
+                  <br/>
                   <br/>
                   <br/>
                   show checkout button if cart item count is larger then 0
