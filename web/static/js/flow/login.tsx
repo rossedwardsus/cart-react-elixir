@@ -175,25 +175,25 @@ class Login extends React.Component<any, any> {
 
             <div className="container-fluid">
                   <div className="row">
+                        <div className="col-md-4">
+                        </div>
                         <div className="col-md-8">
-                                <div>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    Login
-                                    <br/>
-                                    <form className="form-horizontal">
-                                      <div className="form-group">
-                                        <div className="col-md-6">
-                                         <br/>
-                                          <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
-                                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
-                                        <button type="button" className="btn" onClick={() => this.login()}>Login</button> 
-                                        </div>
-                                     </div>
-                                    </form>
-                                </div>
+                              <br/>
+                              <br/>
+                              <br/>
+                              <br/>
+                              Login
+                              <br/>
+                              <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-6">
+                                   <br/>
+                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
+                                  <button type="button" className="btn" onClick={() => this.login()}>Login</button> 
+                                  </div>
+                               </div>
+                              </form>
                         </div>
                      
                 </div>

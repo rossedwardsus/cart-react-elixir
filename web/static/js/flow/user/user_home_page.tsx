@@ -272,7 +272,7 @@ export default class Homepage extends React.Component<any, any> {
                                   <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
                                 </ul>
                                 <ul className="nav navbar-nav">
-                                  <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                                  <li className="inactive"><Link to="/public/menu">Menu-Welcome Ross Edwards</Link><span className="sr-only">(current)</span></li>
                                 </ul>
                               </div>
                           </div>

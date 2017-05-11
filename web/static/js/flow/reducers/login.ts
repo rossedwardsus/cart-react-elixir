@@ -91,7 +91,7 @@ export default function login(state:any = {user_id: "guest"}, action: any){
       console.log("login reducer" + action.data);
       //alert("add cart item " + JSON.stringify(state));
 
-      return {user_id: 1};
+      return {user_id: 1, first_name: "", session_id: "", key: "", logged_in: true};
 
     default:
       //alert();
