@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 export default class App extends React.Component {
   //props: Props;
@@ -24,7 +24,7 @@ export default class App extends React.Component {
         
     };
 
-    window.links = [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}];
+    
 
     this.changeEventName = this.changeEventName.bind(this);
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
@@ -46,6 +46,15 @@ export default class App extends React.Component {
         //this.setState({payment_complete: true});
   
       });*/
+
+  }
+
+  componentDidMount(){
+
+        //this.context.router.push('/order/12345');
+        //browserHistory.push('#/');
+
+        //this.props.history.push('/');
 
   }
 

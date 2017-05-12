@@ -33,7 +33,8 @@ import OrderCart from "./order_cart.jsx";
 import OrderComplete from './order_complete.jsx';
 
 import Login from './login.tsx';
-import Register from './register.jsx';
+import Register from './register.tsx';
+import checkLogin from './checkLogin.tsx';
 
 import User from "./user";
 
@@ -156,7 +157,7 @@ const Root = () => (
                                        // async work to find components
                                       cb(null, User)
                                     }} >
-      <IndexRoute getComponent={(nextState, cb) => {
+        <IndexRoute getComponent={(nextState, cb) => {
                                        // async work to find components
                                       cb(null, PublicHomePage)
                                     }} />
@@ -166,7 +167,9 @@ const Root = () => (
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id/cart" component={OrderCart} />
-        <Route path="/order/checkout" component={Checkout} />
+        <Route component={checkLogin}>
+          <Route path="/order/checkout" component={Checkout} />
+        </Route>
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />

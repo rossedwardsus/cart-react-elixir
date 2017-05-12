@@ -121,9 +121,9 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseEnter(item_id: any){
 
-      console.log("mouse" + item_id);
+      console.log("mouse enter" + item_id);
 
-      console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+      //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 
       let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
 
@@ -133,11 +133,11 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseLeave(item_id: any){
 
-      console.log("mouse" + item_id);
+      console.log("mouse leave" + item_id);
 
-      console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+      //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 
-      let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
+      let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
 
       this.setState({["image_src_" + item_id]: image_id});
 

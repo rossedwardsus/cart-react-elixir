@@ -30,7 +30,8 @@ export default function register(state:any = {user_id: "guest"}, action: any){
       console.log("login reducer" + action.data);
       //alert("add cart item " + JSON.stringify(state));
 
-      return {user_id: 1, first_name: "", session_id: "", key: "", logged_in: true};
+      //return {user_id: 1, first_name: "", session_id: "", key: "", logged_in: true};
+      return {registration: true};
 
     default:
       //alert();

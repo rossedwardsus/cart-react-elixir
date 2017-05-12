@@ -1,7 +1,7 @@
 //get the order total
 
 import {SET_EMAIL, CHECK_LOGGED_IN, LOGIN} from '../constants/actionTypes.ts';
-
+import axios from 'axios';
 
 export function loginUser(email: any, password: any) {
   let url = "";

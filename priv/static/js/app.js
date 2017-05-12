@@ -82,19 +82,23 @@ webpackJsonp([0],[
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _user = __webpack_require__(1096);
+	var _checkLogin = __webpack_require__(1096);
+	
+	var _checkLogin2 = _interopRequireDefault(_checkLogin);
+	
+	var _user = __webpack_require__(1097);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _event = __webpack_require__(1097);
+	var _event = __webpack_require__(1098);
 	
 	var _event2 = _interopRequireDefault(_event);
 	
-	var _sconely_signature_single_page = __webpack_require__(1098);
+	var _sconely_signature_single_page = __webpack_require__(1099);
 	
 	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
 	
-	var _index = __webpack_require__(1102);
+	var _index = __webpack_require__(1103);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -112,6 +116,14 @@ webpackJsonp([0],[
 	import SconelySignatureGuests from "./sconely_signature_guests";
 	import SconelySocialMenu from "./sconely_social_menu";
 	import SconelySignaturePreview from "./sconely_signature_preview";*/
+	
+	
+	//import Order from "./order.jsx";
+	
+	
+	//import autobind from 'autobind-decorator'
+	//import TodoListItem from './TodoListItem'
+	
 	var isReactComponent = function isReactComponent(obj) {
 	  return Boolean(obj && obj.prototype && Boolean(obj.prototype.isReactComponent));
 	};
@@ -132,12 +144,6 @@ webpackJsonp([0],[
 	
 	//import SconelySocial from "./sconely_social_single_page";*/
 	
-	
-	//import Order from "./order.jsx";
-	
-	
-	//import autobind from 'autobind-decorator'
-	//import TodoListItem from './TodoListItem'
 	
 	var component = function component(_component) {
 	  return isReactComponent(_component) ? { component: _component } : { getComponent: function getComponent(loc, cb) {
@@ -231,7 +237,11 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/menu', component: _menu2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/about_us', component: _public_about_us2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/cart', component: _order_cart2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/checkout', component: _order_datetime_contact2.default }),
+	        _react2.default.createElement(
+	          _reactRouter.Route,
+	          { component: _checkLogin2.default },
+	          _react2.default.createElement(_reactRouter.Route, { path: '/order/checkout', component: _order_datetime_contact2.default })
+	        ),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user', component: _user_home_page2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_addresses', component: _user_delivery_addresses2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment_methods', component: _user_payment_methods2.default }),
@@ -27235,10 +27245,8 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onMouseEnter",
 	        value: function onMouseEnter(item_id) {
-	            console.log("mouse" + item_id);
-	            console.log(this.state.menu_items.find(function (item) {
-	                return item.item_id === item_id;
-	            }).hover_image_id);
+	            console.log("mouse enter" + item_id);
+	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 	            var image_id = this.state.menu_items.find(function (item) {
 	                return item.item_id === item_id;
 	            }).hover_image_id;
@@ -27247,13 +27255,11 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onMouseLeave",
 	        value: function onMouseLeave(item_id) {
-	            console.log("mouse" + item_id);
-	            console.log(this.state.menu_items.find(function (item) {
-	                return item.item_id === item_id;
-	            }).hover_image_id);
+	            console.log("mouse leave" + item_id);
+	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 	            var image_id = this.state.menu_items.find(function (item) {
 	                return item.item_id === item_id;
-	            }).hover_image_id;
+	            }).image_id;
 	            this.setState(_defineProperty({}, "image_src_" + item_id, image_id));
 	        }
 	    }, {
@@ -34358,31 +34364,7 @@ webpackJsonp([0],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(153);
-	
-	var React = _interopRequireWildcard(_react);
-	
-	var _reactRouter = __webpack_require__(546);
-	
-	var _redux = __webpack_require__(197);
-	
-	var _reactRedux = __webpack_require__(190);
-	
-	var _register = __webpack_require__(1095);
-	
-	var _axios = __webpack_require__(1066);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -34390,21 +34372,22 @@ webpackJsonp([0],[
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	//import SconelyYoursMenu from './sconely_yours_menu';
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
-	
-	
+	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
+	var register_ts_1 = __webpack_require__(1095);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	
+	var axios_1 = __webpack_require__(1066);
 	//declare var module: { Order: any };
-	
 	//interface LoginRegister {
 	//  state: any,
 	//  props: any,
 	//completed: boolean
 	//}
-	
 	//function setCookie(cname, cvalue, exdays) {
 	//   var d = new Date();
 	//   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -34412,312 +34395,156 @@ webpackJsonp([0],[
 	//   document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
 	//}
 	
-	/*function addTodoWithDispatch() {
-	  const action = {
-	    type: "VIEW_PUBLIC_MENU",
-	    //text
-	  }
-	  //dispatch(action)
-	}*/
-	
 	var Register = function (_React$Component) {
-	  _inherits(Register, _React$Component);
+	    _inherits(Register, _React$Component);
 	
-	  //props: Props;
+	    //props: Props;
+	    function Register(props) {
+	        _classCallCheck(this, Register);
 	
-	  function Register(props) {
-	    _classCallCheck(this, Register);
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
 	
-	    //this.getData();
-	
-	    //alert("sconely yours1" + this.props.params.order_id);
-	
-	    var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
-	
-	    _this.state = {
-	
-	      //menu_items: this.props.menu_items,
-	      //here: ""
-	      name: "",
-	      email: "",
-	      mobile: "",
-	      password: "",
-	      password_again: ""
-	
-	    };
-	
-	    //user_type=guest
-	    //order_type=yours load 
-	    //state==menu
-	    //yours_menu
-	    //just show cart if guest
-	    //or separate into order_menu and order_delivery_address_payment objects
-	    //or have everything work of a "pages" flag
-	
-	    return _this;
-	  }
-	
-	  _createClass(Register, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	
-	      //this.props;
-	
-	      //alert(JSON.stringify(this.state.menu_items));
-	
-	      //alert("products" + JSON.stringify(this.props.menu_items));
-	      //console.log(this.props.getAllProducts());
-	      //this.setState({here: this.props.getAllProducts()});
-	      //console.log(this.props.dispatch(addTodoWithDispatch));
-	      //this.props.getAllProducts();
-	
+	        _this.state = {
+	            //menu_items: this.props.menu_items,
+	            //here: ""
+	            name: "",
+	            email: "",
+	            mobile: "",
+	            password: "",
+	            password_again: "",
+	            email_border_color: "red"
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
 	    }
-	  }, {
-	    key: 'register',
-	    value: function register() {
 	
-	      _axios2.default.post('http://localhost:4000/graphql', {
-	        query: 'mutation {register (first_name: \"' + this.state.email + '\", email: \"' + this.state.email + '\", mobile: \"' + this.state.mobile + '\", password: \"' + this.state.password + '\") {session_id,}}'
-	      }).then(function (response) {
+	    _createClass(Register, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //this.props;
+	            //alert(JSON.stringify(this.state.menu_items));
+	            //alert("products" + JSON.stringify(this.props.menu_items));
+	            //console.log(this.props.getAllProducts());
+	            //this.setState({here: this.props.getAllProducts()});
+	            //console.log(this.props.dispatch(addTodoWithDispatch));
+	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "register1",
+	        value: function register1() {
+	            axios_1.default.post('http://localhost:4000/graphql', {
+	                query: 'mutation {register (first_name: \"' + this.state.email + '\", email: \"' + this.state.email + '\", mobile: \"' + this.state.mobile + '\", password: \"' + this.state.password + '\") {session_id,}}'
+	            }).then(function (response) {
+	                //alert(JSON.stringify(response));
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //this.props.setSubscription();
+	                //addtosubscribedblocklist
+	                //setsubscriptiontype == 1 block
+	                //setsubscriptionpaid == true
+	                //setsusbcriptindatetime
+	                //store in cookie
+	                //setCookie("sconely_session_id", 1, 1)
+	                //setCookie("sconely_first_name", 1, 1)
+	                //setCookie("sconely_last_name", 1, 1)
+	            }).catch(function (error) {
+	                alert("error");
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	        }
+	    }, {
+	        key: "setName",
+	        value: function setName(e) {
+	            this.setState({ name: e.target.value });
+	        }
+	    }, {
+	        key: "setEmail",
+	        value: function setEmail(e) {
+	            var dot_patt = /[.]/;
+	            var dot_res = dot_patt.test(e.target.value);
+	            var ampersand_patt = /[@]/;
+	            var ampersand_res = ampersand_patt.test(e.target.value);
+	            //if(e.target.value.length > 20){
+	            //less then 20, doesnt include @ and .
+	            console.log(dot_res + "" + ampersand_res);
+	            this.setState({ email: e.target.value });
+	            this.setState({ email_border_color: "grey" });
+	            //}
+	        }
+	    }, {
+	        key: "setMobile",
+	        value: function setMobile(e) {
+	            this.setState({ mobile: e.target.value });
+	        }
+	    }, {
+	        key: "setPassword",
+	        value: function setPassword(e) {
+	            //if less then 20, doesnt equal password again
+	            this.setState({ password: e.target.value });
+	        }
+	    }, {
+	        key: "setPasswordAgain",
+	        value: function setPasswordAgain(e) {
+	            this.setState({ password_again: e.target.value });
+	        }
+	    }, {
+	        key: "register",
+	        value: function register() {
+	            //check email and password
+	            this.props.register(1, 1);
+	            //this.setState({"delivery_address_street1_classname": "form-group"});
+	            //this.props.history.push('/thanks forregistering');
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
 	
-	        //alert(JSON.stringify(response));
-	        //go to code/payment screen
-	        //        this.props.loadView();
-	        //this.props.setSubscription();
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-4" }), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Register", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
+	                    return _this2.setEmail(e);
+	                }, style: { borderColor: this.state.email_border_color } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
+	                    return _this2.setPassword(e);
+	                } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password Again", onChange: function onChange(e) {
+	                    return _this2.setPassword(e);
+	                } }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                    return _this2.register();
+	                } }, "Login"))))))));
+	        }
+	    }]);
 	
-	        //addtosubscribedblocklist
-	
-	        //setsubscriptiontype == 1 block
-	        //setsubscriptionpaid == true
-	        //setsusbcriptindatetime
-	
-	
-	        //store in cookie
-	        //setCookie("sconely_session_id", 1, 1)
-	        //setCookie("sconely_first_name", 1, 1)
-	        //setCookie("sconely_last_name", 1, 1)
-	
-	      }).catch(function (error) {
-	
-	        alert("error");
-	        //go to code/payment screen
-	        //        this.props.loadView();
-	
-	        //if (!error.status) {
-	        // network error
-	        //}
-	      });
-	    }
-	  }, {
-	    key: 'setName',
-	    value: function setName(e) {
-	
-	      this.setState({ name: e.target.value });
-	    }
-	  }, {
-	    key: 'setEmail',
-	    value: function setEmail(e) {
-	
-	      this.setState({ email: e.target.value });
-	    }
-	  }, {
-	    key: 'setMobile',
-	    value: function setMobile(e) {
-	
-	      this.setState({ mobile: e.target.value });
-	    }
-	  }, {
-	    key: 'setPassword',
-	    value: function setPassword(e) {
-	
-	      this.setState({ password: e.target.value });
-	    }
-	  }, {
-	    key: 'setPasswordAgain',
-	    value: function setPasswordAgain(e) {
-	
-	      this.setState({ password_again: e.target.value });
-	    }
-	  }, {
-	    key: 'register',
-	    value: function register() {
-	
-	      this.props.register(1, 1);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-	
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'nav',
-	          { className: 'navbar navbar-default navbar-fixed-top' },
-	          React.createElement(
-	            'div',
-	            { className: 'container-fluid' },
-	            React.createElement(
-	              'div',
-	              { className: 'navbar-header' },
-	              React.createElement(
-	                'button',
-	                { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
-	                React.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  'Toggle navigation'
-	                ),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' }),
-	                React.createElement('span', { className: 'icon-bar' })
-	              ),
-	              React.createElement(
-	                'a',
-	                { className: 'navbar-brand', href: '#' },
-	                React.createElement('img', { height: '100', width: '250', src: '/images/logo/Sconely_color_web_300_space3.jpg' })
-	              )
-	            ),
-	            React.createElement(
-	              'div',
-	              { id: 'navbar', className: 'navbar-collapse collapse navbar-right' },
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  'Profile',
-	                  React.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/login' },
-	                    'Login',
-	                    React.createElement(
-	                      'span',
-	                      { className: 'sr-only' },
-	                      '(current)'
-	                    )
-	                  )
-	                )
-	              ),
-	              React.createElement(
-	                'ul',
-	                { className: 'nav navbar-nav' },
-	                React.createElement(
-	                  'li',
-	                  { className: 'inactive' },
-	                  React.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/public/menu' },
-	                    'Menu'
-	                  ),
-	                  React.createElement(
-	                    'span',
-	                    { className: 'sr-only' },
-	                    '(current)'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'container-fluid' },
-	          React.createElement(
-	            'div',
-	            { className: 'row' },
-	            React.createElement('div', { className: 'col-md-4' }),
-	            React.createElement(
-	              'div',
-	              { className: 'col-md-8' },
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              React.createElement('br', null),
-	              'Register',
-	              React.createElement('br', null),
-	              React.createElement(
-	                'form',
-	                { className: 'form-horizontal' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'form-group' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'col-md-6' },
-	                    React.createElement('br', null),
-	                    React.createElement('input', { type: 'text', className: 'form-control', id: 'email', placeholder: 'Email', onChange: function onChange(e) {
-	                        return _this2.setEmail(e);
-	                      } }),
-	                    React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Password', onChange: function onChange(e) {
-	                        return _this2.setPassword(e);
-	                      } }),
-	                    React.createElement('input', { type: 'text', className: 'form-control', id: 'exampleInputName2', placeholder: 'Password Again', onChange: function onChange(e) {
-	                        return _this2.setPassword(e);
-	                      } }),
-	                    React.createElement(
-	                      'button',
-	                      { type: 'button', className: 'btn', onClick: function onClick() {
-	                          return _this2.register();
-	                        } },
-	                      'Login'
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Register;
+	    return Register;
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	  console.log(JSON.stringify(state));
-	  return {
-	
-	    state: state
-	  };
+	    console.log(JSON.stringify(state));
+	    return {
+	        state: state
+	    };
 	}
-	
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	  return {
-	    //loginthunk
-	
-	
-	    //setEmail: (e: any) => {
-	    //  dispatch(setEmail(e.target.value))
-	    //},
-	
-	    register: function register(email, password) {
-	      dispatch((0, _register.registerUser)(email, password));
-	    }
-	
-	  };
+	    return {
+	        //loginthunk
+	        //setEmail: (e: any) => {
+	        //  dispatch(setEmail(e.target.value))
+	        //},
+	        register: function register(email, password) {
+	            dispatch(register_ts_1.registerUser(email, password));
+	        }
+	    };
 	};
-	
-	var Register1 = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Register);
-	
+	var Register1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Register);
 	exports.default = Register1;
 
 /***/ }),
@@ -34754,7 +34581,7 @@ webpackJsonp([0],[
 	        type: types.FETCH_WEATHER_SUCCESS,
 	        data: response.data
 	      }).error((response) => dispatch({
-	        type: types.FETCH_WEATHER_FAILURE,
+	        type: 'WAITING_FOR_AUTHENTICATION',
 	        error: response.error
 	      })*/
 	    dispatch({
@@ -34767,6 +34594,57 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1096 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	
+	var checkLogin = function (_React$Component) {
+	    _inherits(checkLogin, _React$Component);
+	
+	    //props: Props;
+	    function checkLogin(props) {
+	        _classCallCheck(this, checkLogin);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (checkLogin.__proto__ || Object.getPrototypeOf(checkLogin)).call(this, props));
+	
+	        _this.state = {};
+	        return _this;
+	    }
+	
+	    _createClass(checkLogin, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //this.context.router.push('/order/12345');
+	            //browserHistory.push('#/');
+	            //this.props.history.push('/');
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, this.props.children);
+	        }
+	    }]);
+	
+	    return checkLogin;
+	}(React.Component);
+	
+	exports.default = checkLogin;
+
+/***/ }),
+/* 1097 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34818,8 +34696,6 @@ webpackJsonp([0],[
 	
 	    };
 	
-	    window.links = [{ link: "event_details", text: "Event Details" }, { link: "guests", text: "Guests" }];
-	
 	    _this.changeEventName = _this.changeEventName.bind(_this);
 	    _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
 	    _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
@@ -34841,13 +34717,22 @@ webpackJsonp([0],[
 	    return _this;
 	  }
 	
-	  // Yes, I could use an arrow function, I get it.
-	  //@autobind
-	  //_handleCompleteTodo(id: string): void {
-	  // do something to mark this todo as complete
-	  //}
-	
 	  _createClass(App, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	
+	    //this.context.router.push('/order/12345');
+	    //browserHistory.push('#/');
+	
+	    //this.props.history.push('/');
+	
+	    // Yes, I could use an arrow function, I get it.
+	    //@autobind
+	    //_handleCompleteTodo(id: string): void {
+	    // do something to mark this todo as complete
+	    //}
+	
+	  }, {
 	    key: 'changeEventName',
 	    value: function changeEventName(e) {
 	
@@ -34900,7 +34785,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1097 */
+/* 1098 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34970,7 +34855,7 @@ webpackJsonp([0],[
 	exports.default = Event1;
 
 /***/ }),
-/* 1098 */
+/* 1099 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34985,8 +34870,8 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var sconely_signature_event_details_tsx_1 = __webpack_require__(1099);
-	var sconely_signature_guests_tsx_1 = __webpack_require__(1101);
+	var sconely_signature_event_details_tsx_1 = __webpack_require__(1100);
+	var sconely_signature_guests_tsx_1 = __webpack_require__(1102);
 	var payment_method_tsx_1 = __webpack_require__(1065);
 	var react_router_1 = __webpack_require__(546);
 	//import request from 'superagent';
@@ -35099,7 +34984,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignature;
 
 /***/ }),
-/* 1099 */
+/* 1100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35121,7 +35006,7 @@ webpackJsonp([0],[
 	//import { DateField, Calendar } from 'react-date-picker';
 	//import Autocomplete from 'react-google-autocomplete';
 	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
-	var Dropzone = __webpack_require__(1100);
+	var Dropzone = __webpack_require__(1101);
 	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
 	//import request from 'superagent';
 	//const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -35306,7 +35191,7 @@ webpackJsonp([0],[
 	exports.default = EventDetails;
 
 /***/ }),
-/* 1100 */
+/* 1101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -36188,7 +36073,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 1101 */
+/* 1102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36293,7 +36178,7 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ }),
-/* 1102 */
+/* 1103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36301,12 +36186,12 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var login_ts_1 = __webpack_require__(1103);
-	var register_ts_1 = __webpack_require__(1104);
-	var user_ts_1 = __webpack_require__(1105);
-	var user_delivery_addresses_ts_1 = __webpack_require__(1106);
-	var cart_items_ts_1 = __webpack_require__(1107);
-	var user_payment_methods_ts_1 = __webpack_require__(1108);
+	var login_ts_1 = __webpack_require__(1104);
+	var register_ts_1 = __webpack_require__(1105);
+	var user_ts_1 = __webpack_require__(1106);
+	var user_delivery_addresses_ts_1 = __webpack_require__(1107);
+	var cart_items_ts_1 = __webpack_require__(1108);
+	var user_payment_methods_ts_1 = __webpack_require__(1109);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
@@ -36319,7 +36204,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1103 */
+/* 1104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36401,7 +36286,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1104 */
+/* 1105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36428,7 +36313,8 @@ webpackJsonp([0],[
 	        case actionTypes_ts_1.REGISTER:
 	            console.log("login reducer" + action.data);
 	            //alert("add cart item " + JSON.stringify(state));
-	            return { user_id: 1, first_name: "", session_id: "", key: "", logged_in: true };
+	            //return {user_id: 1, first_name: "", session_id: "", key: "", logged_in: true};
+	            return { registration: "waiting to authenticate" };
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {logged_in: true, cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -36440,7 +36326,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1105 */
+/* 1106 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -36524,7 +36410,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1106 */
+/* 1107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36610,7 +36496,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1107 */
+/* 1108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36750,7 +36636,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1108 */
+/* 1109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

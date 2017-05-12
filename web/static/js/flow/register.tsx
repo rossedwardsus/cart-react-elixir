@@ -60,7 +60,8 @@ class Register extends React.Component<any, any> {
         email: "",
         mobile: "",
         password: "",
-        password_again: ""
+        password_again: "",
+        email_border_color: "red"
 
     };
 
@@ -88,7 +89,7 @@ class Register extends React.Component<any, any> {
 
   }
 
-  register(){
+  register1(){
 
      axios.post('http://localhost:4000/graphql', {
                query: 'mutation {register (first_name: \"' + this.state.email + '\", email: \"' + this.state.email + '\", mobile: \"' + this.state.mobile + '\", password: \"' + this.state.password + '\") {session_id,}}'
@@ -134,7 +135,22 @@ class Register extends React.Component<any, any> {
 
   setEmail(e: any){
 
-      this.setState({email: e.target.value})
+      let dot_patt = /[.]/;
+      var dot_res = dot_patt.test(e.target.value);
+
+      var ampersand_patt = /[@]/;
+      var ampersand_res = ampersand_patt.test(e.target.value);
+
+      //if(e.target.value.length > 20){
+
+          //less then 20, doesnt include @ and .
+          console.log(dot_res + "" + ampersand_res);
+
+          this.setState({email: e.target.value})
+          this.setState({email_border_color: "grey"});
+          //this.setState({email_validated: true});
+
+      //}
 
   }
 
@@ -145,6 +161,8 @@ class Register extends React.Component<any, any> {
   }
 
   setPassword(e: any){
+
+      //if less then 20, doesnt equal password again
 
       this.setState({password: e.target.value})
 
@@ -158,7 +176,15 @@ class Register extends React.Component<any, any> {
 
   register(){
 
+    //check email and password/form validated
+
     this.props.register(1, 1);
+
+    //this.setState({"delivery_address_street1_classname": "form-group"});
+
+    
+    //ifthis.props.registration.registered == true
+    //this.props.history.push('/thanks forregistering check your email');
 
 
   }
@@ -206,9 +232,9 @@ class Register extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-6">
                                    <br/>
-                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e) => this.setPassword(e)}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e: any) => this.setEmail(e)} style={{borderColor: this.state.email_border_color}}/>
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e: any) => this.setPassword(e)}/>
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e: any) => this.setPassword(e)}/>
                                  
                                   <button type="button" className="btn" onClick={() => this.register()}>Login</button> 
                                   </div>

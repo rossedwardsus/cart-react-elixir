@@ -27,7 +27,7 @@ export function registerUser(email: any, password: any) {
         type: types.FETCH_WEATHER_SUCCESS,
         data: response.data
       }).error((response) => dispatch({
-        type: types.FETCH_WEATHER_FAILURE,
+        type: 'WAITING_FOR_AUTHENTICATION',
         error: response.error
       })*/
       dispatch({
