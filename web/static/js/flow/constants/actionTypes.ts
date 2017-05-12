@@ -18,6 +18,7 @@ export const SET_PASSWORD_AGAIN = 'SET_PASSWORD_AGAIN'
 
 export const CHECK_LOGGED_IN = 'CHECK_LOGGED_IN'
 export const LOGIN = 'LOGIN'
+export const REGISTER = 'REGISTER'
 
 export const SET_FIRST_NAME = 'SET_FIRST_NAME'
 export const SET_LAST_NAME = 'SET_LAST_NAME'
