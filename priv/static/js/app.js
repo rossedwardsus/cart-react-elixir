@@ -27188,11 +27188,14 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
+	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "RubyQ", description: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
 	            selected_item_id: "",
 	            selected_item_dozens: "",
 	            selected_item_quantity: "",
-	            selected_item_mini: false
+	            selected_item_mini: false,
+	            selected_item_title: "",
+	            selected_item_description: "",
+	            selected_item_ingredients: ""
 	        };
 	        //this.loadCart = this.loadCart.bind(this);
 	        _this.showItem = _this.showItem.bind(_this);
@@ -27222,6 +27225,13 @@ webpackJsonp([0],[
 	        value: function showItem(item_id) {
 	            //alert(item_id);
 	            this.setState({ selected_item_id: item_id });
+	            this.state.menu_items.map(function (item) {
+	                if (item.item_id === item_id) {
+	                    this.setState({ selected_item_title: item.title });
+	                    this.setState({ selected_item_description: item.description });
+	                    this.setState({ selected_item_ingredients: item.ingrediets });
+	                }
+	            }.bind(this));
 	            $('#myModal').modal('show');
 	        }
 	    }, {
@@ -27284,7 +27294,7 @@ webpackJsonp([0],[
 	                    }, onMouseLeave: function onMouseLeave() {
 	                        return _this2.onMouseLeave(item.item_id);
 	                    }, src: "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("div", { style: { fontSize: 13 } }, React.createElement("b", null, item.title), " / ", item.description), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, "Modal title")), React.createElement("div", { className: "modal-body" }, "Story", React.createElement("br", null), "Ingredients"), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(e) {
+	            }.bind(this)), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), this.state.selected_item_ingredients), React.createElement("div", { className: "modal-footer" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(e) {
 	                    return _this3.selectedItemDozens(e);
 	                } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "12" }, "Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini")), "X", React.createElement("select", { value: this.state.selected_item_quantity, onChange: function onChange(e) {
 	                    return _this3.selectedItemQuantity(e);

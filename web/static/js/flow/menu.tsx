@@ -80,16 +80,18 @@ class PublicMenu extends React.Component<any, any> {
 
       this.setState({selected_item_id: item_id});
 
-      this.state.menu_items.map(function(item){
+      this.state.menu_items.map(function(item: any){
 
           if(item.item_id === item_id){
 
               this.setState({selected_item_title: item.title});
+              this.setState({selected_item_description: item.description});
+              this.setState({selected_item_ingredients: item.ingrediets});
 
           }
 
 
-      }
+      }.bind(this));
 
       $('#myModal').modal('show');
 
@@ -245,9 +247,9 @@ class PublicMenu extends React.Component<any, any> {
                           <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
                         </div>
                         <div className="modal-body">
-                            Story
+                            {this.state.selected_item_description}
                             <br/>
-                            Ingredients
+                            {this.state.selected_item_ingredients}
                         </div>
                         <div className="modal-footer">
                           <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)}>
