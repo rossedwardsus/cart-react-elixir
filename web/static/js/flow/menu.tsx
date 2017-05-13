@@ -185,7 +185,7 @@ class PublicMenu extends React.Component<any, any> {
                           </div>
                   </nav>
                     <div className="row">
-                          <div className="hidden-xs col-md-4">
+                          <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
                             <br/>
@@ -193,7 +193,7 @@ class PublicMenu extends React.Component<any, any> {
                             <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
                             <br/>
                           </div>
-                          <div className="hidden-xs col-md-10">
+                          <div className="hidden-xs col-md-9">
                             <br/>
                             <br/>
                             <br/>
