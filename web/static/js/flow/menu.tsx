@@ -27,11 +27,14 @@ class PublicMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
+        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "RubyQ", description: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
         selected_item_id: "",
         selected_item_dozens: "",
         selected_item_quantity: "",
         selected_item_mini: false,
+        selected_item_title: "",
+        selected_item_description: "",
+        selected_item_ingredients: ""
 
     };
 
@@ -76,6 +79,17 @@ class PublicMenu extends React.Component<any, any> {
       //alert(item_id);
 
       this.setState({selected_item_id: item_id});
+
+      this.state.menu_items.map(function(item){
+
+          if(item.item_id === item_id){
+
+              this.setState({selected_item_title: item.title});
+
+          }
+
+
+      }
 
       $('#myModal').modal('show');
 
@@ -228,7 +242,7 @@ class PublicMenu extends React.Component<any, any> {
                       <div className="modal-content">
                         <div className="modal-header">
                           <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
                         </div>
                         <div className="modal-body">
                             Story
@@ -254,14 +268,14 @@ class PublicMenu extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3">
-                                <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)} style={{borderRadius: 0, WebkitAppearance: "none"}}>
+                                <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 45}}>
                                   <option value=""></option>
                                   <option value="12">1 Dozen</option>
                                   <option value="mini_24">2 Dozen Mini</option>
                                 </select>
                               </div>
                               <div className="col-md-3">
-                                <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)}>
+                                <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 45}}>
                                   <option value=""></option> 
                                   <option value="1">1</option>
                                   <option value="2">2</option>
@@ -270,7 +284,7 @@ class PublicMenu extends React.Component<any, any> {
                                 </select>
                               </div>
                               <div className="col-md-3">
-                                <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => this.addCartItem()}>Add-only show if cart items larger then 1</button>
+                                <img src="/images/add_to_cart.jpg" ddata-dismiss="modal" onClick={() => this.addCartItem()}/>
                               </div>
                             </div>
                           </form>

@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default (state:any = [], action: any) => {
+export default function deliveryAdress(state:any = {street1: "", street2: "", city: "", state: "", zipcode: ""}, action: any){
 
   let delivery_address_updated = null;
 

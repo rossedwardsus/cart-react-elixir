@@ -27126,7 +27126,7 @@ webpackJsonp([0],[
 	exports.SET_LAST_NAME = 'SET_LAST_NAME';
 	exports.SET_COMPANY_NAME = 'SET_COMPANY_NAME';
 	exports.SET_CONTACT_EMAIL = 'SET_CONTACT_EMAIL';
-	exports.SET_CONTACT_PHONE = 'SET_CONTACT_PHONE';
+	exports.SET_CONTACT_MOBILE = 'SET_CONTACT_MOBILE';
 	exports.SET_PAYMENT_NAME_ON_CARD = 'SET_PAYMENT_NAME_ON_CARD';
 	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
 	exports.SET_PAYMENT_EXPIRY_DATE = 'SET_PAYMENT_EXPIRY_DATE';
@@ -27292,11 +27292,11 @@ webpackJsonp([0],[
 	                    return _this3.addCartItem();
 	                } }, "Add-only show if cart items larger then 1"), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { value: this.state.selected_item_dozens, onChange: function onChange(e) {
 	                    return _this3.selectedItemDozens(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none" } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "12" }, "1 Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { value: this.state.selected_item_quantity, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 45 } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "12" }, "1 Dozen"), React.createElement("option", { value: "mini_24" }, "2 Dozen Mini"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { value: this.state.selected_item_quantity, onChange: function onChange(e) {
 	                    return _this3.selectedItemQuantity(e);
-	                } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { type: "button", className: "btn btn-default", "data-dismiss": "modal", onClick: function onClick() {
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 45 } }, React.createElement("option", { value: "" }), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4"))), React.createElement("div", { className: "col-md-3" }, React.createElement("img", { src: "/images/add_to_cart.jpg", "ddata-dismiss": "modal", onClick: function onClick() {
 	                    return _this3.addCartItem();
-	                } }, "Add-only show if cart items larger then 1")))))))));
+	                } })))))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -29695,7 +29695,7 @@ webpackJsonp([0],[
 	                    return _this2.showCart();
 	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(datetime_tsx_1.default, null), React.createElement("br", null), React.createElement(name_tsx_1.default, null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, null), React.createElement("br", null), React.createElement(contact_tsx_1.default, null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement(payment_method_tsx_1.default, null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
-	                } }, "Complete Order"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
+	                } }, "Payment"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -29856,15 +29856,7 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (DeliveryAddress.__proto__ || Object.getPrototypeOf(DeliveryAddress)).call(this, props));
 	
 	        _this.state = {
-	            page: "menu",
-	            //menu_items: this.props.menu_items,
-	            //here: "",
-	            delivery_address: Immutable.Map(),
-	            delivery_address_street: "",
-	            item_count: 0,
-	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	            street: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -29879,114 +29871,41 @@ webpackJsonp([0],[
 	    _createClass(DeliveryAddress, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            //alert();
-	            //window.onhashchange = function() {
-	            //blah blah blah
-	            //alert(this.state.page);
-	            //}.bind(this);
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //var result = [{'id': 'a'}, {'id': 'b'}];
-	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	            //    previous[ current.id ] = current;
-	            //    return previous;
-	            //}, {}));
-	            var demoRecord = Immutable.List.of(Immutable.Record({
-	                property: 'defaultValue',
-	                index: 0,
-	                works: true,
-	                valueList: Immutable.List([])
-	            }));
-	            //alert(demoRecord.getIn(["0"], "index"));
-	            /*let list = demoRecord.update(
-	              demoRecord.findIndex(function(item: any) {
-	                return item.get("index") === "0";
-	              }), function(item: any) {
-	                return item.set("index", 4);
-	              }
-	            );*/
-	            var result = [{ 'id': 2 }, { 'id': 4 }];
-	            var map = Immutable.fromJS(result);
-	            var map_updated = map.set();
-	            var result1 = map.find(function (obj) {
-	                return obj.get('id') === 4;
-	            });
-	            //alert(result1.get("id"));
-	            /*let arr = fromJS(
-	              elem: [
-	                {id: 1, name: "first", count: 2},
-	                {id: 2, name: "second", count: 1},
-	                {id: 3, name: "third", count: 2},
-	                {id: 4, name: "fourth", count: 1}
-	              ]
-	            );
-	                 arr = arr.setIn(['elem', 3, 'count'], 4);
-	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	                 
-	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	              return listItem.get('name') === 'third';
-	            });
-	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	            var cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	            var myNewMap = cart_items_temp.push({ item_id: 5 });
-	            //let hello = cart_items_temp.push({item_id: 5});
-	            //alert(JSON.stringify(myNewMap));
-	            //alert(JSON.stringify(myNewMap.delete("0")));
-	            //hello.findIndex(function(item: any) { 
-	            //    return item.get("item_id") === "1"; 
-	            //})
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	            /*let list = hello.update(
-	              hello.findIndex(function(item: any) {
-	                return item.get("item_id") === "1";
-	              }), function(item: any) {
-	                return item.set("quantity", 44444444444444);
-	              }
-	            );*/
-	            //let list = hello.update(0, function(v: any) {
-	            //    return {quantity: 44444444444};
-	            //});
-	            //alert(JSON.stringify(list.toJS()));
-	            //alert(cart_items_temp_updated);
-	            //get menu items
-	            //this.props;
-	            //alert(JSON.stringify(this.state.menu_items));
-	            //alert("products" + JSON.stringify(this.props.menu_items));
-	            //console.log(this.props.getAllProducts());
-	            //this.setState({here: this.props.getAllProducts()});
-	            //console.log(this.props.dispatch(addTodoWithDispatch));
-	            //this.props.getAllProducts();
+	            this.setState({ street: this.props.delivery_address.street1 });
 	        }
 	    }, {
 	        key: "setDeliveryAddressStreet1",
-	        value: function setDeliveryAddressStreet1() {}
+	        value: function setDeliveryAddressStreet1(e) {
+	            this.setState({ street1: e.target.value });
+	            this.props.setDeliveryAddressStreet1(e);
+	        }
 	    }, {
 	        key: "setDeliveryAddressStreet2",
-	        value: function setDeliveryAddressStreet2() {}
+	        value: function setDeliveryAddressStreet2(e) {}
 	    }, {
 	        key: "setDeliveryAddressCity",
-	        value: function setDeliveryAddressCity() {}
+	        value: function setDeliveryAddressCity(e) {}
 	    }, {
 	        key: "setDeliveryAddressState",
-	        value: function setDeliveryAddressState() {}
+	        value: function setDeliveryAddressState(e) {}
 	    }, {
-	        key: "setDeliveryAddressZipCode",
-	        value: function setDeliveryAddressZipCode() {}
+	        key: "setDeliveryAddressZipcode",
+	        value: function setDeliveryAddressZipcode(e) {}
 	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Address"), React.createElement("br", null), this.props.login.user_id === "guest1" && React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setDeliveryAddressStreet2(e);
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Address"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
+	                    return _this2.setDeliveryAddressStreet1(e);
+	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setDeliveryAddressStreet2(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.props.setDeliveryAddressCity(value);
+	                    return _this2.setDeliveryAddressCity(value);
 	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.props.setDeliveryAddressState(value);
+	                    return _this2.setDeliveryAddressState(value);
 	                } }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.props.setDeliveryAddressZipcode(value);
+	                    return _this2.setDeliveryAddressZipcode(value);
 	                } }, React.createElement("option", null), React.createElement("option", null, "90025")))));
 	        }
 	    }], [{
@@ -30002,9 +29921,9 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("delivery address component/state" + JSON.stringify(state));
+	    console.log("delivery address component/state" + JSON.stringify(state.delivery_address));
 	    return {
-	        login: state.login,
+	        delivery_address: state.delivery_address,
 	        user_delivery_addresses: state.user_delivery_addresses
 	        //order: state.default.order
 	        //menu_items: getPublicMenu
@@ -30089,9 +30008,6 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(922);
 	var order_contact_ts_1 = __webpack_require__(938);
 	function addTodoWithDispatch() {
@@ -30113,15 +30029,8 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
 	
 	        _this.state = {
-	            page: "menu",
-	            //menu_items: this.props.menu_items,
-	            //here: "",
-	            delivery_address: Immutable.Map(),
-	            delivery_address_street: "",
-	            item_count: 0,
-	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	            email: "",
+	            mobile: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -30136,89 +30045,15 @@ webpackJsonp([0],[
 	    _createClass(Contact, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            //alert();
-	            //window.onhashchange = function() {
-	            //blah blah blah
-	            //alert(this.state.page);
-	            //}.bind(this);
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //var result = [{'id': 'a'}, {'id': 'b'}];
-	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	            //    previous[ current.id ] = current;
-	            //    return previous;
-	            //}, {}));
-	            var demoRecord = Immutable.List.of(Immutable.Record({
-	                property: 'defaultValue',
-	                index: 0,
-	                works: true,
-	                valueList: Immutable.List([])
-	            }));
-	            //alert(demoRecord.getIn(["0"], "index"));
-	            /*let list = demoRecord.update(
-	              demoRecord.findIndex(function(item: any) {
-	                return item.get("index") === "0";
-	              }), function(item: any) {
-	                return item.set("index", 4);
-	              }
-	            );*/
-	            var result = [{ 'id': 2 }, { 'id': 4 }];
-	            var map = Immutable.fromJS(result);
-	            var map_updated = map.set();
-	            var result1 = map.find(function (obj) {
-	                return obj.get('id') === 4;
-	            });
-	            //alert(result1.get("id"));
-	            /*let arr = fromJS(
-	              elem: [
-	                {id: 1, name: "first", count: 2},
-	                {id: 2, name: "second", count: 1},
-	                {id: 3, name: "third", count: 2},
-	                {id: 4, name: "fourth", count: 1}
-	              ]
-	            );
-	                 arr = arr.setIn(['elem', 3, 'count'], 4);
-	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	                 
-	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	              return listItem.get('name') === 'third';
-	            });
-	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	            var cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	            var myNewMap = cart_items_temp.push({ item_id: 5 });
-	            //let hello = cart_items_temp.push({item_id: 5});
-	            //alert(JSON.stringify(myNewMap));
-	            //alert(JSON.stringify(myNewMap.delete("0")));
-	            //hello.findIndex(function(item: any) { 
-	            //    return item.get("item_id") === "1"; 
-	            //})
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	            /*let list = hello.update(
-	              hello.findIndex(function(item: any) {
-	                return item.get("item_id") === "1";
-	              }), function(item: any) {
-	                return item.set("quantity", 44444444444444);
-	              }
-	            );*/
-	            //let list = hello.update(0, function(v: any) {
-	            //    return {quantity: 44444444444};
-	            //});
-	            //alert(JSON.stringify(list.toJS()));
-	            //alert(cart_items_temp_updated);
-	            //get menu items
-	            //this.props;
-	            //alert(JSON.stringify(this.state.menu_items));
-	            //alert("products" + JSON.stringify(this.props.menu_items));
-	            //console.log(this.props.getAllProducts());
-	            //this.setState({here: this.props.getAllProducts()});
-	            //console.log(this.props.dispatch(addTodoWithDispatch));
-	            //this.props.getAllProducts();
+	            this.setState({ email: this.props.contact.contact_email });
+	            this.setState({ mobile: this.props.contact.contact_mobile });
 	        }
 	    }, {
 	        key: "setContactEmail",
-	        value: function setContactEmail(e) {}
+	        value: function setContactEmail(e) {
+	            this.setState({ email: e.target.value });
+	            this.props.setContactEmail(e);
+	        }
 	    }, {
 	        key: "setContactMobile",
 	        value: function setContactMobile(e) {}
@@ -30229,7 +30064,7 @@ webpackJsonp([0],[
 	
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setContactEmail(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "email@email.com", style: { borderRadius: 0 } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "email@email.com", value: this.state.email, style: { borderRadius: 0 } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setContactMobile(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "111-111-1111" }))))));
 	        }
@@ -30246,8 +30081,12 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("contact component/state" + JSON.stringify(state));
-	    return {};
+	    console.log("contact component/state" + JSON.stringify(state.contact));
+	    return {
+	        contact: state.contact
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
@@ -30256,9 +30095,9 @@ webpackJsonp([0],[
 	            console.log(e.target.value);
 	            dispatch(order_contact_ts_1.setContactEmail(e.target.value));
 	        },
-	        setContactPhone: function setContactPhone(e) {
+	        setContactMobile: function setContactMobile(e) {
 	            //  console.log(e.target.value);
-	            dispatch(order_contact_ts_1.setContactPhone(e.target.value));
+	            dispatch(order_contact_ts_1.setContactMobile(e.target.value));
 	        }
 	    };
 	}
@@ -30281,14 +30120,14 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setContactEmail = setContactEmail;
-	function setContactPhone(value) {
+	function setContactMobile(value) {
 	    //alert("addCartItem from redux" + value);
 	    return {
-	        type: actionTypes_ts_1.SET_CONTACT_PHONE,
+	        type: actionTypes_ts_1.SET_CONTACT_MOBILE,
 	        value: value
 	    };
 	}
-	exports.setContactPhone = setContactPhone;
+	exports.setContactMobile = setContactMobile;
 
 /***/ }),
 /* 939 */
@@ -30998,15 +30837,8 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
 	
 	        _this.state = {
-	            page: "menu",
-	            //menu_items: this.props.menu_items,
-	            //here: "",
-	            delivery_address: Immutable.Map(),
-	            delivery_address_street: "",
-	            item_count: 0,
-	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
-	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	            first_name: "",
+	            last_name: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -31021,102 +30853,32 @@ webpackJsonp([0],[
 	    _createClass(Name, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            //alert();
-	            //window.onhashchange = function() {
-	            //blah blah blah
-	            //alert(this.state.page);
-	            //}.bind(this);
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //var result = [{'id': 'a'}, {'id': 'b'}];
-	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	            //    previous[ current.id ] = current;
-	            //    return previous;
-	            //}, {}));
-	            var demoRecord = Immutable.List.of(Immutable.Record({
-	                property: 'defaultValue',
-	                index: 0,
-	                works: true,
-	                valueList: Immutable.List([])
-	            }));
-	            //alert(demoRecord.getIn(["0"], "index"));
-	            /*let list = demoRecord.update(
-	              demoRecord.findIndex(function(item: any) {
-	                return item.get("index") === "0";
-	              }), function(item: any) {
-	                return item.set("index", 4);
-	              }
-	            );*/
-	            var result = [{ 'id': 2 }, { 'id': 4 }];
-	            var map = Immutable.fromJS(result);
-	            var map_updated = map.set();
-	            var result1 = map.find(function (obj) {
-	                return obj.get('id') === 4;
-	            });
-	            //alert(result1.get("id"));
-	            /*let arr = fromJS(
-	              elem: [
-	                {id: 1, name: "first", count: 2},
-	                {id: 2, name: "second", count: 1},
-	                {id: 3, name: "third", count: 2},
-	                {id: 4, name: "fourth", count: 1}
-	              ]
-	            );
-	                 arr = arr.setIn(['elem', 3, 'count'], 4);
-	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	                 
-	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	              return listItem.get('name') === 'third';
-	            });
-	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	            var cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	            var myNewMap = cart_items_temp.push({ item_id: 5 });
-	            //let hello = cart_items_temp.push({item_id: 5});
-	            //alert(JSON.stringify(myNewMap));
-	            //alert(JSON.stringify(myNewMap.delete("0")));
-	            //hello.findIndex(function(item: any) { 
-	            //    return item.get("item_id") === "1"; 
-	            //})
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	            /*let list = hello.update(
-	              hello.findIndex(function(item: any) {
-	                return item.get("item_id") === "1";
-	              }), function(item: any) {
-	                return item.set("quantity", 44444444444444);
-	              }
-	            );*/
-	            //let list = hello.update(0, function(v: any) {
-	            //    return {quantity: 44444444444};
-	            //});
-	            //alert(JSON.stringify(list.toJS()));
-	            //alert(cart_items_temp_updated);
-	            //get menu items
-	            //this.props;
-	            //alert(JSON.stringify(this.state.menu_items));
-	            //alert("products" + JSON.stringify(this.props.menu_items));
-	            //console.log(this.props.getAllProducts());
-	            //this.setState({here: this.props.getAllProducts()});
-	            //console.log(this.props.dispatch(addTodoWithDispatch));
-	            //this.props.getAllProducts();
+	            this.setState({ first_name: this.props.name.first_name });
+	            this.setState({ last_name: this.props.name.last_name });
 	        }
 	    }, {
 	        key: "setFirstName",
-	        value: function setFirstName() {}
+	        value: function setFirstName(e) {
+	            //if length > 0
+	            this.setState({ first_name: e.target.value });
+	            this.props.setFirstName(e);
+	        }
 	    }, {
 	        key: "setLastName",
-	        value: function setLastName() {}
+	        value: function setLastName(e) {
+	            this.setState({ last_name: e.target.value });
+	            this.props.setLastName(e);
+	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
 	
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setFirstName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name" }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setLastName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setFirstName(e);
+	                }, value: this.state.first_name, className: "form-control", id: "exampleInputName2", placeholder: "First Name" }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setLastName(e);
+	                }, value: this.state.last_name, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.props.setCompanyName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name" }))))));
 	        }
@@ -31133,14 +30895,18 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("name component/state" + JSON.stringify(state));
-	    return {};
+	    console.log("name component/state" + JSON.stringify(state.name));
+	    return {
+	        name: state.name
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
 	        setFirstName: function setFirstName(e) {
-	            console.log(e.target.value);
+	            console.log("first name" + e.target.value);
 	            dispatch(order_name_ts_1.setFirstName(e.target.value));
 	        },
 	        setLastName: function setLastName(e) {
@@ -36238,7 +36004,10 @@ webpackJsonp([0],[
 	var user_ts_1 = __webpack_require__(1106);
 	var user_delivery_addresses_ts_1 = __webpack_require__(1107);
 	var cart_ts_1 = __webpack_require__(1108);
-	var user_payment_methods_ts_1 = __webpack_require__(1109);
+	var name_ts_1 = __webpack_require__(1109);
+	var contact_ts_1 = __webpack_require__(1110);
+	var order_delivery_address_ts_1 = __webpack_require__(1111);
+	var user_payment_methods_ts_1 = __webpack_require__(1112);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
 	    login: login_ts_1.default,
@@ -36246,6 +36015,9 @@ webpackJsonp([0],[
 	    user: user_ts_1.default,
 	    user_delivery_addresses: user_delivery_addresses_ts_1.default,
 	    cart: cart_ts_1.default,
+	    name: name_ts_1.default,
+	    contact: contact_ts_1.default,
+	    delivery_address: order_delivery_address_ts_1.default,
 	    user_payment_methods: user_payment_methods_ts_1.default,
 	    routing: react_router_redux_1.routerReducer
 	});
@@ -36695,6 +36467,195 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function name() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "first", last_name: "" };
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case actionTypes_ts_1.SET_FIRST_NAME:
+	            //alert("CartState " + action.item_id);
+	            console.log("first name" + JSON.stringify(action.value));
+	            return Object.assign({}, state, { name: { first_name: action.value, last_name: state.last_name } });
+	        //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	        //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	        case actionTypes_ts_1.SET_LAST_NAME:
+	            //alert("CartState " + action.item_id);
+	            console.log("last name" + JSON.stringify(action.value));
+	            return Object.assign({}, state, { name: { first_name: state.first_name, last_name: action.value } });
+	        //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	        //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
+	}
+	exports.default = name;
+	;
+
+/***/ }),
+/* 1110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function contact() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { email: "first", mobile: "" };
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case actionTypes_ts_1.SET_CONTACT_EMAIL:
+	            //alert("CartState " + action.item_id);
+	            console.log("email" + JSON.stringify(action.value));
+	            return Object.assign({}, state, { email: action.value, mobile: state.mobile });
+	        //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	        //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	        case actionTypes_ts_1.SET_CONTACT_MOBILE:
+	            //alert("CartState " + action.item_id);
+	            console.log("mobile" + JSON.stringify(action.value));
+	            return Object.assign({}, state, { email: state.email, mobile: action.value });
+	        //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	        //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
+	}
+	exports.default = contact;
+	;
+
+/***/ }),
+/* 1111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function deliveryAdress() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { street1: "", street2: "", city: "", state: "", zipcode: "" };
+	    var action = arguments[1];
+	
+	    var delivery_address_updated = null;
+	    switch (action.type) {
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET1:
+	            //alert("CartState " + action.item_id);
+	            //console.log("reducer " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            delivery_address_updated = { delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
+	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
+	            return Object.assign({}, state, { delivery_address: delivery_address_updated });
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY:
+	            //alert("CartState " + action.item_id);
+	            //alert("add cart item " + JSON.stringify(state));
+	            //alert("view public menu reducer" + JSON.stringify(action));
+	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return "hello";
+	            //alertObject.assign({}, state);
+	            //alert(state);
+	            //return Object.assign({}, ...state);
+	            //return Object.assign({}, ...state, action.menu_items)
+	            //return Object.assign({}, {menu_items: action.menu_items});
+	            //let cart_items_temp = state.cart_items;
+	            //cart_items_temp.push({item_id: 2, title: "another item"});
+	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	            //let new_state = {cart_items: cart_items_temp};
+	            delivery_address_updated = { delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
+	            //return Object.assign({}, state, new_state);
+	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	            return Object.assign({}, state, { delivery_address: delivery_address_updated });
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
+	}
+	exports.default = deliveryAdress;
+	;
+
+/***/ }),
+/* 1112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

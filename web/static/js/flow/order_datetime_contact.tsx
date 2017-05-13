@@ -909,7 +909,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                               </div>
                             </form>
                             <PaymentMethod />
-                            <button onClick={() => this.completeOrder()}>Complete Order</button>
+                            <button onClick={() => this.completeOrder()}>Payment</button>
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">

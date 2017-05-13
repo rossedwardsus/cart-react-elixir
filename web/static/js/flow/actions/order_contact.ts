@@ -1,4 +1,4 @@
-import {SET_CONTACT_EMAIL, SET_CONTACT_PHONE} from '../constants/actionTypes.ts';
+import {SET_CONTACT_EMAIL, SET_CONTACT_MOBILE} from '../constants/actionTypes.ts';
 
 export function setContactEmail(value: any) {
   console.log("contact email");
@@ -8,10 +8,10 @@ export function setContactEmail(value: any) {
   }
 }
 
-export function setContactPhone(value: any) {
+export function setContactMobile(value: any) {
   //alert("addCartItem from redux" + value);
   return {
-    type: SET_CONTACT_PHONE,
+    type: SET_CONTACT_MOBILE,
     value
   }
 }
