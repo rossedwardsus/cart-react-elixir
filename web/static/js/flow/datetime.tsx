@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+import {setDate, setTime} from './actions/cart.ts';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
@@ -201,7 +201,12 @@ class DateTime extends React.Component<any, any> {
   }
 
   
+  setDate(date: any){
 
+    this.setState({startDate: date});
+    this.props.setDate(date);
+
+  }
   
 
   
@@ -223,17 +228,17 @@ class DateTime extends React.Component<any, any> {
                     <div className="col-md-2">
                       <DatePicker
                         selected={this.state.startDate}
-                        onChange={(e: any) => {this.props.setDate(e)}} />
+                        onChange={(e: any) => {this.setDate(e)}} />
                     </div>
                     <div className="col-md-2">
-                      <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, "-webkit-appearance": "none"}}>
+                      <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
                           <option value="">Free</option>
-                          <option value="900">9:00 am - 11:00 am</option>
-                          <option value="100">1:00 pm - 3:00 pm</option>
+                          <option value="9-11">9:00 am - 11:00 am</option>
+                          <option value="1-3">1:00 pm - 3:00 pm</option>
                       </select>
                     </div>
                     <div className="col-md-2">
-                        <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)}>
+                        <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
                             <option value="">Extra</option>
                             <option value="900">9:00</option>
                             <option value="930">9:30</option>
@@ -256,7 +261,7 @@ class DateTime extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("name component/state" + JSON.stringify(state));
+  console.log("datetime component/state" + JSON.stringify(state));
   return {
    //order: state.default.order
    //menu_items: getPublicMenu
@@ -267,15 +272,15 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    /*setFirstName: (e: any) => {
-      console.log(e.target.value);
-      dispatch(setFirstName(e.target.value));
+    setDate: (e: any) => {
+      console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
+      dispatch(setDate(e));
     },
-    setLastName: (e: any) => {
-      console.log(e.target.value);
-      dispatch(setLastName(e.target.value));
+    setTime: (e: any) => {
+      console.log("settime" + e.target.value);
+      dispatch(setTime(e.target.value));
     },
-    setBusinessName: (e: any) => {
+    /*setBusinessName: (e: any) => {
       console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
     }*/

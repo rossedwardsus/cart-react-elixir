@@ -6,7 +6,7 @@ import { Link, browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
 //import {checklogin} from './action/cart.ts';
-import {addCartItem} from './actions/cart_items.ts';
+import {addCartItem} from './actions/cart.ts';
 import SidebarCart from './sidebar_cart.tsx';
 
 
@@ -121,7 +121,7 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseEnter(item_id: any){
 
-      console.log("mouse enter" + item_id);
+      //console.log("mouse enter" + item_id);
 
       //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 
@@ -133,7 +133,7 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseLeave(item_id: any){
 
-      console.log("mouse leave" + item_id);
+      //console.log("mouse leave" + item_id);
 
       //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 

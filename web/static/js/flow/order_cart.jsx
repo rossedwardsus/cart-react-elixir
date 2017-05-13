@@ -7,7 +7,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart_items.ts';
+import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
 //import { getPublicMenu } from './reducers/menu';
 //import Immutable  = require('immutable');
 

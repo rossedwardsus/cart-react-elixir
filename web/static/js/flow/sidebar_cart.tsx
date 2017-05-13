@@ -8,7 +8,7 @@ import { Link } from 'react-router'
 //import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-import {addCartItem, removeCartItem} from './actions/cart_items.ts';
+//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 //import { getPublicMenu } from './reducers/menu';
 
 const Immutable  = require('immutable');
@@ -206,18 +206,18 @@ class SidebarCart extends React.Component<any, any> {
 
     let cart = "";
 
-    console.log("length order" + JSON.stringify(this.props.order));
+    console.log("length order" + JSON.stringify(this.props.cart.cart_items));
 
 
-    if(this.props.cart_items.length === 0){
+    if(this.props.cart.cart_items.length === 0){
 
         cart = "There are no items in your cart.";
 
     }else{
 
-        console.log("order " + JSON.stringify(this.props.order));
+        console.log("order " + JSON.stringify(this.props.cart.cart_items));
 
-        this.props.cart_items.map(function(item: any){
+        this.props.cart.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
 
@@ -237,7 +237,7 @@ class SidebarCart extends React.Component<any, any> {
 
     //alert(total_cost);
 
-        cart = this.props.cart_items.map(function(item: any, index: any){
+        cart = this.props.cart.cart_items.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
@@ -249,14 +249,13 @@ class SidebarCart extends React.Component<any, any> {
                           return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-xs-6">{item.quantity} Dozen</div>
-                                        Mini{item.quantity}
+                                             Mini{item.quantity}
                                           </div>
                                         </form>)
 
                       }else{
 
                           return(<div>
-                                    <div className="col-md-1">{item_title}</div>
                                     <div className="col-md-1">{item.quantity} Dozen</div>
                                     <div className="col-md-1"></div>
                                     <div className="col-md-1">{item.quantity}</div>
@@ -315,13 +314,13 @@ class SidebarCart extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.cart_items));
+  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        cart_items: state.cart_items
+        cart: state.cart
 
     //}
   }

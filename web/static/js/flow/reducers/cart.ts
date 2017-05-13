@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY } from '../constants/actionTypes.ts';
+import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, SET_DATE, SET_TIME, SET_SPECIFIC_TIME } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,13 +20,16 @@ let inititalState: CartState = {
 
 }*/
 
-export default function cart_items(state:any = [], action: any){
+export default function cart_items(state:any = {cart_items: []}, action: any){
   switch (action.type) {
     case ADD_CART_ITEM:
 
       console.log("add cart item" + JSON.stringify(state));
+
+      let items = state.cart_items;
+      items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
       
-      return [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}];
+      return Object.assign({}, state, {cart_items: items});
     
 
     case INCREASE_CART_ITEM_QUANTITY:
@@ -155,6 +158,25 @@ export default function cart_items(state:any = [], action: any){
           return item
         })
       }})
+
+    case SET_DATE:
+
+      console.log("setdate" + JSON.stringify(state));
+      
+      return Object.assign({}, state, {date: action.value});
+    
+    case SET_TIME:
+
+      console.log("add cart item" + JSON.stringify(state));
+      
+      return Object.assign({}, state, {time: action.value});
+    
+    case SET_SPECIFIC_TIME:
+
+      console.log("add cart item" + JSON.stringify(state));
+      
+      return Object.assign({}, state, {specific_time: action.value});
+    
 
     default:
       //alert();

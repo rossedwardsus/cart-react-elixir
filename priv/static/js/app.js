@@ -27113,6 +27113,9 @@ webpackJsonp([0],[
 	exports.SET_DELIVERY_ADDRESS_STATE = 'SET_DELIVERY_ADDRESS_STATE';
 	exports.SET_DELIVERY_ADDRESS_ZIPCODE = 'SET_DELIVERY_ADDRESS_ZIPCODE';
 	exports.VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU';
+	exports.SET_DATE = 'SET_DATE';
+	exports.SET_TIME = 'SET_TIME';
+	exports.SET_SPECIFIC_TIME = 'SET_SPECIFIC_TIME';
 	exports.SET_EMAIL = 'SET_EMAIL';
 	exports.SET_PASSWORD = 'SET_PASSWORD';
 	exports.SET_PASSWORD_AGAIN = 'SET_PASSWORD_AGAIN';
@@ -27124,9 +27127,6 @@ webpackJsonp([0],[
 	exports.SET_COMPANY_NAME = 'SET_COMPANY_NAME';
 	exports.SET_CONTACT_EMAIL = 'SET_CONTACT_EMAIL';
 	exports.SET_CONTACT_PHONE = 'SET_CONTACT_PHONE';
-	exports.SET_DATE = 'SET_DATE';
-	exports.SET_TIME = 'SET_TIME';
-	exports.SET_SPECIFIC_TIME = 'SET_SPECIFIC_TIME';
 	exports.SET_PAYMENT_NAME_ON_CARD = 'SET_PAYMENT_NAME_ON_CARD';
 	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
 	exports.SET_PAYMENT_EXPIRY_DATE = 'SET_PAYMENT_EXPIRY_DATE';
@@ -27161,7 +27161,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {viewMenu} from './action/cart.ts';
 	//import {checklogin} from './action/cart.ts';
-	var cart_items_ts_1 = __webpack_require__(924);
+	var cart_ts_1 = __webpack_require__(924);
 	var sidebar_cart_tsx_1 = __webpack_require__(925);
 	//type Props = {
 	//title: string,
@@ -27188,7 +27188,7 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
+	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "RubyQ", description: "Cherry Chocolate", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
 	            selected_item_id: "",
 	            selected_item_dozens: "",
 	            selected_item_quantity: "",
@@ -27245,7 +27245,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onMouseEnter",
 	        value: function onMouseEnter(item_id) {
-	            console.log("mouse enter" + item_id);
+	            //console.log("mouse enter" + item_id);
 	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 	            var image_id = this.state.menu_items.find(function (item) {
 	                return item.item_id === item_id;
@@ -27255,7 +27255,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onMouseLeave",
 	        value: function onMouseLeave(item_id) {
-	            console.log("mouse leave" + item_id);
+	            //console.log("mouse leave" + item_id);
 	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 	            var image_id = this.state.menu_items.find(function (item) {
 	                return item.item_id === item_id;
@@ -27318,7 +27318,7 @@ webpackJsonp([0],[
 	    return {
 	        //viewmenuthunk
 	        addCartItem: function addCartItem(item_id, dozens, quantity) {
-	            dispatch(cart_items_ts_1.addCartItem(item_id, dozens, quantity));
+	            dispatch(cart_ts_1.addCartItem(item_id, dozens, quantity));
 	        }
 	    };
 	};
@@ -27364,6 +27364,30 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
+	function setDate(value) {
+	    //alert(item_id)
+	    return {
+	        type: actionTypes_ts_1.SET_DATE,
+	        value: value
+	    };
+	}
+	exports.setDate = setDate;
+	function setTime(value) {
+	    //alert(item_id)
+	    return {
+	        type: actionTypes_ts_1.SET_TIME,
+	        value: value
+	    };
+	}
+	exports.setTime = setTime;
+	function setSpecificTime(value) {
+	    //alert(item_id)
+	    return {
+	        type: actionTypes_ts_1.SET_SPECIFIC_TIME,
+	        value: value
+	    };
+	}
+	exports.setSpecificTime = setSpecificTime;
 
 /***/ }),
 /* 925 */
@@ -27386,6 +27410,8 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	//import { bindActionCreators } from 'redux';
 	var react_redux_1 = __webpack_require__(190);
+	//import * as getAllProducts from './actions/menu';
+	//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(922);
 	//import _ from 'lodash';
@@ -27505,12 +27531,12 @@ webpackJsonp([0],[
 	            //    item_count = item.dozens * item.quantity;
 	            //});
 	            var cart = "";
-	            console.log("length order" + JSON.stringify(this.props.order));
-	            if (this.props.cart_items.length === 0) {
+	            console.log("length order" + JSON.stringify(this.props.cart.cart_items));
+	            if (this.props.cart.cart_items.length === 0) {
 	                cart = "There are no items in your cart.";
 	            } else {
-	                console.log("order " + JSON.stringify(this.props.order));
-	                this.props.cart_items.map(function (item) {
+	                console.log("order " + JSON.stringify(this.props.cart.cart_items));
+	                this.props.cart.cart_items.map(function (item) {
 	                    console.log("item " + JSON.stringify(item));
 	                    if (item.mini == true) {
 	                        total_cost = total_cost + item.dozens * item.quantity * 2;
@@ -27521,7 +27547,7 @@ webpackJsonp([0],[
 	                    }
 	                });
 	                //alert(total_cost);
-	                cart = this.props.cart_items.map(function (item, index) {
+	                cart = this.props.cart.cart_items.map(function (item, index) {
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
 	                    //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
 	                    //let item_title = result.get("title");
@@ -27529,7 +27555,7 @@ webpackJsonp([0],[
 	                    if (item.mini == true) {
 	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-6" }, item.quantity, " Dozen"), "Mini", item.quantity));
 	                    } else {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity));
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity));
 	                    }
 	                }.bind(this));
 	            }
@@ -27549,11 +27575,11 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.cart_items));
+	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
-	        cart_items: state.cart_items
+	        cart: state.cart
 	        //}
 	    };
 	};
@@ -30282,7 +30308,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	var cart_ts_1 = __webpack_require__(924);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(922);
 	var DatePicker = __webpack_require__(940);
@@ -30414,17 +30440,23 @@ webpackJsonp([0],[
 	            //this.props.getAllProducts();
 	        }
 	    }, {
+	        key: "setDate",
+	        value: function setDate(date) {
+	            this.setState({ startDate: date });
+	            this.props.setDate(date);
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
 	
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, React.createElement("b", null, "Delivery Date and Time")))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-2" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: function onChange(e) {
-	                    _this2.props.setDate(e);
+	                    _this2.setDate(e);
 	                } })), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
 	                    return _this2.props.setTime(e);
-	                }, style: { borderRadius: 0, "-webkit-appearance": "none" } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "900" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "100" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-2" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
-	                } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -30439,12 +30471,21 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("name component/state" + JSON.stringify(state));
+	    console.log("datetime component/state" + JSON.stringify(state));
 	    return {};
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {};
+	    return {
+	        setDate: function setDate(e) {
+	            console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
+	            dispatch(cart_ts_1.setDate(e));
+	        },
+	        setTime: function setTime(e) {
+	            console.log("settime" + e.target.value);
+	            dispatch(cart_ts_1.setTime(e.target.value));
+	        }
+	    };
 	}
 	var DateTime1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(DateTime);
 	exports.default = DateTime1;
@@ -32900,7 +32941,7 @@ webpackJsonp([0],[
 	
 	var _reactRedux = __webpack_require__(190);
 	
-	var _cart_items = __webpack_require__(924);
+	var _cart = __webpack_require__(924);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -33518,13 +33559,13 @@ webpackJsonp([0],[
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	  return {
 	    addCartItem: function addCartItem(item_id, dozens, quantity) {
-	      dispatch((0, _cart_items.addCartItem)(1));
+	      dispatch((0, _cart.addCartItem)(1));
 	    },
 	    increaseCartItemQuantity: function increaseCartItemQuantity() {
-	      dispatch((0, _cart_items.increaseCartItemQuantity)(1));
+	      dispatch((0, _cart.increaseCartItemQuantity)(1));
 	    },
 	    decreaseCartItemQuantity: function decreaseCartItemQuantity() {
-	      dispatch((0, _cart_items.decreaseCartItemQuantity)(1));
+	      dispatch((0, _cart.decreaseCartItemQuantity)(1));
 	    }
 	  };
 	};
@@ -36196,7 +36237,7 @@ webpackJsonp([0],[
 	var register_ts_1 = __webpack_require__(1105);
 	var user_ts_1 = __webpack_require__(1106);
 	var user_delivery_addresses_ts_1 = __webpack_require__(1107);
-	var cart_items_ts_1 = __webpack_require__(1108);
+	var cart_ts_1 = __webpack_require__(1108);
 	var user_payment_methods_ts_1 = __webpack_require__(1109);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
@@ -36204,7 +36245,7 @@ webpackJsonp([0],[
 	    register: register_ts_1.default,
 	    user: user_ts_1.default,
 	    user_delivery_addresses: user_delivery_addresses_ts_1.default,
-	    cart_items: cart_items_ts_1.default,
+	    cart: cart_ts_1.default,
 	    user_payment_methods: user_payment_methods_ts_1.default,
 	    routing: react_router_redux_1.routerReducer
 	});
@@ -36529,13 +36570,15 @@ webpackJsonp([0],[
 	
 	}*/
 	function cart_items() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { cart_items: [] };
 	    var action = arguments[1];
 	
 	    switch (action.type) {
 	        case actionTypes_ts_1.ADD_CART_ITEM:
 	            console.log("add cart item" + JSON.stringify(state));
-	            return [{ item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true }];
+	            var items = state.cart_items;
+	            items.push({ item_id: 1, dozens: 1, quantity: 1, mini: true });
+	            return Object.assign({}, state, { cart_items: items });
 	        case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
 	            //alert("CartState " + action.item_id);
 	            //alert("add cart item " + JSON.stringify(state));
@@ -36632,6 +36675,15 @@ webpackJsonp([0],[
 	                        return item;
 	                    })
 	                } });
+	        case actionTypes_ts_1.SET_DATE:
+	            console.log("setdate" + JSON.stringify(state));
+	            return Object.assign({}, state, { date: action.value });
+	        case actionTypes_ts_1.SET_TIME:
+	            console.log("add cart item" + JSON.stringify(state));
+	            return Object.assign({}, state, { time: action.value });
+	        case actionTypes_ts_1.SET_SPECIFIC_TIME:
+	            console.log("add cart item" + JSON.stringify(state));
+	            return Object.assign({}, state, { specific_time: action.value });
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
