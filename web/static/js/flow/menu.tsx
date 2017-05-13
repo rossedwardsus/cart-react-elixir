@@ -184,9 +184,8 @@ class PublicMenu extends React.Component<any, any> {
                             </div>
                           </div>
                   </nav>
-                  <div className="container-fluid">
                     <div className="row">
-                          <div className="hidden-xs col-md-2">
+                          <div className="hidden-xs col-md-4">
                             <br/>
                             <br/>
                             <br/>
@@ -225,7 +224,6 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                           </div>
                     </div>
-                  </div>
                   <br/>
                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
                     <div className="modal-dialog" role="document">
@@ -258,16 +256,23 @@ class PublicMenu extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3">
-                            
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
+                                <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)} style={{borderRadius: 0, WebkitAppearance: "none"}}>
+                                  <option value=""></option>
+                                  <option value="12">1 Dozen</option>
+                                  <option value="mini_24">2 Dozen Mini</option>
+                                </select>
                               </div>
                               <div className="col-md-3">
-                            
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
+                                <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)}>
+                                  <option value=""></option> 
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                </select>
                               </div>
                               <div className="col-md-3">
-                            
-                                <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
+                                <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => this.addCartItem()}>Add-only show if cart items larger then 1</button>
                               </div>
                             </div>
                           </form>

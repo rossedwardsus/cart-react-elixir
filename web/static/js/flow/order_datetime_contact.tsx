@@ -17,6 +17,7 @@ import {completeOrder} from './actions/complete_order.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 //import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 //import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';

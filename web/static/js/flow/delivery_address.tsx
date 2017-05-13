@@ -82,6 +82,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
   componentDidMount(){
 
+   
+
     //alert();
 
     //window.onhashchange = function() {
@@ -247,7 +249,7 @@ class DeliveryAddress extends React.Component<any, any> {
                </form>
                <form className="form-inline">
                     <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Street"/>
                     </div>
                     <div className="form-group">
                       <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
