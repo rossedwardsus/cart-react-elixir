@@ -254,6 +254,23 @@ class PublicMenu extends React.Component<any, any> {
                             <option value="4">4</option>
                           </select>
                           <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => this.addCartItem()}>Add-only show if cart items larger then 1</button>
+                          <br/>
+                          <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-md-3">
+                            
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
+                              </div>
+                              <div className="col-md-3">
+                            
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
+                              </div>
+                              <div className="col-md-3">
+                            
+                                <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
+                              </div>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>
