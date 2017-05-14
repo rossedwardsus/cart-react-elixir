@@ -43,7 +43,7 @@ export interface HelloProps {
 //   document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
 //}
 
-class Register extends React.Component<any, any> {
+class RegisterCompleted extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -188,8 +188,6 @@ class Register extends React.Component<any, any> {
             //setCookie("sconely_first_name", 1, 1)
             //setCookie("sconely_last_name", 1, 1)
 
-            this.props.history.push('/registration_complete');
-
 
       })
       .catch( error => {
@@ -208,7 +206,8 @@ class Register extends React.Component<any, any> {
 
 
   render(){
-    return (<div><nav className="navbar navbar-default navbar-fixed-top">
+    return (<div>
+                <nav className="navbar navbar-default navbar-fixed-top">
                           <div className="container-fluid">
                             <div className="navbar-header">
                               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -231,94 +230,19 @@ class Register extends React.Component<any, any> {
                                 </ul>
                               </div>
                           </div>
-                    </nav>
-            <div className="container-fluid">
-                  <div className="row">
-                         <div className="col-md-4">
-                        </div>
-                        <div className="col-md-8">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              Register
-                              <br/>
-                              <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-6">
-                                   <br/>
-                                    <input type="text" className="form-control" id="email" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} style={{borderColor: this.state.first_border_color}}/>
-                                  </div>
-                                </div>
-                                <div className="form-group">
-                                  <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setEmail(e)} style={{borderColor: this.state.email_border_color}}/>
-                                  </div>
-                                </div>
-                                <div className="form-group">
-                                  <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e: any) => this.setEmail(e)} style={{borderColor: this.state.email_border_color}}/>
-                                  </div>
-                                </div>
-                                <div className="form-group">
-                                  <div className="col-md-6">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e: any) => this.setPassword(e)} style={{borderColor: this.state.password_border_color}}/>
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e: any) => this.setPassword(e)}/>
-                                 
-                                  <button type="button" className="btn" onClick={() => this.register()}>Login</button> 
-                                  </div>
-                               </div>
-                              </form>
-                        </div>
-                       </div>
+                </nav>
+                <div className="container-fluid">
+                    <div className="row">
+                      register completed
+                    </div>     
                 </div>
             </div>
       )
   }
 
-  
-
 }
 
 
-
-
-function mapStateToProps(state: any) {
-  console.log(JSON.stringify(state));
-  return {
-
-    state: state,
-    //login thunk
-//   menu_items: state.default.menu_items
-   //menu_items: getPublicMenu
-   //menu_items: dispatch()
-  };
-}
-
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    //loginthunk
-
-      
-    //setEmail: (e: any) => {
-    //  dispatch(setEmail(e.target.value))
-    //},
-
-    register: (email: any, password: any) => {
-      dispatch(registerUser(email, password))
-    },
-    
-  }
-}
-
-
-const Register1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Register)
-
-export default Register1
+export default RegisterCompleted
 
 

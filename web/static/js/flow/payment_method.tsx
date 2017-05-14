@@ -240,59 +240,126 @@ class PaymentMethod extends React.Component<any, any> {
       //if length > 0 or less then 4, only numbers
 
   }
+
+  goToPreview(){
+
+      this.context.router.push('/order/preview');
+      
+  }  
   
   
   render(): JSX.Element{
 
    
     return ( <div>
-
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-sm-5">
-                        <b>Payment Methods</b>
-                        <br/>
-                        {this.props.login.user_id === "guest" &&
-                          <select className="form-control">
-                              <option>Home</option>
-                              <option>Office</option>
-                          </select>
-                        }
+                <nav className="navbar navbar-default navbar-fixed-top">
+                          <div className="container-fluid">
+                            <div className="navbar-header">
+                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                              </button>
+                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                            </div>
+                            <div className="hidden-xs navbar-form navbar-right">
+                            </div>
+                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                              </ul>
+                              <ul className="nav navbar-nav">
+                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                    </nav> 
+                <div className="container-fluid">
+                  <div className="row">
+                        <div className="hidden-xs col-md-2">
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                        </div>
+                        <div className="col-md-10">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-5">
+                                    <b>Payment Methods</b>
+                                    <br/>
+                                    {this.props.login.user_id === "guest" &&
+                                      <select className="form-control">
+                                          <option>Home</option>
+                                          <option>Office</option>
+                                      </select>
+                                    }
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-horizontal">
+                            <div className="form-group">
+                                <div className="col-sm-10">
+                                
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                              </div>
+                              </div>
+                            </form>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-10">
+                                
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)}/>
+                                </div>
+                              </div>
+                            </form>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-md-3">
+                              
+                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
+                                </div>
+                                <div className="col-md-3">
+                              
+                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
+                                </div>
+                                <div className="col-md-3">
+                              
+                                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
+                                </div>
+                              </div>
+                            </form>
+                            <button onClick={() => this.goToPreview()}>Preview</button>
+                            <br/>
+                        </div>
                     </div>
-                  </div>
-                </form>
-                <form className="form-horizontal">
-                <div className="form-group">
-                    <div className="col-sm-10">
-                    
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
-                  </div>
-                  </div>
-                </form>
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-sm-10">
-                    
-                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)}/>
-                    </div>
-                  </div>
-                </form>
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-md-3">
-                  
-                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
-                    </div>
-                    <div className="col-md-3">
-                  
-                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
-                    </div>
-                    <div className="col-md-3">
-                  
-                      <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
-                    </div>
-                  </div>
-                </form>
+                </div>
             </div>
     )
   }

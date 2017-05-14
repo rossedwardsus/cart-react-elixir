@@ -43,12 +43,12 @@ defmodule Sconely.RegistrationResolver do
     #{order_id, name, delivery_address, items with names 1 dozen quantity, paid with, total amount, date of order}
 
     #working
-    #Sconely.SconelySocialOrderEmail.welcome_email(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
+    Sconely.RegistrationEmail.welcome_email(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
     #admin
     #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
-    {:ok, %{session_id: 1}}
+    {:ok, %{status: "1"}}
 
   end
 end

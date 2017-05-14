@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Schema do
+defmodule Sconely.Schema do
   use Absinthe.Schema
   import_types Sconely.Schema.Types
  
@@ -39,36 +39,22 @@ defmodule SconeHomeElixir.Schema do
 
 
 
-
-
-
-
-
   mutation do
 
 
 
-  	#field :register, type: :registration do
-    	#arg :email, (:string)
-    	#arg :mobile, (:string)
-    	#arg :delivery_address_city, (:string)
-    	#arg :order_items, list_of(:menu_item_input)
-    		
-    	#resolve &Sconely.SconelySocialOrderResolver.create_order/2
-  	#end
+  	field :register, type: :registration do
+      arg :first, (:string)
+      arg :last, (:string)
+    	arg :email, (:string)
+    	arg :mobile, (:string)
+    	arg :password, (:string)
+
+    	resolve &Sconely.RegistrationResolver.create_user/2
+  	end
 
 
-  	#field :create_user, type: :registration do
-    #	arg :host_id, (:string)
-    	#arg :email
-       	#arg :mobile
-       	#arg :password
-    	#arg :new_payment
-    	#arg :cart
-    		
-    #	resolve &Sconely.OrderResolver.create/2
-  	#end
-
+  	
   	field :complete_sconely_social_order, type: :sconely_social_order do
   		arg :first, (:string)
   		arg :last, (:string)

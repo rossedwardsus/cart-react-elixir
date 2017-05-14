@@ -29,9 +29,11 @@ defmodule Sconely.Schema.Types do
   end
 
   object :registration do
- 	field :email, :string
- 	field :password, :string
- 	field :password_again, :string
+    field :first, :string
+    field :last, :string
+   	field :email, :string
+   	field :password, :string
+   	field :status, :string
   end
 
 

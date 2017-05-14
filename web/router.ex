@@ -57,6 +57,7 @@ defmodule SconeHomeElixir.Router do
     #end
 
     get "/", HomeController, :index
+    #get "/activate", ActivateController, :index
 
     #forward "/graphql/signature", Absinthe.Plug, schema: SconeHomeElixir.SignatureSchema
     #forward "/graphql/social", Absinthe.Plug, schema: SconeHomeElixir.SocialSchema
@@ -79,7 +80,9 @@ defmodule SconeHomeElixir.Router do
     #post "/", LoginController, :create
 
     get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
-    forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
+    forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
+    #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
+
 
   end
 

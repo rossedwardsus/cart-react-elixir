@@ -125,6 +125,8 @@ class PublicMenu extends React.Component<any, any> {
 
     //if they haven't selected quantity and dozens dont submit and show them an error
 
+    //$('#myModal').modal('toggle');
+
     this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 
   }
@@ -252,21 +254,6 @@ class PublicMenu extends React.Component<any, any> {
                             {this.state.selected_item_ingredients}
                         </div>
                         <div className="modal-footer">
-                          <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)}>
-                            <option value="">Quantity</option>
-                            <option value="12">Dozen</option>
-                            <option value="mini_24">2 Dozen Mini</option>
-                          </select>
-                          X
-                          <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)}>
-                            <option value=""></option> 
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select>
-                          <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => this.addCartItem()}>Add-only show if cart items larger then 1</button>
-                          <br/>
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3">
@@ -286,7 +273,7 @@ class PublicMenu extends React.Component<any, any> {
                                 </select>
                               </div>
                               <div className="col-md-3">
-                                <img src="/images/add_to_cart.jpg" ddata-dismiss="modal" onClick={() => this.addCartItem()}/>
+                                <img src="/images/add_to_cart.jpg" onClick={() => this.addCartItem()}/>
                               </div>
                             </div>
                           </form>

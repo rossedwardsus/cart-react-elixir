@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
 //import { getPublicMenu } from './reducers/menu';
-//import Immutable  = require('immutable');
+const Immutable  = require('immutable');
 
 
 /*function addTodoWithDispatch() {
@@ -608,7 +608,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(1))
+      //dispatch(addCartItem(1))
     },
     increaseCartItemQuantity: () => {
       dispatch(increaseCartItemQuantity(1))

@@ -55,7 +55,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderDateTimeContact extends React.Component<any, any> {
+class Preview extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -808,15 +808,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   }
 
-  goToMenu(){
+  goToCompleteOrder(){
 
-      this.context.router.push('/order/12345');
-      
-  }  
-
-  goToPaymentMethod(){
-
-      this.context.router.push('/order/payment_method');
+      this.context.router.push('/order/complete_order');
       
   }  
 
@@ -903,6 +897,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <Contact />
                             <br/>
+                            <button onClick={() => this.completeOrder()}>Edit Datetime</button>
                             <form className="form-horizontal">
                               <div className="form-group">
                                 <div className="col-sm-10">
@@ -914,7 +909,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                               </div>
                             </form>
-                            <button onClick={() => this.goToPaymentMethod()}>Payment Method</button>
+                            
+                            <button onClick={() => this.completeOrder()}>Complete Order</button>
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">
@@ -1024,10 +1020,10 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const Checkout = connect(
+const Preview1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderDateTimeContact)
+)(Preview)
 
-export default Checkout;
+export default Preview;
 

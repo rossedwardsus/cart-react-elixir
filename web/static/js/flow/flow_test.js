@@ -29,11 +29,14 @@ import UserPaymentMethods from './user/user_payment_methods.tsx';
 
 //import Order from "./order.jsx";
 import Checkout from "./order_datetime_contact.tsx";
-import OrderCart from "./order_cart.jsx";
+import PaymentMethod from './payment_method.tsx'
+import OrderCart from "./order_cart.tsx";
 import OrderComplete from './order_complete.jsx';
+import Preview from './preview.tsx';
 
 import Login from './login.tsx';
 import Register from './register.tsx';
+import RegisterCompleted from './register_completed.tsx';
 import checkLogin from './checkLogin.tsx';
 
 import User from "./user";
@@ -164,11 +167,14 @@ const Root = () => (
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/register_completed" component={RegisterCompleted} />
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route path="/order/:order_id/cart" component={OrderCart} />
         <Route component={checkLogin}>
           <Route path="/order/checkout" component={Checkout} />
+          <Route path="/order/payment_method" component={PaymentMethod} />
+          <Route path="/order/preview" component={Preview} />
         </Route>
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
