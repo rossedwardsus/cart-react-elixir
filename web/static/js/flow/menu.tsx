@@ -270,14 +270,14 @@ class PublicMenu extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3">
-                                <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 45}}>
+                                <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 40}}>
                                   <option value=""></option>
                                   <option value="12">1 Dozen</option>
                                   <option value="mini_24">2 Dozen Mini</option>
                                 </select>
                               </div>
-                              <div className="col-md-3">
-                                <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 45}}>
+                              <div className="col-md-2">
+                                <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 40}}>
                                   <option value=""></option> 
                                   <option value="1">1</option>
                                   <option value="2">2</option>
