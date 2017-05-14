@@ -188,7 +188,7 @@ class Register extends React.Component<any, any> {
             //setCookie("sconely_first_name", 1, 1)
             //setCookie("sconely_last_name", 1, 1)
 
-            this.props.history.push('/registration_complete');
+            this.props.history.push('/register_complete');
 
 
       })
