@@ -22,6 +22,8 @@ defmodule SconeHomeElixir.Web do
 
       import Ecto.Changeset
       import Ecto.Query, only: [from: 1, from: 2]
+
+      @timestamps_opts :created_at
     end
   end
 

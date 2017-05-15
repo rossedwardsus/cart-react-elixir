@@ -1,6 +1,7 @@
 defmodule Sconely.RegistrationResolver do
-  alias Sconely.SconelySignatureOrder
-  
+  alias Sconely.Registration
+  alias SconeHomeElixir.Repo
+
   def all(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
     {:ok, [%{id: 1, title: "hello", body: "there"}]}
@@ -13,36 +14,17 @@ defmodule Sconely.RegistrationResolver do
 
     IO.inspect(args[:email])
 
-  	#changeset = Registration.changeset(%{user_type: "guest", order_id: "1", email: "", mobile: "", delivery_date: "datetime", time: "", paid: "yes", stripe_receipt})
+  	changeset = Registration.changeset(%Registration{}, %{email: "guest", password: "p", password_salt: ""})
 
-    #case Repo.insert(changeset) do
-    #  {:ok, _user} ->
+    case Repo.insert(changeset) do
+      {:ok, _registration} -> IO.inspect("ok")
     #    conn
     #      |> put_flash(:info, "User created successfully.")
     #      |> redirect(to: user_path(conn, :index))
-    #  {:error, changeset} ->
+      {:error, changeset} ->
     #    render(conn, "new.html", changeset: changeset)
-    #end
+    end
 
-
-
-
-    #create session for user and return session id
-    #also auth tokens
-    #changeset = Session.changeset(%{order_id: "1", order_id: "", time: "", quantity: "", quantity_multiplier: ""})
-
-    #case Repo.insert(changeset) do
-    #  {:ok, _user} ->
-    #    conn
-    #      |> put_flash(:info, "User created successfully.")
-    #      |> redirect(to: user_path(conn, :index))
-    #  {:error, changeset} ->
-    #    render(conn, "new.html", changeset: changeset)
-    #end
-
-
-
-    #{order_id, name, delivery_address, items with names 1 dozen quantity, paid with, total amount, date of order}
 
     #working
     Sconely.RegistrationEmail.welcome_email(%{"email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now

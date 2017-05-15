@@ -13,27 +13,19 @@ defmodule Sconely.Registration do
 
 		schema "registration" do
 			#field :user_id, :string
-			#field :first_name, :string
 			field :email, :string
 			field :password, :string
 			field :password_salt, :string
-			#field :registration_datetime, :string
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-			field :activated, :boolean
+			field :activated, :boolean, default: false
 
-			#timestamps([{:inserted_at, false}, {:updated_at, false}])
-			#timestamps([{:updated_at, false}])
-			#timestamps([{:created_at}])
-			
-
-			#timestamps()
 		end
 
 		def changeset(struct, params \\ %{}) do
 		    struct
-		    |> cast(params, [:first_name, :email, :password])
+		    |> cast(params, [:email, :password, :password_salt])
 		    #|> validate_required([:email, :password])
-		    |> validate_length(:first_name, min: 2)
+		    #|> validate_length(:first_name, min: 2)
 		    #|> validate_length(:email, min: 2)
 		end
 

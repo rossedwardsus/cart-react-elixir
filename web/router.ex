@@ -79,13 +79,18 @@ defmodule SconeHomeElixir.Router do
   #  get "/", Api1Controller, :index
     #post "/", LoginController, :create
 
-    get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
+    #get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
     forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
     #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
 
-
   end
 
+  #scope "/graphql", Absinthe do
+
+  #    forward "/", Plug, schema: Sconely.Schema
+  #    forward "/1", Plug, schema: Sconely.Schema
+     
+  #end
 
 
 

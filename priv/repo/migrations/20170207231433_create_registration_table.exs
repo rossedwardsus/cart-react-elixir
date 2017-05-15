@@ -7,10 +7,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateRegistrationTable do
   	  add :email, :string
   	  add :password, :string
       add :password_salt, :string
-  	  add :created_datetime, Ecto.DateTime
+  	  add :created_at, :timestampz
       add :activated, :boolean
-
-      #timestamps
 
       #create index(:posts, [:slug], concurrently: true)
     end
