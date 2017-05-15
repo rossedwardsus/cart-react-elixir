@@ -3,7 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateRegistrationTable do
 
   def change do
     create table(:registration, primary_key: false) do
-      #add :user_id, :uuid, primary_key: true
+      add :user_id, :uuid, primary_key: true
   	  add :email, :string
   	  add :password, :string
       add :password_salt, :string
