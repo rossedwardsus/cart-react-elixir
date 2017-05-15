@@ -13,13 +13,13 @@ defmodule Sconely.Registration do
 
 		schema "registration" do
 			#field :user_id, :string
-			field :first_name, :string
+			#field :first_name, :string
 			field :email, :string
 			field :password, :string
 			field :password_salt, :string
-			field :registration_datetime, :string
+			#field :registration_datetime, :string
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-			field :active, :string
+			field :activated, :boolean
 
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
 			#timestamps([{:updated_at, false}])
