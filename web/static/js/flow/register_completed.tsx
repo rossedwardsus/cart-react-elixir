@@ -233,6 +233,12 @@ class RegisterCompleted extends React.Component<any, any> {
                 </nav>
                 <div className="container-fluid">
                     <div className="row">
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
                       register completed
                     </div>     
                 </div>

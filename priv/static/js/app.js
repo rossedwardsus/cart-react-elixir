@@ -244,7 +244,7 @@ webpackJsonp([0],[
 	          } }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/register', component: _register2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/register_completed', component: _register_completed2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/register_complete', component: _register_completed2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/menu', component: _menu2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/public/about_us', component: _public_about_us2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/cart', component: _order_cart2.default }),
@@ -34673,7 +34673,8 @@ webpackJsonp([0],[
 	            last_border_color: "red",
 	            email_border_color: "red",
 	            password_border_color: "red",
-	            password_again_border_color: "red"
+	            password_again_border_color: "red",
+	            first_name_validated: false
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -34743,56 +34744,45 @@ webpackJsonp([0],[
 	    }, {
 	        key: "register",
 	        value: function register() {
-	            var _this2 = this;
-	
 	            //check email and password/form validated
 	            //this.props.register(1, 1);
 	            //this.setState({"delivery_address_street1_classname": "form-group"});
 	            //ifthis.props.registration.registered == true
-	            //this.props.history.push('/registration_complete');
-	            axios_1.default.post('http://localhost:4000/api/graphql', {
-	                query: 'mutation {register (first: "' + this.state.first + '", last: "' + this.state.last + '", email: "' + this.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password + '") {status}}'
-	            }).then(function (response) {
-	                console.log(JSON.stringify(response));
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //this.props.setSubscription();
-	                //addtosubscribedblocklist
-	                //setsubscriptiontype == 1 block
-	                //setsubscriptionpaid == true
-	                //setsusbcriptindatetime
-	                //store in cookie
-	                //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	                //setCookie("sconely_session_id", 1, 1)
-	                //setCookie("sconely_first_name", 1, 1)
-	                //setCookie("sconely_last_name", 1, 1)
-	                _this2.props.history.push('/registration_complete');
-	            }).catch(function (error) {
-	                console.log("error" + error);
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //if (!error.status) {
-	                // network error
-	                //}
-	            });
+	            //this.props.history.push('/register_complete');
+	            var that = this;
+	            if (this.state.first_name_validated === false) {
+	                axios_1.default.post('http://localhost:4000/api/graphql', {
+	                    query: 'mutation {register (first: "' + this.state.first + '", last: "' + this.state.last + '", email: "' + this.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password + '") {status}}'
+	                }).then(function (response) {
+	                    console.log("response" + JSON.stringify(response));
+	                    that.props.history.push('/register_complete');
+	                }).catch(function (error) {
+	                    console.log("error" + error);
+	                    //go to code/payment screen
+	                    //        this.props.loadView();
+	                    //if (!error.status) {
+	                    // network error
+	                    //}
+	                });
+	            }
 	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 	
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-4" }), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Register", React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "First Name", onChange: function onChange(e) {
-	                    return _this3.setFirstName(e);
+	                    return _this2.setFirstName(e);
 	                }, style: { borderColor: this.state.first_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Last Name", onChange: function onChange(e) {
-	                    return _this3.setEmail(e);
+	                    return _this2.setEmail(e);
 	                }, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
-	                    return _this3.setEmail(e);
+	                    return _this2.setEmail(e);
 	                }, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
-	                    return _this3.setPassword(e);
+	                    return _this2.setPassword(e);
 	                }, style: { borderColor: this.state.password_border_color } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password Again", onChange: function onChange(e) {
-	                    return _this3.setPassword(e);
+	                    return _this2.setPassword(e);
 	                } }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
-	                    return _this3.register();
+	                    return _this2.register();
 	                } }, "Login"))))))));
 	        }
 	    }]);
@@ -35027,7 +35017,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, "register completed")));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "register completed")));
 	        }
 	    }]);
 	

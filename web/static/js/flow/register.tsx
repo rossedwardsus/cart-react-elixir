@@ -66,7 +66,8 @@ class Register extends React.Component<any, any> {
         last_border_color: "red",
         email_border_color: "red",
         password_border_color: "red",
-        password_again_border_color: "red"
+        password_again_border_color: "red",
+        first_name_validated: false
 
     };
 
@@ -162,47 +163,35 @@ class Register extends React.Component<any, any> {
 
     
     //ifthis.props.registration.registered == true
-    //this.props.history.push('/registration_complete');
+    //this.props.history.push('/register_complete');
 
-     axios.post('http://localhost:4000/api/graphql', {
-             query: 'mutation {register (first: "' + this.state.first + '", last: "' + this.state.last + '", email: "' + this.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") {status}}'
-      })
-      .then( response => {
+    let that = this;
 
-            console.log(JSON.stringify(response));
-            //go to code/payment screen
-    //        this.props.loadView();
-            //this.props.setSubscription();
+    if(this.state.first_name_validated === false){
 
-            //addtosubscribedblocklist
+          axios.post('http://localhost:4000/api/graphql', {
+                 query: 'mutation {register (first: "' + this.state.first + '", last: "' + this.state.last + '", email: "' + this.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") {status}}'
+          })
+          .then( response => {
 
-            //setsubscriptiontype == 1 block
-            //setsubscriptionpaid == true
-            //setsusbcriptindatetime
+                console.log("response" + JSON.stringify(response));
+
+                that.props.history.push('/register_complete');
 
 
-            //store in cookie
+          })
+          .catch( error => {
 
-            //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-            //setCookie("sconely_session_id", 1, 1)
-            //setCookie("sconely_first_name", 1, 1)
-            //setCookie("sconely_last_name", 1, 1)
+                console.log("error" + error);
+                //go to code/payment screen
+        //        this.props.loadView();
 
-            this.props.history.push('/register_complete');
+         //if (!error.status) {
+            // network error
+          //}
 
-
-      })
-      .catch( error => {
-
-            console.log("error" + error);
-            //go to code/payment screen
-    //        this.props.loadView();
-
-     //if (!error.status) {
-        // network error
-      //}
-
-      })
+          })
+    }
 
   }
 
