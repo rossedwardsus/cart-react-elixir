@@ -11,6 +11,8 @@ defmodule Sconely.RegistrationResolver do
 
     #userid password email
 
+    IO.inspect(args[:email])
+
   	#changeset = Registration.changeset(%{user_type: "guest", order_id: "1", email: "", mobile: "", delivery_date: "datetime", time: "", paid: "yes", stripe_receipt})
 
     #case Repo.insert(changeset) do
@@ -43,7 +45,7 @@ defmodule Sconely.RegistrationResolver do
     #{order_id, name, delivery_address, items with names 1 dozen quantity, paid with, total amount, date of order}
 
     #working
-    Sconely.RegistrationEmail.welcome_email(%{"email" => "email"}) |> SconeHomeElixir.Mailer.deliver_now
+    Sconely.RegistrationEmail.welcome_email(%{"email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
     #admin
     #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now

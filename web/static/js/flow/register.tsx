@@ -120,7 +120,7 @@ class Register extends React.Component<any, any> {
       let ampersand_patt = /[@]/;
       let ampersand_res = ampersand_patt.test(e.target.value);
 
-      if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+      //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
 
           //less then 20, doesnt include @ and .
           console.log(dot_res + "" + ampersand_res);
@@ -129,7 +129,7 @@ class Register extends React.Component<any, any> {
           this.setState({email_border_color: "grey"});
           //this.setState({email_validated: true});
 
-      }
+      //}
 
   }
 
@@ -170,14 +170,13 @@ class Register extends React.Component<any, any> {
     if(this.state.first_name_validated === false){
 
           axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {register (first: "' + this.state.first + '", last: "' + this.state.last + '", email: "' + this.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") {status}}'
+                 query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") {status}}'
           })
           .then( response => {
 
                 console.log("response" + JSON.stringify(response));
 
-                that.props.history.push('/register_complete');
-
+                //that.props.history.push('/register_complete');
 
           })
           .catch( error => {

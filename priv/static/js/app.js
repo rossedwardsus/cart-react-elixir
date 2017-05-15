@@ -34717,13 +34717,13 @@ webpackJsonp([0],[
 	            var dot_res = dot_patt.test(e.target.value);
 	            var ampersand_patt = /[@]/;
 	            var ampersand_res = ampersand_patt.test(e.target.value);
-	            if (e.target.value.length > 0 && dot_res === true && ampersand_res === true) {
-	                //less then 20, doesnt include @ and .
-	                console.log(dot_res + "" + ampersand_res);
-	                this.setState({ email: e.target.value });
-	                this.setState({ email_border_color: "grey" });
-	                //this.setState({email_validated: true});
-	            }
+	            //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+	            //less then 20, doesnt include @ and .
+	            console.log(dot_res + "" + ampersand_res);
+	            this.setState({ email: e.target.value });
+	            this.setState({ email_border_color: "grey" });
+	            //this.setState({email_validated: true});
+	            //}
 	        }
 	    }, {
 	        key: "setMobile",
@@ -34752,10 +34752,10 @@ webpackJsonp([0],[
 	            var that = this;
 	            if (this.state.first_name_validated === false) {
 	                axios_1.default.post('http://localhost:4000/api/graphql', {
-	                    query: 'mutation {register (first: "' + this.state.first + '", last: "' + this.state.last + '", email: "' + this.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password + '") {status}}'
+	                    query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password + '") {status}}'
 	                }).then(function (response) {
 	                    console.log("response" + JSON.stringify(response));
-	                    that.props.history.push('/register_complete');
+	                    //that.props.history.push('/register_complete');
 	                }).catch(function (error) {
 	                    console.log("error" + error);
 	                    //go to code/payment screen

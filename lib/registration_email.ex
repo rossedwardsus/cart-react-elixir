@@ -4,11 +4,12 @@ defmodule Sconely.RegistrationEmail do
   def welcome_email(_params) do
 
     IO.inspect(_params["email"])
+    IO.inspect(System.get_env("MIX"))
     
     #template = Phoenix.View.render_to_string(SconeHomeElixir.UserOrderProcessedEmailView, "user_order_processed_email.html", key: _params)
 
     new_email(
-      to: "rossedwards.us@gmail.com",
+      to: _params["email"],
       from: "welcome@sconely.com",
       subject: "Thank you for joining Sconely.com. ",
       #html_body: template,
