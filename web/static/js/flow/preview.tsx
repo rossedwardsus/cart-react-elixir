@@ -21,8 +21,10 @@ import {setDate, setTime, setSpecificTime} from './actions/order_delivery_dateti
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';
+import ContactPreview from './contact_preview.tsx';
 import DateTime from './datetime.tsx';
 import Name from './name.tsx';
+import NamePreview from './name_preview.tsx';
 import PaymentMethod from './payment_method.tsx';
 
 //import { getPublicMenu } from './reducers/name';
@@ -891,11 +893,11 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <DateTime />
                             <br/>
-                            <Name />
+                            <NamePreview />
                             <br/>
                             <DeliveryAddress />
                             <br/>
-                            <Contact />
+                            <ContactPreview />
                             <br/>
                             <button onClick={() => this.completeOrder()}>Edit Datetime</button>
                             <form className="form-horizontal">

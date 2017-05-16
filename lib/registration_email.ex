@@ -11,7 +11,7 @@ defmodule Sconely.RegistrationEmail do
     new_email(
       to: _params["email"],
       from: "welcome@sconely.com",
-      subject: "Thank you for joining Sconely.com. ",
+      subject: "Activate Sconely.com account",
       #html_body: template,
       html_body: "Thanks for joining Sconely!<br>Click here to activate your account.   <a href=\"http:\/\/localhost:4000\/activate?email=" <> _params["email"] <> "\">activate</a>",
       #text_body: "Thanks for joining!"

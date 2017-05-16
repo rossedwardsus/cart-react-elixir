@@ -34,7 +34,8 @@ class PublicMenu extends React.Component<any, any> {
         selected_item_mini: false,
         selected_item_title: "",
         selected_item_story: "",
-        selected_item_ingredients: ""
+        selected_item_ingredients: "",
+        add_cart_item_button_classname: "btn btn-default disabled"
 
     };
 
@@ -86,7 +87,7 @@ class PublicMenu extends React.Component<any, any> {
 
               this.setState({selected_item_title: item.title});
               this.setState({selected_item_story: item.story});
-              this.setState({selected_item_ingredients: item.ingrediets});
+              this.setState({selected_item_ingredients: item.ingredients});
 
           }
 
@@ -101,13 +102,16 @@ class PublicMenu extends React.Component<any, any> {
 
       //alert(e.target.value);
 
-      this.setState({selected_item_dozens: e.target.value});
+      //this.setState({selected_item_dozens: e.target.value});
 
-      if(e.target.value == "24_mini"){
+      console.log(e);
 
-          this.setState({selected_item_mini: true});
+      //if(e.target.value == "24_mini"){
 
-      }
+        //  this.setState({selected_item_mini: true});
+
+      //}
+      this.setState({add_cart_item_button_classname: "btn btn-default"});
       
   }
 
@@ -118,16 +122,19 @@ class PublicMenu extends React.Component<any, any> {
 
     this.setState({selected_item_quantity: e.target.value});
     //set add cart button == active
+    //this.set
 
   }
 
   addCartItem(){
 
+    console.log("add cart item");
+
     //if they haven't selected quantity and dozens dont submit and show them an error
 
     //$('#myModal').modal('toggle');
 
-    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
+    //this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 
   }
 
@@ -229,7 +236,6 @@ class PublicMenu extends React.Component<any, any> {
                                 return(<div className="col-md-4" style={{marginTop: 0, marginBottom: 0}}>
                                               <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={() => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                               
-                                          
                                           <div style={{fontSize: 13}}><b>{item.title}</b> / {item.description}</div>
                                           <br/>
                                           <br/>
@@ -251,21 +257,21 @@ class PublicMenu extends React.Component<any, any> {
                         <div className="modal-body">
                             {this.state.selected_item_story}
                             <br/>
-                            {this.state.selected_item_ingredients}
+                            <br/>
+                            Ingredients: {this.state.selected_item_ingredients}
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
-                              <div className="col-md-3">
-                                <select value={this.state.selected_item_dozens} onChange={(e: any) => this.selectedItemDozens(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 40}}>
-                                  <option value=""></option>
-                                  <option value="12">1 Dozen</option>
-                                  <option value="mini_24">2 Dozen Mini</option>
-                                </select>
+                              <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
+                                <input type="radio" name="optradio" value="1 dozen" onChange={(value: any) => this.selectedItemDozens(value)}/> 1 Dozen
                               </div>
-                              <div className="col-md-2">
-                                <select value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 40}}>
-                                  <option value=""></option> 
+                              <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
+                                <input type="radio" name="optradio" value="2 Dozen Mini" onChange={(value: any) => this.selectedItemDozens(value)}/> 2 Dozen Mini
+                              </div>
+                              <div className="col-md-3">
+                                <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
+                                  <option value="">Select Quantity</option> 
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -273,7 +279,7 @@ class PublicMenu extends React.Component<any, any> {
                                 </select>
                               </div>
                               <div className="col-md-3">
-                                <img src="/images/add_to_cart.jpg" onClick={() => this.addCartItem()}/>
+                                <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
                               </div>
                             </div>
                           </form>
@@ -322,3 +328,5 @@ const PublicMenu1 = connect(
 )(PublicMenu);
 
 export default PublicMenu1;
+
+//background: url(../images/down-arrow.png) no-repeat right 12px

@@ -46,7 +46,7 @@ defmodule Sconely.Schema do
   	field :register, type: :registration do
       arg :first, (:string)
       arg :last, (:string)
-    	arg :email, (:string)
+    	arg :email, non_null(:string)
     	arg :mobile, (:string)
     	arg :password, (:string)
 

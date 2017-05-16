@@ -11,9 +11,12 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+//import * as getAllProducts from './actions/menu';
+//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+//import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
+import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 
-import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 
 
 function addTodoWithDispatch() {
@@ -37,7 +40,7 @@ interface Order {
   //completed: boolean
 }
 
-class Contact extends React.Component<any, any> {
+class NamePreview extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -48,9 +51,8 @@ class Contact extends React.Component<any, any> {
 
     this.state = {
 
-        email: "",
-        mobile: ""
-
+       first_name: "",
+       last_name: ""
     };
 
     //user_type=guest
@@ -71,51 +73,60 @@ class Contact extends React.Component<any, any> {
 
   componentDidMount(){
 
-      this.setState({email: this.props.contact.email});
-      this.setState({mobile: this.props.contact.mobile});
+    this.setState({first_name: this.props.name.first_name});
+    this.setState({last_name: this.props.name.last_name});
+
    
-  }
-
-  setContactEmail(e: any){
-
-      this.setState({email: "this.input.value"});
-      this.props.setContactEmail(e);
 
   }
 
-  setContactMobile(e: any){
+  setFirstName(e: any){
 
-
+    //if length > 0
+    this.setState({first_name: e.target.value});
+    this.props.setFirstName(e);
 
   }
+
+  setLastName(e: any){
+
+    this.setState({last_name: e.target.value});
+    this.props.setLastName(e);
+
+  }
+
   
   render(): JSX.Element{
 
    
     return ( <div>
-               <form className="form-horizontal">
+              <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-sm-10">
-                      <b>Contact</b>
+                  <div className="col-sm-12">
+                      <b>Name</b>
                       <br/>
                   </div>
                 </div>
               </form>
               <form className="form-horizontal">
                 <div className="form-group">
-                
                   <div className="col-md-3">
-                      <div className={this.state.contact_email_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0}}/>
-                      </div>
+                    <div className={this.props.firstNameClassName}>
+                      name  
+                    </div>
                   </div>
                   <div className="col-md-3">
-                      <div className={this.state.contact_mobile_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile" value={this.state.mobile}  style={{borderRadius: 0}}/>
-                      </div>
+                    <div className={this.state.last_name_classname}>
+                      last
+                    </div>
+                  </div>
+                  <div className="col-md-3">
+                    <div className={this.props.firstNameClassName}>
+                      company
+                    </div>
                   </div>
                 </div>
-              </form> 
+              </form>
             </div>
     )
   }
@@ -129,11 +140,10 @@ class Contact extends React.Component<any, any> {
 
 }
 
-
 function mapStateToProps(state: any) {
-  console.log("contact component/state" + JSON.stringify(state.contact));
+  console.log("name component/state" + JSON.stringify(state.name));
   return {
-   contact: state.contact
+   name: state.name
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -142,24 +152,26 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setContactEmail: (e: any) => {
+    setFirstName: (e: any) => {
+      console.log("first name" + e.target.value);
+      dispatch(setFirstName(e.target.value));
+    },
+    setLastName: (e: any) => {
       console.log(e.target.value);
-      dispatch(setContactEmail(e.target.value));
+      dispatch(setLastName(e.target.value));
     },
-    setContactMobile: (e: any) => {
-    //  console.log(e.target.value);
-      dispatch(setContactMobile(e.target.value));
-    },
-   
+    setBusinessName: (e: any) => {
+      console.log(e.target.value);
+      //dispatch(setLastName(e.target.value));
+    }
   }
 }
 
-const Contact1 = connect(
+const NamePreview1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Contact)
+)(NamePreview)
 
-export default Contact1;
-
+export default NamePreview1;
 
 

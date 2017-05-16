@@ -32,7 +32,7 @@ export function registerUser(email: any, password: any) {
       })*/
       dispatch({
         type: REGISTER,
-        data: "response.data"
+        data: "session_key"
       })
   }
 }

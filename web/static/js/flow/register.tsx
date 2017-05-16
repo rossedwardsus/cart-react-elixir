@@ -62,7 +62,7 @@ class Register extends React.Component<any, any> {
         mobile: "",
         password: "",
         password_again: "",
-        first_border_color: "red",
+        first_border_color: "gre",
         last_border_color: "red",
         email_border_color: "red",
         password_border_color: "red",
@@ -92,6 +92,12 @@ class Register extends React.Component<any, any> {
     //this.setState({here: this.props.getAllProducts()});
     //console.log(this.props.dispatch(addTodoWithDispatch));
     //this.props.getAllProducts();
+
+  }
+
+  onFirstNameFocus(){
+
+    this.setState({first_border_color: "red"});
 
   }
 
@@ -176,7 +182,7 @@ class Register extends React.Component<any, any> {
 
                 console.log("response" + JSON.stringify(response));
 
-                //that.props.history.push('/register_complete');
+                that.props.history.push('/user');
 
           })
           .catch( error => {
@@ -237,7 +243,7 @@ class Register extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-6">
                                    <br/>
-                                    <input type="text" className="form-control" id="email" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} style={{borderColor: this.state.first_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} onFocus={() => this.onFirstNameFocus()} style={{borderColor: this.state.first_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">

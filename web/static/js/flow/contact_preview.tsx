@@ -37,7 +37,7 @@ interface Order {
   //completed: boolean
 }
 
-class Contact extends React.Component<any, any> {
+class ContactPreview extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -106,12 +106,12 @@ class Contact extends React.Component<any, any> {
                 
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0}}/>
+                        email
                       </div>
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile" value={this.state.mobile}  style={{borderRadius: 0}}/>
+                        mobile
                       </div>
                   </div>
                 </div>
@@ -154,12 +154,12 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const Contact1 = connect(
+const ContactPreview1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Contact)
+)(ContactPreview)
 
-export default Contact1;
+export default ContactPreview1;
 
 
 

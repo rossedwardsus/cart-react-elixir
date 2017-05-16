@@ -1,4 +1,4 @@
-import { SET_USER_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_CITY } from '../constants/actionTypes.ts';
+import { REGISTER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,71 +20,14 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = [], action: any){
+export default function user(state:any = {session_key: "", first_name: "", last_name: ""}, action: any){
 
   let delivery_address_updated = null;
 
   switch (action.type) {
-    /*case SET_USER_DELIVERY_ADDRESS_STREET1:
-      //alert("CartState " + action.item_id);
-      //console.log("reducer " + JSON.stringify(state));
-
-      //alert("view public menu reducer" + JSON.stringify(action));
-      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return "hello";
-      //alertObject.assign({}, state);
-      //alert(state);
-      //return Object.assign({}, ...state);
-
-      //return Object.assign({}, ...state, action.menu_items)
-      //return Object.assign({}, {menu_items: action.menu_items});
-
-      //let cart_items_temp = state.cart_items;
-      //cart_items_temp.push({item_id: 2, title: "another item"});
-
-      //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-
-      //let new_state = {cart_items: cart_items_temp};
-
-      //return Object.assign({}, state, new_state);
-      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-      //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+    case REGISTER:
       
-      delivery_address_updated = {delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
-
-      //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-      return Object.assign({}, state, {delivery_address: delivery_address_updated});
-    
-
-    case SET_DELIVERY_ADDRESS_CITY:
-      //alert("CartState " + action.item_id);
-      //alert("add cart item " + JSON.stringify(state));
-
-      //alert("view public menu reducer" + JSON.stringify(action));
-      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return "hello";
-      //alertObject.assign({}, state);
-      //alert(state);
-      //return Object.assign({}, ...state);
-
-      //return Object.assign({}, ...state, action.menu_items)
-      //return Object.assign({}, {menu_items: action.menu_items});
-
-      //let cart_items_temp = state.cart_items;
-      //cart_items_temp.push({item_id: 2, title: "another item"});
-
-      //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-
-      //let new_state = {cart_items: cart_items_temp};
-
-      delivery_address_updated = {delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
-
-      //return Object.assign({}, state, new_state);
-      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-      //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-      return Object.assign({}, state, {delivery_address: delivery_address_updated})*/
-
-
+      return Object.assign({}, state, {session_key: "key", first_name: "ross", last_name: "edwards"});
     
 
     default:

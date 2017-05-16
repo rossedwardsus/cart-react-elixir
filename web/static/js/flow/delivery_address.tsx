@@ -116,7 +116,7 @@ class DeliveryAddress extends React.Component<any, any> {
     return ( <div>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-sm-12">
+                    <div className="col-sm-3">
                         <b>Address</b>
                         <br/>
                           <select className="form-control">

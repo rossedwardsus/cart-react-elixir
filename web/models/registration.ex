@@ -1,13 +1,14 @@
 defmodule Sconely.Registration do
-		use Ecto.Schema
-		import Ecto.Changeset
+		#use Ecto.Schema
+		#import Ecto.Changeset
 
-		#use SconeHomeElixir.Web, :model
+		use SconeHomeElixir.Web, :model
 
 		#@derive {Poison.Encoder, only: [:email, :password]}
 
 		#@valid_attrs %{email: "", password: ""}
-		#@required_fields %{email: "", password: ""}
+		@optional_fields ~W()
+		@required_fields ~W(email password password_salt)
 
 		@primary_key {:user_id, :binary_id, autogenerate: true}
 
@@ -18,15 +19,14 @@ defmodule Sconely.Registration do
 			field :password_salt, :string
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 			field :activated, :boolean, default: false
-
 		end
 
 		def changeset(struct, params \\ %{}) do
 		    struct
-		    |> cast(params, [:email, :password, :password_salt])
-		    #|> validate_required([:email, :password])
-		    #|> validate_length(:first_name, min: 2)
+		    |> cast(params, @required_fields, @optional_fields)
+		    #|> validate_required([:email])
 		    #|> validate_length(:email, min: 2)
+		    #|> validate_length(:password, min: 2)
 		end
 
 end 

@@ -14,20 +14,66 @@ defmodule Sconely.RegistrationResolver do
 
     IO.inspect(args[:email])
 
-  	changeset = Registration.changeset(%Registration{}, %{email: "guest", password: "p", password_salt: ""})
+    #user_id secure uuid
+    #password_salt
+
+  	changeset = Registration.changeset(%Registration{}, %{first: "f", last: "l", email: "e", password: "p", password_salt: "ps"})
 
     case Repo.insert(changeset) do
       {:ok, _registration} -> IO.inspect("ok")
     #    conn
     #      |> put_flash(:info, "User created successfully.")
     #      |> redirect(to: user_path(conn, :index))
-      {:error, changeset} ->
+
+            #changeset = UserProfile.changeset(%UserProfile{}, %{user_id: "e", first: "f"})
+
+            #case Repo.insert(changeset) do
+            #  {:ok, _registration} -> IO.inspect("ok")
+            #    conn
+            #      |> put_flash(:info, "User created successfully.")
+            #      |> redirect(to: user_path(conn, :index))
+
+                    #changeset = Session.changeset(%Session{}, %{user_id: "e", session_id: "p"})
+
+                    #case Repo.insert(changeset) do
+                    #  {:ok, _registration} -> IO.inspect("ok")
+                    #    conn
+                    #      |> put_flash(:info, "User created successfully.")
+                    #      |> redirect(to: user_path(conn, :index))
+                    #  {:error, changeset} -> 
+                        #Ecto.Changeset.traverse_errors(changeset, fn
+                          IO.inspect(Map.fetch(changeset, :errors))
+                          #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
+                          #{msg, opts} -> IO.inspect(msg)
+                          #msg -> msg
+                        #end)
+                    #    render(conn, "new.html", changeset: changeset)
+                    #end
+
+
+            #  {:error, changeset} -> 
+                #Ecto.Changeset.traverse_errors(changeset, fn
+                  IO.inspect(Map.fetch(changeset, :errors))
+                  #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
+                  #{msg, opts} -> IO.inspect(msg)
+                  #msg -> msg
+                #end)
+            #    render(conn, "new.html", changeset: changeset)
+            #end
+
+      {:error, changeset} -> 
+        #Ecto.Changeset.traverse_errors(changeset, fn
+          IO.inspect(Map.fetch(changeset, :errors))
+          #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
+          #{msg, opts} -> IO.inspect(msg)
+          #msg -> msg
+        #end)
     #    render(conn, "new.html", changeset: changeset)
     end
 
 
     #working
-    Sconely.RegistrationEmail.welcome_email(%{"email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+    #Sconely.RegistrationEmail.welcome_email(%{"email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
     #admin
     #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now

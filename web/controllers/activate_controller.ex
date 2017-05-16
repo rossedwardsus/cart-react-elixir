@@ -17,6 +17,10 @@ defmodule SconeHomeElixir.ActivateController do
 
     IO.puts("email" <> "password")
 
+    #get registration row based on email
+    #update activated to true
+    
+
     #changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})
     #{:error, changeset} = Repo.insert(changeset)
     
