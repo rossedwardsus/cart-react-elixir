@@ -26,7 +26,8 @@ export default function user(state:any = {session_key: "", first_name: "", last_
 
   switch (action.type) {
     case REGISTER:
-      
+      console.log("user" + JSON.stringify(state));
+
       return Object.assign({}, state, {session_key: "key", first_name: "ross", last_name: "edwards"});
     
 

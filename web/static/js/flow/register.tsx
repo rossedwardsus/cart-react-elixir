@@ -62,11 +62,12 @@ class Register extends React.Component<any, any> {
         mobile: "",
         password: "",
         password_again: "",
-        first_border_color: "gre",
-        last_border_color: "red",
-        email_border_color: "red",
-        password_border_color: "red",
-        password_again_border_color: "red",
+        first_border_color: "grey",
+        last_border_color: "grey",
+        email_border_color: "grey",
+        email_again_border_color: "grey",
+        password_border_color: "grey",
+        password_again_border_color: "grey",
         first_name_validated: false
 
     };
@@ -101,6 +102,36 @@ class Register extends React.Component<any, any> {
 
   }
 
+  onLastNameFocus(){
+
+    this.setState({last_border_color: "red"});
+
+  }
+
+  onEmailFocus(){
+
+    this.setState({email_border_color: "red"});
+
+  }
+
+  onEmailAgainFocus(){
+
+    this.setState({email_again_border_color: "red"});
+
+  }
+
+  onPasswordFocus(){
+
+    this.setState({password_border_color: "red"});
+
+  }
+
+  onPasswordAgainFocus(){
+
+    this.setState({password_again_border_color: "red"});
+
+  }
+
   setFirstName(e: any){
 
       if(e.target.value.length > 0){
@@ -119,6 +150,27 @@ class Register extends React.Component<any, any> {
   }
 
   setEmail(e: any){
+
+      let dot_patt = /[.]/;
+      let dot_res = dot_patt.test(e.target.value);
+
+      let ampersand_patt = /[@]/;
+      let ampersand_res = ampersand_patt.test(e.target.value);
+
+      //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+
+          //less then 20, doesnt include @ and .
+          console.log(dot_res + "" + ampersand_res);
+
+          this.setState({email: e.target.value})
+          this.setState({email_border_color: "grey"});
+          //this.setState({email_validated: true});
+
+      //}
+
+  }
+
+  setEmailAgain(e: any){
 
       let dot_patt = /[.]/;
       let dot_res = dot_patt.test(e.target.value);
@@ -183,6 +235,7 @@ class Register extends React.Component<any, any> {
                 console.log("response" + JSON.stringify(response));
 
                 that.props.history.push('/user');
+                //context.router
 
           })
           .catch( error => {
@@ -248,7 +301,7 @@ class Register extends React.Component<any, any> {
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setEmail(e)} style={{borderColor: this.state.email_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setEmail(e)} onFocus={() => this.onLastNameFocus()} style={{borderColor: this.state.last_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
@@ -256,12 +309,24 @@ class Register extends React.Component<any, any> {
                                     <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e: any) => this.setEmail(e)} style={{borderColor: this.state.email_border_color}}/>
                                   </div>
                                 </div>
+                                 <div className="form-group">
+                                  <div className="col-md-6">
+                                    <input type="text" className="form-control" id="email" placeholder="Email Again" onChange={(e: any) => this.setEmailAgain(e)} onFocus={() => this.onEmailFocus()} style={{borderColor: this.state.email_again_border_color}}/>
+                                  </div>
+                                </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e: any) => this.setPassword(e)} style={{borderColor: this.state.password_border_color}}/>
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e: any) => this.setPassword(e)}/>
-                                 
-                                  <button type="button" className="btn" onClick={() => this.register()}>Login</button> 
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e: any) => this.setPassword(e)} onFocus={() => this.onPasswordFocus()} style={{borderColor: this.state.password_border_color}}/>
+                                 </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-md-6">
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e: any) => this.setPasswordAgain(e)} onFocus={() => this.onPasswordAgainFocus()} style={{borderColor: this.state.password_again_border_color}}/>
+                                 </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-md-6">
+                                    <button type="button" className="btn btn-default" onClick={() => this.register()}>Register</button> 
                                   </div>
                                </div>
                               </form>
@@ -280,7 +345,7 @@ class Register extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log(JSON.stringify(state));
+  console.log("register.tsx" + JSON.stringify(state));
   return {
 
     state: state,

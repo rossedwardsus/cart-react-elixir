@@ -18,7 +18,7 @@ import UserOrders from './user_orders.tsx';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class Homepage extends React.Component<any, any> {
+class UserHomePage extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -266,13 +266,13 @@ export default class Homepage extends React.Component<any, any> {
                                   <li className="inactive">Profile<span className="sr-only">(current)</span></li>
                                 </ul>
                                 <ul className="nav navbar-nav">
-                                  <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                                  <li className="inactive"><Link to="/logout">Logout<span className="sr-only">(current)</span></Link></li>
                                 </ul>
                                 <ul className="nav navbar-nav">
                                   <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
                                 </ul>
                                 <ul className="nav navbar-nav">
-                                  <li className="inactive"><Link to="/public/menu">Menu-Welcome Ross Edwards</Link><span className="sr-only">(current)</span></li>
+                                  <li className="inactive"><Link to="/public/menu">Menu-{this.props.name.first_name} Welcome Ross Edwards</Link><span className="sr-only">(current)</span></li>
                                 </ul>
                               </div>
                           </div>
@@ -292,7 +292,11 @@ export default class Homepage extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
-                          <Link to="/public/menu">About Me</Link>
+                          <Link to="/user/about_me">About Me</Link>
+                          <br/>
+                          <Link to="/user/contact">Contact</Link>
+                          <br/>
+                          <Link to="/user/password">Password</Link>
                           <br/>
                           <Link to="/user/photo">Photo</Link>
                           
@@ -334,3 +338,34 @@ export default class Homepage extends React.Component<any, any> {
     )
   }
 }
+
+function mapStateToProps(state: any) {
+  console.log("user home page component/state" + JSON.stringify(state));
+  return {
+   name: state.name
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    setUserDeliveryAddressStreet1: (e: any) => {
+      //console.log(e.target.value);
+      //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+    },
+    //setContactPhone: (e: any) => {
+    //  console.log(e.target.value);
+      //dispatch(setContactPhone(e.target.value));
+    //},
+   
+  }
+}
+
+const UserHomePage1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserHomePage)
+
+export default UserHomePage1;

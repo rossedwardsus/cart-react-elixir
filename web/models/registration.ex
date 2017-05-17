@@ -8,12 +8,12 @@ defmodule Sconely.Registration do
 
 		#@valid_attrs %{email: "", password: ""}
 		@optional_fields ~W()
-		@required_fields ~W(email password password_salt)
+		@required_fields ~W(user_id email password password_salt)
 
-		@primary_key {:user_id, :binary_id, autogenerate: true}
+		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "registration" do
-			#field :user_id, :string
+			field :user_id, Ecto.UUID
 			field :email, :string
 			field :password, :string
 			field :password_salt, :string

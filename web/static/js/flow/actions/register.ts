@@ -30,6 +30,27 @@ export function registerUser(email: any, password: any) {
         type: 'WAITING_FOR_AUTHENTICATION',
         error: response.error
       })*/
+      /*axios.post('http://localhost:4000/api/graphql', {
+                 query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") {status}}'
+          })
+          .then( response => {
+
+                console.log("response" + JSON.stringify(response));
+
+                that.props.history.push('/user');
+
+          })
+          .catch( error => {
+
+                console.log("error" + error);
+                //go to code/payment screen
+        //        this.props.loadView();
+
+         //if (!error.status) {
+            // network error
+          //}
+
+          })*/
       dispatch({
         type: REGISTER,
         data: "session_key"

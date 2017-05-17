@@ -274,7 +274,7 @@ class PublicHomePage extends React.Component<any, any> {
 
 
     
-    if(this.props.logged_in.user_id != "guest"){
+    if(this.props.user.user_id != undefined){
         
         logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-header">
@@ -322,7 +322,6 @@ class PublicHomePage extends React.Component<any, any> {
                               </button>
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
-                            
                             
                               {logged_in}
                              

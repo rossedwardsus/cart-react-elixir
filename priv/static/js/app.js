@@ -19011,7 +19011,7 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            var logged_in = null;
-	            if (this.props.logged_in.user_id != "guest") {
+	            if (this.props.user.user_id != undefined) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-header" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Start Order")), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "Home"))));
 	            } else {
 	                logged_in = React.createElement("div", null, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-left" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", { className: "inactive" }, "Start Orde"), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("div", { id: "navbar", className: "navbar-form nav navbar-right" }, React.createElement("div", { className: "hidden-xs form-group" }, React.createElement("input", { type: "text", className: "hidden-xs form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange(e) {
@@ -28033,6 +28033,9 @@ webpackJsonp([0],[
 	__webpack_require__(624);
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
+	//import Swipeable from 'react-swipeable';
+	//import { routeActions, push } from 'react-router-redux'
+	var react_redux_1 = __webpack_require__(190);
 	//import {startOrder} from './actions/order';
 	var immutable_1 = __webpack_require__(922);
 	var user_orders_tsx_1 = __webpack_require__(928);
@@ -28045,16 +28048,16 @@ webpackJsonp([0],[
 	//};
 	//@connect(null, mapDispatchToProps)
 	
-	var Homepage = function (_React$Component) {
-	    _inherits(Homepage, _React$Component);
+	var UserHomePage = function (_React$Component) {
+	    _inherits(UserHomePage, _React$Component);
 	
 	    //props: Props;
-	    function Homepage(props) {
-	        _classCallCheck(this, Homepage);
+	    function UserHomePage(props) {
+	        _classCallCheck(this, UserHomePage);
 	
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (UserHomePage.__proto__ || Object.getPrototypeOf(UserHomePage)).call(this, props));
 	
 	        _this.state = {
 	            image: "/images/gallery/sconely_group_HPb.jpg",
@@ -28070,7 +28073,7 @@ webpackJsonp([0],[
 	        return _this;
 	    }
 	
-	    _createClass(Homepage, [{
+	    _createClass(UserHomePage, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //alert("jsx");
@@ -28213,7 +28216,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-Welcome Ross Edwards"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), "-", React.createElement(react_router_1.Link, { to: "/order/signature" }, "Signature"), React.createElement("br", null), React.createElement("div", null, "Your Orders", React.createElement("br", null), React.createElement(user_orders_tsx_1.default, null)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/logout" }, "Logout", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu-", this.props.name.first_name, " Welcome Ross Edwards"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/about_me" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/contact" }, "Contact"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/password" }, "Password"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), "-", React.createElement(react_router_1.Link, { to: "/order/signature" }, "Signature"), React.createElement("br", null), React.createElement("div", null, "Your Orders", React.createElement("br", null), React.createElement(user_orders_tsx_1.default, null)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -28224,10 +28227,28 @@ webpackJsonp([0],[
 	        }
 	    }]);
 	
-	    return Homepage;
+	    return UserHomePage;
 	}(React.Component);
 	
-	exports.default = Homepage;
+	function mapStateToProps(state) {
+	    console.log("user home page component/state" + JSON.stringify(state));
+	    return {
+	        name: state.name
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {
+	        setUserDeliveryAddressStreet1: function setUserDeliveryAddressStreet1(e) {
+	            //console.log(e.target.value);
+	            //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+	        }
+	    };
+	}
+	var UserHomePage1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(UserHomePage);
+	exports.default = UserHomePage1;
 
 /***/ }),
 /* 928 */
@@ -34901,11 +34922,12 @@ webpackJsonp([0],[
 	            mobile: "",
 	            password: "",
 	            password_again: "",
-	            first_border_color: "gre",
-	            last_border_color: "red",
-	            email_border_color: "red",
-	            password_border_color: "red",
-	            password_again_border_color: "red",
+	            first_border_color: "grey",
+	            last_border_color: "grey",
+	            email_border_color: "grey",
+	            email_again_border_color: "grey",
+	            password_border_color: "grey",
+	            password_again_border_color: "grey",
 	            first_name_validated: false
 	        };
 	        //user_type=guest
@@ -34935,6 +34957,31 @@ webpackJsonp([0],[
 	            this.setState({ first_border_color: "red" });
 	        }
 	    }, {
+	        key: "onLastNameFocus",
+	        value: function onLastNameFocus() {
+	            this.setState({ last_border_color: "red" });
+	        }
+	    }, {
+	        key: "onEmailFocus",
+	        value: function onEmailFocus() {
+	            this.setState({ email_border_color: "red" });
+	        }
+	    }, {
+	        key: "onEmailAgainFocus",
+	        value: function onEmailAgainFocus() {
+	            this.setState({ email_again_border_color: "red" });
+	        }
+	    }, {
+	        key: "onPasswordFocus",
+	        value: function onPasswordFocus() {
+	            this.setState({ password_border_color: "red" });
+	        }
+	    }, {
+	        key: "onPasswordAgainFocus",
+	        value: function onPasswordAgainFocus() {
+	            this.setState({ password_again_border_color: "red" });
+	        }
+	    }, {
 	        key: "setFirstName",
 	        value: function setFirstName(e) {
 	            if (e.target.value.length > 0) {
@@ -34950,6 +34997,21 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setEmail",
 	        value: function setEmail(e) {
+	            var dot_patt = /[.]/;
+	            var dot_res = dot_patt.test(e.target.value);
+	            var ampersand_patt = /[@]/;
+	            var ampersand_res = ampersand_patt.test(e.target.value);
+	            //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+	            //less then 20, doesnt include @ and .
+	            console.log(dot_res + "" + ampersand_res);
+	            this.setState({ email: e.target.value });
+	            this.setState({ email_border_color: "grey" });
+	            //this.setState({email_validated: true});
+	            //}
+	        }
+	    }, {
+	        key: "setEmailAgain",
+	        value: function setEmailAgain(e) {
 	            var dot_patt = /[.]/;
 	            var dot_res = dot_patt.test(e.target.value);
 	            var ampersand_patt = /[@]/;
@@ -35014,13 +35076,23 @@ webpackJsonp([0],[
 	                    return _this2.onFirstNameFocus();
 	                }, style: { borderColor: this.state.first_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Last Name", onChange: function onChange(e) {
 	                    return _this2.setEmail(e);
-	                }, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
+	                }, onFocus: function onFocus() {
+	                    return _this2.onLastNameFocus();
+	                }, style: { borderColor: this.state.last_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
 	                    return _this2.setEmail(e);
-	                }, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
+	                }, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email Again", onChange: function onChange(e) {
+	                    return _this2.setEmailAgain(e);
+	                }, onFocus: function onFocus() {
+	                    return _this2.onEmailFocus();
+	                }, style: { borderColor: this.state.email_again_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
 	                    return _this2.setPassword(e);
-	                }, style: { borderColor: this.state.password_border_color } }), React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password Again", onChange: function onChange(e) {
-	                    return _this2.setPassword(e);
-	                } }), React.createElement("button", { type: "button", className: "btn", onClick: function onClick() {
+	                }, onFocus: function onFocus() {
+	                    return _this2.onPasswordFocus();
+	                }, style: { borderColor: this.state.password_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password Again", onChange: function onChange(e) {
+	                    return _this2.setPasswordAgain(e);
+	                }, onFocus: function onFocus() {
+	                    return _this2.onPasswordAgainFocus();
+	                }, style: { borderColor: this.state.password_again_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("button", { type: "button", className: "btn btn-default", onClick: function onClick() {
 	                    return _this2.register();
 	                } }, "Login"))))))));
 	        }
@@ -35030,7 +35102,7 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log(JSON.stringify(state));
+	    console.log("register.tsx" + JSON.stringify(state));
 	    return {
 	        state: state
 	    };
@@ -36912,6 +36984,7 @@ webpackJsonp([0],[
 	    var delivery_address_updated = null;
 	    switch (action.type) {
 	        case actionTypes_ts_1.REGISTER:
+	            console.log("user" + JSON.stringify(state));
 	            return Object.assign({}, state, { session_key: "key", first_name: "ross", last_name: "edwards" });
 	        default:
 	            //alert();
