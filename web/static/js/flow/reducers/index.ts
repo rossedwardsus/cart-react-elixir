@@ -5,6 +5,7 @@ import login from './login.ts';
 //import register from './register.ts';
 //import root from './root.ts';
 import OrderDeliveryAddress from './order_delivery_Address.ts';
+import OrderPayment from './order_payment.ts';
 import user from './user.ts';
 import user_delivery_addresses from './user_delivery_addresses.ts';
 import cart from './cart.ts';
@@ -15,6 +16,7 @@ import user_payment_methods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 
 export default combineReducers({
+  OrderPayment,
   user,
   user_delivery_addresses,
   cart,

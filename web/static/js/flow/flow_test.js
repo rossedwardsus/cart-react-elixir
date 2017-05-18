@@ -170,11 +170,12 @@ const Root = () => (
         <Route path="/register_complete" component={RegisterCompleted} />
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
-        <Route path="/order/:order_id/cart" component={OrderCart} />
         <Route component={checkLogin}>
           <Route path="/order/checkout" component={Checkout} />
           <Route path="/order/payment_method" component={PaymentMethod} />
           <Route path="/order/preview" component={Preview} />
+          <Route path="/order/cart" component={OrderCart} />
+          <Route path="/order/order_completed" component={OrderComplete} />
         </Route>
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />

@@ -21,6 +21,16 @@ defmodule Sconely.Schema.Types do
   #  field :description, :string
   end
 
+  #length
+  #input_object :registration do
+  #  field :user_id, :string
+  #  field :first, :string
+  #  field :last, :string
+  #  field :email, :string
+  #  field :password, :string
+  #  #field :status, :string
+  #end
+
 
   object :login do
   	field :email, :string
@@ -34,7 +44,7 @@ defmodule Sconely.Schema.Types do
     field :last, :string
    	field :email, :string
    	field :password, :string
-   	field :status, :string
+   	#field :status, :string
   end
 
 

@@ -134,8 +134,8 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
                     </div>
-                  </form>
-                  <form className="form-inline">
+               </form>
+              <form className="form-inline">
                     <div className="form-group">
                       <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
                           <option></option>

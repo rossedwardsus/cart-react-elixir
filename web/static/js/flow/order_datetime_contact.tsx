@@ -896,13 +896,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <DateTime />
-                            <br/>
                             <Name />
-                            <br/>
                             <DeliveryAddress />
-                            <br/>
                             <Contact />
-                            <br/>
                             <form className="form-horizontal">
                               <div className="form-group">
                                 <div className="col-sm-10">

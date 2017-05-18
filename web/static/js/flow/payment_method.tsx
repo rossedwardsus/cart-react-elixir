@@ -51,15 +51,12 @@ class PaymentMethod extends React.Component<any, any> {
 
     this.state = {
 
-        page: "menu",
-        //menu_items: this.props.menu_items,
-        //here: "",
-        delivery_address: Immutable.Map(),
-        delivery_address_street: "",
-        item_count: 0,
-        cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-        //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-        order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
+       card_number_border_color: "grey",
+       expiry_month_border_color: "grey",
+       expiry_year_border_color: "grey",
+       cvc_border_color: "grey",
+       
+       card_type: ""
 
     };
 
@@ -197,33 +194,37 @@ class PaymentMethod extends React.Component<any, any> {
   setPaymentCardNumber(e: any){
 
       //Amex Card: ^3[47][0-9]{13}$
-      if(/^[a-zA-Z]/.test(e.target.value)){
+      //if(/^3[47][0-9]{13}$/.test(e.target.value)){
 
-          alert("amex");
+          console.log("amex");
+          this.props.setPaymentCardNumber(e.target.value);
+          this.setState({card_number_border_color: "red"})
+          this.setState({card_type: "AMEX"});
 
       //
-      }else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
+      //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
       //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
 
-          alert("visa");
+      //    alert("visa");
       //
-      }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
-          alert("discovery");
+      //}else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
+      //    alert("discovery");
       //
       //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
-      }
+      //}
 
 
   }
 
   setPaymentExpiryDateMonth(e: any){
 
-      alert(e.target.value);
+      console.log(e.target.value);
 
       //01-12, only numbers
       if(/^[0-9]/.test(e.target.value)){
 
-          alert("ok");
+          console.log("ok month");
+          this.setState({expiry_month_border_color: "grey"})
 
       }
 
@@ -232,6 +233,14 @@ class PaymentMethod extends React.Component<any, any> {
   setPaymentExpiryDateYear(e: any){
 
       //2017-only numbers
+      //01-12, only numbers
+      if(/^[0-9]/.test(e.target.value)){
+
+          console.log("ok year");
+          this.setState({expiry_year_border_color: "grey"})
+
+
+      }
 
   }
 
@@ -311,21 +320,19 @@ class PaymentMethod extends React.Component<any, any> {
                             <br/>
                             <form className="form-horizontal">
                               <div className="form-group">
-                                <div className="col-sm-5">
-                                    <b>Payment Methods</b>
+                                <div className="col-sm-3">
+                                    <b>Payment</b>
                                     <br/>
-                                    {this.props.login.user_id === "guest" &&
                                       <select className="form-control">
                                           <option>Home</option>
                                           <option>Office</option>
                                       </select>
-                                    }
                                 </div>
                               </div>
                             </form>
                             <form className="form-horizontal">
                             <div className="form-group">
-                                <div className="col-sm-10">
+                                <div className="col-sm-6">
                                 
                                 <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
                               </div>
@@ -333,25 +340,28 @@ class PaymentMethod extends React.Component<any, any> {
                             </form>
                             <form className="form-horizontal">
                               <div className="form-group">
-                                <div className="col-sm-10">
+                                <div className="col-sm-3">
                                 
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)}/>
+                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color}}/>
+                                </div>
+                                <div className="col-sm-3">
+                                    {this.state.card_type}
                                 </div>
                               </div>
                             </form>
                             <form className="form-horizontal">
                               <div className="form-group">
-                                <div className="col-md-3">
+                                <div className="col-md-2">
                               
-                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" onChange={(e) => this.setPaymentExpiryDateMonth(e)}/>
+                                  <input type="text" size="2" className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_year_border_color}}/>
                                 </div>
-                                <div className="col-md-3">
+                                <div className="col-md-2">
                               
-                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" onChange={(e) => this.setPaymentExpiryDateYear(e)}/>
+                                  <input type="text" size="4" className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_month_border_color}}/>
                                 </div>
-                                <div className="col-md-3">
+                                <div className="col-md-2">
                               
-                                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" onChange={(e) => this.setPaymentSecurityCode(e)}/>
+                                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={(e) => this.setPaymentSecurityCode(e)} style={{borderColor: this.state.cvc_border_color}}/>
                                 </div>
                               </div>
                             </form>
@@ -376,7 +386,7 @@ class PaymentMethod extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("payment method component/state" + JSON.stringify(state));
   return {
-   login: state.login,
+   user: state.user,
    user_payment_methods: state.user_payment_methods
    //menu_items: dispatch()
   };
@@ -385,19 +395,19 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setNameOnCard: (e: any) => {
-      console.log(e.target.value);
-      //dispatch(setFirstName(e.target.value));
+    setPaymentNameOnCard: (e: any) => {
+      //console.log(e.target.value);
+      dispatch(setPaymentNameOnCard(e.target.value));
     },
-    setCardNumber: (e: any) => {
+    setPaymentCardNumber: (e: any) => {
+      //console.log(e.target.value);
+      dispatch(setPaymentCardNumber(e));
+    },
+    setPaymentExpiryDate: (e: any) => {
       console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
     },
-    setExpiryDate: (e: any) => {
-      console.log(e.target.value);
-      //dispatch(setLastName(e.target.value));
-    },
-    setSecurityCode: (e: any) => {
+    setPaymentSecurityCode: (e: any) => {
       console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
     }

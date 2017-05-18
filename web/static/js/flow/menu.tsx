@@ -259,15 +259,18 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             Ingredients: {this.state.selected_item_ingredients}
+                            <br/>
+                            <br/>
+                            $60/Mini - $54
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="1 dozen" onChange={(value: any) => this.selectedItemDozens(value)}/> 1 Dozen
+                                <input type="radio" name="optradio" value="1 dozen" onChange={(value: any) => this.selectedItemDozens(value)}/> 1 Dz $60
                               </div>
                               <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="2 Dozen Mini" onChange={(value: any) => this.selectedItemDozens(value)}/> 2 Dozen Mini
+                                <input type="radio" name="optradio" value="2 Dozen Mini" onChange={(value: any) => this.selectedItemDozens(value)}/> 2 Dz Mini $54
                               </div>
                               <div className="col-md-3">
                                 <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>

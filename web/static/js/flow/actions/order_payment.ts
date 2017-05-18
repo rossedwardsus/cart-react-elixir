@@ -9,7 +9,7 @@ export function setPaymentNameOnCard(value: any) {
 }
 
 export function setPaymentCardNumber(value: any) {
-  alert("addCartItem from redux");
+  console.log("action payment");
   return {
     type: SET_PAYMENT_CARD_NUMBER,
     value

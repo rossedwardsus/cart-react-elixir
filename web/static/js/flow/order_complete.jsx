@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
-//import Immutable  = require('immutable');
+const Immutable  = require('immutable');
 
 
 function addTodoWithDispatch() {
@@ -38,7 +38,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderDateTimeContact extends React.Component<any, any> {
+class OrderCompleted extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -552,7 +552,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             Your Order #12345 has been received.
                             <br/>
                             <br/>
-                            <button onClick={() => this.goToDateTimeContact()}>Back Home</button>
+                            
                         </div>
                         <div className="hidden-xs col-md-2">
                               maybe put something here
@@ -590,5 +590,5 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderDateTimeContact;
+export default OrderCompleted;
 

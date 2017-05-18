@@ -750,23 +750,10 @@ class Preview extends React.Component<any, any> {
       //if this.props.order_state = "completed"?
       //else error
 
-
-      //export default function getBook(dispatch) {
-      /*  $.ajax({
-            method: "GET",
-            url: "/api/data",
-            dataType: "json"
-          }).success(function(data){
-            //return dispatch({type:'GET_BOOK', data: data});
-            this.context.router.push('/order/12345/order_complete');
-
-          });
-      //}
-
-      this.context.router.push('/order/12345/order_complete');*/
+      this.context.router.push('/order/order_completed');
 
 
-      axios.post('http://localhost:4000/graphql', {
+      /*axios.post('http://localhost:4000/graphql', {
              query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
       })
       .then( response => {
@@ -802,7 +789,7 @@ class Preview extends React.Component<any, any> {
         // network error
       //}
 
-      })
+      })*/
 
       //alert(JSON.stringify(this.state.delivery_address_street));
 

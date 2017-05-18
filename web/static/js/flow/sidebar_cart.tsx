@@ -291,14 +291,8 @@ class SidebarCart extends React.Component<any, any> {
                   <div style={{fontSize: "14"}}><b>Sub Total</b> ${total_cost}.00</div>
                   <br/>
                   <br/>
+                  <Link to="/order/cart">Cart</Link><Link to="/order/checkout">Checkout</Link>
                   <br/>
-                  show checkout button if cart item count is larger then 0
-                  <br/>
-                  <Link to="/public/menu">Menu-dont show if on menu page</Link>
-                  <br/>
-                  <Link to="/order/checkout">Checkout-only show id cart items != 0</Link>
-                  <br/>
-                  <Link to="/order/cart">Cart</Link>
             </div>
     )
   }

@@ -27,6 +27,7 @@ defmodule Sconely.Registration do
 		    #|> validate_required([:email])
 		    #|> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)
+		    #contains
 		end
 
 end 

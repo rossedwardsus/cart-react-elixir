@@ -4,7 +4,7 @@ defmodule Sconely.RegistrationResolver do
   alias SconeHomeElixir.Repo
   alias Comeonin.Bcrypt 
   #alias Ecto.Multi
-  #import Ecto
+  import Ecto.Query
 
 
   def all(_args, _info) do
@@ -35,6 +35,15 @@ defmodule Sconely.RegistrationResolver do
     #    {:ok, result} -> IO.inspect(result)
     #end
 
+    #Regex.scan(~r/c(d|e)/, "abcd abce")
+
+    
+    query = from r in Registration, join: up in UserProfiles, where: r.user_id == up.user_id
+    query = from [r, up] in query, select: {up.first_name}
+
+    IO.puts("first name") 
+    IO.inspect(Repo.all(query))
+
     Repo.transaction(fn ->
 
 
@@ -59,7 +68,7 @@ defmodule Sconely.RegistrationResolver do
                     #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
                  
-                    {:ok, %{user_id: user_id}}
+                    %{user_id: user_id}
 
 
                     #changeset = Session.changeset(%Session{}, %{user_id: "e", session_id: "p"})

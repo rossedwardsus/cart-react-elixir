@@ -134,22 +134,60 @@ class Register extends React.Component<any, any> {
 
   setFirstName(e: any){
 
-      if(e.target.value.length > 0){
-          
-          this.setState({first_name: e.target.value})
-          this.setState({"first_border_color": "grey"});
+      
+      //if(/[@-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/.test(e.target.value)){
+      //let symbol_test = /[@-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/.test(e.target.value);
+      //}
 
+
+
+      let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_res = symbol_patt.test(e.target.value);
+
+      let number_res = (/[0-9]/.test(e.target.value));
+
+
+      console.log(/[0-9]/.test(e.target.value));
+
+      //larger then 0
+      //no symbols
+      //no numbers
+
+      if(e.target.value.length > 0){
+
+          if(symbol_res == false && number_res == false){
+          
+            this.setState({first_name: e.target.value})
+            this.setState({"first_border_color": "grey"});
+
+          }else{
+
+            this.setState({first_name: e.target.value})
+            this.setState({"first_border_color": "red"});
+
+          }
+      
       }
 
   }
 
   setLastName(e: any){
 
-      this.setState({last_name: e.target.value})
+      if(e.target.value.length > 0){
+        
+        this.setState({last_name: e.target.value})
 
+      }
   }
 
   setEmail(e: any){
+
+      console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
+
+      //not blank
+      //has to include @ and .
+      //no symbols
+      //cant already exist
 
       let dot_patt = /[.]/;
       let dot_res = dot_patt.test(e.target.value);
@@ -160,10 +198,10 @@ class Register extends React.Component<any, any> {
       //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
 
           //less then 20, doesnt include @ and .
-          console.log(dot_res + "" + ampersand_res);
+      //    console.log(dot_res + "" + ampersand_res);
 
-          this.setState({email: e.target.value})
-          this.setState({email_border_color: "grey"});
+      //    this.setState({email: e.target.value})
+      //    this.setState({email_border_color: "grey"});
           //this.setState({email_validated: true});
 
       //}
@@ -191,21 +229,20 @@ class Register extends React.Component<any, any> {
 
   }
 
-  setMobile(e: any){
-
-      this.setState({mobile: e.target.value})
-
-  }
 
   setPassword(e: any){
 
       //if less then 20, doesnt equal password again
+      //no symbols
+      //no numbers
 
       this.setState({password: e.target.value})
 
   }
 
   setPasswordAgain(e: any){
+
+      //must be equal to password
 
       this.setState({password_again: e.target.value})
 
@@ -228,13 +265,13 @@ class Register extends React.Component<any, any> {
     if(this.state.first_name_validated === false){
 
           axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") {status}}'
+                 query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") { user_id }}'
           })
           .then( response => {
 
-                console.log("response" + JSON.stringify(response));
+                console.log("graphql response" + JSON.stringify(response));
 
-                that.props.history.push('/user');
+                //that.props.history.push('/user');
                 //context.router
 
           })
