@@ -286,15 +286,19 @@ class SidebarCart extends React.Component<any, any> {
                         <div className="col-xs-2">Cost</div>
                       </div>
                     </form>
-<br/>
-                  <div style={{fontSize: "14"}}><b>Total Items</b>{item_count} Scones</div>
-                  <br/>
-                  <div style={{fontSize: "14"}}><b>Sub Total</b> ${total_cost}.00</div>
-                  <br/>
-                  <br/>
-                  <Link to="/order/cart">Cart</Link><Link to="/order/checkout">Checkout</Link>
-                  <br/>
-                  <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <br/>
+                    <form className="form-horizontal" style={{border: 1}}>
+                      <div className="form-group" style={{border: 1}}>
+                        <div className="col-xs-2"></div>
+                        <div className="col-xs-2" style={{fontSize: "14"}}><b>Total Items</b>{item_count} Scones</div>
+                        <br/>
+                        <div className="col-xs-2" style={{fontSize: "14"}}><b>Sub Total</b> ${total_cost}.00</div>
+                        <br/>
+                        <br/>
+                        <Link to="/order/checkout">Checkout</Link>
+                        <br/>
+                      </div>
+                    </form>                       
             </div>
     )
   }
