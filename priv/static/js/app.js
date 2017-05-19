@@ -27199,13 +27199,9 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (PublicMenu.__proto__ || Object.getPrototypeOf(PublicMenu)).call(this, props));
 	
-	        _this.selectedItemDozens = function (e) {
+	        _this.selectedItemType = function (e) {
 	            //alert(e.target.value);
-	            //this.setState({selected_item_dozens: e.target.value});
-	            console.log(e);
-	            //if(e.target.value == "24_mini"){
-	            //  this.setState({selected_item_mini: true});
-	            //}
+	            _this.setState({ selected_item_type: e.target.value });
 	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
 	        };
 	        //this.getData();
@@ -27213,9 +27209,8 @@ webpackJsonp([0],[
 	        _this.state = {
 	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
 	            selected_item_id: "",
-	            selected_item_dozens: "",
+	            selected_item_type: "",
 	            selected_item_quantity: "",
-	            selected_item_mini: false,
 	            selected_item_title: "",
 	            selected_item_story: "",
 	            selected_item_ingredients: "",
@@ -27261,7 +27256,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "selectedItemQuantity",
 	        value: function selectedItemQuantity(e) {
-	            //alert(e.target.value);
+	            console.log("selected_item quantity " + e.target.value);
 	            this.setState({ selected_item_quantity: e.target.value });
 	            //set add cart button == active
 	            //this.set
@@ -27272,7 +27267,7 @@ webpackJsonp([0],[
 	            console.log("add cart item");
 	            //if they haven't selected quantity and dozens dont submit and show them an error
 	            //$('#myModal').modal('toggle');
-	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
+	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
 	        }
 	    }, {
 	        key: "goToDateTimeContact",
@@ -27321,10 +27316,10 @@ webpackJsonp([0],[
 	                    }, onMouseLeave: function onMouseLeave() {
 	                        return _this2.onMouseLeave(item.item_id);
 	                    }, src: "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("div", { style: { fontSize: 13 } }, React.createElement("b", null, item.title), " / ", item.description), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3", style: { height: 35, paddingTop: 10 } }, React.createElement("input", { type: "radio", name: "optradio", value: "1 dozen", onChange: function onChange(value) {
-	                    return _this3.selectedItemDozens(value);
-	                } }), " 1 Dz $60"), React.createElement("div", { className: "col-md-3", style: { height: 35, paddingTop: 10 } }, React.createElement("input", { type: "radio", name: "optradio", value: "2 Dozen Mini", onChange: function onChange(value) {
-	                    return _this3.selectedItemDozens(value);
+	            }.bind(this)), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3", style: { height: 35, paddingTop: 10 } }, React.createElement("input", { type: "radio", name: "optradio", value: "regular", onChange: function onChange(value) {
+	                    return _this3.selectedItemType(value);
+	                } }), " 1 Dz $60"), React.createElement("div", { className: "col-md-3", style: { height: 35, paddingTop: 10 } }, React.createElement("input", { type: "radio", name: "optradio", value: "mini", onChange: function onChange(value) {
+	                    return _this3.selectedItemType(value);
 	                } }), " 2 Dz Mini $54"), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: function onChange(e) {
 	                    return _this3.selectedItemQuantity(e);
 	                }, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
@@ -27350,8 +27345,8 @@ webpackJsonp([0],[
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {
 	        //viewmenuthunk
-	        addCartItem: function addCartItem(item_id, dozens, quantity) {
-	            dispatch(cart_ts_1.addCartItem(item_id, dozens, quantity));
+	        addCartItem: function addCartItem(item_id, item_type, quantity) {
+	            dispatch(cart_ts_1.addCartItem(item_id, item_type, quantity));
 	        }
 	    };
 	};
@@ -27366,11 +27361,13 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	function addCartItem(item_id, dozens, quantity_multipler) {
-	    console.log("add cart item quantity action " + item_id);
+	function addCartItem(item_id, item_type, quantity) {
+	    console.log("add cart item quantity action " + item_id + " " + item_type + " " + quantity);
 	    return {
 	        type: actionTypes_ts_1.ADD_CART_ITEM,
-	        item_id: item_id
+	        item_id: item_id,
+	        item_type: item_type,
+	        quantity: quantity
 	    };
 	}
 	exports.addCartItem = addCartItem;
@@ -27547,12 +27544,12 @@ webpackJsonp([0],[
 	                console.log("order " + JSON.stringify(this.props.cart.cart_items));
 	                this.props.cart.cart_items.map(function (item) {
 	                    console.log("item " + JSON.stringify(item));
-	                    if (item.mini == true) {
-	                        total_cost = total_cost + item.dozens * item.quantity * 2;
-	                        item_count = item_count + item.dozens * item.quantity;
+	                    if (item.item_type == "mini") {
+	                        total_cost = total_cost + 6 * item.quantity * 24;
+	                        item_count = item_count + 24 * item.quantity;
 	                    } else {
-	                        total_cost = total_cost + item.dozens * item.quantity * 5;
-	                        item_count = item_count + item.dozens * 12 * item.quantity;
+	                        total_cost = total_cost + 5 * item.quantity * 12;
+	                        item_count = item_count + 12 * item.quantity;
 	                    }
 	                });
 	                //alert(total_cost);
@@ -27561,15 +27558,15 @@ webpackJsonp([0],[
 	                    //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
 	                    //let item_title = result.get("title");
 	                    var item_title = "";
-	                    if (item.mini == true) {
-	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-6" }, item.quantity, " Dozen"), "Mini", item.quantity));
+	                    if (item.item_type == "mini") {
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-6" }, 24 * item.quantity, "title-mini")));
 	                    } else {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity));
+	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-1" }, item.quantity * 12), React.createElement("div", { className: "col-md-1" }, "title"))));
 	                    }
 	                }.bind(this));
 	            }
 	            //{this.props.params.repoName}
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-2" }, "Ruby Q"), React.createElement("div", { className: "col-xs-2" }, "24"), React.createElement("div", { className: "col-xs-2" }, "Cost"))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-xs-2", style: { fontSize: "14" } }, "24"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Sub Total")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout"), React.createElement("br", null))));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-2" }, "Ruby Q"), React.createElement("div", { className: "col-xs-2" }, "24"), React.createElement("div", { className: "col-xs-2" }, "Cost"))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-xs-2", style: { fontSize: "14" } }, item_count))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Sub Total")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout"), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -37236,7 +37233,7 @@ webpackJsonp([0],[
 	        case actionTypes_ts_1.ADD_CART_ITEM:
 	            console.log("add cart item" + JSON.stringify(state));
 	            var items = state.cart_items;
-	            items.push({ item_id: 1, dozens: 1, quantity: 1, mini: true });
+	            items.push({ item_id: 1, item_type: action.item_type, quantity: action.quantity });
 	            return Object.assign({}, state, { cart_items: items });
 	        case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
 	            console.log("increase reducer " + JSON.stringify(state));

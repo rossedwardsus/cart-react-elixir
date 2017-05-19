@@ -109,7 +109,7 @@ class PublicMenu extends React.Component<any, any> {
 
   selectedItemQuantity(e: any){
 
-    //alert(e.target.value);
+    console.log("selected_item quantity " + e.target.value);
 
     this.setState({selected_item_quantity: e.target.value});
     //set add cart button == active
@@ -258,7 +258,7 @@ class PublicMenu extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="regular" onChange={(value: any) => this.selectedItemDozens(value)}/> 1 Dz $60
+                                <input type="radio" name="optradio" value="regular" onChange={(value: any) => this.selectedItemType(value)}/> 1 Dz $60
                               </div>
                               <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
                                 <input type="radio" name="optradio" value="mini" onChange={(value: any) => this.selectedItemType(value)}/> 2 Dz Mini $54
@@ -304,8 +304,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      dispatch(addCartItem(item_id, dozens, quantity));
+    addCartItem: (item_id: any, item_type: any, quantity: any) => {
+      dispatch(addCartItem(item_id, item_type, quantity));
     },
     //increaseCartItemQuantity: () => {
     //  dispatch(increaseCartItemQuantity(1));

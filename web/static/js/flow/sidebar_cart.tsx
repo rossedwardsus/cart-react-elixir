@@ -221,15 +221,15 @@ class SidebarCart extends React.Component<any, any> {
 
             console.log("item " + JSON.stringify(item));
 
-            if(item.mini == true){
+            if(item.item_type == "mini"){
                           
-              total_cost = total_cost + ((item.dozens * item.quantity) * 2);
-              item_count = item_count + (item.dozens * item.quantity);
+              total_cost = total_cost + (6 * item.quantity * 24);
+              item_count = item_count + (24 * item.quantity);
 
             }else{
 
-              total_cost = total_cost + ((item.dozens * item.quantity) * 5);
-              item_count = item_count + (item.dozens * 12 * item.quantity);
+              total_cost = total_cost + (5 * item.quantity * 12);
+              item_count = item_count + (12 * item.quantity);
 
             }
                           
@@ -244,21 +244,23 @@ class SidebarCart extends React.Component<any, any> {
                       //let item_title = result.get("title");
                       let item_title = "";
 
-                      if(item.mini == true){
+                      if(item.item_type == "mini"){
                       
                           return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-xs-6">{item.quantity} Dozen</div>
-                                             Mini{item.quantity}
+                                            <div className="col-xs-6">{24 * item.quantity}title-mini</div>
                                           </div>
                                         </form>)
 
                       }else{
 
                           return(<div>
-                                    <div className="col-md-1">{item.quantity} Dozen</div>
-                                    <div className="col-md-1"></div>
-                                    <div className="col-md-1">{item.quantity}</div>
+                                        <form className="form-horizontal" style={{border: 1, position: "static"}}>
+                                          <div className="form-group" style={{border: 1}}>
+                                            <div className="col-md-1">{item.quantity * 12}</div>
+                                            <div className="col-md-1">title</div>
+                                          </div>
+                                        </form>
                                 </div>)
 
                       }
@@ -291,7 +293,7 @@ class SidebarCart extends React.Component<any, any> {
                       <div className="form-group" style={{border: 1}}>
                         <div className="col-xs-0"></div>
                         <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Items</b></div>
-                        <div className="col-xs-2" style={{fontSize: "14"}}>24</div>
+                        <div className="col-xs-2" style={{fontSize: "14"}}>{item_count}</div>
                       </div>
                     </form>
                     <form className="form-horizontal" style={{border: 1}}>

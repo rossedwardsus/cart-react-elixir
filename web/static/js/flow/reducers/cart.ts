@@ -27,7 +27,7 @@ export default function cart_items(state:any = {cart_items: []}, action: any){
       console.log("add cart item" + JSON.stringify(state));
 
       let items = state.cart_items;
-      items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
+      items.push({item_id: 1, item_type: action.item_type, quantity: action.quantity});
       
       return Object.assign({}, state, {cart_items: items});
     
