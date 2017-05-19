@@ -4,6 +4,7 @@ import { routerReducer } from 'react-router-redux'
 import login from './login.ts';
 //import register from './register.ts';
 //import root from './root.ts';
+import Order from './order.ts';
 import OrderDeliveryAddress from './order_delivery_Address.ts';
 import OrderPayment from './order_payment.ts';
 import user from './user.ts';
@@ -16,6 +17,7 @@ import user_payment_methods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 
 export default combineReducers({
+  Order,
   OrderPayment,
   user,
   user_delivery_addresses,

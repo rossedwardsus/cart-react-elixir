@@ -281,8 +281,9 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                     <form className="form-horizontal" style={{border: 1}}>
                       <div className="form-group" style={{border: 1}}>
-                        <div className="col-xs-5">1 Dozen</div>
-                        <div className="col-xs-5">x 2</div>
+                        <div className="col-xs-2">Ruby Q</div>
+                        <div className="col-xs-2">24</div>
+                        <div className="col-xs-2">Cost</div>
                       </div>
                     </form>
 <br/>
@@ -293,6 +294,7 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                   <Link to="/order/cart">Cart</Link><Link to="/order/checkout">Checkout</Link>
                   <br/>
+                  <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </div>
     )
   }

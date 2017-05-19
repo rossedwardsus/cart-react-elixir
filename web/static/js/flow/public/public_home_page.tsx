@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-import {checkLoggedIn} from '../actions/login.ts';
+import {createOrder} from '../actions/order.ts';
 import {List, Map} from 'immutable';
 //import * as Cookie from 'js-cookie';
 //const cookie: any = require('react-cookie');
@@ -41,7 +41,7 @@ class PublicHomePage extends React.Component<any, any> {
         
     };
 
-    this.createSignatureOrder = this.createSignatureOrder.bind(this);
+    //this.createSignatureOrder = this.createSignatureOrder.bind(this);
     this.guestCode = this.guestCode.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onSwipedLeft = this.onSwipedLeft.bind(this);
@@ -55,13 +55,13 @@ class PublicHomePage extends React.Component<any, any> {
 
     //dispatch(checkLoggedIn);
 
-    this.props.checkLoggedIn();
+    //this.props.checkLoggedIn();
 
     //alert("jsx");
 
     //get active items from the database
 
-    setInterval(this.changeImage, 10000);
+    //setInterval(this.changeImage, 10000);
 
     //Cookies.set('name', 'value');
     //alert(Cookies.get('name'));
@@ -157,7 +157,9 @@ class PublicHomePage extends React.Component<any, any> {
   }
 
 
-  createSignatureOrder(order_type: any) {
+  createOrder(order_type: any) {
+
+    console.log(order_type);
 
     if(order_type == "sconely_yours"){
 
@@ -168,10 +170,12 @@ class PublicHomePage extends React.Component<any, any> {
        
         //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        //if user is logged in then 
-        this.context.router.push('/order/12345');
+        this.props.createOrder("sconely_yours");
 
-        //this.context.router.push('/order/12345');
+        //if user is logged in then 
+        this.context.router.push('/public/menu');
+
+        //this.context.router.push('/public/menu');
 
 
     }else if(order_type == "sconely_social"){
@@ -180,9 +184,11 @@ class PublicHomePage extends React.Component<any, any> {
         //alert(orders);
         //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+        //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
 
-        this.context.router.push('/order/12345');
+        this.props.createOrder("sconely_social");
+
+        this.context.router.push('/public/menu');
          
     }else if(order_type == "sconely_signature"){
 
@@ -323,7 +329,6 @@ class PublicHomePage extends React.Component<any, any> {
                               <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
                             </div>
                             
-                              {logged_in}
                              
                           </div>
                     </nav>
@@ -334,11 +339,13 @@ class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          Home
+                          <a onClick={() => this.createOrder("sconely_yours")}>Yours</a>
+                          <br/>
+                          <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                           <br/>
                           <Link to="/public/menu">Menu/Social</Link>
                           <br/>
-                          <a onClick={this.createSignatureOrder.bind(this, "sconely_signature")}>Signature</a>
+                          <a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                           <br/>
                         </div>
                         <div className="col-md-6">
@@ -359,7 +366,7 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <div className="hidden-lg navbar-form">
                                     <div className="form-group">
-                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={this.guestCodeChange}/>
+                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={() => this.guestCodeChange}/>
                                     </div>
                                     
                                   </div>
@@ -391,15 +398,16 @@ const mapStateToProps = (state: any, ownProps: any) => {
   console.log("homepage" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
-    logged_in: state.login
+    //logged_in: state.login
+    user: state.user
   }
 }
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    checkLoggedIn: () => {
+    createOrder: (order_type: any) => {
       //alert("check");
-      dispatch(checkLoggedIn())
+      dispatch(createOrder(order_type))
     }
   }
 }

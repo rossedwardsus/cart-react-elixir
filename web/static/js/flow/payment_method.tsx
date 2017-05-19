@@ -78,116 +78,7 @@ class PaymentMethod extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //alert();
-
-    //window.onhashchange = function() {
-     //blah blah blah
-     //alert(this.state.page);
-    //}.bind(this);
-
-    //var result = map.find(function(obj){return obj.get('id') === 4;});
-
-    //var result = [{'id': 'a'}, {'id': 'b'}];
-    //var map = Immutable.Map(result.reduce(function(previous, current) { 
-    //    previous[ current.id ] = current;
-    //    return previous;
-    //}, {}));
-
-    
-
-    let demoRecord = Immutable.List.of(Immutable.Record({
-                     property:'defaultValue',
-                     index:0,
-                     works:true,
-                     valueList:Immutable.List([])
-    }));
-
-    //alert(demoRecord.getIn(["0"], "index"));
-
-    /*let list = demoRecord.update(
-      demoRecord.findIndex(function(item: any) { 
-        return item.get("index") === "0"; 
-      }), function(item: any) {
-        return item.set("index", 4);
-      }
-    );*/
-
-    var result = [{'id': 2}, {'id': 4}];
-    var map = Immutable.fromJS(result);
-    var map_updated = map.set()
-    var result1 = map.find(function(obj: any){return obj.get('id') === 4;});
-
-    //alert(result1.get("id"));
-
-    /*let arr = fromJS(
-      elem: [
-        {id: 1, name: "first", count: 2},
-        {id: 2, name: "second", count: 1},
-        {id: 3, name: "third", count: 2},
-        {id: 4, name: "fourth", count: 1}
-      ]
-    );
-
-    arr = arr.setIn(['elem', 3, 'count'], 4);
-    If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-
-    
-    const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-      return listItem.get('name') === 'third';
-    });
-    arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-
-
-
-    let cart_items_temp = this.state.cart_items;
-    //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-    //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-    const myNewMap = cart_items_temp.push({item_id: 5});
-    //let hello = cart_items_temp.push({item_id: 5});
-
-    //alert(JSON.stringify(myNewMap));
-
-    //alert(JSON.stringify(myNewMap.delete("0")));
-
-    //hello.findIndex(function(item: any) { 
-    //    return item.get("item_id") === "1"; 
-    //})
-
-    //var result = map.find(function(obj){return obj.get('id') === 4;});
-
-    //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-
-
-    /*let list = hello.update(
-      hello.findIndex(function(item: any) { 
-        return item.get("item_id") === "1"; 
-      }), function(item: any) {
-        return item.set("quantity", 44444444444444);
-      }
-    );*/
-
-    //let list = hello.update(0, function(v: any) {
-    //    return {quantity: 44444444444};
-    //});
-
-    //alert(JSON.stringify(list.toJS()));
-
-
-    //alert(cart_items_temp_updated);
-
-
-    //get menu items
-
-
-    //this.props;
-
-    //alert(JSON.stringify(this.state.menu_items));
-
-    //alert("products" + JSON.stringify(this.props.menu_items));
-    //console.log(this.props.getAllProducts());
-    //this.setState({here: this.props.getAllProducts()});
-    //console.log(this.props.dispatch(addTodoWithDispatch));
-    //this.props.getAllProducts();
+   
 
   }
 
@@ -261,65 +152,8 @@ class PaymentMethod extends React.Component<any, any> {
 
    
     return ( <div>
-                <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                            </div>
-                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                              </ul>
-                            </div>
-                          </div>
-                    </nav> 
-                <div className="container-fluid">
-                  <div className="row">
-                        <div className="hidden-xs col-md-2">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                        </div>
-                        <div className="col-md-10">
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <form className="form-horizontal">
-                              <div className="form-group">
+                  <form className="form-horizontal">
+                            <div className="form-group">
                                 <div className="col-sm-3">
                                     <b>Payment</b>
                                     <br/>
@@ -353,11 +187,11 @@ class PaymentMethod extends React.Component<any, any> {
                               <div className="form-group">
                                 <div className="col-md-2">
                               
-                                  <input type="text" size="2" className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_year_border_color}}/>
+                                  <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_year_border_color}}/>
                                 </div>
                                 <div className="col-md-2">
                               
-                                  <input type="text" size="4" className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_month_border_color}}/>
+                                  <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_month_border_color}}/>
                                 </div>
                                 <div className="col-md-2">
                               
@@ -367,9 +201,8 @@ class PaymentMethod extends React.Component<any, any> {
                             </form>
                             <button onClick={() => this.goToPreview()}>Preview</button>
                             <br/>
-                        </div>
-                    </div>
-                </div>
+                     
+                
             </div>
     )
   }

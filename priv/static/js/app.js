@@ -42,7 +42,7 @@ webpackJsonp([0],[
 	
 	var _public_home_page2 = _interopRequireDefault(_public_home_page);
 	
-	var _menu = __webpack_require__(923);
+	var _menu = __webpack_require__(922);
 	
 	var _menu2 = _interopRequireDefault(_menu);
 	
@@ -66,11 +66,11 @@ webpackJsonp([0],[
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _payment_method = __webpack_require__(1090);
+	var _payment_method = __webpack_require__(1066);
 	
 	var _payment_method2 = _interopRequireDefault(_payment_method);
 	
-	var _order_cart = __webpack_require__(1092);
+	var _order_cart = __webpack_require__(1065);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
@@ -86,31 +86,31 @@ webpackJsonp([0],[
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1098);
+	var _register = __webpack_require__(1099);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1100);
+	var _register_completed = __webpack_require__(1101);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1101);
+	var _checkLogin = __webpack_require__(1102);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1102);
+	var _user = __webpack_require__(1103);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _event = __webpack_require__(1103);
+	var _event = __webpack_require__(1104);
 	
 	var _event2 = _interopRequireDefault(_event);
 	
-	var _sconely_signature_single_page = __webpack_require__(1104);
+	var _sconely_signature_single_page = __webpack_require__(1105);
 	
 	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
 	
-	var _index = __webpack_require__(1108);
+	var _index = __webpack_require__(1109);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -18817,8 +18817,7 @@ webpackJsonp([0],[
 	//import Swipeable from 'react-swipeable';
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
-	var login_ts_1 = __webpack_require__(920);
-	var immutable_1 = __webpack_require__(922);
+	var order_ts_1 = __webpack_require__(920);
 	//import * as Cookie from 'js-cookie';
 	//const cookie: any = require('react-cookie');
 	function getCookie(name) {
@@ -18848,7 +18847,7 @@ webpackJsonp([0],[
 	            image: "/images/gallery/sconely_group_HPb.jpg",
 	            guest_code: ""
 	        };
-	        _this.createSignatureOrder = _this.createSignatureOrder.bind(_this);
+	        //this.createSignatureOrder = this.createSignatureOrder.bind(this);
 	        _this.guestCode = _this.guestCode.bind(_this);
 	        _this.onSubmit = _this.onSubmit.bind(_this);
 	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
@@ -18862,10 +18861,10 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //dispatch(checkLoggedIn);
-	            this.props.checkLoggedIn();
+	            //this.props.checkLoggedIn();
 	            //alert("jsx");
 	            //get active items from the database
-	            setInterval(this.changeImage, 10000);
+	            //setInterval(this.changeImage, 10000);
 	            //Cookies.set('name', 'value');
 	            //alert(Cookies.get('name'));
 	            //function setCookie(cname, cvalue, exdays) {
@@ -18927,22 +18926,25 @@ webpackJsonp([0],[
 	            }
 	        }
 	    }, {
-	        key: "createSignatureOrder",
-	        value: function createSignatureOrder(order_type) {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            console.log(order_type);
 	            if (order_type == "sconely_yours") {
 	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
 	                //alert(orders);
 	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
 	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                this.props.createOrder("sconely_yours");
 	                //if user is logged in then 
-	                this.context.router.push('/order/12345');
-	                //this.context.router.push('/order/12345');
+	                this.context.router.push('/public/menu');
+	                //this.context.router.push('/public/menu');
 	            } else if (order_type == "sconely_social") {
 	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
 	                //alert(orders);
 	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	                localStorage.setState("order", immutable_1.Map({ name: "name", contact: "contact", cart: immutable_1.List([]), delivery_address: { street: "" }, payment: "" }));
-	                this.context.router.push('/order/12345');
+	                //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+	                this.props.createOrder("sconely_social");
+	                this.context.router.push('/public/menu');
 	            } else if (order_type == "sconely_signature") {
 	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
 	                //alert(orders);
@@ -19019,7 +19021,15 @@ webpackJsonp([0],[
 	                        return _this2.guestCodeChange(e);
 	                    } }))));
 	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu/Social"), React.createElement("br", null), React.createElement("a", { onClick: this.createSignatureOrder.bind(this, "sconely_signature") }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg navbar-form" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: this.guestCodeChange }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.createOrder("sconely_yours");
+	                } }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.createOrder("sconely_social");
+	                } }, "Social"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu/Social"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.createOrder("sconely_signature");
+	                } }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/login_register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg navbar-form" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange() {
+	                    return _this2.guestCodeChange;
+	                } }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -19037,14 +19047,15 @@ webpackJsonp([0],[
 	    console.log("homepage" + JSON.stringify(state));
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
-	        logged_in: state.login
+	        //logged_in: state.login
+	        user: state.user
 	    };
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {
-	        checkLoggedIn: function checkLoggedIn() {
+	        createOrder: function createOrder(order_type) {
 	            //alert("check");
-	            dispatch(login_ts_1.checkLoggedIn());
+	            dispatch(order_ts_1.createOrder(order_type));
 	        }
 	    };
 	};
@@ -27063,50 +27074,47 @@ webpackJsonp([0],[
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
-	//get the order total
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	function loginUser(email, password) {
-	    var url = "";
-	    return function (dispatch) {
-	        /*axios.get(url)
-	          .then((response) => dispatch({
-	            type: types.FETCH_WEATHER_SUCCESS,
-	            data: response.data
-	          }).error((response) => dispatch({
-	            type: types.FETCH_WEATHER_FAILURE,
-	            error: response.error
-	          })*/
-	        dispatch({
-	            type: actionTypes_ts_1.LOGIN,
-	            data: "response.data"
-	        });
-	    };
-	}
-	exports.loginUser = loginUser;
-	function setEmail(value) {
-	    console.log("setemail action");
+	//const receiveProducts = products => ({
+	//  type: types.RECEIVE_PRODUCTS,
+	//  products: products
+	//})
+	//export const createOrder = (order_type) => dispatch => {
+	//shop.getProducts(products => {
+	//  dispatch(receiveProducts(products))
+	//})
+	//dispatch(viewPublicMenu(1));
+	//dispatch(createOrder());
+	//alert();
+	//return "hello";
+	//Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
+	//}
+	//export const save = () => dispatch => {
+	//shop.getProducts(products => {
+	//  dispatch(receiveProducts(products))
+	//})
+	//dispatch(viewPublicMenu(1));
+	//dispatch(saveDeliveryAddress());
+	//alert();
+	//return "hello";
+	//Promise.res
+	//}
+	//const completeOrder = (order_type: any) =>
+	//  console.log("create order action");
+	//  ({ 
+	//    type: "VIEW_PUBLIC_MENU", 
+	//    order_type
+	//  });
+	function createOrder(order_type) {
+	    console.log("create order action " + order_type);
 	    return {
-	        type: actionTypes_ts_1.SET_EMAIL,
-	        value: value
+	        type: actionTypes_ts_1.CREATE_ORDER,
+	        order_type: order_type
 	    };
 	}
-	exports.setEmail = setEmail;
-	function checkLoggedIn() {
-	    //alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.CHECK_LOGGED_IN
-	    };
-	}
-	exports.checkLoggedIn = checkLoggedIn;
-	function login(email, password) {
-	    console.log("login action");
-	    return {
-	        type: actionTypes_ts_1.LOGIN
-	    };
-	}
-	exports.login = login;
+	exports.createOrder = createOrder;
 
 /***/ }),
 /* 921 */
@@ -27153,8 +27161,7 @@ webpackJsonp([0],[
 	exports.SET_USER_PAYMENT_METHODS = 'SET_USER_PAYMENT_METHODS';
 
 /***/ }),
-/* 922 */,
-/* 923 */
+/* 922 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27175,8 +27182,8 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {viewMenu} from './action/cart.ts';
 	//import {checklogin} from './action/cart.ts';
-	var cart_ts_1 = __webpack_require__(924);
-	var sidebar_cart_tsx_1 = __webpack_require__(925);
+	var cart_ts_1 = __webpack_require__(923);
+	var sidebar_cart_tsx_1 = __webpack_require__(924);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -27265,7 +27272,7 @@ webpackJsonp([0],[
 	            console.log("add cart item");
 	            //if they haven't selected quantity and dozens dont submit and show them an error
 	            //$('#myModal').modal('toggle');
-	            //this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
+	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
 	        }
 	    }, {
 	        key: "goToDateTimeContact",
@@ -27352,7 +27359,7 @@ webpackJsonp([0],[
 	exports.default = PublicMenu1;
 
 /***/ }),
-/* 924 */
+/* 923 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27416,7 +27423,7 @@ webpackJsonp([0],[
 	exports.setSpecificTime = setSpecificTime;
 
 /***/ }),
-/* 925 */
+/* 924 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27439,7 +27446,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	//import _ from 'lodash';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -27586,7 +27593,7 @@ webpackJsonp([0],[
 	                }.bind(this));
 	            }
 	            //{this.props.params.repoName}
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-5" }, "1 Dozen"), React.createElement("div", { className: "col-xs-5" }, "x 2"))), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Total Items"), item_count, " Scones"), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Sub Total"), " $", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout"), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-2" }, "Ruby Q"), React.createElement("div", { className: "col-xs-2" }, "24"), React.createElement("div", { className: "col-xs-2" }, "Cost"))), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Total Items"), item_count, " Scones"), React.createElement("br", null), React.createElement("div", { style: { fontSize: "14" } }, React.createElement("b", null, "Sub Total"), " $", total_cost, ".00"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Checkout"), React.createElement("br", null), React.createElement("span", { className: "glyphicon glyphicon-plus", "aria-hidden": "true" }));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -27616,6 +27623,7 @@ webpackJsonp([0],[
 	exports.default = SidebarCart1;
 
 /***/ }),
+/* 925 */,
 /* 926 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28038,7 +28046,7 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(922);
+	var immutable_1 = __webpack_require__(925);
 	var user_orders_tsx_1 = __webpack_require__(928);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
@@ -28270,7 +28278,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(922);
+	var immutable_1 = __webpack_require__(925);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -28489,7 +28497,7 @@ webpackJsonp([0],[
 	//import Swipeable from 'react-swipeable';
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
-	var immutable_1 = __webpack_require__(922);
+	var immutable_1 = __webpack_require__(925);
 	var user_ts_1 = __webpack_require__(930);
 	var user_delivery_address_tsx_1 = __webpack_require__(931);
 	//const mapDispatchToProps = dispatch => {
@@ -28732,7 +28740,7 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(922);
+	var immutable_1 = __webpack_require__(925);
 	var user_ts_1 = __webpack_require__(930);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
@@ -28976,7 +28984,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(922);
+	var immutable_1 = __webpack_require__(925);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -29205,11 +29213,13 @@ webpackJsonp([0],[
 	var contact_tsx_1 = __webpack_require__(937);
 	var datetime_tsx_1 = __webpack_require__(939);
 	var name_tsx_1 = __webpack_require__(1063);
+	var order_cart_tsx_1 = __webpack_require__(1065);
+	var payment_method_tsx_1 = __webpack_require__(1066);
 	//import { getPublicMenu } from './reducers/name';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var DatePicker = __webpack_require__(940);
 	var moment = __webpack_require__(941);
-	var axios_1 = __webpack_require__(1065);
+	var axios_1 = __webpack_require__(1068);
 	__webpack_require__(1059);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -29742,11 +29752,9 @@ webpackJsonp([0],[
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
-	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(datetime_tsx_1.default, null), React.createElement(name_tsx_1.default, null), React.createElement(delivery_address_tsx_1.default, null), React.createElement(contact_tsx_1.default, null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("button", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, null), React.createElement(datetime_tsx_1.default, null), React.createElement(name_tsx_1.default, null), React.createElement(contact_tsx_1.default, null), React.createElement(order_cart_tsx_1.default, null), React.createElement(payment_method_tsx_1.default, null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.goToPaymentMethod();
-	                } }, "Payment Method"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
+	                } }, "Complete Order"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -29886,7 +29894,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var order_delivery_address_ts_1 = __webpack_require__(936);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -29947,7 +29955,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Address"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
+	            return React.createElement("div", null, this.props.order.order_type, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
 	                    return _this2.setDeliveryAddressStreet1(e);
 	                } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setDeliveryAddressStreet2(e);
@@ -29972,8 +29980,9 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("delivery address component/state" + JSON.stringify(state.delivery_address));
+	    console.log("delivery address component/state" + JSON.stringify(state));
 	    return {
+	        order: state.Order,
 	        delivery_address: state.delivery_address,
 	        user_delivery_addresses: state.user_delivery_addresses
 	        //order: state.default.order
@@ -30059,7 +30068,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var order_contact_ts_1 = __webpack_require__(938);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -30198,9 +30207,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	var cart_ts_1 = __webpack_require__(924);
+	var cart_ts_1 = __webpack_require__(923);
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var DatePicker = __webpack_require__(940);
 	var moment = __webpack_require__(941);
 	__webpack_require__(1059);
@@ -30867,7 +30876,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var order_name_ts_1 = __webpack_require__(1064);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -31010,1793 +31019,6 @@ webpackJsonp([0],[
 /* 1065 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1066);
-
-/***/ }),
-/* 1066 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	var bind = __webpack_require__(1068);
-	var Axios = __webpack_require__(1069);
-	var defaults = __webpack_require__(1070);
-	
-	/**
-	 * Create an instance of Axios
-	 *
-	 * @param {Object} defaultConfig The default config for the instance
-	 * @return {Axios} A new instance of Axios
-	 */
-	function createInstance(defaultConfig) {
-	  var context = new Axios(defaultConfig);
-	  var instance = bind(Axios.prototype.request, context);
-	
-	  // Copy axios.prototype to instance
-	  utils.extend(instance, Axios.prototype, context);
-	
-	  // Copy context to instance
-	  utils.extend(instance, context);
-	
-	  return instance;
-	}
-	
-	// Create the default instance to be exported
-	var axios = createInstance(defaults);
-	
-	// Expose Axios class to allow class inheritance
-	axios.Axios = Axios;
-	
-	// Factory for creating new instances
-	axios.create = function create(instanceConfig) {
-	  return createInstance(utils.merge(defaults, instanceConfig));
-	};
-	
-	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(1087);
-	axios.CancelToken = __webpack_require__(1088);
-	axios.isCancel = __webpack_require__(1084);
-	
-	// Expose all/spread
-	axios.all = function all(promises) {
-	  return Promise.all(promises);
-	};
-	axios.spread = __webpack_require__(1089);
-	
-	module.exports = axios;
-	
-	// Allow use of default import syntax in TypeScript
-	module.exports.default = axios;
-
-
-/***/ }),
-/* 1067 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var bind = __webpack_require__(1068);
-	
-	/*global toString:true*/
-	
-	// utils is a library of generic helper functions non-specific to axios
-	
-	var toString = Object.prototype.toString;
-	
-	/**
-	 * Determine if a value is an Array
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an Array, otherwise false
-	 */
-	function isArray(val) {
-	  return toString.call(val) === '[object Array]';
-	}
-	
-	/**
-	 * Determine if a value is an ArrayBuffer
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
-	 */
-	function isArrayBuffer(val) {
-	  return toString.call(val) === '[object ArrayBuffer]';
-	}
-	
-	/**
-	 * Determine if a value is a FormData
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an FormData, otherwise false
-	 */
-	function isFormData(val) {
-	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
-	}
-	
-	/**
-	 * Determine if a value is a view on an ArrayBuffer
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
-	 */
-	function isArrayBufferView(val) {
-	  var result;
-	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
-	    result = ArrayBuffer.isView(val);
-	  } else {
-	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Determine if a value is a String
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a String, otherwise false
-	 */
-	function isString(val) {
-	  return typeof val === 'string';
-	}
-	
-	/**
-	 * Determine if a value is a Number
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Number, otherwise false
-	 */
-	function isNumber(val) {
-	  return typeof val === 'number';
-	}
-	
-	/**
-	 * Determine if a value is undefined
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if the value is undefined, otherwise false
-	 */
-	function isUndefined(val) {
-	  return typeof val === 'undefined';
-	}
-	
-	/**
-	 * Determine if a value is an Object
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an Object, otherwise false
-	 */
-	function isObject(val) {
-	  return val !== null && typeof val === 'object';
-	}
-	
-	/**
-	 * Determine if a value is a Date
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Date, otherwise false
-	 */
-	function isDate(val) {
-	  return toString.call(val) === '[object Date]';
-	}
-	
-	/**
-	 * Determine if a value is a File
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a File, otherwise false
-	 */
-	function isFile(val) {
-	  return toString.call(val) === '[object File]';
-	}
-	
-	/**
-	 * Determine if a value is a Blob
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Blob, otherwise false
-	 */
-	function isBlob(val) {
-	  return toString.call(val) === '[object Blob]';
-	}
-	
-	/**
-	 * Determine if a value is a Function
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Function, otherwise false
-	 */
-	function isFunction(val) {
-	  return toString.call(val) === '[object Function]';
-	}
-	
-	/**
-	 * Determine if a value is a Stream
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Stream, otherwise false
-	 */
-	function isStream(val) {
-	  return isObject(val) && isFunction(val.pipe);
-	}
-	
-	/**
-	 * Determine if a value is a URLSearchParams object
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
-	 */
-	function isURLSearchParams(val) {
-	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
-	}
-	
-	/**
-	 * Trim excess whitespace off the beginning and end of a string
-	 *
-	 * @param {String} str The String to trim
-	 * @returns {String} The String freed of excess whitespace
-	 */
-	function trim(str) {
-	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-	}
-	
-	/**
-	 * Determine if we're running in a standard browser environment
-	 *
-	 * This allows axios to run in a web worker, and react-native.
-	 * Both environments support XMLHttpRequest, but not fully standard globals.
-	 *
-	 * web workers:
-	 *  typeof window -> undefined
-	 *  typeof document -> undefined
-	 *
-	 * react-native:
-	 *  typeof document.createElement -> undefined
-	 */
-	function isStandardBrowserEnv() {
-	  return (
-	    typeof window !== 'undefined' &&
-	    typeof document !== 'undefined' &&
-	    typeof document.createElement === 'function'
-	  );
-	}
-	
-	/**
-	 * Iterate over an Array or an Object invoking a function for each item.
-	 *
-	 * If `obj` is an Array callback will be called passing
-	 * the value, index, and complete array for each item.
-	 *
-	 * If 'obj' is an Object callback will be called passing
-	 * the value, key, and complete object for each property.
-	 *
-	 * @param {Object|Array} obj The object to iterate
-	 * @param {Function} fn The callback to invoke for each item
-	 */
-	function forEach(obj, fn) {
-	  // Don't bother if no value provided
-	  if (obj === null || typeof obj === 'undefined') {
-	    return;
-	  }
-	
-	  // Force an array if not already something iterable
-	  if (typeof obj !== 'object' && !isArray(obj)) {
-	    /*eslint no-param-reassign:0*/
-	    obj = [obj];
-	  }
-	
-	  if (isArray(obj)) {
-	    // Iterate over array values
-	    for (var i = 0, l = obj.length; i < l; i++) {
-	      fn.call(null, obj[i], i, obj);
-	    }
-	  } else {
-	    // Iterate over object keys
-	    for (var key in obj) {
-	      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-	        fn.call(null, obj[key], key, obj);
-	      }
-	    }
-	  }
-	}
-	
-	/**
-	 * Accepts varargs expecting each argument to be an object, then
-	 * immutably merges the properties of each object and returns result.
-	 *
-	 * When multiple objects contain the same key the later object in
-	 * the arguments list will take precedence.
-	 *
-	 * Example:
-	 *
-	 * ```js
-	 * var result = merge({foo: 123}, {foo: 456});
-	 * console.log(result.foo); // outputs 456
-	 * ```
-	 *
-	 * @param {Object} obj1 Object to merge
-	 * @returns {Object} Result of all merge properties
-	 */
-	function merge(/* obj1, obj2, obj3, ... */) {
-	  var result = {};
-	  function assignValue(val, key) {
-	    if (typeof result[key] === 'object' && typeof val === 'object') {
-	      result[key] = merge(result[key], val);
-	    } else {
-	      result[key] = val;
-	    }
-	  }
-	
-	  for (var i = 0, l = arguments.length; i < l; i++) {
-	    forEach(arguments[i], assignValue);
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Extends object a by mutably adding to it the properties of object b.
-	 *
-	 * @param {Object} a The object to be extended
-	 * @param {Object} b The object to copy properties from
-	 * @param {Object} thisArg The object to bind function to
-	 * @return {Object} The resulting value of object a
-	 */
-	function extend(a, b, thisArg) {
-	  forEach(b, function assignValue(val, key) {
-	    if (thisArg && typeof val === 'function') {
-	      a[key] = bind(val, thisArg);
-	    } else {
-	      a[key] = val;
-	    }
-	  });
-	  return a;
-	}
-	
-	module.exports = {
-	  isArray: isArray,
-	  isArrayBuffer: isArrayBuffer,
-	  isFormData: isFormData,
-	  isArrayBufferView: isArrayBufferView,
-	  isString: isString,
-	  isNumber: isNumber,
-	  isObject: isObject,
-	  isUndefined: isUndefined,
-	  isDate: isDate,
-	  isFile: isFile,
-	  isBlob: isBlob,
-	  isFunction: isFunction,
-	  isStream: isStream,
-	  isURLSearchParams: isURLSearchParams,
-	  isStandardBrowserEnv: isStandardBrowserEnv,
-	  forEach: forEach,
-	  merge: merge,
-	  extend: extend,
-	  trim: trim
-	};
-
-
-/***/ }),
-/* 1068 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function bind(fn, thisArg) {
-	  return function wrap() {
-	    var args = new Array(arguments.length);
-	    for (var i = 0; i < args.length; i++) {
-	      args[i] = arguments[i];
-	    }
-	    return fn.apply(thisArg, args);
-	  };
-	};
-
-
-/***/ }),
-/* 1069 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var defaults = __webpack_require__(1070);
-	var utils = __webpack_require__(1067);
-	var InterceptorManager = __webpack_require__(1081);
-	var dispatchRequest = __webpack_require__(1082);
-	var isAbsoluteURL = __webpack_require__(1085);
-	var combineURLs = __webpack_require__(1086);
-	
-	/**
-	 * Create a new instance of Axios
-	 *
-	 * @param {Object} instanceConfig The default config for the instance
-	 */
-	function Axios(instanceConfig) {
-	  this.defaults = instanceConfig;
-	  this.interceptors = {
-	    request: new InterceptorManager(),
-	    response: new InterceptorManager()
-	  };
-	}
-	
-	/**
-	 * Dispatch a request
-	 *
-	 * @param {Object} config The config specific for this request (merged with this.defaults)
-	 */
-	Axios.prototype.request = function request(config) {
-	  /*eslint no-param-reassign:0*/
-	  // Allow for axios('example/url'[, config]) a la fetch API
-	  if (typeof config === 'string') {
-	    config = utils.merge({
-	      url: arguments[0]
-	    }, arguments[1]);
-	  }
-	
-	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-	
-	  // Support baseURL config
-	  if (config.baseURL && !isAbsoluteURL(config.url)) {
-	    config.url = combineURLs(config.baseURL, config.url);
-	  }
-	
-	  // Hook up interceptors middleware
-	  var chain = [dispatchRequest, undefined];
-	  var promise = Promise.resolve(config);
-	
-	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-	  });
-	
-	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-	    chain.push(interceptor.fulfilled, interceptor.rejected);
-	  });
-	
-	  while (chain.length) {
-	    promise = promise.then(chain.shift(), chain.shift());
-	  }
-	
-	  return promise;
-	};
-	
-	// Provide aliases for supported request methods
-	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-	  /*eslint func-names:0*/
-	  Axios.prototype[method] = function(url, config) {
-	    return this.request(utils.merge(config || {}, {
-	      method: method,
-	      url: url
-	    }));
-	  };
-	});
-	
-	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-	  /*eslint func-names:0*/
-	  Axios.prototype[method] = function(url, data, config) {
-	    return this.request(utils.merge(config || {}, {
-	      method: method,
-	      url: url,
-	      data: data
-	    }));
-	  };
-	});
-	
-	module.exports = Axios;
-
-
-/***/ }),
-/* 1070 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	var utils = __webpack_require__(1067);
-	var normalizeHeaderName = __webpack_require__(1071);
-	
-	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
-	var DEFAULT_CONTENT_TYPE = {
-	  'Content-Type': 'application/x-www-form-urlencoded'
-	};
-	
-	function setContentTypeIfUnset(headers, value) {
-	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-	    headers['Content-Type'] = value;
-	  }
-	}
-	
-	function getDefaultAdapter() {
-	  var adapter;
-	  if (typeof XMLHttpRequest !== 'undefined') {
-	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(1072);
-	  } else if (typeof process !== 'undefined') {
-	    // For node use HTTP adapter
-	    adapter = __webpack_require__(1072);
-	  }
-	  return adapter;
-	}
-	
-	var defaults = {
-	  adapter: getDefaultAdapter(),
-	
-	  transformRequest: [function transformRequest(data, headers) {
-	    normalizeHeaderName(headers, 'Content-Type');
-	    if (utils.isFormData(data) ||
-	      utils.isArrayBuffer(data) ||
-	      utils.isStream(data) ||
-	      utils.isFile(data) ||
-	      utils.isBlob(data)
-	    ) {
-	      return data;
-	    }
-	    if (utils.isArrayBufferView(data)) {
-	      return data.buffer;
-	    }
-	    if (utils.isURLSearchParams(data)) {
-	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-	      return data.toString();
-	    }
-	    if (utils.isObject(data)) {
-	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-	      return JSON.stringify(data);
-	    }
-	    return data;
-	  }],
-	
-	  transformResponse: [function transformResponse(data) {
-	    /*eslint no-param-reassign:0*/
-	    if (typeof data === 'string') {
-	      data = data.replace(PROTECTION_PREFIX, '');
-	      try {
-	        data = JSON.parse(data);
-	      } catch (e) { /* Ignore */ }
-	    }
-	    return data;
-	  }],
-	
-	  timeout: 0,
-	
-	  xsrfCookieName: 'XSRF-TOKEN',
-	  xsrfHeaderName: 'X-XSRF-TOKEN',
-	
-	  maxContentLength: -1,
-	
-	  validateStatus: function validateStatus(status) {
-	    return status >= 200 && status < 300;
-	  }
-	};
-	
-	defaults.headers = {
-	  common: {
-	    'Accept': 'application/json, text/plain, */*'
-	  }
-	};
-	
-	utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
-	  defaults.headers[method] = {};
-	});
-	
-	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-	  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-	});
-	
-	module.exports = defaults;
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
-
-/***/ }),
-/* 1071 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	module.exports = function normalizeHeaderName(headers, normalizedName) {
-	  utils.forEach(headers, function processHeader(value, name) {
-	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-	      headers[normalizedName] = value;
-	      delete headers[name];
-	    }
-	  });
-	};
-
-
-/***/ }),
-/* 1072 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	var utils = __webpack_require__(1067);
-	var settle = __webpack_require__(1073);
-	var buildURL = __webpack_require__(1076);
-	var parseHeaders = __webpack_require__(1077);
-	var isURLSameOrigin = __webpack_require__(1078);
-	var createError = __webpack_require__(1074);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1079);
-	
-	module.exports = function xhrAdapter(config) {
-	  return new Promise(function dispatchXhrRequest(resolve, reject) {
-	    var requestData = config.data;
-	    var requestHeaders = config.headers;
-	
-	    if (utils.isFormData(requestData)) {
-	      delete requestHeaders['Content-Type']; // Let the browser set it
-	    }
-	
-	    var request = new XMLHttpRequest();
-	    var loadEvent = 'onreadystatechange';
-	    var xDomain = false;
-	
-	    // For IE 8/9 CORS support
-	    // Only supports POST and GET calls and doesn't returns the response headers.
-	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-	    if (process.env.NODE_ENV !== 'test' &&
-	        typeof window !== 'undefined' &&
-	        window.XDomainRequest && !('withCredentials' in request) &&
-	        !isURLSameOrigin(config.url)) {
-	      request = new window.XDomainRequest();
-	      loadEvent = 'onload';
-	      xDomain = true;
-	      request.onprogress = function handleProgress() {};
-	      request.ontimeout = function handleTimeout() {};
-	    }
-	
-	    // HTTP basic authentication
-	    if (config.auth) {
-	      var username = config.auth.username || '';
-	      var password = config.auth.password || '';
-	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-	    }
-	
-	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-	
-	    // Set the request timeout in MS
-	    request.timeout = config.timeout;
-	
-	    // Listen for ready state
-	    request[loadEvent] = function handleLoad() {
-	      if (!request || (request.readyState !== 4 && !xDomain)) {
-	        return;
-	      }
-	
-	      // The request errored out and we didn't get a response, this will be
-	      // handled by onerror instead
-	      // With one exception: request that using file: protocol, most browsers
-	      // will return status as 0 even though it's a successful request
-	      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-	        return;
-	      }
-	
-	      // Prepare the response
-	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-	      var response = {
-	        data: responseData,
-	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
-	        status: request.status === 1223 ? 204 : request.status,
-	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
-	        headers: responseHeaders,
-	        config: config,
-	        request: request
-	      };
-	
-	      settle(resolve, reject, response);
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Handle low level network errors
-	    request.onerror = function handleError() {
-	      // Real errors are hidden from us by the browser
-	      // onerror should only fire if it's a network error
-	      reject(createError('Network Error', config));
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Handle timeout
-	    request.ontimeout = function handleTimeout() {
-	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Add xsrf header
-	    // This is only done if running in a standard browser environment.
-	    // Specifically not if we're in a web worker, or react-native.
-	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(1080);
-	
-	      // Add xsrf header
-	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-	          cookies.read(config.xsrfCookieName) :
-	          undefined;
-	
-	      if (xsrfValue) {
-	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-	      }
-	    }
-	
-	    // Add headers to the request
-	    if ('setRequestHeader' in request) {
-	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-	          // Remove Content-Type if data is undefined
-	          delete requestHeaders[key];
-	        } else {
-	          // Otherwise add header to the request
-	          request.setRequestHeader(key, val);
-	        }
-	      });
-	    }
-	
-	    // Add withCredentials to request if needed
-	    if (config.withCredentials) {
-	      request.withCredentials = true;
-	    }
-	
-	    // Add responseType to request if needed
-	    if (config.responseType) {
-	      try {
-	        request.responseType = config.responseType;
-	      } catch (e) {
-	        if (request.responseType !== 'json') {
-	          throw e;
-	        }
-	      }
-	    }
-	
-	    // Handle progress if needed
-	    if (typeof config.onDownloadProgress === 'function') {
-	      request.addEventListener('progress', config.onDownloadProgress);
-	    }
-	
-	    // Not all browsers support upload events
-	    if (typeof config.onUploadProgress === 'function' && request.upload) {
-	      request.upload.addEventListener('progress', config.onUploadProgress);
-	    }
-	
-	    if (config.cancelToken) {
-	      // Handle cancellation
-	      config.cancelToken.promise.then(function onCanceled(cancel) {
-	        if (!request) {
-	          return;
-	        }
-	
-	        request.abort();
-	        reject(cancel);
-	        // Clean up request
-	        request = null;
-	      });
-	    }
-	
-	    if (requestData === undefined) {
-	      requestData = null;
-	    }
-	
-	    // Send the request
-	    request.send(requestData);
-	  });
-	};
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
-
-/***/ }),
-/* 1073 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var createError = __webpack_require__(1074);
-	
-	/**
-	 * Resolve or reject a Promise based on response status.
-	 *
-	 * @param {Function} resolve A function that resolves the promise.
-	 * @param {Function} reject A function that rejects the promise.
-	 * @param {object} response The response.
-	 */
-	module.exports = function settle(resolve, reject, response) {
-	  var validateStatus = response.config.validateStatus;
-	  // Note: status is not exposed by XDomainRequest
-	  if (!response.status || !validateStatus || validateStatus(response.status)) {
-	    resolve(response);
-	  } else {
-	    reject(createError(
-	      'Request failed with status code ' + response.status,
-	      response.config,
-	      null,
-	      response
-	    ));
-	  }
-	};
-
-
-/***/ }),
-/* 1074 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var enhanceError = __webpack_require__(1075);
-	
-	/**
-	 * Create an Error with the specified message, config, error code, and response.
-	 *
-	 * @param {string} message The error message.
-	 * @param {Object} config The config.
-	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
-	 @ @param {Object} [response] The response.
-	 * @returns {Error} The created error.
-	 */
-	module.exports = function createError(message, config, code, response) {
-	  var error = new Error(message);
-	  return enhanceError(error, config, code, response);
-	};
-
-
-/***/ }),
-/* 1075 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Update an Error with the specified config, error code, and response.
-	 *
-	 * @param {Error} error The error to update.
-	 * @param {Object} config The config.
-	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
-	 @ @param {Object} [response] The response.
-	 * @returns {Error} The error.
-	 */
-	module.exports = function enhanceError(error, config, code, response) {
-	  error.config = config;
-	  if (code) {
-	    error.code = code;
-	  }
-	  error.response = response;
-	  return error;
-	};
-
-
-/***/ }),
-/* 1076 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	function encode(val) {
-	  return encodeURIComponent(val).
-	    replace(/%40/gi, '@').
-	    replace(/%3A/gi, ':').
-	    replace(/%24/g, '$').
-	    replace(/%2C/gi, ',').
-	    replace(/%20/g, '+').
-	    replace(/%5B/gi, '[').
-	    replace(/%5D/gi, ']');
-	}
-	
-	/**
-	 * Build a URL by appending params to the end
-	 *
-	 * @param {string} url The base of the url (e.g., http://www.google.com)
-	 * @param {object} [params] The params to be appended
-	 * @returns {string} The formatted url
-	 */
-	module.exports = function buildURL(url, params, paramsSerializer) {
-	  /*eslint no-param-reassign:0*/
-	  if (!params) {
-	    return url;
-	  }
-	
-	  var serializedParams;
-	  if (paramsSerializer) {
-	    serializedParams = paramsSerializer(params);
-	  } else if (utils.isURLSearchParams(params)) {
-	    serializedParams = params.toString();
-	  } else {
-	    var parts = [];
-	
-	    utils.forEach(params, function serialize(val, key) {
-	      if (val === null || typeof val === 'undefined') {
-	        return;
-	      }
-	
-	      if (utils.isArray(val)) {
-	        key = key + '[]';
-	      }
-	
-	      if (!utils.isArray(val)) {
-	        val = [val];
-	      }
-	
-	      utils.forEach(val, function parseValue(v) {
-	        if (utils.isDate(v)) {
-	          v = v.toISOString();
-	        } else if (utils.isObject(v)) {
-	          v = JSON.stringify(v);
-	        }
-	        parts.push(encode(key) + '=' + encode(v));
-	      });
-	    });
-	
-	    serializedParams = parts.join('&');
-	  }
-	
-	  if (serializedParams) {
-	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-	  }
-	
-	  return url;
-	};
-
-
-/***/ }),
-/* 1077 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	/**
-	 * Parse headers into an object
-	 *
-	 * ```
-	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
-	 * Content-Type: application/json
-	 * Connection: keep-alive
-	 * Transfer-Encoding: chunked
-	 * ```
-	 *
-	 * @param {String} headers Headers needing to be parsed
-	 * @returns {Object} Headers parsed into an object
-	 */
-	module.exports = function parseHeaders(headers) {
-	  var parsed = {};
-	  var key;
-	  var val;
-	  var i;
-	
-	  if (!headers) { return parsed; }
-	
-	  utils.forEach(headers.split('\n'), function parser(line) {
-	    i = line.indexOf(':');
-	    key = utils.trim(line.substr(0, i)).toLowerCase();
-	    val = utils.trim(line.substr(i + 1));
-	
-	    if (key) {
-	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-	    }
-	  });
-	
-	  return parsed;
-	};
-
-
-/***/ }),
-/* 1078 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	module.exports = (
-	  utils.isStandardBrowserEnv() ?
-	
-	  // Standard browser envs have full support of the APIs needed to test
-	  // whether the request URL is of the same origin as current location.
-	  (function standardBrowserEnv() {
-	    var msie = /(msie|trident)/i.test(navigator.userAgent);
-	    var urlParsingNode = document.createElement('a');
-	    var originURL;
-	
-	    /**
-	    * Parse a URL to discover it's components
-	    *
-	    * @param {String} url The URL to be parsed
-	    * @returns {Object}
-	    */
-	    function resolveURL(url) {
-	      var href = url;
-	
-	      if (msie) {
-	        // IE needs attribute set twice to normalize properties
-	        urlParsingNode.setAttribute('href', href);
-	        href = urlParsingNode.href;
-	      }
-	
-	      urlParsingNode.setAttribute('href', href);
-	
-	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-	      return {
-	        href: urlParsingNode.href,
-	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-	        host: urlParsingNode.host,
-	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-	        hostname: urlParsingNode.hostname,
-	        port: urlParsingNode.port,
-	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-	                  urlParsingNode.pathname :
-	                  '/' + urlParsingNode.pathname
-	      };
-	    }
-	
-	    originURL = resolveURL(window.location.href);
-	
-	    /**
-	    * Determine if a URL shares the same origin as the current location
-	    *
-	    * @param {String} requestURL The URL to test
-	    * @returns {boolean} True if URL shares the same origin, otherwise false
-	    */
-	    return function isURLSameOrigin(requestURL) {
-	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-	      return (parsed.protocol === originURL.protocol &&
-	            parsed.host === originURL.host);
-	    };
-	  })() :
-	
-	  // Non standard browser envs (web workers, react-native) lack needed support.
-	  (function nonStandardBrowserEnv() {
-	    return function isURLSameOrigin() {
-	      return true;
-	    };
-	  })()
-	);
-
-
-/***/ }),
-/* 1079 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-	
-	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-	
-	function E() {
-	  this.message = 'String contains an invalid character';
-	}
-	E.prototype = new Error;
-	E.prototype.code = 5;
-	E.prototype.name = 'InvalidCharacterError';
-	
-	function btoa(input) {
-	  var str = String(input);
-	  var output = '';
-	  for (
-	    // initialize result and counter
-	    var block, charCode, idx = 0, map = chars;
-	    // if the next str index does not exist:
-	    //   change the mapping table to "="
-	    //   check if d has no fractional digits
-	    str.charAt(idx | 0) || (map = '=', idx % 1);
-	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-	  ) {
-	    charCode = str.charCodeAt(idx += 3 / 4);
-	    if (charCode > 0xFF) {
-	      throw new E();
-	    }
-	    block = block << 8 | charCode;
-	  }
-	  return output;
-	}
-	
-	module.exports = btoa;
-
-
-/***/ }),
-/* 1080 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	module.exports = (
-	  utils.isStandardBrowserEnv() ?
-	
-	  // Standard browser envs support document.cookie
-	  (function standardBrowserEnv() {
-	    return {
-	      write: function write(name, value, expires, path, domain, secure) {
-	        var cookie = [];
-	        cookie.push(name + '=' + encodeURIComponent(value));
-	
-	        if (utils.isNumber(expires)) {
-	          cookie.push('expires=' + new Date(expires).toGMTString());
-	        }
-	
-	        if (utils.isString(path)) {
-	          cookie.push('path=' + path);
-	        }
-	
-	        if (utils.isString(domain)) {
-	          cookie.push('domain=' + domain);
-	        }
-	
-	        if (secure === true) {
-	          cookie.push('secure');
-	        }
-	
-	        document.cookie = cookie.join('; ');
-	      },
-	
-	      read: function read(name) {
-	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-	        return (match ? decodeURIComponent(match[3]) : null);
-	      },
-	
-	      remove: function remove(name) {
-	        this.write(name, '', Date.now() - 86400000);
-	      }
-	    };
-	  })() :
-	
-	  // Non standard browser env (web workers, react-native) lack needed support.
-	  (function nonStandardBrowserEnv() {
-	    return {
-	      write: function write() {},
-	      read: function read() { return null; },
-	      remove: function remove() {}
-	    };
-	  })()
-	);
-
-
-/***/ }),
-/* 1081 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	function InterceptorManager() {
-	  this.handlers = [];
-	}
-	
-	/**
-	 * Add a new interceptor to the stack
-	 *
-	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
-	 * @param {Function} rejected The function to handle `reject` for a `Promise`
-	 *
-	 * @return {Number} An ID used to remove interceptor later
-	 */
-	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-	  this.handlers.push({
-	    fulfilled: fulfilled,
-	    rejected: rejected
-	  });
-	  return this.handlers.length - 1;
-	};
-	
-	/**
-	 * Remove an interceptor from the stack
-	 *
-	 * @param {Number} id The ID that was returned by `use`
-	 */
-	InterceptorManager.prototype.eject = function eject(id) {
-	  if (this.handlers[id]) {
-	    this.handlers[id] = null;
-	  }
-	};
-	
-	/**
-	 * Iterate over all the registered interceptors
-	 *
-	 * This method is particularly useful for skipping over any
-	 * interceptors that may have become `null` calling `eject`.
-	 *
-	 * @param {Function} fn The function to call for each interceptor
-	 */
-	InterceptorManager.prototype.forEach = function forEach(fn) {
-	  utils.forEach(this.handlers, function forEachHandler(h) {
-	    if (h !== null) {
-	      fn(h);
-	    }
-	  });
-	};
-	
-	module.exports = InterceptorManager;
-
-
-/***/ }),
-/* 1082 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	var transformData = __webpack_require__(1083);
-	var isCancel = __webpack_require__(1084);
-	var defaults = __webpack_require__(1070);
-	
-	/**
-	 * Throws a `Cancel` if cancellation has been requested.
-	 */
-	function throwIfCancellationRequested(config) {
-	  if (config.cancelToken) {
-	    config.cancelToken.throwIfRequested();
-	  }
-	}
-	
-	/**
-	 * Dispatch a request to the server using the configured adapter.
-	 *
-	 * @param {object} config The config that is to be used for the request
-	 * @returns {Promise} The Promise to be fulfilled
-	 */
-	module.exports = function dispatchRequest(config) {
-	  throwIfCancellationRequested(config);
-	
-	  // Ensure headers exist
-	  config.headers = config.headers || {};
-	
-	  // Transform request data
-	  config.data = transformData(
-	    config.data,
-	    config.headers,
-	    config.transformRequest
-	  );
-	
-	  // Flatten headers
-	  config.headers = utils.merge(
-	    config.headers.common || {},
-	    config.headers[config.method] || {},
-	    config.headers || {}
-	  );
-	
-	  utils.forEach(
-	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-	    function cleanHeaderConfig(method) {
-	      delete config.headers[method];
-	    }
-	  );
-	
-	  var adapter = config.adapter || defaults.adapter;
-	
-	  return adapter(config).then(function onAdapterResolution(response) {
-	    throwIfCancellationRequested(config);
-	
-	    // Transform response data
-	    response.data = transformData(
-	      response.data,
-	      response.headers,
-	      config.transformResponse
-	    );
-	
-	    return response;
-	  }, function onAdapterRejection(reason) {
-	    if (!isCancel(reason)) {
-	      throwIfCancellationRequested(config);
-	
-	      // Transform response data
-	      if (reason && reason.response) {
-	        reason.response.data = transformData(
-	          reason.response.data,
-	          reason.response.headers,
-	          config.transformResponse
-	        );
-	      }
-	    }
-	
-	    return Promise.reject(reason);
-	  });
-	};
-
-
-/***/ }),
-/* 1083 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(1067);
-	
-	/**
-	 * Transform the data for a request or a response
-	 *
-	 * @param {Object|String} data The data to be transformed
-	 * @param {Array} headers The headers for the request or response
-	 * @param {Array|Function} fns A single function or Array of functions
-	 * @returns {*} The resulting transformed data
-	 */
-	module.exports = function transformData(data, headers, fns) {
-	  /*eslint no-param-reassign:0*/
-	  utils.forEach(fns, function transform(fn) {
-	    data = fn(data, headers);
-	  });
-	
-	  return data;
-	};
-
-
-/***/ }),
-/* 1084 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function isCancel(value) {
-	  return !!(value && value.__CANCEL__);
-	};
-
-
-/***/ }),
-/* 1085 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Determines whether the specified URL is absolute
-	 *
-	 * @param {string} url The URL to test
-	 * @returns {boolean} True if the specified URL is absolute, otherwise false
-	 */
-	module.exports = function isAbsoluteURL(url) {
-	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-	  // by any combination of letters, digits, plus, period, or hyphen.
-	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-	};
-
-
-/***/ }),
-/* 1086 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Creates a new URL by combining the specified URLs
-	 *
-	 * @param {string} baseURL The base URL
-	 * @param {string} relativeURL The relative URL
-	 * @returns {string} The combined URL
-	 */
-	module.exports = function combineURLs(baseURL, relativeURL) {
-	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
-	};
-
-
-/***/ }),
-/* 1087 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * A `Cancel` is an object that is thrown when an operation is canceled.
-	 *
-	 * @class
-	 * @param {string=} message The message.
-	 */
-	function Cancel(message) {
-	  this.message = message;
-	}
-	
-	Cancel.prototype.toString = function toString() {
-	  return 'Cancel' + (this.message ? ': ' + this.message : '');
-	};
-	
-	Cancel.prototype.__CANCEL__ = true;
-	
-	module.exports = Cancel;
-
-
-/***/ }),
-/* 1088 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var Cancel = __webpack_require__(1087);
-	
-	/**
-	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
-	 *
-	 * @class
-	 * @param {Function} executor The executor function.
-	 */
-	function CancelToken(executor) {
-	  if (typeof executor !== 'function') {
-	    throw new TypeError('executor must be a function.');
-	  }
-	
-	  var resolvePromise;
-	  this.promise = new Promise(function promiseExecutor(resolve) {
-	    resolvePromise = resolve;
-	  });
-	
-	  var token = this;
-	  executor(function cancel(message) {
-	    if (token.reason) {
-	      // Cancellation has already been requested
-	      return;
-	    }
-	
-	    token.reason = new Cancel(message);
-	    resolvePromise(token.reason);
-	  });
-	}
-	
-	/**
-	 * Throws a `Cancel` if cancellation has been requested.
-	 */
-	CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-	  if (this.reason) {
-	    throw this.reason;
-	  }
-	};
-	
-	/**
-	 * Returns an object that contains a new `CancelToken` and a function that, when called,
-	 * cancels the `CancelToken`.
-	 */
-	CancelToken.source = function source() {
-	  var cancel;
-	  var token = new CancelToken(function executor(c) {
-	    cancel = c;
-	  });
-	  return {
-	    token: token,
-	    cancel: cancel
-	  };
-	};
-	
-	module.exports = CancelToken;
-
-
-/***/ }),
-/* 1089 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Syntactic sugar for invoking a function and expanding an array for arguments.
-	 *
-	 * Common use case would be to use `Function.prototype.apply`.
-	 *
-	 *  ```js
-	 *  function f(x, y, z) {}
-	 *  var args = [1, 2, 3];
-	 *  f.apply(null, args);
-	 *  ```
-	 *
-	 * With `spread` this example can be re-written.
-	 *
-	 *  ```js
-	 *  spread(function(x, y, z) {})([1, 2, 3]);
-	 *  ```
-	 *
-	 * @param {Function} callback
-	 * @returns {Function}
-	 */
-	module.exports = function spread(callback) {
-	  return function wrap(arr) {
-	    return callback.apply(null, arr);
-	  };
-	};
-
-
-/***/ }),
-/* 1090 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	var react_router_1 = __webpack_require__(546);
-	var react_redux_1 = __webpack_require__(190);
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
-	var order_payment_ts_1 = __webpack_require__(1091);
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var PaymentMethod = function (_React$Component) {
-	    _inherits(PaymentMethod, _React$Component);
-	
-	    //props: Props;
-	    function PaymentMethod(props) {
-	        _classCallCheck(this, PaymentMethod);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
-	
-	        _this.state = {
-	            card_number_border_color: "grey",
-	            expiry_month_border_color: "grey",
-	            expiry_year_border_color: "grey",
-	            cvc_border_color: "grey",
-	            card_type: ""
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(PaymentMethod, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //alert();
-	            //window.onhashchange = function() {
-	            //blah blah blah
-	            //alert(this.state.page);
-	            //}.bind(this);
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //var result = [{'id': 'a'}, {'id': 'b'}];
-	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	            //    previous[ current.id ] = current;
-	            //    return previous;
-	            //}, {}));
-	            var demoRecord = Immutable.List.of(Immutable.Record({
-	                property: 'defaultValue',
-	                index: 0,
-	                works: true,
-	                valueList: Immutable.List([])
-	            }));
-	            //alert(demoRecord.getIn(["0"], "index"));
-	            /*let list = demoRecord.update(
-	              demoRecord.findIndex(function(item: any) {
-	                return item.get("index") === "0";
-	              }), function(item: any) {
-	                return item.set("index", 4);
-	              }
-	            );*/
-	            var result = [{ 'id': 2 }, { 'id': 4 }];
-	            var map = Immutable.fromJS(result);
-	            var map_updated = map.set();
-	            var result1 = map.find(function (obj) {
-	                return obj.get('id') === 4;
-	            });
-	            //alert(result1.get("id"));
-	            /*let arr = fromJS(
-	              elem: [
-	                {id: 1, name: "first", count: 2},
-	                {id: 2, name: "second", count: 1},
-	                {id: 3, name: "third", count: 2},
-	                {id: 4, name: "fourth", count: 1}
-	              ]
-	            );
-	                 arr = arr.setIn(['elem', 3, 'count'], 4);
-	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	                 
-	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	              return listItem.get('name') === 'third';
-	            });
-	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	            var cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	            var myNewMap = cart_items_temp.push({ item_id: 5 });
-	            //let hello = cart_items_temp.push({item_id: 5});
-	            //alert(JSON.stringify(myNewMap));
-	            //alert(JSON.stringify(myNewMap.delete("0")));
-	            //hello.findIndex(function(item: any) { 
-	            //    return item.get("item_id") === "1"; 
-	            //})
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	            /*let list = hello.update(
-	              hello.findIndex(function(item: any) {
-	                return item.get("item_id") === "1";
-	              }), function(item: any) {
-	                return item.set("quantity", 44444444444444);
-	              }
-	            );*/
-	            //let list = hello.update(0, function(v: any) {
-	            //    return {quantity: 44444444444};
-	            //});
-	            //alert(JSON.stringify(list.toJS()));
-	            //alert(cart_items_temp_updated);
-	            //get menu items
-	            //this.props;
-	            //alert(JSON.stringify(this.state.menu_items));
-	            //alert("products" + JSON.stringify(this.props.menu_items));
-	            //console.log(this.props.getAllProducts());
-	            //this.setState({here: this.props.getAllProducts()});
-	            //console.log(this.props.dispatch(addTodoWithDispatch));
-	            //this.props.getAllProducts();
-	        }
-	    }, {
-	        key: "setPaymentCardNumber",
-	        value: function setPaymentCardNumber(e) {
-	            //Amex Card: ^3[47][0-9]{13}$
-	            //if(/^3[47][0-9]{13}$/.test(e.target.value)){
-	            console.log("amex");
-	            this.props.setPaymentCardNumber(e.target.value);
-	            this.setState({ card_number_border_color: "red" });
-	            this.setState({ card_type: "AMEX" });
-	            //
-	            //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
-	            //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
-	            //    alert("visa");
-	            //
-	            //}else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
-	            //    alert("discovery");
-	            //
-	            //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
-	            //}
-	        }
-	    }, {
-	        key: "setPaymentExpiryDateMonth",
-	        value: function setPaymentExpiryDateMonth(e) {
-	            console.log(e.target.value);
-	            //01-12, only numbers
-	            if (/^[0-9]/.test(e.target.value)) {
-	                console.log("ok month");
-	                this.setState({ expiry_month_border_color: "grey" });
-	            }
-	        }
-	    }, {
-	        key: "setPaymentExpiryDateYear",
-	        value: function setPaymentExpiryDateYear(e) {
-	            //2017-only numbers
-	            //01-12, only numbers
-	            if (/^[0-9]/.test(e.target.value)) {
-	                console.log("ok year");
-	                this.setState({ expiry_year_border_color: "grey" });
-	            }
-	        }
-	    }, {
-	        key: "setPaymentSecurityCode",
-	        value: function setPaymentSecurityCode(e) {
-	            //if length > 0 or less then 4, only numbers
-	        }
-	    }, {
-	        key: "goToPreview",
-	        value: function goToPreview() {
-	            this.context.router.push('/order/preview');
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
-	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-6" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
-	                    return _this2.props.setPaymentNameOnCard(e);
-	                } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
-	                    return _this2.setPaymentCardNumber(e);
-	                }, style: { borderColor: this.state.card_number_border_color } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_type))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "MM", onChange: function onChange(e) {
-	                    return _this2.setPaymentExpiryDateMonth(e);
-	                }, style: { borderColor: this.state.expiry_year_border_color } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onChange: function onChange(e) {
-	                    return _this2.setPaymentExpiryDateMonth(e);
-	                }, style: { borderColor: this.state.expiry_month_border_color } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: function onChange(e) {
-	                    return _this2.setPaymentSecurityCode(e);
-	                }, style: { borderColor: this.state.cvc_border_color } })))), React.createElement("button", { onClick: function onClick() {
-	                    return _this2.goToPreview();
-	                } }, "Preview"), React.createElement("br", null)))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return PaymentMethod;
-	}(React.Component);
-	
-	function mapStateToProps(state) {
-	    console.log("payment method component/state" + JSON.stringify(state));
-	    return {
-	        user: state.user,
-	        user_payment_methods: state.user_payment_methods
-	        //menu_items: dispatch()
-	    };
-	}
-	function mapDispatchToProps(dispatch) {
-	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {
-	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
-	            //console.log(e.target.value);
-	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
-	        },
-	        setPaymentCardNumber: function setPaymentCardNumber(e) {
-	            //console.log(e.target.value);
-	            dispatch(order_payment_ts_1.setPaymentCardNumber(e));
-	        },
-	        setPaymentExpiryDate: function setPaymentExpiryDate(e) {
-	            console.log(e.target.value);
-	            //dispatch(setLastName(e.target.value));
-	        },
-	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	            console.log(e.target.value);
-	            //dispatch(setLastName(e.target.value));
-	        }
-	    };
-	}
-	var PaymentMethod1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
-	exports.default = PaymentMethod1;
-
-/***/ }),
-/* 1091 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function setPaymentNameOnCard(value) {
-	    alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD,
-	        value: value
-	    };
-	}
-	exports.setPaymentNameOnCard = setPaymentNameOnCard;
-	function setPaymentCardNumber(value) {
-	    console.log("action payment");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER,
-	        value: value
-	    };
-	}
-	exports.setPaymentCardNumber = setPaymentCardNumber;
-	function setPaymentExpiryDate(value) {
-	    alert("addCartItem from redux" + value);
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE,
-	        value: value
-	    };
-	}
-	exports.setPaymentExpiryDate = setPaymentExpiryDate;
-	function setPaymentSecurityCode(value) {
-	    alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
-	        value: value
-	    };
-	}
-	exports.setPaymentSecurityCode = setPaymentSecurityCode;
-
-/***/ }),
-/* 1092 */
-/***/ (function(module, exports, __webpack_require__) {
-
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -32811,9 +31033,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	var cart_ts_1 = __webpack_require__(924);
+	var cart_ts_1 = __webpack_require__(923);
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	
 	var OrderCart = function (_React$Component) {
 	    _inherits(OrderCart, _React$Component);
@@ -32835,7 +31057,8 @@ webpackJsonp([0],[
 	            item_count: 0,
 	            cart_items: Immutable.fromJS([{ item_id: 1, dozen: 2, quantity: 2, mini: true }, { item_id: 2, dozen: 1, quantity: 5 }]),
 	            //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
-	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" })
+	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
+	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -33153,23 +31376,21 @@ webpackJsonp([0],[
 	            //alert(item_count);
 	            //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 	            var cart = "";
-	            if (item_count == 0) {
+	            if (this.props.cart_items.length === 0) {
 	                cart = "there are no items in your cart";
 	            } else {
-	                cart = this.props.order.toJS().cart.map(function (item, index) {
+	                cart = this.props.cart_items.map(function (item, index) {
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-	                    var result = this.state.menu_items.find(function (obj) {
-	                        return obj.get('item_id') === 1;
-	                    });
-	                    var item_title = result.get("title");
+	                    //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
+	                    var item_title = "result.get(\"title\")";
 	                    if (item.mini == true) {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }, "Mini"), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: this.props.increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: this.props.decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
+	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_title, " Mini"), React.createElement("div", { className: "col-md-1" }, "48"), React.createElement("div", { className: "col-md-1" }, "X"), React.createElement("div", { className: "col-md-1" }, "+"), React.createElement("div", { className: "col-md-1" }, "-"))));
 	                    } else {
-	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, "image"), React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.removeCartItem.bind(this, index) }, "X")), React.createElement("div", null, React.createElement("a", { onClick: this.props.increaseCartItemQuantity.bind(this, item.item_id, index) }, "+"), React.createElement("a", { onClick: this.props.decreaseCartItemQuantity.bind(this, item.item_id, index) }, "-")));
+	                        return React.createElement("div", null, React.createElement("div", { className: "col-md-1" }, item_title), React.createElement("div", { className: "col-md-1" }, item.quantity, " Dozen"), React.createElement("div", { className: "col-md-1" }));
 	                    }
 	                }.bind(this));
 	            }
-	            return React.createElement("div", null, cart);
+	            return React.createElement("div", null, React.createElement("b", null, "Cart Items"), React.createElement("br", null), cart, React.createElement("br", null), "Subtotal - 24 Scones x 6.00", React.createElement("br", null), "Delivery - 10", React.createElement("br", null), "Total");
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -33184,11 +31405,11 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("mapstatetoprops " + JSON.stringify(state));
+	    console.log("order cart " + JSON.stringify(state));
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
-	        order: state.default
+	        cart_items: state.cart.cart_items
 	        //}
 	    };
 	};
@@ -33208,6 +31429,1709 @@ webpackJsonp([0],[
 	var OrderCart1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderCart);
 	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
 	exports.default = OrderCart1;
+
+/***/ }),
+/* 1066 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_redux_1 = __webpack_require__(190);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(925);
+	var order_payment_ts_1 = __webpack_require__(1067);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var PaymentMethod = function (_React$Component) {
+	    _inherits(PaymentMethod, _React$Component);
+	
+	    //props: Props;
+	    function PaymentMethod(props) {
+	        _classCallCheck(this, PaymentMethod);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
+	
+	        _this.state = {
+	            card_number_border_color: "grey",
+	            expiry_month_border_color: "grey",
+	            expiry_year_border_color: "grey",
+	            cvc_border_color: "grey",
+	            card_type: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(PaymentMethod, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {}
+	    }, {
+	        key: "setPaymentCardNumber",
+	        value: function setPaymentCardNumber(e) {
+	            //Amex Card: ^3[47][0-9]{13}$
+	            //if(/^3[47][0-9]{13}$/.test(e.target.value)){
+	            console.log("amex");
+	            this.props.setPaymentCardNumber(e.target.value);
+	            this.setState({ card_number_border_color: "red" });
+	            this.setState({ card_type: "AMEX" });
+	            //
+	            //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
+	            //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
+	            //    alert("visa");
+	            //
+	            //}else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
+	            //    alert("discovery");
+	            //
+	            //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
+	            //}
+	        }
+	    }, {
+	        key: "setPaymentExpiryDateMonth",
+	        value: function setPaymentExpiryDateMonth(e) {
+	            console.log(e.target.value);
+	            //01-12, only numbers
+	            if (/^[0-9]/.test(e.target.value)) {
+	                console.log("ok month");
+	                this.setState({ expiry_month_border_color: "grey" });
+	            }
+	        }
+	    }, {
+	        key: "setPaymentExpiryDateYear",
+	        value: function setPaymentExpiryDateYear(e) {
+	            //2017-only numbers
+	            //01-12, only numbers
+	            if (/^[0-9]/.test(e.target.value)) {
+	                console.log("ok year");
+	                this.setState({ expiry_year_border_color: "grey" });
+	            }
+	        }
+	    }, {
+	        key: "setPaymentSecurityCode",
+	        value: function setPaymentSecurityCode(e) {
+	            //if length > 0 or less then 4, only numbers
+	        }
+	    }, {
+	        key: "goToPreview",
+	        value: function goToPreview() {
+	            this.context.router.push('/order/preview');
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Payment"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	                    return _this2.props.setPaymentNameOnCard(e);
+	                } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                    return _this2.setPaymentCardNumber(e);
+	                }, style: { borderColor: this.state.card_number_border_color } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_type))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onChange: function onChange(e) {
+	                    return _this2.setPaymentExpiryDateMonth(e);
+	                }, style: { borderColor: this.state.expiry_year_border_color } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onChange: function onChange(e) {
+	                    return _this2.setPaymentExpiryDateMonth(e);
+	                }, style: { borderColor: this.state.expiry_month_border_color } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: function onChange(e) {
+	                    return _this2.setPaymentSecurityCode(e);
+	                }, style: { borderColor: this.state.cvc_border_color } })))), React.createElement("button", { onClick: function onClick() {
+	                    return _this2.goToPreview();
+	                } }, "Preview"), React.createElement("br", null));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return PaymentMethod;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    console.log("payment method component/state" + JSON.stringify(state));
+	    return {
+	        user: state.user,
+	        user_payment_methods: state.user_payment_methods
+	        //menu_items: dispatch()
+	    };
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {
+	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            //console.log(e.target.value);
+	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
+	        },
+	        setPaymentCardNumber: function setPaymentCardNumber(e) {
+	            //console.log(e.target.value);
+	            dispatch(order_payment_ts_1.setPaymentCardNumber(e));
+	        },
+	        setPaymentExpiryDate: function setPaymentExpiryDate(e) {
+	            console.log(e.target.value);
+	            //dispatch(setLastName(e.target.value));
+	        },
+	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	            console.log(e.target.value);
+	            //dispatch(setLastName(e.target.value));
+	        }
+	    };
+	}
+	var PaymentMethod1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
+	exports.default = PaymentMethod1;
+
+/***/ }),
+/* 1067 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function setPaymentNameOnCard(value) {
+	    alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD,
+	        value: value
+	    };
+	}
+	exports.setPaymentNameOnCard = setPaymentNameOnCard;
+	function setPaymentCardNumber(value) {
+	    console.log("action payment");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER,
+	        value: value
+	    };
+	}
+	exports.setPaymentCardNumber = setPaymentCardNumber;
+	function setPaymentExpiryDate(value) {
+	    alert("addCartItem from redux" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE,
+	        value: value
+	    };
+	}
+	exports.setPaymentExpiryDate = setPaymentExpiryDate;
+	function setPaymentSecurityCode(value) {
+	    alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
+	        value: value
+	    };
+	}
+	exports.setPaymentSecurityCode = setPaymentSecurityCode;
+
+/***/ }),
+/* 1068 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(1069);
+
+/***/ }),
+/* 1069 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var bind = __webpack_require__(1071);
+	var Axios = __webpack_require__(1072);
+	var defaults = __webpack_require__(1073);
+	
+	/**
+	 * Create an instance of Axios
+	 *
+	 * @param {Object} defaultConfig The default config for the instance
+	 * @return {Axios} A new instance of Axios
+	 */
+	function createInstance(defaultConfig) {
+	  var context = new Axios(defaultConfig);
+	  var instance = bind(Axios.prototype.request, context);
+	
+	  // Copy axios.prototype to instance
+	  utils.extend(instance, Axios.prototype, context);
+	
+	  // Copy context to instance
+	  utils.extend(instance, context);
+	
+	  return instance;
+	}
+	
+	// Create the default instance to be exported
+	var axios = createInstance(defaults);
+	
+	// Expose Axios class to allow class inheritance
+	axios.Axios = Axios;
+	
+	// Factory for creating new instances
+	axios.create = function create(instanceConfig) {
+	  return createInstance(utils.merge(defaults, instanceConfig));
+	};
+	
+	// Expose Cancel & CancelToken
+	axios.Cancel = __webpack_require__(1090);
+	axios.CancelToken = __webpack_require__(1091);
+	axios.isCancel = __webpack_require__(1087);
+	
+	// Expose all/spread
+	axios.all = function all(promises) {
+	  return Promise.all(promises);
+	};
+	axios.spread = __webpack_require__(1092);
+	
+	module.exports = axios;
+	
+	// Allow use of default import syntax in TypeScript
+	module.exports.default = axios;
+
+
+/***/ }),
+/* 1070 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var bind = __webpack_require__(1071);
+	
+	/*global toString:true*/
+	
+	// utils is a library of generic helper functions non-specific to axios
+	
+	var toString = Object.prototype.toString;
+	
+	/**
+	 * Determine if a value is an Array
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Array, otherwise false
+	 */
+	function isArray(val) {
+	  return toString.call(val) === '[object Array]';
+	}
+	
+	/**
+	 * Determine if a value is an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+	 */
+	function isArrayBuffer(val) {
+	  return toString.call(val) === '[object ArrayBuffer]';
+	}
+	
+	/**
+	 * Determine if a value is a FormData
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an FormData, otherwise false
+	 */
+	function isFormData(val) {
+	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+	}
+	
+	/**
+	 * Determine if a value is a view on an ArrayBuffer
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+	 */
+	function isArrayBufferView(val) {
+	  var result;
+	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+	    result = ArrayBuffer.isView(val);
+	  } else {
+	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Determine if a value is a String
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a String, otherwise false
+	 */
+	function isString(val) {
+	  return typeof val === 'string';
+	}
+	
+	/**
+	 * Determine if a value is a Number
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Number, otherwise false
+	 */
+	function isNumber(val) {
+	  return typeof val === 'number';
+	}
+	
+	/**
+	 * Determine if a value is undefined
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if the value is undefined, otherwise false
+	 */
+	function isUndefined(val) {
+	  return typeof val === 'undefined';
+	}
+	
+	/**
+	 * Determine if a value is an Object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is an Object, otherwise false
+	 */
+	function isObject(val) {
+	  return val !== null && typeof val === 'object';
+	}
+	
+	/**
+	 * Determine if a value is a Date
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Date, otherwise false
+	 */
+	function isDate(val) {
+	  return toString.call(val) === '[object Date]';
+	}
+	
+	/**
+	 * Determine if a value is a File
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a File, otherwise false
+	 */
+	function isFile(val) {
+	  return toString.call(val) === '[object File]';
+	}
+	
+	/**
+	 * Determine if a value is a Blob
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Blob, otherwise false
+	 */
+	function isBlob(val) {
+	  return toString.call(val) === '[object Blob]';
+	}
+	
+	/**
+	 * Determine if a value is a Function
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Function, otherwise false
+	 */
+	function isFunction(val) {
+	  return toString.call(val) === '[object Function]';
+	}
+	
+	/**
+	 * Determine if a value is a Stream
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a Stream, otherwise false
+	 */
+	function isStream(val) {
+	  return isObject(val) && isFunction(val.pipe);
+	}
+	
+	/**
+	 * Determine if a value is a URLSearchParams object
+	 *
+	 * @param {Object} val The value to test
+	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+	 */
+	function isURLSearchParams(val) {
+	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+	}
+	
+	/**
+	 * Trim excess whitespace off the beginning and end of a string
+	 *
+	 * @param {String} str The String to trim
+	 * @returns {String} The String freed of excess whitespace
+	 */
+	function trim(str) {
+	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+	}
+	
+	/**
+	 * Determine if we're running in a standard browser environment
+	 *
+	 * This allows axios to run in a web worker, and react-native.
+	 * Both environments support XMLHttpRequest, but not fully standard globals.
+	 *
+	 * web workers:
+	 *  typeof window -> undefined
+	 *  typeof document -> undefined
+	 *
+	 * react-native:
+	 *  typeof document.createElement -> undefined
+	 */
+	function isStandardBrowserEnv() {
+	  return (
+	    typeof window !== 'undefined' &&
+	    typeof document !== 'undefined' &&
+	    typeof document.createElement === 'function'
+	  );
+	}
+	
+	/**
+	 * Iterate over an Array or an Object invoking a function for each item.
+	 *
+	 * If `obj` is an Array callback will be called passing
+	 * the value, index, and complete array for each item.
+	 *
+	 * If 'obj' is an Object callback will be called passing
+	 * the value, key, and complete object for each property.
+	 *
+	 * @param {Object|Array} obj The object to iterate
+	 * @param {Function} fn The callback to invoke for each item
+	 */
+	function forEach(obj, fn) {
+	  // Don't bother if no value provided
+	  if (obj === null || typeof obj === 'undefined') {
+	    return;
+	  }
+	
+	  // Force an array if not already something iterable
+	  if (typeof obj !== 'object' && !isArray(obj)) {
+	    /*eslint no-param-reassign:0*/
+	    obj = [obj];
+	  }
+	
+	  if (isArray(obj)) {
+	    // Iterate over array values
+	    for (var i = 0, l = obj.length; i < l; i++) {
+	      fn.call(null, obj[i], i, obj);
+	    }
+	  } else {
+	    // Iterate over object keys
+	    for (var key in obj) {
+	      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+	        fn.call(null, obj[key], key, obj);
+	      }
+	    }
+	  }
+	}
+	
+	/**
+	 * Accepts varargs expecting each argument to be an object, then
+	 * immutably merges the properties of each object and returns result.
+	 *
+	 * When multiple objects contain the same key the later object in
+	 * the arguments list will take precedence.
+	 *
+	 * Example:
+	 *
+	 * ```js
+	 * var result = merge({foo: 123}, {foo: 456});
+	 * console.log(result.foo); // outputs 456
+	 * ```
+	 *
+	 * @param {Object} obj1 Object to merge
+	 * @returns {Object} Result of all merge properties
+	 */
+	function merge(/* obj1, obj2, obj3, ... */) {
+	  var result = {};
+	  function assignValue(val, key) {
+	    if (typeof result[key] === 'object' && typeof val === 'object') {
+	      result[key] = merge(result[key], val);
+	    } else {
+	      result[key] = val;
+	    }
+	  }
+	
+	  for (var i = 0, l = arguments.length; i < l; i++) {
+	    forEach(arguments[i], assignValue);
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Extends object a by mutably adding to it the properties of object b.
+	 *
+	 * @param {Object} a The object to be extended
+	 * @param {Object} b The object to copy properties from
+	 * @param {Object} thisArg The object to bind function to
+	 * @return {Object} The resulting value of object a
+	 */
+	function extend(a, b, thisArg) {
+	  forEach(b, function assignValue(val, key) {
+	    if (thisArg && typeof val === 'function') {
+	      a[key] = bind(val, thisArg);
+	    } else {
+	      a[key] = val;
+	    }
+	  });
+	  return a;
+	}
+	
+	module.exports = {
+	  isArray: isArray,
+	  isArrayBuffer: isArrayBuffer,
+	  isFormData: isFormData,
+	  isArrayBufferView: isArrayBufferView,
+	  isString: isString,
+	  isNumber: isNumber,
+	  isObject: isObject,
+	  isUndefined: isUndefined,
+	  isDate: isDate,
+	  isFile: isFile,
+	  isBlob: isBlob,
+	  isFunction: isFunction,
+	  isStream: isStream,
+	  isURLSearchParams: isURLSearchParams,
+	  isStandardBrowserEnv: isStandardBrowserEnv,
+	  forEach: forEach,
+	  merge: merge,
+	  extend: extend,
+	  trim: trim
+	};
+
+
+/***/ }),
+/* 1071 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function bind(fn, thisArg) {
+	  return function wrap() {
+	    var args = new Array(arguments.length);
+	    for (var i = 0; i < args.length; i++) {
+	      args[i] = arguments[i];
+	    }
+	    return fn.apply(thisArg, args);
+	  };
+	};
+
+
+/***/ }),
+/* 1072 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var defaults = __webpack_require__(1073);
+	var utils = __webpack_require__(1070);
+	var InterceptorManager = __webpack_require__(1084);
+	var dispatchRequest = __webpack_require__(1085);
+	var isAbsoluteURL = __webpack_require__(1088);
+	var combineURLs = __webpack_require__(1089);
+	
+	/**
+	 * Create a new instance of Axios
+	 *
+	 * @param {Object} instanceConfig The default config for the instance
+	 */
+	function Axios(instanceConfig) {
+	  this.defaults = instanceConfig;
+	  this.interceptors = {
+	    request: new InterceptorManager(),
+	    response: new InterceptorManager()
+	  };
+	}
+	
+	/**
+	 * Dispatch a request
+	 *
+	 * @param {Object} config The config specific for this request (merged with this.defaults)
+	 */
+	Axios.prototype.request = function request(config) {
+	  /*eslint no-param-reassign:0*/
+	  // Allow for axios('example/url'[, config]) a la fetch API
+	  if (typeof config === 'string') {
+	    config = utils.merge({
+	      url: arguments[0]
+	    }, arguments[1]);
+	  }
+	
+	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+	
+	  // Support baseURL config
+	  if (config.baseURL && !isAbsoluteURL(config.url)) {
+	    config.url = combineURLs(config.baseURL, config.url);
+	  }
+	
+	  // Hook up interceptors middleware
+	  var chain = [dispatchRequest, undefined];
+	  var promise = Promise.resolve(config);
+	
+	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+	    chain.push(interceptor.fulfilled, interceptor.rejected);
+	  });
+	
+	  while (chain.length) {
+	    promise = promise.then(chain.shift(), chain.shift());
+	  }
+	
+	  return promise;
+	};
+	
+	// Provide aliases for supported request methods
+	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url
+	    }));
+	  };
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  /*eslint func-names:0*/
+	  Axios.prototype[method] = function(url, data, config) {
+	    return this.request(utils.merge(config || {}, {
+	      method: method,
+	      url: url,
+	      data: data
+	    }));
+	  };
+	});
+	
+	module.exports = Axios;
+
+
+/***/ }),
+/* 1073 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var normalizeHeaderName = __webpack_require__(1074);
+	
+	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
+	var DEFAULT_CONTENT_TYPE = {
+	  'Content-Type': 'application/x-www-form-urlencoded'
+	};
+	
+	function setContentTypeIfUnset(headers, value) {
+	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+	    headers['Content-Type'] = value;
+	  }
+	}
+	
+	function getDefaultAdapter() {
+	  var adapter;
+	  if (typeof XMLHttpRequest !== 'undefined') {
+	    // For browsers use XHR adapter
+	    adapter = __webpack_require__(1075);
+	  } else if (typeof process !== 'undefined') {
+	    // For node use HTTP adapter
+	    adapter = __webpack_require__(1075);
+	  }
+	  return adapter;
+	}
+	
+	var defaults = {
+	  adapter: getDefaultAdapter(),
+	
+	  transformRequest: [function transformRequest(data, headers) {
+	    normalizeHeaderName(headers, 'Content-Type');
+	    if (utils.isFormData(data) ||
+	      utils.isArrayBuffer(data) ||
+	      utils.isStream(data) ||
+	      utils.isFile(data) ||
+	      utils.isBlob(data)
+	    ) {
+	      return data;
+	    }
+	    if (utils.isArrayBufferView(data)) {
+	      return data.buffer;
+	    }
+	    if (utils.isURLSearchParams(data)) {
+	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+	      return data.toString();
+	    }
+	    if (utils.isObject(data)) {
+	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+	      return JSON.stringify(data);
+	    }
+	    return data;
+	  }],
+	
+	  transformResponse: [function transformResponse(data) {
+	    /*eslint no-param-reassign:0*/
+	    if (typeof data === 'string') {
+	      data = data.replace(PROTECTION_PREFIX, '');
+	      try {
+	        data = JSON.parse(data);
+	      } catch (e) { /* Ignore */ }
+	    }
+	    return data;
+	  }],
+	
+	  timeout: 0,
+	
+	  xsrfCookieName: 'XSRF-TOKEN',
+	  xsrfHeaderName: 'X-XSRF-TOKEN',
+	
+	  maxContentLength: -1,
+	
+	  validateStatus: function validateStatus(status) {
+	    return status >= 200 && status < 300;
+	  }
+	};
+	
+	defaults.headers = {
+	  common: {
+	    'Accept': 'application/json, text/plain, */*'
+	  }
+	};
+	
+	utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
+	  defaults.headers[method] = {};
+	});
+	
+	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+	  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+	});
+	
+	module.exports = defaults;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
+
+/***/ }),
+/* 1074 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	module.exports = function normalizeHeaderName(headers, normalizedName) {
+	  utils.forEach(headers, function processHeader(value, name) {
+	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+	      headers[normalizedName] = value;
+	      delete headers[name];
+	    }
+	  });
+	};
+
+
+/***/ }),
+/* 1075 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var settle = __webpack_require__(1076);
+	var buildURL = __webpack_require__(1079);
+	var parseHeaders = __webpack_require__(1080);
+	var isURLSameOrigin = __webpack_require__(1081);
+	var createError = __webpack_require__(1077);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1082);
+	
+	module.exports = function xhrAdapter(config) {
+	  return new Promise(function dispatchXhrRequest(resolve, reject) {
+	    var requestData = config.data;
+	    var requestHeaders = config.headers;
+	
+	    if (utils.isFormData(requestData)) {
+	      delete requestHeaders['Content-Type']; // Let the browser set it
+	    }
+	
+	    var request = new XMLHttpRequest();
+	    var loadEvent = 'onreadystatechange';
+	    var xDomain = false;
+	
+	    // For IE 8/9 CORS support
+	    // Only supports POST and GET calls and doesn't returns the response headers.
+	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
+	    if (process.env.NODE_ENV !== 'test' &&
+	        typeof window !== 'undefined' &&
+	        window.XDomainRequest && !('withCredentials' in request) &&
+	        !isURLSameOrigin(config.url)) {
+	      request = new window.XDomainRequest();
+	      loadEvent = 'onload';
+	      xDomain = true;
+	      request.onprogress = function handleProgress() {};
+	      request.ontimeout = function handleTimeout() {};
+	    }
+	
+	    // HTTP basic authentication
+	    if (config.auth) {
+	      var username = config.auth.username || '';
+	      var password = config.auth.password || '';
+	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
+	    }
+	
+	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
+	
+	    // Set the request timeout in MS
+	    request.timeout = config.timeout;
+	
+	    // Listen for ready state
+	    request[loadEvent] = function handleLoad() {
+	      if (!request || (request.readyState !== 4 && !xDomain)) {
+	        return;
+	      }
+	
+	      // The request errored out and we didn't get a response, this will be
+	      // handled by onerror instead
+	      // With one exception: request that using file: protocol, most browsers
+	      // will return status as 0 even though it's a successful request
+	      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+	        return;
+	      }
+	
+	      // Prepare the response
+	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
+	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+	      var response = {
+	        data: responseData,
+	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
+	        status: request.status === 1223 ? 204 : request.status,
+	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+	        headers: responseHeaders,
+	        config: config,
+	        request: request
+	      };
+	
+	      settle(resolve, reject, response);
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle low level network errors
+	    request.onerror = function handleError() {
+	      // Real errors are hidden from us by the browser
+	      // onerror should only fire if it's a network error
+	      reject(createError('Network Error', config));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Handle timeout
+	    request.ontimeout = function handleTimeout() {
+	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
+	
+	      // Clean up request
+	      request = null;
+	    };
+	
+	    // Add xsrf header
+	    // This is only done if running in a standard browser environment.
+	    // Specifically not if we're in a web worker, or react-native.
+	    if (utils.isStandardBrowserEnv()) {
+	      var cookies = __webpack_require__(1083);
+	
+	      // Add xsrf header
+	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
+	          cookies.read(config.xsrfCookieName) :
+	          undefined;
+	
+	      if (xsrfValue) {
+	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
+	      }
+	    }
+	
+	    // Add headers to the request
+	    if ('setRequestHeader' in request) {
+	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
+	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
+	          // Remove Content-Type if data is undefined
+	          delete requestHeaders[key];
+	        } else {
+	          // Otherwise add header to the request
+	          request.setRequestHeader(key, val);
+	        }
+	      });
+	    }
+	
+	    // Add withCredentials to request if needed
+	    if (config.withCredentials) {
+	      request.withCredentials = true;
+	    }
+	
+	    // Add responseType to request if needed
+	    if (config.responseType) {
+	      try {
+	        request.responseType = config.responseType;
+	      } catch (e) {
+	        if (request.responseType !== 'json') {
+	          throw e;
+	        }
+	      }
+	    }
+	
+	    // Handle progress if needed
+	    if (typeof config.onDownloadProgress === 'function') {
+	      request.addEventListener('progress', config.onDownloadProgress);
+	    }
+	
+	    // Not all browsers support upload events
+	    if (typeof config.onUploadProgress === 'function' && request.upload) {
+	      request.upload.addEventListener('progress', config.onUploadProgress);
+	    }
+	
+	    if (config.cancelToken) {
+	      // Handle cancellation
+	      config.cancelToken.promise.then(function onCanceled(cancel) {
+	        if (!request) {
+	          return;
+	        }
+	
+	        request.abort();
+	        reject(cancel);
+	        // Clean up request
+	        request = null;
+	      });
+	    }
+	
+	    if (requestData === undefined) {
+	      requestData = null;
+	    }
+	
+	    // Send the request
+	    request.send(requestData);
+	  });
+	};
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
+
+/***/ }),
+/* 1076 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var createError = __webpack_require__(1077);
+	
+	/**
+	 * Resolve or reject a Promise based on response status.
+	 *
+	 * @param {Function} resolve A function that resolves the promise.
+	 * @param {Function} reject A function that rejects the promise.
+	 * @param {object} response The response.
+	 */
+	module.exports = function settle(resolve, reject, response) {
+	  var validateStatus = response.config.validateStatus;
+	  // Note: status is not exposed by XDomainRequest
+	  if (!response.status || !validateStatus || validateStatus(response.status)) {
+	    resolve(response);
+	  } else {
+	    reject(createError(
+	      'Request failed with status code ' + response.status,
+	      response.config,
+	      null,
+	      response
+	    ));
+	  }
+	};
+
+
+/***/ }),
+/* 1077 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var enhanceError = __webpack_require__(1078);
+	
+	/**
+	 * Create an Error with the specified message, config, error code, and response.
+	 *
+	 * @param {string} message The error message.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The created error.
+	 */
+	module.exports = function createError(message, config, code, response) {
+	  var error = new Error(message);
+	  return enhanceError(error, config, code, response);
+	};
+
+
+/***/ }),
+/* 1078 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Update an Error with the specified config, error code, and response.
+	 *
+	 * @param {Error} error The error to update.
+	 * @param {Object} config The config.
+	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
+	 @ @param {Object} [response] The response.
+	 * @returns {Error} The error.
+	 */
+	module.exports = function enhanceError(error, config, code, response) {
+	  error.config = config;
+	  if (code) {
+	    error.code = code;
+	  }
+	  error.response = response;
+	  return error;
+	};
+
+
+/***/ }),
+/* 1079 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	function encode(val) {
+	  return encodeURIComponent(val).
+	    replace(/%40/gi, '@').
+	    replace(/%3A/gi, ':').
+	    replace(/%24/g, '$').
+	    replace(/%2C/gi, ',').
+	    replace(/%20/g, '+').
+	    replace(/%5B/gi, '[').
+	    replace(/%5D/gi, ']');
+	}
+	
+	/**
+	 * Build a URL by appending params to the end
+	 *
+	 * @param {string} url The base of the url (e.g., http://www.google.com)
+	 * @param {object} [params] The params to be appended
+	 * @returns {string} The formatted url
+	 */
+	module.exports = function buildURL(url, params, paramsSerializer) {
+	  /*eslint no-param-reassign:0*/
+	  if (!params) {
+	    return url;
+	  }
+	
+	  var serializedParams;
+	  if (paramsSerializer) {
+	    serializedParams = paramsSerializer(params);
+	  } else if (utils.isURLSearchParams(params)) {
+	    serializedParams = params.toString();
+	  } else {
+	    var parts = [];
+	
+	    utils.forEach(params, function serialize(val, key) {
+	      if (val === null || typeof val === 'undefined') {
+	        return;
+	      }
+	
+	      if (utils.isArray(val)) {
+	        key = key + '[]';
+	      }
+	
+	      if (!utils.isArray(val)) {
+	        val = [val];
+	      }
+	
+	      utils.forEach(val, function parseValue(v) {
+	        if (utils.isDate(v)) {
+	          v = v.toISOString();
+	        } else if (utils.isObject(v)) {
+	          v = JSON.stringify(v);
+	        }
+	        parts.push(encode(key) + '=' + encode(v));
+	      });
+	    });
+	
+	    serializedParams = parts.join('&');
+	  }
+	
+	  if (serializedParams) {
+	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+	  }
+	
+	  return url;
+	};
+
+
+/***/ }),
+/* 1080 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	/**
+	 * Parse headers into an object
+	 *
+	 * ```
+	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
+	 * Content-Type: application/json
+	 * Connection: keep-alive
+	 * Transfer-Encoding: chunked
+	 * ```
+	 *
+	 * @param {String} headers Headers needing to be parsed
+	 * @returns {Object} Headers parsed into an object
+	 */
+	module.exports = function parseHeaders(headers) {
+	  var parsed = {};
+	  var key;
+	  var val;
+	  var i;
+	
+	  if (!headers) { return parsed; }
+	
+	  utils.forEach(headers.split('\n'), function parser(line) {
+	    i = line.indexOf(':');
+	    key = utils.trim(line.substr(0, i)).toLowerCase();
+	    val = utils.trim(line.substr(i + 1));
+	
+	    if (key) {
+	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+	    }
+	  });
+	
+	  return parsed;
+	};
+
+
+/***/ }),
+/* 1081 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs have full support of the APIs needed to test
+	  // whether the request URL is of the same origin as current location.
+	  (function standardBrowserEnv() {
+	    var msie = /(msie|trident)/i.test(navigator.userAgent);
+	    var urlParsingNode = document.createElement('a');
+	    var originURL;
+	
+	    /**
+	    * Parse a URL to discover it's components
+	    *
+	    * @param {String} url The URL to be parsed
+	    * @returns {Object}
+	    */
+	    function resolveURL(url) {
+	      var href = url;
+	
+	      if (msie) {
+	        // IE needs attribute set twice to normalize properties
+	        urlParsingNode.setAttribute('href', href);
+	        href = urlParsingNode.href;
+	      }
+	
+	      urlParsingNode.setAttribute('href', href);
+	
+	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+	      return {
+	        href: urlParsingNode.href,
+	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+	        host: urlParsingNode.host,
+	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+	        hostname: urlParsingNode.hostname,
+	        port: urlParsingNode.port,
+	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+	                  urlParsingNode.pathname :
+	                  '/' + urlParsingNode.pathname
+	      };
+	    }
+	
+	    originURL = resolveURL(window.location.href);
+	
+	    /**
+	    * Determine if a URL shares the same origin as the current location
+	    *
+	    * @param {String} requestURL The URL to test
+	    * @returns {boolean} True if URL shares the same origin, otherwise false
+	    */
+	    return function isURLSameOrigin(requestURL) {
+	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+	      return (parsed.protocol === originURL.protocol &&
+	            parsed.host === originURL.host);
+	    };
+	  })() :
+	
+	  // Non standard browser envs (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return function isURLSameOrigin() {
+	      return true;
+	    };
+	  })()
+	);
+
+
+/***/ }),
+/* 1082 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+	
+	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	
+	function E() {
+	  this.message = 'String contains an invalid character';
+	}
+	E.prototype = new Error;
+	E.prototype.code = 5;
+	E.prototype.name = 'InvalidCharacterError';
+	
+	function btoa(input) {
+	  var str = String(input);
+	  var output = '';
+	  for (
+	    // initialize result and counter
+	    var block, charCode, idx = 0, map = chars;
+	    // if the next str index does not exist:
+	    //   change the mapping table to "="
+	    //   check if d has no fractional digits
+	    str.charAt(idx | 0) || (map = '=', idx % 1);
+	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+	  ) {
+	    charCode = str.charCodeAt(idx += 3 / 4);
+	    if (charCode > 0xFF) {
+	      throw new E();
+	    }
+	    block = block << 8 | charCode;
+	  }
+	  return output;
+	}
+	
+	module.exports = btoa;
+
+
+/***/ }),
+/* 1083 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	module.exports = (
+	  utils.isStandardBrowserEnv() ?
+	
+	  // Standard browser envs support document.cookie
+	  (function standardBrowserEnv() {
+	    return {
+	      write: function write(name, value, expires, path, domain, secure) {
+	        var cookie = [];
+	        cookie.push(name + '=' + encodeURIComponent(value));
+	
+	        if (utils.isNumber(expires)) {
+	          cookie.push('expires=' + new Date(expires).toGMTString());
+	        }
+	
+	        if (utils.isString(path)) {
+	          cookie.push('path=' + path);
+	        }
+	
+	        if (utils.isString(domain)) {
+	          cookie.push('domain=' + domain);
+	        }
+	
+	        if (secure === true) {
+	          cookie.push('secure');
+	        }
+	
+	        document.cookie = cookie.join('; ');
+	      },
+	
+	      read: function read(name) {
+	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+	        return (match ? decodeURIComponent(match[3]) : null);
+	      },
+	
+	      remove: function remove(name) {
+	        this.write(name, '', Date.now() - 86400000);
+	      }
+	    };
+	  })() :
+	
+	  // Non standard browser env (web workers, react-native) lack needed support.
+	  (function nonStandardBrowserEnv() {
+	    return {
+	      write: function write() {},
+	      read: function read() { return null; },
+	      remove: function remove() {}
+	    };
+	  })()
+	);
+
+
+/***/ }),
+/* 1084 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	function InterceptorManager() {
+	  this.handlers = [];
+	}
+	
+	/**
+	 * Add a new interceptor to the stack
+	 *
+	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
+	 * @param {Function} rejected The function to handle `reject` for a `Promise`
+	 *
+	 * @return {Number} An ID used to remove interceptor later
+	 */
+	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+	  this.handlers.push({
+	    fulfilled: fulfilled,
+	    rejected: rejected
+	  });
+	  return this.handlers.length - 1;
+	};
+	
+	/**
+	 * Remove an interceptor from the stack
+	 *
+	 * @param {Number} id The ID that was returned by `use`
+	 */
+	InterceptorManager.prototype.eject = function eject(id) {
+	  if (this.handlers[id]) {
+	    this.handlers[id] = null;
+	  }
+	};
+	
+	/**
+	 * Iterate over all the registered interceptors
+	 *
+	 * This method is particularly useful for skipping over any
+	 * interceptors that may have become `null` calling `eject`.
+	 *
+	 * @param {Function} fn The function to call for each interceptor
+	 */
+	InterceptorManager.prototype.forEach = function forEach(fn) {
+	  utils.forEach(this.handlers, function forEachHandler(h) {
+	    if (h !== null) {
+	      fn(h);
+	    }
+	  });
+	};
+	
+	module.exports = InterceptorManager;
+
+
+/***/ }),
+/* 1085 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	var transformData = __webpack_require__(1086);
+	var isCancel = __webpack_require__(1087);
+	var defaults = __webpack_require__(1073);
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	function throwIfCancellationRequested(config) {
+	  if (config.cancelToken) {
+	    config.cancelToken.throwIfRequested();
+	  }
+	}
+	
+	/**
+	 * Dispatch a request to the server using the configured adapter.
+	 *
+	 * @param {object} config The config that is to be used for the request
+	 * @returns {Promise} The Promise to be fulfilled
+	 */
+	module.exports = function dispatchRequest(config) {
+	  throwIfCancellationRequested(config);
+	
+	  // Ensure headers exist
+	  config.headers = config.headers || {};
+	
+	  // Transform request data
+	  config.data = transformData(
+	    config.data,
+	    config.headers,
+	    config.transformRequest
+	  );
+	
+	  // Flatten headers
+	  config.headers = utils.merge(
+	    config.headers.common || {},
+	    config.headers[config.method] || {},
+	    config.headers || {}
+	  );
+	
+	  utils.forEach(
+	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+	    function cleanHeaderConfig(method) {
+	      delete config.headers[method];
+	    }
+	  );
+	
+	  var adapter = config.adapter || defaults.adapter;
+	
+	  return adapter(config).then(function onAdapterResolution(response) {
+	    throwIfCancellationRequested(config);
+	
+	    // Transform response data
+	    response.data = transformData(
+	      response.data,
+	      response.headers,
+	      config.transformResponse
+	    );
+	
+	    return response;
+	  }, function onAdapterRejection(reason) {
+	    if (!isCancel(reason)) {
+	      throwIfCancellationRequested(config);
+	
+	      // Transform response data
+	      if (reason && reason.response) {
+	        reason.response.data = transformData(
+	          reason.response.data,
+	          reason.response.headers,
+	          config.transformResponse
+	        );
+	      }
+	    }
+	
+	    return Promise.reject(reason);
+	  });
+	};
+
+
+/***/ }),
+/* 1086 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var utils = __webpack_require__(1070);
+	
+	/**
+	 * Transform the data for a request or a response
+	 *
+	 * @param {Object|String} data The data to be transformed
+	 * @param {Array} headers The headers for the request or response
+	 * @param {Array|Function} fns A single function or Array of functions
+	 * @returns {*} The resulting transformed data
+	 */
+	module.exports = function transformData(data, headers, fns) {
+	  /*eslint no-param-reassign:0*/
+	  utils.forEach(fns, function transform(fn) {
+	    data = fn(data, headers);
+	  });
+	
+	  return data;
+	};
+
+
+/***/ }),
+/* 1087 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function isCancel(value) {
+	  return !!(value && value.__CANCEL__);
+	};
+
+
+/***/ }),
+/* 1088 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Determines whether the specified URL is absolute
+	 *
+	 * @param {string} url The URL to test
+	 * @returns {boolean} True if the specified URL is absolute, otherwise false
+	 */
+	module.exports = function isAbsoluteURL(url) {
+	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+	  // by any combination of letters, digits, plus, period, or hyphen.
+	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+	};
+
+
+/***/ }),
+/* 1089 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Creates a new URL by combining the specified URLs
+	 *
+	 * @param {string} baseURL The base URL
+	 * @param {string} relativeURL The relative URL
+	 * @returns {string} The combined URL
+	 */
+	module.exports = function combineURLs(baseURL, relativeURL) {
+	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
+	};
+
+
+/***/ }),
+/* 1090 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * A `Cancel` is an object that is thrown when an operation is canceled.
+	 *
+	 * @class
+	 * @param {string=} message The message.
+	 */
+	function Cancel(message) {
+	  this.message = message;
+	}
+	
+	Cancel.prototype.toString = function toString() {
+	  return 'Cancel' + (this.message ? ': ' + this.message : '');
+	};
+	
+	Cancel.prototype.__CANCEL__ = true;
+	
+	module.exports = Cancel;
+
+
+/***/ }),
+/* 1091 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var Cancel = __webpack_require__(1090);
+	
+	/**
+	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
+	 *
+	 * @class
+	 * @param {Function} executor The executor function.
+	 */
+	function CancelToken(executor) {
+	  if (typeof executor !== 'function') {
+	    throw new TypeError('executor must be a function.');
+	  }
+	
+	  var resolvePromise;
+	  this.promise = new Promise(function promiseExecutor(resolve) {
+	    resolvePromise = resolve;
+	  });
+	
+	  var token = this;
+	  executor(function cancel(message) {
+	    if (token.reason) {
+	      // Cancellation has already been requested
+	      return;
+	    }
+	
+	    token.reason = new Cancel(message);
+	    resolvePromise(token.reason);
+	  });
+	}
+	
+	/**
+	 * Throws a `Cancel` if cancellation has been requested.
+	 */
+	CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+	  if (this.reason) {
+	    throw this.reason;
+	  }
+	};
+	
+	/**
+	 * Returns an object that contains a new `CancelToken` and a function that, when called,
+	 * cancels the `CancelToken`.
+	 */
+	CancelToken.source = function source() {
+	  var cancel;
+	  var token = new CancelToken(function executor(c) {
+	    cancel = c;
+	  });
+	  return {
+	    token: token,
+	    cancel: cancel
+	  };
+	};
+	
+	module.exports = CancelToken;
+
+
+/***/ }),
+/* 1092 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	/**
+	 * Syntactic sugar for invoking a function and expanding an array for arguments.
+	 *
+	 * Common use case would be to use `Function.prototype.apply`.
+	 *
+	 *  ```js
+	 *  function f(x, y, z) {}
+	 *  var args = [1, 2, 3];
+	 *  f.apply(null, args);
+	 *  ```
+	 *
+	 * With `spread` this example can be re-written.
+	 *
+	 *  ```js
+	 *  spread(function(x, y, z) {})([1, 2, 3]);
+	 *  ```
+	 *
+	 * @param {Function} callback
+	 * @returns {Function}
+	 */
+	module.exports = function spread(callback) {
+	  return function wrap(arr) {
+	    return callback.apply(null, arr);
+	  };
+	};
+
 
 /***/ }),
 /* 1093 */
@@ -33247,7 +33171,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	
 	function addTodoWithDispatch() {
 	  var action = {
@@ -33918,7 +33842,7 @@ webpackJsonp([0],[
 	var datetime_tsx_1 = __webpack_require__(939);
 	var name_preview_tsx_1 = __webpack_require__(1096);
 	//import { getPublicMenu } from './reducers/name';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var DatePicker = __webpack_require__(940);
 	var moment = __webpack_require__(941);
 	__webpack_require__(1059);
@@ -34550,7 +34474,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var order_contact_ts_1 = __webpack_require__(938);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -34660,7 +34584,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(922);
+	var Immutable = __webpack_require__(925);
 	var order_name_ts_1 = __webpack_require__(1064);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -34778,7 +34702,7 @@ webpackJsonp([0],[
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var login_ts_1 = __webpack_require__(920);
+	var login_ts_1 = __webpack_require__(1098);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -34899,6 +34823,56 @@ webpackJsonp([0],[
 /* 1098 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+	//get the order total
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function loginUser(email, password) {
+	    var url = "";
+	    return function (dispatch) {
+	        /*axios.get(url)
+	          .then((response) => dispatch({
+	            type: types.FETCH_WEATHER_SUCCESS,
+	            data: response.data
+	          }).error((response) => dispatch({
+	            type: types.FETCH_WEATHER_FAILURE,
+	            error: response.error
+	          })*/
+	        dispatch({
+	            type: actionTypes_ts_1.LOGIN,
+	            data: "response.data"
+	        });
+	    };
+	}
+	exports.loginUser = loginUser;
+	function setEmail(value) {
+	    console.log("setemail action");
+	    return {
+	        type: actionTypes_ts_1.SET_EMAIL,
+	        value: value
+	    };
+	}
+	exports.setEmail = setEmail;
+	function checkLoggedIn() {
+	    //alert("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.CHECK_LOGGED_IN
+	    };
+	}
+	exports.checkLoggedIn = checkLoggedIn;
+	function login(email, password) {
+	    console.log("login action");
+	    return {
+	        type: actionTypes_ts_1.LOGIN
+	    };
+	}
+	exports.login = login;
+
+/***/ }),
+/* 1099 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -34915,10 +34889,10 @@ webpackJsonp([0],[
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var register_ts_1 = __webpack_require__(1099);
+	var register_ts_1 = __webpack_require__(1100);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1065);
+	var axios_1 = __webpack_require__(1068);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -35173,7 +35147,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1099 */
+/* 1100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35233,7 +35207,7 @@ webpackJsonp([0],[
 	exports.registerUser = registerUser;
 
 /***/ }),
-/* 1100 */
+/* 1101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35253,7 +35227,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1065);
+	var axios_1 = __webpack_require__(1068);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -35404,7 +35378,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1101 */
+/* 1102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35455,7 +35429,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1102 */
+/* 1103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35596,7 +35570,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1103 */
+/* 1104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35666,7 +35640,7 @@ webpackJsonp([0],[
 	exports.default = Event1;
 
 /***/ }),
-/* 1104 */
+/* 1105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35681,9 +35655,9 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var sconely_signature_event_details_tsx_1 = __webpack_require__(1105);
-	var sconely_signature_guests_tsx_1 = __webpack_require__(1107);
-	var payment_method_tsx_1 = __webpack_require__(1090);
+	var sconely_signature_event_details_tsx_1 = __webpack_require__(1106);
+	var sconely_signature_guests_tsx_1 = __webpack_require__(1108);
+	var payment_method_tsx_1 = __webpack_require__(1066);
 	var react_router_1 = __webpack_require__(546);
 	//import request from 'superagent';
 	
@@ -35795,7 +35769,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignature;
 
 /***/ }),
-/* 1105 */
+/* 1106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35817,7 +35791,7 @@ webpackJsonp([0],[
 	//import { DateField, Calendar } from 'react-date-picker';
 	//import Autocomplete from 'react-google-autocomplete';
 	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
-	var Dropzone = __webpack_require__(1106);
+	var Dropzone = __webpack_require__(1107);
 	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
 	//import request from 'superagent';
 	//const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -36002,7 +35976,7 @@ webpackJsonp([0],[
 	exports.default = EventDetails;
 
 /***/ }),
-/* 1106 */
+/* 1107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -36884,7 +36858,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 1107 */
+/* 1108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36989,7 +36963,7 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ }),
-/* 1108 */
+/* 1109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36997,16 +36971,20 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var order_payment_ts_1 = __webpack_require__(1109);
-	var user_ts_1 = __webpack_require__(1110);
-	var user_delivery_addresses_ts_1 = __webpack_require__(1111);
-	var cart_ts_1 = __webpack_require__(1112);
-	var name_ts_1 = __webpack_require__(1113);
-	var contact_ts_1 = __webpack_require__(1114);
-	var order_delivery_address_ts_1 = __webpack_require__(1115);
-	var user_payment_methods_ts_1 = __webpack_require__(1116);
+	//import register from './register.ts';
+	//import root from './root.ts';
+	var order_ts_1 = __webpack_require__(1110);
+	var order_payment_ts_1 = __webpack_require__(1111);
+	var user_ts_1 = __webpack_require__(1112);
+	var user_delivery_addresses_ts_1 = __webpack_require__(1113);
+	var cart_ts_1 = __webpack_require__(1114);
+	var name_ts_1 = __webpack_require__(1115);
+	var contact_ts_1 = __webpack_require__(1116);
+	var order_delivery_address_ts_1 = __webpack_require__(1117);
+	var user_payment_methods_ts_1 = __webpack_require__(1118);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
+	    Order: order_ts_1.default,
 	    OrderPayment: order_payment_ts_1.default,
 	    user: user_ts_1.default,
 	    user_delivery_addresses: user_delivery_addresses_ts_1.default,
@@ -37019,7 +36997,53 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1109 */
+/* 1110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function order() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_type: "" };
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case actionTypes_ts_1.CREATE_ORDER:
+	            console.log("order reducer " + action.order_type);
+	            //let items = state.cart_items;
+	            //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
+	            return Object.assign({}, state, { order_type: action.order_type });
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
+	}
+	exports.default = order;
+	;
+
+/***/ }),
+/* 1111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37063,7 +37087,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1110 */
+/* 1112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37108,7 +37132,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1111 */
+/* 1113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37194,7 +37218,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1112 */
+/* 1114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37345,7 +37369,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1113 */
+/* 1115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37398,7 +37422,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1114 */
+/* 1116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37451,7 +37475,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1115 */
+/* 1117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -37534,7 +37558,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1116 */
+/* 1118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

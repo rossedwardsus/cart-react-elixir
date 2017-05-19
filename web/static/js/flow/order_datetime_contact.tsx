@@ -23,6 +23,7 @@ import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';
 import DateTime from './datetime.tsx';
 import Name from './name.tsx';
+import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 
 //import { getPublicMenu } from './reducers/name';
@@ -890,27 +891,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            only show on mobile
-                            <br/>
-                            <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
                             <br/>
+                            <DeliveryAddress />
                             <DateTime />
                             <Name />
-                            <DeliveryAddress />
                             <Contact />
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-10">
-                                    <b>Cart Items</b>
-                                    <br/>
-                                    <br/>
-                                    <b>Total Due</b>
-                                    <br/>
-                                </div>
-                              </div>
-                            </form>
-                            <button onClick={() => this.goToPaymentMethod()}>Payment Method</button>
+                            <OrderCart />
+                            <PaymentMethod />
+                            <button onClick={() => this.goToPaymentMethod()}>Complete Order</button>
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">

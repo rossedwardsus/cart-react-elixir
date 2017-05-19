@@ -53,6 +53,8 @@ class OrderCart extends React.Component<any, any> {
         cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
+        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
+      
 
     };
 
@@ -547,26 +549,32 @@ class OrderCart extends React.Component<any, any> {
 
     let cart = "";
 
-    if(item_count == 0){
+    if(this.props.cart_items.length === 0){
 
         cart = "there are no items in your cart";
 
     }else{
 
 
-        cart = this.props.order.toJS().cart.map(function(item: any, index: any){
+        cart = this.props.cart_items.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-                      let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
-                      let item_title = result.get("title");
+                      //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
+                      let item_title = "result.get(\"title\")";
 
                       if(item.mini == true){
                       
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1">Mini</div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={this.props.removeCartItem.bind(this, index)}>X</a></div><div><a onClick={this.props.increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={this.props.decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+                          return(<div>
+                                      <form className="form-horizontal" style={{border: 1}}>
+                                          <div className="form-group" style={{border: 1}}>
+                                            <div className="col-md-4">{item_title} Mini</div><div className="col-md-1">48</div><div className="col-md-1">X</div><div className="col-md-1">+</div><div className="col-md-1">-</div>
+                                          </div>
+                                      </form>
+                                </div>)
 
                       }else{
 
-                          return(<div><div className="col-md-1">image</div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div><div className="col-md-1">{item.quantity}</div><div className="col-md-1"><a onClick={this.props.removeCartItem.bind(this, index)}>X</a></div><div><a onClick={this.props.increaseCartItemQuantity.bind(this, item.item_id, index)}>+</a><a onClick={this.props.decreaseCartItemQuantity.bind(this, item.item_id, index)}>-</a></div></div>)
+                          return(<div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div></div>)
 
                       }
                   
@@ -575,7 +583,15 @@ class OrderCart extends React.Component<any, any> {
     }
     
     return ( <div>
+               <b>Cart Items</b>
+               <br/>
                {cart}
+               <br/>
+               Subtotal - 24 Scones x 6.00
+               <br/>
+               Delivery - 10
+               <br/>
+               Total 
             </div>
     )
   }
@@ -593,13 +609,13 @@ class OrderCart extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops " + JSON.stringify(state));
+  console.log("order cart " + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        order: state.default
+        cart_items: state.cart.cart_items
 
     //}
   }

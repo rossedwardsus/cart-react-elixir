@@ -114,16 +114,17 @@ class DeliveryAddress extends React.Component<any, any> {
 
    
     return ( <div>
+                {this.props.order.order_type}
+                <br/>
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-3">
-                        <b>Address</b>
+                        <b>Delivery Address</b>
                         <br/>
                           <select className="form-control">
                               <option>Home</option>
                               <option>Office</option>
                           </select>
-                        <br/>
                     </div>
                   </div>
                </form>
@@ -170,8 +171,9 @@ class DeliveryAddress extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("delivery address component/state" + JSON.stringify(state.delivery_address));
+  console.log("delivery address component/state" + JSON.stringify(state));
   return {
+   order: state.Order,
    delivery_address: state.delivery_address,
    user_delivery_addresses: state.user_delivery_addresses
    //order: state.default.order
