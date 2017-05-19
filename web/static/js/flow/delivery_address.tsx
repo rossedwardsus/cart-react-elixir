@@ -128,32 +128,40 @@ class DeliveryAddress extends React.Component<any, any> {
                     </div>
                   </div>
                </form>
-               <form className="form-inline">
+               <form className="form-horizontal">
                     <div className="form-group">
-                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.setDeliveryAddressStreet1(e)}/>
-                    </div>
-                    <div className="form-group">
-                      <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                      <div className="col-sm-3">
+                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.setDeliveryAddressStreet1(e)} style={{borderRadius: 0}}/>
+                      </div>
+                      <div className="col-sm-3">
+                        <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0}}/>
+                      </div>
                     </div>
                </form>
-              <form className="form-inline">
+              <form className="form-horizontal">
                     <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
+                      <div className="col-sm-3">
+                        <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
                           <option></option>
                           <option>Los Angeles</option>
-                      </select>
+                        </select>
+                      </div>
                     </div>
                     <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
+                      <div className="col-sm-3">
+                        <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
                           <option></option>
                           <option>CA</option>
-                      </select>
+                        </select>
+                      </div>
                     </div>
                     <div className="form-group">
-                      <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
+                      <div className="col-sm-3">
+                        <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
                           <option></option>
                           <option>90025</option>
-                      </select>
+                        </select>
+                      </div>
                     </div>
                   </form>
             </div>

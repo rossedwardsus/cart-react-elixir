@@ -548,6 +548,9 @@ class OrderCart extends React.Component<any, any> {
     //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
     let cart = "";
+    let total_items = 0;
+    let subtotal = 0;
+    let total = 0;
 
     if(this.props.cart_items.length === 0){
 
@@ -563,11 +566,13 @@ class OrderCart extends React.Component<any, any> {
                       let item_title = "result.get(\"title\")";
 
                       if(item.mini == true){
+
+                          let total_amount = (item.dozens * 12) * item.quantity;
                       
                           return(<div>
                                       <form className="form-horizontal" style={{border: 1}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-4">{item_title} Mini</div><div className="col-md-1">48</div><div className="col-md-1">X</div><div className="col-md-1">+</div><div className="col-md-1">-</div>
+                                            <div className="col-md-4">{item_title} Mini</div><div className="col-md-1">{total_amount}</div><div className="col-md-1">X</div><div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div><div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                           </div>
                                       </form>
                                 </div>)
@@ -587,11 +592,11 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
-               Subtotal - 24 Scones x 6.00
+               Subtotal - 24 Scones x 6.00- {subtotal}
                <br/>
                Delivery - 10
                <br/>
-               Total 
+               Total - {total}
             </div>
     )
   }
@@ -626,10 +631,10 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
       //dispatch(addCartItem(1))
     },
-    increaseCartItemQuantity: () => {
+    increaseCartItemQuantity: (item_id: any) => {
       dispatch(increaseCartItemQuantity(1))
     },
-    decreaseCartItemQuantity: () => {
+    decreaseCartItemQuantity: (item_id: any) => {
       dispatch(decreaseCartItemQuantity(1))
     }
   }

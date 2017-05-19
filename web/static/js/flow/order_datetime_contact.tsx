@@ -899,7 +899,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <Contact />
                             <OrderCart />
                             <PaymentMethod />
-                            <button onClick={() => this.goToPaymentMethod()}>Complete Order</button>
+                            <button className="btn btn-default" onClick={() => this.goToPaymentMethod()}>Complete Order</button>
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">

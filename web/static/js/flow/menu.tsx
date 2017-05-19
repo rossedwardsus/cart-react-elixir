@@ -29,9 +29,8 @@ class PublicMenu extends React.Component<any, any> {
     this.state = {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
         selected_item_id: "",
-        selected_item_dozens: "",
+        selected_item_type: "",
         selected_item_quantity: "",
-        selected_item_mini: false,
         selected_item_title: "",
         selected_item_story: "",
         selected_item_ingredients: "",
@@ -98,19 +97,11 @@ class PublicMenu extends React.Component<any, any> {
 
   }
 
-  selectedItemDozens = (e: any) => {
+  selectedItemType = (e: any) => {
 
       //alert(e.target.value);
 
-      //this.setState({selected_item_dozens: e.target.value});
-
-      console.log(e);
-
-      //if(e.target.value == "24_mini"){
-
-        //  this.setState({selected_item_mini: true});
-
-      //}
+      this.setState({selected_item_type: e.target.value});
       this.setState({add_cart_item_button_classname: "btn btn-default"});
       
   }
@@ -134,7 +125,7 @@ class PublicMenu extends React.Component<any, any> {
 
     //$('#myModal').modal('toggle');
 
-    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_dozens, this.state.selected_item_quantity, this.state.selected_item_mini);
+    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
 
   }
 
@@ -267,10 +258,10 @@ class PublicMenu extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="1 dozen" onChange={(value: any) => this.selectedItemDozens(value)}/> 1 Dz $60
+                                <input type="radio" name="optradio" value="regular" onChange={(value: any) => this.selectedItemDozens(value)}/> 1 Dz $60
                               </div>
                               <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="2 Dozen Mini" onChange={(value: any) => this.selectedItemDozens(value)}/> 2 Dz Mini $54
+                                <input type="radio" name="optradio" value="mini" onChange={(value: any) => this.selectedItemType(value)}/> 2 Dz Mini $54
                               </div>
                               <div className="col-md-3">
                                 <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>

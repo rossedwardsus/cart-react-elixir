@@ -112,17 +112,17 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.props.firstNameClassName}>
-                      <input type="text" onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                      <input type="text" onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" onChange={(e: any) => this.setLastName(e)}  value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                      <input type="text" onChange={(e: any) => this.setLastName(e)}  value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.props.firstNameClassName}>
-                      <input type="text" onChange={(e: any) => this.props.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name"/>
+                      <input type="text" onChange={(e: any) => this.props.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                 </div>
