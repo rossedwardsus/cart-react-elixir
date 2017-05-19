@@ -289,8 +289,12 @@ class SidebarCart extends React.Component<any, any> {
                     <br/>
                     <form className="form-horizontal" style={{border: 1}}>
                       <div className="form-group" style={{border: 1}}>
-                        <div className="col-xs-2"></div>
+                        <div className="col-xs-1"></div>
                         <div className="col-xs-2" style={{fontSize: "14"}}><b>Total Items</b>{item_count} Scones</div>
+                      </div>
+                    </form>
+                    <form className="form-horizontal" style={{border: 1}}>
+                      <div className="form-group" style={{border: 1}}>
                         <br/>
                         <div className="col-xs-2" style={{fontSize: "14"}}><b>Sub Total</b> ${total_cost}.00</div>
                         <br/>
