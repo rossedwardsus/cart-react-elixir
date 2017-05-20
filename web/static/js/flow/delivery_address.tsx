@@ -11,9 +11,10 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-//import * as getAllProducts from './actions/menu';
+
+import {deliveryAddressValidated} from './actions/cart_validations.ts';
+
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-//import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
@@ -105,6 +106,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
   setDeliveryAddressZipcode(e: any){
 
+      //this.props.setDeliveryAddressZipcode(e);
+      //this.props.setdeliveryAddressValidated();
 
   }
 
@@ -197,14 +200,18 @@ function mapDispatchToProps(dispatch: any) {
       console.log(e.target.value);
       dispatch(setDeliveryAddressStreet1(e.target.value));
     },
-    //setLastName: (e: any) => {
+    setDeliveryAddressStreet2: (e: any) => {
     //  console.log(e.target.value);
     //  dispatch(setLastName(e.target.value));
-    //},
-    //setBusinessName: (e: any) => {
+    },
+    setDeliveryAddressCity: (e: any) => {
     //  console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
-    //}
+    },
+    deliveryAddressValidated: () => {
+    //  console.log(e.target.value);
+      //dispatch(deliveryAddressValidated(e.target.value));
+    }
   }
 }
 

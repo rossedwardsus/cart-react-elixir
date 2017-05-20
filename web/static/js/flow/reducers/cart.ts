@@ -27,7 +27,7 @@ export default function cart_items(state:any = {cart_items: []}, action: any){
       console.log("add cart item" + JSON.stringify(state));
 
       let items = state.cart_items;
-      items.push({item_id: 1, item_type: action.item_type, quantity: action.quantity});
+      items.push({item_id: 1, item_type: action.item_type, quantity: parseInt(action.quantity)});
       
       return Object.assign({}, state, {cart_items: items});
     
@@ -42,7 +42,7 @@ export default function cart_items(state:any = {cart_items: []}, action: any){
       return Object.assign({}, state, {
         cart_items: state.cart_items.map((item: any, index: any) => {
           if (item.item_id === action.item_id) {
-              item.dozens = item.dozens + 1;
+              item.quantity = item.quantity + 1;
           }
           return item
         })

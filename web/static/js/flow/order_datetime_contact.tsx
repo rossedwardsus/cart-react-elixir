@@ -90,7 +90,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
         name_on_card: "form-group has-error",
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         selected_time: "",
-        selected_specific_time: ""
+        selected_specific_time: "",
+        button_complete_order_classname: "btn btn-default disabled"
 
     };
 
@@ -128,133 +129,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //alert(this.props.params.order_id);
+  }
 
-    /*this._isMounted = true;
-    window.onpopstate = ()=> {
-      if(this._isMounted) {
-        const { hash } = location;
-        if(hash.indexOf('home')>-1 && this.state.value!==0)
-          this.setState({value: 0})
-        if(hash.indexOf('users')>-1 && this.state.value!==1)
-          this.setState({value: 1})
-        if(hash.indexOf('data')>-1 && this.state.value!==2)
-          this.setState({value: 2})
-      }
-    }*/
+  componentWillReceiveProps(){
 
-
-
-    //alert();
-
-    //window.onhashchange = function() {
-     //blah blah blah
-     //alert(this.state.page);
-    //}.bind(this);
-
-    //var result = map.find(function(obj){return obj.get('id') === 4;});
-
-    //var result = [{'id': 'a'}, {'id': 'b'}];
-    //var map = Immutable.Map(result.reduce(function(previous, current) { 
-    //    previous[ current.id ] = current;
-    //    return previous;
-    //}, {}));
-
-    
-
-    let demoRecord = Immutable.List.of(Immutable.Record({
-                     property:'defaultValue',
-                     index:0,
-                     works:true,
-                     valueList:Immutable.List([])
-    }));
-
-    //alert(demoRecord.getIn(["0"], "index"));
-
-    /*let list = demoRecord.update(
-      demoRecord.findIndex(function(item: any) { 
-        return item.get("index") === "0"; 
-      }), function(item: any) {
-        return item.set("index", 4);
-      }
-    );*/
-
-    var result = [{'id': 2}, {'id': 4}];
-    var map = Immutable.fromJS(result);
-    var map_updated = map.set()
-    var result1 = map.find(function(obj: any){return obj.get('id') === 4;});
-
-    //alert(result1.get("id"));
-
-    /*let arr = fromJS(
-      elem: [
-        {id: 1, name: "first", count: 2},
-        {id: 2, name: "second", count: 1},
-        {id: 3, name: "third", count: 2},
-        {id: 4, name: "fourth", count: 1}
-      ]
-    );
-
-    arr = arr.setIn(['elem', 3, 'count'], 4);
-    If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-
-    
-    const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-      return listItem.get('name') === 'third';
-    });
-    arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-
-
-
-    //let cart_items_temp = this.state.cart_items;
-    //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-    //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-    //const myNewMap = cart_items_temp.push({item_id: 5});
-    //let hello = cart_items_temp.push({item_id: 5});
-
-    //alert(JSON.stringify(myNewMap));
-
-    //alert(JSON.stringify(myNewMap.delete("0")));
-
-    //hello.findIndex(function(item: any) { 
-    //    return item.get("item_id") === "1"; 
-    //})
-
-    //var result = map.find(function(obj){return obj.get('id') === 4;});
-
-    //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-
-
-    /*let list = hello.update(
-      hello.findIndex(function(item: any) { 
-        return item.get("item_id") === "1"; 
-      }), function(item: any) {
-        return item.set("quantity", 44444444444444);
-      }
-    );*/
-
-    //let list = hello.update(0, function(v: any) {
-    //    return {quantity: 44444444444};
-    //});
-
-    //alert(JSON.stringify(list.toJS()));
-
-
-    //alert(cart_items_temp_updated);
-
-
-    //get menu items
-
-
-    //this.props;
-
-    //alert(JSON.stringify(this.state.menu_items));
-
-    //alert("products" + JSON.stringify(this.props.menu_items));
-    //console.log(this.props.getAllProducts());
-    //this.setState({here: this.props.getAllProducts()});
-    //console.log(this.props.dispatch(addTodoWithDispatch));
-    //this.props.getAllProducts();
+    //this.props.cart_validated;
 
   }
 
@@ -899,7 +778,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <Contact />
                             <OrderCart />
                             <PaymentMethod />
-                            <button className="btn btn-default" onClick={() => this.goToPaymentMethod()}>Complete Order</button>
+                            <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Complete Order</button>
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">
@@ -926,6 +805,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("state" + JSON.stringify(state));
   return {
+   cart_validations: state.cart_validations;
    //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()

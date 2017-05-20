@@ -541,16 +541,17 @@ class OrderCart extends React.Component<any, any> {
   render(): JSX.Element{
 
     let body: any = "";
-    let item_count = this.state.item_count;
+    //let item_count = this.state.item_count;
 
     //alert(item_count);
 
     //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
     let cart = "";
-    let total_items = 0;
+    //let total_items = 0;
+    let item_count = 0;
     let subtotal = 0;
-    let total = 0;
+    let total_cost = 0;
 
     if(this.props.cart_items.length === 0){
 
@@ -558,28 +559,68 @@ class OrderCart extends React.Component<any, any> {
 
     }else{
 
+        //console.log("order " + JSON.stringify(this.props.cart_items));
+
+        total_cost = 0;
+        item_count = 0;
+
+        this.props.cart_items.map(function(item: any){
+
+            console.log("item " + JSON.stringify(item));
+
+            if(item.item_type == "mini"){
+                          
+              total_cost = total_cost + (6 * item.quantity * 24);
+              item_count = item_count + (24 * item.quantity);
+
+            }else{
+
+              total_cost = total_cost + (5 * item.quantity * 12);
+              item_count = item_count + (12 * item.quantity);
+
+            }
+                          
+        });
+
 
         cart = this.props.cart_items.map(function(item: any, index: any){
 
-                      //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
+                      //let menu_item_title_index = menu_items.findIndex where item_id == item.item_id
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
-                      let item_title = "result.get(\"title\")";
+                      //let item_title = result.get("title");
 
-                      if(item.mini == true){
+                      if(item.item_type === "mini"){
 
-                          let total_amount = (item.dozens * 12) * item.quantity;
+                          let total_amount = item.quantity * 24;
+                          let item_cost = total_amount * 6.00;
                       
                           return(<div>
                                       <form className="form-horizontal" style={{border: 1}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-4">{item_title} Mini</div><div className="col-md-1">{total_amount}</div><div className="col-md-1">X</div><div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div><div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
+                                            <div className="col-md-4">item_title Mini</div>
+                                            <div className="col-md-1">{total_amount}</div>
+                                            <div className="col-md-1">${item_cost}.00</div>
+                                            <div className="col-md-1">X</div>
+                                            <div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
+                                            <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                           </div>
                                       </form>
                                 </div>)
 
                       }else{
 
-                          return(<div><div className="col-md-1">{item_title}</div><div className="col-md-1">{item.quantity} Dozen</div><div className="col-md-1"></div></div>)
+                          let total_amount = item.quantity * 12;
+
+                          return(<div>
+                                      <form className="form-horizontal" style={{border: 1}}>    
+                                          <div className="form-group" style={{border: 1}}>
+                                            <div className="col-md-1">item_title</div>
+                                            <div className="col-md-1">{total_amount}</div>
+                                            <div className="col-md-1">cost</div>
+                                            <div className="col-md-1">X</div>
+                                          </div>
+                                      </form>
+                                </div>)
 
                       }
                   
@@ -592,11 +633,27 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
-               Subtotal - 24 Scones x 6.00- {subtotal}
+               <form className="form-horizontal" style={{border: 1}}>    
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-md-2"></div>
+                      <div className="col-md-2">Total Items</div>
+                      <div className="col-md-2">{item_count}</div>
+                      <div className="col-md-2">$</div>
+                    </div>
+               </form>
+               <form className="form-horizontal" style={{border: 1}}>    
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-md-2"></div>
+                      <div className="col-md-2">Subtotal - {item_count} x 6.00 - {subtotal}</div>
+                      <div className="col-md-2"></div>
+                      <div className="col-md-2">$</div>
+                    </div>
+               </form>
                <br/>
-               Delivery - 10
                <br/>
-               Total - {total}
+               Delivery charge
+               <br/>
+               Total Due- {total_cost}
             </div>
     )
   }

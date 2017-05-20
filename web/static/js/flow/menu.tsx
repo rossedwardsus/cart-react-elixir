@@ -5,7 +5,7 @@ import { Link, browserHistory } from 'react-router';
 
 import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
-//import {checklogin} from './action/cart.ts';
+import {cartValidated} from './actions/cart_validations.ts';
 import {addCartItem} from './actions/cart.ts';
 import SidebarCart from './sidebar_cart.tsx';
 
@@ -126,6 +126,10 @@ class PublicMenu extends React.Component<any, any> {
     //$('#myModal').modal('toggle');
 
     this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+
+    this.props.cartValidated();
+
+    //cart validated in redux
 
   }
 
@@ -307,9 +311,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (item_id: any, item_type: any, quantity: any) => {
       dispatch(addCartItem(item_id, item_type, quantity));
     },
-    //increaseCartItemQuantity: () => {
-    //  dispatch(increaseCartItemQuantity(1));
-    //},
+    cartValidated: () => {
+      dispatch(cartValidated());
+    },
     //decreaseCartItemQuantity: () => {
     //  dispatch(decreaseCartItemQuantity(1));
     //}
