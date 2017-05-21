@@ -68,6 +68,12 @@ class PublicMenu extends React.Component<any, any> {
 
   }
 
+  componentWillReceiveProps(nextProp:any){
+
+      console.log("menu props");
+
+  }
+
   static get contextTypes() {
     return {
       router: React.PropTypes.object.isRequired,

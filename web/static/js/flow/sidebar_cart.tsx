@@ -90,6 +90,12 @@ class SidebarCart extends React.Component<any, any> {
 
   }
 
+  componentWillReceiveProps(nextProps: any){
+
+      console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
+
+  }
+
   increaseCartItemQuantity(item_id:any){
 
       //alert(item_id);

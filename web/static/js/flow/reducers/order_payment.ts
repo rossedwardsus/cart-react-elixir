@@ -1,4 +1,4 @@
-import { SET_PAYMENT_CARD_NUMBER } from '../constants/actionTypes.ts';
+import { SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -25,9 +25,27 @@ export default function orderPayment(state:any = {card_number: "", expiry_month:
   let delivery_address_updated = null;
 
   switch (action.type) {
+
+    case SET_PAYMENT_NAME_ON_CARD:
+      
+      return Object.assign({}, state, {name_on_card: action.value});
+    
+
     case SET_PAYMENT_CARD_NUMBER:
       
       return Object.assign({}, state, {card_number: action.value});
+
+    //case SET_PAYMENT_EXPIRY_DATE_MONTH:
+      
+    //  return Object.assign({}, state, {expiry_date_month: action.value});
+    
+    //case SET_PAYMENT_EXPIRY_DATE_YEAR:
+      
+    //  return Object.assign({}, state, {expiry_date_year: action.value});
+    
+    //case SET_PAYMENT_CVC:
+      
+    //  return Object.assign({}, state, {cvc: action.value});
     
 
 

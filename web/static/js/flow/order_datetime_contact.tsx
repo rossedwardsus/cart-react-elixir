@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import {completeOrder} from './actions/complete_order.ts';
 //import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
-//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
+import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 //import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 
 import SidebarCart from './sidebar_cart.tsx';
@@ -131,7 +131,10 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   }
 
-  componentWillReceiveProps(){
+  //componentWillReceiveProps
+  componentWillReceiveProps(nextProps: any){
+
+    console.log("<b>recieved</b>");
 
     //this.props.cart_validated;
 
@@ -777,8 +780,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <Name />
                             <Contact />
                             <OrderCart />
-                            <PaymentMethod />
-                            <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Complete Order</button>
+                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)}/>
+                            {this.props.cart_validations.cart_validated == true &&
+                            <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Complete Order</button>}
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">
@@ -803,9 +807,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("state" + JSON.stringify(state));
+  console.log("checkout state" + JSON.stringify(state));
   return {
-   cart_validations: state.cart_validations;
+   cart_validations: state.cart_validations
    //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
@@ -854,9 +858,9 @@ function mapDispatchToProps(dispatch: any) {
     //setDeliveryAddressZipcode: (e: any) => {
     //  dispatch(setDeliveryAddressZipcode(e.target.value))
     //},
-    //setPaymentNameOnCard: (e: any) => {
-    //  dispatch(setPaymentNameOnCard(e.target.value))
-    //},
+    setPaymentNameOnCard: (e: any) => {
+      dispatch(setPaymentNameOnCard(e.target.value))
+    },
     //setPaymentCardNumber: (e: any) => {
     //  dispatch(setPaymentCardNumber(e.target.value))
     //},

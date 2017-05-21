@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
+//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 
 
 function addTodoWithDispatch() {
@@ -79,6 +79,12 @@ class PaymentMethod extends React.Component<any, any> {
   componentDidMount(){
 
    
+
+  }
+
+  componentWillReceiveProps(nextProps: any){
+
+      console.log("payment props" + JSON.stringify(nextProps));
 
   }
 
@@ -167,16 +173,14 @@ class PaymentMethod extends React.Component<any, any> {
                             <form className="form-horizontal">
                             <div className="form-group">
                                 <div className="col-sm-6">
-                                
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
                               </div>
                               </div>
                             </form>
                             <form className="form-horizontal">
                               <div className="form-group">
                                 <div className="col-sm-3">
-                                
-                                <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_colors, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_colors, borderRadius: 0, WebkitAppearance: "none"}}/>
                                 </div>
                                 <div className="col-sm-3">
                                     {this.state.card_type}
@@ -226,22 +230,22 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setPaymentNameOnCard: (e: any) => {
+    //setPaymentNameOnCard: (e: any) => {
       //console.log(e.target.value);
-      dispatch(setPaymentNameOnCard(e.target.value));
-    },
-    setPaymentCardNumber: (e: any) => {
+    //  dispatch(setPaymentNameOnCard(e.target.value));
+    //},
+    //setPaymentCardNumber: (e: any) => {
       //console.log(e.target.value);
-      dispatch(setPaymentCardNumber(e));
-    },
-    setPaymentExpiryDate: (e: any) => {
-      console.log(e.target.value);
+    //  dispatch(setPaymentCardNumber(e));
+    //},
+    //setPaymentExpiryDate: (e: any) => {
+    //  console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
-    },
-    setPaymentSecurityCode: (e: any) => {
-      console.log(e.target.value);
+    //},
+    //setPaymentSecurityCode: (e: any) => {
+    //  console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
-    }
+    //}
   }
 }
 
@@ -250,5 +254,5 @@ const PaymentMethod1 = connect(
   mapDispatchToProps
 )(PaymentMethod)
 
-export default PaymentMethod1;
+export default PaymentMethod;
 

@@ -66,11 +66,11 @@ webpackJsonp([0],[
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _payment_method = __webpack_require__(1067);
+	var _payment_method = __webpack_require__(1068);
 	
 	var _payment_method2 = _interopRequireDefault(_payment_method);
 	
-	var _order_cart = __webpack_require__(1066);
+	var _order_cart = __webpack_require__(1067);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
@@ -27247,6 +27247,11 @@ webpackJsonp([0],[
 	            }.bind(this));
 	        }
 	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProp) {
+	            console.log("menu props");
+	        }
+	    }, {
 	        key: "showItem",
 	        value: function showItem(item_id) {
 	            //alert(item_id);
@@ -27537,6 +27542,11 @@ webpackJsonp([0],[
 	            //this.setState({here: this.props.getAllProducts()});
 	            //console.log(this.props.dispatch(addTodoWithDispatch));
 	            //this.props.getAllProducts();
+	        }
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 	        }
 	    }, {
 	        key: "increaseCartItemQuantity",
@@ -29252,18 +29262,19 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {setFirstName, setLastName} from './actions/order_name.ts';
 	var order_delivery_datetime_ts_1 = __webpack_require__(935);
-	var delivery_address_tsx_1 = __webpack_require__(936);
-	var contact_tsx_1 = __webpack_require__(938);
-	var datetime_tsx_1 = __webpack_require__(940);
-	var name_tsx_1 = __webpack_require__(1064);
-	var order_cart_tsx_1 = __webpack_require__(1066);
-	var payment_method_tsx_1 = __webpack_require__(1067);
+	var order_payment_ts_1 = __webpack_require__(936);
+	var delivery_address_tsx_1 = __webpack_require__(937);
+	var contact_tsx_1 = __webpack_require__(939);
+	var datetime_tsx_1 = __webpack_require__(941);
+	var name_tsx_1 = __webpack_require__(1065);
+	var order_cart_tsx_1 = __webpack_require__(1067);
+	var payment_method_tsx_1 = __webpack_require__(1068);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(926);
-	var DatePicker = __webpack_require__(941);
-	var moment = __webpack_require__(942);
+	var DatePicker = __webpack_require__(942);
+	var moment = __webpack_require__(943);
 	var axios_1 = __webpack_require__(1069);
-	__webpack_require__(1060);
+	__webpack_require__(1061);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -29306,7 +29317,8 @@ webpackJsonp([0],[
 	            name_on_card: "form-group has-error",
 	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
 	            selected_time: "",
-	            selected_specific_time: ""
+	            selected_specific_time: "",
+	            button_complete_order_classname: "btn btn-default disabled"
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -29335,99 +29347,14 @@ webpackJsonp([0],[
 	
 	    _createClass(OrderDateTimeContact, [{
 	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //alert(this.props.params.order_id);
-	            /*this._isMounted = true;
-	            window.onpopstate = ()=> {
-	              if(this._isMounted) {
-	                const { hash } = location;
-	                if(hash.indexOf('home')>-1 && this.state.value!==0)
-	                  this.setState({value: 0})
-	                if(hash.indexOf('users')>-1 && this.state.value!==1)
-	                  this.setState({value: 1})
-	                if(hash.indexOf('data')>-1 && this.state.value!==2)
-	                  this.setState({value: 2})
-	              }
-	            }*/
-	            //alert();
-	            //window.onhashchange = function() {
-	            //blah blah blah
-	            //alert(this.state.page);
-	            //}.bind(this);
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //var result = [{'id': 'a'}, {'id': 'b'}];
-	            //var map = Immutable.Map(result.reduce(function(previous, current) { 
-	            //    previous[ current.id ] = current;
-	            //    return previous;
-	            //}, {}));
-	            var demoRecord = Immutable.List.of(Immutable.Record({
-	                property: 'defaultValue',
-	                index: 0,
-	                works: true,
-	                valueList: Immutable.List([])
-	            }));
-	            //alert(demoRecord.getIn(["0"], "index"));
-	            /*let list = demoRecord.update(
-	              demoRecord.findIndex(function(item: any) {
-	                return item.get("index") === "0";
-	              }), function(item: any) {
-	                return item.set("index", 4);
-	              }
-	            );*/
-	            var result = [{ 'id': 2 }, { 'id': 4 }];
-	            var map = Immutable.fromJS(result);
-	            var map_updated = map.set();
-	            var result1 = map.find(function (obj) {
-	                return obj.get('id') === 4;
-	            });
-	            //alert(result1.get("id"));
-	            /*let arr = fromJS(
-	              elem: [
-	                {id: 1, name: "first", count: 2},
-	                {id: 2, name: "second", count: 1},
-	                {id: 3, name: "third", count: 2},
-	                {id: 4, name: "fourth", count: 1}
-	              ]
-	            );
-	                 arr = arr.setIn(['elem', 3, 'count'], 4);
-	            If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-	                 
-	            const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-	              return listItem.get('name') === 'third';
-	            });
-	            arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-	            //let cart_items_temp = this.state.cart_items;
-	            //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-	            //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-	            //const myNewMap = cart_items_temp.push({item_id: 5});
-	            //let hello = cart_items_temp.push({item_id: 5});
-	            //alert(JSON.stringify(myNewMap));
-	            //alert(JSON.stringify(myNewMap.delete("0")));
-	            //hello.findIndex(function(item: any) { 
-	            //    return item.get("item_id") === "1"; 
-	            //})
-	            //var result = map.find(function(obj){return obj.get('id') === 4;});
-	            //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-	            /*let list = hello.update(
-	              hello.findIndex(function(item: any) {
-	                return item.get("item_id") === "1";
-	              }), function(item: any) {
-	                return item.set("quantity", 44444444444444);
-	              }
-	            );*/
-	            //let list = hello.update(0, function(v: any) {
-	            //    return {quantity: 44444444444};
-	            //});
-	            //alert(JSON.stringify(list.toJS()));
-	            //alert(cart_items_temp_updated);
-	            //get menu items
-	            //this.props;
-	            //alert(JSON.stringify(this.state.menu_items));
-	            //alert("products" + JSON.stringify(this.props.menu_items));
-	            //console.log(this.props.getAllProducts());
-	            //this.setState({here: this.props.getAllProducts()});
-	            //console.log(this.props.dispatch(addTodoWithDispatch));
-	            //this.props.getAllProducts();
+	        value: function componentDidMount() {}
+	        //componentWillReceiveProps
+	
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log("<b>recieved</b>");
+	            //this.props.cart_validated;
 	        }
 	        /*showMenu(){
 	               //alert();
@@ -29795,7 +29722,9 @@ webpackJsonp([0],[
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, null), React.createElement(datetime_tsx_1.default, null), React.createElement(name_tsx_1.default, null), React.createElement(contact_tsx_1.default, null), React.createElement(order_cart_tsx_1.default, null), React.createElement(payment_method_tsx_1.default, null), React.createElement("button", { className: "btn btn-default disabled", onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, null), React.createElement(datetime_tsx_1.default, null), React.createElement(name_tsx_1.default, null), React.createElement(contact_tsx_1.default, null), React.createElement(order_cart_tsx_1.default, null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	                    return _this2.props.setPaymentNameOnCard(e);
+	                } }), this.props.cart_validations.cart_validated == true && React.createElement("button", { className: this.state.button_complete_order_classname, onClick: function onClick() {
 	                    return _this2.goToPaymentMethod();
 	                } }, "Complete Order"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
@@ -29812,8 +29741,13 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("state" + JSON.stringify(state));
-	    return {};
+	    console.log("checkout state" + JSON.stringify(state));
+	    return {
+	        cart_validations: state.cart_validations
+	        //order: state.default.order
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
@@ -29854,9 +29788,9 @@ webpackJsonp([0],[
 	        //setDeliveryAddressZipcode: (e: any) => {
 	        //  dispatch(setDeliveryAddressZipcode(e.target.value))
 	        //},
-	        //setPaymentNameOnCard: (e: any) => {
-	        //  dispatch(setPaymentNameOnCard(e.target.value))
-	        //},
+	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
+	        },
 	        //setPaymentCardNumber: (e: any) => {
 	        //  dispatch(setPaymentCardNumber(e.target.value))
 	        //},
@@ -29921,6 +29855,47 @@ webpackJsonp([0],[
 /* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function setPaymentNameOnCard(value) {
+	    console.log("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD,
+	        value: value
+	    };
+	}
+	exports.setPaymentNameOnCard = setPaymentNameOnCard;
+	function setPaymentCardNumber(value) {
+	    console.log("action payment");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER,
+	        value: value
+	    };
+	}
+	exports.setPaymentCardNumber = setPaymentCardNumber;
+	function setPaymentExpiryDate(value) {
+	    console.log("addCartItem from redux" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE,
+	        value: value
+	    };
+	}
+	exports.setPaymentExpiryDate = setPaymentExpiryDate;
+	function setPaymentSecurityCode(value) {
+	    console.log("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
+	        value: value
+	    };
+	}
+	exports.setPaymentSecurityCode = setPaymentSecurityCode;
+
+/***/ }),
+/* 937 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -29936,7 +29911,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	var Immutable = __webpack_require__(926);
-	var order_delivery_address_ts_1 = __webpack_require__(937);
+	var order_delivery_address_ts_1 = __webpack_require__(938);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30059,7 +30034,7 @@ webpackJsonp([0],[
 	exports.default = DeliveryAddress1;
 
 /***/ }),
-/* 937 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30108,7 +30083,7 @@ webpackJsonp([0],[
 	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
 
 /***/ }),
-/* 938 */
+/* 939 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30125,7 +30100,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	var Immutable = __webpack_require__(926);
-	var order_contact_ts_1 = __webpack_require__(939);
+	var order_contact_ts_1 = __webpack_require__(940);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30221,7 +30196,7 @@ webpackJsonp([0],[
 	exports.default = Contact1;
 
 /***/ }),
-/* 939 */
+/* 940 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30246,7 +30221,7 @@ webpackJsonp([0],[
 	exports.setContactMobile = setContactMobile;
 
 /***/ }),
-/* 940 */
+/* 941 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30266,9 +30241,9 @@ webpackJsonp([0],[
 	var order_delivery_datetime_ts_1 = __webpack_require__(935);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(926);
-	var DatePicker = __webpack_require__(941);
-	var moment = __webpack_require__(942);
-	__webpack_require__(1060);
+	var DatePicker = __webpack_require__(942);
+	var moment = __webpack_require__(943);
+	__webpack_require__(1061);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30364,7 +30339,6 @@ webpackJsonp([0],[
 	exports.default = DateTime1;
 
 /***/ }),
-/* 941 */,
 /* 942 */,
 /* 943 */,
 /* 944 */,
@@ -30483,16 +30457,17 @@ webpackJsonp([0],[
 /* 1057 */,
 /* 1058 */,
 /* 1059 */,
-/* 1060 */
+/* 1060 */,
+/* 1061 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(1061);
+	var content = __webpack_require__(1062);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(1063)(content, {});
+	var update = __webpack_require__(1064)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -30509,10 +30484,10 @@ webpackJsonp([0],[
 	}
 
 /***/ }),
-/* 1061 */
+/* 1062 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(1062)();
+	exports = module.exports = __webpack_require__(1063)();
 	// imports
 	
 	
@@ -30523,7 +30498,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1062 */
+/* 1063 */
 /***/ (function(module, exports) {
 
 	/*
@@ -30579,7 +30554,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1063 */
+/* 1064 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -30831,7 +30806,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1064 */
+/* 1065 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30851,7 +30826,7 @@ webpackJsonp([0],[
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(926);
-	var order_name_ts_1 = __webpack_require__(1065);
+	var order_name_ts_1 = __webpack_require__(1066);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30957,7 +30932,7 @@ webpackJsonp([0],[
 	exports.default = Name1;
 
 /***/ }),
-/* 1065 */
+/* 1066 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30990,7 +30965,7 @@ webpackJsonp([0],[
 	exports.setCompanyName = setCompanyName;
 
 /***/ }),
-/* 1066 */
+/* 1067 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31431,7 +31406,7 @@ webpackJsonp([0],[
 	exports.default = OrderCart1;
 
 /***/ }),
-/* 1067 */
+/* 1068 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31451,7 +31426,7 @@ webpackJsonp([0],[
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(926);
-	var order_payment_ts_1 = __webpack_require__(1068);
+	//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -31490,6 +31465,11 @@ webpackJsonp([0],[
 	    _createClass(PaymentMethod, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {}
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProps) {
+	            console.log("payment props" + JSON.stringify(nextProps));
+	        }
 	    }, {
 	        key: "setPaymentCardNumber",
 	        value: function setPaymentCardNumber(e) {
@@ -31579,68 +31559,10 @@ webpackJsonp([0],[
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {
-	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
-	            //console.log(e.target.value);
-	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
-	        },
-	        setPaymentCardNumber: function setPaymentCardNumber(e) {
-	            //console.log(e.target.value);
-	            dispatch(order_payment_ts_1.setPaymentCardNumber(e));
-	        },
-	        setPaymentExpiryDate: function setPaymentExpiryDate(e) {
-	            console.log(e.target.value);
-	            //dispatch(setLastName(e.target.value));
-	        },
-	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	            console.log(e.target.value);
-	            //dispatch(setLastName(e.target.value));
-	        }
-	    };
+	    return {};
 	}
 	var PaymentMethod1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
-	exports.default = PaymentMethod1;
-
-/***/ }),
-/* 1068 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function setPaymentNameOnCard(value) {
-	    alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD,
-	        value: value
-	    };
-	}
-	exports.setPaymentNameOnCard = setPaymentNameOnCard;
-	function setPaymentCardNumber(value) {
-	    console.log("action payment");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER,
-	        value: value
-	    };
-	}
-	exports.setPaymentCardNumber = setPaymentCardNumber;
-	function setPaymentExpiryDate(value) {
-	    alert("addCartItem from redux" + value);
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE,
-	        value: value
-	    };
-	}
-	exports.setPaymentExpiryDate = setPaymentExpiryDate;
-	function setPaymentSecurityCode(value) {
-	    alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
-	        value: value
-	    };
-	}
-	exports.setPaymentSecurityCode = setPaymentSecurityCode;
+	exports.default = PaymentMethod;
 
 /***/ }),
 /* 1069 */
@@ -33835,15 +33757,15 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {setFirstName, setLastName} from './actions/order_name.ts';
 	var order_delivery_datetime_ts_1 = __webpack_require__(935);
-	var delivery_address_tsx_1 = __webpack_require__(936);
+	var delivery_address_tsx_1 = __webpack_require__(937);
 	var contact_preview_tsx_1 = __webpack_require__(1096);
-	var datetime_tsx_1 = __webpack_require__(940);
+	var datetime_tsx_1 = __webpack_require__(941);
 	var name_preview_tsx_1 = __webpack_require__(1097);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(926);
-	var DatePicker = __webpack_require__(941);
-	var moment = __webpack_require__(942);
-	__webpack_require__(1060);
+	var DatePicker = __webpack_require__(942);
+	var moment = __webpack_require__(943);
+	__webpack_require__(1061);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -34473,7 +34395,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	var Immutable = __webpack_require__(926);
-	var order_contact_ts_1 = __webpack_require__(939);
+	var order_contact_ts_1 = __webpack_require__(940);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -34583,7 +34505,7 @@ webpackJsonp([0],[
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(926);
-	var order_name_ts_1 = __webpack_require__(1065);
+	var order_name_ts_1 = __webpack_require__(1066);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -35655,7 +35577,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var sconely_signature_event_details_tsx_1 = __webpack_require__(1107);
 	var sconely_signature_guests_tsx_1 = __webpack_require__(1109);
-	var payment_method_tsx_1 = __webpack_require__(1067);
+	var payment_method_tsx_1 = __webpack_require__(1068);
 	var react_router_1 = __webpack_require__(546);
 	//import request from 'superagent';
 	
@@ -35782,8 +35704,8 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var DatePicker = __webpack_require__(941);
-	var moment = __webpack_require__(942);
+	var DatePicker = __webpack_require__(942);
+	var moment = __webpack_require__(943);
 	//require('react-datepicker/dist/react-datepicker.css');
 	//import 'react-date-picker/index.css';
 	//import { DateField, Calendar } from 'react-date-picker';
@@ -36991,7 +36913,7 @@ webpackJsonp([0],[
 	    name: name_ts_1.default,
 	    contact: contact_ts_1.default,
 	    delivery_address: order_delivery_address_ts_1.default,
-	    cart_validated: cart_validated_ts_1.default,
+	    cart_validations: cart_validated_ts_1.default,
 	    user_payment_methods: user_payment_methods_ts_1.default,
 	    routing: react_router_redux_1.routerReducer
 	});
@@ -37075,8 +36997,16 @@ webpackJsonp([0],[
 	
 	    var delivery_address_updated = null;
 	    switch (action.type) {
+	        case actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD:
+	            return Object.assign({}, state, { name_on_card: action.value });
 	        case actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER:
 	            return Object.assign({}, state, { card_number: action.value });
+	        //case SET_PAYMENT_EXPIRY_DATE_MONTH:
+	        //  return Object.assign({}, state, {expiry_date_month: action.value});
+	        //case SET_PAYMENT_EXPIRY_DATE_YEAR:
+	        //  return Object.assign({}, state, {expiry_date_year: action.value});
+	        //case SET_PAYMENT_CVC:
+	        //  return Object.assign({}, state, {cvc: action.value});
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})

@@ -13,7 +13,7 @@ import cart from './cart.ts';
 import name from './name.ts';
 import contact from './contact.ts';
 import deliveryAddress from './order_delivery_address.ts';
-import cart_validated from './cart_validated.ts';
+import cart_validations from './cart_validated.ts';
 import user_payment_methods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 
@@ -26,7 +26,7 @@ export default combineReducers({
   name,
   contact,
   delivery_address: deliveryAddress,
-  cart_validated,
+  cart_validations,
   user_payment_methods,
   routing: routerReducer
 })
