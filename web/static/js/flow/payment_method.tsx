@@ -88,6 +88,13 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
+  setPaymentNameOnCard(e: any){
+
+      //this.props.setNameOnCard();
+      //this.props.validatePayment();
+
+  }
+
   setPaymentCardNumber(e: any){
 
       //Amex Card: ^3[47][0-9]{13}$
@@ -173,7 +180,7 @@ class PaymentMethod extends React.Component<any, any> {
                             <form className="form-horizontal">
                             <div className="form-group">
                                 <div className="col-sm-6">
-                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)}/>
                               </div>
                               </div>
                             </form>

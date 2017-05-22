@@ -1,7 +1,7 @@
 import {SET_DATE, SET_TIME, SET_SPECIFIC_TIME} from '../constants/actionTypes.ts';
 
 export function setDate(value: any) {
-  alert("addCartItem from redux");
+  console.log("date action from redux");
   return {
     type: SET_DATE,
     value

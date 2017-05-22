@@ -214,6 +214,9 @@ class PublicMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
+                            <Link to="/public/menu">Menu</Link>
+                            <br/>
+                            <Link to="/public/menu">Sconely Social</Link>
                             <br/>
                             <br/>
                             <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>

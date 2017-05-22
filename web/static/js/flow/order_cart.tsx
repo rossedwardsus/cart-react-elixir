@@ -651,7 +651,9 @@ class OrderCart extends React.Component<any, any> {
                </form>
                <br/>
                <br/>
-               Delivery charge
+               Delivery charge - 0 if yours - social depends on zipcode
+               <br/>
+               Promo Code
                <br/>
                Total Due- {total_cost}
             </div>

@@ -13,7 +13,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 const Immutable  = require('immutable');
 
-import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
+//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 
 
 function addTodoWithDispatch() {
@@ -71,21 +71,57 @@ class Contact extends React.Component<any, any> {
 
   componentDidMount(){
 
-      this.setState({email: this.props.contact.email});
-      this.setState({mobile: this.props.contact.mobile});
+      //this.setState({email: this.props.contact.email});
+      //this.setState({mobile: this.props.contact.mobile});
    
   }
 
   setContactEmail(e: any){
+
+      /*let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_res = symbol_patt.test(e.target.value);
+
+      let number_res = (/[0-9]/.test(e.target.value));
+
+
+      console.log(/[0-9]/.test(e.target.value));
+
+      //larger then 0
+      //no symbols
+      //no numbers
+
+      if(e.target.value.length > 0){
+
+          if(symbol_res == false && number_res == false){
+          
+            this.setState({first_name: e.target.value})
+            this.setState({"first_border_color": "grey"});
+
+          }else{
+
+            this.setState({first_name: e.target.value})
+            this.setState({"first_border_color": "red"});
+
+          }
+      
+      }*/
 
       this.setState({email: "this.input.value"});
       this.props.setContactEmail(e);
 
   }
 
+  setContactEmailAgain(e: any){
+
+      this.setState({email: "this.input.value"});
+      //this.props.setContactEmail(e);
+
+  }
+
   setContactMobile(e: any){
 
-
+      this.setState({mobile: "this.input.value"});
+      this.props.setContactMobile(e);
 
   }
   
@@ -109,6 +145,12 @@ class Contact extends React.Component<any, any> {
                         <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0}}/>
                       </div>
                   </div>
+                  <div className="col-md-3">
+                      <div className={this.state.contact_email_classname}>
+                        <input type="text" onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" value={this.state.email}  style={{borderRadius: 0}}/>
+                      </div>
+                  </div>
+                
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
                         <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile" value={this.state.mobile}  style={{borderRadius: 0}}/>
@@ -142,14 +184,14 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setContactEmail: (e: any) => {
-      console.log(e.target.value);
-      dispatch(setContactEmail(e.target.value));
-    },
-    setContactMobile: (e: any) => {
+    //setContactEmail: (e: any) => {
     //  console.log(e.target.value);
-      dispatch(setContactMobile(e.target.value));
-    },
+    //  dispatch(setContactEmail(e.target.value));
+    //},
+    //setContactMobile: (e: any) => {
+    //  console.log(e.target.value);
+    //  dispatch(setContactMobile(e.target.value));
+    //},
    
   }
 }
@@ -159,7 +201,7 @@ const Contact1 = connect(
   mapDispatchToProps
 )(Contact)
 
-export default Contact1;
+export default Contact;
 
 
 

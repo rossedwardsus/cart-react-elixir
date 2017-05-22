@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
-import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
+//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 
 
 
@@ -73,10 +73,8 @@ class Name extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.setState({first_name: this.props.name.first_name});
-    this.setState({last_name: this.props.name.last_name});
-
-   
+    //this.setState({first_name: this.props.name.first_name});
+    //this.setState({last_name: this.props.name.last_name});
 
   }
 
@@ -86,12 +84,29 @@ class Name extends React.Component<any, any> {
     this.setState({first_name: e.target.value});
     this.props.setFirstName(e);
 
+    //this.props.nameValidated();
+    //this.props.nameInvalidated();
+
+
   }
 
   setLastName(e: any){
 
     this.setState({last_name: e.target.value});
     this.props.setLastName(e);
+
+    //this.props.nameValidated();
+    //this.props.nameInvalidated();
+
+  }
+
+  setCompanyName(e: any){
+
+    this.setState({company_name: e.target.value});
+    this.props.setCompanyName(e);
+
+    //this.props.nameValidated();
+    //this.props.nameInvalidated();
 
   }
 
@@ -122,7 +137,7 @@ class Name extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3">
                     <div className={this.props.firstNameClassName}>
-                      <input type="text" onChange={(e: any) => this.props.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" onChange={(e: any) => this.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                 </div>
@@ -152,18 +167,18 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setFirstName: (e: any) => {
-      console.log("first name" + e.target.value);
-      dispatch(setFirstName(e.target.value));
-    },
-    setLastName: (e: any) => {
-      console.log(e.target.value);
-      dispatch(setLastName(e.target.value));
-    },
-    setBusinessName: (e: any) => {
-      console.log(e.target.value);
+    //setFirstName: (e: any) => {
+    //  console.log("first name" + e.target.value);
+    //  dispatch(setFirstName(e.target.value));
+    //},
+    //setLastName: (e: any) => {
+    //  console.log(e.target.value);
+    //  dispatch(setLastName(e.target.value));
+    //},
+    //setBusinessName: (e: any) => {
+    //  console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
-    }
+    //}
   }
 }
 
@@ -172,6 +187,6 @@ const Name1 = connect(
   mapDispatchToProps
 )(Name)
 
-export default Name1;
+export default Name;
 
 

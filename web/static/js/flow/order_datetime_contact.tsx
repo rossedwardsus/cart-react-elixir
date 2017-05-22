@@ -11,12 +11,14 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-//import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+
+import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated} from './actions/cart_validations.ts';
+import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 import {completeOrder} from './actions/complete_order.ts';
-//import {setFirstName, setLastName} from './actions/order_name.ts';
+import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
-//import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
@@ -25,6 +27,7 @@ import DateTime from './datetime.tsx';
 import Name from './name.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
+import CheckoutButton from './checkout_button.tsx';
 
 //import { getPublicMenu } from './reducers/name';
 const Immutable  = require('immutable');
@@ -756,8 +759,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          
+                          <Link to="/public/menu">Menu</Link>
                           <br/>
+                          <Link to="/public/menu">Social</Link>
                           <br/>
                           <br/>
                           <br/>
@@ -774,16 +778,25 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
+                            if sconely yours no datetime needed
                             <br/>
-                            <DeliveryAddress />
-                            <DateTime />
-                            <Name />
-                            <Contact />
+                            <DeliveryAddress orderType={this.props.order.order_type} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
+
+                            {this.props.order.order_type === "sconely_social" &&
+                            <DateTime  setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>}
+
+                            <Name setFirstName={(e: any) => this.setFirstName(e)} setLastName={(e: any) => this.setLastName(e)}/>
+                            <Contact setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
+
                             <OrderCart />
+
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)}/>
+
                             {this.props.cart_validations.cart_validated == true &&
                             <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Complete Order</button>}
                             <br/>
+
+                            <CheckoutButton cartValidated={this.props.cart_validations.cart_validated}/>
                         </div>
                         <div className="hidden-xs col-md-2">
                               maybe put something here
@@ -809,8 +822,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("checkout state" + JSON.stringify(state));
   return {
-   cart_validations: state.cart_validations
-   //order: state.default.order
+   cart_validations: state.cart_validations,
+   order: state.Order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -825,30 +838,33 @@ function mapDispatchToProps(dispatch: any) {
     setTime: (e: any) => {
       dispatch(setTime(e.target.value))
     },
+    cartValidated: () => {
+      dispatch(cartValidated());
+    },
+    datetimeValidated: () => {
+        dispatch(datetimeValidated());
+    },
     setSpecificTime: (e: any) => {
       dispatch(setSpecificTime(e.target.value))
     },
-    //setFirstName: (e: any) => {
-    //  dispatch(setFirstName(e.target.value))
-    //},
+    setFirstName: (e: any) => {
+      dispatch(setFirstName(e.target.value))
+    },
     //setLastName: (e: any) => {
     //  dispatch(setLastName(e.target.value))
     //},
-    //setContactEmail: (e: any) => {
-    //  dispatch(setContactEmail(e.target.value))
-    //},
-    //setContactPhone: (e: any) => {
-    //  dispatch(setContactPhone(e.target.value))
-    //},
-    
-    //setDeliveryAddressStreet1: (e: any) => {
-    //  dispatch(setDeliveryAddressStreet1(e.target.value))
-    //},
-    
+    setContactEmail: (e: any) => {
+      dispatch(setContactEmail(e.target.value))
+    },
+    setContactMobile: (e: any) => {
+      dispatch(setContactMobile(e.target.value))
+    },
+    setDeliveryAddressStreet1: (e: any) => {
+      dispatch(setDeliveryAddressStreet1(e.target.value))
+    },
     //setDeliveryAddressStreet2: (e: any) => {
     //  dispatch(setDeliveryAddressStreet1(e.target.value))
     //},
-    
     //setDeliveryAddressCity: (e: any) => {
     //  dispatch(setDeliveryAddressCity(e.target.value))
     //},
@@ -858,6 +874,12 @@ function mapDispatchToProps(dispatch: any) {
     //setDeliveryAddressZipcode: (e: any) => {
     //  dispatch(setDeliveryAddressZipcode(e.target.value))
     //},
+    deliveryAddressValidated: () => {
+      dispatch(deliveryAddressValidated())
+    },
+    deliveryAddressInvalidated: () => {
+      dispatch(deliveryAddressInvalidated())
+    },
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value))
     },

@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {datetimeValidated} from './actions/cart_validations.ts';
-import {setDate, setTime} from './actions/order_delivery_datetime.ts';
+//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
@@ -89,12 +89,10 @@ class DateTime extends React.Component<any, any> {
     this.setState({startDate: date});
     this.props.setDate(date);
 
+    this.props.cartValidated();
     this.props.datetimeValidated();
 
   }
-  
-
-  
   
   
   render(): JSX.Element{
@@ -157,18 +155,18 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setDate: (e: any) => {
-      console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
-      dispatch(setDate(e));
-    },
-    setTime: (e: any) => {
-      console.log("settime" + e.target.value);
-      dispatch(setTime(e.target.value));
-    },
-    datetimeValidated: () => {
+    //setDate: (e: any) => {
+    //  console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
+    //  dispatch(setDate(e));
+    //},
+    //setTime: (e: any) => {
+    //  console.log("settime" + e.target.value);
+    //  dispatch(setTime(e.target.value));
+    //},
+    //datetimeValidated: () => {
       //console.log(e.target.value);
-      dispatch(datetimeValidated());
-    }
+    //  dispatch(datetimeValidated());
+    //}
   }
 }
 
@@ -177,5 +175,5 @@ const DateTime1 = connect(
   mapDispatchToProps
 )(DateTime)
 
-export default DateTime1;
+export default DateTime;
 

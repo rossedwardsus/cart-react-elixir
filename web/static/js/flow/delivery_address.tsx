@@ -17,7 +17,7 @@ import {deliveryAddressValidated} from './actions/cart_validations.ts';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 const Immutable  = require('immutable');
 
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+//import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 
 
 
@@ -74,8 +74,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.setState({street: this.props.delivery_address.street1})
-
+    //this.setState({street: this.props.delivery_address.street1})
 
   }
 
@@ -85,22 +84,31 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({street1: e.target.value});
       this.props.setDeliveryAddressStreet1(e);
 
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
+
   }
 
   setDeliveryAddressStreet2(e: any){
 
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
 
   }
   
 
   setDeliveryAddressCity(e: any){
 
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
 
   }
 
 
   setDeliveryAddressState(e: any){
 
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
 
   }
 
@@ -117,8 +125,13 @@ class DeliveryAddress extends React.Component<any, any> {
 
    
     return ( <div>
-                {this.props.order.order_type}
+                {this.props.order_type}
                 <br/>
+                <select>
+                  <option></option>
+                  <option>Smorgasburg - May 21, 2017</option>
+                  <option>Smorgasburg - May 28, 2017</option>
+                </select>
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-3">
@@ -134,10 +147,13 @@ class DeliveryAddress extends React.Component<any, any> {
                <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3">
-                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.setDeliveryAddressStreet1(e)} style={{borderRadius: 0}}/>
+                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.props.setDeliveryAddressStreet1(e)} style={{borderRadius: 0}}/>
                       </div>
                       <div className="col-sm-3">
                         <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0}}/>
+                      </div>
+                      <div className="col-sm-3">
+                        <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Apt" style={{borderRadius: 0}}/>
                       </div>
                     </div>
                </form>
@@ -196,22 +212,22 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setDeliveryAddressStreet1: (e: any) => {
-      console.log(e.target.value);
-      dispatch(setDeliveryAddressStreet1(e.target.value));
-    },
-    setDeliveryAddressStreet2: (e: any) => {
+    //setDeliveryAddressStreet1: (e: any) => {
+    //  console.log(e.target.value);
+    //  dispatch(setDeliveryAddressStreet1(e.target.value));
+    //},
+    //setDeliveryAddressStreet2: (e: any) => {
     //  console.log(e.target.value);
     //  dispatch(setLastName(e.target.value));
-    },
-    setDeliveryAddressCity: (e: any) => {
+    //},
+    //setDeliveryAddressCity: (e: any) => {
     //  console.log(e.target.value);
       //dispatch(setLastName(e.target.value));
-    },
-    deliveryAddressValidated: () => {
+    //},
+    //deliveryAddressValidated: () => {
     //  console.log(e.target.value);
-      //dispatch(deliveryAddressValidated(e.target.value));
-    }
+    //  //dispatch(deliveryAddressValidated(e.target.value));
+    //}
   }
 }
 
@@ -220,5 +236,5 @@ const DeliveryAddress1 = connect(
   mapDispatchToProps
 )(DeliveryAddress)
 
-export default DeliveryAddress1;
+export default DeliveryAddress;
 
