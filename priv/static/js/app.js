@@ -50,9 +50,9 @@ webpackJsonp([0],[
 	
 	var _public_about_us2 = _interopRequireDefault(_public_about_us);
 	
-	var _smorgasburgh = __webpack_require__(928);
+	var _yours_menu = __webpack_require__(928);
 	
-	var _smorgasburgh2 = _interopRequireDefault(_smorgasburgh);
+	var _yours_menu2 = _interopRequireDefault(_yours_menu);
 	
 	var _user_home_page = __webpack_require__(929);
 	
@@ -267,7 +267,7 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment_methods', component: _user_payment_methods2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/signature', component: _sconely_signature_single_page2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest/event', component: _event2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/:name', component: _menu2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: '/:name', component: _yours_menu2.default })
 	      )
 	    )
 	  );
@@ -27203,6 +27203,7 @@ webpackJsonp([0],[
 	var cart_validations_ts_1 = __webpack_require__(923);
 	var cart_ts_1 = __webpack_require__(924);
 	var sidebar_cart_tsx_1 = __webpack_require__(925);
+	var order_ts_1 = __webpack_require__(920);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -27248,6 +27249,8 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            console.log(JSON.stringify(this.props.params));
+	            //start yours order here
+	            this.props.createOrder("sconely_yours");
 	            //get active items from the database
 	            //alert(this.props.params);
 	            //alert(JSON.stringify(this.props.cart_items));
@@ -27377,6 +27380,9 @@ webpackJsonp([0],[
 	        },
 	        cartValidated: function cartValidated() {
 	            dispatch(cart_validations_ts_1.cartValidated());
+	        },
+	        createOrder: function createOrder(order_type) {
+	            dispatch(order_ts_1.createOrder(order_type));
 	        }
 	    };
 	};
@@ -31866,6 +31872,7 @@ webpackJsonp([0],[
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(926);
 	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
+	var axios_1 = __webpack_require__(1071);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -31907,9 +31914,34 @@ webpackJsonp([0],[
 	            console.log("chechout button componentwillreceiveprops");
 	        }
 	    }, {
+	        key: "completeOrder",
+	        value: function completeOrder() {
+	            var that = this;
+	            //if(this.state.first_name_validated === false){
+	            axios_1.default.post('http://localhost:4000/api/graphql', {
+	                query: 'mutation {completeOrder (first_name: "' + that.state.first + '") { status }}'
+	            }).then(function (response) {
+	                console.log("graphql response" + JSON.stringify(response));
+	                //that.props.history.push('/user');
+	                //context.router
+	            }).catch(function (error) {
+	                console.log("error" + error);
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	            //}
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("button", null, "checkout button"));
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
+	                    return _this2.completeOrder();
+	                } }, "checkout button"));
 	        }
 	    }], [{
 	        key: "contextTypes",

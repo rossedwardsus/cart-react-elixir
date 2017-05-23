@@ -1,75 +1,13 @@
-defmodule Sconely.OrderResolver do
+defmodule Sconely.CompleteOrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
   #alias Sconely.MenuItem
+  alias Sconely.Order
 
   import Ecto.Query
 
-  def get_menu_items(%{host_id: host_id}, _info) do
-    items = Repo.all(MenuItem)
-   # IO.puts("user orders");
-   # query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
-   # orders = Repo.all(query)
-    {:ok, items}
-    #{:ok, [%{event_name: "hello"}]}
-  end
-
-
-  def get_user(%{host_id: host_id}, _info) do
-
-    #orders
-    #payment
-    #about me
-
-    IO.puts("user orders");
-    query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
-    orders = Repo.all(query)
-    {:ok, orders}
-    #{:ok, [%{event_name: "hello"}]}
-  end
-
-  def order_json(order) do
-    %{
-      order_id: "order.order_id",
-      host_id: "order.host_id",
-      order_type: "order.event_type",
-      created_at: "order.created_at",
-    }
-  end
-
-  def sconely_yours_order_json(order) do
-    %{
-      order_id: "order.order_id",
-      host_id: "order.host_id",
-      items: "order.event_type",
-      delivery_datetime: "delivery_datetime"
-    }
-  end
-
-  def sconely_social_order_json(order) do
-    %{
-      order_id: "order.order_id",
-      host_id: "order.host_id",
-      items: "order.event_type",
-      delivery_datetime: "delivery_datetime"
-    }
-  end
-
-  def get_user_orders(%{host_id: host_id}, _info) do
-    IO.puts("user orders");
-    query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
-    orders = Repo.all(query)
-    {:ok, orders}
-    #{:ok, [%{event_name: "hello"}]}
-  end
-
   
-  def all(_args, _info) do
-    {:ok, Repo.all(SconelySignatureOrder)}
-    #{:ok, [%{order_id: 1, event_name: "hello", body: "there"}]}
-  end
-
   def get_user_order(%{order_id: order_id}, _info) do
 
     #status, guests if signature, items
@@ -194,85 +132,8 @@ defmodule Sconely.OrderResolver do
   #save_sconely_signature_order_additional_items(order_id: "24a6d87f-5892-4467-924e-2d33a1e33d2f", item_id: "12", quantity: "time") {
     #status
   #}
-  #}
-
-  #save additional items
-  def save_sconely_signature_order_additional_items(args, _info) do
-     
-     #multiple items
-
-     IO.inspect(args[:order_id])
-     #IO.inspect(args[:items])
-
-     Enum.each(args[:items], fn(item) ->
-        IO.inspect(item.item_id)
-     end)
-
-
-
-     #sconely_signature_order_additional_item = Repo.get_by(SconelySignatureOrderAdditionalItem, order_id: order_id)
-
-     #IO.inspect(sconely_signature_order_additional_item)
-
-     #order_total = guest_count * 6
   
-     #sconely_signature_order_additional_item_changeset = SconelySignatureOrderAdditionalItem.changeset(%SconelySignatureOrderAdditionalItem{}, %{item_id: item_id, quantity: quantity})
-     #{:error, sconely_signature_order_additional_item} = Repo.insert(sconely_signature_order_additional_item_changeset)
-
-     #case Repo.insert(sconely_signature_order_additional_item_changeset) do
-      #  {:ok, sconely_signature_order} -> IO.inspect("sconely_signature_order_changeset")
-          #conn
-          #|> put_flash(:info, "User updated successfully.")
-          #|> redirect(to: user_path(conn, :show, user))
-     #   {:error, changeset} -> IO.inspect("error")
-          #render(conn, "edit.html", user: user, changeset: changeset)
-     #end
-
-    #update cost to reflect guest count
-        
-
-  #  Repo.get!(SconelySignatureOrderEventDetails, order_id)
-  #  |> SconelySignatureOrder.changeset(order_params)
-  #  |> Repo.update
-    {:ok, %{status: "hello"}}
-  end
-
-
-
-  #add order items
-  #def add_sconely_social_items(%{order_id: order_id, order: order_params}, _info) do
-    #order_id, session_id, item_id, quantity
-    #Repo.get!(SconelySignatureOrder, order_id)
-    #|> SconelySignatureOrder.changeset(order_params)
-    #|> Repo.update
-  #end
-
-
-  #save guest details for signature
-  #def save_sconely_signature_order(%{order_id: order_id, order: order_params}, _info) do
-    #order_id, #guest count
-    #Repo.get!(SconelySignatureOrder, order_id)
-    #|> SconelySignatureOrder.changeset(order_params)
-    #|> Repo.update
-  #end
-
-  #complete order and make payment
-  #test secret key sk_test_Bmak0PLr7NSsKLjZeFvRPptz
-  #test publishable key pk_test_pY3YMi18Gcw0iUB3BSfmPtpb
-
   
-
-  #mutation CompleteSconelySocialOrder {
-  #  complete_sconely_signature_order(order_id: "Second", amount: 1) {
-  #    status
-  #  }
-  #}
-
-
-
-
-
-
 
 
   defmodule Person do
@@ -287,14 +148,26 @@ defmodule Sconely.OrderResolver do
 
 
 
-  def complete_sconely_social_order(args, _info) do
+
+
+
+
+
+
+
+
+
+
+  def complete_yours_order(args, _info) do
 
     IO.inspect(args)
 
     #Poison.Parser.parse!(args)
 
-    Enum.each(args[:cart_items], fn(item) ->
-        IO.inspect(item.item_id)
+    cart_items = [%{"one": "one"}]
+
+    Enum.each(cart_items, fn(item) ->
+    #    IO.inspect(item.item_id)
     end)
 
     
@@ -340,14 +213,47 @@ defmodule Sconely.OrderResolver do
       ]
   
     IO.inspect(Stripe.Charges.create(51, params))
+
+    charge = Stripe.Charges.create(51, params)
                     
-    #case charge do
-    #    charge -> IO.inspect(charge)
-    #    "_" -> ""
+    case charge do
+        {:ok, charge} -> 
 
-    #end
+            #validate payment info
 
-    {:ok, %{status: "hello"}}
+            IO.inspect(charge)
+            #get stripe charge id
+            #insert into database
+            #send email
+
+            order_id = UUID.uuid1()
+
+            #Repo.transaction(fn ->
+
+            order_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+
+            #case Repo.insert(order_changeset) do
+            #  {:ok, response} -> IO.inspect(response)
+            #    conn
+            #      |> put_flash(:info, "User created successfully.")
+            #      |> redirect(to: user_path(conn, :index))
+
+                    #working
+                    Sconely.CompleteOrderEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+            #  {:error, :error}
+             #     {:ok, %{status: "changeset error"}}
+
+
+            
+          
+
+        {:error, error} -> IO.inspect(error)
+            #log error in database
+            {:ok, %{status: "card declined"}}
+
+    end
+
+    {:ok, %{status: "card declined"}}
 
     
     #Repo.get!(SconelySignatureOrder, order_id)

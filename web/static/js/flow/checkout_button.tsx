@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 //import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
-
+import axios from 'axios';
 
 
 function addTodoWithDispatch() {
@@ -82,12 +82,44 @@ class CheckoutButton extends React.Component<any, any> {
 
   }
 
+  completeOrder(){
+
+    let that = this;
+
+     //if(this.state.first_name_validated === false){
+
+          axios.post('http://localhost:4000/api/graphql', {
+                 query: 'mutation {completeOrder (first_name: "' + that.state.first + '") { status }}'
+          })
+          .then((response: any) => {
+
+                console.log("graphql response" + JSON.stringify(response));
+
+                //that.props.history.push('/user');
+                //context.router
+
+          })
+          .catch((error: any) => {
+
+                console.log("error" + error);
+                //go to code/payment screen
+        //        this.props.loadView();
+
+         //if (!error.status) {
+            // network error
+          //}
+
+          })
+    //}
+
+  }
+
   
   render(): JSX.Element{
 
    
     return ( <div>
-                <button>checkout button</button>
+                <button className="btn btn-default" onClick={() => this.completeOrder()}>checkout button</button>
               </div>
     )
   }

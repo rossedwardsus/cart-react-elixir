@@ -55,25 +55,25 @@ defmodule Sconely.Schema do
 
 
   	
-  	field :complete_sconely_social_order, type: :sconely_social_order do
-  		arg :first, (:string)
-  		arg :last, (:string)
-  		arg :contact_email, :string
-  		arg :contact_phone, :string
-    	arg :date, :string
-    	arg :time, :string
-    	arg :street1, :string
-    	arg :street2, :string
-    	arg :city, :string
-    	arg :state, :string
-    	arg :zipcode, :string
-    	arg :name_on_card, :string
-    	arg :card_number, :string
-    	arg :expiry_date, :string
-    	arg :security_code, :string
-  		arg :cart_items, list_of(:item)
+  	field :complete_order, type: :sconely_yours_order do
+  		arg :first_name, :string
+  		#arg :last_name, :string
+  		#arg :contact_email, :string
+  		#arg :contact_phone, :string
+    	#arg :street1, :string
+    	#arg :street2, :string
+    	#arg :city, :string
+    	#arg :state, :string
+    	#arg :zipcode, :string
+      #arg :date, :string
+      #arg :time, :string
+    	#arg :name_on_card, :string
+    	#arg :card_number, :string
+    	#arg :expiry_date, :string
+    	#arg :security_code, :string
+  		#arg :cart_items, list_of(:item)
 
-  		resolve &Sconely.SconelySocialOrderResolver.complete_sconely_social_order/2
+  		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
 

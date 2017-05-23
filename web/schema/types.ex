@@ -1,12 +1,12 @@
 defmodule Sconely.Schema.Types do
   use Absinthe.Schema.Notation
 
-  object :order do
-  	field :session_id, :string
-  	field :delivery_address_street, :string
-  	field :delivery_address_city, :string
-  	field :order_items, :menu_item_input
-  end
+  #object :order do
+  #	field :session_id, :string
+  #	field :delivery_address_street, :string
+  #	field :delivery_address_city, :string
+  #	field :order_items, :menu_item_input
+  #end
 
 
   input_object :menu_item_input do
@@ -63,28 +63,38 @@ defmodule Sconely.Schema.Types do
   #end
 
   input_object :item do
-	field :item_id, (:string)
+	 field :item_id, :string
+   field :item_type, :string
+   field :quantity, :string
   end
 
-  object :sconely_social_order do
-  	field :order_id, :string
-    field :first, :string
-    field :last, :string
-    field :email, :string
-    field :phone, :string
-    field :date, :string
-    field :time, :string
-    field :street1, :string
-    field :street2, :string
-    field :city, :string
-    field :state, :string
-    field :zipcode, :string
-    field :name_on_card, :string
-    field :card_number, :string
-    field :expiry_date, :string
-    field :security_code, :string
-  	field :cart_items, list_of(:item)
+  object :sconely_yours_order do
+  	#field :order_id, :string
+    field :first_name, :string
+    #field :last_name, :string
+    #field :company_name, :string
+    #field :email, :string
+    #field :phone, :string
+    #field :street1, :string
+    #field :street2, :string
+    #field :city, :string
+    #field :state, :string
+    #field :zipcode, :string
+    #field :date, :string
+    #field :time, :string
+    #field :name_on_card, :string
+    #field :card_number, :string
+    #field :expiry_date, :string
+    #field :security_code, :string
+  	#field :cart_items, list_of(:item)
+    field :status, :string
   end
+
+
+
+
+
+
 
 
 

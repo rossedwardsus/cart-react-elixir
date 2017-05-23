@@ -22,7 +22,7 @@ import thunk from 'redux-thunk';
 import PublicHomePage from './public/public_home_page.tsx';
 import PublicMenu from './menu.tsx';
 import PublicAboutUs from './public/public_about_us';
-import Smorgasburgh from './smorgasburgh.tsx';
+import SconelyYours from './yours_menu.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
 import UserDeliveryAddresses from './user/user_delivery_addresses.tsx';
@@ -182,7 +182,7 @@ const Root = () => (
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
         <Route path="/order/signature" component={SconelySignature} />
         <Route path="/order/:order_id/guest/event" component={SconelySignatureGuestEvent} />
-        <Route path="/:name" component={PublicMenu} />                
+        <Route path="/:name" component={SconelyYours} />                
       </Route>
     </Router>
   </Provider>

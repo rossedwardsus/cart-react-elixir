@@ -45,6 +45,25 @@ defmodule SconeHomeElixir.Router do
   #end
 
 
+  scope "/api"  do
+    pipe_through :api
+
+  #  get "/", Api1Controller, :index
+    #post "/", LoginController, :create
+
+    get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
+    forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
+    #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
+
+  end
+
+  #scope "/graphql", Absinthe do
+
+  #    forward "/", Plug, schema: Sconely.Schema
+  #    forward "/1", Plug, schema: Sconely.Schema
+     
+  #end
+
 
 
   #mobile
@@ -71,27 +90,6 @@ defmodule SconeHomeElixir.Router do
   #forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
     
     
-
-  
-
-  scope "/api"  do
-    pipe_through :api
-
-  #  get "/", Api1Controller, :index
-    #post "/", LoginController, :create
-
-    #get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
-    forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
-    #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
-
-  end
-
-  #scope "/graphql", Absinthe do
-
-  #    forward "/", Plug, schema: Sconely.Schema
-  #    forward "/1", Plug, schema: Sconely.Schema
-     
-  #end
 
 
 

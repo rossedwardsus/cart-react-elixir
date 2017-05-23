@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import {cartValidated} from './actions/cart_validations.ts';
 import {addCartItem} from './actions/cart.ts';
 import SidebarCart from './sidebar_cart.tsx';
+import {createOrder} from './actions/order.ts';
+
 
 
 //type Props = {
@@ -50,6 +52,10 @@ class PublicMenu extends React.Component<any, any> {
   componentDidMount(){
 
     console.log(JSON.stringify(this.props.params));
+
+    //start yours order here
+    this.props.createOrder("sconely_yours");
+
 
     //get active items from the database
     //alert(this.props.params);
@@ -325,9 +331,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     cartValidated: () => {
       dispatch(cartValidated());
     },
-    //decreaseCartItemQuantity: () => {
-    //  dispatch(decreaseCartItemQuantity(1));
-    //}
+    createOrder: (order_type: any) => {
+      dispatch(createOrder(order_type));
+    }
   }
 }
 
