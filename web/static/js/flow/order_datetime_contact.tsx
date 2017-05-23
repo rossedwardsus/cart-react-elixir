@@ -778,7 +778,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            if sconely yours no datetime needed
+                            if sconely yours show only sundays
                             <br/>
                             <DeliveryAddress orderType={this.props.order.order_type} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 

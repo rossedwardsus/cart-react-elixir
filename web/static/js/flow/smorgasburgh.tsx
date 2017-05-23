@@ -49,8 +49,6 @@ class PublicMenu extends React.Component<any, any> {
 
   componentDidMount(){
 
-    console.log(JSON.stringify(this.props.params));
-
     //get active items from the database
     //alert(this.props.params);
 

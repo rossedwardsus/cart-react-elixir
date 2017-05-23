@@ -127,6 +127,8 @@ class DeliveryAddress extends React.Component<any, any> {
     return ( <div>
                 {this.props.order_type}
                 <br/>
+                Pickup
+                <br/>
                 <select>
                   <option></option>
                   <option>Smorgasburg - May 21, 2017</option>

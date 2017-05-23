@@ -57,6 +57,7 @@ defmodule SconeHomeElixir.Router do
     #end
 
     get "/", HomeController, :index
+    get "/:name", HomeController, :index
     #get "/activate", ActivateController, :index
 
     #forward "/graphql/signature", Absinthe.Plug, schema: SconeHomeElixir.SignatureSchema
