@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+<style>
+@media screen and (min-device-width: 100px) and (max-device-width: 420px){
+	
+		div[id=my-content]{ 
+			display: none !important; 
+			max-height:0
+			
+		}
+
+}
+
+	.mobile {
+	    display: none;
+	    font-size: 0;
+	    max-height: 0;
+	    line-height: 0;
+	    padding: 0;
+	}
+
+	@media (max-device-width: 420px) and (min-device-width: 100px) {
+	    .mobile {
+	        display:block !important;
+	        line-height: 1.5 !important;
+	        max-height: none !important;
+	    }
+	}
+</style>
+</head>
+
+<html lang="en">
+	<table bgcolor="#00FF00" width="100%">
+		<tr><td>order processed from email <%= @key["email"] %></td></tr>
+		<tr><td>pickup</td></tr>
+		<tr><td>items</td></tr>
+		<tr><td>total</td></tr>
+	</table>
+	<br>
+	<br>
+	
+	<div class='mobile'>
+	  I'm only visible on mobile :)
+	</div>
+</html>
+
