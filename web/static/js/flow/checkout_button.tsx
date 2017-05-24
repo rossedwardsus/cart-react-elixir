@@ -88,8 +88,13 @@ class CheckoutButton extends React.Component<any, any> {
 
      //if(this.state.first_name_validated === false){
 
+          //this.props.order_datetime;
+          //this.props.order_delivery_address
+          //this.props.order_payment_method
+          //this.props.cart_items
+
           axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {completeOrder (first_name: "' + that.state.first + '") { status }}'
+                 query: 'mutation {completeOrder (order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", first_name: "' + that.props.order_name.first_name + '", last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_method_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_method_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_method_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_method_security_code: "' + this.props.order_payment_method.security_code + '") { status }}'
           })
           .then((response: any) => {
 

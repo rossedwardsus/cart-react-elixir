@@ -780,12 +780,17 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             if sconely yours show only sundays
                             <br/>
-                            <DeliveryAddress orderType={this.props.order.order_type} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
+                            <DeliveryAddress orderType={this.props.order.order_type} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
+                            setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
+                            setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} 
+                            setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
+                            deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
                             {this.props.order.order_type === "sconely_social" &&
                             <DateTime  setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>}
 
-                            <Name setFirstName={(e: any) => this.setFirstName(e)} setLastName={(e: any) => this.setLastName(e)}/>
+                            <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)}/>
+                            
                             <Contact setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
                             <OrderCart />
@@ -796,7 +801,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Complete Order</button>}
                             <br/>
 
-                            <CheckoutButton cartValidated={this.props.cart_validations.cart_validated}/>
+                            <CheckoutButton order={this.props.order} order_delivery_address={this.props.order_delivery_address} 
+                            order_datetime={this.props.order_datetime}
+                            order_contact={this.props.order_contact} order_name={this.props.order_name}  
+                            order_payment_method={this.props.order_payment_method}
+                            cartValidated={this.props.cart_validations.cart_validated}/>
                         </div>
                         <div className="hidden-xs col-md-2">
                               maybe put something here
@@ -823,7 +832,14 @@ function mapStateToProps(state: any) {
   console.log("checkout state" + JSON.stringify(state));
   return {
    cart_validations: state.cart_validations,
-   order: state.Order
+   order: state.Order,
+   order_delivery_address: state.delivery_address,
+   order_contact: state.contact,
+   order_name: state.name,
+   order_cart_items: state.cart.cart_items,
+   order_datetime: state.OrderDatetime,
+   order_payment_method: state.OrderPayment,
+
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -850,9 +866,9 @@ function mapDispatchToProps(dispatch: any) {
     setFirstName: (e: any) => {
       dispatch(setFirstName(e.target.value))
     },
-    //setLastName: (e: any) => {
-    //  dispatch(setLastName(e.target.value))
-    //},
+    setLastName: (e: any) => {
+      dispatch(setLastName(e.target.value))
+    },
     setContactEmail: (e: any) => {
       dispatch(setContactEmail(e.target.value))
     },
@@ -862,18 +878,18 @@ function mapDispatchToProps(dispatch: any) {
     setDeliveryAddressStreet1: (e: any) => {
       dispatch(setDeliveryAddressStreet1(e.target.value))
     },
-    //setDeliveryAddressStreet2: (e: any) => {
-    //  dispatch(setDeliveryAddressStreet1(e.target.value))
-    //},
-    //setDeliveryAddressCity: (e: any) => {
-    //  dispatch(setDeliveryAddressCity(e.target.value))
-    //},
-    //setDeliveryAddressState: (e: any) => {
-    //  dispatch(setDeliveryAddressState(e.target.value))
-    //},
-    //setDeliveryAddressZipcode: (e: any) => {
-    //  dispatch(setDeliveryAddressZipcode(e.target.value))
-    //},
+    setDeliveryAddressStreet2: (e: any) => {
+      dispatch(setDeliveryAddressStreet2(e.target.value))
+    },
+    setDeliveryAddressCity: (e: any) => {
+      dispatch(setDeliveryAddressCity(e.target.value))
+    },
+    setDeliveryAddressState: (e: any) => {
+      dispatch(setDeliveryAddressState(e.target.value))
+    },
+    setDeliveryAddressZipcode: (e: any) => {
+      dispatch(setDeliveryAddressZipcode(e.target.value))
+    },
     deliveryAddressValidated: () => {
       dispatch(deliveryAddressValidated())
     },

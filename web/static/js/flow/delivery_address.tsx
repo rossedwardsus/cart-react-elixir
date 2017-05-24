@@ -91,6 +91,9 @@ class DeliveryAddress extends React.Component<any, any> {
 
   setDeliveryAddressStreet2(e: any){
 
+      this.setState({street2: e.target.value});
+      this.props.setDeliveryAddressStreet2(e);
+
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
@@ -99,6 +102,9 @@ class DeliveryAddress extends React.Component<any, any> {
 
   setDeliveryAddressCity(e: any){
 
+      this.setState({city: e.target.value});
+      this.props.setDeliveryAddressCity(e);
+
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
@@ -106,6 +112,9 @@ class DeliveryAddress extends React.Component<any, any> {
 
 
   setDeliveryAddressState(e: any){
+
+      this.setState({state: e.target.value});
+      this.props.setDeliveryAddressState(e);
 
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
@@ -163,16 +172,16 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-sm-3">
                         <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
-                          <option></option>
-                          <option>Los Angeles</option>
+                          <option>City</option>
+                          <option value="los_angeles">Los Angeles</option>
                         </select>
                       </div>
                     </div>
                     <div className="form-group">
                       <div className="col-sm-3">
                         <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
-                          <option></option>
-                          <option>CA</option>
+                          <option>State</option>
+                          <option value="">CA</option>
                         </select>
                       </div>
                     </div>

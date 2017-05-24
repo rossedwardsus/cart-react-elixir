@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 
 <head>
+
 <style>
-@media screen and (min-device-width: 100px) and (max-device-width: 420px){
+
+		@media screen and (min-width: 400px){
+		    .mobile {
+		        display:none !important;
+		        line-height: 1.5 !important;
+		        max-height: none !important;
+		    }
+		 }
 	
-		div[id=my-content]{ 
-			display: none !important; 
-			max-height:0
-			
-		}
-
-}
-
-	.mobile {
-	    display: none;
-	    font-size: 0;
-	    max-height: 0;
-	    line-height: 0;
-	    padding: 0;
-	}
-
-	@media (max-device-width: 420px) and (min-device-width: 100px) {
-	    .mobile {
-	        display:block !important;
-	        line-height: 1.5 !important;
-	        max-height: none !important;
-	    }
-	}
 </style>
 </head>
+
+
 
 <html lang="en">
 	<table bgcolor="#00FF00" width="100%">

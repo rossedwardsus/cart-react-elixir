@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function orderPayment(state:any = {card_number: "", expiry_month: "", expiry_year: "", cvc: ""}, action: any){
+export default function orderPayment(state:any = {name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", cvc: ""}, action: any){
 
   let delivery_address_updated = null;
 

@@ -106,21 +106,21 @@ class Contact extends React.Component<any, any> {
       
       }*/
 
-      this.setState({email: "this.input.value"});
+      this.setState({email: e.target.value});
       this.props.setContactEmail(e);
 
   }
 
   setContactEmailAgain(e: any){
 
-      this.setState({email: "this.input.value"});
+      this.setState({email_again: e.target.value});
       //this.props.setContactEmail(e);
 
   }
 
   setContactMobile(e: any){
 
-      this.setState({mobile: "this.input.value"});
+      this.setState({mobile: e.target.value});
       this.props.setContactMobile(e);
 
   }
@@ -139,7 +139,6 @@ class Contact extends React.Component<any, any> {
               </form>
               <form className="form-horizontal">
                 <div className="form-group">
-                
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
                         <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0}}/>
@@ -147,10 +146,13 @@ class Contact extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" value={this.state.email}  style={{borderRadius: 0}}/>
+                        <input type="text" onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" value={this.state.email_again}  style={{borderRadius: 0}}/>
                       </div>
                   </div>
-                
+                </div>
+              </form>
+              <form className="form-horizontal">
+                <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
                         <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile" value={this.state.mobile}  style={{borderRadius: 0}}/>

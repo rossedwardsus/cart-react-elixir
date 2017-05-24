@@ -239,7 +239,11 @@ defmodule Sconely.CompleteOrderResolver do
             #      |> redirect(to: user_path(conn, :index))
 
                     #working
-                    Sconely.CompleteOrderEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+            #        Sconely.CompleteOrderEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+            
+            #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+            
+
             #  {:error, :error}
              #     {:ok, %{status: "changeset error"}}
 

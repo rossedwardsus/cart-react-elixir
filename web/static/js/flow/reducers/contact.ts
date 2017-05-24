@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function contact(state:any = {email: "first", mobile: ""}, action: any){
+export default function contact(state:any = {email: "", mobile: ""}, action: any){
   switch (action.type) {
     case SET_CONTACT_EMAIL:
       //alert("CartState " + action.item_id);
@@ -28,18 +28,12 @@ export default function contact(state:any = {email: "first", mobile: ""}, action
 
       return Object.assign({}, state, {email: action.value, mobile: state.mobile});
 
-      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-      //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-    
-    case SET_CONTACT_MOBILE:
+     case SET_CONTACT_MOBILE:
       //alert("CartState " + action.item_id);
       console.log("mobile" + JSON.stringify(action.value));
 
       return Object.assign({}, state, {email: state.email, mobile: action.value});
 
-      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-      //return {order: {order_id: "", name: {first: , contact: {email: "", phone: ""}, delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
- 
   
     default:
       //alert();
