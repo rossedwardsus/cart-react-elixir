@@ -18,11 +18,24 @@
 
 
 <html lang="en">
-	<table bgcolor="#00FF00" width="100%">
+	<table bgcolor="" width="100%">
+		<tr><td width="25%"></td><td width="50%">Sconely.com</td></tr>
 		<tr><td>order processed from email <%= @key["order_contact_email"] %></td></tr>
 		<tr><td>pickup<%= @key["order_contact_mobile"] %></td></tr>
+		<tr><td>pickup<%= @key["order_first_name"] %></td></tr>
+		<tr><td>pickup<%= @key["order_last_name"] %></td></tr>
+		<tr><td>pickup<%= @key["order_delivery_address_street1"] %></td></tr>
+		<tr><td>pickup<%= @key["order_delivery_address_street2"] %></td></tr>
+		<tr><td>pickup<%= @key["order_delivery_address_city"] %></td></tr>
+		<tr><td>pickup<%= @key["order_delivery_address_state"] %></td></tr>
+		<tr><td>pickup<%= @key["order_delivery_address_zipcode"] %></td></tr>
 		<tr><td>items</td></tr>
 		<tr><td>total</td></tr>
+		<%= for key <- @key["order_cart_items"] do %>
+	    <tr><td>order items <%= key["item_id"] %></td></tr>
+		<% end %>
+		<tr><td>Instagram Link</td></tr>
+		<tr><td>Contact Us</td></tr>
 	</table>
 	<br>
 	<br>
