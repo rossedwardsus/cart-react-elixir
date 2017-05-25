@@ -21,7 +21,7 @@ defmodule Sconely.Order do
 		    struct
 		    |> cast(params, @required_fields, @optional_fields)
 		    #|> validate_required([:email])
-		    #|> validate_length(:email, min: 2)
+		    |> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)
 		    #contains
 		end

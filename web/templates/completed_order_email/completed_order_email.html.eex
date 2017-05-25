@@ -34,8 +34,21 @@
 		<%= for key <- @key["order_cart_items"] do %>
 	    <tr><td>order items <%= key["item_id"] %></td></tr>
 		<% end %>
-		<tr><td>Instagram Link</td></tr>
 		<tr><td>Contact Us</td></tr>
+		<tr><td>Thank you for your Sconely order! Or Thank you for your Sconely order, Ross!</td></tr>
+		<tr><td>If you have changes to the order or delivery address, contact us immediately at:</td></tr>
+		<tr><td>orders@sconely.com. We will contact you the day we bake and deliver your scones to let</td></tr>
+		<tr><td>you know they are on the way.</td></tr>
+		<tr><td>Order #: Order Date: May 23, 2017 Delivery date: May 27, 2017</td></tr>
+		<tr><td>Billed to </td></tr>
+		<tr><td>Julia Friedman</td></tr>
+		<tr><td>1512 Berkeley St Apt A</td></tr>
+		<tr><td>Santa Monica, CA 90404-3258</td></tr>
+		<tr><td>United States</td></tr>
+		<tr><td>T: 212-72</td></tr>
+		<tr><td>delivered to</td></tr>
+		<tr><td>total</td></tr>
+		<tr><td>Instagram Link</td></tr>
 	</table>
 	<br>
 	<br>

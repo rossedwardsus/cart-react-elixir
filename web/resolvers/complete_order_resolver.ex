@@ -4,6 +4,7 @@ defmodule Sconely.CompleteOrderResolver do
   alias Sconely.SconelySignatureOrderAdditionalItem
   #alias Sconely.MenuItem
   alias Sconely.Order
+  alias Ecto.Multi
 
   import Ecto.Query
 
@@ -232,6 +233,8 @@ defmodule Sconely.CompleteOrderResolver do
 
             #Repo.transaction(fn ->
             #commit transaction else rollback if payment error
+
+            Multi.new
 
             order_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
