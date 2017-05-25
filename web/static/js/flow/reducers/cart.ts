@@ -64,17 +64,21 @@ export default function cart_items(state:any = {cart_items: []}, action: any){
       
       })
 
+      //let item_index = state.cart_items.findIndex((item: any) => {
+          
+      //    return index;
+      
+      //})
+
+
       console.log("quantity" + JSON.stringify(item));
 
 
       return Object.assign({}, state, {
-        cart_items: state.cart_items.filter((item: any, index: any) => {
+        cart_items: state.cart_items.map((item: any, index: any) => {
           if (item.item_id === action.item_id) {
-
-              if(item.dozens > 2){
-
-                  item.dozens = item.dozens - 1;
-
+              if(item.quantity > 1){
+                  item.quantity = item.quantity - 1;
               }
           }
           return item

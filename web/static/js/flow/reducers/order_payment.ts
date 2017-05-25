@@ -1,4 +1,4 @@
-import { SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER } from '../constants/actionTypes.ts';
+import { SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_PAYMENT_EXPIRY_MONTH, SET_PAYMENT_EXPIRY_YEAR, SET_PAYMENT_SECURITY_CODE } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -28,22 +28,25 @@ export default function orderPayment(state:any = {name_on_card: "", card_number:
 
     case SET_PAYMENT_NAME_ON_CARD:
       
-      return Object.assign({}, state, {name_on_card: action.value});
-    
+      return Object.assign({}, state, {name_on_card: action.value, card_number: state.card_number, expiry_month: state.expiry_month, expiry_year: state.expiry_year})
 
     case SET_PAYMENT_CARD_NUMBER:
       
-      return Object.assign({}, state, {card_number: action.value});
+      return Object.assign({}, state, {name_on_card: state.name_on_card, card_number: action.value, expiry_month: state.expiry_month, expiry_year: state.expiry_year});
+   
+    case SET_PAYMENT_EXPIRY_MONTH:
 
-    //case SET_PAYMENT_EXPIRY_DATE_MONTH:
+      console.log("month");
       
-    //  return Object.assign({}, state, {expiry_date_month: action.value});
+      return Object.assign({}, state, {name_on_card: state.name_on_card, card_number: state.card_number, expiry_month: action.value, expiry_year: state.expiry_year});
     
-    //case SET_PAYMENT_EXPIRY_DATE_YEAR:
+    case SET_PAYMENT_EXPIRY_YEAR:
+
+      console.log("year");
       
-    //  return Object.assign({}, state, {expiry_date_year: action.value});
-    
-    //case SET_PAYMENT_CVC:
+      return Object.assign({}, state, {name_on_card: state.name_on_card, card_number: state.card_number, expiry_month: state.expiry_month, expiry_year: action.value});
+   
+    //case SET_PAYMENT_SECURITY_CODE:
       
     //  return Object.assign({}, state, {cvc: action.value});
     

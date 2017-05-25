@@ -27158,7 +27158,8 @@ webpackJsonp([0],[
 	exports.SET_CONTACT_MOBILE = 'SET_CONTACT_MOBILE';
 	exports.SET_PAYMENT_NAME_ON_CARD = 'SET_PAYMENT_NAME_ON_CARD';
 	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
-	exports.SET_PAYMENT_EXPIRY_DATE = 'SET_PAYMENT_EXPIRY_DATE';
+	exports.SET_PAYMENT_EXPIRY_MONTH = 'SET_PAYMENT_EXPIRY_MONTH';
+	exports.SET_PAYMENT_EXPIRY_YEAR = 'SET_PAYMENT_EXPIRY_YEAR';
 	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
 	exports.CART_VALIDATED = 'CART_VALIDATED';
 	exports.CART_INVALIDATED = 'CART_INVALIDATED';
@@ -28220,6 +28221,7 @@ webpackJsonp([0],[
 	        value: function selectedItemQuantity(e) {
 	            console.log("selected_item quantity " + e.target.value);
 	            this.setState({ selected_item_quantity: e.target.value });
+	            this.setState({ add_cart_item_button_classname: "btn btn-default" });
 	            //set add cart button == active
 	            //this.set
 	        }
@@ -28280,13 +28282,9 @@ webpackJsonp([0],[
 	                    }, onMouseLeave: function onMouseLeave() {
 	                        return _this2.onMouseLeave(item.item_id);
 	                    }, src: "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("div", { style: { fontSize: 13 } }, React.createElement("b", null, item.title), " / ", item.description), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3", style: { height: 35, paddingTop: 10 } }, React.createElement("input", { type: "radio", name: "optradio", value: "regular", onChange: function onChange(value) {
-	                    return _this3.selectedItemType(value);
-	                } }), " 1 Dz $60"), React.createElement("div", { className: "col-md-3", style: { height: 35, paddingTop: 10 } }, React.createElement("input", { type: "radio", name: "optradio", value: "mini", onChange: function onChange(value) {
-	                    return _this3.selectedItemType(value);
-	                } }), " 2 Dz Mini $54"), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: function onChange(e) {
+	            }.bind(this)), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: function onChange(e) {
 	                    return _this3.selectedItemQuantity(e);
-	                }, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                }, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"), React.createElement("option", { value: "3" }, "3"), React.createElement("option", { value: "4" }, "4"), React.createElement("option", { value: "5" }, "5"), React.createElement("option", { value: "6" }, "6"), React.createElement("option", { value: "7" }, "7"), React.createElement("option", { value: "8" }, "8"), React.createElement("option", { value: "9" }, "9"), React.createElement("option", { value: "10" }, "10"), React.createElement("option", { value: "11" }, "11"), React.createElement("option", { value: "12" }, "12"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                    return _this3.addCartItem();
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")))))))));
 	        }
@@ -29507,6 +29505,7 @@ webpackJsonp([0],[
 	var order_delivery_address_ts_1 = __webpack_require__(936);
 	var order_name_ts_1 = __webpack_require__(937);
 	var order_delivery_datetime_ts_1 = __webpack_require__(938);
+	var cart_ts_1 = __webpack_require__(924);
 	var order_payment_ts_1 = __webpack_require__(939);
 	var order_contact_ts_1 = __webpack_require__(940);
 	var delivery_address_tsx_1 = __webpack_require__(941);
@@ -29997,8 +29996,22 @@ webpackJsonp([0],[
 	                    return _this2.props.setContactEmail(e);
 	                }, setContactMobile: function setContactMobile(e) {
 	                    return _this2.props.setContactMobile(e);
-	                } }), React.createElement(order_cart_tsx_1.default, null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	                } }), React.createElement(order_cart_tsx_1.default, { decreaseCartItemQuantity: function decreaseCartItemQuantity(e) {
+	                    return _this2.props.decreaseCartItemQuantity(e);
+	                }, increaseCartItemQuantity: function increaseCartItemQuantity(e) {
+	                    return _this2.props.increaseCartItemQuantity(e);
+	                }, removeCartItem: function removeCartItem(e) {
+	                    return _this2.props.removeCartItemQuantity(e);
+	                }, cart_items: this.props.order_cart_items }), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
+	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
+	                    return _this2.props.setPaymentCardNumber(e);
+	                }, setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
+	                    return _this2.props.setPaymentExpiryMonth(e);
+	                }, setPaymentExpiryYear: function setPaymentExpiryYear(e) {
+	                    return _this2.props.setPaymentExpiryYear(e);
+	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	                    return _this2.props.setPaymentSecurityCode(e);
 	                } }), this.props.cart_validations.cart_validated == true && React.createElement("button", { className: this.state.button_complete_order_classname, onClick: function onClick() {
 	                    return _this2.goToPaymentMethod();
 	                } }, "Complete Order"), React.createElement("br", null), React.createElement(checkout_button_tsx_1.default, { order: this.props.order, order_delivery_address: this.props.order_delivery_address, order_datetime: this.props.order_datetime, order_contact: this.props.order_contact, order_name: this.props.order_name, order_payment_method: this.props.order_payment_method, cartValidated: this.props.cart_validations.cart_validated })), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
@@ -30079,18 +30092,27 @@ webpackJsonp([0],[
 	        deliveryAddressInvalidated: function deliveryAddressInvalidated() {
 	            dispatch(cart_validations_ts_1.deliveryAddressInvalidated());
 	        },
+	        increaseCartItemQuantity: function increaseCartItemQuantity(e) {
+	            dispatch(cart_ts_1.increaseCartItemQuantity(e));
+	        },
+	        decreaseCartItemQuantity: function decreaseCartItemQuantity(e) {
+	            dispatch(cart_ts_1.decreaseCartItemQuantity(e));
+	        },
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
 	        },
-	        //setPaymentCardNumber: (e: any) => {
-	        //  dispatch(setPaymentCardNumber(e.target.value))
-	        //},
-	        //setPaymentExpiryDate: (e: any) => {
-	        //  dispatch(setPaymentExpiryDate(e.target.value))
-	        //},
-	        //setPaymentSecurityCode: (e: any) => {
-	        //  dispatch(setPaymentSecurityCode(e.target.value))
-	        //},
+	        setPaymentCardNumber: function setPaymentCardNumber(e) {
+	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value));
+	        },
+	        setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
+	            dispatch(order_payment_ts_1.setPaymentExpiryMonth(e.target.value));
+	        },
+	        setPaymentExpiryYear: function setPaymentExpiryYear(e) {
+	            dispatch(order_payment_ts_1.setPaymentExpiryYear(e.target.value));
+	        },
+	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value));
+	        },
 	        //complete order thunk
 	        completeOrder: function completeOrder() {
 	            /*$.ajax({
@@ -30248,14 +30270,22 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setPaymentCardNumber = setPaymentCardNumber;
-	function setPaymentExpiryDate(value) {
-	    console.log("addCartItem from redux" + value);
+	function setPaymentExpiryMonth(value) {
+	    console.log("expiry month" + value);
 	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_DATE,
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_MONTH,
 	        value: value
 	    };
 	}
-	exports.setPaymentExpiryDate = setPaymentExpiryDate;
+	exports.setPaymentExpiryMonth = setPaymentExpiryMonth;
+	function setPaymentExpiryYear(value) {
+	    console.log("expiry year" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_YEAR,
+	        value: value
+	    };
+	}
+	exports.setPaymentExpiryYear = setPaymentExpiryYear;
 	function setPaymentSecurityCode(value) {
 	    console.log("addCartItem from redux");
 	    return {
@@ -30381,6 +30411,8 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setDeliveryAddressZipcode",
 	        value: function setDeliveryAddressZipcode(e) {
+	            this.setState({ zipcode: e.target.value });
+	            this.props.setDeliveryAddressZipcode(e);
 	            //this.props.setDeliveryAddressZipcode(e);
 	            //this.props.setdeliveryAddressValidated();
 	        }
@@ -30399,9 +30431,9 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryAddressCity(value);
 	                } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles")))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryAddressState(value);
-	                } }, React.createElement("option", null, "State"), React.createElement("option", { value: "" }, "CA")))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA")))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryAddressZipcode(value);
-	                } }, React.createElement("option", null), React.createElement("option", null, "90025"))))));
+	                } }, React.createElement("option", null, "Zipcode"), React.createElement("option", { value: "90025" }, "90025"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -31653,14 +31685,18 @@ webpackJsonp([0],[
 	                    if (item.item_type === "mini") {
 	                        var total_amount = item.quantity * 24;
 	                        var item_cost = total_amount * 6.00;
-	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "item_title Mini"), React.createElement("div", { className: "col-md-1" }, total_amount), React.createElement("div", { className: "col-md-1" }, "$", item_cost, ".00"), React.createElement("div", { className: "col-md-1" }, "X"), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "item_title Mini"), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.increaseCartItemQuantity(item.item_id);
 	                            } }, "+")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.decreaseCartItemQuantity(item.item_id);
-	                            } }, "-")))));
+	                            } }, "-")), React.createElement("div", { className: "col-md-1" }, total_amount), React.createElement("div", { className: "col-md-1" }, "$", item_cost, ".00"), React.createElement("div", { className: "col-md-1" }, "X"))));
 	                    } else {
 	                        var _total_amount = item.quantity * 12;
-	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-1" }, "item_title"), React.createElement("div", { className: "col-md-1" }, _total_amount), React.createElement("div", { className: "col-md-1" }, "cost"), React.createElement("div", { className: "col-md-1" }, "X"))));
+	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-1" }, "item_title"), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.increaseCartItemQuantity(item.item_id);
+	                            } }, "+")), React.createElement("div", { className: "col-md-1" }, _total_amount), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.decreaseCartItemQuantity(item.item_id);
+	                            } }, "-")), React.createElement("div", { className: "col-md-1" }, "cost"), React.createElement("div", { className: "col-md-1" }, "X"))));
 	                    }
 	                }.bind(this));
 	            }
@@ -31702,7 +31738,7 @@ webpackJsonp([0],[
 	};
 	var OrderCart1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderCart);
 	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-	exports.default = OrderCart1;
+	exports.default = OrderCart;
 
 /***/ }),
 /* 1069 */
@@ -31772,6 +31808,8 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setPaymentNameOnCard",
 	        value: function setPaymentNameOnCard(e) {
+	            this.setState({ name_on_card: e.target.value });
+	            this.props.setPaymentNameOnCard(e);
 	            //this.props.setNameOnCard();
 	            //this.props.validatePayment();
 	        }
@@ -31781,9 +31819,10 @@ webpackJsonp([0],[
 	            //Amex Card: ^3[47][0-9]{13}$
 	            //if(/^3[47][0-9]{13}$/.test(e.target.value)){
 	            console.log("amex");
-	            this.props.setPaymentCardNumber(e.target.value);
 	            this.setState({ card_number_border_color: "red" });
 	            this.setState({ card_type: "AMEX" });
+	            this.setState({ card_number: e.target.value });
+	            this.props.setPaymentCardNumber(e);
 	            //
 	            //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
 	            //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
@@ -31796,23 +31835,27 @@ webpackJsonp([0],[
 	            //}
 	        }
 	    }, {
-	        key: "setPaymentExpiryDateMonth",
-	        value: function setPaymentExpiryDateMonth(e) {
+	        key: "setPaymentExpiryMonth",
+	        value: function setPaymentExpiryMonth(e) {
 	            console.log(e.target.value);
 	            //01-12, only numbers
 	            if (/^[0-9]/.test(e.target.value)) {
 	                console.log("ok month");
 	                this.setState({ expiry_month_border_color: "grey" });
+	                this.setState({ expiry_month: e.target.value });
+	                this.props.setPaymentExpiryMonth(e);
 	            }
 	        }
 	    }, {
-	        key: "setPaymentExpiryDateYear",
-	        value: function setPaymentExpiryDateYear(e) {
+	        key: "setPaymentExpiryYear",
+	        value: function setPaymentExpiryYear(e) {
 	            //2017-only numbers
 	            //01-12, only numbers
 	            if (/^[0-9]/.test(e.target.value)) {
 	                console.log("ok year");
 	                this.setState({ expiry_year_border_color: "grey" });
+	                this.setState({ expiry_year: e.target.value });
+	                this.props.setPaymentExpiryYear(e);
 	            }
 	        }
 	    }, {
@@ -31835,11 +31878,11 @@ webpackJsonp([0],[
 	                } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
 	                }, style: { borderColor: this.state.card_number_border_colors, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_type))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onChange: function onChange(e) {
-	                    return _this2.setPaymentExpiryDateMonth(e);
+	                    return _this2.setPaymentExpiryMonth(e);
 	                }, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onChange: function onChange(e) {
-	                    return _this2.setPaymentExpiryDateMonth(e);
+	                    return _this2.setPaymentExpiryYear(e);
 	                }, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: function onChange(e) {
-	                    return _this2.setPaymentSecurityCode(e);
+	                    return _this2.setPaymentExpiryYear(e);
 	                }, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
 	        }
 	    }], [{
@@ -37460,14 +37503,16 @@ webpackJsonp([0],[
 	    var delivery_address_updated = null;
 	    switch (action.type) {
 	        case actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD:
-	            return Object.assign({}, state, { name_on_card: action.value });
+	            return Object.assign({}, state, { name_on_card: action.value, card_number: state.card_number, expiry_month: state.expiry_month, expiry_year: state.expiry_year });
 	        case actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER:
-	            return Object.assign({}, state, { card_number: action.value });
-	        //case SET_PAYMENT_EXPIRY_DATE_MONTH:
-	        //  return Object.assign({}, state, {expiry_date_month: action.value});
-	        //case SET_PAYMENT_EXPIRY_DATE_YEAR:
-	        //  return Object.assign({}, state, {expiry_date_year: action.value});
-	        //case SET_PAYMENT_CVC:
+	            return Object.assign({}, state, { name_on_card: state.name_on_card, card_number: action.value, expiry_month: state.expiry_month, expiry_year: state.expiry_year });
+	        case actionTypes_ts_1.SET_PAYMENT_EXPIRY_MONTH:
+	            console.log("month");
+	            return Object.assign({}, state, { name_on_card: state.name_on_card, card_number: state.card_number, expiry_month: action.value, expiry_year: state.expiry_year });
+	        case actionTypes_ts_1.SET_PAYMENT_EXPIRY_YEAR:
+	            console.log("year");
+	            return Object.assign({}, state, { name_on_card: state.name_on_card, card_number: state.card_number, expiry_month: state.expiry_month, expiry_year: action.value });
+	        //case SET_PAYMENT_SECURITY_CODE:
 	        //  return Object.assign({}, state, {cvc: action.value});
 	        default:
 	            //alert();
@@ -37667,12 +37712,15 @@ webpackJsonp([0],[
 	            item = state.cart_items.find(function (item, index) {
 	                return item.item_id === action.item_id;
 	            });
+	            //let item_index = state.cart_items.findIndex((item: any) => {
+	            //    return index;
+	            //})
 	            console.log("quantity" + JSON.stringify(item));
 	            return Object.assign({}, state, {
-	                cart_items: state.cart_items.filter(function (item, index) {
+	                cart_items: state.cart_items.map(function (item, index) {
 	                    if (item.item_id === action.item_id) {
-	                        if (item.dozens > 2) {
-	                            item.dozens = item.dozens - 1;
+	                        if (item.quantity > 1) {
+	                            item.quantity = item.quantity - 1;
 	                        }
 	                    }
 	                    return item;
@@ -37825,7 +37873,7 @@ webpackJsonp([0],[
 	  cart: [],
 	
 	}*/
-	function deliveryAdress() {
+	function deliveryAddress() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { street1: "", street2: "", city: "", state: "", zipcode: "" };
 	    var action = arguments[1];
 	
@@ -37842,14 +37890,21 @@ webpackJsonp([0],[
 	            delivery_address_updated = { street1: state.street1, street2: action.value, city: state.city, state: state.state, zipcode: state.zipcode };
 	            return Object.assign({}, state, delivery_address_updated);
 	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY:
-	            return Object.assign({}, state, { delivery_address: delivery_address_updated });
+	            delivery_address_updated = { street1: state.street1, street2: state.street2, city: action.value, state: state.state, zipcode: state.zipcode };
+	            return Object.assign({}, state, delivery_address_updated);
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_STATE:
+	            delivery_address_updated = { street1: state.street1, street2: state.street2, city: state.city, state: action.value, zipcode: state.zipcode };
+	            return Object.assign({}, state, delivery_address_updated);
+	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_ZIPCODE:
+	            delivery_address_updated = { street1: state.street1, street2: state.street2, city: state.city, state: state.state, zipcode: action.value };
+	            return Object.assign({}, state, delivery_address_updated);
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
 	            return state;
 	    }
 	}
-	exports.default = deliveryAdress;
+	exports.default = deliveryAddress;
 	;
 
 /***/ }),
@@ -37987,26 +38042,6 @@ webpackJsonp([0],[
 	                return address;
 	            });
 	            return Object.assign({}, state, { addresses: _delivery_address_updated });
-	        case actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY:
-	            //alert("CartState " + action.item_id);
-	            //alert("add cart item " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            _delivery_address_updated = { delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" };
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            return Object.assign({}, state, { delivery_address: _delivery_address_updated });
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})

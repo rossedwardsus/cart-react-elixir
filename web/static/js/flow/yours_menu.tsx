@@ -118,6 +118,8 @@ class PublicMenu extends React.Component<any, any> {
     console.log("selected_item quantity " + e.target.value);
 
     this.setState({selected_item_quantity: e.target.value});
+    this.setState({add_cart_item_button_classname: "btn btn-default"});
+      
     //set add cart button == active
     //this.set
 
@@ -270,12 +272,6 @@ class PublicMenu extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
-                              <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="regular" onChange={(value: any) => this.selectedItemType(value)}/> 1 Dz $60
-                              </div>
-                              <div className="col-md-3" style={{height: 35, paddingTop: 10}}>
-                                <input type="radio" name="optradio" value="mini" onChange={(value: any) => this.selectedItemType(value)}/> 2 Dz Mini $54
-                              </div>
                               <div className="col-md-3">
                                 <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
                                   <option value="">Select Quantity</option> 
@@ -283,6 +279,14 @@ class PublicMenu extends React.Component<any, any> {
                                   <option value="2">2</option>
                                   <option value="3">3</option>
                                   <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                  <option value="9">9</option>
+                                  <option value="10">10</option>
+                                  <option value="11">11</option>
+                                  <option value="12">12</option>
                                 </select>
                               </div>
                               <div className="col-md-3">

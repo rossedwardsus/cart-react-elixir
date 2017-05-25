@@ -598,11 +598,13 @@ class OrderCart extends React.Component<any, any> {
                                       <form className="form-horizontal" style={{border: 1}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-4">item_title Mini</div>
+                                            <div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
+                                            <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                             <div className="col-md-1">{total_amount}</div>
                                             <div className="col-md-1">${item_cost}.00</div>
                                             <div className="col-md-1">X</div>
-                                            <div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
-                                            <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
+                                            
+                                           
                                           </div>
                                       </form>
                                 </div>)
@@ -615,7 +617,9 @@ class OrderCart extends React.Component<any, any> {
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-1">item_title</div>
+                                            <div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
                                             <div className="col-md-1">{total_amount}</div>
+                                            <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                             <div className="col-md-1">cost</div>
                                             <div className="col-md-1">X</div>
                                           </div>
@@ -707,5 +711,5 @@ const OrderCart1 = connect(
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderCart1;
+export default OrderCart;
 

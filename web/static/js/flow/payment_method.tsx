@@ -90,6 +90,9 @@ class PaymentMethod extends React.Component<any, any> {
 
   setPaymentNameOnCard(e: any){
 
+      this.setState({name_on_card: e.target.value})
+      this.props.setPaymentNameOnCard(e);
+      
       //this.props.setNameOnCard();
       //this.props.validatePayment();
 
@@ -101,9 +104,11 @@ class PaymentMethod extends React.Component<any, any> {
       //if(/^3[47][0-9]{13}$/.test(e.target.value)){
 
           console.log("amex");
-          this.props.setPaymentCardNumber(e.target.value);
           this.setState({card_number_border_color: "red"})
           this.setState({card_type: "AMEX"});
+          this.setState({card_number: e.target.value});
+          this.props.setPaymentCardNumber(e);
+          
 
       //
       //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
@@ -120,7 +125,7 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
-  setPaymentExpiryDateMonth(e: any){
+  setPaymentExpiryMonth(e: any){
 
       console.log(e.target.value);
 
@@ -128,13 +133,15 @@ class PaymentMethod extends React.Component<any, any> {
       if(/^[0-9]/.test(e.target.value)){
 
           console.log("ok month");
-          this.setState({expiry_month_border_color: "grey"})
+          this.setState({expiry_month_border_color: "grey"});
+          this.setState({expiry_month: e.target.value});
+          this.props.setPaymentExpiryMonth(e);
 
       }
 
   }
 
-  setPaymentExpiryDateYear(e: any){
+  setPaymentExpiryYear(e: any){
 
       //2017-only numbers
       //01-12, only numbers
@@ -142,7 +149,8 @@ class PaymentMethod extends React.Component<any, any> {
 
           console.log("ok year");
           this.setState({expiry_year_border_color: "grey"})
-
+          this.setState({expiry_year: e.target.value});
+          this.props.setPaymentExpiryYear(e);
 
       }
 
@@ -198,15 +206,15 @@ class PaymentMethod extends React.Component<any, any> {
                               <div className="form-group">
                                 <div className="col-md-2">
                               
-                                  <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                  <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryMonth(e)} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                                 </div>
                                 <div className="col-md-2">
                               
-                                  <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryDateMonth(e)} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                  <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                                 </div>
                                 <div className="col-md-2">
                               
-                                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={(e) => this.setPaymentSecurityCode(e)} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                                 </div>
                               </div>
                             </form>

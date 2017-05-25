@@ -56,10 +56,10 @@ defmodule Sconely.Schema do
 
   	
   	field :complete_order, type: :sconely_yours_order do
-  		arg :first_name, :string
-  		#arg :last_name, :string
-  		#arg :contact_email, :string
-  		#arg :contact_phone, :string
+  		arg :order_first_name, :string
+  		arg :order_last_name, :string
+  		arg :order_contact_email, :string
+  		arg :order_contact_mobile, :string
     	#arg :street1, :string
     	#arg :street2, :string
     	#arg :city, :string

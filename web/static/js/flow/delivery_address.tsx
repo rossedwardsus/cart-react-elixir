@@ -123,6 +123,9 @@ class DeliveryAddress extends React.Component<any, any> {
 
   setDeliveryAddressZipcode(e: any){
 
+      this.setState({zipcode: e.target.value});
+      this.props.setDeliveryAddressZipcode(e);
+
       //this.props.setDeliveryAddressZipcode(e);
       //this.props.setdeliveryAddressValidated();
 
@@ -181,15 +184,15 @@ class DeliveryAddress extends React.Component<any, any> {
                       <div className="col-sm-3">
                         <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
                           <option>State</option>
-                          <option value="">CA</option>
+                          <option value="ca">CA</option>
                         </select>
                       </div>
                     </div>
                     <div className="form-group">
                       <div className="col-sm-3">
                         <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
-                          <option></option>
-                          <option>90025</option>
+                          <option>Zipcode</option>
+                          <option value="90025">90025</option>
                         </select>
                       </div>
                     </div>

@@ -19,8 +19,8 @@
 
 <html lang="en">
 	<table bgcolor="#00FF00" width="100%">
-		<tr><td>order processed from email <%= @key["email"] %></td></tr>
-		<tr><td>pickup</td></tr>
+		<tr><td>order processed from email <%= @key["order_contact_email"] %></td></tr>
+		<tr><td>pickup<%= @key["order_contact_mobile"] %></td></tr>
 		<tr><td>items</td></tr>
 		<tr><td>total</td></tr>
 	</table>

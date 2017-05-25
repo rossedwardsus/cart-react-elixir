@@ -14,11 +14,12 @@ import { connect } from 'react-redux';
 
 import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated} from './actions/cart_validations.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
-import {completeOrder} from './actions/complete_order.ts';
 import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
+import {increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
+import {completeOrder} from './actions/complete_order.ts';
 
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
@@ -793,9 +794,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             
                             <Contact setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
-                            <OrderCart />
+                            <OrderCart decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItemQuantity(e)} cart_items={this.props.order_cart_items}/>
 
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)}/>
+                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
 
                             {this.props.cart_validations.cart_validated == true &&
                             <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Complete Order</button>}
@@ -896,18 +897,27 @@ function mapDispatchToProps(dispatch: any) {
     deliveryAddressInvalidated: () => {
       dispatch(deliveryAddressInvalidated())
     },
+    increaseCartItemQuantity: (e: any) => {
+      dispatch(increaseCartItemQuantity(e));
+    },
+    decreaseCartItemQuantity: (e: any) => {
+      dispatch(decreaseCartItemQuantity(e));
+    },
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value))
     },
-    //setPaymentCardNumber: (e: any) => {
-    //  dispatch(setPaymentCardNumber(e.target.value))
-    //},
-    //setPaymentExpiryDate: (e: any) => {
-    //  dispatch(setPaymentExpiryDate(e.target.value))
-    //},
-    //setPaymentSecurityCode: (e: any) => {
-    //  dispatch(setPaymentSecurityCode(e.target.value))
-    //},
+    setPaymentCardNumber: (e: any) => {
+      dispatch(setPaymentCardNumber(e.target.value))
+    },
+    setPaymentExpiryMonth: (e: any) => {
+      dispatch(setPaymentExpiryMonth(e.target.value))
+    },
+    setPaymentExpiryYear: (e: any) => {
+      dispatch(setPaymentExpiryYear(e.target.value))
+    },
+    setPaymentSecurityCode: (e: any) => {
+      dispatch(setPaymentSecurityCode(e.target.value))
+    },
     
     //complete order thunk
 

@@ -70,11 +70,11 @@ defmodule Sconely.Schema.Types do
 
   object :sconely_yours_order do
   	#field :order_id, :string
-    field :first_name, :string
-    #field :last_name, :string
+    field :order_first_name, :string
+    field :order_last_name, :string
     #field :company_name, :string
-    #field :email, :string
-    #field :phone, :string
+    field :order_contact_email, :string
+    field :order_contact_mobile, :string
     #field :street1, :string
     #field :street2, :string
     #field :city, :string

@@ -160,7 +160,9 @@ defmodule Sconely.CompleteOrderResolver do
 
   def complete_yours_order(args, _info) do
 
-    IO.inspect(args)
+    #IO.inspect(args)
+    IO.inspect(args[:order_contact_email])
+    IO.inspect(Map.fetch(args, :order_contact_email))
 
     #Poison.Parser.parse!(args)
 
@@ -212,7 +214,7 @@ defmodule Sconely.CompleteOrderResolver do
         description: "1000 Scones"
       ]
   
-    IO.inspect(Stripe.Charges.create(51, params))
+    #IO.inspect(Stripe.Charges.create(51, params))
 
     charge = Stripe.Charges.create(51, params)
                     
@@ -229,6 +231,7 @@ defmodule Sconely.CompleteOrderResolver do
             order_id = UUID.uuid1()
 
             #Repo.transaction(fn ->
+            #commit transaction else rollback if payment error
 
             order_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
@@ -239,7 +242,7 @@ defmodule Sconely.CompleteOrderResolver do
             #      |> redirect(to: user_path(conn, :index))
 
                     #working
-            #        Sconely.CompleteOrderEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+                    Sconely.CompleteOrderEmail.welcome_email(%{"order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_id" => order_id, }) |> SconeHomeElixir.Mailer.deliver_now
             
             #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
             

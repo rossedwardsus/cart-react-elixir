@@ -49,6 +49,23 @@ export default function deliveryAddress(state:any = {street1: "", street2: "", c
         return Object.assign({}, state, delivery_address_updated)
 
 
+    case SET_DELIVERY_ADDRESS_STATE:
+
+        delivery_address_updated = {street1: state.street1, street2: state.street2, city: state.city, state: action.value, zipcode: state.zipcode};
+
+        return Object.assign({}, state, delivery_address_updated)
+
+
+    case SET_DELIVERY_ADDRESS_ZIPCODE:
+
+        delivery_address_updated = {street1: state.street1, street2: state.street2, city: state.city, state: state.state, zipcode: action.value};
+
+        return Object.assign({}, state, delivery_address_updated)
+
+
+
+
+
     default:
       //alert();
       //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
