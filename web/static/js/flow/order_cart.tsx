@@ -589,6 +589,8 @@ class OrderCart extends React.Component<any, any> {
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
                       //let item_title = result.get("title");
 
+                      //if order type == social
+
                       if(item.item_type === "mini"){
 
                           let total_amount = item.quantity * 24;
@@ -598,7 +600,7 @@ class OrderCart extends React.Component<any, any> {
                                       <form className="form-horizontal" style={{border: 1}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-4">item_title Mini</div>
-                                            <div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
+                                            <div style={{fontSize: 10}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
                                             <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                             <div className="col-md-1">{total_amount}</div>
                                             <div className="col-md-1">${item_cost}.00</div>
@@ -617,7 +619,7 @@ class OrderCart extends React.Component<any, any> {
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-1">item_title</div>
-                                            <div className="col-md-1"><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
+                                            <div className="col-md-1" style={{fontSize: 20}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
                                             <div className="col-md-1">{total_amount}</div>
                                             <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                             <div className="col-md-1">cost</div>
@@ -640,7 +642,7 @@ class OrderCart extends React.Component<any, any> {
                <form className="form-horizontal" style={{border: 1}}>    
                     <div className="form-group" style={{border: 1}}>
                       <div className="col-md-2"></div>
-                      <div className="col-md-2">Total Items</div>
+                      <div className="col-md-2">Number of Scones</div>
                       <div className="col-md-2">{item_count}</div>
                       <div className="col-md-2">$</div>
                     </div>

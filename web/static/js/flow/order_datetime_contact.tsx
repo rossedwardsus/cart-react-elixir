@@ -798,10 +798,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
 
-                            {this.props.cart_validations.cart_validated == true &&
-                            <button className={this.state.button_complete_order_classname}  onClick={() => this.goToPaymentMethod()}>Old Complete Order</button>}
-                            <br/>
-
                             <CheckoutButton order={this.props.order} order_delivery_address={this.props.order_delivery_address} 
                             order_datetime={this.props.order_datetime}
                             order_contact={this.props.order_contact} order_name={this.props.order_name}  

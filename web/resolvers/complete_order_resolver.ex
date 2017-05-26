@@ -4,7 +4,7 @@ defmodule Sconely.CompleteOrderResolver do
   alias Sconely.SconelySignatureOrderAdditionalItem
   #alias Sconely.MenuItem
   alias Sconely.Order
-  alias Ecto.Multi
+  #alias Ecto.Multi
 
   import Ecto.Query
 
@@ -234,7 +234,7 @@ defmodule Sconely.CompleteOrderResolver do
             #Repo.transaction(fn ->
             #commit transaction else rollback if payment error
 
-            Multi.new
+            #Multi.new
 
             order_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
@@ -243,6 +243,16 @@ defmodule Sconely.CompleteOrderResolver do
             #    conn
             #      |> put_flash(:info, "User created successfully.")
             #      |> redirect(to: user_path(conn, :index))
+
+                    #def from_timestamp(timestamp) do
+                    #   timestamp
+                    #   |> +(@epoch)
+                    #   |> :calendar.gregorian_seconds_to_datetime
+                    # end
+
+                    #epoch = {{1970, 1, 1}, {0, 0, 0}}
+                    #@epoch :calendar.datetime_to_gregorian_seconds(epoch)
+
 
                     #working
                     Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_cart_items" => [%{"item_id" => 1, "quantity" => 1}]}) |> SconeHomeElixir.Mailer.deliver_now

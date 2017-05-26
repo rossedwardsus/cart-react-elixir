@@ -19,8 +19,12 @@
 
 <html lang="en">
 	<table bgcolor="" width="100%">
-		<tr><td width="25%"></td><td width="50%">Sconely.com</td></tr>
-		<tr><td>order processed from email <%= @key["order_contact_email"] %></td></tr>
+		<tr><td width="25%"></td><td width="50%">Sconely.com-<img src="http://sconely.herokuapp.com/images/logo/Sconely_color_web_300_space3.jpg"></img></td></tr>
+		<tr><td width="25%"></td><td>Thank you for your Sconely order! Or Thank you for your Sconely order, Ross!</td></tr>
+		<tr><td width="25%"></td><td>If you have changes to the order or delivery address, contact us immediately at:</td></tr>
+		<tr><td width="25%"></td><td>orders@sconely.com. We will contact you the day we bake and deliver your scones to let</td></tr>
+		<tr><td>you know they are on the way.</td></tr>
+		<tr><td><%= @key["order_contact_email"] %></td></tr>
 		<tr><td>pickup<%= @key["order_contact_mobile"] %></td></tr>
 		<tr><td>pickup<%= @key["order_first_name"] %></td></tr>
 		<tr><td>pickup<%= @key["order_last_name"] %></td></tr>
@@ -34,21 +38,14 @@
 		<%= for key <- @key["order_cart_items"] do %>
 	    <tr><td>order items <%= key["item_id"] %></td></tr>
 		<% end %>
-		<tr><td>Contact Us</td></tr>
-		<tr><td>Thank you for your Sconely order! Or Thank you for your Sconely order, Ross!</td></tr>
-		<tr><td>If you have changes to the order or delivery address, contact us immediately at:</td></tr>
-		<tr><td>orders@sconely.com. We will contact you the day we bake and deliver your scones to let</td></tr>
-		<tr><td>you know they are on the way.</td></tr>
+		<tr><td>Contact Us orders@orders.com</td></tr>
 		<tr><td>Order #: Order Date: May 23, 2017 Delivery date: May 27, 2017</td></tr>
-		<tr><td>Billed to </td></tr>
-		<tr><td>Julia Friedman</td></tr>
-		<tr><td>1512 Berkeley St Apt A</td></tr>
-		<tr><td>Santa Monica, CA 90404-3258</td></tr>
-		<tr><td>United States</td></tr>
-		<tr><td>T: 212-72</td></tr>
+		<tr><td>Billed to card number</td></tr>
 		<tr><td>delivered to</td></tr>
 		<tr><td>total</td></tr>
-		<tr><td>Instagram Link</td></tr>
+		<tr><td></td><tr>
+		<tr><td>Sconely.com</td></tr>
+		<tr><td width="25%"></td><td><a href="http://instagram.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Instagram.jpg"></img></a></td></tr>
 	</table>
 	<br>
 	<br>
