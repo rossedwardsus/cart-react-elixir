@@ -27670,12 +27670,17 @@ webpackJsonp([0],[
 	                console.log("order " + JSON.stringify(this.props.cart));
 	                this.props.cart.cart_items.map(function (item) {
 	                    console.log("item " + JSON.stringify(item));
-	                    if (item.item_type == "mini") {
-	                        total_cost = total_cost + 6 * item.quantity * 24;
-	                        item_count = item_count + 24 * item.quantity;
+	                    if (this.props.order.order_type == "sconely_yours") {
+	                        total_cost = total_cost + 1 * item.quantity;
+	                        item_count = item_count + item.quantity;
 	                    } else {
-	                        total_cost = total_cost + 5 * item.quantity * 12;
-	                        item_count = item_count + 12 * item.quantity;
+	                        if (item.item_type == "mini") {
+	                            total_cost = total_cost + 6 * item.quantity * 24;
+	                            item_count = item_count + 24 * item.quantity;
+	                        } else {
+	                            total_cost = total_cost + 5 * item.quantity * 12;
+	                            item_count = item_count + 12 * item.quantity;
+	                        }
 	                    }
 	                });
 	                //alert(total_cost);
