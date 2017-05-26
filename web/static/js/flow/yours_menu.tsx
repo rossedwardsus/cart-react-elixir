@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {cartValidated} from './actions/cart_validations.ts';
 import {addCartItem} from './actions/cart.ts';
 import SidebarCart from './sidebar_cart.tsx';
+import {createOrder} from './actions/order.ts';
 
 
 //type Props = {
@@ -57,14 +58,15 @@ class PublicMenu extends React.Component<any, any> {
 
     //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
 
-    this.state.menu_items.map(function(value: any, index: any){
+    /*this.state.menu_items.map(function(value: any, index: any){
 
           //console.log(value.item_id);
           let image_src = "image_src_" + value.item_id;
           this.setState({[image_src]: value.image_id});
 
-    }.bind(this));
+    }.bind(this));*/
 
+    this.props.createOrder("sconely_yours");
 
   }
 
@@ -221,7 +223,7 @@ class PublicMenu extends React.Component<any, any> {
                             <Link to="/public/menu">Sconely Social</Link>
                             <br/>
                             <br/>
-                            <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+                            <SidebarCart order={this.props.order} cart={this.props.cart}/>
                             <br/>
                           </div>
                           <div className="hidden-xs col-md-9">
@@ -305,13 +307,14 @@ class PublicMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops " + JSON.stringify(state));
+  console.log("mapstatetoprops yours" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        //order: state.root.order
+        order: state.Order,
+        cart: state.cart
 
     //}
   }
@@ -324,8 +327,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (item_id: any, item_type: any, quantity: any) => {
       dispatch(addCartItem(item_id, item_type, quantity));
     },
-    cartValidated: () => {
-      dispatch(cartValidated());
+    createOrder: (order_type: any) => {
+      dispatch(createOrder(order_type));
     },
     //decreaseCartItemQuantity: () => {
     //  dispatch(decreaseCartItemQuantity(1));

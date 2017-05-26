@@ -227,7 +227,7 @@ class PublicMenu extends React.Component<any, any> {
                             <Link to="/public/menu">Sconely Social</Link>
                             <br/>
                             <br/>
-                            <SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+                            <SidebarCart order={this.props.order} cart={this.props.cart}/>
                             <br/>
                           </div>
                           <div className="hidden-xs col-md-9">
@@ -309,13 +309,14 @@ class PublicMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops " + JSON.stringify(state));
+  console.log("mapstatetoprops menu" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        //order: state.root.order
+        order: state.Order,
+        cart: state.cart
 
     //}
   }

@@ -56,7 +56,8 @@ defmodule Sconely.Schema do
 
   	
   	field :complete_order, type: :sconely_yours_order do
-  		arg :first_name, :string
+  		#arg :order_type, :string
+      arg :first_name, :string
   		arg :last_name, :string
   		arg :order_contact_email, :string
   		arg :order_contact_mobile, :string
@@ -65,7 +66,7 @@ defmodule Sconely.Schema do
     	arg :order_delivery_address_city, :string
     	arg :order_delivery_address_state, :string
       arg :order_delivery_address_zipcode, :string
-      #arg :date, :string
+      arg :date, :string
       #arg :time, :string
     	#arg :name_on_card, :string
     	#arg :card_number, :string

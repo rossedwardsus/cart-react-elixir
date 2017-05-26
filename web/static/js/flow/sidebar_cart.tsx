@@ -212,7 +212,8 @@ class SidebarCart extends React.Component<any, any> {
 
     let cart = "";
 
-    console.log("length order" + JSON.stringify(this.props.cart.cart_items));
+    console.log("length order" + JSON.stringify(this.props.cart));
+    console.log("order type" + JSON.stringify(this.props.order));
 
 
     if(this.props.cart.cart_items.length === 0){
@@ -221,21 +222,30 @@ class SidebarCart extends React.Component<any, any> {
 
     }else{
 
-        console.log("order " + JSON.stringify(this.props.cart.cart_items));
+        console.log("order " + JSON.stringify(this.props.cart));
 
         this.props.cart.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
 
-            if(item.item_type == "mini"){
-                          
-              total_cost = total_cost + (6 * item.quantity * 24);
-              item_count = item_count + (24 * item.quantity);
+            if(this.props.order.order_type == "sconely_yours"){
+
+              total_cost = total_cost + (1 * item.quantity);
+              item_count = item_count + item.quantity;
 
             }else{
 
-              total_cost = total_cost + (5 * item.quantity * 12);
-              item_count = item_count + (12 * item.quantity);
+              if(item.item_type == "mini"){
+                            
+                total_cost = total_cost + (6 * item.quantity * 24);
+                item_count = item_count + (24 * item.quantity);
+
+              }else{
+
+                total_cost = total_cost + (5 * item.quantity * 12);
+                item_count = item_count + (12 * item.quantity);
+
+              }
 
             }
                           
@@ -251,28 +261,40 @@ class SidebarCart extends React.Component<any, any> {
                       let item_title = "";
 
 
-                      //if order_type == "yours"
-                      if(item.item_type == "mini"){
-                      
-                          return(
-                                    <form className="form-horizontal" style={{border: 1, position: "static"}}>
-                                          <div className="form-group" style={{border: 1}}>
-                                            <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}title-mini</div>
-                                          </div>
-                                    </form>
-                          )
-
-                      }else{
+                      if(this.props.order.order_type == "sconely_yours"){
 
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-6">ruby q</div>
-                                            <div className="col-md-6">{item.quantity * 12}</div>
+                                            <div className="col-md-6">Ruby Q</div>
+                                            <div className="col-md-6">{item.quantity}</div>
                                           </div>
                                         </form>
                                 )
+                      }else{
+                          
+                          if(item.item_type == "mini"){
+                          
+                              return(
+                                        <form className="form-horizontal" style={{border: 1, position: "static"}}>
+                                              <div className="form-group" style={{border: 1}}>
+                                                <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}title-mini</div>
+                                              </div>
+                                        </form>
+                              )
 
+                          }else{
+
+                              return(
+                                            <form className="form-horizontal" style={{border: 1, position: "static"}}>
+                                              <div className="form-group" style={{border: 1}}>
+                                                <div className="col-md-6">ruby q</div>
+                                                <div className="col-md-6">{item.quantity * 12}</div>
+                                              </div>
+                                            </form>
+                                    )
+
+                          }
                       }
                   
                 }.bind(this))
@@ -358,4 +380,4 @@ const SidebarCart1 = connect(
   mapDispatchToProps
 )(SidebarCart);
 
-export default SidebarCart1;
+export default SidebarCart;

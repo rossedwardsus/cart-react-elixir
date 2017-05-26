@@ -19,7 +19,9 @@
 
 <html lang="en">
 	<table bgcolor="" width="100%">
-		<tr><td width="25%"></td><td width="50%">Sconely.com-<img src="http://sconely.herokuapp.com/images/logo/Sconely_color_web_300_space3.jpg"></img></td></tr>
+		<tr><td width="25%"></td><td width="50%"><img height="150" width="300" src="http://sconely.herokuapp.com/images/logo/Sconely_color_web_300_space3.jpg"></img></td><td width="25%"></td></tr>
+	<table>
+	<table border="1" bgcolor="" width="100%">
 		<tr><td width="25%"></td><td>Thank you for your Sconely order, Ross!</td></tr>
 		<tr><td width="25%"></td><td>If you have changes to the order or delivery address, contact us immediately at:</td></tr>
 		<tr><td width="25%"></td><td>orders@sconely.com. We will contact you the day we bake and deliver your scones to let you know they are on the way.</td></tr>
@@ -36,15 +38,15 @@
 	    <tr><td width="25%"><td>order items <%= key["item_id"] %></td></tr>
 		<% end %>
 		<tr><td width="25%"><td>Order #: Order Date: May 23, 2017 Delivery date: May 27, 2017</td></tr>
-		<tr><td width="25%"><td>Billed to card number</td></tr>
-		<tr><td width="25%"><td>delivered to</td></tr>
+		<tr><td width="25%"><td>Billed to card number <%= @key["payment_card_number"] %></td></tr>
+		<tr><td width="25%"><td>delivered to <%= @key["delivery_address_street"] %></td></tr>
 		<tr><td width="25%"><td>total</td></tr>
 		<tr><td></td><tr>
 		<tr><td width="25%"><td>Contact Us orders@orders.com</td></tr>
 		<tr><td width="25%"><td>Sconely.com</td></tr>
 	</table>
 	<table width="100%">
-		<tr><td width="25%"></td><td width="25%"><a href="http://instagram.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Instagram.jpg"></img></a></td><td width="25%"><a href="http://facebook.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Facebook.jpg"></img></a></td></tr>
+		<tr><td width="25%"></td><td width="25%" align="right"><a href="http://instagram.com/sconelyla"><img width="50" height="50" src="http://sconely.herokuapp.com/images/Instagram.jpg"></img></a></td><td width="25%"><a href="http://facebook.com/sconelyla"><img height="50" width="50" src="http://sconely.herokuapp.com/images/Facebook.jpg"></img></a></td><td width="25%"></tr>
 	</table>
 	<br>
 	<br>
