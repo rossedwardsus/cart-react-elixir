@@ -30,22 +30,21 @@
 		<tr><td width="25%"><td>last name<%= @key["order_last_name"] %></td></tr>
 		<tr><td width="25%"><td>street1<%= @key["order_delivery_address_street1"] %></td></tr>
 		<tr><td width="25%"><td>street2<%= @key["order_delivery_address_street2"] %></td></tr>
-		<tr><td>pickup<%= @key["order_delivery_address_city"] %></td></tr>
-		<tr><td>pickup<%= @key["order_delivery_address_state"] %></td></tr>
-		<tr><td>pickup<%= @key["order_delivery_address_zipcode"] %></td></tr>
-		<tr><td>items</td></tr>
-		<tr><td>total</td></tr>
+		<tr><td width="25%"><td>items</td></tr>
+		<tr><td width="25%"><td>total</td></tr>
 		<%= for key <- @key["order_cart_items"] do %>
-	    <tr><td>order items <%= key["item_id"] %></td></tr>
+	    <tr><td width="25%"><td>order items <%= key["item_id"] %></td></tr>
 		<% end %>
-		<tr><td>Order #: Order Date: May 23, 2017 Delivery date: May 27, 2017</td></tr>
-		<tr><td>Billed to card number</td></tr>
-		<tr><td>delivered to</td></tr>
-		<tr><td>total</td></tr>
+		<tr><td width="25%"><td>Order #: Order Date: May 23, 2017 Delivery date: May 27, 2017</td></tr>
+		<tr><td width="25%"><td>Billed to card number</td></tr>
+		<tr><td width="25%"><td>delivered to</td></tr>
+		<tr><td width="25%"><td>total</td></tr>
 		<tr><td></td><tr>
-		<tr><td>Contact Us orders@orders.com</td></tr>
-		<tr><td>Sconely.com</td></tr>
-		<tr><td width="25%"></td><td><a href="http://instagram.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Instagram.jpg"></img></a></td><td><a href="http://facebook.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Facebook.jpg"></img></a></td></tr>
+		<tr><td width="25%"><td>Contact Us orders@orders.com</td></tr>
+		<tr><td width="25%"><td>Sconely.com</td></tr>
+	</table>
+	<table width="100%">
+		<tr><td width="25%"></td><td width="25%"><a href="http://instagram.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Instagram.jpg"></img></a></td><td width="25%"><a href="http://facebook.com/sconelyla"><img src="http://sconely.herokuapp.com/images/Facebook.jpg"></img></a></td></tr>
 	</table>
 	<br>
 	<br>

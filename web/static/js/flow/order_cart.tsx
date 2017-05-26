@@ -619,11 +619,11 @@ class OrderCart extends React.Component<any, any> {
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-1">item_title</div>
-                                            <div className="col-md-1">
-                                              <div class="row">
-                                                <div className="col-md-1" style={{fontSize: 20}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
+                                            <div className="col-md-3">
+                                              <div className="row">
+                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
                                                 <div className="col-md-1">{total_amount}</div>
-                                                <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
+                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
                                               </div>
                                             </div>
                                             <div className="col-md-1">cost</div>

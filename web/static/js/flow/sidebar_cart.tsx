@@ -250,24 +250,28 @@ class SidebarCart extends React.Component<any, any> {
                       //let item_title = result.get("title");
                       let item_title = "";
 
+
+                      //if order_type == "yours"
                       if(item.item_type == "mini"){
                       
-                          return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
+                          return(
+                                    <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-xs-6">{24 * item.quantity}title-mini</div>
+                                            <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}title-mini</div>
                                           </div>
-                                        </form>)
+                                    </form>
+                          )
 
                       }else{
 
-                          return(<div>
+                          return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-1">{item.quantity * 12}</div>
-                                            <div className="col-md-1">title</div>
+                                            <div className="col-md-6">ruby q</div>
+                                            <div className="col-md-6">{item.quantity * 12}</div>
                                           </div>
                                         </form>
-                                </div>)
+                                )
 
                       }
                   
@@ -287,13 +291,6 @@ class SidebarCart extends React.Component<any, any> {
                   {cart}
                   </div>
                   <br/>
-                    <form className="form-horizontal" style={{border: 1}}>
-                      <div className="form-group" style={{border: 1}}>
-                        <div className="col-xs-2">Ruby Q</div>
-                        <div className="col-xs-2">24</div>
-                        <div className="col-xs-2">Cost</div>
-                      </div>
-                    </form>
                     <br/>
                     <form className="form-horizontal" style={{border: 1}}>
                       <div className="form-group" style={{border: 1}}>
