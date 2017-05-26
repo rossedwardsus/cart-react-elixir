@@ -212,8 +212,8 @@ class SidebarCart extends React.Component<any, any> {
 
     let cart = "";
 
-    console.log("length order" + JSON.stringify(this.props.cart));
-    console.log("order type" + JSON.stringify(this.props.order));
+    //console.log("length order" + JSON.stringify(this.props.cart));
+    //console.log("order type" + JSON.stringify(this.props.order));
 
 
     if(this.props.cart.cart_items.length === 0){
@@ -222,16 +222,24 @@ class SidebarCart extends React.Component<any, any> {
 
     }else{
 
-        console.log("order " + JSON.stringify(this.props.cart));
+        //console.log("order " + JSON.stringify(this.props.cart));
+
+        let that = this;
 
         this.props.cart.cart_items.map(function(item: any){
 
-            console.log("item " + JSON.stringify(item));
+            //console.log("item " + JSON.stringify(item));
+            //console.log("order type" + JSON.stringify(that.props.order));
 
-            if(this.props.order.order_type == "sconely_yours"){
+            if(that.props.order.order_type == "sconely_yours"){
 
-              total_cost = total_cost + (1 * item.quantity);
+              //if total_cost is more then 2 then cost = 5 else 6
+              //dont have to loop.  just times cart length
+
+              total_cost = total_cost + (5 * item.quantity);
               item_count = item_count + item.quantity;
+
+
 
             }else{
 
@@ -261,7 +269,7 @@ class SidebarCart extends React.Component<any, any> {
                       let item_title = "";
 
 
-                      if(this.props.order.order_type == "sconely_yours"){
+                      if(that.props.order.order_type == "sconely_yours"){
 
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
