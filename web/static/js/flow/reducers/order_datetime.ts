@@ -28,7 +28,7 @@ export default function deliveryDatetime(state:any = {date: ""}, action: any){
     case SET_DATE:
       console.log("date reducer " + action.value);
       
-      return Object.assign({}, state, {date: "action.value"});
+      return Object.assign({}, state, {date: action.value});
     
 
     default:

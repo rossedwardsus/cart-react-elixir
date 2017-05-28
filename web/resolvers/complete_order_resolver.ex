@@ -6,6 +6,9 @@ defmodule Sconely.CompleteOrderResolver do
   alias Sconely.Order
   #alias Ecto.Multi
 
+  #use Timex
+
+  import Ecto.DateTime
   import Ecto.Query
 
   
@@ -244,18 +247,121 @@ defmodule Sconely.CompleteOrderResolver do
             #      |> put_flash(:info, "User created successfully.")
             #      |> redirect(to: user_path(conn, :index))
 
+
+                    #total cost == total items * 12
+                    cart_items = [%{"item_type": "mini", "item_id": 1}, %{"item_type": "regular", "item_id": 1}]
+                    #total_cost = 0
+
+                    #if order_type == "sconely_social"
+                    
+                    #total_cost = Enum.reduce(cart_items, fn(x) ->
+
+                    #    case x[:item_type] do
+
+                    #      "mini" ->  acc = acc + (1 * 5)
+
+                    #      "regular" -> acc = acc + (1 * 6)
+
+                    #    end
+
+                    #end)
+
+                    #Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
+
+                    mini_items_count = 0
+                    regular_items_count = 0
+                    items_count = 0
+                    order_type = "sconely_social"
+
+
+                    case order_type do
+
+                        "sconely_social" -> 
+
+                                  mini_items_count = length(Enum.filter(cart_items, fn(x) ->  
+
+                                      x[:item_type] == "mini"
+
+                                  end))
+
+                                  regular_items_count = length(Enum.filter(cart_items, fn(x) ->  
+
+                                      x[:item_type] == "regular"
+
+                                  end))
+
+                                  #items_count = 1
+
+                        "sconely_yours" -> ""
+
+                    end
+
+                    IO.inspect(mini_items_count + regular_items_count)
+
+
+                    #IO.inspect(total_cost)
+
                     #def from_timestamp(timestamp) do
                     #   timestamp
                     #   |> +(@epoch)
                     #   |> :calendar.gregorian_seconds_to_datetime
                     # end
 
+                    #IO.puts("date")
+                    #IO.inspect(args[:order_datetime_date])
                     #epoch = {{1970, 1, 1}, {0, 0, 0}}
                     #@epoch :calendar.datetime_to_gregorian_seconds(epoch)
+                    #Ecto.DateTime.to_erl(args[:order_datetime_date])
+
+                    #Timex.format!(1495868400000, "%FT%T%:z", :strftime)
+                    #{{0, 0, 0}, Ecto.DateTime.to_erl(args[:order_datetime_date])}
+                    #IO.inspect(Timex.format!(1495868400000, "%H-%M", :strftime))
+
+                    #epoch = :calendar.datetime_to_gregorian_seconds({{1970, 1, 1}, {0, 0, 0}})
+                    #datetime = :calendar.gregorian_seconds_to_datetime(epoch + div(args[:order_datetime_date], 1000))
+    
+                    #Timex.Date.from(args[:order_datetime_date])
+
+                    #IO.inspect(Timex.from_unix(1495868400000))
+                    #IO.inspect(Timex.now)
+
+                    #DateTime.from_unix(args[:order_datetime_date])
+
+                    #1495868400000
+                    #|> +(@epoch)
+                    #|> :calendar.gregorian_seconds_to_datetime
+
+                    #IO.inspect(@epoch)
+
+                    #Timex.Date.now
+
+                    #Calendar.calendar(1318781876)
+                    IO.inspect(elem(DateTime.from_iso8601("2017-05-28T07:00:00.000Z"), 1).month)
+
+                    #IO.inspect(DateTime.to_string(elem(DateTime.from_unix(1318781876), 1)))
+
+                    date = ~D[2017-05-27]
+                    month = ""
+                    day = ""
+                    year = ""
+                    day_of_week = ""
+                    
+                    #IO.inspect(Date.day_of_week(date))
+
+                    case date.month do
+                      0 -> {month = "January"}
+                      5 -> {month = "May"}
+
+                    end
+
+                    delivery_date = Integer.to_string(Date.day_of_week(date)) <> " " <> month
+
+                    IO.puts(delivery_date)
+
 
 
                     #working
-                    Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => [%{"item_id" => 1, "quantity" => 1}]}) |> SconeHomeElixir.Mailer.deliver_now
+                    #Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_datetime_date" => args[:order_datetime_date], "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => [%{"item_id" => 1, "quantity" => 1}]}) |> SconeHomeElixir.Mailer.deliver_now
             
             #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
             

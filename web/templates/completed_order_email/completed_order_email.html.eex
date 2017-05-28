@@ -29,8 +29,7 @@
 		<tr><td><td>email<%= @key["order_contact_email"] %></td></tr>
 		<tr><td><td>mobile phone<%= @key["order_contact_mobile"] %></td></tr>
 		<tr><td><td>first<%= @key["order_first_name"] %></td></tr>
-		<tr><td><td>last name<%= @key["order_last_name"] %></td></tr>
-		><br><br><br></td></tr>
+		<tr><td><td>last name<%= @key["order_last_name"] %><br><br><br><%= @key["order_datetime_date"] %></td></tr>
 	</table>
 	<table width="100%">
 		<tr><td width="15%"><td>items</td></tr>
@@ -55,7 +54,7 @@
 	<br>
 	
 	<div class='mobile'>
-	  I'm only visible on mobile :)
+	  
 	</div>
 </html>
 

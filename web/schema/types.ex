@@ -80,7 +80,7 @@ defmodule Sconely.Schema.Types do
     field :order_delivery_address_city, :string
     field :order_delivery_address_state, :string
     field :order_delivery_address_zipcode, :string
-    #field :date, :string
+    field :order_datetime_date, :string
     #field :time, :string
     field :order_payment_name_on_card, :string
     field :order_payment_card_number, :string

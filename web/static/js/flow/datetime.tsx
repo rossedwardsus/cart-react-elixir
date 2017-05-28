@@ -86,8 +86,13 @@ class DateTime extends React.Component<any, any> {
   
   setDate(date: any){
 
+    
+
+    console.log("date " + moment(date).toISOString());
+
     this.setState({startDate: date});
-    this.props.setDate(date);
+    //this.props.setDate("date"+ moment(date).format("YYYY/MM/DD"));
+    this.props.setDate("date"+ moment(date).toISOString());
 
     this.props.cartValidated();
     this.props.datetimeValidated();

@@ -24,7 +24,7 @@ import {completeOrder} from './actions/complete_order.ts';
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';
-import DateTime from './datetime.tsx';
+import Datetime from './datetime.tsx';
 import Name from './name.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
@@ -779,7 +779,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            if sconely yours show only sundays
                             <br/>
                             <DeliveryAddress orderType={this.props.order.order_type} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
                             setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
@@ -787,8 +786,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
-                            {this.props.order.order_type === "sconely_social" &&
-                            <DateTime  setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>}
+                            <Datetime  setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>
 
                             <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)}/>
                             
