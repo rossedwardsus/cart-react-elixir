@@ -225,9 +225,14 @@ defmodule Sconely.CompleteOrderResolver do
     case charge do
         {:ok, charge} -> 
 
+            #validated entered order data
+            #if validate process payment
+            #invoice = Invoice.changeset(params["data"], :create)
+
             #validate payment info
 
-            IO.inspect(charge)
+            #IO.inspect(charge)
+            
             #get stripe charge id
             #insert into database
             #send email
@@ -236,10 +241,29 @@ defmodule Sconely.CompleteOrderResolver do
 
             #Repo.transaction(fn ->
             #commit transaction else rollback if payment error
+            #if payment error dont insert
+            #if error log it
+
+             #if invoice.valid?
+            #Repo.transaction fn ->
+            #  invoice = Repo.insert(invoice)
+            #  Enum.map(items, fn item ->
+            #    item = Ecto.Changeset.change(item, invoice_id: invoice.id)
+            #    Repo.insert(item)
+            #  end)
+            #end
 
             #Multi.new
 
             order_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_name_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+
+
+
 
             #case Repo.insert(order_changeset) do
             #  {:ok, response} -> IO.inspect(response)
@@ -249,7 +273,7 @@ defmodule Sconely.CompleteOrderResolver do
 
 
                     #total cost == total items * 12
-                    cart_items = [%{"item_type": "mini", "item_id": 1}, %{"item_type": "regular", "item_id": 1}]
+                    cart_items = [%{"item_type": "mini", "item_id": 1, "quantity": 5}, %{"item_type": "mini", "item_id": 1, "quantity": 8}, %{"item_type": "regular", "item_id": 1, "quantity": 15}]
                     #total_cost = 0
 
                     #if order_type == "sconely_social"
@@ -270,6 +294,8 @@ defmodule Sconely.CompleteOrderResolver do
 
                     mini_items_count = 0
                     regular_items_count = 0
+                    mini_total = 0
+                    regular_total = 0
                     items_count = 0
                     order_type = "sconely_social"
 
@@ -278,11 +304,23 @@ defmodule Sconely.CompleteOrderResolver do
 
                         "sconely_social" -> 
 
-                                  mini_items_count = length(Enum.filter(cart_items, fn(x) ->  
+                                  #mini_items = Enum.filter(cart_items, fn(x) ->  
 
-                                      x[:item_type] == "mini"
+                                   #   x[:item_type] == "mini"
 
-                                  end))
+                                  #end)
+
+                                  #Enum.map(mini_items, fn(x) -> 
+
+                                  #    mini_total = x[:quantity]
+
+                                  #end)
+
+                                  #mini_total = Enum.reduce(mini_items, {0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+                                  mini_total = cart_items
+                                    |> Enum.filter(fn(x) ->  x[:item_type] == "mini" end)
+                                    |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
 
                                   regular_items_count = length(Enum.filter(cart_items, fn(x) ->  
 
@@ -296,10 +334,12 @@ defmodule Sconely.CompleteOrderResolver do
 
                     end
 
-                    IO.inspect(mini_items_count + regular_items_count)
+                    total_cost = (mini_items_count * 24 * 5) + (regular_items_count * 24 * 5)
 
 
+                    #IO.inspect(elem(mini_total, 0))
                     #IO.inspect(total_cost)
+
 
                     #def from_timestamp(timestamp) do
                     #   timestamp
@@ -313,18 +353,8 @@ defmodule Sconely.CompleteOrderResolver do
                     #@epoch :calendar.datetime_to_gregorian_seconds(epoch)
                     #Ecto.DateTime.to_erl(args[:order_datetime_date])
 
-                    #Timex.format!(1495868400000, "%FT%T%:z", :strftime)
-                    #{{0, 0, 0}, Ecto.DateTime.to_erl(args[:order_datetime_date])}
-                    #IO.inspect(Timex.format!(1495868400000, "%H-%M", :strftime))
-
                     #epoch = :calendar.datetime_to_gregorian_seconds({{1970, 1, 1}, {0, 0, 0}})
                     #datetime = :calendar.gregorian_seconds_to_datetime(epoch + div(args[:order_datetime_date], 1000))
-    
-                    #Timex.Date.from(args[:order_datetime_date])
-
-                    #IO.inspect(Timex.from_unix(1495868400000))
-                    #IO.inspect(Timex.now)
-
                     #DateTime.from_unix(args[:order_datetime_date])
 
                     #1495868400000
@@ -333,35 +363,78 @@ defmodule Sconely.CompleteOrderResolver do
 
                     #IO.inspect(@epoch)
 
-                    #Timex.Date.now
-
                     #Calendar.calendar(1318781876)
-                    IO.inspect(elem(DateTime.from_iso8601("2017-05-28T07:00:00.000Z"), 1).month)
+                    #IO.inspect(elem(DateTime.from_iso8601("2017-05-28T07:00:00.000Z"), 1).month)
 
                     #IO.inspect(DateTime.to_string(elem(DateTime.from_unix(1318781876), 1)))
 
-                    date = ~D[2017-05-27]
+
+
+                    delivery_date = ~D[2017-05-27]
+                    delivery_date_formatted = ""
                     month = ""
                     day = ""
+                    day_formatted = ""
                     year = ""
                     day_of_week = ""
                     
-                    #IO.inspect(Date.day_of_week(date))
+                    IO.inspect(delivery_date)
 
-                    case date.month do
-                      0 -> {month = "January"}
-                      5 -> {month = "May"}
-
+                    case Date.day_of_week(delivery_date) do
+                      0 -> {day_of_week = "Sunday"}
+                      1 -> {day_of_week = "Monday"}
+                      6 -> {day_of_week = "Saturday"}
                     end
 
-                    delivery_date = Integer.to_string(Date.day_of_week(date)) <> " " <> month
+                    case delivery_date.month do
+                      0 -> {month = "January"}
+                      5 -> {month = "May"}
+                    end
 
-                    IO.puts(delivery_date)
+                    case delivery_date.day do
+                      n when n in [1, 21, 31] -> {day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                      n when n in [2, 22] -> {day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                      n when n in [3, 23] -> {day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                      n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+                    end
+
+                    delivery_date_formatted = day_of_week <> " " <> month <> " " <> day_formatted <> ", " <> Integer.to_string(delivery_date.year)
+
+                    IO.puts(delivery_date_formatted)
+
+                    menu_items = [%{"item_id": 1, "title": "one"}, %{"item_id": 2, "title": "one"}]
+
+                    #loop through cart items
+                    cart_items_with_title_temp = Enum.map(cart_items, fn(cart_item) ->
+                      Enum.map(menu_items, fn(menu_item) ->
+                      #  match?({:, _}, element)
+                        if(menu_item.item_id == cart_item.item_id) do
+                          Map.put(cart_item, :title, menu_item.title)
+                        end
+                      end)
+                    end)
+
+                    IO.inspect(cart_items_with_title_temp)
+
+                    cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
+
+                        Enum.at(item, 0)
+
+                    end)
+
+                    IO.inspect(cart_items_with_title)
+
+
+                    #loop through menu items and return the element if the title matches
+
+                    #Result := menu_items.Contains(1);
+
+
 
 
 
                     #working
-                    #Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_datetime_date" => args[:order_datetime_date], "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => [%{"item_id" => 1, "quantity" => 1}]}) |> SconeHomeElixir.Mailer.deliver_now
+                    Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_now
             
             #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
             

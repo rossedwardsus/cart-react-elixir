@@ -1,4 +1,4 @@
-defmodule Sconenly.SconelySocialItems do
+defmodule Sconely.OrderDeliveryAddress do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,15 +6,22 @@ defmodule Sconenly.SconelySocialItems do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		@primary_key {:order_id, :binary_id, autogenerate: true}
+		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
 		schema "sconely_social_items" do
-			field :user_id, Ecto.UUID
-			field :item_id, :string
-			field :quantity, :string
+			field :order_id, Ecto.UUID
+			field :street1, :string
+			field :street2, :string
 			
 			#timestamps()
 		end
 
+
+		#def changeset(model, params \\ %{}) do
+		#    model
+		#    |> cast(params, [:email, :password, :registration_datetime])
+		    #|> cast(params, [])
+		    #|> validate_required([:name, :email, :bio, :number_of_pets])
+		#end
 
 end 

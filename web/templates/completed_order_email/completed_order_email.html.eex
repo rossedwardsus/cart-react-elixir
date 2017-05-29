@@ -29,20 +29,20 @@
 		<tr><td><td>email<%= @key["order_contact_email"] %></td></tr>
 		<tr><td><td>mobile phone<%= @key["order_contact_mobile"] %></td></tr>
 		<tr><td><td>first<%= @key["order_first_name"] %></td></tr>
-		<tr><td><td>last name<%= @key["order_last_name"] %><br><br><br><%= @key["order_datetime_date"] %></td></tr>
+		<tr><td><td>last name<%= @key["order_last_name"] %><br><br><br><%= @key["order_date_formatted"] %><%= @key["order_date_time"] %></td></tr>
 	</table>
 	<table width="100%">
 		<tr><td width="15%"><td>items</td></tr>
 		<tr><td width="15%"><td>total</td></tr>
 		<%= for key <- @key["order_cart_items"] do %>
-	    <tr><td width="15%"><td>order items <%= key["item_id"] %></td></tr>
+	    <tr><td width="15%"><td>title quantity - order items <%= Enum.at(key, 0)[:title] %></td></tr>
 		<% end %>
 		<tr><td width="15%"><td>Order #: Order Date: May 23, 2017 Delivery date: May 27, 2017<br><br><br></td></tr>
 		<tr><td width="15%"><td>Billed to card number <%= @key["order_payment_card_number"] %></td></tr>
-		<tr><td width="15%"><td>delivered to <%= @key["delivery_address_street"] %></td></tr>
+		<tr><td width="15%"><td>if social - delivered to <%= @key["delivery_address_street"] %></td></tr>
 		<tr><td><td>street1<%= @key["order_delivery_address_street1"] %></td></tr>
 		<tr><td><td>street2<%= @key["order_delivery_address_street2"] %><br><br><br><br><br
-		<tr><td width="15%"><td>total<br><br><br><br></td></tr>
+		<tr><td width="15%"><td><%= @key["total_cost"] %><br><br><br><br></td></tr>
 		<tr><td></td><tr>
 		<tr><td width="15%"><td>Contact Us orders@orders.com</td></tr>
 		<tr><td width="15%"><td>Sconely.com</td></tr>

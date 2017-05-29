@@ -56,7 +56,7 @@ defmodule Sconely.Schema do
 
   	
   	field :complete_order, type: :sconely_yours_order do
-  		#arg :order_type, :string
+  		arg :order_type, non_null(:string)
       arg :first_name, :string
   		arg :last_name, :string
   		arg :order_contact_email, :string
