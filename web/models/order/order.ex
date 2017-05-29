@@ -6,14 +6,15 @@ defmodule Sconely.Order do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 		@optional_fields ~W()
-		@required_fields ~W(order_id)
+		@required_fields ~W(order_id user_id order_type created_at payment_confirmation)
 
 		schema "orders" do
+
 			field :order_id, :string #primary key
-			#field :user_id, Ecto.UUID
-			#field :order_type, :string
-			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
-			#stripe receipt
+			field :user_id, :string #Ecto.UUID or "guest"
+			field :order_type, :string
+			field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
+			field :payment_confirmation, :string #stripe receipt
 
 		end
 
@@ -21,7 +22,7 @@ defmodule Sconely.Order do
 		    struct
 		    |> cast(params, @required_fields, @optional_fields)
 		    #|> validate_required([:email])
-		    |> validate_length(:email, min: 2)
+		    #|> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)
 		    #contains
 		end

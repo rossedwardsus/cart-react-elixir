@@ -232,7 +232,7 @@ defmodule Sconely.CompleteOrderResolver do
 
             #validate payment info
 
-            #IO.inspect(charge)
+            IO.inspect(charge[:balance_transaction])
             
             #get stripe charge id
             #insert into database
@@ -256,202 +256,244 @@ defmodule Sconely.CompleteOrderResolver do
 
             #Multi.new
 
-            order_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            order_changeset = Order.changeset(%Order{}, %{user_id: "guest", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_name_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
+            Enum.map(order_changeset.errors, fn {field, detail} ->
+
+                IO.inspect(Atom.to_string(field) <> " " <> detail)
+
+            end)
+
+            #Enum.each(order_changeset.errors),  fn {k, v} ->
+            #  IO.puts "#{k} --> #{v}"
+            #end)
+
+            #Ecto.Changeset.traverse_errors(order_changeset, fn {msg, opts} ->
+              #case msg do
+              #  {_} -> IO.puts("hello")
+                  #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
+                  #IO.inspect(opts)
+                  #msg
+              #end
+              #Enum.reduce(opts, msg, fn {key, value}, acc ->
+              #   #String.replace(acc, "%{#{key}}", to_string(value))
+              #end)
+            #end)
+
+            #Enum.map(order_changeset, fn(item) ->
+
+            #    IO.inspect(item)
+
+            #end)
 
 
+            if order_changeset.valid? do
+
+                case Repo.insert(order_changeset) do
+                  {:ok, response} -> IO.inspect(response)
+                #    conn
+                #      |> put_flash(:info, "User created successfully.")
+                #      |> redirect(to: user_path(conn, :index))
+
+
+                        #total cost == total items * 12
+                        cart_items = [%{"item_type": "mini", "item_id": 1, "quantity": 5}, %{"item_type": "mini", "item_id": 1, "quantity": 8}, %{"item_type": "regular", "item_id": 1, "quantity": 15}]
+                        #total_cost = 0
+
+                        #if order_type == "sconely_social"
+                        
+                        #total_cost = Enum.reduce(cart_items, fn(x) ->
+
+                        #    case x[:item_type] do
+
+                        #      "mini" ->  acc = acc + (1 * 5)
+
+                        #      "regular" -> acc = acc + (1 * 6)
+
+                        #    end
+
+                        #end)
+
+                        #Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
+
+                        mini_items_count = 0
+                        regular_items_count = 0
+                        mini_total = 0
+                        regular_total = 0
+                        items_count = 0
+                        order_type = "sconely_social"
+
+
+                        case order_type do
+
+                            "sconely_social" -> 
+
+                                      #mini_items = Enum.filter(cart_items, fn(x) ->  
+
+                                       #   x[:item_type] == "mini"
+
+                                      #end)
+
+                                      #Enum.map(mini_items, fn(x) -> 
+
+                                      #    mini_total = x[:quantity]
+
+                                      #end)
+
+                                      #mini_total = Enum.reduce(mini_items, {0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+                                      mini_total = cart_items
+                                        |> Enum.filter(fn(x) ->  x[:item_type] == "mini" end)
+                                        |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+                                      regular_items_count = length(Enum.filter(cart_items, fn(x) ->  
+
+                                          x[:item_type] == "regular"
+
+                                      end))
+
+                                      #items_count = 1
+
+                            "sconely_yours" -> ""
+
+                        end
+
+                        total_cost = (mini_items_count * 24 * 5) + (regular_items_count * 24 * 5)
+
+
+                        #IO.inspect(elem(mini_total, 0))
+                        #IO.inspect(total_cost)
+
+
+                        #def from_timestamp(timestamp) do
+                        #   timestamp
+                        #   |> +(@epoch)
+                        #   |> :calendar.gregorian_seconds_to_datetime
+                        # end
+
+                        #IO.puts("date")
+                        #IO.inspect(args[:order_datetime_date])
+                        #epoch = {{1970, 1, 1}, {0, 0, 0}}
+                        #@epoch :calendar.datetime_to_gregorian_seconds(epoch)
+                        #Ecto.DateTime.to_erl(args[:order_datetime_date])
+
+                        #epoch = :calendar.datetime_to_gregorian_seconds({{1970, 1, 1}, {0, 0, 0}})
+                        #datetime = :calendar.gregorian_seconds_to_datetime(epoch + div(args[:order_datetime_date], 1000))
+                        #DateTime.from_unix(args[:order_datetime_date])
+
+                        #1495868400000
+                        #|> +(@epoch)
+                        #|> :calendar.gregorian_seconds_to_datetime
+
+                        #IO.inspect(@epoch)
+
+                        #Calendar.calendar(1318781876)
+                        #IO.inspect(elem(DateTime.from_iso8601("2017-05-28T07:00:00.000Z"), 1).month)
+
+                        #IO.inspect(DateTime.to_string(elem(DateTime.from_unix(1318781876), 1)))
+
+
+
+                        delivery_date = ~D[2017-05-27]
+                        delivery_date_formatted = ""
+                        month = ""
+                        day = ""
+                        day_formatted = ""
+                        year = ""
+                        day_of_week = ""
+                        
+                        IO.inspect(delivery_date)
+
+                        case Date.day_of_week(delivery_date) do
+                          0 -> {day_of_week = "Sunday"}
+                          1 -> {day_of_week = "Monday"}
+                          6 -> {day_of_week = "Saturday"}
+                        end
+
+                        case delivery_date.month do
+                          0 -> {month = "January"}
+                          5 -> {month = "May"}
+                        end
+
+                        case delivery_date.day do
+                          n when n in [1, 21, 31] -> {day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                          n when n in [2, 22] -> {day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                          n when n in [3, 23] -> {day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                          n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+                        end
+
+                        delivery_date_formatted = day_of_week <> " " <> month <> " " <> day_formatted <> ", " <> Integer.to_string(delivery_date.year)
+
+                        IO.puts(delivery_date_formatted)
+
+                        menu_items = [%{"item_id": 1, "title": "Ruby Q"}, %{"item_id": 2, "title": "one"}]
+
+                        #loop through cart items
+                        cart_items_with_title = Enum.map(cart_items, fn(cart_item) ->
+                          title = Enum.filter(menu_items, fn(menu_item) ->
+                          #  match?({:, _}, element)
+                            if(menu_item.item_id == cart_item.item_id) do
+                              #IO.inspect(menu_item)
+                              #Map.put(cart_item, :title, menu_item.title)
+                              menu_item
+                            end
+                          end)
+                          IO.inspect(title)
+                          title_temp = Enum.at(title, 0)
+                          #IO.inspect(title_temp[:title])
+                          Map.put(cart_item, :title, title_temp[:title])
+                        end)
+
+                        IO.inspect(cart_items_with_title)
+
+                        #cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
+
+                         #   Enum.at(item, 0)
+
+                        #end)
+
+                        #IO.inspect(cart_items_with_title)
+
+
+                        #loop through menu items and return the element if the title matches
+
+                        #Result := menu_items.Contains(1);
+
+                        IO.inspect(CompleteOrderResolverHelper.formatDeliveryDate("2017-05-27"))
+
+
+
+                        #working
+                        #Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_now
+                
+                #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+                
+
+                  #{:error, :error}
+                      #{:ok, %{status: "changeset error"}}
+
+                end
+
+          else
+
+            IO.inspect("error")
+
+            #log_error_changeset = LogError.changeset(%Order{}, %{order_id: order_id})
+
+            #IO.inspect(error_log_changeset.valid?)
+
+            #if order_changeset.valid?
 
             #case Repo.insert(order_changeset) do
             #  {:ok, response} -> IO.inspect(response)
-            #    conn
-            #      |> put_flash(:info, "User created successfully.")
-            #      |> redirect(to: user_path(conn, :index))
+            #end
 
-
-                    #total cost == total items * 12
-                    cart_items = [%{"item_type": "mini", "item_id": 1, "quantity": 5}, %{"item_type": "mini", "item_id": 1, "quantity": 8}, %{"item_type": "regular", "item_id": 1, "quantity": 15}]
-                    #total_cost = 0
-
-                    #if order_type == "sconely_social"
-                    
-                    #total_cost = Enum.reduce(cart_items, fn(x) ->
-
-                    #    case x[:item_type] do
-
-                    #      "mini" ->  acc = acc + (1 * 5)
-
-                    #      "regular" -> acc = acc + (1 * 6)
-
-                    #    end
-
-                    #end)
-
-                    #Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
-
-                    mini_items_count = 0
-                    regular_items_count = 0
-                    mini_total = 0
-                    regular_total = 0
-                    items_count = 0
-                    order_type = "sconely_social"
-
-
-                    case order_type do
-
-                        "sconely_social" -> 
-
-                                  #mini_items = Enum.filter(cart_items, fn(x) ->  
-
-                                   #   x[:item_type] == "mini"
-
-                                  #end)
-
-                                  #Enum.map(mini_items, fn(x) -> 
-
-                                  #    mini_total = x[:quantity]
-
-                                  #end)
-
-                                  #mini_total = Enum.reduce(mini_items, {0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
-
-                                  mini_total = cart_items
-                                    |> Enum.filter(fn(x) ->  x[:item_type] == "mini" end)
-                                    |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
-
-                                  regular_items_count = length(Enum.filter(cart_items, fn(x) ->  
-
-                                      x[:item_type] == "regular"
-
-                                  end))
-
-                                  #items_count = 1
-
-                        "sconely_yours" -> ""
-
-                    end
-
-                    total_cost = (mini_items_count * 24 * 5) + (regular_items_count * 24 * 5)
-
-
-                    #IO.inspect(elem(mini_total, 0))
-                    #IO.inspect(total_cost)
-
-
-                    #def from_timestamp(timestamp) do
-                    #   timestamp
-                    #   |> +(@epoch)
-                    #   |> :calendar.gregorian_seconds_to_datetime
-                    # end
-
-                    #IO.puts("date")
-                    #IO.inspect(args[:order_datetime_date])
-                    #epoch = {{1970, 1, 1}, {0, 0, 0}}
-                    #@epoch :calendar.datetime_to_gregorian_seconds(epoch)
-                    #Ecto.DateTime.to_erl(args[:order_datetime_date])
-
-                    #epoch = :calendar.datetime_to_gregorian_seconds({{1970, 1, 1}, {0, 0, 0}})
-                    #datetime = :calendar.gregorian_seconds_to_datetime(epoch + div(args[:order_datetime_date], 1000))
-                    #DateTime.from_unix(args[:order_datetime_date])
-
-                    #1495868400000
-                    #|> +(@epoch)
-                    #|> :calendar.gregorian_seconds_to_datetime
-
-                    #IO.inspect(@epoch)
-
-                    #Calendar.calendar(1318781876)
-                    #IO.inspect(elem(DateTime.from_iso8601("2017-05-28T07:00:00.000Z"), 1).month)
-
-                    #IO.inspect(DateTime.to_string(elem(DateTime.from_unix(1318781876), 1)))
-
-
-
-                    delivery_date = ~D[2017-05-27]
-                    delivery_date_formatted = ""
-                    month = ""
-                    day = ""
-                    day_formatted = ""
-                    year = ""
-                    day_of_week = ""
-                    
-                    IO.inspect(delivery_date)
-
-                    case Date.day_of_week(delivery_date) do
-                      0 -> {day_of_week = "Sunday"}
-                      1 -> {day_of_week = "Monday"}
-                      6 -> {day_of_week = "Saturday"}
-                    end
-
-                    case delivery_date.month do
-                      0 -> {month = "January"}
-                      5 -> {month = "May"}
-                    end
-
-                    case delivery_date.day do
-                      n when n in [1, 21, 31] -> {day_formatted = Integer.to_string(delivery_date.day) <> "st"}
-                      n when n in [2, 22] -> {day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-                      n when n in [3, 23] -> {day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-                      n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {day_formatted = Integer.to_string(delivery_date.day) <> "th"}
-                    end
-
-                    delivery_date_formatted = day_of_week <> " " <> month <> " " <> day_formatted <> ", " <> Integer.to_string(delivery_date.year)
-
-                    IO.puts(delivery_date_formatted)
-
-                    menu_items = [%{"item_id": 1, "title": "one"}, %{"item_id": 2, "title": "one"}]
-
-                    #loop through cart items
-                    cart_items_with_title = Enum.map(cart_items, fn(cart_item) ->
-                      title = Enum.filter(menu_items, fn(menu_item) ->
-                      #  match?({:, _}, element)
-                        if(menu_item.item_id == cart_item.item_id) do
-                          #IO.inspect(menu_item)
-                          #Map.put(cart_item, :title, menu_item.title)
-                          menu_item
-                        end
-                      end)
-                      IO.inspect(title)
-                      title_temp = Enum.at(title, 0)
-                      #IO.inspect(title_temp[:title])
-                      Map.put(cart_item, :title, title_temp[:title])
-                    end)
-
-                    IO.inspect(cart_items_with_title)
-
-                    #cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
-
-                     #   Enum.at(item, 0)
-
-                    #end)
-
-                    #IO.inspect(cart_items_with_title)
-
-
-                    #loop through menu items and return the element if the title matches
-
-                    #Result := menu_items.Contains(1);
-
-                    IO.inspect(CompleteOrderResolverHelper.formatDeliveryDate("2017-05-27"))
-
-
-
-                    #working
-                    Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_now
-            
-            #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
-            
-
-            #  {:error, :error}
-             #     {:ok, %{status: "changeset error"}}
-
-
-            
-          
+          end
 
         {:error, error} -> IO.inspect(error)
             #log error in database
