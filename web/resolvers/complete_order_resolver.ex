@@ -5,6 +5,7 @@ defmodule Sconely.CompleteOrderResolver do
   #alias Sconely.MenuItem
   alias Sconely.Order
   #alias Ecto.Multi
+  alias Sconely.CompleteOrderResolverHelper
 
   #use Timex
 
@@ -405,31 +406,37 @@ defmodule Sconely.CompleteOrderResolver do
                     menu_items = [%{"item_id": 1, "title": "one"}, %{"item_id": 2, "title": "one"}]
 
                     #loop through cart items
-                    cart_items_with_title_temp = Enum.map(cart_items, fn(cart_item) ->
-                      Enum.map(menu_items, fn(menu_item) ->
+                    cart_items_with_title = Enum.map(cart_items, fn(cart_item) ->
+                      title = Enum.filter(menu_items, fn(menu_item) ->
                       #  match?({:, _}, element)
                         if(menu_item.item_id == cart_item.item_id) do
-                          Map.put(cart_item, :title, menu_item.title)
+                          #IO.inspect(menu_item)
+                          #Map.put(cart_item, :title, menu_item.title)
+                          menu_item
                         end
                       end)
-                    end)
-
-                    IO.inspect(cart_items_with_title_temp)
-
-                    cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
-
-                        Enum.at(item, 0)
-
+                      IO.inspect(title)
+                      title_temp = Enum.at(title, 0)
+                      #IO.inspect(title_temp[:title])
+                      Map.put(cart_item, :title, title_temp[:title])
                     end)
 
                     IO.inspect(cart_items_with_title)
+
+                    #cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
+
+                     #   Enum.at(item, 0)
+
+                    #end)
+
+                    #IO.inspect(cart_items_with_title)
 
 
                     #loop through menu items and return the element if the title matches
 
                     #Result := menu_items.Contains(1);
 
-
+                    IO.inspect(CompleteOrderResolverHelper.formatDeliveryDate("2017-05-27"))
 
 
 
