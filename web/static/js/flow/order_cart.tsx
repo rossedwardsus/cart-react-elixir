@@ -559,7 +559,7 @@ class OrderCart extends React.Component<any, any> {
 
     }else{
 
-        //console.log("order " + JSON.stringify(this.props.cart_items));
+        //console.log("order cart" + JSON.stringify(this.props.cart_items));
 
         total_cost = 0;
         item_count = 0;
@@ -568,15 +568,28 @@ class OrderCart extends React.Component<any, any> {
 
             console.log("item " + JSON.stringify(item));
 
-            if(item.item_type == "mini"){
-                          
-              total_cost = total_cost + (6 * item.quantity * 24);
-              item_count = item_count + (24 * item.quantity);
+            if(this.props.order.order_type == "sconely_yours"){
 
+                  //total_cost = total_cost + (6 * item.quantity * 24);
+                  //item_count = item_count + (24 * item.quantity);
+
+
+                 
+            
             }else{
 
-              total_cost = total_cost + (5 * item.quantity * 12);
-              item_count = item_count + (12 * item.quantity);
+
+                  if(item.item_type == "mini"){
+                                
+                    total_cost = total_cost + (6 * item.quantity * 24);
+                    item_count = item_count + (24 * item.quantity);
+
+                  }else{
+
+                    total_cost = total_cost + (5 * item.quantity * 12);
+                    item_count = item_count + item.quantity;
+
+                  }
 
             }
                           
@@ -589,7 +602,9 @@ class OrderCart extends React.Component<any, any> {
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
                       //let item_title = result.get("title");
 
-                      if(this.props.order.order_type == "yours"){
+                      if(this.props.order.order_type == "sconely_yours"){
+
+                          console.log("order cart" + JSON.stringify(this.props.cart_items));
 
                           return(<div>
                                       <form className="form-horizontal" style={{border: 1}}>    
@@ -602,8 +617,8 @@ class OrderCart extends React.Component<any, any> {
                                                 <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
                                               </div>
                                             </div>
-                                            <div className="col-md-1">cost</div>
-                                            <div className="col-md-1">X</div>
+                                            <div className="col-md-1">${item.quantity * 6}.00</div>
+                                            <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(item.item_id)}><b>X</b></a></div>
                                           </div>
                                       </form>
                                 </div>)
@@ -624,8 +639,6 @@ class OrderCart extends React.Component<any, any> {
                                               <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                               <div className="col-md-1">$.00</div>
                                               <div className="col-md-1">X</div>
-                                              
-                                             
                                             </div>
                                         </form>
                                   </div>)
@@ -663,28 +676,14 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
-               <form className="form-horizontal" style={{border: 1}}>    
-                    <div className="form-group" style={{border: 1}}>
-                      <div className="col-md-2"></div>
-                      <div className="col-md-2">Number of Scones</div>
-                      <div className="col-md-2">{item_count}</div>
-                      <div className="col-md-2">$</div>
-                    </div>
-               </form>
-               <form className="form-horizontal" style={{border: 1}}>    
-                    <div className="form-group" style={{border: 1}}>
-                      <div className="col-md-2"></div>
-                      <div className="col-md-2"></div>
-                      <div className="col-md-2">$</div>
-                    </div>
-               </form>
-               <br/>
                <br/>
                Delivery charge - 0 if yours - social depends on zipcode
                <br/>
                Promo Code
                <br/>
-               Total Due- {total_cost}
+               Total Items - 
+               <br/> 
+               Total Due - {total_cost}
             </div>
     )
   }

@@ -135,68 +135,83 @@ class DeliveryAddress extends React.Component<any, any> {
   
   render(): JSX.Element{
 
+    let delivery_address:any = "";
+
+    console.log("delivery address " + this.props.order.order_type);
+
+    if(this.props.order.order_type == "sconely_yours"){
+
+        delivery_address = <div>
+                              Pickup
+                              <br/>
+                              <select>
+                                <option></option>
+                                <option>Smorgasburg - May 21, 2017</option>
+                                <option>Smorgasburg - May 28, 2017</option>
+                              </select>
+                            </div>
+
+    }else{
+
+        delivery_address = <div><form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-sm-3">
+                                    <b>Delivery Address</b>
+                                    <br/>
+                                      <select className="form-control">
+                                          <option>Home</option>
+                                          <option>Office</option>
+                                      </select>
+                                </div>
+                              </div>
+                           </form>
+                           <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-3">
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.props.setDeliveryAddressStreet1(e)} style={{borderRadius: 0}}/>
+                                  </div>
+                                  <div className="col-sm-3">
+                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0}}/>
+                                  </div>
+                                  <div className="col-sm-3">
+                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Apt" style={{borderRadius: 0}}/>
+                                  </div>
+                                </div>
+                           </form>
+                          <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-3">
+                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
+                                      <option>City</option>
+                                      <option value="los_angeles">Los Angeles</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-sm-3">
+                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
+                                      <option>State</option>
+                                      <option value="ca">CA</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-sm-3">
+                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
+                                      <option>Zipcode</option>
+                                      <option value="90025">90025</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </form></div>
+
+    }
    
     return ( <div>
                 {this.props.order_type}
                 <br/>
-                Pickup
+                {delivery_address}
                 <br/>
-                <select>
-                  <option></option>
-                  <option>Smorgasburg - May 21, 2017</option>
-                  <option>Smorgasburg - May 28, 2017</option>
-                </select>
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-sm-3">
-                        <b>Delivery Address</b>
-                        <br/>
-                          <select className="form-control">
-                              <option>Home</option>
-                              <option>Office</option>
-                          </select>
-                    </div>
-                  </div>
-               </form>
-               <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3">
-                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.props.setDeliveryAddressStreet1(e)} style={{borderRadius: 0}}/>
-                      </div>
-                      <div className="col-sm-3">
-                        <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0}}/>
-                      </div>
-                      <div className="col-sm-3">
-                        <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Apt" style={{borderRadius: 0}}/>
-                      </div>
-                    </div>
-               </form>
-              <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3">
-                        <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
-                          <option>City</option>
-                          <option value="los_angeles">Los Angeles</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <div className="col-sm-3">
-                        <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
-                          <option>State</option>
-                          <option value="ca">CA</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <div className="col-sm-3">
-                        <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
-                          <option>Zipcode</option>
-                          <option value="90025">90025</option>
-                        </select>
-                      </div>
-                    </div>
-                  </form>
             </div>
     )
   }

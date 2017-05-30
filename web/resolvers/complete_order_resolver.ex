@@ -163,7 +163,7 @@ defmodule Sconely.CompleteOrderResolver do
 
 
 
-  def complete_yours_order(args, _info, test) do
+  def complete_yours_order(args, _info) do
 
     IO.inspect(args)
 

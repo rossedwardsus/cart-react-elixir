@@ -780,7 +780,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <DeliveryAddress orderType={this.props.order.order_type} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
+                            <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
                             setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
                             setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} 
                             setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
