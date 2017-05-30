@@ -163,7 +163,9 @@ defmodule Sconely.CompleteOrderResolver do
 
 
 
-  def complete_yours_order(args, _info) do
+  def complete_yours_order(args, _info, test) do
+
+    IO.inspect(args)
 
     #IO.inspect(args)
     IO.inspect(args[:order_contact_email])
@@ -263,36 +265,16 @@ defmodule Sconely.CompleteOrderResolver do
             #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
-            Enum.map(order_changeset.errors, fn {field, detail} ->
-
-                IO.inspect(Atom.to_string(field) <> " " <> detail)
-
-            end)
-
-            #Enum.each(order_changeset.errors),  fn {k, v} ->
-            #  IO.puts "#{k} --> #{v}"
-            #end)
-
-            #Ecto.Changeset.traverse_errors(order_changeset, fn {msg, opts} ->
-              #case msg do
-              #  {_} -> IO.puts("hello")
-                  #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
-                  #IO.inspect(opts)
-                  #msg
-              #end
-              #Enum.reduce(opts, msg, fn {key, value}, acc ->
-              #   #String.replace(acc, "%{#{key}}", to_string(value))
-              #end)
-            #end)
-
-            #Enum.map(order_changeset, fn(item) ->
-
-            #    IO.inspect(item)
-
-            #end)
+           
 
 
             if order_changeset.valid? do
+                #Repo.insert(order_datetime_changeset)
+                #Repo.insert(order_delivery_address_changeset)
+                #Repo.insert(order_payment_changeset)    
+                #Repo.insert(order_items_changeset)
+                #Repo.insert(order_contact_changeset)    
+                #Repo.insert(order_name_changeset)      
 
                 case Repo.insert(order_changeset) do
                   {:ok, response} -> IO.inspect(response)
@@ -483,15 +465,45 @@ defmodule Sconely.CompleteOrderResolver do
 
             IO.inspect("error")
 
-            #log_error_changeset = LogError.changeset(%Order{}, %{order_id: order_id})
+            #log_error_changeset = LogError.changeset(%Order{}, %{error: error})
 
             #IO.inspect(error_log_changeset.valid?)
 
-            #if order_changeset.valid?
+            #if log_error_changeset.valid?
 
-            #case Repo.insert(order_changeset) do
+            #case Repo.insert(log_error_changeset) do
             #  {:ok, response} -> IO.inspect(response)
             #end
+
+
+
+            Enum.map(order_changeset.errors, fn {field, detail} ->
+
+                IO.inspect(Atom.to_string(field) <> " " <> detail)
+
+            end)
+
+            #Enum.each(order_changeset.errors),  fn {k, v} ->
+            #  IO.puts "#{k} --> #{v}"
+            #end)
+
+            #Ecto.Changeset.traverse_errors(order_changeset, fn {msg, opts} ->
+              #case msg do
+              #  {_} -> IO.puts("hello")
+                  #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
+                  #IO.inspect(opts)
+                  #msg
+              #end
+              #Enum.reduce(opts, msg, fn {key, value}, acc ->
+              #   #String.replace(acc, "%{#{key}}", to_string(value))
+              #end)
+            #end)
+
+            #Enum.map(order_changeset, fn(item) ->
+
+            #    IO.inspect(item)
+
+            #end)
 
           end
 

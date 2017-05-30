@@ -74,7 +74,7 @@ defmodule Sconely.Schema do
     	#arg :security_code, :string
   		#arg :cart_items, list_of(:item)
 
-  		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
+  		resolve &Sconely.CompleteOrderResolver.complete_yours_order/3
   	end
 
 
