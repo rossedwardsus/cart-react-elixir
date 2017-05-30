@@ -142,14 +142,20 @@ class DeliveryAddress extends React.Component<any, any> {
     if(this.props.order.order_type == "sconely_yours"){
 
         delivery_address = <div>
-                              Pickup
-                              <br/>
-                              <select>
-                                <option></option>
-                                <option>Smorgasburg - May 21, 2017</option>
-                                <option>Smorgasburg - May 28, 2017</option>
-                              </select>
-                            </div>
+                              <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-3">
+                                    Pickup
+                                    <br/>
+                                    <select className="form-control">
+                                      <option></option>
+                                      <option>Smorgasburg - May 21, 2017</option>
+                                      <option>Smorgasburg - May 28, 2017</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </form>
+                          </div>
 
     }else{
 

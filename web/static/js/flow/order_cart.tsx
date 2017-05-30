@@ -568,13 +568,12 @@ class OrderCart extends React.Component<any, any> {
 
             console.log("item " + JSON.stringify(item));
 
+            console.log("order cart " + this.props.order.order_type);
+
             if(this.props.order.order_type == "sconely_yours"){
 
                   //total_cost = total_cost + (6 * item.quantity * 24);
                   //item_count = item_count + (24 * item.quantity);
-
-
-                 
             
             }else{
 

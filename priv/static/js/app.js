@@ -30447,7 +30447,7 @@ webpackJsonp([0],[
 	            var delivery_address = "";
 	            console.log("delivery address " + this.props.order.order_type);
 	            if (this.props.order.order_type == "sconely_yours") {
-	                delivery_address = React.createElement("div", null, "Pickup", React.createElement("br", null), React.createElement("select", null, React.createElement("option", null), React.createElement("option", null, "Smorgasburg - May 21, 2017"), React.createElement("option", null, "Smorgasburg - May 28, 2017")));
+	                delivery_address = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, "Pickup", React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Smorgasburg - May 21, 2017"), React.createElement("option", null, "Smorgasburg - May 28, 2017"))))));
 	            } else {
 	                delivery_address = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
 	                        return _this2.props.setDeliveryAddressStreet1(e);
@@ -31700,6 +31700,7 @@ webpackJsonp([0],[
 	                item_count = 0;
 	                this.props.cart_items.map(function (item) {
 	                    console.log("item " + JSON.stringify(item));
+	                    console.log("order cart " + this.props.order.order_type);
 	                    if (this.props.order.order_type == "sconely_yours") {
 	                        //total_cost = total_cost + (6 * item.quantity * 24);
 	                        //item_count = item_count + (24 * item.quantity);
