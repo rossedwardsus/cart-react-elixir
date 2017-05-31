@@ -52,7 +52,11 @@ class Name extends React.Component<any, any> {
     this.state = {
 
        first_name: "",
-       last_name: ""
+       last_name: "",
+       first_name_border_color: "grey",
+       last_name_border_color: "grey"
+       first_name_validated: false,
+       last_name_validated: false
     };
 
     //user_type=guest
@@ -78,11 +82,53 @@ class Name extends React.Component<any, any> {
 
   }
 
+
+  onFirstNameFocus(){
+
+    //alert();
+
+    this.setState({first_name_border_color: "red"});
+
+  }
+
   setFirstName(e: any){
 
-    //if length > 0
+    //only letters
+
     this.setState({first_name: e.target.value});
-    this.props.setFirstName(e);
+
+    if(e.target.value.length > 0){
+
+        let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+        let symbol_res = symbol_patt.test(e.target.value);
+
+        let number_res = (/[0-9]/.test(e.target.value));
+
+        if(!symbol_res){
+        
+          this.setState({first_name_border_color: "grey"});
+          this.props.setFirstName(e);
+
+          //if(last_name_validated){
+          
+              //this.props.setNameValidated(e);
+
+          //}else{
+
+              //set first_name_validated == true
+
+            }
+
+        }else{
+
+          this.setState({first_name_border_color: "red"});
+
+          //this.props.setNameInvalidated(e);
+
+        }
+
+    }
+
 
     //this.props.nameValidated();
     //this.props.nameInvalidated();
@@ -92,11 +138,26 @@ class Name extends React.Component<any, any> {
 
   setLastName(e: any){
 
-    this.setState({last_name: e.target.value});
-    this.props.setLastName(e);
+      let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_res = symbol_patt.test(e.target.value);
 
-    //this.props.nameValidated();
-    //this.props.nameInvalidated();
+      let number_res = (/[0-9]/.test(e.target.value));
+
+      if(!symbol_res){
+      
+        this.setState({last_name_border_color: "grey"});
+        this.props.setLastName(e);
+
+        //if first_name_validated && last_name_validated
+        //this.props.setNameValidated(e);
+
+      }else{
+
+        this.setState({last_name_border_color: "red"});
+
+         //this.props.setNameInvalidated(e);
+
+      }
 
   }
 
@@ -126,13 +187,13 @@ class Name extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
-                    <div className={this.props.firstNameClassName}>
-                      <input type="text" onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                    <div className={this.state.first_name_classname}>
+                      <input type="text" maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" onChange={(e: any) => this.setLastName(e)}  value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" onChange={(e: any) => this.setLastName(e)}  value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">

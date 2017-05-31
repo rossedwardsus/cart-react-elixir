@@ -675,14 +675,21 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
-               <br/>
-               Delivery charge - 0 if yours - social depends on zipcode
-               <br/>
-               Promo Code
-               <br/>
-               Total Items - 
-               <br/> 
-               Total Due - {total_cost}
+               <form className="form-horizontal" style={{border: 1}}>    
+                  <div className="form-group" style={{border: 1}}>
+                    <div className="col-md-1">item_title</div>
+                    <div className="col-md-3">                         
+                       <br/>
+                       Delivery charge - 0 if yours - social depends on zipcode
+                       <br/>
+                       Promo Code
+                       <br/>
+                       Total Items - <b>2</b>
+                       <br/> 
+                       Total Due - <b>{total_cost}</b>
+                    </div>
+                  </div>
+                </form>
             </div>
     )
   }

@@ -751,7 +751,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                     </nav> 
                 <div className="container-fluid">
                   <div className="row">
-                        <div className="hidden-xs col-md-2">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
@@ -772,7 +772,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-10">
+                        <div className="col-md-9">
                             <br/>
                             <br/>
                             <br/>
@@ -786,7 +786,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
-                            <Datetime  setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>
+                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>
 
                             <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)}/>
                             
@@ -802,9 +802,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             order_payment_method={this.props.order_payment_method}
                             cartValidated={this.props.cart_validations.cart_validated}/>
                         </div>
-                        <div className="hidden-xs col-md-2">
-                              maybe put something here
-                        </div>
+                        
                 </div>
             </div>
             </div>

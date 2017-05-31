@@ -102,12 +102,23 @@ class DateTime extends React.Component<any, any> {
   
   render(): JSX.Element{
 
+    let delivery_address_pickup_datetime:any = "";
+
+    if(this.props.order.order_type == "sconely_yours"){
+
+        delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
+
+    }else{
+
+        delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
+
+    }
    
     return ( <div>
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-12">
-                          <b>Delivery Date and Time</b>
+                      {delivery_address_pickup_datetime}
                       </div>
                     </div>
                 </form>

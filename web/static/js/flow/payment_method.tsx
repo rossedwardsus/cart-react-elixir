@@ -171,53 +171,52 @@ class PaymentMethod extends React.Component<any, any> {
   
   render(): JSX.Element{
 
+    /*let dropdown: any = <form className="form-horizontal">
+                      <div className="form-group">
+                          <div className="col-sm-3">
+                              <b>Payment</b>
+                              <br/>
+                                <select className="form-control">
+                                    <option>Home</option>
+                                    <option>Office</option>
+                                </select>
+                          </div>
+                      </div>
+                  </form>*/
+
    
     return ( <div>
+                  
                   <form className="form-horizontal">
-                            <div className="form-group">
-                                <div className="col-sm-3">
-                                    <b>Payment</b>
-                                    <br/>
-                                      <select className="form-control">
-                                          <option>Home</option>
-                                          <option>Office</option>
-                                      </select>
-                                </div>
-                              </div>
-                            </form>
-                            <form className="form-horizontal">
-                            <div className="form-group">
-                                <div className="col-sm-6">
-                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)}/>
-                              </div>
-                              </div>
-                            </form>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-3">
-                                  <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_colors, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                </div>
-                                <div className="col-sm-3">
-                                    {this.state.card_type}
-                                </div>
-                              </div>
-                            </form>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-md-2">
-                              
-                                  <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryMonth(e)} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                </div>
-                                <div className="col-md-2">
-                              
-                                  <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                </div>
-                                <div className="col-md-2">
-                              
-                                  <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                </div>
-                              </div>
-                            </form>
+                  <div className="form-group">
+                      <div className="col-sm-6">
+                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)}/>
+                    </div>
+                    </div>
+                  </form>
+                  <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3">
+                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                      <div className="col-sm-3">
+                          {this.state.card_type}
+                      </div>
+                    </div>
+                  </form>
+                  <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-md-2">
+                        <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryMonth(e)} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                      <div className="col-md-2">
+                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                      <div className="col-md-2">
+                        <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                    </div>
+                  </form>
                             
                     
             </div>
