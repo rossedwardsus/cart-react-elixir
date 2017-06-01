@@ -227,28 +227,24 @@ class SidebarCart extends React.Component<any, any> {
 
         let that = this;
 
-        if(this.props.cart.cart_items.length == 12){
+        
 
-            item_limit = "You have reached your item limit";
-
-        }
-
-        /*this.props.cart.cart_items.map(function(item: any){
+        this.props.cart.cart_items.map(function(item: any){
 
             //console.log("item " + JSON.stringify(item));
             //console.log("order type" + JSON.stringify(that.props.order));
 
-            if(that.props.order.order_type == "sconely_yours"){
+            //if(that.props.order.order_type == "sconely_yours"){
 
               //if total_cost is more then 2 then cost = 5 else 6
               //dont have to loop.  just times cart length
 
-              total_cost = total_cost + (5 * item.quantity);
+              //total_cost = total_cost + (5 * item.quantity);
               item_count = item_count + item.quantity;
 
 
 
-            }else{
+            /*}else{
 
               if(item.item_type == "mini"){
                             
@@ -262,9 +258,9 @@ class SidebarCart extends React.Component<any, any> {
 
               }
 
-            }
+            }*/
                           
-        });*/
+        });
 
     //alert(total_cost);
 
@@ -313,6 +309,12 @@ class SidebarCart extends React.Component<any, any> {
                       }
                   
                 }.bind(this))
+
+    }
+
+    if(total_items == 12){
+
+        item_limit = "You have reached your item limit";
 
     }
 

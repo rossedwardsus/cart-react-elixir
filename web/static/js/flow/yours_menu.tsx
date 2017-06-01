@@ -136,7 +136,28 @@ class PublicMenu extends React.Component<any, any> {
 
     //$('#myModal').modal('toggle');
 
-    if(this.props.cart.cart_items.length < 12){
+    let items_count = 0
+
+    this.props.cart.cart_items.map(function(item: any){
+
+            //console.log("item " + JSON.stringify(item));
+            //console.log("order type" + JSON.stringify(that.props.order));
+
+            //if(that.props.order.order_type == "sconely_yours"){
+
+              //if total_cost is more then 2 then cost = 5 else 6
+              //dont have to loop.  just times cart length
+
+              //total_cost = total_cost + (5 * item.quantity);
+              item_count = item_count + item.quantity;
+
+            //}else{
+
+    });
+
+    consol.log("yours items count" + items_count);
+
+    if(items_count < 12){
 
         this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
 
