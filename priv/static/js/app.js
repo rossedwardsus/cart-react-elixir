@@ -27327,7 +27327,21 @@ webpackJsonp([0],[
 	            console.log("add cart item");
 	            //if they haven't selected quantity and dozens dont submit and show them an error
 	            //$('#myModal').modal('toggle');
-	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+	            var item_count = 0;
+	            this.props.cart.cart_items.map(function (item) {
+	                //console.log("item " + JSON.stringify(item));
+	                //console.log("order type" + JSON.stringify(that.props.order));
+	                //if(that.props.order.order_type == "sconely_yours"){
+	                //if total_cost is more then 2 then cost = 5 else 6
+	                //dont have to loop.  just times cart length
+	                //total_cost = total_cost + (5 * item.quantity);
+	                item_count = item_count + item.quantity;
+	                //}else{
+	            });
+	            console.log("item count" + item_count);
+	            if (item_count < 150) {
+	                this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+	            }
 	            this.props.cartValidated();
 	            //cart validated in redux
 	        }
@@ -27690,6 +27704,7 @@ webpackJsonp([0],[
 	            }
 	            var total_cost = 0;
 	            var item_count = 0;
+	            var item_limit = "";
 	            //alert(JSON.stringify(this.props.order.toJS()));
 	            //this.props.order.toJS().cart.map(function(item: any){
 	            //    item_count = item.dozens * item.quantity;
@@ -27702,24 +27717,30 @@ webpackJsonp([0],[
 	            } else {
 	                //console.log("order " + JSON.stringify(this.props.cart));
 	                var that = this;
-	                this.props.cart.cart_items.map(function (item) {
-	                    //console.log("item " + JSON.stringify(item));
+	                if (this.props.cart.cart_items.length == 12) {
+	                    item_limit = "You have reached your item limit";
+	                }
+	                /*this.props.cart.cart_items.map(function(item: any){
+	                         //console.log("item " + JSON.stringify(item));
 	                    //console.log("order type" + JSON.stringify(that.props.order));
-	                    if (that.props.order.order_type == "sconely_yours") {
-	                        //if total_cost is more then 2 then cost = 5 else 6
-	                        //dont have to loop.  just times cart length
-	                        total_cost = total_cost + 5 * item.quantity;
-	                        item_count = item_count + item.quantity;
-	                    } else {
-	                        if (item.item_type == "mini") {
-	                            total_cost = total_cost + 6 * item.quantity * 24;
-	                            item_count = item_count + 24 * item.quantity;
-	                        } else {
-	                            total_cost = total_cost + 5 * item.quantity * 12;
-	                            item_count = item_count + 12 * item.quantity;
-	                        }
-	                    }
-	                });
+	                         if(that.props.order.order_type == "sconely_yours"){
+	                           //if total_cost is more then 2 then cost = 5 else 6
+	                      //dont have to loop.  just times cart length
+	                           total_cost = total_cost + (5 * item.quantity);
+	                      item_count = item_count + item.quantity;
+	                  
+	                    }else{
+	                           if(item.item_type == "mini"){
+	                                    
+	                        total_cost = total_cost + (6 * item.quantity * 24);
+	                        item_count = item_count + (24 * item.quantity);
+	                           }else{
+	                             total_cost = total_cost + (5 * item.quantity * 12);
+	                        item_count = item_count + (12 * item.quantity);
+	                           }
+	                         }
+	                                  
+	                });*/
 	                //alert(total_cost);
 	                cart = this.props.cart.cart_items.map(function (item, index) {
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
@@ -27738,7 +27759,7 @@ webpackJsonp([0],[
 	                }.bind(this));
 	            }
 	            //{this.props.params.repoName}
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "You have reached your limit", React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }), React.createElement("div", { className: "col-xs-2", style: { fontSize: "14" } }, React.createElement("b", null, item_count)))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_cost, ".00"), React.createElement("br", null), "if item_count > 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout"), React.createElement("br", null))));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), item_limit, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { border: 1, position: "static" } }, cart), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }), React.createElement("div", { className: "col-xs-2", style: { fontSize: "14" } }, React.createElement("b", null, item_count)))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-0" }), React.createElement("div", { className: "col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_cost, ".00"), React.createElement("br", null), "if item_count > 0", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout"), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -28283,7 +28304,9 @@ webpackJsonp([0],[
 	            console.log("add cart item");
 	            //if they haven't selected quantity and dozens dont submit and show them an error
 	            //$('#myModal').modal('toggle');
-	            this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+	            if (this.props.cart.cart_items.length < 12) {
+	                this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+	            }
 	            this.props.cartValidated();
 	            //cart validated in redux
 	        }

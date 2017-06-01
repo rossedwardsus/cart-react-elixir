@@ -136,7 +136,11 @@ class PublicMenu extends React.Component<any, any> {
 
     //$('#myModal').modal('toggle');
 
-    this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+    if(this.props.cart.cart_items.length < 12){
+
+        this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+
+    }
 
     this.props.cartValidated();
 

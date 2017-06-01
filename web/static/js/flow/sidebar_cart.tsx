@@ -200,6 +200,7 @@ class SidebarCart extends React.Component<any, any> {
 
     let total_cost = 0;
     let item_count = 0;
+    let item_limit = "";
 
     //alert(JSON.stringify(this.props.order.toJS()));
    
@@ -226,7 +227,13 @@ class SidebarCart extends React.Component<any, any> {
 
         let that = this;
 
-        this.props.cart.cart_items.map(function(item: any){
+        if(this.props.cart.cart_items.length == 12){
+
+            item_limit = "You have reached your item limit";
+
+        }
+
+        /*this.props.cart.cart_items.map(function(item: any){
 
             //console.log("item " + JSON.stringify(item));
             //console.log("order type" + JSON.stringify(that.props.order));
@@ -257,7 +264,7 @@ class SidebarCart extends React.Component<any, any> {
 
             }
                           
-        });
+        });*/
 
     //alert(total_cost);
 
@@ -315,7 +322,7 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  You have reached your limit
+                  {item_limit}
                   <br/>
                   <br/>
                   <div style={{border: 1, position: "static"}}>
