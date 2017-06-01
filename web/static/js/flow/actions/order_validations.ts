@@ -65,9 +65,9 @@ export function contactInvalidated() {
 }
 
 export function nameValidated() {
-  console.log("cart validated ");
+  console.log("cart validated action");
   return {
-    type: DELIVERY_ADDRESS_VALIDATED,
+    type: NAME_VALIDATED,
     
   }
 }

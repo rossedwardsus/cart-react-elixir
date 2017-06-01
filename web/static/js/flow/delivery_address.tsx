@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {deliveryAddressValidated} from './actions/cart_validations.ts';
+//import {deliveryAddressValidated} from './actions/cart_validations.ts';
 
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 const Immutable  = require('immutable');
@@ -149,8 +149,7 @@ class DeliveryAddress extends React.Component<any, any> {
                                     <br/>
                                     <select className="form-control">
                                       <option></option>
-                                      <option>Smorgasburg - May 21, 2017</option>
-                                      <option>Smorgasburg - May 28, 2017</option>
+                                      <option>Crafted Kitchen</option>
                                     </select>
                                   </div>
                                 </div>

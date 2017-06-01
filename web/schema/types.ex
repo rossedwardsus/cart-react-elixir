@@ -84,10 +84,12 @@ defmodule Sconely.Schema.Types do
     #field :time, :string
     field :order_payment_name_on_card, :string
     field :order_payment_card_number, :string
-    #field :expiry_date, :string
+    field :order_payment_expiry_month, :string
+    field :order_payment_expiry_year, :string
     #field :security_code, :string
   	#field :cart_items, list_of(:item)
     field :status, :string
+    field :order_id, :string
   end
 
 

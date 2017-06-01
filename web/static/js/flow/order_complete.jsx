@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
+import {completeOrder} from './actions/order.ts';
 
 
 function addTodoWithDispatch() {
@@ -38,7 +39,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderCompleted extends React.Component<any, any> {
+class OrderComplete extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -97,10 +98,10 @@ class OrderCompleted extends React.Component<any, any> {
 
     //alert();
 
-    window.onhashchange = function() {
+    //window.onhashchange = function() {
      //blah blah blah
-     alert("this.state.page");
-    }.bind(this);
+    // alert("this.state.page");
+    //}.bind(this);
 
     //var result = map.find(function(obj){return obj.get('id') === 4;});
 
@@ -549,10 +550,16 @@ class OrderCompleted extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            Your Order #12345 has been received.
+                            Your Order {this.props.order.order_id} has been received.
                             <br/>
+                            Check your email {this.props.contact.email}
                             <br/>
-                            
+                            Check out our social links
+                            <br/>
+                            A receipt has been saved if you are registered
+                            <br/>
+                            Click to go back to the homepage here
+                            <br/>
                         </div>
                         <div className="hidden-xs col-md-2">
                               maybe put something here
@@ -573,22 +580,40 @@ class OrderCompleted extends React.Component<any, any> {
 }
 
 
-
-
-/*function mapStateToProps(state: any) {
+const mapStateToProps = (state: any, ownProps: any) => {
+  console.log("order complete " + JSON.stringify(state));
   return {
-   menu_items: state.default.menu_items
-   //menu_items: getPublicMenu
-   //menu_items: dispatch()
-  };
+    //active: ownProps.filter === state.visibilityFilter
+
+    //if(state.default.order.cart_items != undefined){
+        
+        order: state.Order,
+        contact: state.contact
+
+    //}
+  }
 }
 
-function mapDispatchToProps(dispatch: any) {
-  return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-}*/
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //addCartItem: (item_id: any, dozens: any, quantity: any) => {
+      //dispatch(addCartItem(1))
+    //},
+    //increaseCartItemQuantity: (item_id: any) => {
+    //  dispatch(increaseCartItemQuantity(1))
+    //},
+    //decreaseCartItemQuantity: (item_id: any) => {
+    //  dispatch(decreaseCartItemQuantity(1))
+    //}
+  }
+}
+
+const OrderCompleted1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OrderComplete)
 
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderCompleted;
-
+export default OrderCompleted1;

@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+//import {validateName} from './actions/cart/order_validations.ts';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 //import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
@@ -54,7 +54,7 @@ class Name extends React.Component<any, any> {
        first_name: "",
        last_name: "",
        first_name_border_color: "grey",
-       last_name_border_color: "grey"
+       last_name_border_color: "grey",
        first_name_validated: false,
        last_name_validated: false
     };
@@ -87,7 +87,7 @@ class Name extends React.Component<any, any> {
 
     //alert();
 
-    this.setState({first_name_border_color: "red"});
+    //this.setState({first_name_border_color: "red"});
 
   }
 
@@ -99,33 +99,29 @@ class Name extends React.Component<any, any> {
 
     if(e.target.value.length > 0){
 
-        let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-        let symbol_res = symbol_patt.test(e.target.value);
+        //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+        //let symbol_res = symbol_patt.test(e.target.value);
 
-        let number_res = (/[0-9]/.test(e.target.value));
+        //let number_res = (/[0-9]/.test(e.target.value));
 
-        if(!symbol_res){
+        //if(!symbol_res){
         
-          this.setState({first_name_border_color: "grey"});
+          //this.setState({first_name_border_color: "grey"});
           this.props.setFirstName(e);
 
-          //if(last_name_validated){
+          if(this.state.last_name.length > 0){
           
-              //this.props.setNameValidated(e);
+              this.props.setNameValidated(e);
 
-          //}else{
+          }
 
-              //set first_name_validated == true
+        //}else{
 
-            }
-
-        }else{
-
-          this.setState({first_name_border_color: "red"});
+          //this.setState({first_name_border_color: "red"});
 
           //this.props.setNameInvalidated(e);
 
-        }
+        //}
 
     }
 
@@ -136,26 +132,45 @@ class Name extends React.Component<any, any> {
 
   }
 
+  onLastNameFocus(){
+
+    //alert();
+
+    //this.setState({last_name_border_color: "red"});
+
+  }
+
   setLastName(e: any){
 
-      let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-      let symbol_res = symbol_patt.test(e.target.value);
+      this.setState({last_name: e.target.value});
 
-      let number_res = (/[0-9]/.test(e.target.value));
+      if(e.target.value.length > 0){    
 
-      if(!symbol_res){
-      
-        this.setState({last_name_border_color: "grey"});
-        this.props.setLastName(e);
+          //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+          //let symbol_res = symbol_patt.test(e.target.value);
 
-        //if first_name_validated && last_name_validated
-        //this.props.setNameValidated(e);
+          //console.log(symbol_res);
 
-      }else{
+          //let number_res = (/[0-9]/.test(e.target.value));
 
-        this.setState({last_name_border_color: "red"});
+          //if(!symbol_res){
+          
+            //this.setState({last_name_border_color: "grey"});
+            this.props.setLastName(e);
 
-         //this.props.setNameInvalidated(e);
+            if(this.state.first_name.length > 0){
+             
+              this.props.setNameValidated(e);
+            
+            }
+
+          //}else{
+
+            //this.setState({last_name_border_color: "red"});
+
+             //this.props.setNameInvalidated(e);
+
+          //}
 
       }
 
@@ -176,9 +191,9 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-              <form className="form-horizontal">
-                <div className="form-group">
-                  <div className="col-sm-12">
+              <form className="form-horizontal" style={{paddingLeft: 0}}>
+                <div className="form-group" style={{paddingLeft: 0}}>
+                  <div className="col-sm-12" style={{paddingLeft: 0}}>
                       <b>Name</b>
                       <br/>
                   </div>
@@ -193,7 +208,7 @@ class Name extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" onChange={(e: any) => this.setLastName(e)}  value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setLastName(e)}  value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">

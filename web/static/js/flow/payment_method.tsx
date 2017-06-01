@@ -84,6 +84,8 @@ class PaymentMethod extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProps: any){
 
+      //check for payment invalidated error
+
       console.log("payment props" + JSON.stringify(nextProps));
 
   }
@@ -100,12 +102,13 @@ class PaymentMethod extends React.Component<any, any> {
 
   setPaymentCardNumber(e: any){
 
+      //if e.target.value > 0
       //Amex Card: ^3[47][0-9]{13}$
       //if(/^3[47][0-9]{13}$/.test(e.target.value)){
 
           console.log("amex");
-          this.setState({card_number_border_color: "red"})
-          this.setState({card_type: "AMEX"});
+          //this.setState({card_number_border_color: "red"})
+          //this.setState({card_type: "AMEX"});
           this.setState({card_number: e.target.value});
           this.props.setPaymentCardNumber(e);
           
@@ -125,40 +128,97 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
+  onPaymentExpiryMonthFocus(){
+
+      //this.setState({expiry_month_border_color: "red"});
+
+  }
+
   setPaymentExpiryMonth(e: any){
 
       console.log(e.target.value);
 
-      //01-12, only numbers
-      if(/^[0-9]/.test(e.target.value)){
+      if(e.target.value.length > 0){
+          //01-12, only numbers
+          if(/^[0-9]{2}/.test(e.target.value)){
 
-          console.log("ok month");
-          this.setState({expiry_month_border_color: "grey"});
-          this.setState({expiry_month: e.target.value});
-          this.props.setPaymentExpiryMonth(e);
+              console.log("ok month");
+              this.setState({expiry_month_border_color: "grey"});
+              this.setState({expiry_month: e.target.value});
+              this.props.setPaymentExpiryMonth(e);
 
+              if(this.state.payment_expiry_year.length > 0){
+
+                  this.props.paymentValidated();
+
+              }
+
+          }else{
+
+              //this.setState({expiry_month_border_color: "red"});
+
+          }
       }
+  }
+
+  onPaymentExpiryYearFocus(){
+
+      //this.setState({expiry_year_border_color: "red"});
 
   }
 
   setPaymentExpiryYear(e: any){
 
-      //2017-only numbers
-      //01-12, only numbers
-      if(/^[0-9]/.test(e.target.value)){
+      if(e.target.value.length > 0){
+          //2017-only numbers
+          //01-12, only numbers
+          if(/^[0-9]{4}/.test(e.target.value)){
 
-          console.log("ok year");
-          this.setState({expiry_year_border_color: "grey"})
-          this.setState({expiry_year: e.target.value});
-          this.props.setPaymentExpiryYear(e);
+              console.log("ok year");
+              this.setState({expiry_year_border_color: "grey"})
+              this.setState({expiry_year: e.target.value});
+              this.props.setPaymentExpiryYear(e);
 
+              if(this.state.payment_expiry_month.length > 0){
+
+                  this.props.paymentValidated();
+
+              }
+
+          }else{
+
+              this.setState({expiry_month_border_color: "red"});
+
+          }
       }
-
   }
 
   setPaymentSecurityCode(e: any){
 
       //if length > 0 or less then 4, only numbers
+
+       if(e.target.value.length > 0){
+          //2017-only numbers
+          //01-12, only numbers
+          if(/^[0-9]{4}/.test(e.target.value)){
+
+              console.log("ok year");
+              //this.setState({expiry_year_border_color: "grey"})
+              this.setState({expiry_security_code: e.target.value});
+              this.props.setPaymentSecurityCode(e);
+
+              if(this.state.payment_expiry_month.length > 0){
+
+                  this.props.paymentValidated();
+
+              }
+
+          }else{
+
+              this.setState({expiry_month_border_color: "red"});
+
+          }
+      }
 
   }
 
@@ -207,10 +267,10 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-md-2">
-                        <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onChange={(e) => this.setPaymentExpiryMonth(e)} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={(e) => this.setPaymentExpiryMonth(e)} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                       <div className="col-md-2">
-                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                       <div className="col-md-2">
                         <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={(e) => this.setPaymentExpiryYear(e)} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>

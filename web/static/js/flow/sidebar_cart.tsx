@@ -315,6 +315,7 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
+                  You have reached your limit
                   <br/>
                   <br/>
                   <div style={{border: 1, position: "static"}}>
@@ -325,16 +326,17 @@ class SidebarCart extends React.Component<any, any> {
                     <form className="form-horizontal" style={{border: 1}}>
                       <div className="form-group" style={{border: 1}}>
                         <div className="col-xs-0"></div>
-                        <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Items</b></div>
-                        <div className="col-xs-2" style={{fontSize: "14"}}>{item_count}</div>
+                        <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}></div>
+                        <div className="col-xs-2" style={{fontSize: "14"}}><b>{item_count}</b></div>
                       </div>
                     </form>
                     <form className="form-horizontal" style={{border: 1}}>
                       <div className="form-group" style={{border: 1}}>
                         <div className="col-xs-0"></div>
-                        <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Sub Total</b></div>
+                        <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total</b></div>
                         <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost}.00</div>
                         <br/>
+                        if item_count > 0
                         <br/>
                         <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
                         <br/>

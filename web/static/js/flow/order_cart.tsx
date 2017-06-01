@@ -567,7 +567,6 @@ class OrderCart extends React.Component<any, any> {
         this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
-
             console.log("order cart " + this.props.order.order_type);
 
             if(this.props.order.order_type == "sconely_yours"){
@@ -675,17 +674,18 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
+               click here to add more items to your cart
+               <br/>
                <form className="form-horizontal" style={{border: 1}}>    
                   <div className="form-group" style={{border: 1}}>
-                    <div className="col-md-1">item_title</div>
                     <div className="col-md-3">                         
                        <br/>
                        Delivery charge - 0 if yours - social depends on zipcode
                        <br/>
-                       Promo Code
-                       <br/>
-                       Total Items - <b>2</b>
+                       <b>2</b>
                        <br/> 
+                       Promo Code<input/>
+                       <br/>
                        Total Due - <b>{total_cost}</b>
                     </div>
                   </div>

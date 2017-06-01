@@ -1,4 +1,4 @@
-import { CREATE_ORDER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, FAQ, MAILING_LIST, SET_ORDER_ID, ORDER_COMPLETED } from '../constants/actionTypes.ts';
 
 
 
@@ -47,3 +47,31 @@ export function createOrder(order_type: any) {
   }
 }
 
+export function orderCompleted(order_type: any) {
+  console.log("create order action " + order_type);
+  return {
+    type: ORDER_COMPLETED,
+    order_type
+  }
+}
+
+export function faq(value: any) {
+  console.log("create order action ");
+  return {
+    type: FAQ,
+  }
+}
+
+export function mailingList(value: any) {
+  console.log("create order action ");
+  return {
+    type: MAILING_LIST,
+  }
+}
+
+export function setOrderId(order_id: any) {
+  console.log("order id action " + order_id);
+  return {
+    type: SET_ORDER_ID,
+  }
+}

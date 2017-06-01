@@ -11,7 +11,7 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {datetimeValidated} from './actions/cart_validations.ts';
+//import {datetimeValidated} from './actions/order_validations.ts';
 //import {setDate, setTime} from './actions/order_delivery_datetime.ts';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
@@ -86,15 +86,13 @@ class DateTime extends React.Component<any, any> {
   
   setDate(date: any){
 
-    
-
     console.log("date " + moment(date).toISOString());
 
     this.setState({startDate: date});
-    //this.props.setDate("date"+ moment(date).format("YYYY/MM/DD"));
-    this.props.setDate("date"+ moment(date).toISOString());
+    this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.props.setDate(moment(date).toISOString());
 
-    this.props.cartValidated();
+    //this.props.cartValidated();
     this.props.datetimeValidated();
 
   }

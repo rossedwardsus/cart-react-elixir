@@ -221,7 +221,7 @@ defmodule Sconely.CompleteOrderResolver do
         description: "1000 Scones"
       ]
   
-    #IO.inspect(Stripe.Charges.create(51, params))
+    IO.inspect(Stripe.Charges.create(51, params))
 
     charge = Stripe.Charges.create(51, params)
                     
@@ -258,16 +258,15 @@ defmodule Sconely.CompleteOrderResolver do
 
             #Multi.new
 
-            order_changeset = Order.changeset(%Order{}, %{user_id: "guest", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
+            order_changeset = Order.changeset(%Order{}, %{user_id: "guest", order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_name_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
+            IO.inspect(order_changeset)
            
-
-
             if order_changeset.valid? do
                 #Repo.insert(order_datetime_changeset)
                 #Repo.insert(order_delivery_address_changeset)
@@ -451,10 +450,11 @@ defmodule Sconely.CompleteOrderResolver do
 
 
                         #working
-                        #Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_now
+                        Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:first_name], "order_last_name" => args[:last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_now
                 
                 #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
                 
+                        {:ok, %{status: "completed", order_id: order_id}}
 
                   #{:error, :error}
                       #{:ok, %{status: "changeset error"}}
@@ -509,11 +509,11 @@ defmodule Sconely.CompleteOrderResolver do
 
         {:error, error} -> IO.inspect(error)
             #log error in database
-            {:ok, %{status: "card declined"}}
+            {:ok, %{status: "card declined - limit reached"}}
 
     end
 
-    {:ok, %{status: "card declined"}}
+    #{:ok, %{status: "card declined"}}
 
     
     #Repo.get!(SconelySignatureOrder, order_id)

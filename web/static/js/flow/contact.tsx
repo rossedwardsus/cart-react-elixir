@@ -49,7 +49,8 @@ class Contact extends React.Component<any, any> {
     this.state = {
 
         email: "",
-        mobile: ""
+        mobile: "",
+        email_border_color: "grey"
 
     };
 
@@ -83,6 +84,8 @@ class Contact extends React.Component<any, any> {
 
       let number_res = (/[0-9]/.test(e.target.value));
 
+      //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //return re.test(email);
 
       console.log(/[0-9]/.test(e.target.value));
 
@@ -141,7 +144,7 @@ class Contact extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0}}/>
+                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="col-md-3">
@@ -155,7 +158,7 @@ class Contact extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile" value={this.state.mobile}  style={{borderRadius: 0}}/>
+                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="1111111111" value={this.state.mobile}  style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>

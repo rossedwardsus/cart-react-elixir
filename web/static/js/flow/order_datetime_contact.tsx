@@ -12,14 +12,14 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated} from './actions/cart_validations.ts';
+import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 import {setFirstName, setLastName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {completeOrder} from './actions/complete_order.ts';
+import {faq, mailingList, setOrderId} from './actions/order.ts';
 
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
@@ -705,7 +705,22 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       this.context.router.push('/order/payment_method');
       
-  }  
+  }
+
+  terms(e: any){
+
+      console.log(e.target.value)
+
+      this.props.faq(e);
+
+  }
+
+  mailingList(e: any){
+
+      this.props.mailingList(e);
+
+  }
+
 
   render(): JSX.Element{
 
@@ -760,7 +775,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
+                          <Link to="/public/menu" className="btn btn-default">Back to Menu</Link>
+                          <br/>
                           <br/>
                           <Link to="/public/menu">Social</Link>
                           <br/>
@@ -786,23 +802,31 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
-                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()} cartValidated={() => this.props.cartValidated()}/>
+                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>
 
-                            <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)}/>
+                            <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)} setNameValidated={() => this.props.setNameValidated()}/>
                             
                             <Contact setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
                             <OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItemQuantity(e)} cart_items={this.props.order_cart_items}/>
 
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                            <br/>
 
-                            <CheckoutButton order={this.props.order} order_delivery_address={this.props.order_delivery_address} 
+                            <input type="checkbox" onChange={(e: any) => this.terms(e)}/>Terms
+                            <br/>
+                            <input type="checkbox" onChange={(e: any) => this.mailingList(e)}/>Join Mailing List
+                            <br/>
+
+                            <CheckoutButton setOrderId={(order_id: any) => this.props.setOrderId(order_id)} thisorder={this.props.order} order_delivery_address={this.props.order_delivery_address} 
                             order_datetime={this.props.order_datetime}
                             order_contact={this.props.order_contact} order_name={this.props.order_name}  
                             order_payment_method={this.props.order_payment_method}
-                            cartValidated={this.props.cart_validations.cart_validated}/>
+                            validations={this.props.order_validations}/>
+                            <br/>
+                            <button>Cancel</button>
+                            <br/>
                         </div>
-                        
                 </div>
             </div>
             </div>
@@ -824,7 +848,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("checkout state" + JSON.stringify(state));
   return {
-   cart_validations: state.cart_validations,
+   order_validations: state.order_validations,
    order: state.Order,
    order_delivery_address: state.delivery_address,
    order_contact: state.contact,
@@ -861,6 +885,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setLastName: (e: any) => {
       dispatch(setLastName(e.target.value))
+    },
+    setNameValidated: (e: any) => {
+      dispatch(nameValidated())
     },
     setContactEmail: (e: any) => {
       dispatch(setContactEmail(e.target.value))
@@ -909,6 +936,21 @@ function mapDispatchToProps(dispatch: any) {
     },
     setPaymentSecurityCode: (e: any) => {
       dispatch(setPaymentSecurityCode(e.target.value))
+    },
+    faq: (value: any) => {
+
+      dispatch(faq(value));
+
+    },
+    mailingList: (value: any) => {
+
+      dispatch(mailingList(value));
+
+    },
+    setOrderId: (value: any) => {
+
+      dispatch(setOrderId(value));
+
     },
     
     //complete order thunk

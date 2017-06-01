@@ -70,8 +70,9 @@ defmodule Sconely.Schema do
       #arg :time, :string
     	arg :order_payment_name_on_card, :string
     	arg :order_payment_card_number, :string
-    	#arg :expiry_date, :string
-    	#arg :security_code, :string
+    	arg :order_payment_expiry_month, :string
+    	arg :order_payment_expiry_year, :string
+      arg :order_payment_security_code, :string
   		#arg :cart_items, list_of(:item)
 
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
