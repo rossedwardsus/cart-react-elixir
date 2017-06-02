@@ -29713,6 +29713,10 @@ webpackJsonp([0],[
 	    _createClass(OrderDateTimeContact, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {}
+	        ///if(this.props.order.order_type == undefined){
+	        //    redirect to homepage
+	        //}
+	
 	        //componentWillReceiveProps
 	
 	    }, {
@@ -30560,6 +30564,7 @@ webpackJsonp([0],[
 	        value: function setDeliveryAddressZipcode(e) {
 	            this.setState({ zipcode: e.target.value });
 	            this.props.setDeliveryAddressZipcode(e);
+	            //90012, 90014, 90074, 90012, 90017, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086
 	            //this.props.setDeliveryAddressZipcode(e);
 	            //this.props.setdeliveryAddressValidated();
 	        }
@@ -35244,8 +35249,8 @@ webpackJsonp([0],[
 	            //this.props.order_delivery_address
 	            //this.props.order_payment_method
 	            //this.props.cart_items
-	            //axios.post('https://sconely.herokuapp.com/api/graphql', {
-	            axios_1.default.post('http://localhost:4000/api/graphql', {
+	            axios_1.default.post('https://sconely.herokuapp.com/api/graphql', {
+	                //axios.post('http://localhost:4000/api/graphql', {
 	                query: 'mutation {completeOrder (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", first_name: "' + that.props.order_name.first_name + '", last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
 	            }).then(function (response) {
 	                console.log("graphql response" + JSON.stringify(response));
