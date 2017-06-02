@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 //import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
-import {completeOrder} from './actions/order.ts';
+import {completeOrder, clearOrder} from './actions/order.ts';
 
 
 function addTodoWithDispatch() {
@@ -60,6 +60,9 @@ class OrderComplete extends React.Component<any, any> {
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
 
+        order_id: "",
+        order_email: ""
+
     };
 
     //user_type=guest
@@ -95,6 +98,11 @@ class OrderComplete extends React.Component<any, any> {
   }
 
   componentDidMount(){
+
+    this.setState({order_id: this.props.order.order_id});
+    this.setState({order_email: this.props.contact.email});
+
+    this.props.clearOrder();
 
     //alert();
 
@@ -550,15 +558,15 @@ class OrderComplete extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            Your Order {this.props.order.order_id} has been received.
+                            Your Order {this.state.order_id} has been received.
                             <br/>
-                            Check your email {this.props.contact.email}
+                            Check your email at {this.state.order_email}
                             <br/>
                             Check out our social links
                             <br/>
                             A receipt has been saved if you are registered
                             <br/>
-                            Click to go back to the homepage here
+                            <Link to="/" className="btn btn-default">Home</Link>
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">
@@ -596,9 +604,9 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    //addCartItem: (item_id: any, dozens: any, quantity: any) => {
-      //dispatch(addCartItem(1))
-    //},
+    clearOrder: () => {
+      dispatch(clearOrder());
+    },
     //increaseCartItemQuantity: (item_id: any) => {
     //  dispatch(increaseCartItemQuantity(1))
     //},

@@ -18,6 +18,10 @@ const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
+var DayPickerInput = require("react-day-picker/DayPickerInput");
+
+import "react-day-picker/lib/style.css"
+
 require('react-datepicker/dist/react-datepicker.css');
 
 
@@ -79,7 +83,6 @@ class DateTime extends React.Component<any, any> {
   componentDidMount(){
 
     //alert();
-
   
   }
 
@@ -94,6 +97,19 @@ class DateTime extends React.Component<any, any> {
 
     //this.props.cartValidated();
     this.props.datetimeValidated();
+
+  }
+
+  setDay(day: any){
+
+    console.log("date " + moment(day).format("YYYY/MM/DD"));
+
+    //this.setState({startDate: date});
+    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.props.setDate(moment(date).toISOString());
+
+    //this.props.cartValidated();
+    //this.props.datetimeValidated();
 
   }
   
@@ -122,19 +138,17 @@ class DateTime extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal" style={{border: 0}}>
                   <div className="form-group" style={{borderRadius: 0}}>
-                    <div className="col-md-2">
-                      <DatePicker
-                        selected={this.state.startDate}
-                        onChange={(e: any) => {this.setDate(e)}} />
+                    <div className="col-md-3">
+                      <DayPickerInput onDayChange={(e: any) => this.setDay(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10, zIndex: -1}}/>
                     </div>
-                    <div className="col-md-2">
-                      <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
+                    <div className="col-md-3">
+                      <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10}}>
                           <option value="">Free</option>
                           <option value="9-11">9:00 am - 11:00 am</option>
                           <option value="1-3">1:00 pm - 3:00 pm</option>
                       </select>
                     </div>
-                    <div className="col-md-2">
+                    <div className="col-md-3">
                         <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
                             <option value="">Extra</option>
                             <option value="900">9:00</option>

@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 //import {viewMenu} from './action/cart.ts';
 import {cartValidated} from './actions/order_validations.ts';
 import {addCartItem} from './actions/cart.ts';
-import SidebarCart from './sidebar_cart.tsx';
 import {createOrder} from './actions/order.ts';
+import SidebarCart from './sidebar_cart.tsx';
 
 
 //type Props = {
@@ -134,9 +134,8 @@ class PublicMenu extends React.Component<any, any> {
 
     //if they haven't selected quantity and dozens dont submit and show them an error
 
-    //$('#myModal').modal('toggle');
-
-    let items_count = 0
+    
+    let item_count = 0
 
     this.props.cart.cart_items.map(function(item: any){
 
@@ -155,15 +154,18 @@ class PublicMenu extends React.Component<any, any> {
 
     });
 
-    consol.log("yours items count" + items_count);
+    console.log("yours items count" + item_count);
 
-    if(items_count < 12){
+    if(item_count < 12){
 
         this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+        this.setState({selected_item_quantity: ""});
 
     }
 
     this.props.cartValidated();
+
+    $('#myModal').modal('toggle');
 
     //cart validated in redux
 
@@ -355,12 +357,12 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (item_id: any, item_type: any, quantity: any) => {
       dispatch(addCartItem(item_id, item_type, quantity));
     },
+    cartValidated: () => {
+      dispatch(cartValidated());
+    },
     createOrder: (order_type: any) => {
       dispatch(createOrder(order_type));
-    },
-    //decreaseCartItemQuantity: () => {
-    //  dispatch(decreaseCartItemQuantity(1));
-    //}
+    }
   }
 }
 

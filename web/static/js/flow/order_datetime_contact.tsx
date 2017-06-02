@@ -133,6 +133,12 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   componentDidMount(){
 
+      ///if(this.props.order.order_type == undefined){
+
+      //    redirect to homepage
+
+      //}
+      
   }
 
   //componentWillReceiveProps

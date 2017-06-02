@@ -1,4 +1,4 @@
-import { CREATE_ORDER, ORDER_COMPLETED, FAQ, MAILING_LIST, SET_ORDER_ID } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, ORDER_COMPLETED, FAQ, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, CLEAR_ORDER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function order(state:any = {order_type: "", order_id: "", user_id: "", mailing_list: "", faq: ""}, action: any){
+export default function order(state:any = {order_type: "", order_id: "", user_id: "", mailing_list: "", faq: "", delivery_cost: ""}, action: any){
   switch (action.type) {
     case CREATE_ORDER:
 
@@ -62,6 +62,16 @@ export default function order(state:any = {order_type: "", order_id: "", user_id
       return Object.assign({}, state, {order_id: "1"});
 
 
+    case SET_DELIVERY_COST:
+
+      console.log("CLEAR order reducer ");
+    
+      //let items = state.cart_items;
+      //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
+      
+      return Object.assign({}, state, {delivery_cost: "1"});;
+
+
     case ORDER_COMPLETED:
 
       console.log("order reducer " + action.order_type);
@@ -70,6 +80,19 @@ export default function order(state:any = {order_type: "", order_id: "", user_id
       //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
       
       return Object.assign({}, state, {order_type: action.order_type});
+
+
+
+
+    case CLEAR_ORDER:
+
+      console.log("CLEAR order reducer ");
+    
+      //let items = state.cart_items;
+      //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
+      
+      return {};
+
 
     
     default:

@@ -3,6 +3,8 @@ export const SET_ORDER_ID = 'SET_ORDER_ID'
 export const FAQ = 'FAQ'
 export const MAILING_LIST = 'MAILING_LIST'
 export const ORDER_COMPLETED = 'ORDER_COMPLETED'
+export const CLEAR_ORDER = 'CLEAR_ORDER'
+export const SET_DELIVERY_COST  = 'SETDELIVERY_COST'
 
 export const ADD_CART_ITEM = 'ADD_CART_ITEM'
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'

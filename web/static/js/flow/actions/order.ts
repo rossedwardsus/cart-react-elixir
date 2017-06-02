@@ -1,4 +1,4 @@
-import { CREATE_ORDER, FAQ, MAILING_LIST, SET_ORDER_ID, ORDER_COMPLETED } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, FAQ, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER } from '../constants/actionTypes.ts';
 
 
 
@@ -75,3 +75,24 @@ export function setOrderId(order_id: any) {
     type: SET_ORDER_ID,
   }
 }
+
+export function setDeliveryCost(cost: any) {
+  console.log("setdeliverycost action " + cost);
+  return {
+    type: SET_DELIVERY_COST,
+  }
+}
+
+export function clearOrder() {
+  console.log("clear action ");
+  return {
+    type: CLEAR_ORDER,
+  }
+}
+
+//export function cancelOrder() {
+//  console.log("clear action ");
+//  return {
+//    type: CLEAR_ORDER,
+//  }
+//}

@@ -126,6 +126,8 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({zipcode: e.target.value});
       this.props.setDeliveryAddressZipcode(e);
 
+      //90012, 90014, 90074, 90012, 90017, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086
+
       //this.props.setDeliveryAddressZipcode(e);
       //this.props.setdeliveryAddressValidated();
 

@@ -11,8 +11,10 @@ defmodule Sconely.CompleteOrderEmail do
     
     template = Phoenix.View.render_to_string(Sconely.CompletedOrderEmailView, "completed_order_email.html", key: _params)
 
+    IO.inspect(_params["order_contact_email"])
+
     new_email(
-      to: "rossedwards.us@gmail.com",
+      to: _params["order_contact_email"],
       from: "order@sconely.com",
       subject: "Sconely.com order: " <> _params["order_id"],
       html_body: template,
