@@ -39,6 +39,8 @@ defmodule SconeHomeElixir.Endpoint do
 
   #plug SconeHomeElixir.Plugs.Redirect.RedirectsPlug
 
+  plug CORSPlug, origin: ["*"]
+
   plug SconeHomeElixir.Router
 
 end

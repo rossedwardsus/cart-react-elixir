@@ -56,7 +56,8 @@ defmodule SconeHomeElixir.Mixfile do
      {:tzdata, "~> 0.5.8"},
      #{:graphql, "~> 0.3"},
      {:absinthe, "~> 1.1.0"},
-     {:absinthe_plug, "~> 1.1"}]
+     {:absinthe_plug, "~> 1.1"},
+     {:cors_plug, "~> 1.2"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
