@@ -36,7 +36,9 @@ class PublicMenu extends React.Component<any, any> {
         selected_item_title: "",
         selected_item_story: "",
         selected_item_ingredients: "",
-        add_cart_item_button_classname: "btn btn-default disabled"
+        add_cart_item_button_classname: "btn btn-default disabled",
+        images: [],
+        hover_images: [] 
 
     };
 
@@ -59,13 +61,21 @@ class PublicMenu extends React.Component<any, any> {
 
     //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
 
-    /*this.state.menu_items.map(function(value: any, index: any){
+    let that = this;
+
+    this.state.smorgasbourgh_menu_items.map(function(item: any, index: any){
 
           //console.log(value.item_id);
-          let image_src = "image_src_" + value.item_id;
-          this.setState({[image_src]: value.image_id});
+          let images_temp = that.state.images;
+          images_temp.push(item.image_id);
 
-    }.bind(this));*/
+          let hover_images_temp = that.state.hover_images;
+          hover_images_temp.push(item.hover_image_id);
+
+          that.setState({images: images_temp});
+          that.setState({hover_images: hover_images_temp});          
+
+    });
 
     this.props.createOrder("sconely_yours");
 
@@ -179,13 +189,35 @@ class PublicMenu extends React.Component<any, any> {
 
   onMouseEnter(item_id: any){
 
-      //console.log("mouse enter" + item_id);
+      console.log("mouse enter" + JSON.stringify(item_id));
 
       //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 
-      let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
+      //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
 
-      this.setState({["image_src_" + item_id]: image_id});
+      //get index of of element with item id
+      //also get name of image and append "rollover to it"
+
+      //let images_temp = this.state.images;
+      //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
+
+      let smorgasbourgh_menu_items_updated = this.state.smorgasbourgh_menu_items.map((item: any) => 
+
+          {
+              if(item.item_id == item_id){
+
+              //let image_name = item.image_id;
+                item.image_id = item.image_id + "roll";
+
+              }
+
+              return item;
+
+          })
+
+      console.log(JSON.stringify(smorgasbourgh_menu_items_updated));
+
+      this.setState({smorgasbourgh_menu_items: smorgasbourgh_menu_items_updated});
 
   }
 
@@ -263,15 +295,24 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            {this.state[this.props.params.name + "_menu_items"].map(function(item: any){
+                            {this.state[this.props.params.name + "_menu_items"].map(function(item: any, index: any){
 
-                                //console.log("hello " + this.state["image_src_" + item.item_id]);
+                                console.log(item);
+                            
 
-                                let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+                                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
+
+                                //this.setState({image_id: image_id});
+
+                                //console.log("image id" + image_id);
+
+                                //console.log("image id " + this.state["image_src_" + item.item_id]);
+
+                                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
                                         <div className="col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={() => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(index: any) => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                               
                                           <div style={{fontSize: 13}}><b>{item.title}</b> / {item.description}</div>
                                           <br/>
