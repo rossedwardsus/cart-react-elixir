@@ -1,4 +1,4 @@
-import { SET_FIRST_NAME, SET_LAST_NAME } from '../constants/actionTypes.ts';
+import { SET_FIRST_NAME, SET_LAST_NAME, SET_COMPANY_NAME } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function name(state:any = {first_name: "", last_name: ""}, action: any){
+export default function name(state:any = {first_name: "", last_name: "", company_name: ""}, action: any){
   switch (action.type) {
     case SET_FIRST_NAME:
       console.log("first name" + JSON.stringify(action.value));
@@ -31,6 +31,11 @@ export default function name(state:any = {first_name: "", last_name: ""}, action
       console.log("last name" + JSON.stringify(action.value));
 
       return Object.assign({}, state, {first_name: state.first_name, last_name: action.value});
+
+    case SET_COMPANY_NAME:
+      console.log("company name" + JSON.stringify(action.value));
+
+      return Object.assign({}, state, {...state, company_name: action.value});
 
   
     default:

@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 
 import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
-import {setFirstName, setLastName} from './actions/order_name.ts';
+import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
@@ -810,7 +810,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
                             <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>
 
-                            <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)} setNameValidated={() => this.props.setNameValidated()}/>
+                            <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)} setCompanyName={(e: any) => this.props.setCompanyName(e)} setNameValidated={() => this.props.setNameValidated()}/>
                             
                             <Contact setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
@@ -891,6 +891,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setLastName: (e: any) => {
       dispatch(setLastName(e.target.value))
+    },
+    setCompanyName: (e: any) => {
+      dispatch(setCompanyName(e.target.value))
     },
     setNameValidated: (e: any) => {
       dispatch(nameValidated())

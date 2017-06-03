@@ -70,9 +70,9 @@ defmodule Sconely.Schema.Types do
 
   object :sconely_yours_order do
   	#field :order_id, :string
-    field :first_name, :string
-    field :last_name, :string
-    #field :company_name, :string
+    field :order_first_name, :string
+    field :order_last_name, :string
+    field :order_company_name, :string
     field :order_contact_email, :string
     field :order_contact_mobile, :string
     field :order_delivery_address_street1, :string
@@ -86,7 +86,7 @@ defmodule Sconely.Schema.Types do
     field :order_payment_card_number, :string
     field :order_payment_expiry_month, :string
     field :order_payment_expiry_year, :string
-    #field :security_code, :string
+    field :security_code, :string
   	#field :cart_items, list_of(:item)
     field :status, :string
     field :order_id, :string

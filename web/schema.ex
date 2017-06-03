@@ -57,9 +57,10 @@ defmodule Sconely.Schema do
   	
   	field :complete_order, type: :sconely_yours_order do
   		arg :order_type, non_null(:string)
-      arg :first_name, :string
-  		arg :last_name, :string
+      arg :order_first_name, :string
+  		arg :order_last_name, :string
   		arg :order_contact_email, :string
+      arg :order_company_name, :string
   		arg :order_contact_mobile, :string
     	arg :order_delivery_address_street1, :string
     	arg :order_delivery_address_street2, :string
@@ -74,6 +75,8 @@ defmodule Sconely.Schema do
     	arg :order_payment_expiry_year, :string
       arg :order_payment_security_code, :string
   		#arg :cart_items, list_of(:item)
+      #arg :terms
+      #arg :mailing_list
 
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
