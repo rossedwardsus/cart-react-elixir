@@ -275,8 +275,8 @@ defmodule Sconely.CompleteOrderResolver do
                 #Repo.insert(order_contact_changeset)    
                 #Repo.insert(order_name_changeset)      
 
-                case Repo.insert(order_changeset) do
-                  {:ok, response} -> IO.inspect(response)
+                #case Repo.insert(order_changeset) do
+                #  {:ok, response} -> IO.inspect(response)
                 #    conn
                 #      |> put_flash(:info, "User created successfully.")
                 #      |> redirect(to: user_path(conn, :index))
