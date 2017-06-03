@@ -390,11 +390,11 @@ defmodule Sconely.CompleteOrderResolver do
                         
                         IO.inspect(delivery_date)
 
-                        #case Date.day_of_week(delivery_date) do
+                        case Date.day_of_week(delivery_date) do
                         #  0 -> {day_of_week = "Sunday"}
                         #  1 -> {day_of_week = "Monday"}
                         #  6 -> {day_of_week = "Saturday"}
-                        #end
+                        end
 
                         case delivery_date.month do
                           0 -> {month = "January"}
