@@ -459,7 +459,7 @@ defmodule Sconely.CompleteOrderResolver do
                   #{:error, :error}
                       #{:ok, %{status: "changeset error"}}
 
-                end
+                #end
 
           else
 
