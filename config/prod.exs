@@ -29,7 +29,7 @@ config :SconeHomeElixir, SconeHomeElixir.Repo,
   adapter: Ecto.Adapters.Postgres,
   #url: System.get_env("DATABASE_URL"),
   #pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-  ssl: true
+  ssl: true,
   url: "postgres://zokuppiwdnddjg:C8ipdqtvZ2vB8et-xPDVot87ij@ec2-54-163-240-101.compute-1.amazonaws.com:5432/d72tdu152l44hp"
 
 
