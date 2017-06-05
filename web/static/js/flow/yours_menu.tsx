@@ -276,7 +276,7 @@ class PublicMenu extends React.Component<any, any> {
                           </div>
                   </nav>
                     <div className="row">
-                          <div className="hidden-xs col-md-3">
+                          <div className="hidden-xs col-md-1">
                             <br/>
                             <br/>
                             <Link to="/public/menu">Menu</Link>
@@ -312,7 +312,7 @@ class PublicMenu extends React.Component<any, any> {
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
-                                        <div className="col-md-4" style={{marginTop: 0, marginBottom: 0}}>
+                                        <div className="col-xs-1 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
                                               <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(index: any) => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                               
                                           <div style={{fontSize: 13}}><b>{item.title}</b> / {item.description}</div>
