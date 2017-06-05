@@ -752,6 +752,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           </button>
                           <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
                         </div>
+                        <div className="hidden-xs navbar-form navbar-right">
+                        </div>
                         <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
                           <ul className="nav navbar-nav">
                             <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
@@ -767,9 +769,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           </ul>
                         </div>
                       </div>
-                </nav> 
+                </nav>
                 <div className="row">
-                        <div className="hidden-xs col-md-3">
+                        <div className="hidden-xs col-md-1">
                           <br/>
                           <br/>
                           <br/>
