@@ -365,9 +365,8 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   mobile
                                   <div>
-                                    <a href="./">Profile<span className="sr-only">(current)</span></a>
-                                    <Link to="/login_register">Login<span className="sr-only">(current)</span></Link>
-                                    <Link to="/login_register">Signup<span className="sr-only">(current)</span></Link>
+                                    <Link to="/smorgasbourgh">Yours</Link>
+                                    <br/>
                                     <Link to="/public/menu">Menu</Link>
                                   </div>
                                   <br/>
