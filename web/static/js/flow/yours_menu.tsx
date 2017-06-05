@@ -315,8 +315,9 @@ class PublicMenu extends React.Component<any, any> {
                                 return(
                                         <div className="col-xs-2 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
                                               <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(index: any) => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
-                                              
-                                          <div className="col-xs-12" style={{fontSize: 13}}><b>{item.title}</b> / {item.description}</div>
+                                          <br/>    
+                                          <br/>
+                                          <b>{item.title}</b> / {item.description}
                                           <br/>
                                           <br/>
                                           <br/>
