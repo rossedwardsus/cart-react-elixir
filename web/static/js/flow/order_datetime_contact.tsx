@@ -791,7 +791,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-xs-1 col-md-9">
                             <br/>
                             <br/>
                             <br/>
