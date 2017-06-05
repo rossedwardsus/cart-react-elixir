@@ -27408,7 +27408,7 @@ webpackJsonp([0],[
 	
 	                //console.log("hello " + this.state["image_src_" + item.item_id]);
 	                var image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
-	                return React.createElement("div", { className: "col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
+	                return React.createElement("div", { className: "col-md-4 col-sm-1", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
 	                    }, onMouseEnter: function onMouseEnter() {
 	                        return _this2.onMouseEnter(item.item_id);
