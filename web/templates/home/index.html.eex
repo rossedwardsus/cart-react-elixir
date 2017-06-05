@@ -10,7 +10,7 @@
 </head>
 
 <style type="text/css">
-    .navbar-wrapper {
+    /*.navbar-wrapper {
         position: absolute;
         top: 0;
         right: 0;
@@ -58,7 +58,7 @@
     }
 
     .navbar-right {
-        padding-top: 25px;
+        padding-top: 0px;
         padding-left: .5;
         color: #FFFFFF;
     }
@@ -143,7 +143,7 @@
 
       height:5
 
-    }
+    }*/
 
     //@-ms-viewport {
     //    width: device-width;

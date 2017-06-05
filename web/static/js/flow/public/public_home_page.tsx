@@ -323,25 +323,22 @@ class PublicHomePage extends React.Component<any, any> {
                             <div className="navbar-header">
                               <a className="navbar-brand" href="#"><img src="http://sconely.herokuapp.com/images/logo/Sconelylogo.5.jpg"/></a>
                             </div>
-                             <ul id="navbar" className="nav navbar-nav navbar-left">
-                              <li><Link to="/login">Login</Link></li>
-                              <li><Link to="/register">Signup</Link></li>
-                            </ul>
-                            <div id="navbar" className="navbar-form navbar-left">
-                              <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                              </div>
-                              <button type="submit" className="btn btn-default">Submit</button>
+                            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                              <ul id="navbar" className="nav navbar-nav navbar-right">
+                                <li><Link to="/login">Login</Link></li>
+                                <li><Link to="/register">Signup</Link></li>
+                              </ul>
+                              <form id="navbar" className="navbar-form navbar-left">
+                                <div className="form-group">
+                                  <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
+                                </div>
+                                <button type="submit" className="btn btn-default">Submit</button>
+                              </form>
                             </div>
                           </div>
                     </nav>
                     <div className="row">
                         <div className="hidden-xs col-md-4">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
                           <br/>
                           <br/>
                           <br/>
@@ -355,13 +352,12 @@ class PublicHomePage extends React.Component<any, any> {
                           <a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                           <br/>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-8">
                                   <br/>
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <br/>
-                                  <br/>
+                                  mobile
                                   <div>
                                     <a href="./">Profile<span className="sr-only">(current)</span></a>
                                     <Link to="/login_register">Login<span className="sr-only">(current)</span></Link>
@@ -371,12 +367,6 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <div className="hidden-lg navbar-form">
-                                    <div className="form-group">
-                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={() => this.guestCodeChange}/>
-                                    </div>
-                                    
-                                  </div>
                                   <br/>
                                   <br/>
                                   <br/>
@@ -385,15 +375,6 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   
                                 
-                        </div>
-                        <div className="hidden-xs col-md-2">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              maybe put something here
                         </div>
                     </div>
               </div>
