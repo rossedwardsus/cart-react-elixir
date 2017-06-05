@@ -287,7 +287,7 @@ class PublicMenu extends React.Component<any, any> {
                             <SidebarCart order={this.props.order} cart={this.props.cart}/>
                             <br/>
                           </div>
-                          <div className="col-xs-4 col-md-9">
+                          <div className="col-xs-1 col-md-9">
                             <br/>
                             <br/>
                             <MobileCheckoutButton/>
@@ -313,7 +313,7 @@ class PublicMenu extends React.Component<any, any> {
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
-                                        <div className="col-xs-4 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
+                                        <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
                                               <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(index: any) => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           <br/>    
                                           <br/>
