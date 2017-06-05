@@ -321,9 +321,15 @@ class PublicHomePage extends React.Component<any, any> {
                     <nav className="navbar navbar-default" style={{border: 1}}>
                           <div className="container-fluid">
                             <div className="navbar-header">
+                              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                                 <span className="sr-only">Toggle navigation</span>
+                                 <span className="icon-bar"></span>
+                                 <span className="icon-bar"></span>
+                                 <span className="icon-bar"></span>
+                              </button>
                               <a className="navbar-brand" href="#"><img src="http://sconely.herokuapp.com/images/logo/Sconelylogo.5.jpg"/></a>
                             </div>
-                            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <div className="collapse navbar-collapse" id="navigationbar">
                               <ul id="navbar" className="nav navbar-nav navbar-right">
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to="/register">Signup</Link></li>
