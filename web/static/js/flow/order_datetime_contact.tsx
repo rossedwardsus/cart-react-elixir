@@ -801,36 +801,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
-                            setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
-                            setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} 
-                            setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
-                            deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
-
-                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>
-
-                            <Name setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)} setCompanyName={(e: any) => this.props.setCompanyName(e)} setNameValidated={() => this.props.setNameValidated()}/>
-                            
-                            <Contact setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
-
-                            <OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItemQuantity(e)} cart_items={this.props.order_cart_items}/>
-
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
-                            <br/>
-
-                            <input type="checkbox" onChange={(e: any) => this.terms(e)}/>Terms
-                            <br/>
-                            <input type="checkbox" onChange={(e: any) => this.mailingList(e)}/>Join Mailing List
-                            <br/>
-
-                            <CheckoutButton setOrderId={(order_id: any) => this.props.setOrderId(order_id)} thisorder={this.props.order} order_delivery_address={this.props.order_delivery_address} 
-                            order_datetime={this.props.order_datetime}
-                            order_contact={this.props.order_contact} order_name={this.props.order_name}  
-                            order_payment_method={this.props.order_payment_method}
-                            validations={this.props.order_validations}/>
-                            <br/>
-                            <button>Cancel</button>
-                            <br/>
                         </div>
                 </div>
             </div>
