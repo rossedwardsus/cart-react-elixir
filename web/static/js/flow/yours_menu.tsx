@@ -9,6 +9,7 @@ import {cartValidated} from './actions/order_validations.ts';
 import {addCartItem} from './actions/cart.ts';
 import {createOrder} from './actions/order.ts';
 import SidebarCart from './sidebar_cart.tsx';
+import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
 
 //type Props = {
@@ -254,7 +255,7 @@ class PublicMenu extends React.Component<any, any> {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                               </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                              <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
                             </div>
                             <div className="hidden-xs navbar-form navbar-right">
                             </div>
@@ -323,6 +324,7 @@ class PublicMenu extends React.Component<any, any> {
                             }.bind(this))}
                               
                             <br/>
+                            <MobileCheckoutButton/>
                           </div>
                     </div>
                   <br/>
