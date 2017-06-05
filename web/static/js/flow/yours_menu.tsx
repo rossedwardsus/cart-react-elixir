@@ -287,7 +287,7 @@ class PublicMenu extends React.Component<any, any> {
                             <SidebarCart order={this.props.order} cart={this.props.cart}/>
                             <br/>
                           </div>
-                          <div className="hidden-xs col-md-9">
+                          <div className="col-md-9">
                             <br/>
                             <br/>
                             <br/>
