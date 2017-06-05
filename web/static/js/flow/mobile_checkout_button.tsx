@@ -142,7 +142,7 @@ class MobileCheckoutButton extends React.Component<any, any> {
     //please enter a valid date
     //please enter a valid contact
 
-    return ( <div className="hidden-lg">
+    return ( <div>
                 <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
               </div>
     )
