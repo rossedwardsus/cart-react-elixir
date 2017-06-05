@@ -4,14 +4,14 @@ defmodule Sconely.CompleteOrderEmail do
   def welcome_email(_params) do
 
   	#IO.puts("hello")
-  	IO.inspect(_params)
+  	#IO.inspect(_params)
   	#IO.inspect(_params["order_contact_email"])
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
     template = Phoenix.View.render_to_string(Sconely.CompletedOrderEmailView, "completed_order_email.html", key: _params)
 
-    IO.inspect(_params["order_contact_email"])
+    IO.inspect(_params["order_first_name"])
 
     new_email(
       to: _params["order_contact_email"],

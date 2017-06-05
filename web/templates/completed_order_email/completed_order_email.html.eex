@@ -19,7 +19,7 @@
 
 <html lang="en">
 	<table bgcolor="" width="100%">
-		<tr><td width="10%""></td><td><img height="150" width="300" src="http://sconely.herokuapp.com/images/logo/Sconelylogo.5.jpg"></img></td><td width="25%"></td></tr>
+		<tr><td width="10%""></td><td><img src="http://sconely.herokuapp.com/images/logo/Sconelylogo.5.jpg"></img></td><td width="25%"></td></tr>
 	</table>
 	<table border="0" bgcolor="" width="100%">
 		<tr><td width="10%"></td><td>Thank you for your Sconely order, Ross!</td></tr>

@@ -276,13 +276,13 @@ class PublicHomePage extends React.Component<any, any> {
 
   render(){
 
-    let logged_in = null;
+    let menu = null;
 
 
     
     if(this.props.user.user_id != undefined){
         
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
+        menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-header">
                         <li className="inactive">Profile<span className="sr-only">(current)</span></li>
                       </ul>
@@ -290,46 +290,49 @@ class PublicHomePage extends React.Component<any, any> {
                         <li className="inactive">Start Order</li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                        <li className="inactive"><span className="sr-only">(current)</span></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">Home</span></li>
+                        <li className="inactive"><span className="sr-only">Home</span></li>
                       </ul>
                     </div>
     }else{
 
-        logged_in = <div><ul id="navbar" className="nav navbar-nav navbar-left">
-                      <li className="inactive"><Link to="/login">Login</Link></li>
-                      <li className="inactive"><Link to="/register">Signup</Link></li>
-                      <li className="inactive">Start Orde</li>
+        menu = <div>
+                      <ul id="navbar" className="nav navbar-nav navbar-left">
+                      <li><Link to="/login">Login</Link></li>
+                      <li><Link to="/register">Signup</Link></li>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                        <li><span className="sr-only">(current)</span></li>
                       </ul>
                     </ul>
-                    <div id="navbar" className="navbar-form nav navbar-right">
+                    <div id="navbar" className="nav navbar-form navbar-right">
                               <div className="hidden-xs form-group">
                                 <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
                               </div>
-                              
-                    </div></div>
+                              <button type="submit" className="btn btn-default">Submit</button>
+                    </div>
+                </div>
 
     }
 
     return (
               <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
+                    <nav className="navbar navbar-default" style={{border: 1}}>
                           <div className="container-fluid">
                             <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                              <a className="navbar-brand" href="#"><img src="http://sconely.herokuapp.com/images/logo/Sconelylogo.5.jpg"/></a>
                             </div>
-                            
-                             
+                             <ul id="navbar" className="nav navbar-nav navbar-left">
+                              <li><Link to="/login">Login</Link></li>
+                              <li><Link to="/register">Signup</Link></li>
+                            </ul>
+                            <div id="navbar" className="navbar-form navbar-left">
+                              <div className="form-group">
+                                <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
+                              </div>
+                              <button type="submit" className="btn btn-default">Submit</button>
+                            </div>
                           </div>
                     </nav>
                     <div className="row">
