@@ -327,7 +327,7 @@ class PublicHomePage extends React.Component<any, any> {
                                  <span className="icon-bar"></span>
                                  <span className="icon-bar"></span>
                               </button>
-                              <a className="navbar-brand" href="#"><img src="http://sconely.herokuapp.com/images/logo/LogoJune5.jpg"/></a>
+                              <a className="navbar-brand" href="#"><img src="http://sconely.herokuapp.com/images/logo/LogoJune5b.jpg"/></a>
                             </div>
                             <div className="collapse navbar-collapse" id="navigationbar">
                               <ul id="navbar" className="nav navbar-nav navbar-right">
