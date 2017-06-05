@@ -27883,7 +27883,7 @@ webpackJsonp([0],[
 	            //please enter a valid name
 	            //please enter a valid date
 	            //please enter a valid contact
-	            return React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Mobile Checkout"));
+	            return React.createElement("div", { className: "show-xs" }, React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Mobile Checkout"));
 	        }
 	    }], [{
 	        key: "contextTypes",
