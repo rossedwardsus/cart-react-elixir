@@ -399,7 +399,8 @@ class PublicHomePage extends React.Component<any, any> {
                                       <Link to="/smorgasbourgh" style={{fontSize:17}}>Yours</Link>
                                       <br/>
                                       <Link to="/public/menu">Menu</Link>
-                                      <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
+                                      <br/>
+                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
                                     </div>
                                   </div>
                                   <br/>
