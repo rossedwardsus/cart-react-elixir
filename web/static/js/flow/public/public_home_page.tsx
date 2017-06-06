@@ -327,12 +327,14 @@ class PublicHomePage extends React.Component<any, any> {
                                  <span className="icon-bar"></span>
                                  <span className="icon-bar"></span>
                               </button>
-                              <a className="navbar-brand" href="#"><img src="http://sconely.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+                              <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                             </div>
                             <div className="collapse navbar-collapse" id="navigationbar">
                               <ul id="navbar" className="nav navbar-nav navbar-right">
                                 <li><Link to="/login">Login</Link></li>
                                 <li><Link to="/register">Signup</Link></li>
+                                <li><Link to="/register">About Us</Link></li>
+                                <li><Link to="/register">Faq</Link></li>
                               </ul>
                               <form id="navbar" className="navbar-form navbar-left">
                                 <div className="form-group">
@@ -365,7 +367,7 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   mobile
                                   <div>
-                                    <Link to="/smorgasbourgh">Yours</Link>
+                                    <Link to="/smorgasbourgh" style={{fontSize:20}}>Yours</Link>
                                     <br/>
                                     <Link to="/public/menu">Menu</Link>
                                   </div>
