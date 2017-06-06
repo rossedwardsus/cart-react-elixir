@@ -367,7 +367,7 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   mobile
                                   <div>
-                                    <Link to="/smorgasbourgh" style={{fontSize:20}}>Yours</Link>
+                                    <Link to="/smorgasbourgh" style={{fontSize:17}}>Yours</Link>
                                     <br/>
                                     <Link to="/public/menu">Menu</Link>
                                   </div>
