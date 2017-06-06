@@ -160,6 +160,13 @@ class DateTime extends React.Component<any, any> {
                     </form>
                 </div>
                 <div className="hidden-lg">
+                  <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-12">
+                          {delivery_address_pickup_datetime}
+                          </div>
+                        </div>
+                  </form>
                   <form className="form-horizontal" style={{border: 0}}>
                     <div className="form-group show-xs" style={{borderRadius: 0}}>
                       <div className="col-md-3">
