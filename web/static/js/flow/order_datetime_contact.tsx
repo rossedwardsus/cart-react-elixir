@@ -771,7 +771,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                       </div>
                 </nav>
                 <div className="row">
-                        <div className="hidden-xs col-md-1">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
@@ -795,6 +795,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                         </div>
                         <div className="col-xs-12 col-md-9">
                             <br/>
+                            Total Items
                             <br/>
                             <br/>
                             <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 

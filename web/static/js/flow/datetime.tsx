@@ -158,42 +158,8 @@ class DateTime extends React.Component<any, any> {
                         </div>
                       </div>
                     </form>
-                </div>
-                <div className="hidden-lg">
-                  <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                          {delivery_address_pickup_datetime}
-                          </div>
-                        </div>
-                  </form>
-                  <form className="form-horizontal" style={{border: 0}}>
-                    <div className="form-group show-xs" style={{borderRadius: 0}}>
-                      <div className="col-md-3">
-                        <DayPickerInput onDayChange={(e: any) => this.setDay(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10, zIndex: -1}}/>
-                      </div>
-                    </div>
-                    <div className="form-group show-xs" style={{borderRadius: 0}}>
-                      <div className="col-md-3">
-                        <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10}}>
-                            <option value="">Free</option>
-                            <option value="9-11">9:00 am - 11:00 am</option>
-                            <option value="1-3">1:00 pm - 3:00 pm</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="form-group show-xs" style={{borderRadius: 0}}>
-                      <div className="col-md-3">
-                          <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
-                              <option value="">Extra</option>
-                              <option value="900">9:00</option>
-                              <option value="930">9:30</option>
-                          </select>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-            </div>
+                </div>  
+              </div>
     )
   }
 

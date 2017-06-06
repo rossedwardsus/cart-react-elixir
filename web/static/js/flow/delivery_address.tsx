@@ -191,7 +191,7 @@ class DeliveryAddress extends React.Component<any, any> {
                           <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-3">
-                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)}>
+                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10}}>
                                       <option>City</option>
                                       <option value="los_angeles">Los Angeles</option>
                                     </select>
