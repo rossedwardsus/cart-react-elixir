@@ -166,7 +166,6 @@ class PaymentMethod extends React.Component<any, any> {
                   //this.setState({expiry_month_border_color: "red"});
 
               }
-          }
       }
   }
 
@@ -185,7 +184,7 @@ class PaymentMethod extends React.Component<any, any> {
           //01-12, only numbers
           if(/^[0-9]{4}/.test(e.target.value)){
 
-              if(e.target.value => 2017 || e.target.value <= 2025)
+              if((parseInt(e.target.value) >= 2017) && (parseInt(e.target.value) <= 2025)){
 
                   console.log("ok year");
                   this.setState({expiry_year_border_color: "grey"})
@@ -201,11 +200,16 @@ class PaymentMethod extends React.Component<any, any> {
 
                   }
 
+              }else{
+
+                  //paymentinvalidated
+
               }
 
           }else{
 
-              this.setState({expiry_month_border_color: "red"});
+              //this.setState({expiry_month_border_color: "red"});
+
 
           }
       }

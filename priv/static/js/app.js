@@ -18851,7 +18851,9 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (PublicHomePage.__proto__ || Object.getPrototypeOf(PublicHomePage)).call(this, props));
 	
 	        _this.state = {
-	            image: "/images/gallery/sconely_group_HPb.jpg",
+	            gallery_images: ["/images/gallery/sconely_group_HPb.jpg", "/images/gallery/Sconely_HomePage_image_new_site.jpg"],
+	            gallery_image: "",
+	            gallery_image_index: 0,
 	            guest_code: ""
 	        };
 	        //this.createSignatureOrder = this.createSignatureOrder.bind(this);
@@ -18871,7 +18873,8 @@ webpackJsonp([0],[
 	            //this.props.checkLoggedIn();
 	            //alert("jsx");
 	            //get active items from the database
-	            //setInterval(this.changeImage, 10000);
+	            this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
+	            setInterval(this.changeImage, 1000);
 	            //Cookies.set('name', 'value');
 	            //alert(Cookies.get('name'));
 	            //function setCookie(cname, cvalue, exdays) {
@@ -18926,11 +18929,22 @@ webpackJsonp([0],[
 	    }, {
 	        key: "changeImage",
 	        value: function changeImage() {
-	            if (this.state.image == "/images/gallery/sconely_group_HPb.jpg") {
-	                this.setState({ image: "/images/gallery/Sconely_HomePage_image_new_site.jpg" });
+	            //console.log("changeimage");
+	            if (this.state.gallery_image_index == 1) {
+	                //let gallery_image_index_temp = this.state.gallery_image_index; 
+	                this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
+	                this.setState({ gallery_image_index: 0 });
 	            } else {
-	                this.setState({ image: "/images/gallery/sconely_group_HPb.jpg" });
+	                //console.log("changeimage else");
+	                //let gallery_image_index_temp = this.state.gallery_image_index; 
+	                this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
+	                this.setState({ gallery_image_index: this.state.gallery_image_index + 1 });
 	            }
+	            //if(this.state.gallery_image == "/images/gallery/sconely_group_HPb.jpg"){
+	            //    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
+	            //}else{
+	            //    this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
+	            //}
 	        }
 	    }, {
 	        key: "createOrder",
@@ -19034,7 +19048,7 @@ webpackJsonp([0],[
 	                    return _this2.createOrder("sconely_social");
 	                } }, "Social"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu/Social"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_signature");
-	                } }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
+	                } }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 200, width: 200 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -35197,16 +35211,19 @@ webpackJsonp([0],[
 	            if (e.target.value.length > 0) {
 	                //01-12, only numbers
 	                if (/^[0-9]{2}/.test(e.target.value)) {
-	                    console.log("ok month");
-	                    this.setState({ expiry_month_border_color: "grey" });
-	                    this.setState({ expiry_month: e.target.value });
-	                    this.props.setPaymentExpiryMonth(e);
-	                    if (this.state.payment_expiry_year.length > 0) {
-	                        this.props.paymentValidated();
+	                    if (e.target.value > 0 && e.target.value < 13) {
+	                        console.log("ok month");
+	                        this.setState({ expiry_month_border_color: "grey" });
+	                        this.setState({ expiry_month: e.target.value });
+	                        this.props.setPaymentExpiryMonth(e);
+	                        //if(this.state.payment_expiry_year.length > 0){
+	                        //this.props.paymentValidated();
+	                        //this.props.paymentInvalidated();
+	                        //}
 	                    }
 	                } else {
-	                    //this.setState({expiry_month_border_color: "red"});
-	                }
+	                        //this.setState({expiry_month_border_color: "red"});
+	                    }
 	            }
 	        }
 	    }, {
@@ -35222,16 +35239,22 @@ webpackJsonp([0],[
 	                //2017-only numbers
 	                //01-12, only numbers
 	                if (/^[0-9]{4}/.test(e.target.value)) {
-	                    console.log("ok year");
-	                    this.setState({ expiry_year_border_color: "grey" });
-	                    this.setState({ expiry_year: e.target.value });
-	                    this.props.setPaymentExpiryYear(e);
-	                    if (this.state.payment_expiry_month.length > 0) {
-	                        this.props.paymentValidated();
-	                    }
+	                    if (parseInt(e.target.value) >= 2017 && parseInt(e.target.value) <= 2025) {
+	                        console.log("ok year");
+	                        this.setState({ expiry_year_border_color: "grey" });
+	                        this.setState({ expiry_year: e.target.value });
+	                        this.props.setPaymentExpiryYear(e);
+	                        if (this.state.payment_expiry_month.length > 0) {
+	                            //if card number
+	                            //if security code
+	                            //this.props.paymentValidated();
+	                        }
+	                    } else {
+	                            //paymentinvalidated
+	                        }
 	                } else {
-	                    this.setState({ expiry_month_border_color: "red" });
-	                }
+	                        //this.setState({expiry_month_border_color: "red"});
+	                    }
 	            }
 	        }
 	    }, {
@@ -35239,15 +35262,16 @@ webpackJsonp([0],[
 	        value: function setPaymentSecurityCode(e) {
 	            //if length > 0 or less then 4, only numbers
 	            if (e.target.value.length > 0) {
-	                //2017-only numbers
-	                //01-12, only numbers
 	                if (/^[0-9]{4}/.test(e.target.value)) {
 	                    console.log("ok year");
 	                    //this.setState({expiry_year_border_color: "grey"})
 	                    this.setState({ expiry_security_code: e.target.value });
 	                    this.props.setPaymentSecurityCode(e);
 	                    if (this.state.payment_expiry_month.length > 0) {
-	                        this.props.paymentValidated();
+	                        //if number
+	                        //month
+	                        //year
+	                        //this.props.paymentValidated();
 	                    }
 	                } else {
 	                    this.setState({ expiry_month_border_color: "red" });

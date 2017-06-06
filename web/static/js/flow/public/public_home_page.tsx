@@ -36,7 +36,9 @@ class PublicHomePage extends React.Component<any, any> {
 
     this.state = {
 
-        image: "/images/gallery/sconely_group_HPb.jpg",
+        gallery_images: ["/images/gallery/sconely_group_HPb.jpg", "/images/gallery/Sconely_HomePage_image_new_site.jpg"],
+        gallery_image: "",
+        gallery_image_index: 0,
         guest_code: ""
         
     };
@@ -61,7 +63,11 @@ class PublicHomePage extends React.Component<any, any> {
 
     //get active items from the database
 
-    //setInterval(this.changeImage, 10000);
+
+    this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
+
+    setInterval(this.changeImage, 1000);
+
 
     //Cookies.set('name', 'value');
     //alert(Cookies.get('name'));
@@ -144,15 +150,36 @@ class PublicHomePage extends React.Component<any, any> {
 
   changeImage(){
 
-    if(this.state.image == "/images/gallery/sconely_group_HPb.jpg"){
+    //console.log("changeimage");
 
-        this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
+    if(this.state.gallery_image_index == 1){
+
+        
+        //let gallery_image_index_temp = this.state.gallery_image_index; 
+        this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
+        this.setState({gallery_image_index: 0});
 
     }else{
 
-        this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
+        //console.log("changeimage else");
+
+        //let gallery_image_index_temp = this.state.gallery_image_index; 
+        this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
+        this.setState({gallery_image_index: this.state.gallery_image_index + 1});
 
     }
+
+    
+
+    //if(this.state.gallery_image == "/images/gallery/sconely_group_HPb.jpg"){
+
+    //    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
+
+    //}else{
+
+    //    this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
+
+    //}
 
   }
 
@@ -363,13 +390,16 @@ class PublicHomePage extends React.Component<any, any> {
                         <div className="col-md-8">
                                   <br/>
                                   <br/>
+                                  <img style={{height:200, width:200}} src={this.state.gallery_image}/>
                                   <br/>
                                   <br/>
-                                  mobile
-                                  <div>
-                                    <Link to="/smorgasbourgh" style={{fontSize:17}}>Yours</Link>
-                                    <br/>
-                                    <Link to="/public/menu">Menu</Link>
+                                  <div className="visible-xs">
+                                    mobile
+                                    <div>
+                                      <Link to="/smorgasbourgh" style={{fontSize:17}}>Yours</Link>
+                                      <br/>
+                                      <Link to="/public/menu">Menu</Link>
+                                    </div>
                                   </div>
                                   <br/>
                                   <br/>
