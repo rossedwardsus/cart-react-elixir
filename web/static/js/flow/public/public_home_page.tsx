@@ -66,7 +66,7 @@ class PublicHomePage extends React.Component<any, any> {
 
     this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
 
-    setInterval(this.changeImage, 1000);
+    setInterval(this.changeImage, 10000);
 
 
     //Cookies.set('name', 'value');
@@ -390,7 +390,7 @@ class PublicHomePage extends React.Component<any, any> {
                         <div className="col-md-8">
                                   <br/>
                                   <br/>
-                                  <img style={{height:200, width:200}} src={this.state.gallery_image}/>
+                                  <img style={{height:250, width:250}} src={this.state.gallery_image}/>
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">

@@ -18874,7 +18874,7 @@ webpackJsonp([0],[
 	            //alert("jsx");
 	            //get active items from the database
 	            this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
-	            setInterval(this.changeImage, 1000);
+	            setInterval(this.changeImage, 10000);
 	            //Cookies.set('name', 'value');
 	            //alert(Cookies.get('name'));
 	            //function setCookie(cname, cvalue, exdays) {
@@ -19048,7 +19048,7 @@ webpackJsonp([0],[
 	                    return _this2.createOrder("sconely_social");
 	                } }, "Social"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu/Social"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_signature");
-	                } }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 200, width: 200 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
+	                } }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 250, width: 250 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
