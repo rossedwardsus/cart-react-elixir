@@ -98,7 +98,7 @@ class MobileCheckoutButton extends React.Component<any, any> {
     //please enter a valid date
     //please enter a valid contact
 
-    return ( <Link to="/order/checkout" className="btn btn-default">Mobile Checkout</Link>
+    return ( <Link to="/order/checkout" className="btn btn-default disabled">Mobile Checkout</Link>
     )
   }
 

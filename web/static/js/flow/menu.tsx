@@ -37,7 +37,8 @@ class PublicMenu extends React.Component<any, any> {
         selected_item_title: "",
         selected_item_story: "",
         selected_item_ingredients: "",
-        add_cart_item_button_classname: "btn btn-default disabled"
+        add_cart_item_button_classname: "btn btn-default disabled",
+        total_items: 0
 
     };
 
@@ -215,35 +216,35 @@ class PublicMenu extends React.Component<any, any> {
     //alert(this.props.cart_items.length);
 
           return(<div>
-                  <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
+                    <nav className="navbar navbar-default navbar-fixed-top">
+                            <div className="container-fluid">
+                              <div className="navbar-header">
+                                <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                  <span className="sr-only">Toggle navigation</span>
+                                  <span className="icon-bar"></span>
+                                  <span className="icon-bar"></span>
+                                  <span className="icon-bar"></span>
+                                </button>
+                                <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
+                              </div>
+                              <div className="hidden-xs navbar-form navbar-right">
+                              </div>
+                              <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                                </ul>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                                </ul>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                                </ul>
+                                <ul className="nav navbar-nav">
+                                  <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                                </ul>
+                              </div>
                             </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                            </div>
-                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                              </ul>
-                            </div>
-                          </div>
-                  </nav>
+                    </nav>
                     <div className="row">
                           <div className="hidden-xs col-md-3">
                             <br/>
@@ -261,6 +262,7 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
+                            Total Items {this.state.total_items}
                             <br/>
                             <br/>
                             <br/>
@@ -284,7 +286,7 @@ class PublicMenu extends React.Component<any, any> {
                             }.bind(this))}
                               
                             <br/>
-                            <MobileCheckoutButton/>
+                            <MobileCheckoutButton cartItems={this.props.cart.cart_items}/>
                           </div>
                     </div>
                   <br/>

@@ -136,27 +136,36 @@ class PaymentMethod extends React.Component<any, any> {
 
   setPaymentExpiryMonth(e: any){
 
+      //only 1-12
+
       console.log(e.target.value);
 
       if(e.target.value.length > 0){
-          //01-12, only numbers
-          if(/^[0-9]{2}/.test(e.target.value)){
 
-              console.log("ok month");
-              this.setState({expiry_month_border_color: "grey"});
-              this.setState({expiry_month: e.target.value});
-              this.props.setPaymentExpiryMonth(e);
+              //01-12, only numbers
+              if(/^[0-9]{2}/.test(e.target.value)){
 
-              if(this.state.payment_expiry_year.length > 0){
+                  if(e.target.value > 0 && e.target.value < 13){
 
-                  this.props.paymentValidated();
+                      console.log("ok month");
+                      this.setState({expiry_month_border_color: "grey"});
+                      this.setState({expiry_month: e.target.value});
+                      this.props.setPaymentExpiryMonth(e);
+
+                      //if(this.state.payment_expiry_year.length > 0){
+
+                          //this.props.paymentValidated();
+                          //this.props.paymentInvalidated();
+
+                      //}
+
+                  }
+
+              }else{
+
+                  //this.setState({expiry_month_border_color: "red"});
 
               }
-
-          }else{
-
-              //this.setState({expiry_month_border_color: "red"});
-
           }
       }
   }
@@ -169,19 +178,28 @@ class PaymentMethod extends React.Component<any, any> {
 
   setPaymentExpiryYear(e: any){
 
+      //can only be this year up to 2028
+
       if(e.target.value.length > 0){
           //2017-only numbers
           //01-12, only numbers
           if(/^[0-9]{4}/.test(e.target.value)){
 
-              console.log("ok year");
-              this.setState({expiry_year_border_color: "grey"})
-              this.setState({expiry_year: e.target.value});
-              this.props.setPaymentExpiryYear(e);
+              if(e.target.value => 2017 || e.target.value <= 2025)
 
-              if(this.state.payment_expiry_month.length > 0){
+                  console.log("ok year");
+                  this.setState({expiry_year_border_color: "grey"})
+                  this.setState({expiry_year: e.target.value});
+                  this.props.setPaymentExpiryYear(e);
 
-                  this.props.paymentValidated();
+                  if(this.state.payment_expiry_month.length > 0){
+
+                      //if card number
+                      //if security code
+
+                      //this.props.paymentValidated();
+
+                  }
 
               }
 
@@ -198,9 +216,8 @@ class PaymentMethod extends React.Component<any, any> {
       //if length > 0 or less then 4, only numbers
 
        if(e.target.value.length > 0){
-          //2017-only numbers
-          //01-12, only numbers
-          if(/^[0-9]{4}/.test(e.target.value)){
+          
+           if(/^[0-9]{4}/.test(e.target.value)){
 
               console.log("ok year");
               //this.setState({expiry_year_border_color: "grey"})
@@ -209,7 +226,11 @@ class PaymentMethod extends React.Component<any, any> {
 
               if(this.state.payment_expiry_month.length > 0){
 
-                  this.props.paymentValidated();
+                  //if number
+                  //month
+                  //year
+
+                  //this.props.paymentValidated();
 
               }
 

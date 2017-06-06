@@ -79,8 +79,12 @@ class Contact extends React.Component<any, any> {
 
   setContactEmail(e: any){
 
-      /*let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-      let symbol_res = symbol_patt.test(e.target.value);
+      this.setState({contact_email: e.target.value})
+      this.props.setContactEmail(e);
+
+      //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+      //let symbol_res = symbol_patt.test(e.target.value);
 
       let number_res = (/[0-9]/.test(e.target.value));
 
@@ -95,26 +99,57 @@ class Contact extends React.Component<any, any> {
 
       if(e.target.value.length > 0){
 
-          if(symbol_res == false && number_res == false){
+          //can only have _ .
+          //after @ at least one characted . then domain
+
+          //if(symbol_res == false){
+            let address = e.target.value.split("@")[0];
+            let symbol_res = symbol_patt.test(address);
+
+            if(symbol_res == true){
+
+                if(e.target.value.split("@")[1].split(".")[0].length > 0){
+
+                    if(e.target.value.split("@")[1].split(".")[1].length > 1){
+
+                        //cant enter symbols????  or numbers
           
-            this.setState({first_name: e.target.value})
-            this.setState({"first_border_color": "grey"});
+          
+                        //if email contains @ and at least one character and 2 character domain
+                        //validate contact and emails are same
+                    
+                        //this.props.setContactEmail(e);
 
-          }else{
+                        console.log("email ok")
 
-            this.setState({first_name: e.target.value})
-            this.setState({"first_border_color": "red"});
+                    }
 
-          }
+                }
+
+            }
+
+          //}else{
+
+              //console.log("email ok")
+
+          //  this.setState({first_name: e.target.value})
+            //this.setState({"first_border_color": "red"});
+
+          //}
       
-      }*/
+      }
 
-      this.setState({email: e.target.value});
-      this.props.setContactEmail(e);
+      
 
   }
 
   setContactEmailAgain(e: any){
+
+      if(this.state.email == e.target.value){
+
+          //validated
+
+      }
 
       this.setState({email_again: e.target.value});
       //this.props.setContactEmail(e);
@@ -123,8 +158,21 @@ class Contact extends React.Component<any, any> {
 
   setContactMobile(e: any){
 
+      //strip out -
+      //check if only number
+
+      let mobile_number = e.target.value.replace("_", "");
+      let number_res = (/[0-9]/.test(mobile_number));
+
       this.setState({mobile: e.target.value});
       this.props.setContactMobile(e);
+
+      if(number_res == true){
+
+          //validate contact
+          //else invalatidate
+
+      }
 
   }
   
