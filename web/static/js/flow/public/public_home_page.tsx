@@ -373,7 +373,7 @@ class PublicHomePage extends React.Component<any, any> {
                           </div>
                     </nav>
                     <div className="row">
-                        <div className="hidden-xs col-md-2">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
