@@ -36,7 +36,7 @@ class PublicHomePage extends React.Component<any, any> {
 
     this.state = {
 
-        gallery_images: ["/images/gallery/sconely_group_HPb.jpg", "/images/gallery/Sconely_HomePage_image_new_site.jpg"],
+        gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
         gallery_image: "",
         gallery_image_index: 0,
         guest_code: ""
@@ -152,7 +152,7 @@ class PublicHomePage extends React.Component<any, any> {
 
     //console.log("changeimage");
 
-    if(this.state.gallery_image_index == 1){
+    if(this.state.gallery_image_index == 3){
 
         
         //let gallery_image_index_temp = this.state.gallery_image_index; 

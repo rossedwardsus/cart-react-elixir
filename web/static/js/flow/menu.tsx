@@ -262,7 +262,7 @@ class PublicMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            Total Items {this.state.total_items}
+                            Total Items {this.props.cart.cart_items.length}
                             <br/>
                             <br/>
                             <br/>
@@ -286,7 +286,7 @@ class PublicMenu extends React.Component<any, any> {
                             }.bind(this))}
                               
                             <br/>
-                            <MobileCheckoutButton cartItems={this.props.cart.cart_items}/>
+                            <MobileCheckoutButton cartTotalItems={this.props.cart.cart_items.length}/>
                           </div>
                     </div>
                   <br/>
