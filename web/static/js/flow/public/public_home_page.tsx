@@ -373,7 +373,7 @@ class PublicHomePage extends React.Component<any, any> {
                           </div>
                     </nav>
                     <div className="row">
-                        <div className="hidden-xs col-md-4">
+                        <div className="hidden-xs col-md-2">
                           <br/>
                           <br/>
                           <br/>
@@ -387,10 +387,10 @@ class PublicHomePage extends React.Component<any, any> {
                           <a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                           <br/>
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-4">
                                   <br/>
                                   <br/>
-                                  <img style={{height:500, width:500}} src={this.state.gallery_image}/>
+                                  <img style={{height:650, width:650}} src={this.state.gallery_image}/>
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
@@ -412,8 +412,8 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  
-                                
+                        </div>
+                        <div className="col-md-4">
                         </div>
                     </div>
               </div>
