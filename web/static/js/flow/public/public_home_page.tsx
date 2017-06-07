@@ -66,7 +66,7 @@ class PublicHomePage extends React.Component<any, any> {
 
     this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
 
-    setInterval(this.changeImage, 1000);
+    setInterval(this.changeImage, 5000);
 
 
     //Cookies.set('name', 'value');
