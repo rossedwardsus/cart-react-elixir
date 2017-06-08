@@ -13,8 +13,10 @@ defmodule Sconely.CompleteOrderEmail do
 
     IO.inspect(_params["order_first_name"])
 
+    #send to admin as well
+
     new_email(
-      to: _params["order_contact_email"],
+      to: [_params["order_contact_email"], "rossedwards.us@gmail.com"],
       from: "order@sconely.com",
       subject: "Sconely.com order: " <> _params["order_id"],
       html_body: template,

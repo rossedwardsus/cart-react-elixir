@@ -241,6 +241,11 @@ defmodule Sconely.CompleteOrderResolver do
             #send email
 
             order_id = UUID.uuid1()
+            #change order_id to random number
+            random_number = :rand.uniform(10000)
+            IO.inspect(random_number)
+            #Float.round
+            #n = Random.rand(10..20)     # Random integer between 10 and 20
 
             #Repo.transaction(fn ->
             #commit transaction else rollback if payment error
