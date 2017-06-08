@@ -58,7 +58,7 @@ class DateTime extends React.Component<any, any> {
 
     this.state = {
 
-        startDate: moment(),
+        selectedDate: moment().format("YYYY/MM/DD"),
         selected_time: "",
         selected_specific_time: "",
         
@@ -91,7 +91,7 @@ class DateTime extends React.Component<any, any> {
 
     console.log("date " + moment(date).toISOString());
 
-    this.setState({startDate: date});
+    this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     this.props.setDate(moment(date).format("YYYY/MM/DD"));
     //this.props.setDate(moment(date).toISOString());
 
@@ -100,18 +100,18 @@ class DateTime extends React.Component<any, any> {
 
   }
 
-  setDay(day: any){
+  //setDay(day: any){
 
-    console.log("date " + moment(day).format("YYYY/MM/DD"));
+    //console.log("date " + moment(day).format("YYYY/MM/DD"));
 
-    //this.setState({startDate: date});
+    //this.setState({selectedDate: date});
     //this.props.setDate(moment(date).format("YYYY/MM/DD"));
     //this.props.setDate(moment(date).toISOString());
 
     //this.props.cartValidated();
     //this.props.datetimeValidated();
 
-  }
+  //}
   
   
   render(): JSX.Element{
@@ -140,7 +140,7 @@ class DateTime extends React.Component<any, any> {
                     <form className="form-horizontal" style={{border: 0}}>
                       <div className="form-group show-lg" style={{borderRadius: 0}}>
                         <div className="col-md-3">
-                          <DayPickerInput onDayChange={(e: any) => this.setDay(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10, zIndex: -1}}/>
+                          <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate}/>
                         </div>
                         <div className="col-md-3">
                           <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10}}>

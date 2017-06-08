@@ -193,9 +193,6 @@ class DeliveryAddress extends React.Component<any, any> {
                                   <div className="col-sm-3">
                                     <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
                                   </div>
-                                  <div className="col-sm-3">
-                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Apt" style={{borderRadius: 0, fontSize: 16}}/>
-                                  </div>
                                 </div>
                            </form>
                           <form className="form-horizontal">
@@ -216,6 +213,31 @@ class DeliveryAddress extends React.Component<any, any> {
                                     <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
                                       <option>Zipcode</option>
                                       <option value="90025">90025</option>
+                                      <option value="90012">90012</option>
+                                      <option value="90014">90014</option>
+                                      <option value="90074">90074</option>
+                                      <option value="90012">90012</option>
+                                      <option value="90017">90017</option>
+                                      <option value="90071">90071</option>
+                                      <option value="90081">90081</option>
+                                      <option value="90012">90012</option>
+                                      <option value="90013">90013</option>
+                                      <option value="90017">90017</option>
+                                      <option value="90012">90012</option>
+                                      <option value="90053">90053</option>
+                                      <option value="90014">90014</option>
+                                      <option value="90015">90015</option>
+                                      <option value="90021">90021</option>
+                                      <option value="90079">90079</option>
+                                      <option value="90055">90055</option>
+                                      <option value="90012">90012</option>
+                                      <option value="90014">90014</option>
+                                      <option value="90071">90017</option>
+                                      <option value="90012">90012</option>
+                                      <option value="90015">90015</option>
+                                      <option value="90017">90017</option>
+                                      <option value="90021">90021</option>
+                                      <option value="90086">90006</option>
                                     </select>
                                   </div>
                                 </div>

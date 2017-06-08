@@ -209,7 +209,7 @@ class Contact extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111" value={this.state.contact_mobile}  style={{borderRadius: 0}}/>
+                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="1111111111" value={this.state.contact_mobile}  style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>

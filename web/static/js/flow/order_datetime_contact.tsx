@@ -19,7 +19,7 @@ import {setDate, setTime, setSpecificTime} from './actions/order_delivery_dateti
 import {increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {faq, mailingList, setOrderId} from './actions/order.ts';
+import {termsValidated, mailingList, setOrderId} from './actions/order.ts';
 
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
@@ -814,7 +814,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
 
-                            <input type="checkbox" onChange={(e: any) => this.terms(e)}/>Terms
+                            <input type="checkbox" onChange={(e: any) => this.props.termsValidated(e)}/>Terms
                             <br/>
                             <input type="checkbox" onChange={(e: any) => this.mailingList(e)}/>Join Mailing List
                             <br/>
@@ -939,9 +939,9 @@ function mapDispatchToProps(dispatch: any) {
     setPaymentSecurityCode: (e: any) => {
       dispatch(setPaymentSecurityCode(e.target.value))
     },
-    faq: (value: any) => {
+    termsValidated: (value: any) => {
 
-      dispatch(faq(value));
+      dispatch(termsValidated(value));
 
     },
     mailingList: (value: any) => {

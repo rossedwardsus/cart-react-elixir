@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function orderPayment(state:any = {name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", cvc: ""}, action: any){
+export default function orderPayment(state:any = {name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: ""}, action: any){
 
   let delivery_address_updated = null;
 
@@ -46,9 +46,9 @@ export default function orderPayment(state:any = {name_on_card: "", card_number:
       
       return Object.assign({}, state, {name_on_card: state.name_on_card, card_number: state.card_number, expiry_month: state.expiry_month, expiry_year: action.value});
    
-    //case SET_PAYMENT_SECURITY_CODE:
+    case SET_PAYMENT_SECURITY_CODE:
       
-    //  return Object.assign({}, state, {cvc: action.value});
+      return Object.assign({}, state, {security_code: action.value});
     
 
 

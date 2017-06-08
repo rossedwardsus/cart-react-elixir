@@ -1,4 +1,4 @@
-import { CREATE_ORDER, FAQ, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER } from '../constants/actionTypes.ts';
 
 
 
@@ -55,10 +55,10 @@ export function orderCompleted(order_type: any) {
   }
 }
 
-export function faq(value: any) {
+export function termsValidated(value: any) {
   console.log("create order action ");
   return {
-    type: FAQ,
+    type: TERMS,
   }
 }
 

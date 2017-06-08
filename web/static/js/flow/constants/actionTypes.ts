@@ -1,6 +1,6 @@
 export const CREATE_ORDER = 'CREATE_ORDER'
 export const SET_ORDER_ID = 'SET_ORDER_ID'
-export const FAQ = 'FAQ'
+export const TERMS = 'TERMS'
 export const MAILING_LIST = 'MAILING_LIST'
 export const ORDER_COMPLETED = 'ORDER_COMPLETED'
 export const CLEAR_ORDER = 'CLEAR_ORDER'
