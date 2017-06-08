@@ -84,6 +84,8 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({street1: e.target.value});
       this.props.setDeliveryAddressStreet1(e);
 
+      //if street1 street2 city state
+
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
@@ -93,6 +95,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
       this.setState({street2: e.target.value});
       this.props.setDeliveryAddressStreet2(e);
+
+      //if street1 street2 city state
 
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
@@ -105,6 +109,8 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({city: e.target.value});
       this.props.setDeliveryAddressCity(e);
 
+      //if street1 street2 city state
+
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
@@ -115,6 +121,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
       this.setState({state: e.target.value});
       this.props.setDeliveryAddressState(e);
+
+      //if street1 street2 city state
 
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
@@ -132,6 +140,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
       //this.props.setDeliveryAddressZipcode(e);
       //set location for delivery time
+
+      //if street1 street2 city state
       //this.props.setdeliveryAddressValidated();
 
   }
@@ -181,10 +191,10 @@ class DeliveryAddress extends React.Component<any, any> {
                                     <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.props.setDeliveryAddressStreet1(e)} style={{borderRadius: 0, fontSize: 16}}/>
                                   </div>
                                   <div className="col-sm-3">
-                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0}}/>
+                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
                                   </div>
                                   <div className="col-sm-3">
-                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Apt" style={{borderRadius: 0}}/>
+                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Apt" style={{borderRadius: 0, fontSize: 16}}/>
                                   </div>
                                 </div>
                            </form>
@@ -196,16 +206,12 @@ class DeliveryAddress extends React.Component<any, any> {
                                       <option value="los_angeles">Los Angeles</option>
                                     </select>
                                   </div>
-                                </div>
-                                <div className="form-group">
                                   <div className="col-sm-3">
                                     <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
                                       <option>State</option>
                                       <option value="ca">CA</option>
                                     </select>
                                   </div>
-                                </div>
-                                <div className="form-group">
                                   <div className="col-sm-3">
                                     <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
                                       <option>Zipcode</option>
