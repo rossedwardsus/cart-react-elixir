@@ -19046,11 +19046,7 @@ webpackJsonp([0],[
 	                    return _this2.guestCodeChange(e);
 	                } })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit"))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/smorgasbourgh" }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
-	                } }, "Social"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu/Social"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_signature");
-	                } }, "Signature"), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange(e) {
-	                    return _this2.guestCodeChange(e);
-	                } }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" })));
+	                } }, "Social"), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" })));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -30675,6 +30671,7 @@ webpackJsonp([0],[
 	        value: function setDeliveryAddressStreet1(e) {
 	            this.setState({ street1: e.target.value });
 	            this.props.setDeliveryAddressStreet1(e);
+	            //if street1 street2 city state
 	            //this.props.deliveryAddressValidated();
 	            //this.props.deliveryAddressInvalidated();
 	        }
@@ -30683,6 +30680,7 @@ webpackJsonp([0],[
 	        value: function setDeliveryAddressStreet2(e) {
 	            this.setState({ street2: e.target.value });
 	            this.props.setDeliveryAddressStreet2(e);
+	            //if street1 street2 city state
 	            //this.props.deliveryAddressValidated();
 	            //this.props.deliveryAddressInvalidated();
 	        }
@@ -30691,6 +30689,7 @@ webpackJsonp([0],[
 	        value: function setDeliveryAddressCity(e) {
 	            this.setState({ city: e.target.value });
 	            this.props.setDeliveryAddressCity(e);
+	            //if street1 street2 city state
 	            //this.props.deliveryAddressValidated();
 	            //this.props.deliveryAddressInvalidated();
 	        }
@@ -30699,6 +30698,7 @@ webpackJsonp([0],[
 	        value: function setDeliveryAddressState(e) {
 	            this.setState({ state: e.target.value });
 	            this.props.setDeliveryAddressState(e);
+	            //if street1 street2 city state
 	            //this.props.deliveryAddressValidated();
 	            //this.props.deliveryAddressInvalidated();
 	        }
@@ -30711,6 +30711,7 @@ webpackJsonp([0],[
 	            //90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
 	            //this.props.setDeliveryAddressZipcode(e);
 	            //set location for delivery time
+	            //if street1 street2 city state
 	            //this.props.setdeliveryAddressValidated();
 	        }
 	    }, {
@@ -30807,8 +30808,9 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
 	
 	        _this.state = {
-	            email: "",
-	            mobile: "",
+	            contact_email: "",
+	            contact_email_again: "",
+	            contact_mobile: "",
 	            email_border_color: "grey"
 	        };
 	        //user_type=guest
@@ -30869,11 +30871,11 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setContactEmailAgain",
 	        value: function setContactEmailAgain(e) {
-	            if (this.state.email == e.target.value) {
+	            this.setState({ contact_email_again: e.target.value });
+	            //this.props.setContactEmail(e);
+	            if (this.state.contact_email == e.target.value) {
 	                //validated
 	            }
-	            this.setState({ email_again: e.target.value });
-	            //this.props.setContactEmail(e);
 	        }
 	    }, {
 	        key: "setContactMobile",
@@ -30882,7 +30884,7 @@ webpackJsonp([0],[
 	            //check if only number
 	            var mobile_number = e.target.value.replace("_", "");
 	            var number_res = /[0-9]/.test(mobile_number);
-	            this.setState({ mobile: e.target.value });
+	            this.setState({ contact_mobile: e.target.value });
 	            this.props.setContactMobile(e);
 	            if (number_res == true) {
 	                //validate contact
@@ -30896,11 +30898,11 @@ webpackJsonp([0],[
 	
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setContactEmail(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", value: this.state.email, style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", value: this.state.contact_email, style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setContactEmailAgain(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", value: this.state.email_again, style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", value: this.state.contact_email_again, style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.setContactMobile(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "111-111-1111", value: this.state.mobile, style: { borderRadius: 0 } }))))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "111-111-1111", value: this.state.contact_mobile, style: { borderRadius: 0 } }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -35153,6 +35155,11 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
 	
 	        _this.state = {
+	            payment_name_on_card: "",
+	            payment_card_number: "",
+	            payment_expiry_month: "",
+	            payment_expiry_year: "",
+	            payment_security_code: "",
 	            card_number_border_color: "grey",
 	            expiry_month_border_color: "grey",
 	            expiry_year_border_color: "grey",

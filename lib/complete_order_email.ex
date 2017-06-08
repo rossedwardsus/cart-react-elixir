@@ -16,7 +16,7 @@ defmodule Sconely.CompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      to: [_params["order_contact_email"], "rossedwards.us@gmail.com"],
+      to: _params["order_contact_email"],
       from: "order@sconely.com",
       subject: "Sconely.com order: " <> _params["order_id"],
       html_body: template,

@@ -48,8 +48,9 @@ class Contact extends React.Component<any, any> {
 
     this.state = {
 
-        email: "",
-        mobile: "",
+        contact_email: "",
+        contact_email_again: "",
+        contact_mobile: "",
         email_border_color: "grey"
 
     };
@@ -145,14 +146,16 @@ class Contact extends React.Component<any, any> {
 
   setContactEmailAgain(e: any){
 
-      if(this.state.email == e.target.value){
+      this.setState({contact_email_again: e.target.value});
+      //this.props.setContactEmail(e);
+
+      if(this.state.contact_email == e.target.value){
 
           //validated
 
       }
 
-      this.setState({email_again: e.target.value});
-      //this.props.setContactEmail(e);
+      
 
   }
 
@@ -164,7 +167,7 @@ class Contact extends React.Component<any, any> {
       let mobile_number = e.target.value.replace("_", "");
       let number_res = (/[0-9]/.test(mobile_number));
 
-      this.setState({mobile: e.target.value});
+      this.setState({contact_mobile: e.target.value});
       this.props.setContactMobile(e);
 
       if(number_res == true){
@@ -192,12 +195,12 @@ class Contact extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email}  style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" onChange={(e: any) => this.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.contact_email}  style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" value={this.state.email_again}  style={{borderRadius: 0}}/>
+                        <input type="text" onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" value={this.state.contact_email_again}  style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>
@@ -206,7 +209,7 @@ class Contact extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
-                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111" value={this.state.mobile}  style={{borderRadius: 0}}/>
+                        <input type="text" onChange={(e: any) => this.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="111-111-1111" value={this.state.contact_mobile}  style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>

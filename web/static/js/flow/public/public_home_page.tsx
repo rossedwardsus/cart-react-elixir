@@ -382,9 +382,7 @@ class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                           <br/>
-                          <Link to="/public/menu">Menu/Social</Link>
-                          <br/>
-                          <a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
+                          
                           <br/>
                         </div>
                         <div className="col-md-4">
@@ -400,7 +398,7 @@ class PublicHomePage extends React.Component<any, any> {
                                       <br/>
                                       <Link to="/public/menu">Menu</Link>
                                       <br/>
-                                      <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
+                                      
                                     </div>
                                   </div>
                                   <br/>

@@ -51,6 +51,11 @@ class PaymentMethod extends React.Component<any, any> {
 
     this.state = {
 
+       payment_name_on_card: "",
+       payment_card_number: "",
+       payment_expiry_month: "",
+       payment_expiry_year: "",
+       payment_security_code: "",
        card_number_border_color: "grey",
        expiry_month_border_color: "grey",
        expiry_year_border_color: "grey",

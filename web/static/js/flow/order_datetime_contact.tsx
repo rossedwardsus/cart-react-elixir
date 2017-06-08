@@ -825,7 +825,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             order_payment_method={this.props.order_payment_method}
                             validations={this.props.order_validations}/>
                             <br/>
-                            <button>Cancel</button>
                             <br/>
                         </div>
                 </div>
