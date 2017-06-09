@@ -30318,7 +30318,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setDate(e);
 	                }, datetimeValidated: function datetimeValidated() {
 	                    return _this2.props.datetimeValidated();
-	                } }), React.createElement(name_tsx_1.default, { setFirstName: function setFirstName(e) {
+	                } }), React.createElement(name_tsx_1.default, { name: this.props.name, setFirstName: function setFirstName(e) {
 	                    return _this2.props.setFirstName(e);
 	                }, setLastName: function setLastName(e) {
 	                    return _this2.props.setLastName(e);
