@@ -51,8 +51,8 @@ class Name extends React.Component<any, any> {
 
     this.state = {
 
-       first_name: "",
-       last_name: "",
+       first: "",
+       last: "",
        first_name_border_color: "grey",
        last_name_border_color: "grey",
        first_name_validated: false,
@@ -77,8 +77,8 @@ class Name extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.setState({first_name: this.props.name.first_name});
-    this.setState({last_name: this.props.name.last_name});
+    this.setState({first_name: this.props.name.first});
+    this.setState({last_name: this.props.name.last});
 
   }
 
@@ -95,7 +95,7 @@ class Name extends React.Component<any, any> {
 
     //only letters
 
-    this.setState({first_name: e.target.value});
+    this.setState({first: e.target.value});
 
     if(e.target.value.length > 0){
 
@@ -142,7 +142,7 @@ class Name extends React.Component<any, any> {
 
   setLastName(e: any){
 
-      this.setState({last_name: e.target.value});
+      this.setState({last: e.target.value});
 
       if(e.target.value.length > 0){    
 
@@ -203,12 +203,12 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.state.first_name_classname}>
-                      <input type="text" value={this.state.first_name} maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" value={this.state.first} maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" value={this.state.last_name} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" value={this.state.last} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">

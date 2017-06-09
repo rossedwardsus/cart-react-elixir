@@ -34603,8 +34603,8 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
 	
 	        _this.state = {
-	            first_name: "",
-	            last_name: "",
+	            first: "",
+	            last: "",
 	            first_name_border_color: "grey",
 	            last_name_border_color: "grey",
 	            first_name_validated: false,
@@ -34623,8 +34623,8 @@ webpackJsonp([0],[
 	    _createClass(Name, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            this.setState({ first_name: this.props.name.first_name });
-	            this.setState({ last_name: this.props.name.last_name });
+	            this.setState({ first_name: this.props.name.first });
+	            this.setState({ last_name: this.props.name.last });
 	        }
 	    }, {
 	        key: "onFirstNameFocus",
@@ -34636,7 +34636,7 @@ webpackJsonp([0],[
 	        key: "setFirstName",
 	        value: function setFirstName(e) {
 	            //only letters
-	            this.setState({ first_name: e.target.value });
+	            this.setState({ first: e.target.value });
 	            if (e.target.value.length > 0) {
 	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
 	                //let symbol_res = symbol_patt.test(e.target.value);
@@ -34664,7 +34664,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setLastName",
 	        value: function setLastName(e) {
-	            this.setState({ last_name: e.target.value });
+	            this.setState({ last: e.target.value });
 	            if (e.target.value.length > 0) {
 	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
 	                //let symbol_res = symbol_patt.test(e.target.value);
@@ -34695,11 +34695,11 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { paddingLeft: 0 } }, React.createElement("div", { className: "form-group", style: { paddingLeft: 0 } }, React.createElement("div", { className: "col-sm-12", style: { paddingLeft: 0 } }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first_name, maxLength: 20, onFocus: function onFocus() {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { paddingLeft: 0 } }, React.createElement("div", { className: "form-group", style: { paddingLeft: 0 } }, React.createElement("div", { className: "col-sm-12", style: { paddingLeft: 0 } }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, maxLength: 20, onFocus: function onFocus() {
 	                    return _this2.onFirstNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.setFirstName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last_name, onFocus: function onFocus() {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, onFocus: function onFocus() {
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.setLastName(e);
@@ -35135,9 +35135,9 @@ webpackJsonp([0],[
 	                        console.log("order cart" + JSON.stringify(this.props.cart_items));
 	                        //let total_amount = item.quantity;
 	                        //let item_cost = total_amount * 6.00;
-	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { fontSize: 20, border: 1 } }, React.createElement("div", { className: "col-md-1" }, item.item_title), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-1", style: { fontSize: 20 } }, React.createElement("a", { onClick: function onClick() {
+	                        return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { fontSize: 16, border: 1 } }, React.createElement("div", { className: "col-md-1" }, item.item_title), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-1", style: { fontSize: 16 } }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.increaseCartItemQuantity(item.item_id);
-	                            } }, React.createElement("b", null, "+"))), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1", style: { fontSize: 20 } }, React.createElement("a", { onClick: function onClick() {
+	                            } }, React.createElement("b", null, "+"))), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1", style: { fontSize: 16 } }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.decreaseCartItemQuantity(item.item_id);
 	                            } }, React.createElement("b", null, "-"))))), React.createElement("div", { className: "col-md-1", style: { fontSize: 15 } }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.removeCartItem(item.item_id);
