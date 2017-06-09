@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function order(state:any = {order_type: "", order_id: "", user_id: "", mailing_list: "", terms_validated: "", delivery_cost: ""}, action: any){
+export default function order(state:any = {order_type: "", order_id: "", user_id: "", mailing_list: "", terms_validated: "", delivery_cost: 0}, action: any){
   switch (action.type) {
     case CREATE_ORDER:
 
@@ -64,12 +64,12 @@ export default function order(state:any = {order_type: "", order_id: "", user_id
 
     case SET_DELIVERY_COST:
 
-      console.log("CLEAR order reducer ");
+      console.log("delivery cost reducer " + action.value);
     
       //let items = state.cart_items;
       //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
       
-      return Object.assign({}, state, {delivery_cost: "1"});;
+      return Object.assign({}, state, {delivery_cost: action.cost});
 
 
     case ORDER_COMPLETED:

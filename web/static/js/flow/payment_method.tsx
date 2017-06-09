@@ -281,13 +281,6 @@ class PaymentMethod extends React.Component<any, any> {
     return ( <div>
                   
                   <form className="form-horizontal">
-                  <div className="form-group">
-                      <div className="col-sm-6">
-                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)}/>
-                    </div>
-                    </div>
-                  </form>
-                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3">
                         <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>

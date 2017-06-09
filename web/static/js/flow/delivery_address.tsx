@@ -53,7 +53,12 @@ class DeliveryAddress extends React.Component<any, any> {
 
     this.state = {
 
-        street: ""
+        street1: "",
+        street2: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        zipcodes: [90012, 90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086, 90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
     };
 
     //user_type=guest
@@ -74,7 +79,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //this.setState({street: this.props.delivery_address.street1})
+    this.setState({street1: this.props.deliveryAddress.street1})
+    this.setState({street2: this.props.deliveryAddress.street2})
 
   }
 
@@ -132,11 +138,26 @@ class DeliveryAddress extends React.Component<any, any> {
   setDeliveryAddressZipcode(e: any){
 
       this.setState({zipcode: e.target.value});
-      this.props.setDeliveryAddressZipcode(e);
+      //this.props.setDeliveryAddressZipcode(e.target.value);
 
-      //90012, 90014, 90074, 90012, 90017, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086, 
+      let dtla = [90012, 90014, 90017, 90074, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086]
 
-      //90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
+      let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
+
+      console.log("e" + e.target.value);
+      console.log("dtla" + dtla.indexOf(parseInt(e.target.value)));
+      console.log("sm" + sm.indexOf(parseInt(e.target.value)));
+
+
+      if(dtla.indexOf(parseInt(e.target.value)) > -1){
+
+          this.props.setDeliveryCost(0);
+
+      }else if(sm.indexOf(parseInt(e.target.value)) > -1){
+
+          this.props.setDeliveryCost(10);
+
+      }
 
       //this.props.setDeliveryAddressZipcode(e);
       //set location for delivery time
@@ -188,10 +209,10 @@ class DeliveryAddress extends React.Component<any, any> {
                            <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-3">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e) => this.props.setDeliveryAddressStreet1(e)} style={{borderRadius: 0, fontSize: 16}}/>
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} onChange={(e) => this.setDeliveryAddressStreet1(e)} style={{borderRadius: 0, fontSize: 16}}/>
                                   </div>
                                   <div className="col-sm-3">
-                                    <input type="text" onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
+                                    <input type="text" value={this.state.street2} onChange={(e: any) => this.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
                                   </div>
                                 </div>
                            </form>
@@ -204,40 +225,22 @@ class DeliveryAddress extends React.Component<any, any> {
                                     </select>
                                   </div>
                                   <div className="col-sm-3">
-                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)}>
+                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                                       <option>State</option>
                                       <option value="ca">CA</option>
                                     </select>
                                   </div>
                                   <div className="col-sm-3">
-                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)}>
+                                    <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                                       <option>Zipcode</option>
-                                      <option value="90025">90025</option>
-                                      <option value="90012">90012</option>
-                                      <option value="90014">90014</option>
-                                      <option value="90074">90074</option>
-                                      <option value="90012">90012</option>
-                                      <option value="90017">90017</option>
-                                      <option value="90071">90071</option>
-                                      <option value="90081">90081</option>
-                                      <option value="90012">90012</option>
-                                      <option value="90013">90013</option>
-                                      <option value="90017">90017</option>
-                                      <option value="90012">90012</option>
-                                      <option value="90053">90053</option>
-                                      <option value="90014">90014</option>
-                                      <option value="90015">90015</option>
-                                      <option value="90021">90021</option>
-                                      <option value="90079">90079</option>
-                                      <option value="90055">90055</option>
-                                      <option value="90012">90012</option>
-                                      <option value="90014">90014</option>
-                                      <option value="90071">90017</option>
-                                      <option value="90012">90012</option>
-                                      <option value="90015">90015</option>
-                                      <option value="90017">90017</option>
-                                      <option value="90021">90021</option>
-                                      <option value="90086">90006</option>
+                                      <option>Free</option>
+                                      
+                                      {this.state.zipcodes.map(function(zipcode: any){
+
+                                          return(<option value={zipcode}>{zipcode}</option>)
+
+                                      })}
+                                    
                                     </select>
                                   </div>
                                 </div>

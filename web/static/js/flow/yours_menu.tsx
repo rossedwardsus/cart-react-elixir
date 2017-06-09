@@ -299,7 +299,7 @@ class PublicMenu extends React.Component<any, any> {
                         </div>
                     </nav>
                     <div className="row">
-                          <div className="hidden-xs col-md-1">
+                          <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
                             <Link to="/public/menu">Menu</Link>

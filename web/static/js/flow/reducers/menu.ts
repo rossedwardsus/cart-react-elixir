@@ -20,21 +20,11 @@ let inititalState: OrderState = {
 
 }*/
 
-export default (state:any = [], action: any) => {
+export default (state:any = {menu_items: []}, action: any) => {
   switch (action.type) {
     case VIEW_PUBLIC_MENU:
-      //alert("view public menu reducer" + JSON.stringify(action));
-      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return "hello";
-      //alertObject.assign({}, state);
-      //alert(state);
-      //return Object.assign({}, ...state);
-
-      //return Object.assign({}, ...state, action.menu_items)
-      //return Object.assign({}, {menu_items: action.menu_items});
-
-      return Object.assign({}, state, {menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return {"menu_items": [{item_id: 1, title: "from reducer view public menu yippee caye!"}]}
+      
+      return Object.assign({}, state, {menu_items: action.menu_items})
     default:
       return state
   }

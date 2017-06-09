@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { Link, browserHistory } from 'react-router';
-
 import {connect} from 'react-redux';
-//import {viewMenu} from './action/cart.ts';
+
+import {getMenuItems} from './actions/menu.ts';
 import {cartValidated} from './actions/order_validations.ts';
 import {addCartItem} from './actions/cart.ts';
 import SidebarCart from './sidebar_cart.tsx';
@@ -53,10 +53,12 @@ class PublicMenu extends React.Component<any, any> {
 
   componentDidMount(){
 
+    this.props.getMenuItems();
+
     console.log(JSON.stringify(this.props.params));
 
     //start yours order here
-    this.props.createOrder("sconely_yours");
+    //this.props.createOrder("sconely_yours");
 
 
     //get active items from the database
@@ -186,9 +188,28 @@ class PublicMenu extends React.Component<any, any> {
 
       //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 
-      let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
+      //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id;
 
-      this.setState({["image_src_" + item_id]: image_id});
+      //this.setState({["image_src_" + item_id]: image_id});
+
+      let menu_items_updated = this.state.menu_items.map((item: any) => 
+
+          {
+              if(item.item_id == item_id){
+
+              //let image_name = item.image_id;
+                item.image_id = item.image_id + "roll";
+
+              }
+
+              return item;
+
+          })
+
+      console.log(JSON.stringify(menu_items_updated));
+
+      this.setState({menu_items: menu_items_updated});
+
 
   }
 
@@ -275,7 +296,7 @@ class PublicMenu extends React.Component<any, any> {
 
                                 return(
                                         <div className="col-md-4 col-xs-1" style={{marginTop: 0, marginBottom: 0}}>
-                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={() => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={() => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"}  data-target="myModal" alt="..." height="270" width="270"/>
                                               
                                           <div style={{fontSize: 13}}><b>{item.title}</b> / {item.description}</div>
                                           <br/>
@@ -346,6 +367,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
+        menu_items: state.menu_items,    
         order: state.Order,
         cart: state.cart
 
@@ -357,6 +379,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
+    getMenuItems: () => {
+      dispatch(getMenuItems());
+    },
     addCartItem: (item_id: any, item_type: any, quantity: any) => {
       dispatch(addCartItem(item_id, item_type, quantity));
     },

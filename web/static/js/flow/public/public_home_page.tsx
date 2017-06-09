@@ -39,7 +39,8 @@ class PublicHomePage extends React.Component<any, any> {
         gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
         gallery_image: "",
         gallery_image_index: 0,
-        guest_code: ""
+        guest_code: "",
+        interval: ""
         
     };
 
@@ -66,7 +67,8 @@ class PublicHomePage extends React.Component<any, any> {
 
     this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
 
-    setInterval(this.changeImage, 5000);
+    let interval = setInterval(this.changeImage, 5000);
+    this.setState({interval: interval});
 
 
     //Cookies.set('name', 'value');
@@ -88,6 +90,11 @@ class PublicHomePage extends React.Component<any, any> {
     //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
+  }
+
+  componentWillUnmount() {
+     // use intervalId from the state to clear the interval
+     clearInterval(this.state.interval);
   }
 
   static get contextTypes() {

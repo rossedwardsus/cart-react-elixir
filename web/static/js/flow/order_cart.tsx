@@ -552,6 +552,9 @@ class OrderCart extends React.Component<any, any> {
     let item_count = 0;
     let subtotal = 0;
     let total_cost = 0;
+    let that = this;
+
+    console.log("order cart" + JSON.stringify(this.props.cart_items));
 
     if(this.props.cart_items.length === 0){
 
@@ -567,25 +570,27 @@ class OrderCart extends React.Component<any, any> {
         this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
-            console.log("order cart " + this.props.order.order_type);
+            console.log("order cart " + that.props.order);
 
-            if(this.props.order.order_type == "sconely_yours"){
+            if(that.props.order.order_type == "sconely_yours"){
 
-                  //total_cost = total_cost + (6 * item.quantity * 24);
-                  //item_count = item_count + (24 * item.quantity);
+                  //change to individual calls
+
+                  total_cost = total_cost + (6 * item.quantity * 24);
+                  item_count = item_count + (24 * item.quantity);
             
             }else{
 
 
                   if(item.item_type == "mini"){
                                 
-                    total_cost = total_cost + (6 * item.quantity * 24);
+                    total_cost = total_cost + (5 * item.quantity * 24);
                     item_count = item_count + (24 * item.quantity);
 
                   }else{
 
-                    total_cost = total_cost + (5 * item.quantity * 12);
-                    item_count = item_count + item.quantity;
+                    total_cost = total_cost + (6 * item.quantity * 12);
+                    item_count = item_count + (12 * item.quantity);
 
                   }
 
@@ -604,18 +609,20 @@ class OrderCart extends React.Component<any, any> {
 
                           console.log("order cart" + JSON.stringify(this.props.cart_items));
 
+                          //let total_amount = item.quantity;
+                          //let item_cost = total_amount * 6.00;
+
                           return(<div>
                                       <form className="form-horizontal" style={{border: 1}}>    
-                                          <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-1">item_title</div>
+                                          <div className="form-group" style={{fontSize:20, border: 1}}>
+                                            <div className="col-md-1">{item.item_title}</div>
                                             <div className="col-md-3">
                                               <div className="row">
-                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
+                                                <div className="col-md-1" style={{fontSize: 20}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
                                                 <div className="col-md-1">{item.quantity}</div>
-                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
+                                                <div className="col-md-1" style={{fontSize: 20}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
                                               </div>
                                             </div>
-                                            <div className="col-md-1">${item.quantity * 6}.00</div>
                                             <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(item.item_id)}><b>X</b></a></div>
                                           </div>
                                       </form>
@@ -631,11 +638,11 @@ class OrderCart extends React.Component<any, any> {
                             return(<div>
                                         <form className="form-horizontal" style={{border: 1}}>
                                             <div className="form-group" style={{border: 1}}>
-                                              <div className="col-md-4">item_title Mini</div>
+                                              <div className="col-md-4" style={{fontSize: 20}}>{item.item_title} Mini</div>
                                               <div style={{fontSize: 10}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
                                               <div className="col-md-1">{item.quantity}</div>
                                               <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
-                                              <div className="col-md-1">$.00</div>
+                                              <div className="col-md-1">${item_cost}</div>
                                               <div className="col-md-1">X</div>
                                             </div>
                                         </form>
@@ -644,11 +651,12 @@ class OrderCart extends React.Component<any, any> {
                         }else{
 
                             let total_amount = item.quantity * 12;
+                            let item_cost = total_amount * 6.00;
 
                             return(
                                         <form className="form-horizontal" style={{border: 1}}>    
                                             <div className="form-group" style={{border: 1}}>
-                                              <div className="col-md-1">item_title</div>
+                                              <div className="col-md-1" style={{fontSize: 20}}>{item.item_title}</div>
                                               <div className="col-md-3">
                                                 <div className="row">
                                                   <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
@@ -656,7 +664,7 @@ class OrderCart extends React.Component<any, any> {
                                                   <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
                                                 </div>
                                               </div>
-                                              <div className="col-md-1">cost</div>
+                                              <div className="col-md-1">${item_cost}</div>
                                               <div className="col-md-1">X</div>
                                             </div>
                                         </form>
@@ -674,19 +682,21 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
-               click here to add more items to your cart
+               <Link to="/menu" className="btn btn-default">Menu</Link><br/>
                <br/>
                <form className="form-horizontal" style={{border: 1}}>    
                   <div className="form-group" style={{border: 1}}>
-                    <div className="col-md-3">                         
+                    <div className="col-md-8">                         
                        <br/>
-                       Delivery charge - 0 if yours - social depends on zipcode
+                       <div className="col-md-4">Delivery charge</div><div className="col-md-1">{this.props.order.delivery_cost}</div>
                        <br/>
-                       <b>2</b>
                        <br/> 
-                       Promo Code<input/>
+                       <div className="col-md-4">Promo Code</div><div className="col-md-4">
+                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" style={{borderRadius: 0, fontSize: 16}}/>
+                       </div>
                        <br/>
-                       Total Due - <b>{total_cost}</b>
+                       <br/>
+                       <div className="col-md-4">Total Due</div><div className="col-md-1"><b>{total_cost}</b></div>
                     </div>
                   </div>
                 </form>

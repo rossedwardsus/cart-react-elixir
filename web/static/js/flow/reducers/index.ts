@@ -4,6 +4,7 @@ import { routerReducer } from 'react-router-redux'
 import login from './login.ts';
 //import register from './register.ts';
 //import root from './root.ts';
+import MenuItems from './menu.ts';
 import Order from './order.ts';
 import OrderDeliveryAddress from './order_delivery_Address.ts';
 import OrderDatetime from './order_datetime.ts';
@@ -19,6 +20,7 @@ import user_payment_methods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 
 export default combineReducers({
+  MenuItems,
   Order,
   OrderDatetime,
   OrderPayment,

@@ -148,7 +148,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const UserTopNavbar = connect(
+const UserTopNavbar1 = connect(
   mapStateToProps,
   mapDispatchToProps
 )(UserTopNavbar)

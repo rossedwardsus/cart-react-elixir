@@ -248,12 +248,12 @@ class SidebarCart extends React.Component<any, any> {
 
               if(item.item_type == "mini"){
                             
-                total_cost = total_cost + (6 * item.quantity * 24);
+                total_cost = total_cost + (5 * item.quantity * 24);
                 item_count = item_count + (24 * item.quantity);
 
               }else{
 
-                total_cost = total_cost + (5 * item.quantity * 12);
+                total_cost = total_cost + (6 * item.quantity * 12);
                 item_count = item_count + (12 * item.quantity);
 
               }
@@ -289,6 +289,7 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
+                                                <div className="col-md-6">ruby q</div>
                                                 <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}title-mini</div>
                                               </div>
                                         </form>
@@ -322,35 +323,19 @@ class SidebarCart extends React.Component<any, any> {
 
     return (<div> 
                   <br/>
-                  <br/>
-                  <br/>
                   {item_limit}
                   <br/>
-                  <br/>
-                  <div style={{border: 1, position: "static"}}>
                   {cart}
-                  </div>
-                  <br/>
-                    <br/>
-                    <form className="form-horizontal" style={{border: 1}}>
-                      <div className="form-group" style={{border: 1}}>
-                        <div className="col-xs-0"></div>
-                        <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}></div>
-                        <div className="col-xs-2" style={{fontSize: "14"}}><b>{item_count}</b></div>
-                      </div>
-                    </form>
-                    <form className="form-horizontal" style={{border: 1}}>
-                      <div className="form-group" style={{border: 1}}>
-                        <div className="col-xs-0"></div>
-                        <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total</b></div>
-                        <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost}.00</div>
-                        <br/>
-                        if item_count > 0
-                        <br/>
-                        <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
-                        <br/>
-                      </div>
-                    </form>                       
+                  <form className="form-horizontal" style={{border: 1}}>
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Items</b></div>
+                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>{item_count}</div>
+                      <br/>
+                      <br/>
+                      <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
+                      <br/>
+                    </div>
+                  </form>                       
             </div>
     )
   }

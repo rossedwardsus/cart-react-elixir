@@ -19,7 +19,7 @@ import {setDate, setTime, setSpecificTime} from './actions/order_delivery_dateti
 import {increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {termsValidated, mailingList, setOrderId} from './actions/order.ts';
+import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
 
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
@@ -797,10 +797,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
+                            <DeliveryAddress order={this.props.order} deliveryAddress={this.props.order_delivery_address} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
                             setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
                             setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} 
                             setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
+                            setDeliveryCost={(e: any) => this.props.setDeliveryCost(e)}
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
                             <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>
@@ -811,6 +812,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
                             <OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItemQuantity(e)} cart_items={this.props.order_cart_items}/>
 
+                            <br/>
+                            
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
 
@@ -911,6 +914,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setDeliveryAddressZipcode: (e: any) => {
       dispatch(setDeliveryAddressZipcode(e.target.value))
+    },
+    setDeliveryCost: (value: any) => {
+      dispatch(setDeliveryCost(value));
     },
     deliveryAddressValidated: () => {
       dispatch(deliveryAddressValidated())

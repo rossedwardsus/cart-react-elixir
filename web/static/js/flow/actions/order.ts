@@ -80,6 +80,7 @@ export function setDeliveryCost(cost: any) {
   console.log("setdeliverycost action " + cost);
   return {
     type: SET_DELIVERY_COST,
+    cost
   }
 }
 
