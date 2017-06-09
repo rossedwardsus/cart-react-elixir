@@ -688,7 +688,7 @@ class OrderCart extends React.Component<any, any> {
                   <div className="form-group" style={{border: 1}}>
                     <div className="col-md-8">                         
                        <br/>
-                       <div className="col-md-4">Delivery charge</div><div className="col-md-1">{this.props.order.delivery_cost}</div>
+                       <div className="col-md-4">Delivery charge</div><div className="col-md-1">${this.props.order.delivery_cost}</div>
                        <br/>
                        <br/> 
                        <div className="col-md-4">Promo Code</div><div className="col-md-4">
@@ -696,7 +696,7 @@ class OrderCart extends React.Component<any, any> {
                        </div>
                        <br/>
                        <br/>
-                       <div className="col-md-4">Total Due</div><div className="col-md-1"><b>{total_cost}</b></div>
+                       <div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost}</b></div>
                     </div>
                   </div>
                 </form>
