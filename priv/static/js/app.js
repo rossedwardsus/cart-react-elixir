@@ -30318,7 +30318,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setDate(e);
 	                }, datetimeValidated: function datetimeValidated() {
 	                    return _this2.props.datetimeValidated();
-	                } }), React.createElement(name_tsx_1.default, { name: this.props.name, setFirstName: function setFirstName(e) {
+	                } }), React.createElement(name_tsx_1.default, { name: this.props.order_name, setFirstName: function setFirstName(e) {
 	                    return _this2.props.setFirstName(e);
 	                }, setLastName: function setLastName(e) {
 	                    return _this2.props.setLastName(e);
@@ -30326,7 +30326,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setCompanyName(e);
 	                }, setNameValidated: function setNameValidated() {
 	                    return _this2.props.setNameValidated();
-	                } }), React.createElement(contact_tsx_1.default, { setContactEmail: function setContactEmail(e) {
+	                } }), React.createElement(contact_tsx_1.default, { contact: this.props.order_contact, setContactEmail: function setContactEmail(e) {
 	                    return _this2.props.setContactEmail(e);
 	                }, setContactMobile: function setContactMobile(e) {
 	                    return _this2.props.setContactMobile(e);
@@ -30907,8 +30907,8 @@ webpackJsonp([0],[
 	    _createClass(Contact, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            this.setState({ contact_email: this.props.contact_email });
-	            this.setState({ contact_email_again: this.props.contact_email_again });
+	            this.setState({ contact_email: this.props.contact.contact_email });
+	            this.setState({ contact_email_again: this.props.contact.contact_email_again });
 	            this.setState({ contact_mobile: this.props.contact.mobile });
 	        }
 	    }, {
