@@ -16,7 +16,7 @@ import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, 
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
-import {increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/cart.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
@@ -780,10 +780,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <Link to="/public/menu" className="btn btn-default">Back to Menu</Link>
+                          {this.props.order.order_type == "sconely_yours" ?
+                            <Link to={"/" + this.props.order.name} className="btn btn-default">Back to Menu</Link> : <Link to="/public/menu" className="btn btn-default">Back to Menu</Link>  
+                          }
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Social</Link>
                           <br/>
                           <br/>
                           <br/>
@@ -810,7 +811,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             
                             <Contact contact={this.props.order_contact} setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
-                            <OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItemQuantity(e)} cart_items={this.props.order_cart_items}/>
+                            <OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
 
                             <br/>
 
@@ -929,6 +930,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     decreaseCartItemQuantity: (e: any) => {
       dispatch(decreaseCartItemQuantity(e));
+    },
+    removeCartItem: (item_id: any) => {
+      dispatch(removeCartItem(item_id));
     },
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value))

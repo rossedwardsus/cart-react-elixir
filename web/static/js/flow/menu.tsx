@@ -30,7 +30,8 @@ class PublicMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
+        //menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
+        menu_items: [],
         selected_item_id: "",
         selected_item_type: "",
         selected_item_quantity: "",
@@ -53,9 +54,11 @@ class PublicMenu extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.props.getMenuItems();
+    //this.props.getMenuItems();
 
-    console.log(JSON.stringify(this.props.params));
+    console.log("props" + JSON.stringify(this.props));
+
+    this.setState({menu_items: this.props.menu_items.menu_items});
 
     //start yours order here
     //this.props.createOrder("sconely_yours");
@@ -69,20 +72,21 @@ class PublicMenu extends React.Component<any, any> {
 
     //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
 
-    this.state.menu_items.map(function(value: any, index: any){
+    //this.state.menu_items.map(function(value: any, index: any){
 
           //console.log(value.item_id);
-          let image_src = "image_src_" + value.item_id;
-          this.setState({[image_src]: value.image_id});
+    //      let image_src = "image_src_" + value.item_id;
+    //      this.setState({[image_src]: value.image_id});
 
-    }.bind(this));
+    //}.bind(this));
 
 
   }
 
   componentWillReceiveProps(nextProp:any){
 
-      console.log("menu props");
+      //console.log("menu componentwillreceiveprops" + JSON.stringify(this.props));
+      //this.setState({menu_items: this.props.menu_items.menu_items});
 
   }
 
@@ -390,7 +394,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        menu_items: state.menu_items,    
+        menu_items: state.MenuItems,    
         order: state.Order,
         cart: state.cart
 
@@ -411,9 +415,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     cartValidated: () => {
       dispatch(cartValidated());
     },
-    createOrder: (order_type: any) => {
-      dispatch(createOrder(order_type));
-    }
+    //createOrder: (order_type: any) => {
+    //  dispatch(createOrder(order_type));
+    //}
   }
 }
 

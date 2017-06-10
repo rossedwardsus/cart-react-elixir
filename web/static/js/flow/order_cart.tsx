@@ -558,7 +558,7 @@ class OrderCart extends React.Component<any, any> {
 
     if(this.props.cart_items.length === 0){
 
-        cart = "there are no items in your cart";
+        cart = "<div>there are no items in your cart<br/><Link to='/public/menu' className='btn btn-default'>Go to Menu</Link><br/></div>";
 
     }else{
 
@@ -566,6 +566,43 @@ class OrderCart extends React.Component<any, any> {
 
         total_cost = 0;
         item_count = 0;
+
+        if(that.props.order.order_type == "sconely_yours"){
+         
+          /*total_cost = this.props.cart_items.map(function(item: any){
+
+                          //console.log("item " + JSON.stringify(item));
+                          //console.log("order cart " + that.props.order);
+
+                          //change to individual calls
+
+                          return subtotal + (6 * item.quantity * 24);
+                          //item_count = item_count + (24 * item.quantity);
+
+                      });*/
+
+          total_cost =  this.props.cart_items.map(function(b: any) { return b.quantity * 6; })
+            .reduce(function(p:any, c:any) { return p + c; });
+        }else{
+
+
+
+        }
+
+        /* item_count = this.props.cart_items.map(function(item: any){
+
+            console.log("item " + JSON.stringify(item));
+            console.log("order cart " + that.props.order);
+
+            if(that.props.order.order_type == "sconely_yours"){
+
+                  //change to individual calls
+
+                  //total_cost = total_cost + (6 * item.quantity * 24);
+                  item_count = item_count + (24 * item.quantity);*/
+
+
+
 
         this.props.cart_items.map(function(item: any){
 
@@ -576,7 +613,7 @@ class OrderCart extends React.Component<any, any> {
 
                   //change to individual calls
 
-                  total_cost = total_cost + (6 * item.quantity * 24);
+                  //total_cost = total_cost + (6 * item.quantity * 24);
                   item_count = item_count + (24 * item.quantity);
             
             }else{
@@ -623,7 +660,7 @@ class OrderCart extends React.Component<any, any> {
                                                 <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
                                               </div>
                                             </div>
-                                            <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(item.item_id)}><b>X</b></a></div>
+                                            <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
                                           </div>
                                       </form>
                                 </div>)
@@ -643,7 +680,7 @@ class OrderCart extends React.Component<any, any> {
                                               <div className="col-md-1">{item.quantity}</div>
                                               <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
                                               <div className="col-md-1">${item_cost}</div>
-                                              <div className="col-md-1">X</div>
+                                              <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
                                             </div>
                                         </form>
                                   </div>)
@@ -665,7 +702,7 @@ class OrderCart extends React.Component<any, any> {
                                                 </div>
                                               </div>
                                               <div className="col-md-1">${item_cost}</div>
-                                              <div className="col-md-1">X</div>
+                                              <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                             </div>
                                         </form>
                                   )
@@ -682,7 +719,6 @@ class OrderCart extends React.Component<any, any> {
                <br/>
                {cart}
                <br/>
-               <Link to="/menu" className="btn btn-default">Menu</Link><br/>
                <br/>
                <form className="form-horizontal" style={{border: 1}}>    
                   <div className="form-group" style={{border: 1}}>

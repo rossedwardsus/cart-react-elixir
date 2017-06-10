@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function order(state:any = {order_type: "", order_id: "", user_id: "", mailing_list: "", terms_validated: "", delivery_cost: 0}, action: any){
+export default function order(state:any = {order_type: "", name: "", order_id: "", user_id: "", mailing_list: "", terms_validated: "", delivery_cost: 0}, action: any){
   switch (action.type) {
     case CREATE_ORDER:
 
@@ -29,7 +29,7 @@ export default function order(state:any = {order_type: "", order_id: "", user_id
       //let items = state.cart_items;
       //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
       
-      return Object.assign({}, state, {order_type: action.order_type});
+      return Object.assign({}, state, {order_type: action.order_type, name: action.name});
 
     //complete_order
 

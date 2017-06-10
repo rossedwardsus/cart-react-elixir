@@ -42,7 +42,7 @@ webpackJsonp([0],[
 	
 	var _public_home_page2 = _interopRequireDefault(_public_home_page);
 	
-	var _menu = __webpack_require__(922);
+	var _menu = __webpack_require__(923);
 	
 	var _menu2 = _interopRequireDefault(_menu);
 	
@@ -18972,7 +18972,7 @@ webpackJsonp([0],[
 	                //alert(orders);
 	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 	                //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-	                this.props.createOrder("sconely_social");
+	                this.props.createOrder("sconely_social", "");
 	                this.context.router.push('/public/menu');
 	            } else if (order_type == "sconely_signature") {
 	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
@@ -19052,9 +19052,9 @@ webpackJsonp([0],[
 	            }
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq"))), React.createElement("form", { id: "navbar", className: "navbar-form navbar-left" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange(e) {
 	                    return _this2.guestCodeChange(e);
-	                } })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit"))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/smorgasbourgh" }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                } })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit"))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/craftedkitchen" }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
-	                } }, "Social"), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/smorgasbourgh", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" })));
+	                } }, "Social"), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/craftedkitchen", style: { fontSize: 17 } }, "Yours"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" })));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -19078,9 +19078,9 @@ webpackJsonp([0],[
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {
-	        createOrder: function createOrder(order_type) {
+	        createOrder: function createOrder(order_type, name) {
 	            //alert("check");
-	            dispatch(order_ts_1.createOrder(order_type));
+	            dispatch(order_ts_1.createOrder(order_type, name));
 	        }
 	    };
 	};
@@ -27102,6 +27102,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var menu_ts_1 = __webpack_require__(922);
 	//const receiveProducts = products => ({
 	//  type: types.RECEIVE_PRODUCTS,
 	//  products: products
@@ -27132,11 +27133,15 @@ webpackJsonp([0],[
 	//    type: "VIEW_PUBLIC_MENU", 
 	//    order_type
 	//  });
-	function createOrder(order_type) {
-	    console.log("create order action " + order_type);
-	    return {
-	        type: actionTypes_ts_1.CREATE_ORDER,
-	        order_type: order_type
+	function createOrder(order_type, name) {
+	    return function (dispatch, getState) {
+	        console.log("create order action " + order_type);
+	        dispatch(menu_ts_1.getMenuItems());
+	        return {
+	            type: actionTypes_ts_1.CREATE_ORDER,
+	            order_type: order_type,
+	            name: name
+	        };
 	    };
 	}
 	exports.createOrder = createOrder;
@@ -27216,6 +27221,7 @@ webpackJsonp([0],[
 	exports.SET_DELIVERY_ADDRESS_STATE = 'SET_DELIVERY_ADDRESS_STATE';
 	exports.SET_DELIVERY_ADDRESS_ZIPCODE = 'SET_DELIVERY_ADDRESS_ZIPCODE';
 	exports.VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU';
+	exports.SET_MENU = 'SET_MENU';
 	exports.SET_DATE = 'SET_DATE';
 	exports.SET_TIME = 'SET_TIME';
 	exports.SET_SPECIFIC_TIME = 'SET_SPECIFIC_TIME';
@@ -27256,13 +27262,54 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 922 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	//check login
+	exports.getMenuItems = function () {
+	    return function (dispatch) {
+	        //dispatch(setMenuItems(menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]));
+	        ({
+	            type: "VIEW_PUBLIC_MENU",
+	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	        });
+	        //set menu
+	    };
+	};
+	exports.setMenuItems = function () {
+	    //dispatch(setMenuItems());
+	    ({
+	        type: "SET_MENU",
+	        menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	    });
+	    //set menu
+	};
+	//const receiveProducts = products => ({
+	//  type: types.RECEIVE_PRODUCTS,
+	//  products: products
+	//})
+	exports.getAllProducts = function () {
+	    return function (dispatch) {
+	        //shop.getProducts(products => {
+	        //  dispatch(receiveProducts(products))
+	        //})
+	        //dispatch(viewPublicMenu(1));
+	        //dispatch(viewPublicMenu());
+	        //alert();
+	        //return "hello";
+	        //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
+	    };
+	};
+
+/***/ }),
+/* 923 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -27274,11 +27321,10 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var menu_ts_1 = __webpack_require__(923);
+	var menu_ts_1 = __webpack_require__(922);
 	var order_validations_ts_1 = __webpack_require__(924);
 	var cart_ts_1 = __webpack_require__(925);
 	var sidebar_cart_tsx_1 = __webpack_require__(926);
-	var order_ts_1 = __webpack_require__(920);
 	var mobile_checkout_button_tsx_1 = __webpack_require__(928);
 	//type Props = {
 	//title: string,
@@ -27303,7 +27349,8 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }],
+	            //menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
+	            menu_items: [],
 	            selected_item_id: "",
 	            selected_item_type: "",
 	            selected_item_quantity: "",
@@ -27325,8 +27372,9 @@ webpackJsonp([0],[
 	    _createClass(PublicMenu, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            this.props.getMenuItems();
-	            console.log(JSON.stringify(this.props.params));
+	            //this.props.getMenuItems();
+	            console.log("props" + JSON.stringify(this.props));
+	            this.setState({ menu_items: this.props.menu_items.menu_items });
 	            //start yours order here
 	            //this.props.createOrder("sconely_yours");
 	            //get active items from the database
@@ -27334,16 +27382,17 @@ webpackJsonp([0],[
 	            //alert(JSON.stringify(this.props.cart_items));
 	            //this.props.dispatch();
 	            //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
-	            this.state.menu_items.map(function (value, index) {
-	                //console.log(value.item_id);
-	                var image_src = "image_src_" + value.item_id;
-	                this.setState(_defineProperty({}, image_src, value.image_id));
-	            }.bind(this));
+	            //this.state.menu_items.map(function(value: any, index: any){
+	            //console.log(value.item_id);
+	            //      let image_src = "image_src_" + value.item_id;
+	            //      this.setState({[image_src]: value.image_id});
+	            //}.bind(this));
 	        }
 	    }, {
 	        key: "componentWillReceiveProps",
 	        value: function componentWillReceiveProps(nextProp) {
-	            console.log("menu props");
+	            //console.log("menu componentwillreceiveprops" + JSON.stringify(this.props));
+	            //this.setState({menu_items: this.props.menu_items.menu_items});
 	        }
 	    }, {
 	        key: "showItem",
@@ -27482,7 +27531,7 @@ webpackJsonp([0],[
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
-	        menu_items: state.menu_items,
+	        menu_items: state.MenuItems,
 	        order: state.Order,
 	        cart: state.cart
 	        //}
@@ -27499,45 +27548,11 @@ webpackJsonp([0],[
 	        },
 	        cartValidated: function cartValidated() {
 	            dispatch(order_validations_ts_1.cartValidated());
-	        },
-	        createOrder: function createOrder(order_type) {
-	            dispatch(order_ts_1.createOrder(order_type));
 	        }
 	    };
 	};
 	var PublicMenu1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PublicMenu);
 	exports.default = PublicMenu1;
-
-/***/ }),
-/* 923 */
-/***/ (function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	//check login
-	exports.getMenuItems = function () {
-	    return {
-	        type: "VIEW_PUBLIC_MENU",
-	        menu_items: { item_id: 1, title: "holy shit it worked for real this time" }
-	    };
-	};
-	//const receiveProducts = products => ({
-	//  type: types.RECEIVE_PRODUCTS,
-	//  products: products
-	//})
-	exports.getAllProducts = function () {
-	    return function (dispatch) {
-	        //shop.getProducts(products => {
-	        //  dispatch(receiveProducts(products))
-	        //})
-	        //dispatch(viewPublicMenu(1));
-	        //dispatch(viewPublicMenu());
-	        //alert();
-	        //return "hello";
-	        //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
-	    };
-	};
 
 /***/ }),
 /* 924 */
@@ -27636,13 +27651,6 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.addCartItem = addCartItem;
-	function removeCartItem(text) {
-	    return {
-	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
-	        text: text
-	    };
-	}
-	exports.removeCartItem = removeCartItem;
 	function increaseCartItemQuantity(item_id) {
 	    console.log("increase cart item quantity action " + item_id);
 	    return {
@@ -27659,6 +27667,13 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
+	function removeCartItem(index) {
+	    return {
+	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
+	        index: index
+	    };
+	}
+	exports.removeCartItem = removeCartItem;
 
 /***/ }),
 /* 926 */
@@ -28393,7 +28408,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	//import {viewMenu} from './action/cart.ts';
+	var menu_ts_1 = __webpack_require__(922);
 	var order_validations_ts_1 = __webpack_require__(924);
 	var cart_ts_1 = __webpack_require__(925);
 	var order_ts_1 = __webpack_require__(920);
@@ -28422,8 +28437,9 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_green" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }],
-	            smorgasbourgh_menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "SavvymenuJuneb5x5", hover_image_id: "SavvymenuJuneb5x5rollover" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }],
+	            //menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_green"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}],
+	            crafted_kitchen_menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "SavvymenuJuneb5x5", hover_image_id: "SavvymenuJuneb5x5rollover" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }],
+	            menu_items: [],
 	            selected_item_id: "",
 	            selected_item_type: "",
 	            selected_item_quantity: "",
@@ -28452,16 +28468,21 @@ webpackJsonp([0],[
 	            //this.props.dispatch();
 	            //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
 	            var that = this;
-	            this.state.smorgasbourgh_menu_items.map(function (item, index) {
-	                //console.log(value.item_id);
-	                var images_temp = that.state.images;
-	                images_temp.push(item.image_id);
-	                var hover_images_temp = that.state.hover_images;
-	                hover_images_temp.push(item.hover_image_id);
-	                that.setState({ images: images_temp });
-	                that.setState({ hover_images: hover_images_temp });
-	            });
-	            this.props.createOrder("sconely_yours");
+	            /*this.state.crafted_kitchen_menu_items.map(function(item: any, index: any){
+	                       //console.log(value.item_id);
+	                  let images_temp = that.state.images;
+	                  images_temp.push(item.image_id);
+	                       let hover_images_temp = that.state.hover_images;
+	                  hover_images_temp.push(item.hover_image_id);
+	                       that.setState({images: images_temp});
+	                  that.setState({hover_images: hover_images_temp});
+	                 });*/
+	            this.props.createOrder("sconely_yours", this.props.params.name);
+	            this.props.getMenuItems();
+	            //get menu items here
+	            this.setState({ menu_items: this.props.menu_items.menu_items });
+	            this.props.getMenuItems();
+	            console.log("props" + JSON.stringify(this.props));
 	        }
 	    }, {
 	        key: "componentWillReceiveProps",
@@ -28531,15 +28552,15 @@ webpackJsonp([0],[
 	            //also get name of image and append "rollover to it"
 	            //let images_temp = this.state.images;
 	            //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
-	            var smorgasbourgh_menu_items_updated = this.state.smorgasbourgh_menu_items.map(function (item) {
+	            var crafted_kitchen_menu_items_updated = this.state.crafted_kitchen_menu_items.map(function (item) {
 	                if (item.item_id == item_id) {
 	                    //let image_name = item.image_id;
 	                    item.image_id = item.image_id + "roll";
 	                }
 	                return item;
 	            });
-	            console.log(JSON.stringify(smorgasbourgh_menu_items_updated));
-	            this.setState({ smorgasbourgh_menu_items: smorgasbourgh_menu_items_updated });
+	            console.log(JSON.stringify(crafted_kitchen_menu_items_updated));
+	            this.setState({ crafted_kitchen_menu_items: crafted_kitchen_menu_items_updated });
 	        }
 	    }, {
 	        key: "onMouseLeave",
@@ -28548,7 +28569,7 @@ webpackJsonp([0],[
 	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
 	            //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
 	            //this.setState({["image_src_" + item_id]: image_id});
-	            var smorgasbourgh_menu_items_updated = this.state.smorgasbourgh_menu_items.map(function (item) {
+	            var crafted_kitchen_menu_items_updated = this.state.crafted_kitchen_menu_items.map(function (item) {
 	                if (item.item_id == item_id) {
 	                    //let image_name = item.image_id;
 	                    //remove "roll"
@@ -28558,8 +28579,8 @@ webpackJsonp([0],[
 	                }
 	                return item;
 	            });
-	            console.log(JSON.stringify(smorgasbourgh_menu_items_updated));
-	            this.setState({ smorgasbourgh_menu_items: smorgasbourgh_menu_items_updated });
+	            console.log(JSON.stringify(crafted_kitchen_menu_items_updated));
+	            this.setState({ crafted_kitchen_menu_items: crafted_kitchen_menu_items_updated });
 	        }
 	    }, {
 	        key: "render",
@@ -28571,7 +28592,7 @@ webpackJsonp([0],[
 	            //if(this.state.page == "items"){
 	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	            //alert(this.props.cart_items.length);
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Sconely Social"), React.createElement("br", null), React.createElement("br", null), React.createElement(sidebar_cart_tsx_1.default, { order: this.props.order, cart: this.props.cart }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state[this.props.params.name + "_menu_items"].map(function (item, index) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Sconely Social"), React.createElement("br", null), React.createElement("br", null), React.createElement(sidebar_cart_tsx_1.default, { order: this.props.order, cart: this.props.cart }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                console.log(item);
@@ -28610,6 +28631,7 @@ webpackJsonp([0],[
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
+	        menu_items: state.MenuItems,
 	        order: state.Order,
 	        cart: state.cart
 	        //}
@@ -28618,14 +28640,17 @@ webpackJsonp([0],[
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {
 	        //viewmenuthunk
+	        getMenuItems: function getMenuItems() {
+	            dispatch(menu_ts_1.getMenuItems());
+	        },
 	        addCartItem: function addCartItem(item_id, item_type, quantity) {
 	            dispatch(cart_ts_1.addCartItem(item_id, item_type, quantity));
 	        },
 	        cartValidated: function cartValidated() {
 	            dispatch(order_validations_ts_1.cartValidated());
 	        },
-	        createOrder: function createOrder(order_type) {
-	            dispatch(order_ts_1.createOrder(order_type));
+	        createOrder: function createOrder(order_type, name) {
+	            dispatch(order_ts_1.createOrder(order_type, name));
 	        }
 	    };
 	};
@@ -30298,7 +30323,7 @@ webpackJsonp([0],[
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.order.order_type == "sconely_yours" ? React.createElement(react_router_1.Link, { to: "/" + this.props.order.name, className: "btn btn-default" }, "Back to Menu") : React.createElement(react_router_1.Link, { to: "/public/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
 	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
 	                    return _this2.props.setDeliveryAddressStreet2(e);
@@ -30335,7 +30360,7 @@ webpackJsonp([0],[
 	                }, increaseCartItemQuantity: function increaseCartItemQuantity(e) {
 	                    return _this2.props.increaseCartItemQuantity(e);
 	                }, removeCartItem: function removeCartItem(e) {
-	                    return _this2.props.removeCartItemQuantity(e);
+	                    return _this2.props.removeCartItem(e);
 	                }, cart_items: this.props.order_cart_items }), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
@@ -30444,6 +30469,9 @@ webpackJsonp([0],[
 	        },
 	        decreaseCartItemQuantity: function decreaseCartItemQuantity(e) {
 	            dispatch(cart_ts_1.decreaseCartItemQuantity(e));
+	        },
+	        removeCartItem: function removeCartItem(item_id) {
+	            dispatch(cart_ts_1.removeCartItem(item_id));
 	        },
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
@@ -30811,7 +30839,7 @@ webpackJsonp([0],[
 	                        return _this2.setDeliveryAddressStreet2(e);
 	                    }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                        return _this2.setDeliveryAddressCity(value);
-	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                        return _this2.setDeliveryAddressState(value);
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                        return _this2.setDeliveryAddressZipcode(value);
@@ -30907,8 +30935,8 @@ webpackJsonp([0],[
 	    _createClass(Contact, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            this.setState({ contact_email: this.props.contact.contact_email });
-	            this.setState({ contact_email_again: this.props.contact.contact_email_again });
+	            this.setState({ contact_email: this.props.contact.email });
+	            this.setState({ contact_email_again: this.props.contact.email_again });
 	            this.setState({ contact_mobile: this.props.contact.mobile });
 	        }
 	    }, {
@@ -34750,7 +34778,6 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
 	var cart_ts_1 = __webpack_require__(925);
@@ -35103,17 +35130,38 @@ webpackJsonp([0],[
 	            var that = this;
 	            console.log("order cart" + JSON.stringify(this.props.cart_items));
 	            if (this.props.cart_items.length === 0) {
-	                cart = "there are no items in your cart";
+	                cart = "<div>there are no items in your cart<br/><Link to='/public/menu' className='btn btn-default'>Go to Menu</Link><br/></div>";
 	            } else {
 	                //console.log("order cart" + JSON.stringify(this.props.cart_items));
 	                total_cost = 0;
 	                item_count = 0;
+	                if (that.props.order.order_type == "sconely_yours") {
+	                    /*total_cost = this.props.cart_items.map(function(item: any){
+	                                           //console.log("item " + JSON.stringify(item));
+	                                    //console.log("order cart " + that.props.order);
+	                                           //change to individual calls
+	                                           return subtotal + (6 * item.quantity * 24);
+	                                    //item_count = item_count + (24 * item.quantity);
+	                                       });*/
+	                    total_cost = this.props.cart_items.map(function (b) {
+	                        return b.quantity * 6;
+	                    }).reduce(function (p, c) {
+	                        return p + c;
+	                    });
+	                } else {}
+	                /* item_count = this.props.cart_items.map(function(item: any){
+	                         console.log("item " + JSON.stringify(item));
+	                    console.log("order cart " + that.props.order);
+	                         if(that.props.order.order_type == "sconely_yours"){
+	                               //change to individual calls
+	                               //total_cost = total_cost + (6 * item.quantity * 24);
+	                          item_count = item_count + (24 * item.quantity);*/
 	                this.props.cart_items.map(function (item) {
 	                    console.log("item " + JSON.stringify(item));
 	                    console.log("order cart " + that.props.order);
 	                    if (that.props.order.order_type == "sconely_yours") {
 	                        //change to individual calls
-	                        total_cost = total_cost + 6 * item.quantity * 24;
+	                        //total_cost = total_cost + (6 * item.quantity * 24);
 	                        item_count = item_count + 24 * item.quantity;
 	                    } else {
 	                        if (item.item_type == "mini") {
@@ -35140,7 +35188,7 @@ webpackJsonp([0],[
 	                            } }, React.createElement("b", null, "+"))), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1", style: { fontSize: 16 } }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.decreaseCartItemQuantity(item.item_id);
 	                            } }, React.createElement("b", null, "-"))))), React.createElement("div", { className: "col-md-1", style: { fontSize: 15 } }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.removeCartItem(item.item_id);
+	                                return _this2.props.removeCartItem(index);
 	                            } }, React.createElement("b", null, "X"))))));
 	                    } else {
 	                        if (item.item_type === "mini") {
@@ -35150,7 +35198,9 @@ webpackJsonp([0],[
 	                                    return _this2.props.increaseCartItemQuantity(item.item_id);
 	                                } }, "+")), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
 	                                    return _this2.props.decreaseCartItemQuantity(item.item_id);
-	                                } }, "-")), React.createElement("div", { className: "col-md-1" }, "$", item_cost), React.createElement("div", { className: "col-md-1" }, "X"))));
+	                                } }, "-")), React.createElement("div", { className: "col-md-1" }, "$", item_cost), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                    return _this2.props.removeCartItem(index);
+	                                } }, React.createElement("b", null, "X"))))));
 	                        } else {
 	                            var _total_amount = item.quantity * 12;
 	                            var _item_cost = _total_amount * 6.00;
@@ -35158,12 +35208,14 @@ webpackJsonp([0],[
 	                                    return _this2.props.increaseCartItemQuantity(item.item_id);
 	                                } }, React.createElement("b", null, "+"))), React.createElement("div", { className: "col-md-1" }, _total_amount), React.createElement("div", { className: "col-md-1", style: { fontSize: 15 } }, React.createElement("a", { onClick: function onClick() {
 	                                    return _this2.props.decreaseCartItemQuantity(item.item_id);
-	                                } }, React.createElement("b", null, "-"))))), React.createElement("div", { className: "col-md-1" }, "$", _item_cost), React.createElement("div", { className: "col-md-1" }, "X")));
+	                                } }, React.createElement("b", null, "-"))))), React.createElement("div", { className: "col-md-1" }, "$", _item_cost), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                    return _this2.props.removeCartItem(index);
+	                                } }, "X"))));
 	                        }
 	                    }
 	                }.bind(this));
 	            }
-	            return React.createElement("div", null, React.createElement("b", null, "Cart Items"), React.createElement("br", null), cart, React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Delivery charge"), React.createElement("div", { className: "col-md-1" }, "$", this.props.order.delivery_cost), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Promo Code"), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", style: { borderRadius: 0, fontSize: 16 } })), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Total Due"), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, "$", total_cost))))));
+	            return React.createElement("div", null, React.createElement("b", null, "Cart Items"), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Delivery charge"), React.createElement("div", { className: "col-md-1" }, "$", this.props.order.delivery_cost), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Promo Code"), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", style: { borderRadius: 0, fontSize: 16 } })), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Total Due"), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, "$", total_cost))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41000,9 +41052,13 @@ webpackJsonp([0],[
 	
 	    switch (action.type) {
 	        case actionTypes_ts_1.VIEW_PUBLIC_MENU:
+	            console.log("menu_items reducer" + JSON.stringify(action.menu_items));
+	            return Object.assign({}, state, { menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }] });
+	        case actionTypes_ts_1.SET_MENU:
+	            console.log("menu_items reducer" + JSON.stringify(action.menu_items));
 	            return Object.assign({}, state, { menu_items: action.menu_items });
 	        default:
-	            return state;
+	            return Object.assign({}, state, { menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }] });
 	    }
 	};
 	//export const getPublicMenu = 
@@ -41037,7 +41093,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function order() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_type: "", order_id: "", user_id: "", mailing_list: "", terms_validated: "", delivery_cost: 0 };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_type: "", name: "", order_id: "", user_id: "", mailing_list: "", terms_validated: "", delivery_cost: 0 };
 	    var action = arguments[1];
 	
 	    switch (action.type) {
@@ -41045,7 +41101,7 @@ webpackJsonp([0],[
 	            console.log("order reducer " + action.order_type);
 	            //let items = state.cart_items;
 	            //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
-	            return Object.assign({}, state, { order_type: action.order_type });
+	            return Object.assign({}, state, { order_type: action.order_type, name: action.name });
 	        //complete_order
 	        case actionTypes_ts_1.MAILING_LIST:
 	            console.log("order reducer mailing list" + action.value);
@@ -41394,14 +41450,16 @@ webpackJsonp([0],[
 	            console.log("REMOVE reducer " + JSON.stringify(state));
 	            //todo if dozens is 0 then just remove
 	            //if dozens > 0
-	            return Object.assign({}, state, {
-	                cart_items: state.cart_items.map(function (item, index) {
-	                    if (item.item_id === action.item_id) {
-	                        return false;
-	                    }
-	                    return item;
-	                })
-	            });
+	            /*return Object.assign({}, state, {
+	              cart_items: state.cart_items.map((item: any, index: any) => {
+	                if (item.item_id === action.item_id) {
+	                    return false
+	                }
+	                return item
+	              })
+	            })*/
+	            var cart_items_updated = state.cart_items.splice(action.index, 1);
+	            return Object.assign({}, state, { cart_items: cart_items_updated });
 	        //else remove item
 	        default:
 	            //alert();

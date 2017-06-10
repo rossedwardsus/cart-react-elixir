@@ -10,13 +10,6 @@ export function addCartItem(item_id: any, item_type: any, quantity: any) {
   }
 }
 
-export function removeCartItem(text: any) {
-  return {
-    type: REMOVE_CART_ITEM,
-    text
-  }
-}
-
 export function increaseCartItemQuantity(item_id: any) {
   console.log("increase cart item quantity action " + item_id);
   return {
@@ -31,6 +24,13 @@ export function decreaseCartItemQuantity(item_id: any) {
   return {
     type: DECREASE_CART_ITEM_QUANTITY,
     item_id
+  }
+}
+
+export function removeCartItem(index: any) {
+  return {
+    type: REMOVE_CART_ITEM,
+    index
   }
 }
 

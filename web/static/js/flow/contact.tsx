@@ -73,8 +73,8 @@ class Contact extends React.Component<any, any> {
 
   componentDidMount(){
 
-      this.setState({contact_email: this.props.contact.contact_email});
-      this.setState({contact_email_again: this.props.contact.contact_email_again});
+      this.setState({contact_email: this.props.contact.email});
+      this.setState({contact_email_again: this.props.contact.email_again});
       this.setState({contact_mobile: this.props.contact.mobile});
    
   }

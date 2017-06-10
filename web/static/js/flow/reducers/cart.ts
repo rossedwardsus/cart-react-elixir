@@ -96,14 +96,18 @@ export default function cart_items(state:any = {cart_items: []}, action: any){
 
       //if dozens > 0
 
-      return Object.assign({}, state, {
+      /*return Object.assign({}, state, {
         cart_items: state.cart_items.map((item: any, index: any) => {
           if (item.item_id === action.item_id) {
               return false
           }
           return item
         })
-      })
+      })*/
+
+      let cart_items_updated = state.cart_items.splice(action.index, 1);
+
+      return Object.assign({}, state, { cart_items: cart_items_updated });
 
       //else remove item
 

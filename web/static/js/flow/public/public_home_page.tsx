@@ -220,7 +220,7 @@ class PublicHomePage extends React.Component<any, any> {
 
         //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
 
-        this.props.createOrder("sconely_social");
+        this.props.createOrder("sconely_social", "");
 
         this.context.router.push('/public/menu');
          
@@ -385,7 +385,7 @@ class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <Link to="/smorgasbourgh">Yours</Link>
+                          <Link to="/craftedkitchen">Yours</Link>
                           <br/>
                           <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                           <br/>
@@ -401,7 +401,7 @@ class PublicHomePage extends React.Component<any, any> {
                                   <div className="visible-xs">
                                     mobile
                                     <div>
-                                      <Link to="/smorgasbourgh" style={{fontSize:17}}>Yours</Link>
+                                      <Link to="/craftedkitchen" style={{fontSize:17}}>Yours</Link>
                                       <br/>
                                       <Link to="/public/menu">Menu</Link>
                                       <br/>
@@ -437,9 +437,9 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
-    createOrder: (order_type: any) => {
+    createOrder: (order_type: any, name: any) => {
       //alert("check");
-      dispatch(createOrder(order_type))
+      dispatch(createOrder(order_type, name))
     }
   }
 }
