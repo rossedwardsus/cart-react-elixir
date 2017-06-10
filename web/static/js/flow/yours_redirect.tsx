@@ -20,7 +20,7 @@ import MobileCheckoutButton from './mobile_checkout_button.tsx';
 //};
 
 
-class OrderMenu extends React.Component<any, any> {
+class PublicMenu extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -413,7 +413,7 @@ class OrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order" + JSON.stringify(state));
+  console.log("mapstatetoprops yours" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
@@ -446,11 +446,11 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const OrderMenu1 = connect(
+const PublicMenu1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderMenu);
+)(PublicMenu);
 
-export default OrderMenu1;
+export default PublicMenu1;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

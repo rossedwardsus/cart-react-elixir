@@ -5,12 +5,12 @@ import { Link, browserHistory } from 'react-router';
 
 import {connect} from 'react-redux';
 
-import {getMenuItems} from './actions/menu.ts';
-import {cartValidated} from './actions/order_validations.ts';
-import {addCartItem} from './actions/cart.ts';
-import {createOrder} from './actions/order.ts';
-import SidebarCart from './sidebar_cart.tsx';
-import MobileCheckoutButton from './mobile_checkout_button.tsx';
+import {getMenuItems} from '../actions/menu.ts';
+import {cartValidated} from '../actions/order_validations.ts';
+import {addCartItem} from '../actions/cart.ts';
+import {createOrder} from '../actions/order.ts';
+//import SidebarCart from './sidebar_cart.tsx';
+//import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
 
 //type Props = {
@@ -80,7 +80,7 @@ class OrderMenu extends React.Component<any, any> {
 
     });*/
 
-    this.props.createOrder("sconely_yours", this.props.params.name);
+    //this.props.createOrder("sconely_yours", this.props.params.name);
     //this.props.getMenuItems();
 
     //get menu items here
@@ -263,6 +263,17 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
+  createOrder(order_type: any) {
+
+    console.log(order_type);
+
+    this.props.createOrder(order_type, "");
+
+    //if user is logged in then 
+    this.context.router.push('/order/menu');
+  }
+
+
   render(): JSX.Element{
 
           //var that = this;
@@ -313,15 +324,16 @@ class OrderMenu extends React.Component<any, any> {
                             <Link to="/public/menu">Sconely Social</Link>
                             <br/>
                             <br/>
-                            <SidebarCart order={this.props.order} cart={this.props.cart}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
                             <br/>
                             <br/>
-                            <MobileCheckoutButton/>
                             <br/>
                             <br/>
+                            <a onClick={() => this.createOrder("sconely_yours")}>Crafted Kitchen</a>
+                            <br/>
+                            <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                             <br/>
                             <br/>
                             <br/>
@@ -357,7 +369,15 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <MobileCheckoutButton/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            
+                            <br/>
                           </div>
                     </div>
                   <br/>

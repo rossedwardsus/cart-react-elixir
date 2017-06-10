@@ -41,15 +41,16 @@ import {getMenuItems} from './menu.ts';
 
 
 export function createOrder(order_type: any, name: any) {
-  return (dispatch: any, getState: any) => {
+  //return (dispatch: any, getState: any) => {
     console.log("create order action " + order_type);
-    dispatch(getMenuItems());
+    //dispatch(getMenuItems());
+    //if name != "" then redirect
     return {
       type: CREATE_ORDER,
       order_type,
       name
     }
-  }
+  //}
 }
 
 export function orderCompleted(order_type: any) {

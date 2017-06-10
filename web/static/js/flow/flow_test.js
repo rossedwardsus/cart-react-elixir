@@ -20,15 +20,16 @@ import thunk from 'redux-thunk';
 
 
 import PublicHomePage from './public/public_home_page.tsx';
-import PublicMenu from './menu.tsx';
+import PublicMenu from './public/public_menu.tsx';
 import PublicAboutUs from './public/public_about_us';
-import SconelyYours from './yours_menu.tsx';
+import YoursRedirect from './yours_redirect.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
 import UserDeliveryAddresses from './user/user_delivery_addresses.tsx';
 import UserPaymentMethods from './user/user_payment_methods.tsx';
 
 //import Order from "./order.jsx";
+import Menu from "./menu.tsx";
 import Checkout from "./order_datetime_contact.tsx";
 import PaymentMethod from './payment_method.tsx'
 import OrderCart from "./order_cart.tsx";
@@ -171,8 +172,8 @@ const Root = () => (
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route component={checkLogin}>
+          <Route path="/order/menu" component={Menu} />
           <Route path="/order/checkout" component={Checkout} />
-          <Route path="/order/payment_method" component={PaymentMethod} />
           <Route path="/order/preview" component={Preview} />
           <Route path="/order/cart" component={OrderCart} />
           <Route path="/order/complete" component={OrderComplete} />
@@ -182,7 +183,7 @@ const Root = () => (
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
         <Route path="/order/signature" component={SconelySignature} />
         <Route path="/order/:order_id/guest/event" component={SconelySignatureGuestEvent} />
-        <Route path="/:name" component={SconelyYours} />                
+        <Route path="/:name" component={YoursRedirect} />                
       </Route>
     </Router>
   </Provider>

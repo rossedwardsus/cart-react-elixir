@@ -780,9 +780,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          {this.props.order.order_type == "sconely_yours" ?
-                            <Link to={"/" + this.props.order.name} className="btn btn-default">Back to Menu</Link> : <Link to="/public/menu" className="btn btn-default">Back to Menu</Link>  
-                          }
+                          <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
                           <br/>
                           <br/>
                           <br/>

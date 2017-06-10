@@ -29,7 +29,7 @@ export default function order(state:any = {order_type: "", name: "", order_id: "
       //let items = state.cart_items;
       //items.push({item_id: 1, dozens: 1, quantity: 1, mini: true});
       
-      return Object.assign({}, state, {order_type: action.order_type, name: action.name});
+      return Object.assign({}, state, {order_type: action.order_type, name: action.name, menu_items: action.menu_items});
 
     //complete_order
 

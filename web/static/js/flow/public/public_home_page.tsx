@@ -195,7 +195,13 @@ class PublicHomePage extends React.Component<any, any> {
 
     console.log(order_type);
 
-    if(order_type == "sconely_yours"){
+    this.props.createOrder(order_type, "");
+
+    //if user is logged in then 
+    this.context.router.push('/order/menu');
+
+
+    /*if(order_type == "sconely_yours"){
 
         //var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
@@ -204,10 +210,10 @@ class PublicHomePage extends React.Component<any, any> {
        
         //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.props.createOrder("sconely_yours");
+        this.props.createOrder("sconely_yours", "");
 
         //if user is logged in then 
-        this.context.router.push('/public/menu');
+        this.context.router.push('/order/menu');
 
         //this.context.router.push('/public/menu');
 
@@ -222,7 +228,7 @@ class PublicHomePage extends React.Component<any, any> {
 
         this.props.createOrder("sconely_social", "");
 
-        this.context.router.push('/public/menu');
+        this.context.router.push('/order/menu');
          
     }else if(order_type == "sconely_signature"){
 
@@ -233,7 +239,7 @@ class PublicHomePage extends React.Component<any, any> {
         this.context.router.push('/order/signature');
         
          
-    }
+    }*/
 
 
     /*const client = GQLClient('http://localhost:3000', {
@@ -383,9 +389,10 @@ class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
+                          <Link to="/public/menu">Menu</Link>
                           <br/>
                           <br/>
-                          <Link to="/craftedkitchen">Yours</Link>
+                          <a onClick={() => this.createOrder("sconely_yours")}>Crafted Kithen</a>
                           <br/>
                           <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                           <br/>
