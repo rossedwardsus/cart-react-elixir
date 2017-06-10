@@ -1,5 +1,6 @@
 import { CREATE_ORDER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER } from '../constants/actionTypes.ts';
 import {getMenuItems} from './menu.ts';
+import {push} from 'react-router-redux';
 
 
 
@@ -43,12 +44,15 @@ import {getMenuItems} from './menu.ts';
 export function createOrder(order_type: any, name: any) {
   //return (dispatch: any, getState: any) => {
     console.log("create order action " + order_type);
-    //dispatch(getMenuItems());
-    //if name != "" then redirect
-    return {
-      type: CREATE_ORDER,
-      order_type,
-      name
+    return function(dispatch: any){
+      //dispatch(getMenuItems());
+      //if name != "" then redirect
+      //return {
+      //  type: CREATE_ORDER,
+      //  order_type,
+      //  name
+      //}
+      dispatch(push("/order/menu"));
     }
   //}
 }
