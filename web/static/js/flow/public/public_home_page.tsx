@@ -198,7 +198,7 @@ class PublicHomePage extends React.Component<any, any> {
     this.props.createOrder(order_type, "");
 
     //if user is logged in then 
-    this.context.router.push('/order/menu');
+    //this.context.router.push('/order/menu');
 
 
     /*if(order_type == "sconely_yours"){

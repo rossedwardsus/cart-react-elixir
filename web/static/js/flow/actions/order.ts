@@ -52,9 +52,20 @@ export function createOrder(order_type: any, name: any) {
       //  order_type,
       //  name
       //}
-      dispatch(push("/order/menu"));
+      dispatch(createOrder1(order_type, name));
+      //dispatch(getMenuItems(order_type));
+      //dispatch(push("/order/menu"));
     }
   //}
+}
+
+export function createOrder1(order_type: any, name: any) {
+  console.log("create order action " + order_type);
+  return {
+    type: CREATE_ORDER,
+    order_type,
+    name
+  }
 }
 
 export function orderCompleted(order_type: any) {

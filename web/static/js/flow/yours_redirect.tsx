@@ -84,7 +84,7 @@ class PublicMenu extends React.Component<any, any> {
     //this.props.getMenuItems();
 
     //get menu items here
-    this.setState({menu_items: this.props.menu_items.menu_items});
+    //this.setState({menu_items: this.props.menu_items.menu_items});
     
   }
 
@@ -318,6 +318,7 @@ class PublicMenu extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-9">
                             <br/>
+                            YOURS REDIRECT
                             <br/>
                             <MobileCheckoutButton/>
                             <br/>
