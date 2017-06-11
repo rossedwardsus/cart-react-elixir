@@ -46,79 +46,79 @@ webpackJsonp([0],[
 	
 	var _public_menu2 = _interopRequireDefault(_public_menu);
 	
-	var _public_about_us = __webpack_require__(926);
+	var _public_about_us = __webpack_require__(927);
 	
 	var _public_about_us2 = _interopRequireDefault(_public_about_us);
 	
-	var _yours_redirect = __webpack_require__(927);
+	var _yours_redirect = __webpack_require__(928);
 	
 	var _yours_redirect2 = _interopRequireDefault(_yours_redirect);
 	
-	var _user_home_page = __webpack_require__(931);
+	var _user_home_page = __webpack_require__(932);
 	
 	var _user_home_page2 = _interopRequireDefault(_user_home_page);
 	
-	var _user_delivery_addresses = __webpack_require__(933);
+	var _user_delivery_addresses = __webpack_require__(934);
 	
 	var _user_delivery_addresses2 = _interopRequireDefault(_user_delivery_addresses);
 	
-	var _user_payment_methods = __webpack_require__(936);
+	var _user_payment_methods = __webpack_require__(937);
 	
 	var _user_payment_methods2 = _interopRequireDefault(_user_payment_methods);
 	
-	var _menu = __webpack_require__(937);
+	var _menu = __webpack_require__(938);
 	
 	var _menu2 = _interopRequireDefault(_menu);
 	
-	var _order_datetime_contact = __webpack_require__(938);
+	var _order_datetime_contact = __webpack_require__(939);
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _payment_method = __webpack_require__(1095);
+	var _payment_method = __webpack_require__(1096);
 	
 	var _payment_method2 = _interopRequireDefault(_payment_method);
 	
-	var _order_cart = __webpack_require__(1094);
+	var _order_cart = __webpack_require__(1095);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_complete = __webpack_require__(1122);
+	var _order_complete = __webpack_require__(1123);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _preview = __webpack_require__(1123);
+	var _preview = __webpack_require__(1124);
 	
 	var _preview2 = _interopRequireDefault(_preview);
 	
-	var _login = __webpack_require__(1126);
+	var _login = __webpack_require__(1127);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1128);
+	var _register = __webpack_require__(1130);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1130);
+	var _register_completed = __webpack_require__(1132);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1131);
+	var _checkLogin = __webpack_require__(1133);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1132);
+	var _user = __webpack_require__(1134);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _event = __webpack_require__(1133);
+	var _event = __webpack_require__(1135);
 	
 	var _event2 = _interopRequireDefault(_event);
 	
-	var _sconely_signature_single_page = __webpack_require__(1134);
+	var _sconely_signature_single_page = __webpack_require__(1136);
 	
 	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
 	
-	var _index = __webpack_require__(1138);
+	var _index = __webpack_require__(1140);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -27257,6 +27257,7 @@ webpackJsonp([0],[
 	exports.CHECK_LOGGED_IN = 'CHECK_LOGGED_IN';
 	exports.LOGIN = 'LOGIN';
 	exports.REGISTER = 'REGISTER';
+	exports.SET_SESSION = 'SET_SESSION';
 	exports.SET_FIRST_NAME = 'SET_FIRST_NAME';
 	exports.SET_LAST_NAME = 'SET_LAST_NAME';
 	exports.SET_COMPANY_NAME = 'SET_COMPANY_NAME';
@@ -27281,9 +27282,10 @@ webpackJsonp([0],[
 	exports.PAYMENT_INVALIDATED = 'PAYMENT_INVALIDATED';
 	exports.GET_USER_DETAILS = 'GET_USER_DETAILS';
 	exports.GET_USER_ORDERS = 'GET_USER_ORDERS';
+	exports.GET_USER_PAYMENT_NAMES = 'GET_USER_PAYMENT_NAMES';
+	exports.GET_USER_DELIVERY_ADDRESS_NAMES = 'GET_USER_DELIVERY_ADDRESS_NAMES';
 	exports.GET_USER_DELIVERY_ADDRESSES = 'GET_USER_DELIVERY_ADDRESSES';
-	exports.SET_USER_DELIVERY_ADDRESS_STREET1 = 'SET_USER_DELIVERY_ADDRESS_STREET1';
-	exports.SET_USER_DELIVERY_ADDRESS_STREET2 = 'SET_USER_DELIVERY_ADDRESS_STREET2';
+	exports.SET_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS';
 	exports.SET_USER_PAYMENT_METHODS = 'SET_USER_PAYMENT_METHODS';
 
 /***/ }),
@@ -27310,6 +27312,7 @@ webpackJsonp([0],[
 	var order_ts_1 = __webpack_require__(920);
 	//import SidebarCart from './sidebar_cart.tsx';
 	//import MobileCheckoutButton from './mobile_checkout_button.tsx';
+	var user_top_navbar_tsx_1 = __webpack_require__(926);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -27494,7 +27497,7 @@ webpackJsonp([0],[
 	            //if(this.state.page == "items"){
 	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	            //alert(this.props.cart_items.length);
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Sconely Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(user_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Sconely Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_yours");
 	                } }, "Crafted Kitchen"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
@@ -27729,6 +27732,152 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 926 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	__webpack_require__(624);
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
+	//import Swipeable from 'react-swipeable';
+	//import { routeActions, push } from 'react-router-redux'
+	var react_redux_1 = __webpack_require__(190);
+	
+	var UserTopNavbar = function (_React$Component) {
+	    _inherits(UserTopNavbar, _React$Component);
+	
+	    //props: Props;
+	    function UserTopNavbar(props) {
+	        _classCallCheck(this, UserTopNavbar);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (UserTopNavbar.__proto__ || Object.getPrototypeOf(UserTopNavbar)).call(this, props));
+	
+	        _this.state = {
+	            page: "items",
+	            items: [{ item_id: 1 }],
+	            cart: _this.props.cart
+	        };
+	        _this.loadCart = _this.loadCart.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(UserTopNavbar, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //get active items from the database
+	        }
+	    }, {
+	        key: "loadCart",
+	        value: function loadCart() {
+	            this.setState({ page: "cart" });
+	            //remove/change quantity
+	        }
+	    }, {
+	        key: "loadItems",
+	        value: function loadItems() {
+	            this.setState({ page: "items" });
+	            //remove/change quantity
+	        }
+	        /*removeitem(item_id){
+	             //find item and remove it via split maybe
+	          //this.setState({cart: cart_temp});
+	             var cart_temp = this.state.cart;
+	          var cart_temp1 = "";
+	          
+	          //var cart_temp = cart_temp.filter(function(item) {
+	          //    return item.name !== "John";
+	          //});
+	             //cart_temp.map(function(i, v){
+	                     //if v.item_id == item_id{
+	                       //.splice(0,1);
+	                     //}
+	                
+	          //}
+	          
+	        }*/
+	
+	    }, {
+	        key: "mouseOver",
+	        value: function mouseOver(e) {
+	            e.target.src = "/images/menu/DWK_greenrollover3.jpg";
+	        }
+	    }, {
+	        key: "mouseOut",
+	        value: function mouseOut(e) {
+	            e.target.src = "/images/menu/DWK_greenrollover1.jpg";
+	        }
+	    }, {
+	        key: "guestCode",
+	        value: function guestCode() {
+	            //e.preventDefault();
+	            //alert(order_type);
+	            //if(order_type == "sconely_yours"){
+	            //if user is logged in then 
+	            //guest code is right then
+	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	            this.context.router.push('/order/' + this.state.guest_code + '/guest/event');
+	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	            //this.props.dispatch(routeActions.push('/foo'));
+	            //}
+	        }
+	    }, {
+	        key: "guestCodeChange",
+	        value: function guestCodeChange(e) {
+	            this.setState({ guest_code: e.target.value });
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, "" == "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), this.props.user.user_id == "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/signup" }, "Signup")), this.props.user.user_id != "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/user" }, "Home")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq"))), React.createElement("form", { id: "navbar", className: "navbar-form navbar-left" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange(e) {
+	                    return _this2.guestCodeChange(e);
+	                } })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit")))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return UserTopNavbar;
+	}(React.Component);
+	
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    console.log("homepage" + JSON.stringify(state));
+	    return {
+	        //active: ownProps.filter === state.visibilityFilter
+	        //logged_in: state.login
+	        user: state.user
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	    return {
+	        createOrder: function createOrder(order_type) {
+	            //alert("check");
+	            //dispatch(createOrder(order_type))
+	        }
+	    };
+	};
+	var UserTopNavbar1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(UserTopNavbar);
+	exports.default = UserTopNavbar1;
+
+/***/ }),
+/* 927 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28129,7 +28278,7 @@ webpackJsonp([0],[
 	exports.default = Menu;
 
 /***/ }),
-/* 927 */
+/* 928 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28150,8 +28299,8 @@ webpackJsonp([0],[
 	var order_validations_ts_1 = __webpack_require__(924);
 	var cart_ts_1 = __webpack_require__(925);
 	var order_ts_1 = __webpack_require__(920);
-	var sidebar_cart_tsx_1 = __webpack_require__(928);
-	var mobile_checkout_button_tsx_1 = __webpack_require__(930);
+	var sidebar_cart_tsx_1 = __webpack_require__(929);
+	var mobile_checkout_button_tsx_1 = __webpack_require__(931);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -28394,7 +28543,7 @@ webpackJsonp([0],[
 	exports.default = PublicMenu1;
 
 /***/ }),
-/* 928 */
+/* 929 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28417,7 +28566,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	//import _ from 'lodash';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -28617,8 +28766,8 @@ webpackJsonp([0],[
 	exports.default = SidebarCart;
 
 /***/ }),
-/* 929 */,
-/* 930 */
+/* 930 */,
+/* 931 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28640,7 +28789,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -28708,7 +28857,7 @@ webpackJsonp([0],[
 	exports.default = MobileCheckoutButton;
 
 /***/ }),
-/* 931 */
+/* 932 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28729,8 +28878,8 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(929);
-	var user_orders_tsx_1 = __webpack_require__(932);
+	var immutable_1 = __webpack_require__(930);
+	var user_orders_tsx_1 = __webpack_require__(933);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -28943,7 +29092,7 @@ webpackJsonp([0],[
 	exports.default = UserHomePage1;
 
 /***/ }),
-/* 932 */
+/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28961,7 +29110,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(929);
+	var immutable_1 = __webpack_require__(930);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -29160,7 +29309,7 @@ webpackJsonp([0],[
 	exports.default = UserOrders;
 
 /***/ }),
-/* 933 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29180,9 +29329,9 @@ webpackJsonp([0],[
 	//import Swipeable from 'react-swipeable';
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
-	var immutable_1 = __webpack_require__(929);
-	var user_ts_1 = __webpack_require__(934);
-	var user_delivery_address_tsx_1 = __webpack_require__(935);
+	var immutable_1 = __webpack_require__(930);
+	var user_ts_1 = __webpack_require__(935);
+	var user_delivery_address_tsx_1 = __webpack_require__(936);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -29224,7 +29373,7 @@ webpackJsonp([0],[
 	            //setInterval(this.changeImage, 10000);
 	            //localStorage.get('user');
 	            //this.setState({orders: this.props.getUserDeliveryAddresses});
-	            //this.props.getUserDeliveryAddresses;
+	            this.props.getUserDeliveryAddresses();
 	            var getUserDeliveryAddresses = this.props.getUserDeliveryAddresses;
 	
 	            getUserDeliveryAddresses();
@@ -29321,7 +29470,15 @@ webpackJsonp([0],[
 	            if (true) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Delivery Addresses", React.createElement("br", null), "Home-Edit", React.createElement("br", null), "Office", React.createElement("br", null), "Add", React.createElement("br", null), React.createElement(user_delivery_address_tsx_1.default, null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(user_delivery_address_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), "Delivery Addresses", React.createElement("br", null), "Home-Edit", React.createElement("br", null), "Office", React.createElement("br", null), "Add", React.createElement("br", null), this.props.delivery_addresses.map(function (address) {
+	                var _this2 = this;
+	
+	                return React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: address.street1, onChange: function onChange(e) {
+	                        return _this2.props.setUserDeliveryAddressStreet1(e);
+	                    }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                        return _this2.props.setDeliveryAddressStreet2(e);
+	                    }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" })));
+	            })), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -29337,7 +29494,11 @@ webpackJsonp([0],[
 	
 	function mapStateToProps(state) {
 	    console.log("delivery addresses component/state" + JSON.stringify(state));
-	    return {};
+	    return {
+	        delivery_addresses: state.user.delivery_addresses
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
@@ -29352,7 +29513,7 @@ webpackJsonp([0],[
 	exports.default = UserDeliveryAddresses1;
 
 /***/ }),
-/* 934 */
+/* 935 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29363,7 +29524,7 @@ webpackJsonp([0],[
 	    //alert("GET USER details");
 	    return {
 	        type: actionTypes_ts_1.GET_USER_DETAILS,
-	        value: value
+	        data: { first_name: "", last_name: "", email: "", mobile: "" }
 	    };
 	}
 	exports.getUserDetails = getUserDetails;
@@ -29371,38 +29532,61 @@ webpackJsonp([0],[
 	    //alert("setDeliveryAddressStreet");
 	    return {
 	        type: actionTypes_ts_1.GET_USER_ORDERS,
-	        value: value
+	        value: [{ order_id: "", date: "" }]
 	    };
 	}
 	exports.getUserOrders = getUserOrders;
-	function setUserOrder(value) {
+	function setUserOrders(value) {
 	    //alert("setDeliveryAddressStreet");
 	    return {
 	        type: actionTypes_ts_1.GET_USER_ORDERS,
 	        value: value
 	    };
 	}
-	exports.setUserOrder = setUserOrder;
-	function getUserDeliveryAddresses() {
+	exports.setUserOrders = setUserOrders;
+	function getUserDeliveryAddresseNames() {
 	    console.log("get user delivery addresses");
 	    return {
-	        type: actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES
+	        type: actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES,
+	        data: ["home", "office"]
+	    };
+	}
+	exports.getUserDeliveryAddresseNames = getUserDeliveryAddresseNames;
+	function getUserDeliveryAddress() {
+	    console.log("get user delivery address action");
+	    return {
+	        type: actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES,
+	        data: ["home", "office"]
+	    };
+	}
+	exports.getUserDeliveryAddress = getUserDeliveryAddress;
+	function getUserDeliveryAddresses() {
+	    console.log("get user delivery addresses action");
+	    return {
+	        type: actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES,
+	        data: [{ "home": { street1: "", street2: "", city: "", state: "", zipcode: "" } }, { office: { street: "", street1: "", city: "", state: "", zipcode: "" } }]
 	    };
 	}
 	exports.getUserDeliveryAddresses = getUserDeliveryAddresses;
-	function setUserDeliveryAddressStreet1(address_id, value) {
-	    //console.log("state" + JSON.stringify(state));
-	    console.log("set user delivery address street1" + address_id + " " + value);
+	function getPaymentNames() {
+	    console.log("get user delivery addresses");
 	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_ADDRESS_STREET1,
-	        address_id: address_id,
-	        value: value
+	        type: actionTypes_ts_1.GET_USER_PAYMENT_NAMES,
+	        data: ["personal", "work"]
 	    };
 	}
-	exports.setUserDeliveryAddressStreet1 = setUserDeliveryAddressStreet1;
+	exports.getPaymentNames = getPaymentNames;
+	function setUserDeliveryAddress(address_name, street1, street2, city, state, zipcode) {
+	    //console.log("state" + JSON.stringify(state));
+	    console.log("set user delivery address street1");
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_ADDRESS
+	    };
+	}
+	exports.setUserDeliveryAddress = setUserDeliveryAddress;
 
 /***/ }),
-/* 935 */
+/* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29423,8 +29607,8 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(929);
-	var user_ts_1 = __webpack_require__(934);
+	var immutable_1 = __webpack_require__(930);
+	//import { setUserDeliveryAddress } from '../actions/user.ts';
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -29602,23 +29786,11 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this2 = this;
-	
 	            var logged_in = null;
 	            if (true) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
-	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setUserDeliveryAddressStreet1(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this2.props.setDeliveryAddressStreet2(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.props.setDeliveryAddressCity(value);
-	                } }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.props.setDeliveryAddressState(value);
-	                } }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.props.setDeliveryAddressZipcode(value);
-	                } }, React.createElement("option", null), React.createElement("option", null, "90025")))));
+	            return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "90025")))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -29641,7 +29813,7 @@ webpackJsonp([0],[
 	    return {
 	        setUserDeliveryAddressStreet1: function setUserDeliveryAddressStreet1(e) {
 	            //console.log(e.target.value);
-	            dispatch(user_ts_1.setUserDeliveryAddressStreet1(2, e.target.value));
+	            //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
 	        }
 	    };
 	}
@@ -29649,7 +29821,7 @@ webpackJsonp([0],[
 	exports.default = UserDeliveryAddress1;
 
 /***/ }),
-/* 936 */
+/* 937 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29667,7 +29839,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	//import {startOrder} from './actions/order';
-	var immutable_1 = __webpack_require__(929);
+	var immutable_1 = __webpack_require__(930);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -29870,7 +30042,7 @@ webpackJsonp([0],[
 	exports.default = UserPaymentMethods;
 
 /***/ }),
-/* 937 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29891,8 +30063,8 @@ webpackJsonp([0],[
 	var order_validations_ts_1 = __webpack_require__(924);
 	var cart_ts_1 = __webpack_require__(925);
 	var order_ts_1 = __webpack_require__(920);
-	var sidebar_cart_tsx_1 = __webpack_require__(928);
-	var mobile_checkout_button_tsx_1 = __webpack_require__(930);
+	var sidebar_cart_tsx_1 = __webpack_require__(929);
+	var mobile_checkout_button_tsx_1 = __webpack_require__(931);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -30135,7 +30307,7 @@ webpackJsonp([0],[
 	exports.default = OrderMenu1;
 
 /***/ }),
-/* 938 */
+/* 939 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30156,26 +30328,26 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var order_validations_ts_1 = __webpack_require__(924);
-	var order_delivery_address_ts_1 = __webpack_require__(939);
-	var order_name_ts_1 = __webpack_require__(940);
-	var order_delivery_datetime_ts_1 = __webpack_require__(941);
+	var order_delivery_address_ts_1 = __webpack_require__(940);
+	var order_name_ts_1 = __webpack_require__(941);
+	var order_delivery_datetime_ts_1 = __webpack_require__(942);
 	var cart_ts_1 = __webpack_require__(925);
-	var order_payment_ts_1 = __webpack_require__(942);
-	var order_contact_ts_1 = __webpack_require__(943);
+	var order_payment_ts_1 = __webpack_require__(943);
+	var order_contact_ts_1 = __webpack_require__(944);
 	var order_ts_1 = __webpack_require__(920);
-	var delivery_address_tsx_1 = __webpack_require__(944);
-	var contact_tsx_1 = __webpack_require__(945);
-	var datetime_tsx_1 = __webpack_require__(946);
-	var name_tsx_1 = __webpack_require__(1093);
-	var order_cart_tsx_1 = __webpack_require__(1094);
-	var payment_method_tsx_1 = __webpack_require__(1095);
-	var checkout_button_tsx_1 = __webpack_require__(1096);
+	var delivery_address_tsx_1 = __webpack_require__(945);
+	var contact_tsx_1 = __webpack_require__(946);
+	var datetime_tsx_1 = __webpack_require__(947);
+	var name_tsx_1 = __webpack_require__(1094);
+	var order_cart_tsx_1 = __webpack_require__(1095);
+	var payment_method_tsx_1 = __webpack_require__(1096);
+	var checkout_button_tsx_1 = __webpack_require__(1097);
 	//import { getPublicMenu } from './reducers/name';
-	var Immutable = __webpack_require__(929);
-	var DatePicker = __webpack_require__(947);
-	var moment = __webpack_require__(948);
-	var axios_1 = __webpack_require__(1097);
-	__webpack_require__(1091);
+	var Immutable = __webpack_require__(930);
+	var DatePicker = __webpack_require__(948);
+	var moment = __webpack_require__(949);
+	var axios_1 = __webpack_require__(1098);
+	__webpack_require__(1092);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -30638,7 +30810,7 @@ webpackJsonp([0],[
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
 	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
 	                    return _this2.props.setDeliveryAddressStreet2(e);
@@ -30709,6 +30881,7 @@ webpackJsonp([0],[
 	function mapStateToProps(state) {
 	    console.log("checkout state" + JSON.stringify(state));
 	    return {
+	        session: state.session,
 	        order_validations: state.order_validations,
 	        order: state.Order,
 	        order_delivery_address: state.delivery_address,
@@ -30831,7 +31004,7 @@ webpackJsonp([0],[
 	exports.default = Checkout;
 
 /***/ }),
-/* 939 */
+/* 940 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30880,7 +31053,7 @@ webpackJsonp([0],[
 	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
 
 /***/ }),
-/* 940 */
+/* 941 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30913,7 +31086,7 @@ webpackJsonp([0],[
 	exports.setCompanyName = setCompanyName;
 
 /***/ }),
-/* 941 */
+/* 942 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30946,7 +31119,7 @@ webpackJsonp([0],[
 	exports.setSpecificTime = setSpecificTime;
 
 /***/ }),
-/* 942 */
+/* 943 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30995,7 +31168,7 @@ webpackJsonp([0],[
 	exports.setPaymentSecurityCode = setPaymentSecurityCode;
 
 /***/ }),
-/* 943 */
+/* 944 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31020,7 +31193,7 @@ webpackJsonp([0],[
 	exports.setContactMobile = setContactMobile;
 
 /***/ }),
-/* 944 */
+/* 945 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31038,7 +31211,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import {deliveryAddressValidated} from './actions/cart_validations.ts';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	//import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -31148,7 +31321,9 @@ webpackJsonp([0],[
 	            if (this.props.order.order_type == "sconely_yours") {
 	                delivery_address = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, "Pickup", React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Crafted Kitchen"))))));
 	            } else {
-	                delivery_address = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Home"), React.createElement("option", null, "Office"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, onChange: function onChange(e) {
+	                delivery_address = React.createElement("div", null, this.props.session.session_id != "" && React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null), React.createElement("select", { className: "form-control" }, this.props.user.delivery_address_names.map(function (address) {
+	                    return React.createElement("option", null, address.name);
+	                }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, onChange: function onChange(e) {
 	                        return _this2.setDeliveryAddressStreet1(e);
 	                    }, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, onChange: function onChange(e) {
 	                        return _this2.setDeliveryAddressStreet2(e);
@@ -31195,7 +31370,7 @@ webpackJsonp([0],[
 	exports.default = DeliveryAddress;
 
 /***/ }),
-/* 945 */
+/* 946 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31211,7 +31386,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -31358,7 +31533,7 @@ webpackJsonp([0],[
 	exports.default = Contact;
 
 /***/ }),
-/* 946 */
+/* 947 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31377,12 +31552,12 @@ webpackJsonp([0],[
 	//import {datetimeValidated} from './actions/order_validations.ts';
 	//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
-	var DatePicker = __webpack_require__(947);
-	var moment = __webpack_require__(948);
-	var DayPickerInput = __webpack_require__(1066);
-	__webpack_require__(1087);
-	__webpack_require__(1091);
+	var Immutable = __webpack_require__(930);
+	var DatePicker = __webpack_require__(948);
+	var moment = __webpack_require__(949);
+	var DayPickerInput = __webpack_require__(1067);
+	__webpack_require__(1088);
+	__webpack_require__(1092);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -31483,7 +31658,6 @@ webpackJsonp([0],[
 	exports.default = DateTime;
 
 /***/ }),
-/* 947 */,
 /* 948 */,
 /* 949 */,
 /* 950 */,
@@ -31602,19 +31776,20 @@ webpackJsonp([0],[
 /* 1063 */,
 /* 1064 */,
 /* 1065 */,
-/* 1066 */
+/* 1066 */,
+/* 1067 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* eslint-disable no-var */
 	/* eslint-env node */
 	
-	var DayPickerInput = __webpack_require__(1067);
+	var DayPickerInput = __webpack_require__(1068);
 	
 	module.exports = DayPickerInput.default || DayPickerInput;
 
 
 /***/ }),
-/* 1067 */
+/* 1068 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31632,21 +31807,21 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _propTypes = __webpack_require__(1068);
+	var _propTypes = __webpack_require__(1069);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _moment = __webpack_require__(948);
+	var _moment = __webpack_require__(949);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _DayPicker = __webpack_require__(1073);
+	var _DayPicker = __webpack_require__(1074);
 	
 	var _DayPicker2 = _interopRequireDefault(_DayPicker);
 	
-	var _ModifiersUtils = __webpack_require__(1085);
+	var _ModifiersUtils = __webpack_require__(1086);
 	
-	var _keys = __webpack_require__(1086);
+	var _keys = __webpack_require__(1087);
 	
 	var _keys2 = _interopRequireDefault(_keys);
 	
@@ -31964,7 +32139,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=DayPickerInput.js.map
 
 /***/ }),
-/* 1068 */
+/* 1069 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31991,17 +32166,17 @@ webpackJsonp([0],[
 	  // By explicitly using `prop-types` you are opting into new development behavior.
 	  // http://fb.me/prop-types-in-prod
 	  var throwOnDirectAccess = true;
-	  module.exports = __webpack_require__(1069)(isValidElement, throwOnDirectAccess);
+	  module.exports = __webpack_require__(1070)(isValidElement, throwOnDirectAccess);
 	} else {
 	  // By explicitly using `prop-types` you are opting into new production behavior.
 	  // http://fb.me/prop-types-in-prod
-	  module.exports = __webpack_require__(1072)();
+	  module.exports = __webpack_require__(1073)();
 	}
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1069 */
+/* 1070 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -32019,8 +32194,8 @@ webpackJsonp([0],[
 	var invariant = __webpack_require__(160);
 	var warning = __webpack_require__(163);
 	
-	var ReactPropTypesSecret = __webpack_require__(1070);
-	var checkPropTypes = __webpack_require__(1071);
+	var ReactPropTypesSecret = __webpack_require__(1071);
+	var checkPropTypes = __webpack_require__(1072);
 	
 	module.exports = function(isValidElement, throwOnDirectAccess) {
 	  /* global Symbol */
@@ -32520,7 +32695,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1070 */
+/* 1071 */
 /***/ (function(module, exports) {
 
 	/**
@@ -32540,7 +32715,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1071 */
+/* 1072 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -32557,7 +32732,7 @@ webpackJsonp([0],[
 	if (process.env.NODE_ENV !== 'production') {
 	  var invariant = __webpack_require__(160);
 	  var warning = __webpack_require__(163);
-	  var ReactPropTypesSecret = __webpack_require__(1070);
+	  var ReactPropTypesSecret = __webpack_require__(1071);
 	  var loggedTypeFailures = {};
 	}
 	
@@ -32608,7 +32783,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1072 */
+/* 1073 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32624,7 +32799,7 @@ webpackJsonp([0],[
 	
 	var emptyFunction = __webpack_require__(164);
 	var invariant = __webpack_require__(160);
-	var ReactPropTypesSecret = __webpack_require__(1070);
+	var ReactPropTypesSecret = __webpack_require__(1071);
 	
 	module.exports = function() {
 	  function shim(props, propName, componentName, location, propFullName, secret) {
@@ -32673,7 +32848,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1073 */
+/* 1074 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32690,51 +32865,51 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Caption = __webpack_require__(1074);
+	var _Caption = __webpack_require__(1075);
 	
 	var _Caption2 = _interopRequireDefault(_Caption);
 	
-	var _Navbar = __webpack_require__(1076);
+	var _Navbar = __webpack_require__(1077);
 	
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 	
-	var _Month = __webpack_require__(1078);
+	var _Month = __webpack_require__(1079);
 	
 	var _Month2 = _interopRequireDefault(_Month);
 	
-	var _Day = __webpack_require__(1083);
+	var _Day = __webpack_require__(1084);
 	
 	var _Day2 = _interopRequireDefault(_Day);
 	
-	var _Weekday = __webpack_require__(1084);
+	var _Weekday = __webpack_require__(1085);
 	
 	var _Weekday2 = _interopRequireDefault(_Weekday);
 	
-	var _Helpers = __webpack_require__(1080);
+	var _Helpers = __webpack_require__(1081);
 	
 	var Helpers = _interopRequireWildcard(_Helpers);
 	
-	var _DateUtils = __webpack_require__(1081);
+	var _DateUtils = __webpack_require__(1082);
 	
 	var DateUtils = _interopRequireWildcard(_DateUtils);
 	
-	var _LocaleUtils = __webpack_require__(1082);
+	var _LocaleUtils = __webpack_require__(1083);
 	
 	var LocaleUtils = _interopRequireWildcard(_LocaleUtils);
 	
-	var _ModifiersUtils = __webpack_require__(1085);
+	var _ModifiersUtils = __webpack_require__(1086);
 	
 	var ModifiersUtils = _interopRequireWildcard(_ModifiersUtils);
 	
-	var _classNames = __webpack_require__(1077);
+	var _classNames = __webpack_require__(1078);
 	
 	var _classNames2 = _interopRequireDefault(_classNames);
 	
-	var _keys = __webpack_require__(1086);
+	var _keys = __webpack_require__(1087);
 	
 	var _keys2 = _interopRequireDefault(_keys);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
@@ -33361,7 +33536,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=DayPicker.js.map
 
 /***/ }),
-/* 1074 */
+/* 1075 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33375,7 +33550,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
@@ -33409,7 +33584,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Caption.js.map
 
 /***/ }),
-/* 1075 */
+/* 1076 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33421,7 +33596,7 @@ webpackJsonp([0],[
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	var _propTypes = __webpack_require__(1068);
+	var _propTypes = __webpack_require__(1069);
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
@@ -33452,7 +33627,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=PropTypes.js.map
 
 /***/ }),
-/* 1076 */
+/* 1077 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33467,11 +33642,11 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
-	var _classNames = __webpack_require__(1077);
+	var _classNames = __webpack_require__(1078);
 	
 	var _classNames2 = _interopRequireDefault(_classNames);
 	
@@ -33550,7 +33725,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Navbar.js.map
 
 /***/ }),
-/* 1077 */
+/* 1078 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33587,7 +33762,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=classNames.js.map
 
 /***/ }),
-/* 1078 */
+/* 1079 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33601,17 +33776,17 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
-	var _Weekdays = __webpack_require__(1079);
+	var _Weekdays = __webpack_require__(1080);
 	
 	var _Weekdays2 = _interopRequireDefault(_Weekdays);
 	
-	var _Helpers = __webpack_require__(1080);
+	var _Helpers = __webpack_require__(1081);
 	
-	var _DateUtils = __webpack_require__(1081);
+	var _DateUtils = __webpack_require__(1082);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33729,7 +33904,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Month.js.map
 
 /***/ }),
-/* 1079 */
+/* 1080 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33743,7 +33918,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
@@ -33805,7 +33980,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Weekdays.js.map
 
 /***/ }),
-/* 1080 */
+/* 1081 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33826,9 +34001,9 @@ webpackJsonp([0],[
 	exports.getWeekArray = getWeekArray;
 	exports.startOfMonth = startOfMonth;
 	
-	var _DateUtils = __webpack_require__(1081);
+	var _DateUtils = __webpack_require__(1082);
 	
-	var _LocaleUtils = __webpack_require__(1082);
+	var _LocaleUtils = __webpack_require__(1083);
 	
 	function cancelEvent(e) {
 	  e.preventDefault();
@@ -33955,7 +34130,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Helpers.js.map
 
 /***/ }),
-/* 1081 */
+/* 1082 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -34166,7 +34341,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=DateUtils.js.map
 
 /***/ }),
-/* 1082 */
+/* 1083 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -34221,7 +34396,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=LocaleUtils.js.map
 
 /***/ }),
-/* 1083 */
+/* 1084 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34235,11 +34410,11 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classNames = __webpack_require__(1077);
+	var _classNames = __webpack_require__(1078);
 	
 	var _classNames2 = _interopRequireDefault(_classNames);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
@@ -34350,7 +34525,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Day.js.map
 
 /***/ }),
-/* 1084 */
+/* 1085 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34365,7 +34540,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _PropTypes = __webpack_require__(1075);
+	var _PropTypes = __webpack_require__(1076);
 	
 	var _PropTypes2 = _interopRequireDefault(_PropTypes);
 	
@@ -34417,7 +34592,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=Weekday.js.map
 
 /***/ }),
-/* 1085 */
+/* 1086 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34428,9 +34603,9 @@ webpackJsonp([0],[
 	exports.dayMatchesModifier = dayMatchesModifier;
 	exports.getModifiersForDay = getModifiersForDay;
 	
-	var _DateUtils = __webpack_require__(1081);
+	var _DateUtils = __webpack_require__(1082);
 	
-	var _Helpers = __webpack_require__(1080);
+	var _Helpers = __webpack_require__(1081);
 	
 	/**
 	 * Return `true` if a date matches the specified modifier.
@@ -34498,7 +34673,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=ModifiersUtils.js.map
 
 /***/ }),
-/* 1086 */
+/* 1087 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -34518,16 +34693,16 @@ webpackJsonp([0],[
 	//# sourceMappingURL=keys.js.map
 
 /***/ }),
-/* 1087 */
+/* 1088 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(1088);
+	var content = __webpack_require__(1089);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(1090)(content, {});
+	var update = __webpack_require__(1091)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -34544,10 +34719,10 @@ webpackJsonp([0],[
 	}
 
 /***/ }),
-/* 1088 */
+/* 1089 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(1089)();
+	exports = module.exports = __webpack_require__(1090)();
 	// imports
 	
 	
@@ -34558,7 +34733,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1089 */
+/* 1090 */
 /***/ (function(module, exports) {
 
 	/*
@@ -34614,7 +34789,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1090 */
+/* 1091 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -34866,16 +35041,16 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1091 */
+/* 1092 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(1092);
+	var content = __webpack_require__(1093);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(1090)(content, {});
+	var update = __webpack_require__(1091)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -34892,10 +35067,10 @@ webpackJsonp([0],[
 	}
 
 /***/ }),
-/* 1092 */
+/* 1093 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(1089)();
+	exports = module.exports = __webpack_require__(1090)();
 	// imports
 	
 	
@@ -34906,7 +35081,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1093 */
+/* 1094 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34925,7 +35100,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {validateName} from './actions/cart/order_validations.ts';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -35078,7 +35253,7 @@ webpackJsonp([0],[
 	exports.default = Name;
 
 /***/ }),
-/* 1094 */
+/* 1095 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35097,7 +35272,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	var cart_ts_1 = __webpack_require__(925);
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	
 	var OrderCart = function (_React$Component) {
 	    _inherits(OrderCart, _React$Component);
@@ -35571,7 +35746,7 @@ webpackJsonp([0],[
 	exports.default = OrderCart;
 
 /***/ }),
-/* 1095 */
+/* 1096 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35590,7 +35765,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 	function addTodoWithDispatch() {
 	    var action = {
@@ -35817,7 +35992,7 @@ webpackJsonp([0],[
 	exports.default = PaymentMethod;
 
 /***/ }),
-/* 1096 */
+/* 1097 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35835,9 +36010,9 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
-	var axios_1 = __webpack_require__(1097);
+	var axios_1 = __webpack_require__(1098);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -35940,21 +36115,21 @@ webpackJsonp([0],[
 	exports.default = CheckoutButton;
 
 /***/ }),
-/* 1097 */
+/* 1098 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1098);
+	module.exports = __webpack_require__(1099);
 
 /***/ }),
-/* 1098 */
+/* 1099 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
-	var bind = __webpack_require__(1100);
-	var Axios = __webpack_require__(1101);
-	var defaults = __webpack_require__(1102);
+	var utils = __webpack_require__(1100);
+	var bind = __webpack_require__(1101);
+	var Axios = __webpack_require__(1102);
+	var defaults = __webpack_require__(1103);
 	
 	/**
 	 * Create an instance of Axios
@@ -35987,15 +36162,15 @@ webpackJsonp([0],[
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(1119);
-	axios.CancelToken = __webpack_require__(1120);
-	axios.isCancel = __webpack_require__(1116);
+	axios.Cancel = __webpack_require__(1120);
+	axios.CancelToken = __webpack_require__(1121);
+	axios.isCancel = __webpack_require__(1117);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(1121);
+	axios.spread = __webpack_require__(1122);
 	
 	module.exports = axios;
 	
@@ -36004,12 +36179,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1099 */
+/* 1100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bind = __webpack_require__(1100);
+	var bind = __webpack_require__(1101);
 	
 	/*global toString:true*/
 	
@@ -36309,7 +36484,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1100 */
+/* 1101 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -36326,17 +36501,17 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1101 */
+/* 1102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(1102);
-	var utils = __webpack_require__(1099);
-	var InterceptorManager = __webpack_require__(1113);
-	var dispatchRequest = __webpack_require__(1114);
-	var isAbsoluteURL = __webpack_require__(1117);
-	var combineURLs = __webpack_require__(1118);
+	var defaults = __webpack_require__(1103);
+	var utils = __webpack_require__(1100);
+	var InterceptorManager = __webpack_require__(1114);
+	var dispatchRequest = __webpack_require__(1115);
+	var isAbsoluteURL = __webpack_require__(1118);
+	var combineURLs = __webpack_require__(1119);
 	
 	/**
 	 * Create a new instance of Axios
@@ -36417,13 +36592,13 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1102 */
+/* 1103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1099);
-	var normalizeHeaderName = __webpack_require__(1103);
+	var utils = __webpack_require__(1100);
+	var normalizeHeaderName = __webpack_require__(1104);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -36440,10 +36615,10 @@ webpackJsonp([0],[
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(1104);
+	    adapter = __webpack_require__(1105);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(1104);
+	    adapter = __webpack_require__(1105);
 	  }
 	  return adapter;
 	}
@@ -36517,12 +36692,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1103 */
+/* 1104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -36535,18 +36710,18 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1104 */
+/* 1105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1099);
-	var settle = __webpack_require__(1105);
-	var buildURL = __webpack_require__(1108);
-	var parseHeaders = __webpack_require__(1109);
-	var isURLSameOrigin = __webpack_require__(1110);
-	var createError = __webpack_require__(1106);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1111);
+	var utils = __webpack_require__(1100);
+	var settle = __webpack_require__(1106);
+	var buildURL = __webpack_require__(1109);
+	var parseHeaders = __webpack_require__(1110);
+	var isURLSameOrigin = __webpack_require__(1111);
+	var createError = __webpack_require__(1107);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1112);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -36642,7 +36817,7 @@ webpackJsonp([0],[
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(1112);
+	      var cookies = __webpack_require__(1113);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -36719,12 +36894,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1105 */
+/* 1106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(1106);
+	var createError = __webpack_require__(1107);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -36750,12 +36925,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1106 */
+/* 1107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(1107);
+	var enhanceError = __webpack_require__(1108);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -36773,7 +36948,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1107 */
+/* 1108 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -36798,12 +36973,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1108 */
+/* 1109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -36872,12 +37047,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1109 */
+/* 1110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	/**
 	 * Parse headers into an object
@@ -36915,12 +37090,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1110 */
+/* 1111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -36989,7 +37164,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1111 */
+/* 1112 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37031,12 +37206,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1112 */
+/* 1113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -37090,12 +37265,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1113 */
+/* 1114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -37148,15 +37323,15 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1114 */
+/* 1115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
-	var transformData = __webpack_require__(1115);
-	var isCancel = __webpack_require__(1116);
-	var defaults = __webpack_require__(1102);
+	var utils = __webpack_require__(1100);
+	var transformData = __webpack_require__(1116);
+	var isCancel = __webpack_require__(1117);
+	var defaults = __webpack_require__(1103);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -37233,12 +37408,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1115 */
+/* 1116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1099);
+	var utils = __webpack_require__(1100);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -37259,7 +37434,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1116 */
+/* 1117 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37270,7 +37445,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1117 */
+/* 1118 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37290,7 +37465,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1118 */
+/* 1119 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37308,7 +37483,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1119 */
+/* 1120 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37333,12 +37508,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1120 */
+/* 1121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(1119);
+	var Cancel = __webpack_require__(1120);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -37396,7 +37571,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1121 */
+/* 1122 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37429,7 +37604,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1122 */
+/* 1123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -37468,7 +37643,7 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
+	var Immutable = __webpack_require__(930);
 	
 	
 	function addTodoWithDispatch() {
@@ -38147,7 +38322,7 @@ webpackJsonp([0],[
 	exports.default = OrderCompleted1;
 
 /***/ }),
-/* 1123 */
+/* 1124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38168,16 +38343,16 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import {setFirstName, setLastName} from './actions/order_name.ts';
-	var order_delivery_datetime_ts_1 = __webpack_require__(941);
-	var delivery_address_tsx_1 = __webpack_require__(944);
-	var contact_preview_tsx_1 = __webpack_require__(1124);
-	var datetime_tsx_1 = __webpack_require__(946);
-	var name_preview_tsx_1 = __webpack_require__(1125);
+	var order_delivery_datetime_ts_1 = __webpack_require__(942);
+	var delivery_address_tsx_1 = __webpack_require__(945);
+	var contact_preview_tsx_1 = __webpack_require__(1125);
+	var datetime_tsx_1 = __webpack_require__(947);
+	var name_preview_tsx_1 = __webpack_require__(1126);
 	//import { getPublicMenu } from './reducers/name';
-	var Immutable = __webpack_require__(929);
-	var DatePicker = __webpack_require__(947);
-	var moment = __webpack_require__(948);
-	__webpack_require__(1091);
+	var Immutable = __webpack_require__(930);
+	var DatePicker = __webpack_require__(948);
+	var moment = __webpack_require__(949);
+	__webpack_require__(1092);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -38790,7 +38965,7 @@ webpackJsonp([0],[
 	exports.default = Preview;
 
 /***/ }),
-/* 1124 */
+/* 1125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38806,8 +38981,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var Immutable = __webpack_require__(929);
-	var order_contact_ts_1 = __webpack_require__(943);
+	var Immutable = __webpack_require__(930);
+	var order_contact_ts_1 = __webpack_require__(944);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -38897,7 +39072,7 @@ webpackJsonp([0],[
 	exports.default = ContactPreview1;
 
 /***/ }),
-/* 1125 */
+/* 1126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38916,8 +39091,8 @@ webpackJsonp([0],[
 	//import * as getAllProducts from './actions/menu';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(929);
-	var order_name_ts_1 = __webpack_require__(940);
+	var Immutable = __webpack_require__(930);
+	var order_name_ts_1 = __webpack_require__(941);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -39015,7 +39190,7 @@ webpackJsonp([0],[
 	exports.default = NamePreview1;
 
 /***/ }),
-/* 1126 */
+/* 1127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39034,7 +39209,7 @@ webpackJsonp([0],[
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var login_ts_1 = __webpack_require__(1127);
+	var login_ts_1 = __webpack_require__(1128);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -39104,7 +39279,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "login",
 	        value: function login() {
-	            this.props.login("1", "2");
+	            this.props.loginUser("1", "2");
 	        }
 	    }, {
 	        key: "render",
@@ -39143,7 +39318,7 @@ webpackJsonp([0],[
 	        setEmail: function setEmail(e) {
 	            dispatch(login_ts_1.setEmail(e.target.value));
 	        },
-	        login: function login(email, password) {
+	        loginUser: function loginUser(email, password) {
 	            dispatch(login_ts_1.loginUser(email, password));
 	        }
 	    };
@@ -39152,7 +39327,7 @@ webpackJsonp([0],[
 	exports.default = Login1;
 
 /***/ }),
-/* 1127 */
+/* 1128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39160,6 +39335,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var session_ts_1 = __webpack_require__(1129);
 	function loginUser(email, password) {
 	    var url = "";
 	    return function (dispatch) {
@@ -39167,14 +39343,12 @@ webpackJsonp([0],[
 	          .then((response) => dispatch({
 	            type: types.FETCH_WEATHER_SUCCESS,
 	            data: response.data
+	            //dispatch user page
 	          }).error((response) => dispatch({
 	            type: types.FETCH_WEATHER_FAILURE,
 	            error: response.error
 	          })*/
-	        dispatch({
-	            type: actionTypes_ts_1.LOGIN,
-	            data: "response.data"
-	        });
+	        dispatch(session_ts_1.setSession());
 	    };
 	}
 	exports.loginUser = loginUser;
@@ -39202,7 +39376,63 @@ webpackJsonp([0],[
 	exports.login = login;
 
 /***/ }),
-/* 1128 */
+/* 1129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	//get the order total
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	var user_ts_1 = __webpack_require__(935);
+	function setSession() {
+	  var url = "";
+	  return function (dispatch) {
+	    /*axios.get(url)
+	      .then((response) => dispatch({
+	        type: types.FETCH_WEATHER_SUCCESS,
+	        data: response.data
+	        //dispatch user page
+	      }).error((response) => dispatch({
+	        type: types.FETCH_WEATHER_FAILURE,
+	        error: response.error
+	      })*/
+	    dispatch({ type: actionTypes_ts_1.SET_SESSION, session_id: "session_id" });
+	    dispatch(user_ts_1.getUserOrders("session_id"));
+	    //dispatch({ type: GET_USER_DELIVERY_ADDRESS_NAMES, session_id: "session_id"});
+	    //dispatch({ type: GET_USER_PAYMENT_NAMES, session_id: "session_id"});
+	    //dispatch(push("/user"));
+	  };
+	}
+	exports.setSession = setSession;
+	/*export function setEmail(value: any) {
+	  console.log("setemail action");
+	  return {
+	    type: SET_EMAIL,
+	    value
+	  }
+	}
+
+	export function checkLoggedIn() {
+	  //alert("addCartItem from redux");
+	  return {
+	    type: CHECK_LOGGED_IN,
+	  }
+	}
+
+
+	export function login(email: any, password: any) {
+	  console.log("login action");
+	  return {
+	    type: LOGIN,
+	    //redux saga to login user in
+	    //redirect
+	    //dispatch(get sessionid)
+	  }
+	}*/
+
+/***/ }),
+/* 1130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39221,10 +39451,7 @@ webpackJsonp([0],[
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var register_ts_1 = __webpack_require__(1129);
-	//import * as Autocomplete from "react-google-autocomplete";
-	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1097);
+	var register_ts_1 = __webpack_require__(1131);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -39400,27 +39627,29 @@ webpackJsonp([0],[
 	        key: "register",
 	        value: function register() {
 	            //check email and password/form validated
-	            //this.props.register(1, 1);
+	            this.props.registerUser(1, 1);
 	            //this.setState({"delivery_address_street1_classname": "form-group"});
 	            //ifthis.props.registration.registered == true
 	            //this.props.history.push('/register_complete');
 	            var that = this;
-	            if (this.state.first_name_validated === false) {
-	                axios_1.default.post('http://localhost:4000/api/graphql', {
-	                    query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password + '") { user_id }}'
-	                }).then(function (response) {
-	                    console.log("graphql response" + JSON.stringify(response));
-	                    //that.props.history.push('/user');
-	                    //context.router
-	                }).catch(function (error) {
-	                    console.log("error" + error);
-	                    //go to code/payment screen
-	                    //        this.props.loadView();
-	                    //if (!error.status) {
+	            /*if(this.state.first_name_validated === false){
+	                       axios.post('http://localhost:4000/api/graphql', {
+	                         query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") { user_id }}'
+	                  })
+	                  .then( response => {
+	                             console.log("graphql response" + JSON.stringify(response));
+	                             //that.props.history.push('/user');
+	                        //context.router
+	                       })
+	                  .catch( error => {
+	                             console.log("error" + error);
+	                        //go to code/payment screen
+	                //        this.props.loadView();
+	                      //if (!error.status) {
 	                    // network error
-	                    //}
-	                });
-	            }
+	                  //}
+	                       })
+	            }*/
 	        }
 	    }, {
 	        key: "render",
@@ -39470,7 +39699,7 @@ webpackJsonp([0],[
 	        //setEmail: (e: any) => {
 	        //  dispatch(setEmail(e.target.value))
 	        //},
-	        register: function register(email, password) {
+	        registerUser: function registerUser(email, password) {
 	            dispatch(register_ts_1.registerUser(email, password));
 	        }
 	    };
@@ -39479,13 +39708,14 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1129 */
+/* 1131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var session_ts_1 = __webpack_require__(1129);
 	function registerUserCheckEmailExists(email, password) {
 	  var url = "";
 	  return function (dispatch) {
@@ -39530,16 +39760,17 @@ webpackJsonp([0],[
 	          // network error
 	        //}
 	           })*/
-	    dispatch({
-	      type: actionTypes_ts_1.REGISTER,
-	      data: "session_key"
-	    });
+	    //dispatch({
+	    //  type: REGISTER,
+	    //  data: "session_key"
+	    //})
+	    dispatch(session_ts_1.setSession());
 	  };
 	}
 	exports.registerUser = registerUser;
 
 /***/ }),
-/* 1130 */
+/* 1132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39559,7 +39790,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1097);
+	var axios_1 = __webpack_require__(1098);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -39710,7 +39941,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1131 */
+/* 1133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39761,7 +39992,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1132 */
+/* 1134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39902,7 +40133,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1133 */
+/* 1135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39972,7 +40203,7 @@ webpackJsonp([0],[
 	exports.default = Event1;
 
 /***/ }),
-/* 1134 */
+/* 1136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39987,9 +40218,9 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var sconely_signature_event_details_tsx_1 = __webpack_require__(1135);
-	var sconely_signature_guests_tsx_1 = __webpack_require__(1137);
-	var payment_method_tsx_1 = __webpack_require__(1095);
+	var sconely_signature_event_details_tsx_1 = __webpack_require__(1137);
+	var sconely_signature_guests_tsx_1 = __webpack_require__(1139);
+	var payment_method_tsx_1 = __webpack_require__(1096);
 	var react_router_1 = __webpack_require__(546);
 	//import request from 'superagent';
 	
@@ -40101,7 +40332,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignature;
 
 /***/ }),
-/* 1135 */
+/* 1137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40116,14 +40347,14 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var DatePicker = __webpack_require__(947);
-	var moment = __webpack_require__(948);
+	var DatePicker = __webpack_require__(948);
+	var moment = __webpack_require__(949);
 	//require('react-datepicker/dist/react-datepicker.css');
 	//import 'react-date-picker/index.css';
 	//import { DateField, Calendar } from 'react-date-picker';
 	//import Autocomplete from 'react-google-autocomplete';
 	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
-	var Dropzone = __webpack_require__(1136);
+	var Dropzone = __webpack_require__(1138);
 	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
 	//import request from 'superagent';
 	//const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -40308,7 +40539,7 @@ webpackJsonp([0],[
 	exports.default = EventDetails;
 
 /***/ }),
-/* 1136 */
+/* 1138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -41190,7 +41421,7 @@ webpackJsonp([0],[
 	//# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 1137 */
+/* 1139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41295,7 +41526,7 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ }),
-/* 1138 */
+/* 1140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41303,28 +41534,30 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
+	var session_ts_1 = __webpack_require__(1141);
 	//import register from './register.ts';
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1139);
-	var order_ts_1 = __webpack_require__(1140);
-	var order_datetime_ts_1 = __webpack_require__(1141);
-	var order_payment_ts_1 = __webpack_require__(1142);
-	var user_ts_1 = __webpack_require__(1143);
-	var user_delivery_addresses_ts_1 = __webpack_require__(1144);
-	var cart_ts_1 = __webpack_require__(1145);
-	var name_ts_1 = __webpack_require__(1146);
-	var contact_ts_1 = __webpack_require__(1147);
-	var order_delivery_address_ts_1 = __webpack_require__(1148);
-	var order_validated_ts_1 = __webpack_require__(1149);
-	var user_payment_methods_ts_1 = __webpack_require__(1150);
+	var menu_ts_1 = __webpack_require__(1142);
+	var order_ts_1 = __webpack_require__(1143);
+	var order_datetime_ts_1 = __webpack_require__(1144);
+	var order_payment_ts_1 = __webpack_require__(1145);
+	var user_ts_1 = __webpack_require__(1146);
+	//import user_delivery_addresses from './user_delivery_addresses.ts';
+	var cart_ts_1 = __webpack_require__(1147);
+	var name_ts_1 = __webpack_require__(1148);
+	var contact_ts_1 = __webpack_require__(1149);
+	var order_delivery_address_ts_1 = __webpack_require__(1150);
+	var order_validated_ts_1 = __webpack_require__(1151);
+	var user_payment_methods_ts_1 = __webpack_require__(1152);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
+	    session: session_ts_1.default,
 	    MenuItems: menu_ts_1.default,
 	    Order: order_ts_1.default,
 	    OrderDatetime: order_datetime_ts_1.default,
 	    OrderPayment: order_payment_ts_1.default,
 	    user: user_ts_1.default,
-	    user_delivery_addresses: user_delivery_addresses_ts_1.default,
+	    //user_delivery_addresses,
 	    cart: cart_ts_1.default,
 	    name: name_ts_1.default,
 	    contact: contact_ts_1.default,
@@ -41335,7 +41568,45 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1139 */
+/* 1141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	var menu_items = void 0;
+	;
+	/*let inititalState: CartState = {
+	
+	  logged_in: "",
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function session() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { session_id: "", session_key: "", session_start_datetime: "" };
+	    var action = arguments[1];
+	
+	    switch (action.type) {
+	        case actionTypes_ts_1.SET_SESSION:
+	            //alert("CartState " + action.item_id);
+	            return Object.assign({}, Object.assign({}, state, { session_id: "guest" }));
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {logged_in: true, cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            //return Object.assign({}, state.default, {})
+	            return state;
+	    }
+	}
+	exports.default = session;
+	;
+
+/***/ }),
+/* 1142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41381,7 +41652,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1140 */
+/* 1143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41458,7 +41729,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1141 */
+/* 1144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41503,7 +41774,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1142 */
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41557,7 +41828,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1143 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41584,14 +41855,23 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { session_key: "", first_name: "", last_name: "" };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "", last_name: "", user_orders: [], delivery_address_names: [], delivery_addresses: [], user_payment_methods: [] };
 	    var action = arguments[1];
 	
 	    var delivery_address_updated = null;
 	    switch (action.type) {
-	        case actionTypes_ts_1.REGISTER:
+	        case actionTypes_ts_1.GET_USER_ORDERS:
 	            console.log("user" + JSON.stringify(state));
-	            return Object.assign({}, state, { session_key: "key", first_name: "ross", last_name: "edwards" });
+	            return Object.assign({}, state, Object.assign({}, state, { user_orders: [] }));
+	        case actionTypes_ts_1.GET_USER_DELIVERY_ADDRESS_NAMES:
+	            console.log("user names" + JSON.stringify(state));
+	            return Object.assign({}, state, Object.assign({}, state, { user_delivery_address_names: action.data }));
+	        case actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES:
+	            console.log("user delivery addresses reducer" + JSON.stringify(state));
+	            return Object.assign({}, state, Object.assign({}, state, { delivery_addresses: action.data }));
+	        case actionTypes_ts_1.GET_USER_PAYMENT_NAMES:
+	            console.log("user" + JSON.stringify(state));
+	            return Object.assign({}, state, Object.assign({}, state, { user_delivery_addresses: [] }));
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -41602,93 +41882,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	/*let menu_items: any;
-	
-	interface CartState {
-	  user_type: string;
-	  address: string;
-	  payment_method: string;
-	  menu_items: any;
-	  cart: any;
-	};
-	
-	let inititalState: CartState = {
-	
-	  user_type: "",
-	  address: "",
-	  payment_method: "",
-	  menu_items: [],
-	  cart: [],
-	
-	}*/
-	function user_delivery_addresses() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	    var action = arguments[1];
-	
-	    var delivery_addresses = [];
-	    var delivery_address_updated = null;
-	    switch (action.type) {
-	        case actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES:
-	            //alert("CartState " + action.item_id);
-	            console.log("user delivery addresses " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_addresses.push({ address_id: 1, name: "home", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" });
-	            delivery_addresses.push({ address_id: 2, name: "work", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" });
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { addresses: delivery_addresses });
-	        case actionTypes_ts_1.SET_USER_DELIVERY_ADDRESS_STREET1:
-	            console.log("state: " + JSON.stringify(action.payload));
-	            delivery_address_updated = state.addresses.filter(function (address) {
-	                //if(address.address)
-	                console.log("id" + address.address_id);
-	                if (address.address_id === 1) {
-	                    address.street_address1 = "home2";
-	                }
-	                return address;
-	            });
-	            return Object.assign({}, state, { addresses: delivery_address_updated });
-	        case actionTypes_ts_1.SET_USER_DELIVERY_ADDRESS_STREET2:
-	            delivery_address_updated = state.addresses.filter(function (address) {
-	                //if(address.address)
-	                console.log("id" + address.address_id);
-	                if (address.address_id === 1) {
-	                    address.street_address2 = "home2";
-	                }
-	                return address;
-	            });
-	            return Object.assign({}, state, { addresses: delivery_address_updated });
-	        default:
-	            //alert();
-	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            return state;
-	    }
-	}
-	exports.default = user_delivery_addresses;
-	;
-
-/***/ }),
-/* 1145 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41786,7 +41980,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1146 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41836,7 +42030,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1147 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41885,7 +42079,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1148 */
+/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41946,7 +42140,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1149 */
+/* 1151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42002,13 +42196,12 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1150 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 1152 */
+/***/ (function(module, exports) {
 
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
 	/*let menu_items: any;
 	
 	interface CartState {
@@ -42029,68 +42222,74 @@ webpackJsonp([0],[
 	
 	}*/
 	function user_delivery_addresses() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	    var action = arguments[1];
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	      var action = arguments[1];
 	
-	    var delivery_addresses = [];
-	    var delivery_address_updated = null;
-	    switch (action.type) {
-	        case actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES:
-	            //alert("CartState " + action.item_id);
-	            console.log("user delivery addresses " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            delivery_addresses.push({ address_id: 1, name: "home", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" });
-	            delivery_addresses.push({ address_id: 2, name: "work", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode" });
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            return Object.assign({}, state, { addresses: delivery_addresses });
-	        case actionTypes_ts_1.SET_USER_DELIVERY_ADDRESS_STREET1:
-	            //alert("CartState " + action.item_id);
-	            //console.log("reducer " + JSON.stringify(state));
-	            //alert("view public menu reducer" + JSON.stringify(action));
-	            //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            //return "hello";
-	            //alertObject.assign({}, state);
-	            //alert(state);
-	            //return Object.assign({}, ...state);
-	            //return Object.assign({}, ...state, action.menu_items)
-	            //return Object.assign({}, {menu_items: action.menu_items});
-	            //let cart_items_temp = state.cart_items;
-	            //cart_items_temp.push({item_id: 2, title: "another item"});
-	            //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	            //let new_state = {cart_items: cart_items_temp};
-	            //return Object.assign({}, state, new_state);
-	            //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	            //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	            //delivery_address_updated = {address_id: 1, name: "home1", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
-	            //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	            var _delivery_address_updated = state.addresses.filter(function (address) {
-	                //if(address.address)
-	                console.log("id" + address.address_id);
-	                if (address.address_id === 1) {
-	                    address.name = "home2";
-	                }
-	                return address;
-	            });
-	            return Object.assign({}, state, { addresses: _delivery_address_updated });
-	        default:
-	            //alert();
-	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            return state;
-	    }
+	      var delivery_addresses = [];
+	      var delivery_address_updated = null;
+	      switch (action.type) {
+	            /*case GET_USER_DELIVERY_ADDRESSES:
+	              //alert("CartState " + action.item_id);
+	              console.log("user delivery addresses " + JSON.stringify(state));
+	                   //alert("view public menu reducer" + JSON.stringify(action));
+	              //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	              //return "hello";
+	              //alertObject.assign({}, state);
+	              //alert(state);
+	              //return Object.assign({}, ...state);
+	                   //return Object.assign({}, ...state, action.menu_items)
+	              //return Object.assign({}, {menu_items: action.menu_items});
+	                   //let cart_items_temp = state.cart_items;
+	              //cart_items_temp.push({item_id: 2, title: "another item"});
+	                   //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	                   //let new_state = {cart_items: cart_items_temp};
+	                   //return Object.assign({}, state, new_state);
+	              //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	              //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	              
+	              delivery_addresses.push({address_id: 1, name: "home", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"});
+	                   delivery_addresses.push({address_id: 2, name: "work", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"});
+	             
+	              //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
+	              return Object.assign({}, state, {addresses: delivery_addresses});
+	            
+	                 case SET_USER_DELIVERY_ADDRESS_STREET1:
+	              //alert("CartState " + action.item_id);
+	              //console.log("reducer " + JSON.stringify(state));
+	                   //alert("view public menu reducer" + JSON.stringify(action));
+	              //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	              //return "hello";
+	              //alertObject.assign({}, state);
+	              //alert(state);
+	              //return Object.assign({}, ...state);
+	                   //return Object.assign({}, ...state, action.menu_items)
+	              //return Object.assign({}, {menu_items: action.menu_items});
+	                   //let cart_items_temp = state.cart_items;
+	              //cart_items_temp.push({item_id: 2, title: "another item"});
+	                   //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	                   //let new_state = {cart_items: cart_items_temp};
+	                   //return Object.assign({}, state, new_state);
+	              //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	              //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	              
+	              //delivery_address_updated = {address_id: 1, name: "home1", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
+	                   //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
+	                   let delivery_address_updated: any = state.addresses.filter((address: any) => {
+	                         //if(address.address)
+	                    console.log("id" + address.address_id);
+	                    if(address.address_id === 1){
+	                        
+	                        address.name = "home2";
+	                         }
+	                         return address;
+	                   })
+	              
+	                   return Object.assign({}, state, {addresses: delivery_address_updated});*/
+	            default:
+	                  //alert();
+	                  //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	                  return state;
+	      }
 	}
 	exports.default = user_delivery_addresses;
 	;

@@ -142,7 +142,7 @@ class Login extends React.Component<any, any> {
   
   login(){
 
-      this.props.login("1", "2");
+      this.props.loginUser("1", "2");
 
   }
 
@@ -232,7 +232,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(setEmail(e.target.value))
     },
 
-    login: (email: any, password: any) => {
+    loginUser: (email: any, password: any) => {
       dispatch(loginUser(email, password))
     },
     

@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryAddresses } from '../actions/user.ts';
+import { getUserDeliveryAddresses, setUserDeliveryAddress } from '../actions/user.ts';
 import UserDeliveryAddress from './user_delivery_address.tsx';
 
 
@@ -53,7 +53,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
     //this.setState({orders: this.props.getUserDeliveryAddresses});
 
-    //this.props.getUserDeliveryAddresses;
+    this.props.getUserDeliveryAddresses();
 
     const { getUserDeliveryAddresses } = this.props
     getUserDeliveryAddresses();
@@ -249,6 +249,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
+                                  <UserDeliveryAddress />
                                   <br/>
                                   <br/>
                                   Delivery Addresses
@@ -259,7 +260,16 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   Add
                                   <br/>
-                                  <UserDeliveryAddress />
+                                  {this.props.delivery_addresses.map(function(address: any){
+                                        return(<form className="form-inline">
+                                                  <div className="form-group">
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                                                  </div>
+                                                  <div className="form-group">
+                                                    <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                                                  </div>
+                                                </form>)
+                                  })}
                                  
                         </div>
                         <div className="hidden-xs col-md-2">
@@ -280,7 +290,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery addresses component/state" + JSON.stringify(state));
   return {
-   //order: state.default.order
+   delivery_addresses: state.user.delivery_addresses
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };

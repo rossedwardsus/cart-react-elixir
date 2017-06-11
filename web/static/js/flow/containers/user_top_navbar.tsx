@@ -16,10 +16,10 @@ type Props = {
 };
 
 
-export default class UserTopNavbar extends React.Component {
+class UserTopNavbar extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -85,19 +85,49 @@ export default class UserTopNavbar extends React.Component {
     
   }*/
 
-  mouseOver(e){
+  mouseOver(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover3.jpg";
 
   }
 
-  mouseOut(e){
+  mouseOut(e: any){
 
       e.target.src = "/images/menu/DWK_greenrollover1.jpg";
 
   }
 
-  render(): React.Element {
+  guestCode() {
+
+    //e.preventDefault();
+
+    //alert(order_type);
+
+    //if(order_type == "sconely_yours"){
+
+          //if user is logged in then 
+        //guest code is right then
+        //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+
+        this.context.router.push('/order/' + this.state.guest_code + '/guest/event');
+
+        //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+
+        //this.props.dispatch(routeActions.push('/foo'));
+
+        
+
+    //}
+
+  }
+
+  guestCodeChange(e: any){
+
+      this.setState({guest_code: e.target.value});
+
+  }
+
+  render(): JSX.Element {
     return (
          <nav className="navbar navbar-default" style={{border: 1}}>
                 <div className="container-fluid">
@@ -112,10 +142,17 @@ export default class UserTopNavbar extends React.Component {
                   </div>
                   <div className="collapse navbar-collapse" id="navigationbar">
                     <ul id="navbar" className="nav navbar-nav navbar-right">
-                      <li><Link to="/login">Login</Link></li>
-                      <li><Link to="/register">Signup</Link></li>
+                      {"" == "" &&
+                        <li><Link to="/login">Login</Link></li>
+                      }
+                      {this.props.user.user_id == "" &&
+                        <li><Link to="/signup">Signup</Link></li>
+                      }
+                      {this.props.user.user_id != "" &&
+                        <li><Link to="/user">Home</Link></li>
+                      }
                       <li><Link to="/register">About Us</Link></li>
-                      <li><Link to="/register">Faq</Link></li>
+                      <li><Link to="/register">Faq</Link></li> 
                     </ul>
                     <form id="navbar" className="navbar-form navbar-left">
                       <div className="form-group">
@@ -143,7 +180,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     createOrder: (order_type: any) => {
       //alert("check");
-      dispatch(createOrder(order_type))
+      //dispatch(createOrder(order_type))
     }
   }
 }

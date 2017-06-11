@@ -1,10 +1,10 @@
-import {GET_USER_DETAILS, GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, SET_USER_DELIVERY_ADDRESS_STREET1} from '../constants/actionTypes.ts';
+import {GET_USER_DETAILS, GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, GET_USER_DELIVERY_ADDRESS_NAMES, GET_USER_PAYMENT_NAMES, SET_USER_DELIVERY_ADDRESS} from '../constants/actionTypes.ts';
 
 export function getUserDetails(value: any) {
   //alert("GET USER details");
   return {
     type: GET_USER_DETAILS,
-    value
+    data: {first_name: "", last_name: "", email: "", mobile: ""}
   }
 }
 
@@ -12,11 +12,11 @@ export function getUserOrders(value: any) {
   //alert("setDeliveryAddressStreet");
   return {
     type: GET_USER_ORDERS,
-    value
+    value: [{order_id: "", date: ""}]
   }
 }
 
-export function setUserOrder(value: any) {
+export function setUserOrders(value: any) {
   //alert("setDeliveryAddressStreet");
   return {
     type: GET_USER_ORDERS,
@@ -24,20 +24,44 @@ export function setUserOrder(value: any) {
   }
 }
 
-export function getUserDeliveryAddresses() {
+export function getUserDeliveryAddresseNames() {
   console.log("get user delivery addresses");
   return {
-    type: GET_USER_DELIVERY_ADDRESSES
+    type: GET_USER_DELIVERY_ADDRESSES,
+    data: ["home", "office"]
   }
 }
 
-export function setUserDeliveryAddressStreet1(address_id: any, value: any) {
-  //console.log("state" + JSON.stringify(state));
-  console.log("set user delivery address street1" + address_id + " " + value);
+export function getUserDeliveryAddress() {
+  console.log("get user delivery address action");
   return {
-    type: SET_USER_DELIVERY_ADDRESS_STREET1,
-    address_id,
-    value
+    type: GET_USER_DELIVERY_ADDRESSES,
+    data: ["home", "office"]
+  }
+}
+
+export function getUserDeliveryAddresses() {
+  console.log("get user delivery addresses action");
+  return {
+    type: GET_USER_DELIVERY_ADDRESSES,
+    data: [{"home": {street1: "", street2: "", city: "", state: "", zipcode: ""}},  {office: {street: "", street1: "", city: "", state: "", zipcode: ""}}]
+  }
+}
+
+export function getPaymentNames() {
+  console.log("get user delivery addresses");
+  return {
+    type: GET_USER_PAYMENT_NAMES,
+    data: ["personal", "work"]
+  }
+}
+
+export function setUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("set user delivery address street1");
+  return {
+    type: SET_USER_DELIVERY_ADDRESS,
+    
   }
 }
 

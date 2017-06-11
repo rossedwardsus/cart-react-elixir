@@ -252,7 +252,7 @@ class Register extends React.Component<any, any> {
 
     //check email and password/form validated
 
-    //this.props.register(1, 1);
+    this.props.registerUser(1, 1);
 
     //this.setState({"delivery_address_street1_classname": "form-group"});
 
@@ -262,7 +262,7 @@ class Register extends React.Component<any, any> {
 
     let that = this;
 
-    if(this.state.first_name_validated === false){
+    /*if(this.state.first_name_validated === false){
 
           axios.post('http://localhost:4000/api/graphql', {
                  query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") { user_id }}'
@@ -286,7 +286,7 @@ class Register extends React.Component<any, any> {
           //}
 
           })
-    }
+    }*/
 
   }
 
@@ -402,7 +402,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //  dispatch(setEmail(e.target.value))
     //},
 
-    register: (email: any, password: any) => {
+    registerUser: (email: any, password: any) => {
       dispatch(registerUser(email, password))
     },
     

@@ -12,14 +12,6 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-//import {deliveryAddressValidated} from './actions/cart_validations.ts';
-
-//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-const Immutable  = require('immutable');
-
-//import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
-
-
 
 function addTodoWithDispatch() {
   const action = {

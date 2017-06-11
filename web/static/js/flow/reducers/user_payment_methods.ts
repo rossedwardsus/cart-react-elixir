@@ -1,4 +1,4 @@
-import { GET_USER_DELIVERY_ADDRESSES, SET_USER_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_CITY } from '../constants/actionTypes.ts';
+import {  } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -26,7 +26,7 @@ export default function user_delivery_addresses(state: any = [], action: any){
   let delivery_address_updated: any = null;
 
   switch (action.type) {
-    case GET_USER_DELIVERY_ADDRESSES:
+    /*case GET_USER_DELIVERY_ADDRESSES:
       //alert("CartState " + action.item_id);
       console.log("user delivery addresses " + JSON.stringify(state));
 
@@ -104,7 +104,7 @@ export default function user_delivery_addresses(state: any = [], action: any){
       })
       
 
-      return Object.assign({}, state, {addresses: delivery_address_updated});
+      return Object.assign({}, state, {addresses: delivery_address_updated});*/
     
 
    

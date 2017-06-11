@@ -1,10 +1,11 @@
 //get the order total
 
-import {SET_EMAIL, CHECK_LOGGED_IN, LOGIN} from '../constants/actionTypes.ts';
+import {SET_SESSION} from '../constants/actionTypes.ts';
 import axios from 'axios';
-import {setSession} from './session.ts';
+import {push} from 'react-router-redux';
+import {getUserOrders} from './user.ts';
 
-export function loginUser(email: any, password: any) {
+export function setSession() {
   let url = "";
   return function (dispatch: any) { 
     /*axios.get(url)
@@ -16,11 +17,15 @@ export function loginUser(email: any, password: any) {
         type: types.FETCH_WEATHER_FAILURE,
         error: response.error
       })*/
-    dispatch(setSession());
+    dispatch({ type: SET_SESSION, session_id: "session_id"});
+    dispatch(getUserOrders("session_id"));
+    //dispatch({ type: GET_USER_DELIVERY_ADDRESS_NAMES, session_id: "session_id"});
+    //dispatch({ type: GET_USER_PAYMENT_NAMES, session_id: "session_id"});
+    //dispatch(push("/user"));
   }
 }
 
-export function setEmail(value: any) {
+/*export function setEmail(value: any) {
   console.log("setemail action");
   return {
     type: SET_EMAIL,
@@ -44,4 +49,4 @@ export function login(email: any, password: any) {
     //redirect
     //dispatch(get sessionid)
   }
-}
+}*/

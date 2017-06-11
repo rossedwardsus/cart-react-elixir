@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
 
-import { setUserDeliveryAddressStreet1 } from '../actions/user.ts';
+//import { setUserDeliveryAddress } from '../actions/user.ts';
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -272,27 +272,27 @@ class UserDeliveryAddress extends React.Component<any, any> {
                     
                         <form className="form-inline">
                           <div className="form-group">
-                            <input type="text" onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                            <input type="text" className="form-control" id="exampleInputName2" placeholder="Street"/>
                           </div>
                           <div className="form-group">
-                            <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                            <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
                           </div>
                         </form>
                         <form className="form-inline">
                           <div className="form-group">
-                            <select className="form-control" onChange={(value) => this.props.setDeliveryAddressCity(value)}>
+                            <select className="form-control">
                                 <option></option>
                                 <option>Los Angeles</option>
                             </select>
                           </div>
                           <div className="form-group">
-                            <select className="form-control" onChange={(value) => this.props.setDeliveryAddressState(value)}>
+                            <select className="form-control">
                                 <option></option>
                                 <option>CA</option>
                             </select>
                           </div>
                           <div className="form-group">
-                            <select className="form-control" onChange={(value) => this.props.setDeliveryAddressZipcode(value)}>
+                            <select className="form-control" >
                                 <option></option>
                                 <option>90025</option>
                             </select>
@@ -318,7 +318,7 @@ function mapDispatchToProps(dispatch: any) {
   return {
     setUserDeliveryAddressStreet1: (e: any) => {
       //console.log(e.target.value);
-      dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+      //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
     },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);

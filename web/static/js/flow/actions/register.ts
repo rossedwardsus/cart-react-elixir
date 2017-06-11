@@ -1,4 +1,5 @@
 import {REGISTER} from '../constants/actionTypes.ts';
+import {setSession} from './session.ts';
 
 export function registerUserCheckEmailExists(email: any, password: any) {
   let url = "";
@@ -51,9 +52,10 @@ export function registerUser(email: any, password: any) {
           //}
 
           })*/
-      dispatch({
-        type: REGISTER,
-        data: "session_key"
-      })
+      //dispatch({
+      //  type: REGISTER,
+      //  data: "session_key"
+      //})
+    dispatch(setSession());
   }
 }
