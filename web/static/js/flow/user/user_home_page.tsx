@@ -46,6 +46,12 @@ class UserHomePage extends React.Component<any, any> {
 
   componentDidMount(){
 
+    //this.props.getUserOrders();
+    //this.props.getUserPayments();
+    //this.props.getUserDeliveryAddresses();
+
+
+
     //alert("jsx");
     //get active items from the database
     //setInterval(this.changeImage, 10000);
@@ -351,7 +357,15 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setUserDeliveryAddressStreet1: (e: any) => {
+    getUserOrders: (e: any) => {
+      //console.log(e.target.value);
+      //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+    },
+    getUserDeliveryAddresses: (e: any) => {
+      //console.log(e.target.value);
+      //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+    },
+    getUserPayment: (e: any) => {
       //console.log(e.target.value);
       //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
     },
