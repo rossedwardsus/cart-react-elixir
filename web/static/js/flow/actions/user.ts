@@ -1,4 +1,4 @@
-import {GET_USER_DETAILS, GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, GET_USER_DELIVERY_ADDRESS_NAMES, GET_USER_PAYMENT_NAMES, SET_USER_DELIVERY_ADDRESS} from '../constants/actionTypes.ts';
+import {GET_USER_DETAILS, GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, GET_USER_DELIVERY_ADDRESS_NAMES, GET_USER_PAYMENT_NAMES, ADD_USER_DELIVERY_ADDRESS} from '../constants/actionTypes.ts';
 
 export function getUserDetails(value: any) {
   //alert("GET USER details");
@@ -56,11 +56,11 @@ export function getPaymentNames() {
   }
 }
 
-export function setUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
+export function addUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
   //console.log("state" + JSON.stringify(state));
   console.log("set user delivery address street1");
   return {
-    type: SET_USER_DELIVERY_ADDRESS,
+    type: ADD_USER_DELIVERY_ADDRESS,
     
   }
 }

@@ -269,7 +269,6 @@ class UserDeliveryAddress extends React.Component<any, any> {
 
     return (
               <div>
-                    
                         <form className="form-inline">
                           <div className="form-group">
                             <input type="text" className="form-control" id="exampleInputName2" placeholder="Street"/>
@@ -298,7 +297,6 @@ class UserDeliveryAddress extends React.Component<any, any> {
                             </select>
                           </div>
                         </form>
-
               </div>
     )
   }

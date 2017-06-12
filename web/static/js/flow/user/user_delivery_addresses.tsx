@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryAddresses, setUserDeliveryAddress } from '../actions/user.ts';
+import { getUserDeliveryAddresses, addUserDeliveryAddress } from '../actions/user.ts';
 import UserDeliveryAddress from './user_delivery_address.tsx';
 
 
@@ -33,13 +33,6 @@ class UserDeliveryAddresses extends React.Component<any, any> {
         delivery_addresses: "",
     };
 
-    //this.createOrder = this.createOrder.bind(this);
-    /*this.guestCode = this.guestCode.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onSwipedLeft = this.onSwipedLeft.bind(this);
-    this.onSwipedRight = this.onSwipedRight.bind(this);
-    this.guestCodeChange = this.guestCodeChange.bind(this);
-    this.changeImage = this.changeImage.bind(this);*/
 
   }
 
@@ -73,116 +66,12 @@ class UserDeliveryAddresses extends React.Component<any, any> {
   }
 
   
+  addDeliveryAddress(){
 
-  createOrder(order_type: any) {
+      //this.props.addUserDeliveryAddress(street1, street2, city, state, zipcode)
 
-    if(order_type == "sconely_yours"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-
-        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        //if user is logged in then 
-        this.context.router.push('/order/12345');
-
-        //this.context.router.push('/order/12345');
-
-
-    }else if(order_type == "sconely_social"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-
-        this.context.router.push('/order/12345');
-         
-    }else if(order_type == "sconely_signature"){
-
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        this.context.router.push('/order/12345/signature');
-        
-         
-    }
-
-
-    /*const client = GQLClient('http://localhost:3000', {
-      // anything passed here is merged with 
-      // the options passed to fetch() 
-      credentials: true,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    });*/
-
-    /*client.mutate(`
-      mutation ($id: RecordID!, $name: String!) {
-        updateUser(input: {id: $id, name: $name}) {
-          user {
-            id
-            name
-          }
-        }
-      }
-    `, { id: 1234, name: 'Danny' }).then((result) => {
-      console.log(result.data.user);
-      // => { id: 1234, name: 'Danny' } 
-    });*/
-
-
-
-    /*var query = `
-      query q (id: String!) {
-        user(id: $id) {
-          id,
-          email,
-          name
-        }
-      }
-    `
-    var queryVars = {
-      id: 'abcdef'
-    }
-    var opts = {
-      // custom fetch options 
-    }*/
-     
-    /**
-     * @param  {Query} query graphql query
-     * @param  {Object} [vars]  graphql query args, optional
-     * @param  {Object} [opts]  fetch options, optional
-     */
-    /*fetch(query, queryVars, opts).then(function (results) {
-      if (results.errors) {
-        //... 
-        return
-      }
-      var user = result.data.user
-      //... 
-    })*/
-
-
-  
-
-    //alert(order_type);
-    
-    //this.context.router.push('/order/12345/event_details');
-    
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
-  
   }
-
-  //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
-                                  
+                 
 
 
   render(){
@@ -199,7 +88,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                         <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                        <li className="inactive"><a>>Start Order</a></li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
@@ -246,29 +135,84 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                         </div>
                         <div className="col-md-6">
                                   <br/>
+                                  Delivery Addresses
                                   <br/>
+                                  <form className="form-inline">
+                                  <div className="form-group">
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
+                                  </div>
+                                  <div className="form-group">
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street"/>
+                                  </div>
+                                  <div className="form-group">
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                                  </div>
+                                  </form>
+                                  <form className="form-inline">
+                                  <div className="form-group">
+                                    <select className="form-control">
+                                        <option></option>
+                                        <option>Los Angeles</option>
+                                    </select>
+                                  </div>
+                                  <div className="form-group">
+                                    <select className="form-control">
+                                        <option></option>
+                                        <option>CA</option>
+                                    </select>
+                                  </div>
+                                  <div className="form-group">
+                                    <select className="form-control" >
+                                        <option></option>
+                                        <option>90025</option>
+                                    </select>
+                                  </div>
+                                  </form>
+                                  <br/>
+                                  <a className="btn btn-default">Add Address</a>
                                   <br/>
                                   <br/>
                                   <UserDeliveryAddress />
                                   <br/>
                                   <br/>
-                                  Delivery Addresses
-                                  <br/>
-                                  Home-Edit
-                                  <br/>
-                                  Office
-                                  <br/>
-                                  Add
                                   <br/>
                                   {this.props.delivery_addresses.map(function(address: any){
-                                        return(<form className="form-inline">
+                                        return(<div>
+                                                <form className="form-inline">
+                                                  <div className="form-group">
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Name"/>
+                                                  </div>
+                                                </form>
+                                                <form className="form-inline">
                                                   <div className="form-group">
                                                     <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
                                                   </div>
                                                   <div className="form-group">
                                                     <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
                                                   </div>
-                                                </form>)
+                                                </form>
+                                                <form className="form-inline">
+                                                  <div className="form-group">
+                                                    <select className="form-control">
+                                                        <option></option>
+                                                        <option>Los Angeles</option>
+                                                    </select>
+                                                  </div>
+                                                  <div className="form-group">
+                                                    <select className="form-control">
+                                                        <option></option>
+                                                        <option>CA</option>
+                                                    </select>
+                                                  </div>
+                                                  <div className="form-group">
+                                                    <select className="form-control" >
+                                                        <option></option>
+                                                        <option>90025</option>
+                                                    </select>
+                                                  </div>
+                                                  </form>
+                                                  <button>save changes</button>
+                                                  </div>)
                                   })}
                                  
                         </div>

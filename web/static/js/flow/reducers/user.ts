@@ -1,4 +1,4 @@
-import { GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, GET_USER_DELIVERY_ADDRESS_NAMES, GET_USER_PAYMENT_NAMES } from '../constants/actionTypes.ts';
+import { GET_USER_ORDERS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_DELIVERY_ADDRESS_NAMES, GET_USER_PAYMENT_NAMES } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -39,6 +39,11 @@ export default function user(state:any = {first_name: "", last_name: "", user_or
 
     case GET_USER_DELIVERY_ADDRESSES:
       console.log("user delivery addresses reducer" + JSON.stringify(state));
+
+      return Object.assign({}, state, {...state, delivery_addresses: action.data});
+
+    case ADD_USER_DELIVERY_ADDRESS:
+      console.log("ADD user delivery addresses reducer" + JSON.stringify(state));
 
       return Object.assign({}, state, {...state, delivery_addresses: action.data});
  
