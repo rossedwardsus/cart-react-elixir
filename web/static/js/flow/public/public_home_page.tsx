@@ -392,6 +392,8 @@ class PublicHomePage extends React.Component<any, any> {
                           <Link to="/public/menu">Menu</Link>
                           <br/>
                           <br/>
+                          <Link to="/order/signature">Signature</Link>
+                          <br/>
                           <a onClick={() => this.createOrder("sconely_yours")}>Crafted Kithen</a>
                           <br/>
                           <a onClick={() => this.createOrder("sconely_social")}>Social</a>

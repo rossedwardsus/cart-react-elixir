@@ -7,15 +7,36 @@ import {setSession} from './session.ts';
 export function loginUser(email: any, password: any) {
   let url = "";
   return function (dispatch: any) { 
-    /*axios.get(url)
-      .then((response) => dispatch({
-        type: types.FETCH_WEATHER_SUCCESS,
-        data: response.data
-        //dispatch user page
-      }).error((response) => dispatch({
-        type: types.FETCH_WEATHER_FAILURE,
-        error: response.error
-      })*/
+	  axios.post('http://localhost:4000/api/graphql', {
+	         query: 'query {loginUser (email: "email", password: "password") { user }}'
+	  })
+	  .then((response: any) => {
+
+	        console.log("graphql response" + JSON.stringify(response));
+
+	        //that.props.history.push('/user');
+	        //context.router
+
+	        //that.props.setOrderId(1);
+
+	        //this.context.router.push('/order/complete');
+
+
+	  })
+	  .catch((error: any) => {
+
+	        console.log("error" + error);
+	        //go to code/payment screen
+	//        this.props.loadView();
+
+
+	        //display errror to user - payment
+
+	 //if (!error.status) {
+	    // network error
+	  //}
+
+      })
     dispatch(setSession());
   }
 }

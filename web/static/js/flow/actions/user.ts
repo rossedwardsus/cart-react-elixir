@@ -58,10 +58,15 @@ export function getPaymentNames() {
 
 export function addUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
   //console.log("state" + JSON.stringify(state));
-  console.log("set user delivery address street1");
+  console.log("add user delivery address street1");
   return {
     type: ADD_USER_DELIVERY_ADDRESS,
-    
+    name,
+    street1,
+    street2,
+    city,
+    state,
+    zipcode
   }
 }
 

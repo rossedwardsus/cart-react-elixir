@@ -45,7 +45,9 @@ export default function user(state:any = {first_name: "", last_name: "", user_or
     case ADD_USER_DELIVERY_ADDRESS:
       console.log("ADD user delivery addresses reducer" + JSON.stringify(state));
 
-      return Object.assign({}, state, {...state, delivery_addresses: action.data});
+      //let delivery_addresses_temp = state.delivery_addresses;
+
+      return Object.assign({}, state, {...state, delivery_addresses: [...state.delivery_addresses, {name: {street1: ""}}]});
  
 
     case GET_USER_PAYMENT_NAMES:

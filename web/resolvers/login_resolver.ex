@@ -6,8 +6,10 @@ defmodule Sconely.LoginResolver do
     {:ok, [%{id: 1, title: "hello", body: "there"}]}
   end
 
+  def login(_args, %{context: %{current_user: %{id: id}}}) do
+  #def login(args, _info) do
 
-  def login(args, _info) do
+    IO.puts("login")
 
     #userid password email
 
@@ -47,5 +49,16 @@ defmodule Sconely.LoginResolver do
 
     {:ok, %{session_id: 1}}
 
+  end
+
+  def login(_args, _info) do
+    #IO.puts("not authorized")
+    #{:error, "Not Authorized"}
+
+    #with {:ok, user} <- Sconely.Session.authenticate(params, Repo),
+    with {:ok, jwt, _ } <- Guardian.encode_and_sign("user") do
+        IO.inspect(Guardian.encode_and_sign("user"))
+        {:ok, %{user: jwt}}
+    end
   end
 end

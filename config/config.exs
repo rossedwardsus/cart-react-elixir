@@ -99,12 +99,13 @@ config :stripity_stripe, platform_client_id: "pk_test_pY3YMi18Gcw0iUB3BSfmPtpb"
 
 
 
-#config :guardian, Guardian,
-#  allowed_algos: ["HS512"], # optional
-#  verify_module: Guardian.JWT,  # optional
-#  issuer: "SconeHomeElixir",
-#  ttl: { 30, :days },
-#  allowed_drift: 2000,
-#  verify_issuer: true, # optional
-#  secret_key: <guardian secret key>,
-#  serializer: SconeHomeElixir.GuardianSerializer
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "SconeHomeElixir",
+  ttl: { 30, :days },
+  allowed_drift: 2000,
+  verify_issuer: true, # optional
+  secret_key: "",
+  serializer: SconeHomeElixir.GuardianSerializer
+#  JOSE.JWS.generate_key(%{"alg" => "HS512"}) |> JOSE.JWK.to_map |> elem(1) |> Map.take(["k", "kty"]

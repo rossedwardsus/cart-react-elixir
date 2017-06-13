@@ -19,7 +19,7 @@ defmodule SconeHomeElixir.Mixfile do
   def application do
     [mod: {SconeHomeElixir, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin, :twilex]]
+                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin, :twilex, :guardian]]
   end
 
   # Specifies which paths to compile per environment.

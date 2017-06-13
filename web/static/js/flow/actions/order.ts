@@ -54,7 +54,7 @@ export function createOrder(order_type: any, name: any) {
       //}
       dispatch(createOrder1(order_type, name));
       //dispatch(getMenuItems(order_type));
-      //dispatch(push("/order/menu"));
+      dispatch(push("/order/menu"));
     }
   //}
 }

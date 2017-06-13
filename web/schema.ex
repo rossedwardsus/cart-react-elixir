@@ -6,7 +6,7 @@ defmodule Sconely.Schema do
 
   query do
 
-  	field :login, :login do
+  	field :login_user, :login do
   	  arg :email, :string
   	  arg :password, :string
       resolve &Sconely.LoginResolver.login/2

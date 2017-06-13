@@ -14,7 +14,11 @@ defmodule SconeHomeElixir.Router do
     #plug SconeHomeElixir.RedirectEndpoint
   end
 
-
+  pipeline :graphql do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+    plug SconeHomeElixir.Web.Context
+  end
 
   defp logged_in(conn, _) do
       conn = Plug.Conn.put_resp_cookie(conn, "first_cookie_key", "first_cookie_value")
@@ -46,7 +50,8 @@ defmodule SconeHomeElixir.Router do
 
 
   scope "/api"  do
-    pipe_through :api
+    #pipe_through :api
+    pipe_through :graphql
 
   #  get "/", Api1Controller, :index
     #post "/", LoginController, :create

@@ -29,8 +29,12 @@ class UserDeliveryAddresses extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-
-        delivery_addresses: "",
+        name: "",
+        street1: "",
+        street2: "",
+        city: "",
+        state: "",
+        zipcode: ""
     };
 
 
@@ -65,10 +69,35 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
   }
 
-  
-  addDeliveryAddress(){
+  street1Change(e: any){
 
-      //this.props.addUserDeliveryAddress(street1, street2, city, state, zipcode)
+    this.setState({street1: e.target.value});
+
+  }
+
+  street2Change(e: any){
+
+    this.setState({street2: e.target.value});
+  
+  }
+
+  cityChange(e: any){
+
+
+  
+  }
+
+  stateChange(e: any){
+
+    this.setState({state: e.target.value});
+  
+  }
+
+
+  
+  addUserDeliveryAddress(){
+
+      this.props.addUserDeliveryAddress(this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode)
 
   }
                  
@@ -142,7 +171,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                     <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
                                   </div>
                                   <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street"/>
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e: any) => this.street1Change(e)}/>
                                   </div>
                                   <div className="form-group">
                                     <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
@@ -169,7 +198,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   </div>
                                   </form>
                                   <br/>
-                                  <a className="btn btn-default">Add Address</a>
+                                  <a className="btn btn-default" onClick={() => this.addUserDeliveryAddress()}>Add Address</a>
                                   <br/>
                                   <br/>
                                   <UserDeliveryAddress />
@@ -247,10 +276,10 @@ function mapDispatchToProps(dispatch: any) {
       console.log("e.target.value");
       dispatch(getUserDeliveryAddresses());
     },
-    //setContactPhone: (e: any) => {
+    addUserDeliveryAddress: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);
-      //dispatch(setContactPhone(e.target.value));
-    //},
+      dispatch(addUserDeliveryAddress(name, street1, street2, city, state, zipcode));
+    },
    
   }
 }
