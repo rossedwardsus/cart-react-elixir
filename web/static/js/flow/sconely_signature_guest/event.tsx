@@ -41,9 +41,15 @@ class Event extends React.Component<any, any> {
   render(): JSX.Element {
     return (
       <ul>
-        Welcome to Sconely.com.  You have been invited to "event name here" by.  You can now choose which scone you want.
+        Welcome to Sconely.com.  
         <br/>
-        <button>Next</button> 
+        You have been invited to "event name here" by Sconely!.  
+        <br/>
+        The event will be taking place at LACI in JULY
+        <br/>
+        You can now choose which scone you want.
+        <br/>
+        <Link to="/1/guest/menu">Next</Link> 
       </ul>
     )
   }

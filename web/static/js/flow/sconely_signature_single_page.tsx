@@ -1,16 +1,20 @@
 import * as React from 'react'
 
 import EventDetails from './sconely_signature_event_details.tsx';
+import EventDetailsAddress from './sconely_signature_event_details_address.tsx';
+import EventDetailsName from './sconely_signature_event_details_name.tsx';
 import Guests from './sconely_signature_guests.tsx';
-import AdditionalItems from './sconely_signature_additional_items.tsx';
+//import AdditionalItems from './sconely_signature_additional_items.tsx';
 import PaymentMethod from './payment_method.tsx';
 
 import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 
 //import request from 'superagent';
 
-export default class SconelySignature extends React.Component<any, any> {
+class SconelySignatureSinglePage extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -187,14 +191,65 @@ export default class SconelySignature extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  <EventDetails/>
+                  <br/>
+                  <br/>
+                  <EventDetailsName/>
+                  <br/>
+                  <br/>
+                  <EventDetailsAddress/>
+                  <br/>
+                  Invite message
                   <br/>
                   <Guests/>
                   <br/>
                   <PaymentMethod/>
+                  <br/>
+                  <br/>
+                  <a className="btn dtn-default">Save</a><a className="btn dtn-default">Preview</a>
                 </div>
               </div>
           </div>
     )
   }
 }
+
+function mapStateToProps(state: any) {
+  console.log("checkout state" + JSON.stringify(state));
+  return {
+   session: state.session,
+   order_validations: state.order_validations,
+   order: state.Order,
+   order_delivery_address: state.delivery_address,
+   order_contact: state.contact,
+   order_name: state.name,
+   order_cart_items: state.cart.cart_items,
+   order_datetime: state.OrderDatetime,
+   order_payment_method: state.OrderPayment,
+
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    //setDate: (e: any) => {
+    //  dispatch(setDate(e))
+    //},
+    //setTime: (e: any) => {
+    //  dispatch(setTime(e.target.value))
+    //},
+  }
+}
+
+
+//export default connect(mapStateToProps, mapDispatchToProps)(Order);
+
+const SconelySignatureSinglePage1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SconelySignatureSinglePage)
+
+export default SconelySignatureSinglePage1;
+

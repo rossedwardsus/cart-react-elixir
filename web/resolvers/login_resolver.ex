@@ -56,8 +56,8 @@ defmodule Sconely.LoginResolver do
     #{:error, "Not Authorized"}
 
     #with {:ok, user} <- Sconely.Session.authenticate(params, Repo),
-    with {:ok, jwt, _ } <- Guardian.encode_and_sign("user") do
-        IO.inspect(Guardian.encode_and_sign("user"))
+    with {:ok, jwt, _ } <- Guardian.encode_and_sign(%{user: "ross"}) do
+        IO.inspect(Guardian.encode_and_sign(%{user: "ross"}))
         {:ok, %{user: jwt}}
     end
   end

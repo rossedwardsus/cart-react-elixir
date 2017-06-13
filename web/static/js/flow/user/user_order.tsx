@@ -17,7 +17,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-class UserOrders extends React.Component<any, any> {
+class UserOrder extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -276,4 +276,4 @@ class UserOrders extends React.Component<any, any> {
   }
 }
 
-export default UserOrders;
+export default UserOrder;

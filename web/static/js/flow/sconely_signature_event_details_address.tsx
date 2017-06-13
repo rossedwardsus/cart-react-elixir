@@ -225,37 +225,15 @@ export default class EventDetailsAddress extends React.Component<any, any> {
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label className="col-sm-2 control-label">Event Name</label>
-            <div className="col-sm-10">
-              <input type="email" className="form-control" id="inputEmail3" placeholder="Event Name"/>
+            <div className="col-sm-5">
+              <label>Delivery Address</label>
             </div>
           </div>
         </form>
         <form className="form-horizontal">
           <div className="form-group">
-            <label className="col-sm-2 control-label">Date Time</label>
-            <label className="col-sm-2 control-label">
-                <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
-            </label>
-            <label className="col-sm-2 control-label">Time<input type="radio" name="time"/>
-            </label>
             <div className="col-sm-5">
-                <select>
-                    <option></option>
-                    <option>9-11</option>
-                    <option>3-5</option>
-                </select>
-                <br/>
-            </div>
-            <br/>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Delivery Address</label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                <select>
+                <select className="form-control">
                     <option></option>
                     <option>Home</option>
                     <option>Office</option>
@@ -263,35 +241,27 @@ export default class EventDetailsAddress extends React.Component<any, any> {
                 <br/>
             </div>
           </div>
-          <div className="form-group">
-            <label className="col-sm-2 control-label"></label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                
-            </div>
-          </div>
-        </form>
-        <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Image</label>
-            <label className="col-sm-2 control-label"></label>
-            <div className="col-sm-5">
-                <Dropzone onDrop={this.onDrop}>
-                  <div>Try dropping some files here, or click to select files to upload.</div>
-                </Dropzone>
-            </div>
-          </div>
         </form>
         <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Event Code:</label>
-            <div className="col-sm-5">
-              <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+            <div className="form-group">
+              <div className="col-sm-3">
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+              <div className="col-sm-3">
+                <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
             </div>
-          </div>
         </form>
-        <br/>
+        <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-sm-3">
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="City" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+              <div className="col-sm-3">
+                <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="State" style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+            </div>
+       </form>
        </div>
     )
   }

@@ -27,6 +27,7 @@ import YoursRedirect from './yours_redirect.tsx';
 import UserHomePage from './user/user_home_page.tsx';
 import UserDeliveryAddresses from './user/user_delivery_addresses.tsx';
 import UserPaymentMethods from './user/user_payment_methods.tsx';
+import UserOrder from './user/user_order.tsx';
 
 //import Order from "./order.jsx";
 import Menu from "./menu.tsx";
@@ -43,21 +44,17 @@ import checkLogin from './checkLogin.tsx';
 
 import User from "./user";
 
-
-/*import UserOrder from "./user_order";
-import SconelySocial from "./sconely_yours_social_single_page";
-import SconelyYours from "./sconely_yours_social_single_page";
-//import SconelyYoursDeliveryAddressPayment from "./sconely_yours_single_page";
-
 //import SconelySocial from "./sconely_social_single_page";*/
 import SconelySignatureGuestEvent from "./sconely_signature_guest/event.tsx";
+import SconelySignatureGuestMenuItems from "./sconely_signature_guest/menu_items.tsx";
 
-/*import SconelySocialEventDetails from "./sconely_social_event_details";
-import SconelySignatureGuest from "./sconely_signature_guest/guest";
-import SconelySignatureGuests from "./sconely_signature_guests";
-import SconelySocialMenu from "./sconely_social_menu";
-import SconelySignaturePreview from "./sconely_signature_preview";*/
-import SconelySignature from "./sconely_signature_single_page.tsx";
+
+//import SconelySocialEventDetails from "./sconely_social_event_details";
+//import SconelySignatureGuests from "./sconely_signature_guests";
+//import SconelySocialMenu from "./sconely_social_menu";
+//import SconelySignaturePreview from "./sconely_signature_preview";*/
+//import SconelySignature from "./sconely_signature_single_page.tsx";
+import SconelySignatureSinglePage from "./sconely_signature_single_page.tsx";
 /*import OrderPayment from "./sconely_yours_social_order_payment";
 import ProfilePayment from "./user/payment";*/
 
@@ -181,8 +178,10 @@ const Root = () => (
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
-        <Route path="/order/signature" component={SconelySignature} />
+        <Route path="/user/:order_id/order" component={UserOrder} />
+        <Route path="/order/signature" component={SconelySignatureSinglePage} />
         <Route path="/order/:order_id/guest/event" component={SconelySignatureGuestEvent} />
+        <Route path="/order/:order_id/guest/menu" component={SconelySignatureGuestMenuItems} />
         <Route path="/:name" component={YoursRedirect} />                
       </Route>
     </Router>

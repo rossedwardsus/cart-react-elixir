@@ -113,12 +113,22 @@ export default class Guests extends React.Component<any, any> {
     return (
       <div>
         <br/>
-        <b>Guests</b>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-5">
+              <label>Guests</label>
+            </div>
+          </div>
+        </form>
         <br/>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-5">
+              20<input type="range" id="weight" min="20" max="500" step="10" value={this.state.values} onChange={this.handleValuesChange.bind(this)} style={{width: "200px", height: "10px"}}/>50
+            </div>
+          </div>
+        </form>
         <br/>
-        Number of guests1:
-        <br/>
-        <input type="range" id="weight" min="20" max="500" step="10" value={this.state.values} onChange={this.handleValuesChange.bind(this)} style={{width: "200px", height: "10px"}}/>{this.state.value}
         <br/>
         <br/>
         Guest responses
