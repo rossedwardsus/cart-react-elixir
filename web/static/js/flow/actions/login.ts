@@ -7,9 +7,9 @@ import {setSession} from './session.ts';
 export function loginUser(email: any, password: any) {
   let url = "";
   return function (dispatch: any) { 
-	  axios.post('http://localhost:4000/api/graphql', {headers: { 'Authorization': "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJVc2VyOnt1c2VyLmlkfSIsImV4cCI6MTQ5OTk3MTYxNCwiaWF0IjoxNDk3Mzc5NjE0LCJpc3MiOiJTY29uZUhvbWVFbGl4aXIiLCJqdGkiOiI5YmViOGMyZi04MGRhLTQ0NWYtODQ4MS0wMWI0NDFlOTA5OTQiLCJwZW0iOnt9LCJzdWIiOiJVc2VyOnt1c2VyLmlkfSIsInR5cCI6ImFjY2VzcyJ9.tnHAIDcTiVxhA0Mo5ZqmagdUdtAqIus5h1omeMxuYQGuyNpA4UQxFqUR8s91GoPSz0CElHFIf4d7xZqdPsXw-w"},
-	         query: 'query {loginUser (email: "email", password: "password") { user }}'
-	  })
+	  axios.post('http://localhost:4000/api/graphql',
+	         {query: 'query {loginUser (email: "email", password: "password") { user }}'}, {headers: { 'Authorization': "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJVc2VyOjEiLCJleHAiOjE0OTk5ODY3ODYsImlhdCI6MTQ5NzM5NDc4NiwiaXNzIjoiU2NvbmVIb21lRWxpeGlyIiwianRpIjoiMGI5M2VmZWYtMzA1Zi00NThmLWI5N2EtMjJlYzgwZWU4OWNkIiwicGVtIjp7fSwic3ViIjoiVXNlcjoxIiwidHlwIjoiYWNjZXNzIn0.J9dBWzR_vJyD8jU6TievrPcXvlN_cssXpkWy0TqI5hl5AXTOhIimXgkyrtgANAouBKGx6ip5xbi3rnyldQEU2g"}}
+	  )
 	  .then((response: any) => {
 
 	        console.log("graphql response" + JSON.stringify(response));

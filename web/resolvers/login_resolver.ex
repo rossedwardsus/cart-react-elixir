@@ -9,7 +9,7 @@ defmodule Sconely.LoginResolver do
   def login(_args, %{context: %{current_user: %{id: id}}}) do
   #def login(args, _info) do
 
-    IO.puts("login")
+    IO.puts("login" <> id)
 
     #userid password email
 
@@ -56,9 +56,10 @@ defmodule Sconely.LoginResolver do
     #{:error, "Not Authorized"}
 
     #with {:ok, user} <- Sconely.Session.authenticate(params, Repo),
-    with {:ok, jwt, _ } <- Guardian.encode_and_sign(%{user: "ross"}) do
-        IO.inspect(Guardian.encode_and_sign(%{user: "ross"}))
-        {:ok, %{user: jwt}}
-    end
+    #with {:ok, jwt, _ } <- Guardian.encode_and_sign(%{id: 1}) do
+    #    #IO.puts(Guardian.encode_and_sign(%{id: 1}))
+    #    IO.puts("hello")
+    #    {:ok, %{user: jwt}}
+    #end
   end
 end

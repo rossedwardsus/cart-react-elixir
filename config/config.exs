@@ -107,5 +107,5 @@ config :guardian, Guardian,
   allowed_drift: 2000,
   verify_issuer: true, # optional
   secret_key: "",
-  serializer: SconeHomeElixir.GuardianSerializer
+  serializer: Sconely.GuardianSerializer
 #  JOSE.JWS.generate_key(%{"alg" => "HS512"}) |> JOSE.JWK.to_map |> elem(1) |> Map.take(["k", "kty"]
