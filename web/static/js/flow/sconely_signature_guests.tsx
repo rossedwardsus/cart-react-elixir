@@ -120,11 +120,10 @@ export default class Guests extends React.Component<any, any> {
             </div>
           </div>
         </form>
-        <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <div className="col-sm-5">
-              20<input type="range" id="weight" min="20" max="500" step="10" value={this.state.values} onChange={this.handleValuesChange.bind(this)} style={{width: "200px", height: "10px"}}/>50
+            <div className="col-sm-10">
+              12<input type="range" id="weight" min="12" max="500" step="1" value={this.state.values} onChange={this.handleValuesChange.bind(this)} style={{width: "200px", height: "10px"}}/>100
             </div>
           </div>
         </form>
@@ -133,6 +132,7 @@ export default class Guests extends React.Component<any, any> {
         <br/>
         Guest responses
         <br/>
+        Name email chosen scone message
         <br/>
       </div>
     )

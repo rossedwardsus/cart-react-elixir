@@ -2,7 +2,10 @@ import * as React from 'react'
 
 import EventDetails from './sconely_signature_event_details.tsx';
 import EventDetailsAddress from './sconely_signature_event_details_address.tsx';
+import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
+import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx';
 import EventDetailsName from './sconely_signature_event_details_name.tsx';
+import EventDetailsCode from './sconely_signature_event_details_code.tsx';
 import Guests from './sconely_signature_guests.tsx';
 //import AdditionalItems from './sconely_signature_additional_items.tsx';
 import PaymentMethod from './payment_method.tsx';
@@ -195,15 +198,19 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/>
                   <EventDetailsName/>
                   <br/>
-                  <br/>
                   <EventDetailsAddress/>
+                  <br/>
+                  <EventDetailsEventAddress/>
+                  <br/>
+                  <EventDetailsDateTime/>
                   <br/>
                   Invite message
                   <br/>
-                  <Guests/>
-                  <br/>
                   <PaymentMethod/>
                   <br/>
+                  <EventDetailsCode/>
+                  <br/>
+                  <Guests/>
                   <br/>
                   <a className="btn dtn-default">Save</a><a className="btn dtn-default">Preview</a>
                 </div>

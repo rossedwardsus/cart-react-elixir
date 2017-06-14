@@ -32,7 +32,7 @@ var Dropzone = require('react-dropzone');
     this.age++;
   }, 1000);*/
 
-export default class EventDetailsAddress extends React.Component<any, any> {
+export default class EventDetailsEventAddress extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -224,24 +224,44 @@ export default class EventDetailsAddress extends React.Component<any, any> {
       <div>
         <br/>
         <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-5">
+              <label>Event Address</label>
+            </div>
+          </div>
+        </form>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-5">
+                <select className="form-control">
+                    <option></option>
+                    <option>Home</option>
+                    <option>Office</option>
+                </select>
+                <br/>
+            </div>
+          </div>
+        </form>
+        <form className="form-horizontal">
             <div className="form-group">
-              <div className="col-sm-5">
-                <label>Event Name/photo</label>
+              <div className="col-sm-3">
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+              <div className="col-sm-3">
+                <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
         </form>
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="City" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+              <div className="col-sm-3">
+                <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="State" style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
-        </form>
-        <br/>
-        <Dropzone onDrop={this.onDrop}>
-            <div>Try dropping some files here, or click to select files to upload.</div>
-        </Dropzone>
-        <br/>
+       </form>
        </div>
     )
   }

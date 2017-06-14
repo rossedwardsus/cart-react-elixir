@@ -32,7 +32,7 @@ var Dropzone = require('react-dropzone');
     this.age++;
   }, 1000);*/
 
-export default class EventDetailsAddress extends React.Component<any, any> {
+export default class EventDetailsCode extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -192,47 +192,15 @@ export default class EventDetailsAddress extends React.Component<any, any> {
 
   }
 
-  onFocus(){
-
-        /*alert();
-
-        //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
-        
-        request
-              .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-                console.log(res);
-          
-              });*/
-
-
-  }
-
-  next(){
-
-    alert("next" + this.state.event_name);
-
-  }
-
+  
   render(): JSX.Element {
     return (
       <div>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label className="col-sm-2 control-label">Delivery Address</label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
             <div className="col-sm-5">
-                <select>
-                    <option></option>
-                    <option>Home</option>
-                    <option>Office</option>
-                </select>
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="Code" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
                 <br/>
             </div>
           </div>

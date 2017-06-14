@@ -225,14 +225,6 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         <br/>
         <form className="form-horizontal">
           <div className="form-group">
-            <label className="col-sm-2 control-label">Event Name</label>
-            <div className="col-sm-10">
-              <input type="email" className="form-control" id="inputEmail3" placeholder="Event Name"/>
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
             <label className="col-sm-2 control-label">Date Time</label>
             <label className="col-sm-2 control-label">
                 <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
@@ -250,47 +242,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
             <br/>
           </div>
         </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Delivery Address</label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                <select>
-                    <option></option>
-                    <option>Home</option>
-                    <option>Office</option>
-                </select>
-                <br/>
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="col-sm-2 control-label"></label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                
-            </div>
-          </div>
-        </form>
         <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Image</label>
-            <label className="col-sm-2 control-label"></label>
-            <div className="col-sm-5">
-                <Dropzone onDrop={this.onDrop}>
-                  <div>Try dropping some files here, or click to select files to upload.</div>
-                </Dropzone>
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Event Code:</label>
-            <div className="col-sm-5">
-              <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
-            </div>
-          </div>
-        </form>
         <br/>
        </div>
     )

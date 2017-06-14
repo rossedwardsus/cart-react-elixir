@@ -126,7 +126,7 @@ webpackJsonp([0],[
 	
 	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
 	
-	var _index = __webpack_require__(1143);
+	var _index = __webpack_require__(1146);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -40470,8 +40470,11 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var sconely_signature_event_details_address_tsx_1 = __webpack_require__(1139);
-	var sconely_signature_event_details_name_tsx_1 = __webpack_require__(1141);
-	var sconely_signature_guests_tsx_1 = __webpack_require__(1142);
+	var sconely_signature_event_details_event_address_tsx_1 = __webpack_require__(1141);
+	var sconely_signature_event_details_datetime_tsx_1 = __webpack_require__(1142);
+	var sconely_signature_event_details_name_tsx_1 = __webpack_require__(1143);
+	var sconely_signature_event_details_code_tsx_1 = __webpack_require__(1144);
+	var sconely_signature_guests_tsx_1 = __webpack_require__(1145);
 	//import AdditionalItems from './sconely_signature_additional_items.tsx';
 	var payment_method_tsx_1 = __webpack_require__(1097);
 	var react_router_1 = __webpack_require__(546);
@@ -40576,7 +40579,7 @@ webpackJsonp([0],[
 	            if (true) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Start Order")), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_event_details_name_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_event_details_address_tsx_1.default, null), React.createElement("br", null), "Invite message", React.createElement("br", null), React.createElement(sconely_signature_guests_tsx_1.default, null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { className: "btn dtn-default" }, "Save"), React.createElement("a", { className: "btn dtn-default" }, "Preview"))));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_event_details_name_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_event_details_address_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_event_details_event_address_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, null), React.createElement("br", null), "Invite message", React.createElement("br", null), React.createElement(payment_method_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_event_details_code_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_guests_tsx_1.default, null), React.createElement("br", null), React.createElement("a", { className: "btn dtn-default" }, "Save"), React.createElement("a", { className: "btn dtn-default" }, "Preview"))));
 	        }
 	    }]);
 	
@@ -41732,6 +41735,420 @@ webpackJsonp([0],[
 	    this.age++;
 	  }, 1000);*/
 	
+	var EventDetailsEventAddress = function (_React$Component) {
+	    _inherits(EventDetailsEventAddress, _React$Component);
+	
+	    //props: Props;
+	    function EventDetailsEventAddress(props) {
+	        _classCallCheck(this, EventDetailsEventAddress);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + window.guest_chooses);
+	        var _this = _possibleConstructorReturn(this, (EventDetailsEventAddress.__proto__ || Object.getPrototypeOf(EventDetailsEventAddress)).call(this, props));
+	
+	        _this.state = {
+	            //order_id: this.props.params.order_id,
+	            order_id: _this.props.order_id,
+	            order_type: "",
+	            event_name: "",
+	            event_datetime: "",
+	            event_address_street: "",
+	            event_address_city: "",
+	            event_address_zipcode: "",
+	            code: 0,
+	            startDate: moment()
+	        };
+	        //load the data from the database if this is not a new event/order
+	        //if window.event.status == "existing/saved"
+	        /*request
+	                  .post('/api/order/new')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	              
+	        });*/
+	        _this.changeEventName = _this.changeEventName.bind(_this);
+	        _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
+	        _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
+	        _this.handleDateChange = _this.handleDateChange.bind(_this);
+	        _this.createCode = _this.createCode.bind(_this);
+	        _this.changeCode = _this.changeCode.bind(_this);
+	        //this.findOrder = this.findOrder.bind(this);
+	        //autosave
+	        //if event name has been added then start autosaving
+	        //myTimer;
+	        //var myVar = setInterval(
+	        //    () => 
+	        //get the data from state and upload to server
+	        //only update if the data has been changed though
+	        //add a flag that updates when they change something
+	        //if this.state.changed == true then update
+	        //only update event details
+	        //window.event.event_name == this.state.event_name
+	        //window.address == "home"
+	        //window.event_date == "date"
+	        //window.event_time == "time"
+	        //window.custom_code = "custom_code"
+	        /*request
+	          .post('/api/order/new')
+	          .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	          .set('X-API-Key', 'foobar')
+	          .set('Accept', 'application/json')
+	          .end(function(err, res){
+	            // Calling the end function will send the request
+	            //this.setState({payment_complete: true});
+	                 });*/
+	        //console.log("hello")
+	        //, 10000);
+	        //myVar;
+	        //myTimer;
+	        return _this;
+	    }
+	    // Yes, I could use an arrow function, I get it.
+	    //@autobind
+	    //_handleCompleteTodo(id: string): void {
+	    // do something to mark this todo as complete
+	    //}
+	
+	
+	    _createClass(EventDetailsEventAddress, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            function findOrder(order) {
+	                //alert(order.order_id);
+	                return order.order_id === 12345;
+	            }
+	            ;
+	            var order_type = orders.find(findOrder).order_type;
+	            //alert(order_type);
+	            this.setState({ order_type: order_type });
+	        }
+	    }, {
+	        key: "changeEventName",
+	        value: function changeEventName(e) {
+	            //alert();
+	            //this.setState({changed: true});
+	            this.setState({ event_name: e.target.value });
+	        }
+	    }, {
+	        key: "changeDeliveryAddress",
+	        value: function changeDeliveryAddress(e) {
+	            this.setState({ delivery_address: e.target.value });
+	        }
+	    }, {
+	        key: "changeNumberOfGuests",
+	        value: function changeNumberOfGuests(e) {
+	            this.setState({ number_of_guests: e.target.value });
+	        }
+	    }, {
+	        key: "handleDateChange",
+	        value: function handleDateChange(dateString) {
+	            //alert(dateString);
+	            //this.setState({
+	            //startDate: date
+	            //});
+	        }
+	    }, {
+	        key: "onDrop",
+	        value: function onDrop(acceptedFiles) {
+	            /*var req = request.post('/api/v_alpha/signature/upload');
+	            acceptedFiles.forEach((file: any)=> {
+	                //alert(file.name);
+	                req.attach("file", file);
+	            });
+	            req.field("event_id", 123545);
+	            req.end((response: any) => {alert(JSON.stringify(response))});*/
+	        }
+	    }, {
+	        key: "changeCode",
+	        value: function changeCode() {}
+	    }, {
+	        key: "createCode",
+	        value: function createCode() {}
+	    }, {
+	        key: "onFocus",
+	        value: function onFocus() {
+	            /*alert();
+	             //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
+	            
+	            request
+	                  .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	                    console.log(res);
+	              
+	                  });*/
+	        }
+	    }, {
+	        key: "next",
+	        value: function next() {
+	            alert("next" + this.state.event_name);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Event Address")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "City", value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "State", style: { borderRadius: 0, fontSize: 16 } })))));
+	        }
+	    }]);
+	
+	    return EventDetailsEventAddress;
+	}(React.Component);
+	
+	exports.default = EventDetailsEventAddress;
+
+/***/ }),
+/* 1142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var DatePicker = __webpack_require__(949);
+	var moment = __webpack_require__(950);
+	//require('react-datepicker/dist/react-datepicker.css');
+	//import 'react-date-picker/index.css';
+	//import { DateField, Calendar } from 'react-date-picker';
+	//import Autocomplete from 'react-google-autocomplete';
+	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+	var Dropzone = __webpack_require__(1140);
+	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	//import request from 'superagent';
+	//const onChange = (dateString, { dateMoment, timestamp }) => {
+	//console.log(dateString)
+	//  alert();
+	//}
+	//var myTimer = () => console.log("hello");
+	/*setInterval(function growUp() {
+	    // In non-strict mode, the growUp() function defines `this`
+	    // as the global object, which is different from the `this`
+	    // defined by the Person() constructor.
+	    this.age++;
+	  }, 1000);*/
+	
+	var EventDetailsDateTime = function (_React$Component) {
+	    _inherits(EventDetailsDateTime, _React$Component);
+	
+	    //props: Props;
+	    function EventDetailsDateTime(props) {
+	        _classCallCheck(this, EventDetailsDateTime);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + window.guest_chooses);
+	        var _this = _possibleConstructorReturn(this, (EventDetailsDateTime.__proto__ || Object.getPrototypeOf(EventDetailsDateTime)).call(this, props));
+	
+	        _this.state = {
+	            //order_id: this.props.params.order_id,
+	            order_id: _this.props.order_id,
+	            order_type: "",
+	            event_name: "",
+	            event_datetime: "",
+	            event_address_street: "",
+	            event_address_city: "",
+	            event_address_zipcode: "",
+	            code: 0,
+	            startDate: moment()
+	        };
+	        //load the data from the database if this is not a new event/order
+	        //if window.event.status == "existing/saved"
+	        /*request
+	                  .post('/api/order/new')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	              
+	        });*/
+	        _this.changeEventName = _this.changeEventName.bind(_this);
+	        _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
+	        _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
+	        _this.handleDateChange = _this.handleDateChange.bind(_this);
+	        _this.createCode = _this.createCode.bind(_this);
+	        _this.changeCode = _this.changeCode.bind(_this);
+	        //this.findOrder = this.findOrder.bind(this);
+	        //autosave
+	        //if event name has been added then start autosaving
+	        //myTimer;
+	        //var myVar = setInterval(
+	        //    () => 
+	        //get the data from state and upload to server
+	        //only update if the data has been changed though
+	        //add a flag that updates when they change something
+	        //if this.state.changed == true then update
+	        //only update event details
+	        //window.event.event_name == this.state.event_name
+	        //window.address == "home"
+	        //window.event_date == "date"
+	        //window.event_time == "time"
+	        //window.custom_code = "custom_code"
+	        /*request
+	          .post('/api/order/new')
+	          .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	          .set('X-API-Key', 'foobar')
+	          .set('Accept', 'application/json')
+	          .end(function(err, res){
+	            // Calling the end function will send the request
+	            //this.setState({payment_complete: true});
+	                 });*/
+	        //console.log("hello")
+	        //, 10000);
+	        //myVar;
+	        //myTimer;
+	        return _this;
+	    }
+	    // Yes, I could use an arrow function, I get it.
+	    //@autobind
+	    //_handleCompleteTodo(id: string): void {
+	    // do something to mark this todo as complete
+	    //}
+	
+	
+	    _createClass(EventDetailsDateTime, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            function findOrder(order) {
+	                //alert(order.order_id);
+	                return order.order_id === 12345;
+	            }
+	            ;
+	            var order_type = orders.find(findOrder).order_type;
+	            //alert(order_type);
+	            this.setState({ order_type: order_type });
+	        }
+	    }, {
+	        key: "changeEventName",
+	        value: function changeEventName(e) {
+	            //alert();
+	            //this.setState({changed: true});
+	            this.setState({ event_name: e.target.value });
+	        }
+	    }, {
+	        key: "changeDeliveryAddress",
+	        value: function changeDeliveryAddress(e) {
+	            this.setState({ delivery_address: e.target.value });
+	        }
+	    }, {
+	        key: "changeNumberOfGuests",
+	        value: function changeNumberOfGuests(e) {
+	            this.setState({ number_of_guests: e.target.value });
+	        }
+	    }, {
+	        key: "handleDateChange",
+	        value: function handleDateChange(dateString) {
+	            //alert(dateString);
+	            //this.setState({
+	            //startDate: date
+	            //});
+	        }
+	    }, {
+	        key: "onDrop",
+	        value: function onDrop(acceptedFiles) {
+	            /*var req = request.post('/api/v_alpha/signature/upload');
+	            acceptedFiles.forEach((file: any)=> {
+	                //alert(file.name);
+	                req.attach("file", file);
+	            });
+	            req.field("event_id", 123545);
+	            req.end((response: any) => {alert(JSON.stringify(response))});*/
+	        }
+	    }, {
+	        key: "changeCode",
+	        value: function changeCode() {}
+	    }, {
+	        key: "createCode",
+	        value: function createCode() {}
+	    }, {
+	        key: "onFocus",
+	        value: function onFocus() {
+	            /*alert();
+	             //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
+	            
+	            request
+	                  .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	                    console.log(res);
+	              
+	                  });*/
+	        }
+	    }, {
+	        key: "next",
+	        value: function next() {
+	            alert("next" + this.state.event_name);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { className: "col-sm-2 control-label" }, "Date Time"), React.createElement("label", { className: "col-sm-2 control-label" }, React.createElement(DatePicker, { selected: this.state.startDate, onChange: this.handleDateChange })), React.createElement("label", { className: "col-sm-2 control-label" }, "Time", React.createElement("input", { type: "radio", name: "time" })), React.createElement("div", { className: "col-sm-5" }, React.createElement("select", null, React.createElement("option", null), React.createElement("option", null, "9-11"), React.createElement("option", null, "3-5")), React.createElement("br", null)), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null));
+	        }
+	    }]);
+	
+	    return EventDetailsDateTime;
+	}(React.Component);
+	
+	exports.default = EventDetailsDateTime;
+
+/***/ }),
+/* 1143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var DatePicker = __webpack_require__(949);
+	var moment = __webpack_require__(950);
+	//require('react-datepicker/dist/react-datepicker.css');
+	//import 'react-date-picker/index.css';
+	//import { DateField, Calendar } from 'react-date-picker';
+	//import Autocomplete from 'react-google-autocomplete';
+	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+	var Dropzone = __webpack_require__(1140);
+	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	//import request from 'superagent';
+	//const onChange = (dateString, { dateMoment, timestamp }) => {
+	//console.log(dateString)
+	//  alert();
+	//}
+	//var myTimer = () => console.log("hello");
+	/*setInterval(function growUp() {
+	    // In non-strict mode, the growUp() function defines `this`
+	    // as the global object, which is different from the `this`
+	    // defined by the Person() constructor.
+	    this.age++;
+	  }, 1000);*/
+	
 	var EventDetailsAddress = function (_React$Component) {
 	    _inherits(EventDetailsAddress, _React$Component);
 	
@@ -41892,7 +42309,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Event Name/photo")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Event Name", value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("br", null), React.createElement(Dropzone, null), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Event Name/photo")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Event Name", value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("br", null), React.createElement(Dropzone, { onDrop: this.onDrop }, React.createElement("div", null, "Try dropping some files here, or click to select files to upload.")), React.createElement("br", null));
 	        }
 	    }]);
 	
@@ -41902,7 +42319,191 @@ webpackJsonp([0],[
 	exports.default = EventDetailsAddress;
 
 /***/ }),
-/* 1142 */
+/* 1144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var DatePicker = __webpack_require__(949);
+	var moment = __webpack_require__(950);
+	//require('react-datepicker/dist/react-datepicker.css');
+	//import 'react-date-picker/index.css';
+	//import { DateField, Calendar } from 'react-date-picker';
+	//import Autocomplete from 'react-google-autocomplete';
+	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
+	var Dropzone = __webpack_require__(1140);
+	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	//import request from 'superagent';
+	//const onChange = (dateString, { dateMoment, timestamp }) => {
+	//console.log(dateString)
+	//  alert();
+	//}
+	//var myTimer = () => console.log("hello");
+	/*setInterval(function growUp() {
+	    // In non-strict mode, the growUp() function defines `this`
+	    // as the global object, which is different from the `this`
+	    // defined by the Person() constructor.
+	    this.age++;
+	  }, 1000);*/
+	
+	var EventDetailsCode = function (_React$Component) {
+	    _inherits(EventDetailsCode, _React$Component);
+	
+	    //props: Props;
+	    function EventDetailsCode(props) {
+	        _classCallCheck(this, EventDetailsCode);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + window.guest_chooses);
+	        var _this = _possibleConstructorReturn(this, (EventDetailsCode.__proto__ || Object.getPrototypeOf(EventDetailsCode)).call(this, props));
+	
+	        _this.state = {
+	            //order_id: this.props.params.order_id,
+	            order_id: _this.props.order_id,
+	            order_type: "",
+	            event_name: "",
+	            event_datetime: "",
+	            event_address_street: "",
+	            event_address_city: "",
+	            event_address_zipcode: "",
+	            code: 0,
+	            startDate: moment()
+	        };
+	        //load the data from the database if this is not a new event/order
+	        //if window.event.status == "existing/saved"
+	        /*request
+	                  .post('/api/order/new')
+	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	                  .set('X-API-Key', 'foobar')
+	                  .set('Accept', 'application/json')
+	                  .end(function(err, res){
+	                    // Calling the end function will send the request
+	                    //this.setState({payment_complete: true});
+	              
+	        });*/
+	        _this.changeEventName = _this.changeEventName.bind(_this);
+	        _this.changeNumberOfGuests = _this.changeNumberOfGuests.bind(_this);
+	        _this.changeDeliveryAddress = _this.changeDeliveryAddress.bind(_this);
+	        _this.handleDateChange = _this.handleDateChange.bind(_this);
+	        _this.createCode = _this.createCode.bind(_this);
+	        _this.changeCode = _this.changeCode.bind(_this);
+	        //this.findOrder = this.findOrder.bind(this);
+	        //autosave
+	        //if event name has been added then start autosaving
+	        //myTimer;
+	        //var myVar = setInterval(
+	        //    () => 
+	        //get the data from state and upload to server
+	        //only update if the data has been changed though
+	        //add a flag that updates when they change something
+	        //if this.state.changed == true then update
+	        //only update event details
+	        //window.event.event_name == this.state.event_name
+	        //window.address == "home"
+	        //window.event_date == "date"
+	        //window.event_time == "time"
+	        //window.custom_code = "custom_code"
+	        /*request
+	          .post('/api/order/new')
+	          .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
+	          .set('X-API-Key', 'foobar')
+	          .set('Accept', 'application/json')
+	          .end(function(err, res){
+	            // Calling the end function will send the request
+	            //this.setState({payment_complete: true});
+	                 });*/
+	        //console.log("hello")
+	        //, 10000);
+	        //myVar;
+	        //myTimer;
+	        return _this;
+	    }
+	    // Yes, I could use an arrow function, I get it.
+	    //@autobind
+	    //_handleCompleteTodo(id: string): void {
+	    // do something to mark this todo as complete
+	    //}
+	
+	
+	    _createClass(EventDetailsCode, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            var orders = JSON.parse(localStorage.getItem("user")).orders;
+	            function findOrder(order) {
+	                //alert(order.order_id);
+	                return order.order_id === 12345;
+	            }
+	            ;
+	            var order_type = orders.find(findOrder).order_type;
+	            //alert(order_type);
+	            this.setState({ order_type: order_type });
+	        }
+	    }, {
+	        key: "changeEventName",
+	        value: function changeEventName(e) {
+	            //alert();
+	            //this.setState({changed: true});
+	            this.setState({ event_name: e.target.value });
+	        }
+	    }, {
+	        key: "changeDeliveryAddress",
+	        value: function changeDeliveryAddress(e) {
+	            this.setState({ delivery_address: e.target.value });
+	        }
+	    }, {
+	        key: "changeNumberOfGuests",
+	        value: function changeNumberOfGuests(e) {
+	            this.setState({ number_of_guests: e.target.value });
+	        }
+	    }, {
+	        key: "handleDateChange",
+	        value: function handleDateChange(dateString) {
+	            //alert(dateString);
+	            //this.setState({
+	            //startDate: date
+	            //});
+	        }
+	    }, {
+	        key: "onDrop",
+	        value: function onDrop(acceptedFiles) {
+	            /*var req = request.post('/api/v_alpha/signature/upload');
+	            acceptedFiles.forEach((file: any)=> {
+	                //alert(file.name);
+	                req.attach("file", file);
+	            });
+	            req.field("event_id", 123545);
+	            req.end((response: any) => {alert(JSON.stringify(response))});*/
+	        }
+	    }, {
+	        key: "changeCode",
+	        value: function changeCode() {}
+	    }, {
+	        key: "createCode",
+	        value: function createCode() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Code", value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } }), React.createElement("br", null)))), React.createElement("br", null), React.createElement("br", null));
+	        }
+	    }]);
+	
+	    return EventDetailsCode;
+	}(React.Component);
+	
+	exports.default = EventDetailsCode;
+
+/***/ }),
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41997,7 +42598,7 @@ webpackJsonp([0],[
 	            if (this.state.value == true) {
 	                guests_choices = "Ross Edwards rossedwards.us@gmail.com";
 	            }
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, "20", React.createElement("input", { type: "range", id: "weight", min: "20", max: "500", step: "10", value: this.state.values, onChange: this.handleValuesChange.bind(this), style: { width: "200px", height: "10px" } }), "50"))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Guest responses", React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "12", React.createElement("input", { type: "range", id: "weight", min: "12", max: "500", step: "1", value: this.state.values, onChange: this.handleValuesChange.bind(this), style: { width: "200px", height: "10px" } }), "100"))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Guest responses", React.createElement("br", null), "Name email chosen scone message", React.createElement("br", null));
 	        }
 	    }]);
 	
@@ -42007,7 +42608,7 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ }),
-/* 1143 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42015,21 +42616,21 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1144);
+	var session_ts_1 = __webpack_require__(1147);
 	//import register from './register.ts';
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1145);
-	var order_ts_1 = __webpack_require__(1146);
-	var order_datetime_ts_1 = __webpack_require__(1147);
-	var order_payment_ts_1 = __webpack_require__(1148);
-	var user_ts_1 = __webpack_require__(1149);
+	var menu_ts_1 = __webpack_require__(1148);
+	var order_ts_1 = __webpack_require__(1149);
+	var order_datetime_ts_1 = __webpack_require__(1150);
+	var order_payment_ts_1 = __webpack_require__(1151);
+	var user_ts_1 = __webpack_require__(1152);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
-	var cart_ts_1 = __webpack_require__(1150);
-	var name_ts_1 = __webpack_require__(1151);
-	var contact_ts_1 = __webpack_require__(1152);
-	var order_delivery_address_ts_1 = __webpack_require__(1153);
-	var order_validated_ts_1 = __webpack_require__(1154);
-	var user_payment_methods_ts_1 = __webpack_require__(1155);
+	var cart_ts_1 = __webpack_require__(1153);
+	var name_ts_1 = __webpack_require__(1154);
+	var contact_ts_1 = __webpack_require__(1155);
+	var order_delivery_address_ts_1 = __webpack_require__(1156);
+	var order_validated_ts_1 = __webpack_require__(1157);
+	var user_payment_methods_ts_1 = __webpack_require__(1158);
 	//import OrderContact from './order_contact';
 	exports.default = redux_1.combineReducers({
 	    session: session_ts_1.default,
@@ -42049,7 +42650,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1144 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42087,7 +42688,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1145 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42133,7 +42734,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1146 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42210,7 +42811,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1147 */
+/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42255,7 +42856,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1148 */
+/* 1151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42309,7 +42910,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1149 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42369,7 +42970,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1150 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42467,7 +43068,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1151 */
+/* 1154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42517,7 +43118,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1152 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42566,7 +43167,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1153 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42627,7 +43228,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1154 */
+/* 1157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -42683,7 +43284,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1155 */
+/* 1158 */
 /***/ (function(module, exports) {
 
 	"use strict";
