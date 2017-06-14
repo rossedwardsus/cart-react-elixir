@@ -43,11 +43,10 @@ class Event extends React.Component<any, any> {
       <ul>
         Welcome to Sconely.com.  
         <br/>
-        You have been invited to "event name here" by Sconely!.  
+        You have been invited to "Sconely Launch Party".  By sconely.
         <br/>
-        The event will be taking place at LACI in JULY
         <br/>
-        You can now choose which scone you want.
+        You can now choose which scone you want by clicking the link below
         <br/>
         <Link to="/order/1/guest/menu">Next</Link> 
       </ul>

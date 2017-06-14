@@ -40377,7 +40377,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("ul", null, "Welcome to Sconely.com.", React.createElement("br", null), "You have been invited to \"event name here\" by Sconely!.", React.createElement("br", null), "The event will be taking place at LACI in JULY", React.createElement("br", null), "You can now choose which scone you want.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/1/guest/menu" }, "Next"));
+	            return React.createElement("ul", null, "Welcome to Sconely.com.", React.createElement("br", null), "You have been invited to \"Sconely Launch Party\".  By sconely.", React.createElement("br", null), React.createElement("br", null), "You can now choose which scone you want by clicking the link below", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/1/guest/menu" }, "Next"));
 	        }
 	    }], [{
 	        key: "contextTypes",
