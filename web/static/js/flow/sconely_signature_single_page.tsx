@@ -194,13 +194,21 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
+                  <Link to="/order/signature">Order Details</Link>
                   <br/>
+                  <Link to="/order/signature/guests">Order Guests</Link>
                   <br/>
                   <EventDetailsName/>
                   <br/>
+                  <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-10">
+                        12<input type="range" id="weight" min="12" max="500" step="1" value={this.state.values} style={{width: "200px", height: "10px"}}/>100
+                      </div>
+                    </div>
+                  </form>
                   <EventDetailsAddress/>
                   <br/>
-                  <EventDetailsEventAddress/>
                   <br/>
                   <EventDetailsDateTime/>
                   <br/>

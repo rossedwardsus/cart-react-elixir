@@ -49,7 +49,7 @@ class Event extends React.Component<any, any> {
         <br/>
         You can now choose which scone you want.
         <br/>
-        <Link to="/1/guest/menu">Next</Link> 
+        <Link to="/order/1/guest/menu">Next</Link> 
       </ul>
     )
   }
