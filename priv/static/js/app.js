@@ -40432,14 +40432,33 @@ webpackJsonp([0],[
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (GuestMenu.__proto__ || Object.getPrototypeOf(GuestMenu)).call(this, props));
 	
-	        _this.state = {};
+	        _this.state = {
+	            selected_item_id: 0,
+	            selected_item_title: "",
+	            selected_item_story: "",
+	            selected_item_ingredients: ""
+	        };
 	        return _this;
 	    }
 	
 	    _createClass(GuestMenu, [{
+	        key: "showItem",
+	        value: function showItem(item_id) {
+	            //alert(item_id);
+	            this.setState({ selected_item_id: item_id });
+	            this.props.menu_items.menu_items.map(function (item) {
+	                if (item.item_id === item_id) {
+	                    this.setState({ selected_item_title: item.title });
+	                    this.setState({ selected_item_story: item.story });
+	                    this.setState({ selected_item_ingredients: item.ingredients });
+	                }
+	            }.bind(this));
+	            $('#myModal').modal('show');
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("ul", null, "menu items", React.createElement("br", null), this.props.menu_items.menu_items.map(function (item, index) {
+	            return React.createElement("div", null, "menu items", React.createElement("br", null), React.createElement("br", null), this.props.menu_items.menu_items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                console.log(item);
@@ -40450,12 +40469,8 @@ webpackJsonp([0],[
 	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
-	                    }, onMouseEnter: function onMouseEnter(index) {
-	                        return _this2.onMouseEnter(item.item_id);
-	                    }, onMouseLeave: function onMouseLeave() {
-	                        return _this2.onMouseLeave(item.item_id);
 	                    }, src: "/images/menu/" + item.image_id + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.title), " / ", item.description, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)));
+	            }.bind(this)), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")))))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
