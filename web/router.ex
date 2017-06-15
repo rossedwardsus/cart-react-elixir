@@ -56,6 +56,9 @@ defmodule SconeHomeElixir.Router do
   #  get "/", Api1Controller, :index
     #post "/", LoginController, :create
 
+    get "/upload", Sconely.UserProfilePhotoController, :create
+    post "/upload", Sconely.UserProfilePhotoController, :create
+
     get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
     forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
     #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
@@ -81,7 +84,7 @@ defmodule SconeHomeElixir.Router do
     #end
 
     get "/", HomeController, :index
-    get "/:name", HomeController, :index
+    #get "/:name", HomeController, :index
     #get "/activate", ActivateController, :index
 
     #forward "/graphql/signature", Absinthe.Plug, schema: SconeHomeElixir.SignatureSchema

@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Userprofile do
+defmodule Sconely.Userprofile do
   use Arc.Definition
 
   # Include ecto support (requires package arc_ecto installed):
@@ -17,21 +17,22 @@ defmodule SconeHomeElixir.Userprofile do
   end
 
   # Define a thumbnail transformation:
-  def transform(:thumb, _) do
-     {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
-  end
+  #def transform(:thumb, _) do
+  #   {:convert, "-strip -thumbnail 250x250^ -gravity center -extent 250x250 -format png", :png}
+  #end
 
   # Override the persisted filenames:
-  def filename(version, _) do
-    version
+  def filename(version, {file, scope}) do
+    "#{scope.id}"
   end
 
   def __storage, do: Arc.Storage.Local
 
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
-     #"uploads/user/avatars/#{scope.id}"
-     "uploads/"
+     #"uploads/#{scope.id}"
+     #"uploads/"
+     "priv/static/uploads"
   end
 
   # Provide a default URL if there hasn't been a file uploaded

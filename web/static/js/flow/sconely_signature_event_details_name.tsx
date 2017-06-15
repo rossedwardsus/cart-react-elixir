@@ -14,7 +14,7 @@ var moment = require('moment');
 
 var Dropzone = require('react-dropzone');
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
-//import request from 'superagent';
+var request = require('superagent');
 
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -52,7 +52,9 @@ export default class EventDetailsAddress extends React.Component<any, any> {
         event_address_city: "",
         event_address_zipcode: "",
         code: 0,
-        startDate: moment()
+        startDate: moment(),
+        files: [],
+        image_src: ""
 
     };
 
@@ -171,13 +173,28 @@ export default class EventDetailsAddress extends React.Component<any, any> {
   }
 
   onDrop(acceptedFiles: any){
-        /*var req = request.post('/api/v_alpha/signature/upload');
+        let req = request.post('/api/upload');
+        let that = this;
+        //this.setState({files: acceptedFiles});
+        
+        console.log(JSON.stringify(acceptedFiles));
         acceptedFiles.forEach((file: any)=> {
-            //alert(file.name);
+            console.log(file.name);
+            //this.setState({image_src: "http://localhost:4000/uploads/1.jpg"});
+            
             req.attach("file", file);
+            //this.setState({files: acceptedFiles});
+
         });
-        req.field("event_id", 123545);
-        req.end((response: any) => {alert(JSON.stringify(response))});*/
+        req.field("event_id", 12345);
+        req.end((response: any) => {
+            //console.log(JSON.stringify(response))
+            this.setState({files: acceptedFiles});
+
+        });
+        //this.setState({files: acceptedFiles});
+
+        
   }
 
   changeCode(){
@@ -238,9 +255,13 @@ export default class EventDetailsAddress extends React.Component<any, any> {
             </div>
         </form>
         <br/>
-        <Dropzone onDrop={this.onDrop}>
+        <Dropzone onDrop={(files: any) => this.onDrop(files)}>
             <div>Try dropping some files here, or click to select files to upload.</div>
         </Dropzone>
+        <aside>
+          <h2>Dropped files</h2>
+            {this.state.files.map((f: any) => <img src={f.preview}/>)}
+            </aside>
         <br/>
        </div>
     )

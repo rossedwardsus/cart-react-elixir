@@ -14,7 +14,7 @@ var moment = require('moment');
 
 var Dropzone = require('react-dropzone');
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
-//import request from 'superagent';
+var request = require('superagent');
 
 
 //const onChange = (dateString, { dateMoment, timestamp }) => {
@@ -171,13 +171,13 @@ export default class EventDetailsPhoto extends React.Component<any, any> {
   }
 
   onDrop(acceptedFiles: any){
-        /*var req = request.post('/api/v_alpha/signature/upload');
+        let req = request.post('/api/upload');
         acceptedFiles.forEach((file: any)=> {
             //alert(file.name);
             req.attach("file", file);
         });
         req.field("event_id", 123545);
-        req.end((response: any) => {alert(JSON.stringify(response))});*/
+        req.end((response: any) => {alert(JSON.stringify(response))});
   }
 
   changeCode(){
@@ -278,7 +278,7 @@ export default class EventDetailsPhoto extends React.Component<any, any> {
             <label className="col-sm-2 control-label"></label>
             <div className="col-sm-5">
                 <Dropzone onDrop={this.onDrop}>
-                  <div>Try dropping some files here, or click to select files to upload.</div>
+                  <div>Try dropping some files here, or click to select files to </div>
                 </Dropzone>
             </div>
           </div>

@@ -82,6 +82,8 @@ class GuestNameEmailHostMessage extends React.Component<any, any> {
             <div className="row">      
                   <br/>
                   <br/>
+                  Please provide with your name so we can personalize your scone.  And email so we can send you a confirmation.
+                  <br/>
                   <br/>
                   <form className="form-inline">
                     <div className="form-group">
@@ -98,11 +100,6 @@ class GuestNameEmailHostMessage extends React.Component<any, any> {
                   </form>
                   <br/>
                   <br/>
-                  <form className="form-inline">
-                    <div className="form-group">
-                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Message"/>
-                    </div>
-                  </form>
                   <br/>
                   <br/>
                   <button>Complete Order</button>

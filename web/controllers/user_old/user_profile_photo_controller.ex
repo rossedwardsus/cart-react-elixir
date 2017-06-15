@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserProfilePhotoController do
+defmodule Sconely.UserProfilePhotoController do
   use SconeHomeElixir.Web, :controller
 
   import Mogrify
@@ -14,12 +14,19 @@ defmodule SconeHomeElixir.UserProfilePhotoController do
     
   end
 
-  #def create(conn, %{"profile_photo" => user_params}) do
-  def create(conn, %{"userprofile" => user_params}) do
+  #def create(conn, %{"event_id" => event_id, "profile_photo" => user_params}) do
+  def create(conn, %{"event_id" => event_id, "file" => user_params}) do
+
+    IO.inspect(event_id)
   
   	#Userprofile.store()
-  	SconeHomeElixir.Userprofile.store(user_params)
+  	Sconely.Userprofile.store({user_params, %{id: 1}})
   	
+
+
+
+
+
   	
   	#File.cp!(user_params.path, System.cwd() <> "/uploads/test.jpg")
   	#open(System.cwd() <> "/uploads/test.jpg") |> resize("10x10") |> save(in_place: true)

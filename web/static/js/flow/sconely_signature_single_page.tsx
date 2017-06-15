@@ -42,7 +42,8 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
         code: 0,
         delivery_time: "",
         image_uploaded: "",
-        //startDate: moment()
+        //startDate: moment(),
+        files: []
 
     };
 
