@@ -4,6 +4,7 @@ import { Link, browserHistory } from 'react-router'
 import {connect} from 'react-redux';
 
 import {getMenuItems} from '../actions/menu.ts';
+import {addGuestCartItem} from '../actions/sconely_signature_guest.ts';
 
 class GuestMenu extends React.Component<any, any> {
   //props: Props;
@@ -31,7 +32,7 @@ class GuestMenu extends React.Component<any, any> {
     };
   }
 
-   showItem(item_id: any){
+  showItem(item_id: any){
 
       //alert(item_id);
 
@@ -51,6 +52,13 @@ class GuestMenu extends React.Component<any, any> {
       }.bind(this));
 
       $('#myModal').modal('show');
+
+  }
+
+  addGuestCartItem(){
+
+    $('#myModal').modal('hide');
+    this.props.addGuestCartItem("item_id");
 
   }
 
@@ -108,7 +116,7 @@ class GuestMenu extends React.Component<any, any> {
                               <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
-                                    <button className={this.state.add_cart_item_button_classname}  type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                    <button className={this.state.add_cart_item_button_classname}  onClick={() => this.addGuestCartItem()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
                                   </div>
                                 </div>
                               </form>
@@ -143,9 +151,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     getMenuItems: () => {
       dispatch(getMenuItems());
     },
-    //addCartItem: (item_id: any, item_type: any, quantity: any) => {
-    //  dispatch(addCartItem(item_id, item_type, quantity));
-    //},
+    addGuestCartItem: (item_id: any) => {
+      dispatch(addGuestCartItem(item_id));
+    },
     //cartValidated: () => {
     //  dispatch(cartValidated());
     //},

@@ -47,6 +47,7 @@ import User from "./user";
 //import SconelySocial from "./sconely_social_single_page";*/
 import SconelySignatureGuestEvent from "./sconely_signature_guest/event.tsx";
 import SconelySignatureGuestMenuItems from "./sconely_signature_guest/menu_items.tsx";
+import SconelySignatureGuestNameEmailHostMessage from "./sconely_signature_guest/name_email_host_message.tsx";
 
 
 //import SconelySocialEventDetails from "./sconely_social_event_details";
@@ -182,6 +183,7 @@ const Root = () => (
         <Route path="/order/signature" component={SconelySignatureSinglePage} />
         <Route path="/order/:order_id/guest/event" component={SconelySignatureGuestEvent} />
         <Route path="/order/:order_id/guest/menu" component={SconelySignatureGuestMenuItems} />
+        <Route path="/order/:order_id/guest/name_email_host_message" component={SconelySignatureGuestNameEmailHostMessage} />
         <Route path="/:name" component={YoursRedirect} />                
       </Route>
     </Router>

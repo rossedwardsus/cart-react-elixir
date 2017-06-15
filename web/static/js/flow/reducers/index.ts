@@ -19,6 +19,7 @@ import deliveryAddress from './order_delivery_address.ts';
 import order_validations from './order_validated.ts';
 import user_payment_methods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
+import SconelySignatureGuest from './sconely_signature_guest.ts';
 
 export default combineReducers({
   session,
@@ -34,5 +35,6 @@ export default combineReducers({
   delivery_address: deliveryAddress,
   order_validations,
   user_payment_methods,
+  SconelySignatureGuest,
   routing: routerReducer
 })

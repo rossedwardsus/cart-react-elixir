@@ -1,11 +1,11 @@
-// @flow
-
 import * as React from 'react'
 
 import { Link, browserHistory } from 'react-router';
+import {connect} from 'react-redux';
+
 //import MenuItems from './menu_items';
 
-export default class SconelySignatureGuest extends React.Component<any, any> {
+class GuestNameEmailHostMessage extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -83,39 +83,66 @@ export default class SconelySignatureGuest extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
+                  <form className="form-inline">
+                    <div className="form-group">
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                    </div>
+                    <div className="form-group">
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                    </div>
+                  </form>
+                  <form className="form-inline">
+                    <div className="form-group">
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
+                    </div>
+                  </form>
+                  <br/>
+                  <br/>
+                  <form className="form-inline">
+                    <div className="form-group">
+                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Message"/>
+                    </div>
+                  </form>
+                  <br/>
+                  <br/>
+                  <button>Complete Order</button>
                   <br/>
                   <br/>
                   <br/>
-                  <br/>
-                  <br/>
-                  <br/>
-                  <br/>
-                  
-                  {this.state.menu_items.map(function(item: any){
-                    return(<div className="col-xs-12 col-md-3">
-                              <div className="thumbnail" >
-                                <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.showItem(item.item_id)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
-                                <div className="caption">
-                                  <h3>Strawberry Scone1</h3>
-                                  <p>
-                                    <div>
-                                      <select onChange={this.props.addItemToCart} id={item.item_id}>
-                                        <option value=""></option>
-                                        <option value="12">12</option>
-                                        <option value="24">24</option>
-                                      </select>
-                                      <br/>
-                                    </div>
-                                  </p>
-                                </div>
-                                 <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                    Launch demo modal
-                                 </button>
-                              </div>
-                          </div>)
-                  }.bind(this))}
+                
             </div>
         </div>
     )
   }
 }
+
+function mapStateToProps(state: any) {
+  console.log("delivery addresses component/state" + JSON.stringify(state));
+  return {
+   //order: state.default.order
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    //getUserDeliveryAddresses: () => {
+    //  console.log("e.target.value");
+    //  dispatch(getUserDeliveryAddresses());
+    //},
+    //setContactPhone: (e: any) => {
+    //  console.log(e.target.value);
+      //dispatch(setContactPhone(e.target.value));
+    //},
+   
+  }
+}
+
+const GuestNameEmailHostMessage1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GuestNameEmailHostMessage)
+
+export default GuestNameEmailHostMessage1;
