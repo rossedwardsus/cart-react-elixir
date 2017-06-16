@@ -66,23 +66,31 @@ class GuestNameEmailHostMessage extends React.Component<any, any> {
   render(){
     return (
       <div>
-            <nav className="navbar navbar-default navbar-fixed-top">
-                <div className="container-fluid">
-                  <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                      <span className="sr-only">Toggle navigation</span>
-                      <span className="icon-bar"></span>
-                      <span className="icon-bar"></span>
-                      <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                  </div>
-                </div>
-            </nav>
+            <nav className="navbar navbar-default" style={{border: 1}}>
+                      <div className="container-fluid">
+                        <div className="navbar-header">
+                          <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                             <span className="sr-only">Toggle navigation</span>
+                             <span className="icon-bar"></span>
+                             <span className="icon-bar"></span>
+                             <span className="icon-bar"></span>
+                          </button>
+                          <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="/images/logo/LogoJune5d.jpg"/></a>
+                        </div>
+                        <div className="collapse navbar-collapse" id="navigationbar">
+                          <ul id="navbar" className="nav navbar-nav navbar-right">
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/register">Signup</Link></li>
+                            <li><Link to="/register">About Us</Link></li>
+                            <li><Link to="/register">Faq</Link></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>
             <div className="row">      
                   <br/>
                   <br/>
-                  Please provide with your name so we can personalize your scone.  And email so we can send you a confirmation.
+                  Please provide us with your name so we can personalize your scone.
                   <br/>
                   <br/>
                   <form className="form-inline">
@@ -93,13 +101,6 @@ class GuestNameEmailHostMessage extends React.Component<any, any> {
                       <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name"/>
                     </div>
                   </form>
-                  <form className="form-inline">
-                    <div className="form-group">
-                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
-                    </div>
-                  </form>
-                  <br/>
-                  <br/>
                   <br/>
                   <br/>
                   <button>Complete Order</button>

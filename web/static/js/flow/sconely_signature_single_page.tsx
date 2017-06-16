@@ -1,14 +1,17 @@
 import * as React from 'react'
 
+import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import EventDetails from './sconely_signature_event_details.tsx';
 import EventDetailsAddress from './sconely_signature_event_details_address.tsx';
-import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
+//import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
 import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx';
 import EventDetailsName from './sconely_signature_event_details_name.tsx';
 import EventDetailsCode from './sconely_signature_event_details_code.tsx';
 import Guests from './sconely_signature_guests.tsx';
-//import AdditionalItems from './sconely_signature_additional_items.tsx';
+import AdditionalItems from './sconely_signature_additional_items.tsx';
 import PaymentMethod from './payment_method.tsx';
+
+import {setEventName} from './actions/sconely_signature.ts';
 
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -173,11 +176,12 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                               </div>
               </nav>
               <div className="row">
-                <div className="hidden-xs col-md-4">
+                <div className="hidden-xs col-md-3">
                     <br/>
                     <br/>
                     <br/>
                     <br/>
+                    <SidebarCart/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -191,35 +195,38 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                     <Link to="/public/menu">Photo</Link>
                     
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-8">
                   <br/>
                   <br/>
                   <br/>
-                  <Link to="/order/signature">Order Details</Link>
+                  <Link to="/order/12345/signature">Order Details</Link>
                   <br/>
-                  <Link to="/order/signature/guests">Order Guests</Link>
+                  <Link to="/order/12345/signature/items">Additional Items</Link>
                   <br/>
-                  <EventDetailsName/>
-                  <br/>
-                  <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-10">
-                        12<input type="range" id="weight" min="12" max="500" step="1" value={this.state.values} style={{width: "200px", height: "10px"}}/>100
-                      </div>
-                    </div>
-                  </form>
-                  <EventDetailsAddress/>
+                  <Link to="/order/12345/signature/guests">Order Guests</Link>
                   <br/>
                   <br/>
-                  <EventDetailsDateTime/>
+                  Event Details
+                  <br/>
+                  <EventDetailsName order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)}/>
                   <br/>
                   Invite message
                   <br/>
-                  <PaymentMethod/>
+                  <EventDetailsCode order={this.props.order}/>
                   <br/>
-                  <EventDetailsCode/>
                   <br/>
-                  <Guests/>
+                  Delivery
+                  <br/>
+                  <EventDetailsAddress order={this.props.order}/>
+                  <br/>
+                  <br/>
+                  <EventDetailsDateTime order={this.props.order}/>
+                  <br/>
+                  <AdditionalItems menu_items={this.props.menu_items}/>
+                  <br/>
+                  <PaymentMethod order={this.props.order}/>
+                  <br/>
+                  <br/>
                   <br/>
                   <a className="btn dtn-default">Save</a><a className="btn dtn-default">Preview</a>
                 </div>
@@ -230,8 +237,9 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("checkout state" + JSON.stringify(state));
+  console.log("signature state" + JSON.stringify(state));
   return {
+   menu_items: state.MenuItems,
    session: state.session,
    order_validations: state.order_validations,
    order: state.Order,
@@ -250,12 +258,44 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    //setDate: (e: any) => {
+    setEventName: (e: any) => {
+        dispatch(setEventName(e.target.value));
+
+    },
+    setDeliveryAddressStreet1: (e: any) => {
+
+
+    },
+    setDeliveryAddressStreet2: (e: any) => {
+
+
+    },
+    setDeliveryAddressCity: (e: any) => {
+
+
+    },
+    setDeliveryAddressState: (e: any) => {
+
+
+    },
+    setDeliveryAddressZipcode: (e: any) => {
+
+
+    },
+    setDate: (e: any) => {
     //  dispatch(setDate(e))
-    //},
-    //setTime: (e: any) => {
+    },
+    setTime: (e: any) => {
     //  dispatch(setTime(e.target.value))
-    //},
+    },
+    setCode: (e: any) => {
+
+
+    },
+    setPayment: (e: any) => {
+
+
+    },
   }
 }
 

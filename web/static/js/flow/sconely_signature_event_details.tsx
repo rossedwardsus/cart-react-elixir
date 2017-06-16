@@ -128,14 +128,14 @@ export default class EventDetails extends React.Component<any, any> {
 
     var orders = JSON.parse(localStorage.getItem("user")).orders;    
 
-    function findOrder(order: any) { 
+    //function findOrder(order: any) { 
             //alert(order.order_id);
-            return order.order_id === 12345;
-    };
+    //        return order.order_id === 12345;
+    //};
 
-    var order_type = orders.find(findOrder).order_type; 
+    //var order_type = orders.find(findOrder).order_type; 
     //alert(order_type);
-    this.setState({order_type: order_type});
+    //this.setState({order_type: order_type});
 
   }
 

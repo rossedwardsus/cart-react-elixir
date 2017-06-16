@@ -126,7 +126,7 @@ export default class EventDetailsEventAddress extends React.Component<any, any> 
 
   componentDidMount(){
 
-    var orders = JSON.parse(localStorage.getItem("user")).orders;    
+    /*var orders = JSON.parse(localStorage.getItem("user")).orders;    
 
     function findOrder(order: any) { 
             //alert(order.order_id);
@@ -135,7 +135,7 @@ export default class EventDetailsEventAddress extends React.Component<any, any> 
 
     var order_type = orders.find(findOrder).order_type; 
     //alert(order_type);
-    this.setState({order_type: order_type});
+    this.setState({order_type: order_type});*/
 
   }
 

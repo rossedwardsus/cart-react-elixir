@@ -4,7 +4,8 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-//import {startOrder} from './actions/order';
+
+import {createOrder} from '../actions/order.ts';
 import {List, Map} from 'immutable';
 
 import UserOrders from './user_orders.tsx';
@@ -169,70 +170,16 @@ class UserHomePage extends React.Component<any, any> {
          
     }else if(order_type == "sconely_signature"){
 
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //var orders = JSON.parse(localStorage.getItem("user")).orders;
         //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.context.router.push('/order/12345/signature');
+        //this.context.router.push('/order/12345/signature');
+
+        this.props.createOrder("sconely_signature");
         
          
     }
-
-
-    /*const client = GQLClient('http://localhost:3000', {
-      // anything passed here is merged with 
-      // the options passed to fetch() 
-      credentials: true,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    });*/
-
-    /*client.mutate(`
-      mutation ($id: RecordID!, $name: String!) {
-        updateUser(input: {id: $id, name: $name}) {
-          user {
-            id
-            name
-          }
-        }
-      }
-    `, { id: 1234, name: 'Danny' }).then((result) => {
-      console.log(result.data.user);
-      // => { id: 1234, name: 'Danny' } 
-    });*/
-
-
-
-    /*var query = `
-      query q (id: String!) {
-        user(id: $id) {
-          id,
-          email,
-          name
-        }
-      }
-    `
-    var queryVars = {
-      id: 'abcdef'
-    }
-    var opts = {
-      // custom fetch options 
-    }*/
-     
-    /**
-     * @param  {Query} query graphql query
-     * @param  {Object} [vars]  graphql query args, optional
-     * @param  {Object} [opts]  fetch options, optional
-     */
-    /*fetch(query, queryVars, opts).then(function (results) {
-      if (results.errors) {
-        //... 
-        return
-      }
-      var user = result.data.user
-      //... 
-    })*/
 
 
   
@@ -313,12 +260,12 @@ class UserHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <Link to="/public/menu">Social</Link>-<Link to="/order/signature">Signature</Link>
+                                  <Link to="/public/menu">Social</Link>-<a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                                   <br/>
                                   <div>
-                                    Your Orders
-                                    <br/>
-                                    <UserOrders />
+                                  Your Orders
+                                  <br/>
+                                  <UserOrders />
                                   </div>
                                   <br/>
                                   <br/>
@@ -349,7 +296,7 @@ function mapStateToProps(state: any) {
   console.log("user home page component/state" + JSON.stringify(state));
   return {
    name: state.name
-   //menu_items: getPublicMenu
+   //createOrder: createOrder
    //menu_items: dispatch()
   };
 }
@@ -369,10 +316,10 @@ function mapDispatchToProps(dispatch: any) {
       //console.log(e.target.value);
       //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
     },
-    //setContactPhone: (e: any) => {
+    createOrder: (order_type: any) => {
     //  console.log(e.target.value);
-      //dispatch(setContactPhone(e.target.value));
-    //},
+      dispatch(createOrder(order_type, ""));
+    },
    
   }
 }

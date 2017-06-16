@@ -52,19 +52,29 @@ export function createOrder(order_type: any, name: any) {
       //  order_type,
       //  name
       //}
-      dispatch(createOrder1(order_type, name));
+      dispatch(createOrder1(order_type, name, 123));
       //dispatch(getMenuItems(order_type));
-      dispatch(push("/order/menu"));
+      
+      if(order_type == "sconely_signature"){
+          
+          dispatch(push("/order/1/signature"));
+
+      }else{
+
+          dispatch(push("/order/menu"));
+
+      }
     }
   //}
 }
 
-export function createOrder1(order_type: any, name: any) {
+export function createOrder1(order_type: any, name: any, order_id: any) {
   console.log("create order action " + order_type);
   return {
     type: CREATE_ORDER,
     order_type,
-    name
+    name,
+    order_id
   }
 }
 

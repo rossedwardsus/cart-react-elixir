@@ -8,6 +8,7 @@ var moment = require('moment');
 //import { DateField, Calendar } from 'react-date-picker';
 //import Autocomplete from 'react-google-autocomplete';
 
+import { connect } from 'react-redux';
 
 //<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
 
@@ -32,7 +33,7 @@ var request = require('superagent');
     this.age++;
   }, 1000);*/
 
-export default class EventDetailsAddress extends React.Component<any, any> {
+class EventDetailsName extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -128,7 +129,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
 
   componentDidMount(){
 
-    var orders = JSON.parse(localStorage.getItem("user")).orders;    
+    /*var orders = JSON.parse(localStorage.getItem("user")).orders;    
 
     function findOrder(order: any) { 
             //alert(order.order_id);
@@ -137,7 +138,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
 
     var order_type = orders.find(findOrder).order_type; 
     //alert(order_type);
-    this.setState({order_type: order_type});
+    this.setState({order_type: order_type});*/
 
   }
 
@@ -147,6 +148,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
 
     //this.setState({changed: true});
 
+    this.props.setEventName(e);
     this.setState({event_name: e.target.value})
 
   }
@@ -173,6 +175,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
   }
 
   onDrop(acceptedFiles: any){
+        
         let req = request.post('/api/upload');
         let that = this;
         //this.setState({files: acceptedFiles});
@@ -186,7 +189,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
             //this.setState({files: acceptedFiles});
 
         });
-        req.field("event_id", 12345);
+        req.field("order_id", this.props.order.order_id);
         req.end((response: any) => {
             //console.log(JSON.stringify(response))
             this.setState({files: acceptedFiles});
@@ -249,21 +252,68 @@ export default class EventDetailsAddress extends React.Component<any, any> {
         </form>
         <form className="form-horizontal">
             <div className="form-group">
-              <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+              <div className="col-sm-10">
+                Guest Count<input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
         </form>
         <br/>
         <Dropzone onDrop={(files: any) => this.onDrop(files)}>
-            <div>Try dropping some files here, or click to select files to upload.</div>
+            <div style={{height:"25%", width:"10%"}}>Drop some files here, or click</div>
         </Dropzone>
         <aside>
           <h2>Dropped files</h2>
             {this.state.files.map((f: any) => <img src={f.preview}/>)}
             </aside>
         <br/>
+        <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-10">
+                        12<input type="range" id="weight" min="12" max="500" step="1" value={this.state.values} style={{width: "200px", height: "10px"}}/>100
+                      </div>
+                    </div>
+                  </form>
        </div>
     )
   }
 }
+
+function mapStateToProps(state: any) {
+  console.log("checkout state" + JSON.stringify(state));
+  return {
+   session: state.session,
+   order_validations: state.order_validations,
+   order: state.Order,
+   order_delivery_address: state.delivery_address,
+   order_contact: state.contact,
+   order_name: state.name,
+   order_cart_items: state.cart.cart_items,
+   order_datetime: state.OrderDatetime,
+   order_payment_method: state.OrderPayment,
+
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    //setDate: (e: any) => {
+    //  dispatch(setDate(e))
+    //},
+    //setTime: (e: any) => {
+    //  dispatch(setTime(e.target.value))
+    //},
+  }
+}
+
+
+//export default connect(mapStateToProps, mapDispatchToProps)(Order);
+
+const EventDetailsName1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EventDetailsName)
+
+export default EventDetailsName;

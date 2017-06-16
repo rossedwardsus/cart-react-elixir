@@ -31,8 +31,8 @@ defmodule Sconely.Userprofile do
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
      #"uploads/#{scope.id}"
-     #"uploads/"
-     "priv/static/uploads"
+     "uploads/"
+     #"priv/static/uploads"
   end
 
   # Provide a default URL if there hasn't been a file uploaded

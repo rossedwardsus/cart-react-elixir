@@ -15,12 +15,12 @@ defmodule Sconely.UserProfilePhotoController do
   end
 
   #def create(conn, %{"event_id" => event_id, "profile_photo" => user_params}) do
-  def create(conn, %{"event_id" => event_id, "file" => user_params}) do
+  def create(conn, %{"order_id" => order_id, "file" => user_params}) do
 
-    IO.inspect(event_id)
+    IO.inspect(order_id)
   
   	#Userprofile.store()
-  	Sconely.Userprofile.store({user_params, %{id: 1}})
+  	Sconely.Userprofile.store({user_params, %{id: order_id}})
   	
 
 

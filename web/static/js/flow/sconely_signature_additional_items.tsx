@@ -219,78 +219,106 @@ export default class AdditionalItems extends React.Component<any, any> {
 
   }
 
+   showItem(item_id: any){
+
+      //alert(item_id);
+
+      this.setState({selected_item_id: item_id});
+
+      this.props.menu_items.menu_items.map(function(item: any){
+
+          if(item.item_id === item_id){
+
+              this.setState({selected_item_title: item.title});
+              this.setState({selected_item_story: item.story});
+              this.setState({selected_item_ingredients: item.ingredients});
+
+          }
+
+
+      }.bind(this));
+
+      $('#myModal').modal('show');
+
+  }
+
+
   render(): JSX.Element {
     return (
       <div>
         <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Event Name</label>
-            <div className="col-sm-10">
-              <input type="email" className="form-control" id="inputEmail3" placeholder="Event Name"/>
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Date Time</label>
-            <label className="col-sm-2 control-label">
-                <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
-            </label>
-            <label className="col-sm-2 control-label">Time<input type="radio" name="time"/>
-            </label>
-            <div className="col-sm-5">
-                <select>
-                    <option></option>
-                    <option>9-11</option>
-                    <option>3-5</option>
-                </select>
-                <br/>
-            </div>
-            <br/>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Delivery Address</label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                <select>
-                    <option></option>
-                    <option>Home</option>
-                    <option>Office</option>
-                </select>
-                <br/>
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="col-sm-2 control-label"></label>
-            <label className="col-sm-2 control-label"><input type="radio" name="address"/></label>
-            <div className="col-sm-5">
-                
-            </div>
-          </div>
-        </form>
-        <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Image</label>
-            <label className="col-sm-2 control-label"></label>
-            <div className="col-sm-5">
-                <Dropzone onDrop={this.onDrop}>
-                  <div>Try dropping some files here, or click to select files to upload.</div>
-                </Dropzone>
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <label className="col-sm-2 control-label">Event Code:</label>
-            <div className="col-sm-5">
-              <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
-            </div>
-          </div>
-        </form>
+        {this.props.menu_items.menu_items.map(function(item: any, index: any){
+
+                console.log(item);
+            
+
+                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
+
+                //this.setState({image_id: image_id});
+
+                //console.log("image id" + image_id);
+
+                //console.log("image id " + this.state["image_src_" + item.item_id]);
+
+                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+
+                return(
+                        <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
+                              <img id="1" onClick={() => this.showItem(item.item_id)}  src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                          <br/>    
+                          <br/>
+                          <b>{item.title}</b> / {item.description}
+                          <br/>
+                          <br/>
+                          <br/>
+                        </div>
+              );
+            }.bind(this))}
+             <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
+                        </div>
+                        <div className="modal-body">
+                            {this.state.selected_item_story}
+                            <br/>
+                            <br/>
+                            Ingredients: {this.state.selected_item_ingredients}
+                            <br/>
+                            <br/>
+                            $60/Mini - $54
+                        </div>
+                        <div className="modal-footer">
+                          <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-md-3">
+                                <select className="form-control" value={this.state.selected_item_quantity}  style={{height: 35, width: 120}}>
+                                  <option value="">Select Quantity</option> 
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                  <option value="9">9</option>
+                                  <option value="10">10</option>
+                                  <option value="11">11</option>
+                                  <option value="12">12</option>
+                                </select>
+                              </div>
+                              <div className="col-md-3">
+                                <button className={this.state.add_cart_item_button_classname}  type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
         <br/>
        </div>
     )

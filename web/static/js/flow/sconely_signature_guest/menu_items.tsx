@@ -65,65 +65,101 @@ class GuestMenu extends React.Component<any, any> {
   render(): JSX.Element {
     return (
             <div>
-              menu items
-              <br/>
-              <br/>
-               {this.props.menu_items.menu_items.map(function(item: any, index: any){
+              <nav className="navbar navbar-default" style={{border: 1}}>
+                      <div className="container-fluid">
+                        <div className="navbar-header">
+                          <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                             <span className="sr-only">Toggle navigation</span>
+                             <span className="icon-bar"></span>
+                             <span className="icon-bar"></span>
+                             <span className="icon-bar"></span>
+                          </button>
+                          <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+                        </div>
+                        <div className="collapse navbar-collapse" id="navigationbar">
+                          <ul id="navbar" className="nav navbar-nav navbar-right">
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/register">Signup</Link></li>
+                            <li><Link to="/register">About Us</Link></li>
+                            <li><Link to="/register">Faq</Link></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>
+              <div className="row">
+                    <div className="hidden-xs col-md-3">
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                    </div>
+                    <div className="col-xs-12 col-md-9">
+                      <br/>
+                    
+                      <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
+                      <br/>
+                      Ross has invited you to choose a scone for an event on july 1st.  Select your prefered scone for "my event".
+                      <br/>
+                      <br/>
+                       {this.props.menu_items.menu_items.map(function(item: any, index: any){
 
-                  console.log(item);
-              
+                          console.log(item);
+                      
 
-                  //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
+                          //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
 
-                  //this.setState({image_id: image_id});
+                          //this.setState({image_id: image_id});
 
-                  //console.log("image id" + image_id);
+                          //console.log("image id" + image_id);
 
-                  //console.log("image id " + this.state["image_src_" + item.item_id]);
+                          //console.log("image id " + this.state["image_src_" + item.item_id]);
 
-                  //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+                          //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
-                  return(
-                          <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                <img id="1" onClick={() => this.showItem(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
-                            <br/>    
-                            <br/>
-                            <b>{item.title}</b> / {item.description}
-                            <br/>
-                            <br/>
-                            <br/>
-                          </div>
-                );
-              }.bind(this))}
+                          return(
+                                  <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
+                                        <img id="1" onClick={() => this.showItem(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                    <br/>    
+                                    <br/>
+                                    <b>{item.title}</b> / {item.description}
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                  </div>
+                        );
+                      }.bind(this))}
 
-               <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
-                        <div className="modal-dialog" role="document">
-                          <div className="modal-content">
-                            <div className="modal-header">
-                              <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
-                            </div>
-                            <div className="modal-body">
-                                {this.state.selected_item_story}
-                                <br/>
-                                <br/>
-                                Ingredients: {this.state.selected_item_ingredients}
-                                <br/>
-                                <br/>
-                                $60/Mini - $54
-                            </div>
-                            <div className="modal-footer">
-                              <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-3">
-                                    <button className={this.state.add_cart_item_button_classname}  onClick={() => this.addGuestCartItem()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
+                       <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
+                                <div className="modal-dialog" role="document">
+                                  <div className="modal-content">
+                                    <div className="modal-header">
+                                      <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
+                                    </div>
+                                    <div className="modal-body">
+                                        {this.state.selected_item_story}
+                                        <br/>
+                                        <br/>
+                                        Ingredients: {this.state.selected_item_ingredients}
+                                        <br/>
+                                        <br/>
+                                        $60/Mini - $54
+                                    </div>
+                                    <div className="modal-footer">
+                                      <form className="form-horizontal">
+                                        <div className="form-group">
+                                          <div className="col-md-3">
+                                            <button className={this.state.add_cart_item_button_classname}  onClick={() => this.addGuestCartItem()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
                                   </div>
                                 </div>
-                              </form>
-                            </div>
                           </div>
-                        </div>
-              </div>
+                      </div>
+                    </div>
             </div>
     )
   }
