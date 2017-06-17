@@ -1,11 +1,23 @@
-import {SET_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
 
-export function setDeliveryAddressStreet1(value: any) {
+export function setDeliveryAddressStreet1(value: any, order_id: any) {
   //alert("addCartItem from redux");
-  return {
-    type: SET_DELIVERY_ADDRESS_STREET1,
-    value
-  }
+  //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+  //else SET_DELIVERY_ADDRESS_STREET1
+
+  //if("user" == "guest"){
+  //    return {
+  //      type: SET_DELIVERY_ADDRESS_STREET1,
+  //      value
+  //    }
+  //}else{
+      return {
+        type: SET_USER_ORDER_DELIVERY_ADDRESS_STREET1,
+        value,
+        order_id
+      }
+  //}
+
 }
 
 

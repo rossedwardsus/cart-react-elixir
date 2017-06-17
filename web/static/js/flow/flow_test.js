@@ -179,7 +179,7 @@ const Root = () => (
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
-        <Route path="/user/:order_id/order" component={UserOrder} />
+        <Route path="/user/order/:order_id" component={UserOrder} />
         <Route path="/order/:order_id/signature/guests" component={Guests} />
         <Route path="/order/:order_id/signature" component={SconelySignatureSinglePage} />
         <Route path="/order/:order_id/guest/event" component={SconelySignatureGuestEvent} />

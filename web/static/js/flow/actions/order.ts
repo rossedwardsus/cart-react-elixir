@@ -52,6 +52,10 @@ export function createOrder(order_type: any, name: any) {
       //  order_type,
       //  name
       //}
+
+      //if user if logged in then dispatch(user_orders)
+      //else dispatch(orders)
+
       dispatch(createOrder1(order_type, name, 123));
       //dispatch(getMenuItems(order_type));
       

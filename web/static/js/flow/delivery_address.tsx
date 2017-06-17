@@ -248,7 +248,8 @@ class DeliveryAddress extends React.Component<any, any> {
                                     </select>
                                   </div>
                                 </div>
-                              </form></div>
+                              </form>
+                          </div>
 
     }
    

@@ -4,7 +4,7 @@ import { Link, browserHistory } from 'react-router'
 import {connect} from 'react-redux';
 
 import {getMenuItems} from '../actions/menu.ts';
-import {addGuestCartItem} from '../actions/sconely_signature_guest.ts';
+import {addGuestCartItem} from '../actions/guest_response.ts';
 
 class GuestMenu extends React.Component<any, any> {
   //props: Props;

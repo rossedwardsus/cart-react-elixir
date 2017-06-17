@@ -268,8 +268,15 @@ class UserOrders extends React.Component<any, any> {
 
     return (
               <div>
-                    
                     Your Orders1
+                    <br/>
+                    <br/>
+                    {this.props.UserOrders.orders.map(function(order: any){
+
+                        return(<div><Link to={"/user/order/" + order.order_id}>{order.order_type}</Link></div>);
+
+                    })};
+                    
                     
               </div>
     )

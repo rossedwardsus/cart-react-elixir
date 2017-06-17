@@ -2,16 +2,18 @@ import * as React from 'react'
 
 import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import EventDetails from './sconely_signature_event_details.tsx';
-import EventDetailsAddress from './sconely_signature_event_details_address.tsx';
+import DeliveryAddress from './sconely_signature_delivery_address.tsx';
 //import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
 import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx';
-import EventDetailsName from './sconely_signature_event_details_name.tsx';
-import EventDetailsCode from './sconely_signature_event_details_code.tsx';
+//import EventDetailsName from './sconely_signature_event_details_name.tsx';
+//import EventDetailsCode from './sconely_signature_event_details_code.tsx';
 import Guests from './sconely_signature_guests.tsx';
 import AdditionalItems from './sconely_signature_additional_items.tsx';
 import PaymentMethod from './payment_method.tsx';
 
-import {setEventName} from './actions/sconely_signature.ts';
+import {setEventName, setCode, setGuestCount} from './actions/order_event_details.ts';
+import {setDeliveryAddressStreet1} from './actions/order_delivery_address.ts';
+import {saveOrder} from './actions/user_order.ts';
 
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -33,7 +35,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
 
     this.state = {
 
-        order_id: this.props.params.order_id,
+        //order_id: this.props.params.order_id,
         order_type: "",
         host_id: "",
         event_name: "",
@@ -181,7 +183,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart/>
+                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -208,27 +210,28 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/>
                   Event Details
                   <br/>
-                  <EventDetailsName order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)}/>
+                  <EventDetails order={this.props.order} order_details={this.props.order_details} setEventName={(e: any) =>this.props.setEventName(e)} setGuestCount={(e: any) =>this.props.setGuestCount(e)} setCode={(e: any) =>this.props.setCode(e)}/>
                   <br/>
                   Invite message
                   <br/>
-                  <EventDetailsCode order={this.props.order}/>
                   <br/>
                   <br/>
                   Delivery
                   <br/>
-                  <EventDetailsAddress order={this.props.order}/>
+                  <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)}/>
                   <br/>
                   <br/>
-                  <EventDetailsDateTime order={this.props.order}/>
+                  <EventDetailsDateTime order={this.props.Order}/>
                   <br/>
                   <AdditionalItems menu_items={this.props.menu_items}/>
+                  <br/>
+                  <br/>
                   <br/>
                   <PaymentMethod order={this.props.order}/>
                   <br/>
                   <br/>
                   <br/>
-                  <a className="btn dtn-default">Save</a><a className="btn dtn-default">Preview</a>
+                  <a onClick={() => this.props.saveOrder()} className="btn dtn-default">Save</a><a className="btn dtn-default">Preview</a>
                 </div>
               </div>
           </div>
@@ -243,12 +246,13 @@ function mapStateToProps(state: any) {
    session: state.session,
    order_validations: state.order_validations,
    order: state.Order,
+   order_details: state.OrderEventDetails,
    order_delivery_address: state.delivery_address,
-   order_contact: state.contact,
-   order_name: state.name,
-   order_cart_items: state.cart.cart_items,
-   order_datetime: state.OrderDatetime,
-   order_payment_method: state.OrderPayment,
+   //order_contact: state.contact,
+   //order_name: state.name,
+   //order_cart_items: state.cart.cart_items,
+   //order_datetime: state.OrderDatetime,
+   //order_payment_method: state.OrderPayment,
 
    //menu_items: getPublicMenu
    //menu_items: dispatch()
@@ -259,11 +263,22 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     setEventName: (e: any) => {
-        dispatch(setEventName(e.target.value));
+        dispatch(setEventName(e.target.value, 1));
+
+    },
+    setCode: (e: any) => {
+
+        dispatch(setCode(e.target.value, 1));
+
+    },
+    setGuestCount: (e: any) => {
+
+        dispatch(setGuestCount(e.target.value, 1));
 
     },
     setDeliveryAddressStreet1: (e: any) => {
 
+        dispatch(setDeliveryAddressStreet1(e.target.value, 1));
 
     },
     setDeliveryAddressStreet2: (e: any) => {
@@ -288,14 +303,16 @@ function mapDispatchToProps(dispatch: any) {
     setTime: (e: any) => {
     //  dispatch(setTime(e.target.value))
     },
-    setCode: (e: any) => {
-
-
-    },
+   
     setPayment: (e: any) => {
 
 
     },
+    saveOrder: (e: any) => {
+
+        dispatch(saveOrder(1));
+
+    }
   }
 }
 
@@ -307,5 +324,5 @@ const SconelySignatureSinglePage1 = connect(
   mapDispatchToProps
 )(SconelySignatureSinglePage)
 
-export default SconelySignatureSinglePage1;
+export default SconelySignatureSinglePage;
 

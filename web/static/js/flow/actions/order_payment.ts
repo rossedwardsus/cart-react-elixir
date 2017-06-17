@@ -2,6 +2,7 @@ import {SET_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_PAYMENT_EXPIRY_MO
 
 export function setPaymentNameOnCard(value: any) {
   console.log("addCartItem from redux");
+  //if user is logged u dispatch to user order payment
   return {
     type: SET_PAYMENT_NAME_ON_CARD,
     value

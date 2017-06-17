@@ -32,7 +32,7 @@ var Dropzone = require('react-dropzone');
     this.age++;
   }, 1000);*/
 
-export default class EventDetailsAddress extends React.Component<any, any> {
+export default class EventDetailsDeliveryAddress extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -48,7 +48,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
         order_type: "",
         event_name: "",
         event_datetime: "",
-        event_address_street: "",
+        street1: "",
         event_address_city: "",
         event_address_zipcode: "",
         code: 0,
@@ -58,64 +58,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
 
     
 
-    //load the data from the database if this is not a new event/order
-
-    //if window.event.status == "existing/saved"
-    /*request
-              .post('/api/order/new')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-          
-    });*/
-
-    this.changeEventName = this.changeEventName.bind(this);
-    this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
-    this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.createCode = this.createCode.bind(this);
-    this.changeCode = this.changeCode.bind(this);
-    //this.findOrder = this.findOrder.bind(this);
-
-    //autosave
-    //if event name has been added then start autosaving
-
-    //myTimer;
-    //var myVar = setInterval(
-    //    () => 
-            //get the data from state and upload to server
-            //only update if the data has been changed though
-            //add a flag that updates when they change something
-            
-            //if this.state.changed == true then update
-            //only update event details
-
-            //window.event.event_name == this.state.event_name
-            //window.address == "home"
-            //window.event_date == "date"
-            //window.event_time == "time"
-            //window.custom_code = "custom_code"
-
-            /*request
-              .post('/api/order/new')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-          
-              });*/
-
-            //console.log("hello")
-    //, 10000);
-
-    //myVar;
-    //myTimer;
-
+  
   }
 
   // Yes, I could use an arrow function, I get it.
@@ -180,42 +123,11 @@ export default class EventDetailsAddress extends React.Component<any, any> {
         req.end((response: any) => {alert(JSON.stringify(response))});*/
   }
 
-  changeCode(){
+  changeStreet1(e: any){
 
+      this.setState({street1: e.target.value});
 
-
-  }
-
-  createCode(){
-
-
-
-  }
-
-  onFocus(){
-
-        /*alert();
-
-        //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
-        
-        request
-              .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-                console.log(res);
-          
-              });*/
-
-
-  }
-
-  next(){
-
-    alert("next" + this.state.event_name);
+      this.props.setDeliveryAddressStreet1(e);
 
   }
 
@@ -245,7 +157,7 @@ export default class EventDetailsAddress extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e: any) => this.changeStreet1(e)} value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-3">
                 <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
@@ -253,15 +165,30 @@ export default class EventDetailsAddress extends React.Component<any, any> {
             </div>
         </form>
         <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="City" value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
-              </div>
-              <div className="col-sm-3">
-                <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="State" style={{borderRadius: 0, fontSize: 16}}/>
-              </div>
+          <div className="form-group">
+            <div className="col-sm-3">
+              <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <option>City</option>
+                <option value="los_angeles">Los Angeles</option>
+                <option value="santa_monica">Santa Monica</option>
+              </select>
             </div>
-       </form>
+            <div className="col-sm-3">
+              <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <option>State</option>
+                <option value="ca">CA</option>
+              </select>
+            </div>
+            <div className="col-sm-3">
+              <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <option>Zipcode</option>
+                <option>Free</option>
+                
+              
+              </select>
+            </div>
+          </div>
+        </form>
        </div>
     )
   }

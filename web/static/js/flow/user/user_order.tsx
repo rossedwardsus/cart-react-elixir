@@ -6,6 +6,11 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
+import SconelySignatureSinglePage from '../sconely_signature_single_page.tsx'; 
+
+import {setEventName, setCode, setGuestCount} from '../actions/order_event_details.ts';
+import {setDeliveryAddressStreet1} from '../actions/order_delivery_address.ts';
+import {saveOrder} from '../actions/user_order.ts';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -269,11 +274,89 @@ class UserOrder extends React.Component<any, any> {
     return (
               <div>
                     
-                    Your Orders1
+                    if order type == signature show event details
+                    <br/>
+                    <SconelySignatureSinglePage UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} saveOrder={() => this.props.saveOrder()} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setGuestCount={(e: any) => this.props.setGuestCount(e)} setEventName={(e: any) => this.props.setEventName(e)} m/>
+                    <br/>
+                    else show receipt
                     
               </div>
     )
   }
 }
 
-export default UserOrder;
+function mapStateToProps(state: any) {
+  console.log("user home page component/state" + JSON.stringify(state));
+  return {
+   name: state.name,
+   UserOrders: state.UserOrders,
+   //Order: state.Order,
+   menu_items: state.MenuItems,
+   UserOrderEventDetails: state.UserOrderEventDetails,
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+     setEventName: (e: any) => {
+        dispatch(setEventName(e.target.value, 1));
+
+    },
+    setCode: (e: any) => {
+
+        dispatch(setCode(e.target.value, 1));
+
+    },
+    setGuestCount: (e: any) => {
+
+        dispatch(setGuestCount(e.target.value, 1));
+
+    },
+    setDeliveryAddressStreet1: (e: any) => {
+
+        dispatch(setDeliveryAddressStreet1(e.target.value, 1));
+
+    },
+    setDeliveryAddressStreet2: (e: any) => {
+
+
+    },
+    setDeliveryAddressCity: (e: any) => {
+
+
+    },
+    setDeliveryAddressState: (e: any) => {
+
+
+    },
+    setDeliveryAddressZipcode: (e: any) => {
+
+
+    },
+    setDate: (e: any) => {
+    //  dispatch(setDate(e))
+    },
+    setTime: (e: any) => {
+    //  dispatch(setTime(e.target.value))
+    },
+   
+    setPayment: (e: any) => {
+
+
+    },
+    saveOrder: (e: any) => {
+
+        dispatch(saveOrder(1));
+
+    }
+   
+  }
+}
+
+const UserOrder1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserOrder)
+
+export default UserOrder1;

@@ -1,4 +1,4 @@
-import { LOAD_ORDERS, SAVE_ORDER } from '../constants/actionTypes.ts';
+import { SAVE_ORDER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,18 +20,12 @@ let inititalState: CartState = {
 
 }*/
 
-export default function UserOrders(state: any = {orders: [{order_id: 1, order_type: "signature", saved: true, created_date: "", guest_responses: 0}]}, action: any){
+export default function UserOrders(state: any = {orders: {order_id: 1, saved: true}}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;
 
   switch (action.type) {
-    case LOAD_ORDERS:
-      //alert("CartState " + action.item_id);
-      console.log("user delivery addresses " + JSON.stringify(state));
-
-      return Object.assign({}, state, {state});
-   
     case SAVE_ORDER:
       //alert("CartState " + action.item_id);
       console.log("user delivery addresses " + JSON.stringify(state));
