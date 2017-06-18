@@ -276,7 +276,7 @@ class UserOrder extends React.Component<any, any> {
                     
                     if order type == signature show event details
                     <br/>
-                    <SconelySignatureSinglePage UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} saveOrder={() => this.props.saveOrder()} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setGuestCount={(e: any) => this.props.setGuestCount(e)} setEventName={(e: any) => this.props.setEventName(e)} m/>
+                    <SconelySignatureSinglePage UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} saveOrder={() => this.props.saveOrder()} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setGuestCount={(e: any) => this.props.setGuestCount(e)} setEventName={(e: any) => this.props.setEventName(e)} setCode={(e: any) => this.props.setCode(e)}/>
                     <br/>
                     else show receipt
                     

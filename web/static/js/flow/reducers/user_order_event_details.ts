@@ -41,7 +41,7 @@ export default function orderEventDetails(state:any = {orders: [{order_id: 1, ev
 
             //if(address.address)
             console.log("order id" + order.order_id);
-            if(order.order_id === 1){
+            if(order.order_id == 1){
                 
                 order.code = action.value;
 
@@ -51,7 +51,7 @@ export default function orderEventDetails(state:any = {orders: [{order_id: 1, ev
 
       })
 
-      return Object.assign({}, state, {orders_updated});
+      return Object.assign({}, state, {orders: orders_updated});
     
     case SET_GUEST_COUNT:
       //console("CartState " + action.item_id);

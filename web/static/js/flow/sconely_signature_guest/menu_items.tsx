@@ -89,6 +89,9 @@ class GuestMenu extends React.Component<any, any> {
               <div className="row">
                     <div className="hidden-xs col-md-3">
                       <br/>
+                      <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
+                      <br/>
+                      Sconely Launch PArty
                       <br/>
                       <br/>
                       <br/>
@@ -96,10 +99,6 @@ class GuestMenu extends React.Component<any, any> {
                     </div>
                     <div className="col-xs-12 col-md-9">
                       <br/>
-                    
-                      <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
-                      <br/>
-                      Ross has invited you to choose a scone for an event on july 1st.  Select your prefered scone for "my event".
                       <br/>
                       <br/>
                        {this.props.menu_items.menu_items.map(function(item: any, index: any){

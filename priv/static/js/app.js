@@ -30227,7 +30227,9 @@ webpackJsonp([0],[
 	                    return _this2.props.setGuestCount(e);
 	                }, setEventName: function setEventName(e) {
 	                    return _this2.props.setEventName(e);
-	                }, m: true }), React.createElement("br", null), "else show receipt");
+	                }, setCode: function setCode(e) {
+	                    return _this2.props.setCode(e);
+	                } }), React.createElement("br", null), "else show receipt");
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -44274,7 +44276,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this3 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("img", { height: "100", width: "100", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Ross has invited you to choose a scone for an event on july 1st.  Select your prefered scone for \"my event\".", React.createElement("br", null), React.createElement("br", null), this.props.menu_items.menu_items.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("img", { height: "100", width: "100", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch PArty", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.menu_items.menu_items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                console.log(item);
@@ -45578,12 +45580,12 @@ webpackJsonp([0],[
 	            orders_updated = state.orders.map(function (order) {
 	                //if(address.address)
 	                console.log("order id" + order.order_id);
-	                if (order.order_id === 1) {
+	                if (order.order_id == 1) {
 	                    order.code = action.value;
 	                }
 	                return order;
 	            });
-	            return Object.assign({}, state, { orders_updated: orders_updated });
+	            return Object.assign({}, state, { orders: orders_updated });
 	        case actionTypes_ts_1.SET_GUEST_COUNT:
 	            //console("CartState " + action.item_id);
 	            console.log("set guest count reducer " + action.value);
