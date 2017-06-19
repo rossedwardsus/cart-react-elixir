@@ -10,6 +10,7 @@ import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx
 import Guests from './sconely_signature_guests.tsx';
 import AdditionalItems from './sconely_signature_additional_items.tsx';
 import PaymentMethod from './payment_method.tsx';
+import SaveOrderButton from './save_order_button.tsx';
 
 import {setEventName, setCode, setGuestCount} from './actions/order_event_details.ts';
 import {setDeliveryAddressStreet1} from './actions/order_delivery_address.ts';
@@ -231,7 +232,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  <a onClick={() => this.props.saveOrder()} className="btn dtn-default">Save</a><a className="btn dtn-default">Preview</a>
+                  <SaveOrderButton/>><a className="btn dtn-default">Preview</a>
                 </div>
               </div>
           </div>

@@ -13,6 +13,10 @@ defmodule Sconely.Order do
 		field :order_id, :string #primary key
 		field :user_id, :string #Ecto.UUID or "guest"
 		field :order_type, :string
+		#field :delivery_address
+		#datetime
+		#payment
+
 		#guest count
 		#deliverydatetime for signature
 		#name if guest
