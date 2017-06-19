@@ -174,9 +174,9 @@ class UserHomePage extends React.Component<any, any> {
         //alert(orders);
         //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        //this.context.router.push('/user/order/12345');
+        this.context.router.push('/user/order/12345');
 
-        this.props.createOrder("sconely_signature");
+        //this.props.createOrder("sconely_signature");
         
          
     }

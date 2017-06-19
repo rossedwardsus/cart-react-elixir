@@ -29034,8 +29034,8 @@ webpackJsonp([0],[
 	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
 	                //alert(orders);
 	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	                //this.context.router.push('/user/order/12345');
-	                this.props.createOrder("sconely_signature");
+	                this.context.router.push('/user/order/12345');
+	                //this.props.createOrder("sconely_signature");
 	            }
 	            //alert(order_type);
 	            //this.context.router.push('/order/12345/event_details');
