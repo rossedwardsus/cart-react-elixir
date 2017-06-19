@@ -202,11 +202,11 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  <Link to="/order/12345/signature">Order Details</Link>
+                  <Link to="/order/12345">Order Details</Link>
                   <br/>
-                  <Link to="/order/12345/signature/items">Additional Items</Link>
+                  <Link to="/order/12345/additional_items">Additional Items</Link>
                   <br/>
-                  <Link to="/order/12345/signature/guests">Order Guests</Link>
+                  <Link to="/order/12345/guests">Order Guests</Link>
                   <br/>
                   <br/>
                   Event Details

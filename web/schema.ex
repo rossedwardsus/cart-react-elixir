@@ -81,6 +81,11 @@ defmodule Sconely.Schema do
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
+  field :get_sconely_signature_order, type: :sconely_signature_order do
+
+      #resolve &Sconely.SconelySignatureOrderResolver.get/2
+  
+  end
 
 
 	field :create_sconely_signature_order, type: :sconely_signature_order do

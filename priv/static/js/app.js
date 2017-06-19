@@ -130,6 +130,10 @@ webpackJsonp([0],[
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
+	var _sconely_signature_additional_items = __webpack_require__(1069);
+	
+	var _sconely_signature_additional_items2 = _interopRequireDefault(_sconely_signature_additional_items);
+	
 	var _sconely_signature_single_page = __webpack_require__(939);
 	
 	var _sconely_signature_single_page2 = _interopRequireDefault(_sconely_signature_single_page);
@@ -147,12 +151,19 @@ webpackJsonp([0],[
 	//import { getAllProducts } from './actions/viewPublicMenu'
 	
 	
-	//import SconelySocialMenu from "./sconely_social_menu";
 	//import SconelySignaturePreview from "./sconely_signature_preview";*/
 	//import SconelySignature from "./sconely_signature_single_page.tsx";
 	
 	
-	//import SconelySocial from "./sconely_social_single_page";*/
+	//import SconelySocialEventDetails from "./sconely_social_event_details";
+	
+	
+	//import Order from "./order.jsx";
+	
+	
+	//import autobind from 'autobind-decorator'
+	//import TodoListItem from './TodoListItem'
+	
 	var isReactComponent = function isReactComponent(obj) {
 	  return Boolean(obj && obj.prototype && Boolean(obj.prototype.isReactComponent));
 	};
@@ -166,14 +177,8 @@ webpackJsonp([0],[
 	//import * as root_reducer from './reducers/root.ts';
 	
 	
-	//import SconelySocialEventDetails from "./sconely_social_event_details";
+	//import SconelySocial from "./sconely_social_single_page";*/
 	
-	
-	//import Order from "./order.jsx";
-	
-	
-	//import autobind from 'autobind-decorator'
-	//import TodoListItem from './TodoListItem'
 	
 	var component = function component(_component) {
 	  return isReactComponent(_component) ? { component: _component } : { getComponent: function getComponent(loc, cb) {
@@ -280,8 +285,8 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_addresses', component: _user_delivery_addresses2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment_methods', component: _user_payment_methods2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/order/:order_id', component: _user_order2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/signature/guests', component: _sconely_signature_guests2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/signature', component: _sconely_signature_single_page2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: _sconely_signature_guests2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/additional_items', component: _sconely_signature_additional_items2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest/event', component: _event2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest/menu', component: _menu_items2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guest/name_email_host_message', component: _name_email_host_message2.default }),
@@ -30420,7 +30425,7 @@ webpackJsonp([0],[
 	            if (true) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Start Order")), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/signature" }, "Order Details"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/signature/items" }, "Additional Items"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/signature/guests" }, "Order Guests"), React.createElement("br", null), React.createElement("br", null), "Event Details", React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order: this.props.order, order_details: this.props.order_details, setEventName: function setEventName(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345" }, "Order Details"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/additional_items" }, "Additional Items"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/12345/guests" }, "Order Guests"), React.createElement("br", null), React.createElement("br", null), "Event Details", React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order: this.props.order, order_details: this.props.order_details, setEventName: function setEventName(e) {
 	                    return _this2.props.setEventName(e);
 	                }, setGuestCount: function setGuestCount(e) {
 	                    return _this2.props.setGuestCount(e);
@@ -33836,51 +33841,20 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var DatePicker = __webpack_require__(942);
-	var moment = __webpack_require__(943);
-	//require('react-datepicker/dist/react-datepicker.css');
-	//import 'react-date-picker/index.css';
-	//import { DateField, Calendar } from 'react-date-picker';
-	//import Autocomplete from 'react-google-autocomplete';
-	//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
-	var Dropzone = __webpack_require__(1061);
-	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
-	//import request from 'superagent';
-	//const onChange = (dateString, { dateMoment, timestamp }) => {
-	//console.log(dateString)
-	//  alert();
-	//}
-	//var myTimer = () => console.log("hello");
-	/*setInterval(function growUp() {
-	    // In non-strict mode, the growUp() function defines `this`
-	    // as the global object, which is different from the `this`
-	    // defined by the Person() constructor.
-	    this.age++;
-	  }, 1000);*/
+	var react_redux_1 = __webpack_require__(190);
 	
-	var AdditionalItems = function (_React$Component) {
-	    _inherits(AdditionalItems, _React$Component);
+	var SconelySignatureAdditionalItems = function (_React$Component) {
+	    _inherits(SconelySignatureAdditionalItems, _React$Component);
 	
 	    //props: Props;
-	    function AdditionalItems(props) {
-	        _classCallCheck(this, AdditionalItems);
+	    function SconelySignatureAdditionalItems(props) {
+	        _classCallCheck(this, SconelySignatureAdditionalItems);
 	
 	        //this.getData();
 	        //alert("sconely yours1" + window.guest_chooses);
-	        var _this = _possibleConstructorReturn(this, (AdditionalItems.__proto__ || Object.getPrototypeOf(AdditionalItems)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (SconelySignatureAdditionalItems.__proto__ || Object.getPrototypeOf(SconelySignatureAdditionalItems)).call(this, props));
 	
-	        _this.state = {
-	            //order_id: this.props.params.order_id,
-	            order_id: _this.props.order_id,
-	            order_type: "",
-	            event_name: "",
-	            event_datetime: "",
-	            event_address_street: "",
-	            event_address_city: "",
-	            event_address_zipcode: "",
-	            code: 0,
-	            startDate: moment()
-	        };
+	        _this.state = {};
 	        //load the data from the database if this is not a new event/order
 	        //if window.event.status == "existing/saved"
 	        /*request
@@ -33937,7 +33911,7 @@ webpackJsonp([0],[
 	    //}
 	
 	
-	    _createClass(AdditionalItems, [{
+	    _createClass(SconelySignatureAdditionalItems, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {}
 	    }, {
@@ -34038,10 +34012,23 @@ webpackJsonp([0],[
 	        }
 	    }]);
 	
-	    return AdditionalItems;
+	    return SconelySignatureAdditionalItems;
 	}(React.Component);
 	
-	exports.default = AdditionalItems;
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
+	    return {
+	        //active: ownProps.filter === state.visibilityFilter
+	        //if(state.default.order.cart_items != undefined){
+	        menu_items: state.MenuItems
+	        //}
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	    return {};
+	};
+	var SconelySignatureAdditionalItems1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SconelySignatureAdditionalItems);
+	exports.default = SconelySignatureAdditionalItems1;
 
 /***/ }),
 /* 1070 */

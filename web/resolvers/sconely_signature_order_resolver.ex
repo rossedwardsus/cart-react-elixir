@@ -6,9 +6,11 @@ defmodule Sconely.SconelySignatureOrderResolver do
   alias SconeHomeElixir.Repo
 
   
-  def all(_args, _info) do
+  def get(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
     {:ok, [%{id: 1, title: "hello", body: "there"}]}
+
+    #Repo.get Order
   end
 
 
@@ -30,7 +32,9 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
 	  {:ok, %{order_id: 1}}
 
-    IO.inspect(Ecto.DateTime.utc)
+    #IO.inspect(Ecto.DateTime.utc)
+    #IO.inspect(Date.to_erl(DateTime.utc_now()))
+    IO.inspect(Calendar.DateTime.now! "America/Los_Angeles")
 
     order_changeset = Order.changeset(%Order{}, %{order_id: "", order_type: "", delivery_datetime: Ecto.DateTime.utc})
 
@@ -52,7 +56,15 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
                 {:ok, datetime} = NaiveDateTime.new(~D[2017-06-18], ~T[00:00:00])
 
-                query = from o in Order, where: o.delivery_datetime > ^datetime
+                IO.inspect(datetime)
+                IO.inspect(Date.to_erl(~D[2017-06-18]))
+
+                #query = from o in Order, where: o.delivery_datetime > ^datetime
+
+                query = from o in Order, where: fragment("?::date", o.delivery_datetime) == ^Date.to_erl(DateTime.utc_now())
+
+                #query = from o in Order, select: fragment("?::date", o.delivery_datetime) 
+
 
                 #datetime_add(^Ecto.DateTime.utc, 0, "month")
 

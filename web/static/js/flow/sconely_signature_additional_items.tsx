@@ -1,38 +1,8 @@
 import * as React from 'react'
 
-var DatePicker = require('react-datepicker');
-var moment = require('moment');
+import { connect } from 'react-redux';
 
-//require('react-datepicker/dist/react-datepicker.css');
-//import 'react-date-picker/index.css';
-//import { DateField, Calendar } from 'react-date-picker';
-//import Autocomplete from 'react-google-autocomplete';
-
-
-//<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
-
-
-var Dropzone = require('react-dropzone');
-//import SconelySocialTopMenu from './sconely_social_top_menu'; 
-//import request from 'superagent';
-
-
-//const onChange = (dateString, { dateMoment, timestamp }) => {
-  //console.log(dateString)
-
-//  alert();
-//}
-
-//var myTimer = () => console.log("hello");
-
-/*setInterval(function growUp() {
-    // In non-strict mode, the growUp() function defines `this` 
-    // as the global object, which is different from the `this`
-    // defined by the Person() constructor.
-    this.age++;
-  }, 1000);*/
-
-export default class AdditionalItems extends React.Component<any, any> {
+class SconelySignatureAdditionalItems extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -43,17 +13,7 @@ export default class AdditionalItems extends React.Component<any, any> {
 
     this.state = {
 
-        //order_id: this.props.params.order_id,
-        order_id: this.props.order_id,
-        order_type: "",
-        event_name: "",
-        event_datetime: "",
-        event_address_street: "",
-        event_address_city: "",
-        event_address_zipcode: "",
-        code: 0,
-        startDate: moment()
-
+       
     };
 
     
@@ -315,3 +275,39 @@ export default class AdditionalItems extends React.Component<any, any> {
     )
   }
 }
+
+const mapStateToProps = (state: any, ownProps: any) => {
+  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
+  return {
+    //active: ownProps.filter === state.visibilityFilter
+
+    //if(state.default.order.cart_items != undefined){
+        
+        menu_items: state.MenuItems
+
+    //}
+  }
+};
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //viewmenuthunk
+
+    //addCartItem: (item_id: any, dozens: any, quantity: any) => {
+    //  dispatch(addCartItem(1));
+    //},
+    //increaseCartItemQuantity: () => {
+    //  dispatch(increaseCartItemQuantity(1, 12));
+    //},
+    //decreaseCartItemQuantity: () => {
+    //  dispatch(decreaseCartItemQuantity(1, 12));
+    //}
+  }
+}
+
+const SconelySignatureAdditionalItems1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SconelySignatureAdditionalItems);
+
+export default SconelySignatureAdditionalItems1;
