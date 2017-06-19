@@ -118,14 +118,14 @@ defmodule Sconely.Schema.Types do
 
 
 
-  object :sconely_signature_order_event_details do
-    field :order_id, :string
-    field :host_id, :string
+  object :sconely_signature_order do
+    #field :order_id, :string
+    #field :host_id, :string
     field :event_name, :string
-    field :event_date, :string
-  	field :event_time, :string
-  	field :guest_count, :string
-  	field :code, :string
+    #field :event_date, :string
+  	#field :event_time, :string
+  	#field :guest_count, :string
+  	#field :code, :string
   end
 
   #object :sconely_signature_order_additional_items do

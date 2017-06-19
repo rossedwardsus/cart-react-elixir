@@ -105,7 +105,7 @@ class SaveOrderButton extends React.Component<any, any> {
 
           axios.post('/api/graphql', {
           //axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {saveSconelySignatureOrder (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", order_first_name: "' + that.props.order_name.first_name + '", order_last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
+                 query: 'mutation {createSconelySignatureOrder (event_name: "signature") { status, order_id }}'
           })
           .then((response: any) => {
 
@@ -114,9 +114,9 @@ class SaveOrderButton extends React.Component<any, any> {
                 //that.props.history.push('/user');
                 //context.router
 
-                that.props.setOrderId(1);
+          //      that.props.setOrderId(1);
 
-                this.context.router.push('/order/complete');
+            //    this.context.router.push('/order/complete');
       
 
           })

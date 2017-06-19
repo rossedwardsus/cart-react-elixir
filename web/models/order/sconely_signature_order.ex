@@ -19,10 +19,6 @@ defmodule Sconely.SconelySignatureOrder do
 			field :message, :string
 			
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
-			#field :delivery_address_street, :string, default: ""
-			#field :delivery_address_city, :string, default: ""
-			#field :delivery_address_state, :string, default: ""
-			#field :delivery_address_zipcode, :string, default: ""
 			#field :delivery_address_comment, :string, default: ""
 			#field :status, :string
 			field :total, :string

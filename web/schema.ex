@@ -83,13 +83,24 @@ defmodule Sconely.Schema do
 
 
 
-	field :save_sconely_signature_order_event_details, type: :sconely_signature_order_event_details do
+	field :create_sconely_signature_order, type: :sconely_signature_order do
+      #arg :order_id, non_null(:string)
+      arg :event_name, :string
+      #arg :code, :string
+      #arg :guest_count, :string
+      #arg :delivery_date, :string
+      #arg :delivery_time, :string
+   
+      resolve &Sconely.SconelySignatureOrderResolver.create/2
+  end
+
+  field :save_sconely_signature_order, type: :sconely_signature_order do
 	    arg :order_id, non_null(:string)
 	    arg :event_name, :string
 	    arg :event_date, :string
 	    arg :event_time, :string
 	 
-	    resolve &Sconely.OrderResolver.save_sconely_signature_order_event_details/2
+	    resolve &Sconely.SconelySignatureOrderResolver.save_sconely_signature_order/2
 	end
 
 

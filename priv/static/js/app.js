@@ -30796,6 +30796,29 @@ webpackJsonp([0],[
 	        value: function changeCode(e) {
 	            this.setState({ code: e.target.value });
 	            this.props.setCode(e);
+	            //check if code exists already
+	            /*axios.post('/api/graphql', {
+	                  //axios.post('http://localhost:4000/api/graphql', {
+	                         query: 'mutation {setCode (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", order_first_name: "' + that.props.order_name.first_name + '", order_last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
+	                  })
+	                  .then((response: any) => {
+	                             console.log("graphql response" + JSON.stringify(response));
+	                             //that.props.history.push('/user');
+	                        //context.router
+	                             that.props.setOrderId(1);
+	                             this.context.router.push('/order/complete');
+	              
+	                       })
+	                  .catch((error: any) => {
+	                             console.log("error" + error);
+	                        //go to code/payment screen
+	                //        this.props.loadView();
+	             
+	                        //display errror to user - payment
+	                      //if (!error.status) {
+	                    // network error
+	                  //}
+	                       })*/
 	        }
 	    }, {
 	        key: "onFocus",
@@ -34335,23 +34358,24 @@ webpackJsonp([0],[
 	    }, {
 	        key: "completeOrder",
 	        value: function completeOrder() {
-	            var _this2 = this;
-	
 	            var that = this;
 	            //if(this.state.first_name_validated === false){
+	            //this.props.event_name
+	            //this.props.code
+	            //this.props.guest_count
 	            //this.props.order_datetime;
 	            //this.props.order_delivery_address
 	            //this.props.order_payment_method
-	            //this.props.cart_items
+	            //this.props.additional_items
 	            axios_1.default.post('/api/graphql', {
 	                //axios.post('http://localhost:4000/api/graphql', {
-	                query: 'mutation {completeOrder (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", order_first_name: "' + that.props.order_name.first_name + '", order_last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
+	                query: 'mutation {createSconelySignatureOrder (event_name: "signature") { status, order_id }}'
 	            }).then(function (response) {
 	                console.log("graphql response" + JSON.stringify(response));
 	                //that.props.history.push('/user');
 	                //context.router
-	                that.props.setOrderId(1);
-	                _this2.context.router.push('/order/complete');
+	                //      that.props.setOrderId(1);
+	                //    this.context.router.push('/order/complete');
 	            }).catch(function (error) {
 	                console.log("error" + error);
 	                //go to code/payment screen
@@ -34366,13 +34390,13 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 	
 	            //please enter a valid name
 	            //please enter a valid date
 	            //please enter a valid contact
 	            return React.createElement("div", null, React.createElement("button", { className: this.state.validated, onClick: function onClick() {
-	                    return _this3.completeOrder();
+	                    return _this2.completeOrder();
 	                } }, "save button"));
 	        }
 	    }], [{
