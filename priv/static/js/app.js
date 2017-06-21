@@ -44573,7 +44573,7 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (SconelySignatureAdditionalItems.__proto__ || Object.getPrototypeOf(SconelySignatureAdditionalItems)).call(this, props));
 	
 	        _this.state = {
-	            items: [{ item_id: 1, image_id: "", title: "Savory Assortment", description: "" }, { title: "Sweet Assortment", description: "" }, { title: "Savory Assortment Mini", description: "" }, { title: "Sweet Assortment Mini", description: "" }]
+	            items: [{ item_id: 1, image_id: "SweetassortmentJune7a", title: "Savory Assortment", description: "" }, { item_id: 1, image_id: "savories7", title: "Sweet Assortment", description: "" }, { title: "Savory Assortment Mini", description: "", image_id: "SconelyGallery3" }, { title: "Sweet Assortment Mini", description: "", image_id: "Savoryassortment5x5" }]
 	        };
 	        //load the data from the database if this is not a new event/order
 	        //if window.event.status == "existing/saved"

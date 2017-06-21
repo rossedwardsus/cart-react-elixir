@@ -16,7 +16,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
 
     this.state = {
 
-        items: [{item_id: 1, image_id: "SweetassortmentJune7a", title: "Savory Assortment", description: ""}, {item_id: 1, image_id: "savories7", title: "Sweet Assortment", description: "", image_id: "Savoryassortment5x5"}, {title: "Savory Assortment Mini", description: "", image_id: "SconelyGallery3"}, {title: "Sweet Assortment Mini", description: ""}]
+        items: [{item_id: 1, image_id: "SweetassortmentJune7a", title: "Savory Assortment", description: ""}, {item_id: 1, image_id: "savories7", title: "Sweet Assortment", description: ""}, {title: "Savory Assortment Mini", description: "", image_id: "SconelyGallery3"}, {title: "Sweet Assortment Mini", description: "", image_id: "Savoryassortment5x5"}]
        
     };
 
