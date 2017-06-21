@@ -236,10 +236,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
                 <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
             </div>
             <div className="col-sm-2">
-                Time
-            </div>
-            <div className="col-sm-5">
-                <select style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                     <option></option>
                     <option>9-11 am</option>
                     <option>1-3 pm</option>

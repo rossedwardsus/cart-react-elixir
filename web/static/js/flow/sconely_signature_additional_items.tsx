@@ -216,7 +216,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                 </div>
               </nav>
               <div className="row">
-                <div className="hidden-xs col-md-2">
+                <div className="hidden-xs col-md-3">
                     <br/>
                     <br/>
                     <br/>
@@ -235,7 +235,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                     <Link to="/public/menu">Photo</Link>
                     
                 </div>
-                <div className="col-md-10">
+                <div className="col-md-9">
                       <br/>
                       <br/>
                       <br/>

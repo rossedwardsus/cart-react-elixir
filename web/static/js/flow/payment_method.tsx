@@ -279,7 +279,13 @@ class PaymentMethod extends React.Component<any, any> {
 
    
     return ( <div>
-                  
+                  <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-4">
+                          Payment
+                      </div>
+                    </div>
+                  </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
