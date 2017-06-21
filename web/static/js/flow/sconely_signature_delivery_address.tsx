@@ -152,6 +152,16 @@ export default class EventDetailsDeliveryAddress extends React.Component<any, an
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="First" onChange={(e: any) => this.changeStreet1(e)} value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+              <div className="col-sm-3">
+                <input type="text" value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="Last" style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+            </div>
+        </form>
+        <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-sm-3">
                 <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.changeStreet1(e)} value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-3">

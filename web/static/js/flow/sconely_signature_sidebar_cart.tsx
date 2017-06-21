@@ -227,19 +227,35 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                   <form className="form-horizontal" style={{border: 1, position: "static"}}>
                     <div className="form-group" style={{border: 1}}>
-                      <div className="col-md-6">{this.props.UserOrderEventDetails.orders[0].guest_count}</div>
-                      <div className="col-md-6">Guests</div>
+                      <div className="col-md-4">Guest</div>
+                      <div className="col-md-4">X</div>
+                       <div className="col-md-4">{this.props.UserOrderEventDetails.orders[0].guest_count}</div>
+                    </div>
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-md-4">Ruby Q</div>
+                      <div className="col-md-4">X</div>
+                       <div className="col-md-4">5</div>
                     </div>
                   </form>
                   <form className="form-horizontal" style={{border: 1}}>
                     <div className="form-group" style={{border: 1}}>
-                      <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Totat</b></div>
-                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}></div>
+                      <div className="col-xs-10" style={{fontType: "helvetica", fontSize: "14"}}><b>Totat Amount Due</b></div>
+                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>$100.00</div>
                       <br/>
                       <br/>
                       <br/>
                     </div>
-                  </form>                       
+                  </form>    
+                  <form className="form-horizontal" style={{border: 1}}>
+                    <div className="form-group" style={{border: 1}}>
+                      <br/>
+                      <div className="col-xs-7" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Paid</b></div>
+                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>$50.00</div>
+                      <br/>
+                      <br/>
+                    </div>
+                  </form> 
+                  <button>Submit Order</button>                      
             </div>
     )
   }

@@ -164,6 +164,13 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
+                <label>Event Name: This name will be used to generate a link that you send to your guests.  50 character limit.</label>
+              </div>
+            </div>
+        </form>
+        <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-sm-10">
                 <input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
@@ -171,8 +178,8 @@ class EventDetailsName extends React.Component<any, any> {
         <br/>
         <form className="form-horizontal">
             <div className="form-group">
-              <div className="col-sm-5">
-                Event Photo
+              <div className="col-sm-10">
+                Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo.  
               </div>
             </div>
         </form>
@@ -193,37 +200,36 @@ class EventDetailsName extends React.Component<any, any> {
         </form>
         <form className="form-horizontal">
           <div className="form-group">
-            <div className="col-sm-1">
-              12
-            </div>
-            <div className="col-sm-5">
-              <input type="range" onChange={(e: any) => this.setGuestCount(e)} id="weight" min="12" max="100" step="1" value={this.state.guest_count} style={{width: "200px", height: "10px"}}/>
-            </div>
-            <div className="col-sm-1">
-              100
-            </div>
-            <div className="col-sm-2">
-              Total Cost
-            </div>
-            <div className="col-sm-1">
-              12
-            </div>
+              <div className="col-sm-2">
+                <input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="Count" value={this.state.event_name} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+              <div className="col-sm-4">
+                Total Cost
+              </div>
+              <div className="col-sm-1">
+                12
+              </div>
           </div>
         </form>
-         <form className="form-horizontal">
+        <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              Your guests will be able to select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. If one or more of your guests do not choose a scone, a Sconely seasonal scone will be delivered in it's place. 
+              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. If a guest does not choose a scone, a Sconely seasonal scone will be delivered in it's place. 
             </div>
           </div>
         </form>
         <form className="form-horizontal">
           <div className="form-group">
-              <input type="radio" name="guest_doesnt_choose"/>- Sconely chooses seasonal scone
-              <br/>
-              <input type="radio" name="guest_doesnt_choose"/>- host chooses all of the same scone (everyone gets DWK, eg)
-              <br/>
-              <input type="radio" name="guest_doesnt_choose"/>- Sconely chooses mixture of sweet and savory distributed across the order
+            <div className="col-sm-10">
+              Invite message
+            </div>
+          </div>
+        </form>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-8">
+              <textarea className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+            </div>
           </div>
         </form>
        </div>

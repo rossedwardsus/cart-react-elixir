@@ -91,7 +91,7 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
                       <br/>
-                      Sconely Launch PArty
+                      Select the Scone you would like to have at the Sconely Launch Party
                       <br/>
                       <br/>
                       <br/>
@@ -121,7 +121,7 @@ class GuestMenu extends React.Component<any, any> {
                                         <img id="1" onClick={() => this.showItem(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                     <br/>    
                                     <br/>
-                                    <b>{item.title}</b> / {item.description}
+                                    <b>{item.title}</b> /
                                     <br/>
                                     <br/>
                                     <br/>
@@ -143,13 +143,12 @@ class GuestMenu extends React.Component<any, any> {
                                         Ingredients: {this.state.selected_item_ingredients}
                                         <br/>
                                         <br/>
-                                        $60/Mini - $54
                                     </div>
                                     <div className="modal-footer">
                                       <form className="form-horizontal">
                                         <div className="form-group">
                                           <div className="col-md-3">
-                                            <button className={this.state.add_cart_item_button_classname}  onClick={() => this.addGuestCartItem()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
+                                            <button className="btn btn-default"  onClick={() => this.addGuestCartItem()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
                                           </div>
                                         </div>
                                       </form>
