@@ -142,74 +142,11 @@ class EventDetailsName extends React.Component<any, any> {
         
   }
 
-  changeCode(e: any){
 
-     this.setState({code: e.target.value});
+  setGuestCount(e: any){
 
-     this.props.setCode(e);
-
-     //check if code exists already
-
-    /*axios.post('/api/graphql', {
-          //axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {setCode (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", order_first_name: "' + that.props.order_name.first_name + '", order_last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
-          })
-          .then((response: any) => {
-
-                console.log("graphql response" + JSON.stringify(response));
-
-                //that.props.history.push('/user');
-                //context.router
-
-                that.props.setOrderId(1);
-
-                this.context.router.push('/order/complete');
-      
-
-          })
-          .catch((error: any) => {
-
-                console.log("error" + error);
-                //go to code/payment screen
-        //        this.props.loadView();
-
-
-                //display errror to user - payment
-
-         //if (!error.status) {
-            // network error
-          //}
-
-          })*/
-
-
-  }
-
-
-  onFocus(){
-
-        /*alert();
-
-        //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
-        
-        request
-              .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-                console.log(res);
-          
-              });*/
-
-
-  }
-
-  next(){
-
-    alert("next" + this.state.event_name);
+      this.setState({guest_count: e.target.value});
+      //this.props.setGuestCount(e);
 
   }
 
@@ -243,8 +180,30 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              12<input type="range" onChange={(e: any) => this.props.setGuestCount(e)} id="weight" min="12" max="100" step="1" value={this.state.guest_count} style={{width: "200px", height: "10px"}}/>100
+              How many guests will be selected a Scone.
             </div>
+          </div>
+        </form>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-1">
+              12
+            </div>
+            <div className="col-sm-5">
+              <input type="range" onChange={(e: any) => this.setGuestCount(e)} id="weight" min="12" max="100" step="1" value={this.state.guest_count} style={{width: "200px", height: "10px"}}/>
+            </div>
+            <div className="col-sm-1">
+              100
+            </div>
+          </div>
+        </form>
+        <form className="form-horizontal">
+          <div className="form-group">
+              <input type="radio" name="guest_doesnt_choose"/>- Sconely chooses seasonal scone
+              <br/>
+              <input type="radio" name="guest_doesnt_choose"/>- host chooses all of the same scone (everyone gets DWK, eg)
+              <br/>
+              <input type="radio" name="guest_doesnt_choose"/>- Sconely chooses mixture of sweet and savory distributed across the order
           </div>
         </form>
        </div>

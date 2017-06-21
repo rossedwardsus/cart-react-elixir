@@ -30438,7 +30438,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setCode(e);
 	                } }), React.createElement("br", null), "Invite message", React.createElement("br", null), React.createElement("div", { className: "form-group" }, React.createElement("textarea", { className: "form-control", style: { rows: "5" }, id: "comment" })), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_delivery_address_tsx_1.default, { order: this.props.order, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, { order: this.props.Order }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { order: this.props.order }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(save_order_button_tsx_1.default, { saveOrder: function saveOrder() {
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, { order: this.props.Order }), React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { order: this.props.order }), React.createElement("br", null), React.createElement("br", null), React.createElement(save_order_button_tsx_1.default, { saveOrder: function saveOrder() {
 	                    return _this2.props.saveOrder();
 	                } }), React.createElement("a", { className: "btn dtn-default" }, "Preview"))));
 	        }
@@ -30804,56 +30804,10 @@ webpackJsonp([0],[
 	            //this.setState({files: acceptedFiles});
 	        }
 	    }, {
-	        key: "changeCode",
-	        value: function changeCode(e) {
-	            this.setState({ code: e.target.value });
-	            this.props.setCode(e);
-	            //check if code exists already
-	            /*axios.post('/api/graphql', {
-	                  //axios.post('http://localhost:4000/api/graphql', {
-	                         query: 'mutation {setCode (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", order_first_name: "' + that.props.order_name.first_name + '", order_last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
-	                  })
-	                  .then((response: any) => {
-	                             console.log("graphql response" + JSON.stringify(response));
-	                             //that.props.history.push('/user');
-	                        //context.router
-	                             that.props.setOrderId(1);
-	                             this.context.router.push('/order/complete');
-	              
-	                       })
-	                  .catch((error: any) => {
-	                             console.log("error" + error);
-	                        //go to code/payment screen
-	                //        this.props.loadView();
-	             
-	                        //display errror to user - payment
-	                      //if (!error.status) {
-	                    // network error
-	                  //}
-	                       })*/
-	        }
-	    }, {
-	        key: "onFocus",
-	        value: function onFocus() {
-	            /*alert();
-	             //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
-	            
-	            request
-	                  .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
-	                  .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-	                  .set('X-API-Key', 'foobar')
-	                  .set('Accept', 'application/json')
-	                  .end(function(err, res){
-	                    // Calling the end function will send the request
-	                    //this.setState({payment_complete: true});
-	                    console.log(res);
-	              
-	                  });*/
-	        }
-	    }, {
-	        key: "next",
-	        value: function next() {
-	            alert("next" + this.state.event_name);
+	        key: "setGuestCount",
+	        value: function setGuestCount(e) {
+	            this.setState({ guest_count: e.target.value });
+	            //this.props.setGuestCount(e);
 	        }
 	    }, {
 	        key: "render",
@@ -30866,9 +30820,9 @@ webpackJsonp([0],[
 	                    return _this3.onDrop(files);
 	                } }, React.createElement("div", { style: { height: "25%", width: "10%" } }, "Event Photo")), React.createElement("aside", null, React.createElement("h2", null, "Dropped files"), this.state.files.map(function (f) {
 	                return React.createElement("img", { src: f.preview });
-	            })), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "12", React.createElement("input", { type: "range", onChange: function onChange(e) {
-	                    return _this3.props.setGuestCount(e);
-	                }, id: "weight", min: "12", max: "100", step: "1", value: this.state.guest_count, style: { width: "200px", height: "10px" } }), "100"))));
+	            })), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests will be selected a Scone."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-1" }, "12"), React.createElement("div", { className: "col-sm-5" }, React.createElement("input", { type: "range", onChange: function onChange(e) {
+	                    return _this3.setGuestCount(e);
+	                }, id: "weight", min: "12", max: "100", step: "1", value: this.state.guest_count, style: { width: "200px", height: "10px" } })), React.createElement("div", { className: "col-sm-1" }, "100"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "radio", name: "guest_doesnt_choose" }), "- Sconely chooses seasonal scone", React.createElement("br", null), React.createElement("input", { type: "radio", name: "guest_doesnt_choose" }), "- host chooses all of the same scone (everyone gets DWK, eg)", React.createElement("br", null), React.createElement("input", { type: "radio", name: "guest_doesnt_choose" }), "- Sconely chooses mixture of sweet and savory distributed across the order")));
 	        }
 	    }]);
 	
@@ -33613,11 +33567,11 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery details")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Home"), React.createElement("option", null, "Office")), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery details")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Contact")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: function onChange(e) {
 	                    return _this2.changeStreet1(e);
-	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Contact")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: function onChange(e) {
+	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "elivery Address")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
 	                    return _this2.changeStreet1(e);
-	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, fontSize: 16 } })))));
+	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"))))));
 	        }
 	    }]);
 	

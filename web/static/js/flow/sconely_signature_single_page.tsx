@@ -226,10 +226,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <EventDetailsDateTime order={this.props.Order}/>
                   <br/>
                   <br/>
-                  <br/>
-                  <br/>
                   <PaymentMethod order={this.props.order}/>
-                  <br/>
                   <br/>
                   <br/>
                   <SaveOrderButton saveOrder={() => this.props.saveOrder()}/><a className="btn dtn-default">Preview</a>
