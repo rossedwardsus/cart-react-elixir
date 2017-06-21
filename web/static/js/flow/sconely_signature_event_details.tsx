@@ -169,8 +169,15 @@ class EventDetailsName extends React.Component<any, any> {
             </div>
         </form>
         <br/>
+        <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-sm-5">
+                Event Photo
+              </div>
+            </div>
+        </form>
         <Dropzone onDrop={(files: any) => this.onDrop(files)}>
-            <div style={{height:"25%", width:"10%"}}>Event Photo</div>
+            
         </Dropzone>
         <aside>
           <h2>Dropped files</h2>
@@ -180,7 +187,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              How many guests will be selected a Scone.
+              How many guests are you offering Sconely Signature to?
             </div>
           </div>
         </form>
@@ -194,6 +201,19 @@ class EventDetailsName extends React.Component<any, any> {
             </div>
             <div className="col-sm-1">
               100
+            </div>
+            <div className="col-sm-2">
+              Total Cost
+            </div>
+            <div className="col-sm-1">
+              12
+            </div>
+          </div>
+        </form>
+         <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-10">
+              Your guests will be able to select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. If one or more of your guests do not choose a scone, a Sconely seasonal scone will be delivered in it's place. 
             </div>
           </div>
         </form>

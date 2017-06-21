@@ -162,7 +162,7 @@ export default class EventDetailsDeliveryAddress extends React.Component<any, an
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-5">
-              <label>elivery Address</label>
+              <label>Delivery Address</label>
             </div>
           </div>
         </form>
