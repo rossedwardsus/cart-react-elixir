@@ -209,22 +209,22 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <Link to="/order/12345/guests">Order Guests</Link>
                   <br/>
                   <br/>
-                  Event Details
                   <br/>
                   <EventDetails order={this.props.order} order_details={this.props.order_details} setEventName={(e: any) =>this.props.setEventName(e)} setGuestCount={(e: any) =>this.props.setGuestCount(e)} setCode={(e: any) =>this.props.setCode(e)}/>
                   <br/>
                   Invite message
                   <br/>
+                  <div className="form-group">
+                    <textarea className="form-control" style={{rows: "5"}} id="comment"></textarea>
+                  </div>
                   <br/>
                   <br/>
-                  Delivery
                   <br/>
                   <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)}/>
                   <br/>
                   <br/>
                   <EventDetailsDateTime order={this.props.Order}/>
                   <br/>
-                  <AdditionalItems menu_items={this.props.menu_items}/>
                   <br/>
                   <br/>
                   <br/>
@@ -232,7 +232,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  <SaveOrderButton/>><a className="btn dtn-default">Preview</a>
+                  <SaveOrderButton saveOrder={() => this.props.saveOrder()}/><a className="btn dtn-default">Preview</a>
                 </div>
               </div>
           </div>

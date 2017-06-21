@@ -10,7 +10,7 @@ import SconelySignatureSinglePage from '../sconely_signature_single_page.tsx';
 
 import {setEventName, setCode, setGuestCount} from '../actions/order_event_details.ts';
 import {setDeliveryAddressStreet1} from '../actions/order_delivery_address.ts';
-import {saveOrder} from '../actions/user_order.ts';
+import {getUserOrder, saveOrder} from '../actions/user_order.ts';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -55,6 +55,8 @@ class UserOrder extends React.Component<any, any> {
     //setInterval(this.changeImage, 10000);
 
     //localStorage.get('user');
+
+    this.props.getUserOrder();
 
   }
 
@@ -299,7 +301,7 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-     setEventName: (e: any) => {
+    setEventName: (e: any) => {
         dispatch(setEventName(e.target.value, 1));
 
     },
@@ -343,6 +345,11 @@ function mapDispatchToProps(dispatch: any) {
    
     setPayment: (e: any) => {
 
+
+    },
+    getUserOrder: (e: any) => {
+
+        dispatch(getUserOrder(1));
 
     },
     saveOrder: (e: any) => {

@@ -23,7 +23,11 @@ defmodule Sconely.Schema do
     #    resolve &Sconely.OrderResolver.get_order/2
     #end
 
+    field :get_user_order, type: :order do
 
+      resolve &Sconely.SconelySignatureOrderResolver.get/2
+  
+    end
 
 
     #field :user_orders, list_of(:sconely_signature_order) do
@@ -55,7 +59,7 @@ defmodule Sconely.Schema do
 
 
   	
-  	field :complete_order, type: :sconely_yours_order do
+  	field :complete_order, type: :order do
   		arg :order_type, non_null(:string)
       arg :order_first_name, :string
   		arg :order_last_name, :string
@@ -81,11 +85,7 @@ defmodule Sconely.Schema do
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
-  field :get_sconely_signature_order, type: :sconely_signature_order do
-
-      #resolve &Sconely.SconelySignatureOrderResolver.get/2
   
-  end
 
 
 	field :create_sconely_signature_order, type: :sconely_signature_order do
@@ -101,12 +101,28 @@ defmodule Sconely.Schema do
 
   field :save_sconely_signature_order, type: :sconely_signature_order do
 	    arg :order_id, non_null(:string)
-	    arg :event_name, :string
-	    arg :event_date, :string
-	    arg :event_time, :string
-	 
-	    resolve &Sconely.SconelySignatureOrderResolver.save_sconely_signature_order/2
+	    #arg :event_name, :string
+	    #arg :delivery_datetime, :string
+	    
+	    resolve &Sconely.SconelySignatureOrderResolver.save/2
 	end
+
+  field :complete_sconely_signature_order, type: :sconely_signature_order do
+      arg :order_id, non_null(:string)
+      #arg :event_name, :string
+      #arg :delivery_datetime, :string
+      
+      resolve &Sconely.SconelySignatureOrderResolver.save/2
+  end
+
+  field :save_sconely_signature_guest_choice, type: :sconely_signature_order_guest do
+      arg :order_id, non_null(:string)
+      arg :item_id, :string
+      arg :first_name, :string
+      arg :last_name, :string
+     
+      resolve &Sconely.SconelySignatureOrderResolver.save_guest_choice/2
+  end
 
 
 	#field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_items do

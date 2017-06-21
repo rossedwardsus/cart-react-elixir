@@ -52,7 +52,7 @@ class EventDetailsName extends React.Component<any, any> {
         files: [],
         image_src: "",
         code: "",
-        guest_count: 0,
+        guest_count: 12,
 
     };
 
@@ -220,7 +220,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-5">
-                <label>Event Name/photo</label>
+                <label>Event Details</label>
               </div>
             </div>
         </form>
@@ -233,7 +233,7 @@ class EventDetailsName extends React.Component<any, any> {
         </form>
         <br/>
         <Dropzone onDrop={(files: any) => this.onDrop(files)}>
-            <div style={{height:"25%", width:"10%"}}>Drop some files here, or click</div>
+            <div style={{height:"25%", width:"10%"}}>Event Photo</div>
         </Dropzone>
         <aside>
           <h2>Dropped files</h2>
@@ -243,15 +243,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              20<input type="range" onChange={(e: any) => this.props.setGuestCount(e)} id="weight" min="20" max="100" step="1" value={this.state.values} style={{width: "200px", height: "10px"}}/>100
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-5">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="Code" value={this.state.code} onChange={(e: any) => this.changeCode(e)} style={{borderRadius: 0, fontSize: 16}}/>
-                <br/>
+              12<input type="range" onChange={(e: any) => this.props.setGuestCount(e)} id="weight" min="12" max="100" step="1" value={this.state.guest_count} style={{width: "200px", height: "10px"}}/>100
             </div>
           </div>
         </form>

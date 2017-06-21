@@ -79,6 +79,8 @@ export const SET_EVENT_NAME = 'SET_EVENT_NAME'
 export const SET_GUEST_COUNT = 'SET_GUEST_COUNT'
 export const SET_CODE = 'SET_CODE'
 
+export const GET_ORDER = 'GET_ORDER'
+export const CREATE_USER_ORDER = 'CREATE_ORDER'
 export const SAVE_ORDER = 'SAVE_ORDER'
 export const LOAD_ORDERS = 'LOAD_ORDERS'
 

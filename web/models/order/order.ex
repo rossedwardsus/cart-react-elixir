@@ -6,13 +6,12 @@ defmodule Sconely.Order do
 
 	#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 	@optional_fields ~W()
-	#@required_fields ~W(order_id user_id order_type created_at payment_confirmation)
-	@required_fields ~W(order_type delivery_datetime)
+	@required_fields ~W(user_id order_type delivery_datetime)
 
 	schema "orders" do
 
 		#field :order_id, :string #primary key
-		#field :user_id, :string #Ecto.UUID or "guest"
+		field :user_id, :string #Ecto.UUID or "guest"
 		field :order_type, :string
 		#field :delivery_address_street1
 		#field :delivery_address_street2

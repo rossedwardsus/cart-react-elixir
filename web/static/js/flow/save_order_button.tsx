@@ -89,9 +89,11 @@ class SaveOrderButton extends React.Component<any, any> {
 
   }
 
-  completeOrder(){
+  saveOrder(){
 
     let that = this;
+
+    this.props.saveOrder();
 
      //if(this.state.first_name_validated === false){
 
@@ -103,7 +105,7 @@ class SaveOrderButton extends React.Component<any, any> {
           //this.props.order_payment_method
           //this.props.additional_items
 
-          axios.post('/api/graphql', {
+          /*axios.post('/api/graphql', {
           //axios.post('http://localhost:4000/api/graphql', {
                  query: 'mutation {createSconelySignatureOrder (event_name: "signature") { status, order_id }}'
           })
@@ -133,7 +135,7 @@ class SaveOrderButton extends React.Component<any, any> {
             // network error
           //}
 
-          })
+          })*/
     //}
 
   }
@@ -147,7 +149,7 @@ class SaveOrderButton extends React.Component<any, any> {
 
     return ( <div>
 
-                <button className={this.state.validated} onClick={() => this.completeOrder()}>save button</button>
+                <button className={this.state.validated} onClick={() => this.saveOrder()}>save button</button>
               </div>
     )
   }

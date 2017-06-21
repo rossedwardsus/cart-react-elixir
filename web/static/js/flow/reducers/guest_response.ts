@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function guestResponse(state:any = {chosen_item: "", first_name: "", last_name: "", email: "", host_message: ""}, action: any){
+export default function guestResponse(state:any = {chosen_item: "", first_name: "", last_name: "", email: "", host_message: "", guest_response_validated: ""}, action: any){
 
   let delivery_address_updated = null;
 
