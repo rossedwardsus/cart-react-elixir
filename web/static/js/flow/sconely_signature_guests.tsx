@@ -123,7 +123,7 @@ export default class Guests extends React.Component<any, any> {
         <br/>
         <br/>
         <br/>
-        20 Guest responses.  Please click this link to download the responses.
+        20 Guest responses.  Please click this <a href="/api/guest/list">link</a> to download the responses.
         <br/>
         <br/>
       </div>

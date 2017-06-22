@@ -44532,7 +44532,7 @@ webpackJsonp([0],[
 	            if (this.state.value == true) {
 	                guests_choices = "Ross Edwards rossedwards.us@gmail.com";
 	            }
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "20 Guest responses.  Please click this link to download the responses.", React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "20 Guest responses.  Please click this ", React.createElement("a", { href: "/api/guest/list" }, "link"), " to download the responses.", React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }]);
 	
