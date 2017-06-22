@@ -3,6 +3,14 @@ import * as React from 'react'
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
+var DayPickerInput = require("react-day-picker/DayPickerInput");
+
+import "react-day-picker/lib/style.css"
+
+require('react-datepicker/dist/react-datepicker.css');
+
+
+
 //require('react-datepicker/dist/react-datepicker.css');
 //import 'react-date-picker/index.css';
 //import { DateField, Calendar } from 'react-date-picker';
@@ -213,9 +221,16 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
 
   }
 
-  next(){
+  setDate(date: any){
 
-    alert("next" + this.state.event_name);
+    console.log("date " + moment(date).toISOString());
+
+    this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.props.setDate(moment(date).toISOString());
+
+    //this.props.cartValidated();
+    this.props.datetimeValidated();
 
   }
 
@@ -234,6 +249,8 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
           <div className="form-group">
             <div className="col-sm-3">
                 <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
+                <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate}/>
+                      
             </div>
             <div className="col-sm-2">
                 <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>

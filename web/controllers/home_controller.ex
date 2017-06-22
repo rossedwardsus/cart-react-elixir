@@ -13,14 +13,14 @@ defmodule SconeHomeElixir.HomeController do
 
   	#Enum.each(test_array, fn (v) -> {IO.inspect(v[:one])} end)
 
-  	#if _params["name"] != nil do
-	#  	name = _params["name"]
-	#  	url = "/#" <> name
+  	if _params["name"] != nil do
+	  	name = _params["name"]
+	  	url = "/#/order/" <> name <> "/guest/menu"
 
-	#  	redirect conn, to: url
-	#else
+	  	redirect conn, to: url
+	else
     	render conn, "index.html"
-    #end
+    end
   end
 
   #def index(conn, _params) do
