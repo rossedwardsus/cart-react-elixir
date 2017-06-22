@@ -48,7 +48,7 @@ defmodule SconeHomeElixir.Mixfile do
      {:ex_aws, "~> 1.0.0"},
      #{:erlcloud, git: "https://github.com/gleber/erlcloud"},
      {:uuid, "~> 1.1"},
-     #{:csv, "~> 1.4.2"},
+     {:csv, "~> 1.4.2"},
      {:plug, "~> 1.0"},
      {:timex, "~> 3.0"},
      {:hackney, "~> 1.0", override: true},

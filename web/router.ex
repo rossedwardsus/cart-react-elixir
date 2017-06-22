@@ -59,6 +59,8 @@ defmodule SconeHomeElixir.Router do
     get "/upload", Sconely.UserProfilePhotoController, :create
     post "/upload", Sconely.UserProfilePhotoController, :create
 
+    get "/guest/list", Sconely.GuestListDownloadController, :index   
+
     get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
     forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
     #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
