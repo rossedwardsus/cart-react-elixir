@@ -212,14 +212,6 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                       </div>
                   </form>
                   <br/>
-                  <Link to="/order/12345">Order Details</Link>
-                  <br/>
-                  <Link to="/order/12345/items">Items</Link>
-                  <br/>
-                  <Link to="/order/12345/guests">Order Guests</Link>
-                  <br/>
-                  <br/>
-                  <br/>
                   <EventDetails order={this.props.order} order_details={this.props.order_details} setEventName={(e: any) =>this.props.setEventName(e)} setGuestCount={(e: any) =>this.props.setGuestCount(e)} setCode={(e: any) =>this.props.setCode(e)}/>
                   <br/>
                   <br/>
