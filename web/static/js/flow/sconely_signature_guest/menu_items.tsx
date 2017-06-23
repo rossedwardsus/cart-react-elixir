@@ -94,7 +94,7 @@ class GuestMenu extends React.Component<any, any> {
               <div className="row">
                     <div className="hidden-xs col-md-3">
                       <br/>
-                      <div style={{ width: "100", height: "100", borderRadius: "50%", backgroundImage: 'url("http://localhost:4000/images/menu/DWK_green.jpg")'}}>
+                      <div style={{ width: "100", height: "100", borderRadius: "50%", backgroundImage: 'url("/images/menu/DWK_green.jpg")'}}>
                       hello
                       </div>
                       <br/>
