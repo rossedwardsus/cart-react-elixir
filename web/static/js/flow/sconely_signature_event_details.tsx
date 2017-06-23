@@ -6,7 +6,9 @@ var moment = require('moment');
 //require('react-datepicker/dist/react-datepicker.css');
 //import 'react-date-picker/index.css';
 //import { DateField, Calendar } from 'react-date-picker';
-//import Autocomplete from 'react-google-autocomplete';
+
+import { Link } from 'react-router';
+
 
 import { connect } from 'react-redux';
 
@@ -218,6 +220,13 @@ class EventDetailsName extends React.Component<any, any> {
             </div>
           </div>
         </form>
+        <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-sm-3">
+                  <Link to="/order/12345/items">Items</Link>
+              </div>
+            </div>
+        </form>   
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
