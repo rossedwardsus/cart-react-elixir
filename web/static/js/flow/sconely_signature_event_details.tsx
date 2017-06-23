@@ -157,7 +157,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-5">
-                <label>Event Details</label>
+                <label></label>
               </div>
             </div>
         </form>
@@ -201,10 +201,10 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
               <div className="col-sm-2">
-                <input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="Count" value={this.state.event_name} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.event_name} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-4">
-                Total Cost
+                Anticipated Cost
               </div>
               <div className="col-sm-1">
                 12
@@ -214,7 +214,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. If a guest does not choose a scone, a Sconely seasonal scone will be delivered in it's place. 
+              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. IYou will only be charged for the guests that make a selection. 
             </div>
           </div>
         </form>
