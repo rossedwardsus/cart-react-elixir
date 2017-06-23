@@ -6,6 +6,9 @@ import {connect} from 'react-redux';
 import {getMenuItems} from '../actions/menu.ts';
 import {addGuestCartItem} from '../actions/guest_response.ts';
 
+//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
+
+
 class GuestMenu extends React.Component<any, any> {
   //props: Props;
 
@@ -63,6 +66,8 @@ class GuestMenu extends React.Component<any, any> {
   }
 
   render(): JSX.Element {
+
+    
     return (
             <div>
               <nav className="navbar navbar-default" style={{border: 1}}>
@@ -89,9 +94,13 @@ class GuestMenu extends React.Component<any, any> {
               <div className="row">
                     <div className="hidden-xs col-md-3">
                       <br/>
+                      <div style={{ width: "100", height: "100", borderRadius: "50%", backgroundImage: 'url("http://localhost:4000/images/menu/DWK_green.jpg")'}}>
+                      hello
+                      </div>
+                      <br/>
                       <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
                       <br/>
-                      Select the Scone you would like to have at the Sconely Launch Party
+                      Select the Scone you would like to have at the Sconely Launch Party at LACI
                       <br/>
                       <br/>
                       <br/>

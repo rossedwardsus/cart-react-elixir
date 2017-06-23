@@ -11,7 +11,8 @@ defmodule Sconely.OrderItems do
 		schema "order_items" do
 			field :order_id, Ecto.UUID
 			field :item_id, :string
-			field :quantity, :string		
+			field :quantity, :string
+			field :mini, :boolean		
 		end
 
 		#def changeset(struct, params \\ %{}) do
