@@ -3,7 +3,9 @@ import * as React from 'react'
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
-var DayPickerInput = require("react-day-picker/DayPickerInput");
+//var DayPickerInput = require("react-day-picker/DayPickerInput");
+var DayPicker = require("react-day-picker");
+
 
 import "react-day-picker/lib/style.css"
 
@@ -221,16 +223,16 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
 
   }
 
-  setDate(date: any){
+  setDate(){
 
-    console.log("date " + moment(date).toISOString());
+    console.log("date ");
 
-    this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-    this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
     //this.props.setDate(moment(date).toISOString());
 
     //this.props.cartValidated();
-    this.props.datetimeValidated();
+    //this.props.datetimeValidated();
 
   }
 
@@ -241,15 +243,14 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-5">
-                <label>Delivery Date Time</label>
+                <label>Delivery Date Time1</label>
             </div>
           </div>
         </form>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-3">
-                <DatePicker selected={this.state.startDate} onChange={this.handleDateChange} />
-                <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate}/>
+                <DayPicker onDayClick={() => this.setDate()} disabledDays={{before: new Date()}} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>
                       
             </div>
             <div className="col-sm-2">

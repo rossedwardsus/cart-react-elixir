@@ -216,7 +216,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. IYou will only be charged for the guests that make a selection. 
+              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. You will only be charged for the guests that make a selection. 
             </div>
           </div>
         </form>
