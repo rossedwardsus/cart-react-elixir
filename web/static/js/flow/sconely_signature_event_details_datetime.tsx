@@ -3,8 +3,8 @@ import * as React from 'react'
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
-//var DayPickerInput = require("react-day-picker/DayPickerInput");
-var DayPicker = require("react-day-picker");
+var DayPickerInput = require("react-day-picker/DayPickerInput");
+//var DayPicker = require("react-day-picker");
 
 
 import "react-day-picker/lib/style.css"
@@ -62,7 +62,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         event_address_city: "",
         event_address_zipcode: "",
         code: 0,
-        startDate: moment()
+        startDate: moment(new Date()).add(3, 'days').format("YYYY/MM/DD")
 
     };
 
@@ -223,9 +223,13 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
 
   }
 
-  setDate(){
+  setDate(date: any){
 
-    console.log("date ");
+    var someDate = new Date();
+    var numberOfDaysToAdd = 6;
+    console.log("here " + someDate.setDate(someDate.getDate() + numberOfDaysToAdd)); 
+
+    console.log("date " + moment(date).format("YYYY/MM/DD") + " " + moment(new Date()).add(3, 'days').format("YYYY/MM/DD"));
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setDate(moment(date).format("YYYY/MM/DD"));
@@ -237,6 +241,12 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
   }
 
   render(): JSX.Element {
+
+
+    var someDate = new Date();
+    var numberOfDaysToAdd = 3;
+    someDate.setDate(someDate.getDate() + numberOfDaysToAdd); 
+
     return (
       <div>
         <br/>
@@ -250,7 +260,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-3">
-                <DayPicker onDayClick={() => this.setDate()} disabledDays={{before: new Date()}} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>
+                <DayPickerInput selectedDays={new Date(2017, 6, 26)} onDayChange={(e: any) => this.setDate(e)} dayPickerProps={{selectedDays: new Date(2017, 6, 26), disabledDays: {before: someDate}}} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>
                       
             </div>
             <div className="col-sm-2">
