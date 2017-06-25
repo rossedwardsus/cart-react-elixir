@@ -53,8 +53,8 @@ class EventDetailsName extends React.Component<any, any> {
         startDate: moment(),
         files: [],
         image_src: "",
-        code: "",
         guest_count: 12,
+        guest_message: ""
 
     };
 
@@ -109,15 +109,7 @@ class EventDetailsName extends React.Component<any, any> {
 
   }
 
-  handleDateChange(dateString: any) {
-
-    //alert(dateString);
-
-    //this.setState({
-      //startDate: date
-    //});
-  }
-
+ 
   onDrop(acceptedFiles: any){
         
         let req = request.post('/api/upload');
@@ -148,6 +140,13 @@ class EventDetailsName extends React.Component<any, any> {
   setGuestCount(e: any){
 
       this.setState({guest_count: e.target.value});
+      //this.props.setGuestCount(e);
+
+  }
+
+  setGuestMessage(e: any){
+
+      this.setState({guest_message: e.target.value});
       //this.props.setGuestCount(e);
 
   }
@@ -203,13 +202,13 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
               <div className="col-sm-2">
-                <input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.event_name} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-4">
-                Anticipated Cost
+                Cost
               </div>
               <div className="col-sm-1">
-                12
+                {this.state.guest_count * 7}
               </div>
           </div>
         </form>
@@ -237,7 +236,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-8">
-              <textarea className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+              <textarea onChange={(e: any) => this.setGuestMessage(e)}  value={this.state.guest_message} className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
             </div>
           </div>
         </form>

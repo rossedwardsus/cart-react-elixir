@@ -8,8 +8,9 @@ import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 import SconelySignatureSinglePage from '../sconely_signature.tsx'; 
 
-import {setEventName, setCode, setGuestCount} from '../actions/order_event_details.ts';
-import {setDeliveryAddressStreet1} from '../actions/order_delivery_address.ts';
+import {setEventName, setGuestMessage, setGuestCount} from '../actions/order_event_details.ts';
+import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_address.ts';
+import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode} from '../actions/order_payment.ts';
 import {getUserOrder, saveOrder} from '../actions/user_order.ts';
 
 
@@ -278,7 +279,7 @@ class UserOrder extends React.Component<any, any> {
                     
                     if order type == signature show event details
                     <br/>
-                    <SconelySignatureSinglePage UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} saveOrder={() => this.props.saveOrder()} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setGuestCount={(e: any) => this.props.setGuestCount(e)} setEventName={(e: any) => this.props.setEventName(e)} setCode={(e: any) => this.props.setCode(e)}/>
+                    <SconelySignatureSinglePage UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} saveOrder={() => this.props.saveOrder()} setGuestCount={(e: any) => this.props.setGuestCount(e)} setGuestMessage={(e: any) => this.props.setGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} />
                     <br/>
                     else show receipt
                     
@@ -305,14 +306,14 @@ function mapDispatchToProps(dispatch: any) {
         dispatch(setEventName(e.target.value, 1));
 
     },
-    setCode: (e: any) => {
-
-        dispatch(setCode(e.target.value, 1));
-
-    },
     setGuestCount: (e: any) => {
 
         dispatch(setGuestCount(e.target.value, 1));
+
+    },
+    setGuestMessage: (e: any) => {
+
+        dispatch(setGuestMessage(e.target.value, 1));
 
     },
     setDeliveryAddressStreet1: (e: any) => {
@@ -322,18 +323,22 @@ function mapDispatchToProps(dispatch: any) {
     },
     setDeliveryAddressStreet2: (e: any) => {
 
+        dispatch(setDeliveryAddressStreet2(e.target.value, 1));
 
     },
     setDeliveryAddressCity: (e: any) => {
 
+        dispatch(setDeliveryAddressCity(e.target.value, 1));
 
     },
     setDeliveryAddressState: (e: any) => {
 
+        dispatch(setDeliveryAddressState(e.target.value, 1));
 
     },
     setDeliveryAddressZipcode: (e: any) => {
 
+        dispatch(setDeliveryAddressZipcode(e.target.value, 1));
 
     },
     setDate: (e: any) => {
@@ -343,8 +348,29 @@ function mapDispatchToProps(dispatch: any) {
     //  dispatch(setTime(e.target.value))
     },
    
-    setPayment: (e: any) => {
+    setNameOnCard: (e: any) => {
 
+        dispatch(setPaymentNameOnCard(e.target.value, 1));
+
+    },
+    setCardNumber: (e: any) => {
+
+        dispatch(setPaymentCardNumber(e.target.value, 1));
+
+    },
+    setPaymentExpiryDateMonth: (e: any) => {
+
+        dispatch(setPaymentExpiryMonth(e.target.value, 1));
+
+    },
+    setPaymentExpiryDateYear: (e: any) => {
+
+        dispatch(setPaymentExpiryYear(e.target.value, 1));
+
+    },
+    setPaymentSecurityCode: (e: any) => {
+
+        dispatch(setPaymentSecurityCode(e.target.value, 1));
 
     },
     getUserOrder: (e: any) => {

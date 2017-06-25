@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import EventDetails from './sconely_signature_event_details.tsx';
-import DeliveryAddress from './sconely_signature_delivery_address.tsx';
+import EventDeliveryContactAddress from './sconely_signature_delivery_contact_address.tsx';
 //import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
 import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx';
 //import EventDetailsName from './sconely_signature_event_details_name.tsx';
@@ -10,9 +10,9 @@ import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx
 import Guests from './sconely_signature_guests.tsx';
 import AdditionalItems from './sconely_signature_additional_items.tsx';
 import PaymentMethod from './payment_method.tsx';
-import SaveOrderButton from './save_order_button.tsx';
+import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
 
-import {setEventName, setCode, setGuestCount} from './actions/order_event_details.ts';
+import {setEventName, setGuestCount} from './actions/order_event_details.ts';
 import {setDeliveryAddressStreet1} from './actions/order_delivery_address.ts';
 import {saveOrder} from './actions/user_order.ts';
 
@@ -212,18 +212,16 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                       </div>
                   </form>
                   <br/>
-                  <EventDetails order={this.props.order} order_details={this.props.order_details} setEventName={(e: any) =>this.props.setEventName(e)} setGuestCount={(e: any) =>this.props.setGuestCount(e)} setCode={(e: any) =>this.props.setCode(e)}/>
+                  <EventDetails order={this.props.order} order_details={this.props.order_details} setEventName={(e: any) =>this.props.setEventName(e)} setGuestCount={(e: any) =>this.props.setGuestCount(e)} setGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
                   <br/>
-                  <DeliveryAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)}/>
+                  <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)}/>
                   <br/>
+                  <EventDetailsDateTime order={this.props.Order} />
                   <br/>
-                  <EventDetailsDateTime order={this.props.Order}/>
-                  <br/>
-                  <br/>
-                  <PaymentMethod order={this.props.order}/>
+                  <PaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                   <br/>
                   <br/>
-                  <SaveOrderButton saveOrder={() => this.props.saveOrder()}/><a className="btn dtn-default">Preview</a>
+                  <ProcessOrderButton processOrder={() => this.props.processOrder()}/>
                 </div>
               </div>
           </div>
@@ -258,11 +256,6 @@ function mapDispatchToProps(dispatch: any) {
         dispatch(setEventName(e.target.value, 1));
 
     },
-    setCode: (e: any) => {
-
-        dispatch(setCode(e.target.value, 1));
-
-    },
     setGuestCount: (e: any) => {
 
         dispatch(setGuestCount(e.target.value, 1));
@@ -270,23 +263,27 @@ function mapDispatchToProps(dispatch: any) {
     },
     setDeliveryAddressStreet1: (e: any) => {
 
-        dispatch(setDeliveryAddressStreet1(e.target.value, 1));
+        //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
 
     },
     setDeliveryAddressStreet2: (e: any) => {
 
+        //dispatch(setDeliveryAddressStreet2(e.target.value, 1));
 
     },
     setDeliveryAddressCity: (e: any) => {
 
+        //dispatch(setDeliveryAddressCity(e.target.value, 1));
 
     },
     setDeliveryAddressState: (e: any) => {
 
+        //dispatch(setDeliveryAddressState(e.target.value, 1));
 
     },
     setDeliveryAddressZipcode: (e: any) => {
 
+        //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
 
     },
     setDate: (e: any) => {
@@ -295,12 +292,16 @@ function mapDispatchToProps(dispatch: any) {
     setTime: (e: any) => {
     //  dispatch(setTime(e.target.value))
     },
-   
+    setDeliveryCost: (e: any) => {
+
+        //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
+
+    },
     setPayment: (e: any) => {
 
 
     },
-    saveOrder: (e: any) => {
+    processOrder: (e: any) => {
 
         dispatch(saveOrder(1));
 

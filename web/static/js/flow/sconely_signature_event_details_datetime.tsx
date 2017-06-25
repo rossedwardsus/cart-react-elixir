@@ -249,7 +249,6 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
 
     return (
       <div>
-        <br/>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-5">
@@ -260,14 +259,28 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-3">
-                <DayPickerInput selectedDays={new Date(2017, 6, 26)} onDayChange={(e: any) => this.setDate(e)} dayPickerProps={{selectedDays: new Date(2017, 6, 26), disabledDays: {before: someDate}}} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>
-                      
+                <DayPickerInput selectedDays={someDate} onDayChange={(e: any) => this.setDate(e)} dayPickerProps={{selectedDays: new Date(2017, 6, 26), disabledDays: {before: someDate}}} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>    
             </div>
             <div className="col-sm-2">
                 <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                    <option></option>
+                    <option>Time</option>
+                    <option>Free</option>
                     <option>9-11 am</option>
                     <option>1-3 pm</option>
+                    <option></option>
+                    <option>$20</option>
+                    <option>7:00 am</option>
+                    <option>7:30 am</option>
+                    <option>8:00 am</option>
+                    <option>8:30 am</option>
+                    <option>9:00 am</option>
+                    <option>11:30 pm</option>
+                    <option>12:00 am</option>
+                    <option>12:30 am</option>
+                    <option>1:00 pm</option>
+                    <option>1:30 am</option>
+                    <option>2:00 am</option>
+                    <option>2:30 pm</option>
                 </select>
                 <br/>
             </div>

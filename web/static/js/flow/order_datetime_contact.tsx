@@ -904,16 +904,16 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(setDeliveryAddressStreet1(e.target.value, ""))
     },
     setDeliveryAddressStreet2: (e: any) => {
-      dispatch(setDeliveryAddressStreet2(e.target.value))
+      dispatch(setDeliveryAddressStreet2(e.target.value, ""))
     },
     setDeliveryAddressCity: (e: any) => {
-      dispatch(setDeliveryAddressCity(e.target.value))
+      dispatch(setDeliveryAddressCity(e.target.value, ""))
     },
     setDeliveryAddressState: (e: any) => {
-      dispatch(setDeliveryAddressState(e.target.value))
+      dispatch(setDeliveryAddressState(e.target.value, ""))
     },
     setDeliveryAddressZipcode: (e: any) => {
-      dispatch(setDeliveryAddressZipcode(e.target.value))
+      dispatch(setDeliveryAddressZipcode(e.target.value, ""))
     },
     setDeliveryCost: (value: any) => {
       dispatch(setDeliveryCost(value));
@@ -934,19 +934,19 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(removeCartItem(item_id));
     },
     setPaymentNameOnCard: (e: any) => {
-      dispatch(setPaymentNameOnCard(e.target.value))
+      dispatch(setPaymentNameOnCard(e.target.value, ""))
     },
     setPaymentCardNumber: (e: any) => {
-      dispatch(setPaymentCardNumber(e.target.value))
+      dispatch(setPaymentCardNumber(e.target.value, ""))
     },
     setPaymentExpiryMonth: (e: any) => {
-      dispatch(setPaymentExpiryMonth(e.target.value))
+      dispatch(setPaymentExpiryMonth(e.target.value, ""))
     },
     setPaymentExpiryYear: (e: any) => {
-      dispatch(setPaymentExpiryYear(e.target.value))
+      dispatch(setPaymentExpiryYear(e.target.value, ""))
     },
     setPaymentSecurityCode: (e: any) => {
-      dispatch(setPaymentSecurityCode(e.target.value))
+      dispatch(setPaymentSecurityCode(e.target.value, ""))
     },
     termsValidated: (value: any) => {
 

@@ -1,4 +1,4 @@
-import { SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_CITY } from '../constants/actionTypes.ts';
+import { SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_STREET2, SET_USER_ORDER_DELIVERY_ADDRESS_CITY, SET_USER_ORDER_DELIVERY_ADDRESS_STATE, SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -23,7 +23,7 @@ let inititalState: CartState = {
 export default function userOrderDeliveryAddress(state: any = {addresses: [{order_id: 1, address: {street1: ""}}]}, action: any){
 
   let delivery_addresses: any = [];
-  let delivery_address_updated: any = null;
+  let delivery_addresses_updated: any = null;
 
   switch (action.type) {
     /*case GET_USER_DELIVERY_ADDRESSES:
@@ -67,7 +67,7 @@ export default function userOrderDeliveryAddress(state: any = {addresses: [{orde
       console.log("user order address reducer");
 
 
-      let addresses_updated: any = state.addresses.map((address: any) => {
+      delivery_addresses_updated = state.addresses.map((address: any) => {
 
             //if(address.address)
             console.log("order id" + address.order_id);
@@ -81,38 +81,67 @@ export default function userOrderDeliveryAddress(state: any = {addresses: [{orde
 
       })
       
-      return Object.assign({}, state, {addresses: addresses_updated});
+      return Object.assign({}, state, {addresses: delivery_addresses_updated});
+
+
+    case SET_USER_ORDER_DELIVERY_ADDRESS_CITY:
     
 
-    /*case SET_DELIVERY_ADDRESS_CITY:
-      //alert("CartState " + action.item_id);
-      //alert("add cart item " + JSON.stringify(state));
+      delivery_addresses_updated = state.addresses.map((address: any) => {
 
-      //alert("view public menu reducer" + JSON.stringify(action));
-      //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-      //return "hello";
-      //alertObject.assign({}, state);
-      //alert(state);
-      //return Object.assign({}, ...state);
+            //if(address.address)
+            console.log("order id" + address.order_id);
+            if(address.order_id === 1){
+                
+                address.address.city = action.value;
 
-      //return Object.assign({}, ...state, action.menu_items)
-      //return Object.assign({}, {menu_items: action.menu_items});
+            }
 
-      //let cart_items_temp = state.cart_items;
-      //cart_items_temp.push({item_id: 2, title: "another item"});
+            return address;
 
-      //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+      })
+      
+      return Object.assign({}, state, {addresses:delivery_addresses_updated});
 
-      //let new_state = {cart_items: cart_items_temp};
+    
+    case SET_USER_ORDER_DELIVERY_ADDRESS_CITY:
+    
+      
+      delivery_addresses_updated = state.addresses.map((address: any) => {
 
-      delivery_address_updated = {delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
+            //if(address.address)
+            console.log("order id" + address.order_id);
+            if(address.order_id === 1){
+                
+                address.address.city = action.value;
 
-      //return Object.assign({}, state, new_state);
-      //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-      //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-      return Object.assign({}, state, {delivery_address: delivery_address_updated})*/
+            }
+
+            return address;
+
+      })
+      
+      return Object.assign({}, state, {addresses: delivery_addresses_updated});
 
 
+    case SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE:
+    
+
+      delivery_addresses_updated = state.addresses.map((address: any) => {
+
+            //if(address.address)
+            console.log("order id" + address.order_id);
+            if(address.order_id === 1){
+                
+                address.address.zipcode = action.value;
+
+            }
+
+            return address;
+
+      })
+      
+      return Object.assign({}, state, {addresses: delivery_addresses_updated});
     
 
     default:

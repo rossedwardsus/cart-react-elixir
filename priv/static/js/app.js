@@ -70,11 +70,11 @@ webpackJsonp([0],[
 	
 	var _user_order2 = _interopRequireDefault(_user_order);
 	
-	var _menu = __webpack_require__(1126);
+	var _menu = __webpack_require__(1127);
 	
 	var _menu2 = _interopRequireDefault(_menu);
 	
-	var _order_datetime_contact = __webpack_require__(1127);
+	var _order_datetime_contact = __webpack_require__(1128);
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
@@ -27306,14 +27306,21 @@ webpackJsonp([0],[
 	exports.GET_USER_ORDERS = 'GET_USER_ORDERS';
 	exports.GET_USER_PAYMENT_NAMES = 'GET_USER_PAYMENT_NAMES';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1 = 'SET_USER_ORDER_DELIVERY_ADDRESS_STREET1';
+	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STREET2 = 'SET_USER_ORDER_DELIVERY_ADDRESS_STREET2';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_CITY = 'SET_USER_ORDER_DELIVERY_ADDRESS_CITY';
+	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STATE = 'SET_USER_ORDER_DELIVERY_ADDRESS_STATE';
+	exports.SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE = 'SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE';
+	exports.SET_USER_ORDER_PAYMENT_NAME_ON_CARD = 'SET_USER_ORDER_PAYMENT_NAME_ON_CARD';
+	exports.SET_USER_ORDER_PAYMENT_CARD_NUMBER = 'SET_USER_ORDER_PAYMENT_CARD_NUMBER';
+	exports.SET_USER_ORDER_PAYMENT_EXPIRY_YEAR = 'SET_USER_ORDER_PAYMENT_EXPIRY_YEAR';
+	exports.SET_USER_ORDER_PAYMENT_EXPIRY_MONTH = 'SET_USER_ORDER_PAYMENT_EXPIRY_MONTH';
 	exports.GET_USER_DELIVERY_ADDRESS_NAMES = 'GET_USER_DELIVERY_ADDRESS_NAMES';
 	exports.GET_USER_DELIVERY_ADDRESSES = 'GET_USER_DELIVERY_ADDRESSES';
 	exports.ADD_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS';
 	exports.SET_USER_PAYMENT_METHODS = 'SET_USER_PAYMENT_METHODS';
 	exports.SET_EVENT_NAME = 'SET_EVENT_NAME';
 	exports.SET_GUEST_COUNT = 'SET_GUEST_COUNT';
-	exports.SET_CODE = 'SET_CODE';
+	exports.SET_GUEST_MESSAGE = 'SET_GUEST_MESSAGE';
 	exports.GET_ORDER = 'GET_ORDER';
 	exports.CREATE_USER_ORDER = 'CREATE_ORDER';
 	exports.SAVE_ORDER = 'SAVE_ORDER';
@@ -30034,8 +30041,9 @@ webpackJsonp([0],[
 	var immutable_1 = __webpack_require__(930);
 	var sconely_signature_tsx_1 = __webpack_require__(939);
 	var order_event_details_ts_1 = __webpack_require__(1098);
-	var order_delivery_address_ts_1 = __webpack_require__(1099);
-	var user_order_ts_1 = __webpack_require__(1100);
+	var order_delivery_address_ts_1 = __webpack_require__(1125);
+	var order_payment_ts_1 = __webpack_require__(1126);
+	var user_order_ts_1 = __webpack_require__(1099);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -30222,14 +30230,32 @@ webpackJsonp([0],[
 	            }
 	            return React.createElement("div", null, "if order type == signature show event details", React.createElement("br", null), React.createElement(sconely_signature_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, menu_items: this.props.menu_items, saveOrder: function saveOrder() {
 	                    return _this2.props.saveOrder();
-	                }, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
-	                    return _this2.props.setDeliveryAddressStreet1(e);
 	                }, setGuestCount: function setGuestCount(e) {
 	                    return _this2.props.setGuestCount(e);
+	                }, setGuestMessage: function setGuestMessage(e) {
+	                    return _this2.props.setGuestMessage(e);
 	                }, setEventName: function setEventName(e) {
 	                    return _this2.props.setEventName(e);
-	                }, setCode: function setCode(e) {
-	                    return _this2.props.setCode(e);
+	                }, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	                    return _this2.props.setDeliveryAddressStreet1(e);
+	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
+	                    return _this2.props.setDeliveryAddressStreet2(e);
+	                }, setDeliveryAddressCity: function setDeliveryAddressCity(e) {
+	                    return _this2.props.setDeliveryAddressCity(e);
+	                }, setDeliveryAddressState: function setDeliveryAddressState(e) {
+	                    return _this2.props.setDeliveryAddressState(e);
+	                }, setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
+	                    return _this2.props.setDeliveryAddressZipcode(e);
+	                }, setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	                    return _this2.props.setNameOnCard(e);
+	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
+	                    return _this2.props.setCardNumber(e);
+	                }, setPaymentExpiryDateMonth: function setPaymentExpiryDateMonth(e) {
+	                    return _this2.props.setPaymentExpiryDateMonth(e);
+	                }, setPaymentExpiryDateYear: function setPaymentExpiryDateYear(e) {
+	                    return _this2.props.setPaymentExpiryDateYear(e);
+	                }, setPaymentSecurity: function setPaymentSecurity(e) {
+	                    return _this2.props.setPaymentSecurity(e);
 	                } }), React.createElement("br", null), "else show receipt");
 	        }
 	    }], [{
@@ -30260,26 +30286,48 @@ webpackJsonp([0],[
 	        setEventName: function setEventName(e) {
 	            dispatch(order_event_details_ts_1.setEventName(e.target.value, 1));
 	        },
-	        setCode: function setCode(e) {
-	            dispatch(order_event_details_ts_1.setCode(e.target.value, 1));
-	        },
 	        setGuestCount: function setGuestCount(e) {
 	            dispatch(order_event_details_ts_1.setGuestCount(e.target.value, 1));
+	        },
+	        setGuestMessage: function setGuestMessage(e) {
+	            dispatch(order_event_details_ts_1.setGuestMessage(e.target.value, 1));
 	        },
 	        setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
 	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value, 1));
 	        },
-	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {},
-	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {},
-	        setDeliveryAddressState: function setDeliveryAddressState(e) {},
-	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {},
+	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet2(e.target.value, 1));
+	        },
+	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressCity(e.target.value, 1));
+	        },
+	        setDeliveryAddressState: function setDeliveryAddressState(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressState(e.target.value, 1));
+	        },
+	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressZipcode(e.target.value, 1));
+	        },
 	        setDate: function setDate(e) {
 	            //  dispatch(setDate(e))
 	        },
 	        setTime: function setTime(e) {
 	            //  dispatch(setTime(e.target.value))
 	        },
-	        setPayment: function setPayment(e) {},
+	        setNameOnCard: function setNameOnCard(e) {
+	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value, 1));
+	        },
+	        setCardNumber: function setCardNumber(e) {
+	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value, 1));
+	        },
+	        setPaymentExpiryDateMonth: function setPaymentExpiryDateMonth(e) {
+	            dispatch(order_payment_ts_1.setPaymentExpiryMonth(e.target.value, 1));
+	        },
+	        setPaymentExpiryDateYear: function setPaymentExpiryDateYear(e) {
+	            dispatch(order_payment_ts_1.setPaymentExpiryYear(e.target.value, 1));
+	        },
+	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value, 1));
+	        },
 	        getUserOrder: function getUserOrder(e) {
 	            dispatch(user_order_ts_1.getUserOrder(1));
 	        },
@@ -30309,14 +30357,13 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(940);
 	var sconely_signature_event_details_tsx_1 = __webpack_require__(941);
-	var sconely_signature_delivery_address_tsx_1 = __webpack_require__(1067);
+	var sconely_signature_delivery_contact_address_tsx_1 = __webpack_require__(1067);
 	//import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
 	var sconely_signature_event_details_datetime_tsx_1 = __webpack_require__(1068);
 	var payment_method_tsx_1 = __webpack_require__(1096);
-	var save_order_button_tsx_1 = __webpack_require__(1097);
+	var sconely_signature_process_order_button_tsx_1 = __webpack_require__(1097);
 	var order_event_details_ts_1 = __webpack_require__(1098);
-	var order_delivery_address_ts_1 = __webpack_require__(1099);
-	var user_order_ts_1 = __webpack_require__(1100);
+	var user_order_ts_1 = __webpack_require__(1099);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import request from 'superagent';
@@ -30427,13 +30474,31 @@ webpackJsonp([0],[
 	                    return _this2.props.setEventName(e);
 	                }, setGuestCount: function setGuestCount(e) {
 	                    return _this2.props.setGuestCount(e);
-	                }, setCode: function setCode(e) {
-	                    return _this2.props.setCode(e);
-	                } }), React.createElement("br", null), React.createElement(sconely_signature_delivery_address_tsx_1.default, { order: this.props.order, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	                }, setGuestMessage: function setGuestMessage(e) {
+	                    return _this2.props.setGuestMessage(e);
+	                } }), React.createElement("br", null), React.createElement(sconely_signature_delivery_contact_address_tsx_1.default, { order: this.props.order, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, { order: this.props.Order }), React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { order: this.props.order }), React.createElement("br", null), React.createElement("br", null), React.createElement(save_order_button_tsx_1.default, { saveOrder: function saveOrder() {
-	                    return _this2.props.saveOrder();
-	                } }), React.createElement("a", { className: "btn dtn-default" }, "Preview"))));
+	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
+	                    return _this2.props.setDeliveryAddressStreet2(e);
+	                }, setDeliveryAddressCity: function setDeliveryAddressCity(e) {
+	                    return _this2.props.setDeliveryAddressCity(e);
+	                }, setDeliveryAddressState: function setDeliveryAddressState(e) {
+	                    return _this2.props.setDeliveryAddressState(e);
+	                }, setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
+	                    return _this2.props.setDeliveryAddressZipcode(e);
+	                } }), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, { order: this.props.Order }), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { order: this.props.order, setNameOnCard: function setNameOnCard(e) {
+	                    return _this2.props.NameOnCard(e);
+	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
+	                    return _this2.props.setPaymentCardNumber(e);
+	                }, setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
+	                    return _this2.props.setPaymentExpiryDateMonth(e);
+	                }, setPaymentExpiryYear: function setPaymentExpiryYear(e) {
+	                    return _this2.props.setPaymentExpiryDateYear(e);
+	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
+	                    return _this2.props.setPaymentSecurityCode(e);
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_process_order_button_tsx_1.default, { processOrder: function processOrder() {
+	                    return _this2.props.processOrder();
+	                } }))));
 	        }
 	    }]);
 	
@@ -30457,27 +30522,35 @@ webpackJsonp([0],[
 	        setEventName: function setEventName(e) {
 	            dispatch(order_event_details_ts_1.setEventName(e.target.value, 1));
 	        },
-	        setCode: function setCode(e) {
-	            dispatch(order_event_details_ts_1.setCode(e.target.value, 1));
-	        },
 	        setGuestCount: function setGuestCount(e) {
 	            dispatch(order_event_details_ts_1.setGuestCount(e.target.value, 1));
 	        },
 	        setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
-	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value, 1));
+	            //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
 	        },
-	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {},
-	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {},
-	        setDeliveryAddressState: function setDeliveryAddressState(e) {},
-	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {},
+	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
+	            //dispatch(setDeliveryAddressStreet2(e.target.value, 1));
+	        },
+	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {
+	            //dispatch(setDeliveryAddressCity(e.target.value, 1));
+	        },
+	        setDeliveryAddressState: function setDeliveryAddressState(e) {
+	            //dispatch(setDeliveryAddressState(e.target.value, 1));
+	        },
+	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
+	            //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
+	        },
 	        setDate: function setDate(e) {
 	            //  dispatch(setDate(e))
 	        },
 	        setTime: function setTime(e) {
 	            //  dispatch(setTime(e.target.value))
 	        },
+	        setDeliveryCost: function setDeliveryCost(e) {
+	            //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
+	        },
 	        setPayment: function setPayment(e) {},
-	        saveOrder: function saveOrder(e) {
+	        processOrder: function processOrder(e) {
 	            dispatch(user_order_ts_1.saveOrder(1));
 	        }
 	    };
@@ -30722,8 +30795,8 @@ webpackJsonp([0],[
 	            startDate: moment(),
 	            files: [],
 	            image_src: "",
-	            code: "",
-	            guest_count: 12
+	            guest_count: 12,
+	            guest_message: ""
 	        };
 	        //load the data from the database if this is not a new event/order
 	        //if window.event.status == "existing/saved"
@@ -30767,14 +30840,6 @@ webpackJsonp([0],[
 	            this.props.setGuestCount(e);
 	        }
 	    }, {
-	        key: "handleDateChange",
-	        value: function handleDateChange(dateString) {
-	            //alert(dateString);
-	            //this.setState({
-	            //startDate: date
-	            //});
-	        }
-	    }, {
 	        key: "onDrop",
 	        value: function onDrop(acceptedFiles) {
 	            var _this2 = this;
@@ -30803,6 +30868,12 @@ webpackJsonp([0],[
 	            //this.props.setGuestCount(e);
 	        }
 	    }, {
+	        key: "setGuestMessage",
+	        value: function setGuestMessage(e) {
+	            this.setState({ guest_message: e.target.value });
+	            //this.props.setGuestCount(e);
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this3 = this;
@@ -30814,8 +30885,10 @@ webpackJsonp([0],[
 	                } }), React.createElement("aside", null, React.createElement("h2", null, "Dropped files"), this.state.files.map(function (f) {
 	                return React.createElement("img", { src: f.preview });
 	            })), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests are you offering Sconely Signature to?"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-2" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this3.changeEventName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.event_name, maxLength: 3, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-4" }, "Anticipated Cost"), React.createElement("div", { className: "col-sm-1" }, "12"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. You will only be charged for the guests that make a selection."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Invite message"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("textarea", { className: "form-control", style: { rows: 5, columns: 1, resize: "none" }, id: "comment" })))));
+	                    return _this3.setGuestCount(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.guest_count, maxLength: 3, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-4" }, "Cost"), React.createElement("div", { className: "col-sm-1" }, this.state.guest_count * 7))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. You will only be charged for the guests that make a selection."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Invite message"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("textarea", { onChange: function onChange(e) {
+	                    return _this3.setGuestMessage(e);
+	                }, value: this.state.guest_message, className: "form-control", style: { rows: 5, columns: 1, resize: "none" }, id: "comment" })))));
 	        }
 	    }]);
 	
@@ -33469,28 +33542,27 @@ webpackJsonp([0],[
 	    this.age++;
 	  }, 1000);*/
 	
-	var EventDetailsDeliveryAddress = function (_React$Component) {
-	    _inherits(EventDetailsDeliveryAddress, _React$Component);
+	var EventDetailsDeliveryContactAddress = function (_React$Component) {
+	    _inherits(EventDetailsDeliveryContactAddress, _React$Component);
 	
 	    //props: Props;
-	    function EventDetailsDeliveryAddress(props) {
-	        _classCallCheck(this, EventDetailsDeliveryAddress);
+	    function EventDetailsDeliveryContactAddress(props) {
+	        _classCallCheck(this, EventDetailsDeliveryContactAddress);
 	
 	        //this.getData();
 	        //alert("sconely yours1" + window.guest_chooses);
-	        var _this = _possibleConstructorReturn(this, (EventDetailsDeliveryAddress.__proto__ || Object.getPrototypeOf(EventDetailsDeliveryAddress)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (EventDetailsDeliveryContactAddress.__proto__ || Object.getPrototypeOf(EventDetailsDeliveryContactAddress)).call(this, props));
 	
 	        _this.state = {
-	            //order_id: this.props.params.order_id,
-	            order_id: _this.props.order_id,
-	            order_type: "",
-	            event_name: "",
-	            event_datetime: "",
+	            contact_first_name: "",
+	            contact_last_name: "",
+	            contact_email: "",
+	            contact_mobile: "",
 	            street1: "",
-	            event_address_city: "",
-	            event_address_zipcode: "",
-	            code: 0,
-	            startDate: moment()
+	            street2: "",
+	            city: "",
+	            state: "",
+	            zipcode: ""
 	        };
 	        return _this;
 	    }
@@ -33501,7 +33573,7 @@ webpackJsonp([0],[
 	    //}
 	
 	
-	    _createClass(EventDetailsDeliveryAddress, [{
+	    _createClass(EventDetailsDeliveryContactAddress, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            /*var orders = JSON.parse(localStorage.getItem("user")).orders;
@@ -33514,46 +33586,58 @@ webpackJsonp([0],[
 	            this.setState({order_type: order_type});*/
 	        }
 	    }, {
-	        key: "changeEventName",
-	        value: function changeEventName(e) {
-	            //alert();
-	            //this.setState({changed: true});
-	            this.setState({ event_name: e.target.value });
+	        key: "changeDeliveryContactFirstName",
+	        value: function changeDeliveryContactFirstName(e) {
+	            this.setState({ contact_first_name: e.target.value });
+	            //this.props.setDeliveryAddressStreet1(e);
 	        }
 	    }, {
-	        key: "changeDeliveryAddress",
-	        value: function changeDeliveryAddress(e) {
-	            this.setState({ delivery_address: e.target.value });
+	        key: "changeDeliveryContactLastName",
+	        value: function changeDeliveryContactLastName(e) {
+	            this.setState({ contact_last_name: e.target.value });
+	            //this.props.setDeliveryAddressStreet1(e);
 	        }
 	    }, {
-	        key: "changeNumberOfGuests",
-	        value: function changeNumberOfGuests(e) {
-	            this.setState({ number_of_guests: e.target.value });
+	        key: "changeDeliveryContactEmail",
+	        value: function changeDeliveryContactEmail(e) {
+	            this.setState({ contact_email: e.target.value });
+	            //this.props.setDeliveryAddressStreet1(e);
 	        }
 	    }, {
-	        key: "handleDateChange",
-	        value: function handleDateChange(dateString) {
-	            //alert(dateString);
-	            //this.setState({
-	            //startDate: date
-	            //});
+	        key: "changeDeliveryContactMobile",
+	        value: function changeDeliveryContactMobile(e) {
+	            this.setState({ contact_mobile: e.target.value });
+	            //this.props.setDeliveryAddressStreet1(e);
 	        }
 	    }, {
-	        key: "onDrop",
-	        value: function onDrop(acceptedFiles) {
-	            /*var req = request.post('/api/v_alpha/signature/upload');
-	            acceptedFiles.forEach((file: any)=> {
-	                //alert(file.name);
-	                req.attach("file", file);
-	            });
-	            req.field("event_id", 123545);
-	            req.end((response: any) => {alert(JSON.stringify(response))});*/
-	        }
-	    }, {
-	        key: "changeStreet1",
-	        value: function changeStreet1(e) {
+	        key: "changeDeliveryAddressStreet1",
+	        value: function changeDeliveryAddressStreet1(e) {
 	            this.setState({ street1: e.target.value });
 	            this.props.setDeliveryAddressStreet1(e);
+	        }
+	    }, {
+	        key: "changeDeliveryAddressStreet2",
+	        value: function changeDeliveryAddressStreet2(e) {
+	            this.setState({ street2: e.target.value });
+	            this.props.setDeliveryAddressStreet2(e);
+	        }
+	    }, {
+	        key: "changeDeliveryAddressCity",
+	        value: function changeDeliveryAddressCity(e) {
+	            this.setState({ city: e.target.value });
+	            this.props.setDeliveryAddressCity(e);
+	        }
+	    }, {
+	        key: "changeDeliveryAddressState",
+	        value: function changeDeliveryAddressState(e) {
+	            this.setState({ state: e.target.value });
+	            this.props.setDeliveryAddressState(e);
+	        }
+	    }, {
+	        key: "changeDeliveryAddressZipcode",
+	        value: function changeDeliveryAddressZipcode(e) {
+	            this.setState({ zipcode: e.target.value });
+	            this.props.setDeliveryAddressZipcode(e);
 	        }
 	    }, {
 	        key: "render",
@@ -33561,19 +33645,31 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Contact")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First", onChange: function onChange(e) {
-	                    return _this2.changeStreet1(e);
-	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Last", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: function onChange(e) {
-	                    return _this2.changeStreet1(e);
-	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Address")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", onChange: function onChange(e) {
-	                    return _this2.changeStreet1(e);
-	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"))))));
+	                    return _this2.changeDeliveryContactFirstName(e);
+	                }, value: this.state.first_name, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.changeDeliveryContactLastName(e);
+	                }, value: this.state.last_name, className: "form-control", id: "exampleInputName2", placeholder: "Last", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: function onChange(e) {
+	                    return _this2.changeDeliveryContactEmail(e);
+	                }, value: this.state.contact_email, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.changeDeliveryContactMobile(e);
+	                }, value: this.state.contact_mobile, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Address")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 1", onChange: function onChange(e) {
+	                    return _this2.changeDeliveryAddressStreet1(e);
+	                }, value: this.state.street1, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.changeDeliveryAddressStreet2(e);
+	                }, value: this.state.street2, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { onChange: function onChange(e) {
+	                    return _this2.changeDeliveryAddressCity(e);
+	                }, value: this.state.city, className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { onChange: function onChange(e) {
+	                    return _this2.changeDeliveryAddressState(e);
+	                }, value: this.state.state, className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { onChange: function onChange(e) {
+	                    return _this2.changeDeliveryAddressZipcode(e);
+	                }, value: this.state.zipcode, className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"))))));
 	        }
 	    }]);
 	
-	    return EventDetailsDeliveryAddress;
+	    return EventDetailsDeliveryContactAddress;
 	}(React.Component);
 	
-	exports.default = EventDetailsDeliveryAddress;
+	exports.default = EventDetailsDeliveryContactAddress;
 
 /***/ }),
 /* 1068 */
@@ -33789,9 +33885,9 @@ webpackJsonp([0],[
 	            var someDate = new Date();
 	            var numberOfDaysToAdd = 3;
 	            someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Date Time1")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(DayPickerInput, { selectedDays: new Date(2017, 6, 26), onDayChange: function onDayChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Date Time1")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(DayPickerInput, { selectedDays: someDate, onDayChange: function onDayChange(e) {
 	                    return _this2.setDate(e);
-	                }, dayPickerProps: { selectedDays: new Date(2017, 6, 26), disabledDays: { before: someDate } }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 } })), React.createElement("div", { className: "col-sm-2" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null), React.createElement("option", null, "9-11 am"), React.createElement("option", null, "1-3 pm")), React.createElement("br", null)), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null));
+	                }, dayPickerProps: { selectedDays: new Date(2017, 6, 26), disabledDays: { before: someDate } }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 } })), React.createElement("div", { className: "col-sm-2" }, React.createElement("select", { className: "form-control", style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Time"), React.createElement("option", null, "Free"), React.createElement("option", null, "9-11 am"), React.createElement("option", null, "1-3 pm"), React.createElement("option", null), React.createElement("option", null, "$20"), React.createElement("option", null, "7:00 am"), React.createElement("option", null, "7:30 am"), React.createElement("option", null, "8:00 am"), React.createElement("option", null, "8:30 am"), React.createElement("option", null, "9:00 am"), React.createElement("option", null, "11:30 pm"), React.createElement("option", null, "12:00 am"), React.createElement("option", null, "12:30 am"), React.createElement("option", null, "1:00 pm"), React.createElement("option", null, "1:30 am"), React.createElement("option", null, "2:00 am"), React.createElement("option", null, "2:30 pm")), React.createElement("br", null)), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }]);
 	
@@ -37459,7 +37555,7 @@ webpackJsonp([0],[
 	            //please enter a valid contact
 	            return React.createElement("div", null, React.createElement("button", { className: this.state.validated, onClick: function onClick() {
 	                    return _this2.saveOrder();
-	                } }, "save button"));
+	                } }, "Process Order"));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -37492,22 +37588,14 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setEventName = setEventName;
-	/*export function setHost(value: any) {
-	  //alert(item_id)
-	  return {
-	    type: SET_GUEST_FIRST_NAME,
-	    value
-	  }
-	}*/
-	function setCode(value, order_id) {
-	    //alert(item_id)
+	function setGuestMessage(value, order_id) {
+	    console.log("guest message");
 	    return {
-	        type: actionTypes_ts_1.SET_CODE,
-	        value: value,
-	        order_id: order_id
+	        type: actionTypes_ts_1.SET_GUEST_MESSAGE,
+	        value: value
 	    };
 	}
-	exports.setCode = setCode;
+	exports.setGuestMessage = setGuestMessage;
 	/*export function setImageAdded(value: any) {
 	  //alert(item_id)
 	  return {
@@ -37532,66 +37620,7 @@ webpackJsonp([0],[
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function setDeliveryAddressStreet1(value, order_id) {
-	    //alert("addCartItem from redux");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("user" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setDeliveryAddressStreet1 = setDeliveryAddressStreet1;
-	function setDeliveryAddressStreet2(value) {
-	    //alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET2,
-	        value: value
-	    };
-	}
-	exports.setDeliveryAddressStreet2 = setDeliveryAddressStreet2;
-	function setDeliveryAddressCity(value) {
-	    //alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY,
-	        value: value
-	    };
-	}
-	exports.setDeliveryAddressCity = setDeliveryAddressCity;
-	function setDeliveryAddressState(value) {
-	    //alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STATE,
-	        value: value
-	    };
-	}
-	exports.setDeliveryAddressState = setDeliveryAddressState;
-	function setDeliveryAddressZipcode(value) {
-	    //alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_ZIPCODE,
-	        value: value
-	    };
-	}
-	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
-
-/***/ }),
-/* 1100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var axios_1 = __webpack_require__(1101);
+	var axios_1 = __webpack_require__(1100);
 	function saveOrder(order_id) {
 	  console.log("get user order action");
 	  return function (dispatch) {
@@ -37711,21 +37740,21 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1101 */
+/* 1100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1102);
+	module.exports = __webpack_require__(1101);
 
 /***/ }),
-/* 1102 */
+/* 1101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
-	var bind = __webpack_require__(1104);
-	var Axios = __webpack_require__(1105);
-	var defaults = __webpack_require__(1106);
+	var utils = __webpack_require__(1102);
+	var bind = __webpack_require__(1103);
+	var Axios = __webpack_require__(1104);
+	var defaults = __webpack_require__(1105);
 	
 	/**
 	 * Create an instance of Axios
@@ -37758,15 +37787,15 @@ webpackJsonp([0],[
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(1123);
-	axios.CancelToken = __webpack_require__(1124);
-	axios.isCancel = __webpack_require__(1120);
+	axios.Cancel = __webpack_require__(1122);
+	axios.CancelToken = __webpack_require__(1123);
+	axios.isCancel = __webpack_require__(1119);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(1125);
+	axios.spread = __webpack_require__(1124);
 	
 	module.exports = axios;
 	
@@ -37775,12 +37804,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1103 */
+/* 1102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bind = __webpack_require__(1104);
+	var bind = __webpack_require__(1103);
 	
 	/*global toString:true*/
 	
@@ -38080,7 +38109,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1104 */
+/* 1103 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -38097,17 +38126,17 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1105 */
+/* 1104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(1106);
-	var utils = __webpack_require__(1103);
-	var InterceptorManager = __webpack_require__(1117);
-	var dispatchRequest = __webpack_require__(1118);
-	var isAbsoluteURL = __webpack_require__(1121);
-	var combineURLs = __webpack_require__(1122);
+	var defaults = __webpack_require__(1105);
+	var utils = __webpack_require__(1102);
+	var InterceptorManager = __webpack_require__(1116);
+	var dispatchRequest = __webpack_require__(1117);
+	var isAbsoluteURL = __webpack_require__(1120);
+	var combineURLs = __webpack_require__(1121);
 	
 	/**
 	 * Create a new instance of Axios
@@ -38188,13 +38217,13 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1106 */
+/* 1105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1103);
-	var normalizeHeaderName = __webpack_require__(1107);
+	var utils = __webpack_require__(1102);
+	var normalizeHeaderName = __webpack_require__(1106);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -38211,10 +38240,10 @@ webpackJsonp([0],[
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(1108);
+	    adapter = __webpack_require__(1107);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(1108);
+	    adapter = __webpack_require__(1107);
 	  }
 	  return adapter;
 	}
@@ -38288,12 +38317,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1107 */
+/* 1106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -38306,18 +38335,18 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1108 */
+/* 1107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(1103);
-	var settle = __webpack_require__(1109);
-	var buildURL = __webpack_require__(1112);
-	var parseHeaders = __webpack_require__(1113);
-	var isURLSameOrigin = __webpack_require__(1114);
-	var createError = __webpack_require__(1110);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1115);
+	var utils = __webpack_require__(1102);
+	var settle = __webpack_require__(1108);
+	var buildURL = __webpack_require__(1111);
+	var parseHeaders = __webpack_require__(1112);
+	var isURLSameOrigin = __webpack_require__(1113);
+	var createError = __webpack_require__(1109);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1114);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -38413,7 +38442,7 @@ webpackJsonp([0],[
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(1116);
+	      var cookies = __webpack_require__(1115);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -38490,12 +38519,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 1109 */
+/* 1108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(1110);
+	var createError = __webpack_require__(1109);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -38521,12 +38550,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1110 */
+/* 1109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(1111);
+	var enhanceError = __webpack_require__(1110);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -38544,7 +38573,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1111 */
+/* 1110 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -38569,12 +38598,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1112 */
+/* 1111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -38643,12 +38672,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1113 */
+/* 1112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	/**
 	 * Parse headers into an object
@@ -38686,12 +38715,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1114 */
+/* 1113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -38760,7 +38789,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1115 */
+/* 1114 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -38802,12 +38831,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1116 */
+/* 1115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -38861,12 +38890,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1117 */
+/* 1116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -38919,15 +38948,15 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1118 */
+/* 1117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
-	var transformData = __webpack_require__(1119);
-	var isCancel = __webpack_require__(1120);
-	var defaults = __webpack_require__(1106);
+	var utils = __webpack_require__(1102);
+	var transformData = __webpack_require__(1118);
+	var isCancel = __webpack_require__(1119);
+	var defaults = __webpack_require__(1105);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -39004,12 +39033,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1119 */
+/* 1118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(1103);
+	var utils = __webpack_require__(1102);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -39030,7 +39059,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1120 */
+/* 1119 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -39041,7 +39070,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1121 */
+/* 1120 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -39061,7 +39090,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1122 */
+/* 1121 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -39079,7 +39108,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1123 */
+/* 1122 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -39104,12 +39133,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1124 */
+/* 1123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(1123);
+	var Cancel = __webpack_require__(1122);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -39167,7 +39196,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 1125 */
+/* 1124 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -39200,7 +39229,125 @@ webpackJsonp([0],[
 
 
 /***/ }),
+/* 1125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function setDeliveryAddressStreet1(value, order_id) {
+	    console.log("street1");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("user" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setDeliveryAddressStreet1 = setDeliveryAddressStreet1;
+	function setDeliveryAddressStreet2(value, order_id) {
+	    console.log("street2");
+	    return {
+	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STREET2,
+	        value: value
+	    };
+	}
+	exports.setDeliveryAddressStreet2 = setDeliveryAddressStreet2;
+	function setDeliveryAddressCity(value, order_id) {
+	    console.log("city");
+	    return {
+	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_CITY,
+	        value: value
+	    };
+	}
+	exports.setDeliveryAddressCity = setDeliveryAddressCity;
+	function setDeliveryAddressState(value, order_id) {
+	    console.log("state");
+	    return {
+	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_STATE,
+	        value: value
+	    };
+	}
+	exports.setDeliveryAddressState = setDeliveryAddressState;
+	function setDeliveryAddressZipcode(value, order_id) {
+	    console.log("zipcode");
+	    return {
+	        type: actionTypes_ts_1.SET_DELIVERY_ADDRESS_ZIPCODE,
+	        value: value
+	    };
+	}
+	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
+
+/***/ }),
 /* 1126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function setPaymentNameOnCard(value, order_id) {
+	    console.log("name on card action");
+	    //if user is logged u dispatch to user order payment
+	    return {
+	        type: actionTypes_ts_1.SET_USER_ORDER_PAYMENT_NAME_ON_CARD,
+	        value: value
+	    };
+	    //return {
+	    //  type: SET_PAYMENT_NAME_ON_CARD,
+	    //  value
+	    //}
+	}
+	exports.setPaymentNameOnCard = setPaymentNameOnCard;
+	function setPaymentCardNumber(value, order_id) {
+	    console.log("action payment card number");
+	    return {
+	        type: actionTypes_ts_1.SET_USER_ORDER_PAYMENT_CARD_NUMBER,
+	        value: value
+	    };
+	    //if user == logged in
+	    //return {
+	    //  type: SET_PAYMENT_CARD_NUMBER,
+	    //  value
+	    //}
+	}
+	exports.setPaymentCardNumber = setPaymentCardNumber;
+	function setPaymentExpiryMonth(value, order_id) {
+	    console.log(" action expiry month" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_MONTH,
+	        value: value
+	    };
+	}
+	exports.setPaymentExpiryMonth = setPaymentExpiryMonth;
+	function setPaymentExpiryYear(value, order_id) {
+	    console.log("expiry year" + value);
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_YEAR,
+	        value: value
+	    };
+	}
+	exports.setPaymentExpiryYear = setPaymentExpiryYear;
+	function setPaymentSecurityCode(value, order_id) {
+	    console.log("addCartItem from redux");
+	    return {
+	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
+	        value: value
+	    };
+	}
+	exports.setPaymentSecurityCode = setPaymentSecurityCode;
+
+/***/ }),
+/* 1127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39465,7 +39612,7 @@ webpackJsonp([0],[
 	exports.default = OrderMenu1;
 
 /***/ }),
-/* 1127 */
+/* 1128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39486,11 +39633,11 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var order_validations_ts_1 = __webpack_require__(924);
-	var order_delivery_address_ts_1 = __webpack_require__(1099);
-	var order_name_ts_1 = __webpack_require__(1128);
-	var order_delivery_datetime_ts_1 = __webpack_require__(1129);
+	var order_delivery_address_ts_1 = __webpack_require__(1125);
+	var order_name_ts_1 = __webpack_require__(1129);
+	var order_delivery_datetime_ts_1 = __webpack_require__(1130);
 	var cart_ts_1 = __webpack_require__(925);
-	var order_payment_ts_1 = __webpack_require__(1130);
+	var order_payment_ts_1 = __webpack_require__(1126);
 	var order_contact_ts_1 = __webpack_require__(1131);
 	var order_ts_1 = __webpack_require__(920);
 	var delivery_address_tsx_1 = __webpack_require__(1132);
@@ -39504,7 +39651,7 @@ webpackJsonp([0],[
 	var Immutable = __webpack_require__(930);
 	var DatePicker = __webpack_require__(942);
 	var moment = __webpack_require__(943);
-	var axios_1 = __webpack_require__(1101);
+	var axios_1 = __webpack_require__(1100);
 	__webpack_require__(1094);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -40090,16 +40237,16 @@ webpackJsonp([0],[
 	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet1(e.target.value, ""));
 	        },
 	        setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
-	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet2(e.target.value));
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressStreet2(e.target.value, ""));
 	        },
 	        setDeliveryAddressCity: function setDeliveryAddressCity(e) {
-	            dispatch(order_delivery_address_ts_1.setDeliveryAddressCity(e.target.value));
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressCity(e.target.value, ""));
 	        },
 	        setDeliveryAddressState: function setDeliveryAddressState(e) {
-	            dispatch(order_delivery_address_ts_1.setDeliveryAddressState(e.target.value));
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressState(e.target.value, ""));
 	        },
 	        setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
-	            dispatch(order_delivery_address_ts_1.setDeliveryAddressZipcode(e.target.value));
+	            dispatch(order_delivery_address_ts_1.setDeliveryAddressZipcode(e.target.value, ""));
 	        },
 	        setDeliveryCost: function setDeliveryCost(value) {
 	            dispatch(order_ts_1.setDeliveryCost(value));
@@ -40120,19 +40267,19 @@ webpackJsonp([0],[
 	            dispatch(cart_ts_1.removeCartItem(item_id));
 	        },
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
-	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value));
+	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value, ""));
 	        },
 	        setPaymentCardNumber: function setPaymentCardNumber(e) {
-	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value));
+	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value, ""));
 	        },
 	        setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
-	            dispatch(order_payment_ts_1.setPaymentExpiryMonth(e.target.value));
+	            dispatch(order_payment_ts_1.setPaymentExpiryMonth(e.target.value, ""));
 	        },
 	        setPaymentExpiryYear: function setPaymentExpiryYear(e) {
-	            dispatch(order_payment_ts_1.setPaymentExpiryYear(e.target.value));
+	            dispatch(order_payment_ts_1.setPaymentExpiryYear(e.target.value, ""));
 	        },
 	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value));
+	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value, ""));
 	        },
 	        termsValidated: function termsValidated(value) {
 	            dispatch(order_ts_1.termsValidated(value));
@@ -40162,7 +40309,7 @@ webpackJsonp([0],[
 	exports.default = Checkout;
 
 /***/ }),
-/* 1128 */
+/* 1129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40195,7 +40342,7 @@ webpackJsonp([0],[
 	exports.setCompanyName = setCompanyName;
 
 /***/ }),
-/* 1129 */
+/* 1130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40226,56 +40373,6 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setSpecificTime = setSpecificTime;
-
-/***/ }),
-/* 1130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function setPaymentNameOnCard(value) {
-	    console.log("addCartItem from redux");
-	    //if user is logged u dispatch to user order payment
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_NAME_ON_CARD,
-	        value: value
-	    };
-	}
-	exports.setPaymentNameOnCard = setPaymentNameOnCard;
-	function setPaymentCardNumber(value) {
-	    console.log("action payment");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_CARD_NUMBER,
-	        value: value
-	    };
-	}
-	exports.setPaymentCardNumber = setPaymentCardNumber;
-	function setPaymentExpiryMonth(value) {
-	    console.log("expiry month" + value);
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_MONTH,
-	        value: value
-	    };
-	}
-	exports.setPaymentExpiryMonth = setPaymentExpiryMonth;
-	function setPaymentExpiryYear(value) {
-	    console.log("expiry year" + value);
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_EXPIRY_YEAR,
-	        value: value
-	    };
-	}
-	exports.setPaymentExpiryYear = setPaymentExpiryYear;
-	function setPaymentSecurityCode(value) {
-	    console.log("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
-	        value: value
-	    };
-	}
-	exports.setPaymentSecurityCode = setPaymentSecurityCode;
 
 /***/ }),
 /* 1131 */
@@ -41453,7 +41550,7 @@ webpackJsonp([0],[
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(930);
 	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
-	var axios_1 = __webpack_require__(1101);
+	var axios_1 = __webpack_require__(1100);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -42295,7 +42392,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import {setFirstName, setLastName} from './actions/order_name.ts';
-	var order_delivery_datetime_ts_1 = __webpack_require__(1129);
+	var order_delivery_datetime_ts_1 = __webpack_require__(1130);
 	var delivery_address_tsx_1 = __webpack_require__(1132);
 	var contact_preview_tsx_1 = __webpack_require__(1140);
 	var datetime_tsx_1 = __webpack_require__(1134);
@@ -43044,7 +43141,7 @@ webpackJsonp([0],[
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(930);
-	var order_name_ts_1 = __webpack_require__(1128);
+	var order_name_ts_1 = __webpack_require__(1129);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -43287,7 +43384,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(1101);
+	var axios_1 = __webpack_require__(1100);
 	var session_ts_1 = __webpack_require__(1144);
 	function loginUser(email, password) {
 	    var url = "";
@@ -43749,7 +43846,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(1101);
+	var axios_1 = __webpack_require__(1100);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -44290,7 +44387,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(1101);
+	var axios_1 = __webpack_require__(1100);
 	function addGuestCartItem(order_id, item_id) {
 	    //alert(item_id)
 	    return {
@@ -45634,73 +45731,83 @@ webpackJsonp([0],[
 	
 	}*/
 	function userOrderDeliveryAddress() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { addresses: [{ order_id: 1, address: { street1: "" } }] };
-	      var action = arguments[1];
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { addresses: [{ order_id: 1, address: { street1: "" } }] };
+	    var action = arguments[1];
 	
-	      var delivery_addresses = [];
-	      var delivery_address_updated = null;
-	      switch (action.type) {
-	            /*case GET_USER_DELIVERY_ADDRESSES:
-	              //alert("CartState " + action.item_id);
-	              console.log("user delivery addresses " + JSON.stringify(state));
-	                   //alert("view public menu reducer" + JSON.stringify(action));
-	              //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	              //return "hello";
-	              //alertObject.assign({}, state);
-	              //alert(state);
-	              //return Object.assign({}, ...state);
-	                   //return Object.assign({}, ...state, action.menu_items)
-	              //return Object.assign({}, {menu_items: action.menu_items});
-	                   //let cart_items_temp = state.cart_items;
-	              //cart_items_temp.push({item_id: 2, title: "another item"});
-	                   //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	                   //let new_state = {cart_items: cart_items_temp};
-	                   //return Object.assign({}, state, new_state);
-	              //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	              //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	              
-	              delivery_addresses.push({address_id: 1, name: "home", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"});
-	                   delivery_addresses.push({address_id: 2, name: "work", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"});
-	             
-	              //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
-	              return Object.assign({}, state, {addresses: delivery_addresses});*/
-	            case actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1:
-	                  //find the order and set street1
-	                  console.log("user order address reducer");
-	                  var addresses_updated = state.addresses.map(function (address) {
-	                        //if(address.address)
-	                        console.log("order id" + address.order_id);
-	                        if (address.order_id === 1) {
-	                              address.address.street1 = action.value;
-	                        }
-	                        return address;
-	                  });
-	                  return Object.assign({}, state, { addresses: addresses_updated });
-	            /*case SET_DELIVERY_ADDRESS_CITY:
-	              //alert("CartState " + action.item_id);
-	              //alert("add cart item " + JSON.stringify(state));
-	                   //alert("view public menu reducer" + JSON.stringify(action));
-	              //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	              //return "hello";
-	              //alertObject.assign({}, state);
-	              //alert(state);
-	              //return Object.assign({}, ...state);
-	                   //return Object.assign({}, ...state, action.menu_items)
-	              //return Object.assign({}, {menu_items: action.menu_items});
-	                   //let cart_items_temp = state.cart_items;
-	              //cart_items_temp.push({item_id: 2, title: "another item"});
-	                   //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
-	                   //let new_state = {cart_items: cart_items_temp};
-	                   delivery_address_updated = {delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"};
-	                   //return Object.assign({}, state, new_state);
-	              //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
-	              //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
-	              return Object.assign({}, state, {delivery_address: delivery_address_updated})*/
-	            default:
-	                  //alert();
-	                  //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	                  return state;
-	      }
+	    var delivery_addresses = [];
+	    var delivery_addresses_updated = null;
+	    switch (action.type) {
+	        /*case GET_USER_DELIVERY_ADDRESSES:
+	          //alert("CartState " + action.item_id);
+	          console.log("user delivery addresses " + JSON.stringify(state));
+	               //alert("view public menu reducer" + JSON.stringify(action));
+	          //state.push({menu_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	          //return "hello";
+	          //alertObject.assign({}, state);
+	          //alert(state);
+	          //return Object.assign({}, ...state);
+	               //return Object.assign({}, ...state, action.menu_items)
+	          //return Object.assign({}, {menu_items: action.menu_items});
+	               //let cart_items_temp = state.cart_items;
+	          //cart_items_temp.push({item_id: 2, title: "another item"});
+	               //alert("cart items temp updated " + JSON.stringify(cart_items_temp));
+	               //let new_state = {cart_items: cart_items_temp};
+	               //return Object.assign({}, state, new_state);
+	          //return Object.assign({}, state.order, {cart_items: [...state.cart_items, {item_id: action.item_id, title: "another item", quantity: 1}]});
+	          //return {order: {delivery_address: {}, cart_items: [{item_id: 1, title: "from reducer view public menu yippee caye!", dozens: 1, quantity: 1, mini: true}]}}
+	          
+	          delivery_addresses.push({address_id: 1, name: "home", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"});
+	               delivery_addresses.push({address_id: 2, name: "work", delivery_address_street: action.value, delivery_address_city: "state.default.delivery_address.delivery_address_city", delivery_address_state: "state.default.delivery_address.delivery_address_city", delivery_address_zipcode: "state.default.delivery_address.delivery_address_zipcode"});
+	         
+	          //return Object.assign({}, state, {delivery_address: {delivery_address_street: action.value, delivery_address_city: ""}})
+	          return Object.assign({}, state, {addresses: delivery_addresses});*/
+	        case actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1:
+	            //find the order and set street1
+	            console.log("user order address reducer");
+	            delivery_addresses_updated = state.addresses.map(function (address) {
+	                //if(address.address)
+	                console.log("order id" + address.order_id);
+	                if (address.order_id === 1) {
+	                    address.address.street1 = action.value;
+	                }
+	                return address;
+	            });
+	            return Object.assign({}, state, { addresses: delivery_addresses_updated });
+	        case actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_CITY:
+	            delivery_addresses_updated = state.addresses.map(function (address) {
+	                //if(address.address)
+	                console.log("order id" + address.order_id);
+	                if (address.order_id === 1) {
+	                    address.address.city = action.value;
+	                }
+	                return address;
+	            });
+	            return Object.assign({}, state, { addresses: delivery_addresses_updated });
+	        case actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_CITY:
+	            delivery_addresses_updated = state.addresses.map(function (address) {
+	                //if(address.address)
+	                console.log("order id" + address.order_id);
+	                if (address.order_id === 1) {
+	                    address.address.city = action.value;
+	                }
+	                return address;
+	            });
+	            return Object.assign({}, state, { addresses: delivery_addresses_updated });
+	        case actionTypes_ts_1.SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE:
+	            delivery_addresses_updated = state.addresses.map(function (address) {
+	                //if(address.address)
+	                console.log("order id" + address.order_id);
+	                if (address.order_id === 1) {
+	                    address.address.zipcode = action.value;
+	                }
+	                return address;
+	            });
+	            return Object.assign({}, state, { addresses: delivery_addresses_updated });
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
 	}
 	exports.default = userOrderDeliveryAddress;
 	;
@@ -45742,15 +45849,11 @@ webpackJsonp([0],[
 	        case actionTypes_ts_1.SET_EVENT_NAME:
 	            //console("CartState " + action.item_id);
 	            console.log("setevent name reducer " + action.value);
-	            return Object.assign({}, state, Object.assign({}, state, { event_name: action.value }));
-	        case actionTypes_ts_1.SET_CODE:
-	            //console("CartState " + action.item_id);
-	            console.log("set code reducer " + action.value);
 	            orders_updated = state.orders.map(function (order) {
 	                //if(address.address)
 	                console.log("order id" + order.order_id);
 	                if (order.order_id == 1) {
-	                    order.code = action.value;
+	                    order.event_name = action.value;
 	                }
 	                return order;
 	            });
