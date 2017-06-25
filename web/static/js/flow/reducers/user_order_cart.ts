@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM } from '../constants/actionTypes.ts';
+import { ADD_USER_ORDER_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,16 +20,26 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user_order_cart_items(state:any = {cart_items: []}, action: any){
-  switch (action.type) {
-    case ADD_CART_ITEM:
+export default function user_order_cart_items(state:any = {cart_items: [{order_id: 1, items: []}]}, action: any){
 
-      console.log("add cart item" + JSON.stringify(state));
+  let cart_updated = [];
+
+  switch (action.type) {
+    case ADD_USER_ORDER_CART_ITEM:
+
+      console.log("add user order cart item" + JSON.stringify(state));
 
       let items = state.cart_items;
-      items.push({item_id: 1, item_type: action.item_type, quantity: parseInt(action.quantity)});
+      //items.push({item_id: 1, itemsitem_type: action.item_type, quantity: parseInt(action.quantity)});
+
+      cart_updated = state.cart_items.map((item: any, index: any) => {
+          if (item.order_id === 1) {
+              item.items.push({item_id: 1, mini: "action.item_type", quantity: 1})
+          }
+          return item
+      })
       
-      return Object.assign({}, state, {cart_items: items});
+      return Object.assign({}, state, {cart_items: cart_updated});
     
 
     case INCREASE_CART_ITEM_QUANTITY:

@@ -21,6 +21,7 @@ import UserPaymentMethods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 //import SconelySignatureGuest from './sconely_signature_guest.ts';
 import UserOrders from './user_orders.ts';
+import UserOrderCart from './user_order_cart.ts';
 import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
 import UserOrderEventDetails from './user_order_event_details.ts';
 import GuestResponse from './guest_response.ts';
@@ -40,6 +41,7 @@ export default combineReducers({
   UserOrders,
   UserOrderEventDetails,
   UserOrderDeliveryAddress,
+  UserOrderCart,
   UserPaymentMethods,
   GuestResponse,
   //user_delivery_addresses,

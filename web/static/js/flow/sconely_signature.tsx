@@ -184,7 +184,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails}/>
+                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.user_order_cart}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -238,6 +238,7 @@ function mapStateToProps(state: any) {
    order: state.Order,
    order_details: state.OrderEventDetails,
    order_delivery_address: state.delivery_address,
+   user_order_cart: state.UserOrderCart,
    //order_contact: state.contact,
    //order_name: state.name,
    //order_cart_items: state.cart.cart_items,

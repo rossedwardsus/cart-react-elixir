@@ -5,6 +5,9 @@ import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import {addCartItem} from './actions/cart.ts';
+
+
 class SconelySignatureAdditionalItems extends React.Component<any, any> {
   //props: Props;
 
@@ -16,7 +19,11 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
 
     this.state = {
 
-        items: [{item_id: 1, image_id: "SweetassortmentJune7a", title: "Savory Assortment", description: ""}, {item_id: 1, image_id: "savories7", title: "Sweet Assortment", description: ""}, {title: "Savory Assortment Mini", description: "", image_id: "SconelyGallery3"}, {title: "Sweet Assortment Mini", description: "", image_id: "Savoryassortment5x5"}]
+        items: [{item_id: 1, image_id: "SweetassortmentJune7a", title: "Savory Assortment", description: ""}, {item_id: 1, image_id: "savories7", title: "Sweet Assortment", description: ""}, {title: "Savory Assortment Mini", description: "", image_id: "SconelyGallery3"}, {title: "Sweet Assortment Mini", description: "", image_id: "Savoryassortment5x5"}],
+        dozen: 0,
+        quantity: 0,
+        mini: "no",
+        add_cart_item_button_classname: "btn btn-default"
        
     };
 
@@ -36,13 +43,13 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
           
     });*/
 
-    this.changeEventName = this.changeEventName.bind(this);
+    /*this.changeEventName = this.changeEventName.bind(this);
     this.changeNumberOfGuests = this.changeNumberOfGuests.bind(this);
     this.changeDeliveryAddress = this.changeDeliveryAddress.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.createCode = this.createCode.bind(this);
     this.changeCode = this.changeCode.bind(this);
-    //this.findOrder = this.findOrder.bind(this);
+    //this.findOrder = this.findOrder.bind(this);*/
 
     //autosave
     //if event name has been added then start autosaving
@@ -94,86 +101,8 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
 
   }
 
-  changeEventName(e: any){
 
-    //alert();
-
-    //this.setState({changed: true});
-
-    this.setState({event_name: e.target.value})
-
-  }
-
-  changeDeliveryAddress(e: any){
-
-    this.setState({delivery_address: e.target.value})
-
-  }
-
-  changeNumberOfGuests(e:any){
-
-    this.setState({number_of_guests: e.target.value})
-
-  }
-
-  handleDateChange(dateString: any) {
-
-    //alert(dateString);
-
-    //this.setState({
-      //startDate: date
-    //});
-  }
-
-  onDrop(acceptedFiles: any){
-        /*var req = request.post('/api/v_alpha/signature/upload');
-        acceptedFiles.forEach((file: any)=> {
-            //alert(file.name);
-            req.attach("file", file);
-        });
-        req.field("event_id", 123545);
-        req.end((response: any) => {alert(JSON.stringify(response))});*/
-  }
-
-  changeCode(){
-
-
-
-  }
-
-  createCode(){
-
-
-
-  }
-
-  onFocus(){
-
-        /*alert();
-
-        //AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk
-        
-        request
-              .post('https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyAuVR15rb8d2QgfDsZUD5b6kNhnV-mF4wk')
-              .send({ payment_choice: this.state.payment_choice, total: 0, customer_id: 0 })
-              .set('X-API-Key', 'foobar')
-              .set('Accept', 'application/json')
-              .end(function(err, res){
-                // Calling the end function will send the request
-                //this.setState({payment_complete: true});
-                console.log(res);
-          
-              });*/
-
-
-  }
-
-  next(){
-
-    alert("next" + this.state.event_name);
-
-  }
-
+ 
    showItem(item_id: any){
 
       //alert(item_id);
@@ -196,6 +125,25 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
       $('#myModal').modal('show');
 
   }
+
+  changeDozen(e: any){
+
+      this.setState({dozen: 1224})
+
+  }
+
+  changeQuantity(e: any){
+
+      this.setState({quantity: e.target.value})
+
+  }
+
+  addCartItem(){
+
+      this.props.addCartItem("item_id", "dozen", "quantity")
+
+  }
+
 
 
   render(): JSX.Element {
@@ -221,7 +169,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails}/>
+                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -286,6 +234,10 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                                         <form className="form-horizontal">
                                           <div className="form-group">
                                             <div className="col-md-3">
+                                                12<input type="radio" onChange={(e: any) => this.changeDozen(e)} name="dozen" value="12" /> 
+                                                24<input type="radio" onChange={(e: any) => this.changeDozen(e)} name="dozen" value="24" />
+                                            </div>
+                                            <div className="col-md-3">
                                               <select className="form-control" value={this.state.selected_item_quantity}  style={{height: 35, width: 120}}>
                                                 <option value="">Select Quantity</option> 
                                                 <option value="1">1</option>
@@ -303,7 +255,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                                               </select>
                                             </div>
                                             <div className="col-md-3">
-                                              <button className={this.state.add_cart_item_button_classname}  type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                              <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
                                             </div>
                                           </div>
                                         </form>
@@ -328,6 +280,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         
         menu_items: state.MenuItems,
         UserOrderEventDetails: state.UserOrderEventDetails,
+        UserOrderCart: state.UserOrderCart,
 
     //}
   }
@@ -337,9 +290,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    //addCartItem: (item_id: any, dozens: any, quantity: any) => {
-    //  dispatch(addCartItem(1));
-    //},
+    addCartItem: (item_id: any, type: any, quantity: any) => {
+      dispatch(addCartItem(1, "type", 1));
+    },
     //increaseCartItemQuantity: () => {
     //  dispatch(increaseCartItemQuantity(1, 12));
     //},

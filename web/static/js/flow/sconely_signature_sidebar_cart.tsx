@@ -213,7 +213,7 @@ class SidebarCart extends React.Component<any, any> {
 
     let cart = "";
 
-    //console.log("length order" + JSON.stringify(this.props.cart));
+    console.log("length cart" + JSON.stringify(this.props.UserOrderCart.cart_items));
     //console.log("order type" + JSON.stringify(this.props.order));
 
     console.log("details" + JSON.stringify(this.props.UserOrderEventDetails));
@@ -221,9 +221,28 @@ class SidebarCart extends React.Component<any, any> {
    
     //{this.props.params.repoName}
 
+    cart = this.props.UserOrderCart.cart_items.map((items: any) => {
+
+          return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-md-4">Guest</div>
+                      <div className="col-md-4">X</div>
+                       <div className="col-md-4"></div>
+                    </div>
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-md-4">Ruby Q</div>
+                      <div className="col-md-4">X</div>
+                       <div className="col-md-4">5</div>
+                    </div>
+                  </form>)
+
+    });
+
+    
+
     return (<div> 
                   <br/>
-                  {item_limit}
+                  {cart}
                   <br/>
                   <form className="form-horizontal" style={{border: 1, position: "static"}}>
                     <div className="form-group" style={{border: 1}}>
@@ -239,7 +258,7 @@ class SidebarCart extends React.Component<any, any> {
                   </form>
                   <form className="form-horizontal" style={{border: 1}}>
                     <div className="form-group" style={{border: 1}}>
-                      <div className="col-xs-10" style={{fontType: "helvetica", fontSize: "14"}}><b>Totat Amount Due</b></div>
+                      <div className="col-xs-10" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Amount Due</b></div>
                       <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>$100.00</div>
                       <br/>
                       <br/>
