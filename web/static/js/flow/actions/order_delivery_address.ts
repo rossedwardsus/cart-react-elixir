@@ -5,7 +5,7 @@ export function setDeliveryAddressStreet1(value: any, order_id: any) {
   //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
   //else SET_DELIVERY_ADDRESS_STREET1
 
-  //if("user" == "guest"){
+  //if("session.user_id" == "guest"){
   //    return {
   //      type: SET_DELIVERY_ADDRESS_STREET1,
   //      value

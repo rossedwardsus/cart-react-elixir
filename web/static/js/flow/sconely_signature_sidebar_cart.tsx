@@ -180,6 +180,11 @@ class SidebarCart extends React.Component<any, any> {
 
   }
 
+  processOrder = () => {
+
+      //this.props.processOrder();
+
+  }
   
 
   render(){
@@ -213,7 +218,7 @@ class SidebarCart extends React.Component<any, any> {
 
     let cart = "";
 
-    console.log("length cart" + JSON.stringify(this.props.UserOrderCart.cart_items));
+    console.log("length cart" + JSON.stringify(this.props.UserOrderCart));
     //console.log("order type" + JSON.stringify(this.props.order));
 
     console.log("details" + JSON.stringify(this.props.UserOrderEventDetails));
@@ -221,7 +226,7 @@ class SidebarCart extends React.Component<any, any> {
    
     //{this.props.params.repoName}
 
-    cart = this.props.UserOrderCart.cart_items.map((items: any) => {
+    /*cart = this.props.UserOrderSubOrders.cart_items.map((items: any) => {
 
           return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
                     <div className="form-group" style={{border: 1}}>
@@ -236,7 +241,10 @@ class SidebarCart extends React.Component<any, any> {
                     </div>
                   </form>)
 
-    });
+    });*/
+
+
+  
 
     
 
@@ -274,7 +282,9 @@ class SidebarCart extends React.Component<any, any> {
                       <br/>
                     </div>
                   </form> 
-                  <button>Submit Order</button>                      
+                  if order processed if false button is active
+                  <br/>
+                  <button onClick={this.processOrder} className="btn btn-default">Process Order</button>                      
             </div>
     )
   }
@@ -290,7 +300,7 @@ class SidebarCart extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
+  console.log("order id " + JSON.stringify(this.props.params.order_id));
   return {
     //active: ownProps.filter === state.visibilityFilter
 

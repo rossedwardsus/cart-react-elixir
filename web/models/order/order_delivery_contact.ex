@@ -1,4 +1,4 @@
-defmodule Sconely.OrderContact do
+defmodule Sconely.OrderDeliveryContact do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -8,8 +8,8 @@ defmodule Sconely.OrderContact do
 		
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
-		schema "order_contact" do
-			field :order_id, Ecto.UUID
+		schema "order_delivery_contact" do
+			field :order_id, :string
 			field :email, :string
 			field :mobile, :string
 			field :first_name, :string

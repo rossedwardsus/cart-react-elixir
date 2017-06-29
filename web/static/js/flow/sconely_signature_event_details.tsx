@@ -8,9 +8,10 @@ var moment = require('moment');
 //import { DateField, Calendar } from 'react-date-picker';
 
 import { Link } from 'react-router';
-
-
 import { connect } from 'react-redux';
+
+import {getUserOrderDetails} from './actions/user_order.ts';
+
 
 //<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
 
@@ -89,6 +90,8 @@ class EventDetailsName extends React.Component<any, any> {
     //alert(order_type);
     this.setState({order_type: order_type});*/
 
+    //this.props.getUserOrderDetails;
+
   }
 
   changeEventName(e: any){
@@ -147,7 +150,7 @@ class EventDetailsName extends React.Component<any, any> {
   setGuestMessage(e: any){
 
       this.setState({guest_message: e.target.value});
-      //this.props.setGuestCount(e);
+      this.props.setGuestMessage(e);
 
   }
 
@@ -165,6 +168,8 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
+                if order processed is true then only shoe text
+                <br/>
                 <label>Event Name: This name will be used to generate a link that you send to your guests.  50 character limit.</label>
               </div>
             </div>
@@ -266,9 +271,9 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    //setDate: (e: any) => {
-    //  dispatch(setDate(e))
-    //},
+    getUserOrderDetails: () => {
+      dispatch(getUserOrderDetails("e"))
+    },
     //setTime: (e: any) => {
     //  dispatch(setTime(e.target.value))
     //},

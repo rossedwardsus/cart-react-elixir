@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import {addCartItem} from './actions/cart.ts';
+import {processOrder} from './actions/user_order.ts';
 
 
 class SconelySignatureAdditionalItems extends React.Component<any, any> {
@@ -138,9 +139,9 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
 
   }
 
-  addCartItem(){
+  addCartItem = () => {
 
-      this.props.addCartItem("item_id", "dozen", "quantity")
+      this.props.addCartItem(this.props.params.order_id, 1, "dozen", "quantity")
 
   }
 
@@ -169,7 +170,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart}/>
+                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart} processOrder={this.props.processOrder}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -255,7 +256,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                                               </select>
                                             </div>
                                             <div className="col-md-3">
-                                              <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                              <button className={this.state.add_cart_item_button_classname}  type="button" onClick={this.addCartItem} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
                                             </div>
                                           </div>
                                         </form>
@@ -273,6 +274,8 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
 
 const mapStateToProps = (state: any, ownProps: any) => {
   console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
+  console.log("order id " + JSON.stringify(ownProps.params.order_id));
+  
   return {
     //active: ownProps.filter === state.visibilityFilter
 
@@ -280,7 +283,17 @@ const mapStateToProps = (state: any, ownProps: any) => {
         
         menu_items: state.MenuItems,
         UserOrderEventDetails: state.UserOrderEventDetails,
-        UserOrderCart: state.UserOrderCart,
+        //UserOrderCart: state.UserOrderCart,
+
+        UserOrderCart: state.UserOrderCart.cart_items.map((item: any) => {
+
+            if(item.order_id == 1){
+
+                return(item)
+
+            }
+
+        }),
 
     //}
   }
@@ -290,8 +303,11 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    addCartItem: (item_id: any, type: any, quantity: any) => {
-      dispatch(addCartItem(1, "type", 1));
+    addCartItem: (order_id: any, item_id: any, type: any, quantity: any) => {
+      dispatch(addCartItem(order_id, item_id, "type", 1));
+    },
+    processOrder: () => {
+      dispatch(processOrder(ownProps.params.order_id));
     },
     //increaseCartItemQuantity: () => {
     //  dispatch(increaseCartItemQuantity(1, 12));

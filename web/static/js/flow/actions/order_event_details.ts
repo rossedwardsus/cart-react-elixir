@@ -2,18 +2,44 @@ import {SET_EVENT_NAME, SET_GUEST_MESSAGE, SET_GUEST_COUNT} from '../constants/a
 
 export function setEventName(value: any, order_id: any) {
   console.log("set event name action from redux");
-  return {
-    type: SET_EVENT_NAME,
-    value,
-    order_id
+  return function (dispatch: any) { 
+    
+    //dispatch({type : "REQUEST_STARTED"});
+    return {      
+      type: SET_EVENT_NAME,
+      value,
+      order_id
+    }
+  }
+}
+
+export function setGuestCount(value: any, order_id: any) {
+  //alert(item_id)
+  return function (dispatch: any) { 
+    
+    //dispatch({type : "REQUEST_STARTED"});
+  
+    return {
+      type: SET_GUEST_COUNT,
+      value,
+      order_id
+    }
   }
 }
 
 export function setGuestMessage(value: any, order_id: any) {
+
   console.log("guest message")
-  return {
-    type: SET_GUEST_MESSAGE,
-    value
+
+  return function (dispatch: any) { 
+    
+    //dispatch({type : "REQUEST_STARTED"});
+  
+    return {
+      type: SET_GUEST_MESSAGE,
+      value
+    }
+
   }
 }
 
@@ -25,11 +51,3 @@ export function setGuestMessage(value: any, order_id: any) {
   }
 }*/
 
-export function setGuestCount(value: any, order_id: any) {
-  //alert(item_id)
-  return {
-    type: SET_GUEST_COUNT,
-    value,
-    order_id
-  }
-}

@@ -1,13 +1,14 @@
 import {ADD_CART_ITEM, ADD_USER_ORDER_CART_ITEM, REMOVE_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, SET_DATE, SET_TIME, SET_SPECIFIC_TIME} from '../constants/actionTypes.ts';
 
-export function addCartItem(item_id: any, item_type: any, quantity: any) {
+export function addCartItem(order_id: any, item_id: any, item_type: any, quantity: any) {
   console.log("add cart item quantity action " + item_id + " " + item_type + " " + quantity);
 
-  //if user is logged in
+  //if uorder_id != undefined
   //else
 
   return {
     type: ADD_USER_ORDER_CART_ITEM,
+    order_id, 
     item_id,
     item_type,
     quantity

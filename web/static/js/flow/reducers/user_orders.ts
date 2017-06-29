@@ -1,4 +1,4 @@
-import { LOAD_ORDERS, SAVE_ORDER } from '../constants/actionTypes.ts';
+import { GET_USER_ORDER_DETAILS, GET_USER_ORDER_DELIVERY_CONTACT, LOAD_ORDERS, SAVE_ORDER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -31,6 +31,15 @@ export default function UserOrders(state: any = {orders: [{order_id: 1, order_ty
       console.log("user delivery addresses " + JSON.stringify(state));
 
       return Object.assign({}, state, {state});
+
+    case GET_USER_ORDER_DETAILS:
+      //alert("CartState " + action.item_id);
+      console.log("user order details reducer" + JSON.stringify(state));
+
+      return Object.assign({}, state, {state});
+
+
+    
    
     case SAVE_ORDER:
       //alert("CartState " + action.item_id);

@@ -14,7 +14,7 @@ import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
 
 import {setEventName, setGuestCount} from './actions/order_event_details.ts';
 import {setDeliveryAddressStreet1} from './actions/order_delivery_address.ts';
-import {saveOrder} from './actions/user_order.ts';
+import {getUserOrderDetails, processOrder} from './actions/user_order.ts';
 
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -72,6 +72,14 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
         console.log(err);
     })
     .done();*/
+
+  }
+
+  componentDidMount = () => {
+
+      //this.props.getUserOrder;
+      //this.props.getUserOrderDetails();
+      this.props.getUserOrderDeliveryContact();
 
   }
 
@@ -253,6 +261,10 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
+
+    getUserOrderDetails: () => {
+        dispatch(getUserOrderDetails(1));
+    },
     setEventName: (e: any) => {
         dispatch(setEventName(e.target.value, 1));
 
@@ -304,7 +316,7 @@ function mapDispatchToProps(dispatch: any) {
     },
     processOrder: (e: any) => {
 
-        dispatch(saveOrder(1));
+        dispatch(processOrder(1));
 
     }
   }

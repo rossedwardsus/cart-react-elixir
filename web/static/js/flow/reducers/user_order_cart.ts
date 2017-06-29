@@ -28,6 +28,8 @@ export default function user_order_cart_items(state:any = {cart_items: [{order_i
     case ADD_USER_ORDER_CART_ITEM:
 
       console.log("add user order cart item" + JSON.stringify(state));
+      console.log("add user order cart item order_id" + JSON.stringify(action.order_id));
+
 
       let items = state.cart_items;
       //items.push({item_id: 1, itemsitem_type: action.item_type, quantity: parseInt(action.quantity)});

@@ -22,11 +22,15 @@ interface CartState {
 
 }*/
 
-export default function session(state:any = {session_id: "", session_key: "", session_start_datetime: ""}, action: any){
+export default function session(state:any = {user_id: "", session_key: "", session_start_datetime: ""}, action: any){
   switch (action.type) {
     case SET_SESSION:
       //alert("CartState " + action.item_id);
-      return Object.assign({}, {...state, session_id: "guest"})
+
+      //default to "guest" if not logged in
+      //if logged in then set to user_id of logged in user
+
+      return Object.assign({}, {...state, user_id: "guest"})
 
     default:
       //alert();

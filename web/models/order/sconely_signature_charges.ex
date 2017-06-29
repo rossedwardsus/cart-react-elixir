@@ -1,7 +1,6 @@
 defmodule Sconely.Order do
 	#use Ecto.Schema
 	#import Ecto.Changeset
-	alias Sconely.OrderDeliveryAddress
 
 	use SconeHomeElixir.Web, :model
 
@@ -11,7 +10,7 @@ defmodule Sconely.Order do
 
 	schema "orders" do
 
-		field :order_id, :string #primary key
+		#field :order_id, :string #primary key
 		field :user_id, :string #Ecto.UUID or "guest"
 		field :order_type, :string
 		#field :delivery_address_street1
@@ -20,14 +19,8 @@ defmodule Sconely.Order do
 		#field :delivery_address_state
 		#field :delivery_address_zipcode
 		field :delivery_datetime, Ecto.DateTime
-
-		#has_one :order_delivery_address, {"order_delivery_address", OrderDeliveryAddress}
-		#has_one :order_delivery_address, OrderDeliveryAddress, foreign_key: :order_id
-		#belongs_to :order_delivery_address, OrderDeliveryAddress, foreign_key: :order_id
-
-		#has_many :order_delivery_address, OrderDeliveryAddress
-
 		
+
 		#datetime
 		#payment confirmation
 

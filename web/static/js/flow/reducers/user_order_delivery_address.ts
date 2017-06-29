@@ -1,4 +1,4 @@
-import { SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_STREET2, SET_USER_ORDER_DELIVERY_ADDRESS_CITY, SET_USER_ORDER_DELIVERY_ADDRESS_STATE, SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import { GET_USER_ORDER_DELIVERY_CONTACT, SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_STREET2, SET_USER_ORDER_DELIVERY_ADDRESS_CITY, SET_USER_ORDER_DELIVERY_ADDRESS_STATE, SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,12 +20,21 @@ let inititalState: CartState = {
 
 }*/
 
-export default function userOrderDeliveryAddress(state: any = {addresses: [{order_id: 1, address: {street1: ""}}]}, action: any){
+export default function userOrderDeliveryAddress(state: any = {addresses: {}}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_addresses_updated: any = null;
 
   switch (action.type) {
+
+    case GET_USER_ORDER_DELIVERY_CONTACT:
+      //alert("CartState " + action.item_id);
+      console.log("user order delivery contact reducer" + JSON.stringify(state));
+
+      return Object.assign({}, state, {addresses: {1: {street1: action.street1}}});
+  
+
+
     /*case GET_USER_DELIVERY_ADDRESSES:
       //alert("CartState " + action.item_id);
       console.log("user delivery addresses " + JSON.stringify(state));

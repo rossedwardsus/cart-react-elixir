@@ -264,14 +264,17 @@ class PaymentMethod extends React.Component<any, any> {
   
   render(): JSX.Element{
 
+    //if session.user_id != guest
+    //then get the users payment methods
+
     /*let dropdown: any = <form className="form-horizontal">
                       <div className="form-group">
                           <div className="col-sm-3">
                               <b>Payment</b>
                               <br/>
                                 <select className="form-control">
-                                    <option>Home</option>
-                                    <option>Office</option>
+                                    <option>Home - 2444</option>
+                                    <option>Office - 1234</option>
                                 </select>
                           </div>
                       </div>

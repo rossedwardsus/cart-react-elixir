@@ -3,21 +3,131 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
   alias Sconely.Order
   alias Sconely.SconelySignatureOrder
+  alias Sconely.OrderDeliveryAddress
+  alias Sconely.OrderDeliveryContact
+  
   alias Sconely.SconelySignatureGuestResponse
   alias SconeHomeElixir.Repo
 
   
   def get(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
-    IO.inspect("get")
+    IO.inspect("get order")
 
-    order = Repo.get!(Order, 23)
+    #Repo.all(from(o in Order, where: o.order_id == "23", preload: :order_delivery_address))
 
-    IO.inspect(order.delivery_datetime)
+    #Repo.all(  
+    #  from oda in OrderDeliveryAddress,
+    #    join: o in assoc(oda, :order),
+    #   where: o.order_id == "23",
+    #  select: oda
+    #)
 
-    {:ok, %{delivery_datetime: order.delivery_datetime}}
+    query = from o in Order,
+          join: oda in OrderDeliveryAddress, where: o.order_id == oda.order_id,
+          where: o.order_id == "23"
+          #sub_orders one to many
+          #sub_order_items one to many
+          #payment methods
+          #delivery_contact
+          #guest responses-one to many
+
+    query = from [o, oda] in query,
+          select: {o.order_type, oda.street1}
+
+    orders = Repo.all(query)
+
+    #IO.inspect(orders)
+
+    #order = Repo.get(Order, 23)
+    #addresses = Repo.all assoc(order, :order_delivery_address)
+
+    #post = Repo.all(from(o in Order, where: o.order_id == "23", preload: :order_delivery_address))
+
+    #Repo.all from o in Order,
+    #        where: o.order_id == "uuid",
+    #        preload: [:order_delivery_address]
+
+
+
+    #order = Repo.get!(Order, "23")
+
+    order = Repo.all from o in Order,
+              where: o.order_id == "uuid",
+              select: o.order_type
+
+    addresses = Repo.all from oda in OrderDeliveryAddress,
+              where: oda.order_id == "uuid"
+
+
+    IO.inspect(order)
+    #IO.inspect(addresses)
+
+
+
+    #user = Repo.one from order in Order,
+    #      where: order.order_id == "23",
+    #      left_join: order_delivery_address in assoc(order, :order_delivery_address),
+          #left_join: comments in assoc(posts, :comments),
+    #      preload: [order_delivery_address: order_delivery_address]
+
+    #IO.inspect(order.delivery_datetime)
+
+    response = Map.put(%{}, :order_type, List.first(order))
+    #response = Map.put(response, :address, addresses)
+
+    IO.inspect(response)
+
+    {:ok, response}
 
     
+  end
+
+  def get_order_details(_args, _info) do
+    #{:ok, Blog.Repo.all(Post)}
+    IO.inspect("get order details")
+
+    address = Repo.all from oda in OrderDeliveryAddress,
+              where: oda.order_id == "uuid"
+
+
+    {:ok, address.street}
+
+  end
+
+
+  def get_order_delivery_contact(_args, _info) do
+    #{:ok, Blog.Repo.all(Post)}
+    IO.inspect("get order delivery contact")
+
+     contact = Repo.all from oc in OrderDeliveryContact,
+              where: oc.order_id == "uuid",
+              #select: [oda.street1, oda.street2]
+              #select: map(oda, [:street1, :street2])
+              select: %{first_name: oc.first_name, email: oc.email}
+
+      IO.inspect(contact)
+
+
+    {:ok, List.first(contact)}
+
+  end
+
+   def get_order_delivery_address(_args, _info) do
+    #{:ok, Blog.Repo.all(Post)}
+    IO.inspect("get order delivery contact")
+
+     address = Repo.all from oda in OrderDeliveryAddress,
+              where: oda.order_id == "uuid",
+              #select: [oda.street1, oda.street2]
+              #select: map(oda, [:street1, :street2])
+              select: %{street1: oda.street1, street2: oda.street2}
+
+      IO.inspect(address)
+
+
+    {:ok, List.first(address)}
+
   end
   
 
@@ -82,7 +192,7 @@ defmodule Sconely.SconelySignatureOrderResolver do
            
   end
 
-  def save(args, _info) do
+  def process(args, _info) do
 
     #get order
 
@@ -111,7 +221,7 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
 
 
-  def save_guest_choice(args, _info) do
+  def process_guest_choice(args, _info) do
 
     IO.inspect("guest")
 

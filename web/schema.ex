@@ -35,11 +35,42 @@ defmodule Sconely.Schema do
 	    
     #    resolve &Sconely.OrderResolver.user_orders/2
     #end
-  end
 
-  #input_object :update_order_params do
-	#field :event_name, (:string)
-  #end
+
+    #input_object :update_order_params do
+    #field :event_name, (:string)
+    #end
+
+    field :get_sconely_signature_order, type: :sconely_signature_order do
+        arg :order_id, :string
+        #arg :event_name, :string
+        #arg :code, :string
+        #arg :guest_count, :string
+        #arg :delivery_date, :string
+        #arg :delivery_time, :string
+     
+        resolve &Sconely.SconelySignatureOrderResolver.get/2
+    end
+
+    field :get_sconely_signature_order_details, type: :sconely_signature_order_details do
+        arg :order_id, :string
+     
+        #resolve &Sconely.SconelySignatureOrderResolver.get_order_details/2
+    end
+
+    field :get_sconely_signature_order_delivery_contact, type: :sconely_signature_order_delivery_contact do
+        arg :order_id, :string
+       
+        resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_contact/2
+    end
+
+    field :get_sconely_signature_order_delivery_address, type: :sconely_signature_order_delivery_address do
+        arg :order_id, :string
+       
+        resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_address/2
+    end
+
+  end
 
 
 
@@ -99,12 +130,12 @@ defmodule Sconely.Schema do
       resolve &Sconely.SconelySignatureOrderResolver.create/2
   end
 
-  field :save_sconely_signature_order, type: :sconely_signature_order do
+  field :process_sconely_signature_order, type: :sconely_signature_order do
 	    arg :order_id, non_null(:string)
 	    #arg :event_name, :string
 	    #arg :delivery_datetime, :string
 	    
-	    resolve &Sconely.SconelySignatureOrderResolver.save/2
+	    resolve &Sconely.SconelySignatureOrderResolver.process/2
 	end
 
   field :complete_sconely_signature_order, type: :sconely_signature_order do
@@ -112,7 +143,7 @@ defmodule Sconely.Schema do
       #arg :event_name, :string
       #arg :delivery_datetime, :string
       
-      resolve &Sconely.SconelySignatureOrderResolver.save/2
+      resolve &Sconely.SconelySignatureOrderResolver.process_order/2
   end
 
   field :save_sconely_signature_guest_choice, type: :sconely_signature_order_guest do
@@ -121,7 +152,7 @@ defmodule Sconely.Schema do
       arg :first_name, :string
       arg :last_name, :string
      
-      resolve &Sconely.SconelySignatureOrderResolver.save_guest_choice/2
+      resolve &Sconely.SconelySignatureOrderResolver.process_guest_choice/2
   end
 
 
