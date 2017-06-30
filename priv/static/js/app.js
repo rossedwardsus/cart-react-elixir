@@ -27307,6 +27307,12 @@ webpackJsonp([0],[
 	exports.GET_USER_PAYMENT_NAMES = 'GET_USER_PAYMENT_NAMES';
 	exports.GET_USER_ORDER_DETAILS = 'GET_USER_ORDER_DETAILS';
 	exports.GET_USER_ORDER_DELIVERY_CONTACT = 'GET_USER_ORDER_DELIVERY_CONTACT';
+	exports.GET_USER_ORDER_DELIVERY_ADDRESS = 'GET_USER_ORDER_DELIVERY_ADDRESS';
+	exports.GET_USER_ORDER_GUEST_RESPONSES = 'GET_USER_ORDER_GUEST_RESPONSES';
+	exports.GET_USER_ORDER_SUBORDERS = 'GET_USER_ORDER_SUBORDERS';
+	exports.GET_USER_DELIVERY_ADDRESS_NAMES = 'GET_USER_DELIVERY_ADDRESS_NAMES';
+	exports.GET_USER_DELIVERY_ADDRESSES = 'GET_USER_DELIVERY_ADDRESSES';
+	exports.ADD_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS';
 	exports.PROCESS_USER_ORDER = 'PROCESS_CREATE_ORDER';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1 = 'SET_USER_ORDER_DELIVERY_ADDRESS_STREET1';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STREET2 = 'SET_USER_ORDER_DELIVERY_ADDRESS_STREET2';
@@ -27318,9 +27324,6 @@ webpackJsonp([0],[
 	exports.SET_USER_ORDER_PAYMENT_EXPIRY_YEAR = 'SET_USER_ORDER_PAYMENT_EXPIRY_YEAR';
 	exports.SET_USER_ORDER_PAYMENT_EXPIRY_MONTH = 'SET_USER_ORDER_PAYMENT_EXPIRY_MONTH';
 	exports.ADD_USER_ORDER_CART_ITEM = 'ADD_USER_ORDER_CART_ITEM';
-	exports.GET_USER_DELIVERY_ADDRESS_NAMES = 'GET_USER_DELIVERY_ADDRESS_NAMES';
-	exports.GET_USER_DELIVERY_ADDRESSES = 'GET_USER_DELIVERY_ADDRESSES';
-	exports.ADD_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS';
 	exports.SET_USER_PAYMENT_METHODS = 'SET_USER_PAYMENT_METHODS';
 	exports.SET_EVENT_NAME = 'SET_EVENT_NAME';
 	exports.SET_GUEST_COUNT = 'SET_GUEST_COUNT';
@@ -30272,6 +30275,10 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentSecurity(e);
 	                }, getUserOrderDeliveryContact: function getUserOrderDeliveryContact() {
 	                    return _this2.props.getUserOrderDeliveryContact();
+	                }, getUserOrderDeliveryAddress: function getUserOrderDeliveryAddress() {
+	                    return _this2.props.getUserOrderDeliveryAddress();
+	                }, getUserOrderGuestResponses: function getUserOrderGuestResponses() {
+	                    return _this2.props.getUserOrderGuestResponses();
 	                } }), React.createElement("br", null), "else show receipt");
 	        }
 	    }], [{
@@ -30353,6 +30360,12 @@ webpackJsonp([0],[
 	        getUserOrderDeliveryContact: function getUserOrderDeliveryContact() {
 	            dispatch(user_order_ts_1.getUserOrderDeliveryContact(1));
 	        },
+	        getUserOrderDeliveryAddress: function getUserOrderDeliveryAddress() {
+	            dispatch(user_order_ts_1.getUserOrderDeliveryAddress(1));
+	        },
+	        getUserOrderGuestResponses: function getUserOrderGuestResponses() {
+	            dispatch(user_order_ts_1.getUserOrderGuestResponses(1));
+	        },
 	        processOrder: function processOrder(e) {
 	            dispatch(user_order_ts_1.processOrder(1));
 	        }
@@ -30403,6 +30416,12 @@ webpackJsonp([0],[
 	            //this.props.getUserOrder;
 	            //this.props.getUserOrderDetails();
 	            _this.props.getUserOrderDeliveryContact();
+	            _this.props.getUserOrderDeliveryAddress();
+	            //payment
+	            //suborders move to sidebart cart
+	            //this.props.getUserOrderSuborders();
+	            //guests - MOVE TO GUESTS COMPONENT
+	            _this.props.getUserOrderGuestResponses();
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + window.guest_chooses);
@@ -31199,7 +31218,7 @@ webpackJsonp([0],[
 	            console.log("graphql order contact response " + JSON.stringify(response));
 	            dispatch({
 	                type: actionTypes_ts_1.GET_USER_ORDER_DELIVERY_CONTACT,
-	                street1: "street1"
+	                first_name: "fn"
 	            });
 	        }).catch(function (error) {
 	            console.log("error" + error);
@@ -31213,13 +31232,72 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.getUserOrderDeliveryContact = getUserOrderDeliveryContact;
-	/*export function getUserOrderDeliveryAddress(order_id: any) {
-	    console.log("get user order action");
-	    return function (dispatch: any) {
-	    }
+	function getUserOrderDeliveryAddress(order_id) {
+	    console.log("get user order delivery address action");
+	    return function (dispatch) {
+	        axios_1.default.post('http://localhost:4000/api/graphql', {
+	            query: 'query {get_sconely_signature_order_delivery_address (orderId: "23") { street1, street2 }}'
+	        }).then(function (response) {
+	            console.log("graphql order contact response " + JSON.stringify(response));
+	            dispatch({
+	                type: actionTypes_ts_1.GET_USER_ORDER_DELIVERY_ADDRESS,
+	                street1: "street1"
+	            });
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	    };
 	}
-	
-	export function getUserOrderPayment(order_id: any) {
+	exports.getUserOrderDeliveryAddress = getUserOrderDeliveryAddress;
+	function getUserOrderGuestResponses(order_id) {
+	    console.log("get user order details action");
+	    return function (dispatch) {
+	        //axios.post('/api/graphql', {
+	        axios_1.default.post('http://localhost:4000/api/graphql', {
+	            query: 'query {get_sconely_signature_order_guest_responses (orderId: "23") { first_name }}'
+	        }).then(function (response) {
+	            console.log("graphql guest responses response " + JSON.stringify(response));
+	            dispatch({});
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	    };
+	}
+	exports.getUserOrderGuestResponses = getUserOrderGuestResponses;
+	function getUserOrderSuborders(order_id) {
+	    console.log("get user order details action");
+	    return function (dispatch) {
+	        //axios.post('/api/graphql', {
+	        axios_1.default.post('http://localhost:4000/api/graphql', {
+	            query: 'query {get_sconely_signature_order_suborders (orderId: "23") { order_type }}'
+	        }).then(function (response) {
+	            console.log("graphql suborders response " + JSON.stringify(response));
+	            dispatch({});
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	    };
+	}
+	exports.getUserOrderSuborders = getUserOrderSuborders;
+	/*export function getUserOrderPayment(order_id: any) {
 	    console.log("get user order action");
 	    return function (dispatch: any) {
 	    }
@@ -45000,7 +45078,8 @@ webpackJsonp([0],[
 	var user_order_cart_ts_1 = __webpack_require__(1170);
 	var user_order_delivery_address_ts_1 = __webpack_require__(1171);
 	var user_order_event_details_ts_1 = __webpack_require__(1172);
-	var guest_response_ts_1 = __webpack_require__(1173);
+	var user_order_guest_response_ts_1 = __webpack_require__(1173);
+	var user_order_suborders_ts_1 = __webpack_require__(1174);
 	exports.default = redux_1.combineReducers({
 	    session: session_ts_1.default,
 	    MenuItems: menu_ts_1.default,
@@ -45018,7 +45097,8 @@ webpackJsonp([0],[
 	    UserOrderDeliveryAddress: user_order_delivery_address_ts_1.default,
 	    UserOrderCart: user_order_cart_ts_1.default,
 	    UserPaymentMethods: user_payment_methods_ts_1.default,
-	    GuestResponse: guest_response_ts_1.default,
+	    UserOrderGuestResponse: user_order_guest_response_ts_1.default,
+	    UserOrderSuborders: user_order_suborders_ts_1.default,
 	    //user_delivery_addresses,
 	    routing: react_router_redux_1.routerReducer
 	});
@@ -45786,7 +45866,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function UserOrders() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, order_type: "signature", saved: true, created_date: "", guest_responses: 0 }] };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, order_type: "signature", saved: true, created_date: "", image_added: true, guest_count: 0, guest_invitation_message: "", guest_responses: 0 }] };
 	    var action = arguments[1];
 	
 	    var delivery_addresses = [];
@@ -45795,10 +45875,6 @@ webpackJsonp([0],[
 	        case actionTypes_ts_1.LOAD_ORDERS:
 	            //alert("CartState " + action.item_id);
 	            console.log("user delivery addresses " + JSON.stringify(state));
-	            return Object.assign({}, state, { state: state });
-	        case actionTypes_ts_1.GET_USER_ORDER_DETAILS:
-	            //alert("CartState " + action.item_id);
-	            console.log("user order details reducer" + JSON.stringify(state));
 	            return Object.assign({}, state, { state: state });
 	        case actionTypes_ts_1.SAVE_ORDER:
 	            //alert("CartState " + action.item_id);
@@ -45956,6 +46032,10 @@ webpackJsonp([0],[
 	        case actionTypes_ts_1.GET_USER_ORDER_DELIVERY_CONTACT:
 	            //alert("CartState " + action.item_id);
 	            console.log("user order delivery contact reducer" + JSON.stringify(state));
+	            return Object.assign({}, state, { addresses: { 1: { email: action.street1 } } });
+	        case actionTypes_ts_1.GET_USER_ORDER_DELIVERY_ADDRESS:
+	            //alert("CartState " + action.item_id);
+	            console.log("user order delivery address reducer" + JSON.stringify(state));
 	            return Object.assign({}, state, { addresses: { 1: { street1: action.street1 } } });
 	        /*case GET_USER_DELIVERY_ADDRESSES:
 	          //alert("CartState " + action.item_id);
@@ -46060,12 +46140,16 @@ webpackJsonp([0],[
 	
 	}*/
 	function orderEventDetails() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, event_name: "", guest_count: 20, code: "", total_due: "", event_image_uploaded: "", event_guest_choices: "" }] };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, event_name: "", total_due: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "" }] };
 	    var action = arguments[1];
 	
 	    var delivery_address_updated = null;
 	    var orders_updated = [];
 	    switch (action.type) {
+	        case actionTypes_ts_1.GET_USER_ORDER_DETAILS:
+	            //alert("CartState " + action.item_id);
+	            console.log("user order details reducer" + JSON.stringify(state));
+	            return Object.assign({}, state, { state: state });
 	        case actionTypes_ts_1.SET_EVENT_NAME:
 	            //console("CartState " + action.item_id);
 	            console.log("setevent name reducer " + action.value);
@@ -46186,6 +46270,57 @@ webpackJsonp([0],[
 	      }
 	}
 	exports.default = guestResponse;
+	;
+
+/***/ }),
+/* 1174 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	function UserOrders() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, order_type: "signature", saved: true, created_date: "", image_added: true, guest_count: 0, guest_invitation_message: "", guest_responses: 0 }] };
+	    var action = arguments[1];
+	
+	    var delivery_addresses = [];
+	    var delivery_address_updated = null;
+	    switch (action.type) {
+	        case actionTypes_ts_1.LOAD_ORDERS:
+	            //alert("CartState " + action.item_id);
+	            console.log("user delivery addresses " + JSON.stringify(state));
+	            return Object.assign({}, state, { state: state });
+	        case actionTypes_ts_1.SAVE_ORDER:
+	            //alert("CartState " + action.item_id);
+	            console.log("user delivery addresses " + JSON.stringify(state));
+	            return Object.assign({}, state, { addresses: delivery_addresses });
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
+	}
+	exports.default = UserOrders;
 	;
 
 /***/ })

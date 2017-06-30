@@ -24,7 +24,17 @@ import UserOrders from './user_orders.ts';
 import UserOrderCart from './user_order_cart.ts';
 import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
 import UserOrderEventDetails from './user_order_event_details.ts';
-import GuestResponse from './guest_response.ts';
+import UserOrderGuestResponse from './user_order_guest_response.ts';
+import UserOrderSuborders from './user_order_suborders.ts';
+
+
+//session
+//guest_order
+//user
+//user_orders
+//order_validations
+//user_order_suborders
+//menus
 
 export default combineReducers({
   session,
@@ -43,7 +53,8 @@ export default combineReducers({
   UserOrderDeliveryAddress,
   UserOrderCart,
   UserPaymentMethods,
-  GuestResponse,
+  UserOrderGuestResponse,
+  UserOrderSuborders,
   //user_delivery_addresses,
   routing: routerReducer
 })

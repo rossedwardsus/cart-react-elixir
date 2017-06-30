@@ -70,6 +70,18 @@ defmodule Sconely.Schema do
         resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_address/2
     end
 
+     field :get_sconely_signature_order_guest_responses, list_of(:sconely_signature_order_guest_response) do
+        arg :order_id, :string
+       
+        resolve &Sconely.SconelySignatureOrderResolver.get_order_guest_responses/2
+     end
+
+     field :get_sconely_signature_order_suborders, list_of(:sconely_signature_order_suborder) do
+        arg :order_id, :string
+       
+        resolve &Sconely.SconelySignatureOrderResolver.get_order_suborders/2
+     end
+
   end
 
 

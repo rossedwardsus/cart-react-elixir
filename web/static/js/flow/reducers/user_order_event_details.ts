@@ -1,4 +1,4 @@
-import { SET_EVENT_NAME, SET_GUEST_COUNT } from '../constants/actionTypes.ts';
+import { GET_USER_ORDER_DETAILS, SET_EVENT_NAME, SET_GUEST_COUNT } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,12 +20,21 @@ let inititalState: CartState = {
 
 }*/
 
-export default function orderEventDetails(state:any = {orders: [{order_id: 1, event_name: "", guest_count: 20, code: "", total_due: "", event_image_uploaded: "", event_guest_choices: ""}]}, action: any){
+export default function orderEventDetails(state:any = {orders: [{order_id: 1, event_name: "", total_due: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: ""}]}, action: any){
 
   let delivery_address_updated = null;
   let orders_updated: any = [];
 
   switch (action.type) {
+
+    case GET_USER_ORDER_DETAILS:
+      //alert("CartState " + action.item_id);
+      console.log("user order details reducer" + JSON.stringify(state));
+
+      return Object.assign({}, state, {state});
+
+
+
     case SET_EVENT_NAME:
       //console("CartState " + action.item_id);
       console.log("setevent name reducer " + action.value);

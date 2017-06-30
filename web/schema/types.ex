@@ -96,6 +96,9 @@ defmodule Sconely.Schema.Types do
 
   object :sconely_signature_order_details do
     field :order_id, :string
+    field :event_name, :string
+    field :guest_count, :string
+    field :invited_guest_message, :string
   end
 
   #input_object :update_order_params do
@@ -109,13 +112,38 @@ defmodule Sconely.Schema.Types do
     field :email, :string
   end
 
+  object :sconely_signature_order_delivery_address do
+    field :order_id, :string
+    field :street1, :string
+    field :street2, :string
+  end
+
+  object :sconely_signature_order_guest_response do
+    #field :order_id, :string
+    field :first_name, :string
+    
+  end
+
+  object :sconely_signature_order_guest_response do
+    #field :order_id, :string
+    field :first_name, :string
+    #field :last_name, :string
+    #field :email, :string
+    #field :choice, :string
+    #field :mailing_list, :string  
+  end
+
+  object :sconely_signature_order_suborder do
+    #field :order_id, :string
+    field :order_type, :string
+    
+  end
+
 
   object :sconely_signature_order do
     field :order_id, :string
     field :order_type, :string
     #field :host_id, :string
-    #field :event_name, :string
-    #field :guest_count, :string
     #field :code, :string
     #field :response, :sconely_signature_order_response
   end

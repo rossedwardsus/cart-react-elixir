@@ -13,10 +13,10 @@ defmodule Sconely.SconelySignatureOrder do
 			#field :number_of_guests, :string
 			#field :event_date, :string
 			#field :event_time, :string
-			field :code, :string
-			field :guest_count, :string
+			#field :code, :string
+			field :invited_guest_count, :string
 			field :image_uploaded, :string
-			field :message, :string
+			field :invited_guest_message, :string
 			
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
 			#field :delivery_address_comment, :string, default: ""

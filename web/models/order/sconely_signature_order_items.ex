@@ -9,7 +9,7 @@ defmodule Sconely.SconelySignatureOrderAdditionalItem do
 		@primary_key {:order_id, :binary_id, autogenerate: true}
 
 		schema "sconely_signature_order_additional_items" do
-			#field :order_id, :string
+			#field :suborder_id, :string
 			field :item_id, :string
 			field :quantity, :string
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local

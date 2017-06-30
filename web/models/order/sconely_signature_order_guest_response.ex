@@ -1,4 +1,4 @@
-defmodule Sconely.SconelySignatureGuestResponse do
+defmodule Sconely.SconelySignatureOrderGuestResponse do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -8,12 +8,12 @@ defmodule Sconely.SconelySignatureGuestResponse do
 		@optional_fields ~W()
 		@required_fields ~W(order_id item_id first_name last_name)
 
-		schema "guest_responses" do
+		schema "sconely_signature_order_guest_responses" do
 			field :order_id, :string
-			field :item_id, :string
+			#field :item_id, :string
 			field :first_name, :string
-			field :last_name, :string
-			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+			#field :last_name, :string
+			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 			
 			#timestamps()
 		end

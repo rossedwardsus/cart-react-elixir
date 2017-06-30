@@ -6,8 +6,15 @@ defmodule Sconely.SconelySignatureOrderResolver do
   alias Sconely.OrderDeliveryAddress
   alias Sconely.OrderDeliveryContact
   
-  alias Sconely.SconelySignatureGuestResponse
+  alias Sconely.SconelySignatureOrderGuestResponse
   alias SconeHomeElixir.Repo
+
+
+  def getOdrer(_args, _info) do
+  
+      {:ok, %{event_name: "en", guest_count}}
+
+  end
 
   
   def get(_args, _info) do
@@ -113,9 +120,9 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
   end
 
-   def get_order_delivery_address(_args, _info) do
+  def get_order_delivery_address(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
-    IO.inspect("get order delivery contact")
+    IO.inspect("get order delivery address")
 
      address = Repo.all from oda in OrderDeliveryAddress,
               where: oda.order_id == "uuid",
@@ -127,6 +134,40 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
 
     {:ok, List.first(address)}
+
+  end
+
+  def get_order_guest_responses(_args, _info) do
+    #{:ok, Blog.Repo.all(Post)}
+    IO.inspect("get order guest guest responses")
+
+     responses = Repo.all from gr in SconelySignatureOrderGuestResponse,
+              where: gr.order_id == "uuid",
+              #select: [oda.street1, oda.street2]
+              #select: map(oda, [:street1, :street2])
+              select: %{first_name: gr.first_name}
+
+      IO.inspect(responses)
+
+
+    {:ok, responses}
+
+  end
+
+  def get_order_suborders(_args, _info) do
+    #{:ok, Blog.Repo.all(Post)}
+    IO.inspect("get order guest guest responses")
+
+     responses = Repo.all from gr in SconelySignatureOrderGuestResponse,
+              where: gr.order_id == "uuid",
+              #select: [oda.street1, oda.street2]
+              #select: map(oda, [:street1, :street2])
+              select: %{first_name: gr.first_name}
+
+      IO.inspect(responses)
+
+
+    {:ok, responses}
 
   end
   
@@ -243,7 +284,7 @@ defmodule Sconely.SconelySignatureOrderResolver do
     #IO.inspect(Date.to_erl(DateTime.utc_now()))
     IO.inspect(Calendar.DateTime.now! "America/Los_Angeles")
 
-    guest_order_changeset = SconelySignatureGuestResponse.changeset(%SconelySignatureGuestResponse{}, %{order_id: "", item_id: "", first_name: "", last_name: ""})
+    #guest_order_changeset = SconelySignatureGuestResponse.changeset(%SconelySignatureGuestResponse{}, %{order_id: "", item_id: "", first_name: "", last_name: ""})
 
     #IO.inspect(order_changeset)
            
@@ -261,10 +302,10 @@ defmodule Sconely.SconelySignatureOrderResolver do
                 #|> Repo.update!()
 
 
-                case Repo.insert(guest_order_changeset) do
-                  {:ok, response} -> IO.inspect(response)
+                #case Repo.insert(guest_order_changeset) do
+                #  {:ok, response} -> IO.inspect(response)
 
-                end
+                #end
 
                 {:ok, datetime} = NaiveDateTime.new(~D[2017-06-18], ~T[00:00:00])
 

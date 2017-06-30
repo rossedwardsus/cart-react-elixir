@@ -1,4 +1,4 @@
-import {GET_USER_ORDER_DETAILS, GET_USER_ORDER_DELIVERY_CONTACT, PROCESS_USER_ORDER} from '../constants/actionTypes.ts';
+import {GET_USER_ORDER_DETAILS, GET_USER_ORDER_DELIVERY_CONTACT, GET_USER_ORDER_DELIVERY_ADDRESS, GET_USER_ORDER_GUEST_RESPONSES, GET_USER_ORDER_SUBORDERS, PROCESS_USER_ORDER} from '../constants/actionTypes.ts';
 import axios from 'axios';
 
 export function processOrder(order_id: any) {
@@ -172,7 +172,7 @@ export function getUserOrderDeliveryContact(order_id: any) {
 }
 
 export function getUserOrderDeliveryAddress(order_id: any) {
-    console.log("get user order contact action");
+    console.log("get user order delivery address action");
     return function (dispatch: any) { 
 
         axios.post('http://localhost:4000/api/graphql', {
@@ -184,7 +184,7 @@ export function getUserOrderDeliveryAddress(order_id: any) {
 
 
               dispatch({ 
-                type: GET_USER_ORDER_DELIVERY_CONTACT,
+                type: GET_USER_ORDER_DELIVERY_ADDRESS,
                 street1: "street1",
               })
 
@@ -208,6 +208,77 @@ export function getUserOrderDeliveryAddress(order_id: any) {
     }
 }
 
+export function getUserOrderGuestResponses(order_id: any) {
+    console.log("get user order details action");
+    return function (dispatch: any) { 
+        //axios.post('/api/graphql', {
+        axios.post('http://localhost:4000/api/graphql', {
+               query: 'query {get_sconely_signature_order_guest_responses (orderId: "23") { first_name }}'
+        })
+        .then((response: any) => {
+
+              console.log("graphql guest responses response " + JSON.stringify(response));
+
+
+               dispatch({ 
+                 //type: GET_USER_ORDER_DETAILS,
+                 //value: [{order_id: "", date: ""}]
+               })
+
+        })
+        .catch((error: any) => {
+
+              console.log("error" + error);
+              //go to code/payment screen
+      //        this.props.loadView();
+
+
+              //display errror to user - payment
+
+       //if (!error.status) {
+          // network error
+        //}
+
+        })
+
+    }
+}
+
+export function getUserOrderSuborders(order_id: any) {
+    console.log("get user order details action");
+    return function (dispatch: any) { 
+        //axios.post('/api/graphql', {
+        axios.post('http://localhost:4000/api/graphql', {
+               query: 'query {get_sconely_signature_order_suborders (orderId: "23") { order_type }}'
+        })
+        .then((response: any) => {
+
+              console.log("graphql suborders response " + JSON.stringify(response));
+
+
+               dispatch({ 
+                 //type: GET_USER_ORDER_DETAILS,
+                 //value: [{order_id: "", date: ""}]
+               })
+
+        })
+        .catch((error: any) => {
+
+              console.log("error" + error);
+              //go to code/payment screen
+      //        this.props.loadView();
+
+
+              //display errror to user - payment
+
+       //if (!error.status) {
+          // network error
+        //}
+
+        })
+
+    }
+}
 
 
 /*export function getUserOrderPayment(order_id: any) {
