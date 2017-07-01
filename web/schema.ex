@@ -52,11 +52,11 @@ defmodule Sconely.Schema do
         resolve &Sconely.SconelySignatureOrderResolver.get/2
     end
 
-    field :get_sconely_signature_order_details, type: :sconely_signature_order_details do
-        arg :order_id, :string
+    #field :get_sconely_signature_order_details, type: :sconely_signature_order_details do
+    #    arg :order_id, :string
      
-        #resolve &Sconely.SconelySignatureOrderResolver.get_order_details/2
-    end
+    #    #resolve &Sconely.SconelySignatureOrderResolver.get_order_details/2
+    #end
 
     field :get_sconely_signature_order_delivery_contact, type: :sconely_signature_order_delivery_contact do
         arg :order_id, :string
@@ -131,9 +131,9 @@ defmodule Sconely.Schema do
   
 
 
-	field :create_sconely_signature_order, type: :sconely_signature_order do
-      #arg :order_id, non_null(:string)
-      arg :event_name, :string
+	field :create_signature_order, type: :sconely_signature_order do
+      arg :user_id, non_null(:string)
+      #arg :event_name, :string
       #arg :code, :string
       #arg :guest_count, :string
       #arg :delivery_date, :string
@@ -158,14 +158,14 @@ defmodule Sconely.Schema do
       resolve &Sconely.SconelySignatureOrderResolver.process_order/2
   end
 
-  field :save_sconely_signature_guest_choice, type: :sconely_signature_order_guest do
-      arg :order_id, non_null(:string)
-      arg :item_id, :string
-      arg :first_name, :string
-      arg :last_name, :string
+  #field :save_sconely_signature_guest_choice, type: :sconely_signature_order_guest do
+  #    arg :order_id, non_null(:string)
+  #    arg :item_id, :string
+  #    arg :first_name, :string
+  #    arg :last_name, :string
      
-      resolve &Sconely.SconelySignatureOrderResolver.process_guest_choice/2
-  end
+  #    resolve &Sconely.SconelySignatureOrderResolver.process_guest_choice/2
+  #end
 
 
 	#field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_items do
@@ -177,11 +177,11 @@ defmodule Sconely.Schema do
 	#end
 
 
-	field :complete_sconely_signature_order, type: :sconely_signature_order do
-	    arg :order_id, :string
-	    arg :amount, :integer
-	 
-	    resolve &Sconely.OrderResolver.complete_sconely_signature_order/2
-	end
+  	#field :complete_sconely_signature_order, type: :sconely_signature_order do
+  	#    arg :order_id, :string
+  	#    arg :amount, :integer
+  	 
+  	#    resolve &Sconely.OrderResolver.complete_sconely_signature_order/2
+  	#end
   end
 end

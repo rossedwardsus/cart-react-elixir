@@ -79,13 +79,13 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
 
       //this.props.getUserOrder;
       //this.props.getUserOrderDetails();
-      this.props.getUserOrderDeliveryContact();
-      this.props.getUserOrderDeliveryAddress();
+      //this.props.getUserOrderDeliveryContact();
+      //this.props.getUserOrderDeliveryAddress();
       //payment
       //suborders move to sidebart cart
       //this.props.getUserOrderSuborders();
       //guests - MOVE TO GUESTS COMPONENT
-      this.props.getUserOrderGuestResponses();
+      //this.props.getUserOrderGuestResponses();
   }
 
   save(){

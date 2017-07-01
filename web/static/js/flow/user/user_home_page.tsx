@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 
 import {createOrder} from '../actions/order.ts';
+import {createSignatureOrder} from '../actions/user_order.ts';
 import {List, Map} from 'immutable';
 
 import UserOrders from './user_orders.tsx';
@@ -174,7 +175,9 @@ class UserHomePage extends React.Component<any, any> {
         //alert(orders);
         //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
 
-        this.context.router.push('/user/order/12345');
+        this.props.createSignatureOrder();
+
+        //this.context.router.push('/user/order/12345');
 
         //this.props.createOrder("sconely_signature");
         
@@ -322,6 +325,10 @@ function mapDispatchToProps(dispatch: any) {
     createOrder: (order_type: any) => {
     //  console.log(e.target.value);
       dispatch(createOrder(order_type, ""));
+    },
+    createSignatureOrder: (user_id: any) => {
+    //  console.log(e.target.value);
+      dispatch(createSignatureOrder(1));
     },
    
   }

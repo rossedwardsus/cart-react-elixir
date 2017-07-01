@@ -10,14 +10,23 @@ defmodule Sconely.SconelySignatureOrderResolver do
   alias SconeHomeElixir.Repo
 
 
-  def getOdrer(_args, _info) do
+  def get(_args, _info) do
+
+      #IO.inspect({:ok, %{event_name: "en", guest_count: 0, contact: %{first_name: "fn"}}})
   
-      {:ok, %{event_name: "en", guest_count}}
+      #signature_order
+      #contact
+      #delivery_address
+      #guest_responses
+      #sub_orders
+
+
+      {:ok, %{event_name: "en", invited_guest_count: 0, delivery_contact: %{first_name: "fn", last_name: "fn"}, delivery_address: %{street1: "s1"}}}
 
   end
 
   
-  def get(_args, _info) do
+  def get1(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
     IO.inspect("get order")
 
@@ -194,18 +203,23 @@ defmodule Sconely.SconelySignatureOrderResolver do
     #IO.inspect(Date.to_erl(DateTime.utc_now()))
     IO.inspect(Calendar.DateTime.now! "America/Los_Angeles")
 
-    order_changeset = Order.changeset(%Order{}, %{order_id: "", order_type: "", delivery_datetime: Ecto.DateTime.utc})
+    #create order_id
+    #
+
+    order_changeset = Order.changeset(%Order{}, %{order_id: "", host_id: "", order_type: "signature"})
+
+    #signature_order_changeset = SconelySignatureOrder.changeset(%SconelySignatureOrder{}, %{parent_order_id: "", event_name: "", event_datetime: "", invited_guest_count: 0, invited_guest_message: ""})
+
 
     IO.inspect(order_changeset)
            
      #       if order_changeset.valid? do
                 #Repo.insert(order_changeset)
 
-                #Repo.insert(order_delivery_address_changeset)
-                #Repo.insert(order_payment_changeset)    
+                #Repo.insert(order)
+                #Repo.insert(signature_order)    
                 #Repo.insert(order_items_changeset)
-                #Repo.insert(order_contact_changeset)    
-                #Repo.insert(order_name_changeset)      
+                    
 
                 #case Repo.insert(order_changeset) do
                 #  {:ok, response} -> IO.inspect(response)
@@ -229,6 +243,8 @@ defmodule Sconely.SconelySignatureOrderResolver do
                 orders = Repo.all(query)
 
                 IO.inspect(orders)
+
+                {:ok, %{order_id: 12345}}
 
            
   end

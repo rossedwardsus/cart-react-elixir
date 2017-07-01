@@ -56,8 +56,6 @@ defmodule Sconely.Schema.Types do
     field :status, :string
   end
 
-
-
   #object :item do
   #	field :item_id, :string
   #end
@@ -82,28 +80,13 @@ defmodule Sconely.Schema.Types do
     #field :order_delivery_address_zipcode, :string
     field :delivery_datetime, :string
     #field :order_stripe_auth_code, :string
-    #field :cart_items, list_of(:item)
     #field :status, :string
-    #guest_count
-    #code
-    #event_name
   end
 
   object :sconely_signature_order_response do
     field :order_type, :string
     
   end
-
-  object :sconely_signature_order_details do
-    field :order_id, :string
-    field :event_name, :string
-    field :guest_count, :string
-    field :invited_guest_message, :string
-  end
-
-  #input_object :update_order_params do
-  #field :event_name, (:string)
-  #end
 
 
   object :sconely_signature_order_delivery_contact do
@@ -121,12 +104,6 @@ defmodule Sconely.Schema.Types do
   object :sconely_signature_order_guest_response do
     #field :order_id, :string
     field :first_name, :string
-    
-  end
-
-  object :sconely_signature_order_guest_response do
-    #field :order_id, :string
-    field :first_name, :string
     #field :last_name, :string
     #field :email, :string
     #field :choice, :string
@@ -134,28 +111,32 @@ defmodule Sconely.Schema.Types do
   end
 
   object :sconely_signature_order_suborder do
-    #field :order_id, :string
+    field :parent_order_id, :string
+    #field :suborder_id, :string
     field :order_type, :string
-    
+    field :stripe_token, :string
+    field :items, :sconely_signature_order_suborder_items
   end
 
+  object :sconely_signature_order_suborder_items do
+    #field :parent_order_id, :string
+    field :suborder_id, :string
+    field :item_id, :string
+    field :mini, :string
+    field :quantity, :integer
+  end
 
   object :sconely_signature_order do
     field :order_id, :string
-    field :order_type, :string
-    #field :host_id, :string
-    #field :code, :string
-    #field :response, :sconely_signature_order_response
+    field :event_name, :string
+    field :invited_guest_count, :string
+    field :invited_guest_message, :string
+    field :delivery_contact, :sconely_signature_order_delivery_contact
+    field :delivery_address, :sconely_signature_order_delivery_address
+    #field :guest_responses, :sconely_signature_order_guest_response
+    field :suborders, list_of(:sconely_signature_order_suborder)
+    #field :items, :sconely_signature_order_delivery_contact
   end
-
-  object :sconely_signature_order_guest do
-    field :order_id, :string
-    field :item_id, :string
-    field :first_name, :string
-    field :last_name, :string
-    #field :code, :string
-  end
-
 
 
 

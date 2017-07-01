@@ -57,8 +57,8 @@ class UserOrder extends React.Component<any, any> {
 
     //localStorage.get('user');
 
-    //this.props.getUserOrder(this.props.params.order_id);
-    this.props.getUserOrderDetails();
+    this.props.getUserOrder(this.props.params.order_id);
+    //this.props.getUserOrderDetails();
     //this.props.getUserOrderDeliveryContact()
 
   }

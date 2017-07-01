@@ -6,11 +6,11 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateSconelySignatureOrdersTable do
   	 create table(:orders) do
       add :user_id, :string #uuid or "guest"
       add :order_id, :uuid
-  	  add :order_type, :string
+  	  #add :order_type, :string
       #delivery address
       #delivery datetime
-      add :guest_count, :datetime
-      add :code, :string
+      add :invited_guest_count, :datetime
+      #add :code, :string
       
       #create index(:posts, [:slug], concurrently: true)
     end
