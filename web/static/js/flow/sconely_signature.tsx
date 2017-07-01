@@ -14,7 +14,7 @@ import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
 
 import {setEventName, setGuestCount} from './actions/order_event_details.ts';
 import {setDeliveryAddressStreet1} from './actions/order_delivery_address.ts';
-import {getUserOrderDetails, processOrder} from './actions/user_order.ts';
+import {getUserOrderDetails, processSignatureOrder} from './actions/user_order.ts';
 
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
@@ -197,7 +197,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.user_order_cart}/>
+                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.user_order_cart} processSignatureOrder={() => this.props.processSignatureOrder()}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -234,7 +234,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <PaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                   <br/>
                   <br/>
-                  <ProcessOrderButton processOrder={() => this.props.processOrder()}/>
+                  <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
                 </div>
               </div>
           </div>
@@ -319,9 +319,9 @@ function mapDispatchToProps(dispatch: any) {
 
 
     },
-    processOrder: (e: any) => {
+    processSignatureOrder: (e: any) => {
 
-        dispatch(processOrder(1));
+        dispatch(processSignatureOrder(1));
 
     }
   }

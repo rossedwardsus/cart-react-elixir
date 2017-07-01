@@ -255,24 +255,40 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
     IO.inspect("save")
 
-    order = Repo.get!(Order, 23)
+    #order = Repo.get!(Order, 23)
     #sconely_signature_order = Repo.get!(SconelySignatureOrder, 23)
 
-    IO.inspect(order)
+    order = Repo.all from o in Order,
+              where: o.order_id == "uuid"
+              #select: [oda.street1, oda.street2]
+              #select: map(oda, [:street1, :street2])
+              #select: %{first_name: gr.first_name}
+
+
+    signature_order = Repo.all from so in SconelySignatureOrder,
+              where: so.parent_order_id == "uuid"
+              #select: [oda.street1, oda.street2]
+              #select: map(oda, [:street1, :street2])
+              #select: %{first_name: gr.first_name}
+
+
+
+    IO.inspect("order")
+    IO.inspect(signature_order)
 
     #sconely_signature_order
-    #|> SconelySignatureOrder.changeset(%{event_name: "An Event"})
+    #|> SconelySignatureOrder.changeset(%{event_name: "An Event", invited_guest_count: "", invited_guest_message: ""})
     #|> Repo.update!()
 
 
     #IO.puts("create graphql")
-    order
-    |> Order.changeset(%{user_id: "1"})
-    |> Repo.update!()
+    #order
+    #|> Order.changeset(%{user_id: "1"})
+    #|> Repo.update!()
 
-    IO.inspect(order)
+    
 
-    {:ok, %{order_id: 1}}
+    {:ok, %{state: "processed"}}
   end
 
 

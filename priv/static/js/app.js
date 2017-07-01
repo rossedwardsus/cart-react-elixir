@@ -29144,6 +29144,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var axios_1 = __webpack_require__(934);
+	var react_router_redux_1 = __webpack_require__(617);
 	function createSignatureOrder(user_id) {
 	    console.log("create signature order action");
 	    return function (dispatch) {
@@ -29151,12 +29152,12 @@ webpackJsonp([0],[
 	        axios_1.default.post('/api/graphql', {
 	            query: 'mutation {create_signature_order (user_id: 1) { order_id }}'
 	        }).then(function (response) {
-	            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.order_id));
+	            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.orderId));
 	            //that.props.history.push('/user');
 	            //context.router
 	            //      that.props.setOrderId(1);
 	            //    this.context.router.push('/order/complete');
-	            //    dispatch(push("/order/12345" + ));
+	            dispatch(react_router_redux_1.push("/user/order/" + response.data.data.createSignatureOrder.orderId));
 	        }).catch(function (error) {
 	            console.log("error" + error);
 	            //go to code/payment screen
@@ -29169,29 +29170,27 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.createSignatureOrder = createSignatureOrder;
-	function processOrder(order_id) {
+	function processSignatureOrder(order_id) {
 	    console.log("process user order action");
 	    return function (dispatch) {
 	        //axios.post('/api/graphql', {
-	        /*axios.post('http://localhost:4000/api/graphql', {
-	               query: 'mutation {sconely_signature_process_order (orderId: "23") { delivery_datetime }}'
-	        })
-	        .then((response: any) => {
-	                 console.log("graphql response " + JSON.stringify(response));
-	                 //that.props.history.push('/user');
-	              //context.router
-	           //      that.props.setOrderId(1);
-	             //    this.context.router.push('/order/complete');
-	                })
-	        .catch((error: any) => {
-	                 console.log("error" + error);
-	              //go to code/payment screen
-	        //        this.props.loadView();
-	                    //display errror to user - payment
-	          //if (!error.status) {
-	          // network error
-	        //}
-	           })*/
+	        axios_1.default.post('/api/graphql', {
+	            query: 'mutation {process_signature_order (orderId: "23") { status }}'
+	        }).then(function (response) {
+	            console.log("graphql response " + JSON.stringify(response));
+	            //that.props.history.push('/user');
+	            //context.router
+	            //      that.props.setOrderId(1);
+	            //    this.context.router.push('/order/complete');
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
 	    };
 	    //alert("GET USER details");
 	    //return {
@@ -29199,7 +29198,7 @@ webpackJsonp([0],[
 	    //  data: {first_name: "", last_name: "", email: "", mobile: ""}
 	    //}
 	}
-	exports.processOrder = processOrder;
+	exports.processSignatureOrder = processSignatureOrder;
 	/*export function getUserOrders(value: any) {
 	  //alert("setDeliveryAddressStreet");
 	  return {
@@ -32052,8 +32051,8 @@ webpackJsonp([0],[
 	            if (true) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { onClick: this.createOrder.bind(this, "sconely_yours") }, "Start Order"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
-	            return React.createElement("div", null, "if order type == signature show event details", React.createElement("br", null), React.createElement(sconely_signature_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, menu_items: this.props.menu_items, processOrder: function processOrder() {
-	                    return _this2.props.processOrder();
+	            return React.createElement("div", null, "if order type == signature show event details", React.createElement("br", null), React.createElement(sconely_signature_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, menu_items: this.props.menu_items, processSignatureOrder: function processSignatureOrder() {
+	                    return _this2.props.processSignatureOrder();
 	                }, setGuestCount: function setGuestCount(e) {
 	                    return _this2.props.setGuestCount(e);
 	                }, setGuestMessage: function setGuestMessage(e) {
@@ -32173,8 +32172,8 @@ webpackJsonp([0],[
 	        getUserOrderGuestResponses: function getUserOrderGuestResponses() {
 	            dispatch(user_order_ts_1.getUserOrderGuestResponses(1));
 	        },
-	        processOrder: function processOrder(e) {
-	            dispatch(user_order_ts_1.processOrder(1));
+	        processSignatureOrder: function processSignatureOrder(e) {
+	            dispatch(user_order_ts_1.processSignatureOrder(1));
 	        }
 	    };
 	}
@@ -32323,7 +32322,9 @@ webpackJsonp([0],[
 	            if (true) {
 	                logged_in = React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right" }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)"))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, "Start Order")), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)"))));
 	            }
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.user_order_cart }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")), React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/guests" }, "Order Guests")))), React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order: this.props.order, order_details: this.props.order_details, setEventName: function setEventName(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.user_order_cart, processSignatureOrder: function processSignatureOrder() {
+	                    return _this2.props.processSignatureOrder();
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")), React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/guests" }, "Order Guests")))), React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order: this.props.order, order_details: this.props.order_details, setEventName: function setEventName(e) {
 	                    return _this2.props.setEventName(e);
 	                }, setGuestCount: function setGuestCount(e) {
 	                    return _this2.props.setGuestCount(e);
@@ -32349,8 +32350,8 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryDateYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_process_order_button_tsx_1.default, { processOrder: function processOrder() {
-	                    return _this2.props.processOrder();
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_process_order_button_tsx_1.default, { processSignatureOrder: function processSignatureOrder() {
+	                    return _this2.props.processSignatureOrder();
 	                } }))));
 	        }
 	    }]);
@@ -32407,8 +32408,8 @@ webpackJsonp([0],[
 	            //dispatch(setDeliveryAddressStreet1(e.target.value, 1));
 	        },
 	        setPayment: function setPayment(e) {},
-	        processOrder: function processOrder(e) {
-	            dispatch(user_order_ts_1.processOrder(1));
+	        processSignatureOrder: function processSignatureOrder(e) {
+	            dispatch(user_order_ts_1.processSignatureOrder(1));
 	        }
 	    };
 	}
@@ -32455,8 +32456,8 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (SidebarCart.__proto__ || Object.getPrototypeOf(SidebarCart)).call(this, props));
 	
-	        _this.processOrder = function () {
-	            //this.props.processOrder();
+	        _this.processSignatureOrder = function () {
+	            _this.props.processSignatureOrder();
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
@@ -32582,7 +32583,7 @@ webpackJsonp([0],[
 	                            </div>
 	                          </form>)
 	                 });*/
-	            return React.createElement("div", null, React.createElement("br", null), cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, this.props.UserOrderEventDetails.orders[0].guest_count)), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-10", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), "if order processed if false button is active", React.createElement("br", null), React.createElement("button", { onClick: this.processOrder, className: "btn btn-default" }, "Process Order"));
+	            return React.createElement("div", null, React.createElement("br", null), cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, this.props.UserOrderEventDetails.orders[0].guest_count)), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-10", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), "if order processed if false button is active", React.createElement("br", null), React.createElement("button", { onClick: this.processSignatureOrder, className: "btn btn-default" }, "Process Order"));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -39355,16 +39356,16 @@ webpackJsonp([0],[
 	    //dispatch(action)
 	}
 	
-	var SaveOrderButton = function (_React$Component) {
-	    _inherits(SaveOrderButton, _React$Component);
+	var ProcessOrderButton = function (_React$Component) {
+	    _inherits(ProcessOrderButton, _React$Component);
 	
 	    //props: Props;
-	    function SaveOrderButton(props) {
-	        _classCallCheck(this, SaveOrderButton);
+	    function ProcessOrderButton(props) {
+	        _classCallCheck(this, ProcessOrderButton);
 	
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (SaveOrderButton.__proto__ || Object.getPrototypeOf(SaveOrderButton)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (ProcessOrderButton.__proto__ || Object.getPrototypeOf(ProcessOrderButton)).call(this, props));
 	
 	        _this.state = {
 	            first_name: "",
@@ -39381,7 +39382,7 @@ webpackJsonp([0],[
 	        return _this;
 	    }
 	
-	    _createClass(SaveOrderButton, [{
+	    _createClass(ProcessOrderButton, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {}
 	    }, {
@@ -39436,7 +39437,7 @@ webpackJsonp([0],[
 	            //please enter a valid date
 	            //please enter a valid contact
 	            return React.createElement("div", null, React.createElement("button", { className: this.state.validated, onClick: function onClick() {
-	                    return _this2.saveOrder();
+	                    return _this2.props.processSignatureOrder();
 	                } }, "Process Order"));
 	        }
 	    }], [{
@@ -39448,10 +39449,10 @@ webpackJsonp([0],[
 	        }
 	    }]);
 	
-	    return SaveOrderButton;
+	    return ProcessOrderButton;
 	}(React.Component);
 	
-	exports.default = SaveOrderButton;
+	exports.default = ProcessOrderButton;
 
 /***/ }),
 /* 1124 */
@@ -44954,7 +44955,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var cart_ts_1 = __webpack_require__(925);
-	var user_order_ts_1 = __webpack_require__(933);
+	//import {processSignatureOrder} from './actions/user_order.ts';
 	
 	var SconelySignatureAdditionalItems = function (_React$Component) {
 	    _inherits(SconelySignatureAdditionalItems, _React$Component);
@@ -45065,7 +45066,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this3 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.UserOrderCart, processOrder: this.props.processOrder }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.items.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.UserOrderCart, processSignatureOrder: this.props.processSignatureOrder }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                //console.log(item);
@@ -45110,8 +45111,8 @@ webpackJsonp([0],[
 	        addCartItem: function addCartItem(order_id, item_id, type, quantity) {
 	            dispatch(cart_ts_1.addCartItem(order_id, item_id, "type", 1));
 	        },
-	        processOrder: function processOrder() {
-	            dispatch(user_order_ts_1.processOrder(ownProps.params.order_id));
+	        processSignatureOrder: function processSignatureOrder() {
+	            //dispatch(processSignatureOrder(ownProps.params.order_id));
 	        }
 	    };
 	};

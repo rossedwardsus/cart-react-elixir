@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import {addCartItem} from './actions/cart.ts';
-import {processOrder} from './actions/user_order.ts';
+//import {processSignatureOrder} from './actions/user_order.ts';
 
 
 class SconelySignatureAdditionalItems extends React.Component<any, any> {
@@ -170,7 +170,7 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart} processOrder={this.props.processOrder}/>
+                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart} processSignatureOrder={this.props.processSignatureOrder}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -306,8 +306,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (order_id: any, item_id: any, type: any, quantity: any) => {
       dispatch(addCartItem(order_id, item_id, "type", 1));
     },
-    processOrder: () => {
-      dispatch(processOrder(ownProps.params.order_id));
+    processSignatureOrder: () => {
+      //dispatch(processSignatureOrder(ownProps.params.order_id));
     },
     //increaseCartItemQuantity: () => {
     //  dispatch(increaseCartItemQuantity(1, 12));

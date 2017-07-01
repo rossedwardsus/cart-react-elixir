@@ -180,9 +180,9 @@ class SidebarCart extends React.Component<any, any> {
 
   }
 
-  processOrder = () => {
+  processSignatureOrder = () => {
 
-      //this.props.processOrder();
+      this.props.processSignatureOrder();
 
   }
   
@@ -284,7 +284,7 @@ class SidebarCart extends React.Component<any, any> {
                   </form> 
                   if order processed if false button is active
                   <br/>
-                  <button onClick={this.processOrder} className="btn btn-default">Process Order</button>                      
+                  <button onClick={this.processSignatureOrder} className="btn btn-default">Process Order</button>                      
             </div>
     )
   }

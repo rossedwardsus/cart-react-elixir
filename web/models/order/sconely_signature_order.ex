@@ -6,22 +6,23 @@ defmodule Sconely.SconelySignatureOrder do
 
 		@derive {Poison.Encoder, only: [:order_id, :event_name]}
 
-		@primary_key {:order_id, :binary_id, autogenerate: true}
+		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
-		schema "sconely_signature_orders" do
-			field :event_name, :string
+		schema "signature_orders" do
+			field :parent_order_id, :string
+			#field :event_name, :string
 			#field :number_of_guests, :string
 			#field :event_date, :string
 			#field :event_time, :string
 			#field :code, :string
-			field :invited_guest_count, :string
-			field :image_uploaded, :string
-			field :invited_guest_message, :string
+			#field :invited_guest_count, :string
+			#field :image_uploaded, :string
+			#field :invited_guest_message, :string
 			
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
 			#field :delivery_address_comment, :string, default: ""
 			#field :status, :string
-			field :total, :string
+			#field :total, :string
 
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
 			#timestamps([{:updated_at, false}])

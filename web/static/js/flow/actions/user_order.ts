@@ -12,7 +12,7 @@ export function createSignatureOrder(user_id: any) {
       })
       .then((response: any) => {
 
-            console.log("graphql response " + JSON.stringify(response.data.data));
+            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.orderId));
 
             //that.props.history.push('/user');
             //context.router
@@ -20,7 +20,7 @@ export function createSignatureOrder(user_id: any) {
       //      that.props.setOrderId(1);
 
         //    this.context.router.push('/order/complete');
-        //    dispatch(push("/order/12345" + ));
+            dispatch(push("/user/order/" + response.data.data.createSignatureOrder.orderId));
 
       })
       .catch((error: any) => {
@@ -41,12 +41,12 @@ export function createSignatureOrder(user_id: any) {
 }
 
 
-export function processOrder(order_id: any) {
+export function processSignatureOrder(order_id: any) {
   console.log("process user order action");
   return function (dispatch: any) { 
       //axios.post('/api/graphql', {
-      /*axios.post('http://localhost:4000/api/graphql', {
-             query: 'mutation {sconely_signature_process_order (orderId: "23") { delivery_datetime }}'
+      axios.post('/api/graphql', {
+             query: 'mutation {process_signature_order (orderId: "23") { status }}'
       })
       .then((response: any) => {
 
@@ -74,7 +74,7 @@ export function processOrder(order_id: any) {
         // network error
       //}
 
-      })*/
+      })
   }
 
 

@@ -142,9 +142,12 @@ defmodule Sconely.Schema do
       resolve &Sconely.SconelySignatureOrderResolver.create/2
   end
 
-  field :process_sconely_signature_order, type: :sconely_signature_order do
+  field :process_signature_order, type: :sconely_signature_order do
 	    arg :order_id, non_null(:string)
 	    #arg :event_name, :string
+      #arg :invited_guest_count, :string
+      #arg :invited_guest_message, :string
+      #arg :delivery_contact_first_name, :string
 	    #arg :delivery_datetime, :string
 	    
 	    resolve &Sconely.SconelySignatureOrderResolver.process/2

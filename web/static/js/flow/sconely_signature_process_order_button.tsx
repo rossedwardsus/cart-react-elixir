@@ -40,7 +40,7 @@ interface Order {
   //completed: boolean
 }
 
-class SaveOrderButton extends React.Component<any, any> {
+class ProcessOrderButton extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -149,7 +149,7 @@ class SaveOrderButton extends React.Component<any, any> {
 
     return ( <div>
 
-                <button className={this.state.validated} onClick={() => this.saveOrder()}>Process Order</button>
+                <button className={this.state.validated} onClick={() => this.props.processSignatureOrder()}>Process Order</button>
               </div>
     )
   }
@@ -158,6 +158,6 @@ class SaveOrderButton extends React.Component<any, any> {
 
 }
 
-export default SaveOrderButton;
+export default ProcessOrderButton;
 
 
