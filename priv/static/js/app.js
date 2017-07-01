@@ -29151,11 +29151,12 @@ webpackJsonp([0],[
 	        axios_1.default.post('/api/graphql', {
 	            query: 'mutation {create_signature_order (user_id: 1) { order_id }}'
 	        }).then(function (response) {
-	            console.log("graphql response " + JSON.stringify(response));
+	            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.order_id));
 	            //that.props.history.push('/user');
 	            //context.router
 	            //      that.props.setOrderId(1);
 	            //    this.context.router.push('/order/complete');
+	            //    dispatch(push("/order/12345" + ));
 	        }).catch(function (error) {
 	            console.log("error" + error);
 	            //go to code/payment screen

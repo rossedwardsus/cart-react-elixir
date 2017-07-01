@@ -1,5 +1,6 @@
 import {CREATE_SIGNATURE_ORDER, GET_USER_ORDER_DETAILS, GET_USER_ORDER_DELIVERY_CONTACT, GET_USER_ORDER_DELIVERY_ADDRESS, GET_USER_ORDER_GUEST_RESPONSES, GET_USER_ORDER_SUBORDERS, PROCESS_USER_ORDER} from '../constants/actionTypes.ts';
 import axios from 'axios';
+import {push} from 'react-router-redux';
 
 
 export function createSignatureOrder(user_id: any) {
@@ -11,7 +12,7 @@ export function createSignatureOrder(user_id: any) {
       })
       .then((response: any) => {
 
-            console.log("graphql response " + JSON.stringify(response));
+            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.order_id));
 
             //that.props.history.push('/user');
             //context.router
@@ -19,7 +20,7 @@ export function createSignatureOrder(user_id: any) {
       //      that.props.setOrderId(1);
 
         //    this.context.router.push('/order/complete');
-  
+        //    dispatch(push("/order/12345" + ));
 
       })
       .catch((error: any) => {
