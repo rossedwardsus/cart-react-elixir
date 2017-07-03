@@ -51,7 +51,7 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
 
   #heroku
   url: "postgres://astyunkagqyjlt:6971339b540d713daaf77b6875476354ad6185131bc9cafa6667795437216185@ec2-107-20-186-238.compute-1.amazonaws.com:5432/dp60dnefin9ht",
-  #ssl: true
+  ssl: true
 
 
 
