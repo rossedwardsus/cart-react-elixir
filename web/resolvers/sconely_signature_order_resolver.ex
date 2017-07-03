@@ -365,10 +365,16 @@ defmodule Sconely.SconelySignatureOrderResolver do
     end
 
 
+    #insert into signature_order
+
     #sconely_signature_order
     #|> SconelySignatureOrder.changeset(%{event_name: "An Event", invited_guest_count: "", invited_guest_message: ""})
     #|> Repo.update!()
        
+
+    #working
+    Sconely.SconelySignatureOrderProcessedEmail.welcome_email(%{"order_id" => "order_id"}) |> SconeHomeElixir.Mailer.deliver_later
+
 
     {:ok, %{status: "processed", suborders: [%{suborder_id: 111111, stripe_token: "st"}]}}
   end

@@ -1,4 +1,4 @@
-defmodule Sconely.SconelySocialOrderEmailView do
+defmodule Sconely.SconelySignatureOrderProcessedEmailView do
   use SconeHomeElixir.Web, :view
 
   def key(conn) do
