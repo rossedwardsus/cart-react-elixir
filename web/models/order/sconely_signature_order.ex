@@ -10,20 +10,11 @@ defmodule Sconely.SconelySignatureOrder do
 
 		schema "signature_orders" do
 			field :parent_order_id, :string
-			#field :event_name, :string
-			#field :number_of_guests, :string
-			#field :event_date, :string
-			#field :event_time, :string
-			#field :code, :string
-			#field :invited_guest_count, :string
+			field :event_name, :string
+			field :invited_guest_count, :string
+			field :invited_guest_message, :string
 			#field :image_uploaded, :string
-			#field :invited_guest_message, :string
 			
-			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.local
-			#field :delivery_address_comment, :string, default: ""
-			#field :status, :string
-			#field :total, :string
-
 			#timestamps([{:inserted_at, false}, {:updated_at, false}])
 			#timestamps([{:updated_at, false}])
 			#timestamps([{:created_at}])

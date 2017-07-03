@@ -6,20 +6,27 @@ defmodule Sconely.Order do
 	use SconeHomeElixir.Web, :model
 
 	#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
-	@optional_fields ~W()
-	@required_fields ~W(user_id order_type delivery_datetime)
+	@optional_fields ~W(user_id order_id order_type delivery_contact_first_name delivery_contact_last_name delivery_contact_email delivery_contact_mobile delivery_datetime delivery_time)
+	@required_fields ~W()
 
 	schema "orders" do
 
 		field :order_id, :string #primary key
 		field :user_id, :string #Ecto.UUID or "guest"
 		field :order_type, :string
+		field :delivery_contact_first_name, :string
+		field :delivery_contact_last_name, :string
+		field :delivery_contact_email, :string
+		field :delivery_contact_mobile, :string
 		#field :delivery_address_street1
 		#field :delivery_address_street2
 		#field :delivery_address_city
 		#field :delivery_address_state
 		#field :delivery_address_zipcode
 		field :delivery_datetime, Ecto.DateTime
+		field :delivery_time, :string
+		#created_at
+		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 
 		#has_one :order_delivery_address, {"order_delivery_address", OrderDeliveryAddress}
 		#has_one :order_delivery_address, OrderDeliveryAddress, foreign_key: :order_id
@@ -28,20 +35,18 @@ defmodule Sconely.Order do
 		#has_many :order_delivery_address, OrderDeliveryAddress
 
 		
-		#datetime
-		#payment confirmation
-
-		#guest count
-		#deliverydatetime for signature
-		#name if guest
-		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-		#field :payment_confirmation, :string #stripe receipt
-		#payment choice for signature
-		#event photo
-
 	end
 
 	def changeset(struct, params \\ %{}) do
+	    struct
+	    |> cast(params, @required_fields, @optional_fields)
+	    #|> validate_required([:email])
+	    #|> validate_length(:email, min: 2)
+	    #|> validate_length(:password, min: 2)
+	    #contains
+	end
+
+	def update_changeset(struct, params \\ %{}) do
 	    struct
 	    |> cast(params, @required_fields, @optional_fields)
 	    #|> validate_required([:email])

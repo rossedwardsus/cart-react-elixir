@@ -268,10 +268,51 @@ class OrderMenu extends React.Component<any, any> {
 
     console.log(order_type);
 
-    this.props.createOrder(order_type, "");
+    //this.props.createOrder(order_type, "");
 
     //if user is logged in then 
     //this.context.router.push('/order/menu');
+
+    if(order_type == "sconely_yours"){
+
+        //var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+
+        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+       
+        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+
+        //if user is logged in then 
+        //this.context.router.push('/order/12345');
+
+        //this.context.router.push('/order/12345');
+
+
+    }else if(order_type == "sconely_social"){
+
+        //var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+
+        //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+
+        //this.context.router.push('/order/12345');
+         
+    }else if(order_type == "sconely_signature"){
+
+        //var orders = JSON.parse(localStorage.getItem("user")).orders;
+        //alert(orders);
+        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+
+        this.props.createSignatureOrder();
+
+        //this.context.router.push('/user/order/12345');
+
+        //this.props.createOrder("sconely_signature");
+        
+         
+    }
+
   }
 
 
@@ -304,10 +345,11 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <a onClick={() => this.createOrder("sconely_yours")}>Crafted Kitchen</a>
+                            <a onClick={() => this.createOrder("sconely_yours")}>Yours</a>
                             <br/>
                             <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                             <br/>
+                            <a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                             <br/>
                             <br/>
                             <br/>

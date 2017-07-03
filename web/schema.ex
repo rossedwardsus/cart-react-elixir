@@ -58,17 +58,17 @@ defmodule Sconely.Schema do
     #    #resolve &Sconely.SconelySignatureOrderResolver.get_order_details/2
     #end
 
-    field :get_sconely_signature_order_delivery_contact, type: :sconely_signature_order_delivery_contact do
-        arg :order_id, :string
+    #field :get_sconely_signature_order_delivery_contact, type: :sconely_signature_order_delivery_contact do
+    #    arg :order_id, :string
        
-        resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_contact/2
-    end
+    #    resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_contact/2
+    #end
 
-    field :get_sconely_signature_order_delivery_address, type: :sconely_signature_order_delivery_address do
-        arg :order_id, :string
+    #field :get_sconely_signature_order_delivery_address, type: :sconely_signature_order_delivery_address do
+    #    arg :order_id, :string
        
-        resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_address/2
-    end
+    #    resolve &Sconely.SconelySignatureOrderResolver.get_order_delivery_address/2
+    #end
 
      field :get_sconely_signature_order_guest_responses, list_of(:sconely_signature_order_guest_response) do
         arg :order_id, :string
@@ -76,11 +76,11 @@ defmodule Sconely.Schema do
         resolve &Sconely.SconelySignatureOrderResolver.get_order_guest_responses/2
      end
 
-     field :get_sconely_signature_order_suborders, list_of(:sconely_signature_order_suborder) do
-        arg :order_id, :string
+     #field :get_sconely_signature_order_suborders, list_of(:sconely_signature_order_suborder) do
+     #   arg :order_id, :string
        
-        resolve &Sconely.SconelySignatureOrderResolver.get_order_suborders/2
-     end
+    #    resolve &Sconely.SconelySignatureOrderResolver.get_order_suborders/2
+     #end
 
   end
 
@@ -144,22 +144,24 @@ defmodule Sconely.Schema do
 
   field :process_signature_order, type: :sconely_signature_order do
 	    arg :order_id, non_null(:string)
-	    #arg :event_name, :string
-      #arg :invited_guest_count, :string
-      #arg :invited_guest_message, :string
-      #arg :delivery_contact_first_name, :string
+	    arg :event_name, :string
+      arg :invited_guest_count, :string
+      arg :invited_guest_message, :string
+      arg :delivery_contact, :signature_order_delivery_contact_input
 	    #arg :delivery_datetime, :string
 	    
 	    resolve &Sconely.SconelySignatureOrderResolver.process/2
 	end
 
-  field :complete_sconely_signature_order, type: :sconely_signature_order do
-      arg :order_id, non_null(:string)
+
+
+  #field :complete_sconely_signature_order, type: :sconely_signature_order do
+  #    arg :order_id, non_null(:string)
       #arg :event_name, :string
       #arg :delivery_datetime, :string
       
-      resolve &Sconely.SconelySignatureOrderResolver.process_order/2
-  end
+  #    resolve &Sconely.SconelySignatureOrderResolver.process_order/2
+  #end
 
   #field :save_sconely_signature_guest_choice, type: :sconely_signature_order_guest do
   #    arg :order_id, non_null(:string)

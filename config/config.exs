@@ -45,12 +45,13 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   #username: "postgres",
   #password: "",
   #hostname: "localhost"
-  url: "postgres://postgres@localhost/sconely_dev"
+  #url: "postgres://postgres@localhost/sconely_dev"
   #url: "postgres://zokuppiwdnddjg:C8ipdqtvZ2vB8et-xPDVot87ij@ec2-54-163-240-101.compute-1.amazonaws.com:5432/d72tdu152l44hp"
   #url: "postgres://rqzuituwviprbp:d7b644fdd03e377a1ca7318849c4a631242b78496bd0d6f87847aad3ab46316d@ec2-54-83-205-71.compute-1.amazonaws.com:5432/d68qdnh6v3kbvs"
 
   #heroku
-  #postgres://astyunkagqyjlt:6971339b540d713daaf77b6875476354ad6185131bc9cafa6667795437216185@ec2-107-20-186-238.compute-1.amazonaws.com:5432/dp60dnefin9ht
+  url: "postgres://astyunkagqyjlt:6971339b540d713daaf77b6875476354ad6185131bc9cafa6667795437216185@ec2-107-20-186-238.compute-1.amazonaws.com:5432/dp60dnefin9ht",
+  ssl: true
 
 
 

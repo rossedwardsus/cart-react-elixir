@@ -27540,9 +27540,31 @@ webpackJsonp([0],[
 	        key: "createOrder",
 	        value: function createOrder(order_type) {
 	            console.log(order_type);
-	            this.props.createOrder(order_type, "");
+	            //this.props.createOrder(order_type, "");
 	            //if user is logged in then 
 	            //this.context.router.push('/order/menu');
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                //this.context.router.push('/order/12345');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                this.props.createSignatureOrder();
+	                //this.context.router.push('/user/order/12345');
+	                //this.props.createOrder("sconely_signature");
+	            }
 	        }
 	    }, {
 	        key: "render",
@@ -27556,9 +27578,11 @@ webpackJsonp([0],[
 	            //alert(this.props.cart_items.length);
 	            return React.createElement("div", null, React.createElement(user_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Sconely Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_yours");
-	                } }, "Crafted Kitchen"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                } }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
-	                } }, "Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
+	                } }, "Social"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.createOrder("sconely_signature");
+	                } }, "Signature"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
 	                var _this3 = this;
 	
 	                console.log(item);
@@ -29144,7 +29168,6 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var axios_1 = __webpack_require__(934);
-	var react_router_redux_1 = __webpack_require__(617);
 	function createSignatureOrder(user_id) {
 	    console.log("create signature order action");
 	    return function (dispatch) {
@@ -29152,12 +29175,12 @@ webpackJsonp([0],[
 	        axios_1.default.post('/api/graphql', {
 	            query: 'mutation {create_signature_order (user_id: 1) { order_id }}'
 	        }).then(function (response) {
-	            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.orderId));
+	            console.log("graphql response " + JSON.stringify(response));
 	            //that.props.history.push('/user');
 	            //context.router
 	            //      that.props.setOrderId(1);
 	            //    this.context.router.push('/order/complete');
-	            dispatch(react_router_redux_1.push("/user/order/" + response.data.data.createSignatureOrder.orderId));
+	            //dispatch(push("/user/order/" + response.data.data.createSignatureOrder.orderId));
 	        }).catch(function (error) {
 	            console.log("error" + error);
 	            //go to code/payment screen
@@ -29175,7 +29198,7 @@ webpackJsonp([0],[
 	    return function (dispatch) {
 	        //axios.post('/api/graphql', {
 	        axios_1.default.post('/api/graphql', {
-	            query: 'mutation {process_signature_order (orderId: "23") { status }}'
+	            query: 'mutation {process_signature_order (order_id: "23", event_name: "en", invited_guest_count: 5, invited_guest_message: "a mmessage to invited guests", delivery_contact: {first_name: "fn", last_name: ln, email: "e"}, delivery_address: {street1: "s1"}, delivery_date: "", delivery_time: "8-9") { status suborders { suborder_id stripe_token }}}'
 	        }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            //that.props.history.push('/user');

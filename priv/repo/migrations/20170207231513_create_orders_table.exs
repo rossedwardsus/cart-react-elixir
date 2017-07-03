@@ -4,13 +4,22 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateOrdersTable do
   def change do
     create table(:orders) do
       add :user_id, :string #uuid or "guest"
-      add :order_id, :uuid
+      add :order_id, :integer
   	  add :order_type, :string
-      #delivery address
-      #delivery datetime
+      add :delivery_contact_first_name
+      add :delivery_contact_last_name
+      add :delivery_contact_email
+      add :delivery_contact_mobile
+      add :delivery_address_street1
+      add :delivery_address_street2
+      add :delivery_address_city
+      add :delivery_address_state
+      add :delivery_address_zipcode
+      add :delivery_datetime, :datetime
+      add :delivery_time, :string
       add :created_at, :datetime
-      #payment_id
-      add :payment_confirmation, :string
+      add :stripe_token, :string
+      #add :payment_confirmation, :string
       
       #create index(:posts, [:slug], concurrently: true)
     end

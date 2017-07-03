@@ -3,8 +3,8 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
   alias Sconely.Order
   alias Sconely.SconelySignatureOrder
-  alias Sconely.OrderDeliveryAddress
-  alias Sconely.OrderDeliveryContact
+  #alias Sconely.OrderDeliveryAddress
+  #alias Sconely.OrderDeliveryContact
   
   alias Sconely.SconelySignatureOrderGuestResponse
   alias SconeHomeElixir.Repo
@@ -129,22 +129,22 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
   end
 
-  def get_order_delivery_address(_args, _info) do
-    #{:ok, Blog.Repo.all(Post)}
-    IO.inspect("get order delivery address")
+  #def get_order_delivery_address(_args, _info) do
+  #  #{:ok, Blog.Repo.all(Post)}
+  #  IO.inspect("get order delivery address")
 
-     address = Repo.all from oda in OrderDeliveryAddress,
-              where: oda.order_id == "uuid",
+   #  address = Repo.all from oda in OrderDeliveryAddress,
+   #           where: oda.order_id == "uuid",
               #select: [oda.street1, oda.street2]
               #select: map(oda, [:street1, :street2])
-              select: %{street1: oda.street1, street2: oda.street2}
+   #           select: %{street1: oda.street1, street2: oda.street2}
 
-      IO.inspect(address)
+    #  IO.inspect(address)
 
 
-    {:ok, List.first(address)}
+    #{:ok, List.first(address)}
 
-  end
+  #end
 
   def get_order_guest_responses(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
@@ -197,54 +197,61 @@ defmodule Sconely.SconelySignatureOrderResolver do
     #SconelySignatureOrder.changeset(args)
     #Blog.Repo.insert
 
-	  {:ok, %{order_id: 1}}
+	  #{:ok, %{order_id: 1}}
 
-    #IO.inspect(Ecto.DateTime.utc)
+    IO.inspect(Ecto.DateTime.utc)
+    IO.inspect(elem(Ecto.DateTime.cast("2014-04-17T14:00:00.030Z"), 1))
     #IO.inspect(Date.to_erl(DateTime.utc_now()))
-    IO.inspect(Calendar.DateTime.now! "America/Los_Angeles")
+    #IO.inspect(Calendar.DateTime.now! "America/Los_Angeles")
 
-    #create order_id
-    #
+    #IO.inspect(DateTime.from_naive(~N[2016-05-24 13:26:08.003], "Etc/UTC") |> NaiveDateTime.to_erl)
 
-    order_changeset = Order.changeset(%Order{}, %{order_id: "", host_id: "", order_type: "signature"})
+    
+    #delivery_datetime = NaiveDateTime.new(~D[2017-06-18], ~T[00:00:00]) |> Ecto.DateTime.from_erl
 
-    #signature_order_changeset = SconelySignatureOrder.changeset(%SconelySignatureOrder{}, %{parent_order_id: "", event_name: "", event_datetime: "", invited_guest_count: 0, invited_guest_message: ""})
+    order_changeset = Order.changeset(%Order{}, %{order_id: "", user_id: "1", order_type: "signature", delivery_contact_first_name: "fn", delivery_contact_last_name: "fn", delivery_contact_email: "email", delivery_contact_mobile: "mobile", delivery_datetime: elem(Ecto.DateTime.cast("2014-04-17T00:00:00.000Z"), 1), delivery_time: "9:00-11:00"})
+
+    #signature_order_changeset = SconelySignatureOrder.changeset(%SconelySignatureOrder{}, %{parent_order_id: "", event_name: "", invited_guest_count: 0, invited_guest_message: ""})
 
 
     IO.inspect(order_changeset)
            
      #       if order_changeset.valid? do
-                #Repo.insert(order_changeset)
-
+                
                 #Repo.insert(order)
                 #Repo.insert(signature_order)    
                 #Repo.insert(order_items_changeset)
                     
 
-                #case Repo.insert(order_changeset) do
-                #  {:ok, response} -> IO.inspect(response)
+                
 
-                #end
+                #{:ok, datetime} = NaiveDateTime.new(~D[2017-06-18], ~T[00:00:00])
 
-                {:ok, datetime} = NaiveDateTime.new(~D[2017-06-18], ~T[00:00:00])
-
-                IO.inspect(datetime)
+                #IO.inspect(datetime)
                 IO.inspect(Date.to_erl(~D[2017-06-18]))
 
                 #query = from o in Order, where: o.delivery_datetime > ^datetime
 
-                query = from o in Order, where: fragment("?::date", o.delivery_datetime) == ^Date.to_erl(DateTime.utc_now())
+                #query = from o in Order, where: fragment("?::date", o.delivery_datetime) == ^Date.to_erl(DateTime.utc_now())
 
                 #query = from o in Order, select: fragment("?::date", o.delivery_datetime) 
 
 
                 #datetime_add(^Ecto.DateTime.utc, 0, "month")
 
-                orders = Repo.all(query)
+                #orders = Repo.all(query)
 
-                IO.inspect(orders)
+                #IO.inspect(orders)
 
-                {:ok, %{order_id: 12345}}
+                order_id = Enum.random(100000..1000000)
+
+                case Repo.insert(order_changeset) do
+                  {:ok, response} -> IO.inspect(response)
+                                     {:ok, %{order_id: order_id}}
+
+                end
+
+                
 
            
   end
@@ -253,42 +260,117 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
     #get order
 
-    IO.inspect("save")
+    #look in suborders
+    #if no stripe token then charge
+    suborders = [%{order_type: "invited_guests", amount: 10, stripe_token: ""}, %{order_type: "paid_delivery", amount: 10, stripe_token: ""}, %{order_type: "items", amount: 10, stripe_token: "", date_processed: ""}]
 
-    #order = Repo.get!(Order, 23)
+    #Enum.map(suborders, fn {k, v} -> {
+     #                                   IO.inspect(k),
+    #                                    IO.inspect(v),
+    #                                  } 
+    #end)
+
+    #IO.inspect(Map.has_key?(args, :suborders))
+    for x <- suborders do
+    #for order of suborders loop
+    #Enum.each suborders 
+         Enum.each x, fn {k, v} -> 
+            IO.inspect(k)
+            #IO.inspect(Map.has_key?(args, :stripe_token))
+
+            #if stripe token doesnt exist process the charge and add to database
+            #if multiple items dont have stripe keys then total them and 
+            #process payment
+            #and save stripe token
+            #if all have stripe tokens then do nothing and check for delivery address and contact
+
+            #send out receipt
+         
+         end
+    
+    #end
+    end
+    
+    
+
+
+    params = [
+        source: [
+          object: "card",
+          number: "4111111111111111",
+          exp_month: 10,
+          exp_year: 2020,
+          country: "US",
+          name: "Ducky Test",
+          cvc: 123
+        ],
+        description: "1000 Scones"
+      ]
+  
+    #IO.inspect(Stripe.Charges.create(51, params))
+
+    #charge = Stripe.Charges.create(51, params)
+                    
+    #case charge do
+    #    {:ok, charge} -> 
+
+
+
+
+    #create order_id
+    #
+
+    #delivery time can be a spcific time or a range
+
+    IO.inspect("process")
+    IO.inspect(args)
+    IO.inspect(Map.has_key?(args, :delivery_contact))
+
+    order = Repo.get_by!(Order, %{order_id: "1"})
     #sconely_signature_order = Repo.get!(SconelySignatureOrder, 23)
 
-    order = Repo.all from o in Order,
-              where: o.order_id == "uuid"
+    #order = Repo.all from o in Order,
+    #          where: o.id == 28
               #select: [oda.street1, oda.street2]
               #select: map(oda, [:street1, :street2])
               #select: %{first_name: gr.first_name}
 
 
-    signature_order = Repo.all from so in SconelySignatureOrder,
-              where: so.parent_order_id == "uuid"
+    #signature_order = Repo.all from so in SconelySignatureOrder,
+     #         where: so.parent_order_id == "uuid"
               #select: [oda.street1, oda.street2]
               #select: map(oda, [:street1, :street2])
               #select: %{first_name: gr.first_name}
 
+    #event name invited guest count and invited guest message are needed for the suborder
 
 
-    IO.inspect("order")
-    IO.inspect(signature_order)
+
+    IO.inspect(order)
+    #IO.inspect(signature_order)
+
+    #IO.puts("process order graphql")
+    #order
+    #|> Order.changeset(%{order_id: "1"})
+    #|> Repo.update!()
+
+    order_changeset = Order.update_changeset(order, %{order_type: "1"})
+    #Repo.update(order_updated)
+
+    case Repo.update(order_changeset) do
+      {:ok, order} ->
+        # do something with person
+      {:error, order_changeset}
+        # do something with changeset
+    end
+
 
     #sconely_signature_order
     #|> SconelySignatureOrder.changeset(%{event_name: "An Event", invited_guest_count: "", invited_guest_message: ""})
     #|> Repo.update!()
+       
 
-
-    #IO.puts("create graphql")
-    #order
-    #|> Order.changeset(%{user_id: "1"})
-    #|> Repo.update!()
-
-    
-
-    {:ok, %{state: "processed"}}
+    {:ok, %{status: "processed", suborders: [%{suborder_id: 111111, stripe_token: "st"}]}}
   end
 
 

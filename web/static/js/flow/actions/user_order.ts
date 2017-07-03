@@ -12,7 +12,7 @@ export function createSignatureOrder(user_id: any) {
       })
       .then((response: any) => {
 
-            console.log("graphql response " + JSON.stringify(response.data.data.createSignatureOrder.orderId));
+            console.log("graphql response " + JSON.stringify(response));
 
             //that.props.history.push('/user');
             //context.router
@@ -20,7 +20,7 @@ export function createSignatureOrder(user_id: any) {
       //      that.props.setOrderId(1);
 
         //    this.context.router.push('/order/complete');
-            dispatch(push("/user/order/" + response.data.data.createSignatureOrder.orderId));
+            //dispatch(push("/user/order/" + response.data.data.createSignatureOrder.orderId));
 
       })
       .catch((error: any) => {
@@ -46,7 +46,7 @@ export function processSignatureOrder(order_id: any) {
   return function (dispatch: any) { 
       //axios.post('/api/graphql', {
       axios.post('/api/graphql', {
-             query: 'mutation {process_signature_order (orderId: "23") { status }}'
+             query: 'mutation {process_signature_order (order_id: "23", event_name: "en", invited_guest_count: 5, invited_guest_message: "a mmessage to invited guests", delivery_contact: {first_name: "fn", last_name: ln, email: "e"}, delivery_address: {street1: "s1"}, delivery_date: "", delivery_time: "8-9") { status suborders { suborder_id stripe_token }}}'
       })
       .then((response: any) => {
 
