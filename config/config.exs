@@ -16,16 +16,6 @@ config :scone_home_elixir, SconeHomeElixir.Endpoint,
 
 
 
-#database-local
-#config :scone_home_elixir, SconeHomeElixir.Repo,
-#  adapter: Ecto.Adapters.Postgres,
-  #database: "scone_home",
-  #username: "postgres",
-  #password: "",
-  #hostname: "localhost"
-#  url: "postgres://postgres@localhost/scone_home"
-
-
 #database-heroku
 #config :scone_home_elixir, SconeHomeElixir.Repo,
 #  adapter: Ecto.Adapters.Postgres,
