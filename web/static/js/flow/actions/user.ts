@@ -1,4 +1,4 @@
-import {GET_USER_DETAILS, GET_USER_ORDERS, GET_USER_DELIVERY_ADDRESSES, GET_USER_DELIVERY_ADDRESS_NAMES, GET_USER_PAYMENT_NAMES, ADD_USER_DELIVERY_ADDRESS} from '../constants/actionTypes.ts';
+import {GET_USER_DETAILS, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS} from '../constants/actionTypes.ts';
 
 export function getUserDetails(value: any) {
   //alert("GET USER details");
@@ -24,14 +24,6 @@ export function setUserOrders(value: any) {
   }
 }
 
-export function getUserDeliveryAddresseNames() {
-  console.log("get user delivery addresses");
-  return {
-    type: GET_USER_DELIVERY_ADDRESSES,
-    data: ["home", "office"]
-  }
-}
-
 export function getUserDeliveryAddress() {
   console.log("get user delivery address action");
   return {
@@ -48,15 +40,29 @@ export function getUserDeliveryAddresses() {
   }
 }
 
-export function getPaymentNames() {
-  console.log("get user delivery addresses");
+export function addUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("add user delivery address street1");
   return {
-    type: GET_USER_PAYMENT_NAMES,
-    data: ["personal", "work"]
+    type: ADD_USER_DELIVERY_ADDRESS,
+    name,
+    street1,
+    street2,
+    city,
+    state,
+    zipcode
   }
 }
 
-export function addUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
+export function getUserDeliveryContacts() {
+  console.log("get user delivery addresses action");
+  return {
+    type: GET_USER_DELIVERY_CONTACTS,
+    data: [{"home": {street1: "", street2: "", city: "", state: "", zipcode: ""}},  {office: {street: "", street1: "", city: "", state: "", zipcode: ""}}]
+  }
+}
+
+export function addUserDeliveryContact(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
   //console.log("state" + JSON.stringify(state));
   console.log("add user delivery address street1");
   return {

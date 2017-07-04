@@ -6,8 +6,8 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryAddresses, addUserDeliveryAddress } from '../actions/user.ts';
-import UserDeliveryAddress from './user_delivery_address.tsx';
+import { getUserDeliveryContacts, addUserDeliveryContact } from '../actions/user.ts';
+//import UserDeliveryContact from './user_delivery_contact.tsx';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -19,7 +19,7 @@ import UserDeliveryAddress from './user_delivery_address.tsx';
 //};
 
 //@connect(null, mapDispatchToProps)
-class UserDeliveryContact extends React.Component<any, any> {
+class UserDeliveryContacts extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -50,10 +50,10 @@ class UserDeliveryContact extends React.Component<any, any> {
 
     //this.setState({orders: this.props.getUserDeliveryAddresses});
 
-    this.props.getUserDeliveryAddresses();
+    //this.props.getUserDeliveryAddresses();
 
-    const { getUserDeliveryAddresses } = this.props
-    getUserDeliveryAddresses();
+    const { getUserDeliveryContacts} = this.props
+    getUserDeliveryContacts();
 
   }
 
@@ -164,24 +164,31 @@ class UserDeliveryContact extends React.Component<any, any> {
                         </div>
                         <div className="col-md-6">
                                   <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
                                   Contacts
                                   <br/>
                                   <form className="form-inline">
-                                  <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name"/>
-                                  </div>
-                                  <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.street1Change(e)}/>
-                                  </div>
-                                  <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
-                                  </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.street1Change(e)}/>
+                                      </div>
+                                  </form>
+                                  <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.street1Change(e)}/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                                      </div>
                                   </form>
                                   <br/>
                                   <a className="btn btn-default" onClick={() => this.addUserDeliveryAddress()}>Add Contact</a>
                                   <br/>
                                   <br/>
-                                  <UserDeliveryContact />
                                   <br/>
                                   <br/>
                                   <br/>
@@ -191,13 +198,16 @@ class UserDeliveryContact extends React.Component<any, any> {
                                                   <div className="form-group">
                                                     <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
                                                   </div>
-                                                </form>
-                                                <form className="form-inline">
                                                   <div className="form-group">
                                                     <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
                                                   </div>
+                                                </form>
+                                                <form className="form-inline">
                                                   <div className="form-group">
-                                                    <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                                                  </div>
+                                                  <div className="form-group">
+                                                    <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
                                                   </div>
                                                 </form>
                                                
@@ -245,9 +255,9 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const UserDeliveryContact1 = connect(
+const UserDeliveryContacts1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserDeliveryContact)
+)(UserDeliveryContacts)
 
-export default UserDeliveryContact1;
+export default UserDeliveryContacts1;

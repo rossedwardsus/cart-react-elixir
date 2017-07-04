@@ -156,6 +156,8 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
+                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
+                          <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
                           <Link to="/public/menu">About Me</Link>
@@ -201,7 +203,6 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <a className="btn btn-default" onClick={() => this.addUserDeliveryAddress()}>Add Address</a>
                                   <br/>
                                   <br/>
-                                  <UserDeliveryAddress />
                                   <br/>
                                   <br/>
                                   <br/>
@@ -261,7 +262,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("delivery addresses component/state" + JSON.stringify(state));
+  console.log("delivery addresses component/state" + JSON.stringify(state.user));
   return {
    delivery_addresses: state.user.delivery_addresses
    //menu_items: getPublicMenu

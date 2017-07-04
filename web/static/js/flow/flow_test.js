@@ -26,7 +26,9 @@ import YoursRedirect from './yours_redirect.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
 import UserDeliveryAddresses from './user/user_delivery_addresses.tsx';
+import UserDeliveryContacts from './user/user_delivery_contacts.tsx';
 import UserPaymentMethods from './user/user_payment_methods.tsx';
+import UserAboutMe from './user/user_about_me.tsx';
 import UserOrder from './user/user_order.tsx';
 
 //import Order from "./order.jsx";
@@ -45,9 +47,9 @@ import checkLogin from './checkLogin.tsx';
 import User from "./user";
 
 //import SconelySocial from "./sconely_social_single_page";*/
-import SconelySignatureGuestEvent from "./sconely_signature_guest/event.tsx";
-import SconelySignatureGuestMenuItems from "./sconely_signature_guest/menu_items.tsx";
-import SconelySignatureGuestName from "./sconely_signature_guest/name.tsx";
+import SconelySignatureGuestEvent from "./sconely_signature_guest_response/event.tsx";
+import SconelySignatureGuestMenuItems from "./sconely_signature_guest_response/menu_items.tsx";
+import SconelySignatureGuestName from "./sconely_signature_guest_response/name.tsx";
 
 
 //import SconelySocialEventDetails from "./sconely_social_event_details";
@@ -178,7 +180,9 @@ const Root = () => (
         </Route>
         <Route path="/user" component={UserHomePage} />
         <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
+        <Route path="/user/delivery_contacts" component={UserDeliveryContacts} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
+        <Route path="/user/about_me" component={UserAboutMe} />
         <Route path="/user/order/:order_id" component={UserOrder} />
         <Route path="/order/:order_id/guests" component={Guests} />
         <Route path="/order/:order_id/guests" component={SconelySignatureOrderHistory} />

@@ -244,7 +244,7 @@ class UserHomePage extends React.Component<any, any> {
                           <br/>
                           <Link to="/public/menu">Menu</Link>
                           <br/>
-                          <Link to="/user/delivery_contact">Delivery Contact</Link>
+                          <Link to="/user/delivery_contacts">Delivery Contacts</Link>
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>

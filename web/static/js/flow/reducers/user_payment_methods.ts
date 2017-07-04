@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user_delivery_addresses(state: any = [], action: any){
+export default function user_order_payment_method(state: any = [], action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;
@@ -60,7 +60,7 @@ export default function user_delivery_addresses(state: any = [], action: any){
       return Object.assign({}, state, {addresses: delivery_addresses});
     
 
-    case SET_USER_DELIVERY_ADDRESS_STREET1:
+    case SET_USER_:
       //alert("CartState " + action.item_id);
       //console.log("reducer " + JSON.stringify(state));
 
