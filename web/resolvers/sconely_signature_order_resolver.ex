@@ -318,6 +318,8 @@ defmodule Sconely.SconelySignatureOrderResolver do
     #payment_method: {stripe_token: ""}
     #or actually payment method info
 
+    #get contact info from users profile
+
 
     #create order_id
     #

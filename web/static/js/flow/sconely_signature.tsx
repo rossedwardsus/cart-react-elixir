@@ -234,6 +234,12 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <PaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                   <br/>
                   <br/>
+                  Save
+                  <br/>
+                  <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
+                  <br/>
+                  Pay
+                  <br/>
                   <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
                 </div>
               </div>

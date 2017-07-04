@@ -147,6 +147,8 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
 
   }
 
+  //by default prepoluate with info from the users profile
+
   render(): JSX.Element {
     return (
       <div>
