@@ -156,6 +156,8 @@ class UserDeliveryContacts extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
+                          <Link to="/user/delivery_contacts">Delivery Contacts</Link>
+                          <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
                           <Link to="/public/menu">About Me</Link>

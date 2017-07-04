@@ -50,7 +50,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
     //this.setState({orders: this.props.getUserDeliveryAddresses});
 
-    this.props.getUserDeliveryAddresses();
+    //this.props.getUserDeliveryAddresses();
 
     const { getUserDeliveryAddresses } = this.props
     getUserDeliveryAddresses();
@@ -168,16 +168,32 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   Delivery Addresses
                                   <br/>
+                                   <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.street1Change(e)}/>
+                                      </div>
+                                  </form>
+                                   <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile" onChange={(e: any) => this.street1Change(e)}/>
+                                      </div>
+                                  </form>
                                   <form className="form-inline">
-                                  <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
-                                  </div>
-                                  <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e: any) => this.street1Change(e)}/>
-                                  </div>
-                                  <div className="form-group">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                                  </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e: any) => this.street1Change(e)}/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                                      </div>
                                   </form>
                                   <form className="form-inline">
                                   <div className="form-group">
@@ -210,12 +226,23 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                         return(<div>
                                                 <form className="form-inline">
                                                   <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Name"/>
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                                                  </div>
+                                                  <div className="form-group">
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
                                                   </div>
                                                 </form>
                                                 <form className="form-inline">
                                                   <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street"/>
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                                                  </div>
+                                                   <div className="form-group">
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                                                  </div>
+                                                </form>
+                                                <form className="form-inline">
+                                                  <div className="form-group">
+                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street 1"/>
                                                   </div>
                                                   <div className="form-group">
                                                     <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
