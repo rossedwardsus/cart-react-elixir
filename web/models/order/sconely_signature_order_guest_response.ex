@@ -12,9 +12,11 @@ defmodule Sconely.SconelySignatureOrderGuestResponse do
 			field :order_id, :string
 			#field :item_id, :string
 			field :first_name, :string
-			#field :last_name, :string
+			field :last_name, :string
+			field :email, :string
 			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-			
+			field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
+
 			#timestamps()
 		end
 

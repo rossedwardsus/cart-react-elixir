@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserProfilePayment do
+defmodule SconeHomeElixir.UserProfilePaymentMethods do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -6,8 +6,9 @@ defmodule SconeHomeElixir.UserProfilePayment do
 
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "users" do
+		schema "user_payment_methods" do
 			field :user_id, Ecto.UUID
+			field :name, :string
 			field :stripe_token, :string
 			
 			#timestamps()

@@ -3,6 +3,7 @@ defmodule Sconely.UserResolver do
   
   def all(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
+
     {:ok, [%{id: 1, title: "hello", body: "there"}]}
   end
 
@@ -15,7 +16,7 @@ defmodule Sconely.UserResolver do
 	  {:ok, %{order_id: 1}}
   end
 
-   def user_delivery_address(args, _info) do
+  def save_delivery_address(args, _info) do
     IO.puts("create graphql")
     #%SconelySignatureOrder{}
     #|> SconelySignatureOrder.changeset(args)
@@ -23,7 +24,7 @@ defmodule Sconely.UserResolver do
     {:ok, %{order_id: 1}}
   end
 
-   def user_profile_payments(args, _info) do
+   def save_payment_method(args, _info) do
     IO.puts("create graphql")
     #%SconelySignatureOrder{}
     #|> SconelySignatureOrder.changeset(args)

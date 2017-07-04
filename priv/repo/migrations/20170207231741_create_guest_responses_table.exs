@@ -3,13 +3,13 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateGuestResponsesTable do
 
   def change do
 	create table(:guest_responses) do
-      add :user_id, :string #uuid or "guest"
+      #add :user_id, :string #uuid or "guest"
       add :order_id, :integer
       add :item_id, :string
       add :first_name, :string
       add :last_name, :string
       add :email, :string
-  	  #add :created_at, :datetime
+  	  #add :datetime_selected, :datetime
       
       #create index(:posts, [:slug], concurrently: true)
     end

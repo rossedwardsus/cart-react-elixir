@@ -16,15 +16,15 @@ defmodule Sconely.SignatureSubOrder do
 		field :total_amount_due, :string
 		field :paid_token, :string 
 		#suborder_id if items
+		#datetime_processed
 		
-
 		#datetime
 		#payment confirmation
 
 		#guest count
 		#deliverydatetime for signature
 		#name if guest
-		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+		#field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 		#field :payment_confirmation, :string #stripe receipt
 		#payment choice for signature
 		#event photo

@@ -314,7 +314,9 @@ defmodule Sconely.SconelySignatureOrderResolver do
     #case charge do
     #    {:ok, charge} -> 
 
-
+    #save paynent info
+    #payment_method: {stripe_token: ""}
+    #or actually payment method info
 
 
     #create order_id

@@ -100,6 +100,45 @@ defmodule Sconely.Schema do
     	resolve &Sconely.RegistrationResolver.create_user/2
   	end
 
+    field :save_user_profile, type: :registration do
+      arg :first, (:string)
+      arg :last, (:string)
+      arg :email, non_null(:string)
+      arg :mobile, (:string)
+      arg :password, (:string)
+
+      resolve &Sconely.RegistrationResolver.create_user/2
+    end
+
+    field :save_user_delivery_address, type: :registration do
+      arg :first, (:string)
+      arg :last, (:string)
+      arg :email, non_null(:string)
+      arg :mobile, (:string)
+      arg :password, (:string)
+
+      resolve &Sconely.UserResolver.save_user_delivery_address/2
+    end
+
+    field :save_user_delivery_contact, type: :registration do
+      arg :first, (:string)
+      arg :last, (:string)
+      arg :email, non_null(:string)
+      arg :mobile, (:string)
+      arg :password, (:string)
+
+      resolve &Sconely.UserResolver.save_user_delivery_contact/2
+    end
+
+    field :save_user_payment_method, type: :registration do
+      arg :first, (:string)
+      arg :last, (:string)
+      arg :email, non_null(:string)
+      arg :mobile, (:string)
+      arg :password, (:string)
+
+      resolve &Sconely.UserResolver.save_user_payment_method/2
+    end
 
   	
   	field :complete_order, type: :order do
