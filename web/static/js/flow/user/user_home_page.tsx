@@ -10,6 +10,7 @@ import {createSignatureOrder} from '../actions/user_order.ts';
 import {List, Map} from 'immutable';
 
 import UserOrders from './user_orders.tsx';
+import UserNavbar from './user_navbar.tsx';
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -206,33 +207,7 @@ class UserHomePage extends React.Component<any, any> {
     
     return (
               <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
-                            </div>
-                              <div id="navbar" className="navbar-collapse collapse navbar-right">
-                                <ul className="nav navbar-nav">
-                                  <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                                </ul>
-                                <ul className="nav navbar-nav">
-                                  <li className="inactive"><Link to="/logout">Logout<span className="sr-only">(current)</span></Link></li>
-                                </ul>
-                                <ul className="nav navbar-nav">
-                                  <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
-                                </ul>
-                                <ul className="nav navbar-nav">
-                                  <li className="inactive"><Link to="/public/menu">Menu-{this.props.name.first_name} Welcome Ross Edwards</Link><span className="sr-only">(current)</span></li>
-                                </ul>
-                              </div>
-                          </div>
-                    </nav>
+                    <UserNavbar/>
                     <div className="row">
                         <div className="hidden-xs col-md-4">
                           <br/>

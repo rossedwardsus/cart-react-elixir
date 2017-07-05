@@ -9,8 +9,8 @@ defmodule Sconely.RegistrationEmail do
     template = Phoenix.View.render_to_string(Sconely.RegisterEmailView, "register_email.html", key: _params)
 
     new_email(
-      to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
-      #to: ["rossedwards.us@gmail.com"],
+      #to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
+      to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
       subject: "Welcome to Sconely",
       html_body: template,

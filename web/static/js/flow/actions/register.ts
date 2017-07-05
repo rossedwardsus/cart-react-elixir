@@ -1,4 +1,5 @@
 import {REGISTER_USER, REGISTER_SET_FIRST_NAME, REGISTER_SET_LAST_NAME, REGISTER_SET_EMAIL, REGISTER_SET_EMAIL_AGAIN, REGISTER_SET_PASSWORD, REGISTER_SET_PASSWORD_AGAIN} from '../constants/actionTypes.ts';
+
 import {setSession} from './session.ts';
 import axios from 'axios';
 import {push} from 'react-router-redux';
@@ -187,7 +188,7 @@ export function registerUser(first_name: any, last_name: any, email: any, passwo
           })
           .catch((error: any) => {
 
-                console.log("error" + error);
+                console.log("sorry an error occurred-email already exists" + error);
                 //go to code/payment screen
         //        this.props.loadView();
 

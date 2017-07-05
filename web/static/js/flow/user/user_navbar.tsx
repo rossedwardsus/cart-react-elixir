@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {setUserFirstName, setUserLastName, setUserEmail} from '../actions/user.ts';
 import {List, Map} from 'immutable';
-import UserNavbar from './user_navbar.tsx';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -18,7 +17,7 @@ import UserNavbar from './user_navbar.tsx';
 //};
 
 //@connect(null, mapDispatchToProps)
-class UserAboutMe extends React.Component<any, any> {
+class UserNavbar extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -225,125 +224,35 @@ class UserAboutMe extends React.Component<any, any> {
 
   render(){
 
-    let logged_in = null;
     
-    if("logged_in_true" == "logged_in_true"){
-        
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><a>Start Order</a></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </div>
-    }
-
     return (
               <div>
-                    <UserNavbar/>
-                    <div className="row">
-                        <div className="hidden-xs col-md-4">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          Home
-                          <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
-                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
-                          <br/>
-                          <Link to="/user/payment_methods">Payment Methods</Link>
-                          <br/>
-                          <Link to="/user/about_me">About Me</Link>
-                          <br/>
-                          <Link to="/user/photo">Photo</Link>
-                        </div>
-                        <div className="col-md-6">
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                   <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.setUserFirstName(e)}/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.setUserLastName(e)}/>
-                                      </div>
-                                    </form>
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.setUserEmail(e)}/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile"/>
-                                      </div>
-                                    </form>    
-                                    <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Company Name" />
-                                      </div>
-                                    </form>       
-                                    save button            
-                                  </div>
-                        <div className="hidden-xs col-md-2">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              maybe put something here
-                        </div>
-                    </div>
+                    <nav className="navbar navbar-default" style={{border: 1}}>
+                          <div className="container-fluid">
+                            <div className="navbar-header">
+                              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                                 <span className="sr-only">Toggle navigation</span>
+                                 <span className="icon-bar"></span>
+                                 <span className="icon-bar"></span>
+                                 <span className="icon-bar"></span>
+                              </button>
+                              <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+                            </div>
+                            <div className="collapse navbar-collapse" id="navigationbar">
+                              <ul id="navbar" className="nav navbar-nav navbar-right">
+                                <li><Link to="/login">Logout</Link></li>
+                                <li><Link to="/register">About Us</Link></li>
+                                <li><Link to="/register">Faq</Link></li>
+                                <li><p className="navbar-text">Signed in as Ross Edwards</p></li>
+                              </ul>
+                              
+                            </div>
+                          </div>
+                    </nav>
               </div>
     )
   }
 }
 
-function mapStateToProps(state: any) {
-  console.log("delivery addresses component/state" + JSON.stringify(state.user));
-  return {
-   delivery_addresses: state.user.delivery_addresses
-   //menu_items: getPublicMenu
-   //menu_items: dispatch()
-  };
-}
 
-function mapDispatchToProps(dispatch: any) {
-  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-  return {
-    setUserFirstName: (e: any) => {
-      console.log("e.target.value");
-      dispatch(setUserFirstName(e.target.value));
-    },
-    setUserLastName: (e: any) => {
-      console.log("e.target.value");
-      dispatch(setUserLastName(e.target.value));
-    },
-    setUserEmail: (e: any) => {
-      console.log("e.target.value");
-      dispatch(setUserEmail(e.target.value));
-    },
-    //addUserDeliveryAddress: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
-    //  console.log(e.target.value);
-    //  dispatch(addUserDeliveryAddress(name, street1, street2, city, state, zipcode));
-    //},
-   
-  }
-}
-
-const UserAboutMe1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserAboutMe)
-
-export default UserAboutMe1;
+export default UserNavbar;
