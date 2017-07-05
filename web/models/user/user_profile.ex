@@ -15,10 +15,10 @@ defmodule Sconely.UserProfiles do
 			field :user_id, Ecto.UUID
 			field :first_name, :string
 			field :last_name, :string
-			field :about_me, :string, default: ""
-			#field :email, :string
-			#field :mobile, :string, default: ""
-			#field :company_name
+			field :about_me, :string
+			field :email, :string
+			field :mobile, :string
+			field :company_name, :string
 			
 			#timestamps()
 		end
