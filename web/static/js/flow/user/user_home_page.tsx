@@ -213,8 +213,6 @@ class UserHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <br/>
-                          <br/>
                           Home
                           <br/>
                           <Link to="/public/menu">Menu</Link>
@@ -236,14 +234,14 @@ class UserHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <br/>
-                                  <br/>
                                   <Link to="/public/menu">Social</Link>-<a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                                   <br/>
-                                  <div>
-                                  Your Orders
                                   <br/>
-                                  <UserOrders UserOrders={this.props.UserOrders}/>
+                                  <br/>
+                                  <div>
+                                    Your Orders
+                                    <br/>
+                                    <UserOrders UserOrders={this.props.UserOrders}/>
                                   </div>
                                   <br/>
                                   <br/>
