@@ -297,9 +297,11 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
+                          <Link to="/user/delivery_contact">Delivery Contact</Link>
+                          <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
-                          <Link to="/public/menu">About Me</Link>
+                          <Link to="/user/about_me">About Me</Link>
                           <br/>
                           <Link to="/user/photo">Photo</Link>
                         </div>
@@ -320,7 +322,7 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                                   <br/>
                                   <form className="form-inline">
                                     <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.props.setPaymentNameOnCard(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card"/>
                                       </div>
                                     </form>
                                     <form className="form-inline">

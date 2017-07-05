@@ -299,7 +299,7 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
-                          <Link to="/public/menu">About Me</Link>
+                          <Link to="/user/about_me">About Me</Link>
                           <br/>
                           <Link to="/user/photo">Photo</Link>
                         </div>
@@ -307,17 +307,31 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  Payment Methods
-                                  <br/>
-                                  Home-Edit
-                                  <br/>
-                                  Office
-                                  <br/>
-                                  Add
-                        </div>
+                                   <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" />
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                                      </div>
+                                    </form>
+                                    <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" />
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                                      </div>
+                                    </form>
+                                    <form className="form-inline">
+                                      About Me
+                                    </form>
+                                    <form className="form-inline">
+                                        <div className="form-group">
+                                          <textarea value={this.state.guest_message} className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+                                        </div>
+                                    </form>                        
+                                  </div>
                         <div className="hidden-xs col-md-2">
                               <br/>
                               <br/>

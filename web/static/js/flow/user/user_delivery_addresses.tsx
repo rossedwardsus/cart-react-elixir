@@ -156,11 +156,11 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
-                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
+                          <Link to="/user/delivery_contact">Delivery Contact</Link>
                           <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
-                          <Link to="/public/menu">About Me</Link>
+                          <Link to="/user/about_me">About Me</Link>
                           <br/>
                           <Link to="/user/photo">Photo</Link>
                         </div>
@@ -186,34 +186,36 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   </form>
                                   <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" onChange={(e: any) => this.street1Change(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 1" onChange={(e: any) => this.street1Change(e)}/>
                                       </div>
                                       <div className="form-group">
                                         <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
                                       </div>
                                   </form>
                                   <form className="form-inline">
-                                  <div className="form-group">
-                                    <select className="form-control">
-                                        <option></option>
-                                        <option>Los Angeles</option>
-                                    </select>
-                                  </div>
-                                  <div className="form-group">
-                                    <select className="form-control">
-                                        <option></option>
-                                        <option>CA</option>
-                                    </select>
-                                  </div>
-                                  <div className="form-group">
-                                    <select className="form-control" >
-                                        <option></option>
-                                        <option>90025</option>
-                                    </select>
-                                  </div>
+                                      <div className="form-group">
+                                        <select className="form-control">
+                                            <option>City</option>
+                                            <option>Los Angeles</option>
+                                        </select>
+                                      </div>
+                                      <div className="form-group">
+                                        <select className="form-control">
+                                            <option>State</option>
+                                            <option>CA</option>
+                                        </select>
+                                      </div>
+                                      <div className="form-group">
+                                        <select className="form-control" >
+                                            <option>Zipcode</option>
+                                            <option>90025</option>
+                                        </select>
+                                      </div>
+                                  </form>
+                                  <form className="form-inline">
+                                      <div className="form-group">
+                                        <textarea value={this.state.guest_message} className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+                                      </div>
                                   </form>
                                   <br/>
                                   <a className="btn btn-default" onClick={() => this.addUserDeliveryAddress()}>Add Address</a>
