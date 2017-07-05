@@ -2,13 +2,18 @@
 <html lang="en">
 
 	<table width="100%">
-	<tr><td><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
-	<tr><td>Thank you ross for registering!</td></tr>
-	<tr><td>Dear First NAME,</td></tr>
-	<tr><td>We’re so glad you joined us!</td></tr>
-	<tr><td>Now that you are registered with Sconely, you can easily order freshly baked scones foryourself or to share with friends, family and colleagues. With an emphasis on organic ingredients, our scones range from sweet to savory and include vegan and gluten-free options.</td></tr>
+	<tr><td><img height="50" width="200" src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
+	<tr><td><br></td></tr>
+	<tr><td>Dear <%= @key["first_name"] %> <%= @key["last_name"] %>,</td></tr>
+	<tr><td><br><br><br><br><br><br><br></td></tr>
+	<tr><td>Thank you for registering for Sconely! We’re so glad you joined us!</td></tr>
+	<tr><td><br></td></tr>
+	<tr><td>Now that you are registered with Sconely, you can easily order freshly baked scones for yourself or to share with friends, family and colleagues. With an emphasis on organic ingredients, our scones range from sweet to savory and include vegan and gluten-free options.</td></tr>
+	<tr><td><br></td></tr>
 	<tr><td>Take a look at our menu to start an order. If you have questions or feedback, please contact us at eat@sconely.com.</td></tr>
+	<tr><td><br></td></tr>
 	<tr><td>We hope to hear from you soon!</td></tr>
+	<tr><td><br></td></tr>
 	<tr><td>Thanks,</td></tr>
 	<tr><td>The Sconely Team</td></tr>
 	</table>

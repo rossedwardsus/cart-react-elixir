@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-//import {startOrder} from './actions/order';
+import {setUserFirstName, setUserLastName, setUserEmail} from '../actions/user.ts';
 import {List, Map} from 'immutable';
 
 
@@ -17,7 +17,7 @@ import {List, Map} from 'immutable';
 //};
 
 //@connect(null, mapDispatchToProps)
-export default class UserPaymentMethods extends React.Component<any, any> {
+class UserAboutMe extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -33,14 +33,7 @@ export default class UserPaymentMethods extends React.Component<any, any> {
         
     };
 
-    //this.createOrder = this.createOrder.bind(this);
-    this.guestCode = this.guestCode.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onSwipedLeft = this.onSwipedLeft.bind(this);
-    this.onSwipedRight = this.onSwipedRight.bind(this);
-    this.guestCodeChange = this.guestCodeChange.bind(this);
-    this.changeImage = this.changeImage.bind(this);
-
+   
   }
 
   componentDidMount(){
@@ -65,40 +58,25 @@ export default class UserPaymentMethods extends React.Component<any, any> {
 
   }
 
-  guestCode() {
+  setUserEmail = (e: any) => {
 
-    //e.preventDefault();
+    console.log("setuseremail");
 
-    //alert(order_type);
-
-    //if(order_type == "sconely_yours"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //if user is logged in then 
-        //guest code is right then
-        //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-
-        //this.context.router.push('/guest/order/12345/sconely_yours');
-
-        //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-
-        //this.props.dispatch(routeActions.push('/foo'));
-
-        //push("/foo");
-
-        this.props.onNavigateTo('/hello');
-
-
-    //}
+    this.props.setUserEmail(e);
 
   }
 
-  guestCodeChange(e: any){
+  setUserFirstName = (e: any) => {
 
-      this.setState({guest_code: e.target.value});
+      //this.setState({guest_code: e.target.value});
+    this.props.setUserFirstName(e);
+
+  }
+
+  setUserLastName = (e: any) => {
+
+      //this.setState({guest_code: e.target.value});
+    this.props.setUserLastName(e);
 
   }
 
@@ -258,7 +236,7 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                         <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
                       </ul>
                       <ul className="nav navbar-nav">
-                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
+                        <li className="inactive"><a>Start Order</a></li>
                       </ul>
                       <ul className="nav navbar-nav">
                         <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
@@ -309,28 +287,26 @@ export default class UserPaymentMethods extends React.Component<any, any> {
                                   <br/>
                                    <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" />
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.setUserFirstName(e)}/>
                                       </div>
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.setUserLastName(e)}/>
                                       </div>
                                     </form>
                                     <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" />
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.setUserEmail(e)}/>
                                       </div>
                                       <div className="form-group">
                                         <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile"/>
                                       </div>
-                                    </form>
+                                    </form>    
                                     <form className="form-inline">
-                                      About Me
-                                    </form>
-                                    <form className="form-inline">
-                                        <div className="form-group">
-                                          <textarea value={this.state.guest_message} className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
-                                        </div>
-                                    </form>                        
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Company Name" />
+                                      </div>
+                                    </form>       
+                                    save button            
                                   </div>
                         <div className="hidden-xs col-md-2">
                               <br/>
@@ -346,3 +322,42 @@ export default class UserPaymentMethods extends React.Component<any, any> {
     )
   }
 }
+
+function mapStateToProps(state: any) {
+  console.log("delivery addresses component/state" + JSON.stringify(state.user));
+  return {
+   delivery_addresses: state.user.delivery_addresses
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    setUserFirstName: (e: any) => {
+      console.log("e.target.value");
+      dispatch(setUserFirstName(e.target.value));
+    },
+    setUserLastName: (e: any) => {
+      console.log("e.target.value");
+      dispatch(setUserLastName(e.target.value));
+    },
+    setUserEmail: (e: any) => {
+      console.log("e.target.value");
+      dispatch(setUserEmail(e.target.value));
+    },
+    //addUserDeliveryAddress: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
+    //  console.log(e.target.value);
+    //  dispatch(addUserDeliveryAddress(name, street1, street2, city, state, zipcode));
+    //},
+   
+  }
+}
+
+const UserAboutMe1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserAboutMe)
+
+export default UserAboutMe1;

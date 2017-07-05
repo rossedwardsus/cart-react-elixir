@@ -215,7 +215,7 @@ class UserHomePage extends React.Component<any, any> {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                               </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
+                              <a className="navbar-brand" href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                             </div>
                               <div id="navbar" className="navbar-collapse collapse navbar-right">
                                 <ul className="nav navbar-nav">
@@ -250,9 +250,7 @@ class UserHomePage extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
-                          <Link to="/user/about_me">About Me</Link>
-                          <br/>
-                          <Link to="/user/contact">Contact</Link>
+                          <Link to="/user/about_me">Settings</Link>
                           <br/>
                           <Link to="/user/password">Password</Link>
                           <br/>

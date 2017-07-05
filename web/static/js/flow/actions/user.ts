@@ -1,4 +1,31 @@
-import {GET_USER_DETAILS, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS} from '../constants/actionTypes.ts';
+import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS} from '../constants/actionTypes.ts';
+
+export function setUserFirstName(value: any) {
+  //alert("GET USER details");
+  console.log("set user first name action " + value);
+  return {
+    type: SET_USER_FIRST_NAME,
+    data: value
+  }
+}
+
+export function setUserLastName(value: any) {
+  //alert("GET USER details");
+  console.log("set user last name action " + value);
+  return {
+    type: SET_USER_LAST_NAME,
+    data: value
+  }
+}
+
+export function setUserEmail(value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_EMAIL,
+    data: value
+  }
+}
 
 export function getUserDetails(value: any) {
   //alert("GET USER details");

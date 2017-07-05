@@ -10,6 +10,7 @@ defmodule Sconely.RegistrationEmail do
 
     new_email(
       to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
+      #to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
       subject: "Welcome to Sconely",
       html_body: template,

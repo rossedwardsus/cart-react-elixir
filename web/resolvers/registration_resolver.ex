@@ -26,9 +26,9 @@ defmodule Sconely.RegistrationResolver do
     user_id = UUID.uuid1()
     hash = Bcrypt.hashpwsalt("password")
 
-  	registration_changeset = Registration.changeset(%Registration{}, %{user_id:  user_id, first: "f", last: "l", email: "e", password: "p", password_salt: hash})
+  	registration_changeset = Registration.changeset(%Registration{}, %{user_id:  user_id, email: "e", password: "p", password_salt: hash})
 
-    user_profile_changeset = UserProfiles.changeset(%UserProfiles{}, %{user_id: user_id, first_name: "f", last_name: "l", email: "e", about_me: "am"})
+    user_profile_changeset = UserProfiles.changeset(%UserProfiles{}, %{user_id: user_id, first_name: args[:first_name], last_name: args[:last_name], email: "e", about_me: "am"})
 
 
     #multi =
@@ -69,14 +69,14 @@ defmodule Sconely.RegistrationResolver do
         #      |> redirect(to: user_path(conn, :index))
 
              
-        #        case Repo.insert(user_profile_changeset) do
-         #         {:ok, response} -> IO.inspect(response)
+                case Repo.insert(user_profile_changeset) do
+                  {:ok, response} -> IO.inspect(response)
                 #    conn
                 #      |> put_flash(:info, "User created successfully.")
                 #      |> redirect(to: user_path(conn, :index))
 
                         #working
-                        Sconely.RegistrationEmail.welcome_email(%{"email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                        Sconely.RegistrationEmail.welcome_email(%{"first_name" => args[:first_name], "last_name" => args[:last_name], "email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
                         #admin
                         #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
@@ -119,7 +119,8 @@ defmodule Sconely.RegistrationResolver do
                       #msg -> msg
                     #end)
                 #    render(conn, "new.html", changeset: changeset)
-         #end
+                
+                end
 
          {:error, changeset} -> 
             #Ecto.Changeset.traverse_errors(changeset, fn
