@@ -8,7 +8,7 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {registerUser} from './actions/register.ts';
+import {registerSetFirstName, registerSetLastName, registerSetEmail, registerSetPassword, registerUser} from './actions/register.ts';
 
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");
@@ -98,25 +98,25 @@ class Register extends React.Component<any, any> {
 
   onFirstNameFocus(){
 
-    this.setState({first_border_color: "red"});
+    //this.setState({first_border_color: "red"});
 
   }
 
   onLastNameFocus(){
 
-    this.setState({last_border_color: "red"});
+    //this.setState({last_border_color: "red"});
 
   }
 
   onEmailFocus(){
 
-    this.setState({email_border_color: "red"});
+    //this.setState({email_border_color: "red"});
 
   }
 
   onEmailAgainFocus(){
 
-    this.setState({email_again_border_color: "red"});
+    //this.setState({email_again_border_color: "red"});
 
   }
 
@@ -141,7 +141,7 @@ class Register extends React.Component<any, any> {
 
 
 
-      let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      /*let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
       let symbol_res = symbol_patt.test(e.target.value);
 
       let number_res = (/[0-9]/.test(e.target.value));
@@ -167,33 +167,38 @@ class Register extends React.Component<any, any> {
 
           }
       
-      }
+      }*/
+
+      this.props.registerSetFirstName(e);
 
   }
 
   setLastName(e: any){
 
-      if(e.target.value.length > 0){
+      //if(e.target.value.length > 0){
         
-        this.setState({last_name: e.target.value})
+      //  this.setState({last_name: e.target.value})
 
-      }
+      //}
+
+      this.props.registerSetLastName(e);
+
   }
 
   setEmail(e: any){
 
-      console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
+      //console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
 
       //not blank
       //has to include @ and .
       //no symbols
       //cant already exist
 
-      let dot_patt = /[.]/;
-      let dot_res = dot_patt.test(e.target.value);
+      //let dot_patt = /[.]/;
+      //let dot_res = dot_patt.test(e.target.value);
 
-      let ampersand_patt = /[@]/;
-      let ampersand_res = ampersand_patt.test(e.target.value);
+      //let ampersand_patt = /[@]/;
+      //let ampersand_res = ampersand_patt.test(e.target.value);
 
       //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
 
@@ -205,6 +210,9 @@ class Register extends React.Component<any, any> {
           //this.setState({email_validated: true});
 
       //}
+
+      this.props.registerSetEmail(e);
+
 
   }
 
@@ -252,7 +260,7 @@ class Register extends React.Component<any, any> {
 
     //check email and password/form validated
 
-    this.props.registerUser(1, 1);
+    this.props.registerUser(this.props.Register.first_name, this.props.Register.last_name, this.props.Register.email, this.props.Register.password);
 
     //this.setState({"delivery_address_street1_classname": "form-group"});
 
@@ -338,7 +346,7 @@ class Register extends React.Component<any, any> {
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setEmail(e)} onFocus={() => this.onLastNameFocus()} style={{borderColor: this.state.last_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setLastName(e)} onFocus={() => this.onLastNameFocus()} style={{borderColor: this.state.last_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
@@ -385,7 +393,7 @@ function mapStateToProps(state: any) {
   console.log("register.tsx" + JSON.stringify(state));
   return {
 
-    state: state,
+    Register: state.Register,
     //login thunk
 //   menu_items: state.default.menu_items
    //menu_items: getPublicMenu
@@ -397,13 +405,33 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //loginthunk
 
-      
-    //setEmail: (e: any) => {
-    //  dispatch(setEmail(e.target.value))
-    //},
+    registerSetFirstName: (e: any) => {
+      dispatch(registerSetFirstName(e.target.value))
+    },
 
-    registerUser: (email: any, password: any) => {
-      dispatch(registerUser(email, password))
+    registerSetLastName: (e: any) => {
+      dispatch(registerSetLastName(e.target.value))
+    },
+
+    registerSetEmail: (e: any) => {
+      dispatch(registerSetEmail(e.target.value))
+    },
+
+    registerSetEmailAgain: (e: any) => {
+      dispatch(registerSetEmail(e.target.value))
+    },
+
+    registerSetPassword: (e: any) => {
+      dispatch(registerSetEmail(e.target.value))
+    },
+
+    registerSetPasswordAgain: (e: any) => {
+      dispatch(registerSetEmail(e.target.value))
+    },
+
+    registerUser: (first_name: any, last_name: any, email: any, password: any) => {
+      console.log("ownprops" + JSON.stringify(ownProps));
+      dispatch(registerUser(first_name, last_name, email, password))
     },
     
   }

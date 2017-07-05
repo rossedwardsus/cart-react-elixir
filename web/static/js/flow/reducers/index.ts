@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux'
 
 import login from './login.ts';
 import session from './session.ts';
-//import register from './register.ts';
+import Register from './register.ts';
 //import root from './root.ts';
 import MenuItems from './menu.ts';
 import Order from './order.ts';
@@ -38,6 +38,7 @@ import UserOrderSuborders from './user_order_suborders.ts';
 //menus
 
 export default combineReducers({
+  Register,
   session,
   MenuItems,
   Order,

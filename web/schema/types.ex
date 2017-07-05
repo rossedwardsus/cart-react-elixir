@@ -33,17 +33,17 @@ defmodule Sconely.Schema.Types do
 
 
   object :login do
-  	field :email, :string
-  	field :password, :string
+  	#field :email, :string
+  	#field :password, :string
   	field :user, :string
   end
 
   object :registration do
     field :user_id, :string
-    field :first, :string
-    field :last, :string
-   	field :email, :string
-   	field :password, :string
+    #field :first, :string
+    #field :last, :string
+   	#field :email, :string
+   	#field :password, :string
    	#field :status, :string
   end
 

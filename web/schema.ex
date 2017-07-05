@@ -91,10 +91,10 @@ defmodule Sconely.Schema do
 
 
   	field :register, type: :registration do
-      arg :first, (:string)
-      arg :last, (:string)
+      arg :first_name, (:string)
+      arg :last_name, (:string)
     	arg :email, non_null(:string)
-    	arg :mobile, (:string)
+    	#arg :mobile, (:string)
     	arg :password, (:string)
 
     	resolve &Sconely.RegistrationResolver.create_user/2
