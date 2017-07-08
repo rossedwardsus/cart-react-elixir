@@ -19,12 +19,13 @@ class GuestName extends React.Component<any, any> {
 
         page: "",
 
-        first_name: "",
-        last_name: "",
-        email: "",
-        mailing_list: false
+        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 1, title: "freedom", description: "let freedom ring!"}],
         
     };
+
+    this.mouseOut = this.mouseOut.bind(this);
+    this.mouseOver = this.mouseOver.bind(this);
+    this.showItem = this.showItem.bind(this);
 
   }
 
@@ -43,7 +44,25 @@ class GuestName extends React.Component<any, any> {
   
   }
 
-  
+  mouseOver(e: any){
+
+      e.target.src = "/images/menu/DWK_greenrollover3.jpg";
+
+  }
+
+  mouseOut(e: any){
+
+      e.target.src = "/images/menu/DWK_greenrollover1.jpg";
+
+  }
+
+  showItem(item_id: any){
+
+      //alert(item_id);
+
+      $('#myModal').modal('show');
+
+  }
 
   setFirstName = (e: any) => {
 
@@ -63,14 +82,11 @@ class GuestName extends React.Component<any, any> {
 
   }
 
-  setMailingList = () => {
+  saveGuestChoice = (e: any) => {
 
-      let mailing_list_updated = !this.state.mailing_list;
-
-      this.setState({mailing_list: mailing_list_updated});
+    this.props.saveGuestChoice("first_name", "last_name", "email", "choice");
 
   }
-
 
   render(){
     return (
@@ -104,33 +120,7 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      Please provide us with your name so we can personalize your scone.
-                      <br/>
-                      <br/>
-                      <form className="form-inline">
-                        <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={this.setFirstName}/>
-                        </div>
-                        <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={this.setLastName}/>
-                        </div>
-                      </form>
-                      <form className="form-inline">
-                        <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={this.setEmail}/>
-                        </div>
-                      </form>
-                      <form className="form-inline">
-                        <div className="form-group">
-                          Mailing List 
-                        </div>
-                        <div className="form-group">
-                          <input type="checkbox" id="exampleInputName2" value={this.state.mailing_list} onChange={this.setMailingList}/>
-                        </div>
-                      </form>
-                      <br/>
-                      <br/>
-                      <button className="btn btn-default" onClick={() => this.props.completeGuestResponse(this.state.first_name, this.state.last_name, this.state.email, this.state.mailing_list)}>Complete Order</button>
+                      Your order has been received!  Thank you from Sconely.com.
                       <br/>
                       <br/>
                       <br/>
@@ -154,9 +144,9 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    completeGuestResponse: (first_name: any, last_name: any, email: any, mailing_list: any) => {
+    completeGuestResponse: (first_name: any, last_name: any, email: any) => {
     //  console.log("e.target.value");
-      dispatch(completeGuestResponse(first_name, last_name, email, mailing_list));
+      dispatch(completeGuestResponse(first_name, last_name, email));
     },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);

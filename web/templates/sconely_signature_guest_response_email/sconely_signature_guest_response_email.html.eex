@@ -1,1 +1,1 @@
-Thank you Ross Edwards.  We have received your order for a Ruby Q.
+Thank you <%= @key["first_name"] %> <%= @key["last_name"] %>Ross Edwards.  We have received your order for a Ruby Q.

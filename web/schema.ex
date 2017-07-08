@@ -218,6 +218,7 @@ defmodule Sconely.Schema do
       arg :first_name, :string
       arg :last_name, :string
       arg :email, :string
+      arg :mailing_list, :boolean
 
       resolve &Sconely.SignatureOrderGuestResponseResolver.complete_guest_response/2
   end

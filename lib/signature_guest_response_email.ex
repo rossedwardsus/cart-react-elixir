@@ -3,14 +3,15 @@ defmodule Sconely.SignatureGuestResponseEmail do
 
   def welcome_email(_params) do
 
-    IO.inspect(_params["email"])
-    IO.inspect(System.get_env("MIX"))
+    IO.inspect("email")
+    IO.inspect(_params)
+    #IO.inspect(System.get_env("MIX"))
     
     template = Phoenix.View.render_to_string(Sconely.SconelySignatureGuestResponseEmailView, "sconely_signature_guest_response_email.html", key: _params)
 
     new_email(
+      to: _params[:email],
       #to: ["rossedwards.us@gmail.com"],
-      to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
       subject: "Welcome to Sconely",
       html_body: template,

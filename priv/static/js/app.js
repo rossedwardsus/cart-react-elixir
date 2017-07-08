@@ -45189,16 +45189,19 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.saveGuestChoice = saveGuestChoice;
-	function completeGuestResponse(first_name, last_name, email) {
+	function completeGuestResponse(first_name, last_name, email, mailing_list) {
 	    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
 	    return function (dispatch) {
-	        axios_1.default.post('http://localhost:4000/api/graphql', { query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "", last_name: "") { user }}'
+	        axios_1.default.post('http://localhost:4000/api/graphql', { query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
 	        }).then(function (response) {
 	            console.log("graphql response" + JSON.stringify(response));
 	            //that.props.history.push('/user');
 	            //context.router
 	            //that.props.setOrderId(1);
-	            //this.context.router.push('/order/complete');
+	            //this.context.router.push('/guestorder/complete');
+	            //call the reducer themn redirect
+	            //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+	            //dispatch(push("/order/1/guest/order_complete"));
 	        }).catch(function (error) {
 	            console.log("error" + error);
 	            //go to code/payment screen
@@ -45277,18 +45280,19 @@ webpackJsonp([0],[
 	        _this.setEmail = function (e) {
 	            _this.setState({ email: e.target.value });
 	        };
-	        _this.saveGuestChoice = function (e) {
-	            _this.props.saveGuestChoice("first_name", "last_name", "email", "choice");
+	        _this.setMailingList = function () {
+	            var mailing_list_updated = !_this.state.mailing_list;
+	            _this.setState({ mailing_list: mailing_list_updated });
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            page: "",
-	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 1, title: "freedom", description: "let freedom ring!" }]
+	            first_name: "",
+	            last_name: "",
+	            email: "",
+	            mailing_list: false
 	        };
-	        _this.mouseOut = _this.mouseOut.bind(_this);
-	        _this.mouseOver = _this.mouseOver.bind(_this);
-	        _this.showItem = _this.showItem.bind(_this);
 	        return _this;
 	    }
 	
@@ -45302,28 +45306,12 @@ webpackJsonp([0],[
 	            //save id in local storage
 	        }
 	    }, {
-	        key: "mouseOver",
-	        value: function mouseOver(e) {
-	            e.target.src = "/images/menu/DWK_greenrollover3.jpg";
-	        }
-	    }, {
-	        key: "mouseOut",
-	        value: function mouseOut(e) {
-	            e.target.src = "/images/menu/DWK_greenrollover1.jpg";
-	        }
-	    }, {
-	        key: "showItem",
-	        value: function showItem(item_id) {
-	            //alert(item_id);
-	            $('#myModal').modal('show');
-	        }
-	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "hidden-xs col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Please provide us with your name so we can personalize your scone.", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: this.setLastName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setLastName }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
-	                    return _this2.props.completeGuestResponse(_this2.state.first_name, _this2.state.last_name, _this2.state.email);
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "hidden-xs col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Please provide us with your name so we can personalize your scone.", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, "Mailing List"), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "checkbox", id: "exampleInputName2", value: this.state.mailing_list, onChange: this.setMailingList }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
+	                    return _this2.props.completeGuestResponse(_this2.state.first_name, _this2.state.last_name, _this2.state.email, _this2.state.mailing_list);
 	                } }, "Complete Order"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
@@ -45347,9 +45335,9 @@ webpackJsonp([0],[
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
-	        completeGuestResponse: function completeGuestResponse(first_name, last_name, email) {
+	        completeGuestResponse: function completeGuestResponse(first_name, last_name, email, mailing_list) {
 	            //  console.log("e.target.value");
-	            dispatch(signature_guest_response_ts_1.completeGuestResponse(first_name, last_name, email));
+	            dispatch(signature_guest_response_ts_1.completeGuestResponse(first_name, last_name, email, mailing_list));
 	        }
 	    };
 	}

@@ -68,12 +68,12 @@ export function saveGuestChoice(item_id: any) {
 
 }
 
-export function completeGuestResponse(first_name: any, last_name: any, email: any) {
+export function completeGuestResponse(first_name: any, last_name: any, email: any, mailing_list: any) {
    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
    return function (dispatch: any) { 
 
       axios.post('http://localhost:4000/api/graphql',
-               {query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "", last_name: "") { user }}'
+               {query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
       })
       .then((response: any) => {
 
@@ -84,8 +84,11 @@ export function completeGuestResponse(first_name: any, last_name: any, email: an
 
             //that.props.setOrderId(1);
 
-            //this.context.router.push('/order/complete');
+            //this.context.router.push('/guestorder/complete');
 
+             //call the reducer themn redirect
+             //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+             //dispatch(push("/order/1/guest/order_complete"));
 
       })
       .catch((error: any) => {
