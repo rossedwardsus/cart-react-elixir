@@ -9,7 +9,7 @@ export function loadSignatureGuestResponseOrderDetails() {
 
         //event full name
 
-        axios.post('http://localhost:4000/api/graphql',
+        axios.post('/api/graphql',
                  {query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
         })
         .then((response: any) => {
@@ -72,7 +72,7 @@ export function completeGuestResponse(first_name: any, last_name: any, email: an
    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
    return function (dispatch: any) { 
 
-      axios.post('http://localhost:4000/api/graphql',
+      axios.post('/api/graphql',
                {query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
       })
       .then((response: any) => {

@@ -45154,7 +45154,7 @@ webpackJsonp([0],[
 	    //alert(item_id)
 	    return function (dispatch) {
 	        //event full name
-	        axios_1.default.post('http://localhost:4000/api/graphql', { query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
+	        axios_1.default.post('/api/graphql', { query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
 	        }).then(function (response) {
 	            console.log("graphql response" + JSON.stringify(response.data.data.loadSignatureGuestResponseOrderDetails));
 	            //that.props.history.push('/user');
@@ -45192,7 +45192,7 @@ webpackJsonp([0],[
 	function completeGuestResponse(first_name, last_name, email, mailing_list) {
 	    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
 	    return function (dispatch) {
-	        axios_1.default.post('http://localhost:4000/api/graphql', { query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
+	        axios_1.default.post('/api/graphql', { query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
 	        }).then(function (response) {
 	            console.log("graphql response" + JSON.stringify(response));
 	            //that.props.history.push('/user');
