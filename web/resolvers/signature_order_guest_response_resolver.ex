@@ -22,16 +22,16 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     guest_response_changeset = SconelySignatureOrderGuestResponse.changeset(%SconelySignatureOrderGuestResponse{}, %{parent_order_id:  "parent_order_id", first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email], mailing_list: _args[:mailing_list]})
 
 
-    Repo.transaction(fn ->
+    #Repo.transaction(fn ->
 
-        case Repo.insert(guest_response_changeset) do
-          {:ok, response} -> 
-                IO.inspect(response)
-                Sconely.SignatureGuestResponseEmail.welcome_email(%{"first_name" => _args[:first_name], "last_name" => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+     #   case Repo.insert(guest_response_changeset) do
+     #     {:ok, response} -> 
+     #           IO.inspect(response)
+     #           Sconely.SignatureGuestResponseEmail.welcome_email(%{"first_name" => _args[:first_name], "last_name" => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
-        end
+     #   end
    
-    end)
+    #end)
 
     #admin
     
