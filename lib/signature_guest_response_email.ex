@@ -13,7 +13,7 @@ defmodule Sconely.SignatureGuestResponseEmail do
       to: _params[:email],
       #to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
-      subject: "Welcome to Sconely",
+      subject: "Sconely Signature Guest Order",
       html_body: template,
       #html_body: "Thanks for joining Sconely!<br>Click here to activate your account.   <a href=\"http:\/\/localhost:4000\/activate?email=" <> _params["email"] <> "\">activate</a>",
       #text_body: "Thanks for joining!"
