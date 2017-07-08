@@ -8,6 +8,7 @@ import {List, Map} from 'immutable';
 
 import { getUserDeliveryAddresses, addUserDeliveryAddress } from '../actions/user.ts';
 import UserDeliveryAddress from './user_delivery_address.tsx';
+import DeliveryAddresses from './delivery_addresses.tsx';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -55,6 +56,14 @@ class UserDeliveryAddresses extends React.Component<any, any> {
     const { getUserDeliveryAddresses } = this.props
     getUserDeliveryAddresses();
 
+    //console.log(this.props.delivery_addresses)
+
+  }
+
+  componentWillReceiveProps(){
+
+    console.log("cwrp");
+
   }
 
   static get contextTypes() {
@@ -69,31 +78,42 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
   }
 
-  street1Change(e: any){
+  setName = (e: any) => {
+
+    this.setState({name: e.target.value});
+
+  }
+
+  setStreet1 = (e: any) => {
 
     this.setState({street1: e.target.value});
 
   }
 
-  street2Change(e: any){
+  setStreet2 = (e: any) => {
 
     this.setState({street2: e.target.value});
   
   }
 
-  cityChange(e: any){
+  setCity = (e: any) => {
 
-
+    this.setState({city: e.target.value});
   
   }
 
-  stateChange(e: any){
+  setAddressState = (e: any) => {
 
     this.setState({state: e.target.value});
   
   }
 
+  setZipcode = (e: any) => {
+  
+    this.setState({zipcode: e.target.value});
 
+  }
+  
   
   addUserDeliveryAddress(){
 
@@ -101,29 +121,20 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
   }
                  
+  saveAddress = (id: any) => {
 
+    console.log(id);
+
+  }
 
   render(){
 
     let logged_in = null;
     
-    if("logged_in_true" == "logged_in_true"){
-        
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><a>>Start Order</a></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </div>
-    }
+    const {delivery_addresses} = this.props;
+    //console.log("render" + JSON.stringify(delivery_addresses));
+
+    let that = this;
 
     return (
               <div>
@@ -168,28 +179,33 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   Delivery Addresses
                                   <br/>
-                                   <form className="form-inline">
+                                  <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name"/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.street1Change(e)}/>
-                                      </div>
-                                  </form>
-                                   <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email"/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile" onChange={(e: any) => this.street1Change(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Address Name" onChange={(e: any) => this.setName(e)} value={this.state.name}/>
                                       </div>
                                   </form>
                                   <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 1" onChange={(e: any) => this.street1Change(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.setStreet1(e)} value={this.state.street1}/>
                                       </div>
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.setStreet2(e)} value={this.state.street2}/>
+                                      </div>
+                                  </form>
+                                  <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.setStreet1(e)} value={this.state.street1}/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile" onChange={(e: any) => this.setStreet2(e)} value={this.state.street2}/>
+                                      </div>
+                                  </form>
+                                  <form className="form-inline">
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 1" onChange={(e: any) => this.setStreet1(e)} value={this.state.street1}/>
+                                      </div>
+                                      <div className="form-group">
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2" onChange={(e: any) => this.setStreet2(e)} value={this.state.street2}/>
                                       </div>
                                   </form>
                                   <form className="form-inline">
@@ -224,54 +240,69 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  {this.props.delivery_addresses.map(function(address: any){
-                                        return(<div>
-                                                <form className="form-inline">
-                                                  <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="First Name"/>
-                                                  </div>
-                                                  <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
-                                                  </div>
-                                                </form>
-                                                <form className="form-inline">
-                                                  <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Email"/>
-                                                  </div>
-                                                   <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
-                                                  </div>
-                                                </form>
-                                                <form className="form-inline">
-                                                  <div className="form-group">
-                                                    <input type="text" value={address.street1} onChange={(e: any) => this.props.setUserDeliveryAddressStreet1(e)} className="form-control" id="exampleInputName2" placeholder="Street 1"/>
-                                                  </div>
-                                                  <div className="form-group">
-                                                    <input type="text" onChange={(e: any) => this.props.setDeliveryAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                                                  </div>
-                                                </form>
-                                                <form className="form-inline">
-                                                  <div className="form-group">
-                                                    <select className="form-control">
-                                                        <option></option>
-                                                        <option>Los Angeles</option>
-                                                    </select>
-                                                  </div>
-                                                  <div className="form-group">
-                                                    <select className="form-control">
-                                                        <option></option>
-                                                        <option>CA</option>
-                                                    </select>
-                                                  </div>
-                                                  <div className="form-group">
-                                                    <select className="form-control" >
-                                                        <option></option>
-                                                        <option>90025</option>
-                                                    </select>
-                                                  </div>
+                                  {Object.keys(delivery_addresses).map((key: any, index: any) => {
+
+                                      return(<div>
+                                                  <form className="form-inline">
+                                                    <div className="form-group">
+                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Address/Contact Name"/>
+                                                    </div>
                                                   </form>
-                                                  <button>save changes</button>
-                                                  </div>)
+                                                  <form className="form-inline">
+                                                    <div className="form-group">
+                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                                                    </div>
+                                                    <div className="form-group">
+                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                                                    </div>
+                                                  </form>
+                                                  <form className="form-inline">
+                                                    <div className="form-group">
+                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                                                    </div>
+                                                    <div className="form-group">
+                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                                                    </div>
+                                                  </form>
+                                                
+                                                  <form className="form-inline">
+                                                    <div className="form-group">
+                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Street 1"/>
+                                                    </div>
+                                                    <div className="form-group">
+                                                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
+                                                    </div>
+                                                  </form>
+                                                  <form className="form-inline">
+                                                    <div className="form-group">
+                                                      <select className="form-control">
+                                                          <option></option>
+                                                          <option>Los Angeles</option>
+                                                      </select>
+                                                    </div>
+                                                    <div className="form-group">
+                                                      <select className="form-control">
+                                                          <option></option>
+                                                          <option>CA</option>
+                                                      </select>
+                                                    </div>
+                                                    <div className="form-group">
+                                                      <select className="form-control" >
+                                                          <option></option>
+                                                          <option>90025</option>
+                                                      </select>
+                                                    </div>
+                                                  </form>
+                                                  <form className="form-inline">
+                                                      <div className="form-group">
+                                                        <textarea  className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+                                                      </div>
+                                                    </form>
+                                                <button className="btn btn-default" onClick={() => this.saveAddress(delivery_addresses[key].id)}>Save Address</button>
+                                                <br/>
+                                                <br/>
+                                                </div>
+                                      )
                                   })}
                                  
                         </div>
@@ -291,9 +322,9 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("delivery addresses component/state" + JSON.stringify(state.user));
+  console.log("delivery addresses state" + JSON.stringify(state.User.delivery_addresses));
   return {
-   delivery_addresses: state.user.delivery_addresses
+   delivery_addresses: state.User.delivery_addresses
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };

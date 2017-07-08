@@ -5,17 +5,18 @@ defmodule Sconely.SconelySignatureOrderGuestResponse do
 		use SconeHomeElixir.Web, :model
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
-		@optional_fields ~W()
-		@required_fields ~W(order_id item_id first_name last_name)
+		@optional_fields ~W(order_id item_id first_name last_name)
+		@required_fields ~W()
 
 		schema "sconely_signature_order_guest_responses" do
 			field :order_id, :string
-			#field :item_id, :string
+			field :item_id, :string
 			field :first_name, :string
 			field :last_name, :string
 			field :email, :string
-			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-			field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
+			#field :mailing_list
+			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+			#field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
 
 			#timestamps()
 		end

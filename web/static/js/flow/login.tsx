@@ -81,14 +81,6 @@ class Login extends React.Component<any, any> {
 
 
 
-    //user_type=guest
-    //order_type=yours load 
-    //state==menu
-    //yours_menu
-    //just show cart if guest
-    //or separate into order_menu and order_delivery_address_payment objects
-    //or have everything work of a "pages" flag
-    
   }
 
   static get contextTypes() {
@@ -132,14 +124,7 @@ class Login extends React.Component<any, any> {
 
   }
 
-  setPasswordAgain(e: any){
-
-      this.setState({password: e.target.value})
-
-      //this.props.password_again
-
-  }
-  
+ 
   login(){
 
       this.props.loginUser("1", "2");

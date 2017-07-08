@@ -8,7 +8,11 @@ defmodule Sconely.UserDeliveryAddress do
 
 		schema "user_delivery_addresses" do
 			field :user_id, Ecto.UUID
-			field :name, :string
+			field :address_contact_name, :string
+			field :first_name, :string
+			field :last_name, :string
+			field :email, :string
+			field :mobile, :string
 			field :street1, :string
 			field :street2, :string
 			field :city, :string

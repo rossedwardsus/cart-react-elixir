@@ -1,6 +1,17 @@
 defmodule Sconely.Schema.Types do
   use Absinthe.Schema.Notation
 
+  object :signature_guest_response_order_details do
+    field :parent_order_id, :string
+    field :event_full_name, :string
+    field :invited_guest_message, :string
+    #field :menu_items, :string
+  end
+
+  object :signature_guest_response do
+    field :status, :string
+  end
+
   #object :order do
   #	field :session_id, :string
   #	field :delivery_address_street, :string

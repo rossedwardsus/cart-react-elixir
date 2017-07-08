@@ -3,9 +3,9 @@
 import * as React from 'react'
 
 import { Link, browserHistory } from 'react-router'
-
 import {connect} from 'react-redux';
 
+import {loadSignatureGuestResponseOrderDetails} from '../actions/signature_guest_response.ts';
 
 class Event extends React.Component<any, any> {
   //props: Props;
@@ -29,13 +29,10 @@ class Event extends React.Component<any, any> {
     };
   }
 
-  createOrder(order_type: any) {
-    //alert(order_type);
-    this.context.router.push('/order/12345');
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
-  
+  componentDidMount = () => {
+
+    this.props.loadSignatureGuestResponseOrderDetails();
+
   }
 
   render(): JSX.Element {
@@ -55,9 +52,9 @@ class Event extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("delivery addresses component/state" + JSON.stringify(state));
+  console.log("signature order details state" + JSON.stringify(state));
   return {
-   //order: state.default.order
+   //order: state.SignatureOrderGuestResponse
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -66,10 +63,10 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    //getUserDeliveryAddresses: () => {
+    loadSignatureGuestResponseOrderDetails: () => {
     //  console.log("e.target.value");
-    //  dispatch(getUserDeliveryAddresses());
-    //},
+      dispatch(loadSignatureGuestResponseOrderDetails());
+    },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);
       //dispatch(setContactPhone(e.target.value));

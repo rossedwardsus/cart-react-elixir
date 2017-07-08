@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryContacts, addUserDeliveryContact } from '../actions/user.ts';
+import { addUserDeliveryContact } from '../actions/user.ts';
 //import UserDeliveryContact from './user_delivery_contact.tsx';
 
 
@@ -247,7 +247,7 @@ function mapDispatchToProps(dispatch: any) {
   return {
     getUserDeliveryContacts: () => {
       console.log("e.target.value");
-      dispatch(getUserDeliveryContacts());
+      //dispatch(getUserDeliveryContacts());
     },
     addUserDeliveryContact: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);

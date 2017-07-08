@@ -13,6 +13,16 @@ defmodule Sconely.Schema do
     end
 
 
+    field :load_signature_guest_response_order_details, type: :signature_guest_response_order_details do
+        arg :order_name, :string
+        #arg :event_name, :string
+        #arg :delivery_time, :string
+     
+        resolve &Sconely.SignatureOrderGuestResponseResolver.get_order/2
+    end
+
+
+
     #field :get_user_delivery_addresses, list_of(:sconely_signature_order) do
     #  resolve &Sconely.OrderResolver.all/2
     #end
@@ -202,14 +212,15 @@ defmodule Sconely.Schema do
   #    resolve &Sconely.SconelySignatureOrderResolver.process_order/2
   #end
 
-  #field :save_sconely_signature_guest_choice, type: :sconely_signature_order_guest do
-  #    arg :order_id, non_null(:string)
-  #    arg :item_id, :string
-  #    arg :first_name, :string
-  #    arg :last_name, :string
-     
-  #    resolve &Sconely.SconelySignatureOrderResolver.process_guest_choice/2
-  #end
+  field :complete_signature_guest_response, type: :signature_guest_response do
+      arg :order_id, non_null(:string)
+      arg :item_id, :string
+      arg :first_name, :string
+      arg :last_name, :string
+      arg :email, :string
+
+      resolve &Sconely.SignatureOrderGuestResponseResolver.complete_guest_response/2
+  end
 
 
 	#field :save_sconely_signature_order_additional_items, type: :sconely_signature_order_additional_items do

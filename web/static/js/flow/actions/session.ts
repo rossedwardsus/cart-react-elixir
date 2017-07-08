@@ -3,7 +3,7 @@
 import {SET_SESSION} from '../constants/actionTypes.ts';
 import axios from 'axios';
 import {push} from 'react-router-redux';
-import {getUserOrders} from './user.ts';
+//import {getUserOrders} from './user.ts';
 
 export function setSession() {
   let url = "";
@@ -18,7 +18,7 @@ export function setSession() {
         error: response.error
       })*/
     dispatch({ type: SET_SESSION, user_id: "guest"});
-    dispatch(getUserOrders("session_id"));
+    //dispatch(getUserOrders("session_id"));
     //dispatch({ type: GET_USER_DELIVERY_ADDRESS_NAMES, session_id: "session_id"});
     //dispatch({ type: GET_USER_PAYMENT_NAMES, session_id: "session_id"});
     //dispatch(push("/user"));

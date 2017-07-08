@@ -10,8 +10,8 @@ import Order from './order.ts';
 import OrderDeliveryAddress from './order_delivery_Address.ts';
 import OrderDatetime from './order_datetime.ts';
 import OrderPayment from './order_payment.ts';
-import order_validations from './order_validated.ts';
-import user from './user.ts';
+import OrderValidations from './order_validated.ts';
+import User from './user.ts';
 //import user_delivery_addresses from './user_delivery_addresses.ts';
 import cart from './cart.ts';
 import name from './name.ts';
@@ -19,7 +19,7 @@ import contact from './contact.ts';
 //import OrderDeliveryAddress from './order_delivery_address.ts';
 import UserPaymentMethods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
-//import SconelySignatureGuest from './sconely_signature_guest.ts';
+import SignatureGuestResponse from './signature_guest_response.ts';
 import UserOrders from './user_orders.ts';
 import UserOrderCart from './user_order_cart.ts';
 import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -41,18 +41,19 @@ export default combineReducers({
   Register,
   session,
   MenuItems,
+  SignatureGuestResponse,
   Order,
   OrderDatetime,
   OrderPayment,
   OrderDeliveryAddress,
-  order_validations,
+  OrderValidations,
   cart,
   name,
   contact,
-  user,
+  User,
   UserOrders,
-  UserOrderEventDetails,
-  UserOrderDeliveryAddress,
+  //UserOrderEventDetails,
+  //UserOrderDeliveryAddress,
   //UserOrderDeliveryContact,
   UserOrderCart,
   UserPaymentMethods,

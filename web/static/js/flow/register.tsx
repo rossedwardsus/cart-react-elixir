@@ -55,8 +55,8 @@ class Register extends React.Component<any, any> {
     this.state = {
 
         //menu_items: this.props.menu_items,
-        first: "",
-        last: "",
+        first_name: "",
+        last_name: "",
         name: "",
         email: "",
         mobile: "",
@@ -68,7 +68,12 @@ class Register extends React.Component<any, any> {
         email_again_border_color: "grey",
         password_border_color: "grey",
         password_again_border_color: "grey",
-        first_name_validated: false
+        first_name_validated: false,
+        last_name_validated: false,
+        email_validated: false,
+        email_again_validated: false,
+        
+        button_class: "btn btn-default disabled"
 
     };
 
@@ -141,13 +146,12 @@ class Register extends React.Component<any, any> {
 
 
 
-      /*let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
       let symbol_res = symbol_patt.test(e.target.value);
 
-      let number_res = (/[0-9]/.test(e.target.value));
+      //let number_res = (/[0-9]/.test(e.target.value));
 
-
-      console.log(/[0-9]/.test(e.target.value));
+      //console.log(/[0-9]/.test(e.target.value));
 
       //larger then 0
       //no symbols
@@ -155,21 +159,25 @@ class Register extends React.Component<any, any> {
 
       if(e.target.value.length > 0){
 
-          if(symbol_res == false && number_res == false){
+          //if(symbol_res == false){
           
             this.setState({first_name: e.target.value})
-            this.setState({"first_border_color": "grey"});
+            this.setState({first_validated: true})
+            
+            this.checkButton();
 
-          }else{
+            //this.setState({"first_border_color": "grey"});
+            
+          //}else{
 
-            this.setState({first_name: e.target.value})
-            this.setState({"first_border_color": "red"});
+          //  this.setState({first_name: e.target.value})
+          //  this.setState({"first_border_color": "red"});
 
-          }
+          //}
       
-      }*/
+      }
 
-      this.props.registerSetFirstName(e);
+      //this.props.registerSetFirstName(e);
 
   }
 
@@ -177,11 +185,15 @@ class Register extends React.Component<any, any> {
 
       //if(e.target.value.length > 0){
         
-      //  this.setState({last_name: e.target.value})
+        this.setState({last_name: e.target.value});
+        this.setState({last_name_validated: true});
+            
+        this.checkButton();
+
 
       //}
 
-      this.props.registerSetLastName(e);
+     // this.props.registerSetLastName(e);
 
   }
 
@@ -194,46 +206,47 @@ class Register extends React.Component<any, any> {
       //no symbols
       //cant already exist
 
-      //let dot_patt = /[.]/;
-      //let dot_res = dot_patt.test(e.target.value);
-
-      //let ampersand_patt = /[@]/;
-      //let ampersand_res = ampersand_patt.test(e.target.value);
-
-      //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
-
-          //less then 20, doesnt include @ and .
-      //    console.log(dot_res + "" + ampersand_res);
-
-      //    this.setState({email: e.target.value})
-      //    this.setState({email_border_color: "grey"});
-          //this.setState({email_validated: true});
-
-      //}
-
-      this.props.registerSetEmail(e);
-
-
-  }
-
-  setEmailAgain(e: any){
-
       let dot_patt = /[.]/;
       let dot_res = dot_patt.test(e.target.value);
 
       let ampersand_patt = /[@]/;
       let ampersand_res = ampersand_patt.test(e.target.value);
 
-      //if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+      if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+
+          //less then 20, doesnt include @ and . _
+      //    console.log(dot_res + "" + ampersand_res);
+
+          this.setState({email: e.target.value});
+      //    this.setState({email_border_color: "grey"});
+          this.setState({email_validated: true});
+          this.checkButton();
+
+      }
+
+      //this.props.registerSetEmail(e);
+
+
+  }
+
+  setEmailAgain(e: any){
+
+      //let dot_patt = /[.]/;
+      //let dot_res = dot_patt.test(e.target.value);
+
+      //let ampersand_patt = /[@]/;
+      //let ampersand_res = ampersand_patt.test(e.target.value);
+
+      if(e.target.value == this.state.email){
 
           //less then 20, doesnt include @ and .
-          console.log(dot_res + "" + ampersand_res);
+          //console.log(dot_res + "" + ampersand_res);
 
-          this.setState({email: e.target.value})
-          this.setState({email_border_color: "grey"});
-          //this.setState({email_validated: true});
+          //this.setState({email: e.target.value})
+          //this.setState({email_border_color: "grey"});
+          this.setState({email_again_validated: true});
 
-      //}
+      }
 
   }
 
@@ -260,7 +273,7 @@ class Register extends React.Component<any, any> {
 
     //check email and password/form validated
 
-    this.props.registerUser(this.props.Register.first_name, this.props.Register.last_name, this.props.Register.email, this.props.Register.password);
+    this.props.registerUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password);
 
     //this.setState({"delivery_address_street1_classname": "form-group"});
 
@@ -295,6 +308,16 @@ class Register extends React.Component<any, any> {
 
           })
     }*/
+
+  }
+
+  checkButton = () => {
+
+    if(this.state.first_name_validated && this.state.last_name_validated && this.state.email_validated){
+
+        this.setState({button_class: "btn btn-default"});
+
+    }
 
   }
 
@@ -341,22 +364,22 @@ class Register extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-6">
                                    <br/>
-                                    <input type="text" className="form-control" id="email" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} onFocus={() => this.onFirstNameFocus()} style={{borderColor: this.state.first_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} style={{borderColor: this.state.first_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setLastName(e)} onFocus={() => this.onLastNameFocus()} style={{borderColor: this.state.last_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setLastName(e)} value={this.state.last_name} style={{borderColor: this.state.last_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e: any) => this.setEmail(e)} style={{borderColor: this.state.email_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e: any) => this.setEmail(e)} value={this.state.email} style={{borderColor: this.state.email_border_color}}/>
                                   </div>
                                 </div>
                                  <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Email Again" onChange={(e: any) => this.setEmailAgain(e)} onFocus={() => this.onEmailFocus()} style={{borderColor: this.state.email_again_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Email Again" onChange={(e: any) => this.setEmailAgain(e)} value={this.state.email_again} style={{borderColor: this.state.email_again_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
@@ -371,7 +394,7 @@ class Register extends React.Component<any, any> {
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <button type="button" className="btn btn-default" onClick={() => this.register()}>Register</button> 
+                                    <button type="button" className={this.state.button_class} onClick={() => this.register()}>Register</button> 
                                   </div>
                                </div>
                               </form>

@@ -59,7 +59,12 @@ class UserHomePage extends React.Component<any, any> {
     //get active items from the database
     //setInterval(this.changeImage, 10000);
 
+    
+
+
     //localStorage.get('user');
+    //get user or user id
+
 
   }
 
@@ -207,7 +212,7 @@ class UserHomePage extends React.Component<any, any> {
     
     return (
               <div>
-                    <UserNavbar/>
+                    <UserNavbar first_name={this.props.User.first_name} last_name={this.props.User.last_name}/>
                     <div className="row">
                         <div className="hidden-xs col-md-4">
                           <br/>
@@ -217,13 +222,17 @@ class UserHomePage extends React.Component<any, any> {
                           <br/>
                           <Link to="/public/menu">Menu</Link>
                           <br/>
-                          <Link to="/user/delivery_contacts">Delivery Contacts</Link>
+                          <br/>
+                          Order Settings:
                           <br/>
                           <Link to="/user/delivery_addresses">Delivery Addresses</Link>
                           <br/>
                           <Link to="/user/payment_methods">Payment Methods</Link>
                           <br/>
-                          <Link to="/user/about_me">Settings</Link>
+                          <br/>
+                          Profile Settings:
+                          <br/>
+                          <Link to="/user/about_me">Name/Contact</Link>
                           <br/>
                           <Link to="/user/password">Password</Link>
                           <br/>
@@ -271,7 +280,7 @@ class UserHomePage extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("user home page component/state" + JSON.stringify(state));
   return {
-   name: state.name,
+   User: state.User,
    UserOrders: state.UserOrders
    //createOrder: createOrder
    //menu_items: dispatch()
@@ -281,6 +290,7 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
+    //get user
     getUserOrders: (e: any) => {
       //console.log(e.target.value);
       //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));

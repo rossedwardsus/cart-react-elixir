@@ -3,8 +3,8 @@ import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 import {connect} from 'react-redux';
 
-import {getMenuItems} from '../actions/menu.ts';
-import {addGuestCartItem} from '../actions/guest_response.ts';
+//import {getMenuItems} from '../actions/menu.ts';
+import {loadSignatureGuestResponseOrderDetails, saveGuestChoice} from '../actions/signature_guest_response.ts';
 
 //import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 
@@ -33,6 +33,12 @@ class GuestMenu extends React.Component<any, any> {
     return {
       router: React.PropTypes.object.isRequired,
     };
+  }
+
+  componentDidMount = () => {
+
+    this.props.loadSignatureGuestResponseOrderDetails();
+
   }
 
   showItem(item_id: any){
@@ -65,8 +71,16 @@ class GuestMenu extends React.Component<any, any> {
 
   }
 
+  saveGuestChoice = () => {
+
+    $('#myModal').modal('hide');   
+    this.props.saveGuestChoice(this.state.selected_item_id);
+
+  }
+
   render(): JSX.Element {
 
+    const {order_details} = this.props;
     
     return (
             <div>
@@ -94,20 +108,17 @@ class GuestMenu extends React.Component<any, any> {
               <div className="row">
                     <div className="hidden-xs col-md-3">
                       <br/>
-                      <div style={{ width: "100", height: "100", borderRadius: "50%", backgroundImage: 'url("/images/menu/DWK_green.jpg")'}}>
-                      hello
-                      </div>
                       <br/>
                       <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
                       <br/>
                       Select the Scone you would like to have at the Sconely Launch Party at LACI
                       <br/>
+                      {order_details.invited_guest_message}
                       <br/>
                       <br/>
                       <br/>
                     </div>
                     <div className="col-xs-12 col-md-9">
-                      <br/>
                       <br/>
                       <br/>
                        {this.props.menu_items.menu_items.map(function(item: any, index: any){
@@ -157,7 +168,7 @@ class GuestMenu extends React.Component<any, any> {
                                       <form className="form-horizontal">
                                         <div className="form-group">
                                           <div className="col-md-3">
-                                            <button className="btn btn-default"  onClick={() => this.addGuestCartItem()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
+                                            <button className="btn btn-default"  onClick={() => this.saveGuestChoice()} type="button" style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Select Scone</button>
                                           </div>
                                         </div>
                                       </form>
@@ -173,15 +184,15 @@ class GuestMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order" + JSON.stringify(state));
+  console.log("mapstatetoprops order" + JSON.stringify(state.SignatureGuestResponse));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
+        order_details: state.SignatureGuestResponse,
         menu_items: state.MenuItems,
-        order: state.Order,
-        cart: state.cart
+        //cart: state.cart
 
     //}
   }
@@ -191,11 +202,16 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    getMenuItems: () => {
-      dispatch(getMenuItems());
+    loadSignatureGuestResponseOrderDetails: () => {
+    //  console.log("e.target.value");
+      dispatch(loadSignatureGuestResponseOrderDetails());
     },
-    addGuestCartItem: (order_id: any, item_id: any) => {
-      dispatch(addGuestCartItem(order_id, item_id));
+
+    //getMenuItems: () => {
+      //dispatch(getMenuItems());
+    //},
+    saveGuestChoice: (item_id: any) => {
+      dispatch(saveGuestChoice(item_id));
     },
     //cartValidated: () => {
     //  dispatch(cartValidated());

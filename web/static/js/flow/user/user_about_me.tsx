@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-import {setUserFirstName, setUserLastName, setUserEmail} from '../actions/user.ts';
+//import {setUserFirstName, setUserLastName, setUserEmail} from '../actions/user.ts';
 import {List, Map} from 'immutable';
 import UserNavbar from './user_navbar.tsx';
 
@@ -29,9 +29,11 @@ class UserAboutMe extends React.Component<any, any> {
 
     this.state = {
 
-        image: "/images/gallery/sconely_group_HPb.jpg",
-        guest_code: ""
-        
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: ""
+
     };
 
    
@@ -39,11 +41,10 @@ class UserAboutMe extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //alert("jsx");
-    //get active items from the database
-    //setInterval(this.changeImage, 10000);
-
-    //localStorage.get('user');
+    this.setState({first_name: this.props.User.first_name});
+    this.setState({last_name: this.props.User.last_name});
+    this.setState({email: this.props.User.email});
+    this.setState({mobile: this.props.User.mobile});
 
   }
 
@@ -53,201 +54,56 @@ class UserAboutMe extends React.Component<any, any> {
     };
   }
 
-  onSubmit(e: any){
 
-    e.preventDefault();
-
-  }
-
-  setUserEmail = (e: any) => {
-
-    console.log("setuseremail");
-
-    this.props.setUserEmail(e);
-
-  }
 
   setUserFirstName = (e: any) => {
 
-      //this.setState({guest_code: e.target.value});
-    this.props.setUserFirstName(e);
+    this.setState({first_name: e.target.value});
+    //this.props.setUserFirstName(e);
 
   }
 
   setUserLastName = (e: any) => {
 
-      //this.setState({guest_code: e.target.value});
-    this.props.setUserLastName(e);
+    this.setState({last_name: e.target.value});
+    //this.props.setUserLastName(e);
 
   }
 
-  onSwipedLeft(){
+  setUserEmail = (e: any) => {
 
-    //alert("left");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  onSwipedRight(){
-
-    //alert("right");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
+    this.setState({email: e.target.value});
+    //this.props.setUserLastName(e);
 
   }
 
-  changeImage(){
+  setMobile = (e: any) => {
 
-    if(this.state.image == "/images/gallery/sconely_group_HPb.jpg"){
-
-        this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
-
-    }else{
-
-        this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
-
-    }
+    this.setState({mobile: e.target.value});
+    //this.props.setUserLastName(e);
 
   }
 
 
-  createOrder(order_type: any) {
+  saveAboutMe = () => {
 
-    if(order_type == "sconely_yours"){
+    this.props.saveAboutMe(this.state.first_name, this.state.last_name);
 
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-
-        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        //if user is logged in then 
-        this.context.router.push('/order/12345');
-
-        //this.context.router.push('/order/12345');
-
-
-    }else if(order_type == "sconely_social"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-
-        this.context.router.push('/order/12345');
-         
-    }else if(order_type == "sconely_signature"){
-
-        var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        this.context.router.push('/order/12345/signature');
-        
-         
-    }
-
-
-    /*const client = GQLClient('http://localhost:3000', {
-      // anything passed here is merged with 
-      // the options passed to fetch() 
-      credentials: true,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    });*/
-
-    /*client.mutate(`
-      mutation ($id: RecordID!, $name: String!) {
-        updateUser(input: {id: $id, name: $name}) {
-          user {
-            id
-            name
-          }
-        }
-      }
-    `, { id: 1234, name: 'Danny' }).then((result) => {
-      console.log(result.data.user);
-      // => { id: 1234, name: 'Danny' } 
-    });*/
-
-
-
-    /*var query = `
-      query q (id: String!) {
-        user(id: $id) {
-          id,
-          email,
-          name
-        }
-      }
-    `
-    var queryVars = {
-      id: 'abcdef'
-    }
-    var opts = {
-      // custom fetch options 
-    }*/
-     
-    /**
-     * @param  {Query} query graphql query
-     * @param  {Object} [vars]  graphql query args, optional
-     * @param  {Object} [opts]  fetch options, optional
-     */
-    /*fetch(query, queryVars, opts).then(function (results) {
-      if (results.errors) {
-        //... 
-        return
-      }
-      var user = result.data.user
-      //... 
-    })*/
-
+  }
 
   
 
-    //alert(order_type);
-    
-    //this.context.router.push('/order/12345/event_details');
-    
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
-  
-  }
 
-  //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
-                                  
+                                      
 
 
   render(){
 
     let logged_in = null;
     
-    if("logged_in_true" == "logged_in_true"){
-        
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><a>Start Order</a></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </div>
-    }
-
     return (
               <div>
-                    <UserNavbar/>
+                    <UserNavbar first_name={this.props.User.first_name} last_name={this.props.User.last_name}/>
                     <div className="row">
                         <div className="hidden-xs col-md-4">
                           <br/>
@@ -273,23 +129,23 @@ class UserAboutMe extends React.Component<any, any> {
                                   <br/>
                                    <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.setUserFirstName(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" value={this.state.first_name} onChange={(e: any) => this.setUserFirstName(e)}/>
                                       </div>
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.setUserLastName(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" value={this.state.last_name} onChange={(e: any) => this.setUserLastName(e)}/>
                                       </div>
                                     </form>
                                     <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.setUserEmail(e)}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" value={this.state.email} onChange={(e: any) => this.setUserEmail(e)}/>
                                       </div>
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                                        <input type="text" className="form-control" value={this.state.mobile} id="exampleInputName2" placeholder="Mobile"/>
                                       </div>
                                     </form>    
                                     <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Company Name" />
+                                        <input type="text" className="form-control" value={this.state.company_name} id="exampleInputName2" placeholder="Company Name" />
                                       </div>
                                     </form>       
                                     save button            
@@ -312,7 +168,7 @@ class UserAboutMe extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery addresses component/state" + JSON.stringify(state.user));
   return {
-   delivery_addresses: state.user.delivery_addresses
+   User: state.User
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -323,15 +179,15 @@ function mapDispatchToProps(dispatch: any) {
   return {
     setUserFirstName: (e: any) => {
       console.log("e.target.value");
-      dispatch(setUserFirstName(e.target.value));
+      //dispatch(setUserFirstName(e.target.value));
     },
     setUserLastName: (e: any) => {
       console.log("e.target.value");
-      dispatch(setUserLastName(e.target.value));
+      //dispatch(setUserLastName(e.target.value));
     },
     setUserEmail: (e: any) => {
       console.log("e.target.value");
-      dispatch(setUserEmail(e.target.value));
+      //dispatch(setUserEmail(e.target.value));
     },
     //addUserDeliveryAddress: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);

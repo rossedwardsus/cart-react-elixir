@@ -4,7 +4,7 @@ import { Link, browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 
 //import MenuItems from './menu_items';
-import {saveGuestChoice} from '../actions/guest_response.ts';
+import {completeGuestResponse} from '../actions/signature_guest_response.ts';
 
 class GuestName extends React.Component<any, any> {
   //props: Props;
@@ -64,6 +64,30 @@ class GuestName extends React.Component<any, any> {
 
   }
 
+  setFirstName = (e: any) => {
+
+      this.setState({first_name: e.target.value});
+
+  }
+
+  setLastName = (e: any) => {
+
+      this.setState({last_name: e.target.value});
+
+  }
+
+  setEmail = (e: any) => {
+
+      this.setState({email: e.target.value});
+
+  }
+
+  saveGuestChoice = (e: any) => {
+
+    this.props.saveGuestChoice("first_name", "last_name", "email", "choice");
+
+  }
+
   render(){
     return (
       <div>
@@ -101,15 +125,18 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <form className="form-inline">
                         <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                          <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={this.setFirstName}/>
                         </div>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={this.setLastName}/>
+                        </div>
+                        <div className="form-group">
+                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={this.setLastName}/>
                         </div>
                       </form>
                       <br/>
                       <br/>
-                      <button onClick={() => this.props.saveGuestChoice(this.props.GuestResponse)}>Complete Order</button>
+                      <button onClick={() => this.props.completeGuestResponse(this.state.first_name, this.state.last_name, this.state.email)}>Complete Order</button>
                       <br/>
                       <br/>
                       <br/>
@@ -133,9 +160,9 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    saveGuestChoice: (GuestResponse: any) => {
+    completeGuestResponse: (first_name: any, last_name: any, email: any) => {
     //  console.log("e.target.value");
-      dispatch(saveGuestChoice(GuestResponse));
+      dispatch(completeGuestResponse(first_name, last_name, email));
     },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);

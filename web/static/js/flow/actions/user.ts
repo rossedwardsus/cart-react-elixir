@@ -4,7 +4,7 @@ import axios from 'axios';
 import {push} from 'react-router-redux';
 
 
-export function setUserFirstName(value: any) {
+/*export function setUserFirstName(value: any) {
   //alert("GET USER details");
   console.log("set user first name action " + value);
   return {
@@ -32,58 +32,58 @@ export function setUserEmail(value: any) {
 }
 
 
-/*export function setUserNewDeliveryAddressName(value: any) {
+export function setUserNewDeliveryAddressName(value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
     data: value
   }
-}*/
+}
 
-/*export function setUserExistingDeliveryAddressName(user_id: any, delivery_address_id: any, value: any) {
+export function setUserExistingDeliveryAddressName(user_id: any, delivery_address_id: any, value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
     data: value
-  }
+}
 
-/*export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
+export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
     data: value
   }
-}*/
+}
 
-/*export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id: any, value: any) {
+export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id: any, value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
     data: value
   }
-}*/
+}
 
-/*export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: any, value: any) {
+export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: any, value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
     data: value
   }
-}*/
+}
 
-/*export function setUserDeliveryAddressStreet1(value: any) {
+export function setUserDeliveryAddressZipcode(value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
     data: value
   }
-}*/
+}
 
 export function getUserDetails(value: any) {
   //alert("GET USER details");
@@ -115,15 +115,20 @@ export function getUserDeliveryAddress() {
     type: GET_USER_DELIVERY_ADDRESSES,
     data: ["home", "office"]
   }
-}
+}*/
+
+
 
 export function getUserDeliveryAddresses() {
   console.log("get user delivery addresses action");
   return {
     type: GET_USER_DELIVERY_ADDRESSES,
-    data: [{"home": {street1: "", street2: "", city: "", state: "", zipcode: ""}},  {office: {street: "", street1: "", city: "", state: "", zipcode: ""}}]
+    data: {"home": {street1: "", street2: "", city: "", state: "", zipcode: ""}, "office": {street: "", street1: "", city: "", state: "", zipcode: ""}}
   }
 }
+
+
+
 
 export function addUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
   //console.log("state" + JSON.stringify(state));
@@ -131,7 +136,7 @@ export function addUserDeliveryAddress(address_name: any, street1: any, street2:
   return function (dispatch: any) { 
       
       /*axios.post('/api/graphql', {
-                     query: 'mutation {register (first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", password: "' + password +'") {user_id}}'
+                     query: 'mutation {add_user_delivery_address (name: "' + address_name + '", street1: "' + street1 + '", street2: "' + street2 + '", city: "' + city +'", state: '" + state + "', zipcode: '" + zipcode + "') {user_id}}'
               })
               .then((response: any) => {
 
@@ -167,6 +172,12 @@ export function addUserDeliveryAddress(address_name: any, street1: any, street2:
               //}
 
               })*/
+
+               dispatch({
+                  type: ADD_USER_DELIVERY_ADDRESS,
+                    //  data: "session_key"
+               })
+
   }
   
 }
@@ -239,3 +250,55 @@ export function addUserDeliveryContact(address_name: any, street1: any, street2:
   }
 }
 
+export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any, zipcode: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("add user delivery address street1");
+  return function (dispatch: any) { 
+      
+      /*axios.post('/api/graphql', {
+                     query: 'mutation {add_user_payment_method (payment_name: "' + payment_name + '", name_on_card: "' + name_on_card + '", expiry_month: "' + expiry_month + '", city: "' + city +'", state: '" + state + "', zipcode: '" + zipcode + "') {user_id}}'
+              })
+              .then((response: any) => {
+
+                    console.log("register response" + JSON.stringify(response));
+
+                     //dispatch({
+                    //  type: REGISTER_USER,
+                    //  data: "session_key"
+                    //})
+
+                    //return {
+                    //  type: ADD_USER_DELIVERY_ADDRESS,
+                    //  name,
+                    //  street1,
+                    //  street2,
+                    //  city,
+                    //  state,
+                    //  zipcode
+                    //}
+                    //saved
+
+                    //that.props.history.push('/user');
+                    //dispatch(push("/user"));
+
+              })
+              .catch((error: any) => {
+
+                    console.log("sorry an error occurred-email already exists" + error);
+                    //go to code/payment screen
+            //        this.props.loadView();
+
+             //if (!error.status) {
+                // network error
+              //}
+
+              })*/
+
+               dispatch({
+                  type: ADD_USER_DELIVERY_ADDRESS,
+                    //  data: "session_key"
+               })
+
+  }
+  
+}

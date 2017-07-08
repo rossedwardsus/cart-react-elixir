@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {first_name: "", last_name: "", email: "", mobile: "", user_orders: [], delivery_address_names: [], delivery_addresses: [], delivery_contacts: [], user_payment_methods: []}, action: any){
+export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", user_orders: [], delivery_address_names: [], delivery_addresses: {"home": {id: 1234, street1: "street1", street2: "street2"}, "home1": {id: 1234, street1: "street1", street2: "street2"}}, delivery_contacts: [], payment_methods: {"personal": {id: 1, stripe_token: "", last_4_digits: "1234"}}}, action: any){
 
   let delivery_address_updated = null;
 
@@ -45,11 +45,12 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
   
 
     case ADD_USER_DELIVERY_ADDRESS:
-      console.log("ADD user delivery addresses reducer" + JSON.stringify(state));
+      console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
 
-      //let delivery_addresses_temp = state.delivery_addresses;
+      let delivery_addresses_temp = state.delivery_addresses;
+      let delivery_addresses_updated = delivery_addresses_temp["new_address"] = {id: 1234, street1: "street1", street2: "street2"};
 
-      return Object.assign({}, state, {...state, delivery_addresses: [...state.delivery_addresses, {name: {street1: ""}}]});
+      return Object.assign({}, state, {...state, delivery_addresses: {...state.delivery_addresses, ["new_address"]: {id: 1234, street1: "street1", street2: "street2"}}});
 
 
 

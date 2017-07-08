@@ -177,6 +177,9 @@ export function registerUser(first_name: any, last_name: any, email: any, passwo
 
                 console.log("register response" + JSON.stringify(response));
 
+
+                //save token in cookie or oclstorage
+
                  //dispatch({
                 //  type: REGISTER_USER,
                 //  data: "session_key"

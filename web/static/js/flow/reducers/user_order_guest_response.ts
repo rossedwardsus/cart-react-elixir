@@ -1,4 +1,4 @@
-import { GUEST_ADD_CART_ITEM, SET_GUEST_FIRST_NAME, SET_GUEST_LAST_NAME, SET_GUEST_HOST_MESSAGE } from '../constants/actionTypes.ts';
+//import {  } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,16 +20,25 @@ let inititalState: CartState = {
 
 }*/
 
-export default function guestResponse(state:any = {chosen_item: "", first_name: "", last_name: "", email: "", host_message: "", guest_response_validated: ""}, action: any){
+export default function guestResponses(state:any = {order_id: 1, chosen_item: "", first_name: "", last_name: "", email: "", host_message: "", guest_response_validated: "", menu_items: []}, action: any){
 
   let delivery_address_updated = null;
 
   switch (action.type) {
-    case GUEST_ADD_CART_ITEM:
+
+    /*case GUEST_ADD_CART_ITEM:
       //alert("CartState " + action.item_id);
       console.log("GUEST CART item reducer");
 
-      return Object.assign({}, state, {...state, chosen_item: "ci"});
+      return Object.assign({}, state, {...state, chosen_item: "ci"});*/
+    
+
+    
+    //case GUEST_ADD_CART_ITEM:
+      //alert("CartState " + action.item_id);
+    //  console.log("GUEST CART item reducer");
+
+   //   return Object.assign({}, state, {...state, chosen_item: "ci"});
     
 
     /*case SET_USER_DELIVERY_ADDRESS_STREET1:

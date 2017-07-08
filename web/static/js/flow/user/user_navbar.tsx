@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
-import {setUserFirstName, setUserLastName, setUserEmail} from '../actions/user.ts';
+//import {setUserFirstName, setUserLastName, setUserEmail} from '../actions/user.ts';
 import {List, Map} from 'immutable';
 
 
@@ -243,7 +243,7 @@ class UserNavbar extends React.Component<any, any> {
                                 <li><Link to="/login">Logout</Link></li>
                                 <li><Link to="/register">About Us</Link></li>
                                 <li><Link to="/register">Faq</Link></li>
-                                <li><p className="navbar-text">Signed in as Ross Edwards</p></li>
+                                <li><p className="navbar-text">Signed in as {this.props.first_name} {this.props.last_name}</p></li>
                               </ul>
                               
                             </div>
