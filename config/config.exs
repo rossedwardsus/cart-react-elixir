@@ -71,8 +71,11 @@ config :scone_home_elixir, SconeHomeElixir.Mailer,
   #deliver_later_strategy: Bamboo.TaskSupervisorStrategy
 
 
-config :scone_home_elixir, mailgun_domain: "sandbox60cd8c923f214e8b90257138647a028e.mailgun.org",
-                mailgun_key: "key-22e98444fc043c1e72943865de283d39"
+#config :scone_home_elixir, mailgun_domain: "sandbox60cd8c923f214e8b90257138647a028e.mailgun.org",
+#mailgun_key: "key-22e98444fc043c1e72943865de283d39"
+
+config :scone_home_elixir, mailgun_domain: "appa5d1a79bc484451c90277de01765059d.mailgun.org",
+mailgun_key: "key-020c29121a197b8797c699cc117266c6"
    
 
 config :absinthe,

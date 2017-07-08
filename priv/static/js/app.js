@@ -126,23 +126,23 @@ webpackJsonp([0],[
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1154);
+	var _name = __webpack_require__(1155);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _sconely_signature_guests = __webpack_require__(1155);
+	var _sconely_signature_guests = __webpack_require__(1156);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _sconely_signature_additional_items = __webpack_require__(1156);
+	var _sconely_signature_additional_items = __webpack_require__(1157);
 	
 	var _sconely_signature_additional_items2 = _interopRequireDefault(_sconely_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1157);
+	var _sconely_signature_order_history = __webpack_require__(1158);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _index = __webpack_require__(1158);
+	var _index = __webpack_require__(1159);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -45027,8 +45027,8 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	//import {getMenuItems} from '../actions/menu.ts';
 	var signature_guest_response_ts_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_2 = __webpack_require__(1154);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45118,6 +45118,8 @@ webpackJsonp([0],[
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
+	        menu_items1: signature_guest_response_ts_2.getMenuItems(state),
+	        order_details1: signature_guest_response_ts_2.getOrderDetails(state),
 	        order_details: state.SignatureGuestResponse,
 	        menu_items: state.MenuItems
 	    };
@@ -45243,6 +45245,44 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1154 */
+/***/ (function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.getMenuItems = function (state) {
+	  return state.menu_items;
+	  /*switch (filter) {
+	    case 'SHOW_ALL':
+	      return todos
+	    case 'SHOW_COMPLETED':
+	      return todos.filter(t => t.completed)
+	    case 'SHOW_ACTIVE':
+	      return todos.filter(t => !t.completed)
+	  }*/
+	};
+	exports.getOrderDetails = function (state) {
+	  return state.order_details;
+	  /*switch (filter) {
+	    case 'SHOW_ALL':
+	      return todos
+	    case 'SHOW_COMPLETED':
+	      return todos.filter(t => t.completed)
+	    case 'SHOW_ACTIVE':
+	      return todos.filter(t => !t.completed)
+	  }*/
+	};
+	/*import { createSelector } from 'reselect'
+	// selector
+	const getBar = (state) => state.foo.bar
+	// reselect function
+	export const getBarState = createSelector(
+	  [ getBar ],
+	  (bar) => bar
+	)*/
+
+/***/ }),
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45310,9 +45350,9 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "hidden-xs col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Please provide us with your name so we can personalize your scone.", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, "Mailing List"), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "checkbox", id: "exampleInputName2", value: this.state.mailing_list, onChange: this.setMailingList }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "hidden-xs col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Provide us with the information below so we can personalize your scone.", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "checkbox" }, React.createElement("label", null, "Join our mailing list:  ", React.createElement("input", { type: "checkbox", id: "exampleInputName2", value: this.state.mailing_list, onChange: this.setMailingList })))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
 	                    return _this2.props.completeGuestResponse(_this2.state.first_name, _this2.state.last_name, _this2.state.email, _this2.state.mailing_list);
-	                } }, "Complete Order"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
+	                } }, "Complete"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -45345,7 +45385,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1155 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45450,7 +45490,7 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ }),
-/* 1156 */
+/* 1157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45634,7 +45674,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItems1;
 
 /***/ }),
-/* 1157 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45739,7 +45779,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureOrderHistory;
 
 /***/ }),
-/* 1158 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45747,28 +45787,28 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1159);
-	var register_ts_1 = __webpack_require__(1160);
+	var session_ts_1 = __webpack_require__(1160);
+	var register_ts_1 = __webpack_require__(1161);
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1161);
-	var order_ts_1 = __webpack_require__(1162);
-	var order_delivery_Address_ts_1 = __webpack_require__(1163);
-	var order_datetime_ts_1 = __webpack_require__(1164);
-	var order_payment_ts_1 = __webpack_require__(1165);
-	var order_validated_ts_1 = __webpack_require__(1166);
-	var user_ts_1 = __webpack_require__(1167);
+	var menu_ts_1 = __webpack_require__(1162);
+	var order_ts_1 = __webpack_require__(1163);
+	var order_delivery_Address_ts_1 = __webpack_require__(1164);
+	var order_datetime_ts_1 = __webpack_require__(1165);
+	var order_payment_ts_1 = __webpack_require__(1166);
+	var order_validated_ts_1 = __webpack_require__(1167);
+	var user_ts_1 = __webpack_require__(1168);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
-	var cart_ts_1 = __webpack_require__(1168);
-	var name_ts_1 = __webpack_require__(1169);
-	var contact_ts_1 = __webpack_require__(1170);
+	var cart_ts_1 = __webpack_require__(1169);
+	var name_ts_1 = __webpack_require__(1170);
+	var contact_ts_1 = __webpack_require__(1171);
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
-	var user_payment_methods_ts_1 = __webpack_require__(1171);
+	var user_payment_methods_ts_1 = __webpack_require__(1172);
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1172);
-	var user_orders_ts_1 = __webpack_require__(1173);
-	var user_order_cart_ts_1 = __webpack_require__(1174);
-	var user_order_guest_response_ts_1 = __webpack_require__(1175);
-	var user_order_suborders_ts_1 = __webpack_require__(1176);
+	var signature_guest_response_ts_1 = __webpack_require__(1173);
+	var user_orders_ts_1 = __webpack_require__(1174);
+	var user_order_cart_ts_1 = __webpack_require__(1175);
+	var user_order_guest_response_ts_1 = __webpack_require__(1176);
+	var user_order_suborders_ts_1 = __webpack_require__(1177);
 	//session
 	//guest_order
 	//user
@@ -45803,7 +45843,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1159 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45843,7 +45883,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1160 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45909,7 +45949,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1161 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45955,7 +45995,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1162 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46032,7 +46072,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1163 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46093,7 +46133,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1164 */
+/* 1165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46138,7 +46178,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1165 */
+/* 1166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46192,7 +46232,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1166 */
+/* 1167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46248,7 +46288,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1167 */
+/* 1168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46318,7 +46358,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1168 */
+/* 1169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46416,7 +46456,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1169 */
+/* 1170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46466,7 +46506,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1170 */
+/* 1171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46515,7 +46555,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1171 */
+/* 1172 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -46614,7 +46654,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1172 */
+/* 1173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46665,7 +46705,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1173 */
+/* 1174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46716,7 +46756,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1174 */
+/* 1175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46822,7 +46862,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1175 */
+/* 1176 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -46915,7 +46955,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1176 */
+/* 1177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

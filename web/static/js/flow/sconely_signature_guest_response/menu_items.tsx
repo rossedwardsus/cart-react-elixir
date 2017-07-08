@@ -3,8 +3,8 @@ import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 import {connect} from 'react-redux';
 
-//import {getMenuItems} from '../actions/menu.ts';
 import {loadSignatureGuestResponseOrderDetails, saveGuestChoice} from '../actions/signature_guest_response.ts';
+import {getOrderDetails, getMenuItems} from '../selectors/signature_guest_response.ts';
 
 //import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 
@@ -189,7 +189,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
-        
+        menu_items1: getMenuItems(state),
+        order_details1: getOrderDetails(state),
         order_details: state.SignatureGuestResponse,
         menu_items: state.MenuItems,
         //cart: state.cart

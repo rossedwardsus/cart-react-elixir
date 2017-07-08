@@ -104,7 +104,7 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      Please provide us with your name so we can personalize your scone.
+                      Provide us with the information below so we can personalize your scone.
                       <br/>
                       <br/>
                       <form className="form-inline">
@@ -121,16 +121,15 @@ class GuestName extends React.Component<any, any> {
                         </div>
                       </form>
                       <form className="form-inline">
-                        <div className="form-group">
-                          Mailing List 
-                        </div>
-                        <div className="form-group">
-                          <input type="checkbox" id="exampleInputName2" value={this.state.mailing_list} onChange={this.setMailingList}/>
+                        <div className="checkbox">
+                          <label>
+                            Join our mailing list:  <input type="checkbox" id="exampleInputName2" value={this.state.mailing_list} onChange={this.setMailingList}/>
+                          </label>
                         </div>
                       </form>
                       <br/>
                       <br/>
-                      <button className="btn btn-default" onClick={() => this.props.completeGuestResponse(this.state.first_name, this.state.last_name, this.state.email, this.state.mailing_list)}>Complete Order</button>
+                      <button className="btn btn-default" onClick={() => this.props.completeGuestResponse(this.state.first_name, this.state.last_name, this.state.email, this.state.mailing_list)}>Complete</button>
                       <br/>
                       <br/>
                       <br/>
