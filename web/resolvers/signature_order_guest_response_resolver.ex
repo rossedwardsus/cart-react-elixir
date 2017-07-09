@@ -1,5 +1,7 @@
 defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias Sconely.SconelySignatureOrder
+  alias Sconely.Order
+  use Timex
 
   alias Sconely.SconelySignatureOrderGuestResponse
   alias SconeHomeElixir.Repo
@@ -15,9 +17,11 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
 
   def complete_guest_response(_args, _info) do
-    #order = Repo.get_by(SconelySignatureOrder, %{event_name: "laci"})
+    order = Repo.get_by(Order, %{order_id: "1234"})
 
-    IO.inspect(_args)
+    #IO.inspect(_args)
+    IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
+    #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
 
     guest_response_changeset = SconelySignatureOrderGuestResponse.changeset(%SconelySignatureOrderGuestResponse{}, %{parent_order_id:  "parent_order_id", first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email], mailing_list: _args[:mailing_list]})
 
