@@ -109,7 +109,7 @@ class GuestMenu extends React.Component<any, any> {
                     <div className="hidden-xs col-md-3">
                       <br/>
                       <br/>
-                      <img height="100" width="100" src="/images/menu/DWK_green.jpg"/>
+                      <img height="75" width="75" src="/images/menu/DWK_green.jpg"/>
                       <br/>
                       Select the Scone you would like to have at the Sconely Launch Party at LACI
                       <br/>

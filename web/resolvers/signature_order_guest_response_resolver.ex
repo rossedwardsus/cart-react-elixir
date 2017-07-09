@@ -5,11 +5,11 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias SconeHomeElixir.Repo
   
   def get_order(_args, _info) do
-    order = Repo.get_by(SconelySignatureOrder, %{event_name: "laci"})
+    order = Repo.get_by(SconelySignatureOrder, %{event_url_name: "lacisconelylaunch"})
 
     IO.inspect(order)
 
-    {:ok, %{parent_order_id: 1, event_full_name: "laci launch", invited_guest_message: order.invited_guest_message}}
+    {:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
   end
 
 

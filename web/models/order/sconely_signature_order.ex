@@ -10,7 +10,8 @@ defmodule Sconely.SconelySignatureOrder do
 
 		schema "signature_orders" do
 			field :parent_order_id, :string
-			field :event_name, :string
+			field :event_url_name, :string
+			field :event_long_name, :string
 			field :invited_guest_count, :string
 			field :invited_guest_message, :string
 			#field :image_uploaded, :string
