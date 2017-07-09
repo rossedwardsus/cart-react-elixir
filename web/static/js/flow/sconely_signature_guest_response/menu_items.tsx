@@ -120,6 +120,18 @@ class GuestMenu extends React.Component<any, any> {
                     </div>
                     <div className="col-xs-12 col-md-9">
                       <br/>
+                      <div className="hidden-lg col-md-3">
+                        <br/>
+                        <br/>
+                        <img height="75" width="75" src="/images/menu/DWK_green.jpg"/>
+                        <br/>
+                        Select the Scone you would like to have at the Sconely Launch Party at LACI
+                        <br/>
+                        {order_details.invited_guest_message}
+                        <br/>
+                        <br/>
+                        <br/>
+                      </div>
                       <br/>
                        {this.props.menu_items.menu_items.map(function(item: any, index: any){
 
