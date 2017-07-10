@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function SignatureGuestResponse(state:any = {order_id: 1, chosen_item: "", first_name: "", last_name: "", email: "", invited_guest_message: "", guest_response_validated: "", menu_items: []}, action: any){
+export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", invited_guest_message: "", guest_response_validated: "", menu_items: []}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;
@@ -31,7 +31,7 @@ export default function SignatureGuestResponse(state:any = {order_id: 1, chosen_
       //alert("CartState " + action.item_id);
       console.log("load order " + JSON.stringify(action.data));
 
-      return Object.assign({}, state, {invited_guest_message: action.data.invited_guest_message});
+      return Object.assign({}, state, {event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message, menu_items: action.data.menu_items});
     
 
     case SIGNATURE_GUEST_SAVE_CHOICE:

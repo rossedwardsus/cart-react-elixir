@@ -35,7 +35,9 @@ class GuestMenu extends React.Component<any, any> {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
+
+    console.log("mounted");
 
     this.props.loadSignatureGuestResponseOrderDetails();
 
@@ -47,18 +49,31 @@ class GuestMenu extends React.Component<any, any> {
 
       this.setState({selected_item_id: item_id});
 
-      this.props.menu_items.menu_items.map(function(item: any){
+      //var elementPos = array.map(function(x) {return x.id; }).indexOf(idYourAreLookingFor);
+      //var objectFound = array[elementPos];
 
-          if(item.item_id === item_id){
+      //var filteredArray = array.filter(function (element) { 
+      //    return element.id === 0;
+      //});
 
-              this.setState({selected_item_title: item.title});
-              this.setState({selected_item_story: item.story});
-              this.setState({selected_item_ingredients: item.ingredients});
+      //[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3)
 
-          }
+      //{1234: {title: ""}, 5678: {title: ""}}
+
+      /*this.props.menu_items.menu_items.map(function(item: any){
+
+          if(item.item_id === item_id){*/
+
+              this.setState({selected_item_title: this.props.menu_items[item_id].title});
+              //this.setState({selected_item_story: item.story});
+              //this.setState({selected_item_ingredients: item.ingredients});
+
+          /*}
 
 
-      }.bind(this));
+      }.bind(this));*/
+
+
 
       $('#myModal').modal('show');
 
@@ -80,7 +95,13 @@ class GuestMenu extends React.Component<any, any> {
 
   render(): JSX.Element {
 
-    const {order_details} = this.props;
+    const {order_details, menu_items} = this.props;
+
+    console.log("order details " + JSON.stringify(order_details));
+    console.log("menu items " + JSON.stringify(menu_items));
+
+
+
     
     return (
             <div>
@@ -113,8 +134,8 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       Select the Scone you would like to have at the Sconely Launch Party at LACI
                       <br/>
-                      {order_details.invited_guest_message}
                       <br/>
+                      {order_details.invited_guest_message}
                       <br/>
                       <br/>
                     </div>
@@ -133,9 +154,9 @@ class GuestMenu extends React.Component<any, any> {
                         <br/>
                       </div>
                       <br/>
-                       {this.props.menu_items.menu_items.map(function(item: any, index: any){
+                       {this.props.menu_items.map(function(item: any, index: any){
 
-                          console.log(item);
+                          //console.log(JSON.stringify(item));
                       
 
                           //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
@@ -196,15 +217,15 @@ class GuestMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order" + JSON.stringify(state.SignatureGuestResponse));
+  //console.log("mapstatetoprops order" + JSON.stringify(state.SignatureGuestResponse));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
-        menu_items1: getMenuItems(state),
-        order_details1: getOrderDetails(state),
-        order_details: state.SignatureGuestResponse,
-        menu_items: state.MenuItems,
+        flattened_menu_items: getMenuItems(state),
+        order_details: getOrderDetails(state),
+        //order_details: state.SignatureGuestResponse,
+        menu_items: state.SignatureGuestResponse.menu_items,
         //cart: state.cart
 
     //}
@@ -212,11 +233,14 @@ const mapStateToProps = (state: any, ownProps: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  console.log(JSON.stringify(ownProps.params.event_name));
+  let event_name = ownProps.params.event_name;
+
   return {
     //viewmenuthunk
 
     loadSignatureGuestResponseOrderDetails: () => {
-    //  console.log("e.target.value");
+      //console.log("e.target.value");
       dispatch(loadSignatureGuestResponseOrderDetails());
     },
 
@@ -224,7 +248,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       //dispatch(getMenuItems());
     //},
     saveGuestChoice: (item_id: any) => {
-      dispatch(saveGuestChoice(item_id));
+      dispatch(saveGuestChoice(item_id, event_name));
     },
     //cartValidated: () => {
     //  dispatch(cartValidated());
