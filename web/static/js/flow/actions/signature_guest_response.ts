@@ -91,7 +91,7 @@ export function completeGuestResponse(first_name: any, last_name: any, email: an
 
              //call the reducer themn redirect
              //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
-             //dispatch(push("/order/1/guest/order_complete"));
+             dispatch(push("/order/guest/completed"));
 
       })
       .catch((error: any) => {

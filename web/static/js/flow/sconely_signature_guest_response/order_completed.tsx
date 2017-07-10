@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 //import MenuItems from './menu_items';
 import {completeGuestResponse} from '../actions/signature_guest_response.ts';
 
-class GuestName extends React.Component<any, any> {
+class SignatureGuestOrderComplete extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -115,7 +115,7 @@ class GuestName extends React.Component<any, any> {
             <div className="row">      
                 <div className="hidden-xs col-md-3">
                 </div>
-                <div className="hidden-xs col-md-9">
+                <div className="col-xs-12 col-md-9">
                       <br/>
                       <br/>
                       <br/>
@@ -134,7 +134,7 @@ class GuestName extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery addresses component/state" + JSON.stringify(state));
   return {
-    GuestResponse: state.GuestResponse,
+    //GuestResponse: state.GuestResponse,
    //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
@@ -144,10 +144,10 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    completeGuestResponse: (first_name: any, last_name: any, email: any) => {
+    //completeGuestResponse: (first_name: any, last_name: any, email: any) => {
     //  console.log("e.target.value");
-      dispatch(completeGuestResponse(first_name, last_name, email));
-    },
+    //  dispatch(completeGuestResponse(first_name, last_name, email));
+    //},
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);
       //dispatch(setContactPhone(e.target.value));
@@ -156,9 +156,9 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const GuestName1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GuestName)
+//const GuestName1 = connect(
+//  mapStateToProps,
+//  mapDispatchToProps
+//)(GuestName)
 
-export default GuestName1;
+export default SignatureGuestOrderComplete;

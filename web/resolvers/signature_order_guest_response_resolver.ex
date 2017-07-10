@@ -33,7 +33,10 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
      #   case Repo.insert(guest_response_changeset) do
      #     {:ok, response} -> 
      #           IO.inspect(response)
-                Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                #Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+
+                Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+
 
      #   end
    
@@ -42,9 +45,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     #admin
     
 
-    #Sconely.SignatureGuestResponse.welcome_email(%{"delivery_address_street" => _args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
-
-
+   
     {:ok, %{status: "completed"}}
 
   end

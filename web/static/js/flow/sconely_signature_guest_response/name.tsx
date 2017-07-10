@@ -99,7 +99,7 @@ class GuestName extends React.Component<any, any> {
             <div className="row">      
                 <div className="hidden-xs col-md-3">
                 </div>
-                <div className="hidden-xs col-md-9">
+                <div className="col-xs-12 col-md-9">
                       <br/>
                       <br/>
                       <br/>
