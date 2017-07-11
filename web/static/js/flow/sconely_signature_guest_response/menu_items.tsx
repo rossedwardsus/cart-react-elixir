@@ -132,7 +132,10 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       <img height="75" width="75" src="/images/menu/DWK_green.jpg"/>
                       <br/>
-                      Select the Scone you would like to have at the Sconely Launch Party at LACI
+                      Sconely Launch at LACI August 2017
+                      <br/>
+                      <br/>
+                      Select your Scone.  The host will take care of the rest.
                       <br/>
                       <br/>
                       {order_details.invited_guest_message}
@@ -146,7 +149,10 @@ class GuestMenu extends React.Component<any, any> {
                         <br/>
                         <img height="75" width="75" src="/images/menu/DWK_green.jpg"/>
                         <br/>
-                        Select the Scone you would like to have at the Sconely Launch Party at LACI
+                        Sconely Launch at LACI August 2017
+                        <br/>
+                        <br/>
+                        Select your Scone.  The host will take care of the rest.
                         <br/>
                         {order_details.invited_guest_message}
                         <br/>
