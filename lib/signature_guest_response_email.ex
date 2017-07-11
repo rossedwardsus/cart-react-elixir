@@ -7,7 +7,7 @@ defmodule Sconely.SignatureGuestResponseEmail do
     IO.inspect(_params)
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.SconelySignatureGuestResponseAdminEmailView, "sconely_signature_guest_response_admin_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.SconelySignatureGuestResponseEmailView, "sconely_signature_guest_response_email.html", key: _params)
 
     new_email(
       to: _params[:email],
@@ -32,7 +32,7 @@ defmodule Sconely.SignatureGuestResponseEmail do
       #to: _params[:email],
       to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
-      subject: "Signature Guest Order",
+      subject: "Admin - Signature Guest Order",
       html_body: template,
     )
 
