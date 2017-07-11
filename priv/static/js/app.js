@@ -45048,6 +45048,12 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (GuestMenu.__proto__ || Object.getPrototypeOf(GuestMenu)).call(this, props));
 	
+	        _this.componentWillReceiveProps = function () {
+	            console.log("cwrp" + JSON.stringify(_this.props.order_details.invited_guest_message == ""));
+	            if (_this.props.order_details.invited_guest_message == "") {
+	                //this.setState({sconely_message: "cwrpPlease select your preferred Scone"});
+	            }
+	        };
 	        _this.saveGuestChoice = function () {
 	            $('#myModal').modal('hide');
 	            _this.props.saveGuestChoice(_this.state.selected_item_id);
@@ -45058,7 +45064,8 @@ webpackJsonp([0],[
 	            selected_item_id: 0,
 	            selected_item_title: "",
 	            selected_item_story: "",
-	            selected_item_ingredients: ""
+	            selected_item_ingredients: "",
+	            sconely_message: ""
 	        };
 	        return _this;
 	    }
@@ -45068,6 +45075,7 @@ webpackJsonp([0],[
 	        value: function componentDidMount() {
 	            console.log("mounted");
 	            this.props.loadSignatureGuestResponseOrderDetails();
+	            //let sconely_message: any = "";
 	        }
 	    }, {
 	        key: "showItem",
@@ -45107,7 +45115,7 @@ webpackJsonp([0],[
 	
 	            console.log("order details " + JSON.stringify(order_details));
 	            console.log("menu items " + JSON.stringify(menu_items));
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), order_details.invited_guest_message == "" && 'Please select your preferred Scone', React.createElement("br", null), React.createElement("img", { height: "200", width: "200", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("div", { className: "hidden-lg col-xs-11" }, React.createElement("br", null), order_details.invited_guest_message == "" && 'Please select your preferred Scone', React.createElement("br", null), React.createElement("img", { height: "75", width: "75", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), this.props.menu_items.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), this.props.sconely_message, React.createElement("br", null), React.createElement("img", { height: "200", width: "200", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("div", { className: "hidden-lg col-xs-11" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { height: "75", width: "75", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), this.props.menu_items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                //console.log(JSON.stringify(item));
@@ -45140,6 +45148,7 @@ webpackJsonp([0],[
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
+	        sconely_message: signature_guest_response_ts_1.getSconelyMessage(state),
 	        flattened_menu_items: signature_guest_response_ts_1.getFlattenedMenuItems(state),
 	        //flattened_menu_items: getMenuItems(state),
 	        order_details: signature_guest_response_ts_1.getOrderDetails(state),
@@ -45175,32 +45184,32 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getFlattenedMenuItems = function (state) {
-	  var menu_items_temp = {};
-	  state.menuItems.menu_items.map(function (key, index) {
-	    return menu_items_temp[key.item_id] = { title: key.title, description: key.description };
-	  });
-	  return menu_items_temp;
-	  //return state.SignatureGuestResponse.menu_items
-	  /*switch (filter) {
-	    case 'SHOW_ALL':
-	      return todos
-	    case 'SHOW_COMPLETED':
-	      return todos.filter(t => t.completed)
-	    case 'SHOW_ACTIVE':
-	      return todos.filter(t => !t.completed)
-	  }*/
+	    var menu_items_temp = {};
+	    state.menuItems.menu_items.map(function (key, index) {
+	        return menu_items_temp[key.item_id] = { title: key.title, description: key.description };
+	    });
+	    return menu_items_temp;
+	    //return state.SignatureGuestResponse.menu_items
+	    /*switch (filter) {
+	      case 'SHOW_ALL':
+	        return todos
+	      case 'SHOW_COMPLETED':
+	        return todos.filter(t => t.completed)
+	      case 'SHOW_ACTIVE':
+	        return todos.filter(t => !t.completed)
+	    }*/
 	};
 	exports.getOrderDetails = function (state) {
-	  console.log("order details selector " + JSON.stringify(state.SignatureGuestResponse));
-	  return state.SignatureGuestResponse;
-	  /*switch (filter) {
-	    case 'SHOW_ALL':
-	      return todos
-	    case 'SHOW_COMPLETED':
-	      return todos.filter(t => t.completed)
-	    case 'SHOW_ACTIVE':
-	      return todos.filter(t => !t.completed)
-	  }*/
+	    console.log("order details selector " + JSON.stringify(state.SignatureGuestResponse));
+	    return state.SignatureGuestResponse;
+	    /*switch (filter) {
+	      case 'SHOW_ALL':
+	        return todos
+	      case 'SHOW_COMPLETED':
+	        return todos.filter(t => t.completed)
+	      case 'SHOW_ACTIVE':
+	        return todos.filter(t => !t.completed)
+	    }*/
 	};
 	/*import { createSelector } from 'reselect'
 	// selector
@@ -45210,6 +45219,14 @@ webpackJsonp([0],[
 	  [ getBar ],
 	  (bar) => bar
 	)*/
+	exports.getSconelyMessage = function (state) {
+	    console.log("sconely message selector " + JSON.stringify(state.SignatureGuestResponse));
+	    if (state.SignatureGuestResponse.invited_guest_message == "") {
+	        return "cwrpPlease select your preferred Scone";
+	    } else {
+	        return "";
+	    }
+	};
 
 /***/ }),
 /* 1154 */
@@ -46821,7 +46838,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function SignatureGuestResponse() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", invited_guest_message: "", guest_response_validated: "", menu_items: [] };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
 	    var action = arguments[1];
 	
 	    var delivery_addresses = [];

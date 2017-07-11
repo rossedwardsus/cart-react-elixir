@@ -43,3 +43,20 @@ export const getBarState = createSelector(
   [ getBar ],
   (bar) => bar
 )*/
+
+
+export const getSconelyMessage = (state: any) => {
+  console.log("sconely message selector " + JSON.stringify(state.SignatureGuestResponse));
+  
+  if (state.SignatureGuestResponse.invited_guest_message == ""){
+
+    return "cwrpPlease select your preferred Scone";
+
+  }else{
+
+    return "";
+
+  }
+}
+
+ 

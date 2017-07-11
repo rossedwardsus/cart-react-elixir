@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", invited_guest_message: "", guest_response_validated: "", menu_items: []}, action: any){
+export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;
