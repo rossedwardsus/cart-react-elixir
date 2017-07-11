@@ -1,8 +1,10 @@
-name <%= @key[:first_name] %> <%= @key[:last_name] %> 
+order_id:
+<br> 
+name: <%= @key[:first_name] %> <%= @key[:last_name] %> 
 <br>
-item
+item: 
 <br>
-mailing list <%= @key[:mailing_list] %>
+mailing list: <%= @key[:mailing_list] %>
 <br>
-email <%= @key[:email] %>
+email:  <%= @key[:email] %>
 

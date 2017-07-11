@@ -1,4 +1,4 @@
-defmodule Sconely.SconelySignatureOrderGuestResponse do
+defmodule Sconely.SignatureOrderGuestResponse do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -8,7 +8,7 @@ defmodule Sconely.SconelySignatureOrderGuestResponse do
 		@optional_fields ~W(order_id item_id first_name last_name mailing_list)
 		@required_fields ~W()
 
-		schema "sconely_signature_order_guest_responses" do
+		schema "signature_order_guest_responses" do
 			field :order_id, :string
 			field :item_id, :string
 			field :first_name, :string

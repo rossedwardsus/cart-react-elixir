@@ -1,5 +1,7 @@
 import { SIGNATURE_GUEST_LOAD_ORDER, SIGNATURE_GUEST_SAVE_CHOICE, SIGNATURE_GUEST_COMPLETE_RESPONSE} from '../constants/actionTypes.ts';
 
+const Immutable = require('immutable');
+
 /*let menu_items: any;
 
 interface CartState {
@@ -19,6 +21,32 @@ let inititalState: CartState = {
   cart: [],
 
 }*/
+
+/*const { Map, List, fromJS } = Immutable
+const initialState = Map({
+  foo: 'bar',
+  fooList: List()
+})
+
+export function someStore (state = initialState, action) {
+  if (action.type === 'FOO') {
+    return state.set('foo', fromJS(action.foo))
+  }
+  if (action.type === 'FOO_LIST') {
+    return state.set('fooList', fromJS(action.fooList))
+  }
+
+  return state
+}*/
+
+
+//make initial state immutable???  and normalizd
+//nrmalizer for menu as title needs to be gotten in the cart
+//actually that is really more on the host end
+
+//let initial_state = Immutable.fromJs({order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
+
+
 
 export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
 

@@ -3,7 +3,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias Sconely.Order
   use Timex
 
-  alias Sconely.SconelySignatureOrderGuestResponse
+  alias Sconely.SignatureOrderGuestResponse
   alias SconeHomeElixir.Repo
   
   def get_order(_args, _info) do
@@ -24,7 +24,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
 
-    #guest_response_changeset = SconelySignatureOrderGuestResponse.changeset(%SconelySignatureOrderGuestResponse{}, %{parent_order_id:  "parent_order_id", first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email], mailing_list: _args[:mailing_list]})
+    #guest_response_changeset = ignatureOrderGuestResponse.changeset(%SignatureOrderGuestResponse{}, %{parent_order_id:  "parent_order_id", first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email], mailing_list: _args[:mailing_list]})
 
 
     #get title of chosen item from the database 

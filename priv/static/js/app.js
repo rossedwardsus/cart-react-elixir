@@ -27683,7 +27683,47 @@ webpackJsonp([0],[
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
+	//declare var module: { viewPublicMenu: any };
 	//check login
+	function getMenuItemsAction(dispatch) {
+	    console.log("action");
+	    return function (dispatch) {
+	        //event full name
+	        /*axios.post('/api/graphql',
+	                 {query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
+	        })
+	        .then((response: any) => {
+	               console.log("graphql response" + JSON.stringify(response.data.data.loadSignatureGuestResponseOrderDetails));
+	               //that.props.history.push('/user');
+	              //context.router
+	               //that.props.setOrderId(1);
+	               //this.context.router.push('/order/complete');
+	                 dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: response.data.data.loadSignatureGuestResponseOrderDetails.parent_order_id, image_id: "", host_id: "", invited_guest_message: response.data.data.loadSignatureGuestResponseOrderDetails.invitedGuestMessage, menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]}});
+	                //dispatch(push("/order/url_name/guest/name"));
+	            })
+	        .catch((error: any) => {
+	               console.log("error" + error);
+	              //go to code/payment screen
+	        //        this.props.loadView();
+	                //display errror to user - payment
+	        //if (!error.status) {
+	          // network error
+	        //}
+	         })
+	        
+	          //call the reducer themn redirect
+	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+	        //dispatch(push("/order/1/guest/name"));
+	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
+	                
+	        }*/
+	        dispatch({
+	            type: "VIEW_PUBLIC_MENU",
+	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	        });
+	    };
+	}
+	exports.getMenuItemsAction = getMenuItemsAction;
 	exports.getMenuItems = function () {
 	    return function (dispatch) {
 	        //dispatch(setMenuItems(menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]));
@@ -45075,6 +45115,7 @@ webpackJsonp([0],[
 	        value: function componentDidMount() {
 	            console.log("mounted");
 	            this.props.loadSignatureGuestResponseOrderDetails();
+	            //this.props.loadMenu();
 	            //let sconely_message: any = "";
 	        }
 	    }, {
@@ -45089,7 +45130,7 @@ webpackJsonp([0],[
 	            //});
 	            //[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3)
 	            //{1234: {title: ""}, 5678: {title: ""}}
-	            /*this.props.menu_items.menu_items.map(function(item: any){
+	            /*this.props.normalized_menu_items.map(function(item: any){
 	                   if(item.item_id === item_id){*/
 	            this.setState({ selected_item_title: this.props.menu_items[item_id].title });
 	            //this.setState({selected_item_story: item.story});
@@ -45144,16 +45185,16 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    //console.log("mapstatetoprops order" + JSON.stringify(state.menuItems));
+	    console.log("mapstatetoprops menuitems" + JSON.stringify(state.menuItems));
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
 	        sconely_message: signature_guest_response_ts_1.getSconelyMessage(state),
-	        flattened_menu_items: signature_guest_response_ts_1.getFlattenedMenuItems(state),
+	        normalized_menu_items: signature_guest_response_ts_1.getNormalizedMenuItems(state),
 	        //flattened_menu_items: getMenuItems(state),
 	        order_details: signature_guest_response_ts_1.getOrderDetails(state),
 	        //order_details: state.SignatureGuestResponse,
-	        menu_items: state.menuItems.menu_items
+	        menu_items: signature_guest_response_ts_1.getMenuItems(state)
 	    };
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
@@ -45183,33 +45224,49 @@ webpackJsonp([0],[
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.getFlattenedMenuItems = function (state) {
-	    var menu_items_temp = {};
-	    state.menuItems.menu_items.map(function (key, index) {
-	        return menu_items_temp[key.item_id] = { title: key.title, description: key.description };
-	    });
-	    return menu_items_temp;
-	    //return state.SignatureGuestResponse.menu_items
-	    /*switch (filter) {
-	      case 'SHOW_ALL':
-	        return todos
-	      case 'SHOW_COMPLETED':
-	        return todos.filter(t => t.completed)
-	      case 'SHOW_ACTIVE':
-	        return todos.filter(t => !t.completed)
-	    }*/
+	exports.getMenuItems = function (state) {
+	  //let menu_items_temp: any = {};
+	  //state.menuItems.menu_items.map((key: any, index: any) => {
+	  //      return(menu_items_temp[key.item_id] = {title: key.title, description: key.description});
+	  //})
+	  //return menu_items_temp;
+	  return state.menuItems.menu_items;
+	  /*switch (filter) {
+	    case 'SHOW_ALL':
+	      return todos
+	    case 'SHOW_COMPLETED':
+	      return todos.filter(t => t.completed)
+	    case 'SHOW_ACTIVE':
+	      return todos.filter(t => !t.completed)
+	  }*/
+	};
+	exports.getNormalizedMenuItems = function (state) {
+	  var menu_items_temp = {};
+	  state.menuItems.menu_items.map(function (key, index) {
+	    return menu_items_temp[key.item_id] = { title: key.title, description: key.description };
+	  });
+	  return menu_items_temp;
+	  //return state.SignatureGuestResponse.menu_items
+	  /*switch (filter) {
+	    case 'SHOW_ALL':
+	      return todos
+	    case 'SHOW_COMPLETED':
+	      return todos.filter(t => t.completed)
+	    case 'SHOW_ACTIVE':
+	      return todos.filter(t => !t.completed)
+	  }*/
 	};
 	exports.getOrderDetails = function (state) {
-	    console.log("order details selector " + JSON.stringify(state.SignatureGuestResponse));
-	    return state.SignatureGuestResponse;
-	    /*switch (filter) {
-	      case 'SHOW_ALL':
-	        return todos
-	      case 'SHOW_COMPLETED':
-	        return todos.filter(t => t.completed)
-	      case 'SHOW_ACTIVE':
-	        return todos.filter(t => !t.completed)
-	    }*/
+	  console.log("order details selector " + JSON.stringify(state.SignatureGuestResponse));
+	  return state.SignatureGuestResponse;
+	  /*switch (filter) {
+	    case 'SHOW_ALL':
+	      return todos
+	    case 'SHOW_COMPLETED':
+	      return todos.filter(t => t.completed)
+	    case 'SHOW_ACTIVE':
+	      return todos.filter(t => !t.completed)
+	  }*/
 	};
 	/*import { createSelector } from 'reselect'
 	// selector
@@ -45220,12 +45277,12 @@ webpackJsonp([0],[
 	  (bar) => bar
 	)*/
 	exports.getSconelyMessage = function (state) {
-	    console.log("sconely message selector " + JSON.stringify(state.SignatureGuestResponse));
-	    if (state.SignatureGuestResponse.invited_guest_message == "") {
-	        return "cwrpPlease select your preferred Scone";
-	    } else {
-	        return "";
-	    }
+	  console.log("sconely message selector " + JSON.stringify(state.SignatureGuestResponse));
+	  if (state.SignatureGuestResponse.invited_guest_message == "") {
+	    return "cwrpPlease select your preferred Scone";
+	  } else {
+	    return "";
+	  }
 	};
 
 /***/ }),
@@ -46818,6 +46875,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var Immutable = __webpack_require__(930);
 	/*let menu_items: any;
 	
 	interface CartState {
@@ -46837,26 +46895,46 @@ webpackJsonp([0],[
 	  cart: [],
 	
 	}*/
-	function SignatureGuestResponse() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
-	    var action = arguments[1];
+	/*const { Map, List, fromJS } = Immutable
+	const initialState = Map({
+	  foo: 'bar',
+	  fooList: List()
+	})
 	
-	    var delivery_addresses = [];
-	    var delivery_address_updated = null;
-	    switch (action.type) {
-	        case actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER:
-	            //alert("CartState " + action.item_id);
-	            console.log("load order " + JSON.stringify(action.data));
-	            return Object.assign({}, state, { event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message, menu_items: action.data.menu_items });
-	        case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE:
-	            //alert("CartState " + action.item_id);
-	            console.log("chosen item " + JSON.stringify(action));
-	            return Object.assign({}, state, { chosen_item: action.data.item_id });
-	        default:
-	            //alert();
-	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            return state;
-	    }
+	export function someStore (state = initialState, action) {
+	  if (action.type === 'FOO') {
+	    return state.set('foo', fromJS(action.foo))
+	  }
+	  if (action.type === 'FOO_LIST') {
+	    return state.set('fooList', fromJS(action.fooList))
+	  }
+	
+	  return state
+	}*/
+	//make initial state immutable???  and normalizd
+	//nrmalizer for menu as title needs to be gotten in the cart
+	//actually that is really more on the host end
+	//let initial_state = Immutable.fromJs({order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
+	function SignatureGuestResponse() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
+	  var action = arguments[1];
+	
+	  var delivery_addresses = [];
+	  var delivery_address_updated = null;
+	  switch (action.type) {
+	    case actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER:
+	      //alert("CartState " + action.item_id);
+	      console.log("load order " + JSON.stringify(action.data));
+	      return Object.assign({}, state, { event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message, menu_items: action.data.menu_items });
+	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE:
+	      //alert("CartState " + action.item_id);
+	      console.log("chosen item " + JSON.stringify(action));
+	      return Object.assign({}, state, { chosen_item: action.data.item_id });
+	    default:
+	      //alert();
+	      //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	      return state;
+	  }
 	}
 	exports.default = SignatureGuestResponse;
 	;
