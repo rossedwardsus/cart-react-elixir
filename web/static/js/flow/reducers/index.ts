@@ -5,7 +5,7 @@ import login from './login.ts';
 import session from './session.ts';
 import Register from './register.ts';
 //import root from './root.ts';
-import MenuItems from './menu.ts';
+import menuItems from './menu.ts';
 import Order from './order.ts';
 import OrderDeliveryAddress from './order_delivery_Address.ts';
 import OrderDatetime from './order_datetime.ts';
@@ -40,7 +40,7 @@ import UserOrderSuborders from './user_order_suborders.ts';
 export default combineReducers({
   Register,
   session,
-  MenuItems,
+  menuItems,
   SignatureGuestResponse,
   Order,
   OrderDatetime,

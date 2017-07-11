@@ -47,9 +47,9 @@ import checkLogin from './checkLogin.tsx';
 import User from "./user";
 
 //import SconelySocial from "./sconely_social_single_page";*/
-import SconelySignatureGuestMenuItems from "./sconely_signature_guest_response/menu_items.tsx";
-import SconelySignatureGuestName from "./sconely_signature_guest_response/name.tsx";
-import SconelySignatureGuestOrderCompleted from "./sconely_signature_guest_response/order_completed.tsx";
+import SconelySignatureGuestMenuItems from "./signature_guest_response/menu_items.tsx";
+import SconelySignatureGuestName from "./signature_guest_response/name.tsx";
+import SconelySignatureGuestOrderCompleted from "./signature_guest_response/order_completed.tsx";
 //import SconelySignatureGuestEvent from "./sconely_signature_guest_response/event.tsx";
 
 //import SconelySocialEventDetails from "./sconely_social_event_details";

@@ -1,7 +1,7 @@
-export const getMenuItems = (state: any) => {
+export const getFlattenedMenuItems = (state: any) => {
   let menu_items_temp: any = {};
 
-  state.SignatureGuestResponse.menu_items.map((key: any, index: any) => {
+  state.menuItems.menu_items.map((key: any, index: any) => {
 
         return(menu_items_temp[key.item_id] = {title: key.title, description: key.description});
 
