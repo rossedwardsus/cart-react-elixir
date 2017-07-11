@@ -11,7 +11,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
     #IO.inspect(order)
 
-    {:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: "order.invited_guest_messag"}}
+    {:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: "We are having Scones for our meeting this month.  Enjoy!"}}
   end
 
 
