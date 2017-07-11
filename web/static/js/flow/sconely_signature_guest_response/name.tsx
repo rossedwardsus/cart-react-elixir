@@ -104,7 +104,7 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      Provide us with the information below so we can personalize your scone.
+                      Great you are almost finished.  Please provide us with the information below so we can personalize your scone.
                       <br/>
                       <br/>
                       <form className="form-inline">

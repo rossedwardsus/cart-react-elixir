@@ -95,10 +95,10 @@ class GuestMenu extends React.Component<any, any> {
 
   render(): JSX.Element {
 
-    const {order_details, menu_items} = this.props;
+    const {order_details, menu_items1} = this.props;
 
     console.log("order details " + JSON.stringify(order_details));
-    console.log("menu items " + JSON.stringify(menu_items));
+    console.log("menu items1 " + JSON.stringify(menu_items1));
 
 
 
@@ -217,7 +217,7 @@ class GuestMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  //console.log("mapstatetoprops order" + JSON.stringify(state.SignatureGuestResponse));
+  console.log("mapstatetoprops order" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
@@ -227,6 +227,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //order_details: state.SignatureGuestResponse,
         menu_items: state.SignatureGuestResponse.menu_items,
         //cart: state.cart
+        menu_items1: state.MenuItems,
 
     //}
   }
