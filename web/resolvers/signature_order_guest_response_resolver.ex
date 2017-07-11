@@ -19,6 +19,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   def complete_guest_response(_args, _info) do
     #signature_order = Repo.get_by(SconelySignatureOrder, %{parent_order_id: "uuid"})
 
+    IO.inspect(_args[:first_name])
     #IO.inspect(order)
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
