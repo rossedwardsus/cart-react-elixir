@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Repo.Migrations.CreateSconelySignatureOrdersTable do
+defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureOrdersTable do
   use Ecto.Migration
 
   def change do

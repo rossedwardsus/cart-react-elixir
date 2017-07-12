@@ -1,9 +1,11 @@
 defmodule Sconely.MenuItemsResolver do
-  alias Sconely.SconelySignatureOrder
+  #alias Sconely.SconelySignatureOrder
   
-  def get_menu_items(_args, _info) do
+  def getMenuItems(_args, _info) do
+    IO.puts("create graphql")
+    
     #{:ok, Blog.Repo.all(Post)}
-    {:ok, [%{item_id: 1000, title: "hello", body: "there"}]}
+    {:ok, [%{item_id: 1000}]}
   end
 
 

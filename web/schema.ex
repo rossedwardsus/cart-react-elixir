@@ -23,9 +23,9 @@ defmodule Sconely.Schema do
 
 
 
-    #field :get_user_delivery_addresses, list_of(:sconely_signature_order) do
-    #  resolve &Sconely.OrderResolver.all/2
-    #end
+    field :get_menu_items, list_of(:menu_item) do
+      resolve &Sconely.MenuItemsResolver.getMenuItems/2
+    end
 
     #field :get_user_payment_methods, type: :sconely_signature_order do
     #    arg :order_id, non_null(:string)

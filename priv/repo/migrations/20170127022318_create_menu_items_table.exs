@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Repo.Migrations.CreateMenuItemTable do
+defmodule SconeHomeElixir.Repo.Migrations.CreateMenuItemsTable do
   use Ecto.Migration
 
   def up do

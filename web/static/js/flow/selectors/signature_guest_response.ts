@@ -9,7 +9,7 @@ export const getMenuItems = (state: any) => {
 
   //return menu_items_temp;
 
-  return state.menuItems.menu_items
+  return state.menuItems.items
   
 
   /*switch (filter) {
@@ -21,6 +21,7 @@ export const getMenuItems = (state: any) => {
       return todos.filter(t => !t.completed)
   }*/
 }
+
 export const getNormalizedMenuItems = (state: any) => {
   let menu_items_temp: any = {};
 

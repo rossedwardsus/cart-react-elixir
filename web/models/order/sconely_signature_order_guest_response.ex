@@ -14,7 +14,7 @@ defmodule Sconely.SignatureOrderGuestResponse do
 			field :first_name, :string
 			field :last_name, :string
 			field :email, :string
-			field :mailing_list, :boolean
+			#field :mailing_list, :boolean
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 			#field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
 

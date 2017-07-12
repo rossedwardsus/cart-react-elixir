@@ -164,17 +164,13 @@ class UserPaymentMethods extends React.Component<any, any> {
                                   <br/>
                                   {Object.keys(payment_methods).map((key: any, index: any) => {
 
-                                    return(<form className="form-inline">
-                                      <div className="form-group">
-                                        name
-                                        <br/>
-                                        xxx
-                                        <br/>
-                                        default
-                                      </div>
-                                      Delete
-                                    </form>
-                                  )
+                                    return(
+                                        <form className="form-inline">
+                                          <div className="form-group">
+                                            name-xxx-expiry date-default-Delete
+                                          </div>
+                                        </form>
+                                    )
                                   })}
                                 
                         </div>

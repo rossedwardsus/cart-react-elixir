@@ -65,10 +65,13 @@ module.exports = {
     ],
   },
   plugins: [
+    //new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
     //new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }}),
     new webpack.NoErrorsPlugin(),
   //  new webpack.DefinePlugin({ 'process.env.NODE_ENV': `"${config.env}"` })
+    //new webpack.optimize.AggressiveMergingPlugin(),
+    
   ],
   resolve: {
     modules: {
@@ -77,7 +80,7 @@ module.exports = {
       extensions: [ '', '.js', '.jsx' ]
     },
     root: [
-      path.resolve('./web'),
+      path.resolve('./web'),  //maybe use /web/static/js/flow
       //path.resolve('./vendor/modules')
     ],
     alias: {

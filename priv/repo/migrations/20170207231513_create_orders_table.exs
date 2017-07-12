@@ -15,8 +15,9 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateOrdersTable do
       add :delivery_address_city
       add :delivery_address_state
       add :delivery_address_zipcode
-      add :delivery_datetime, :datetime
+      add :delivery_date, :date
       add :delivery_time, :string
+      add :delivery_time_range, :string
       add :created_at, :datetime
       add :stripe_token, :string
       #add :payment_confirmation, :string

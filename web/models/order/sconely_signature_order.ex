@@ -1,4 +1,4 @@
-defmodule Sconely.SconelySignatureOrder do
+defmodule Sconely.SignatureOrder do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
