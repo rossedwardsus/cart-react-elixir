@@ -197,6 +197,7 @@ class GuestMenu extends React.Component<any, any> {
                         <br/>
                         <br/>
                         <br/>
+                        <br/>
                         {order_details.invited_guest_message}
                         <br/>
                         <br/>
