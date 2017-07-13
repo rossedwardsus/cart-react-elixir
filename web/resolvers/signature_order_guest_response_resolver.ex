@@ -23,7 +23,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
     #guest_response = Repo.get_by(SignatureOrderGuestResponse, %{parent_order_id: "1234", first_name: "Ross"})
 
-    IO.inspect(guest_response)
+    #IO.inspect(guest_response)
 
     #if guest_responee not equal nill
 
