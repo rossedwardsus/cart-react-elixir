@@ -45097,6 +45097,9 @@ webpackJsonp([0],[
 	            $('#myModal').modal('hide');
 	            _this.props.saveGuestChoice(_this.state.selected_item_id);
 	        };
+	        _this.noThanks = function () {
+	            _this.context.router.push("/order/lacisconelylaunchaugust032017indtla/guest/name");
+	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
@@ -45153,9 +45156,22 @@ webpackJsonp([0],[
 	                order_details = _props.order_details,
 	                menu_items = _props.menu_items;
 	
-	            console.log("order details " + JSON.stringify(order_details));
+	            console.log("order details " + JSON.stringify(order_details.invited_guest_message));
 	            console.log("menu items " + JSON.stringify(menu_items));
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), this.props.sconely_message, React.createElement("br", null), React.createElement("img", { height: "200", width: "200", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("div", { className: "hidden-lg col-xs-11" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { height: "75", width: "75", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), React.createElement("br", null), this.props.menu_items.map(function (item, index) {
+	            //let message = order_details.invited_guest_message.replace(/(?:\r\n|\r|\n)/g, <br />)
+	            //order_details.invited_guest_message.split(“\r”);
+	            //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
+	            var message = order_details.invited_guest_message.split('\r').map(function (item, key) {
+	                return React.createElement("span", { key: key }, item, React.createElement("br", null));
+	            });
+	            /*let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
+	            return (<div>
+	              {item}
+	              <br/>
+	              </div>
+	            )
+	            })*/
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis" } }, React.createElement("br", null), React.createElement("br", null), this.props.sconely_message, React.createElement("br", null), React.createElement("img", { height: "200", width: "200", src: "/images/menu/LACI_1.5.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), React.createElement("label", { className: "text-justify", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal" } }, message, React.createElement("br", null), "hello", React.createElement("br", null), "there"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("div", { className: "hidden-lg col-xs-11" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { height: "75", width: "75", src: "/images/menu/DWK_green.jpg" }), React.createElement("br", null), "Sconely Launch at LACI", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), order_details.invited_guest_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), React.createElement("br", null), this.props.menu_items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                //console.log(JSON.stringify(item));
@@ -45166,10 +45182,12 @@ webpackJsonp([0],[
 	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
 	                        return _this2.showItem(item.item_id);
-	                    }, src: "/images/menu/" + item.image_id + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.title), " /", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
+	                    }, src: "/images/menu/" + item.image_id + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.title, "11111111111111111111111111111111111111111111111"), " /", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
 	            }.bind(this)), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
 	                    return _this3.saveGuestChoice();
-	                }, type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Select Scone")))))))))));
+	                }, type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Select Scone"))))))))), React.createElement("button", { onClick: function onClick() {
+	                    return _this3.noThanks();
+	                } }, "No Scone for me, thanks!")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -45326,7 +45344,8 @@ webpackJsonp([0],[
 	exports.loadSignatureGuestResponseOrderDetails = loadSignatureGuestResponseOrderDetails;
 	function saveGuestChoice(item_id, event_name) {
 	    //alert(item_id)
-	    return function (dispatch) {
+	    return function (dispatch, getState) {
+	        console.log("getstate " + JSON.stringify(getState()));
 	        dispatch({
 	            type: actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE,
 	            data: { item_id: item_id }
@@ -45335,10 +45354,10 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.saveGuestChoice = saveGuestChoice;
-	function completeGuestResponse(first_name, last_name, email, mailing_list) {
+	function completeGuestResponse(parent_order_id, chosen_item_id, first_name, last_name, email, mailing_list) {
 	    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
 	    return function (dispatch) {
-	        axios_1.default.post('/api/graphql', { query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
+	        axios_1.default.post('/api/graphql', { query: 'mutation {complete_signature_guest_response (parent_order_id: "1234", chosen_item_id: chosen_item_id, first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
 	        }).then(function (response) {
 	            console.log("graphql response" + JSON.stringify(response));
 	            //that.props.history.push('/user');
@@ -45484,15 +45503,17 @@ webpackJsonp([0],[
 	function mapStateToProps(state) {
 	    console.log("delivery addresses component/state" + JSON.stringify(state));
 	    return {
+	        //parent_order_id
+	        //item_id
 	        GuestResponse: state.GuestResponse
 	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
-	        completeGuestResponse: function completeGuestResponse(first_name, last_name, email, mailing_list) {
+	        completeGuestResponse: function completeGuestResponse(parent_order_id, item_id, first_name, last_name, email, mailing_list) {
 	            //  console.log("e.target.value");
-	            dispatch(signature_guest_response_ts_1.completeGuestResponse(first_name, last_name, email, mailing_list));
+	            dispatch(signature_guest_response_ts_1.completeGuestResponse("1", "1", first_name, last_name, email, mailing_list));
 	        }
 	    };
 	}
@@ -46922,9 +46943,9 @@ webpackJsonp([0],[
 	//make initial state immutable???  and normalizd
 	//nrmalizer for menu as title needs to be gotten in the cart
 	//actually that is really more on the host end
-	//let initial_state = Immutable.fromJs({order_id: 1, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
+	//let initial_state = Immutable.fromJs({order_id: 1, chosen_item_id: 0, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
 	function SignatureGuestResponse() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", invited_guest_message: "", chosen_item_item: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
 	  var action = arguments[1];
 	
 	  var delivery_addresses = [];

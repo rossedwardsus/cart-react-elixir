@@ -44,11 +44,11 @@ export function someStore (state = initialState, action) {
 //nrmalizer for menu as title needs to be gotten in the cart
 //actually that is really more on the host end
 
-//let initial_state = Immutable.fromJs({order_id: 1, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
+//let initial_state = Immutable.fromJs({order_id: 1, chosen_item_id: 0, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
 
 
 
-export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", chosen_item: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
+export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", invited_guest_message: "", chosen_item_item: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;

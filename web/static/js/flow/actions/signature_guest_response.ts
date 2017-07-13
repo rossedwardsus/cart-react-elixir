@@ -58,7 +58,9 @@ export function loadSignatureGuestResponseOrderDetails() {
 
 export function saveGuestChoice(item_id: any, event_name: any) {
   //alert(item_id)
-  return function (dispatch: any) { 
+  return (dispatch: any, getState: any) => { 
+
+    console.log("getstate " + JSON.stringify(getState()));
 
     dispatch({
       type: SIGNATURE_GUEST_SAVE_CHOICE,
@@ -71,12 +73,12 @@ export function saveGuestChoice(item_id: any, event_name: any) {
 
 }
 
-export function completeGuestResponse(first_name: any, last_name: any, email: any, mailing_list: any) {
+export function completeGuestResponse(parent_order_id: any, chosen_item_id: any, first_name: any, last_name: any, email: any, mailing_list: any) {
    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
    return function (dispatch: any) { 
 
       axios.post('/api/graphql',
-               {query: 'mutation {complete_signature_guest_response (order_id: "email", item_id: "1", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
+               {query: 'mutation {complete_signature_guest_response (parent_order_id: "1234", chosen_item_id: chosen_item_id, first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", mailing_list: ' + mailing_list + ') { user }}'
       })
       .then((response: any) => {
 
