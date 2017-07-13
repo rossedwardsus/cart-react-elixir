@@ -181,7 +181,7 @@ class GuestMenu extends React.Component<any, any> {
                       Sconely Launch at LACI
                       <br/>
                       <br/>
-                      <label className="text-justify" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}<br/>hello<br/>there</label>
+                      <label className="text-justify" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
                       <br/>
                       <br/>
                       <br/>

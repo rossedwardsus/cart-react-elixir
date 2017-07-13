@@ -12,7 +12,8 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     IO.inspect(order)
     
 
-    {:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
+    #{:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
+    {:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: "Hi everyone,\r\rSconely is providing complimentary scones for the August 3rd Chat & Chew, please select the scone you'd like.\r\rThanks, \rAnais"}}
   end
 
 
@@ -36,7 +37,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
     #check if guest added order already
     #else you have alrady chosen a scone thank you
-    
+
 
     #guest_response_changeset = ignatureOrderGuestResponse.changeset(%SignatureOrderGuestResponse{}, %{parent_order_id:  "parent_order_id", chosen_item: _args[:chosen_item_id], first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email], mailing_list: _args[:mailing_list]})
 
