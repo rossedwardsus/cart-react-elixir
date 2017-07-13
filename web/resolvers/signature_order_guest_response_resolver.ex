@@ -7,11 +7,10 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias SconeHomeElixir.Repo
   
   def get_order(_args, _info) do
-    order = Repo.get_by(SignatureOrder, %{event_url_name: "lacisconelylaunchaugust032017"})
+    #order = Repo.get_by(SignatureOrder, %{event_url_name: "lacisconelylaunchaugust032017"})
 
     IO.inspect(order)
     
-
     #{:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
     {:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: "Hi everyone,\r\rSconely is providing complimentary scones for the August 3rd Chat & Chew, please select the scone you'd like.\r\rThanks, \rAnais"}}
   end
@@ -21,15 +20,12 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   def complete_guest_response(_args, _info) do
     #signature_order = Repo.get_by(SconelySignatureOrder, %{parent_order_id: "uuid"})
 
-    guest_response = Repo.get_by(SignatureOrderGuestResponse, %{parent_order_id: "1234", first_name: "Ross"})
+    #guest_response = Repo.get_by(SignatureOrderGuestResponse, %{parent_order_id: "1234", first_name: "Ross"})
 
     IO.inspect(guest_response)
 
     #if guest_responee not equal nill
 
-    guest_response = Repo.get_by(SignatureOrderGuestResponse, %{parent_order_id: "1234", first_name: "Ross"})
-
-    IO.inspect(guest_response)
     IO.inspect(_args[:first_name])
     #IO.inspect(order)
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
