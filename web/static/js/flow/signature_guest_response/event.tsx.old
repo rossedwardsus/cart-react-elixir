@@ -1,0 +1,83 @@
+'use strict'
+
+import * as React from 'react'
+
+import { Link, browserHistory } from 'react-router'
+import {connect} from 'react-redux';
+
+import {loadSignatureGuestResponseOrderDetails} from '../actions/signature_guest_response.ts';
+
+class Event extends React.Component<any, any> {
+  //props: Props;
+
+  constructor(props: any) {
+    super(props);
+    //this.getData();
+  
+    //alert("sconely yours1" + this.props.params.order_id);
+
+    this.state = {
+
+        
+    };
+
+  }
+
+  static get contextTypes() {
+    return {
+      router: React.PropTypes.object.isRequired,
+    };
+  }
+
+  componentDidMount = () => {
+
+    this.props.loadSignatureGuestResponseOrderDetails();
+
+  }
+
+  render(): JSX.Element {
+    return (
+      <ul>
+        Welcome to Sconely.com.  
+        <br/>
+        You have been invited to "Sconely Launch Party".  By sconely.
+        <br/>
+        <br/>
+        You can now choose which scone you want by clicking the link below
+        <br/>
+        <Link to="/order/1/guest/menu">Next</Link> 
+      </ul>
+    )
+  }
+}
+
+function mapStateToProps(state: any) {
+  console.log("signature order details state" + JSON.stringify(state));
+  return {
+   //order: state.SignatureOrderGuestResponse
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+  return {
+    loadSignatureGuestResponseOrderDetails: () => {
+    //  console.log("e.target.value");
+      dispatch(loadSignatureGuestResponseOrderDetails());
+    },
+    //setContactPhone: (e: any) => {
+    //  console.log(e.target.value);
+      //dispatch(setContactPhone(e.target.value));
+    //},
+   
+  }
+}
+
+const Event1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Event)
+
+export default Event1;
