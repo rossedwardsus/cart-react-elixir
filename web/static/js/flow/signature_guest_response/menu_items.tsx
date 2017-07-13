@@ -176,9 +176,9 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       {this.props.sconely_message}
                       <br/>
-                      <img height="200" width="200" src="/images/menu/LACI_1.5.jpg"/>
+                      <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
-                      Sconely Launch at LACI
+                      Sconely Chat & Chew at LACI
                       <br/>
                       <br/>
                       <label className="text-justify" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
