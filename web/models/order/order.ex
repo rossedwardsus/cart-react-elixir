@@ -23,8 +23,9 @@ defmodule Sconely.Order do
 		#field :delivery_address_city
 		#field :delivery_address_state
 		#field :delivery_address_zipcode
-		field :delivery_date, Ecto.Date
-		field :delivery_time, :string
+		field :delivery_datetime, Ecto.DateTime
+		#field :delivery_date, Ecto.Date
+		#field :delivery_time, :string
 		#field :delivery_time_range, :string
 		#created_at
 		#status

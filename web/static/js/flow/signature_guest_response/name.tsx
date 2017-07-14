@@ -22,7 +22,6 @@ class GuestName extends React.Component<any, any> {
         first_name: "",
         last_name: "",
         email: "",
-        mailing_list: false,
         button_classname: "btn btn-default inactive"
         
     };
@@ -78,13 +77,7 @@ class GuestName extends React.Component<any, any> {
 
   }
 
-  setMailingList = () => {
-
-      let mailing_list_updated = !this.state.mailing_list;
-
-      this.setState({mailing_list: mailing_list_updated});
-
-  }
+  
 
 
   render(){
@@ -140,7 +133,7 @@ class GuestName extends React.Component<any, any> {
                       </form>
                       <br/>
                       <br/>
-                      <button className={this.state.button_classname} onClick={() => this.props.completeGuestResponse(this.state.first_name, this.state.last_name, this.state.email, this.state.mailing_list)}>Complete</button>
+                      <button className={this.state.button_classname} onClick={() => this.props.completeGuestResponse(this.state.first_name, this.state.last_name, this.state.email)}>Complete</button>
                       <br/>
                       <br/>
                       <br/>
@@ -166,9 +159,9 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    completeGuestResponse: (parent_order_id: any, item_id: any, first_name: any, last_name: any, email: any, mailing_list: any) => {
+    completeGuestResponse: (first_name: any, last_name: any, email: any) => {
     //  console.log("e.target.value");
-      dispatch(completeGuestResponse("1", "1", first_name, last_name, email, mailing_list));
+      dispatch(completeGuestResponse("1", 1, first_name, last_name, email));
     },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);

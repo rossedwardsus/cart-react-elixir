@@ -83,4 +83,29 @@ export const getSconelyMessage = (state: any) => {
   }
 }
 
- 
+/*export const getSignatureHostMessage = (state: any) => {
+  //console.log("sconely host message selector " + JSON.stringify(state.SignatureGuestResponse));
+
+  //state.SignatureGuestResponse.order_details
+
+  //let message = order_details.invited_guest_message.replace(/(?:\r\n|\r|\n)/g, <br />)
+
+  //order_details.invited_guest_message.split(“\r”);
+
+  //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
+
+  let message = state.SignatureGuestResponse.order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
+    return <span key={key}>{item}<br/></span>
+  })*/
+  
+  /*let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
+  return (<div>
+    {item}
+    <br/>
+    </div>
+  )
+  })*/
+
+/*  return message;
+
+}*/

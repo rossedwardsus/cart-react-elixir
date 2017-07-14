@@ -117,7 +117,7 @@ class GuestMenu extends React.Component<any, any> {
 
   noThanks = () => {
 
-    this.context.router.push("/order/lacisconelylaunchaugust032017indtla/guest/name");
+    this.context.router.push("/order/guest/name");
 
   }
 
@@ -162,8 +162,6 @@ class GuestMenu extends React.Component<any, any> {
                         </div>
                         <div className="collapse navbar-collapse" id="navigationbar">
                           <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="/login">Login</Link></li>
-                            <li><Link to="/register">Signup</Link></li>
                             <li><Link to="/register">About Us</Link></li>
                             <li><Link to="/register">Faq</Link></li>
                           </ul>
@@ -264,7 +262,7 @@ class GuestMenu extends React.Component<any, any> {
                                 </div>
                           </div>
                       </div>
-                      <button onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
+                      <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
                     </div>
             </div>
     )
@@ -284,7 +282,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //order_details: state.SignatureGuestResponse,
         menu_items: getMenuItems(state),
         //cart: state.cart
-
+        //host_message: getSignatureHostMessage(state);
         
     //}
   }

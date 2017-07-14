@@ -41,7 +41,7 @@ export default combineReducers({
   Register,
   session,
   menuItems,
-  SignatureGuestResponse,
+  SignatureOrderGuestResponse,
   Order,
   OrderDatetime,
   OrderPayment,

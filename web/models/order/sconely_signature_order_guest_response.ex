@@ -10,7 +10,7 @@ defmodule Sconely.SignatureOrderGuestResponse do
 
 		schema "signature_order_guest_responses" do
 			field :parent_order_id, :string
-			field :chosen_item_id, :string
+			field :chosen_item_id, :integer
 			field :first_name, :string
 			field :last_name, :string
 			field :email, :string

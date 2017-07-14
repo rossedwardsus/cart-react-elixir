@@ -5,7 +5,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureGuestResponsesTable do
 	create table(:signature_guest_responses) do
       #add :user_id, :string #uuid or "guest"
       add :parent_order_id, :integer
-      add :item_id, :integer
+      add :chosen_item_id, :integer
       add :first_name, :string
       add :last_name, :string
       add :email, :string
