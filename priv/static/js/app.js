@@ -31455,6 +31455,8 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	var user_ts_1 = __webpack_require__(962);
+	//import UserDeliveryAddress from './user_delivery_address.tsx';
+	//import DeliveryAddresses from './delivery_addresses.tsx';
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -31473,8 +31475,20 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (UserDeliveryAddresses.__proto__ || Object.getPrototypeOf(UserDeliveryAddresses)).call(this, props));
 	
-	        _this.setName = function (e) {
-	            _this.setState({ name: e.target.value });
+	        _this.setDeliveryContactAddressName = function (e) {
+	            _this.setState({ delivery_contact_address_name: e.target.value });
+	        };
+	        _this.setFirstName = function (e) {
+	            _this.setState({ first_name: e.target.value });
+	        };
+	        _this.setLastName = function (e) {
+	            _this.setState({ last_name: e.target.value });
+	        };
+	        _this.setContact = function (e) {
+	            _this.setState({ contact: e.target.value });
+	        };
+	        _this.setEmail = function (e) {
+	            _this.setState({ email: e.target.value });
 	        };
 	        _this.setStreet1 = function (e) {
 	            _this.setState({ street1: e.target.value });
@@ -31491,13 +31505,20 @@ webpackJsonp([0],[
 	        _this.setZipcode = function (e) {
 	            _this.setState({ zipcode: e.target.value });
 	        };
+	        _this.addUserDeliveryContactAddress = function () {
+	            _this.props.addUserDeliveryContactAddress(_this.state.delivery_contact_address_name, _this.state.first_name, _this.state.last_name, _this.state.mobile, _this.state.email, _this.state.street1, _this.state.street2, _this.state.city, _this.state.state, _this.state.zipcode);
+	        };
 	        _this.saveAddress = function (id) {
 	            console.log(id);
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            name: "",
+	            delivery_contact_address_name: "",
+	            first_name: "",
+	            last_name: "",
+	            email: "",
+	            mobile: "",
 	            street1: "",
 	            street2: "",
 	            city: "",
@@ -31510,10 +31531,7 @@ webpackJsonp([0],[
 	    _createClass(UserDeliveryAddresses, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
-	            //alert("jsx");
-	            //get active items from the database
-	            //setInterval(this.changeImage, 10000);
-	            //localStorage.get('user');
+	            //get info from redux when screen loads
 	            //this.setState({orders: this.props.getUserDeliveryAddresses});
 	            //this.props.getUserDeliveryAddresses();
 	            var getUserDeliveryAddresses = this.props.getUserDeliveryAddresses;
@@ -31532,11 +31550,6 @@ webpackJsonp([0],[
 	            e.preventDefault();
 	        }
 	    }, {
-	        key: "addUserDeliveryAddress",
-	        value: function addUserDeliveryAddress() {
-	            this.props.addUserDeliveryAddress(this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode);
-	        }
-	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
@@ -31546,9 +31559,7 @@ webpackJsonp([0],[
 	            //console.log("render" + JSON.stringify(delivery_addresses));
 	
 	            var that = this;
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_contact" }, "Delivery Contact"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/about_me" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), "Delivery Addresses", React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Address Name", onChange: function onChange(e) {
-	                    return _this2.setName(e);
-	                }, value: this.state.name }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_contact" }, "Delivery Contact"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/about_me" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Delivery Addresses", React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Address Name", onChange: this.setDeliveryContactAddressName, value: this.state.delivery_contact_address_name }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: function onChange(e) {
 	                    return _this2.setStreet1(e);
 	                }, value: this.state.street1 })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: function onChange(e) {
 	                    return _this2.setStreet2(e);
@@ -31560,12 +31571,10 @@ webpackJsonp([0],[
 	                    return _this2.setStreet1(e);
 	                }, value: this.state.street1 })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 2", onChange: function onChange(e) {
 	                    return _this2.setStreet2(e);
-	                }, value: this.state.street2 }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "City"), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "State"), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { value: this.state.guest_message, className: "form-control", style: { rows: 5, columns: 1, resize: "none" }, id: "comment" }))), React.createElement("br", null), React.createElement("a", { className: "btn btn-default", onClick: function onClick() {
-	                    return _this2.addUserDeliveryAddress();
-	                } }, "Add Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), Object.keys(delivery_addresses).map(function (key, index) {
+	                }, value: this.state.street2 }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "City"), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "State"), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { value: this.state.note, className: "form-control", style: { rows: 5, columns: 10, resize: "none" }, id: "note" }))), React.createElement("br", null), React.createElement("a", { className: "btn btn-default", onClick: this.addUserDeliveryContactAddress }, "Add Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), Object.keys(delivery_addresses).map(function (key, index) {
 	                return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Address/Contact Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Street 1" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { className: "form-control", style: { rows: 5, columns: 1, resize: "none" }, id: "comment" }))), React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
 	                        return _this2.saveAddress(delivery_addresses[key].id);
-	                    } }, "Save Address"), React.createElement("br", null), React.createElement("br", null));
+	                    } }, "Save Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
 	            })), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
@@ -31583,6 +31592,7 @@ webpackJsonp([0],[
 	function mapStateToProps(state) {
 	    console.log("delivery addresses state" + JSON.stringify(state.User.delivery_addresses));
 	    return {
+	        //flattened delivery addresses
 	        delivery_addresses: state.User.delivery_addresses
 	        //menu_items: getPublicMenu
 	        //menu_items: dispatch()
@@ -31595,9 +31605,9 @@ webpackJsonp([0],[
 	            console.log("e.target.value");
 	            dispatch(user_ts_1.getUserDeliveryAddresses());
 	        },
-	        addUserDeliveryAddress: function addUserDeliveryAddress(name, street1, street2, city, state, zipcode) {
+	        addUserDeliveryContactAddress: function addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode) {
 	            //  console.log(e.target.value);
-	            dispatch(user_ts_1.addUserDeliveryAddress(name, street1, street2, city, state, zipcode));
+	            dispatch(user_ts_1.addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode));
 	        }
 	    };
 	}
@@ -31612,6 +31622,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var axios_1 = __webpack_require__(924);
 	/*export function setUserFirstName(value: any) {
 	  //alert("GET USER details");
 	  console.log("set user first name action " + value);
@@ -31732,45 +31743,44 @@ webpackJsonp([0],[
 	  };
 	}
 	exports.getUserDeliveryAddresses = getUserDeliveryAddresses;
-	function addUserDeliveryAddress(address_name, street1, street2, city, state, zipcode) {
+	function addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode) {
 	  //console.log("state" + JSON.stringify(state));
 	  console.log("add user delivery address street1");
 	  return function (dispatch) {
-	    /*axios.post('/api/graphql', {
-	                   query: 'mutation {add_user_delivery_address (name: "' + address_name + '", street1: "' + street1 + '", street2: "' + street2 + '", city: "' + city +'", state: '" + state + "', zipcode: '" + zipcode + "') {user_id}}'
-	            })
-	            .then((response: any) => {
-	                     console.log("register response" + JSON.stringify(response));
-	                      //dispatch({
-	                  //  type: REGISTER_USER,
-	                  //  data: "session_key"
-	                  //})
-	                     //return {
-	                  //  type: ADD_USER_DELIVERY_ADDRESS,
-	                  //  name,
-	                  //  street1,
-	                  //  street2,
-	                  //  city,
-	                  //  state,
-	                  //  zipcode
-	                  //}
-	                     //that.props.history.push('/user');
-	                  //dispatch(push("/user"));
-	               })
-	            .catch((error: any) => {
-	                     console.log("sorry an error occurred-email already exists" + error);
-	                  //go to code/payment screen
-	          //        this.props.loadView();
-	              //if (!error.status) {
-	              // network error
-	            //}
-	               })*/
-	    dispatch({
-	      type: actionTypes_ts_1.ADD_USER_DELIVERY_ADDRESS
+	    axios_1.default.post('/api/graphql', {
+	      query: 'mutation {add_user_delivery_contact_address (delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", street1: "' + street1 + '", street2: "' + street2 + '", city: "' + city + '", state: "' + state + '", zipcode: "' + zipcode + '") {user_id}}'
+	    }).then(function (response) {
+	      console.log("register response" + JSON.stringify(response));
+	      //dispatch({
+	      //  type: REGISTER_USER,
+	      //  data: "session_key"
+	      //})
+	      //return {
+	      //  type: ADD_USER_DELIVERY_ADDRESS,
+	      //  name,
+	      //  street1,
+	      //  street2,
+	      //  city,
+	      //  state,
+	      //  zipcode
+	      //}
+	      //that.props.history.push('/user');
+	      //dispatch(push("/user"));
+	    }).catch(function (error) {
+	      console.log("sorry an error occurred-email already exists" + error);
+	      //go to code/payment screen
+	      //        this.props.loadView();
+	      //if (!error.status) {
+	      // network error
+	      //}
 	    });
+	    //dispatch({
+	    //   type: ADD_USER_DELIVERY_ADDRESS,
+	    //  data: "session_key"
+	    //})
 	  };
 	}
-	exports.addUserDeliveryAddress = addUserDeliveryAddress;
+	exports.addUserDeliveryContactAddress = addUserDeliveryContactAddress;
 	function updateUserDeliveryAddress(address_name, street1, street2, city, state, zipcode) {
 	  //console.log("state" + JSON.stringify(state));
 	  console.log("add user delivery address street1");
@@ -45378,11 +45388,11 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.saveGuestChoice = saveGuestChoice;
-	function completeGuestResponse(parent_order_id, chosen_item_id, first_name, last_name, email) {
+	function completeGuestResponse(first_name, last_name, email) {
 	    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
 	    return function (dispatch, getState) {
-	        console.log("getstate order id item id" + JSON.stringify(getState()["SignatureGuestResponse"]));
-	        axios_1.default.post('/api/graphql', { query: 'mutation {complete_signature_guest_response (parent_order_id: "1234", chosen_item_id: ' + chosen_item_id + ', first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '") { user }}'
+	        console.log("getstate order id item id" + JSON.stringify(getState()["SignatureOrderGuestResponse"]));
+	        axios_1.default.post('/api/graphql', { query: 'mutation {complete_signature_guest_response (parent_order_id: "1234", chosen_item_id: ' + getState()["SignatureOrderGuestResponse"]["chosen_item_id"] + ', first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '") { user }}'
 	        }).then(function (response) {
 	            console.log("graphql response" + JSON.stringify(response));
 	            //that.props.history.push('/user');
@@ -45533,7 +45543,7 @@ webpackJsonp([0],[
 	    return {
 	        completeGuestResponse: function completeGuestResponse(first_name, last_name, email) {
 	            //  console.log("e.target.value");
-	            dispatch(signature_guest_response_ts_1.completeGuestResponse("1", 1, first_name, last_name, email));
+	            dispatch(signature_guest_response_ts_1.completeGuestResponse(first_name, last_name, email));
 	        }
 	    };
 	}
@@ -46083,7 +46093,7 @@ webpackJsonp([0],[
 	    Register: register_ts_1.default,
 	    session: session_ts_1.default,
 	    menuItems: menu_ts_1.default,
-	    SignatureGuestResponse: signature_guest_response_ts_1.default,
+	    SignatureOrderGuestResponse: signature_guest_response_ts_1.default,
 	    Order: order_ts_1.default,
 	    OrderDatetime: order_datetime_ts_1.default,
 	    OrderPayment: order_payment_ts_1.default,
@@ -46965,7 +46975,7 @@ webpackJsonp([0],[
 	//actually that is really more on the host end
 	//let initial_state = Immutable.fromJs({order_id: 1, chosen_item_id: 0, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
 	function SignatureGuestResponse() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", invited_guest_message: "", chosen_item_item: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", invited_guest_message: "", chosen_item_id: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
 	  var action = arguments[1];
 	
 	  var delivery_addresses = [];

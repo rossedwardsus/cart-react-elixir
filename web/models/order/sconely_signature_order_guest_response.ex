@@ -5,7 +5,7 @@ defmodule Sconely.SignatureOrderGuestResponse do
 		use SconeHomeElixir.Web, :model
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
-		@optional_fields ~W(order_id item_id first_name last_name mailing_list)
+		@optional_fields ~W(parent_order_id chosen_item_id first_name last_name email)
 		@required_fields ~W()
 
 		schema "signature_order_guest_responses" do

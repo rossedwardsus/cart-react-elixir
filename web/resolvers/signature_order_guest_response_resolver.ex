@@ -40,31 +40,32 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     #if guest_responee not equal nill
 
    
-    #guest_response_changeset = ignatureOrderGuestResponse.changeset(%SignatureOrderGuestResponse{}, %{parent_order_id:  "parent_order_id", chosen_item: _args[:chosen_item_id], first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email], mailing_list: _args[:mailing_list]})
+    guest_response_changeset = SignatureOrderGuestResponse.changeset(%SignatureOrderGuestResponse{}, %{parent_order_id:  _args[:parent_order_id], chosen_item_id: _args[:chosen_item_id], first_name: _args[:first_name], last_name: _args[:last_name], email: _args[:email]})
 
+    IO.inspect(guest_response_changeset)
 
     #get title of chosen item from the database 
 
-    #Repo.transaction(fn ->
+    Repo.transaction(fn ->
 
-     #   case Repo.insert(guest_response_changeset) do
-     #     {:ok, response} -> 
-     #           IO.inspect(response)
+        case Repo.insert(guest_response_changeset) do
+          {:ok, response} -> 
+                IO.inspect(response)
 
 
                 #if _args[:chosen_item_id] != 0
 
-                Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                #Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
-                Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                #Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
 
           #{:error}
 
 
-     #   end
+        end
    
-    #end)
+    end)
 
     #admin
     

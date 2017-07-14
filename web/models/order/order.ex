@@ -27,7 +27,7 @@ defmodule Sconely.Order do
 		#field :delivery_date, Ecto.Date
 		#field :delivery_time, :string
 		#field :delivery_time_range, :string
-		#created_at
+		#stripe_token
 		#status
 		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 

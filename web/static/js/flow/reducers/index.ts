@@ -19,7 +19,7 @@ import contact from './contact.ts';
 //import OrderDeliveryAddress from './order_delivery_address.ts';
 import UserPaymentMethods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
-import SignatureGuestResponse from './signature_guest_response.ts';
+import SignatureOrderGuestResponse from './signature_guest_response.ts';
 import UserOrders from './user_orders.ts';
 import UserOrderCart from './user_order_cart.ts';
 import UserOrderDeliveryAddress from './user_order_delivery_address.ts';

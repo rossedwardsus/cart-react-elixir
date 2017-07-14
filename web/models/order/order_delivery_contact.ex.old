@@ -13,7 +13,7 @@ defmodule Sconely.OrderDeliveryContact do
 			field :email, :string
 			field :mobile, :string
 			field :first_name, :string
-			field :last_namr, :string
+			field :last_name, :string
 		end
 
 		def changeset(struct, params \\ %{}) do

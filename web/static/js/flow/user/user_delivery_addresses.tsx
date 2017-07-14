@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryAddresses, addUserDeliveryAddress } from '../actions/user.ts';
-import UserDeliveryAddress from './user_delivery_address.tsx';
-import DeliveryAddresses from './delivery_addresses.tsx';
+import { getUserDeliveryAddresses, addUserDeliveryContactAddress } from '../actions/user.ts';
+//import UserDeliveryAddress from './user_delivery_address.tsx';
+//import DeliveryAddresses from './delivery_addresses.tsx';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -30,7 +30,11 @@ class UserDeliveryAddresses extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        name: "",
+        delivery_contact_address_name: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        mobile: "",
         street1: "",
         street2: "",
         city: "",
@@ -43,11 +47,9 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //alert("jsx");
-    //get active items from the database
-    //setInterval(this.changeImage, 10000);
+   
+    //get info from redux when screen loads
 
-    //localStorage.get('user');
 
     //this.setState({orders: this.props.getUserDeliveryAddresses});
 
@@ -78,9 +80,33 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
   }
 
-  setName = (e: any) => {
+  setDeliveryContactAddressName = (e: any) => {
 
-    this.setState({name: e.target.value});
+    this.setState({delivery_contact_address_name: e.target.value});
+
+  }
+
+  setFirstName = (e: any) => {
+
+    this.setState({first_name: e.target.value});
+
+  }
+
+  setLastName = (e: any) => {
+
+    this.setState({last_name: e.target.value});
+
+  }
+
+  setContact = (e: any) => {
+
+    this.setState({contact: e.target.value});
+
+  }
+
+  setEmail = (e: any) => {
+
+    this.setState({email: e.target.value});
 
   }
 
@@ -115,9 +141,9 @@ class UserDeliveryAddresses extends React.Component<any, any> {
   }
   
   
-  addUserDeliveryAddress(){
+  addUserDeliveryContactAddress = () => {
 
-      this.props.addUserDeliveryAddress(this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode)
+      this.props.addUserDeliveryContactAddress(this.state.delivery_contact_address_name, this.state.first_name, this.state.last_name, this.state.mobile, this.state.email, this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode)
 
   }
                  
@@ -177,11 +203,15 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                         </div>
                         <div className="col-md-6">
                                   <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
                                   Delivery Addresses
                                   <br/>
                                   <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Address Name" onChange={(e: any) => this.setName(e)} value={this.state.name}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Address Name" onChange={this.setDeliveryContactAddressName} value={this.state.delivery_contact_address_name}/>
                                       </div>
                                   </form>
                                   <form className="form-inline">
@@ -230,11 +260,11 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   </form>
                                   <form className="form-inline">
                                       <div className="form-group">
-                                        <textarea value={this.state.guest_message} className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+                                        <textarea value={this.state.note} className="form-control" style={{rows: 5, columns: 10, resize: "none"}} id="note"></textarea>
                                       </div>
                                   </form>
                                   <br/>
-                                  <a className="btn btn-default" onClick={() => this.addUserDeliveryAddress()}>Add Address</a>
+                                  <a className="btn btn-default" onClick={this.addUserDeliveryContactAddress}>Add Address</a>
                                   <br/>
                                   <br/>
                                   <br/>
@@ -301,6 +331,8 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                                 <button className="btn btn-default" onClick={() => this.saveAddress(delivery_addresses[key].id)}>Save Address</button>
                                                 <br/>
                                                 <br/>
+                                                <br/>
+                                                <br/>
                                                 </div>
                                       )
                                   })}
@@ -324,6 +356,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery addresses state" + JSON.stringify(state.User.delivery_addresses));
   return {
+   //flattened delivery addresses
    delivery_addresses: state.User.delivery_addresses
    //menu_items: getPublicMenu
    //menu_items: dispatch()
@@ -337,9 +370,9 @@ function mapDispatchToProps(dispatch: any) {
       console.log("e.target.value");
       dispatch(getUserDeliveryAddresses());
     },
-    addUserDeliveryAddress: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
+    addUserDeliveryContactAddress: (delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);
-      dispatch(addUserDeliveryAddress(name, street1, street2, city, state, zipcode));
+      dispatch(addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode));
     },
    
   }

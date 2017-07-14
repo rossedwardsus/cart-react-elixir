@@ -161,7 +161,7 @@ function mapDispatchToProps(dispatch: any) {
   return {
     completeGuestResponse: (first_name: any, last_name: any, email: any) => {
     //  console.log("e.target.value");
-      dispatch(completeGuestResponse("1", 1, first_name, last_name, email));
+      dispatch(completeGuestResponse(first_name, last_name, email));
     },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);

@@ -110,6 +110,9 @@ defmodule Sconely.Schema do
     	resolve &Sconely.RegistrationResolver.create_user/2
   	end
 
+
+    #user
+
     field :save_user_profile, type: :registration do
       arg :first, (:string)
       arg :last, (:string)
@@ -120,7 +123,19 @@ defmodule Sconely.Schema do
       resolve &Sconely.RegistrationResolver.create_user/2
     end
 
-    field :save_user_delivery_address, type: :registration do
+    field :add_user_delivery_contact_address, type: :registration do
+      arg :user_id, :string
+      arg :delivery_contact_name, :string
+      #arg :first, (:string)
+      #arg :last, (:string)
+      #arg :email, non_null(:string)
+      #arg :mobile, (:string)
+      #arg :password, (:string)
+
+      resolve &Sconely.UserResolver.add_user_delivery_contact_address/2
+    end
+
+    field :save_user_delivery_contact_address, type: :registration do
       arg :first, (:string)
       arg :last, (:string)
       arg :email, non_null(:string)
@@ -149,6 +164,10 @@ defmodule Sconely.Schema do
 
       resolve &Sconely.UserResolver.save_user_payment_method/2
     end
+
+
+
+
 
   	
   	field :complete_order, type: :order do
@@ -213,12 +232,12 @@ defmodule Sconely.Schema do
   #end
 
   field :complete_signature_guest_response, type: :signature_guest_response do
-      arg :order_id, non_null(:string)
-      arg :item_id, :string
+      arg :parent_order_id, non_null(:string)
+      arg :chosen_item_id, :integer
       arg :first_name, :string
       arg :last_name, :string
       arg :email, :string
-      arg :mailing_list, :boolean
+      #arg :mailing_list, :boolean
 
       resolve &Sconely.SignatureOrderGuestResponseResolver.complete_guest_response/2
   end

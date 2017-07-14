@@ -1,6 +1,46 @@
 defmodule Sconely.Schema.Types do
   use Absinthe.Schema.Notation
 
+
+  object :login do
+    #field :email, :string
+    #field :password, :string
+    field :user, :string
+  end
+
+  object :registration do
+    field :user_id, :string
+    #field :first, :string
+    #field :last, :string
+    #field :email, :string
+    #field :password, :string
+    #field :status, :string
+  end
+
+
+  #user
+
+
+  #object :user_payment do
+  #  field :order_id, :string
+  #  field :host_id, :string
+  #  field :event_name, :string
+  #  field :event_datetime, :string
+  #end
+
+  object :user_delivery_contact_address do
+  #  field :order_id, :string
+  #  field :host_id, :string
+  #  field :event_name, :string
+  #  field :event_datetime, :string
+  end
+
+
+
+
+  #orders
+
+
   object :signature_guest_response_order_details do
     field :parent_order_id, :string
     field :event_full_name, :string
@@ -43,21 +83,9 @@ defmodule Sconely.Schema.Types do
   #end
 
 
-  object :login do
-  	#field :email, :string
-  	#field :password, :string
-  	field :user, :string
-  end
 
-  object :registration do
-    field :user_id, :string
-    #field :first, :string
-    #field :last, :string
-   	#field :email, :string
-   	#field :password, :string
-   	#field :status, :string
-  end
 
+ 
   #object :item do
   #	field :item_id, :string
   #end
@@ -151,27 +179,6 @@ defmodule Sconely.Schema.Types do
     #field :items, :sconely_signature_order_delivery_contact
     field :status, :string
   end
-
-
-
-
-  #object :user_payment do
-  #  field :order_id, :string
-  #  field :host_id, :string
-  #  field :event_name, :string
-  #  field :event_datetime, :string
-  #end
-
-  #object :user_delivery_address do
-  #  field :order_id, :string
-  #  field :host_id, :string
-  #  field :event_name, :string
-  #  field :event_datetime, :string
-  #end
-
-
-
-
 
  
 
