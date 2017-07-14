@@ -6,7 +6,8 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryAddresses, addUserDeliveryContactAddress } from '../actions/user.ts';
+import { getUserDeliveryAddresses, addUserDeliveryContactAddress, saveUserDeliveryContactAddress } from '../actions/user.ts';
+
 //import UserDeliveryAddress from './user_delivery_address.tsx';
 //import DeliveryAddresses from './delivery_addresses.tsx';
 
@@ -147,9 +148,11 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
   }
                  
-  saveAddress = (id: any) => {
+  saveDeliveryContactAddress = (id: any) => {
 
     console.log(id);
+
+    this.props.saveUserDeliveryContactAddress(id, this.state.delivery_contact_address_name, this.state.first_name, this.state.last_name, this.state.mobile, this.state.email, this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode)
 
   }
 
@@ -216,10 +219,10 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   </form>
                                   <form className="form-inline">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.setStreet1(e)} value={this.state.street1}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={this.setFirstName} value={this.state.first_name}/>
                                       </div>
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={(e: any) => this.setStreet2(e)} value={this.state.street2}/>
+                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={this.setLastName} value={this.state.last_name}/>
                                       </div>
                                   </form>
                                   <form className="form-inline">
@@ -328,7 +331,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                                         <textarea  className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
                                                       </div>
                                                     </form>
-                                                <button className="btn btn-default" onClick={() => this.saveAddress(delivery_addresses[key].id)}>Save Address</button>
+                                                <button className="btn btn-default" onClick={this.saveDeliveryContactAddress}>Save Address</button>
                                                 <br/>
                                                 <br/>
                                                 <br/>
@@ -373,6 +376,11 @@ function mapDispatchToProps(dispatch: any) {
     addUserDeliveryContactAddress: (delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);
       dispatch(addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode));
+    },
+
+    saveUserDeliveryContactAddress: (id: any, delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
+    //  console.log(e.target.value);
+      dispatch(saveUserDeliveryContactAddress("1", "delivery_contact_address_name", "first_name", "last_name", "email", "mobile", "street1", "street2", "city", "state", "zipcode"));
     },
    
   }

@@ -21,16 +21,18 @@ defmodule Sconely.Schema.Types do
   #user
 
 
-  #object :user_payment do
-  #  field :order_id, :string
+  object :user_delivery_address do
+    field :delivery_contact_address_name, :string
   #  field :host_id, :string
   #  field :event_name, :string
   #  field :event_datetime, :string
-  #end
+  end
 
-  object :user_delivery_contact_address do
-  #  field :order_id, :string
-  #  field :host_id, :string
+
+
+  object :user do
+    field :first_name, :string
+    field :delivery_addresses, list_of(:user_delivery_address)
   #  field :event_name, :string
   #  field :event_datetime, :string
   end

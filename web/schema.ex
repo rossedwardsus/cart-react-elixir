@@ -125,24 +125,36 @@ defmodule Sconely.Schema do
 
     field :add_user_delivery_contact_address, type: :registration do
       arg :user_id, :string
-      arg :delivery_contact_name, :string
-      #arg :first, (:string)
-      #arg :last, (:string)
-      #arg :email, non_null(:string)
+      arg :delivery_contact_address_name, :string
+      arg :first_name, (:string)
+      arg :last_name, (:string)
+      arg :email, non_null(:string)
       #arg :mobile, (:string)
-      #arg :password, (:string)
+      #arg :street1, (:string)
+      #arg :street2, (:string)
+      #arg :city, (:string)
+      #arg :state, (:string)
+      #arg :zipcode, (:string)
+
 
       resolve &Sconely.UserResolver.add_user_delivery_contact_address/2
     end
 
     field :save_user_delivery_contact_address, type: :registration do
-      arg :first, (:string)
-      arg :last, (:string)
+      arg :user_id, :string
+      arg :delivery_contact_address_id, :string
+      arg :delivery_contact_address_name, :string
+      arg :first_name, (:string)
+      arg :last_name, (:string)
       arg :email, non_null(:string)
-      arg :mobile, (:string)
-      arg :password, (:string)
+      #arg :mobile, (:string)
+      #arg :street1, (:string)
+      #arg :street2, (:string)
+      #arg :city, (:string)
+      #arg :state, (:string)
+      #arg :zipcode, (:string)
 
-      resolve &Sconely.UserResolver.save_user_delivery_address/2
+      resolve &Sconely.UserResolver.save_user_delivery_contact_address/2
     end
 
     field :save_user_delivery_contact, type: :registration do

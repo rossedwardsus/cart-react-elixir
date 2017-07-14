@@ -136,7 +136,7 @@ export function addUserDeliveryContactAddress(delivery_contact_address_name: any
   return function (dispatch: any) { 
       
       axios.post('/api/graphql', {
-                     query: 'mutation {add_user_delivery_contact_address (delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", street1: "' + street1 + '", street2: "' + street2 + '", city: "' + city +'", state: "' + state + '", zipcode: "' + zipcode + '") {user_id}}'
+                     query: 'mutation {add_user_delivery_contact_address (delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 + '", street2: "' + street2 + '", city: "' + city +'", state: "' + state + '", zipcode: "' + zipcode + '") {user_id}}'
               })
               .then((response: any) => {
 
@@ -145,6 +145,11 @@ export function addUserDeliveryContactAddress(delivery_contact_address_name: any
                      //dispatch({
                     //  type: REGISTER_USER,
                     //  data: "session_key"
+                    //})
+
+                    //dispatch({
+                    //   type: ADD_USER_DELIVERY_ADDRESS,
+                          //  data: "session_key"
                     //})
 
                     //return {
@@ -160,6 +165,8 @@ export function addUserDeliveryContactAddress(delivery_contact_address_name: any
                     //that.props.history.push('/user');
                     //dispatch(push("/user"));
 
+
+
               })
               .catch((error: any) => {
 
@@ -173,22 +180,19 @@ export function addUserDeliveryContactAddress(delivery_contact_address_name: any
 
               })
 
-               //dispatch({
-               //   type: ADD_USER_DELIVERY_ADDRESS,
-                    //  data: "session_key"
-               //})
+              
 
   }
   
 }
 
-export function updateUserDeliveryAddress(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
+export function saveUserDeliveryContactAddress(id: any, delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
   //console.log("state" + JSON.stringify(state));
-  console.log("add user delivery address street1");
+  console.log("save user delivery address street1");
   return function (dispatch: any) { 
       
-      /*axios.post('/api/graphql', {
-                     query: 'mutation {register (first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", password: "' + password +'") {user_id}}'
+      axios.post('/api/graphql', {
+                     query: 'mutation {save_user_delivery_contact_address ( delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 +'") {user_id}}'
               })
               .then((response: any) => {
 
@@ -223,7 +227,7 @@ export function updateUserDeliveryAddress(address_name: any, street1: any, stree
                 // network error
               //}
 
-              })*/
+              })
   }
   
 }

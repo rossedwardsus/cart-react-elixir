@@ -6,16 +6,17 @@ defmodule Sconely.UserDeliveryContactAddress do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		@optional_fields ~W(user_id delivery_contact_address)
+		@optional_fields ~W(user_id delivery_contact_address_name first_name last_name email)
+		@required_fields ~W()
 
 
 		schema "user_delivery_contacts_addresses" do
-			field :user_id, Ecto.UUID
+			field :user_id, :string
 			#field :contact_address_id, :integer
 			field :delivery_contact_address_name, :string
-			#field :first_name, :string
-			#field :last_name, :string
-			#field :email, :string
+			field :first_name, :string
+			field :last_name, :string
+			field :email, :string
 			#field :mobile, :string
 			#field :street1, :string
 			#field :street2, :string
