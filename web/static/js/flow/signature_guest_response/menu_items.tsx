@@ -237,7 +237,7 @@ class GuestMenu extends React.Component<any, any> {
 
                           return(
                                   <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                        <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                        <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/%20/g, "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                     <br/>    
                                     <br/>
                                     <b>{item.name}</b>
