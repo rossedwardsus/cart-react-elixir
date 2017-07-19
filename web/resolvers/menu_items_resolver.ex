@@ -41,6 +41,20 @@ defmodule Sconely.MenuItemsResolver do
 
     IO.inspect(res[:id])
 
+    #params = [
+    #  source: [
+    #    object: "card",
+    #    number: "4111111111111111",
+    #    cvc: 123,
+    #    exp_month: 12,
+    #    exp_year: 2020,
+    #    metadata: [
+    #      test_field: "test val"
+    #    ]
+    #  ]
+    #]
+
+    #{:ok, card} = Stripe.Cards.create(:customer, customer_id, params)
 
 
     IO.inspect(Repo.all(from mi in MenuItems, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}))

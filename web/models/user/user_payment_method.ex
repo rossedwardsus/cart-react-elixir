@@ -9,8 +9,9 @@ defmodule SconeHomeElixir.UserProfilePaymentMethods do
 		schema "user_payment_methods" do
 			field :user_id, Ecto.UUID
 			field :payment_name, :string
-			field :last_4_digits, :string
-			field :stripe_token, :string
+			#field :last_4_digits, :string
+			field :stripe_payment_token, :string
+			#field :default
 			
 			#timestamps()
 		end
