@@ -13,6 +13,14 @@ defmodule Sconely.Schema do
     end
 
 
+    field :get_user, :user do
+      arg :user_id, :string
+      #arg :email, :string
+      #arg :password, :string
+      resolve &Sconely.UserResolver.get_user/2
+    end
+
+
     field :load_signature_guest_response_order_details, type: :signature_guest_response_order_details do
         arg :order_name, :string
         #arg :event_name, :string
@@ -157,17 +165,17 @@ defmodule Sconely.Schema do
       resolve &Sconely.UserResolver.save_user_delivery_contact_address/2
     end
 
-    field :save_user_delivery_contact, type: :registration do
-      arg :first, (:string)
-      arg :last, (:string)
-      arg :email, non_null(:string)
-      arg :mobile, (:string)
-      arg :password, (:string)
+    field :add_user_payment_method, type: :user_payment_method do
+      arg :payment_method_name, (:string)
+      arg :card_number, (:string)
+      #arg :email, non_null(:string)
+      #arg :mobile, (:string)
+      #arg :password, (:string)
 
-      resolve &Sconely.UserResolver.save_user_delivery_contact/2
+      resolve &Sconely.UserResolver.add_user_payment_method/2
     end
-
-    field :save_user_payment_method, type: :registration do
+    
+    field :save_user_payment_method, type: :user_payment_method do
       arg :first, (:string)
       arg :last, (:string)
       arg :email, non_null(:string)
@@ -179,7 +187,7 @@ defmodule Sconely.Schema do
 
 
 
-
+    #order
 
   	
   	field :complete_order, type: :order do

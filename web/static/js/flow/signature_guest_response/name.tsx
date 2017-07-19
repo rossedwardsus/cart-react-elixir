@@ -110,6 +110,7 @@ class GuestName extends React.Component<any, any> {
                 <div className="col-xs-12 col-md-9">
                       <br/>
                       <br/>
+                      Please provide us with the information below so we can let your host know.
                       <br/>
                       <br/>
                       Great you are almost finished.  Please provide us with the information below so we can personalize your scone.
@@ -147,6 +148,8 @@ class GuestName extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery addresses component/state" + JSON.stringify(state));
   return {
+    //text: getNameScreenText(state),
+        
     //parent_order_id
     //item_id
     GuestResponse: state.GuestResponse,

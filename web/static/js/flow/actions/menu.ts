@@ -16,7 +16,7 @@ export function getMenuItemsAction(){
             //event full name
 
             axios.post('/api/graphql',
-                     {query: 'query {get_menu_items {item_id title}}'}
+                     {query: 'query {get_menu_items {id name description ingredients}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )
             .then((response: any) => {
@@ -30,7 +30,7 @@ export function getMenuItemsAction(){
 
                   //this.context.router.push('/order/complete');
 
-                  dispatch({ type: VIEW_PUBLIC_MENU, data: ""});
+                  dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems});
                     //dispatch(push("/order/url_name/guest/name"));
       
 

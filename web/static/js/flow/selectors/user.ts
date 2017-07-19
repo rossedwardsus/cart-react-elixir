@@ -1,4 +1,4 @@
-export const getMenuItems = (state: any) => {
+export const getUserOrders = (state: any) => {
   //let menu_items_temp: any = {};
 
   //state.menuItems.menu_items.map((key: any, index: any) => {
@@ -9,7 +9,7 @@ export const getMenuItems = (state: any) => {
 
   //return menu_items_temp;
 
-  return state.menuItems.items
+  return state.User.orders
   
 
   /*switch (filter) {
@@ -21,6 +21,9 @@ export const getMenuItems = (state: any) => {
       return todos.filter(t => !t.completed)
   }*/
 }
+
+
+
 
 export const getNormalizedMenuItems = (state: any) => {
   let menu_items_temp: any = {};

@@ -119,6 +119,7 @@ class SignatureGuestOrderComplete extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
+                      Thank you!
                       <br/>
                       Thank you! Enjoy your scone!
                       <br/>

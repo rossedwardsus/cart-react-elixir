@@ -19,6 +19,7 @@ defmodule Sconely.UserProfiles do
 			field :email, :string
 			field :mobile, :string
 			field :company_name, :string
+			#field :stripe_cus_id, :string
 			
 			#timestamps()
 		end

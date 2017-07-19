@@ -64,11 +64,16 @@
     }
 
     .navbar-default {
-    background-color: white;
-    border-color: #E7E7E7;
-    min-height:80px; 
-    border: 0;
-    padding-right: 20px;
+      background-color: white;
+      border-color: #E7E7E7;
+      min-height:80px; 
+      border: 0;
+      padding-right: 0px;
+    }
+
+    .navbar {
+      
+      padding-right: 0px;
     }
 
     .navbar-collapse {
@@ -108,9 +113,9 @@
             }
 
     body {
-    margin: 0,
-    padding-right: 100px !important;
-    padding-left: 0 !important;
+      margin: 0,
+      padding-right: 0px !important;
+      padding-left: 0 !important;
     }
 
     html, body {
@@ -134,7 +139,7 @@
       margin:0;
       padding-right: 0px;
       padding-left: 0px;
-      margin-right: 30px;
+      margin-right: 0px;
       margin-left: 30px;
     }
 

@@ -83,17 +83,66 @@ export function setUserDeliveryAddressZipcode(value: any) {
     type: SET_USER_EMAIL,
     data: value
   }
-}
+}*/
 
-export function getUserDetails(value: any) {
+export function getUser(user_id: any) {
   //alert("GET USER details");
-  return {
-    type: GET_USER_DETAILS,
-    data: {first_name: "", last_name: "", email: "", mobile: ""}
+  return function (dispatch: any) { 
+       axios.post('/api/graphql', {
+                     query: 'query {get_user (user_id: "") {first_name delivery_contacts_addresses {delivery_contact_address_name}}}'
+              })
+              .then((response: any) => {
+
+                    console.log("getuser response" + JSON.stringify(response));
+
+                     //dispatch({
+                    //  type: REGISTER_USER,
+                    //  data: "session_key"
+                    //})
+
+                    //dispatch({
+                    //   type: ADD_USER_DELIVERY_ADDRESS,
+                          //  data: "session_key"
+                    //})
+
+                    //return {
+                    //  type: ADD_USER_DELIVERY_ADDRESS,
+                    //  name,
+                    //  street1,
+                    //  street2,
+                    //  city,
+                    //  state,
+                    //  zipcode
+                    //}
+
+                    //that.props.history.push('/user');
+                    //dispatch(push("/user"));
+
+
+
+              })
+              .catch((error: any) => {
+
+                    console.log("sorry an error occurred-email already exists" + error);
+                    //go to code/payment screen
+            //        this.props.loadView();
+
+             //if (!error.status) {
+                // network error
+              //}
+
+              })
+
   }
+
+
+  //return {
+  //  type: GET_USER_DETAILS,
+  //  data: {first_name: "", last_name: "", email: "", mobile: ""}
+  //}
 }
 
-export function getUserOrders(value: any) {
+/*export function getUserOrders(value: any) {
   //alert("setDeliveryAddressStreet");
   return {
     type: GET_USER_ORDERS,
@@ -296,12 +345,65 @@ export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_
                 // network error
               //}
 
-              })*/
+        })*/
 
-               dispatch({
-                  type: ADD_USER_DELIVERY_ADDRESS,
+         dispatch({
+            type: ADD_USER_DELIVERY_ADDRESS,
+              //  data: "session_key"
+         })
+
+  }
+  
+}
+
+export function saveUserPaymentMethod(payment_name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any, zipcode: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("add user delivery address street1");
+  return function (dispatch: any) { 
+      
+      /*axios.post('/api/graphql', {
+                     query: 'mutation {save_user_payment_method (payment_name: "' + payment_name + '", name_on_card: "' + name_on_card + '", expiry_month: "' + expiry_month + '", city: "' + city +'", state: '" + state + "', zipcode: '" + zipcode + "') {user_id}}'
+              })
+              .then((response: any) => {
+
+                    console.log("register response" + JSON.stringify(response));
+
+                     //dispatch({
+                    //  type: REGISTER_USER,
                     //  data: "session_key"
-               })
+                    //})
+
+                    //return {
+                    //  type: ADD_USER_DELIVERY_ADDRESS,
+                    //  name,
+                    //  street1,
+                    //  street2,
+                    //  city,
+                    //  state,
+                    //  zipcode
+                    //}
+                    //saved
+
+                    //that.props.history.push('/user');
+                    //dispatch(push("/user"));
+
+              })
+              .catch((error: any) => {
+
+                    console.log("sorry an error occurred-email already exists" + error);
+                    //go to code/payment screen
+            //        this.props.loadView();
+
+             //if (!error.status) {
+                // network error
+              //}
+
+        })*/
+
+         dispatch({
+            type: ADD_USER_DELIVERY_ADDRESS,
+              //  data: "session_key"
+         })
 
   }
   

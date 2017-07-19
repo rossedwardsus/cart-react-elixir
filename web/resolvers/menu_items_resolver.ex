@@ -1,5 +1,8 @@
 defmodule Sconely.MenuItemsResolver do
-  #alias Sconely.SconelySignatureOrder
+  alias Sconely.MenuItems
+  alias SconeHomeElixir.Repo
+
+  import Ecto.Query
   use Timex
   
   def getMenuItems(_args, _info) do
@@ -19,9 +22,31 @@ defmodule Sconely.MenuItemsResolver do
 
     #Duration.now
 
-    
-    #{:ok, Blog.Repo.all(Post)}
-    {:ok, [%{item_id: 1000}]}
+    new_customer = [
+      email: "test@test.com",
+      description: "An Test Account",
+    #  metadata:[
+    #    app_order_id: "ABC123"
+    #    app_state_x: "xyz"
+    #  ],
+    #  card: [
+    #    number: "4111111111111111",
+    #    exp_month: 01,
+    #    exp_year: 2018,
+    #    cvc: 123,
+    #    name: "Joe Test User"
+    #  ]
+    ]
+    {:ok, res} = Stripe.Customers.create new_customer
+
+    IO.inspect(res[:id])
+
+
+
+    IO.inspect(Repo.all(from mi in MenuItems, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}))
+
+    {:ok, Repo.all(from mi in MenuItems, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
+    #{:ok, [%{item_id: 1000}]}
   end
 
 

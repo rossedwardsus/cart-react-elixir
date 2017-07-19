@@ -17,16 +17,16 @@ import cart from './cart.ts';
 import name from './name.ts';
 import contact from './contact.ts';
 //import OrderDeliveryAddress from './order_delivery_address.ts';
-import UserPaymentMethods from './user_payment_methods.ts';
+//import UserPaymentMethods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 import SignatureOrderGuestResponse from './signature_guest_response.ts';
-import UserOrders from './user_orders.ts';
-import UserOrderCart from './user_order_cart.ts';
-import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
+//import UserOrders from './user_orders.ts';
+//import UserOrderCart from './user_order_cart.ts';
+//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
 //import UserOrderDeliveryContact from './user_order_delivery_contact.ts';
-import UserOrderEventDetails from './user_order_event_details.ts';
-import UserOrderGuestResponse from './user_order_guest_response.ts';
-import UserOrderSuborders from './user_order_suborders.ts';
+//import UserOrderEventDetails from './user_order_event_details.ts';
+//import UserOrderGuestResponse from './user_order_guest_response.ts';
+//import UserOrderSuborders from './user_order_suborders.ts';
 
 
 //session
@@ -51,14 +51,14 @@ export default combineReducers({
   name,
   contact,
   User,
-  UserOrders,
+  //UserOrders,
   //UserOrderEventDetails,
   //UserOrderDeliveryAddress,
   //UserOrderDeliveryContact,
-  UserOrderCart,
-  UserPaymentMethods,
-  UserOrderGuestResponse,
-  UserOrderSuborders,
+  //UserOrderCart,
+  //UserPaymentMethods,
+  //UserOrderGuestResponse,
+  //UserOrderSuborders,
   //user_delivery_addresses,
   routing: routerReducer
 })

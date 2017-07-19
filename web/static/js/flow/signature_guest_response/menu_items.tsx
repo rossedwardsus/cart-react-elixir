@@ -23,6 +23,7 @@ class GuestMenu extends React.Component<any, any> {
 
     this.state = {
 
+        menu_items: [],
         selected_item_id: 0,
         selected_item_title: "",
         selected_item_story: "",
@@ -48,14 +49,16 @@ class GuestMenu extends React.Component<any, any> {
 
 
     //let sconely_message: any = "";
+
+    //this.setState({menu_items: this.props.menu_items});
     
    
 
   }
 
-  componentWillReceiveProps = () => {
+  componentWillReceiveProps(){
 
-    console.log("cwrp" + JSON.stringify((this.props.order_details.invited_guest_message == "")));
+    console.log("cwrp menu items " + JSON.stringify((this.props.menu_items)));
 
     if (this.props.order_details.invited_guest_message == ""){
 
@@ -63,9 +66,12 @@ class GuestMenu extends React.Component<any, any> {
 
     }
 
+    //this.setState({menu_items: this.props.menu_items});
+    
+
   }
 
-  showItem(item_id: any){
+  showItem = (item_id: any) => {
 
       //alert(item_id);
 
@@ -125,7 +131,7 @@ class GuestMenu extends React.Component<any, any> {
 
     const {order_details, menu_items} = this.props;
 
-    console.log("order details " + JSON.stringify(order_details.invited_guest_message));
+    //console.log("order details " + JSON.stringify(order_details.invited_guest_message));
     console.log("menu items " + JSON.stringify(menu_items));
 
     //let message = order_details.invited_guest_message.replace(/(?:\r\n|\r|\n)/g, <br />)
@@ -174,7 +180,15 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       {this.props.sconely_message}
                       <br/>
-                      <img src="/images/menu/LACI_1.5.jpg"/>
+                      <div className="col-sm-3"></div>
+                      <div className="col-sm-3"><img src="/images/menu/LACI_1.5.jpg"/></div>
+                      <div className="col-sm-3"></div>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
                       <br/>
                       Sconely Chat & Chew at LACI
                       <br/>
@@ -223,10 +237,10 @@ class GuestMenu extends React.Component<any, any> {
 
                           return(
                                   <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                        <img id="1" onClick={() => this.showItem(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                        <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(" ", "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                     <br/>    
                                     <br/>
-                                    <b>{item.title}11111111111111111111111111111111111111111111111</b> /
+                                    <b>{item.name}</b>
                                     <br/>
                                     <br/>
                                     <br/>
@@ -234,15 +248,15 @@ class GuestMenu extends React.Component<any, any> {
                         );
                       }.bind(this))}
 
-                       <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
+                          <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" max-height=" 700px">
                                 <div className="modal-dialog" role="document">
                                   <div className="modal-content">
                                     <div className="modal-header">
                                       <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
+                                      <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
                                     </div>
                                     <div className="modal-body">
-                                        {this.state.selected_item_story}
+                                        {this.state.selected_item_description}
                                         <br/>
                                         <br/>
                                         Ingredients: {this.state.selected_item_ingredients}
@@ -261,8 +275,52 @@ class GuestMenu extends React.Component<any, any> {
                                   </div>
                                 </div>
                           </div>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+
+                        <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
                       </div>
-                      <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
+                      <div className="hidden-xs col-md-3">
+                      </div>
+                    
                     </div>
             </div>
     )
@@ -280,9 +338,10 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //flattened_menu_items: getMenuItems(state),
         order_details: getOrderDetails(state),
         //order_details: state.SignatureGuestResponse,
-        menu_items: getMenuItems(state),
+        //menu_items: getMenuItems(state),
         //cart: state.cart
         //host_message: getSignatureHostMessage(state);
+        menu_items: state.menuItems.items
         
     //}
   }

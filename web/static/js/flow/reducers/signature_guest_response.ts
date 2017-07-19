@@ -48,7 +48,7 @@ export function someStore (state = initialState, action) {
 
 
 
-export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", invited_guest_message: "", chosen_item_id: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
+export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", invited_guest_message: "", order_delivery_date: "", chosen_item_id: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;

@@ -263,7 +263,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   </form>
                                   <form className="form-inline">
                                       <div className="form-group">
-                                        <textarea value={this.state.note} className="form-control" style={{rows: 5, columns: 10, resize: "none"}} id="note"></textarea>
+                                        <textarea value={this.state.note} className="form-control" rows={5} cols={50} style={{resize: "none"}} id="note"></textarea>
                                       </div>
                                   </form>
                                   <br/>
@@ -328,7 +328,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                                   </form>
                                                   <form className="form-inline">
                                                       <div className="form-group">
-                                                        <textarea  className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
+                                                        <textarea  className="form-control" style={{rows: 5, columns: 10, resize: "none"}} id="comment"></textarea>
                                                       </div>
                                                     </form>
                                                 <button className="btn btn-default" onClick={this.saveDeliveryContactAddress}>Save Address</button>
@@ -380,7 +380,7 @@ function mapDispatchToProps(dispatch: any) {
 
     saveUserDeliveryContactAddress: (id: any, delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);
-      dispatch(saveUserDeliveryContactAddress("1", "delivery_contact_address_name", "first_name", "last_name", "email", "mobile", "street1", "street2", "city", "state", "zipcode"));
+      dispatch(saveUserDeliveryContactAddress("1", "dcan", "first_name", "last_name", "email", "mobile", "street1", "street2", "city", "state", "zipcode"));
     },
    
   }

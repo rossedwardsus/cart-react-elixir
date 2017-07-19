@@ -7,6 +7,9 @@ import {connect} from 'react-redux';
 
 import {createOrder} from '../actions/order.ts';
 import {createSignatureOrder} from '../actions/user_order.ts';
+import {getUser} from '../actions/user.ts';
+import {getUserOrders} from '../selectors/user.ts';
+
 import {List, Map} from 'immutable';
 
 import UserOrders from './user_orders.tsx';
@@ -48,6 +51,8 @@ class UserHomePage extends React.Component<any, any> {
   }
 
   componentDidMount(){
+
+    this.props.getUser();
 
     //this.props.getUserOrders();
     //this.props.getUserPayments();
@@ -250,7 +255,7 @@ class UserHomePage extends React.Component<any, any> {
                                   <div>
                                     Your Orders
                                     <br/>
-                                    <UserOrders UserOrders={this.props.UserOrders}/>
+                                    <UserOrders userOrders={this.props.userOrders}/>
                                   </div>
                                   <br/>
                                   <br/>
@@ -281,7 +286,7 @@ function mapStateToProps(state: any) {
   console.log("user home page component/state" + JSON.stringify(state));
   return {
    User: state.User,
-   UserOrders: state.UserOrders
+   userOrders: getUserOrders(state),
    //createOrder: createOrder
    //menu_items: dispatch()
   };
@@ -291,6 +296,10 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     //get user
+    getUser: () => {
+      //console.log(e.target.value);
+      dispatch(getUser("1"));
+    },
     getUserOrders: (e: any) => {
       //console.log(e.target.value);
       //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));

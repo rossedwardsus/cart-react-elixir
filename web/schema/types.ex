@@ -21,18 +21,31 @@ defmodule Sconely.Schema.Types do
   #user
 
 
-  object :user_delivery_address do
+  object :user_delivery_contact_address do
     field :delivery_contact_address_name, :string
   #  field :host_id, :string
   #  field :event_name, :string
   #  field :event_datetime, :string
   end
 
+  object :user_payment_method do
+    field :payment_method_name, :string
+  #  field :host_id, :string
+  #  field :event_name, :string
+  #  field :event_datetime, :string
+  end
+
+  object :user_order do
+    field :order_id, :string
+  #  field :host_id, :string
+  #  field :event_name, :string
+  #  field :event_datetime, :string
+  end
 
 
   object :user do
     field :first_name, :string
-    field :delivery_addresses, list_of(:user_delivery_address)
+    field :delivery_contacts_addresses, list_of(:user_delivery_contact_address)
   #  field :event_name, :string
   #  field :event_datetime, :string
   end
@@ -69,9 +82,10 @@ defmodule Sconely.Schema.Types do
   end
 
   object :menu_item do
-    field :item_id, :string
-  #  field :title, :string
-  #  field :description, :string
+    field :id, :string
+    field :name, :string
+    field :description, :string
+    field :ingredients, :string
   end
 
   #length
@@ -183,12 +197,6 @@ defmodule Sconely.Schema.Types do
   end
 
  
-
-  #object :sconely_signature_order_additional_items do
-  #  field :items, :menu_item
-  #end
-
-
   #object :items do
   #  field :item_id, :string
   #  field :title, :string
@@ -201,10 +209,5 @@ defmodule Sconely.Schema.Types do
 	field :event_name, (:string)
   end
 
-  #input_object :menu_item do
-  #	field :order_id, (:string)
-	#field :item_id, (:string)
-	#field :quantity, (:string)
-  #end
 
 end
