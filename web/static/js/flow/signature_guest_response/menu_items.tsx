@@ -192,7 +192,7 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      Sconely Chat & Chew at LACI
+                      <p className="text-center">Sconely Chat & Chew at LACI</p>
                       <br/>
                       <br/>
                       <br/>
