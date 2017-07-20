@@ -197,7 +197,7 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      <label className="text-justify" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
+                      <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
                       <br/>
                       <br/>
                       <br/>
