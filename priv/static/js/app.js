@@ -27286,6 +27286,15 @@ webpackJsonp([0],[
 	exports.SET_USER_MOBILE = 'SET_USER_MOBILE';
 	//export const SET_LAST_NAME = 'SET_LAST_NAME'
 	//export const SET_COMPANY_NAME = 'SET_COMPANY_NAME'
+	//USER PAYMENT METHODS
+	exports.ADD_USER_PAYMENT_METHOD = 'ADD_USER_PAYMENT_METHOD';
+	exports.SAVE_USER_PAYMENT_METHOD = 'SAVE_USER_PAYMENT_METHOD';
+	exports.SET_PAYMENT_NAME_ON_CARD = 'SET_PAYMENT_NAME_ON_CARD';
+	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
+	exports.SET_PAYMENT_EXPIRY_MONTH = 'SET_PAYMENT_EXPIRY_MONTH';
+	exports.SET_PAYMENT_EXPIRY_YEAR = 'SET_PAYMENT_EXPIRY_YEAR';
+	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
+	//ORDER
 	exports.CREATE_ORDER = 'CREATE_ORDER';
 	exports.SET_ORDER_ID = 'SET_ORDER_ID';
 	exports.TERMS = 'TERMS';
@@ -27316,11 +27325,7 @@ webpackJsonp([0],[
 	exports.SET_COMPANY_NAME = 'SET_COMPANY_NAME';
 	exports.SET_CONTACT_EMAIL = 'SET_CONTACT_EMAIL';
 	exports.SET_CONTACT_MOBILE = 'SET_CONTACT_MOBILE';
-	exports.SET_PAYMENT_NAME_ON_CARD = 'SET_PAYMENT_NAME_ON_CARD';
-	exports.SET_PAYMENT_CARD_NUMBER = 'SET_PAYMENT_CARD_NUMBER';
-	exports.SET_PAYMENT_EXPIRY_MONTH = 'SET_PAYMENT_EXPIRY_MONTH';
-	exports.SET_PAYMENT_EXPIRY_YEAR = 'SET_PAYMENT_EXPIRY_YEAR';
-	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
+	//ORDER VALIDATIONS
 	exports.CART_VALIDATED = 'CART_VALIDATED';
 	exports.CART_INVALIDATED = 'CART_INVALIDATED';
 	exports.DELIVERY_ADDRESS_VALIDATED = 'DELIVERY_ADDRESS_VALIDATED';
@@ -31296,7 +31301,7 @@ webpackJsonp([0],[
 	                      //  data: "session_key"
 	                      //})
 	                         //return {
-	                      //  type: ADD_USER_DELIVERY_ADDRESS,
+	                      //  type: ADD_USER_PAYMENT_METHOD,
 	                      //  name,
 	                      //  street1,
 	                      //  street2,
@@ -32493,7 +32498,7 @@ webpackJsonp([0],[
 	var sconely_signature_tsx_1 = __webpack_require__(968);
 	var order_event_details_ts_1 = __webpack_require__(1127);
 	var order_delivery_address_ts_1 = __webpack_require__(1128);
-	var order_payment_ts_1 = __webpack_require__(1129);
+	var order_payment_method_ts_1 = __webpack_require__(1129);
 	var user_order_ts_1 = __webpack_require__(958);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
@@ -32773,19 +32778,19 @@ webpackJsonp([0],[
 	            //  dispatch(setTime(e.target.value))
 	        },
 	        setNameOnCard: function setNameOnCard(e) {
-	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value, 1));
+	            dispatch(order_payment_method_ts_1.setPaymentNameOnCard(e.target.value, 1));
 	        },
 	        setCardNumber: function setCardNumber(e) {
-	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value, 1));
+	            dispatch(order_payment_method_ts_1.setPaymentCardNumber(e.target.value, 1));
 	        },
 	        setPaymentExpiryDateMonth: function setPaymentExpiryDateMonth(e) {
-	            dispatch(order_payment_ts_1.setPaymentExpiryMonth(e.target.value, 1));
+	            dispatch(order_payment_method_ts_1.setPaymentExpiryMonth(e.target.value, 1));
 	        },
 	        setPaymentExpiryDateYear: function setPaymentExpiryDateYear(e) {
-	            dispatch(order_payment_ts_1.setPaymentExpiryYear(e.target.value, 1));
+	            dispatch(order_payment_method_ts_1.setPaymentExpiryYear(e.target.value, 1));
 	        },
 	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value, 1));
+	            dispatch(order_payment_method_ts_1.setPaymentSecurityCode(e.target.value, 1));
 	        },
 	        getUserOrder: function getUserOrder(e) {
 	            dispatch(user_order_ts_1.getUserOrder(1));
@@ -40552,7 +40557,7 @@ webpackJsonp([0],[
 	var order_name_ts_1 = __webpack_require__(1132);
 	var order_delivery_datetime_ts_1 = __webpack_require__(1133);
 	var cart_ts_1 = __webpack_require__(950);
-	var order_payment_ts_1 = __webpack_require__(1129);
+	var order_payment_method_ts_1 = __webpack_require__(1129);
 	var order_contact_ts_1 = __webpack_require__(1134);
 	var order_ts_1 = __webpack_require__(920);
 	var delivery_address_tsx_1 = __webpack_require__(1135);
@@ -41182,19 +41187,19 @@ webpackJsonp([0],[
 	            dispatch(cart_ts_1.removeCartItem(item_id));
 	        },
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
-	            dispatch(order_payment_ts_1.setPaymentNameOnCard(e.target.value, ""));
+	            dispatch(order_payment_method_ts_1.setPaymentNameOnCard(e.target.value, ""));
 	        },
 	        setPaymentCardNumber: function setPaymentCardNumber(e) {
-	            dispatch(order_payment_ts_1.setPaymentCardNumber(e.target.value, ""));
+	            dispatch(order_payment_method_ts_1.setPaymentCardNumber(e.target.value, ""));
 	        },
 	        setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
-	            dispatch(order_payment_ts_1.setPaymentExpiryMonth(e.target.value, ""));
+	            dispatch(order_payment_method_ts_1.setPaymentExpiryMonth(e.target.value, ""));
 	        },
 	        setPaymentExpiryYear: function setPaymentExpiryYear(e) {
-	            dispatch(order_payment_ts_1.setPaymentExpiryYear(e.target.value, ""));
+	            dispatch(order_payment_method_ts_1.setPaymentExpiryYear(e.target.value, ""));
 	        },
 	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
-	            dispatch(order_payment_ts_1.setPaymentSecurityCode(e.target.value, ""));
+	            dispatch(order_payment_method_ts_1.setPaymentSecurityCode(e.target.value, ""));
 	        },
 	        termsValidated: function termsValidated(value) {
 	            dispatch(order_ts_1.termsValidated(value));
@@ -45289,13 +45294,16 @@ webpackJsonp([0],[
 	            //var filteredArray = array.filter(function (element) { 
 	            //    return element.id === 0;
 	            //});
-	            //[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3)
+	            var item_index = _this.props.menu_items.findIndex(function (obj) {
+	                return obj.id == item_id;
+	            });
+	            console.log("item index " + item_index);
 	            //{1234: {title: ""}, 5678: {title: ""}}
 	            /*this.props.normalized_menu_items.map(function(item: any){
 	                       if(item.item_id === item_id){*/
-	            _this.setState({ selected_item_title: _this.props.menu_items[item_id].title });
-	            //this.setState({selected_item_story: item.story});
-	            //this.setState({selected_item_ingredients: item.ingredients});
+	            _this.setState({ selected_item_name: _this.props.menu_items[item_id].name });
+	            _this.setState({ selected_item_description: _this.props.menu_items[item_id].description });
+	            _this.setState({ selected_item_ingredients: _this.props.menu_items[item_id].description });
 	            /*}
 	              }.bind(this));*/
 	            $('#myModal').modal('show');
@@ -45388,7 +45396,7 @@ webpackJsonp([0],[
 	                    return _this3.saveGuestChoice();
 	                }, type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Select Scone")))))))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
 	                    return _this3.noThanks();
-	                } }, "No Scone for me, thanks!")), React.createElement("div", { className: "hidden-xs col-md-3" })));
+	                } }, "No Scone for me, thanks!"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { fontSize: 12 } }, "All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used."), React.createElement("br", null), React.createElement("br", null), "*Names of scones are inspired by nicknames of dear friends and family"), React.createElement("div", { className: "hidden-xs col-md-3" })));
 	        }
 	    }], [{
 	        key: "contextTypes",

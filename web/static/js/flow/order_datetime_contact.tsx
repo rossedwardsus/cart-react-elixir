@@ -17,7 +17,7 @@ import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddress
 import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/cart.ts';
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment.ts';
+import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
 

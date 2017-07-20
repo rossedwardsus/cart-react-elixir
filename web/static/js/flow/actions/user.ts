@@ -1,4 +1,4 @@
-import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS} from '../constants/actionTypes.ts';
+import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS, ADD_USER_PAYMENT_METHOD, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
@@ -321,7 +321,7 @@ export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_
                     //})
 
                     //return {
-                    //  type: ADD_USER_DELIVERY_ADDRESS,
+                    //  type: ADD_USER_PAYMENT_METHOD,
                     //  name,
                     //  street1,
                     //  street2,

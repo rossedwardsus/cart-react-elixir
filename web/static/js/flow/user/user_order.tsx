@@ -10,7 +10,7 @@ import SconelySignatureSinglePage from '../sconely_signature.tsx';
 
 import {setEventName, setGuestMessage, setGuestCount} from '../actions/order_event_details.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_address.ts';
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode} from '../actions/order_payment.ts';
+import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode} from '../actions/order_payment_method.ts';
 import {getUserOrder, getUserOrderDetails, getUserOrderDeliveryContact, getUserOrderDeliveryAddress, getUserOrderGuestResponses, processSignatureOrder} from '../actions/user_order.ts';
 
 

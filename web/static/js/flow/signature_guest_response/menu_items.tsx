@@ -84,7 +84,10 @@ class GuestMenu extends React.Component<any, any> {
       //    return element.id === 0;
       //});
 
-      //[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3)
+      let item_index = this.props.menu_items.findIndex((obj: any) => obj.id == item_id);
+
+      console.log("item index " + item_index);
+
 
       //{1234: {title: ""}, 5678: {title: ""}}
 
@@ -92,15 +95,14 @@ class GuestMenu extends React.Component<any, any> {
 
           if(item.item_id === item_id){*/
 
-              this.setState({selected_item_title: this.props.menu_items[item_id].title});
-              //this.setState({selected_item_story: item.story});
-              //this.setState({selected_item_ingredients: item.ingredients});
+              this.setState({selected_item_name: this.props.menu_items[item_id].name});
+              this.setState({selected_item_description: this.props.menu_items[item_id].description});
+              this.setState({selected_item_ingredients: this.props.menu_items[item_id].description});
 
           /*}
 
 
       }.bind(this));*/
-
 
 
       $('#myModal').modal('show');
@@ -317,6 +319,14 @@ class GuestMenu extends React.Component<any, any> {
                           <br/>
 
                         <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div style={{fontSize: 12}}>All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used.</div>
+                        <br/>
+                        <br/>
+                        *Names of scones are inspired by nicknames of dear friends and family
                       </div>
                       <div className="hidden-xs col-md-3">
                       </div>
