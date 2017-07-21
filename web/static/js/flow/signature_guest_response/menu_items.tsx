@@ -196,8 +196,6 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      <br/>
-                      <br/>
                       <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
                       <br/>
