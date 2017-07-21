@@ -219,14 +219,16 @@ class GuestMenu extends React.Component<any, any> {
                       <div className="hidden-lg col-xs-11">
                         <br/>
                         <br/>
-                        <img height="75" width="75" src="/images/menu/DWK_green.jpg"/>
+                        <div className="col-sm-3"></div>
+                        <div className="col-sm-3"><img src="/images/menu/LACI_1.5.jpg"/></div>
+                        <div className="col-sm-3"></div>
                         <br/>
-                        Sconely Launch at LACI
+                        <p className="text-center">Sconely Chat & Chew at LACI</p>
                         <br/>
                         <br/>
                         <br/>
                         <br/>
-                        {order_details.invited_guest_message}
+                        <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
                         <br/>
                         <br/>
                         <br/>
