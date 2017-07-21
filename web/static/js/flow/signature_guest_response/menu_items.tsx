@@ -209,19 +209,21 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
+                      <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>2{message}</label>
                       <br/>
                       <br/>
+                      <div className="text-left col-md-3" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
+                          <br/>
+                          md{order_details.invited_guest_message}
+                          <br/>
+                      </div>
                       <br/>
                     </div>
-                    <div className="col-xs-12 col-md-9">
+                    <div className="col-sm-12 col-md-9">
                       <br/>
-                      <div className="hidden-lg col-xs-11">
                         <br/>
                         <br/>
-                        <div className="col-sm-3"></div>
-                        <div className="col-sm-3"><img src="/images/menu/LACI_1.5.jpg"/></div>
-                        <div className="col-sm-3"></div>
+                        <img src="/images/menu/LACI_1.5.jpg" className="img-responsive center-block"/>
                         <br/>
                         <p className="text-center">Sconely Chat & Chew at LACI</p>
                         <br/>
@@ -231,9 +233,13 @@ class GuestMenu extends React.Component<any, any> {
                         <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
                         <br/>
                         <br/>
+                        <div className="text-left col-sm-1" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
+                          <br/>
+                          xs{order_details.invited_guest_message}
+                          <br/>
+                        </div>
                         <br/>
                         <br/>
-                      </div>
                       <br/>
                       <br/>
                        {this.props.menu_items.map(function(item: any, index: any){
