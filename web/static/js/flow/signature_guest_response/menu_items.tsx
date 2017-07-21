@@ -221,7 +221,7 @@ class GuestMenu extends React.Component<any, any> {
                     </div>
                     <div className="col-sm-12 col-md-9">
                       <br/>
-                        <div className="col-sm-12 hidden-md">
+                        <div className="hidden-lg">
                         <br/>
                         <br/>
                         <img src="/images/menu/LACI_1.5.jpg" className="img-responsive center-block"/>
