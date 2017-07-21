@@ -99,7 +99,7 @@ class GuestMenu extends React.Component<any, any> {
 
               this.setState({selected_item_name: this.props.menu_items[item_id].name});
               this.setState({selected_item_description: this.props.menu_items[item_id].description});
-              this.setState({selected_item_ingredients: this.props.menu_items[item_id].description});
+              this.setState({selected_item_ingredients: this.props.menu_items[item_id].ingredients});
 
           /*}
 
@@ -194,17 +194,11 @@ class GuestMenu extends React.Component<any, any> {
                       <br/>
                       {this.props.sconely_message}
                       <br/>
-                      <div className="col-sm-3"></div>
-                      <div className="col-sm-3"><img src="/images/menu/LACI_1.5.jpg"/></div>
-                      <div className="col-sm-3"></div>
+                      <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
                       <br/>
                       <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <p className="text-center">Sconely Chat & Chew at LACI</p>
+                      <p className="text-left">Sconely Chat & Chew at LACI</p>
                       <br/>
                       <br/>
                       <br/>
@@ -224,9 +218,9 @@ class GuestMenu extends React.Component<any, any> {
                         <div className="hidden-lg">
                         <br/>
                         <br/>
-                        <img src="/images/menu/LACI_1.5.jpg" className="img-responsive center-block"/>
+                        <img src="/images/menu/LACI_1.5.jpg" />
                         <br/>
-                        <p className="text-center">Sconely Chat & Chew at LACI</p>
+                        <p className="text-left">Sconely Chat & Chew at LACI</p>
                         <br/>
                         <br/>
                         <br/>
@@ -234,11 +228,6 @@ class GuestMenu extends React.Component<any, any> {
                         <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
                         <br/>
                         <br/>
-                        <div className="text-left col-sm-1" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
-                          <br/>
-                          xs{order_details.invited_guest_message}
-                          <br/>
-                        </div>
                         </div>
                         <br/>
                         <br/>
