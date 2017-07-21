@@ -221,6 +221,7 @@ class GuestMenu extends React.Component<any, any> {
                     </div>
                     <div className="col-sm-12 col-md-9">
                       <br/>
+                        <div className="col-sm-12 hidden-md">
                         <br/>
                         <br/>
                         <img src="/images/menu/LACI_1.5.jpg" className="img-responsive center-block"/>
@@ -237,6 +238,7 @@ class GuestMenu extends React.Component<any, any> {
                           <br/>
                           xs{order_details.invited_guest_message}
                           <br/>
+                        </div>
                         </div>
                         <br/>
                         <br/>
