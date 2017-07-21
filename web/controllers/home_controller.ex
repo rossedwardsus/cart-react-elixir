@@ -19,14 +19,14 @@ defmodule SconeHomeElixir.HomeController do
   	if params["name"] != nil do
 
   		signature_order = Repo.get_by(SignatureOrder, %{event_url_name: params["name"]})
-  		order = Repo.get_by(Order, %{order_id: signature_order.parent_order_id})
+  		#order = Repo.get_by(Order, %{order_id: signature_order.parent_order_id})
 
   		#http://localhost:4000/sconelychat&chewatlaci
 
   		IO.inspect(signature_order)
   		IO.inspect(order)
 
-  		delivery_date = Ecto.DateTime.to_date(order.delivery_datetime) |> Ecto.Date.to_erl
+  		#delivery_date = Ecto.DateTime.to_date(order.delivery_datetime) |> Ecto.Date.to_erl
 
   		date1 = Timex.today()
 	    #date2 = Date.from({{1970, 2, 4}, {12, 5, 5}})
@@ -36,7 +36,7 @@ defmodule SconeHomeElixir.HomeController do
 	    #date1 = Timex.date({2014, 3, 4})
 	    #date2 = Timex.date({2015, 3, 4})
 
-	    IO.inspect(Timex.diff(date1, delivery_date, :days))
+	    #IO.inspect(Timex.diff(date1, delivery_date, :days))
 
    
 
