@@ -97,9 +97,9 @@ class GuestMenu extends React.Component<any, any> {
 
           if(item.item_id === item_id){*/
 
-              this.setState({selected_item_name: this.props.menu_items[item_id].name});
-              this.setState({selected_item_description: this.props.menu_items[item_id].description});
-              this.setState({selected_item_ingredients: this.props.menu_items[item_id].ingredients});
+              this.setState({selected_item_name: this.props.menu_items[item_index].name});
+              this.setState({selected_item_description: this.props.menu_items[item_index].description});
+              this.setState({selected_item_ingredients: this.props.menu_items[item_index].ingredients});
 
           /*}
 

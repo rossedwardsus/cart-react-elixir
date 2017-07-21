@@ -45302,9 +45302,9 @@ webpackJsonp([0],[
 	            //{1234: {title: ""}, 5678: {title: ""}}
 	            /*this.props.normalized_menu_items.map(function(item: any){
 	                       if(item.item_id === item_id){*/
-	            _this.setState({ selected_item_name: _this.props.menu_items[item_id].name });
-	            _this.setState({ selected_item_description: _this.props.menu_items[item_id].description });
-	            _this.setState({ selected_item_ingredients: _this.props.menu_items[item_id].ingredients });
+	            _this.setState({ selected_item_name: _this.props.menu_items[item_index].name });
+	            _this.setState({ selected_item_description: _this.props.menu_items[item_index].description });
+	            _this.setState({ selected_item_ingredients: _this.props.menu_items[item_index].ingredients });
 	            /*}
 	              }.bind(this));*/
 	            $('#myModal').modal('show');
