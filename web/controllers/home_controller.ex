@@ -48,7 +48,7 @@ defmodule SconeHomeElixir.HomeController do
 
 	  		name = params["name"]
 	  		url = "/#/order/" <> name <> "/guest/menu"
-	  		#redirect conn, to: url
+	  		redirect conn, to: url
 
 	  	end
 
