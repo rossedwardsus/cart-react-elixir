@@ -24,7 +24,7 @@ defmodule SconeHomeElixir.HomeController do
   		#http://localhost:4000/sconelychat&chewatlaci
 
   		IO.inspect(signature_order)
-  		IO.inspect(order)
+  		#IO.inspect(order)
 
   		#delivery_date = Ecto.DateTime.to_date(order.delivery_datetime) |> Ecto.Date.to_erl
 
