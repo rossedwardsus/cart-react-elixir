@@ -347,15 +347,11 @@ class GuestMenu extends React.Component<any, any> {
                             *Names of scones are inspired by nicknames of dear friends and family
                         </div>
                         <br/>
-                        <div className="col-xs-12 hidden-lg" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
+                        <div className="col-xs-12 hidden-lg" style={{fontSize: 12, wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
                             <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
                             <br/>
                             <br/>
-                            All of our scones are made from scratch and freshly baked to order.  Our scones are free of refined sugars, soy and chemical preservatives. 
-                            <br/>
-                            Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others),
-                            <br/>
-                            as we bake in a common kitchen where shared equipment is used.
+                            All of our scones are made from scratch and freshly baked to order.  Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others),  as we bake in a common kitchen where shared equipment is used.
                             <br/>
                             <br/>
                             <br/>

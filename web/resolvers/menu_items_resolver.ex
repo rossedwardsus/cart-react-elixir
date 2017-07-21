@@ -1,5 +1,5 @@
 defmodule Sconely.MenuItemsResolver do
-  alias Sconely.MenuItems
+  alias Sconely.MenuItem
   alias SconeHomeElixir.Repo
 
   import Ecto.Query
@@ -57,9 +57,9 @@ defmodule Sconely.MenuItemsResolver do
     #{:ok, card} = Stripe.Cards.create(:customer, customer_id, params)
 
 
-    IO.inspect(Repo.all(from mi in MenuItems, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}))
+    IO.inspect(Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}))
 
-    {:ok, Repo.all(from mi in MenuItems, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
+    {:ok, Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
   end
 
