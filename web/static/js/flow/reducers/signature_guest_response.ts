@@ -1,4 +1,4 @@
-import { SIGNATURE_GUEST_LOAD_ORDER, SIGNATURE_GUEST_SAVE_CHOICE, SIGNATURE_GUEST_COMPLETE_RESPONSE} from '../constants/actionTypes.ts';
+import { SIGNATURE_GUEST_LOAD_ORDER, SIGNATURE_GUEST_SAVE_CHOICE, SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE, SIGNATURE_GUEST_COMPLETE_RESPONSE } from '../constants/actionTypes.ts';
 
 const Immutable = require('immutable');
 
@@ -48,7 +48,7 @@ export function someStore (state = initialState, action) {
 
 
 
-export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", invited_guest_message: "", order_delivery_date: "", chosen_item_id: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []}, action: any){
+export default function SignatureGuestResponse(state:any = {order_id: 1, event_full_name: "", order_delivery_date: "", first_name: "", last_name: "", email: "", guest_response_validated: ""}, action: any){
 
   let delivery_addresses: any = [];
   let delivery_address_updated: any = null;
@@ -59,14 +59,20 @@ export default function SignatureGuestResponse(state:any = {order_id: 1, event_f
       //alert("CartState " + action.item_id);
       console.log("load order " + JSON.stringify(action.data));
 
-      return Object.assign({}, state, {event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message, menu_items: action.data.menu_items});
-    
+      return Object.assign({}, state, {event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message});
 
     case SIGNATURE_GUEST_SAVE_CHOICE:
       //alert("CartState " + action.item_id);
       console.log("chosen item " + JSON.stringify(action));
 
-      return Object.assign({}, state, {chosen_item: action.data.item_id});
+      return Object.assign({}, state, {chosen_item_id: action.data.item_id});
+    
+
+    case SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE:
+      //alert("CartState " + action.item_id);
+      console.log("chosen item " + JSON.stringify(action));
+
+      return Object.assign({}, state, {chosen_item_id: 0});
     
 
     default:

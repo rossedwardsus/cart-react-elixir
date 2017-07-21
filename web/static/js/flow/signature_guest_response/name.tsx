@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 
 //import MenuItems from './menu_items';
 import {completeGuestResponse} from '../actions/signature_guest_response.ts';
+import {getNameScreenText} from '../selectors/signature_guest_response.ts';
+
 
 class GuestName extends React.Component<any, any> {
   //props: Props;
@@ -25,6 +27,12 @@ class GuestName extends React.Component<any, any> {
         button_classname: "btn btn-default inactive"
         
     };
+
+  }
+
+  componentDidMount(){
+
+      //check event still valid
 
   }
 
@@ -110,11 +118,8 @@ class GuestName extends React.Component<any, any> {
                 <div className="col-xs-12 col-md-9">
                       <br/>
                       <br/>
-                      Please provide us with the information below so we can let your host know.
                       <br/>
-                      <br/>
-                      Great you are almost finished.  Please provide us with the information below so we can personalize your scone.
-                      <br/>
+                      {this.props.text}
                       <br/>
                       <form className="form-inline">
                         <div className="form-group">
@@ -146,9 +151,9 @@ class GuestName extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("delivery addresses component/state" + JSON.stringify(state));
+  console.log("guest name component/state" + JSON.stringify(state));
   return {
-    //text: getNameScreenText(state),
+    text: getNameScreenText(state),
         
     //parent_order_id
     //item_id
@@ -159,12 +164,12 @@ function mapStateToProps(state: any) {
   };
 }
 
-function mapDispatchToProps(dispatch: any) {
+function mapDispatchToProps(dispatch: any, ownProps: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     completeGuestResponse: (first_name: any, last_name: any, email: any) => {
     //  console.log("e.target.value");
-      dispatch(completeGuestResponse(first_name, last_name, email));
+      dispatch(completeGuestResponse(first_name, last_name, email, ownProps.params.event_name));
     },
     //setContactPhone: (e: any) => {
     //  console.log(e.target.value);

@@ -1,4 +1,4 @@
-import {SIGNATURE_GUEST_LOAD_ORDER, SIGNATURE_GUEST_SAVE_CHOICE, SIGNATURE_GUEST_COMPLETE_RESPONSE} from '../constants/actionTypes.ts';
+import {SIGNATURE_GUEST_LOAD_ORDER, SIGNATURE_GUEST_SAVE_CHOICE, SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE, SIGNATURE_GUEST_COMPLETE_RESPONSE} from '../constants/actionTypes.ts';
 
 import {push} from 'react-router-redux';
 import axios from 'axios';
@@ -67,13 +67,30 @@ export function saveGuestChoice(chosen_item_id: any, event_name: any) {
       data: {chosen_item_id: chosen_item_id}
     })
 
-    dispatch(push("/order/guest/name"));
+    dispatch(push("/order/" + event_name + "/guest/name"));
 
   }
 
 }
 
-export function completeGuestResponse(first_name: any, last_name: any, email: any) {
+export function saveGuestChoiceNoScone(event_name: any) {
+  //alert(item_id)
+  return (dispatch: any, getState: any) => { 
+
+    console.log("no scone " + JSON.stringify(getState()));
+
+    dispatch({
+      type: SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE,
+      data: {chosen_item_id: 0}
+    })
+
+    dispatch(push("/order/" + event_name + "/guest/name"));
+
+  }
+
+}
+
+export function completeGuestResponse(first_name: any, last_name: any, email: any, event_name: any) {
    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
    return function (dispatch: any, getState: any) { 
 
@@ -95,7 +112,7 @@ export function completeGuestResponse(first_name: any, last_name: any, email: an
 
              //call the reducer themn redirect
              //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
-             dispatch(push("/order/guest/completed"));
+             dispatch(push("/order/" + event_name + "/guest/completed"));
 
       })
       .catch((error: any) => {

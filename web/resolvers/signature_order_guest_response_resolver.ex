@@ -1,6 +1,8 @@
 defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias Sconely.SignatureOrder
   alias Sconely.Order
+  alias Sconely.MenuItem
+
   use Timex
 
   alias Sconely.SignatureOrderGuestResponse
@@ -24,14 +26,13 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   def complete_guest_response(_args, _info) do
     #signature_order = Repo.get_by(SconelySignatureOrder, %{parent_order_id: "uuid"})
 
-    IO.inspect(_args)
+     IO.inspect(_args)
     #IO.inspect(order)
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
 
     #check if guest added order already
     #else you have alrady chosen a scone thank you
-
 
     #guest_response = Repo.get_by(SignatureOrderGuestResponse, %{parent_order_id: "1234", first_name: "Ross"})
 
@@ -44,8 +45,6 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
     IO.inspect(guest_response_changeset)
 
-    #get title of chosen item from the database 
-
     Repo.transaction(fn ->
 
         case Repo.insert(guest_response_changeset) do
@@ -54,6 +53,10 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
 
                 if _args[:chosen_item_id] != 0 do
+
+                  #get title of chosen item from the database 
+                  menu_item = Repo.get_by(MenuItem, %{id: _args[:chosen_item_id]})
+                  IO.inspect(menu_item)
 
                   #Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 

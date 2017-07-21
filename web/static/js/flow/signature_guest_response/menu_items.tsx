@@ -3,10 +3,10 @@ import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 import {connect} from 'react-redux';
 
-import {getMenuItems, getOrderDetails, getNormalizedMenuItems, getSconelyMessage} from '../selectors/signature_guest_response.ts';
+import {getMenuItems, getOrderDetails, getNormalizedMenuItems, getSconelyMessage, getSignatureHostMessage} from '../selectors/signature_guest_response.ts';
 
 import {getMenuItemsAction} from '../actions/menu.ts';
-import {loadSignatureGuestResponseOrderDetails, saveGuestChoice} from '../actions/signature_guest_response.ts';
+import {loadSignatureGuestResponseOrderDetails, saveGuestChoice, saveGuestChoiceNoScone} from '../actions/signature_guest_response.ts';
 
 
 //import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
@@ -46,6 +46,8 @@ class GuestMenu extends React.Component<any, any> {
 
     this.props.loadSignatureGuestResponseOrderDetails();
     this.props.getMenuItems();
+
+    //check event still valid
 
 
     //let sconely_message: any = "";
@@ -125,7 +127,8 @@ class GuestMenu extends React.Component<any, any> {
 
   noThanks = () => {
 
-    this.context.router.push("/order/guest/name");
+    //this.context.router.push("/order/guest/name");
+    this.props.saveGuestChoiceNoScone();
 
   }
 
@@ -142,10 +145,19 @@ class GuestMenu extends React.Component<any, any> {
 
     //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
 
-    let message = order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
-      return <span key={key}>{item}<br/></span>
-    })
     
+    //working
+    let message = "";
+
+    if(order_details.invited_guest_message != undefined){
+    
+      message = order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
+        return <span key={key}>{item}<br/></span>
+      })
+    }
+    
+    
+
     /*let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
     return (<div>
       {item}
@@ -318,15 +330,40 @@ class GuestMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
 
-                        <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
                         <br/>
                         <br/>
                         <br/>
                         <br/>
-                        <div style={{fontSize: 12}}>All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used.</div>
+                        <div className="hidden-xs col-lg-12" style={{fontSize: 12}}>
+                            <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
+                            <br/>
+                            <br/>
+                            All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used.
+                            <br/>
+                            <br/>
+                            <br/>
+                            *Names of scones are inspired by nicknames of dear friends and family
+                        </div>
+                        <br/>
+                        <div className="col-xs-12 hidden-lg" style={{fontSize: 12}}>
+                            <button className="btn btn-default" onClick={() => this.noThanks()}>No Scone for me, thanks!</button>
+                            <br/>
+                            <br/>
+                            All of our scones are made from scratch and freshly baked to order. 
+                            <br/>
+                            Our scones are free of refined sugars, soy and chemical preservatives. 
+                            <br/>
+                            Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others),
+                            <br/>
+                            as we bake in a common kitchen where shared equipment is used.
+                            <br/>
+                            <br/>
+                            <br/>
+                            *Names of scones are inspired by nicknames of dear friends and family
+                        </div>
                         <br/>
                         <br/>
-                        *Names of scones are inspired by nicknames of dear friends and family
+                        
                       </div>
                       <div className="hidden-xs col-md-3">
                       </div>
@@ -350,7 +387,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //order_details: state.SignatureGuestResponse,
         //menu_items: getMenuItems(state),
         //cart: state.cart
-        //host_message: getSignatureHostMessage(state);
+        host_message: getSignatureHostMessage(state),
         menu_items: state.menuItems.items
         
     //}
@@ -372,11 +409,13 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       //console.log("e.target.value");
       dispatch(loadSignatureGuestResponseOrderDetails());
     },
-
-    
     saveGuestChoice: (item_id: any) => {
       dispatch(saveGuestChoice(item_id, event_name));
     },
+    saveGuestChoiceNoScone: () => {
+      dispatch(saveGuestChoiceNoScone(event_name));
+    },
+    
     //cartValidated: () => {
     //  dispatch(cartValidated());
     //},

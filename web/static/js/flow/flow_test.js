@@ -184,13 +184,13 @@ const Root = () => (
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
         <Route path="/user/about_me" component={UserAboutMe} />
         <Route path="/user/order/:order_id" component={UserOrder} />
-        <Route path="/order/guest/completed" component={SconelySignatureGuestOrderCompleted} />
-        <Route path="/order/guest/name" component={SconelySignatureGuestName} />
         <Route path="/order/:order_id/guests" component={Guests} />
         <Route path="/order/:order_id/guests" component={SconelySignatureOrderHistory} />
         <Route path="/order/:order_id/items" component={SconelySignatureAdditionalItems} />
         <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
-         <Route path="/:name" component={YoursRedirect} />                
+        <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />
+        <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />
+        <Route path="/:name" component={YoursRedirect} />                
       </Route>
     </Router>
   </Provider>

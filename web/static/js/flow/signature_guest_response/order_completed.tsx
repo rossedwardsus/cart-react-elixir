@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 
 //import MenuItems from './menu_items';
 import {completeGuestResponse} from '../actions/signature_guest_response.ts';
+import {getOrderCompletedScreenText} from '../selectors/signature_guest_response.ts';
+
 
 class SignatureGuestOrderComplete extends React.Component<any, any> {
   //props: Props;
@@ -119,11 +121,8 @@ class SignatureGuestOrderComplete extends React.Component<any, any> {
                       <br/>
                       <br/>
                       <br/>
-                      Thank you!
                       <br/>
-                      Thank you! Enjoy your scone!
-                      <br/>
-                      <br/>
+                      {this.props.text}
                       <br/>
                 </div>
             </div>
@@ -135,6 +134,7 @@ class SignatureGuestOrderComplete extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("delivery addresses component/state" + JSON.stringify(state));
   return {
+    text: getOrderCompletedScreenText(state),
     //GuestResponse: state.GuestResponse,
    //order: state.default.order
    //menu_items: getPublicMenu
@@ -157,9 +157,9 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-//const GuestName1 = connect(
-//  mapStateToProps,
-//  mapDispatchToProps
-//)(GuestName)
+const SignatureGuestOrderComplete1 = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignatureGuestOrderComplete)
 
-export default SignatureGuestOrderComplete;
+export default SignatureGuestOrderComplete1;

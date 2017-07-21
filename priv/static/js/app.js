@@ -295,12 +295,12 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment_methods', component: _user_payment_methods2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/about_me', component: _user_about_me2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/order/:order_id', component: _user_order2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/guest/completed', component: _order_completed2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/order/guest/name', component: _name2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: _sconely_signature_guests2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: _sconely_signature_order_history2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: _sconely_signature_additional_items2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:event_name/guest/menu', component: _menu_items2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:event_name/guest/name', component: _name2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:event_name/guest/completed', component: _order_completed2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/:name', component: _yours_redirect2.default })
 	      )
 	    )
@@ -27375,6 +27375,7 @@ webpackJsonp([0],[
 	exports.LOAD_ORDERS = 'LOAD_ORDERS';
 	exports.SIGNATURE_GUEST_LOAD_ORDER = 'SIGNATURE_GUEST_LOAD_ORDER';
 	exports.SIGNATURE_GUEST_SAVE_CHOICE = 'SIGNATURE_GUEST_SAVE_CHOICE';
+	exports.SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE = 'SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE';
 	exports.SIGNATURE_GUEST_COMPLETE_RESPONSE = 'SIGNATURE_GUEST_COMPLETE_RESPONSE';
 	exports.SIGNATURE_GUEST_SET_GUEST_FIRST_NAME = 'SET_GUEST_FIRST_NAME';
 	exports.SIGNATURE_GUEST_SET_GUEST_LAST_NAME = 'SET_GUEST_LAST_NAME';
@@ -45313,7 +45314,8 @@ webpackJsonp([0],[
 	            _this.props.saveGuestChoice(_this.state.selected_item_id);
 	        };
 	        _this.noThanks = function () {
-	            _this.context.router.push("/order/guest/name");
+	            //this.context.router.push("/order/guest/name");
+	            _this.props.saveGuestChoiceNoScone();
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
@@ -45334,6 +45336,7 @@ webpackJsonp([0],[
 	            console.log("mounted");
 	            this.props.loadSignatureGuestResponseOrderDetails();
 	            this.props.getMenuItems();
+	            //check event still valid
 	            //let sconely_message: any = "";
 	            //this.setState({menu_items: this.props.menu_items});
 	        }
@@ -45366,9 +45369,13 @@ webpackJsonp([0],[
 	            //let message = order_details.invited_guest_message.replace(/(?:\r\n|\r|\n)/g, <br />)
 	            //order_details.invited_guest_message.split(“\r”);
 	            //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
-	            var message = order_details.invited_guest_message.split('\r').map(function (item, key) {
-	                return React.createElement("span", { key: key }, item, React.createElement("br", null));
-	            });
+	            //working
+	            var message = "";
+	            if (order_details.invited_guest_message != undefined) {
+	                message = order_details.invited_guest_message.split('\r').map(function (item, key) {
+	                    return React.createElement("span", { key: key }, item, React.createElement("br", null));
+	                });
+	            }
 	            /*let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
 	            return (<div>
 	              {item}
@@ -45394,9 +45401,11 @@ webpackJsonp([0],[
 	                    }, src: "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
 	            }.bind(this)), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
 	                    return _this3.saveGuestChoice();
-	                }, type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Select Scone")))))))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
+	                }, type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Select Scone")))))))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xs col-lg-12", style: { fontSize: 12 } }, React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
 	                    return _this3.noThanks();
-	                } }, "No Scone for me, thanks!"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { fontSize: 12 } }, "All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used."), React.createElement("br", null), React.createElement("br", null), "*Names of scones are inspired by nicknames of dear friends and family"), React.createElement("div", { className: "hidden-xs col-md-3" })));
+	                } }, "No Scone for me, thanks!"), React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "*Names of scones are inspired by nicknames of dear friends and family"), React.createElement("br", null), React.createElement("div", { className: "col-xs-12 hidden-lg", style: { fontSize: 12 } }, React.createElement("button", { className: "btn btn-default", onClick: function onClick() {
+	                    return _this3.noThanks();
+	                } }, "No Scone for me, thanks!"), React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch and freshly baked to order.", React.createElement("br", null), "Our scones are free of refined sugars, soy and chemical preservatives.", React.createElement("br", null), "Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others),", React.createElement("br", null), "as we bake in a common kitchen where shared equipment is used.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "*Names of scones are inspired by nicknames of dear friends and family"), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-3" })));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -45422,7 +45431,7 @@ webpackJsonp([0],[
 	        //order_details: state.SignatureGuestResponse,
 	        //menu_items: getMenuItems(state),
 	        //cart: state.cart
-	        //host_message: getSignatureHostMessage(state);
+	        host_message: signature_guest_response_ts_1.getSignatureHostMessage(state),
 	        menu_items: state.menuItems.items
 	        //}
 	    };
@@ -45441,6 +45450,9 @@ webpackJsonp([0],[
 	        },
 	        saveGuestChoice: function saveGuestChoice(item_id) {
 	            dispatch(signature_guest_response_ts_2.saveGuestChoice(item_id, event_name));
+	        },
+	        saveGuestChoiceNoScone: function saveGuestChoiceNoScone() {
+	            dispatch(signature_guest_response_ts_2.saveGuestChoiceNoScone(event_name));
 	        }
 	    };
 	};
@@ -45455,48 +45467,48 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getMenuItems = function (state) {
-	  //let menu_items_temp: any = {};
-	  //state.menuItems.menu_items.map((key: any, index: any) => {
-	  //      return(menu_items_temp[key.item_id] = {title: key.title, description: key.description});
-	  //})
-	  //return menu_items_temp;
-	  return state.menuItems.items;
-	  /*switch (filter) {
-	    case 'SHOW_ALL':
-	      return todos
-	    case 'SHOW_COMPLETED':
-	      return todos.filter(t => t.completed)
-	    case 'SHOW_ACTIVE':
-	      return todos.filter(t => !t.completed)
-	  }*/
+	    //let menu_items_temp: any = {};
+	    //state.menuItems.menu_items.map((key: any, index: any) => {
+	    //      return(menu_items_temp[key.item_id] = {title: key.title, description: key.description});
+	    //})
+	    //return menu_items_temp;
+	    return state.menuItems.items;
+	    /*switch (filter) {
+	      case 'SHOW_ALL':
+	        return todos
+	      case 'SHOW_COMPLETED':
+	        return todos.filter(t => t.completed)
+	      case 'SHOW_ACTIVE':
+	        return todos.filter(t => !t.completed)
+	    }*/
 	};
 	exports.getNormalizedMenuItems = function (state) {
-	  var menu_items_temp = {};
-	  state.menuItems.menu_items.map(function (key, index) {
-	    return menu_items_temp[key.item_id] = { title: key.title, description: key.description };
-	  });
-	  return menu_items_temp;
-	  //return state.SignatureGuestResponse.menu_items
-	  /*switch (filter) {
-	    case 'SHOW_ALL':
-	      return todos
-	    case 'SHOW_COMPLETED':
-	      return todos.filter(t => t.completed)
-	    case 'SHOW_ACTIVE':
-	      return todos.filter(t => !t.completed)
-	  }*/
+	    var menu_items_temp = {};
+	    state.menuItems.menu_items.map(function (key, index) {
+	        return menu_items_temp[key.item_id] = { title: key.title, description: key.description };
+	    });
+	    return menu_items_temp;
+	    //return state.SignatureGuestResponse.menu_items
+	    /*switch (filter) {
+	      case 'SHOW_ALL':
+	        return todos
+	      case 'SHOW_COMPLETED':
+	        return todos.filter(t => t.completed)
+	      case 'SHOW_ACTIVE':
+	        return todos.filter(t => !t.completed)
+	    }*/
 	};
 	exports.getOrderDetails = function (state) {
-	  console.log("order details selector " + JSON.stringify(state.SignatureOrderGuestResponse));
-	  return state.SignatureOrderGuestResponse;
-	  /*switch (filter) {
-	    case 'SHOW_ALL':
-	      return todos
-	    case 'SHOW_COMPLETED':
-	      return todos.filter(t => t.completed)
-	    case 'SHOW_ACTIVE':
-	      return todos.filter(t => !t.completed)
-	  }*/
+	    console.log("order details selector " + JSON.stringify(state.SignatureOrderGuestResponse));
+	    return state.SignatureOrderGuestResponse;
+	    /*switch (filter) {
+	      case 'SHOW_ALL':
+	        return todos
+	      case 'SHOW_COMPLETED':
+	        return todos.filter(t => t.completed)
+	      case 'SHOW_ACTIVE':
+	        return todos.filter(t => !t.completed)
+	    }*/
 	};
 	/*import { createSelector } from 'reselect'
 	// selector
@@ -45507,52 +45519,42 @@ webpackJsonp([0],[
 	  (bar) => bar
 	)*/
 	exports.getSconelyMessage = function (state) {
-	  console.log("sconely message selector " + JSON.stringify(state.SignatureOrderGuestResponse));
-	  if (state.SignatureOrderGuestResponse.invited_guest_message == "") {
-	    return "cwrpPlease select your preferred Scone";
-	  } else {
-	    return "";
-	  }
+	    console.log("sconely message selector " + JSON.stringify(state.SignatureOrderGuestResponse));
+	    if (state.SignatureOrderGuestResponse.invited_guest_message == "") {
+	        return "cwrpPlease select your preferred Scone";
+	    } else {
+	        return "";
+	    }
 	};
-	/*export const getSignatureHostMessage = (state: any) => {
-	  //console.log("sconely host message selector " + JSON.stringify(state.SignatureGuestResponse));
-	
-	  //state.SignatureGuestResponse.order_details
-	
-	  //let message = order_details.invited_guest_message.replace(/(?:\r\n|\r|\n)/g, <br />)
-	
-	  //order_details.invited_guest_message.split(“\r”);
-	
-	  //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
-	
-	  let message = state.SignatureGuestResponse.order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
-	    return <span key={key}>{item}<br/></span>
-	  })*/
-	/*let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
-	return (<div>
-	  {item}
-	  <br/>
-	  </div>
-	)
-	})*/
-	/*  return message;
-	
-	}*/
+	exports.getSignatureHostMessage = function (state) {
+	    console.log("sconely host message selector " + JSON.stringify(state.SignatureGuestResponse));
+	    //state.SignatureGuestResponse.order_details
+	    //let message = order_details.invited_guest_message.replace(/(?:\r\n|\r|\n)/g, <br />)
+	    //order_details.invited_guest_message.split(“\r”);
+	    //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
+	    //let message = state.SignatureGuestResponse.order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
+	    //  return <span key={key}>{item}<br/></span>
+	    //})
+	    //let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
+	    //                  return ("<div>" + item + "<br/></div>")
+	    //              })
+	    return "message";
+	};
 	exports.getNameScreenText = function (state) {
-	  console.log("sconely message selector " + JSON.stringify(state.SignatureOrderGuestResponse));
-	  //if (state.SignatureOrderGuestResponse.invited_guest_message == ""){
-	  return "cwrpPlease select your preferred Scone";
-	  //}else{
-	  //return "";
-	  //}
+	    console.log("name screen text " + JSON.stringify(state.SignatureOrderGuestResponse.chosen_item_id));
+	    if (state.SignatureOrderGuestResponse.chosen_item_id == 0) {
+	        return "Please provide us with the information below so we can let your host know.";
+	    } else {
+	        return "Great you are almost finished.  Please provide us with the information below so we can personalize your scone.";
+	    }
 	};
 	exports.getOrderCompletedScreenText = function (state) {
-	  console.log("sconely message selector " + JSON.stringify(state.SignatureOrderGuestResponse));
-	  //if (state.SignatureOrderGuestResponse.invited_guest_message == ""){
-	  return "cwrpPlease select your preferred Scone";
-	  //}else{
-	  //return "";
-	  //}
+	    console.log("order completed screen selector " + JSON.stringify(state.SignatureOrderGuestResponse.chosen_item_id));
+	    if (state.SignatureOrderGuestResponse.chosen_item_id == 0) {
+	        return "Thank you!";
+	    } else {
+	        return "Thank you!  Enjoy your Scone!";
+	    }
 	};
 
 /***/ }),
@@ -45603,11 +45605,23 @@ webpackJsonp([0],[
 	            type: actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE,
 	            data: { chosen_item_id: chosen_item_id }
 	        });
-	        dispatch(react_router_redux_1.push("/order/guest/name"));
+	        dispatch(react_router_redux_1.push("/order/" + event_name + "/guest/name"));
 	    };
 	}
 	exports.saveGuestChoice = saveGuestChoice;
-	function completeGuestResponse(first_name, last_name, email) {
+	function saveGuestChoiceNoScone(event_name) {
+	    //alert(item_id)
+	    return function (dispatch, getState) {
+	        console.log("no scone " + JSON.stringify(getState()));
+	        dispatch({
+	            type: actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE,
+	            data: { chosen_item_id: 0 }
+	        });
+	        dispatch(react_router_redux_1.push("/order/" + event_name + "/guest/name"));
+	    };
+	}
+	exports.saveGuestChoiceNoScone = saveGuestChoiceNoScone;
+	function completeGuestResponse(first_name, last_name, email, event_name) {
 	    //console.log("save guest choice action from redux " + JSON.stringify(guestResponse));
 	    return function (dispatch, getState) {
 	        console.log("getstate order id item id" + JSON.stringify(getState()["SignatureOrderGuestResponse"]));
@@ -45620,7 +45634,7 @@ webpackJsonp([0],[
 	            //this.context.router.push('/guestorder/complete');
 	            //call the reducer themn redirect
 	            //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
-	            dispatch(react_router_redux_1.push("/order/guest/completed"));
+	            dispatch(react_router_redux_1.push("/order/" + event_name + "/guest/completed"));
 	        }).catch(function (error) {
 	            console.log("error" + error);
 	            //go to code/payment screen
@@ -45680,6 +45694,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
 	var signature_guest_response_ts_1 = __webpack_require__(1155);
+	var signature_guest_response_ts_2 = __webpack_require__(1154);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -45720,6 +45735,11 @@ webpackJsonp([0],[
 	    }
 	
 	    _createClass(GuestName, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //check event still valid
+	        }
+	    }, {
 	        key: "guestChoice",
 	        value: function guestChoice(order_type) {
 	            //alert(order_type);
@@ -45733,7 +45753,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), "Please provide us with the information below so we can let your host know.", React.createElement("br", null), React.createElement("br", null), "Great you are almost finished.  Please provide us with the information below so we can personalize your scone.", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email Again", onChange: this.setEmail }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.button_classname, onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.text, React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email Again", onChange: this.setEmail }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.button_classname, onClick: function onClick() {
 	                    return _this2.props.completeGuestResponse(_this2.state.first_name, _this2.state.last_name, _this2.state.email);
 	                } }, "Complete"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
@@ -45750,20 +45770,20 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("delivery addresses component/state" + JSON.stringify(state));
+	    console.log("guest name component/state" + JSON.stringify(state));
 	    return {
-	        //text: getNameScreenText(state),
+	        text: signature_guest_response_ts_2.getNameScreenText(state),
 	        //parent_order_id
 	        //item_id
 	        GuestResponse: state.GuestResponse
 	    };
 	}
-	function mapDispatchToProps(dispatch) {
+	function mapDispatchToProps(dispatch, ownProps) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
 	        completeGuestResponse: function completeGuestResponse(first_name, last_name, email) {
 	            //  console.log("e.target.value");
-	            dispatch(signature_guest_response_ts_1.completeGuestResponse(first_name, last_name, email));
+	            dispatch(signature_guest_response_ts_1.completeGuestResponse(first_name, last_name, email, ownProps.params.event_name));
 	        }
 	    };
 	}
@@ -45787,6 +45807,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
+	var signature_guest_response_ts_1 = __webpack_require__(1154);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -45849,7 +45871,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Thank you!", React.createElement("br", null), "Thank you! Enjoy your scone!", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.text, React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -45865,17 +45887,16 @@ webpackJsonp([0],[
 	
 	function mapStateToProps(state) {
 	    console.log("delivery addresses component/state" + JSON.stringify(state));
-	    return {};
+	    return {
+	        text: signature_guest_response_ts_1.getOrderCompletedScreenText(state)
+	    };
 	}
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {};
 	}
-	//const GuestName1 = connect(
-	//  mapStateToProps,
-	//  mapDispatchToProps
-	//)(GuestName)
-	exports.default = SignatureGuestOrderComplete;
+	var SignatureGuestOrderComplete1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SignatureGuestOrderComplete);
+	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
 /* 1158 */
@@ -47110,7 +47131,7 @@ webpackJsonp([0],[
 	//actually that is really more on the host end
 	//let initial_state = Immutable.fromJs({order_id: 1, chosen_item_id: 0, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
 	function SignatureGuestResponse() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", invited_guest_message: "", order_delivery_date: "", chosen_item_id: 0, first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: [] };
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", order_delivery_date: "", first_name: "", last_name: "", email: "", guest_response_validated: "" };
 	  var action = arguments[1];
 	
 	  var delivery_addresses = [];
@@ -47119,11 +47140,15 @@ webpackJsonp([0],[
 	    case actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER:
 	      //alert("CartState " + action.item_id);
 	      console.log("load order " + JSON.stringify(action.data));
-	      return Object.assign({}, state, { event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message, menu_items: action.data.menu_items });
+	      return Object.assign({}, state, { event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message });
 	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE:
 	      //alert("CartState " + action.item_id);
 	      console.log("chosen item " + JSON.stringify(action));
-	      return Object.assign({}, state, { chosen_item: action.data.item_id });
+	      return Object.assign({}, state, { chosen_item_id: action.data.item_id });
+	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE:
+	      //alert("CartState " + action.item_id);
+	      console.log("chosen item " + JSON.stringify(action));
+	      return Object.assign({}, state, { chosen_item_id: 0 });
 	    default:
 	      //alert();
 	      //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})

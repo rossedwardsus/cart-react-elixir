@@ -6,19 +6,19 @@ defmodule SconeHomeElixir.HomeController do
 
   plug :put_layout, "home.html"
 
-  def index(conn, _params) do
+  def index(conn, params) do
 
 
 
-  	IO.inspect(_params["name"])
+  	IO.inspect(params["name"])
 
   	#test_array = [%{"one": "one"}, %{"one": "two"}]
 
   	#Enum.each(test_array, fn (v) -> {IO.inspect(v[:one])} end)
 
-  	if _params["name"] != nil do
+  	if params["name"] != nil do
 
-  		signature_order = Repo.get_by(SignatureOrder, %{event_url_name: _params["name"]})
+  		signature_order = Repo.get_by(SignatureOrder, %{event_url_name: params["name"]})
   		order = Repo.get_by(Order, %{order_id: signature_order.parent_order_id})
 
   		#http://localhost:4000/sconelychat&chewatlaci
@@ -46,7 +46,7 @@ defmodule SconeHomeElixir.HomeController do
 
   		if signature_order != nil do
 
-	  		name = _params["name"]
+	  		name = params["name"]
 	  		url = "/#/order/" <> name <> "/guest/menu"
 	  		#redirect conn, to: url
 

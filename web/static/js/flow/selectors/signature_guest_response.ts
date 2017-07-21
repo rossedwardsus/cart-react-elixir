@@ -83,8 +83,8 @@ export const getSconelyMessage = (state: any) => {
   }
 }
 
-/*export const getSignatureHostMessage = (state: any) => {
-  //console.log("sconely host message selector " + JSON.stringify(state.SignatureGuestResponse));
+export const getSignatureHostMessage = (state: any) => {
+  console.log("sconely host message selector " + JSON.stringify(state.SignatureGuestResponse));
 
   //state.SignatureGuestResponse.order_details
 
@@ -94,46 +94,42 @@ export const getSconelyMessage = (state: any) => {
 
   //let message = order_details.invited_guest_message.string.replace( /\n/g, " " ).split(" ");
 
-  let message = state.SignatureGuestResponse.order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
-    return <span key={key}>{item}<br/></span>
-  })*/
+  //let message = state.SignatureGuestResponse.order_details.invited_guest_message.split('\r').map((item: any, key: any) => {
+  //  return <span key={key}>{item}<br/></span>
+  //})
   
-  /*let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
-  return (<div>
-    {item}
-    <br/>
-    </div>
-  )
-  })*/
+  //let message = order_details.invited_guest_message.split(“\r”).map((item: any) => {
+  //                  return ("<div>" + item + "<br/></div>")
+  //              })
 
-/*  return message;
+  return "message";
 
-}*/
+}
 
 export const getNameScreenText = (state: any) => {
-  console.log("sconely message selector " + JSON.stringify(state.SignatureOrderGuestResponse));
+  console.log("name screen text " + JSON.stringify(state.SignatureOrderGuestResponse.chosen_item_id));
   
-  //if (state.SignatureOrderGuestResponse.invited_guest_message == ""){
+  if (state.SignatureOrderGuestResponse.chosen_item_id == 0){
 
-    return "cwrpPlease select your preferred Scone";
+    return "Please provide us with the information below so we can let your host know.";
+    
+  }else{
 
-  //}else{
+    return "Great you are almost finished.  Please provide us with the information below so we can personalize your scone.";
 
-    //return "";
-
-  //}
+  }
 }
 
 export const getOrderCompletedScreenText = (state: any) => {
-  console.log("sconely message selector " + JSON.stringify(state.SignatureOrderGuestResponse));
+  console.log("order completed screen selector " + JSON.stringify(state.SignatureOrderGuestResponse.chosen_item_id));
   
-  //if (state.SignatureOrderGuestResponse.invited_guest_message == ""){
+  if (state.SignatureOrderGuestResponse.chosen_item_id == 0){
 
-    return "cwrpPlease select your preferred Scone";
+    return "Thank you!";
 
-  //}else{
+  }else{
 
-    //return "";
+    return "Thank you!  Enjoy your Scone!";
 
-  //}
+  }
 }
