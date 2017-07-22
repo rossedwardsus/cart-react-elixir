@@ -216,19 +216,18 @@ class GuestMenu extends React.Component<any, any> {
                     <div className="col-sm-12 col-md-9">
                       <br/>
                         <div className="hidden-lg hidden-md">
-                        <br/>
-                        <br/>
-                        <img src="/images/menu/LACI_1.5.jpg" />
-                        <br/>
-                        <p className="text-left">Sconely Chat & Chew</p>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
-                        <br/>
-                        <br/>
+                          <br/>
+                          <br/>
+                          <img src="/images/menu/LACI_1.5.jpg" />
+                          <br/>
+                          <p className="text-left">Sconely Chat & Chew</p>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
+                          <br/>
+                          <br/>
                         </div>
-                        <br/>
                         <br/>
                       <br/>
                        {this.props.menu_items.map(function(item: any, index: any){
