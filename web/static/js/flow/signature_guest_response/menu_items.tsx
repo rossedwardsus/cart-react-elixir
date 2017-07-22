@@ -199,9 +199,7 @@ class GuestMenu extends React.Component<any, any> {
                       <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
                       <br/>
-                      <br/>
                       <p className="text-left">Sconely Chat & Chew at LACI</p>
-                      <br/>
                       <br/>
                       <br/>
                       <br/>
@@ -223,7 +221,6 @@ class GuestMenu extends React.Component<any, any> {
                         <img src="/images/menu/LACI_1.5.jpg" />
                         <br/>
                         <p className="text-left">Sconely Chat & Chew at LACI</p>
-                        <br/>
                         <br/>
                         <br/>
                         <br/>

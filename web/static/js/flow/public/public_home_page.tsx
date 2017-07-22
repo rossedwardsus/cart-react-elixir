@@ -320,7 +320,7 @@ class PublicHomePage extends React.Component<any, any> {
 
 
     
-    if(this.props.user.user_id != undefined){
+    /*if(this.props.user.user_id != undefined){
         
         menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
                       <ul className="nav navbar-header">
@@ -354,7 +354,7 @@ class PublicHomePage extends React.Component<any, any> {
                     </div>
                 </div>
 
-    }
+    }*/
 
     return (
               <div>
