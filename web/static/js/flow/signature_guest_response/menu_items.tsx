@@ -195,7 +195,6 @@ class GuestMenu extends React.Component<any, any> {
                       {this.props.sconely_message}
                       <br/>
                       <br/>
-                      <br/>
                       <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
                       <br/>
@@ -231,7 +230,6 @@ class GuestMenu extends React.Component<any, any> {
                         </div>
                         <br/>
                         <br/>
-                      <br/>
                       <br/>
                        {this.props.menu_items.map(function(item: any, index: any){
 
