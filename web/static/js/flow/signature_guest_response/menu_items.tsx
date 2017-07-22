@@ -229,7 +229,6 @@ class GuestMenu extends React.Component<any, any> {
                           <br/>
                         </div>
                         <br/>
-                      <br/>
                        {this.props.menu_items.map(function(item: any, index: any){
 
                           //console.log(JSON.stringify(item));
