@@ -9,13 +9,13 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias SconeHomeElixir.Repo
   
   def get_order(_args, _info) do
-    #order = Repo.get_by(SignatureOrder, %{event_url_name: "lacisconelylaunchaugust032017"})
+    order = Repo.get_by(SignatureOrder, %{event_url_name: "sconelychat&chew"})
 
-    #IO.inspect(order)
+    IO.inspect(order)
     
     #{:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
     
-    #{:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: "Hi everyone,\r\rSconely is providing complimentary scones for the August 3rd Chat & Chew, please select the scone you'd like.\r\rThanks, \rAnais"}}
+    #{:ok, %{parent_order_id: order.parent_order_id, event_long_name: order.event_long_name, invited_guest_message: order.invited_guest_message}}
   
     #{:error}
 

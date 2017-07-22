@@ -199,8 +199,9 @@ class GuestMenu extends React.Component<any, any> {
                       <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
                       <br/>
-                      <p className="text-left">Sconely Chat & Chew at LACI</p>
+                      <p className="text-left">Sconely Chat & Chew</p>
                       <br/>
+                      {order_details.event_long_name}
                       <br/>
                       <br/>
                       <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
@@ -215,12 +216,12 @@ class GuestMenu extends React.Component<any, any> {
                     </div>
                     <div className="col-sm-12 col-md-9">
                       <br/>
-                        <div className="hidden-lg">
+                        <div className="hidden-lg hidden-md">
                         <br/>
                         <br/>
                         <img src="/images/menu/LACI_1.5.jpg" />
                         <br/>
-                        <p className="text-left">Sconely Chat & Chew at LACI</p>
+                        <p className="text-left">Sconely Chat & Chew</p>
                         <br/>
                         <br/>
                         <br/>
