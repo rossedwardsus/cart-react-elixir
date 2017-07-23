@@ -4,6 +4,8 @@ defmodule Sconely.SignatureOrderGuestResponse do
 
 		use SconeHomeElixir.Web, :model
 
+		#Ecto.DateTime.from_erl(:erlang.localtime)	
+
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 		@optional_fields ~W(parent_order_id chosen_item_id first_name last_name email)
 		@required_fields ~W()
@@ -15,8 +17,8 @@ defmodule Sconely.SignatureOrderGuestResponse do
 			field :last_name, :string
 			field :email, :string
 			#field :mailing_list, :boolean
-			field :created_at, Ecto.DateTime, default: Ecto.DateTime.from_erl(:erlang.localtime)
-			#field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
+			#field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+			field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
 
 			#timestamps()
 		end
