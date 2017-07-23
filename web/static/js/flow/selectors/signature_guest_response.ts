@@ -107,7 +107,7 @@ export const getSignatureHostMessage = (state: any) => {
 }
 
 export const getNameScreenText = (state: any) => {
-  console.log("name screen text " + JSON.stringify(state.SignatureOrderGuestResponse.chosen_item_id));
+  console.log("name screen text " + JSON.stringify(state.SignatureOrderGuestResponse));
   
   if (state.SignatureOrderGuestResponse.chosen_item_id == 0){
 
