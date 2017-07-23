@@ -59,11 +59,11 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
                   #get title of chosen item from the database 
                   menu_item = Repo.get_by(MenuItem, %{id: _args[:chosen_item_id]})
-                  IO.inspect(menu_item)
+                  IO.inspect(menu_item.name)
 
-                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :chosen_item => ""}) |> SconeHomeElixir.Mailer.deliver_later
+                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :item_name => menu_item.name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                  Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
+                  Sconely.SignatureGuestResponseEmail.admin_email(%{:item_name => menu_item.name, :first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
 
                 end
 

@@ -191,16 +191,12 @@ class GuestMenu extends React.Component<any, any> {
               <div className="row">
                     <div className="hidden-xs col-md-3" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
                       <br/>
-                      <br/>
                       {this.props.sconely_message}
-                      <br/>
                       <br/>
                       <img src="/images/menu/LACI_1.5.jpg"/>
                       <br/>
                       <br/>
                       <p className="text-left">{order_details.event_long_name}</p>
-                      <br/>
-                      <br/>
                       <br/>
                       <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}>{message}</label>
                       <br/>
