@@ -104,8 +104,6 @@ class GuestName extends React.Component<any, any> {
                         </div>
                         <div className="collapse navbar-collapse" id="navigationbar">
                           <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="/login">Login</Link></li>
-                            <li><Link to="/register">Signup</Link></li>
                             <li><Link to="/register">About Us</Link></li>
                             <li><Link to="/register">Faq</Link></li>
                           </ul>
