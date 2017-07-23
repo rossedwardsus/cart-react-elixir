@@ -98,9 +98,9 @@
         background-repeat: no-repeat;
         background-position: center; 
         background-image: url('http://www.riwakawebsitedesigns.com/external/images/stars/img-stars-2.jpg');
-      height: 620px;
-      width: 100%;
-      margin-bottom: 60px;
+        height: 620px;
+        width: 100%;
+        margin-bottom: 60px;
     }
 
     .full-width {
@@ -202,6 +202,7 @@
 
 <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
 <script type="text/javascript" src="/js/vendor.bundle.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
