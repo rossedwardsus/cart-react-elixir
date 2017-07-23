@@ -61,9 +61,9 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
                   menu_item = Repo.get_by(MenuItem, %{id: _args[:chosen_item_id]})
                   IO.inspect(menu_item)
 
-                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :chosen_item => ""}) |> SconeHomeElixir.Mailer.deliver_now
+                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :chosen_item => ""}) |> SconeHomeElixir.Mailer.deliver_later
 
-                  Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                  Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
 
                 end
 
