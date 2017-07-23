@@ -28,6 +28,20 @@ defmodule SconeHomeElixir.Mixfile do
 
   # Specifies your project dependencies.
   #
+  #{:phoenix_ecto, "~> 2.0.1"},
+  #
+  #dont need
+  #{:twilex, "~> 0.0.1"},
+  #{:comeonin, "~> 3.0"},
+  #{:phoenix_ecto, "~> 2.0.1"},
+  #{:mogrify, "~> 0.3.2"},
+  #{:tzdata, "~> 0.5.8"},
+  #{:httpoison, "~> 0.8.0"},
+  #{:erlcloud, git: "https://github.com/gleber/erlcloud"},
+     
+     
+    
+     
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.0"},
@@ -46,7 +60,6 @@ defmodule SconeHomeElixir.Mixfile do
      {:mogrify, "~> 0.3.2"},
      {:gm, "~> 0.0.1"},
      {:ex_aws, "~> 1.0.0"},
-     #{:erlcloud, git: "https://github.com/gleber/erlcloud"},
      {:uuid, "~> 1.1"},
      {:csv, "~> 1.4.2"},
      {:plug, "~> 1.0"},

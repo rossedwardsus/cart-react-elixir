@@ -15,7 +15,7 @@ defmodule Sconely.SignatureOrderGuestResponse do
 			field :last_name, :string
 			field :email, :string
 			#field :mailing_list, :boolean
-			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+			field :created_at, Ecto.DateTime, default: Ecto.DateTime.from_erl(:erlang.localtime)
 			#field :datetime_selected, Ecto.DateTime, default: Ecto.DateTime.utc
 
 			#timestamps()
