@@ -11,7 +11,11 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   def get_order(_args, _info) do
     order = Repo.get_by(SignatureOrder, %{event_url_name: "sconelychat&chew"})
 
-    IO.inspect(order)
+    datetime = DateTime.utc_now()
+    
+    IO.inspect(datetime.time_zone)
+
+    #IO.inspect(order)
     
     #{:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
     

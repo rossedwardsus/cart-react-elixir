@@ -11,7 +11,7 @@ defmodule Sconely.MenuItemsResolver do
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
 
     date1 = Timex.now("America/Los_Angeles")
-    IO.inspect(date1)
+    #IO.inspect(date1)
     #date2 = Date.from({{1970, 2, 4}, {12, 5, 5}})
     #date2 = Timex.shift(date1, days: 3)
     date2 = Timex.shift(date1, days: 3)
