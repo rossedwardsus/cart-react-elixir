@@ -123,10 +123,10 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <form className="form-inline">
                         <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={this.setFirstName}/>
+                          <input type="text" className="form-control" id="first_name" placeholder="First Name" onChange={this.setFirstName}/>
                         </div>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={this.setLastName}/>
+                          <input type="text" className="form-control" id="last_name" placeholder="Last Name" onChange={this.setLastName}/>
                         </div>
                       </form>
                       <form className="form-inline">

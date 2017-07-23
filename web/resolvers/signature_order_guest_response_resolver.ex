@@ -15,7 +15,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     
     #{:ok, %{parent_order_id: 1, event_long_name: "Laci Sconely Launch", invited_guest_message: order.invited_guest_message}}
     
-    #{:ok, %{parent_order_id: order.parent_order_id, event_long_name: order.event_long_name, invited_guest_message: order.invited_guest_message}}
+    {:ok, %{parent_order_id: order.parent_order_id, event_long_name: order.event_long_name, invited_guest_message: order.invited_guest_message}}
   
     #{:error}
 
@@ -24,16 +24,15 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
 
   def complete_guest_response(_args, _info) do
-    #signature_order = Repo.get_by(SconelySignatureOrder, %{parent_order_id: "uuid"})
+    #signature_order = Repo.get_by(SignatureOrder, %{parent_order_id: "uuid"})
 
-     IO.inspect(_args)
+    IO.inspect(_args)
     #IO.inspect(order)
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
 
     #check if guest added order already
     #else you have alrady chosen a scone thank you
-
     #guest_response = Repo.get_by(SignatureOrderGuestResponse, %{parent_order_id: "1234", first_name: "Ross"})
 
     #IO.inspect(guest_response)
@@ -58,21 +57,19 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
                   menu_item = Repo.get_by(MenuItem, %{id: _args[:chosen_item_id]})
                   IO.inspect(menu_item)
 
-                  #Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :chosen_item => ""}) |> SconeHomeElixir.Mailer.deliver_now
 
-                  #Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                  Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
 
                 end
 
-          #{:error}
+          {:error}
 
         end
    
     end)
 
     #admin
-    
-
    
     {:ok, %{status: "completed"}}
 

@@ -129,7 +129,7 @@ export const getOrderCompletedScreenText = (state: any) => {
 
   }else{
 
-    return "Thank you!  Enjoy your Scone!";
+    return "Thank you!  Enjoy your scone!";
 
   }
 }

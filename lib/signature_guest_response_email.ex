@@ -30,7 +30,7 @@ defmodule Sconely.SignatureGuestResponseEmail do
 
     new_email(
       #to: _params[:email],
-      to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
+      to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
       subject: "Admin - Signature Guest Order - order id",
       html_body: template,

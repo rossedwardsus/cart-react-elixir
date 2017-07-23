@@ -58,7 +58,7 @@ defmodule Sconely.Schema.Types do
 
   object :signature_guest_response_order_details do
     field :parent_order_id, :string
-    field :event_full_name, :string
+    field :event_long_name, :string
     field :invited_guest_message, :string
     #field :menu_items, :string
   end

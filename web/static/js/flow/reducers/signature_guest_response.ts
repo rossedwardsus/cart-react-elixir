@@ -59,13 +59,13 @@ export default function SignatureGuestResponse(state:any = {order_id: 1, event_f
       //alert("CartState " + action.item_id);
       console.log("load order " + JSON.stringify(action.data));
 
-      return Object.assign({}, state, {event_full_name: action.data.event_full_name, invited_guest_message: action.data.invited_guest_message});
+      return Object.assign({}, state, {event_long_name: action.data.event_long_name, invited_guest_message: action.data.invited_guest_message});
 
     case SIGNATURE_GUEST_SAVE_CHOICE:
       //alert("CartState " + action.item_id);
       console.log("chosen item " + JSON.stringify(action));
 
-      return Object.assign({}, state, {chosen_item_id: action.data.item_id});
+      return Object.assign({}, state, {chosen_item_id: action.data.chosen_item_id});
     
 
     case SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE:
