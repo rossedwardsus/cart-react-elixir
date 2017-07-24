@@ -3,7 +3,7 @@ import {SIGNATURE_GUEST_LOAD_ORDER, SIGNATURE_GUEST_SAVE_CHOICE, SIGNATURE_GUEST
 import {push} from 'react-router-redux';
 import axios from 'axios';
 
-export function loadSignatureGuestResponseOrderDetails() {
+export function loadSignatureGuestResponseOrderDetails(event_url_name: any) {
   //alert(item_id)
   console.log("action");
   return function (dispatch: any) { 
@@ -11,7 +11,7 @@ export function loadSignatureGuestResponseOrderDetails() {
         //event full name
 
         axios.post('/api/graphql',
-                 {query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_long_name invited_guest_message }}'
+                 {query: 'query {load_signature_guest_response_order_details (event_url_name: "' + event_url_name + '") { parent_order_id event_long_name invited_guest_message delivery_date}}'
         })
         .then((response: any) => {
 
@@ -24,7 +24,7 @@ export function loadSignatureGuestResponseOrderDetails() {
 
               //this.context.router.push('/order/complete');
 
-                dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_long_name: response.data.data.loadSignatureGuestResponseOrderDetails["eventLongName"], order_id: "response.data.data.loadSignatureGuestResponseOrderDetails['parent_order_id']", image_id: "", invited_guest_message: response.data.data.loadSignatureGuestResponseOrderDetails["invitedGuestMessage"]}});
+                dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_long_name: response.data.data.loadSignatureGuestResponseOrderDetails["eventLongName"], order_id: "response.data.data.loadSignatureGuestResponseOrderDetails['parent_order_id']", image_id: "", invited_guest_message: response.data.data.loadSignatureGuestResponseOrderDetails["invitedGuestMessage"], delivery_date: ""}});
   
 
         })

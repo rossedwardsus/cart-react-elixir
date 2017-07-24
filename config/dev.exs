@@ -25,19 +25,17 @@ config :scone_home_elixir, SconeHomeElixir.Endpoint,
   ]
 
 # Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
+#config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development.
 # Do not configure such in production as keeping
 # and calculating stacktraces is usually expensive.
-config :phoenix, :stacktrace_depth, 20
+#config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :scone_home_elixir, SconeHomeElixir.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  url: "postgres://postgres@localhost/sconely_dev"
+#config :scone_home_elixir, SconeHomeElixir.Repo,
+#  adapter: Ecto.Adapters.Postgres,
+#  url: "postgres://postgres@localhost/sconely_dev"
 
-
-
-#config :stripity_stripe, secret_key: "sk_test_dRJI4lMQw1loYK6LmcDLBE41"
-#config :stripity_stripe, platform_client_id: "YOUR CONNECT PLATFORM CLIENT ID"
+#config :stripity_stripe, secret_key: "sk_test_Bmak0PLr7NSsKLjZeFvRPptz"
+#config :stripity_stripe, platform_client_id: "pk_test_pY3YMi18Gcw0iUB3BSfmPtpb"

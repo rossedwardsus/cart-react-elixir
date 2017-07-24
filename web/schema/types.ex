@@ -60,7 +60,7 @@ defmodule Sconely.Schema.Types do
     field :parent_order_id, :string
     field :event_long_name, :string
     field :invited_guest_message, :string
-    #field :menu_items, :string
+    field :delivery_date, :string
   end
 
   object :signature_guest_response do

@@ -22,10 +22,8 @@ defmodule Sconely.Schema do
 
 
     field :load_signature_guest_response_order_details, type: :signature_guest_response_order_details do
-        arg :order_name, :string
-        #arg :event_name, :string
-        #arg :delivery_time, :string
-     
+        arg :event_url_name, :string
+      
         resolve &Sconely.SignatureOrderGuestResponseResolver.get_order/2
     end
 

@@ -6,6 +6,9 @@ import {connect} from 'react-redux';
 //import MenuItems from './menu_items';
 import {completeGuestResponse} from '../actions/signature_guest_response.ts';
 import {getNameScreenText} from '../selectors/signature_guest_response.ts';
+//var validator = require('mailgun-validate-email')('key-22e98444fc043c1e72943865de283d39');
+import axios from 'axios';
+
 
 
 class GuestName extends React.Component<any, any> {
@@ -19,12 +22,14 @@ class GuestName extends React.Component<any, any> {
 
     this.state = {
 
-        page: "",
-
         first_name: "",
+        first_name_validated: "",
+        first_name_border: "",
         last_name: "",
+        last_name_validated: "",
         email: "",
-        button_classname: "btn btn-default inactive"
+        email_validated: "",
+        button_classname: "btn btn-default disabled"
         
     };
 
@@ -56,7 +61,15 @@ class GuestName extends React.Component<any, any> {
   setFirstName = (e: any) => {
 
       this.setState({first_name: e.target.value});
+      this.setState({first_name_validated: true});
 
+      //if(this.state.last_name_validated > 0 || this.state.email_validated){
+
+      //    this.setState({button_classname: "btn btn-default"});
+
+      //}
+
+        
       //if name is larger then 0 and no numbers are symbols
       //let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
       //let symbol_res = symbol_patt.test(e.target.value);
@@ -69,6 +82,14 @@ class GuestName extends React.Component<any, any> {
   setLastName = (e: any) => {
 
       this.setState({last_name: e.target.value});
+      //this.setState({last_name_validated: true});
+
+       //if(this.state.last_name_validated > 0 || this.state.email_validated){
+
+       //   this.setState({button_classname: "btn btn-default"});
+
+      //}
+
 
       //if name is larger then 0 and no numbers are symbols
       //let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
@@ -81,7 +102,74 @@ class GuestName extends React.Component<any, any> {
 
   setEmail = (e: any) => {
 
-      this.setState({email: e.target.value});
+      //this.setState({email: e.target.value});
+      //this.setState({email_validated: true});
+
+      //let symbol_patt = /[-!$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+      //let symbol_res = symbol_patt.test(e.target.value);
+
+      let email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      let email_result = email_pattern.test(e.target.value);
+
+      console.log(email_result);
+
+
+      //length of 6
+      //a@a.co
+
+      if(email_result){
+
+        console.log("email validated");
+
+        this.setState({email: e.target.value});
+
+        //this.setState({email_validated: true});
+
+      }
+
+       //if(this.state.last_name_validated > 0 || this.state.email_again_validated){
+
+       //   this.setState({button_classname: "btn btn-default"});
+
+      //}
+
+  }
+
+  setEmailAgain = (e: any) => {
+
+      this.setState({email_again: e.target.value});
+
+      //email and email_again ==
+      //set border == green
+
+      if(e.target.value == this.state.email){
+
+          this.setState({button_classname: "btn btn-default"});
+
+      }
+
+  }
+
+  onEmailAgainFocus = () => {
+
+    /*axios.get("http://emailpie.com/v1/check?params={\'email\': \'rossedwards.us@gmail.com\'}")
+    .then((response: any) => {
+
+        console.log(JSON.stringify(response));
+
+    });*/
+    
+
+    /*validator("banana@papaia.com", function (err, result){
+      if(err) {
+        // email was not valid 
+        console.log("mailgun error")
+      } else {
+        console.log(result);
+        // register the person for your service etc. 
+      }
+    })*/
 
   }
 
@@ -121,7 +209,7 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <form className="form-inline">
                         <div className="form-group">
-                          <input type="text" className="form-control" id="first_name" placeholder="First Name" onChange={this.setFirstName}/>
+                          <input type="text" className="form-control" id="first_name" placeholder="First Name" onChange={this.setFirstName} style={{borderColor: ""}}/>
                         </div>
                         <div className="form-group">
                           <input type="text" className="form-control" id="last_name" placeholder="Last Name" onChange={this.setLastName}/>
@@ -132,7 +220,7 @@ class GuestName extends React.Component<any, any> {
                           <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={this.setEmail}/>
                         </div>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Email Again" onChange={this.setEmail}/>
+                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Email Again" onChange={this.setEmailAgain} onFocus={this.onEmailAgainFocus}/>
                         </div>
                       </form>
                       <br/>

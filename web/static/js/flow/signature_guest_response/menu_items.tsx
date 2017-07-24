@@ -386,7 +386,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 
     loadSignatureGuestResponseOrderDetails: () => {
       //console.log("e.target.value");
-      dispatch(loadSignatureGuestResponseOrderDetails());
+      dispatch(loadSignatureGuestResponseOrderDetails(event_name));
     },
     saveGuestChoice: (item_id: any) => {
       dispatch(saveGuestChoice(item_id, event_name));

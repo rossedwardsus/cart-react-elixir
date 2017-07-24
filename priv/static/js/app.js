@@ -45472,7 +45472,7 @@ webpackJsonp([0],[
 	        },
 	        loadSignatureGuestResponseOrderDetails: function loadSignatureGuestResponseOrderDetails() {
 	            //console.log("e.target.value");
-	            dispatch(signature_guest_response_ts_2.loadSignatureGuestResponseOrderDetails());
+	            dispatch(signature_guest_response_ts_2.loadSignatureGuestResponseOrderDetails(event_name));
 	        },
 	        saveGuestChoice: function saveGuestChoice(item_id) {
 	            dispatch(signature_guest_response_ts_2.saveGuestChoice(item_id, event_name));
@@ -45593,19 +45593,19 @@ webpackJsonp([0],[
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var react_router_redux_1 = __webpack_require__(617);
 	var axios_1 = __webpack_require__(924);
-	function loadSignatureGuestResponseOrderDetails() {
+	function loadSignatureGuestResponseOrderDetails(event_url_name) {
 	    //alert(item_id)
 	    console.log("action");
 	    return function (dispatch) {
 	        //event full name
-	        axios_1.default.post('/api/graphql', { query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_long_name invited_guest_message }}'
+	        axios_1.default.post('/api/graphql', { query: 'query {load_signature_guest_response_order_details (event_url_name: "' + event_url_name + '") { parent_order_id event_long_name invited_guest_message delivery_date}}'
 	        }).then(function (response) {
 	            console.log("graphql response order details" + JSON.stringify(response.data.data.loadSignatureGuestResponseOrderDetails));
 	            //that.props.history.push('/user');
 	            //context.router
 	            //that.props.setOrderId(1);
 	            //this.context.router.push('/order/complete');
-	            dispatch({ type: actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER, data: { event_long_name: response.data.data.loadSignatureGuestResponseOrderDetails["eventLongName"], order_id: "response.data.data.loadSignatureGuestResponseOrderDetails['parent_order_id']", image_id: "", invited_guest_message: response.data.data.loadSignatureGuestResponseOrderDetails["invitedGuestMessage"] } });
+	            dispatch({ type: actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER, data: { event_long_name: response.data.data.loadSignatureGuestResponseOrderDetails["eventLongName"], order_id: "response.data.data.loadSignatureGuestResponseOrderDetails['parent_order_id']", image_id: "", invited_guest_message: response.data.data.loadSignatureGuestResponseOrderDetails["invitedGuestMessage"], delivery_date: "" } });
 	        }).catch(function (error) {
 	            console.log("error" + error);
 	            //go to code/payment screen
@@ -45732,6 +45732,10 @@ webpackJsonp([0],[
 	
 	        _this.setFirstName = function (e) {
 	            _this.setState({ first_name: e.target.value });
+	            _this.setState({ first_name_validated: true });
+	            //if(this.state.last_name_validated > 0 || this.state.email_validated){
+	            //    this.setState({button_classname: "btn btn-default"});
+	            //}
 	            //if name is larger then 0 and no numbers are symbols
 	            //let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
 	            //let symbol_res = symbol_patt.test(e.target.value);
@@ -45739,22 +45743,68 @@ webpackJsonp([0],[
 	        };
 	        _this.setLastName = function (e) {
 	            _this.setState({ last_name: e.target.value });
+	            //this.setState({last_name_validated: true});
+	            //if(this.state.last_name_validated > 0 || this.state.email_validated){
+	            //   this.setState({button_classname: "btn btn-default"});
+	            //}
 	            //if name is larger then 0 and no numbers are symbols
 	            //let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
 	            //let symbol_res = symbol_patt.test(e.target.value);
 	            //let number_res = (/[0-9]/.test(e.target.value));
 	        };
 	        _this.setEmail = function (e) {
-	            _this.setState({ email: e.target.value });
+	            //this.setState({email: e.target.value});
+	            //this.setState({email_validated: true});
+	            //let symbol_patt = /[-!$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+	            //let symbol_res = symbol_patt.test(e.target.value);
+	            var email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	            var email_result = email_pattern.test(e.target.value);
+	            console.log(email_result);
+	            //length of 6
+	            //a@a.co
+	            if (email_result) {
+	                console.log("email validated");
+	                _this.setState({ email: e.target.value });
+	                //this.setState({email_validated: true});
+	            }
+	            //if(this.state.last_name_validated > 0 || this.state.email_again_validated){
+	            //   this.setState({button_classname: "btn btn-default"});
+	            //}
+	        };
+	        _this.setEmailAgain = function (e) {
+	            _this.setState({ email_again: e.target.value });
+	            //email and email_again ==
+	            //set border == green
+	            if (e.target.value == _this.state.email) {
+	                _this.setState({ button_classname: "btn btn-default" });
+	            }
+	        };
+	        _this.onEmailAgainFocus = function () {
+	            /*axios.get("http://emailpie.com/v1/check?params={\'email\': \'rossedwards.us@gmail.com\'}")
+	            .then((response: any) => {
+	                         console.log(JSON.stringify(response));
+	                     });*/
+	            /*validator("banana@papaia.com", function (err, result){
+	              if(err) {
+	                // email was not valid
+	                console.log("mailgun error")
+	              } else {
+	                console.log(result);
+	                // register the person for your service etc.
+	              }
+	            })*/
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            page: "",
 	            first_name: "",
+	            first_name_validated: "",
+	            first_name_border: "",
 	            last_name: "",
+	            last_name_validated: "",
 	            email: "",
-	            button_classname: "btn btn-default inactive"
+	            email_validated: "",
+	            button_classname: "btn btn-default disabled"
 	        };
 	        return _this;
 	    }
@@ -45778,7 +45828,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.text, React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "first_name", placeholder: "First Name", onChange: this.setFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "last_name", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email Again", onChange: this.setEmail }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.button_classname, onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.text, React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "first_name", placeholder: "First Name", onChange: this.setFirstName, style: { borderColor: "" } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "last_name", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email Again", onChange: this.setEmailAgain, onFocus: this.onEmailAgainFocus }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.button_classname, onClick: function onClick() {
 	                    return _this2.props.completeGuestResponse(_this2.state.first_name, _this2.state.last_name, _this2.state.email);
 	                } }, "Complete"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
