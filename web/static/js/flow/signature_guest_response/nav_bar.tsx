@@ -60,7 +60,7 @@ class NavBar extends React.Component<any, any> {
                         </div>
                         <div className="collapse navbar-collapse" id="navigationbar">
                           <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="/register">About Us</Link></li>
+                            <li><Link to="http://www.sconely.com/faq">About Us</Link></li>
                             <li><Link to="/register">Faq</Link></li>
                           </ul>
                         </div>
@@ -100,9 +100,9 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
   }
 }
 
-const NabBar1 = connect(
+const NavBar1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GuestName)
+)(NavBar)
 
 export default NavBar1;

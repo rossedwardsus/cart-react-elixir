@@ -8,6 +8,7 @@ import {getMenuItems, getOrderDetails, getNormalizedMenuItems, getSconelyMessage
 import {getMenuItemsAction} from '../actions/menu.ts';
 import {loadSignatureGuestResponseOrderDetails, saveGuestChoice, saveGuestChoiceNoScone} from '../actions/signature_guest_response.ts';
 
+import NavBar from './nav_bar.tsx';
 
 //import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 
