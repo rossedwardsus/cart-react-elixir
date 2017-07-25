@@ -315,6 +315,7 @@ class GuestMenu extends React.Component<any, any> {
                         <br/>
                         <div className="col-xs-12 hidden-lg" style={{fontSize: 12, wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
                             <br/>
+                            <br/>
                             All of our scones are made from scratch and freshly baked to order.  Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others),  as we bake in a common kitchen where shared equipment is used.
                             <br/>
                             <br/>
