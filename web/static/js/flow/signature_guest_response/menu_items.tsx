@@ -8,7 +8,7 @@ import {getMenuItems, getOrderDetails, getNormalizedMenuItems, getSconelyMessage
 import {getMenuItemsAction} from '../actions/menu.ts';
 import {loadSignatureGuestResponseOrderDetails, saveGuestChoice, saveGuestChoiceNoScone} from '../actions/signature_guest_response.ts';
 
-import NavBar from './nav_bar.tsx';
+import NavBar from './navbar.tsx';
 
 //import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 
@@ -170,25 +170,7 @@ class GuestMenu extends React.Component<any, any> {
     
     return (
             <div>
-              <nav className="navbar navbar-default" style={{border: 0}}>
-                      <div className="container-fluid">
-                        <div className="navbar-header">
-                          <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
-                             <span className="sr-only">Toggle navigation</span>
-                             <span className="icon-bar"></span>
-                             <span className="icon-bar"></span>
-                             <span className="icon-bar"></span>
-                          </button>
-                          <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
-                        </div>
-                        <div className="collapse navbar-collapse" id="navigationbar">
-                          <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="/register">About Us</Link></li>
-                            <li><Link to="/register">Faq</Link></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </nav>
+              <NavBar/>
               <div className="row">
                     <div className="hidden-xs col-md-3" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
                       <br/>

@@ -126,27 +126,27 @@ webpackJsonp([0],[
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1156);
+	var _name = __webpack_require__(1157);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1157);
+	var _order_completed = __webpack_require__(1158);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1158);
+	var _sconely_signature_guests = __webpack_require__(1159);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _sconely_signature_additional_items = __webpack_require__(1159);
+	var _sconely_signature_additional_items = __webpack_require__(1160);
 	
 	var _sconely_signature_additional_items2 = _interopRequireDefault(_sconely_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1160);
+	var _sconely_signature_order_history = __webpack_require__(1161);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _index = __webpack_require__(1161);
+	var _index = __webpack_require__(1162);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -45297,11 +45297,11 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var signature_guest_response_ts_1 = __webpack_require__(1154);
 	var menu_ts_1 = __webpack_require__(923);
 	var signature_guest_response_ts_2 = __webpack_require__(1155);
+	var navbar_tsx_1 = __webpack_require__(1156);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45409,7 +45409,7 @@ webpackJsonp([0],[
 	              </div>
 	            )
 	            })*/
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 0 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis" } }, React.createElement("br", null), this.props.sconely_message, React.createElement("br", null), React.createElement("img", { src: "/images/menu/LACI_1.5.jpg" }), React.createElement("br", null), React.createElement("br", null), React.createElement("p", { className: "text-left" }, order_details.event_long_name), React.createElement("br", null), React.createElement("label", { className: "text-left", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal" } }, message), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-sm-12 col-md-9" }, React.createElement("br", null), React.createElement("div", { className: "hidden-lg hidden-md" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: "/images/menu/LACI_1.5.jpg" }), React.createElement("br", null), React.createElement("p", { className: "text-left" }, order_details.event_long_name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("label", { className: "text-left", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal" } }, message), React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), this.props.menu_items.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement(navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis" } }, React.createElement("br", null), this.props.sconely_message, React.createElement("br", null), React.createElement("img", { src: "/images/menu/LACI_1.5.jpg" }), React.createElement("br", null), React.createElement("br", null), React.createElement("p", { className: "text-left" }, order_details.event_long_name), React.createElement("br", null), React.createElement("label", { className: "text-left", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal" } }, message), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-sm-12 col-md-9" }, React.createElement("br", null), React.createElement("div", { className: "hidden-lg hidden-md" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: "/images/menu/LACI_1.5.jpg" }), React.createElement("br", null), React.createElement("p", { className: "text-left" }, order_details.event_long_name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("label", { className: "text-left", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal" } }, message), React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), this.props.menu_items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                //console.log(JSON.stringify(item));
@@ -45717,6 +45717,79 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
+	
+	var NavBar = function (_React$Component) {
+	    _inherits(NavBar, _React$Component);
+	
+	    //props: Props;
+	    function NavBar(props) {
+	        _classCallCheck(this, NavBar);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+	
+	        _this.state = {
+	            page: "",
+	            first_name: "",
+	            last_name: "",
+	            email: "",
+	            button_classname: "btn btn-default inactive"
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(NavBar, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //check event still valid
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "http://www.sconely.com/faq" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return NavBar;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    console.log("guest name component/state" + JSON.stringify(state));
+	    return {};
+	}
+	function mapDispatchToProps(dispatch, ownProps) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {};
+	}
+	var NavBar1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(NavBar);
+	exports.default = NavBar1;
+
+/***/ }),
+/* 1157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
 	var signature_guest_response_ts_1 = __webpack_require__(1155);
 	var signature_guest_response_ts_2 = __webpack_require__(1154);
@@ -45866,7 +45939,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1157 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45974,7 +46047,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1158 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46079,7 +46152,7 @@ webpackJsonp([0],[
 	exports.default = Guests;
 
 /***/ }),
-/* 1159 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46263,7 +46336,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItems1;
 
 /***/ }),
-/* 1160 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46368,7 +46441,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureOrderHistory;
 
 /***/ }),
-/* 1161 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46376,24 +46449,24 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1162);
-	var register_ts_1 = __webpack_require__(1163);
+	var session_ts_1 = __webpack_require__(1163);
+	var register_ts_1 = __webpack_require__(1164);
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1164);
-	var order_ts_1 = __webpack_require__(1165);
-	var order_delivery_Address_ts_1 = __webpack_require__(1166);
-	var order_datetime_ts_1 = __webpack_require__(1167);
-	var order_payment_ts_1 = __webpack_require__(1168);
-	var order_validated_ts_1 = __webpack_require__(1169);
-	var user_ts_1 = __webpack_require__(1170);
+	var menu_ts_1 = __webpack_require__(1165);
+	var order_ts_1 = __webpack_require__(1166);
+	var order_delivery_Address_ts_1 = __webpack_require__(1167);
+	var order_datetime_ts_1 = __webpack_require__(1168);
+	var order_payment_ts_1 = __webpack_require__(1169);
+	var order_validated_ts_1 = __webpack_require__(1170);
+	var user_ts_1 = __webpack_require__(1171);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
-	var cart_ts_1 = __webpack_require__(1171);
-	var name_ts_1 = __webpack_require__(1172);
-	var contact_ts_1 = __webpack_require__(1173);
+	var cart_ts_1 = __webpack_require__(1172);
+	var name_ts_1 = __webpack_require__(1173);
+	var contact_ts_1 = __webpack_require__(1174);
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1174);
+	var signature_guest_response_ts_1 = __webpack_require__(1175);
 	//import UserOrders from './user_orders.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -46435,7 +46508,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1162 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46475,7 +46548,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1163 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46541,7 +46614,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1164 */
+/* 1165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46588,7 +46661,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1165 */
+/* 1166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46665,7 +46738,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1166 */
+/* 1167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46726,7 +46799,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1167 */
+/* 1168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46771,7 +46844,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1168 */
+/* 1169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46825,7 +46898,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1169 */
+/* 1170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46881,7 +46954,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1170 */
+/* 1171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46961,7 +47034,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1171 */
+/* 1172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47059,7 +47132,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1172 */
+/* 1173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47109,7 +47182,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1173 */
+/* 1174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47158,7 +47231,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1174 */
+/* 1175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
