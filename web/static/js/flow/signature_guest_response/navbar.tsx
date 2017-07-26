@@ -60,9 +60,9 @@ class NavBar extends React.Component<any, any> {
                         </div>
                         <div className="collapse navbar-collapse" id="navigationbar">
                           <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="http://www.sconely.com/about">About Us</Link></li>
-                            <li><Link to="https://www.sconely.com/team">Team</Link></li>
-                            <li><Link to="https://www.sconely.com/our-story">Our Story</Link></li>
+                            <li><a href="http://www.sconely.com/about">About Us</a></li>
+                            <li><a href="https://www.sconely.com/team">Team</a></li>
+                            <li><a href="https://www.sconely.com/our-story">Our Story</a></li>
                           </ul>
                         </div>
                       </div>

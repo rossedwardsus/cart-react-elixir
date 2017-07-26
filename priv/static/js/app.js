@@ -45711,7 +45711,6 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	
 	var NavBar = function (_React$Component) {
@@ -45743,7 +45742,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "http://www.sconely.com" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "http://www.sconely.com/about" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "https://www.sconely.com/team" }, "Team")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "https://www.sconely.com/our-story" }, "Our Story")))))));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "http://www.sconely.com" }, React.createElement("img", { src: "/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement("a", { href: "http://www.sconely.com/about" }, "About Us")), React.createElement("li", null, React.createElement("a", { href: "https://www.sconely.com/team" }, "Team")), React.createElement("li", null, React.createElement("a", { href: "https://www.sconely.com/our-story" }, "Our Story")))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
