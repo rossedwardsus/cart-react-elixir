@@ -38,8 +38,8 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   def complete_guest_response(_args, _info) do
     signature_order = Repo.get_by(SignatureOrder, %{parent_order_id: "uuid"})
 
-    IO.inspect(_args)
-    IO.inspect(signature_order)
+    #IO.inspect(_args)
+    #IO.inspect(signature_order)
     
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
@@ -70,7 +70,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
                   menu_item = Repo.get_by(MenuItem, %{id: _args[:chosen_item_id]})
                   IO.inspect(menu_item.name)
 
-                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :item_name => menu_item.name, :event_full_name => "event full name"}) |> SconeHomeElixir.Mailer.deliver_later
+                  Sconely.SignatureGuestResponseEmail.welcome_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :item_name => menu_item.name, :event_full_name => signature_order.event_long_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                   Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :order_id => "1", :item_name => menu_item.name}) |> SconeHomeElixir.Mailer.deliver_later
 
