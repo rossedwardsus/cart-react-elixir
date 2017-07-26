@@ -3,9 +3,9 @@
 <html lang="en">
 
   <table width="100%">
-  <tr><td><img height="50" width="200" src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
+  <tr><td><img height="50" width="200" src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
   <tr><td><br></td></tr>
-  <tr><td><br><br><br><br>Thank you <%= @key[:first_name] %> <%= @key[:last_name] %>.  We have received your order for an <%= @key[:item_name] %>Event Name</td></tr>
+  <tr><td><br><br><br><br>Thank you <%= @key[:first_name] %> <%= @key[:last_name] %>.  We have received your order for an <%= @key[:item_name] %> <%= @key[:event_full_name] %></td></tr>
   <tr><td>The Sconely Team</td></tr>
   </table>
 
