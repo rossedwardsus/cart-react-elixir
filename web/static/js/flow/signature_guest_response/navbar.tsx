@@ -56,12 +56,13 @@ class NavBar extends React.Component<any, any> {
                              <span className="icon-bar"></span>
                              <span className="icon-bar"></span>
                           </button>
-                          <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="/images/logo/LogoJune5d.jpg"/></a>
+                          <a className="navbar-brand" style={{textAlign: "center"}} href="http://www.sconely.com"><img src="/images/logo/LogoJune5d.jpg"/></a>
                         </div>
                         <div className="collapse navbar-collapse" id="navigationbar">
                           <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="http://www.sconely.com/faq">About Us</Link></li>
-                            <li><Link to="/register">Faq</Link></li>
+                            <li><Link to="http://www.sconely.com/about">About Us</Link></li>
+                            <li><Link to="https://www.sconely.com/team">Team</Link></li>
+                            <li><Link to="https://www.sconely.com/our-story">Our Story</Link></li>
                           </ul>
                         </div>
                       </div>

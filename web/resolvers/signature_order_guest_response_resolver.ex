@@ -15,7 +15,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     #datetime = DateTime.utc_now()
     #IO.inspect(datetime.time_zone)
 
-    IO.inspect(_args)
+    #IO.inspect(_args)
 
 
     #curl -G --user 'api:pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7' -G https://api.mailgun.net/v3/address/validate --data-urlencode address='foo@mailgun.net'
@@ -64,7 +64,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
                 IO.inspect(response)
 
 
-                if _args[:chosen_item_id] != 0 do
+                #if _args[:chosen_item_id] != 0 do
 
                   #get title of chosen item from the database 
                   menu_item = Repo.get_by(MenuItem, %{id: _args[:chosen_item_id]})
@@ -74,7 +74,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
                   Sconely.SignatureGuestResponseEmail.admin_email(%{:first_name => _args[:first_name], :last_name => _args[:last_name], :email => _args[:email], :order_id => "1", :item_name => menu_item.name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                end
+                #end
 
           {:error}
 

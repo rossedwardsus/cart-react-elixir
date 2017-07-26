@@ -2,6 +2,7 @@ defmodule SconeHomeElixir.HomeController do
   use SconeHomeElixir.Web, :controller
   alias Sconely.SignatureOrder
   alias Sconely.Order
+  alias Sconely.BrowserAnalytics
   alias SconeHomeElixir.Repo
 
   plug :put_layout, "home.html"
@@ -9,6 +10,19 @@ defmodule SconeHomeElixir.HomeController do
   def index(conn, params) do
 
 
+  	#user_agent = conn |> get_req_header("user-agent")
+  	#ip = conn |> get_req_header("http_client_ip")
+  	
+  	#IO.inspect(user_agent |> List.first)
+  	#IO.inspect(conn.remote_ip)
+  	#data time
+  	#ipaddress
+  	#:inet_parse.ntoa(conn.remote_ip)
+
+
+  	#changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{email: "mary@example.com", password: "password"})
+    #{:error, changeset} = Repo.insert(changeset)
+    
 
   	IO.inspect(params["name"])
 

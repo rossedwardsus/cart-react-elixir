@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 //import MenuItems from './menu_items';
 import {completeGuestResponse} from '../actions/signature_guest_response.ts';
 import {getOrderCompletedScreenText} from '../selectors/signature_guest_response.ts';
+import NavBar from './navbar.tsx';
 
 
 class SignatureGuestOrderComplete extends React.Component<any, any> {
@@ -93,27 +94,7 @@ class SignatureGuestOrderComplete extends React.Component<any, any> {
   render(){
     return (
       <div>
-            <nav className="navbar navbar-default" style={{border: 1}}>
-                      <div className="container-fluid">
-                        <div className="navbar-header">
-                          <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
-                             <span className="sr-only">Toggle navigation</span>
-                             <span className="icon-bar"></span>
-                             <span className="icon-bar"></span>
-                             <span className="icon-bar"></span>
-                          </button>
-                          <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="/images/logo/LogoJune5d.jpg"/></a>
-                        </div>
-                        <div className="collapse navbar-collapse" id="navigationbar">
-                          <ul id="navbar" className="nav navbar-nav navbar-right">
-                            <li><Link to="/login">Login</Link></li>
-                            <li><Link to="/register">Signup</Link></li>
-                            <li><Link to="/register">About Us</Link></li>
-                            <li><Link to="/register">Faq</Link></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </nav>
+           <NavBar/>
             <div className="row">      
                 <div className="hidden-xs col-md-3">
                 </div>
