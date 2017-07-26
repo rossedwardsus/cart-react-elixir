@@ -3,10 +3,15 @@
 <html lang="en">
 
   <table width="100%">
+  <tr><td><br></td></tr>
   <tr><td><img height="50" width="200" src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
   <tr><td><br></td></tr>
-  <tr><td><br><br><br><br>Thank you <%= @key[:first_name] %> <%= @key[:last_name] %>.  We have received your order for <%= @key[:item_name] %> <%= @key[:event_full_name] %></td></tr>
-  <tr><td>The Sconely Team</td></tr>
+  <tr><td><br><br>Dear <%= @key[:first_name] %> <%= @key[:last_name] %>,<tr><td>
+  <tr><td>Thank You for choosing <%= @key[:item_name] %> for <%= @key[:event_full_name] %></td></tr>
+  <tr><td><br></td></tr>
+  <tr><td>Enjoy Your Scone!</td></tr>
+  <tr><td><br></td></tr>
+  <tr><td>Sconely Yours, The Sconely Team</td></tr>
   </table>
 
 </html>
