@@ -30,6 +30,7 @@ class GuestName extends React.Component<any, any> {
         last_name_validated: "",
         email: "",
         email_validated: "",
+        email_again_border: "",
         button_classname: "btn btn-default disabled"
         
     };
@@ -148,6 +149,10 @@ class GuestName extends React.Component<any, any> {
 
           this.setState({button_classname: "btn btn-default"});
 
+      }else{
+
+          this.setState({email_again_border: "red"});
+
       }
 
   }
@@ -203,7 +208,7 @@ class GuestName extends React.Component<any, any> {
                           <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={this.setEmail}/>
                         </div>
                         <div className="form-group">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Email Again" onChange={this.setEmailAgain} onFocus={this.onEmailAgainFocus}/>
+                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Email Again" onChange={this.setEmailAgain} onFocus={this.onEmailAgainFocus} style={{borderColor: this.state.email_again_border}}/>
                         </div>
                       </form>
                       <br/>

@@ -45845,6 +45845,8 @@ webpackJsonp([0],[
 	            //set border == green
 	            if (e.target.value == _this.state.email) {
 	                _this.setState({ button_classname: "btn btn-default" });
+	            } else {
+	                _this.setState({ email_again_border: "red" });
 	            }
 	        };
 	        _this.onEmailAgainFocus = function () {
@@ -45872,6 +45874,7 @@ webpackJsonp([0],[
 	            last_name_validated: "",
 	            email: "",
 	            email_validated: "",
+	            email_again_border: "",
 	            button_classname: "btn btn-default disabled"
 	        };
 	        return _this;
@@ -45896,7 +45899,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement(navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.text, React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "first_name", placeholder: "First Name", onChange: this.setFirstName, style: { borderColor: "" } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "last_name", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email Again", onChange: this.setEmailAgain, onFocus: this.onEmailAgainFocus }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.button_classname, onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.props.text, React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "first_name", placeholder: "First Name", onChange: this.setFirstName, style: { borderColor: "" } })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "last_name", placeholder: "Last Name", onChange: this.setLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email", onChange: this.setEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Email Again", onChange: this.setEmailAgain, onFocus: this.onEmailAgainFocus, style: { borderColor: this.state.email_again_border } }))), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.button_classname, onClick: function onClick() {
 	                    return _this2.props.completeGuestResponse(_this2.state.first_name, _this2.state.last_name, _this2.state.email);
 	                } }, "Complete"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
