@@ -2,6 +2,7 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
   alias Sconely.SignatureOrder
   alias Sconely.Order
   alias Sconely.MenuItem
+  alias Sconely.BrowserAnalytics
 
   use Timex
 
@@ -37,6 +38,19 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
 
   def complete_guest_response(_args, _info) do
     signature_order = Repo.get_by(SignatureOrder, %{parent_order_id: "uuid"})
+
+    #user_agent = conn |> get_req_header("user-agent")
+    #ip = conn |> get_req_header("http_client_ip")
+    
+    #IO.inspect(user_agent |> List.first)
+    #IO.inspect(conn.remote_ip)
+    #data time
+    #ipaddress
+    #:inet_parse.ntoa(conn.remote_ip)
+
+    #changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
+    #{:error, changeset} = Repo.insert(changeset)
+ 
 
     #IO.inspect(_args)
     #IO.inspect(signature_order)

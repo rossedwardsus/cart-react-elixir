@@ -10,7 +10,7 @@ defmodule SconeHomeElixir.HomeController do
   def index(conn, params) do
 
 
-  	#user_agent = conn |> get_req_header("user-agent")
+  	user_agent = conn |> get_req_header("user-agent")
   	#ip = conn |> get_req_header("http_client_ip")
   	
   	#IO.inspect(user_agent |> List.first)
@@ -20,7 +20,7 @@ defmodule SconeHomeElixir.HomeController do
   	#:inet_parse.ntoa(conn.remote_ip)
 
 
-  	#changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{email: "mary@example.com", password: "password"})
+  	#changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
     #{:error, changeset} = Repo.insert(changeset)
     
 
