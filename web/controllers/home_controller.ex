@@ -20,8 +20,8 @@ defmodule SconeHomeElixir.HomeController do
   	#:inet_parse.ntoa(conn.remote_ip)
 
 
-  	#changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
-    #{:error, changeset} = Repo.insert(changeset)
+  	changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
+    {:error, changeset} = Repo.insert(changeset)
     
 
   	IO.inspect(params["name"])
