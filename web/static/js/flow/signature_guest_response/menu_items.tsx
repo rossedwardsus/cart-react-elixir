@@ -310,6 +310,8 @@ class GuestMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             *Names of scones are inspired by nicknames of dear friends and family
+                            <br/>
+                            <br/>
                         </div>
                         <br/>
                         <div className="col-xs-12 hidden-lg" style={{fontSize: 12, wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
@@ -320,6 +322,8 @@ class GuestMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             *Names of scones are inspired by nicknames of dear friends and family
+                            <br/>
+                            <br/>
                         </div>
                         <br/>
                         <br/>
