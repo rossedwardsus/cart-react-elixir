@@ -13,7 +13,7 @@ defmodule SconeHomeElixir.HomeController do
   	user_agent = conn |> get_req_header("user-agent")
   	#ip = conn |> get_req_header("http_client_ip")
   	
-  	#IO.inspect(user_agent |> List.first)
+  	IO.inspect(user_agent |> List.first)
   	#IO.inspect(conn.remote_ip)
   	#data time
   	#ipaddress
@@ -21,7 +21,7 @@ defmodule SconeHomeElixir.HomeController do
 
 
   	changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
-    {:error, changeset} = Repo.insert(changeset)
+    #{:error, changeset} = Repo.insert(changeset)
     
 
   	IO.inspect(params["name"])
