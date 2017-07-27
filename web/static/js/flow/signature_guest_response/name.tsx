@@ -147,6 +147,7 @@ class GuestName extends React.Component<any, any> {
 
       if(e.target.value == this.state.email){
 
+          this.setState({email_again_border: ""});
           this.setState({button_classname: "btn btn-default"});
 
       }else{

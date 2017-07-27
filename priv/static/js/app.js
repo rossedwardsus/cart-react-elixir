@@ -45844,6 +45844,7 @@ webpackJsonp([0],[
 	            //email and email_again ==
 	            //set border == green
 	            if (e.target.value == _this.state.email) {
+	                _this.setState({ email_again_border: "" });
 	                _this.setState({ button_classname: "btn btn-default" });
 	            } else {
 	                _this.setState({ email_again_border: "red" });
