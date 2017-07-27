@@ -7,7 +7,7 @@
   <tr><td><img height="50" width="200" src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
   <tr><td><br><br></td></tr>
   <tr><td>Dear <%= @key[:first_name] %>,</td></tr>
-  <tr><td><br><br></td></tr>
+  <tr><td><br></td></tr>
   <tr><td>Thank You for choosing <%= @key[:item_name] %> for <%= @key[:event_full_name] %>.</td></tr>
   <tr><td><br></td></tr>
   <tr><td>Enjoy Your Scone!</td></tr>
