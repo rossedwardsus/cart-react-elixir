@@ -1,3 +1,5 @@
+//import "babel-polyfill";
+
 import * as React from 'react'
 
 import { Link, browserHistory } from 'react-router'

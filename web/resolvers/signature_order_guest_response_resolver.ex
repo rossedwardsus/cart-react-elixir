@@ -52,8 +52,8 @@ defmodule Sconely.SignatureOrderGuestResponseResolver do
     #{:error, changeset} = Repo.insert(changeset)
  
 
-    #IO.inspect(_args)
-    #IO.inspect(signature_order)
+    IO.inspect(_args)
+    IO.inspect(signature_order)
     
     #IO.inspect(order.delivery_datetime |> Ecto.DateTime.to_erl)
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))

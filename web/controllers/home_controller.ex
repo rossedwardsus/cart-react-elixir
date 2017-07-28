@@ -59,6 +59,8 @@ defmodule SconeHomeElixir.HomeController do
 
   		if signature_order != nil do
 
+  			#sconely.herokuapp.com
+
 	  		name = params["name"]
 	  		url = "/#/order/" <> name <> "/guest/menu"
 	  		redirect conn, to: url
