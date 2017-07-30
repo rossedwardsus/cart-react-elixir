@@ -146,6 +146,8 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
   #end
 
+
+
   def get_order_guest_responses(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
     IO.inspect("get order guest guest responses")
@@ -162,6 +164,8 @@ defmodule Sconely.SconelySignatureOrderResolver do
     {:ok, responses}
 
   end
+
+
 
   def get_order_suborders(_args, _info) do
     #{:ok, Blog.Repo.all(Post)}
@@ -382,7 +386,6 @@ defmodule Sconely.SconelySignatureOrderResolver do
 
     {:ok, %{status: "processed", suborders: [%{suborder_id: 111111, stripe_token: "st"}]}}
   end
-
 
 
 

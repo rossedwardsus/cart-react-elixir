@@ -55,6 +55,7 @@ defmodule SconeHomeElixir.Mixfile do
      {:arc, "~> 0.6.0"},
      {:bamboo, "~> 0.6"},
      {:mailgun, "~> 0.1.2"},
+     {:bamboo_postmark, "~> 0.4"},
      {:twilex, "~> 0.0.1"},
      {:stripity_stripe, "~> 1.4.0"},
      {:mogrify, "~> 0.3.2"},

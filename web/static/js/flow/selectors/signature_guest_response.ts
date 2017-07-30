@@ -115,7 +115,7 @@ export const getNameScreenText = (state: any) => {
     
   }else{
 
-    return "Great you are almost finished.  Please provide us with the information below so we can personalize your scone.";
+    return "Great, you are almost finished.  Please provide us with the information below so we can personalize your scone.";
 
   }
 }

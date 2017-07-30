@@ -54,7 +54,26 @@ config :scone_home_elixir, SconeHomeElixir.Mailer,
   adapter: Bamboo.MailgunAdapter,
   #api_key: "my_api_key"
   api_key: "key-22e98444fc043c1e72943865de283d39",
-  domain: "sandbox60cd8c923f214e8b90257138647a028e.mailgun.org"
+  domain: "sconely.com",
+  deliver_later_strategy: Bamboo.TaskSupervisorStrategy
+
+
+
+#2a941da9-b2dd-44ac-b38e-f5a4c0383ce3
+#config :scone_home_elixir, SconeHomeElixir.Mailer,
+#  adapter: Bamboo.PostmarkAdapter,
+  #api_key: "my_api_key"
+ # api_key: "2a941da9-b2dd-44ac-b38e-f5a4c0383ce3"
+  #domain: "sandbox60cd8c923f214e8b90257138647a028e.mailgun.org"
+  #deliver_later_strategy: Bamboo.TaskSupervisorStrategy
+
+
+#2a941da9-b2dd-44ac-b38e-f5a4c0383ce3
+#config :scone_home_elixir, SconeHomeElixir.Mailer,
+#  adapter: Bamboo.MandrillAdapter,
+  #api_key: "my_api_key"
+#  api_key: "tgUvaiYYBCuZCUsara_itg"
+  #domain: "sandbox60cd8c923f214e8b90257138647a028e.mailgun.org"
   #deliver_later_strategy: Bamboo.TaskSupervisorStrategy
 
 
