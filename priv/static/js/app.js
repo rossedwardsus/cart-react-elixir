@@ -45286,6 +45286,7 @@ webpackJsonp([0],[
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	//import "babel-polyfill";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -45567,7 +45568,7 @@ webpackJsonp([0],[
 	    if (state.SignatureOrderGuestResponse.chosen_item_id == 0) {
 	        return "Please provide us with the information below so we can let your host know.";
 	    } else {
-	        return "Great you are almost finished.  Please provide us with the information below so we can personalize your scone.";
+	        return "Great, you are almost finished.  Please provide us with the information below so we can personalize your scone.";
 	    }
 	};
 	exports.getOrderCompletedScreenText = function (state) {
