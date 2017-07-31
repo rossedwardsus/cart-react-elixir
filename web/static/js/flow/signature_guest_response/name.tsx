@@ -198,7 +198,7 @@ class GuestName extends React.Component<any, any> {
                       <br/>
                       <form className="form-inline">
                         <div className="form-group">
-                          <input type="text" className="form-control" id="first_name" placeholder="First Name" onChange={this.setFirstName} style={{borderColor: ""}}/>
+                          <input type="text" className="form-control" id="first_name" placeholder="First Name" onChange={this.setFirstName} maxLength={50} style={{borderColor: ""}}/>
                         </div>
                         <div className="form-group">
                           <input type="text" className="form-control" id="last_name" placeholder="Last Name" onChange={this.setLastName}/>
