@@ -152,7 +152,6 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
   render(): JSX.Element {
     return (
       <div>
-        <br/>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-5">
@@ -227,8 +226,6 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
             </div>
           </div>
         </form>
-        
-     
        </div>
     )
   }

@@ -32986,7 +32986,7 @@ webpackJsonp([0],[
 	            }
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), logged_in)), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.user_order_cart, processSignatureOrder: function processSignatureOrder() {
 	                    return _this2.props.processSignatureOrder();
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")), React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/guests" }, "Order Guests")))), React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order: this.props.order, order_details: this.props.order_details, setEventName: function setEventName(e) {
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")), React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/guests" }, "Order Guests")))), React.createElement(sconely_signature_event_details_tsx_1.default, { order: this.props.order, order_details: this.props.order_details, setEventName: function setEventName(e) {
 	                    return _this2.props.setEventName(e);
 	                }, setGuestCount: function setGuestCount(e) {
 	                    return _this2.props.setGuestCount(e);
@@ -33229,9 +33229,9 @@ webpackJsonp([0],[
 	            //    item_count = item.dozens * item.quantity;
 	            //});
 	            var cart = "";
-	            console.log("length cart" + JSON.stringify(this.props.UserOrderCart));
+	            //console.log("length cart" + JSON.stringify(this.props.UserOrderCart));
 	            //console.log("order type" + JSON.stringify(this.props.order));
-	            console.log("details" + JSON.stringify(this.props.UserOrderEventDetails));
+	            //console.log("details" + JSON.stringify(this.props.UserOrderEventDetails));
 	            //{this.props.params.repoName}
 	            /*cart = this.props.UserOrderSubOrders.cart_items.map((items: any) => {
 	                       return(<form className="form-horizontal" style={{border: 1, position: "static"}}>
@@ -33247,7 +33247,7 @@ webpackJsonp([0],[
 	                            </div>
 	                          </form>)
 	                 });*/
-	            return React.createElement("div", null, React.createElement("br", null), cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, this.props.UserOrderEventDetails.orders[0].guest_count)), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-10", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), "if order processed if false button is active", React.createElement("br", null), React.createElement("button", { onClick: this.processSignatureOrder, className: "btn btn-default" }, "Process Order"));
+	            return React.createElement("div", null, React.createElement("br", null), cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" })), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-8", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), "if order processed if false button is active", React.createElement("br", null), React.createElement("button", { onClick: this.processSignatureOrder, className: "btn btn-default" }, "Process Order"));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -33263,12 +33263,7 @@ webpackJsonp([0],[
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	    console.log("order id " + JSON.stringify(undefined.props.params.order_id));
-	    return {
-	        //active: ownProps.filter === state.visibilityFilter
-	        //if(state.default.order.cart_items != undefined){
-	        cart: state.cart
-	        //}
-	    };
+	    return {};
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {};
@@ -33331,11 +33326,13 @@ webpackJsonp([0],[
 	            //order_id: this.props.params.order_id,
 	            order_id: _this.props.order_id,
 	            order_type: "",
-	            event_name: "",
+	            event_name: "EVENT NAME",
 	            startDate: moment(),
 	            files: [],
 	            image_src: "",
 	            guest_count: 12,
+	            guest_message_before_event_name: "Hi everyone,We are using Sconely Signature for",
+	            guest_message_after_event_name: "Please select the scone you'd like before THREE DAYS BEFORE DELIVERY DATE.",
 	            guest_message: ""
 	        };
 	        //load the data from the database if this is not a new event/order
@@ -33365,14 +33362,16 @@ webpackJsonp([0],[
 	            //alert(order_type);
 	            this.setState({order_type: order_type});*/
 	            //this.props.getUserOrderDetails;
+	            this.setState({ guest_message: this.state.guest_message_before_event_name + " " + this.state.event_name + " " + this.state.guest_message_after_event_name });
 	        }
 	    }, {
-	        key: "changeEventName",
-	        value: function changeEventName(e) {
+	        key: "setEventName",
+	        value: function setEventName(e) {
 	            //alert();
 	            //this.setState({changed: true});
-	            this.props.setEventName(e);
+	            //this.props.setEventName(e);
 	            this.setState({ event_name: e.target.value });
+	            this.setState({ guest_message: this.state.guest_message_before_event_name + " " + e.target.value + " " + this.state.guest_message_after_event_name });
 	        }
 	    }, {
 	        key: "changeGuestCount",
@@ -33383,8 +33382,6 @@ webpackJsonp([0],[
 	    }, {
 	        key: "onDrop",
 	        value: function onDrop(acceptedFiles) {
-	            var _this2 = this;
-	
 	            var req = request.post('/api/upload');
 	            var that = this;
 	            //this.setState({files: acceptedFiles});
@@ -33395,11 +33392,11 @@ webpackJsonp([0],[
 	                req.attach("file", file);
 	                //this.setState({files: acceptedFiles});
 	            });
-	            req.field("order_id", this.props.order.order_id);
-	            req.end(function (response) {
-	                //console.log(JSON.stringify(response))
-	                _this2.setState({ files: acceptedFiles });
-	            });
+	            //req.field("order_id", this.props.order.order_id);
+	            //req.end((response: any) => {
+	            //console.log(JSON.stringify(response))
+	            //    this.setState({files: acceptedFiles});
+	            //});
 	            //this.setState({files: acceptedFiles});
 	        }
 	    }, {
@@ -33411,25 +33408,26 @@ webpackJsonp([0],[
 	    }, {
 	        key: "setGuestMessage",
 	        value: function setGuestMessage(e) {
+	            //this.guest_message_before_event_name + event_name + this.guest_message_after_event_name
 	            this.setState({ guest_message: e.target.value });
 	            this.props.setGuestMessage(e);
 	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "if order processed is true then only shoe text", React.createElement("br", null), React.createElement("label", null, "Event Name: This name will be used to generate a link that you send to your guests.  50 character limit.")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this3.changeEventName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Event Name", value: this.state.event_name, style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo."))), React.createElement(Dropzone, { onDrop: function onDrop(files) {
-	                    return _this3.onDrop(files);
-	                } }), React.createElement("aside", null, React.createElement("h2", null, "Dropped files"), this.state.files.map(function (f) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "if order processed is true then only shoe text", React.createElement("br", null), React.createElement("label", null, "Event Name: This name will be used to generate a link that you send to your guests.  30 character limit.")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo."))), React.createElement(Dropzone, { onDrop: function onDrop(files) {
+	                    return _this2.onDrop(files);
+	                }, style: { borderRadius: "50%", "width": "110", "height": "110", "border": "1px dashed", borderColor: "#808080" } }, React.createElement("img", { height: "107", width: "107", style: { borderRadius: "50%" }, src: "/images/menu/JF_3x3.jpg" })), React.createElement("aside", null, React.createElement("h2", null, "Dropped files"), this.state.files.map(function (f) {
 	                return React.createElement("img", { src: f.preview });
-	            })), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests are you offering Sconely Signature to?"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-2" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
-	                    return _this3.setGuestCount(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.guest_count, maxLength: 3, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-4" }, "Cost"), React.createElement("div", { className: "col-sm-1" }, this.state.guest_count * 7))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. You will only be charged for the guests that make a selection."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Invite message"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-8" }, React.createElement("textarea", { onChange: function onChange(e) {
-	                    return _this3.setGuestMessage(e);
-	                }, value: this.state.guest_message, className: "form-control", style: { rows: 5, columns: 1, resize: "none" }, id: "comment" })))));
+	            })), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
+	                    return _this2.setEventName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Event Name", value: this.state.event_name, maxLength: 25, style: { borderRadius: 0, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("textarea", { onChange: function onChange(e) {
+	                    return _this2.setGuestMessage(e);
+	                }, value: this.state.guest_message, className: "form-control", style: { height: 150, resize: "none" }, id: "comment" })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests are you offering Sconely Signature to?"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("div", { className: "col-sm-1" }, "12"), React.createElement("div", { className: "col-sm-2" }, React.createElement("input", { type: "range", min: "12", max: "150", step: "1", onChange: function onChange(e) {
+	                    return _this2.setGuestCount(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.guest_count, maxLength: 3, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-1" }, "150")), React.createElement("div", { className: "col-sm-4" }, "Cost"), React.createElement("div", { className: "col-sm-1" }, "$", this.state.guest_count * 7))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. You will only be charged for the guests that make a selection."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")))));
 	        }
 	    }]);
 	
@@ -36191,7 +36189,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Contact")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Delivery Contact")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "First", onChange: function onChange(e) {
 	                    return _this2.changeDeliveryContactFirstName(e);
 	                }, value: this.state.first_name, style: { borderRadius: 0, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", onChange: function onChange(e) {
 	                    return _this2.changeDeliveryContactLastName(e);

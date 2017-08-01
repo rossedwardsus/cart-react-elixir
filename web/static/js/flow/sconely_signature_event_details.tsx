@@ -50,11 +50,13 @@ class EventDetailsName extends React.Component<any, any> {
         //order_id: this.props.params.order_id,
         order_id: this.props.order_id,
         order_type: "",
-        event_name: "",
+        event_name: "EVENT NAME",
         startDate: moment(),
         files: [],
         image_src: "",
         guest_count: 12,
+        guest_message_before_event_name: "Hi everyone,We are using Sconely Signature for",
+        guest_message_after_event_name: "Please select the scone you'd like before THREE DAYS BEFORE DELIVERY DATE.",
         guest_message: ""
 
     };
@@ -92,16 +94,20 @@ class EventDetailsName extends React.Component<any, any> {
 
     //this.props.getUserOrderDetails;
 
+    this.setState({guest_message: this.state.guest_message_before_event_name + " " + this.state.event_name + " " + this.state.guest_message_after_event_name});
+
   }
 
-  changeEventName(e: any){
+  setEventName(e: any){
 
     //alert();
 
     //this.setState({changed: true});
 
-    this.props.setEventName(e);
+    //this.props.setEventName(e);
     this.setState({event_name: e.target.value})
+
+    this.setState({guest_message: this.state.guest_message_before_event_name + " " + e.target.value + " " + this.state.guest_message_after_event_name})
 
   }
 
@@ -128,12 +134,12 @@ class EventDetailsName extends React.Component<any, any> {
             //this.setState({files: acceptedFiles});
 
         });
-        req.field("order_id", this.props.order.order_id);
-        req.end((response: any) => {
+        //req.field("order_id", this.props.order.order_id);
+        //req.end((response: any) => {
             //console.log(JSON.stringify(response))
-            this.setState({files: acceptedFiles});
+        //    this.setState({files: acceptedFiles});
 
-        });
+        //});
         //this.setState({files: acceptedFiles});
 
         
@@ -149,6 +155,8 @@ class EventDetailsName extends React.Component<any, any> {
 
   setGuestMessage(e: any){
 
+      //this.guest_message_before_event_name + event_name + this.guest_message_after_event_name
+
       this.setState({guest_message: e.target.value});
       this.props.setGuestMessage(e);
 
@@ -157,31 +165,15 @@ class EventDetailsName extends React.Component<any, any> {
   render(): JSX.Element {
     return (
       <div>
-        <br/>
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-5">
-                <label></label>
-              </div>
-            </div>
-        </form>
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
                 if order processed is true then only shoe text
                 <br/>
-                <label>Event Name: This name will be used to generate a link that you send to your guests.  50 character limit.</label>
+                <label>Event Name: This name will be used to generate a link that you send to your guests.  30 character limit.</label>
               </div>
             </div>
         </form>
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-10">
-                <input type="text" onChange={(e: any) => this.changeEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} style={{borderRadius: 0, fontSize: 16}}/>
-              </div>
-            </div>
-        </form>
-        <br/>
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
@@ -189,14 +181,29 @@ class EventDetailsName extends React.Component<any, any> {
               </div>
             </div>
         </form>
-        <Dropzone onDrop={(files: any) => this.onDrop(files)}>
-            
+        
+        <Dropzone onDrop={(files: any) => this.onDrop(files)} style={{borderRadius: "50%", "width" : "110", "height" : "110", "border" : "1px dashed", borderColor: "#808080"}}>
+              <img height="107" width="107" style={{borderRadius:"50%"}} src="/images/menu/JF_3x3.jpg"/>
         </Dropzone>
         <aside>
           <h2>Dropped files</h2>
             {this.state.files.map((f: any) => <img src={f.preview}/>)}
             </aside>
         <br/>
+        <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-sm-4">
+                <input type="text" onChange={(e: any) => this.setEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} maxLength={25} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+            </div>
+        </form>
+        <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-4">
+              <textarea onChange={(e: any) => this.setGuestMessage(e)}  value={this.state.guest_message} className="form-control" style={{height: 150, resize: "none"}} id="comment"></textarea>
+            </div>
+          </div>
+        </form>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
@@ -206,14 +213,22 @@ class EventDetailsName extends React.Component<any, any> {
         </form>
         <form className="form-horizontal">
           <div className="form-group">
-              <div className="col-sm-2">
-                <input type="text" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
+              <div className="col-sm-4">
+                <div className="col-sm-1">
+                  12
+                </div>
+                <div className="col-sm-2">
+                  <input type="range" min="12" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16}}/>
+                </div>
+                <div className="col-sm-1">
+                  150
+                </div>
               </div>
               <div className="col-sm-4">
                 Cost
               </div>
               <div className="col-sm-1">
-                {this.state.guest_count * 7}
+                ${this.state.guest_count * 7}
               </div>
           </div>
         </form>
@@ -230,20 +245,6 @@ class EventDetailsName extends React.Component<any, any> {
                   <Link to="/order/12345/items">Items</Link>
               </div>
             </div>
-        </form>   
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-10">
-              Invite message
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-8">
-              <textarea onChange={(e: any) => this.setGuestMessage(e)}  value={this.state.guest_message} className="form-control" style={{rows: 5, columns: 1, resize: "none"}} id="comment"></textarea>
-            </div>
-          </div>
         </form>
        </div>
     )

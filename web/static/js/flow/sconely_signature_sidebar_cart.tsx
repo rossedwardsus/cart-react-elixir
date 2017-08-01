@@ -218,10 +218,10 @@ class SidebarCart extends React.Component<any, any> {
 
     let cart = "";
 
-    console.log("length cart" + JSON.stringify(this.props.UserOrderCart));
+    //console.log("length cart" + JSON.stringify(this.props.UserOrderCart));
     //console.log("order type" + JSON.stringify(this.props.order));
 
-    console.log("details" + JSON.stringify(this.props.UserOrderEventDetails));
+    //console.log("details" + JSON.stringify(this.props.UserOrderEventDetails));
 
    
     //{this.props.params.repoName}
@@ -256,7 +256,7 @@ class SidebarCart extends React.Component<any, any> {
                     <div className="form-group" style={{border: 1}}>
                       <div className="col-md-4">Guest</div>
                       <div className="col-md-4">X</div>
-                       <div className="col-md-4">{this.props.UserOrderEventDetails.orders[0].guest_count}</div>
+                       <div className="col-md-4"></div>
                     </div>
                     <div className="form-group" style={{border: 1}}>
                       <div className="col-md-4">Ruby Q</div>
@@ -266,7 +266,7 @@ class SidebarCart extends React.Component<any, any> {
                   </form>
                   <form className="form-horizontal" style={{border: 1}}>
                     <div className="form-group" style={{border: 1}}>
-                      <div className="col-xs-10" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Amount Due</b></div>
+                      <div className="col-xs-8" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Amount Due</b></div>
                       <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>$100.00</div>
                       <br/>
                       <br/>
@@ -306,7 +306,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        cart: state.cart
+     //   cart: state.cart
 
     //}
   }
