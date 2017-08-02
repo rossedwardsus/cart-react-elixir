@@ -46457,28 +46457,35 @@ webpackJsonp([0],[
 	    function SignatureOrderPreview(props) {
 	        _classCallCheck(this, SignatureOrderPreview);
 	
-	        //this.getData();
-	        //alert(window.links.indexOf({link: "menu", text: "Menu"}));
 	        var _this = _possibleConstructorReturn(this, (SignatureOrderPreview.__proto__ || Object.getPrototypeOf(SignatureOrderPreview)).call(this, props));
 	
-	        var exists = "no";
-	        /*JSON.parse(localStorage.getItem("order")).links.map(function(link){
-	                 //alert("yes" + link.link);
-	                 if(link.link == "menu"){
-	                     exists = "yes";
-	                 }
-	             });
-	             if(exists == "no"){
-	                 //alert("doesnt exist");
-	                   JSON.parse(localStorage.getItem("order")).links.push({link: "menu", text: "Menu"});
-	             }else{
-	             //    alert("exists");
-	        }*/
-	        //alert("sconely yours1" + window.guest_chooses);
-	        //window.event.number_of_guests = 20;
-	        //window.event.guests_choose = false;
+	        _this.showItem = function (item_id) {
+	            //alert(item_id);
+	            //this.setState({selected_item_id: item_id});
+	            //var elementPos = array.map(function(x) {return x.id; }).indexOf(idYourAreLookingFor);
+	            //var objectFound = array[elementPos];
+	            //var filteredArray = array.filter(function (element) { 
+	            //    return element.id === 0;
+	            //});
+	            var item_index = _this.state.menu_items.findIndex(function (obj) {
+	                return obj.id == item_id;
+	            });
+	            console.log("item index " + item_index);
+	            //{1234: {title: ""}, 5678: {title: ""}}
+	            /*this.props.normalized_menu_items.map(function(item: any){
+	                       if(item.item_id === item_id){*/
+	            //this.setState({selected_item_name: this.props.menu_items[item_index].name});
+	            //this.setState({selected_item_description: this.props.menu_items[item_index].description});
+	            //this.setState({selected_item_ingredients: this.props.menu_items[item_index].ingredients});
+	            /*}
+	              }.bind(this));*/
+	            $('#myModal').modal('show');
+	        };
+	        //this.getData();
 	        _this.state = {
-	            value: 0
+	            value: 0,
+	            //values: 0
+	            menu_items: [{ "name": "DWK", "ingredients": "Unbleached white all-purpose flour*, Anjou pears*, Pecans, Butter*, Eggs*, Heavy Cream*, Coconut sugar*, Fresh ginger*, Ground ginger, Baking powder, Pure vanilla extract*, Sea salt. *Organic\r", "id": "1", "description": "DWK is an exquisite combination of flavors and textures, with caramelized pears, praline pecans and fresh ginger." }, { "name": "Snorker", "ingredients": "Unbleached white all-purpose flour*, Dark chocolate*, Hazelnuts, Cocoa powder*, Heavy Cream*, Eggs*, Coconut sugar*, Butter*, Pure vanilla extract*, Baking powder, Sea salt. *Organic", "id": "2", "description": "Snorker is a rich double dark chocolate dessert scone with dark chocolate chunks and hazelnut praline. \r" }, { "name": "Ruby Q", "ingredients": "Unbleached white all-purpose flour*, Fresh cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", "id": "3", "description": "Fresh cherries, semisweet chocolate chunks and Madagascar vanilla bean – sweet and simple.\r" }, { "name": "Suzy Sunshine", "ingredients": "Unbleached white all-purpose flour*, Bananas*, Deglet noor dates, Eggs*, Yogurt*, Butter*, Chai tea*, Coconut sugar*, Baking powder, Pure vanilla extract*, Sea salt. *Organic\r", "id": "4", "description": "A rich, warming banana date scone enhanced with Awarding-Winning Masala Chai from SerendipiTea.\r" }, { "name": "Bea (Vegan)", "ingredients": "Unbleached white all-purpose flour*, Fresh blueberries*, Almond milk*, Matcha tea*, Virgin coconut oil*, Ground flax seeds*, Lemon zest*, Coconut sugar*, Pure vanilla extract*, Baking powder, Sea salt. *Organic\r", "id": "5", "description": "Bursting with plump fruit, antioxidant-filled blueberry matcha tea lemon scone.\r" }, { "name": "Julie Freedom (Vegan and Gluten-Free)", "ingredients": "Gluten-free flour (brown rice flour*, sorghum flour*, potato starch, arrowroot powder*), Gluten free oats*, Almond meal*, Dried unsulfured apricots*, Whole raw almonds, Sunflower seeds, Pumpkin seeds*, Golden raisins, Chia seeds*, Dried unsweetened unsulfured cranberries*, Dried unsweetened unsulfured dried cherries, Almond milk*, Virgin coconut oil*, Maple syrup*, Tangerine zest*, Baking soda, Baking powder, Pure vanilla extract*, Sea salt. *Organic\r", "id": "6", "description": "This healthy scone is nutrient dense with chia seeds, unsulfured dried fruit and crunchy nuts, naturally sweetened with maple syrup and tangerine zest." }, { "name": "Zilla", "ingredients": "Unbleached white all-purpose flour*, Purple onions*, Gruyere, Butter*, Eggs*, Heavy cream*, Sage*, Baking powder, Raw cane sugar*, Sea salt. *Organic", "id": "7", "description": "Zilla is a savory powerhouse. It perfectly combines gruyere cheese, slowly caramelized purple onions and sage.\r" }, { "name": "Savvy Go Go\r", "ingredients": "Unbleached white all-purpose flour,* Sun-dried tomatoes, Oven-dried tomatoes*, Goat cheese, Eggs*, Heavy cream*, Butter*, Thyme*, Basil*, Rosemary*, Oregano*, Garlic*, Baking powder, Raw cane sugar*, Sea salt. *Organic\r", "id": "8", "description": "Savory and satisfying with sun-dried tomatoes, goat cheese and fresh herbs, Savvy Go Go is perfect for meals or snacks on the go!" }, { "name": "Ishkabibble (Vegan and Gluten-Free)", "ingredients": "Gluten-free flour (brown rice flour*, sorghum flour*, potato starch, arrowroot powder*), Almond milk*, Gold potatoes*, Virgin coconut oil*, Roasted garlic*, Kale*, Chives*, Preserved lemons*, Ground flax seeds,* Baking powder, Coconut sugar*, Black pepper, Ground and fresh turmeric*, Sea salt, White pepper*. *Organic\r", "id": "9", "description": "Ishkabibble is a unique potato kale scone enhanced with roasted garlic, fresh chives, tumeric, and house made preserved lemons. Vegans, gluten-free eaters and anyone in search of a healthy, savory alternative love this one!\r" }]
 	        };
 	        _this.handleValuesChange = _this.handleValuesChange.bind(_this);
 	        //myTimer;
@@ -46525,7 +46532,23 @@ webpackJsonp([0],[
 	            if (this.state.value == true) {
 	                guests_choices = "Ross Edwards rossedwards.us@gmail.com";
 	            }
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("b", null, "Event Name"), React.createElement("br", null), "Date time:", React.createElement("br", null), "Address:", React.createElement("br", null), "Your host:", React.createElement("br", null), "Please select from the following items:", React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: "/images/menu/LACI_1.5.jpg" }), React.createElement("br", null), "Event Name", React.createElement("br", null), React.createElement("p", { className: "text-left" }, "Message"), React.createElement("br", null), React.createElement("label", { className: "text-left", style: { wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal" } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-sm-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
+	                var _this2 = this;
+	
+	                //console.log(JSON.stringify(item));
+	                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
+	                //this.setState({image_id: image_id});
+	                //console.log("image id" + image_id);
+	                //console.log("image id " + this.state["image_src_" + item.item_id]);
+	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
+	                        return _this2.showItem(item.id);
+	                    }, onMouseEnter: function onMouseEnter(e) {
+	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg";
+	                    }, onMouseLeave: function onMouseLeave(e) {
+	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg";
+	                    }, src: "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
+	            }.bind(this)), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true", style: { fontColor: "black", fontSize: 20 } }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: "btn btn-default", type: "button", style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Select Scone")))))))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xs col-lg-12", style: { fontSize: 12 } }, React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch and freshly baked to order. Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "*Names of scones are inspired by nicknames of dear friends and family", React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), React.createElement("div", { className: "col-xs-12 hidden-lg", style: { fontSize: 12, wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis" } }, React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch and freshly baked to order.  Our scones are free of refined sugars, soy and chemical preservatives. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others),  as we bake in a common kitchen where shared equipment is used.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "*Names of scones are inspired by nicknames of dear friends and family", React.createElement("br", null), React.createElement("br", null)), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-3" })));
 	        }
 	    }]);
 	
