@@ -46165,7 +46165,6 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(969);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var cart_ts_1 = __webpack_require__(950);
@@ -46275,12 +46274,14 @@ webpackJsonp([0],[
 	        value: function changeQuantity(e) {
 	            this.setState({ quantity: e.target.value });
 	        }
+	        //<SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart} processSignatureOrder={this.props.processSignatureOrder}/>
+	
 	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this3 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.UserOrderCart, processSignatureOrder: this.props.processSignatureOrder }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.items.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                //console.log(item);
@@ -46306,18 +46307,7 @@ webpackJsonp([0],[
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
 	    console.log("order id " + JSON.stringify(ownProps.params.order_id));
-	    return {
-	        //active: ownProps.filter === state.visibilityFilter
-	        //if(state.default.order.cart_items != undefined){
-	        menu_items: state.MenuItems,
-	        UserOrderEventDetails: state.UserOrderEventDetails,
-	        //UserOrderCart: state.UserOrderCart,
-	        UserOrderCart: state.UserOrderCart.cart_items.map(function (item) {
-	            if (item.order_id == 1) {
-	                return item;
-	            }
-	        })
-	    };
+	    return {};
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {

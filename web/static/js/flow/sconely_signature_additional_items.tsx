@@ -145,7 +145,8 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
 
   }
 
-
+  //<SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart} processSignatureOrder={this.props.processSignatureOrder}/>
+                    
 
   render(): JSX.Element {
     return (
@@ -170,7 +171,6 @@ class SconelySignatureAdditionalItems extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
-                    <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.UserOrderCart} processSignatureOrder={this.props.processSignatureOrder}/>
                     <br/>
                     <br/>
                     <Link to="/public/menu">Menu</Link>
@@ -281,7 +281,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        menu_items: state.MenuItems,
+        /*menu_items: state.MenuItems,
         UserOrderEventDetails: state.UserOrderEventDetails,
         //UserOrderCart: state.UserOrderCart,
 
@@ -293,7 +293,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
             }
 
-        }),
+        }),*/
 
     //}
   }
