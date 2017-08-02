@@ -168,9 +168,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
-                if order processed is true then only shoe text
-                <br/>
-                <label>Event Name: This name will be used to generate a link that you send to your guests.  30 character limit.</label>
+                 <label>Event Name: This name will be used to generate a link that you send to your guests.  30 character limit.</label>
               </div>
             </div>
         </form>
@@ -185,7 +183,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-10">
-                Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo.  
+                Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo.  1.5 x 1.5 inches or 110 x 110 pixels.
               </div>
             </div>
         </form>
@@ -198,7 +196,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              How many guests are you offering Sconely Signature to?
+              How many guests are you offering Sconely Signature to?  This number can only increase after your order is placed.
             </div>
           </div>
         </form>
@@ -226,7 +224,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
-              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. You will only be charged for the guests that make a selection. 
+              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. 
             </div>
           </div>
         </form>
