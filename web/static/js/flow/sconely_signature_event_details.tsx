@@ -176,6 +176,14 @@ class EventDetailsName extends React.Component<any, any> {
         </form>
         <form className="form-horizontal">
             <div className="form-group">
+              <div className="col-sm-4">
+                <input type="text" onChange={(e: any) => this.setEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} maxLength={25} style={{borderRadius: 0, fontSize: 16}}/>
+              </div>
+            </div>
+        </form>
+         
+        <form className="form-horizontal">
+            <div className="form-group">
               <div className="col-sm-10">
                 Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo.  
               </div>
@@ -190,20 +198,6 @@ class EventDetailsName extends React.Component<any, any> {
             {this.state.files.map((f: any) => <img src={f.preview}/>)}
             </aside>
         <br/>
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-4">
-                <input type="text" onChange={(e: any) => this.setEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} maxLength={25} style={{borderRadius: 0, fontSize: 16}}/>
-              </div>
-            </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-4">
-              <textarea onChange={(e: any) => this.setGuestMessage(e)}  value={this.state.guest_message} className="form-control" style={{height: 150, resize: "none"}} id="comment"></textarea>
-            </div>
-          </div>
-        </form>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-10">
