@@ -56,6 +56,7 @@ import SconelySignatureGuestOrderCompleted from "./signature_guest_response/orde
 import Guests from "./sconely_signature_guests.tsx";
 import SconelySignatureAdditionalItems from "./sconely_signature_additional_items.tsx";
 import SconelySignatureOrderHistory from "./sconely_signature_order_history.tsx";
+import SignatureOrderPreview from "./sconely_signature_preview.tsx";
 //import SconelySignature from "./sconely_signature_single_page.tsx";
 //import SconelySignatureSinglePage from "./sconely_signature_single_page.tsx";
 /*import OrderPayment from "./sconely_yours_social_order_payment";
@@ -187,6 +188,7 @@ const Root = () => (
         <Route path="/order/:order_id/guests" component={Guests} />
         <Route path="/order/:order_id/guests" component={SconelySignatureOrderHistory} />
         <Route path="/order/:order_id/items" component={SconelySignatureAdditionalItems} />
+        <Route path="/order/:order_id/preview" component={SignatureOrderPreview} />
         <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
         <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />
         <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />

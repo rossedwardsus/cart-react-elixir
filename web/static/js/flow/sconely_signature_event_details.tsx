@@ -193,10 +193,7 @@ class EventDetailsName extends React.Component<any, any> {
         <Dropzone onDrop={(files: any) => this.onDrop(files)} style={{borderRadius: "50%", "width" : "110", "height" : "110", "border" : "1px dashed", borderColor: "#808080"}}>
               <img height="107" width="107" style={{borderRadius:"50%"}} src="/images/menu/JF_3x3.jpg"/>
         </Dropzone>
-        <aside>
-          <h2>Dropped files</h2>
             {this.state.files.map((f: any) => <img src={f.preview}/>)}
-            </aside>
         <br/>
         <form className="form-horizontal">
           <div className="form-group">

@@ -197,6 +197,8 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <br/>
+                    <br/>
+                    <br/>
                     <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.user_order_cart} processSignatureOrder={() => this.props.processSignatureOrder()}/>
                     <br/>
                     <br/>
@@ -217,10 +219,10 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <form className="form-horizontal">
                       <div className="form-group">
                         <div className="col-sm-3">
-                            <Link to="/order/12345/items">Items</Link>
+                            <Link to="/order/12345/guests">Order Guests</Link>
                         </div>
                         <div className="col-sm-3">
-                            <Link to="/order/12345/guests">Order Guests</Link>
+                            <Link to="/order/12345/preview">Preview</Link>
                         </div>
                       </div>
                   </form>
