@@ -10,6 +10,24 @@ defmodule Sconely.RegistrationEmail do
 
     new_email(
       #to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
+      #to: ["rossedwards.us@gmail.com"],
+      to: _params[:email],
+      from: "eat@sconely.com",
+      subject: "Welcome to Sconely",
+      html_body: template,
+    )
+
+  end
+
+  def welcome_admin_email(_params) do
+
+    IO.inspect(_params["email"])
+    IO.inspect(System.get_env("MIX"))
+    
+    template = Phoenix.View.render_to_string(Sconely.RegisterEmailView, "register_email.html", key: _params)
+
+    new_email(
+      #to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
       to: ["rossedwards.us@gmail.com"],
       from: "eat@sconely.com",
       subject: "Welcome to Sconely",
@@ -19,4 +37,5 @@ defmodule Sconely.RegistrationEmail do
     )
 
   end
+
 end

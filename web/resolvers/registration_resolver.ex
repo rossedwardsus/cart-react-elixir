@@ -48,38 +48,38 @@ defmodule Sconely.RegistrationResolver do
     IO.puts("first name") 
     #IO.inspect(Repo.all(query))
 
-    email_exists_query = Repo.get_by(Registration, %{email: "e11"})
+    #email_exists_query = Repo.get_by(Registration, %{email: "e11"})
 
-    if email_exists_query != nil do
+    #if email_exists_query != nil do
 
-        IO.inspect("exists")
+    #    IO.inspect("exists")
 
-    else
+    #else
 
-        IO.inspect("doesnt exist")
+    #    IO.inspect("doesnt exist")
 
-    end
+    #end
 
-    Repo.transaction(fn ->
+    #Repo.transaction(fn ->
 
-        case Repo.insert(registration_changeset) do
-          {:ok, response} -> IO.inspect(response)
+        #case Repo.insert(registration_changeset) do
+        #  {:ok, response} -> IO.inspect(response)
         #    conn
         #      |> put_flash(:info, "User created successfully.")
         #      |> redirect(to: user_path(conn, :index))
 
              
-                case Repo.insert(user_profile_changeset) do
-                  {:ok, response} -> IO.inspect(response)
+                #case Repo.insert(user_profile_changeset) do
+                #  {:ok, response} -> IO.inspect(response)
                 #    conn
                 #      |> put_flash(:info, "User created successfully.")
                 #      |> redirect(to: user_path(conn, :index))
 
                         #working
-                        Sconely.RegistrationEmail.welcome_email(%{"first_name" => args[:first_name], "last_name" => args[:last_name], "email" => args[:email]}) |> SconeHomeElixir.Mailer.deliver_now
+                        Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #admin
-                        #Sconely.SconelySocialOrderEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
+                        #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
                      
                        
@@ -120,9 +120,9 @@ defmodule Sconely.RegistrationResolver do
                     #end)
                 #    render(conn, "new.html", changeset: changeset)
                 
-                end
+         #       end
 
-         {:error, changeset} -> 
+         #{:error, changeset} -> 
             #Ecto.Changeset.traverse_errors(changeset, fn
             #  IO.inspect(Map.fetch(changeset, :errors))
               #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
@@ -130,8 +130,9 @@ defmodule Sconely.RegistrationResolver do
               #msg -> msg
             #end)
         #    render(conn, "new.html", changeset: changeset)
-        end
-    end)
-
+        #end
+    #end)
+        {:ok, %{token: "12345"}}
+    
   end
 end

@@ -44440,6 +44440,9 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var register_ts_1 = __webpack_require__(1149);
+	//import * as Autocomplete from "react-google-autocomplete";
+	//const Autocomplete = require("react-google-autocomplete");
+	var axios_1 = __webpack_require__(924);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -44462,6 +44465,28 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
 	
+	        _this.setEmail = function (e) {
+	            //console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
+	            var email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	            var email_result = email_pattern.test(e.target.value);
+	            //not blank
+	            //has to include @ and .
+	            //no symbols
+	            //cant already exist
+	            var dot_patt = /[.]/;
+	            var dot_res = dot_patt.test(e.target.value);
+	            var ampersand_patt = /[@]/;
+	            var ampersand_res = ampersand_patt.test(e.target.value);
+	            //if(e.target.value.length > 0 && email_result === true){
+	            //less then 20, doesnt include @ and . _
+	            //    console.log(dot_res + "" + ampersand_res);
+	            _this.setState({ email: e.target.value });
+	            //    this.setState({email_border_color: "grey"});
+	            //    this.setState({email_validated: true});
+	            _this.checkButton();
+	            //}
+	            //this.props.registerSetEmail(e);
+	        };
 	        _this.checkButton = function () {
 	            if (_this.state.first_name_validated && _this.state.last_name_validated && _this.state.email_validated) {
 	                _this.setState({ button_class: "btn btn-default" });
@@ -44488,7 +44513,7 @@ webpackJsonp([0],[
 	            last_name_validated: false,
 	            email_validated: false,
 	            email_again_validated: false,
-	            button_class: "btn btn-default disabled"
+	            button_class: "btn btn-default"
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -44578,28 +44603,6 @@ webpackJsonp([0],[
 	            // this.props.registerSetLastName(e);
 	        }
 	    }, {
-	        key: "setEmail",
-	        value: function setEmail(e) {
-	            //console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
-	            //not blank
-	            //has to include @ and .
-	            //no symbols
-	            //cant already exist
-	            var dot_patt = /[.]/;
-	            var dot_res = dot_patt.test(e.target.value);
-	            var ampersand_patt = /[@]/;
-	            var ampersand_res = ampersand_patt.test(e.target.value);
-	            if (e.target.value.length > 0 && dot_res === true && ampersand_res === true) {
-	                //less then 20, doesnt include @ and . _
-	                //    console.log(dot_res + "" + ampersand_res);
-	                this.setState({ email: e.target.value });
-	                //    this.setState({email_border_color: "grey"});
-	                this.setState({ email_validated: true });
-	                this.checkButton();
-	            }
-	            //this.props.registerSetEmail(e);
-	        }
-	    }, {
 	        key: "setEmailAgain",
 	        value: function setEmailAgain(e) {
 	            //let dot_patt = /[.]/;
@@ -44632,29 +44635,27 @@ webpackJsonp([0],[
 	        key: "register",
 	        value: function register() {
 	            //check email and password/form validated
-	            this.props.registerUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password);
+	            //this.props.registerUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password);
 	            //this.setState({"delivery_address_street1_classname": "form-group"});
 	            //ifthis.props.registration.registered == true
 	            //this.props.history.push('/register_complete');
 	            var that = this;
-	            /*if(this.state.first_name_validated === false){
-	                       axios.post('http://localhost:4000/api/graphql', {
-	                         query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") { user_id }}'
-	                  })
-	                  .then( response => {
-	                             console.log("graphql response" + JSON.stringify(response));
-	                             //that.props.history.push('/user');
-	                        //context.router
-	                       })
-	                  .catch( error => {
-	                             console.log("error" + error);
-	                        //go to code/payment screen
+	            //if(this.state.first_name_validated === false){
+	            axios_1.default.post('http://localhost:4000/api/graphql', {
+	                query: 'mutation {register (first_name: "' + "that.state.first" + '", last_name: "' + "that.state.last" + '", email: "' + that.state.email + '", mobile: "' + "this.state.mobile" + '", password: "' + "this.state.password" + '") { token }}'
+	            }, { headers: { Authorization: "12345" } }).then(function (response) {
+	                console.log("graphql response" + JSON.stringify(response));
+	                //that.props.history.push('/user');
+	                //context.router
+	            }).catch(function (error) {
+	                console.log("error" + error);
+	                //go to code/payment screen
 	                //        this.props.loadView();
-	                      //if (!error.status) {
-	                    // network error
-	                  //}
-	                       })
-	            }*/
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	            //}
 	        }
 	    }, {
 	        key: "render",
@@ -44665,9 +44666,7 @@ webpackJsonp([0],[
 	                    return _this2.setFirstName(e);
 	                }, value: this.state.first_name, style: { borderColor: this.state.first_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Last Name", onChange: function onChange(e) {
 	                    return _this2.setLastName(e);
-	                }, value: this.state.last_name, style: { borderColor: this.state.last_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: function onChange(e) {
-	                    return _this2.setEmail(e);
-	                }, value: this.state.email, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email Again", onChange: function onChange(e) {
+	                }, value: this.state.last_name, style: { borderColor: this.state.last_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email", onChange: this.setEmail, value: this.state.email, style: { borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "email", placeholder: "Email Again", onChange: function onChange(e) {
 	                    return _this2.setEmailAgain(e);
 	                }, value: this.state.email_again, style: { borderColor: this.state.email_again_border_color } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Password", onChange: function onChange(e) {
 	                    return _this2.setPassword(e);

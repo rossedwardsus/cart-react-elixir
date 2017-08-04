@@ -68,11 +68,15 @@ defmodule Sconely.Schema do
         resolve &Sconely.SconelySignatureOrderResolver.get/2
     end
 
+
+
     #field :get_sconely_signature_order_details, type: :sconely_signature_order_details do
     #    arg :order_id, :string
      
     #    #resolve &Sconely.SconelySignatureOrderResolver.get_order_details/2
     #end
+
+    
 
     #field :get_sconely_signature_order_delivery_contact, type: :sconely_signature_order_delivery_contact do
     #    arg :order_id, :string
@@ -110,7 +114,7 @@ defmodule Sconely.Schema do
       arg :first_name, (:string)
       arg :last_name, (:string)
     	arg :email, non_null(:string)
-    	#arg :mobile, (:string)
+    	arg :mobile, (:string)
     	arg :password, (:string)
 
     	resolve &Sconely.RegistrationResolver.create_user/2

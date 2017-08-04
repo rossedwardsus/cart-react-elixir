@@ -15,9 +15,11 @@ defmodule SconeHomeElixir.Router do
   end
 
   pipeline :graphql do
-    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
-    plug Guardian.Plug.LoadResource
+    #plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    #plug Guardian.Plug.LoadResource
     plug SconeHomeElixir.Web.Context
+    #plug CORSPlug
+
   end
 
   defp logged_in(conn, _) do

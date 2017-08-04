@@ -73,7 +73,7 @@ class Register extends React.Component<any, any> {
         email_validated: false,
         email_again_validated: false,
         
-        button_class: "btn btn-default disabled"
+        button_class: "btn btn-default"
 
     };
 
@@ -197,9 +197,15 @@ class Register extends React.Component<any, any> {
 
   }
 
-  setEmail(e: any){
+  setEmail = (e: any) => {
 
       //console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
+
+      let email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      let email_result = email_pattern.test(e.target.value);
+
+
 
       //not blank
       //has to include @ and .
@@ -212,17 +218,17 @@ class Register extends React.Component<any, any> {
       let ampersand_patt = /[@]/;
       let ampersand_res = ampersand_patt.test(e.target.value);
 
-      if(e.target.value.length > 0 && dot_res === true && ampersand_res === true){
+      //if(e.target.value.length > 0 && email_result === true){
 
           //less then 20, doesnt include @ and . _
       //    console.log(dot_res + "" + ampersand_res);
 
           this.setState({email: e.target.value});
       //    this.setState({email_border_color: "grey"});
-          this.setState({email_validated: true});
+      //    this.setState({email_validated: true});
           this.checkButton();
 
-      }
+      //}
 
       //this.props.registerSetEmail(e);
 
@@ -273,7 +279,7 @@ class Register extends React.Component<any, any> {
 
     //check email and password/form validated
 
-    this.props.registerUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password);
+    //this.props.registerUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password);
 
     //this.setState({"delivery_address_street1_classname": "form-group"});
 
@@ -283,11 +289,11 @@ class Register extends React.Component<any, any> {
 
     let that = this;
 
-    /*if(this.state.first_name_validated === false){
+    //if(this.state.first_name_validated === false){
 
           axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {register (first: "' + that.state.first + '", last: "' + that.state.last + '", email: "' + that.state.email + '", mobile: "' + this.state.mobile + '", password: "' + this.state.password +'") { user_id }}'
-          })
+                 query: 'mutation {register (first_name: "' + "that.state.first" + '", last_name: "' + "that.state.last" + '", email: "' + that.state.email + '", mobile: "' + "this.state.mobile" + '", password: "' + "this.state.password" +'") { token }}'
+          }, {headers: {Authorization: "12345"}})
           .then( response => {
 
                 console.log("graphql response" + JSON.stringify(response));
@@ -307,7 +313,7 @@ class Register extends React.Component<any, any> {
           //}
 
           })
-    }*/
+    //}
 
   }
 
@@ -323,7 +329,8 @@ class Register extends React.Component<any, any> {
 
 
   render(){
-    return (<div><nav className="navbar navbar-default navbar-fixed-top">
+    return (<div>
+                <nav className="navbar navbar-default navbar-fixed-top">
                           <div className="container-fluid">
                             <div className="navbar-header">
                               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -346,9 +353,9 @@ class Register extends React.Component<any, any> {
                                 </ul>
                               </div>
                           </div>
-                    </nav>
-            <div className="container-fluid">
-                  <div className="row">
+                </nav>
+                <div className="container-fluid">
+                    <div className="row">
                          <div className="col-md-4">
                         </div>
                         <div className="col-md-8">
@@ -374,7 +381,7 @@ class Register extends React.Component<any, any> {
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e: any) => this.setEmail(e)} value={this.state.email} style={{borderColor: this.state.email_border_color}}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={this.setEmail} value={this.state.email} style={{borderColor: this.state.email_border_color}}/>
                                   </div>
                                 </div>
                                  <div className="form-group">

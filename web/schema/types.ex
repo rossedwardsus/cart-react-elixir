@@ -9,12 +9,7 @@ defmodule Sconely.Schema.Types do
   end
 
   object :registration do
-    field :user_id, :string
-    #field :first, :string
-    #field :last, :string
-    #field :email, :string
-    #field :password, :string
-    #field :status, :string
+    field :token, :string
   end
 
 
@@ -87,18 +82,6 @@ defmodule Sconely.Schema.Types do
     field :description, :string
     field :ingredients, :string
   end
-
-  #length
-  #input_object :registration do
-  #  field :user_id, :string
-  #  field :first, :string
-  #  field :last, :string
-  #  field :email, :string
-  #  field :password, :string
-  #  #field :status, :string
-  #end
-
-
 
 
  
