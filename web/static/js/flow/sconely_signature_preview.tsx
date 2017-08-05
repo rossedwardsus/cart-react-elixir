@@ -174,11 +174,11 @@ class SignatureOrderPreview extends React.Component<any, any> {
                       <br/>
                         <div className="col-md-12">
                         <div className="row">
-                          <div className="col-md-2" style={{fontSize: 11}}>EVENT DETAILS</div>
-                          <div className="col-md-2" style={{fontSize: 11}}>EVENT GUESTS</div>
-                           <div className="col-md-3" style={{fontSize: 11}}>EVENT MENU PREVIEW</div>
-                           <div className="col-md-2" style={{fontSize: 11}}>ADDITIONAL ITEMS</div>
-                           <div className="col-md-2" style={{fontSize: 11}}>ORDER SUMMARY</div>
+                          <div className="col-md-2" style={{fontSize: 11}}><Link to="/user/order/12345">EVENT DETAILS</Link></div>
+                          <div className="col-md-2" style={{fontSize: 11}}><Link to="/order/12345/guests">EVENT GUESTS</Link></div>
+                           <div className="col-md-3" style={{fontSize: 11}}><Link to="/order/12345/preview">EVENT MENU PREVIEW</Link></div>
+                           <div className="col-md-2" style={{fontSize: 11}}><Link to="/order/12345/items">ADDITIONAL ITEMS</Link></div>
+                           <div className="col-md-2" style={{fontSize: 11}}><Link to="/order/12345/summary">ORDER SUMMARY</Link></div>
                         </div>
                       </div>
                       <br/>

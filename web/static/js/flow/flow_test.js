@@ -186,7 +186,7 @@ const Root = () => (
         <Route path="/user/about_me" component={UserAboutMe} />
         <Route path="/user/order/:order_id" component={UserOrder} />
         <Route path="/order/:order_id/guests" component={Guests} />
-        <Route path="/order/:order_id/guests" component={SconelySignatureOrderHistory} />
+        <Route path="/order/:order_id/summary" component={SconelySignatureOrderHistory} />
         <Route path="/order/:order_id/items" component={SconelySignatureAdditionalItems} />
         <Route path="/order/:order_id/preview" component={SignatureOrderPreview} />
         <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
