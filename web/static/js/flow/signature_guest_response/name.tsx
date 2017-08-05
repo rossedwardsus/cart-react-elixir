@@ -63,7 +63,7 @@ class GuestName extends React.Component<any, any> {
   setFirstName = (e: any) => {
 
       this.setState({first_name: e.target.value});
-      this.setState({first_name_validated: true});
+      //this.setState({first_name_validated: true});
 
       //if(this.state.last_name_validated > 0 || this.state.email_validated){
 

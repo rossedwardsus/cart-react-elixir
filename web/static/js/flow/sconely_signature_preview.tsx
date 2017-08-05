@@ -5,6 +5,7 @@ import * as React from 'react'
 
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 
@@ -121,8 +122,40 @@ class SignatureOrderPreview extends React.Component<any, any> {
 
     return (
       <div>
+         <nav className="navbar navbar-default" style={{border: 1}}>
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                 <span className="sr-only">Toggle navigation</span>
+                 <span className="icon-bar"></span>
+                 <span className="icon-bar"></span>
+                 <span className="icon-bar"></span>
+              </button>
+              <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+            </div>
+            <div className="collapse navbar-collapse" id="navigationbar">
+              <ul id="navbar" className="nav navbar-nav navbar-right">
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Signup</Link></li>
+                <li><Link to="/register">About Us</Link></li>
+                <li><Link to="/register">Faq</Link></li>
+              </ul>
+              <form id="navbar" className="navbar-form navbar-left">
+                <div className="form-group">
+                  
+                </div>
+                <button type="submit" className="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+        </nav>
         <div className="row">
                     <div className="hidden-xs col-md-3" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
+                      <br/>
+                      <br/>
+                    <br/>
+                      <br/>
+                      <br/>
                       <br/>
                       <br/>
                       <img src="/images/menu/LACI_1.5.jpg"/>
@@ -131,14 +164,32 @@ class SignatureOrderPreview extends React.Component<any, any> {
                       <br/>
                       <p className="text-left">Message</p>
                       <br/>
-                      <label className="text-left" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis", whiteSpace: "normal", fontWeight: "normal"}}></label>
+                      <div className="form-group">
+                        <textarea className="form-control" rows={5} id="comment" style={{resize: "none"}}></textarea>
+                      </div>
+                      </div>
+                      <div className="col-sm-14 col-md-9">
+                      <br/>
+                      <br/>
+                      <div className="col-md-12">
+                        <div className="row">
+                          <div className="col-md-2" style={{fontSize: 11}}>EVENT DETAILS</div>
+                          <div className="col-md-2" style={{fontSize: 11}}>EVENT GUESTS</div>
+                           <div className="col-md-3" style={{fontSize: 11}}>EVENT MENU PREVIEW</div>
+                           <div className="col-md-2" style={{fontSize: 11}}>ADDITIONAL ITEMS</div>
+                           <div className="col-md-2" style={{fontSize: 11}}>ORDER SUMMARY</div>
+                        </div>
+                      </div>
                       <br/>
                       <br/>
                       <br/>
-                    </div>
-                    <div className="col-sm-12 col-md-9">
                       <br/>
                       <br/>
+                      <br/>
+                      <br/>
+                      
+                      <br/>
+
                        {this.state.menu_items.map(function(item: any, index: any){
 
                           //console.log(JSON.stringify(item));
@@ -266,9 +317,7 @@ class SignatureOrderPreview extends React.Component<any, any> {
                         <br/>
                         
                       </div>
-                      <div className="hidden-xs col-md-3">
-                      </div>
-                    
+                      
                     </div>
       </div>
     )

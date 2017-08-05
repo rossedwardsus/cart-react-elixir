@@ -162,9 +162,9 @@ class Register extends React.Component<any, any> {
           //if(symbol_res == false){
           
             this.setState({first_name: e.target.value})
-            this.setState({first_validated: true})
+            //this.setState({first_validated: true})
             
-            this.checkButton();
+            //this.checkButton();
 
             //this.setState({"first_border_color": "grey"});
             
@@ -291,12 +291,12 @@ class Register extends React.Component<any, any> {
 
     //if(this.state.first_name_validated === false){
 
-          axios.post('http://localhost:4000/api/graphql', {
-                 query: 'mutation {register (first_name: "' + "that.state.first" + '", last_name: "' + "that.state.last" + '", email: "' + that.state.email + '", mobile: "' + "this.state.mobile" + '", password: "' + "this.state.password" +'") { token }}'
-          }, {headers: {Authorization: "12345"}})
+          axios.post('http://localhost:4000/api/register', {first_name: that.state.first_name, last_name: that.state.last_name, email: that.state.email, mobile: this.state.mobile, password: this.state.password})
           .then( response => {
 
-                console.log("graphql response" + JSON.stringify(response));
+                console.log("graphql respons" + JSON.stringify(response));
+
+                //localStorage.getItem('token')}
 
                 //that.props.history.push('/user');
                 //context.router

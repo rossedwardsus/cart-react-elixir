@@ -90,12 +90,13 @@ defmodule Sconely.RegistrationResolver do
                         #    {:ok, %{user: jwt}}
                         #end
 
-                        {:ok, %{user_id: user_id}}
+                        
 
+                        #{:ok, %{user_id: user_id}}
 
-                        #changeset = Session.changeset(%Session{}, %{user_id: "e", session_id: "p"})
+                        #session_changeset = Session.changeset(%Session{}, %{user_id: "e", session_id: "p", token: ""})
 
-                        #case Repo.insert(changeset) do
+                        #case Repo.insert(session_changeset) do
                         #  {:ok, _registration} -> IO.inspect("ok")
                         #    conn
                         #      |> put_flash(:info, "User created successfully.")
@@ -106,6 +107,10 @@ defmodule Sconely.RegistrationResolver do
                               #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
                               #{msg, opts} -> IO.inspect(msg)
                               #msg -> msg
+
+                                {:ok, %{token: "1234"}}
+                                #phoenix.token or secure random
+
                             #end)
                         #    render(conn, "new.html", changeset: changeset)
                         #end
@@ -132,7 +137,7 @@ defmodule Sconely.RegistrationResolver do
         #    render(conn, "new.html", changeset: changeset)
         #end
     #end)
-        {:ok, %{token: "12345"}}
+        
     
   end
 end
