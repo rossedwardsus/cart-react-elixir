@@ -153,7 +153,7 @@ class SignatureOrderPreview extends React.Component<any, any> {
                     <div className="hidden-xs col-md-3" style={{wordWrap: "break-word", overflowWrap: "break-word", textOverflow: "ellipsis"}}>
                       <br/>
                       <br/>
-                    <br/>
+                        <br/>
                       <br/>
                       <br/>
                       <br/>
@@ -167,11 +167,12 @@ class SignatureOrderPreview extends React.Component<any, any> {
                       <div className="form-group">
                         <textarea className="form-control" rows={5} id="comment" style={{resize: "none"}}></textarea>
                       </div>
-                      </div>
-                      <div className="col-sm-14 col-md-9">
+                      <button className="btn btn-default">Save</button>
+                    </div>
+                    <div className="col-sm-14 col-md-9">
                       <br/>
                       <br/>
-                      <div className="col-md-12">
+                        <div className="col-md-12">
                         <div className="row">
                           <div className="col-md-2" style={{fontSize: 11}}>EVENT DETAILS</div>
                           <div className="col-md-2" style={{fontSize: 11}}>EVENT GUESTS</div>
