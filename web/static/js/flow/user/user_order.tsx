@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
 
-import SconelySignatureSinglePage from './sconely_signature.tsx'; 
+import SignatureOrder from './sconely_signature.tsx'; 
 
 import {setEventName, setGuestMessage, setGuestCount} from '../actions/order_event_details.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_address.ts';
@@ -282,7 +282,7 @@ class UserOrder extends React.Component<any, any> {
                     
                     if order type == signature show event details
                     <br/>
-                    <SconelySignatureSinglePage UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} processSignatureOrder={() => this.props.processSignatureOrder()} setGuestCount={(e: any) => this.props.setGuestCount(e)} setGuestMessage={(e: any) => this.props.setGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} getUserOrderDeliveryContact={() => this.props.getUserOrderDeliveryContact()} getUserOrderDeliveryAddress={() => this.props.getUserOrderDeliveryAddress()} getUserOrderGuestResponses={() => this.props.getUserOrderGuestResponses()}/>
+                    <SignatureOrder UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} processSignatureOrder={() => this.props.processSignatureOrder()} setGuestCount={(e: any) => this.props.setGuestCount(e)} setGuestMessage={(e: any) => this.props.setGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} getUserOrderDeliveryContact={() => this.props.getUserOrderDeliveryContact()} getUserOrderDeliveryAddress={() => this.props.getUserOrderDeliveryAddress()} getUserOrderGuestResponses={() => this.props.getUserOrderGuestResponses()}/>
                     <br/>
                     else show receipt
                     
