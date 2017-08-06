@@ -10,7 +10,7 @@ var moment = require('moment');
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import {getUserOrderDetails} from './actions/user_order.ts';
+import {getUserOrderDetails} from '../actions/user_order.ts';
 
 
 //<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>

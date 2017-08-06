@@ -162,17 +162,17 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-5">
-              <label>Delivery Contact</label>
+              <label>Delivery Address and Contact</label>
             </div>
           </div>
         </form>
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="First" onChange={(e: any) => this.changeDeliveryContactFirstName(e)} value={this.state.first_name} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.changeDeliveryContactFirstName(e)} value={this.state.first_name} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-3">
-                <input type="text" onChange={(e: any) => this.changeDeliveryContactLastName(e)} value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last" style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" onChange={(e: any) => this.changeDeliveryContactLastName(e)} value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
         </form>
@@ -185,13 +185,6 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
                 <input type="text" onChange={(e: any) => this.changeDeliveryContactMobile(e)} value={this.state.contact_mobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-5">
-              <label>Delivery Address</label>
-            </div>
-          </div>
         </form>
         <form className="form-horizontal">
             <div className="form-group">

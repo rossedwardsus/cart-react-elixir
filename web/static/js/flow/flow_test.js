@@ -53,10 +53,10 @@ import SconelySignatureGuestOrderCompleted from "./signature_guest_response/orde
 //import SconelySignatureGuestEvent from "./sconely_signature_guest_response/event.tsx";
 
 //import SconelySocialEventDetails from "./sconely_social_event_details";
-import Guests from "./sconely_signature_guests.tsx";
-import SconelySignatureAdditionalItems from "./sconely_signature_additional_items.tsx";
-import SconelySignatureOrderHistory from "./sconely_signature_order_history.tsx";
-import SignatureOrderPreview from "./sconely_signature_preview.tsx";
+import Guests from "./user/sconely_signature_guests.tsx";
+import SconelySignatureAdditionalItems from "./user/sconely_signature_additional_items.tsx";
+import SconelySignatureOrderHistory from "./user/sconely_signature_order_history.tsx";
+import SignatureOrderPreview from "./user/sconely_signature_preview.tsx";
 //import SconelySignature from "./sconely_signature_single_page.tsx";
 //import SconelySignatureSinglePage from "./sconely_signature_single_page.tsx";
 /*import OrderPayment from "./sconely_yours_social_order_payment";
@@ -118,6 +118,9 @@ const store = createStore(
 )
 
 const history = syncHistoryWithStore(hashHistory, store)
+const history1 = useRouterHistory(createHashHistory)({ queryKey: false })
+
+
 
 
 //store = {session_id: "", event: {event_name: "", delivery_address: "", date: "", time: ""}, guests: {choose: "", number: 0}, payment_methods: [{personal: ""}], orders: [subtotal: ""], menu_items: [1234, 5678], additional_items:[{}], completed: "yes"}

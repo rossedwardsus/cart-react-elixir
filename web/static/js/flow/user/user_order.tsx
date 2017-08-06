@@ -6,7 +6,8 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
-import SconelySignatureSinglePage from '../sconely_signature.tsx'; 
+
+import SconelySignatureSinglePage from './sconely_signature.tsx'; 
 
 import {setEventName, setGuestMessage, setGuestCount} from '../actions/order_event_details.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_address.ts';

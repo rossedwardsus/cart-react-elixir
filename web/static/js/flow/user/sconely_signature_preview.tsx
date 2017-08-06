@@ -162,7 +162,8 @@ class SignatureOrderPreview extends React.Component<any, any> {
                       <br/>
                       Event Name
                       <br/>
-                      <p className="text-left">Message</p>
+                      <br/>
+                      You may edit the message below.
                       <br/>
                       <div className="form-group">
                         <textarea className="form-control" rows={8} id="comment" style={{resize: "none"}} value="We are having complimentary scones for EVENT NAME. Please select the scone you'd like before THREE DAYS BEFORE DELIVERY DATE.Thanks, FIRST+ LAST NAME OF HOST"></textarea>

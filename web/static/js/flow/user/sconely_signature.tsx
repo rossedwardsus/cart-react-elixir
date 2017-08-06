@@ -4,17 +4,18 @@ import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import EventDetails from './sconely_signature_event_details.tsx';
 import EventDeliveryContactAddress from './sconely_signature_delivery_contact_address.tsx';
 //import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
+
 import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx';
 //import EventDetailsName from './sconely_signature_event_details_name.tsx';
 //import EventDetailsCode from './sconely_signature_event_details_code.tsx';
 import Guests from './sconely_signature_guests.tsx';
 import AdditionalItems from './sconely_signature_additional_items.tsx';
-import PaymentMethod from './payment_method.tsx';
+import PaymentMethod from '../payment_method.tsx';
 import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
 
-import {setEventName, setGuestCount} from './actions/order_event_details.ts';
-import {setDeliveryAddressStreet1} from './actions/order_delivery_address.ts';
-import {getUserOrderDetails, processSignatureOrder} from './actions/user_order.ts';
+import {setEventName, setGuestCount} from '../actions/order_event_details.ts';
+import {setDeliveryAddressStreet1} from '../actions/order_delivery_address.ts';
+import {getUserOrderDetails, processSignatureOrder} from '../actions/user_order.ts';
 
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
