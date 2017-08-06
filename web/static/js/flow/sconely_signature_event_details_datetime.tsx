@@ -287,8 +287,6 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
             <br/>
           </div>
         </form>
-        <br/>
-        <br/>
        </div>
     )
   }
