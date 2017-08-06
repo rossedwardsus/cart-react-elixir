@@ -24,6 +24,13 @@ defmodule Sconely.RegisterController do
     user_id = UUID.uuid1()
     hash = Bcrypt.hashpwsalt("password")
 
+    #UUID:
+    #SecureRandom.uuid # => "e8bc6fde-3c11-cc2e-903b-745221154d8a"
+    #base64 string:
+    #SecureRandom.base64(8) # => "VsifwaD2HCk="
+    #urlsafe_base64 string:
+    #SecureRandom.urlsafe_base64 #=> "WAut546EWdXM3O_9sJGvmQ"
+
     registration_changeset = Registration.changeset(%Registration{}, %{user_id:  user_id, email: "e", password: "p", password_salt: hash})
 
     #registration_changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})

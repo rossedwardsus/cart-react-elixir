@@ -62,6 +62,7 @@ defmodule SconeHomeElixir.Mixfile do
      {:gm, "~> 0.0.1"},
      {:ex_aws, "~> 1.0.0"},
      {:uuid, "~> 1.1"},
+     {:secure_random, "~> 0.5"},
      {:csv, "~> 1.4.2"},
      {:plug, "~> 1.0"},
      {:timex, "~> 3.0"},

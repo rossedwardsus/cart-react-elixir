@@ -165,20 +165,26 @@ class SignatureOrderPreview extends React.Component<any, any> {
                       <p className="text-left">Message</p>
                       <br/>
                       <div className="form-group">
-                        <textarea className="form-control" rows={5} id="comment" style={{resize: "none"}}></textarea>
+                        <textarea className="form-control" rows={8} id="comment" style={{resize: "none"}} value="We are having complimentary scones for EVENT NAME. Please select the scone you'd like before THREE DAYS BEFORE DELIVERY DATE.Thanks, FIRST+ LAST NAME OF HOST"></textarea>
                       </div>
                       <button className="btn btn-default">Save</button>
                     </div>
                     <div className="col-sm-14 col-md-9">
                       <br/>
+                      <ul className="nav nav-tabs">
+                          <li className="active"><a href="#">Home</a></li>
+                          <li><a href="#">Menu 1</a></li>
+                          <li><a href="#">Menu 2</a></li>
+                          <li><a href="#">Menu 3</a></li>
+                      </ul>
                       <br/>
                         <div className="col-md-12">
                         <div className="row">
-                          <div className="col-md-2" style={{fontSize: 11}}><Link to="/user/order/12345">EVENT DETAILS</Link></div>
-                          <div className="col-md-2" style={{fontSize: 11}}><Link to="/order/12345/guests">EVENT GUESTS</Link></div>
-                           <div className="col-md-3" style={{fontSize: 11}}><Link to="/order/12345/preview">EVENT MENU PREVIEW</Link></div>
-                           <div className="col-md-2" style={{fontSize: 11}}><Link to="/order/12345/items">ADDITIONAL ITEMS</Link></div>
-                           <div className="col-md-2" style={{fontSize: 11}}><Link to="/order/12345/summary">ORDER SUMMARY</Link></div>
+                          <div className="col-md-2" style={{fontSize: 10}}><Link to="/user/order/12345">EVENT DETAILS</Link></div>
+                          <div className="col-md-2" style={{fontSize: 10}}><Link to="/order/12345/guests">EVENT GUESTS</Link></div>
+                           <div className="col-md-2" style={{fontSize: 10}}><Link to="/order/12345/preview">EVENT MENU PREVIEW</Link></div>
+                           <div className="col-md-2" style={{fontSize: 10}}><Link to="/order/12345/items">ADDITIONAL ITEMS</Link></div>
+                           <div className="col-md-2" style={{fontSize: 10}}><Link to="/order/12345/summary">ORDER SUMMARY</Link></div>
                         </div>
                       </div>
                       <br/>
