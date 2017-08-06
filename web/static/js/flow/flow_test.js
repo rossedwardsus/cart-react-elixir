@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory, hashHistory, useRouterHistory, Link } from 'react-router';
-import createHistory from 'history';
+import { createHistory, createHashHistory } from 'history';
 import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-router-redux'
 import thunk from 'redux-thunk';
 

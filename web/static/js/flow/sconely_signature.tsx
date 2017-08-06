@@ -228,9 +228,10 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   </form>
                   <EventDetails order={this.props.order} order_details={this.props.order_details} setEventName={(e: any) =>this.props.setEventName(e)} setGuestCount={(e: any) =>this.props.setGuestCount(e)} setGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
                   <br/>
+                  <EventDetailsDateTime order={this.props.Order} />
+                  <br/>
                   <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)}/>
                   <br/>
-                  <EventDetailsDateTime order={this.props.Order} />
                   <br/>
                   <PaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                   <br/>

@@ -214,13 +214,13 @@ class EventDetailsName extends React.Component<any, any> {
                 </div>
               </div>
               <div className="col-sm-2">
-                {this.state.guest_count} X 7.00
+                {this.state.guest_count} X 6.00
               </div>
               <div className="col-sm-1">
                 =
               </div>
               <div className="col-sm-1">
-                ${this.state.guest_count * 7.00}
+                ${this.state.guest_count * 6.00}
               </div>
           </div>
         </form>

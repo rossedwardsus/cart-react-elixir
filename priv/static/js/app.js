@@ -30,8 +30,6 @@ webpackJsonp([0],[
 	
 	var _history = __webpack_require__(607);
 	
-	var _history2 = _interopRequireDefault(_history);
-	
 	var _reactRouterRedux = __webpack_require__(617);
 	
 	var _reduxThunk = __webpack_require__(622);
@@ -32994,7 +32992,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setGuestCount(e);
 	                }, setGuestMessage: function setGuestMessage(e) {
 	                    return _this2.props.setGuestMessage(e);
-	                } }), React.createElement("br", null), React.createElement(sconely_signature_delivery_contact_address_tsx_1.default, { order: this.props.order, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
+	                } }), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, { order: this.props.Order }), React.createElement("br", null), React.createElement(sconely_signature_delivery_contact_address_tsx_1.default, { order: this.props.order, setDeliveryAddressStreet1: function setDeliveryAddressStreet1(e) {
 	                    return _this2.props.setDeliveryAddressStreet1(e);
 	                }, setDeliveryAddressStreet2: function setDeliveryAddressStreet2(e) {
 	                    return _this2.props.setDeliveryAddressStreet2(e);
@@ -33004,7 +33002,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setDeliveryAddressState(e);
 	                }, setDeliveryAddressZipcode: function setDeliveryAddressZipcode(e) {
 	                    return _this2.props.setDeliveryAddressZipcode(e);
-	                } }), React.createElement("br", null), React.createElement(sconely_signature_event_details_datetime_tsx_1.default, { order: this.props.Order }), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { order: this.props.order, setNameOnCard: function setNameOnCard(e) {
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { order: this.props.order, setNameOnCard: function setNameOnCard(e) {
 	                    return _this2.props.NameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
@@ -33427,7 +33425,7 @@ webpackJsonp([0],[
 	                return React.createElement("img", { src: f.preview });
 	            }), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests are you offering Sconely Signature to?  This number can only increase after your order is placed."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-7" }, React.createElement("div", { className: "col-sm-1" }, "12"), React.createElement("div", { className: "col-sm-5" }, React.createElement("input", { type: "range", list: "guests", min: "0", max: "150", step: "1", onChange: function onChange(e) {
 	                    return _this2.setGuestCount(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.guest_count, maxLength: 3, style: { borderRadius: 0, fontSize: 16, width: "150px" } })), React.createElement("div", { className: "col-sm-1" }, "150")), React.createElement("div", { className: "col-sm-2" }, this.state.guest_count, " X 7.00"), React.createElement("div", { className: "col-sm-1" }, "="), React.createElement("div", { className: "col-sm-1" }, "$", this.state.guest_count * 7.00))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.guest_count, maxLength: 3, style: { borderRadius: 0, fontSize: 16, width: "150px" } })), React.createElement("div", { className: "col-sm-1" }, "150")), React.createElement("div", { className: "col-sm-2" }, this.state.guest_count, " X 6.00"), React.createElement("div", { className: "col-sm-1" }, "="), React.createElement("div", { className: "col-sm-1" }, "$", this.state.guest_count * 6.00))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "Items")))));
 	        }
 	    }]);
 	

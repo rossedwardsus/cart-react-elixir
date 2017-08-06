@@ -65,8 +65,8 @@ defmodule SconeHomeElixir.Router do
 
     get "/guest/list", Sconely.GuestListDownloadController, :index   
 
-    #get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
-    #forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
+    get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
+    forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
     #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
 
   end
