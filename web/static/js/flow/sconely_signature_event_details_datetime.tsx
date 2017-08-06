@@ -252,7 +252,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-5">
-                <label>Delivery Date Time1</label>
+                <label>Delivery Date Time</label>
             </div>
           </div>
         </form>
