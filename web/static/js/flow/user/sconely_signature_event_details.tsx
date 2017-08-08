@@ -50,11 +50,11 @@ class EventDetailsName extends React.Component<any, any> {
         //order_id: this.props.params.order_id,
         order_id: this.props.order_id,
         order_type: "",
-        event_name: "EVENT NAME",
+        event_name: "",
         startDate: moment(),
         files: [],
         image_src: "",
-        guest_count: 12,
+        invited_guest_count: 12,
         guest_message_before_event_name: "Hi everyone,We are using Sconely Signature for",
         guest_message_after_event_name: "Please select the scone you'd like before THREE DAYS BEFORE DELIVERY DATE.",
         guest_message: ""
@@ -98,16 +98,24 @@ class EventDetailsName extends React.Component<any, any> {
 
   }
 
+  componentWillReceiveProps(){
+
+    console.log("cdrp event details" + JSON.stringify(this.props.order_details));
+    this.setState({event_name: this.props.order_details.event_name});
+    this.setState({invited_guest_count: this.props.order_details.invited_guest_count});
+
+  }
+
   setEventName(e: any){
 
     //alert();
 
     //this.setState({changed: true});
 
-    //this.props.setEventName(e);
-    this.setState({event_name: e.target.value})
+    this.props.setEventName(e);
+    //this.setState({event_name: e.target.value})
 
-    this.setState({guest_message: this.state.guest_message_before_event_name + " " + e.target.value + " " + this.state.guest_message_after_event_name})
+    //this.setState({guest_message: this.state.guest_message_before_event_name + " " + e.target.value + " " + this.state.guest_message_after_event_name})
 
   }
 
@@ -148,8 +156,8 @@ class EventDetailsName extends React.Component<any, any> {
 
   setGuestCount(e: any){
 
-      this.setState({guest_count: e.target.value});
-      //this.props.setGuestCount(e);
+      //this.setState({guest_count: e.target.value});
+      this.props.setInvitedGuestCount(e);
 
   }
 
@@ -207,20 +215,20 @@ class EventDetailsName extends React.Component<any, any> {
                   12
                 </div>
                 <div className="col-sm-5">
-                  <input type="range" list="guests" min="0" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16, width: "150px"}}/>
+                  <input type="range" list="guests" min="0" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.invited_guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16, width: "150px"}}/>
                 </div>
                 <div className="col-sm-1">
                   150
                 </div>
               </div>
               <div className="col-sm-2">
-                {this.state.guest_count} X 6.00
+                {this.state.invited_guest_count} X 6.00
               </div>
               <div className="col-sm-1">
                 =
               </div>
               <div className="col-sm-1">
-                ${this.state.guest_count * 6.00}
+                ${this.state.invited_guest_count * 6.00}
               </div>
           </div>
         </form>
@@ -243,7 +251,7 @@ class EventDetailsName extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: any) {
+/*function mapStateToProps(state: any) {
   console.log("checkout state" + JSON.stringify(state));
   return {
    session: state.session,
@@ -279,6 +287,6 @@ function mapDispatchToProps(dispatch: any) {
 const EventDetailsName1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EventDetailsName)
+)(EventDetailsName)*/
 
 export default EventDetailsName;

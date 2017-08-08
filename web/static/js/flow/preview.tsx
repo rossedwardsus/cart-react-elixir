@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 //import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 import {completeOrder} from './actions/complete_order.ts';
 //import {setFirstName, setLastName} from './actions/order_name.ts';
-import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
+import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 //import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 //import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 
@@ -936,10 +936,10 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     setDate: (e: any) => {
-      dispatch(setDate(e))
+      //dispatch(setDate(e))
     },
     setTime: (e: any) => {
-      dispatch(setTime(e.target.value))
+      //dispatch(setTime(e.target.value))
     },
     setSpecificTime: (e: any) => {
       dispatch(setSpecificTime(e.target.value))

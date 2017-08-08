@@ -13,9 +13,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
+import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
-import {setDate, setTime, setSpecificTime} from './actions/order_delivery_datetime.ts';
+import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/cart.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
@@ -868,10 +868,10 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     setDate: (e: any) => {
-      dispatch(setDate(e))
+      //dispatch(setDate(e))
     },
     setTime: (e: any) => {
-      dispatch(setTime(e.target.value))
+      //dispatch(setTime(e.target.value))
     },
     cartValidated: () => {
       dispatch(cartValidated());

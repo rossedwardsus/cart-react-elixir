@@ -20,7 +20,7 @@ import contact from './contact.ts';
 //import UserPaymentMethods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
 import SignatureOrderGuestResponse from './signature_guest_response.ts';
-//import UserOrders from './user_orders.ts';
+import UserOrders from './user_order.ts';
 //import UserOrderCart from './user_order_cart.ts';
 //import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
 //import UserOrderDeliveryContact from './user_order_delivery_contact.ts';
@@ -51,7 +51,7 @@ export default combineReducers({
   name,
   contact,
   User,
-  //UserOrders,
+  UserOrders,
   //UserOrderEventDetails,
   //UserOrderDeliveryAddress,
   //UserOrderDeliveryContact,

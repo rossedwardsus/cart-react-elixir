@@ -7,12 +7,17 @@ import {connect} from 'react-redux';
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
 
-import SignatureOrder from './sconely_signature.tsx'; 
+import UserNavbar from './user_navbar.tsx';
 
-import {setEventName, setGuestMessage, setGuestCount} from '../actions/order_event_details.ts';
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_address.ts';
+import SignatureOrder from './signature.tsx'; 
+
+import {setEventName, setInvitedGuestCount, setInvitedGuestMessage} from '../actions/signature_order_event_details.ts';
+import {setDate, setTime} from '../actions/signature_order_delivery_datetime.ts';
+import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_contact_address.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode} from '../actions/order_payment_method.ts';
 import {getUserOrder, getUserOrderDetails, getUserOrderDeliveryContact, getUserOrderDeliveryAddress, getUserOrderGuestResponses, processSignatureOrder} from '../actions/user_order.ts';
+
+import {getOrderDetails} from '../selectors/signature_order.ts';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -61,6 +66,12 @@ class UserOrder extends React.Component<any, any> {
     this.props.getUserOrder(this.props.params.order_id);
     //this.props.getUserOrderDetails();
     //this.props.getUserOrderDeliveryContact()
+
+  }
+
+  componentWillReceiveProps = () => {
+
+    console.log("cdrp user order");
 
   }
 
@@ -259,30 +270,11 @@ class UserOrder extends React.Component<any, any> {
 
     let logged_in = null;
     
-    if("logged_in_true" == "logged_in_true"){
-        
-        logged_in = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><a onClick={this.createOrder.bind(this, "sconely_yours")}>Start Order</a></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </div>
-    }
-
-    return (
+      return (
               <div>
-                    
-                    if order type == signature show event details
+                    <UserNavbar/>
                     <br/>
-                    <SignatureOrder UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} processSignatureOrder={() => this.props.processSignatureOrder()} setGuestCount={(e: any) => this.props.setGuestCount(e)} setGuestMessage={(e: any) => this.props.setGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} getUserOrderDeliveryContact={() => this.props.getUserOrderDeliveryContact()} getUserOrderDeliveryAddress={() => this.props.getUserOrderDeliveryAddress()} getUserOrderGuestResponses={() => this.props.getUserOrderGuestResponses()}/>
+                    <SignatureOrder order_details={this.props.order_details} UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} processSignatureOrder={() => this.props.processSignatureOrder()} setInvitedGuestCount={(e: any) => this.props.setInvitedGuestCount(e)} setGuestMessage={(e: any) => this.props.setInvitedGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} getUserOrderDeliveryContact={() => this.props.getUserOrderDeliveryContact()} getUserOrderDeliveryAddress={() => this.props.getUserOrderDeliveryAddress()} getUserOrderGuestResponses={() => this.props.getUserOrderGuestResponses()}/>
                     <br/>
                     else show receipt
                     
@@ -292,8 +284,10 @@ class UserOrder extends React.Component<any, any> {
 }
 
 function mapStateToProps(state: any) {
-  console.log("user home page component/state" + JSON.stringify(state));
+  console.log("user order page component/state" + JSON.stringify(state));
   return {
+   //user_delivery_contact_addresses: [],
+   order_details: getOrderDetails(state.UserOrders, 1),
    name: state.name,
    UserOrders: state.UserOrders,
    //UserOrder: state.Order, only for this order
@@ -306,21 +300,22 @@ function mapStateToProps(state: any) {
   };
 }
 
-function mapDispatchToProps(dispatch: any) {
+function mapDispatchToProps(dispatch: any, ownProps: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     setEventName: (e: any) => {
-        dispatch(setEventName(e.target.value, 1));
+        //console.log("ownprops order_id: " + JSON.stringify(ownProps.params.order_id));
+        dispatch(setEventName(e.target.value, ownProps.params.order_id));
 
     },
-    setGuestCount: (e: any) => {
+    setInvitedGuestCount: (e: any) => {
 
-        dispatch(setGuestCount(e.target.value, 1));
+        dispatch(setInvitedGuestCount(e.target.value, 1));
 
     },
-    setGuestMessage: (e: any) => {
+    setInvitedGuestMessage: (e: any) => {
 
-        dispatch(setGuestMessage(e.target.value, 1));
+        dispatch(setInvitedGuestMessage(e.target.value, 1));
 
     },
     setDeliveryAddressStreet1: (e: any) => {
@@ -348,11 +343,11 @@ function mapDispatchToProps(dispatch: any) {
         dispatch(setDeliveryAddressZipcode(e.target.value, 1));
 
     },
-    setDate: (e: any) => {
-    //  dispatch(setDate(e))
+    setDate: (date: any) => {
+      dispatch(setDate(date, ownProps.params.order_id));
     },
     setTime: (e: any) => {
-    //  dispatch(setTime(e.target.value))
+      dispatch(setTime(e.target.value, ownProps.params.order_id));
     },
    
     setNameOnCard: (e: any) => {
@@ -414,9 +409,9 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const UserOrder1 = connect(
+const UserOrderConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(UserOrder)
 
-export default UserOrder1;
+export default UserOrderConnected;

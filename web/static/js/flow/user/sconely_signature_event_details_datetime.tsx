@@ -62,7 +62,8 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         event_address_city: "",
         event_address_zipcode: "",
         code: 0,
-        startDate: moment(new Date()).add(3, 'days').format("YYYY/MM/DD")
+        startDate: moment(new Date()).add(3, 'days').format("YYYY/MM/DD"),
+        selectedDay: "",
 
     };
 
@@ -149,6 +150,13 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
 
   }
 
+  componentWillReceiveProps = () => {
+
+      console.log("cwrp " + this.props.order_details.delivery_date);
+      this.setState({selectedDay: this.props.order_details.delivery_date});
+
+  }
+
   changeEventName(e: any){
 
     //alert();
@@ -232,7 +240,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
     console.log("date " + moment(date).format("YYYY/MM/DD") + " " + moment(new Date()).add(3, 'days').format("YYYY/MM/DD"));
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    this.props.setDate(moment(date).format("YYYY/MM/DD"));
     //this.props.setDate(moment(date).toISOString());
 
     //this.props.cartValidated();
@@ -259,10 +267,10 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-3">
-                <DayPickerInput selectedDays={someDate} onDayChange={(e: any) => this.setDate(e)} dayPickerProps={{selectedDays: new Date(2017, 6, 26), disabledDays: {before: someDate}}} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>    
+                <DayPickerInput selectedDays={this.state.selectedDay} onDayChange={(e: any) => this.setDate(e)} dayPickerProps={{selectedDays: new Date(2017, 6, 26), disabledDays: {before: someDate}}} value={this.state.selectedDay} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>    
             </div>
             <div className="col-sm-2">
-                <select className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <select className="form-control" onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                     <option>Time</option>
                     <option>Free</option>
                     <option>9-11 am</option>

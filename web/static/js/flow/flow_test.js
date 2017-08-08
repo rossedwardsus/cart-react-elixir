@@ -14,7 +14,8 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory, hashHistory, useRouterHistory, Link } from 'react-router';
-import { createHistory, createHashHistory } from 'history';
+import { createHistory, createHashHistory, createBrowserHistory } from 'history';
+//import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-router-redux'
 import thunk from 'redux-thunk';
 
@@ -54,7 +55,7 @@ import SconelySignatureGuestOrderCompleted from "./signature_guest_response/orde
 
 //import SconelySocialEventDetails from "./sconely_social_event_details";
 import Guests from "./user/sconely_signature_guests.tsx";
-import SconelySignatureAdditionalItems from "./user/sconely_signature_additional_items.tsx";
+import SignatureAdditionalItems from "./user/signature_additional_items.tsx";
 import SconelySignatureOrderHistory from "./user/sconely_signature_order_history.tsx";
 import SignatureOrderPreview from "./user/sconely_signature_preview.tsx";
 //import SconelySignature from "./sconely_signature_single_page.tsx";
@@ -117,8 +118,10 @@ const store = createStore(
     middleware
 )
 
+const historyWithoutAnnoyingQueryKey = useRouterHistory(createHashHistory)({ queryKey: false })
+//const history = syncHistoryWithStore(historyWithoutAnnoyingQueryKey, store)
+
 const history = syncHistoryWithStore(hashHistory, store)
-const history1 = useRouterHistory(createHashHistory)({ queryKey: false })
 
 
 
@@ -190,7 +193,7 @@ const Root = () => (
         <Route path="/user/order/:order_id" component={UserOrder} />
         <Route path="/order/:order_id/guests" component={Guests} />
         <Route path="/order/:order_id/summary" component={SconelySignatureOrderHistory} />
-        <Route path="/order/:order_id/items" component={SconelySignatureAdditionalItems} />
+        <Route path="/order/:order_id/items" component={SignatureAdditionalItems} />
         <Route path="/order/:order_id/preview" component={SignatureOrderPreview} />
         <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
         <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />

@@ -249,7 +249,6 @@ class SidebarCart extends React.Component<any, any> {
     
 
     return (<div> 
-                  <br/>
                   {cart}
                   <br/>
                   <form className="form-horizontal" style={{border: 1, position: "static"}}>
@@ -282,9 +281,7 @@ class SidebarCart extends React.Component<any, any> {
                       <br/>
                     </div>
                   </form> 
-                  if order processed if false button is active
-                  <br/>
-                  <button onClick={this.processSignatureOrder} className="btn btn-default">Process Order</button>                      
+                                        
             </div>
     )
   }
