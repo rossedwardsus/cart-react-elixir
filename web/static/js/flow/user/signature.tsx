@@ -2,6 +2,7 @@ import * as React from 'react'
 
 //import UserNavbar from './user_navbar.tsx';
 
+import SignatureTabs from './signature_tabs.tsx';
 import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import EventDetails from './sconely_signature_event_details.tsx';
 import EventDeliveryContactAddress from './sconely_signature_delivery_contact_address.tsx';
@@ -13,6 +14,7 @@ import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx
 import Guests from './sconely_signature_guests.tsx';
 import AdditionalItems from './signature_additional_items.tsx';
 import PaymentMethod from '../payment_method.tsx';
+import SignaturePaymentMethod from './signature_payment_method.tsx';
 import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
 
 //import {setEventName, setInvitedGuestCount} from '../actions/signature_order_event_details.ts';
@@ -189,24 +191,15 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                 <div className="col-md-8">
                   <br/>
                   <br/>
-                  <br/>
-                  <form className="form-horizontal">
-                      <div className="form-group">
-                        <div className="col-sm-3">
-                            <Link to="/order/12345/guests">Order Guests</Link>
-                        </div>
-                        <div className="col-sm-3">
-                            <Link to="/order/12345/preview">Preview</Link>
-                        </div>
-                      </div>
-                  </form>
+                  <SignatureTabs/>
+                  <br/> 
                   <EventDetails order_details={this.props.order_details} order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)} setInvitedGuestCount={(e: any) =>this.props.setInvitedGuestCount(e)} setInvitedGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
                   <br/>
                   <EventDetailsDateTime order={this.props.Order} order_details={this.props.order_details} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)}/>
                   <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)}/>
                   <br/>
                   <br/>
-                  <PaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                  <SignaturePaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                   <br/>
                   <br/>
                   Save

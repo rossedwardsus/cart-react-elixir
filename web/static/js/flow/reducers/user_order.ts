@@ -95,7 +95,7 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
       //if not then update the existing one
       //order_updated[0].cart.push({item: "invited_guests", count: 0, stripe_token: ""});
 
-      //console.log("order_updated_with_suborder " + JSON.stringify(order_updated[0].suborders.push({item: "invited_guests", count: 0, stripe_token: ""})));
+      //console.log("order_updated_with_suborder " + JSON.stringify(order_updated[0].suborders.push({suborder_id: 12345, item: "invited_guests", count: 0, stripe_token: ""})));
 
       return Object.assign({}, state, {orders: order_updated});
 

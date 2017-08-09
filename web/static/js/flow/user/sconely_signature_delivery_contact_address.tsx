@@ -167,6 +167,16 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
           </div>
         </form>
         <form className="form-horizontal">
+          <div className="form-group">
+            <div className="col-sm-3">
+              <select onChange={(e: any) => this.changeDeliveryAddressZipcode(e)}  value={this.state.zipcode}  className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <option>Home</option>
+                <option>Work</option>
+              </select>
+            </div>
+          </div>
+        </form>
+        <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
                 <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.changeDeliveryContactFirstName(e)} value={this.state.first_name} style={{borderRadius: 0, fontSize: 16}}/>

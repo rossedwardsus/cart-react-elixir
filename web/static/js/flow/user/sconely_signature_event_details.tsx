@@ -172,75 +172,76 @@ class EventDetailsName extends React.Component<any, any> {
 
   render(): JSX.Element {
     return (
-      <div>
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-10">
-                 <label>Event Name: This name will be used to generate a link that you send to your guests.  30 character limit.</label>
-              </div>
-            </div>
-        </form>
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-4">
-                <input type="text" onChange={(e: any) => this.setEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} maxLength={25} style={{borderRadius: 0, fontSize: 16}}/>
-              </div>
-            </div>
-        </form>
-         
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-10">
-                Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo.  1.5 x 1.5 inches or 110 x 110 pixels.
-              </div>
-            </div>
-        </form>
-        
-        <Dropzone onDrop={(files: any) => this.onDrop(files)} style={{borderRadius: "50%", "width" : "110", "height" : "110", "border" : "1px dashed", borderColor: "#808080"}}>
-              <img height="107" width="107" style={{borderRadius:"50%"}} src="/images/menu/JF_3x3.jpg"/>
-        </Dropzone>
-            {this.state.files.map((f: any) => <img src={f.preview}/>)}
-        <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-10">
-              How many guests are you offering Sconely Signature to?  This number can only increase after your order is placed.
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-              <div className="col-sm-7">
-                <div className="col-sm-1">
-                  12
-                </div>
-                <div className="col-sm-5">
-                  <input type="range" list="guests" min="12" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.invited_guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16, width: "150px"}}/>
-                </div>
-                <div className="col-sm-1">
-                  150
-                </div>
-              </div>
-              <div className="col-sm-2">
-                {this.state.invited_guest_count}
-              </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-10">
-              Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. 
-            </div>
-          </div>
-        </form>
-        <form className="form-horizontal">
-            <div className="form-group">
-              <div className="col-sm-3">
-                  <Link to="/order/12345/items">ITEMS</Link>
-              </div>
-            </div>
-        </form>
-       </div>
+              <div>
+                          
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-10">
+                         <label>Event Name: This name will be used to generate a link that you send to your guests.  30 character limit.</label>
+                      </div>
+                    </div>
+                </form>
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-4">
+                        <input type="text" onChange={(e: any) => this.setEventName(e)} className="form-control" id="exampleInputName2" placeholder="Event Name" value={this.state.event_name} maxLength={25} style={{borderRadius: 0, fontSize: 16}}/>
+                      </div>
+                    </div>
+                </form>
+                 
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-10">
+                        Event Photo: This image will be used on your Event Menu.  Use a high quality image that relates to your image or a logo.  1.5 x 1.5 inches or 110 x 110 pixels.
+                      </div>
+                    </div>
+                </form>
+                
+                <Dropzone onDrop={(files: any) => this.onDrop(files)} style={{borderRadius: "50%", "width" : "110", "height" : "110", "border" : "1px dashed", borderColor: "#808080"}}>
+                      <img height="107" width="107" style={{borderRadius:"50%"}} src="/images/menu/JF_3x3.jpg"/>
+                </Dropzone>
+                    {this.state.files.map((f: any) => <img src={f.preview}/>)}
+                <br/>
+                <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-sm-10">
+                      How many guests are you offering Sconely Signature to?  This number can only increase after your order is placed.
+                    </div>
+                  </div>
+                </form>
+                <form className="form-horizontal">
+                  <div className="form-group">
+                      <div className="col-sm-7">
+                        <div className="col-sm-1">
+                          12
+                        </div>
+                        <div className="col-sm-5">
+                          <input type="range" list="guests" min="12" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.invited_guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16, width: "150px"}}/>
+                        </div>
+                        <div className="col-sm-1">
+                          150
+                        </div>
+                      </div>
+                      <div className="col-sm-2">
+                        {this.state.invited_guest_count}
+                      </div>
+                  </div>
+                </form>
+                <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-sm-10">
+                      Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each. 
+                    </div>
+                  </div>
+                </form>
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3">
+                          <Link to="/order/12345/items">ITEMS</Link>
+                      </div>
+                    </div>
+                </form>
+               </div>
     )
   }
 }
