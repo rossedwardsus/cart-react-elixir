@@ -47556,7 +47556,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function UserOrder() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, event_name: "", total_due: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", suborders: [] }] };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", suborders: [] }] };
 	    var action = arguments[1];
 	
 	    var delivery_address_updated = null;
@@ -47590,7 +47590,8 @@ webpackJsonp([0],[
 	                }
 	                return order;
 	            });
-	            orders_updated = orders_updated.suborders.push({ item: "invited_guests", count: 0, stripe_token: "" });
+	            console.log("orders_updated" + JSON.stringify(orders_updated));
+	            orders_updated = orders_updated[0].suborders.push({ item: "invited_guests", count: 0, stripe_token: "" });
 	            return Object.assign({}, state, { orders: orders_updated });
 	        case actionTypes_ts_1.SET_DATE:
 	            //console("CartState " + action.item_id);
