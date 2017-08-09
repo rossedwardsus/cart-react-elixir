@@ -63,7 +63,7 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
         event_address_zipcode: "",
         code: 0,
         startDate: moment(new Date()).add(3, 'days').format("YYYY/MM/DD"),
-        selectedDay: "",
+        selectedDay: "Choose a date",
 
     };
 
@@ -269,26 +269,11 @@ export default class EventDetailsDateTime extends React.Component<any, any> {
             <div className="col-sm-3">
                 <DayPickerInput selectedDays={this.state.selectedDay} onDayChange={(e: any) => this.setDate(e)} dayPickerProps={{selectedDays: new Date(2017, 6, 26), disabledDays: {before: someDate}}} value={this.state.selectedDay} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}}/>    
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-3">
                 <select className="form-control" onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                    <option>Time</option>
-                    <option>Free</option>
+                    <option>Choose a time</option>
                     <option>9-11 am</option>
                     <option>1-3 pm</option>
-                    <option></option>
-                    <option>$20</option>
-                    <option>7:00 am</option>
-                    <option>7:30 am</option>
-                    <option>8:00 am</option>
-                    <option>8:30 am</option>
-                    <option>9:00 am</option>
-                    <option>11:30 pm</option>
-                    <option>12:00 am</option>
-                    <option>12:30 am</option>
-                    <option>1:00 pm</option>
-                    <option>1:30 am</option>
-                    <option>2:00 am</option>
-                    <option>2:30 pm</option>
                 </select>
                 <br/>
             </div>

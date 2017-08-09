@@ -11,6 +11,8 @@ import { connect } from 'react-redux';
 //import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 //import { getPublicMenu } from './reducers/menu';
 
+import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
+
 const Immutable  = require('immutable');
 //import _ from 'lodash';
 
@@ -281,7 +283,7 @@ class SidebarCart extends React.Component<any, any> {
                       <br/>
                     </div>
                   </form> 
-                                        
+                  <ProcessOrderButton/>    
             </div>
     )
   }

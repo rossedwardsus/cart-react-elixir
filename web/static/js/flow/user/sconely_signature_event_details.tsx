@@ -222,13 +222,7 @@ class EventDetailsName extends React.Component<any, any> {
                 </div>
               </div>
               <div className="col-sm-2">
-                {this.state.invited_guest_count} X 6.00
-              </div>
-              <div className="col-sm-1">
-                =
-              </div>
-              <div className="col-sm-1">
-                ${this.state.invited_guest_count * 6.00}
+                {this.state.invited_guest_count}
               </div>
           </div>
         </form>
@@ -242,7 +236,7 @@ class EventDetailsName extends React.Component<any, any> {
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
-                  <Link to="/order/12345/items">Items</Link>
+                  <Link to="/order/12345/items">ITEMS</Link>
               </div>
             </div>
         </form>
