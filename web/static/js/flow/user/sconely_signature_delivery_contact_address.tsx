@@ -213,7 +213,7 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
             </div>
             <div className="col-sm-3">
               <select onChange={(e: any) => this.changeDeliveryAddressZipcode(e)}  value={this.state.zipcode}  className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                <option>Zipcode</option>
+                <option>Zip Code</option>
                 <option>Free</option>
               </select>
             </div>
