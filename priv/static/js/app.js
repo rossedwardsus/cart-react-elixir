@@ -298,7 +298,7 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_contacts', component: _user_delivery_contacts2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment_methods', component: _user_payment_methods2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/about_me', component: _user_about_me2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/user/order/:order_id', component: _user_order2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/details', component: _user_order2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/guests', component: _sconely_signature_guests2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/summary', component: _sconely_signature_order_history2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/items', component: _signature_additional_items2.default }),
@@ -33294,7 +33294,7 @@ webpackJsonp([0],[
 	                            </div>
 	                          </form>)
 	                 });*/
-	            return React.createElement("div", null, cart, React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" })), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-8", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), React.createElement(sconely_signature_process_order_button_tsx_1.default, null));
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "50")), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-8", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), React.createElement(sconely_signature_process_order_button_tsx_1.default, null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -33604,7 +33604,7 @@ webpackJsonp([0],[
 	                    return _this2.onDrop(files);
 	                }, style: { borderRadius: "50%", "width": "110", "height": "110", "border": "1px dashed", borderColor: "#808080" } }, React.createElement("img", { height: "107", width: "107", style: { borderRadius: "50%" }, src: "/images/menu/JF_3x3.jpg" })), this.state.files.map(function (f) {
 	                return React.createElement("img", { src: f.preview });
-	            }), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests are you offering Sconely Signature to?  This number can only increase after your order is placed."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-7" }, React.createElement("div", { className: "col-sm-1" }, "12"), React.createElement("div", { className: "col-sm-5" }, React.createElement("input", { type: "range", list: "guests", min: "0", max: "150", step: "1", onChange: function onChange(e) {
+	            }), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "How many guests are you offering Sconely Signature to?  This number can only increase after your order is placed."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-7" }, React.createElement("div", { className: "col-sm-1" }, "12"), React.createElement("div", { className: "col-sm-5" }, React.createElement("input", { type: "range", list: "guests", min: "12", max: "150", step: "1", onChange: function onChange(e) {
 	                    return _this2.setGuestCount(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "", value: this.state.invited_guest_count, maxLength: 3, style: { borderRadius: 0, fontSize: 16, width: "150px" } })), React.createElement("div", { className: "col-sm-1" }, "150")), React.createElement("div", { className: "col-sm-2" }, this.state.invited_guest_count))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, "Your guests select their preferred scone, which will be delivered in personalized packages. One scone per person, $6 each."))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement(react_router_1.Link, { to: "/order/12345/items" }, "ITEMS")))));
 	        }
@@ -46160,6 +46160,8 @@ webpackJsonp([0],[
 	//import ToggleButton from 'react-toggle-button'
 	//import InputRange from 'react-input-range';
 	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	var react_router_1 = __webpack_require__(546);
+	var user_navbar_tsx_1 = __webpack_require__(962);
 	//import 'react-input-range/react-input-range.css';
 	
 	var Guests = function (_React$Component) {
@@ -46237,7 +46239,7 @@ webpackJsonp([0],[
 	            if (this.state.value == true) {
 	                guests_choices = "Ross Edwards rossedwards.us@gmail.com";
 	            }
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "20 Guest responses.  Please click this ", React.createElement("a", { href: "/api/guest/list" }, "link"), " to download the responses.", React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement(user_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: "active" }, React.createElement("a", { href: "#" }, "Home")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Menu 1")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Menu 2")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Menu 3"))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "20 Guest responses.  Please click this ", React.createElement("a", { href: "/api/guest/list" }, "link"), " to download the responses.", React.createElement("br", null), React.createElement("br", null), "First Name Last Name Email", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }]);
 	
@@ -46267,6 +46269,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	var cart_ts_1 = __webpack_require__(950);
 	//import {processSignatureOrder} from './actions/user_order.ts';
+	var user_navbar_tsx_1 = __webpack_require__(962);
 	
 	var SconelySignatureAdditionalItems = function (_React$Component) {
 	    _inherits(SconelySignatureAdditionalItems, _React$Component);
@@ -46379,7 +46382,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this3 = this;
 	
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.items.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement(user_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.items.map(function (item, index) {
 	                var _this2 = this;
 	
 	                //console.log(item);
@@ -46437,21 +46440,20 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	//import ToggleButton from 'react-toggle-button'
-	//import InputRange from 'react-input-range';
-	//import SconelySocialTopMenu from './sconely_social_top_menu'; 
+	var user_navbar_tsx_1 = __webpack_require__(962);
+	var react_router_1 = __webpack_require__(546);
 	//import 'react-input-range/react-input-range.css';
 	
-	var SconelySignatureOrderHistory = function (_React$Component) {
-	    _inherits(SconelySignatureOrderHistory, _React$Component);
+	var SignatureOrderHistory = function (_React$Component) {
+	    _inherits(SignatureOrderHistory, _React$Component);
 	
 	    //props: Props;
-	    function SconelySignatureOrderHistory(props) {
-	        _classCallCheck(this, SconelySignatureOrderHistory);
+	    function SignatureOrderHistory(props) {
+	        _classCallCheck(this, SignatureOrderHistory);
 	
 	        //this.getData();
 	        //alert(window.links.indexOf({link: "menu", text: "Menu"}));
-	        var _this = _possibleConstructorReturn(this, (SconelySignatureOrderHistory.__proto__ || Object.getPrototypeOf(SconelySignatureOrderHistory)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (SignatureOrderHistory.__proto__ || Object.getPrototypeOf(SignatureOrderHistory)).call(this, props));
 	
 	        var exists = "no";
 	        /*JSON.parse(localStorage.getItem("order")).links.map(function(link){
@@ -46502,7 +46504,7 @@ webpackJsonp([0],[
 	        return _this;
 	    }
 	
-	    _createClass(SconelySignatureOrderHistory, [{
+	    _createClass(SignatureOrderHistory, [{
 	        key: "handleValuesChange",
 	        value: function handleValuesChange(e) {
 	            //alert(JSON.stringify(e.target.value));
@@ -46517,14 +46519,14 @@ webpackJsonp([0],[
 	            if (this.state.value == true) {
 	                guests_choices = "Ross Edwards rossedwards.us@gmail.com";
 	            }
-	            return React.createElement("div", null, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-5" }, React.createElement("label", null, "Guests")))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "20 Guest responses.  Please click this ", React.createElement("a", { href: "/api/guest/list" }, "link"), " to download the responses.", React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement(user_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: "active" }, React.createElement("a", { href: "#" }, "Home")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Menu 1")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Menu 2")), React.createElement("li", null, React.createElement("a", { href: "#" }, "Menu 3"))), React.createElement("br", null), "Order History", React.createElement("br", null), React.createElement("br", null), "Order number-date", React.createElement("br", null), "Invited Guest", React.createElement("br", null), "Additional Items", React.createElement("br", null), "Subtotal", React.createElement("br", null), "Delivery Cost", React.createElement("br", null), "Total", React.createElement("br", null), "Paid", React.createElement("br", null), React.createElement("br", null), "Order number-date", React.createElement("br", null), "Invited Guest", React.createElement("br", null), "Additional Items", React.createElement("br", null), "Subtotal", React.createElement("br", null), "Delivery Cost", React.createElement("br", null), "Total", React.createElement("br", null), "Paid", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }]);
 	
-	    return SconelySignatureOrderHistory;
+	    return SignatureOrderHistory;
 	}(React.Component);
 	
-	exports.default = SconelySignatureOrderHistory;
+	exports.default = SignatureOrderHistory;
 
 /***/ }),
 /* 1163 */
@@ -47558,7 +47560,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function UserOrder() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", suborders: [] }] };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [{ order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", cart: [] }] };
 	    var action = arguments[1];
 	
 	    var delivery_address_updated = null;
@@ -47593,11 +47595,21 @@ webpackJsonp([0],[
 	                return order;
 	            });
 	            console.log("order_updated " + JSON.stringify(order_updated[0]));
+	            var cart_item_index = order_updated[0].cart.findIndex(function (obj) {
+	                return obj["item"] === "invited_guests" && obj["stripe_token"] === "";
+	            });
+	            console.log("cart item index" + JSON.stringify(cart_item_index));
+	            if (cart_item_index == -1) {
+	                //push
+	                order_updated[0].cart.push({ item: "invited_guests", count: 0, stripe_token: "" });
+	            } else {
+	                order_updated[0].cart[cart_item_index]["count"] = action.value;
+	            }
 	            //look in suborders to see if any "invited guests" items exist
 	            //if they have a stripe token then add another
 	            //if not then update the existing one
-	            //order_updated[0].suborders.push({item: "invited_guests", count: 0, stripe_token: ""});
-	            console.log("order_updated_with_suborder " + JSON.stringify(order_updated[0].suborders.push({ item: "invited_guests", count: 0, stripe_token: "" })));
+	            //order_updated[0].cart.push({item: "invited_guests", count: 0, stripe_token: ""});
+	            //console.log("order_updated_with_suborder " + JSON.stringify(order_updated[0].suborders.push({item: "invited_guests", count: 0, stripe_token: ""})));
 	            return Object.assign({}, state, { orders: order_updated });
 	        case actionTypes_ts_1.SET_DATE:
 	            //console("CartState " + action.item_id);

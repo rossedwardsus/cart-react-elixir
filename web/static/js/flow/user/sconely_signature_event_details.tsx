@@ -215,7 +215,7 @@ class EventDetailsName extends React.Component<any, any> {
                   12
                 </div>
                 <div className="col-sm-5">
-                  <input type="range" list="guests" min="0" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.invited_guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16, width: "150px"}}/>
+                  <input type="range" list="guests" min="12" max="150" step="1" onChange={(e: any) => this.setGuestCount(e)} className="form-control" id="exampleInputName2" placeholder="" value={this.state.invited_guest_count} maxLength={3} style={{borderRadius: 0, fontSize: 16, width: "150px"}}/>
                 </div>
                 <div className="col-sm-1">
                   150

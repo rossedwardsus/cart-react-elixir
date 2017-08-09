@@ -5,6 +5,9 @@ import * as React from 'react'
 
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
+import { Link } from 'react-router';
+
+import UserNavbar from './user_navbar.tsx';
 
 //import 'react-input-range/react-input-range.css';
 
@@ -111,22 +114,54 @@ export default class Guests extends React.Component<any, any> {
     }
 
     return (
-      <div>
-        <br/>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-5">
-              <label>Guests</label>
-            </div>
+            <div>
+              <UserNavbar/>
+              <div className="row">
+                  <div className="hidden-xs col-md-3">
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <Link to="/public/menu">Menu</Link>
+                      <br/>
+                      <Link to="/public/menu">Delivery Addresses</Link>
+                      <br/>
+                      <Link to="/public/menu">Payment Methods</Link>
+                      <br/>
+                      <Link to="/public/menu">About Me</Link>
+                      <br/>
+                      <Link to="/public/menu">Photo</Link>
+                  </div>
+                  <div className="col-md-8">
+                    <ul className="nav nav-tabs">
+                        <li className="active"><a href="#">Home</a></li>
+                        <li><a href="#">Menu 1</a></li>
+                        <li><a href="#">Menu 2</a></li>
+                        <li><a href="#">Menu 3</a></li>
+                    </ul>
+                    <br/>
+                    <form className="form-horizontal">
+                      <div className="form-group">
+                        <div className="col-sm-5">
+                          <label>Guests</label>
+                        </div>
+                      </div>
+                    </form>
+                    <br/>
+                    <br/>
+                    <br/>
+                    20 Guest responses.  Please click this <a href="/api/guest/list">link</a> to download the responses.
+                    <br/>
+                    <br/>
+                    First Name Last Name Email
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                  </div>
+              </div>
           </div>
-        </form>
-        <br/>
-        <br/>
-        <br/>
-        20 Guest responses.  Please click this <a href="/api/guest/list">link</a> to download the responses.
-        <br/>
-        <br/>
-      </div>
     )
   }
 }

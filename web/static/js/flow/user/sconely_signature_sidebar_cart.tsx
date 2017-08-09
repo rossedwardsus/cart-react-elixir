@@ -251,13 +251,11 @@ class SidebarCart extends React.Component<any, any> {
     
 
     return (<div> 
-                  {cart}
-                  <br/>
                   <form className="form-horizontal" style={{border: 1, position: "static"}}>
                     <div className="form-group" style={{border: 1}}>
                       <div className="col-md-4">Guest</div>
                       <div className="col-md-4">X</div>
-                       <div className="col-md-4"></div>
+                       <div className="col-md-4">50</div>
                     </div>
                     <div className="form-group" style={{border: 1}}>
                       <div className="col-md-4">Ruby Q</div>
