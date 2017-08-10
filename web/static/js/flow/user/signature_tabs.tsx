@@ -24,17 +24,19 @@ class SignatureTabs extends React.Component<any, any> {
 
       console.log("cwrp signature tabs" + JSON.stringify(this.props.routing.locationBeforeTransitions.pathname));
 
+      //if(this.props.routing.locationBeforeTransitions.pathname.indexOf("event_details"))
+
   }
 
 
   render(): JSX.Element {
     return (
               <ul className="nav nav-tabs">
-                  <li className="active"><Link to="/order/1234/details">EVENT DETAILS</Link></li>
-                  <li><Link to="/order/1234/guests">EVENT GUESTS</Link></li>
-                  <li><Link to="/order/1234/items">ADDITIONAL ITEMS</Link></li>
-                  <li><Link to="/order/1234/summary">ORDER SUMMARY</Link></li>
-                  <li><Link to="/order/1234/preview">EVENT MENU PREVIEW</Link></li>
+                  <li className="active"><Link to="/order/1234/details" style={{fontSize: 11}}>EVENT DETAILS</Link></li>
+                  <li><Link to="/order/1234/guests" style={{fontSize: 11}}>EVENT GUESTS</Link></li>
+                  <li><Link to="/order/1234/items" style={{fontSize: 11}}>ADDITIONAL ITEMS</Link></li>
+                  <li><Link to="/order/1234/summary" style={{fontSize: 11}}>ORDER SUMMARY</Link></li>
+                  <li><Link to="/order/1234/preview" style={{fontSize: 11}}>EVENT MENU PREVIEW</Link></li>
               </ul>    
     )
   }

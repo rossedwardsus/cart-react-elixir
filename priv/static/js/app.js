@@ -33172,7 +33172,7 @@ webpackJsonp([0],[
 	    _createClass(SignatureTabs, [{
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: "active" }, React.createElement(react_router_1.Link, { to: "/order/1234/details" }, "EVENT DETAILS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/guests" }, "EVENT GUESTS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/items" }, "ADDITIONAL ITEMS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/summary" }, "ORDER SUMMARY")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/preview" }, "EVENT MENU PREVIEW")));
+	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: "active" }, React.createElement(react_router_1.Link, { to: "/order/1234/details", style: { fontSize: 11 } }, "EVENT DETAILS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/guests", style: { fontSize: 11 } }, "EVENT GUESTS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/items", style: { fontSize: 11 } }, "ADDITIONAL ITEMS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/summary", style: { fontSize: 11 } }, "ORDER SUMMARY")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/preview", style: { fontSize: 11 } }, "EVENT MENU PREVIEW")));
 	        }
 	    }]);
 	
