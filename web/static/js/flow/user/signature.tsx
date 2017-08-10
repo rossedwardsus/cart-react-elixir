@@ -188,7 +188,7 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                     <Link to="/public/menu">Photo</Link>
                     
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-9">
                   <br/>
                   <br/>
                   <SignatureTabs/>

@@ -33002,7 +33002,7 @@ webpackJsonp([0],[
 	            var logged_in = null;
 	            return React.createElement("div", null, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(sconely_signature_sidebar_cart_tsx_1.default, { UserOrderEventDetails: this.props.UserOrderEventDetails, UserOrderCart: this.props.user_order_cart, processSignatureOrder: function processSignatureOrder() {
 	                    return _this2.props.processSignatureOrder();
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement(signature_tabs_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order_details: this.props.order_details, order: this.props.order, setEventName: function setEventName(e) {
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Payment Methods"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "About Me"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Photo")), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(signature_tabs_tsx_1.default, null), React.createElement("br", null), React.createElement(sconely_signature_event_details_tsx_1.default, { order_details: this.props.order_details, order: this.props.order, setEventName: function setEventName(e) {
 	                    return _this2.props.setEventName(e);
 	                }, setInvitedGuestCount: function setInvitedGuestCount(e) {
 	                    return _this2.props.setInvitedGuestCount(e);
@@ -33145,29 +33145,51 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
 	
 	var SignatureTabs = function (_React$Component) {
 	    _inherits(SignatureTabs, _React$Component);
 	
-	    function SignatureTabs() {
+	    //props: Props;
+	    function SignatureTabs(props) {
 	        _classCallCheck(this, SignatureTabs);
 	
-	        return _possibleConstructorReturn(this, (SignatureTabs.__proto__ || Object.getPrototypeOf(SignatureTabs)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (SignatureTabs.__proto__ || Object.getPrototypeOf(SignatureTabs)).call(this, props));
+	
+	        _this.componentWillReceiveProps = function () {
+	            console.log("cwrp signature tabs" + JSON.stringify(_this.props.routing.locationBeforeTransitions.pathname));
+	        };
+	        _this.state = {
+	            //order_id: this.props.params.order_id,
+	            details_tab: "",
+	            guests_tab: "",
+	            additional_items_tab: "",
+	            menu_preview_tab: ""
+	        };
+	        return _this;
 	    }
 	
 	    _createClass(SignatureTabs, [{
 	        key: "render",
-	
-	        //props: Props;
 	        value: function render() {
-	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: "active" }, React.createElement(react_router_1.Link, { to: "/order/1234/details" }, "DETAILS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/guests" }, "GUESTS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/items" }, "ADDITIONAL ITEMS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/summary" }, "ORDER SUMMARY")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/preview" }, "MENU PREVIEW")));
+	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: "active" }, React.createElement(react_router_1.Link, { to: "/order/1234/details" }, "EVENT DETAILS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/guests" }, "EVENT GUESTS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/items" }, "ADDITIONAL ITEMS")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/summary" }, "ORDER SUMMARY")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/order/1234/preview" }, "EVENT MENU PREVIEW")));
 	        }
 	    }]);
 	
 	    return SignatureTabs;
 	}(React.Component);
 	
-	exports.default = SignatureTabs;
+	function mapStateToProps(state) {
+	    console.log("signature tabs" + JSON.stringify(state.routing.locationBeforeTransitions.pathname));
+	    return {};
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {};
+	}
+	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
+	var SignatureTabsConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SignatureTabs);
+	exports.default = SignatureTabsConnected;
 
 /***/ }),
 /* 970 */
