@@ -6,13 +6,18 @@ import * as React from 'react'
 //import SconelySocialTopMenu from './sconely_social_top_menu'; 
 
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import UserNavbar from './user_navbar.tsx';
 import SignatureTabs from './signature_tabs.tsx';
 
+//import getOrderGuests from '../selectors/signature_order.ts';
+
 //import 'react-input-range/react-input-range.css';
 
-export default class Guests extends React.Component<any, any> {
+
+
+class SignatureOrderGuests extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -161,3 +166,50 @@ export default class Guests extends React.Component<any, any> {
     )
   }
 }
+
+function mapStateToProps(state: any, ownProps: any) {
+  //console.log("guests state" + JSON.stringify(state));
+  return {
+    //guests: getOrderGuests(state, ownProps.params.order_id)
+
+
+   /*session: state.session,
+   order_validations: state.order_validations,
+   order: state.Order,
+   order_delivery_address: state.delivery_address,
+   order_contact: state.contact,
+   order_name: state.name,
+   order_cart_items: state.cart.cart_items,
+   order_datetime: state.OrderDatetime,
+   order_payment_method: state.OrderPayment,*/
+
+   //menu_items: getPublicMenu
+   //menu_items: dispatch()
+  };
+}
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //viewmenuthunk
+
+    //addCartItem: (order_id: any, item_id: any, type: any, quantity: any) => {
+    //  dispatch(addCartItem(order_id, item_id, "type", 1));
+    //},
+    //processSignatureOrder: () => {
+    //  //dispatch(processSignatureOrder(ownProps.params.order_id));
+    //},
+    //increaseCartItemQuantity: () => {
+    //  dispatch(increaseCartItemQuantity(1, 12));
+    //},
+    //decreaseCartItemQuantity: () => {
+    //  dispatch(decreaseCartItemQuantity(1, 12));
+    //}
+  }
+}
+
+const SignatureOrderGuestsConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignatureOrderGuests);
+
+export default SignatureOrderGuestsConnected;

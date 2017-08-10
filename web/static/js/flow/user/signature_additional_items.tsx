@@ -311,9 +311,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const SconelySignatureAdditionalItems1 = connect(
+const SconelySignatureAdditionalItemsConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SconelySignatureAdditionalItems);
 
-export default SconelySignatureAdditionalItems1;
+export default SconelySignatureAdditionalItemsConnected;

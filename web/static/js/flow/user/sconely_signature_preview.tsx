@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import UserNavbar from './user_navbar.tsx';
 import SignatureTabs from './signature_tabs.tsx';
 
+//import getOrder from '../selectors/signature_order.ts';
 
 //import 'react-input-range/react-input-range.css';
 
@@ -334,6 +335,9 @@ class SignatureOrderPreview extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("checkout state" + JSON.stringify(state));
   return {
+    //order: getOrder(state, ownProps.params.order_id)
+
+
    /*session: state.session,
    order_validations: state.order_validations,
    order: state.Order,

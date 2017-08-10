@@ -13,11 +13,27 @@ import SignatureOrder from './signature.tsx';
 
 import {setEventName, setInvitedGuestCount, setInvitedGuestMessage} from '../actions/signature_order_event_details.ts';
 import {setDate, setTime} from '../actions/signature_order_delivery_datetime.ts';
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from '../actions/order_delivery_contact_address.ts';
+import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode, setUserDefinedDeliveryContactAddress} from '../actions/order_delivery_contact_address.ts';
 import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode} from '../actions/order_payment_method.ts';
 import {getUserOrder, getUserOrderDetails, getUserOrderDeliveryContact, getUserOrderDeliveryAddress, getUserOrderGuestResponses, processSignatureOrder} from '../actions/user_order.ts';
 
 import {getOrderDetails} from '../selectors/signature_order.ts';
+
+import SignatureTabs from './signature_tabs.tsx';
+import SidebarCart from './sconely_signature_sidebar_cart.tsx';
+import EventDetails from './sconely_signature_event_details.tsx';
+import EventDeliveryContactAddress from './sconely_signature_delivery_contact_address.tsx';
+//import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
+
+import EventDetailsDateTime from './sconely_signature_event_details_datetime.tsx';
+//import EventDetailsName from './sconely_signature_event_details_name.tsx';
+//import EventDetailsCode from './sconely_signature_event_details_code.tsx';
+import Guests from './sconely_signature_guests.tsx';
+import AdditionalItems from './signature_additional_items.tsx';
+import PaymentMethod from '../payment_method.tsx';
+import SignaturePaymentMethod from './signature_payment_method.tsx';
+import ProcessOrderButton from './sconely_signature_process_order_button.tsx';
+
 
 
 //const mapDispatchToProps = dispatch => {
@@ -264,7 +280,10 @@ class UserOrder extends React.Component<any, any> {
 
   //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
                                   
+  /*<SignatureOrder order_details={this.props.order_details} UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} processSignatureOrder={() => this.props.processSignatureOrder()} setInvitedGuestCount={(e: any) => this.props.setInvitedGuestCount(e)} setGuestMessage={(e: any) => this.props.setInvitedGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} getUserOrderDeliveryContact={() => this.props.getUserOrderDeliveryContact()} getUserOrderDeliveryAddress={() => this.props.getUserOrderDeliveryAddress()} getUserOrderGuestResponses={() => this.props.getUserOrderGuestResponses()}/>*/
+           
 
+  //if order_type == "signature"
 
   render(){
 
@@ -274,9 +293,29 @@ class UserOrder extends React.Component<any, any> {
               <div>
                     <UserNavbar/>
                     <br/>
-                    <SignatureOrder order_details={this.props.order_details} UserOrderEventDetails={this.props.UserOrderEventDetails} menu_items={this.props.menu_items} processSignatureOrder={() => this.props.processSignatureOrder()} setInvitedGuestCount={(e: any) => this.props.setInvitedGuestCount(e)} setGuestMessage={(e: any) => this.props.setInvitedGuestMessage(e)} setEventName={(e: any) => this.props.setEventName(e)} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setPaymentNameOnCard={(e: any) => this.props.setNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setCardNumber(e)} setPaymentExpiryDateMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryDateYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurity={(e: any) => this.props.setPaymentSecurity(e)} getUserOrderDeliveryContact={() => this.props.getUserOrderDeliveryContact()} getUserOrderDeliveryAddress={() => this.props.getUserOrderDeliveryAddress()} getUserOrderGuestResponses={() => this.props.getUserOrderGuestResponses()}/>
                     <br/>
                     else show receipt
+                    <br/>
+                    <br/>
+                    <EventDetails order_details={this.props.order_details} order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)} setInvitedGuestCount={(e: any) =>this.props.setInvitedGuestCount(e)} setInvitedGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
+                    <br/>
+
+                    <EventDetailsDateTime order={this.props.Order} order_details={this.props.order_details} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)}/>
+                    
+                    <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setUserDefinedDeliveryAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)}/>
+                    <br/>
+                    <br/>
+                    
+                    <SignaturePaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                    <br/>
+                    <br/>
+                    Save
+                    <br/>
+                    <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
+                    <br/>
+                    Pay
+                    <br/>
+                    <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
                     
               </div>
     )
@@ -287,6 +326,7 @@ function mapStateToProps(state: any) {
   console.log("user order page component/state" + JSON.stringify(state));
   return {
    //user_delivery_contact_addresses: [],
+
    order_details: getOrderDetails(state.UserOrders, 1),
    name: state.name,
    UserOrders: state.UserOrders,
@@ -343,9 +383,15 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
         dispatch(setDeliveryAddressZipcode(e.target.value, 1));
 
     },
+    setUserDefinesDeliveryContactAddress: (e: any) => {
+
+        dispatch(setUserDefinedDeliveryContactAddress("home", 1));
+
+    },
     setDate: (date: any) => {
       dispatch(setDate(date, ownProps.params.order_id));
     },
+
     setTime: (e: any) => {
       dispatch(setTime(e.target.value, ownProps.params.order_id));
     },

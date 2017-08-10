@@ -195,10 +195,13 @@ class SconelySignatureSinglePage extends React.Component<any, any> {
                   <br/> 
                   <EventDetails order_details={this.props.order_details} order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)} setInvitedGuestCount={(e: any) =>this.props.setInvitedGuestCount(e)} setInvitedGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
                   <br/>
+
                   <EventDetailsDateTime order={this.props.Order} order_details={this.props.order_details} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)}/>
-                  <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)}/>
+                  
+                  <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setUserDefinedDeliveryAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)}/>
                   <br/>
                   <br/>
+                  
                   <SignaturePaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                   <br/>
                   <br/>

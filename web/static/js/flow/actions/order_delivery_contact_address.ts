@@ -1,21 +1,21 @@
-import {SET_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_DELIVERY_ADDRESS_STREET1, SET_USER_ORDER_DELIVERY_ADDRESS_STREET1, SET_DELIVERY_ADDRESS_STREET2, SET_DELIVERY_ADDRESS_CITY, SET_DELIVERY_ADDRESS_STATE, SET_DELIVERY_ADDRESS_ZIPCODE, SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS} from '../constants/actionTypes.ts';
 
 
 //setDeliveryContactAddressPredefined
-//export function selectUserDefinedDeliveryContactAddress(predefined_delivery_contact_address: any, value: any, order_id: any) {
+export function setUserDefinedDeliveryContactAddress(predefined_delivery_contact_address: any, order_id: any) {
 //  console.log("street1");
   //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
   //else SET_DELIVERY_ADDRESS_STREET1
 
   //look in user state for the delivery contact and address info
 
-  //return function (dispatch: any) { 
+  return function (dispatch: any) { 
   
-    //dispatch({type: SET_DELIVERY_CONTACT_ADDRESS, street1: predefined_delivery_contact_address.street1, street2: "", city: "", city: "", state: "", zipcode: "", first_name: "", last_name: "", email: "", mobile: "", order_id: order_id});
+    dispatch({type: SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS, first_name: "", last_name: "", email: "", mobile: "", street1: predefined_delivery_contact_address.street1, street2: "", city: "", state: "", zipcode: "", order_id: order_id});
 
-  //}
+  }
 
-//}
+}
 
 
 
