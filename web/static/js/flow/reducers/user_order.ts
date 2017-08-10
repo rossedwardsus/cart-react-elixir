@@ -20,19 +20,18 @@ let inititalState: CartState = {
 
 }*/
 
-export default function UserOrder(state:any = {orders: [{order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", cart: []}]}, action: any){
+export default function UserOrder(state:any = {orders: [{order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", cart: [], guest_responses: []}]}, action: any){
 
   let delivery_address_updated = null;
   let orders_updated: any = [];
 
   switch (action.type) {
 
-    case GET_USER_ORDER_DETAILS:
+    case SET_USER_ORDERS:
       //alert("CartState " + action.item_id);
       console.log("user order details reducer" + JSON.stringify(state));
 
-      return Object.assign({}, state, {state});
-
+      return Object.assign({}, state, {orders: [{order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", cart: []}]}});
 
 
     case SET_EVENT_NAME:
@@ -116,6 +115,8 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
             return order;
 
       })
+
+      august 16th 1:45
 
       return Object.assign({}, state, {orders: orders_updated});
 

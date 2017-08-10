@@ -20,11 +20,31 @@ class SignatureTabs extends React.Component<any, any> {
     };
   }
 
-  componentWillReceiveProps = () => {
+  componentDidMount = () => {
 
-      console.log("cwrp signature tabs" + JSON.stringify(this.props.routing.locationBeforeTransitions.pathname));
+      console.log("cwrp signature tabs " + JSON.stringify(this.props.pathname.indexOf("details")));
 
-      //if(this.props.routing.locationBeforeTransitions.pathname.indexOf("event_details"))
+      if(this.props.pathname.indexOf("details") > -1){
+
+          this.setState({details_tab: "active"});
+
+      }else if(this.props.pathname.indexOf("preview") > -1){
+
+          this.setState({menu_preview_tab: "active"});
+
+      }else if(this.props.pathname.indexOf("guests") > -1){
+
+          this.setState({guests_tab: "active"});
+
+      }else if(this.props.pathname.indexOf("items") > -1){
+
+          this.setState({items_tab: "active"});
+
+      }else if(this.props.pathname.indexOf("summary") > -1){
+
+          this.setState({summary_tab: "active"});
+
+      }
 
   }
 
@@ -32,19 +52,22 @@ class SignatureTabs extends React.Component<any, any> {
   render(): JSX.Element {
     return (
               <ul className="nav nav-tabs">
-                  <li className="active"><Link to="/order/1234/details" style={{fontSize: 11}}>EVENT DETAILS</Link></li>
-                  <li><Link to="/order/1234/guests" style={{fontSize: 11}}>EVENT GUESTS</Link></li>
-                  <li><Link to="/order/1234/items" style={{fontSize: 11}}>ADDITIONAL ITEMS</Link></li>
-                  <li><Link to="/order/1234/summary" style={{fontSize: 11}}>ORDER SUMMARY</Link></li>
-                  <li><Link to="/order/1234/preview" style={{fontSize: 11}}>EVENT MENU PREVIEW</Link></li>
+                  <li className={this.state.details_tab}><Link to="/order/1234/details" style={{fontSize: 11}}>EVENT DETAILS</Link></li>
+                  <li className={this.state.menu_preview_tab}><Link to="/order/1234/preview" style={{fontSize: 11}}>EVENT MENU PREVIEW</Link></li>
+                  <li className={this.state.guests_tab}><Link to="/order/1234/guests" style={{fontSize: 11}}>EVENT GUESTS</Link></li>
+                  <li className={this.state.items_tab}><Link to="/order/1234/items" style={{fontSize: 11}}>ADDITIONAL ITEMS</Link></li>
+                  <li className={this.state.summary_tab}><Link to="/order/1234/summary" style={{fontSize: 11}}>ORDER SUMMARY</Link></li>
+                 
               </ul>    
     )
   }
 }
 
 function mapStateToProps(state: any) {
-  console.log("signature tabs" + JSON.stringify(state.routing.locationBeforeTransitions.pathname));
+  //console.log("signature tabs" + JSON.stringify(state.routing.locationBeforeTransitions.pathname));
   return {
+
+      pathname: state.routing.locationBeforeTransitions.pathname,
   
   };
 }

@@ -8,6 +8,7 @@ import * as React from 'react'
 import { Link } from 'react-router';
 
 import UserNavbar from './user_navbar.tsx';
+import SignatureTabs from './signature_tabs.tsx';
 
 //import 'react-input-range/react-input-range.css';
 
@@ -134,12 +135,7 @@ export default class Guests extends React.Component<any, any> {
                       <Link to="/public/menu">Photo</Link>
                   </div>
                   <div className="col-md-8">
-                    <ul className="nav nav-tabs">
-                        <li className="active"><a href="#">Home</a></li>
-                        <li><a href="#">Menu 1</a></li>
-                        <li><a href="#">Menu 2</a></li>
-                        <li><a href="#">Menu 3</a></li>
-                    </ul>
+                    <SignatureTabs/>
                     <br/>
                     <form className="form-horizontal">
                       <div className="form-group">

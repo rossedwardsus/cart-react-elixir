@@ -8,6 +8,9 @@ import * as React from 'react'
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import UserNavbar from './user_navbar.tsx';
+import SignatureTabs from './signature_tabs.tsx';
+
 
 //import 'react-input-range/react-input-range.css';
 
@@ -172,12 +175,7 @@ class SignatureOrderPreview extends React.Component<any, any> {
                     </div>
                     <div className="col-sm-14 col-md-9">
                       <br/>
-                      <ul className="nav nav-tabs">
-                          <li className="active"><a href="#">Home</a></li>
-                          <li><a href="#">Menu 1</a></li>
-                          <li><a href="#">Menu 2</a></li>
-                          <li><a href="#">Menu 3</a></li>
-                      </ul>
+                      <SignatureTabs/>
                       <br/>
                         <div className="col-md-12">
                         <div className="row">
