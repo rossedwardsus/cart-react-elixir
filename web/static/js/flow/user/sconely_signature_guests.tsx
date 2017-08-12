@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import UserNavbar from './user_navbar.tsx';
 import SignatureTabs from './signature_tabs.tsx';
 
-//import getOrderGuests from '../selectors/signature_order.ts';
+import {getOrderGuestResponses} from '../selectors/signature_order.ts';
 
 //import 'react-input-range/react-input-range.css';
 
@@ -157,6 +157,13 @@ class SignatureOrderGuests extends React.Component<any, any> {
                     <br/>
                     First Name Last Name Email
                     <br/>
+                    {this.props.guest_responses.map((response: any) => {
+
+                        console.log(JSON.stringify({response}));
+
+                        return(<div>{response.first_name}</div>);
+
+                    })}
                     <br/>
                     <br/>
                     <br/>
@@ -170,7 +177,7 @@ class SignatureOrderGuests extends React.Component<any, any> {
 function mapStateToProps(state: any, ownProps: any) {
   //console.log("guests state" + JSON.stringify(state));
   return {
-    //guests: getOrderGuests(state, ownProps.params.order_id)
+    guest_responses: getOrderGuestResponses(state, ownProps.params.order_id)
 
 
    /*session: state.session,

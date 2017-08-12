@@ -9,7 +9,9 @@ export function setUserDefinedDeliveryContactAddress(predefined_delivery_contact
 
   //look in user state for the delivery contact and address info
 
-  return function (dispatch: any) { 
+  return function (dispatch: any, getState: any) { 
+
+    console.log("state " + JSON.stringify(getState()));
   
     dispatch({type: SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS, first_name: "", last_name: "", email: "", mobile: "", street1: predefined_delivery_contact_address.street1, street2: "", city: "", state: "", zipcode: "", order_id: order_id});
 

@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import UserNavbar from './user_navbar.tsx';
-//import getOrderSummary from '../selectors/signature_order.ts';
+import SignatureTabs from './signature_tabs.tsx';
+import {getSuborders} from '../selectors/signature_order.ts';
 
 
 //import 'react-input-range/react-input-range.css';
@@ -137,6 +138,7 @@ class SignatureOrderHistory extends React.Component<any, any> {
                         <Link to="/public/menu">Photo</Link>
                     </div>
                     <div className="col-md-8">
+                      <SignatureTabs/>
                       <ul className="nav nav-tabs">
                           <li className="active"><a href="#">Home</a></li>
                           <li><a href="#">Menu 1</a></li>
@@ -177,7 +179,31 @@ class SignatureOrderHistory extends React.Component<any, any> {
                       Paid
                       <br/>
                       <br/>
+                       {this.props.suborders.map((suborder: any) => {
+
+                          return(<div>
+                                    <form className="form-horizontal">
+                                    <div className="form-group">
+                                        <div className="col-sm-9">
+                                  
+                     
+                                    <div className="col-md-3">{suborder.item}</div> 
+                                    <div className="col-md-3">{suborder.quantity}</div>
+                                    <div className="col-md-3">suborder.date</div>
+                                                     </div>
+                        </div>
+                      </form>
+           
+                                  </div>)
+
+                      })}
                       <br/>
+                      <br/>
+                      Subtotal
+                      <br/>
+                      Delivery Cost
+                      <br/>
+                      Total
                     </div>
                   </div>
               </div>
@@ -185,10 +211,10 @@ class SignatureOrderHistory extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: any) {
-  console.log("checkout state" + JSON.stringify(state));
+function mapStateToProps(state: any, ownProps: any) {
+  console.log("order history state" + JSON.stringify(state));
   return {
-    //summary: getOrderSummary(state, ownProps.params.order_id)
+   suborders: getSuborders(state, ownProps.params.order_id),
 
    /*session: state.session,
    order_validations: state.order_validations,

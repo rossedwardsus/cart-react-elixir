@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 
 import {getUserOrderDetails} from '../actions/user_order.ts';
 
+import SignatureTabs from './signature_tabs.tsx';
+
 
 //<Calendar dateFormat="YYYY-MM-DD" date={'2017-04-24'} onChange={this.handleChange}/>
 
@@ -173,7 +175,7 @@ class EventDetailsName extends React.Component<any, any> {
   render(): JSX.Element {
     return (
               <div>
-                          
+                <SignatureTabs/>          
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-10">

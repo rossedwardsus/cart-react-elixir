@@ -14,8 +14,8 @@ import SignatureOrder from './signature.tsx';
 import {setEventName, setInvitedGuestCount, setInvitedGuestMessage} from '../actions/signature_order_event_details.ts';
 import {setDate, setTime} from '../actions/signature_order_delivery_datetime.ts';
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode, setUserDefinedDeliveryContactAddress} from '../actions/order_delivery_contact_address.ts';
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode} from '../actions/order_payment_method.ts';
-import {getUserOrder, getUserOrderDetails, getUserOrderDeliveryContact, getUserOrderDeliveryAddress, getUserOrderGuestResponses, processSignatureOrder} from '../actions/user_order.ts';
+import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode, setUserDefinedPaymentMethod} from '../actions/order_payment_method.ts';
+import {setUserOrders, processSignatureOrder} from '../actions/user_order.ts';
 
 import {getOrderDetails} from '../selectors/signature_order.ts';
 
@@ -79,7 +79,8 @@ class UserOrder extends React.Component<any, any> {
 
     //localStorage.get('user');
 
-    this.props.getUserOrder(this.props.params.order_id);
+    this.props.setUserOrders(this.props.params.order_id);
+
     //this.props.getUserOrderDetails();
     //this.props.getUserOrderDeliveryContact()
 
@@ -293,29 +294,50 @@ class UserOrder extends React.Component<any, any> {
               <div>
                     <UserNavbar/>
                     <br/>
-                    <br/>
-                    else show receipt
-                    <br/>
-                    <br/>
-                    <EventDetails order_details={this.props.order_details} order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)} setInvitedGuestCount={(e: any) =>this.props.setInvitedGuestCount(e)} setInvitedGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
-                    <br/>
+                    <div className="row">
+                        <div className="hidden-xs col-md-3">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <SidebarCart UserOrderEventDetails={this.props.UserOrderEventDetails} UserOrderCart={this.props.user_order_cart} processSignatureOrder={() => this.props.processSignatureOrder()}/>
+                            <br/>
+                            <br/>
+                            <Link to="/public/menu">Menu</Link>
+                            <br/>
+                            <Link to="/public/menu">Delivery Addresses</Link>
+                            <br/>
+                            <Link to="/public/menu">Payment Methods</Link>
+                            <br/>
+                            <Link to="/public/menu">About Me</Link>
+                            <br/>
+                            <Link to="/public/menu">Photo</Link>
+                            
+                        </div>
+                        <div className="col-md-9">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <EventDetails order_details={this.props.order_details} order={this.props.order} setEventName={(e: any) =>this.props.setEventName(e)} setInvitedGuestCount={(e: any) =>this.props.setInvitedGuestCount(e)} setInvitedGuestMessage={(e: any) =>this.props.setGuestMessage(e)}/>
+                            <br/>
 
-                    <EventDetailsDateTime order={this.props.Order} order_details={this.props.order_details} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)}/>
-                    
-                    <EventDeliveryContactAddress order={this.props.order} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setUserDefinedDeliveryAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)}/>
-                    <br/>
-                    <br/>
-                    
-                    <SignaturePaymentMethod order={this.props.order} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
-                    <br/>
-                    <br/>
-                    Save
-                    <br/>
-                    <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
-                    <br/>
-                    Pay
-                    <br/>
-                    <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
+                            <EventDetailsDateTime order_details={this.props.order_details} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)}/>
+                            
+                            <EventDeliveryContactAddress user={this.props.user} order_details={this.props.order_details} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)}/>
+                            <br/>
+                            <br/>
+                            
+                            <SignaturePaymentMethod user={this.props.user} order_details={this.props.order_details} setNameOnCard={(e: any) => this.props.NameOnCard(e)} setPaymentMethodCardNumber={(e: any) => this.props.setPaymentMethodCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryDateMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryDateYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setUserDefinedPaymentMethod={(e: any) => this.props.setUserDefinedPaymentMethod(e)}/>
+                            <br/>
+                            <br/>
+                            Save
+                            <br/>
+                            <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
+                            <br/>
+                            Pay
+                            <br/>
+                            <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
+                        </div>
+                    </div>
                     
               </div>
     )
@@ -325,8 +347,7 @@ class UserOrder extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("user order page component/state" + JSON.stringify(state));
   return {
-   //user_delivery_contact_addresses: [],
-
+   user: {delivery_contacts_addresses: [{name: "home"}], payment_methods: [{name: "personal"}]},
    order_details: getOrderDetails(state.UserOrders, 1),
    name: state.name,
    UserOrders: state.UserOrders,
@@ -383,7 +404,7 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
         dispatch(setDeliveryAddressZipcode(e.target.value, 1));
 
     },
-    setUserDefinesDeliveryContactAddress: (e: any) => {
+    setUserDefinedDeliveryContactAddress: (e: any) => {
 
         dispatch(setUserDefinedDeliveryContactAddress("home", 1));
 
@@ -401,9 +422,9 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
         dispatch(setPaymentNameOnCard(e.target.value, 1));
 
     },
-    setCardNumber: (e: any) => {
+    setPaymentMethodCardNumber: (e: any) => {
 
-        dispatch(setPaymentCardNumber(e.target.value, 1));
+        dispatch(setPaymentMethodCardNumber(e.target.value, 1));
 
     },
     setPaymentExpiryDateMonth: (e: any) => {
@@ -421,12 +442,17 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
         dispatch(setPaymentSecurityCode(e.target.value, 1));
 
     },
-    getUserOrder: (e: any) => {
+    setUserDefinedPaymentMethod: (e: any) => {
 
-        dispatch(getUserOrder(1));
+        dispatch(setUserDefinedPaymentMethod("e.target.value", 1));
 
     },
-    getUserOrderDetails: () => {
+    setUserOrders: (e: any) => {
+
+        //dispatch(setUserOrders(1));
+
+    },
+    /*getUserOrderDetails: () => {
 
         dispatch(getUserOrderDetails(1));
 
@@ -445,7 +471,7 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
 
         dispatch(getUserOrderGuestResponses(1));
 
-    },
+    },*/
     processSignatureOrder: (e: any) => {
 
         dispatch(processSignatureOrder(1));

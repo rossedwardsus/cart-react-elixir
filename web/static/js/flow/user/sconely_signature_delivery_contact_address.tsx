@@ -43,12 +43,13 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
 
     this.state = {
 
+      name: "",
       contact_first_name: "",
       contact_last_name: "",
       contact_email: "",
       contact_mobile: "",
-      street1: "",
-      street2: "",
+      address_street1: "",
+      address_street2: "",
       city: "",
       state: "",
       zipcode: ""
@@ -78,6 +79,19 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
     var order_type = orders.find(findOrder).order_type; 
     //alert(order_type);
     this.setState({order_type: order_type});*/
+
+  }
+
+  componentWillReceiveProps = () => {
+
+      console.log("cwrp delivery " + JSON.stringify(this.props.order_details));
+
+      this.setState({contact_first_name: this.props.order_details.delivery_contact_first_name});
+      this.setState({contact_last_name: this.props.order_details.delivery_contact_last_name});
+      this.setState({contact_email: this.props.order_details.delivery_contact_email});
+      this.setState({contact_mobile: this.props.order_details.delivery_contact_mobile});
+      this.setState({address_street1: this.props.order_details.delivery_address_street1});
+      this.setState({address_street2: this.props.order_details.delivery_address_street2});
 
   }
 
@@ -147,6 +161,20 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
 
   }
 
+  setUserDefinedDeliveryContactAddress = (e: any) => {
+
+      this.setState({name: e.target.value});
+
+      //findIndex of delivery information
+      let delivery_contact_address_index = this.props.user.delivery_contacts_addresses.findIndex((obj: any) => obj["name"] === e.target.value);
+
+      let delivery_contact_address = this.props.user.delivery_contacts_addresses[delivery_contact_address_index];
+
+      
+      this.props.setUserDefinedDeliveryContactAddress("");
+
+  }
+
   //by default prepoluate with info from the users profile
 
   render(): JSX.Element {
@@ -169,8 +197,9 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-3">
-              <select onChange={(e: any) => this.changeDeliveryAddressZipcode(e)}  value={this.state.zipcode}  className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                <option>Home</option>
+              <select onChange={(e: any) => this.setUserDefinedDeliveryContactAddress(e)}  value={this.state.name}  className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                <option></option>
+                <option value="home">Home</option>
                 <option>Work</option>
               </select>
             </div>
@@ -179,10 +208,10 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.changeDeliveryContactFirstName(e)} value={this.state.first_name} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={(e: any) => this.changeDeliveryContactFirstName(e)} value={this.state.contact_first_name} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-3">
-                <input type="text" onChange={(e: any) => this.changeDeliveryContactLastName(e)} value={this.state.last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" onChange={(e: any) => this.changeDeliveryContactLastName(e)} value={this.state.contact_last_name} className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
         </form>
@@ -199,10 +228,10 @@ export default class EventDetailsDeliveryContactAddress extends React.Component<
         <form className="form-horizontal">
             <div className="form-group">
               <div className="col-sm-3">
-                <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 1" onChange={(e: any) => this.changeDeliveryAddressStreet1(e)} value={this.state.street1} style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 1" onChange={(e: any) => this.changeDeliveryAddressStreet1(e)} value={this.state.address_street1} style={{borderRadius: 0, fontSize: 16}}/>
               </div>
               <div className="col-sm-3">
-                <input type="text" onChange={(e: any) => this.changeDeliveryAddressStreet2(e)} value={this.state.street2} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
+                <input type="text" onChange={(e: any) => this.changeDeliveryAddressStreet2(e)} value={this.state.address_street2} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
               </div>
             </div>
         </form>

@@ -1,4 +1,4 @@
-import { SET_USER_ORDERS, SET_EVENT_NAME, SET_INVITED_GUEST_COUNT, SET_DATE, SET_TIME, SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS } from '../constants/actionTypes.ts';
+import { SET_USER_ORDERS, SET_EVENT_NAME, SET_INVITED_GUEST_COUNT, SET_DATE, SET_TIME, SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_DEFINED_PAYMENT_METHOD } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,8 +20,9 @@ let inititalState: CartState = {
 
 }*/
 
-export default function UserOrder(state:any = {orders: [{order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", delivery_date: "", delivery_time: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", status: "paid", cart: [], guest_responses: []}]}, action: any){
+export default function UserOrder(state:any = {orders: []}, action: any){
 
+  let order_index: any = null;
   let delivery_address_updated = null;
   let orders_updated: any = [];
 
@@ -29,9 +30,9 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
 
     case SET_USER_ORDERS:
       //alert("CartState " + action.item_id);
-      console.log("user order details reducer" + JSON.stringify(state));
+      console.log("user orders reducer " + JSON.stringify(state));
 
-      return Object.assign({}, state, {orders: [{order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", guest_responses: "", delivery_date: "", delivery_time: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", delivery_address_zipcode: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", cart: []}]});
+      return Object.assign({}, state, {orders: [{order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", delivery_date: "", delivery_time: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", payment_method: {card_number: ""}, status: "paid", suborders: [{item: "invited guests"}], guest_responses: [{first_name: "ross"}]}]});
 
 
     case SET_EVENT_NAME:
@@ -63,7 +64,7 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
 
       //let index = data.findIndex(obj => obj[where] === what)
 
-      let order_updated = state.orders.map((order: any) => {
+      orders_updated = state.orders.map((order: any) => {
 
             //if(address.address)
             console.log("order id" + order.order_id);
@@ -77,17 +78,17 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
 
       })
 
-      console.log("order_updated " + JSON.stringify(order_updated[0]));
+      console.log("order_updated " + JSON.stringify(orders_updated[0]));
 
 
-      let cart_item_index = order_updated[0].cart.findIndex((obj: any) => obj["item"] === "invited_guests" && obj["stripe_token"] === "");
+      let cart_item_index = orders_updated[0].cart.findIndex((obj: any) => obj["item"] === "invited_guests" && obj["stripe_token"] === "");
       console.log("cart item index" + JSON.stringify(cart_item_index));
 
       if(cart_item_index == -1){
       //push
-        order_updated[0].cart.push({item: "invited_guests", count: 0, stripe_token: ""});
+        orders_updated[0].cart.push({item: "invited_guests", count: 0, stripe_token: ""});
       } else { //increment count
-        order_updated[0].cart[cart_item_index]["count"] = action.value;
+        orders_updated[0].cart[cart_item_index]["count"] = action.value;
       }
 
 
@@ -98,7 +99,7 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
 
       //console.log("order_updated_with_suborder " + JSON.stringify(order_updated[0].suborders.push({suborder_id: 12345, item: "invited_guests", count: 0, stripe_token: ""})));
 
-      return Object.assign({}, state, {orders: order_updated});
+      return Object.assign({}, state, {orders: orders_updated});
 
     case SET_DATE:
       //console("CartState " + action.item_id);
@@ -152,17 +153,141 @@ export default function UserOrder(state:any = {orders: [{order_id: 1, order_type
   
     case SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS:
       //console("CartState " + action.item_id);
-      console.log("set TIME reducer " + action.value);
+      console.log("set uddca reducer ");
 
       //findindex
 
       //IF time is chargeable then add suborder
 
+      order_index = state.orders.findIndex((obj: any) => obj["order_id"] === 1);
+
+      //orders_updated.delivery_contact_address.first_name
+
+      orders_updated = state.orders[order_index];
+      orders_updated.delivery_contact_first_name = "action.value";
+      orders_updated.delivery_contact_last_name = "action.value";
+      orders_updated.delivery_contact_email = "action.value";
+      orders_updated.delivery_contact_mobile = "action.value";
+      orders_updated.delivery_address_street1 = "action.value";
+      orders_updated.delivery_address_street2 = "action.value";
+      orders_updated.delivery_address_city = "los_angeles";
+      orders_updated.delivery_address_state = "ca";
+      orders_updated.delivery_address_zipcode = "zipcode";
+
+
+      /*orders_updated = state.orders.map((order: any) => {
+
+            //if(address.address)
+            console.log("order id" + order.order_id);
+            if(order.order_id == 1){
+                
+                order.delivery_contact_first_name = "action.value";
+
+            }
+
+            return order;
+
+      })*/
+
       
       //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
 
-      return Object.assign({}, state, {orders: {delivery_contact_first_name: "Ross", delivery_contact_last_name: "Edwards", delivery_contact_email: "@", delivery_contact_mobile: "310"}});
+      return Object.assign({}, state, {orders: orders_updated});
 
+
+
+    case SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER:
+      //console("CartState " + action.item_id);
+      console.log("set uddca reducer ");
+
+      //findindex
+
+      //IF time is chargeable then add suborder
+
+      order_index = state.orders.findIndex((obj: any) => obj["order_id"] === 1);
+
+      //orders_updated.payment_method.card_number
+
+      orders_updated = state.orders[order_index];
+      orders_updated.payment_method.card_number = action.value;
+      //orders_updated.delivery_contact_last_name = "action.value";
+      //orders_updated.delivery_contact_email = "action.value";
+      //orders_updated.delivery_contact_mobile = "action.value";
+      //orders_updated.delivery_address_street1 = "action.value";
+      //orders_updated.delivery_address_street2 = "action.value";
+      //orders_updated.delivery_address_city = "los_angeles";
+      //orders_updated.delivery_address_state = "ca";
+      //orders_updated.delivery_address_zipcode = "zipcode";
+
+
+      /*orders_updated = state.orders.map((order: any) => {
+
+            //if(address.address)
+            console.log("order id" + order.order_id);
+            if(order.order_id == 1){
+                
+                order.delivery_contact_first_name = "action.value";
+
+            }
+
+            return order;
+
+      })*/
+
+      
+      //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
+
+      return Object.assign({}, state, {orders: orders_updated});
+
+  
+  
+
+
+
+    case SET_USER_DEFINED_PAYMENT_METHOD:
+      //console("CartState " + action.item_id);
+      console.log("set uddca reducer ");
+
+      //findindex
+
+      //IF time is chargeable then add suborder
+
+      order_index = state.orders.findIndex((obj: any) => obj["order_id"] === 1);
+
+      //orders_updated.payment_method.card_number
+
+      orders_updated = state.orders[order_index];
+      orders_updated.payment_method.card_number = "action.value";
+      //orders_updated.delivery_contact_last_name = "action.value";
+      //orders_updated.delivery_contact_email = "action.value";
+      //orders_updated.delivery_contact_mobile = "action.value";
+      //orders_updated.delivery_address_street1 = "action.value";
+      //orders_updated.delivery_address_street2 = "action.value";
+      //orders_updated.delivery_address_city = "los_angeles";
+      //orders_updated.delivery_address_state = "ca";
+      //orders_updated.delivery_address_zipcode = "zipcode";
+
+
+      /*orders_updated = state.orders.map((order: any) => {
+
+            //if(address.address)
+            console.log("order id" + order.order_id);
+            if(order.order_id == 1){
+                
+                order.delivery_contact_first_name = "action.value";
+
+            }
+
+            return order;
+
+      })*/
+
+      
+      //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
+
+      return Object.assign({}, state, {orders: orders_updated});
+
+  
   
 
     default:

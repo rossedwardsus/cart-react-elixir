@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {createOrder} from '../actions/order.ts';
 import {createSignatureOrder} from '../actions/user_order.ts';
 import {getUser} from '../actions/user.ts';
+import {setUserOrders} from '../actions/user_order.ts';
 import {getUserOrders} from '../selectors/user.ts';
 
 import {List, Map} from 'immutable';
@@ -52,7 +53,9 @@ class UserHomePage extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.props.getUser();
+    this.props.setUser();
+    this.props.setUserOrders();
+
 
     //this.props.getUserOrders();
     //this.props.getUserPayments();
@@ -286,6 +289,7 @@ function mapStateToProps(state: any) {
   console.log("user home page component/state" + JSON.stringify(state));
   return {
    User: state.User,
+   //user: getUser(state),
    userOrders: getUserOrders(state),
    //createOrder: createOrder
    //menu_items: dispatch()
@@ -296,13 +300,13 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     //get user
-    getUser: () => {
+    setUser: () => {
       //console.log(e.target.value);
       dispatch(getUser("1"));
     },
-    getUserOrders: (e: any) => {
+    setUserOrders: () => {
       //console.log(e.target.value);
-      //dispatch(setUserDeliveryAddressStreet1(2, e.target.value));
+      dispatch(setUserOrders());
     },
     getUserDeliveryAddresses: (e: any) => {
       //console.log(e.target.value);

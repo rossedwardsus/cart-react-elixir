@@ -1,4 +1,4 @@
-import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS, ADD_USER_PAYMENT_METHOD, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS, ADD_USER_PAYMENT_METHOD, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
@@ -87,8 +87,12 @@ export function setUserDeliveryAddressZipcode(value: any) {
 
 export function getUser(user_id: any) {
   //alert("GET USER details");
+
+  
   return function (dispatch: any) { 
-       axios.post('/api/graphql', {
+       dispatch({type: SET_USER_ORDERS});
+
+       /*axios.post('/api/graphql', {
                      query: 'query {get_user (user_id: "") {first_name delivery_contacts_addresses {delivery_contact_address_name}}}'
               })
               .then((response: any) => {
@@ -100,25 +104,7 @@ export function getUser(user_id: any) {
                     //  data: "session_key"
                     //})
 
-                    //dispatch({
-                    //   type: ADD_USER_DELIVERY_ADDRESS,
-                          //  data: "session_key"
-                    //})
-
-                    //return {
-                    //  type: ADD_USER_DELIVERY_ADDRESS,
-                    //  name,
-                    //  street1,
-                    //  street2,
-                    //  city,
-                    //  state,
-                    //  zipcode
-                    //}
-
-                    //that.props.history.push('/user');
-                    //dispatch(push("/user"));
-
-
+            
 
               })
               .catch((error: any) => {
@@ -131,7 +117,7 @@ export function getUser(user_id: any) {
                 // network error
               //}
 
-              })
+              })*/
 
   }
 
@@ -142,23 +128,17 @@ export function getUser(user_id: any) {
   //}
 }
 
-/*export function getUserOrders(value: any) {
-  //alert("setDeliveryAddressStreet");
-  return {
-    type: GET_USER_ORDERS,
-    value: [{order_id: "", date: ""}]
-  }
-}
+
 
 export function setUserOrders(value: any) {
   //alert("setDeliveryAddressStreet");
   return {
-    type: GET_USER_ORDERS,
+    type: SET_USER_ORDERS,
     value
   }
 }
 
-export function getUserDeliveryAddress() {
+/*export function getUserDeliveryAddress() {
   console.log("get user delivery address action");
   return {
     type: GET_USER_DELIVERY_ADDRESSES,

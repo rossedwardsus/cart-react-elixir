@@ -17,7 +17,7 @@ import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddress
 import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/cart.ts';
-import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
+import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
 
@@ -937,7 +937,7 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(setPaymentNameOnCard(e.target.value, ""))
     },
     setPaymentCardNumber: (e: any) => {
-      dispatch(setPaymentCardNumber(e.target.value, ""))
+      dispatch(setPaymentMethodCardNumber(e.target.value, ""))
     },
     setPaymentExpiryMonth: (e: any) => {
       dispatch(setPaymentExpiryMonth(e.target.value, ""))
