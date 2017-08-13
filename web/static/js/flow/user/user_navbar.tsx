@@ -242,8 +242,8 @@ class UserNavbar extends React.Component<any, any> {
                               <ul id="navbar" className="nav navbar-nav navbar-right">
                                 <li><Link to="/login">LOGOUT</Link></li>
                                 <li><Link to="/register">ABOUT US</Link></li>
-                                <li><Link to="/register">Faq</Link></li>
-                                <li><p className="navbar-text">Signed in as {this.props.first_name} {this.props.last_name}</p></li>
+                                <li><Link to="/register">FAQ</Link></li>
+                                <li><p className="navbar-text">SIGNED in as {this.props.first_name} {this.props.last_name}</p></li>
                               </ul>
                               
                             </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 
-class SignatureTabs extends React.Component<any, any> {
+class UserTabs extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -52,10 +52,10 @@ class SignatureTabs extends React.Component<any, any> {
   render(): JSX.Element {
     return (
               <ul className="nav nav-tabs">
-                  <li className={this.state.details_tab}><Link to="/order/1234/details" style={{fontSize: 11}}>EVENT DETAILS</Link></li>
-                  <li className={this.state.menu_preview_tab}><Link to="/order/1234/preview" style={{fontSize: 11}}>EVENT MENU PREVIEW</Link></li>
-                  <li className={this.state.guests_tab}><Link to="/order/1234/guests" style={{fontSize: 11}}>EVENT GUESTS</Link></li>
-                  <li className={this.state.items_tab}><Link to="/order/1234/items" style={{fontSize: 11}}>ADDITIONAL ITEMS</Link></li>
+                  <li className={this.state.details_tab}><Link to="/order/1234/details" style={{fontSize: 11}}>About me</Link></li>
+                  <li className={this.state.menu_preview_tab}><Link to="/order/1234/preview" style={{fontSize: 11}}>Payment Methods</Link></li>
+                  <li className={this.state.guests_tab}><Link to="/order/1234/guests" style={{fontSize: 11}}>Delivery Contacts and Adresses</Link></li>
+                  <li className={this.state.items_tab}><Link to="/order/1234/items" style={{fontSize: 11}}>Photo</Link></li>
                   <li className={this.state.summary_tab}><Link to="/order/1234/summary" style={{fontSize: 11}}>CHECKOUT</Link></li>
                  
               </ul>    
@@ -82,9 +82,9 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const SignatureTabsConnected = connect(
+const UserTabsConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignatureTabs)
+)(UserTabs)
 
-export default SignatureTabsConnected;
+export default UserTabsConnected;

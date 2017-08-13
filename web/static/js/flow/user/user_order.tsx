@@ -333,9 +333,6 @@ class UserOrder extends React.Component<any, any> {
                             <br/>
                             <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
                             <br/>
-                            Pay
-                            <br/>
-                            <ProcessOrderButton processSignatureOrder={() => this.props.processSignatureOrder()}/>
                         </div>
                     </div>
                     

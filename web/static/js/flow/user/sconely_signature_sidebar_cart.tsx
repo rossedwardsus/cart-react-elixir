@@ -253,35 +253,42 @@ class SidebarCart extends React.Component<any, any> {
     return (<div> 
                   <form className="form-horizontal" style={{border: 1, position: "static"}}>
                     <div className="form-group" style={{border: 1}}>
-                      <div className="col-md-4">Guest</div>
-                      <div className="col-md-4">X</div>
-                       <div className="col-md-4">50</div>
+                      <div className="col-md-4">Item</div>
+                      <div className="col-md-4">Quantity</div>
+                      <div className="col-md-4">Cost</div>
+                    </div>
+                    <div className="form-group" style={{border: 1}}>
+                      <div className="col-md-4">Invited Guests</div>
+                      <div className="col-md-4">50</div>
+                      <div className="col-md-4">350</div>
                     </div>
                     <div className="form-group" style={{border: 1}}>
                       <div className="col-md-4">Ruby Q</div>
-                      <div className="col-md-4">X</div>
-                       <div className="col-md-4">5</div>
+                      <div className="col-md-4">12</div>
+                       <div className="col-md-4">60</div>
                     </div>
                   </form>
                   <form className="form-horizontal" style={{border: 1}}>
                     <div className="form-group" style={{border: 1}}>
-                      <div className="col-xs-8" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Amount Due</b></div>
-                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>$100.00</div>
+                      <div className="col-xs-8" style={{fontType: "helvetica", fontSize: 14}}><b>Sub Total Amount Due</b></div>
+                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: 14}}>$100.00</div>
                       <br/>
                       <br/>
+                      <div className="col-xs-8" style={{fontType: "helvetica", fontSize: 14}}><b>Delivery Cost</b></div>
+                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: 14}}>$10.00</div>
                       <br/>
                     </div>
                   </form>    
                   <form className="form-horizontal" style={{border: 1}}>
                     <div className="form-group" style={{border: 1}}>
                       <br/>
-                      <div className="col-xs-7" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Paid</b></div>
-                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>$50.00</div>
+                      <div className="col-xs-7" style={{fontType: "helvetica", fontSize: 14}}><b>Total Paid</b></div>
+                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: 14}}>$50.00</div>
                       <br/>
                       <br/>
                     </div>
                   </form> 
-                  <ProcessOrderButton/>    
+                  <li className="btn btn-default"><Link to="/order/1234/summary" style={{fontSize: 11}}>Checkout</Link></li> 
             </div>
     )
   }

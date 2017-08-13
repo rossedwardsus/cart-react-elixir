@@ -56,99 +56,99 @@ webpackJsonp([0],[
 	
 	var _user_home_page2 = _interopRequireDefault(_user_home_page);
 	
-	var _user_delivery_addresses = __webpack_require__(963);
+	var _user_delivery_addresses = __webpack_require__(964);
 	
 	var _user_delivery_addresses2 = _interopRequireDefault(_user_delivery_addresses);
 	
-	var _user_delivery_contacts = __webpack_require__(964);
+	var _user_delivery_contacts = __webpack_require__(965);
 	
 	var _user_delivery_contacts2 = _interopRequireDefault(_user_delivery_contacts);
 	
-	var _user_payment_methods = __webpack_require__(965);
+	var _user_payment_methods = __webpack_require__(966);
 	
 	var _user_payment_methods2 = _interopRequireDefault(_user_payment_methods);
 	
-	var _user_about_me = __webpack_require__(966);
+	var _user_about_me = __webpack_require__(967);
 	
 	var _user_about_me2 = _interopRequireDefault(_user_about_me);
 	
-	var _user_order = __webpack_require__(967);
+	var _user_order = __webpack_require__(968);
 	
 	var _user_order2 = _interopRequireDefault(_user_order);
 	
-	var _menu = __webpack_require__(1132);
+	var _menu = __webpack_require__(1133);
 	
 	var _menu2 = _interopRequireDefault(_menu);
 	
-	var _order_datetime_contact = __webpack_require__(1133);
+	var _order_datetime_contact = __webpack_require__(1134);
 	
 	var _order_datetime_contact2 = _interopRequireDefault(_order_datetime_contact);
 	
-	var _payment_method = __webpack_require__(1141);
+	var _payment_method = __webpack_require__(1142);
 	
 	var _payment_method2 = _interopRequireDefault(_payment_method);
 	
-	var _order_cart = __webpack_require__(1140);
+	var _order_cart = __webpack_require__(1141);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_complete = __webpack_require__(1143);
+	var _order_complete = __webpack_require__(1144);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _preview = __webpack_require__(1144);
+	var _preview = __webpack_require__(1145);
 	
 	var _preview2 = _interopRequireDefault(_preview);
 	
-	var _login = __webpack_require__(1147);
+	var _login = __webpack_require__(1148);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1150);
+	var _register = __webpack_require__(1151);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1152);
+	var _register_completed = __webpack_require__(1153);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1153);
+	var _checkLogin = __webpack_require__(1154);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1154);
+	var _user = __webpack_require__(1155);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu_items = __webpack_require__(1155);
+	var _menu_items = __webpack_require__(1156);
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1159);
+	var _name = __webpack_require__(1160);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1160);
+	var _order_completed = __webpack_require__(1161);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1161);
+	var _sconely_signature_guests = __webpack_require__(1162);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _signature_additional_items = __webpack_require__(1162);
+	var _signature_additional_items = __webpack_require__(1163);
 	
 	var _signature_additional_items2 = _interopRequireDefault(_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1163);
+	var _sconely_signature_order_history = __webpack_require__(1164);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _sconely_signature_preview = __webpack_require__(1164);
+	var _sconely_signature_preview = __webpack_require__(1165);
 	
 	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
 	
-	var _index = __webpack_require__(1165);
+	var _index = __webpack_require__(1166);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -30575,6 +30575,7 @@ webpackJsonp([0],[
 	var immutable_1 = __webpack_require__(955);
 	var user_orders_tsx_1 = __webpack_require__(961);
 	var user_navbar_tsx_1 = __webpack_require__(962);
+	var user_tabs_tsx_1 = __webpack_require__(963);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -30713,7 +30714,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement(user_navbar_tsx_1.default, { first_name: this.props.User.first_name, last_name: this.props.User.last_name }), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), "Order Settings:", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement("br", null), "Profile Settings:", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/about_me" }, "Name/Contact"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/password" }, "Password"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), "-", React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(user_navbar_tsx_1.default, { first_name: this.props.User.first_name, last_name: this.props.User.last_name }), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), "Order Settings:", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/delivery_addresses" }, "Delivery Addresses"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/payment_methods" }, "Payment Methods"), React.createElement("br", null), React.createElement("br", null), "Profile Settings:", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/about_me" }, "Name/Contact"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/password" }, "Password"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/user/photo" }, "Photo")), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement(user_tabs_tsx_1.default, null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Social"), "-", React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_signature");
 	                } }, "Signature"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, "Your Orders", React.createElement("br", null), React.createElement(user_orders_tsx_1.default, { userOrders: this.props.userOrders })), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
@@ -31766,7 +31767,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "LOGOUT")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "ABOUT US")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")), React.createElement("li", null, React.createElement("p", { className: "navbar-text" }, "Signed in as ", this.props.first_name, " ", this.props.last_name)))))));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "LOGOUT")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "ABOUT US")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "FAQ")), React.createElement("li", null, React.createElement("p", { className: "navbar-text" }, "SIGNED in as ", this.props.first_name, " ", this.props.last_name)))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -31784,6 +31785,82 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 963 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
+	
+	var UserTabs = function (_React$Component) {
+	    _inherits(UserTabs, _React$Component);
+	
+	    //props: Props;
+	    function UserTabs(props) {
+	        _classCallCheck(this, UserTabs);
+	
+	        var _this = _possibleConstructorReturn(this, (UserTabs.__proto__ || Object.getPrototypeOf(UserTabs)).call(this, props));
+	
+	        _this.componentDidMount = function () {
+	            console.log("cwrp signature tabs " + JSON.stringify(_this.props.pathname.indexOf("details")));
+	            if (_this.props.pathname.indexOf("details") > -1) {
+	                _this.setState({ details_tab: "active" });
+	            } else if (_this.props.pathname.indexOf("preview") > -1) {
+	                _this.setState({ menu_preview_tab: "active" });
+	            } else if (_this.props.pathname.indexOf("guests") > -1) {
+	                _this.setState({ guests_tab: "active" });
+	            } else if (_this.props.pathname.indexOf("items") > -1) {
+	                _this.setState({ items_tab: "active" });
+	            } else if (_this.props.pathname.indexOf("summary") > -1) {
+	                _this.setState({ summary_tab: "active" });
+	            }
+	        };
+	        _this.state = {
+	            //order_id: this.props.params.order_id,
+	            details_tab: "",
+	            guests_tab: "",
+	            additional_items_tab: "",
+	            menu_preview_tab: ""
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(UserTabs, [{
+	        key: "render",
+	        value: function render() {
+	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: this.state.details_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/details", style: { fontSize: 11 } }, "About me")), React.createElement("li", { className: this.state.menu_preview_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/preview", style: { fontSize: 11 } }, "Payment Methods")), React.createElement("li", { className: this.state.guests_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/guests", style: { fontSize: 11 } }, "Delivery Contacts and Adresses")), React.createElement("li", { className: this.state.items_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/items", style: { fontSize: 11 } }, "Photo")), React.createElement("li", { className: this.state.summary_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/summary", style: { fontSize: 11 } }, "CHECKOUT")));
+	        }
+	    }]);
+	
+	    return UserTabs;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    //console.log("signature tabs" + JSON.stringify(state.routing.locationBeforeTransitions.pathname));
+	    return {
+	        pathname: state.routing.locationBeforeTransitions.pathname
+	    };
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {};
+	}
+	//export default connect(mapStateToProps, mapDispatchToProps)(Order);
+	var UserTabsConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(UserTabs);
+	exports.default = UserTabsConnected;
+
+/***/ }),
+/* 964 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31963,7 +32040,7 @@ webpackJsonp([0],[
 	exports.default = UserDeliveryAddresses1;
 
 /***/ }),
-/* 964 */
+/* 965 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32123,7 +32200,7 @@ webpackJsonp([0],[
 	exports.default = UserDeliveryContacts1;
 
 /***/ }),
-/* 965 */
+/* 966 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32234,7 +32311,7 @@ webpackJsonp([0],[
 	exports.default = UserPaymentMethods1;
 
 /***/ }),
-/* 966 */
+/* 967 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32366,7 +32443,7 @@ webpackJsonp([0],[
 	exports.default = UserAboutMe1;
 
 /***/ }),
-/* 967 */
+/* 968 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32389,19 +32466,19 @@ webpackJsonp([0],[
 	//import {startOrder} from './actions/order';
 	var immutable_1 = __webpack_require__(955);
 	var user_navbar_tsx_1 = __webpack_require__(962);
-	var signature_order_event_details_ts_1 = __webpack_require__(968);
-	var signature_order_delivery_datetime_ts_1 = __webpack_require__(969);
-	var order_delivery_contact_address_ts_1 = __webpack_require__(970);
-	var order_payment_method_ts_1 = __webpack_require__(971);
+	var signature_order_event_details_ts_1 = __webpack_require__(969);
+	var signature_order_delivery_datetime_ts_1 = __webpack_require__(970);
+	var order_delivery_contact_address_ts_1 = __webpack_require__(971);
+	var order_payment_method_ts_1 = __webpack_require__(972);
 	var user_order_ts_1 = __webpack_require__(958);
-	var signature_order_ts_1 = __webpack_require__(972);
-	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(973);
+	var signature_order_ts_1 = __webpack_require__(973);
+	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(974);
 	var sconely_signature_event_details_tsx_1 = __webpack_require__(975);
 	var sconely_signature_delivery_contact_address_tsx_1 = __webpack_require__(1102);
 	//import EventDetailsEventAddress from './sconely_signature_event_details_event_address.tsx';
 	var sconely_signature_event_details_datetime_tsx_1 = __webpack_require__(1103);
 	var signature_payment_method_tsx_1 = __webpack_require__(1131);
-	var sconely_signature_process_order_button_tsx_1 = __webpack_require__(974);
+	var sconely_signature_process_order_button_tsx_1 = __webpack_require__(1132);
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -32628,9 +32705,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setUserDefinedPaymentMethod(e);
 	                } }), React.createElement("br", null), React.createElement("br", null), "Save", React.createElement("br", null), React.createElement(sconely_signature_process_order_button_tsx_1.default, { processSignatureOrder: function processSignatureOrder() {
 	                    return _this2.props.processSignatureOrder();
-	                } }), React.createElement("br", null), "Pay", React.createElement("br", null), React.createElement(sconely_signature_process_order_button_tsx_1.default, { processSignatureOrder: function processSignatureOrder() {
-	                    return _this2.props.processSignatureOrder();
-	                } }))));
+	                } }), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -32735,7 +32810,7 @@ webpackJsonp([0],[
 	exports.default = UserOrderConnected;
 
 /***/ }),
-/* 968 */
+/* 969 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32786,7 +32861,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 969 */
+/* 970 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32825,7 +32900,7 @@ webpackJsonp([0],[
 	exports.setSpecificTime = setSpecificTime;
 
 /***/ }),
-/* 970 */
+/* 971 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32896,7 +32971,7 @@ webpackJsonp([0],[
 	exports.setDeliveryAddressZipcode = setDeliveryAddressZipcode;
 
 /***/ }),
-/* 971 */
+/* 972 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32967,7 +33042,7 @@ webpackJsonp([0],[
 	exports.setPaymentSecurityCode = setPaymentSecurityCode;
 
 /***/ }),
-/* 972 */
+/* 973 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -32992,7 +33067,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 973 */
+/* 974 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33007,12 +33082,11 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
+	//import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
+	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
+	var react_router_1 = __webpack_require__(546);
 	//import { bindActionCreators } from 'redux';
 	var react_redux_1 = __webpack_require__(190);
-	//import * as getAllProducts from './actions/menu';
-	//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
-	//import { getPublicMenu } from './reducers/menu';
-	var sconely_signature_process_order_button_tsx_1 = __webpack_require__(974);
 	var Immutable = __webpack_require__(955);
 	//import _ from 'lodash';
 	function addTodoWithDispatch() {
@@ -33158,7 +33232,7 @@ webpackJsonp([0],[
 	                            </div>
 	                          </form>)
 	                 });*/
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Guest"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "50")), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "X"), React.createElement("div", { className: "col-md-4" }, "5"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-8", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: "14" } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), React.createElement(sconely_signature_process_order_button_tsx_1.default, null));
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Item"), React.createElement("div", { className: "col-md-4" }, "Quantity"), React.createElement("div", { className: "col-md-4" }, "Cost")), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Invited Guests"), React.createElement("div", { className: "col-md-4" }, "50"), React.createElement("div", { className: "col-md-4" }, "350")), React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "Ruby Q"), React.createElement("div", { className: "col-md-4" }, "12"), React.createElement("div", { className: "col-md-4" }, "60"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-xs-8", style: { fontType: "helvetica", fontSize: 14 } }, React.createElement("b", null, "Sub Total Amount Due")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: 14 } }, "$100.00"), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-xs-8", style: { fontType: "helvetica", fontSize: 14 } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: 14 } }, "$10.00"), React.createElement("br", null))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("br", null), React.createElement("div", { className: "col-xs-7", style: { fontType: "helvetica", fontSize: 14 } }, React.createElement("b", null, "Total Paid")), React.createElement("div", { className: "col-xs-2", style: { fontType: "helvetica", fontSize: 14 } }, "$50.00"), React.createElement("br", null), React.createElement("br", null))), React.createElement("li", { className: "btn btn-default" }, React.createElement(react_router_1.Link, { to: "/order/1234/summary", style: { fontSize: 11 } }, "Checkout")));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -33181,135 +33255,6 @@ webpackJsonp([0],[
 	};
 	var SidebarCart1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarCart);
 	exports.default = SidebarCart;
-
-/***/ }),
-/* 974 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(955);
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var ProcessOrderButton = function (_React$Component) {
-	    _inherits(ProcessOrderButton, _React$Component);
-	
-	    //props: Props;
-	    function ProcessOrderButton(props) {
-	        _classCallCheck(this, ProcessOrderButton);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (ProcessOrderButton.__proto__ || Object.getPrototypeOf(ProcessOrderButton)).call(this, props));
-	
-	        _this.state = {
-	            first_name: "",
-	            last_name: "",
-	            validated: "btn btn-default"
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(ProcessOrderButton, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {}
-	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps() {
-	            console.log("checkout button componentwillreceiveprops" + JSON.stringify(this.props.validations));
-	            //if(this.props.validations.datetime_validated && this.props.validations.name_validated){
-	            this.setState({ validated: "btn btn-default" });
-	            //}
-	        }
-	    }, {
-	        key: "saveOrder",
-	        value: function saveOrder() {
-	            var that = this;
-	            this.props.saveOrder();
-	            //if(this.state.first_name_validated === false){
-	            //this.props.event_name
-	            //this.props.code
-	            //this.props.guest_count
-	            //this.props.order_datetime;
-	            //this.props.order_delivery_address
-	            //this.props.order_payment_method
-	            //this.props.additional_items
-	            /*axios.post('/api/graphql', {
-	            //axios.post('http://localhost:4000/api/graphql', {
-	                   query: 'mutation {createSconelySignatureOrder (event_name: "signature") { status, order_id }}'
-	            })
-	            .then((response: any) => {
-	                   console.log("graphql response" + JSON.stringify(response));
-	                   //that.props.history.push('/user');
-	                  //context.router
-	             //      that.props.setOrderId(1);
-	               //    this.context.router.push('/order/complete');
-	                  })
-	            .catch((error: any) => {
-	                   console.log("error" + error);
-	                  //go to code/payment screen
-	            //        this.props.loadView();
-	                    //display errror to user - payment
-	            //if (!error.status) {
-	              // network error
-	            //}
-	             })*/
-	            //}
-	        }
-	        //order name invited guest count delivery date time address required
-	        //as well as payment
-	        //save button
-	
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
-	
-	            //please enter a valid name
-	            //please enter a valid date
-	            //please enter a valid contact
-	            return React.createElement("div", null, React.createElement("button", { className: this.state.validated, onClick: function onClick() {
-	                    return _this2.props.processSignatureOrder();
-	                } }, "Process Order"));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return ProcessOrderButton;
-	}(React.Component);
-	
-	exports.default = ProcessOrderButton;
 
 /***/ }),
 /* 975 */
@@ -33692,7 +33637,7 @@ webpackJsonp([0],[
 	    _createClass(SignatureTabs, [{
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: this.state.details_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/details", style: { fontSize: 11 } }, "EVENT DETAILS")), React.createElement("li", { className: this.state.menu_preview_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/preview", style: { fontSize: 11 } }, "EVENT MENU PREVIEW")), React.createElement("li", { className: this.state.guests_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/guests", style: { fontSize: 11 } }, "EVENT GUESTS")), React.createElement("li", { className: this.state.items_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/items", style: { fontSize: 11 } }, "ADDITIONAL ITEMS")), React.createElement("li", { className: this.state.summary_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/summary", style: { fontSize: 11 } }, "ORDER SUMMARY")));
+	            return React.createElement("ul", { className: "nav nav-tabs" }, React.createElement("li", { className: this.state.details_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/details", style: { fontSize: 11 } }, "EVENT DETAILS")), React.createElement("li", { className: this.state.menu_preview_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/preview", style: { fontSize: 11 } }, "EVENT MENU PREVIEW")), React.createElement("li", { className: this.state.guests_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/guests", style: { fontSize: 11 } }, "EVENT GUESTS")), React.createElement("li", { className: this.state.items_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/items", style: { fontSize: 11 } }, "ADDITIONAL ITEMS")), React.createElement("li", { className: this.state.summary_tab }, React.createElement(react_router_1.Link, { to: "/order/1234/summary", style: { fontSize: 11 } }, "CHECKOUT")));
 	        }
 	    }]);
 	
@@ -40003,6 +39948,135 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(955);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var ProcessOrderButton = function (_React$Component) {
+	    _inherits(ProcessOrderButton, _React$Component);
+	
+	    //props: Props;
+	    function ProcessOrderButton(props) {
+	        _classCallCheck(this, ProcessOrderButton);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (ProcessOrderButton.__proto__ || Object.getPrototypeOf(ProcessOrderButton)).call(this, props));
+	
+	        _this.state = {
+	            first_name: "",
+	            last_name: "",
+	            validated: "btn btn-default"
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(ProcessOrderButton, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {}
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps() {
+	            console.log("checkout button componentwillreceiveprops" + JSON.stringify(this.props.validations));
+	            //if(this.props.validations.datetime_validated && this.props.validations.name_validated){
+	            this.setState({ validated: "btn btn-default" });
+	            //}
+	        }
+	    }, {
+	        key: "saveOrder",
+	        value: function saveOrder() {
+	            var that = this;
+	            this.props.saveOrder();
+	            //if(this.state.first_name_validated === false){
+	            //this.props.event_name
+	            //this.props.code
+	            //this.props.guest_count
+	            //this.props.order_datetime;
+	            //this.props.order_delivery_address
+	            //this.props.order_payment_method
+	            //this.props.additional_items
+	            /*axios.post('/api/graphql', {
+	            //axios.post('http://localhost:4000/api/graphql', {
+	                   query: 'mutation {createSconelySignatureOrder (event_name: "signature") { status, order_id }}'
+	            })
+	            .then((response: any) => {
+	                   console.log("graphql response" + JSON.stringify(response));
+	                   //that.props.history.push('/user');
+	                  //context.router
+	             //      that.props.setOrderId(1);
+	               //    this.context.router.push('/order/complete');
+	                  })
+	            .catch((error: any) => {
+	                   console.log("error" + error);
+	                  //go to code/payment screen
+	            //        this.props.loadView();
+	                    //display errror to user - payment
+	            //if (!error.status) {
+	              // network error
+	            //}
+	             })*/
+	            //}
+	        }
+	        //order name invited guest count delivery date time address required
+	        //as well as payment
+	        //save button
+	
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            //please enter a valid name
+	            //please enter a valid date
+	            //please enter a valid contact
+	            return React.createElement("div", null, React.createElement("button", { className: this.state.validated, onClick: function onClick() {
+	                    return _this2.props.processSignatureOrder();
+	                } }, "Process Order"));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return ProcessOrderButton;
+	}(React.Component);
+	
+	exports.default = ProcessOrderButton;
+
+/***/ }),
+/* 1133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var menu_ts_1 = __webpack_require__(923);
@@ -40253,7 +40327,7 @@ webpackJsonp([0],[
 	exports.default = OrderMenu1;
 
 /***/ }),
-/* 1133 */
+/* 1134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40274,20 +40348,20 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var order_validations_ts_1 = __webpack_require__(949);
-	var order_delivery_contact_address_ts_1 = __webpack_require__(970);
-	var order_name_ts_1 = __webpack_require__(1134);
-	var signature_order_delivery_datetime_ts_1 = __webpack_require__(969);
+	var order_delivery_contact_address_ts_1 = __webpack_require__(971);
+	var order_name_ts_1 = __webpack_require__(1135);
+	var signature_order_delivery_datetime_ts_1 = __webpack_require__(970);
 	var cart_ts_1 = __webpack_require__(950);
-	var order_payment_method_ts_1 = __webpack_require__(971);
-	var order_contact_ts_1 = __webpack_require__(1135);
+	var order_payment_method_ts_1 = __webpack_require__(972);
+	var order_contact_ts_1 = __webpack_require__(1136);
 	var order_ts_1 = __webpack_require__(920);
-	var delivery_address_tsx_1 = __webpack_require__(1136);
-	var contact_tsx_1 = __webpack_require__(1137);
-	var datetime_tsx_1 = __webpack_require__(1138);
-	var name_tsx_1 = __webpack_require__(1139);
-	var order_cart_tsx_1 = __webpack_require__(1140);
-	var payment_method_tsx_1 = __webpack_require__(1141);
-	var checkout_button_tsx_1 = __webpack_require__(1142);
+	var delivery_address_tsx_1 = __webpack_require__(1137);
+	var contact_tsx_1 = __webpack_require__(1138);
+	var datetime_tsx_1 = __webpack_require__(1139);
+	var name_tsx_1 = __webpack_require__(1140);
+	var order_cart_tsx_1 = __webpack_require__(1141);
+	var payment_method_tsx_1 = __webpack_require__(1142);
+	var checkout_button_tsx_1 = __webpack_require__(1143);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(955);
 	var DatePicker = __webpack_require__(976);
@@ -40950,7 +41024,7 @@ webpackJsonp([0],[
 	exports.default = Checkout;
 
 /***/ }),
-/* 1134 */
+/* 1135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40983,7 +41057,7 @@ webpackJsonp([0],[
 	exports.setCompanyName = setCompanyName;
 
 /***/ }),
-/* 1135 */
+/* 1136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41008,7 +41082,7 @@ webpackJsonp([0],[
 	exports.setContactMobile = setContactMobile;
 
 /***/ }),
-/* 1136 */
+/* 1137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41185,7 +41259,7 @@ webpackJsonp([0],[
 	exports.default = DeliveryAddress;
 
 /***/ }),
-/* 1137 */
+/* 1138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41348,7 +41422,7 @@ webpackJsonp([0],[
 	exports.default = Contact;
 
 /***/ }),
-/* 1138 */
+/* 1139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41473,7 +41547,7 @@ webpackJsonp([0],[
 	exports.default = DateTime;
 
 /***/ }),
-/* 1139 */
+/* 1140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41645,7 +41719,7 @@ webpackJsonp([0],[
 	exports.default = Name;
 
 /***/ }),
-/* 1140 */
+/* 1141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42138,7 +42212,7 @@ webpackJsonp([0],[
 	exports.default = OrderCart;
 
 /***/ }),
-/* 1141 */
+/* 1142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42386,7 +42460,7 @@ webpackJsonp([0],[
 	exports.default = PaymentMethod;
 
 /***/ }),
-/* 1142 */
+/* 1143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42509,7 +42583,7 @@ webpackJsonp([0],[
 	exports.default = CheckoutButton;
 
 /***/ }),
-/* 1143 */
+/* 1144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -43227,7 +43301,7 @@ webpackJsonp([0],[
 	exports.default = OrderCompleted1;
 
 /***/ }),
-/* 1144 */
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43248,11 +43322,11 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import {setFirstName, setLastName} from './actions/order_name.ts';
-	var signature_order_delivery_datetime_ts_1 = __webpack_require__(969);
-	var delivery_address_tsx_1 = __webpack_require__(1136);
-	var contact_preview_tsx_1 = __webpack_require__(1145);
-	var datetime_tsx_1 = __webpack_require__(1138);
-	var name_preview_tsx_1 = __webpack_require__(1146);
+	var signature_order_delivery_datetime_ts_1 = __webpack_require__(970);
+	var delivery_address_tsx_1 = __webpack_require__(1137);
+	var contact_preview_tsx_1 = __webpack_require__(1146);
+	var datetime_tsx_1 = __webpack_require__(1139);
+	var name_preview_tsx_1 = __webpack_require__(1147);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(955);
 	var DatePicker = __webpack_require__(976);
@@ -43870,7 +43944,7 @@ webpackJsonp([0],[
 	exports.default = Preview;
 
 /***/ }),
-/* 1145 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43887,7 +43961,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	var Immutable = __webpack_require__(955);
-	var order_contact_ts_1 = __webpack_require__(1135);
+	var order_contact_ts_1 = __webpack_require__(1136);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -43977,7 +44051,7 @@ webpackJsonp([0],[
 	exports.default = ContactPreview1;
 
 /***/ }),
-/* 1146 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43997,7 +44071,7 @@ webpackJsonp([0],[
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(955);
-	var order_name_ts_1 = __webpack_require__(1134);
+	var order_name_ts_1 = __webpack_require__(1135);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -44095,7 +44169,7 @@ webpackJsonp([0],[
 	exports.default = NamePreview1;
 
 /***/ }),
-/* 1147 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44114,7 +44188,7 @@ webpackJsonp([0],[
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var login_ts_1 = __webpack_require__(1148);
+	var login_ts_1 = __webpack_require__(1149);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -44219,7 +44293,7 @@ webpackJsonp([0],[
 	exports.default = Login1;
 
 /***/ }),
-/* 1148 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44228,7 +44302,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var axios_1 = __webpack_require__(924);
-	var session_ts_1 = __webpack_require__(1149);
+	var session_ts_1 = __webpack_require__(1150);
 	function loginUser(email, password) {
 	    var url = "";
 	    return function (dispatch) {
@@ -44275,7 +44349,7 @@ webpackJsonp([0],[
 	exports.login = login;
 
 /***/ }),
-/* 1149 */
+/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44331,7 +44405,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1150 */
+/* 1151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44350,7 +44424,7 @@ webpackJsonp([0],[
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var register_ts_1 = __webpack_require__(1151);
+	var register_ts_1 = __webpack_require__(1152);
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
 	var axios_1 = __webpack_require__(924);
@@ -44632,7 +44706,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1151 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -44826,7 +44900,7 @@ webpackJsonp([0],[
 	exports.registerUser = registerUser;
 
 /***/ }),
-/* 1152 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44997,7 +45071,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1153 */
+/* 1154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45048,7 +45122,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1154 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45189,7 +45263,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1155 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45206,10 +45280,10 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1156);
+	var signature_guest_response_ts_1 = __webpack_require__(1157);
 	var menu_ts_1 = __webpack_require__(923);
-	var signature_guest_response_ts_2 = __webpack_require__(1157);
-	var navbar_tsx_1 = __webpack_require__(1158);
+	var signature_guest_response_ts_2 = __webpack_require__(1158);
+	var navbar_tsx_1 = __webpack_require__(1159);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45390,7 +45464,7 @@ webpackJsonp([0],[
 	exports.default = GuestMenu1;
 
 /***/ }),
-/* 1156 */
+/* 1157 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -45488,7 +45562,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1157 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45604,7 +45678,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1158 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45676,7 +45750,7 @@ webpackJsonp([0],[
 	exports.default = NavBar1;
 
 /***/ }),
-/* 1159 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45693,9 +45767,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
-	var signature_guest_response_ts_1 = __webpack_require__(1157);
-	var signature_guest_response_ts_2 = __webpack_require__(1156);
-	var navbar_tsx_1 = __webpack_require__(1158);
+	var signature_guest_response_ts_1 = __webpack_require__(1158);
+	var signature_guest_response_ts_2 = __webpack_require__(1157);
+	var navbar_tsx_1 = __webpack_require__(1159);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -45846,7 +45920,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1160 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45862,8 +45936,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1156);
-	var navbar_tsx_1 = __webpack_require__(1158);
+	var signature_guest_response_ts_1 = __webpack_require__(1157);
+	var navbar_tsx_1 = __webpack_require__(1159);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -45954,7 +46028,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1161 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45976,7 +46050,7 @@ webpackJsonp([0],[
 	var react_redux_1 = __webpack_require__(190);
 	var user_navbar_tsx_1 = __webpack_require__(962);
 	var signature_tabs_tsx_1 = __webpack_require__(1095);
-	var signature_order_ts_1 = __webpack_require__(972);
+	var signature_order_ts_1 = __webpack_require__(973);
 	//import 'react-input-range/react-input-range.css';
 	
 	var SignatureOrderGuests = function (_React$Component) {
@@ -46088,7 +46162,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderGuestsConnected;
 
 /***/ }),
-/* 1162 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46103,7 +46177,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(973);
+	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(974);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var cart_ts_1 = __webpack_require__(950);
@@ -46264,7 +46338,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItemsConnected;
 
 /***/ }),
-/* 1163 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46286,7 +46360,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var user_navbar_tsx_1 = __webpack_require__(962);
 	var signature_tabs_tsx_1 = __webpack_require__(1095);
-	var signature_order_ts_1 = __webpack_require__(972);
+	var signature_order_ts_1 = __webpack_require__(973);
 	//import 'react-input-range/react-input-range.css';
 	
 	var SignatureOrderHistory = function (_React$Component) {
@@ -46386,7 +46460,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderSummaryConnected;
 
 /***/ }),
-/* 1164 */
+/* 1165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46407,7 +46481,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var signature_tabs_tsx_1 = __webpack_require__(1095);
-	var signature_order_ts_1 = __webpack_require__(972);
+	var signature_order_ts_1 = __webpack_require__(973);
 	//import 'react-input-range/react-input-range.css';
 	
 	var SignatureOrderPreview = function (_React$Component) {
@@ -46535,7 +46609,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderPreviewConnected;
 
 /***/ }),
-/* 1165 */
+/* 1166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46543,16 +46617,16 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1166);
+	var session_ts_1 = __webpack_require__(1167);
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1167);
-	var order_ts_1 = __webpack_require__(1168);
-	var user_ts_1 = __webpack_require__(1169);
+	var menu_ts_1 = __webpack_require__(1168);
+	var order_ts_1 = __webpack_require__(1169);
+	var user_ts_1 = __webpack_require__(1170);
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1170);
-	var user_order_ts_1 = __webpack_require__(1171);
+	var signature_guest_response_ts_1 = __webpack_require__(1171);
+	var user_order_ts_1 = __webpack_require__(1172);
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
 	//import UserOrderDeliveryContact from './user_order_delivery_contact.ts';
@@ -46593,7 +46667,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1166 */
+/* 1167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46633,7 +46707,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1167 */
+/* 1168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46680,7 +46754,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1168 */
+/* 1169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46757,7 +46831,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1169 */
+/* 1170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46837,7 +46911,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1170 */
+/* 1171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46913,7 +46987,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1171 */
+/* 1172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

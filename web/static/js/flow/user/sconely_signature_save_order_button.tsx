@@ -51,9 +51,9 @@ class ProcessOrderButton extends React.Component<any, any> {
 
     this.state = {
 
-       first_name: "",
+       button_text: "Save",
        last_name: "",
-       validated: "btn btn-default"
+       button_classname: "btn btn-default"
     };
 
     //user_type=guest
@@ -89,7 +89,7 @@ class ProcessOrderButton extends React.Component<any, any> {
 
   }
 
-  saveOrder(){
+  saveSignatureOrder(){
 
     let that = this;
 
@@ -138,6 +138,8 @@ class ProcessOrderButton extends React.Component<any, any> {
           })*/
     //}
 
+    this.setState({button_classname: "btn btn-default disabled"});
+
   }
 
   //order name invited guest count delivery date time address required
@@ -151,8 +153,7 @@ class ProcessOrderButton extends React.Component<any, any> {
     //please enter a valid contact
 
     return ( <div>
-
-                <button className={this.state.validated} onClick={() => this.props.processSignatureOrder()}>Process Order</button>
+                <button className={this.state.button_classname} onClick={() => this.props.saveSignatureOrder()}>Save Order</button>
               </div>
     )
   }

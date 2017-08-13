@@ -15,6 +15,7 @@ import {List, Map} from 'immutable';
 
 import UserOrders from './user_orders.tsx';
 import UserNavbar from './user_navbar.tsx';
+import UserTabs from './user_tabs.tsx';
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -250,6 +251,7 @@ class UserHomePage extends React.Component<any, any> {
                         <div className="col-md-6">
                                   <br/>
                                   <br/>
+                                  <UserTabs/>
                                   <br/>
                                   <Link to="/public/menu">Social</Link>-<a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                                   <br/>
