@@ -7,7 +7,7 @@ export function createSignatureOrder(user_id: any) {
   console.log("create signature order action");
   return function (dispatch: any) { 
       //axios.post('/api/graphql', {
-      axios.post('/api/graphql', {
+      /*axios.post('/api/graphql', {
              query: 'mutation {create_signature_order (user_id: 1) { order_id }}'
       })
       .then((response: any) => {
@@ -36,7 +36,9 @@ export function createSignatureOrder(user_id: any) {
         // network error
       //}
 
-      })
+      })*/
+
+      dispatch(push("/order/519525/details"));
   }
 }
 

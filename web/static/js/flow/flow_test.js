@@ -186,7 +186,7 @@ const Root = () => (
           <Route path="/order/complete" component={OrderComplete} />
         </Route>
         <Route path="/user" component={UserHomePage} />
-        <Route path="/user/delivery_addresses" component={UserDeliveryAddresses} />
+        <Route path="/user/delivery_contacts_addresses" component={UserDeliveryAddresses} />
         <Route path="/user/delivery_contacts" component={UserDeliveryContacts} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
         <Route path="/user/about_me" component={UserAboutMe} />

@@ -240,9 +240,10 @@ class UserNavbar extends React.Component<any, any> {
                             </div>
                             <div className="collapse navbar-collapse" id="navigationbar">
                               <ul id="navbar" className="nav navbar-nav navbar-right">
-                                <li><Link to="/login">LOGOUT</Link></li>
-                                <li><Link to="/register">ABOUT US</Link></li>
-                                <li><Link to="/register">FAQ</Link></li>
+                                <li><Link to="/profile">PROFILE</Link></li>
+                                <li><Link to="/logout">LOGOUT</Link></li>
+                                <li><Link to="/about_us">ABOUT US</Link></li>
+                                <li><Link to="/faq">FAQ</Link></li>
                                 <li><p className="navbar-text">SIGNED in as {this.props.first_name} {this.props.last_name}</p></li>
                               </ul>
                               

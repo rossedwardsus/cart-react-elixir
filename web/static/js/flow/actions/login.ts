@@ -2,7 +2,7 @@
 
 import {SET_EMAIL, CHECK_LOGGED_IN, LOGIN} from '../constants/actionTypes.ts';
 import axios from 'axios';
-import {setSession} from './session.ts';
+//import {setSession} from './session.ts';
 
 export function loginUser(email: any, password: any) {
   let url = "";
@@ -37,7 +37,7 @@ export function loginUser(email: any, password: any) {
 	  //}
 
       })
-    dispatch(setSession());
+    //dispatch(setSession());
   }
 }
 

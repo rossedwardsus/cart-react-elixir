@@ -13,32 +13,32 @@ class UserTabs extends React.Component<any, any> {
     this.state = {
 
           //order_id: this.props.params.order_id,
-          details_tab: "",
-          guests_tab: "",
-          additional_items_tab: "",
-          menu_preview_tab: "" 
+          about_me_tab: "",
+          payment_methods_tab: "",
+          photo_tab: "",
+          delivery_contact_addresses_tab: "" 
     };
   }
 
   componentDidMount = () => {
 
-      console.log("cwrp signature tabs " + JSON.stringify(this.props.pathname.indexOf("details")));
+      console.log("cwrp user tabs " + JSON.stringify(this.props.pathname.indexOf("details")));
 
-      if(this.props.pathname.indexOf("details") > -1){
+      if(this.props.pathname.indexOf("about_me") > -1){
 
-          this.setState({details_tab: "active"});
+          this.setState({about_me_tab: "active"});
 
-      }else if(this.props.pathname.indexOf("preview") > -1){
+      }else if(this.props.pathname.indexOf("payment_methods") > -1){
 
-          this.setState({menu_preview_tab: "active"});
+          this.setState({payment_methods_preview_tab: "active"});
 
-      }else if(this.props.pathname.indexOf("guests") > -1){
+      }else if(this.props.pathname.indexOf("photo") > -1){
 
-          this.setState({guests_tab: "active"});
+          this.setState({photo_tab: "active"});
 
-      }else if(this.props.pathname.indexOf("items") > -1){
+      }else if(this.props.pathname.indexOf("delivery_contacts_addresses") > -1){
 
-          this.setState({items_tab: "active"});
+          this.setState({delivery_contacts_addresses_tab: "active"});
 
       }else if(this.props.pathname.indexOf("summary") > -1){
 
@@ -52,12 +52,10 @@ class UserTabs extends React.Component<any, any> {
   render(): JSX.Element {
     return (
               <ul className="nav nav-tabs">
-                  <li className={this.state.details_tab}><Link to="/order/1234/details" style={{fontSize: 11}}>About me</Link></li>
-                  <li className={this.state.menu_preview_tab}><Link to="/order/1234/preview" style={{fontSize: 11}}>Payment Methods</Link></li>
-                  <li className={this.state.guests_tab}><Link to="/order/1234/guests" style={{fontSize: 11}}>Delivery Contacts and Adresses</Link></li>
-                  <li className={this.state.items_tab}><Link to="/order/1234/items" style={{fontSize: 11}}>Photo</Link></li>
-                  <li className={this.state.summary_tab}><Link to="/order/1234/summary" style={{fontSize: 11}}>CHECKOUT</Link></li>
-                 
+                  <li className={this.state.about_me_tab}><Link to="/user/about_me" style={{fontSize: 11}}>About me</Link></li>
+                  <li className={this.state.payment_methods_tab}><Link to="/user/payment_methods" style={{fontSize: 11}}>Payment Methods</Link></li>
+                  <li className={this.state.delivery_contacts_addresses_tab}><Link to="/user/delivery_contacts_addresses" style={{fontSize: 11}}>Delivery Contacts and Adresses</Link></li>
+                  <li className={this.state.photo_tab}><Link to="/user/photo" style={{fontSize: 11}}>Photo</Link></li>
               </ul>    
     )
   }

@@ -1,6 +1,6 @@
 import {REGISTER_USER, REGISTER_SET_FIRST_NAME, REGISTER_SET_LAST_NAME, REGISTER_SET_EMAIL, REGISTER_SET_EMAIL_AGAIN, REGISTER_SET_PASSWORD, REGISTER_SET_PASSWORD_AGAIN} from '../constants/actionTypes.ts';
 
-import {setSession} from './session.ts';
+//import {setSession} from './session.ts';
 import axios from 'axios';
 import {push} from 'react-router-redux';
 
