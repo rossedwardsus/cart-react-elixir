@@ -6,11 +6,13 @@ import { Link } from 'react-router';
 import {connect} from 'react-redux';
 import {List, Map} from 'immutable';
 
-import { getUserDeliveryAddresses, addUserDeliveryContactAddress, saveUserDeliveryContactAddress } from '../actions/user.ts';
+import { addUserDeliveryContactAddress, setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, saveUserDeliveryContactAddress } from '../actions/user.ts';
 
 //import UserDeliveryAddress from './user_delivery_address.tsx';
 //import DeliveryAddresses from './delivery_addresses.tsx';
 
+import UserNavbar from './user_navbar.tsx';
+import UserTabs from './user_tabs.tsx';
 
 //const mapDispatchToProps = dispatch => {
 //  return {
@@ -21,7 +23,7 @@ import { getUserDeliveryAddresses, addUserDeliveryContactAddress, saveUserDelive
 //};
 
 //@connect(null, mapDispatchToProps)
-class UserDeliveryAddresses extends React.Component<any, any> {
+class UserDeliveryContactsAddresses extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -40,7 +42,8 @@ class UserDeliveryAddresses extends React.Component<any, any> {
         street2: "",
         city: "",
         state: "",
-        zipcode: ""
+        zipcode: "",
+        note: "Delivery Note"
     };
 
 
@@ -56,8 +59,8 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
     //this.props.getUserDeliveryAddresses();
 
-    const { getUserDeliveryAddresses } = this.props
-    getUserDeliveryAddresses();
+    //const { getUserDeliveryAddresses } = this.props
+    //getUserDeliveryAddresses();
 
     //console.log(this.props.delivery_addresses)
 
@@ -147,12 +150,58 @@ class UserDeliveryAddresses extends React.Component<any, any> {
       this.props.addUserDeliveryContactAddress(this.state.delivery_contact_address_name, this.state.first_name, this.state.last_name, this.state.mobile, this.state.email, this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode)
 
   }
+
+  setUserDeliveryContactAddressFirstName = (e: any) => {
+
+    //console.log(id);
+
+    this.props.setUserDeliveryContactAddressFirstName(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressLastName = (e: any) => {
+
+    //console.log(id);
+
+    this.props.setUserDeliveryContactAddressLastName(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressEmail = (e: any) => {
+
+    //console.log(id);
+
+    //validate email
+
+    this.props.setUserDeliveryContactAddressEmail(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressMobile = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressNote = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
                  
-  saveDeliveryContactAddress = (id: any) => {
+  saveDeliveryContactAddress = (e: any) => {
 
-    console.log(id);
+    //console.log(id);
 
-    this.props.saveUserDeliveryContactAddress(id, this.state.delivery_contact_address_name, this.state.first_name, this.state.last_name, this.state.mobile, this.state.email, this.state.street1, this.state.street2, this.state.city, this.state.state, this.state.zipcode)
+    //this.props.saveUserDeliveryContactAddress(e.target.id)
 
   }
 
@@ -160,7 +209,7 @@ class UserDeliveryAddresses extends React.Component<any, any> {
 
     let logged_in = null;
     
-    const {delivery_addresses} = this.props;
+    const {delivery_contacts_addresses} = this.props;
     //console.log("render" + JSON.stringify(delivery_addresses));
 
     let that = this;
@@ -273,34 +322,34 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  {Object.keys(delivery_addresses).map((key: any, index: any) => {
+                                  {delivery_contacts_addresses.map((delivery_contact_address: any, index: any) => {
 
                                       return(<div>
                                                   <form className="form-inline">
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Address/Contact Name"/>
+                                                      <input type="text" value={delivery_contact_address.name} className="form-control" id="key" placeholder="Address/Contact Name"/>
                                                     </div>
                                                   </form>
                                                   <form className="form-inline">
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="First Name"/>
+                                                      <input type="text" value={delivery_contact_address.first_name} className="form-control" id="key" placeholder="First Name" onChange={this.setUserDeliveryContactAddressFirstName}/>
                                                     </div>
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Last Name"/>
+                                                      <input type="text" value={delivery_contact_address.last_name} className="form-control" id="key" placeholder="Last Name" onChange={this.setUserDeliveryContactAddressLastName}/>
                                                     </div>
                                                   </form>
                                                   <form className="form-inline">
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Email"/>
+                                                      <input type="text" value={delivery_contact_address.email} className="form-control" id="key" placeholder="Email" onChange={this.setUserDeliveryContactAddressEmail}/>
                                                     </div>
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Mobile"/>
+                                                      <input type="text" value={delivery_contact_address.mobile} className="form-control" id="key" placeholder="111-222-3333" onChange={this.setUserDeliveryContactAddressMobile}/>
                                                     </div>
                                                   </form>
                                                 
                                                   <form className="form-inline">
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_addresses[key].street1} className="form-control" id="exampleInputName2" placeholder="Street 1"/>
+                                                      <input type="text" value={delivery_contact_address.street1} className="form-control" id="exampleInputName2" placeholder="Street 1"/>
                                                     </div>
                                                     <div className="form-group">
                                                       <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
@@ -309,26 +358,26 @@ class UserDeliveryAddresses extends React.Component<any, any> {
                                                   <form className="form-inline">
                                                     <div className="form-group">
                                                       <select className="form-control">
-                                                          <option></option>
+                                                          <option>Choose City</option>
                                                           <option>Los Angeles</option>
                                                       </select>
                                                     </div>
                                                     <div className="form-group">
                                                       <select className="form-control">
-                                                          <option></option>
+                                                          <option>Choose State</option>
                                                           <option>CA</option>
                                                       </select>
                                                     </div>
                                                     <div className="form-group">
                                                       <select className="form-control" >
-                                                          <option></option>
+                                                          <option>Choose Zip Code</option>
                                                           <option>90025</option>
                                                       </select>
                                                     </div>
                                                   </form>
                                                   <form className="form-inline">
                                                       <div className="form-group">
-                                                        <textarea  className="form-control" style={{rows: 5, columns: 10, resize: "none"}} id="comment"></textarea>
+                                                        <textarea  className="form-control" rows={5} cols={50} style={{resize: "none"}} id="comment" onChange={this.setUserDeliveryContactAddressNote}></textarea>
                                                       </div>
                                                     </form>
                                                 <button className="btn btn-default" onClick={this.saveDeliveryContactAddress}>Save Address</button>
@@ -360,7 +409,7 @@ function mapStateToProps(state: any) {
   console.log("delivery addresses state" + JSON.stringify(state.User.delivery_addresses));
   return {
    //flattened delivery addresses
-   delivery_addresses: state.User.delivery_addresses
+   delivery_contacts_addresses: state.User.delivery_contacts_addresses
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -369,13 +418,38 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    getUserDeliveryAddresses: () => {
+    /*getUserDeliveryAddresses: () => {
       console.log("e.target.value");
       dispatch(getUserDeliveryAddresses());
-    },
+    },*/
     addUserDeliveryContactAddress: (delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
     //  console.log(e.target.value);
       dispatch(addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode));
+    },
+
+    setUserDeliveryContactAddressFirstName: (id: any, first_name: any) => {
+    //  console.log(e.target.value);
+      dispatch(setUserDeliveryContactAddressFirstName("1", first_name));
+    },
+
+    setUserDeliveryContactAddressLastName: (id: any, last_name: any) => {
+    //  console.log(e.target.value);
+      dispatch(setUserDeliveryContactAddressLastName("1", last_name));
+    },
+
+    setUserDeliveryContactAddressEmail: (id: any, email: any) => {
+    //  console.log(e.target.value);
+      dispatch(setUserDeliveryContactAddressEmail("1", email));
+    },
+
+    setUserDeliveryContactAddressMobile: (id: any, mobile: any) => {
+    //  console.log(e.target.value);
+      dispatch(setUserDeliveryContactAddressMobile("1", mobile));
+    },
+
+    setUserDeliveryContactAddressNote: (id: any, note: any) => {
+    //  console.log(e.target.value);
+      //dispatch(setUserDeliveryContactAddressMobile("1", mobile));
     },
 
     saveUserDeliveryContactAddress: (id: any, delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
@@ -386,9 +460,9 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const UserDeliveryAddresses1 = connect(
+const UserDeliveryContactsAddressesConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserDeliveryAddresses)
+)(UserDeliveryContactsAddresses)
 
-export default UserDeliveryAddresses1;
+export default UserDeliveryContactsAddressesConnected;

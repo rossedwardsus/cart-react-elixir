@@ -27,7 +27,7 @@ import YoursRedirect from './yours_redirect.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
 import UserProfile from './user/user_profile.tsx';
-import UserDeliveryContactsAddresses from './user/user_delivery_addresses.tsx';
+import UserDeliveryContactsAddresses from './user/user_delivery_contacts_addresses.tsx';
 //import UserDeliveryContacts from './user/user_delivery_contacts.tsx';
 import UserPaymentMethods from './user/user_payment_methods.tsx';
 import UserAboutMe from './user/user_about_me.tsx';

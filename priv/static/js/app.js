@@ -60,9 +60,9 @@ webpackJsonp([0],[
 	
 	var _user_profile2 = _interopRequireDefault(_user_profile);
 	
-	var _user_delivery_addresses = __webpack_require__(965);
+	var _user_delivery_contacts_addresses = __webpack_require__(965);
 	
-	var _user_delivery_addresses2 = _interopRequireDefault(_user_delivery_addresses);
+	var _user_delivery_contacts_addresses2 = _interopRequireDefault(_user_delivery_contacts_addresses);
 	
 	var _user_payment_methods = __webpack_require__(966);
 	
@@ -297,7 +297,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user', component: _user_home_page2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/profile', component: _user_profile2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_contacts_addresses', component: _user_delivery_addresses2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/user/delivery_contacts_addresses', component: _user_delivery_contacts_addresses2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/payment_methods', component: _user_payment_methods2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/user/about_me', component: _user_about_me2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:order_id/details', component: _user_order2.default }),
@@ -27327,6 +27327,26 @@ webpackJsonp([0],[
 	exports.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_PAYMENT_METHOD_EXPIRY_MONTH';
 	exports.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_PAYMENT_METHOD_EXPIRY_YEAR';
 	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
+	//USER DELIVERY CONTACT ADDRESSES
+	//USER
+	exports.GET_USER = 'GET_USER';
+	exports.GET_USER_DETAILS = 'GET_USER_DETAILS';
+	exports.GET_USER_ORDERS = 'GET_USER_ORDERS';
+	exports.GET_USER_PAYMENT_METHODS = 'GET_USER_PAYMENT_METHODS';
+	exports.ADD_USER_DELIVERY_CONTACT_ADDRESS = 'ADD_USER_DELIVERY_CONTACT_ADDRESS';
+	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME = 'SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME';
+	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME = 'SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME';
+	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL = 'SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL';
+	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE';
+	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE';
+	//export const SET_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS'
+	//export const ADD_USER_DELIVERY_CONTACT = 'ADD_USER_DELIVERY_CONTACT'
+	//export const GET_USER_DELIVERY_CONTACTS = 'GET_USER_DELIVERY_CONTACTS'
+	exports.GET_USER_ORDER_DETAILS = 'GET_USER_ORDER_DETAILS';
+	exports.GET_USER_ORDER_DELIVERY_CONTACT = 'GET_USER_ORDER_DELIVERY_CONTACT';
+	exports.GET_USER_ORDER_DELIVERY_ADDRESS = 'GET_USER_ORDER_DELIVERY_ADDRESS';
+	exports.GET_USER_ORDER_GUEST_RESPONSES = 'GET_USER_ORDER_GUEST_RESPONSES';
+	exports.GET_USER_ORDER_SUBORDERS = 'GET_USER_ORDER_SUBORDERS';
 	//ORDER
 	exports.CREATE_ORDER = 'CREATE_ORDER';
 	exports.SET_ORDER_ID = 'SET_ORDER_ID';
@@ -27377,24 +27397,10 @@ webpackJsonp([0],[
 	exports.NAME_INVALIDATED = 'NAME_INVALIDATED';
 	exports.PAYMENT_VALIDATED = 'PAYMENT_VALIDATED';
 	exports.PAYMENT_INVALIDATED = 'PAYMENT_INVALIDATED';
-	//USER
-	exports.GET_USER = 'GET_USER';
-	exports.GET_USER_DETAILS = 'GET_USER_DETAILS';
-	exports.GET_USER_ORDERS = 'GET_USER_ORDERS';
-	exports.GET_USER_PAYMENT_METHODS = 'GET_USER_PAYMENT_METHODS';
-	exports.ADD_USER_DELIVERY_ADDRESS = 'ADD_USER_DELIVERY_ADDRESS';
-	exports.GET_USER_DELIVERY_ADDRESSES = 'GET_USER_DELIVERY_ADDRESSES';
-	exports.SET_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS';
-	exports.ADD_USER_DELIVERY_CONTACT = 'ADD_USER_DELIVERY_CONTACT';
-	exports.GET_USER_DELIVERY_CONTACTS = 'GET_USER_DELIVERY_CONTACTS';
-	exports.GET_USER_ORDER_DETAILS = 'GET_USER_ORDER_DETAILS';
-	exports.GET_USER_ORDER_DELIVERY_CONTACT = 'GET_USER_ORDER_DELIVERY_CONTACT';
-	exports.GET_USER_ORDER_DELIVERY_ADDRESS = 'GET_USER_ORDER_DELIVERY_ADDRESS';
-	exports.GET_USER_ORDER_GUEST_RESPONSES = 'GET_USER_ORDER_GUEST_RESPONSES';
-	exports.GET_USER_ORDER_SUBORDERS = 'GET_USER_ORDER_SUBORDERS';
 	exports.PROCESS_SIGNATURE_ORDER = 'PROCESS_SIGNATURE_ORDER';
 	exports.PROCESS_USER_ORDER = 'PROCESS_CREATE_ORDER';
 	exports.CREATE_SIGNATURE_ORDER = 'CREATE_SIGNATURE_ORDER';
+	//USER ORDER
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STREET1 = 'SET_USER_ORDER_DELIVERY_ADDRESS_STREET1';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STREET2 = 'SET_USER_ORDER_DELIVERY_ADDRESS_STREET2';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_CITY = 'SET_USER_ORDER_DELIVERY_ADDRESS_CITY';
@@ -30962,86 +30968,33 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var axios_1 = __webpack_require__(924);
-	/*export function setUserFirstName(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user first name action " + value);
-	  return {
-	    type: SET_USER_FIRST_NAME,
-	    data: value
-	  }
+	function setUserFirstName(value) {
+	    //alert("GET USER details");
+	    console.log("set user first name action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_FIRST_NAME,
+	        data: value
+	    };
 	}
-	
-	export function setUserLastName(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user last name action " + value);
-	  return {
-	    type: SET_USER_LAST_NAME,
-	    data: value
-	  }
+	exports.setUserFirstName = setUserFirstName;
+	function setUserLastName(value) {
+	    //alert("GET USER details");
+	    console.log("set user last name action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_LAST_NAME,
+	        data: value
+	    };
 	}
-	
-	export function setUserEmail(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	  }
+	exports.setUserLastName = setUserLastName;
+	function setUserEmail(value) {
+	    //alert("GET USER details");
+	    console.log("set user email action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_EMAIL,
+	        data: value
+	    };
 	}
-	
-	
-	export function setUserNewDeliveryAddressName(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	  }
-	}
-	
-	export function setUserExistingDeliveryAddressName(user_id: any, delivery_address_id: any, value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	}
-	
-	export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	  }
-	}
-	
-	export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id: any, value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	  }
-	}
-	
-	export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: any, value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	  }
-	}
-	
-	export function setUserDeliveryAddressZipcode(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_EMAIL,
-	    data: value
-	  }
-	}*/
+	exports.setUserEmail = setUserEmail;
 	function getUser(user_id) {
 	    //alert("GET USER details");
 	    return function (dispatch) {
@@ -31080,21 +31033,6 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setUserOrders = setUserOrders;
-	/*export function getUserDeliveryAddress() {
-	  console.log("get user delivery address action");
-	  return {
-	    type: GET_USER_DELIVERY_ADDRESSES,
-	    data: ["home", "office"]
-	  }
-	}*/
-	function getUserDeliveryAddresses() {
-	    console.log("get user delivery addresses action");
-	    return {
-	        type: actionTypes_ts_1.GET_USER_DELIVERY_ADDRESSES,
-	        data: { "home": { street1: "", street2: "", city: "", state: "", zipcode: "" }, "office": { street: "", street1: "", city: "", state: "", zipcode: "" } }
-	    };
-	}
-	exports.getUserDeliveryAddresses = getUserDeliveryAddresses;
 	function addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode) {
 	    //console.log("state" + JSON.stringify(state));
 	    console.log("add user delivery address street1");
@@ -31133,6 +31071,101 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.addUserDeliveryContactAddress = addUserDeliveryContactAddress;
+	/*export function setUserNewDeliveryAddressFirstName(value: any) {
+	  //alert("GET USER details");
+	  console.log("set user email action " + value);
+	  return {
+	    type: SET_USER_EMAIL,
+	    data: value
+	  }
+	}*/
+	function setUserDeliveryContactAddressFirstName(user_id, value) {
+	    //alert("GET USER details");
+	    console.log("set user contact address first name action " + value);
+	    return function (dispatch) {
+	        return {
+	            type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+	            data: value
+	        };
+	    };
+	}
+	exports.setUserDeliveryContactAddressFirstName = setUserDeliveryContactAddressFirstName;
+	function setUserDeliveryContactAddressLastName(user_id, value) {
+	    //alert("GET USER details");
+	    console.log("set user contact address last name action " + value);
+	    return function (dispatch) {
+	        return {
+	            type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+	            data: value
+	        };
+	    };
+	}
+	exports.setUserDeliveryContactAddressLastName = setUserDeliveryContactAddressLastName;
+	function setUserDeliveryContactAddressEmail(user_id, value) {
+	    //alert("GET USER details");
+	    console.log("set user contact address email action " + value);
+	    return function (dispatch) {
+	        return {
+	            type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+	            data: value
+	        };
+	    };
+	}
+	exports.setUserDeliveryContactAddressEmail = setUserDeliveryContactAddressEmail;
+	function setUserDeliveryContactAddressMobile(user_id, value) {
+	    //alert("GET USER details");
+	    console.log("set user contact address mobile action " + value);
+	    return function (dispatch) {
+	        return {
+	            type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+	            data: value
+	        };
+	    };
+	}
+	exports.setUserDeliveryContactAddressMobile = setUserDeliveryContactAddressMobile;
+	function setUserDeliveryContactAddressNote(user_id, value) {
+	    //alert("GET USER details");
+	    console.log("set user contact address mobile action " + value);
+	    return function (dispatch) {
+	        return {};
+	    };
+	}
+	exports.setUserDeliveryContactAddressNote = setUserDeliveryContactAddressNote;
+	/*export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
+	  //alert("GET USER details");
+	  console.log("set user email action " + value);
+	  return {
+	    type: SET_USER_EMAIL,
+	    data: value
+	  }
+	}
+	
+	export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id: any, value: any) {
+	  //alert("GET USER details");
+	  console.log("set user email action " + value);
+	  return {
+	    type: SET_USER_EMAIL,
+	    data: value
+	  }
+	}
+	
+	export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: any, value: any) {
+	  //alert("GET USER details");
+	  console.log("set user email action " + value);
+	  return {
+	    type: SET_USER_EMAIL,
+	    data: value
+	  }
+	}
+	
+	export function setUserDeliveryAddressZipcode(value: any) {
+	  //alert("GET USER details");
+	  console.log("set user email action " + value);
+	  return {
+	    type: SET_USER_EMAIL,
+	    data: value
+	  }
+	}*/
 	function saveUserDeliveryContactAddress(id, delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode) {
 	    //console.log("state" + JSON.stringify(state));
 	    console.log("save user delivery address street1");
@@ -31169,6 +31202,7 @@ webpackJsonp([0],[
 	exports.saveUserDeliveryContactAddress = saveUserDeliveryContactAddress;
 	function addUserPaymentMethod(payment_name, name_on_card, card_number, expiry_month, expiry_year) {
 	    //console.log("state" + JSON.stringify(state));
+	    //add to stripe
 	    console.log("add user delivery address street1");
 	    return function (dispatch) {
 	        /*axios.post('/api/graphql', {
@@ -31217,23 +31251,24 @@ webpackJsonp([0],[
 	exports.setUserPaymentMethodCardNumber = setUserPaymentMethodCardNumber;
 	function setUserPaymentMethodExpiryMonth(id, number) {
 	    //console.log("state" + JSON.stringify(state));
-	    console.log("set user payment name action");
+	    console.log("set user payment month action " + id);
 	    return function (dispatch) {
-	        //dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, id: id, value: number});
+	        dispatch({ type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, id: id, value: number });
 	    };
 	}
 	exports.setUserPaymentMethodExpiryMonth = setUserPaymentMethodExpiryMonth;
 	function setUserPaymentMethodExpiryYear(id, number) {
 	    //console.log("state" + JSON.stringify(state));
-	    console.log("set user payment name action");
+	    console.log("set user payment year action");
 	    return function (dispatch) {
-	        //dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, id: id, value: number});
+	        dispatch({ type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, id: id, value: number });
 	    };
 	}
 	exports.setUserPaymentMethodExpiryYear = setUserPaymentMethodExpiryYear;
 	function saveUserPaymentMethod(payment_name) {
 	    //console.log("state" + JSON.stringify(state));
-	    console.log("save user payment action");
+	    //save on stripe
+	    console.log("save user payment action " + payment_name);
 	    return function (dispatch) {
 	        /*axios.post('/api/graphql', {
 	                       query: 'mutation {save_user_payment_method (payment_name: "' + payment_name + '", expiry_month: "' + expiry_month + '", city: "' + city +'", state: "' + state + '", zipcode: "' + zipcode + '") {user_id}}'
@@ -31265,9 +31300,10 @@ webpackJsonp([0],[
 	                  // network error
 	                //}
 	             })*/
-	        dispatch({
-	            type: actionTypes_ts_1.ADD_USER_DELIVERY_ADDRESS
-	        });
+	        //dispatch({
+	        //   type: ADD_USER_DELIVERY_ADDRESS,
+	        //  data: "session_key"
+	        //})
 	    };
 	}
 	exports.saveUserPaymentMethod = saveUserPaymentMethod;
@@ -32115,8 +32151,6 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	var user_ts_1 = __webpack_require__(959);
-	//import UserDeliveryAddress from './user_delivery_address.tsx';
-	//import DeliveryAddresses from './delivery_addresses.tsx';
 	//const mapDispatchToProps = dispatch => {
 	//  return {
 	//    onNavigateTo(dest) {
@@ -32126,14 +32160,14 @@ webpackJsonp([0],[
 	//};
 	//@connect(null, mapDispatchToProps)
 	
-	var UserDeliveryAddresses = function (_React$Component) {
-	    _inherits(UserDeliveryAddresses, _React$Component);
+	var UserDeliveryContactsAddresses = function (_React$Component) {
+	    _inherits(UserDeliveryContactsAddresses, _React$Component);
 	
 	    //props: Props;
-	    function UserDeliveryAddresses(props) {
-	        _classCallCheck(this, UserDeliveryAddresses);
+	    function UserDeliveryContactsAddresses(props) {
+	        _classCallCheck(this, UserDeliveryContactsAddresses);
 	
-	        var _this = _possibleConstructorReturn(this, (UserDeliveryAddresses.__proto__ || Object.getPrototypeOf(UserDeliveryAddresses)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (UserDeliveryContactsAddresses.__proto__ || Object.getPrototypeOf(UserDeliveryContactsAddresses)).call(this, props));
 	
 	        _this.setDeliveryContactAddressName = function (e) {
 	            _this.setState({ delivery_contact_address_name: e.target.value });
@@ -32168,9 +32202,32 @@ webpackJsonp([0],[
 	        _this.addUserDeliveryContactAddress = function () {
 	            _this.props.addUserDeliveryContactAddress(_this.state.delivery_contact_address_name, _this.state.first_name, _this.state.last_name, _this.state.mobile, _this.state.email, _this.state.street1, _this.state.street2, _this.state.city, _this.state.state, _this.state.zipcode);
 	        };
-	        _this.saveDeliveryContactAddress = function (id) {
-	            console.log(id);
-	            _this.props.saveUserDeliveryContactAddress(id, _this.state.delivery_contact_address_name, _this.state.first_name, _this.state.last_name, _this.state.mobile, _this.state.email, _this.state.street1, _this.state.street2, _this.state.city, _this.state.state, _this.state.zipcode);
+	        _this.setUserDeliveryContactAddressFirstName = function (e) {
+	            //console.log(id);
+	            _this.props.setUserDeliveryContactAddressFirstName(e.target.id, e.target.value);
+	        };
+	        _this.setUserDeliveryContactAddressLastName = function (e) {
+	            //console.log(id);
+	            _this.props.setUserDeliveryContactAddressLastName(e.target.id, e.target.value);
+	        };
+	        _this.setUserDeliveryContactAddressEmail = function (e) {
+	            //console.log(id);
+	            //validate email
+	            _this.props.setUserDeliveryContactAddressEmail(e.target.id, e.target.value);
+	        };
+	        _this.setUserDeliveryContactAddressMobile = function (e) {
+	            //console.log(id);
+	            //validate mobile number format
+	            _this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+	        };
+	        _this.setUserDeliveryContactAddressNote = function (e) {
+	            //console.log(id);
+	            //validate mobile number format
+	            //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+	        };
+	        _this.saveDeliveryContactAddress = function (e) {
+	            //console.log(id);
+	            //this.props.saveUserDeliveryContactAddress(e.target.id)
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
@@ -32184,20 +32241,20 @@ webpackJsonp([0],[
 	            street2: "",
 	            city: "",
 	            state: "",
-	            zipcode: ""
+	            zipcode: "",
+	            note: "Delivery Note"
 	        };
 	        return _this;
 	    }
 	
-	    _createClass(UserDeliveryAddresses, [{
+	    _createClass(UserDeliveryContactsAddresses, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //get info from redux when screen loads
 	            //this.setState({orders: this.props.getUserDeliveryAddresses});
 	            //this.props.getUserDeliveryAddresses();
-	            var getUserDeliveryAddresses = this.props.getUserDeliveryAddresses;
-	
-	            getUserDeliveryAddresses();
+	            //const { getUserDeliveryAddresses } = this.props
+	            //getUserDeliveryAddresses();
 	            //console.log(this.props.delivery_addresses)
 	        }
 	    }, {
@@ -32216,7 +32273,7 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            var logged_in = null;
-	            var delivery_addresses = this.props.delivery_addresses;
+	            var delivery_contacts_addresses = this.props.delivery_contacts_addresses;
 	            //console.log("render" + JSON.stringify(delivery_addresses));
 	
 	            var that = this;
@@ -32228,8 +32285,8 @@ webpackJsonp([0],[
 	                    return _this2.setStreet1(e);
 	                }, value: this.state.street1 })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 2", onChange: function onChange(e) {
 	                    return _this2.setStreet2(e);
-	                }, value: this.state.street2 }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "City"), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "State"), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { value: this.state.note, className: "form-control", rows: 5, cols: 50, style: { resize: "none" }, id: "note" }))), React.createElement("br", null), React.createElement("a", { className: "btn btn-default", onClick: this.addUserDeliveryContactAddress }, "Add Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), Object.keys(delivery_addresses).map(function (key, index) {
-	                return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Address/Contact Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "First Name" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Last Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Email" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Mobile" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_addresses[key].street1, className: "form-control", id: "exampleInputName2", placeholder: "Street 1" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { className: "form-control", style: { rows: 5, columns: 10, resize: "none" }, id: "comment" }))), React.createElement("button", { className: "btn btn-default", onClick: _this2.saveDeliveryContactAddress }, "Save Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
+	                }, value: this.state.street2 }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "City"), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "State"), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { value: this.state.note, className: "form-control", rows: 5, cols: 50, style: { resize: "none" }, id: "note" }))), React.createElement("br", null), React.createElement("a", { className: "btn btn-default", onClick: this.addUserDeliveryContactAddress }, "Add Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), delivery_contacts_addresses.map(function (delivery_contact_address, index) {
+	                return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_contact_address.name, className: "form-control", id: "key", placeholder: "Address/Contact Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_contact_address.first_name, className: "form-control", id: "key", placeholder: "First Name", onChange: _this2.setUserDeliveryContactAddressFirstName })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_contact_address.last_name, className: "form-control", id: "key", placeholder: "Last Name", onChange: _this2.setUserDeliveryContactAddressLastName }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_contact_address.email, className: "form-control", id: "key", placeholder: "Email", onChange: _this2.setUserDeliveryContactAddressEmail })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_contact_address.mobile, className: "form-control", id: "key", placeholder: "111-222-3333", onChange: _this2.setUserDeliveryContactAddressMobile }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", value: delivery_contact_address.street1, className: "form-control", id: "exampleInputName2", placeholder: "Street 1" })), React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street 2" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Choose City"), React.createElement("option", null, "Los Angeles"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Choose State"), React.createElement("option", null, "CA"))), React.createElement("div", { className: "form-group" }, React.createElement("select", { className: "form-control" }, React.createElement("option", null, "Choose Zip Code"), React.createElement("option", null, "90025")))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("textarea", { className: "form-control", rows: 5, cols: 50, style: { resize: "none" }, id: "comment", onChange: _this2.setUserDeliveryContactAddressNote }))), React.createElement("button", { className: "btn btn-default", onClick: _this2.saveDeliveryContactAddress }, "Save Address"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
 	            })), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "maybe put something here")));
 	        }
 	    }], [{
@@ -32241,14 +32298,14 @@ webpackJsonp([0],[
 	        }
 	    }]);
 	
-	    return UserDeliveryAddresses;
+	    return UserDeliveryContactsAddresses;
 	}(React.Component);
 	
 	function mapStateToProps(state) {
 	    console.log("delivery addresses state" + JSON.stringify(state.User.delivery_addresses));
 	    return {
 	        //flattened delivery addresses
-	        delivery_addresses: state.User.delivery_addresses
+	        delivery_contacts_addresses: state.User.delivery_contacts_addresses
 	        //menu_items: getPublicMenu
 	        //menu_items: dispatch()
 	    };
@@ -32256,13 +32313,33 @@ webpackJsonp([0],[
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
-	        getUserDeliveryAddresses: function getUserDeliveryAddresses() {
-	            console.log("e.target.value");
-	            dispatch(user_ts_1.getUserDeliveryAddresses());
-	        },
+	        /*getUserDeliveryAddresses: () => {
+	          console.log("e.target.value");
+	          dispatch(getUserDeliveryAddresses());
+	        },*/
 	        addUserDeliveryContactAddress: function addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode) {
 	            //  console.log(e.target.value);
 	            dispatch(user_ts_1.addUserDeliveryContactAddress(delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode));
+	        },
+	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(id, first_name) {
+	            //  console.log(e.target.value);
+	            dispatch(user_ts_1.setUserDeliveryContactAddressFirstName("1", first_name));
+	        },
+	        setUserDeliveryContactAddressLastName: function setUserDeliveryContactAddressLastName(id, last_name) {
+	            //  console.log(e.target.value);
+	            dispatch(user_ts_1.setUserDeliveryContactAddressLastName("1", last_name));
+	        },
+	        setUserDeliveryContactAddressEmail: function setUserDeliveryContactAddressEmail(id, email) {
+	            //  console.log(e.target.value);
+	            dispatch(user_ts_1.setUserDeliveryContactAddressEmail("1", email));
+	        },
+	        setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(id, mobile) {
+	            //  console.log(e.target.value);
+	            dispatch(user_ts_1.setUserDeliveryContactAddressMobile("1", mobile));
+	        },
+	        setUserDeliveryContactAddressNote: function setUserDeliveryContactAddressNote(id, note) {
+	            //  console.log(e.target.value);
+	            //dispatch(setUserDeliveryContactAddressMobile("1", mobile));
 	        },
 	        saveUserDeliveryContactAddress: function saveUserDeliveryContactAddress(id, delivery_contact_address_name, first_name, last_name, email, mobile, street1, street2, city, state, zipcode) {
 	            //  console.log(e.target.value);
@@ -32270,8 +32347,8 @@ webpackJsonp([0],[
 	        }
 	    };
 	}
-	var UserDeliveryAddresses1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(UserDeliveryAddresses);
-	exports.default = UserDeliveryAddresses1;
+	var UserDeliveryContactsAddressesConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(UserDeliveryContactsAddresses);
+	exports.default = UserDeliveryContactsAddressesConnected;
 
 /***/ }),
 /* 966 */
@@ -32343,9 +32420,14 @@ webpackJsonp([0],[
 	            //this.setState({payment_method_name: e.target.value});
 	            _this.props.setUserPaymentMethodExpiryMonth(e.target.id, e.target.value);
 	        };
+	        _this.setUserPaymentMethodExpiryYear = function (e) {
+	            console.log(e.target.id);
+	            //this.setState({payment_method_name: e.target.value});
+	            _this.props.setUserPaymentMethodExpiryYear(e.target.id, e.target.value);
+	        };
 	        _this.saveUserPaymentMethod = function (e) {
 	            //this.setState({payment_method_name: e.target.value});
-	            _this.props.saveUserPaymentMethod("name");
+	            _this.props.saveUserPaymentMethod(e.target.id);
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
@@ -32375,7 +32457,7 @@ webpackJsonp([0],[
 	            console.log(payment_methods);
 	            return React.createElement("div", null, React.createElement(user_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Home", React.createElement("br", null)), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(user_tabs_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Payment Methods", React.createElement("br", null), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Name" }))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number" }))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("button", { className: "btn btn-default", onClick: this.addUserPaymentMethod }, "Add"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), Object.keys(payment_methods).map(function (key, index) {
 	                console.log(JSON.stringify(payment_methods[key].name));
-	                return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, key)), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", id: "personal", className: "form-control", placeholder: "Card Number", onChange: _this2.setUserPaymentMethodCardNumber }))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", style: { borderColor: _this2.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" }, onChange: _this2.setUserPaymentMethodExpiryMonth })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", style: { borderColor: _this2.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", style: { borderColor: _this2.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("button", { className: "btn btn-default", onClick: _this2.saveUserPaymentMethod }, "Save"));
+	                return React.createElement("div", null, React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, key)), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", id: "personal", className: "form-control", placeholder: "Card Number", onChange: _this2.setUserPaymentMethodCardNumber }))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "personal", placeholder: "MM", style: { borderColor: _this2.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" }, onChange: _this2.setUserPaymentMethodExpiryMonth })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "personal", placeholder: "YYYY", style: { borderColor: _this2.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 }, onChange: _this2.setUserPaymentMethodExpiryYear })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "personal", placeholder: "CVC", style: { borderColor: _this2.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("button", { className: "btn btn-default", id: key, onClick: _this2.saveUserPaymentMethod }, "Save"));
 	            }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
@@ -32416,6 +32498,10 @@ webpackJsonp([0],[
 	        setUserPaymentMethodExpiryMonth: function setUserPaymentMethodExpiryMonth(id, number) {
 	            //  console.log(e.target.value);
 	            dispatch(user_ts_2.setUserPaymentMethodExpiryMonth(id, number));
+	        },
+	        setUserPaymentMethodExpiryYear: function setUserPaymentMethodExpiryYear(id, number) {
+	            //  console.log(e.target.value);
+	            dispatch(user_ts_2.setUserPaymentMethodExpiryYear(id, number));
 	        },
 	        saveUserPaymentMethod: function saveUserPaymentMethod(name) {
 	            //  console.log(e.target.value);
@@ -46468,13 +46554,15 @@ webpackJsonp([0],[
 	//import Register from './register.ts';
 	//import root from './root.ts';
 	var menu_ts_1 = __webpack_require__(1166);
-	var order_ts_1 = __webpack_require__(1167);
+	var social_yours_order_ts_1 = __webpack_require__(1167);
 	var user_ts_1 = __webpack_require__(1168);
+	//import name from './name.ts';
+	//import contact from './contact.ts';
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
 	var signature_guest_response_ts_1 = __webpack_require__(1169);
-	var user_order_ts_1 = __webpack_require__(1170);
+	//import UserOrders from './user_order.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
 	//import UserOrderDeliveryContact from './user_order_delivery_contact.ts';
@@ -46493,7 +46581,7 @@ webpackJsonp([0],[
 	    session: session_ts_1.default,
 	    menuItems: menu_ts_1.default,
 	    SignatureOrderGuestResponse: signature_guest_response_ts_1.default,
-	    Order: order_ts_1.default,
+	    Order: social_yours_order_ts_1.default,
 	    //OrderDatetime,
 	    //OrderPayment,
 	    //OrderDeliveryAddress,
@@ -46502,7 +46590,7 @@ webpackJsonp([0],[
 	    //name,
 	    //contact,
 	    User: user_ts_1.default,
-	    UserOrders: user_order_ts_1.default,
+	    //UserOrders,
 	    //UserOrderEventDetails,
 	    //UserOrderDeliveryAddress,
 	    //UserOrderDeliveryContact,
@@ -46684,10 +46772,6 @@ webpackJsonp([0],[
 
 	"use strict";
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	/*let menu_items: any;
@@ -46710,10 +46794,10 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "signature", delivery_date: "", event_name: "" }], delivery_address_names: [], delivery_addresses: { "home": { id: 1234, street1: "street1", street2: "street2" }, "home1": { id: 1234, street1: "street1", street2: "street2" } }, delivery_contacts: [], payment_methods: { "personal": { name_on_card: "ross", card_number: "12345678", expiry_month: "12" } } };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "signature", delivery_date: "", event_name: "" }], delivery_address_names: [], delivery_contacts_addresses: [{ name: "home", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }, { name: "home1", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: { "personal": { name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, "work": { name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" } } };
 	    var action = arguments[1];
 	
-	    var delivery_address_updated = null;
+	    var delivery_contacts_addresses_updated = null;
 	    var payment_methods_updated = null;
 	    switch (action.type) {
 	        case actionTypes_ts_1.GET_USER:
@@ -46730,23 +46814,16 @@ webpackJsonp([0],[
 	        case actionTypes_ts_1.SET_USER_LAST_NAME:
 	            console.log("user last name reducer" + JSON.stringify(state));
 	            return Object.assign({}, state, Object.assign({}, state, { last_name: action.data }));
-	        case actionTypes_ts_1.ADD_USER_DELIVERY_ADDRESS:
+	        case actionTypes_ts_1.ADD_USER_DELIVERY_CONTACT_ADDRESS:
 	            console.log("add user delivery addresses reducer" + JSON.stringify(Object.assign({}, state.delivery_addresses, { new_address: { id: 1234, street1: "street1", street2: "street2" } })));
-	            var delivery_addresses_temp = state.delivery_addresses;
-	            var delivery_addresses_updated = delivery_addresses_temp["new_address"] = { id: 1234, street1: "street1", street2: "street2" };
-	            return Object.assign({}, state, Object.assign({}, state, { delivery_addresses: Object.assign({}, state.delivery_addresses, _defineProperty({}, "new_address", { id: 1234, street1: "street1", street2: "street2" })) }));
-	        /*case UPDATE_USER_DELIVERY_ADDRESS:
+	            delivery_contacts_addresses_updated = state.delivery_addresses;
+	            delivery_contacts_addresses_updated.push({ name: "n", street1: "street1", street2: "street2" });
+	            return Object.assign({}, state, Object.assign({}, state, { delivery_contacts_addresses: delivery_contacts_addresses_updated }));
+	        /*case SAVE_USER_DELIVERY_CONTACT_ADDRESS:
 	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
 	               let delivery_addresses_temp = state.delivery_addresses;
 	          let delivery_addresses_updated = delivery_addresses_temp["new_address"] = {id: 1234, street1: "street1", street2: "street2"};
 	               return Object.assign({}, state, {...state, delivery_addresses: {...state.delivery_addresses, ["new_address"]: {id: 1234, street1: "street1", street2: "street2"}}});*/
-	        case actionTypes_ts_1.GET_USER_DELIVERY_CONTACTS:
-	            console.log("user delivery contacts reducer" + JSON.stringify(state));
-	            return Object.assign({}, state, Object.assign({}, state, { delivery_contacts: action.data }));
-	        case actionTypes_ts_1.ADD_USER_DELIVERY_CONTACT:
-	            console.log("ADD user delivery contacts reducer" + JSON.stringify(state));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            return Object.assign({}, state, Object.assign({}, state, { delivery_contacts: [].concat(_toConsumableArray(state.delivery_contacts), [{ name: { street1: "" } }]) }));
 	        //case GET_USER_PAYMENT_METHODS:
 	        //  console.log("user" + JSON.stringify(state));
 	        //  return Object.assign({}, state, {...state, user_delivery_methods: []});
@@ -46754,7 +46831,7 @@ webpackJsonp([0],[
 	            console.log("ADD user payment methods reducer" + JSON.stringify(state));
 	            //let delivery_addresses_temp = state.delivery_addresses;
 	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated["work"] = { name_on_card: "ross1", card_number: "012345678", expiry_month: "01" };
+	            payment_methods_updated["work"] = { STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01" };
 	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
 	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
 	            console.log("set user payment methods reducer" + JSON.stringify(state));
@@ -46762,6 +46839,18 @@ webpackJsonp([0],[
 	            payment_methods_updated = state.payment_methods;
 	            payment_methods_updated["personal"]["card_number"] = "987654321";
 	        //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	            console.log("set user payment methods reducer" + JSON.stringify(state));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.payment_methods;
+	            payment_methods_updated[action.id]["expiry_month"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	            console.log("set user payment methods reducer" + JSON.stringify(state));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.payment_methods;
+	            payment_methods_updated[action.id]["expiry_year"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -46845,214 +46934,6 @@ webpackJsonp([0],[
 	  }
 	}
 	exports.default = SignatureGuestResponse;
-	;
-
-/***/ }),
-/* 1170 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	/*let menu_items: any;
-	
-	interface CartState {
-	  user_type: string;
-	  address: string;
-	  payment_method: string;
-	  menu_items: any;
-	  cart: any;
-	};
-	
-	let inititalState: CartState = {
-	
-	  user_type: "",
-	  address: "",
-	  payment_method: "",
-	  menu_items: [],
-	  cart: [],
-	
-	}*/
-	function UserOrder() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { orders: [] };
-	    var action = arguments[1];
-	
-	    var order_index = null;
-	    var delivery_address_updated = null;
-	    var orders_updated = [];
-	    switch (action.type) {
-	        case actionTypes_ts_1.SET_USER_ORDERS:
-	            //alert("CartState " + action.item_id);
-	            console.log("user orders reducer " + JSON.stringify(state));
-	            return Object.assign({}, state, { orders: [{ order_id: 1, order_type: "signature", event_name: "", total_cost: "", image_uploaded: true, invited_guest_count: 20, invited_guest_message: "", delivery_date: "", delivery_time: "", delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", delivery_address_street1: "", delivery_address_street2: "", delivery_address_city: "", delivery_address_state: "", elivery_address_zipcode: "", payment_method: { card_number: "" }, status: "paid", suborders: [{ item: "invited guests" }], guest_responses: [{ first_name: "ross" }] }] });
-	        case actionTypes_ts_1.SET_EVENT_NAME:
-	            //console("CartState " + action.item_id);
-	            console.log("setevent name reducer " + action.value + " " + action.order_id);
-	            //let index = data.findIndex(obj => obj[where] === what)
-	            orders_updated = state.orders.map(function (order) {
-	                //if(address.address)
-	                console.log("order id" + order.order_id);
-	                if (order.order_id == 1) {
-	                    order.event_name = action.value;
-	                }
-	                return order;
-	            });
-	            return Object.assign({}, state, { orders: orders_updated });
-	        case actionTypes_ts_1.SET_INVITED_GUEST_COUNT:
-	            //console("CartState " + action.item_id);
-	            console.log("set guest count reducer " + action.value);
-	            //let index = data.findIndex(obj => obj[where] === what)
-	            orders_updated = state.orders.map(function (order) {
-	                //if(address.address)
-	                console.log("order id" + order.order_id);
-	                if (order.order_id == 1) {
-	                    order.invited_guest_count = action.value;
-	                }
-	                return order;
-	            });
-	            console.log("order_updated " + JSON.stringify(orders_updated[0]));
-	            var cart_item_index = orders_updated[0].cart.findIndex(function (obj) {
-	                return obj["item"] === "invited_guests" && obj["stripe_token"] === "";
-	            });
-	            console.log("cart item index" + JSON.stringify(cart_item_index));
-	            if (cart_item_index == -1) {
-	                //push
-	                orders_updated[0].cart.push({ item: "invited_guests", count: 0, stripe_token: "" });
-	            } else {
-	                orders_updated[0].cart[cart_item_index]["count"] = action.value;
-	            }
-	            //look in suborders to see if any "invited guests" items exist
-	            //if they have a stripe token then add another
-	            //if not then update the existing one
-	            //order_updated[0].cart.push({item: "invited_guests", count: 0, stripe_token: ""});
-	            //console.log("order_updated_with_suborder " + JSON.stringify(order_updated[0].suborders.push({suborder_id: 12345, item: "invited_guests", count: 0, stripe_token: ""})));
-	            return Object.assign({}, state, { orders: orders_updated });
-	        case actionTypes_ts_1.SET_DATE:
-	            //console("CartState " + action.item_id);
-	            console.log("set date reducer " + action.value);
-	            orders_updated = state.orders.map(function (order) {
-	                //if(address.address)
-	                console.log("order id" + order.order_id);
-	                if (order.order_id == 1) {
-	                    order.delivery_date = action.value;
-	                }
-	                return order;
-	            });
-	            //august 16th 1:45
-	            return Object.assign({}, state, { orders: orders_updated });
-	        case actionTypes_ts_1.SET_TIME:
-	            //console("CartState " + action.item_id);
-	            console.log("set TIME reducer " + action.value);
-	            //findindex
-	            //IF time is chargeable then add suborder
-	            orders_updated = state.orders.map(function (order) {
-	                //if(address.address)
-	                console.log("order id" + order.order_id);
-	                if (order.order_id == 1) {
-	                    order.delivery_time = action.value;
-	                }
-	                return order;
-	            });
-	            //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
-	            return Object.assign({}, state, { orders: orders_updated });
-	        case actionTypes_ts_1.SET_USER_DEFINED_DELIVERY_CONTACT_ADDRESS:
-	            //console("CartState " + action.item_id);
-	            console.log("set uddca reducer ");
-	            //findindex
-	            //IF time is chargeable then add suborder
-	            order_index = state.orders.findIndex(function (obj) {
-	                return obj["order_id"] === 1;
-	            });
-	            //orders_updated.delivery_contact_address.first_name
-	            orders_updated = state.orders[order_index];
-	            orders_updated.delivery_contact_first_name = "action.value";
-	            orders_updated.delivery_contact_last_name = "action.value";
-	            orders_updated.delivery_contact_email = "action.value";
-	            orders_updated.delivery_contact_mobile = "action.value";
-	            orders_updated.delivery_address_street1 = "action.value";
-	            orders_updated.delivery_address_street2 = "action.value";
-	            orders_updated.delivery_address_city = "los_angeles";
-	            orders_updated.delivery_address_state = "ca";
-	            orders_updated.delivery_address_zipcode = "zipcode";
-	            /*orders_updated = state.orders.map((order: any) => {
-	                         //if(address.address)
-	                  console.log("order id" + order.order_id);
-	                  if(order.order_id == 1){
-	                      
-	                      order.delivery_contact_first_name = "action.value";
-	                         }
-	                         return order;
-	                   })*/
-	            //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
-	            return Object.assign({}, state, { orders: orders_updated });
-	        case actionTypes_ts_1.SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER:
-	            //console("CartState " + action.item_id);
-	            console.log("set uddca reducer ");
-	            //findindex
-	            //IF time is chargeable then add suborder
-	            order_index = state.orders.findIndex(function (obj) {
-	                return obj["order_id"] === 1;
-	            });
-	            //orders_updated.payment_method.card_number
-	            orders_updated = state.orders[order_index];
-	            orders_updated.payment_method.card_number = action.value;
-	            //orders_updated.delivery_contact_last_name = "action.value";
-	            //orders_updated.delivery_contact_email = "action.value";
-	            //orders_updated.delivery_contact_mobile = "action.value";
-	            //orders_updated.delivery_address_street1 = "action.value";
-	            //orders_updated.delivery_address_street2 = "action.value";
-	            //orders_updated.delivery_address_city = "los_angeles";
-	            //orders_updated.delivery_address_state = "ca";
-	            //orders_updated.delivery_address_zipcode = "zipcode";
-	            /*orders_updated = state.orders.map((order: any) => {
-	                         //if(address.address)
-	                  console.log("order id" + order.order_id);
-	                  if(order.order_id == 1){
-	                      
-	                      order.delivery_contact_first_name = "action.value";
-	                         }
-	                         return order;
-	                   })*/
-	            //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
-	            return Object.assign({}, state, { orders: orders_updated });
-	        case actionTypes_ts_1.SET_USER_DEFINED_PAYMENT_METHOD:
-	            //console("CartState " + action.item_id);
-	            console.log("set uddca reducer ");
-	            //findindex
-	            //IF time is chargeable then add suborder
-	            order_index = state.orders.findIndex(function (obj) {
-	                return obj["order_id"] === 1;
-	            });
-	            //orders_updated.payment_method.card_number
-	            orders_updated = state.orders[order_index];
-	            orders_updated.payment_method.card_number = "action.value";
-	            //orders_updated.delivery_contact_last_name = "action.value";
-	            //orders_updated.delivery_contact_email = "action.value";
-	            //orders_updated.delivery_contact_mobile = "action.value";
-	            //orders_updated.delivery_address_street1 = "action.value";
-	            //orders_updated.delivery_address_street2 = "action.value";
-	            //orders_updated.delivery_address_city = "los_angeles";
-	            //orders_updated.delivery_address_state = "ca";
-	            //orders_updated.delivery_address_zipcode = "zipcode";
-	            /*orders_updated = state.orders.map((order: any) => {
-	                         //if(address.address)
-	                  console.log("order id" + order.order_id);
-	                  if(order.order_id == 1){
-	                      
-	                      order.delivery_contact_first_name = "action.value";
-	                         }
-	                         return order;
-	                   })*/
-	            //orders_updated = orders_updated.suborders.push({item: "delivery", stripe_token: ""});
-	            return Object.assign({}, state, { orders: orders_updated });
-	        default:
-	            //alert();
-	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            return state;
-	    }
-	}
-	exports.default = UserOrder;
 	;
 
 /***/ })

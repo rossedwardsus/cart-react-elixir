@@ -1,10 +1,10 @@
-import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
 
 
-/*export function setUserFirstName(value: any) {
+export function setUserFirstName(value: any) {
   //alert("GET USER details");
   console.log("set user first name action " + value);
   return {
@@ -32,58 +32,6 @@ export function setUserEmail(value: any) {
 }
 
 
-export function setUserNewDeliveryAddressName(value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-  }
-}
-
-export function setUserExistingDeliveryAddressName(user_id: any, delivery_address_id: any, value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-}
-
-export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-  }
-}
-
-export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id: any, value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-  }
-}
-
-export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: any, value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-  }
-}
-
-export function setUserDeliveryAddressZipcode(value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-  }
-}*/
 
 export function getUser(user_id: any) {
   //alert("GET USER details");
@@ -137,25 +85,6 @@ export function setUserOrders(value: any) {
     value
   }
 }
-
-/*export function getUserDeliveryAddress() {
-  console.log("get user delivery address action");
-  return {
-    type: GET_USER_DELIVERY_ADDRESSES,
-    data: ["home", "office"]
-  }
-}*/
-
-
-
-export function getUserDeliveryAddresses() {
-  console.log("get user delivery addresses action");
-  return {
-    type: GET_USER_DELIVERY_ADDRESSES,
-    data: {"home": {street1: "", street2: "", city: "", state: "", zipcode: ""}, "office": {street: "", street1: "", city: "", state: "", zipcode: ""}}
-  }
-}
-
 
 
 
@@ -215,13 +144,124 @@ export function addUserDeliveryContactAddress(delivery_contact_address_name: any
   
 }
 
+/*export function setUserNewDeliveryAddressFirstName(value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_EMAIL,
+    data: value
+  }
+}*/
+
+export function setUserDeliveryContactAddressFirstName(user_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user contact address first name action " + value);
+  return function (dispatch: any) { 
+    
+    return {
+      type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+      data: value
+    }
+
+  }
+}
+
+export function setUserDeliveryContactAddressLastName(user_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user contact address last name action " + value);
+  return function (dispatch: any) { 
+    
+    return {
+      type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+      data: value
+    }
+
+  }
+}
+
+export function setUserDeliveryContactAddressEmail(user_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user contact address email action " + value);
+  return function (dispatch: any) { 
+    
+    return {
+      type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+      data: value
+    }
+
+  }
+}
+
+export function setUserDeliveryContactAddressMobile(user_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user contact address mobile action " + value);
+  return function (dispatch: any) { 
+    
+    return {
+      type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+      data: value
+    }
+
+  }
+}
+
+export function setUserDeliveryContactAddressNote(user_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user contact address mobile action " + value);
+  return function (dispatch: any) { 
+    
+    return {
+    //  type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+    //  data: value
+    }
+
+  }
+}
+
+/*export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_EMAIL,
+    data: value
+  }
+}
+
+export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_EMAIL,
+    data: value
+  }
+}
+
+export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: any, value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_EMAIL,
+    data: value
+  }
+}
+
+export function setUserDeliveryAddressZipcode(value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_EMAIL,
+    data: value
+  }
+}*/
+
+
 export function saveUserDeliveryContactAddress(id: any, delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
   //console.log("state" + JSON.stringify(state));
   console.log("save user delivery address street1");
   return function (dispatch: any) { 
       
-      axios.post('/api/graphql', {
-                     query: 'mutation {save_user_delivery_contact_address ( delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 +'") {user_id}}'
+      /*axios.post('/api/graphql', {
+                     query: 'mutation {save_user_delivery_contact_address ( user_id: "''", delivery_contact_address_id: "''", delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 +'") {user_id}}'
               })
               .then((response: any) => {
 
@@ -256,7 +296,7 @@ export function saveUserDeliveryContactAddress(id: any, delivery_contact_address
                 // network error
               //}
 
-              })
+              })*/
   }
   
 }
@@ -265,6 +305,9 @@ export function saveUserDeliveryContactAddress(id: any, delivery_contact_address
 
 export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any) {
   //console.log("state" + JSON.stringify(state));
+
+  //add to stripe
+
   console.log("add user delivery address street1");
   return function (dispatch: any) { 
       
@@ -328,27 +371,30 @@ export function setUserPaymentMethodCardNumber(id: any, number: any) {
 
 export function setUserPaymentMethodExpiryMonth(id: any, number: any) {
   //console.log("state" + JSON.stringify(state));
-  console.log("set user payment name action");
+  console.log("set user payment month action " + id);
   return function (dispatch: any) {
 
-      //dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, id: id, value: number});
+      dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, id: id, value: number});
 
   }
 }
 
 export function setUserPaymentMethodExpiryYear(id: any, number: any) {
   //console.log("state" + JSON.stringify(state));
-  console.log("set user payment name action");
+  console.log("set user payment year action");
   return function (dispatch: any) {
 
-      //dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, id: id, value: number});
+      dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, id: id, value: number});
 
   }
 }
 
 export function saveUserPaymentMethod(payment_name: any) {
   //console.log("state" + JSON.stringify(state));
-  console.log("save user payment action");
+
+  //save on stripe
+
+  console.log("save user payment action " + payment_name);
   return function (dispatch: any) { 
       
       /*axios.post('/api/graphql', {
@@ -390,10 +436,10 @@ export function saveUserPaymentMethod(payment_name: any) {
 
         })*/
 
-         dispatch({
-            type: ADD_USER_DELIVERY_ADDRESS,
+         //dispatch({
+         //   type: ADD_USER_DELIVERY_ADDRESS,
               //  data: "session_key"
-         })
+         //})
 
   }
   

@@ -8,7 +8,7 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {setEmail, loginUser} from './actions/login.ts';
+//import {setEmail, loginUser} from './actions/login.ts';
 
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");
@@ -127,9 +127,42 @@ class Login extends React.Component<any, any> {
  
   login(){
 
-      this.props.loginUser("1", "2");
+      //this.props.loginUser("1", "2");
 
+  
+      axios.post('/api/login', {email: this.state.email, mobile: this.state.mobile, password: this.state.password
+      })
+      .then((response: any) => {
+
+            console.log("login response" + JSON.stringify(response));
+
+            //save token to local host and send in auth header
+
+            //that.props.history.push('/user');
+            //context.router
+
+            //this.context.router.push('/order/complete');
+
+
+      })
+      .catch((error: any) => {
+
+            console.log("error" + error);
+            //go to code/payment screen
+    //        this.props.loadView();
+
+
+            //display errror to user - payment
+
+     //if (!error.status) {
+        // network error
+      //}
+
+      })
+      //dispatch(setSession());
+      //}
   }
+
 
   render(){
     return ( <div><nav className="navbar navbar-default navbar-fixed-top">
@@ -196,7 +229,7 @@ class Login extends React.Component<any, any> {
 
 
 
-function mapStateToProps(state: any) {
+/*function mapStateToProps(state: any) {
   console.log(JSON.stringify(state));
   return {
 
@@ -228,6 +261,6 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 const Login1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(Login)*/
 
-export default Login1
+export default Login
