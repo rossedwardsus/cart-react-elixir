@@ -4,8 +4,17 @@ import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
 //import { routeActions, push } from 'react-router-redux'
 import {connect} from 'react-redux';
+
 //import {startOrder} from './actions/order';
 import {List, Map} from 'immutable';
+
+import UserNavbar from './user_navbar.tsx';
+import UserTabs from './user_tabs.tsx';
+
+import {addUserPaymentMethod} from '../actions/user.ts';
+import {setUserPaymentMethodCardNumber, setUserPaymentMethodExpiryMonth, saveUserPaymentMethod} from '../actions/user.ts';
+
+//import {getUserPaymentMethods} from '../selectors/user.ts';
 
 
 //const mapDispatchToProps = dispatch => {
@@ -73,9 +82,40 @@ class UserPaymentMethods extends React.Component<any, any> {
 
   }
 
-  addPaymentMethod = (e: any) => {
+  addUserPaymentMethod = (e: any) => {
 
       //this.setState({payment_method_name: e.target.value});
+      this.props.addUserPaymentMethod("name", "name on card", "card number", "expiry month", "expiry year");
+
+  }
+
+  setUserPaymentMethodName = (e: any) => {
+
+      //this.setState({payment_method_name: e.target.value});
+      //this.props.setUserPaymentMethodName("name");
+
+  }
+
+  setUserPaymentMethodCardNumber = (e: any) => {
+
+      console.log(e.target.id);
+      //this.setState({payment_method_name: e.target.value});
+      this.props.setUserPaymentMethodCardNumber(e.target.id, e.target.value);
+
+  }
+
+  setUserPaymentMethodExpiryMonth = (e: any) => {
+
+      console.log(e.target.id);
+      //this.setState({payment_method_name: e.target.value});
+      this.props.setUserPaymentMethodExpiryMonth(e.target.id, e.target.value);
+
+  }
+
+  saveUserPaymentMethod = (e: any) => {
+
+      //this.setState({payment_method_name: e.target.value});
+      this.props.saveUserPaymentMethod("name");
 
   }
 
@@ -87,22 +127,11 @@ class UserPaymentMethods extends React.Component<any, any> {
 
     return (
               <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-      
-                           </div>
-                    </nav>
+                    <UserNavbar />
                     <div className="row">
-                        <div className="hidden-xs col-md-4">
+                        <div className="hidden-xs col-md-3">
+                          <br/>
+                          <br/>
                           <br/>
                           <br/>
                           <br/>
@@ -110,22 +139,14 @@ class UserPaymentMethods extends React.Component<any, any> {
                           <br/>
                           Home
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
-                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
-                          <br/>
-                          <Link to="/user/delivery_contact">Delivery Contact</Link>
-                          <br/>
-                          <Link to="/user/payment_methods">Payment Methods</Link>
-                          <br/>
-                          <Link to="/user/about_me">About Me</Link>
-                          <br/>
-                          <Link to="/user/photo">Photo</Link>
-                        </div>
-                        <div className="col-md-6">
+                          </div>
+                        <div className="col-md-9">
                                   <br/>
                                   <br/>
                                   <br/>
+                                  <br/>
+                                  <br/>
+                                  <UserTabs/>
                                   <br/>
                                   <br/>
                                   <br/>
@@ -135,54 +156,68 @@ class UserPaymentMethods extends React.Component<any, any> {
                                     <div className="form-group">
                                         <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
                                       </div>
-                                    </form>
+                                  </form>
                                   <form className="form-inline">
                                     <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name on Card"/>
-                                      </div>
-                                    </form>
-                                    <form className="form-inline">
-                                      <div className="form-group">
                                         <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" />
+                                    </div>
+                                  </form>
+                                  <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-md-2">
+                                        <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                                       </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Type" />
+                                      <div className="col-md-2">
+                                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                                       </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Month" />
+                                      <div className="col-md-2">
+                                        <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                                       </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Year" />
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="email" className="form-control" id="exampleInputEmail2" placeholder="Security Code" />
-                                      </div>
-                                    </form>
+                                    </div>
+                                  </form>  
                                 
-                                  Add
+                                  <button className="btn btn-default" onClick={this.addUserPaymentMethod}>Add</button>
+                                  <br/>
                                   <br/>
                                   <br/>
                                   {Object.keys(payment_methods).map((key: any, index: any) => {
-
-                                    return(
+                                    console.log(JSON.stringify(payment_methods[key].name));
+                                    return(<div>
                                         <form className="form-inline">
                                           <div className="form-group">
-                                            name-xxx-expiry date-default-Delete
+                                              {key} 
+                                            </div>
+                                        </form>
+                                        <form className="form-inline">
+                                          <div className="form-group">
+                                              <input type="text" id="personal" className="form-control" placeholder="Card Number" onChange={this.setUserPaymentMethodCardNumber}/>
                                           </div>
                                         </form>
+                                        <form className="form-horizontal">
+                                          <div className="form-group">
+                                            <div className="col-md-2">
+                                              <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} onChange={this.setUserPaymentMethodExpiryMonth}/>
+                                            </div>
+                                            <div className="col-md-2">
+                                              <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                                            </div>
+                                            <div className="col-md-2">
+                                              <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                            </div>
+                                          </div>
+                                        </form>  
+                                        <button className="btn btn-default" onClick={this.saveUserPaymentMethod}>Save</button>
+                                  
+                                        </div>
                                     )
                                   })}
+
+                          <br/>
+                          <br/>
+                          <br/>
                                 
                         </div>
-                        <div className="hidden-xs col-md-2">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              maybe put something here
-                        </div>
+                       
                     </div>
               </div>
     )
@@ -205,17 +240,28 @@ function mapDispatchToProps(dispatch: any) {
       console.log("e.target.value");
       //dispatch(getUserDeliveryAddresses());
     },
-    //addUserDeliveryAddress: (name: any, street1: any, street2: any, city: any, state: any, zipcode: any) => {
+    addUserPaymentMethod: (name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any) => {
     //  console.log(e.target.value);
-      //dispatch(addUserDeliveryAddress(name, street1, street2, city, state, zipcode));
-    //},
-   
+      dispatch(addUserPaymentMethod(name, name_on_card, card_number, expiry_month, expiry_year));
+    },
+    setUserPaymentMethodCardNumber: (id: any, number: any) => {
+    //  console.log(e.target.value);
+      dispatch(setUserPaymentMethodCardNumber(id, number));
+    },
+    setUserPaymentMethodExpiryMonth: (id: any, number: any) => {
+    //  console.log(e.target.value);
+      dispatch(setUserPaymentMethodExpiryMonth(id, number));
+    },
+    saveUserPaymentMethod: (name: any) => {
+    //  console.log(e.target.value);
+      dispatch(saveUserPaymentMethod(name));
+    },
   }
 }
 
-const UserPaymentMethods1 = connect(
+const UserPaymentMethodsConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(UserPaymentMethods)
 
-export default UserPaymentMethods1;
+export default UserPaymentMethodsConnected;

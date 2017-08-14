@@ -25,7 +25,7 @@ export const getUserOrders = (state: any) => {
 
 
 
-export const getNormalizedMenuItems = (state: any) => {
+export const getPayment = (state: any) => {
   let menu_items_temp: any = {};
 
   state.menuItems.menu_items.map((key: any, index: any) => {

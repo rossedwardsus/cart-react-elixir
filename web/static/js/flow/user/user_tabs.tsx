@@ -30,7 +30,7 @@ class UserTabs extends React.Component<any, any> {
 
       }else if(this.props.pathname.indexOf("payment_methods") > -1){
 
-          this.setState({payment_methods_preview_tab: "active"});
+          this.setState({payment_methods_tab: "active"});
 
       }else if(this.props.pathname.indexOf("photo") > -1){
 

@@ -221,7 +221,7 @@ class UserHomePage extends React.Component<any, any> {
     
     return (
               <div>
-                    <UserNavbar first_name={this.props.User.first_name} last_name={this.props.User.last_name}/>
+                    <UserNavbar />
                     <div className="row">
                         <div className="hidden-xs col-md-4">
                           <br/>
@@ -232,26 +232,11 @@ class UserHomePage extends React.Component<any, any> {
                           <Link to="/public/menu">Menu</Link>
                           <br/>
                           <br/>
-                          Order Settings:
-                          <br/>
-                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
-                          <br/>
-                          <Link to="/user/payment_methods">Payment Methods</Link>
-                          <br/>
-                          <br/>
-                          Profile Settings:
-                          <br/>
-                          <Link to="/user/about_me">Name/Contact</Link>
-                          <br/>
-                          <Link to="/user/password">Password</Link>
-                          <br/>
-                          <Link to="/user/photo">Photo</Link>
-                          
+                           
                         </div>
                         <div className="col-md-6">
                                   <br/>
                                   <br/>
-                                  <UserTabs/>
                                   <br/>
                                   <Link to="/public/menu">Social</Link>-<a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                                   <br/>

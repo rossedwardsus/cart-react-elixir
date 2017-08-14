@@ -26,8 +26,9 @@ import PublicAboutUs from './public/public_about_us';
 import YoursRedirect from './yours_redirect.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
-import UserDeliveryAddresses from './user/user_delivery_addresses.tsx';
-import UserDeliveryContacts from './user/user_delivery_contacts.tsx';
+import UserProfile from './user/user_profile.tsx';
+import UserDeliveryContactsAddresses from './user/user_delivery_addresses.tsx';
+//import UserDeliveryContacts from './user/user_delivery_contacts.tsx';
 import UserPaymentMethods from './user/user_payment_methods.tsx';
 import UserAboutMe from './user/user_about_me.tsx';
 import UserOrder from './user/user_order.tsx';
@@ -186,8 +187,8 @@ const Root = () => (
           <Route path="/order/complete" component={OrderComplete} />
         </Route>
         <Route path="/user" component={UserHomePage} />
-        <Route path="/user/delivery_contacts_addresses" component={UserDeliveryAddresses} />
-        <Route path="/user/delivery_contacts" component={UserDeliveryContacts} />
+        <Route path="/user/profile" component={UserProfile} />
+        <Route path="/user/delivery_contacts_addresses" component={UserDeliveryContactsAddresses} />
         <Route path="/user/payment_methods" component={UserPaymentMethods} />
         <Route path="/user/about_me" component={UserAboutMe} />
         <Route path="/order/:order_id/details" component={UserOrder} />

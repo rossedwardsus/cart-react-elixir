@@ -1,4 +1,4 @@
-import {SET_PAYMENT_NAME_ON_CARD, SET_USER_ORDER_PAYMENT_NAME_ON_CARD, SET_PAYMENT_CARD_NUMBER, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_PAYMENT_EXPIRY_MONTH, SET_USER_ORDER_PAYMENT_EXPIRY_YEAR, SET_USER_ORDER_PAYMENT_EXPIRY_MONTH, SET_PAYMENT_EXPIRY_YEAR, SET_PAYMENT_SECURITY_CODE, SET_USER_DEFINED_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_PAYMENT_SECURITY_CODE, SET_USER_DEFINED_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 
 //setDeliveryContactAddressPredefined
@@ -57,16 +57,24 @@ export function setPaymentMethodCardNumber(value: any, order_id: any) {
 
 export function setPaymentExpiryMonth(value: any, order_id: any) {
   console.log(" action expiry month" + value);
+
+  //IF logged in use SET_USER_ORDER_PAYMENT_EXPIRY_MONTH
+  //else SET_ORDER_PAYMENT_EXPIRY_MONTH
+
   return {
-    type: SET_PAYMENT_EXPIRY_MONTH,
+    type: SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH,
     value
   }
 }
 
 export function setPaymentExpiryYear(value: any, order_id: any) {
   console.log("expiry year" + value);
+
+  //IF logged in use SET_USER_ORDER_PAYMENT_EXPIRY_YEAR
+  //else SET_ORDER_PAYMENT_EXPIRY_YEAR
+
   return {
-    type: SET_PAYMENT_EXPIRY_YEAR,
+    type: SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR,
     value
   }
 }

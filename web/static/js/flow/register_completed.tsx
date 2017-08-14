@@ -8,7 +8,7 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {registerUser} from './actions/register.ts';
+//import {registerUser} from './actions/register.ts';
 
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");

@@ -1,4 +1,4 @@
-import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS, ADD_USER_PAYMENT_METHOD, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT, GET_USER_DELIVERY_CONTACTS, ADD_USER_DELIVERY_ADDRESS, GET_USER_DELIVERY_ADDRESSES, GET_USER_PAYMENT_METHODS, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
@@ -261,29 +261,9 @@ export function saveUserDeliveryContactAddress(id: any, delivery_contact_address
   
 }
 
-export function getUserDeliveryContacts() {
-  console.log("get user delivery addresses action");
-  return {
-    type: GET_USER_DELIVERY_CONTACTS,
-    data: [{"home": {street1: "", street2: "", city: "", state: "", zipcode: ""}},  {office: {street: "", street1: "", city: "", state: "", zipcode: ""}}]
-  }
-}
 
-export function addUserDeliveryContact(address_name: any, street1: any, street2: any, city: any, state: any, zipcode: any) {
-  //console.log("state" + JSON.stringify(state));
-  console.log("add user delivery address street1");
-  return {
-    type: ADD_USER_DELIVERY_ADDRESS,
-    name,
-    street1,
-    street2,
-    city,
-    state,
-    zipcode
-  }
-}
 
-export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any, zipcode: any) {
+export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any) {
   //console.log("state" + JSON.stringify(state));
   console.log("add user delivery address street1");
   return function (dispatch: any) { 
@@ -328,7 +308,7 @@ export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_
         })*/
 
          dispatch({
-            type: ADD_USER_DELIVERY_ADDRESS,
+            type: ADD_USER_PAYMENT_METHOD,
               //  data: "session_key"
          })
 
@@ -336,13 +316,43 @@ export function addUserPaymentMethod(payment_name: any, name_on_card: any, card_
   
 }
 
-export function saveUserPaymentMethod(payment_name: any, name_on_card: any, card_number: any, expiry_month: any, expiry_year: any, zipcode: any) {
+export function setUserPaymentMethodCardNumber(id: any, number: any) {
   //console.log("state" + JSON.stringify(state));
-  console.log("add user delivery address street1");
+  console.log("set user payment name action");
+  return function (dispatch: any) {
+
+      dispatch({type: SET_USER_PAYMENT_METHOD_CARD_NUMBER, id: id, value: number});
+
+  }
+}
+
+export function setUserPaymentMethodExpiryMonth(id: any, number: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("set user payment name action");
+  return function (dispatch: any) {
+
+      //dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, id: id, value: number});
+
+  }
+}
+
+export function setUserPaymentMethodExpiryYear(id: any, number: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("set user payment name action");
+  return function (dispatch: any) {
+
+      //dispatch({type: SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, id: id, value: number});
+
+  }
+}
+
+export function saveUserPaymentMethod(payment_name: any) {
+  //console.log("state" + JSON.stringify(state));
+  console.log("save user payment action");
   return function (dispatch: any) { 
       
       /*axios.post('/api/graphql', {
-                     query: 'mutation {save_user_payment_method (payment_name: "' + payment_name + '", name_on_card: "' + name_on_card + '", expiry_month: "' + expiry_month + '", city: "' + city +'", state: '" + state + "', zipcode: '" + zipcode + "') {user_id}}'
+                     query: 'mutation {save_user_payment_method (payment_name: "' + payment_name + '", expiry_month: "' + expiry_month + '", city: "' + city +'", state: "' + state + '", zipcode: "' + zipcode + '") {user_id}}'
               })
               .then((response: any) => {
 

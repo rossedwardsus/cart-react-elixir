@@ -8,7 +8,7 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {registerSetFirstName, registerSetLastName, registerSetEmail, registerSetPassword, registerUser} from './actions/register.ts';
+//import {registerSetFirstName, registerSetLastName, registerSetEmail, registerSetPassword, registerUser} from './actions/register.ts';
 
 //import * as Autocomplete from "react-google-autocomplete";
 //const Autocomplete = require("react-google-autocomplete");
@@ -435,7 +435,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //loginthunk
 
-    registerSetFirstName: (e: any) => {
+    /*registerSetFirstName: (e: any) => {
       dispatch(registerSetFirstName(e.target.value))
     },
 
@@ -462,7 +462,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     registerUser: (first_name: any, last_name: any, email: any, password: any) => {
       console.log("ownprops" + JSON.stringify(ownProps));
       dispatch(registerUser(first_name, last_name, email, password))
-    },
+    },*/
     
   }
 }
