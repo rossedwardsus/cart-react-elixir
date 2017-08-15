@@ -130,8 +130,7 @@ class Login extends React.Component<any, any> {
       //this.props.loginUser("1", "2");
 
   
-      axios.post('/api/login', {email: this.state.email, mobile: this.state.mobile, password: this.state.password
-      })
+      axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, data: {email: this.state.email, mobile: this.state.mobile, password: this.state.password}}, {withCredentials: true})
       .then((response: any) => {
 
             console.log("login response" + JSON.stringify(response));

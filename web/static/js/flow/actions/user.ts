@@ -262,7 +262,7 @@ export function saveUserDeliveryContactAddress(id: any, delivery_contact_address
       
       /*axios.post('/api/graphql', {
                      query: 'mutation {save_user_delivery_contact_address ( user_id: "''", delivery_contact_address_id: "''", delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 +'") {user_id}}'
-              })
+              }, headers: { Authorization: localStorage.getItem('sconely_token')}, withCredentials: false)
               .then((response: any) => {
 
                     console.log("register response" + JSON.stringify(response));

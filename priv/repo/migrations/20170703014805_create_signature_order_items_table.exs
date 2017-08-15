@@ -8,7 +8,7 @@ defmodule SconeHomeElixir.Repo.Migrations.AddSignatureOrderItemsTable do
   	  add :item_id, :integer
   	  add :mini, :string
   	  add :quantity, :string
-  	  #datetime selected
+  	  #datetime added
   	end
 
   end

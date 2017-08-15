@@ -62,6 +62,7 @@ defmodule SconeHomeElixir.Router do
     post "/upload", Sconely.UserProfilePhotoController, :create
 
     post "/register", Sconely.RegisterController, :create
+    post "/login", Sconely.LoginController, :create
 
     get "/guest/list", Sconely.GuestListDownloadController, :index   
 

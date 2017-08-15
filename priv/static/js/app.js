@@ -104,51 +104,51 @@ webpackJsonp([0],[
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1150);
+	var _register = __webpack_require__(1149);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1151);
+	var _register_completed = __webpack_require__(1150);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1152);
+	var _checkLogin = __webpack_require__(1151);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1153);
+	var _user = __webpack_require__(1152);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu_items = __webpack_require__(1154);
+	var _menu_items = __webpack_require__(1153);
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1158);
+	var _name = __webpack_require__(1157);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1159);
+	var _order_completed = __webpack_require__(1158);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1160);
+	var _sconely_signature_guests = __webpack_require__(1159);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _signature_additional_items = __webpack_require__(1161);
+	var _signature_additional_items = __webpack_require__(1160);
 	
 	var _signature_additional_items2 = _interopRequireDefault(_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1162);
+	var _sconely_signature_order_history = __webpack_require__(1161);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _sconely_signature_preview = __webpack_require__(1163);
+	var _sconely_signature_preview = __webpack_require__(1162);
 	
 	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
 	
-	var _index = __webpack_require__(1164);
+	var _index = __webpack_require__(1163);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -31170,33 +31170,35 @@ webpackJsonp([0],[
 	    //console.log("state" + JSON.stringify(state));
 	    console.log("save user delivery address street1");
 	    return function (dispatch) {
-	        axios_1.default.post('/api/graphql', {
-	            query: 'mutation {save_user_delivery_contact_address ( delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 + '") {user_id}}'
-	        }).then(function (response) {
-	            console.log("register response" + JSON.stringify(response));
-	            //dispatch({
-	            //  type: REGISTER_USER,
-	            //  data: "session_key"
-	            //})
-	            //return {
-	            //  type: ADD_USER_DELIVERY_ADDRESS,
-	            //  name,
-	            //  street1,
-	            //  street2,
-	            //  city,
-	            //  state,
-	            //  zipcode
-	            //}
-	            //that.props.history.push('/user');
-	            //dispatch(push("/user"));
-	        }).catch(function (error) {
-	            console.log("sorry an error occurred-email already exists" + error);
-	            //go to code/payment screen
-	            //        this.props.loadView();
-	            //if (!error.status) {
-	            // network error
-	            //}
-	        });
+	        /*axios.post('/api/graphql', {
+	                       query: 'mutation {save_user_delivery_contact_address ( user_id: "''", delivery_contact_address_id: "''", delivery_contact_address_name: "' + delivery_contact_address_name + '", first_name: "' + first_name + '", last_name: "' + last_name + '", email: "' + email + '", street1: "' + street1 +'") {user_id}}'
+	                }, headers: { Authorization: localStorage.getItem('sconely_token')}, withCredentials: false)
+	                .then((response: any) => {
+	                         console.log("register response" + JSON.stringify(response));
+	                          //dispatch({
+	                      //  type: REGISTER_USER,
+	                      //  data: "session_key"
+	                      //})
+	                         //return {
+	                      //  type: ADD_USER_DELIVERY_ADDRESS,
+	                      //  name,
+	                      //  street1,
+	                      //  street2,
+	                      //  city,
+	                      //  state,
+	                      //  zipcode
+	                      //}
+	                         //that.props.history.push('/user');
+	                      //dispatch(push("/user"));
+	                   })
+	                .catch((error: any) => {
+	                         console.log("sorry an error occurred-email already exists" + error);
+	                      //go to code/payment screen
+	              //        this.props.loadView();
+	                  //if (!error.status) {
+	                  // network error
+	                //}
+	                   })*/
 	    };
 	}
 	exports.saveUserDeliveryContactAddress = saveUserDeliveryContactAddress;
@@ -44393,8 +44395,10 @@ webpackJsonp([0],[
 	//import SconelyYoursMenu from './sconely_yours_menu';
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
-	var react_redux_1 = __webpack_require__(190);
-	var login_ts_1 = __webpack_require__(1149);
+	//import {setEmail, loginUser} from './actions/login.ts';
+	//import * as Autocomplete from "react-google-autocomplete";
+	//const Autocomplete = require("react-google-autocomplete");
+	var axios_1 = __webpack_require__(924);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -44451,7 +44455,24 @@ webpackJsonp([0],[
 	    }, {
 	        key: "login",
 	        value: function login() {
-	            this.props.loginUser("1", "2");
+	            //this.props.loginUser("1", "2");
+	            axios_1.default.post('/api/login', { headers: { Authorization: localStorage.getItem('sconely_token') }, data: { email: this.state.email, mobile: this.state.mobile, password: this.state.password } }, { withCredentials: true }).then(function (response) {
+	                console.log("login response" + JSON.stringify(response));
+	                //save token to local host and send in auth header
+	                //that.props.history.push('/user');
+	                //context.router
+	                //this.context.router.push('/order/complete');
+	            }).catch(function (error) {
+	                console.log("error" + error);
+	                //go to code/payment screen
+	                //        this.props.loadView();
+	                //display errror to user - payment
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	            //dispatch(setSession());
+	            //}
 	        }
 	    }, {
 	        key: "render",
@@ -44477,85 +44498,45 @@ webpackJsonp([0],[
 	
 	    return Login;
 	}(React.Component);
+	/*function mapStateToProps(state: any) {
+	  console.log(JSON.stringify(state));
+	  return {
 	
-	function mapStateToProps(state) {
-	    console.log(JSON.stringify(state));
-	    return {
-	        state: state
-	    };
+	    state: state,
+	    //login thunk
+	//   menu_items: state.default.menu_items
+	   //menu_items: getPublicMenu
+	   //menu_items: dispatch()
+	  };
 	}
-	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	    return {
-	        //loginthunk
-	        setEmail: function setEmail(e) {
-	            dispatch(login_ts_1.setEmail(e.target.value));
-	        },
-	        loginUser: function loginUser(email, password) {
-	            dispatch(login_ts_1.loginUser(email, password));
-	        }
-	    };
-	};
-	var Login1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Login);
-	exports.default = Login1;
+	
+	const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+	  return {
+	    //loginthunk
+	
+	      
+	    setEmail: (e: any) => {
+	      dispatch(setEmail(e.target.value))
+	    },
+	
+	    loginUser: (email: any, password: any) => {
+	      dispatch(loginUser(email, password))
+	    },
+	    
+	  }
+	}
+	
+	
+	const Login1 = connect(
+	  mapStateToProps,
+	  mapDispatchToProps
+	)(Login)*/
+	
+	
+	exports.default = Login;
 
 /***/ }),
 /* 1149 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	//get the order total
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(924);
-	//import {setSession} from './session.ts';
-	function loginUser(email, password) {
-	    var url = "";
-	    return function (dispatch) {
-	        axios_1.default.post('http://localhost:4000/api/graphql', { query: 'query {loginUser (email: "email", password: "password") { user }}' }, { headers: { 'Authorization': "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJVc2VyOjEiLCJleHAiOjE0OTk5ODY3ODYsImlhdCI6MTQ5NzM5NDc4NiwiaXNzIjoiU2NvbmVIb21lRWxpeGlyIiwianRpIjoiMGI5M2VmZWYtMzA1Zi00NThmLWI5N2EtMjJlYzgwZWU4OWNkIiwicGVtIjp7fSwic3ViIjoiVXNlcjoxIiwidHlwIjoiYWNjZXNzIn0.J9dBWzR_vJyD8jU6TievrPcXvlN_cssXpkWy0TqI5hl5AXTOhIimXgkyrtgANAouBKGx6ip5xbi3rnyldQEU2g" } }).then(function (response) {
-	            console.log("graphql response" + JSON.stringify(response));
-	            //that.props.history.push('/user');
-	            //context.router
-	            //that.props.setOrderId(1);
-	            //this.context.router.push('/order/complete');
-	        }).catch(function (error) {
-	            console.log("error" + error);
-	            //go to code/payment screen
-	            //        this.props.loadView();
-	            //display errror to user - payment
-	            //if (!error.status) {
-	            // network error
-	            //}
-	        });
-	        //dispatch(setSession());
-	    };
-	}
-	exports.loginUser = loginUser;
-	function setEmail(value) {
-	    console.log("setemail action");
-	    return {
-	        type: actionTypes_ts_1.SET_EMAIL,
-	        value: value
-	    };
-	}
-	exports.setEmail = setEmail;
-	function checkLoggedIn() {
-	    //alert("addCartItem from redux");
-	    return {
-	        type: actionTypes_ts_1.CHECK_LOGGED_IN
-	    };
-	}
-	exports.checkLoggedIn = checkLoggedIn;
-	function login(email, password) {
-	    console.log("login action");
-	    return {
-	        type: actionTypes_ts_1.LOGIN
-	    };
-	}
-	exports.login = login;
-
-/***/ }),
-/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44832,7 +44813,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1151 */
+/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45004,7 +44985,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1152 */
+/* 1151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45055,7 +45036,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1153 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45196,7 +45177,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1154 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45213,10 +45194,10 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1155);
+	var signature_guest_response_ts_1 = __webpack_require__(1154);
 	var menu_ts_1 = __webpack_require__(923);
-	var signature_guest_response_ts_2 = __webpack_require__(1156);
-	var navbar_tsx_1 = __webpack_require__(1157);
+	var signature_guest_response_ts_2 = __webpack_require__(1155);
+	var navbar_tsx_1 = __webpack_require__(1156);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45397,7 +45378,7 @@ webpackJsonp([0],[
 	exports.default = GuestMenu1;
 
 /***/ }),
-/* 1155 */
+/* 1154 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -45495,7 +45476,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1156 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45611,7 +45592,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1157 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45683,7 +45664,7 @@ webpackJsonp([0],[
 	exports.default = NavBar1;
 
 /***/ }),
-/* 1158 */
+/* 1157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45700,9 +45681,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
-	var signature_guest_response_ts_1 = __webpack_require__(1156);
-	var signature_guest_response_ts_2 = __webpack_require__(1155);
-	var navbar_tsx_1 = __webpack_require__(1157);
+	var signature_guest_response_ts_1 = __webpack_require__(1155);
+	var signature_guest_response_ts_2 = __webpack_require__(1154);
+	var navbar_tsx_1 = __webpack_require__(1156);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -45853,7 +45834,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1159 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45869,8 +45850,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1155);
-	var navbar_tsx_1 = __webpack_require__(1157);
+	var signature_guest_response_ts_1 = __webpack_require__(1154);
+	var navbar_tsx_1 = __webpack_require__(1156);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -45961,7 +45942,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1160 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46095,7 +46076,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderGuestsConnected;
 
 /***/ }),
-/* 1161 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46271,7 +46252,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItemsConnected;
 
 /***/ }),
-/* 1162 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46393,7 +46374,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderSummaryConnected;
 
 /***/ }),
-/* 1163 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46542,7 +46523,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderPreviewConnected;
 
 /***/ }),
-/* 1164 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46550,18 +46531,18 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1165);
+	var session_ts_1 = __webpack_require__(1164);
 	//import Register from './register.ts';
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1166);
-	var social_yours_order_ts_1 = __webpack_require__(1167);
-	var user_ts_1 = __webpack_require__(1168);
+	var menu_ts_1 = __webpack_require__(1165);
+	var social_yours_order_ts_1 = __webpack_require__(1166);
+	var user_ts_1 = __webpack_require__(1167);
 	//import name from './name.ts';
 	//import contact from './contact.ts';
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1169);
+	var signature_guest_response_ts_1 = __webpack_require__(1168);
 	//import UserOrders from './user_order.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -46603,7 +46584,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1165 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46643,7 +46624,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1166 */
+/* 1165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46690,7 +46671,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1167 */
+/* 1166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46767,7 +46748,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1168 */
+/* 1167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46861,7 +46842,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1169 */
+/* 1168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

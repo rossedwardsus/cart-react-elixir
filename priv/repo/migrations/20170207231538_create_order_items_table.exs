@@ -7,6 +7,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateSconelyOrderItemsTable do
       add :order_id, :uuid
       add :item_id, :integer
       add :mini, :boolean
+      #date time added
 	end
   end
 end

@@ -6,10 +6,12 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureOrderSubordersTable do
 	create table(:signature_orders_suborders) do
   	  add :parent_order_id, :uuid, null: false
 	  add :suborder_id, :string
-	  add :order_type, :string
-	  add :amount, :string
+	  add :item, :string
+	  add :quantity, :string
+	  #add :quantity_multiplier
 	  add :stripe_token, :string
-	  #datetime_processed
+	  #datetime_added
+	  #date time paid
 	end
 
   end
