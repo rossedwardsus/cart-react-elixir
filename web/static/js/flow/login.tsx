@@ -135,7 +135,7 @@ class Login extends React.Component<any, any> {
 
             console.log("login response" + JSON.stringify(response));
 
-            //save token to local host and send in auth header
+            //save token, first_name, last_name to localstorage and send in auth header
 
             //that.props.history.push('/user');
             //context.router

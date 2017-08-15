@@ -21,7 +21,8 @@ defmodule Sconely.RegisterController do
 
     IO.puts(args["email"])
 
-    user_id = UUID.uuid1()
+    #user_id = UUID.uuid1()
+    user_id = SecureRandom.uuid
     hash = Bcrypt.hashpwsalt("password")
 
     #UUID:
@@ -31,7 +32,7 @@ defmodule Sconely.RegisterController do
     #urlsafe_base64 string:
     #SecureRandom.urlsafe_base64 #=> "WAut546EWdXM3O_9sJGvmQ"
 
-    registration_changeset = Registration.changeset(%Registration{}, %{user_id:  user_id, email: "e", password: "p", password_salt: hash})
+    registration_changeset = Registration.changeset(%Registration{}, %{user_id:  SecureRandom.uuid, email: "e", password: "p", password_salt: hash})
 
     #registration_changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})
     #{:error, changeset} = Repo.insert(changeset)
@@ -114,7 +115,7 @@ defmodule Sconely.RegisterController do
 
                         #{:ok, %{user_id: user_id}}
 
-                        #session_changeset = Session.changeset(%Session{}, %{user_id: "e", session_id: "p", token: ""})
+                        #session_changeset = Session.changeset(%Session{}, %{user_id: "e", token: ""})
 
                         #case Repo.insert(session_changeset) do
                         #  {:ok, _registration} -> IO.inspect("ok")
