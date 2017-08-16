@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateOrdersTable do
   def change do
     create table(:orders) do
       add :user_id, :string #uuid or "guest"
-      add :order_id, :integer
+      add :order_id, :uuid
   	  add :order_type, :string
       add :delivery_contact_first_name
       add :delivery_contact_last_name

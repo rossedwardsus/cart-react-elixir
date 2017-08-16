@@ -103,7 +103,7 @@ class Login extends React.Component<any, any> {
 
   }
 
-  setEmail(e: any){
+  setEmail = (e: any) => {
 
       //if email includes @ and .
 
@@ -113,7 +113,7 @@ class Login extends React.Component<any, any> {
 
   }
 
-  setPassword(e: any){
+  setPassword = (e: any) => {
 
       //capitals and numbers? 10 characters
 
@@ -130,7 +130,7 @@ class Login extends React.Component<any, any> {
       //this.props.loginUser("1", "2");
 
   
-      axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, data: {email: this.state.email, mobile: this.state.mobile, password: this.state.password}}, {withCredentials: true})
+      axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, data: {email: this.state.email, mobile: this.state.mobile, password: "this.state.password"}}, {withCredentials: true})
       .then((response: any) => {
 
             console.log("login response" + JSON.stringify(response));
@@ -207,8 +207,8 @@ class Login extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-6">
                                    <br/>
-                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={(e) => this.setEmail(e)}/>
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e) => this.setPassword(e)}/>
+                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={this.setEmail}/>
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={this.setPassword}/>
                                   <button type="button" className="btn" onClick={() => this.login()}>Login</button> 
                                   </div>
                                </div>

@@ -1,4 +1,5 @@
 import "babel-polyfill";
+
 import * as React from 'react'
 import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
@@ -198,19 +199,19 @@ class UserPaymentMethods extends React.Component<any, any> {
                                         </form>
                                         <form className="form-inline">
                                           <div className="form-group">
-                                              <input type="text" id="personal" className="form-control" placeholder="Card Number" onChange={this.setUserPaymentMethodCardNumber}/>
+                                              <input type="text" id={key} className="form-control" placeholder="Card Number" onChange={this.setUserPaymentMethodCardNumber}/>
                                           </div>
                                         </form>
                                         <form className="form-horizontal">
                                           <div className="form-group">
                                             <div className="col-md-2">
-                                              <input type="text" maxLength={2} className="form-control" id="personal"  placeholder="MM" style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} onChange={this.setUserPaymentMethodExpiryMonth}/>
+                                              <input type="text" maxLength={2} className="form-control" id={key}  placeholder="MM" style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} onChange={this.setUserPaymentMethodExpiryMonth}/>
                                             </div>
                                             <div className="col-md-2">
-                                              <input type="text" maxLength={4} className="form-control" id="personal"  placeholder="YYYY" style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} onChange={this.setUserPaymentMethodExpiryYear}/>
+                                              <input type="text" maxLength={4} className="form-control" id={key}  placeholder="YYYY" style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} onChange={this.setUserPaymentMethodExpiryYear}/>
                                             </div>
                                             <div className="col-md-2">
-                                              <input type="email" className="form-control" id="personal"  placeholder="CVC" style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                              <input type="email" className="form-control" id={key}  placeholder="CVC" style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                                             </div>
                                           </div>
                                         </form>  

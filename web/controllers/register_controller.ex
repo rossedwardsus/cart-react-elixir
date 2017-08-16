@@ -4,8 +4,10 @@ defmodule Sconely.RegisterController do
 
   import Ecto.Query, only: [from: 2]
 
-  alias Sconely.{Registration, UserProfiles}
+  alias Sconely.{Registration, Userprofile, Session}
   alias SconeHomeElixir.Repo
+
+  import Comeonin.Bcrypt #only: [checkpw: 2
 
   #plug :action
 
@@ -19,26 +21,27 @@ defmodule Sconely.RegisterController do
 
   def create(conn, args) do
 
-    IO.puts(args["email"])
+    IO.puts(args["password"])
 
     #user_id = UUID.uuid1()
     user_id = SecureRandom.uuid
-    hash = Bcrypt.hashpwsalt("password")
+    token_id = SecureRandom.uuid
+    password_hash = hashpwsalt(args["password"])
+
+    IO.inspect(password_hash)
 
     #UUID:
-    #SecureRandom.uuid # => "e8bc6fde-3c11-cc2e-903b-745221154d8a"
+    #IO.inspect(SecureRandom.uuid) # => "e8bc6fde-3c11-cc2e-903b-745221154d8a"
     #base64 string:
     #SecureRandom.base64(8) # => "VsifwaD2HCk="
     #urlsafe_base64 string:
     #SecureRandom.urlsafe_base64 #=> "WAut546EWdXM3O_9sJGvmQ"
 
-    registration_changeset = Registration.changeset(%Registration{}, %{user_id:  SecureRandom.uuid, email: "e", password: "p", password_salt: hash})
+    registration_changeset = Registration.changeset(%Registration{}, %{user_id: user_id, email: args["email"], password_hash: password_hash})
 
-    #registration_changeset = Registration.changeset(%Registration{}, %{email: "mary@example.com", password: "password"})
-    #{:error, changeset} = Repo.insert(changeset)
+    user_profile_changeset = Userprofile.changeset(%Userprofile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], about_me: ""})
 
-    user_profile_changeset = UserProfiles.changeset(%UserProfiles{}, %{user_id: user_id, first_name: args[:first_name], last_name: args[:last_name], email: "e", about_me: "am"})
-
+    session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
 
 
     #insert into users/registration return user_id
@@ -84,19 +87,69 @@ defmodule Sconely.RegisterController do
     #text conn, "hello"
     #redirect conn, to: "/user"
 
+    #if changesets are valid then insert
+
+    #unique cndtraint email
 
 
-    #Repo.transaction(fn ->
 
-        #case Repo.insert(registration_changeset) do
-        #  {:ok, response} -> IO.inspect(response)
+    if registration_changeset.valid? do
+
+        user_count = Repo.one!(from u in Registration, where: u.email==^args["email"], select: count("*"))
+
+        IO.inspect(user_count)
+
+        #if email doesnt already exist
+        if user_count == 0 do
+
+            
+            if user_profile_changeset.valid? do
+
+                if session_changeset.valid? do
+              
+                         Repo.insert(registration_changeset)
+                         Repo.insert(user_profile_changeset)
+                         #Repo.insert(session_changeset)
+                    
+                         #working
+                         #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
+
+                         #admin
+                         #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
+
+                         json conn, %{token: "12345678"}
+
+                end
+
+            else 
+
+                IO.inspect(user_profile_changeset.errors)
+
+                json conn, %{error: "email already exists"}
+
+            end
+
+        else
+
+          json conn, %{error: "email already exists"}
+    end
+
+
+
+    #transaction = Repo.transaction fn ->
+
+    #    case Repo.insert(registration_changeset) do
+     #     {:ok, registration_response} -> IO.inspect(registration_response)
         #    conn
         #      |> put_flash(:info, "User created successfully.")
         #      |> redirect(to: user_path(conn, :index))
 
+        #    json conn, %{token: "12345678"}
+
+                    
              
-                #case Repo.insert(user_profile_changeset) do
-                #  {:ok, response} -> IO.inspect(response)
+        #        case Repo.insert(user_profile_changeset) do
+        #          {:ok, user_profile_response} -> IO.inspect(user_profile_response)
                 #    conn
                 #      |> put_flash(:info, "User created successfully.")
                 #      |> redirect(to: user_path(conn, :index))
@@ -111,7 +164,8 @@ defmodule Sconely.RegisterController do
                         #    {:ok, %{user: jwt}}
                         #end
 
-                        
+                        #json conn, %{token: "12345678"}
+
 
                         #{:ok, %{user_id: user_id}}
 
@@ -119,15 +173,7 @@ defmodule Sconely.RegisterController do
 
                         #case Repo.insert(session_changeset) do
                         #  {:ok, _registration} -> IO.inspect("ok")
-                        #    conn
-
-                              #working
-                              #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
-
-                              #admin
-                              #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
-
-
+         
 
                         #      |> put_flash(:info, "User created successfully.")
                         #      |> redirect(to: user_path(conn, :index))
@@ -140,14 +186,19 @@ defmodule Sconely.RegisterController do
 
                                 #{:ok, %{token: "1234"}}
                                 #phoenix.token or secure random
-                                json conn, %{token: "1234"}
+                                #json conn, %{token: "1234"}
 
                             #end)
                         #    render(conn, "new.html", changeset: changeset)
                         #end
 
 
-                #  {:error, changeset} -> 
+                  #{:error, changeset} ->  #Repo.rollback(registration_changeset)
+                  #   rollback registraction insert
+                                          json conn, %{status: "error"}
+                                          
+
+
                     #Ecto.Changeset.traverse_errors(changeset, fn
                      # IO.inspect(Map.fetch(changeset, :errors))
                       #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
@@ -156,9 +207,12 @@ defmodule Sconely.RegisterController do
                     #end)
                 #    render(conn, "new.html", changeset: changeset)
                 
-         #       end
+                end
 
-         #{:error, changeset} -> 
+     #    {:error, registration_changeset} ->  IO.inspect("error")
+                                              #{:error, registration_changeset.errors}
+                                              #Repo.rollback(registration_changeset)
+
             #Ecto.Changeset.traverse_errors(changeset, fn
             #  IO.inspect(Map.fetch(changeset, :errors))
               #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
@@ -166,10 +220,22 @@ defmodule Sconely.RegisterController do
               #msg -> msg
             #end)
         #    render(conn, "new.html", changeset: changeset)
-        #end
-    #end)
+    #  end
+    #end
+    #IO.inspect(transaction)
+    #case transaction do
+    #  {:ok, _} ->  #working
+                   #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
 
-    #json conn, %{token: "12345"}
+                    #admin
+                    #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
+
+     #               json conn, %{status: "ok", token: "1234567890"}
+
+      #{:error, _} -> IO.inspect("transaction error")
+                      #Repo.rollback(registration_changeset.errors)
+      #               json conn, %{status: "error"}
+    #end
   end
 
 end

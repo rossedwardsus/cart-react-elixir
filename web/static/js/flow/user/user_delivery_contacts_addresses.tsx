@@ -1,4 +1,5 @@
 import "babel-polyfill";
+
 import * as React from 'react'
 import { Link } from 'react-router';
 //import Swipeable from 'react-swipeable';
@@ -216,24 +217,9 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
 
     return (
               <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-      
-                              {logged_in}
-                             
-                          </div>
-                    </nav>
+                    <UserNavbar />
                     <div className="row">
-                        <div className="hidden-xs col-md-4">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
@@ -253,13 +239,14 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/photo">Photo</Link>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-8">
                                   <br/>
                                   <br/>
                                   <br/>
+                                  <UserTabs/>
                                   <br/>
                                   <br/>
-                                  Delivery Addresses
+                                  Delivery Contact Addresses
                                   <br/>
                                   <form className="form-inline">
                                       <div className="form-group">
@@ -390,15 +377,7 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
                                   })}
                                  
                         </div>
-                        <div className="hidden-xs col-md-2">
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              <br/>
-                              maybe put something here
-                        </div>
+                       
                     </div>
               </div>
     )

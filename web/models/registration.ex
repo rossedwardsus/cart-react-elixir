@@ -7,18 +7,18 @@ defmodule Sconely.Registration do
 		#@derive {Poison.Encoder, only: [:email, :password]}
 
 		#@valid_attrs %{email: "", password: ""}
-		@optional_fields ~W()
-		@required_fields ~W(user_id email password password_salt)
+		@optional_fields ~W(user_id email password_hash)
+		@required_fields ~W()
 
 		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "registration" do
 			field :user_id, Ecto.UUID
 			field :email, :string
-			field :password, :string
-			field :password_salt, :string
+			#field :password, :string
+			field :password_hash, :string
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-			field :activated, :boolean, default: false
+			#field :active, :boolean, default: true
 		end
 
 		def changeset(struct, params \\ %{}) do

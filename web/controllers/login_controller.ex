@@ -6,7 +6,7 @@ defmodule Sconely.LoginController do
   import Comeonin.Bcrypt #only: [checkpw: 2
 
 
-  alias Sconely.Registration
+  alias Sconely.{Registration, Userprofile, Session}
   alias SconeHomeElixir.Repo
 
   #plug :action
@@ -21,73 +21,53 @@ defmodule Sconely.LoginController do
 
   def create(conn, args) do
 
-    IO.puts(args["email"])
+    #IO.inspect(pass)
+    IO.inspect(args["data"]["password"])
 
     user_id = UUID.uuid1()
-    hash = hashpwsalt("password")
+    token_id = SecureRandom.uuid
+    
+    #hash = hashpwsalt("password")
     #checkpw(given_pass, user.password_hash)
 
-    #UUID:
-    #SecureRandom.uuid # => "e8bc6fde-3c11-cc2e-903b-745221154d8a"
-    #base64 string:
-    #SecureRandom.base64(8) # => "VsifwaD2HCk="
-    #urlsafe_base64 string:
-    #SecureRandom.urlsafe_base64 #=> "WAut546EWdXM3O_9sJGvmQ"
+    user = Repo.get_by!(Registration, email: "gmail")
+    IO.inspect(user)
 
-    registration_changeset = Repo.get_by!(Registration, email:  "email")
+    checked = checkpw(args["data"]["password"], user.password_hash)
+
+    IO.inspect(checked)
+
+    #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
+
+    #if email exists
+    #check passwords equal
+    #checked = checkpw(args["data"]["password"], user.password_hash)
+
+    if !checked do
+        #if session_changeset.valid? do
+                  
+             #Repo.insert(session_changeset)
+        
+             #working
+             #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
+
+             #admin
+             #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
+
+        #     json conn, %{token: "12345678", first_name: "", last_name: ""}
+
+        #end
+    end
 
     
-    #Repo.transaction(fn ->
-
-        #case Repo.insert(registration_changeset) do
-        #  {:ok, response} -> IO.inspect(response)
-        #    conn
-        #      |> put_flash(:info, "User created successfully.")
-        #      |> redirect(to: user_path(conn, :index))
-
-             
-               
-                        #session_changeset = Session.changeset(%Session{}, %{user_id: "e", session_id: "p", token: ""})
-
-                        #case Repo.insert(session_changeset) do
-                        #  {:ok, _registration} -> IO.inspect("ok")
-                        #    conn
-
-                              #working
-                              #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
-
-                              #admin
-                              #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
+    #if user != nil
 
 
+    #checkpw(given_pass, user.password_hash)
+    #if good then add session and return token if not return error
 
-                        #      |> put_flash(:info, "User created successfully.")
-                        #      |> redirect(to: user_path(conn, :index))
-                        #  {:error, changeset} -> 
-                            #Ecto.Changeset.traverse_errors(changeset, fn
-                            #  IO.inspect(Map.fetch(changeset, :errors))
-                              #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
-                              #{msg, opts} -> IO.inspect(msg)
-                              #msg -> msg
-
-                                #{:ok, %{token: "1234"}}
-                                #phoenix.token or secure random
-                                json conn, %{token: "1234"}
-
-                            #end)
-                        #    render(conn, "new.html", changeset: changeset)
-                        #end
-
-        #{:error, changeset} -> 
-            #Ecto.Changeset.traverse_errors(changeset, fn
-            #  IO.inspect(Map.fetch(changeset, :errors))
-              #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
-              #{msg, opts} -> IO.inspect(msg)
-              #msg -> msg
-            #end)
-        #    render(conn, "new.html", changeset: changeset)
-        #end
-    #end)
+    
+   
 
     json conn, %{token: "12345"}
   end
