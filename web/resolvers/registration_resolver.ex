@@ -1,6 +1,6 @@
 defmodule Sconely.RegistrationResolver do
   alias Sconely.Registration
-  alias Sconely.Userprofile
+  alias Sconely.UserProfile
   alias SconeHomeElixir.Repo
   
   alias Comeonin.Bcrypt 
@@ -28,7 +28,7 @@ defmodule Sconely.RegistrationResolver do
 
   	registration_changeset = Registration.changeset(%Registration{}, %{user_id:  user_id, email: "e", password: "p", password_salt: hash})
 
-    user_profile_changeset = Userprofile.changeset(%Userprofile{}, %{user_id: user_id, first_name: args[:first_name], last_name: args[:last_name], email: "e", about_me: "am"})
+    user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{user_id: user_id, first_name: args[:first_name], last_name: args[:last_name], email: "e", about_me: "am"})
 
 
     #multi =

@@ -4,7 +4,7 @@ defmodule Sconely.RegisterController do
 
   import Ecto.Query, only: [from: 2]
 
-  alias Sconely.{Registration, Userprofile, Session}
+  alias Sconely.{Registration, UserProfile, Session}
   alias SconeHomeElixir.Repo
 
   import Comeonin.Bcrypt #only: [checkpw: 2
@@ -39,7 +39,7 @@ defmodule Sconely.RegisterController do
 
     registration_changeset = Registration.changeset(%Registration{}, %{user_id: user_id, email: args["email"], password_hash: password_hash})
 
-    user_profile_changeset = Userprofile.changeset(%Userprofile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], about_me: ""})
+    user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], about_me: ""})
 
     session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
 

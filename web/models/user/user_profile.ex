@@ -1,4 +1,4 @@
-defmodule Sconely.Userprofile do
+defmodule Sconely.UserProfile do
 		use Ecto.Schema
 		import Ecto.Changeset
 
