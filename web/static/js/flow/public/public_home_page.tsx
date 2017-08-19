@@ -412,11 +412,12 @@ class PublicHomePage extends React.Component<any, any> {
                                   <div className="visible-xs">
                                     mobile
                                     <div>
-                                      <Link to="/craftedkitchen" style={{fontSize:17}}>Yours</Link>
+                                      <Link to="/" style={{fontSize:17}}>Order Sconely Yours</Link>
+                                      <br/>
+                                      2-12 Scones.  Baked and delivered.
                                       <br/>
                                       <Link to="/public/menu">Menu</Link>
                                       <br/>
-                                      
                                     </div>
                                   </div>
                                   <br/>
@@ -430,6 +431,14 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                         </div>
                         <div className="col-md-4">
+                          <a onClick={() => this.createOrder("sconely_yours")}>Order Sconely Yours</a>
+                          <br/>
+                          2-12 Scones.  Baked and delivered.
+                          <br/>
+                          <br/>
+                          <a onClick={() => this.createOrder("sconely_social")}>Order Sconely Social</a>
+                          <br/>
+                          12-250 Scones.  Regular or Minis.  Baked and delivered for events
                         </div>
                     </div>
               </div>
