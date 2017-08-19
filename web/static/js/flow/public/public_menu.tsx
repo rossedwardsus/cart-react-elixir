@@ -448,13 +448,13 @@ class OrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order" + JSON.stringify(state));
+  console.log("mapstatetoprops public menu" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        menu_items: state.MenuItems,
+        menu_items: state.menuItems,
         order: state.Order,
         cart: state.cart
 

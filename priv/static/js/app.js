@@ -27701,11 +27701,11 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("mapstatetoprops order" + JSON.stringify(state));
+	    console.log("mapstatetoprops public menu" + JSON.stringify(state));
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
-	        menu_items: state.MenuItems,
+	        menu_items: state.menuItems,
 	        order: state.Order,
 	        cart: state.cart
 	        //}
@@ -29542,7 +29542,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, "" == "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), this.props.user.user_id == "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/signup" }, "Signup")), this.props.user.user_id != "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/user" }, "Home")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq"))), React.createElement("form", { id: "navbar", className: "navbar-form navbar-left" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange(e) {
+	            return React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, "" == "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), "" == "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/signup" }, "Signup")), "" != "" && React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/user" }, "Home")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq"))), React.createElement("form", { id: "navbar", className: "navbar-form navbar-left" }, React.createElement("div", { className: "form-group" }, React.createElement("input", { type: "text", className: "form-control", placeholder: "Guest Code", value: this.state.guest_code, onChange: function onChange(e) {
 	                    return _this2.guestCodeChange(e);
 	                } })), React.createElement("button", { type: "submit", className: "btn btn-default" }, "Submit")))));
 	        }
@@ -44455,18 +44455,21 @@ webpackJsonp([0],[
 	    }, {
 	        key: "login",
 	        value: function login() {
+	            var that = this;
 	            //this.props.loginUser("1", "2");
-	            axios_1.default.post('/api/login', { headers: { Authorization: localStorage.getItem('sconely_token') }, data: { email: this.state.email, mobile: this.state.mobile, password: "this.state.password" } }, { withCredentials: true }).then(function (response) {
-	                console.log("login response" + JSON.stringify(response));
+	            /*axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, body: {email: this.state.email, mobile: this.state.mobile, password: "this.state.password"}}, {withCredentials: true}).then((response: any) => {*/
+	            axios_1.default.post('/api/login', { email: this.state.email, mobile: this.state.mobile, password: this.state.password }).then(function (response) {
+	                console.log("login response " + JSON.stringify(response.data.token));
+	                //needs to be in redux, i forgot
 	                //save token, first_name, last_name to localstorage and send in auth header
-	                //that.props.history.push('/user');
+	                //localStorage.setItem("sconely_token", response.data.token)
+	                //localStorage.setItem("sconely_token", response.data.first_name)
+	                //localStorage.setItem("sconely_token", response.data.last_name)
+	                that.props.history.push('/user');
 	                //context.router
 	                //this.context.router.push('/order/complete');
 	            }).catch(function (error) {
-	                console.log("error" + error);
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //display errror to user - payment
+	                console.log("error " + error + "no account found");
 	                //if (!error.status) {
 	                // network error
 	                //}
@@ -44753,7 +44756,7 @@ webpackJsonp([0],[
 	            //this.props.history.push('/register_complete');
 	            var that = this;
 	            //if(this.state.first_name_validated === false){
-	            axios_1.default.post('http://localhost:4000/api/register', { first_name: that.state.first_name, last_name: that.state.last_name, email: that.state.email, mobile: this.state.mobile, password: this.state.password }).then(function (response) {
+	            axios_1.default.post('/api/register', { first_name: that.state.first_name, last_name: that.state.last_name, email: that.state.email, mobile: this.state.mobile, password: this.state.password }).then(function (response) {
 	                console.log("graphql respons" + JSON.stringify(response));
 	                //localStorage.getItem('token')}
 	                //that.props.history.push('/user');

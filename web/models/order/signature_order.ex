@@ -8,8 +8,10 @@ defmodule Sconely.SignatureOrder do
 
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
+		#signature_event_details?
+
 		schema "signature_orders" do
-			field :parent_order_id, :string
+			field :parent_order_id, :string #uuid
 			field :event_url_name, :string
 			field :event_long_name, :string
 			field :invited_guest_count, :string

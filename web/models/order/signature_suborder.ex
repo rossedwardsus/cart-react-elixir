@@ -10,8 +10,8 @@ defmodule Sconely.SignatureSuborder do
 
 	schema "signature_suborders" do
 
-		field :parent_order_id, :string #primary key
-		field :suborder_id, :string
+		field :parent_order_id, :string #primary key #uuid
+		field :suborder_id, :string #uuid
 		field :order_type, :string #invited_guests or additional items
 		field :total_amount_due, :string
 		field :paid_token, :string 

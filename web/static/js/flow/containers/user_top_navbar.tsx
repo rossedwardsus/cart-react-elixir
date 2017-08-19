@@ -145,10 +145,10 @@ class UserTopNavbar extends React.Component<any, any> {
                       {"" == "" &&
                         <li><Link to="/login">Login</Link></li>
                       }
-                      {this.props.user.user_id == "" &&
+                      {"" == "" &&
                         <li><Link to="/signup">Signup</Link></li>
                       }
-                      {this.props.user.user_id != "" &&
+                      {"" != "" &&
                         <li><Link to="/user">Home</Link></li>
                       }
                       <li><Link to="/register">About Us</Link></li>

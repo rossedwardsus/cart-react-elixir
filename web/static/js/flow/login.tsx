@@ -127,35 +127,39 @@ class Login extends React.Component<any, any> {
  
   login(){
 
+      let that = this;
+
       //this.props.loginUser("1", "2");
 
+      /*axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, body: {email: this.state.email, mobile: this.state.mobile, password: "this.state.password"}}, {withCredentials: true}).then((response: any) => {*/
+
   
-      axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, data: {email: this.state.email, mobile: this.state.mobile, password: "this.state.password"}}, {withCredentials: true})
+      axios.post('/api/login', {email: this.state.email, mobile: this.state.mobile, password: this.state.password})
       .then((response: any) => {
 
-            console.log("login response" + JSON.stringify(response));
+            console.log("login response " + JSON.stringify(response.data.token));
 
+            //needs to be in redux, i forgot
             //save token, first_name, last_name to localstorage and send in auth header
+            //localStorage.setItem("sconely_token", response.data.token)
+            //localStorage.setItem("sconely_token", response.data.first_name)
+            //localStorage.setItem("sconely_token", response.data.last_name)
 
-            //that.props.history.push('/user');
+            that.props.history.push('/user');
             //context.router
 
             //this.context.router.push('/order/complete');
 
 
+
       })
       .catch((error: any) => {
 
-            console.log("error" + error);
-            //go to code/payment screen
-    //        this.props.loadView();
+            console.log("error " + error + "no account found");
 
-
-            //display errror to user - payment
-
-     //if (!error.status) {
-        // network error
-      //}
+           //if (!error.status) {
+              // network error
+            //}
 
       })
       //dispatch(setSession());

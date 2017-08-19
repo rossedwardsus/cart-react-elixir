@@ -10,8 +10,8 @@ defmodule Sconely.OrderItems do
 
 		schema "order_items" do
 			field :order_id, Ecto.UUID
-			field :item_id, :string
-			field :quantity, :string
+			field :item_id, :string #integer
+			field :quantity, :string #integer
 			field :mini, :boolean		
 		end
 

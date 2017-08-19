@@ -22,30 +22,32 @@ defmodule Sconely.LoginController do
   def create(conn, args) do
 
     #IO.inspect(pass)
-    IO.inspect(args["data"]["password"])
+    IO.inspect(args)
 
     user_id = UUID.uuid1()
-    token_id = SecureRandom.uuid
+    token = SecureRandom.uuid
     
     #hash = hashpwsalt("password")
     #checkpw(given_pass, user.password_hash)
 
-    user = Repo.get_by!(Registration, email: "gmail")
-    IO.inspect(user)
+    registration = Repo.get_by!(Registration, email: "gmail")
+    IO.inspect(registration)
 
-    checked = checkpw(args["data"]["password"], user.password_hash)
+    checked = checkpw(args["password"], registration.password_hash)
 
     IO.inspect(checked)
 
-    #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
+    session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token})
 
     #if email exists
     #check passwords equal
     #checked = checkpw(args["data"]["password"], user.password_hash)
 
-    if !checked do
-        #if session_changeset.valid? do
-                  
+    if checked do
+        if session_changeset.valid? do
+
+             user = Repo.get_by!(Userprofile, user_id: registration.user_id)
+    
              #Repo.insert(session_changeset)
         
              #working
@@ -54,22 +56,23 @@ defmodule Sconely.LoginController do
              #admin
              #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
-        #     json conn, %{token: "12345678", first_name: "", last_name: ""}
+             json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
 
-        #end
+        end
+
+    else
+
+        json conn |> put_status(:bad_request), %{status: "failed"}
+
     end
 
-    
-    #if user != nil
+  end
 
 
-    #checkpw(given_pass, user.password_hash)
-    #if good then add session and return token if not return error
+  def logout(conn, args) do
 
-    
-   
+    #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token})
 
-    json conn, %{token: "12345"}
   end
 
 end
