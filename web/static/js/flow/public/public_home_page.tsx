@@ -403,7 +403,7 @@ class PublicHomePage extends React.Component<any, any> {
                           
                           <br/>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-7">
                                   <br/>
                                   <br/>
                                   <img style={{height:650, width:650}} src={this.state.gallery_image}/>
@@ -430,7 +430,9 @@ class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-2">
+                          <br/>
+                          <br/>
                           <a onClick={() => this.createOrder("sconely_yours")}>Order Sconely Yours</a>
                           <br/>
                           2-12 Scones.  Baked and delivered.
