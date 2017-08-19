@@ -333,9 +333,6 @@ class OrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
-                            <Link to="/public/menu">Menu</Link>
-                            <br/>
-                            <Link to="/public/menu">Sconely Social</Link>
                             <br/>
                             <br/>
                             <br/>
@@ -349,7 +346,6 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <a onClick={() => this.createOrder("sconely_social")}>Social</a>
                             <br/>
-                            <a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                             <br/>
                             <br/>
                             <br/>
