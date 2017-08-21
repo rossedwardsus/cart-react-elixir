@@ -283,7 +283,8 @@ class OrderMenu extends React.Component<any, any> {
         //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
 
         //if user is logged in then 
-        //this.context.router.push('/order/12345');
+        //this.props.startOrder()
+        this.context.router.push('/order/menu');
 
         //this.context.router.push('/order/12345');
 

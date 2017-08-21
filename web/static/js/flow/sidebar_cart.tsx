@@ -217,7 +217,7 @@ class SidebarCart extends React.Component<any, any> {
     //console.log("order type" + JSON.stringify(this.props.order));
 
 
-    if(this.props.cart.cart_items.length === 0){
+    /*if(this.props.cart.cart_items.length === 0){
 
         cart = "There are no items in your cart.";
 
@@ -311,7 +311,7 @@ class SidebarCart extends React.Component<any, any> {
                   
                 }.bind(this))
 
-    }
+    }*/
 
     if(item_count == 12){
 
@@ -353,6 +353,9 @@ class SidebarCart extends React.Component<any, any> {
 const mapStateToProps = (state: any, ownProps: any) => {
   console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
   return {
+
+    //cart_items: getCartItems(state); 
+
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
@@ -379,9 +382,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const SidebarCart1 = connect(
+const SidebarCartConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SidebarCart);
 
-export default SidebarCart;
+export default SidebarCartConnected;
