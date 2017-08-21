@@ -1,13 +1,13 @@
 defmodule Sconely.DBTest do
   use SconeHomeElixir.ConnCase
   #sconehomeelixir.integrationtest
-  alias Sconely.SconelySocialOrder
+  alias Sconely.Order
   alias SconeHomeElixir.Repo
 
   #@opts SconeHomeElixir.Router.init([])
 
-  test "insert sconely social order" do
-    order = %SconelySocialOrder{}
+  test "sconely social order changeset" do
+    order = %Order{}
 
     #Repo.insert(order)
 
