@@ -367,7 +367,6 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <MobileCheckoutButton/>
                           </div>
                     </div>
                   <br/>
@@ -385,7 +384,7 @@ class OrderMenu extends React.Component<any, any> {
                             Ingredients: {this.state.selected_item_ingredients}
                             <br/>
                             <br/>
-                            $60/Mini - $54
+                            $5.50
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
@@ -393,6 +392,7 @@ class OrderMenu extends React.Component<any, any> {
                               <div className="col-md-3">
                                 <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
                                   <option value="">Select Quantity</option> 
+                                  <option value="2">2</option>
                                   <option value="3">3</option>
                                   <option value="4">4</option>
                                   <option value="5">5</option>

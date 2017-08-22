@@ -202,9 +202,7 @@ class DeliveryAddress extends React.Component<any, any> {
                                     <b>Delivery Address</b>
                                     <br/>
                                       <select className="form-control">
-                                          {this.props.user.delivery_address_names.map(function(address: any){
-                                            return(<option>{address.name}</option>)
-                                          })}
+                                          
                                       </select>
                                 </div>
                               </div>

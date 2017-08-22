@@ -35,7 +35,7 @@ import UserOrder from './user/user_order.tsx';
 
 //import Order from "./order.jsx";
 import Menu from "./menu.tsx";
-import Checkout from "./order_datetime_contact.tsx";
+import Checkout from "./order_datetime_contact_address_payment.tsx";
 import PaymentMethod from './payment_method.tsx'
 import OrderCart from "./order_cart.tsx";
 import OrderComplete from './order_complete.jsx';

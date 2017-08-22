@@ -739,6 +739,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 
+    //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
+
+
 
     return ( <div>
                 <nav className="navbar navbar-default navbar-fixed-top">
@@ -809,8 +812,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             
                             <Contact contact={this.props.order_contact} setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
-                            <OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-
+                            
                             <br/>
 
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
@@ -855,7 +857,7 @@ function mapStateToProps(state: any) {
    order_delivery_address: state.delivery_address,
    order_contact: state.contact,
    order_name: state.name,
-   order_cart_items: state.cart.cart_items,
+   //order_cart_items: state.cart.cart_items,
    order_datetime: state.OrderDatetime,
    order_payment_method: state.OrderPayment,
 
