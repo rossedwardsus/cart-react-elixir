@@ -317,6 +317,9 @@ class OrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                             Sconely Yours
                             <br/>
                             <br/>

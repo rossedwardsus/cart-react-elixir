@@ -11,6 +11,8 @@ export const getYoursMenuItems = (state: any) => {
 
   console.log("yours " + JSON.stringify(state.menuItems));
 
+  //state.menuItems.items.filter((item: any) => item.yours == true)
+
   return state.menuItems.items;
   
 
