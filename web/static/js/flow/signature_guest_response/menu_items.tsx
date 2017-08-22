@@ -5,9 +5,9 @@ import * as React from 'react'
 import { Link, browserHistory } from 'react-router'
 import {connect} from 'react-redux';
 
-import {getMenuItems, getOrderDetails, getNormalizedMenuItems, getSconelyMessage, getSignatureHostMessage} from '../selectors/signature_guest_response.ts';
+import {getOrderDetails, getNormalizedMenuItems, getSconelyMessage, getSignatureHostMessage} from '../selectors/signature_guest_response.ts';
 
-import {getMenuItemsAction} from '../actions/menu.ts';
+import {getMenuItems} from '../actions/menu.ts';
 import {loadSignatureGuestResponseOrderDetails, saveGuestChoice, saveGuestChoiceNoScone} from '../actions/signature_guest_response.ts';
 
 import NavBar from './navbar.tsx';
@@ -368,7 +368,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     getMenuItems: () => {
-      dispatch(getMenuItemsAction());
+      dispatch(getMenuItems());
     },
 
     loadSignatureGuestResponseOrderDetails: () => {
@@ -391,9 +391,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const GuestMenu1 = connect(
+const GuestMenuConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(GuestMenu);
 
-export default GuestMenu1;
+export default GuestMenuConnected;

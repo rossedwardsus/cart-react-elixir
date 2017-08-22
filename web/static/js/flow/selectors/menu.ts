@@ -9,9 +9,9 @@ export const getYoursMenuItems = (state: any) => {
 
   //return menu_items_temp;
 
-  console.log(JSON.stringify(state.MenuItems));
+  console.log("yours " + JSON.stringify(state.menuItems));
 
-  return state.MenuItems;
+  return state.menuItems.items;
   
 
   /*switch (filter) {

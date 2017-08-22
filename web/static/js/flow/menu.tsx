@@ -13,7 +13,7 @@ import {createOrder} from './actions/order.ts';
 import SidebarCart from './sidebar_cart.tsx';
 import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
-import {getYoursMenuItems} from './selectors/order.ts'; 
+import {getYoursMenuItems} from './selectors/menu.ts'; 
 
 
 //type Props = {
@@ -33,9 +33,7 @@ class OrderMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_green"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}],
-        crafted_kitchen_menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "SavvymenuJuneb5x5", hover_image_id: "SavvymenuJuneb5x5rollover"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}],
-        //menu_items: [],
+        menu_items: [],
         selected_item_id: "",
         selected_item_type: "",
         selected_item_quantity: "",
@@ -60,7 +58,7 @@ class OrderMenu extends React.Component<any, any> {
   componentDidMount(){
 
     //get active items from the database
-    //alert(this.props.params);
+    console.log(this.props.params);
 
     //alert(JSON.stringify(this.props.cart_items));
     //this.props.dispatch();
@@ -87,7 +85,9 @@ class OrderMenu extends React.Component<any, any> {
     //this.props.getMenuItems();
 
     //get menu items here
-    this.setState({menu_items: this.props.menuItems.menu_items});
+    
+    this.props.getMenuItems();
+    //this.setState({menu_items: this.props.menuItems.menu_items});
     
   }
 
@@ -109,7 +109,9 @@ class OrderMenu extends React.Component<any, any> {
 
       this.setState({selected_item_id: item_id});
 
-      this.state.menu_items.map(function(item: any){
+      //findindex
+
+      /*this.props.menuItems.map(function(item: any){
 
           if(item.item_id === item_id){
 
@@ -120,7 +122,7 @@ class OrderMenu extends React.Component<any, any> {
           }
 
 
-      }.bind(this));
+      }.bind(this));*/
 
       $('#myModal').modal('show');
 
@@ -315,9 +317,7 @@ class OrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
-                            <Link to="/public/menu">Menu</Link>
-                            <br/>
-                            <Link to="/public/menu">Sconely Social</Link>
+                            Sconely Yours
                             <br/>
                             <br/>
                             <SidebarCart order={this.props.order} cart={this.props.cart}/>
@@ -333,7 +333,7 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            {this.state.menu_items.map(function(item: any, index: any){
+                            {this.props.menuItems.map(function(item: any, index: any){
 
                                 console.log(item);
                             
@@ -350,10 +350,10 @@ class OrderMenu extends React.Component<any, any> {
 
                                 return(
                                         <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(index: any) => this.onMouseEnter(item.item_id)} onMouseLeave={() => this.onMouseLeave(item.item_id)} src={"/images/menu/" + item.image_id + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           <br/>    
                                           <br/>
-                                          <b>{item.title}</b> / {item.description}
+                                          <b>{item.name}</b>
                                           <br/>
                                           <br/>
                                           <br/>
@@ -390,8 +390,6 @@ class OrderMenu extends React.Component<any, any> {
                               <div className="col-md-3">
                                 <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
                                   <option value="">Select Quantity</option> 
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
                                   <option value="3">3</option>
                                   <option value="4">4</option>
                                   <option value="5">5</option>
@@ -420,7 +418,7 @@ class OrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order" + JSON.stringify(state));
+  console.log("mapstatetoprops order menu " + JSON.stringify(state));
   return {
     //if yours
     menuItems: getYoursMenuItems(state),
@@ -432,7 +430,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        //menu_items: state.MenuItems,
+        menu_items: state.menuItems.items,
         order: state.Order,
         cart: state.cart
 
@@ -445,6 +443,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     getMenuItems: () => {
+      console.log("here");
       dispatch(getMenuItems());
     },
     addCartItem: (order_id: any, item_id: any, item_type: any, quantity: any) => {
@@ -459,11 +458,11 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const OrderMenu1 = connect(
+const OrderMenuConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(OrderMenu);
 
-export default OrderMenu1;
+export default OrderMenuConnected;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

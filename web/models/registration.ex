@@ -25,7 +25,8 @@ defmodule Sconely.Registration do
 		    struct
 		    |> cast(params, @required_fields, @optional_fields)
 		    #|> validate_required([:email])
-		    #|> validate_length(:email, min: 2)
+		    |> validate_length(:user_id, min: 2)
+		    |> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)
 		    #contains
 		end

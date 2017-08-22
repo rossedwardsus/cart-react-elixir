@@ -32,6 +32,11 @@ defmodule Sconely.UserProfile do
 		    |> cast(params, @required_fields, @optional_fields)
 		    #|> cast(params, [])
 		    #|> validate_required(params, [:name])
+		    |> validate_length(:first_name, min: 2)
+		    |> validate_length(:last_name, min: 2)
+		    |> validate_length(:email, min: 2)
+		    |> validate_length(:mobile, min: 2)
+		    |> validate_length(:about_me, min: 2)
 		end
 
 
