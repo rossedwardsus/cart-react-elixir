@@ -13,7 +13,7 @@ import Order from './social_yours_order.ts';
 import OrderValidations from './order_validated.ts';
 import User from './user.ts';
 //import user_delivery_addresses from './user_delivery_addresses.ts';
-import GuestCart from './cart.ts';
+import GuestOrder from './cart.ts';
 //import name from './name.ts';
 //import contact from './contact.ts';
 //import OrderDeliveryAddress from './order_delivery_address.ts';
@@ -47,7 +47,7 @@ export default combineReducers({
   //OrderPayment,
   //OrderDeliveryAddress,
   //OrderValidations,
-  GuestCart,
+  GuestOrder,
   //name,
   //contact,
   User,
