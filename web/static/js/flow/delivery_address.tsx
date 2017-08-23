@@ -79,8 +79,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.setState({street1: this.props.deliveryAddress.street1})
-    this.setState({street2: this.props.deliveryAddress.street2})
+    //this.setState({street1: this.props.deliveryAddress.street1})
+    //this.setState({street2: this.props.deliveryAddress.street2})
 
   }
 
@@ -173,40 +173,16 @@ class DeliveryAddress extends React.Component<any, any> {
 
     let delivery_address:any = "";
 
-    console.log("delivery address " + this.props.order.order_type);
-
-    if(this.props.order.order_type == "sconely_yours"){
-
-        delivery_address = <div>
-                              <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-3">
-                                    Pickup
-                                    <br/>
-                                    <select className="form-control">
-                                      <option></option>
-                                      <option>Crafted Kitchen</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </form>
-                          </div>
-
-    }else{
-
-        delivery_address = <div>
-                          {this.props.session.session_id != "" &&
+    return ( <div>
+                <div>
                            <form className="form-horizontal">
                               <div className="form-group">
                                 <div className="col-sm-3">
                                     <b>Delivery Address</b>
                                     <br/>
-                                      <select className="form-control">
-                                          
-                                      </select>
-                                </div>
+                                 </div>
                               </div>
-                           </form>}
+                           </form>
                            <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-3">
@@ -236,26 +212,11 @@ class DeliveryAddress extends React.Component<any, any> {
                                     <select className="form-control" onChange={(value) => this.setDeliveryAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                                       <option>Zipcode</option>
                                       <option>Free</option>
-                                      
-                                      {this.state.zipcodes.map(function(zipcode: any){
-
-                                          return(<option value={zipcode}>{zipcode}</option>)
-
-                                      })}
-                                    
                                     </select>
                                   </div>
-                                </div>
-                              </form>
+                              </div>
+                          </form>
                           </div>
-
-    }
-   
-    return ( <div>
-                {this.props.order_type}
-                <br/>
-                {delivery_address}
-                <br/>
             </div>
     )
   }

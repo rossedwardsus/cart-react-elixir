@@ -73,11 +73,107 @@ class Contact extends React.Component<any, any> {
 
   componentDidMount(){
 
-      this.setState({contact_email: this.props.contact.email});
-      this.setState({contact_email_again: this.props.contact.email_again});
-      this.setState({contact_mobile: this.props.contact.mobile});
+      //this.setState({contact_email: this.props.contact.email});
+      //this.setState({contact_email_again: this.props.contact.email_again});
+      //this.setState({contact_mobile: this.props.contact.mobile});
    
   }
+
+  setFirstName = (e: any) => {
+
+    //only letters
+
+    this.setState({first: e.target.value});
+
+    if(e.target.value.length > 0){
+
+        //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+        //let symbol_res = symbol_patt.test(e.target.value);
+
+        //let number_res = (/[0-9]/.test(e.target.value));
+
+        //if(!symbol_res){
+        
+          //this.setState({first_name_border_color: "grey"});
+          this.props.setFirstName(e);
+
+          if(this.state.last_name.length > 0){
+          
+              this.props.setNameValidated(e);
+
+          }
+
+        //}else{
+
+          //this.setState({first_name_border_color: "red"});
+
+          //this.props.setNameInvalidated(e);
+
+        //}
+
+    }
+
+
+    //this.props.nameValidated();
+    //this.props.nameInvalidated();
+
+
+  }
+
+  onLastNameFocus = () => {
+
+    //alert();
+
+    //this.setState({last_name_border_color: "red"});
+
+  }
+
+  setLastName = (e: any) => {
+
+      this.setState({last: e.target.value});
+
+      if(e.target.value.length > 0){    
+
+          //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+          //let symbol_res = symbol_patt.test(e.target.value);
+
+          //console.log(symbol_res);
+
+          //let number_res = (/[0-9]/.test(e.target.value));
+
+          //if(!symbol_res){
+          
+            //this.setState({last_name_border_color: "grey"});
+            this.props.setLastName(e);
+
+            if(this.state.first_name.length > 0){
+             
+              this.props.setNameValidated(e);
+            
+            }
+
+          //}else{
+
+            //this.setState({last_name_border_color: "red"});
+
+             //this.props.setNameInvalidated(e);
+
+          //}
+
+      }
+
+  }
+
+  setCompanyName(e: any){
+
+    this.setState({company_name: e.target.value});
+    this.props.setCompanyName(e);
+
+    //this.props.nameValidated();
+    //this.props.nameInvalidated();
+
+  }
+
 
   setContactEmail(e: any){
 
@@ -186,13 +282,35 @@ class Contact extends React.Component<any, any> {
 
    
     return ( <div>
-               <form className="form-horizontal">
+              <br/>
+              <br/>
+              <br/>
+              <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-sm-10">
+                  <div className="col-md-12">
                       <b>Contact</b>
                       <br/>
                   </div>
                 </div>
+              </form>
+              <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-md-3">
+                      <div className={this.state.first_name_classname}>
+                        <input type="text" value={this.state.first} maxLength={20}  className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                    </div>
+                    <div className="col-md-3">
+                      <div className={this.state.last_name_classname}>
+                        <input type="text" value={this.state.last}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                    </div>
+                    <div className="col-md-3">
+                      <div className={this.props.firstNameClassName}>
+                        <input type="text" value={this.state.company_name}  className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                    </div>
+                  </div>
               </form>
               <form className="form-horizontal">
                 <div className="form-group">

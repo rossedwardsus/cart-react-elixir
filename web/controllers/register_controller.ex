@@ -39,7 +39,7 @@ defmodule Sconely.RegisterController do
 
     registration_changeset = Registration.changeset(%Registration{}, %{user_id: user_id, email: args["email"], password_hash: password_hash})
 
-    user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], about_me: ""})
+    #user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], about_me: ""})
 
     session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
 
@@ -103,12 +103,12 @@ defmodule Sconely.RegisterController do
         if user_count == 0 do
 
             
-            if user_profile_changeset.valid? do
+            #if user_profile_changeset.valid? do
 
                 if session_changeset.valid? do
               
                          Repo.insert(registration_changeset)
-                         Repo.insert(user_profile_changeset)
+                         #Repo.insert(user_profile_changeset)
                          #Repo.insert(session_changeset)
                     
                          #working
@@ -121,13 +121,13 @@ defmodule Sconely.RegisterController do
 
                 end
 
-            else 
+            #else 
 
-                IO.inspect(user_profile_changeset.errors)
+                #IO.inspect(user_profile_changeset.errors)
 
                 json conn, %{error: "email already exists"}
 
-            end
+            #end
 
         else
 

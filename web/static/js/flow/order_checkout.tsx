@@ -23,9 +23,9 @@ import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './action
 
 import SidebarCart from './sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
-import Contact from './contact.tsx';
-import Datetime from './datetime.tsx';
-import Name from './name.tsx';
+import Contact from './order_contact.tsx';
+import Datetime from './order_datetime.tsx';
+//import Name from './name.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
@@ -798,7 +798,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
                         <div className="col-xs-12 col-md-9">
                             <br/>
                             <br/>
-                            <br/>
+                            <Contact contact={this.props.order_contact} setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
+
                             <DeliveryAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
                             setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
                             setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} 
@@ -806,21 +807,13 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             setDeliveryCost={(e: any) => this.props.setDeliveryCost(e)}
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
-                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>
-
-                            <Name name={this.props.order_name} setFirstName={(e: any) => this.props.setFirstName(e)} setLastName={(e: any) => this.props.setLastName(e)} setCompanyName={(e: any) => this.props.setCompanyName(e)} setNameValidated={() => this.props.setNameValidated()}/>
-                            
-                            <Contact contact={this.props.order_contact} setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
-
-                            
-                            <br/>
-
+                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>      
+                    
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
 
-                            <input type="checkbox" onChange={(e: any) => this.props.termsValidated(e)}/>Terms
                             <br/>
-                            <input type="checkbox" onChange={(e: any) => this.mailingList(e)}/>Join Mailing List
+                            <input type="checkbox" onChange={(e: any) => this.mailingList(e)}/>Save for later
                             <br/>
 
                             <CheckoutButton setOrderId={(order_id: any) => this.props.setOrderId(order_id)} thisorder={this.props.order} order_delivery_address={this.props.order_delivery_address} 
@@ -988,10 +981,10 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const Checkout = connect(
+const CheckoutConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(OrderDateTimeContact)
 
-export default Checkout;
+export default CheckoutConnected;
 

@@ -23,7 +23,7 @@ import DeliveryAddress from './delivery_address.tsx';
 import Contact from './contact.tsx';
 import ContactPreview from './contact_preview.tsx';
 import DateTime from './datetime.tsx';
-import Name from './name.tsx';
+//import Name from './name.tsx';
 import NamePreview from './name_preview.tsx';
 import PaymentMethod from './payment_method.tsx';
 
@@ -1009,10 +1009,10 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const Preview1 = connect(
+const PreviewConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Preview)
 
-export default Preview;
+export default PreviewConnected;
 
