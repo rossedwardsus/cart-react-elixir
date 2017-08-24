@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 
 import { Link, browserHistory } from 'react-router'
 
@@ -15,10 +15,10 @@ type Props = {
 };
 
 
-export default class Menu extends React.Component {
+export default class Menu extends React.Component<any, any> {
   //props: Props;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     //this.getData();
   
@@ -30,7 +30,7 @@ export default class Menu extends React.Component {
         cart: this.props.cart,
     };
 
-    this.loadCart = this.loadCart.bind(this);
+    //this.loadCart = this.loadCart.bind(this);
     
   }
 
@@ -46,57 +46,13 @@ export default class Menu extends React.Component {
     };
   }
 
-  loadCart(){
 
-    this.setState({page: "cart"});
-    //remove/change quantity
 
-  }
+ 
 
-  loadItems(){
+  
 
-    this.setState({page: "items"});
-    //remove/change quantity
-
-  }
-
-  /*removeitem(item_id){
-
-    //find item and remove it via split maybe
-    //this.setState({cart: cart_temp});
-
-    var cart_temp = this.state.cart;
-    var cart_temp1 = "";
-    
-    //var cart_temp = cart_temp.filter(function(item) {
-    //    return item.name !== "John";
-    //});
-
-    //cart_temp.map(function(i, v){
-
-            //if v.item_id == item_id{
-
-              //.splice(0,1);
-
-            //}
-          
-    //}
-    
-  }*/
-
-  mouseOver(e){
-
-      e.target.src = "/images/menu/DWK_greenrollover3.jpg";
-
-  }
-
-  mouseOut(e){
-
-      e.target.src = "/images/menu/DWK_greenrollover1.jpg";
-
-  }
-
-  render(): React.Element {
+  render(): JSX.Element {
 
     var that = this;
     var page = "";
@@ -105,7 +61,7 @@ export default class Menu extends React.Component {
     var value_24 = "";
     var mini_12 = "";
 
-    this.state.items.map(function(item){
+    /*this.state.items.map(function(item){
 
 
         value_12 = item.item_id + "_" + 12;     
@@ -218,17 +174,38 @@ export default class Menu extends React.Component {
                     })}
                   </div>
 
-    }
+    }*/
 
     
 
 
 
     return (
-      <div>
-        {page}
-        <br/>
-      </div>
+            <div>
+               <nav className="navbar navbar-default" style={{border: 1}}>
+                    <div className="container-fluid">
+                      <div className="navbar-header">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                           <span className="sr-only">Toggle navigation</span>
+                           <span className="icon-bar"></span>
+                           <span className="icon-bar"></span>
+                           <span className="icon-bar"></span>
+                        </button>
+                        <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+                      </div>
+                      <div className="collapse navbar-collapse" id="navigationbar">
+                        <ul id="navbar" className="nav navbar-nav navbar-right">
+                          <li><Link to="/login">Login</Link></li>
+                          <li><Link to="/register">Signup</Link></li>
+                          <li><Link to="/register">About Us</Link></li>
+                          <li><Link to="/register">Faq</Link></li>
+                        </ul>
+                        
+                      </div>
+                    </div>
+                  </nav>
+              <br/>
+            </div>
     )
   }
 }

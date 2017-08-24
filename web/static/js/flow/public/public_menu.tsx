@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 import {getMenuItems} from '../actions/menu.ts';
 import {cartValidated} from '../actions/order_validations.ts';
-import {addCartItem} from '../actions/cart.ts';
+//import {addCartItem} from '../actions/cart.ts';
 import {createOrder} from '../actions/order.ts';
 //import SidebarCart from './sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
@@ -412,26 +412,7 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
-                              <div className="col-md-3">
-                                <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
-                                  <option value="">Select Quantity</option> 
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                                  <option value="6">6</option>
-                                  <option value="7">7</option>
-                                  <option value="8">8</option>
-                                  <option value="9">9</option>
-                                  <option value="10">10</option>
-                                  <option value="11">11</option>
-                                  <option value="12">12</option>
-                                </select>
-                              </div>
-                              <div className="col-md-3">
-                                <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
-                              </div>
+                                
                             </div>
                           </form>
                         </div>
@@ -467,7 +448,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(getMenuItems());
     },
     addCartItem: (order_id: "", item_id: any, item_type: any, quantity: any) => {
-      dispatch(addCartItem(order_id, item_id, item_type, quantity));
+      //dispatch(addCartItem(order_id, item_id, item_type, quantity));
     },
     cartValidated: () => {
       dispatch(cartValidated());

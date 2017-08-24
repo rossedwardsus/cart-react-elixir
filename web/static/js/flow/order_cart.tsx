@@ -6,10 +6,18 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
 //import * as getAllProducts from './actions/menu';
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/cart.ts';
+
+import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/guest_cart.ts';
+
 //import { getPublicMenu } from './reducers/menu';
+
 const Immutable  = require('immutable');
+
+import SidebarCart from './order_sidebar_cart.tsx';
+import PublicTopNavbar from './public/public_top_navbar.tsx';
+
 
 
 /*function addTodoWithDispatch() {
@@ -552,11 +560,12 @@ class OrderCart extends React.Component<any, any> {
     let item_count = 0;
     let subtotal = 0;
     let total_cost = 0;
+    let delivery_cost = 0;
     let that = this;
 
     console.log("order cart" + JSON.stringify(this.props.cart_items));
 
-    if(this.props.cart_items.length === 0){
+    /*if(this.props.cart_items.length === 0){
 
         cart = "<div>there are no items in your cart<br/><Link to='/public/menu' className='btn btn-default'>Go to Menu</Link><br/></div>";
 
@@ -567,9 +576,13 @@ class OrderCart extends React.Component<any, any> {
         total_cost = 0;
         item_count = 0;
 
-        if(that.props.order.order_type == "sconely_yours"){
+        //if(that.props.order.order_type == "sconely_yours"){
+
+
+        //put this in a selector?
+        total_cost = cart_items.reduce((prevVal, elem) => prevVal + elem.launches, 0);
          
-          /*total_cost = this.props.cart_items.map(function(item: any){
+        total_cost = this.props.cart_items.map(function(item: any){
 
                           //console.log("item " + JSON.stringify(item));
                           //console.log("order cart " + that.props.order);
@@ -579,17 +592,19 @@ class OrderCart extends React.Component<any, any> {
                           return subtotal + (6 * item.quantity * 24);
                           //item_count = item_count + (24 * item.quantity);
 
-                      });*/
+                      });
 
-          total_cost =  this.props.cart_items.map(function(b: any) { return b.quantity * 6; })
+        total_cost =  this.props.cart_items.map(function(b: any) { return b.quantity * 6; })
             .reduce(function(p:any, c:any) { return p + c; });
-        }else{
+        //}else{
 
 
 
-        }
+        //}
 
-        /* item_count = this.props.cart_items.map(function(item: any){
+        item_count = cart_items.reduce((prevVal, elem) => prevVal + elem.launches, 0);
+
+        item_count = this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
             console.log("order cart " + that.props.order);
@@ -599,11 +614,14 @@ class OrderCart extends React.Component<any, any> {
                   //change to individual calls
 
                   //total_cost = total_cost + (6 * item.quantity * 24);
-                  item_count = item_count + (24 * item.quantity);*/
+                  item_count = item_count + (24 * item.quantity);
 
 
+        //delivery_cost = guest_order.delivery_cost;
+        //subtotal
 
 
+        //put this in render?
         this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
@@ -635,14 +653,31 @@ class OrderCart extends React.Component<any, any> {
                           
         });
 
+        //for yours
+        //"name" +quantity- total cost delete
 
-        cart = this.props.cart_items.map(function(item: any, index: any){
+        //for social
+        //"name - mini" +quantity- total cost delete
+        //"name - assortment" +quantity- total cost delete
+
+        //analytics - track the users selections incremenets decrememnts and deltes?
+
+        //yours
+        //{order_type: "yours", payment_method: {}, delivery_address: {}, contact: {}, cart: [{item_id: 1, quanity: 2}]}
+
+        //social
+        //{order_type: "social", payment_method: {}, delivery_address: {}, contact: {}, cart: [{item_id: 1, mini: true, quanity: 2}, {item_id: 1, assortments: true, quanity: 2}]}
+
+
+        cart = this.props.cart_items.forEach(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item.item_id
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
-                      //let item_title = result.get("title");
+                      //let item_name = result.get("name");
 
-                      if(this.props.order.order_type == "sconely_yours"){
+                      //let item_name = this.props.menu_items[item.menu_item_id].name;
+
+                      if(this.props.guestOrder.order_type == "sconely_yours"){
 
                           console.log("order cart" + JSON.stringify(this.props.cart_items));
 
@@ -652,7 +687,7 @@ class OrderCart extends React.Component<any, any> {
                           return(<div>
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{fontSize:16, border: 1}}>
-                                            <div className="col-md-1">{item.item_title}</div>
+                                            <div className="col-md-1">{item_title}</div>
                                             <div className="col-md-3">
                                               <div className="row">
                                                 <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
@@ -712,31 +747,48 @@ class OrderCart extends React.Component<any, any> {
                   
                 }.bind(this))
 
-    }
+    }*/
     
     return ( <div>
-               <b>Cart Items</b>
-               <br/>
-               {cart}
-               <br/>
-               <br/>
-               <form className="form-horizontal" style={{border: 1}}>    
-                  <div className="form-group" style={{border: 1}}>
-                    <div className="col-md-8">                         
-                       <br/>
-                       <div className="col-md-4">Delivery charge</div><div className="col-md-1">${this.props.order.delivery_cost}</div>
-                       <br/>
-                       <br/> 
-                       <div className="col-md-4">Promo Code</div><div className="col-md-4">
-                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" style={{borderRadius: 0, fontSize: 16}}/>
-                       </div>
-                       <br/>
-                       <br/>
-                       <div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost}</b></div>
+                  <PublicTopNavbar/>
+                  <div className="row">
+                        <div className="hidden-xs col-md-3">
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          Sconely Yours
+                          <br/>
+                          <br/>
+                          <br/>
+                        </div>
+                        <div className="col-xs-12 col-md-9">
+                          <br/>
+                           <b>Cart Items</b>
+                           <br/>
+                           {cart}
+                           <br/>
+                           <br/>
+                           <form className="form-horizontal" style={{border: 1}}>    
+                              <div className="form-group" style={{border: 1}}>
+                                <div className="col-md-8">                         
+                                   <br/>
+                                   <div className="col-md-4">Delivery charge</div><div className="col-md-1">$</div>
+                                   <br/>
+                                   <br/> 
+                                   <div className="col-md-4">Promo Code</div><div className="col-md-4">
+                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" style={{borderRadius: 0, fontSize: 16}}/>
+                                   </div>
+                                   <br/>
+                                   <br/>
+                                   <div className="col-md-4">Total Due</div><div className="col-md-1"><b>$</b></div>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
                     </div>
-                  </div>
-                </form>
-            </div>
+              </div>
     )
   }
 
@@ -759,7 +811,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        cart_items: state.cart.cart_items
+        //cart_items: state.cart.cart_items
 
     //}
   }
@@ -779,7 +831,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const OrderCart1 = connect(
+const OrderCartConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(OrderCart)
@@ -787,5 +839,5 @@ const OrderCart1 = connect(
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-export default OrderCart;
+export default OrderCartConnected;
 

@@ -61,8 +61,8 @@ defmodule SconeHomeElixir.HomeController do
 
   			#sconely.herokuapp.com
 
-	  		name = params["name"]
-	  		url = "/#/order/" <> name <> "/guest/menu"
+	  		event_name = params["name"]
+	  		url = "/#/order/" <> event_name <> "/guest/menu"
 	  		redirect conn, to: url
 
 	  	end

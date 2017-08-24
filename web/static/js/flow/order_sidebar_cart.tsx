@@ -47,8 +47,9 @@ class SidebarCart extends React.Component<any, any> {
 
     this.state = {
 
+        menuItemNames: [],
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}],
-        cart_items: [{item_id: 1, item_title: "Susie Sunshine", quantity: 1}, {item_id: 2, item_title: "Julie Freedom", quantity: 1}],
+        cartItems: [],
         here: ""
 
     };
@@ -76,8 +77,14 @@ class SidebarCart extends React.Component<any, any> {
 
 
     //get menu items
+    //this.setState({menuItemNames: this.props.menuItems})
 
+    console.log("sc menu items " + JSON.stringify(this.props.menuItems));
 
+    this.setState({menuItemNames: this.props.menuItems})
+    //this.setState({cartItems: this.props.cartItems})
+
+    
     //this.props;
 
     //alert(JSON.stringify(this.state.menu_items));
@@ -92,7 +99,12 @@ class SidebarCart extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProps: any){
 
-      console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
+      console.log("sc menu items cwrp " + JSON.stringify(this.props.menuItems));
+
+      //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
+
+      this.setState({menuItemNames: this.props.menuItems})
+      this.setState({cartItems: this.props.cartItems})
 
   }
 
@@ -199,7 +211,7 @@ class SidebarCart extends React.Component<any, any> {
     }
 
     let total_cost = 0;
-    let item_count = 0;
+    let total_items = 0;
     let item_limit = "";
 
     //alert(JSON.stringify(this.props.order.toJS()));
@@ -225,11 +237,17 @@ class SidebarCart extends React.Component<any, any> {
 
         //console.log("order " + JSON.stringify(this.props.cart));
 
-        let that = this;
+        let that = this;*/
 
+        //let cart_items = [{item_id: 1, quantity: 2}];
+
+        total_cost = this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.4, 0);
+        total_items = this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        
+         
         
 
-        this.props.cart.cart_items.map(function(item: any){
+    /*this.props.cart.cart_items.map(function(item: any){
 
             //console.log("item " + JSON.stringify(item));
             //console.log("order type" + JSON.stringify(that.props.order));
@@ -260,29 +278,41 @@ class SidebarCart extends React.Component<any, any> {
 
             }
                           
-        });
+        });*/
 
     //alert(total_cost);
 
-        cart = this.props.cart.cart_items.map(function(item: any, index: any){
+        cart = this.props.cartItems.map(function(item: any, index: any){
 
-                      //let menu_item_title_index = menu_items.findIndex where item_id == item_item_id
-                      //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
-                      //let item_title = result.get("title");
-                      let item_title = "";
+                      //console.log("cart menuitems " + JSON.stringify(this.state.menuItemNames));
+
+                      let menu_item_name_index = this.state.menuItemNames.findIndex((menu_item: any) => {
+
+                          //console.log(JSON.stringify(menu_item) + " " + item.item_id);
+
+                          return menu_item.id === "" + item.item_id;
+
+                      });
+
+                      console.log("index " + menu_item_name_index);
+
+                      //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
+                      let item_name = this.state.menuItemNames[menu_item_name_index].name;
+                      //let item_name = "";
 
 
-                      if(that.props.order.order_type == "sconely_yours"){
+                      //if(that.props.order.order_type == "sconely_yours"){
 
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-6">Ruby Q</div>
-                                            <div className="col-md-6">{item.quantity}</div>
+                                            <div className="col-md-4">{item_name}</div>
+                                            <div className="col-md-5"></div>
+                                            <div className="col-md-3">{item.quantity}</div>
                                           </div>
                                         </form>
                                 )
-                      }else{
+                      /*}else{
                           
                           if(item.item_type == "mini"){
                           
@@ -307,13 +337,13 @@ class SidebarCart extends React.Component<any, any> {
                                     )
 
                           }
-                      }
+                      }*/
                   
                 }.bind(this))
 
-    }*/
+    //}
 
-    if(item_count == 12){
+    if(total_items == 12){
 
         item_limit = "You have reached your item limit";
 
@@ -321,21 +351,43 @@ class SidebarCart extends React.Component<any, any> {
 
     //{this.props.params.repoName}
 
+    //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
+
     return (<div> 
                   <br/>
-                  {item_limit}
+                  {this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}
                   <br/>
                   {cart}
-                  <form className="form-horizontal" style={{border: 1}}>
-                    <div className="form-group" style={{border: 1}}>
-                      <div className="col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Items</b></div>
-                      <div className="col-xs-2" style={{fontType: "helvetica", fontSize: "14"}}>{item_count}</div>
-                      <br/>
-                      <br/>
-                      <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
-                      <br/>
-                    </div>
-                  </form>                       
+                  <br/>
+                  {this.props.cartItems.length == 0 ? 'cart is empty' :
+
+                    (<div>
+                      <form className="form-horizontal" style={{border: 1}}>
+                        <div className="form-group" style={{border: 1}}>
+                          <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
+                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Items</b></div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
+                        </div>
+                      </form>
+                       <form className="form-horizontal" style={{border: 1}}>
+                        <div className="form-group" style={{border: 1}}>
+                          <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
+                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost}0</div>
+                        </div>
+                      </form>
+                      <form className="form-horizontal" style={{border: 1}}>
+                        <div className="form-group" style={{border: 1}}>
+                          <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
+                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Cost</b></div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost.toFixed(2)}</div>
+                        </div>
+                      </form>
+                      <Link to="/order/cart" className="btn btn-default">Checkout</Link>              
+                    </div>)
+                  }
+                  <br/>
+                  <br/>
             </div>
     )
   }
@@ -351,7 +403,7 @@ class SidebarCart extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state));
+  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.guestOrder.cart_items));
   return {
 
     //cart_items: getCartItems(state); 
@@ -360,7 +412,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        cart: state.cart
+        menuItems: state.menuItems.items,
+        cartItems: state.guestOrder.cart_items,
 
     //}
   }
@@ -387,4 +440,4 @@ const SidebarCartConnected = connect(
   mapDispatchToProps
 )(SidebarCart);
 
-export default SidebarCartConnected;
+export default SidebarCart;

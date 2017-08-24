@@ -11,20 +11,21 @@ import * as React from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
 //import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
 import {completeOrder} from './actions/complete_order.ts';
 //import {setFirstName, setLastName} from './actions/order_name.ts';
-import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
+//import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 //import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 //import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 
-import SidebarCart from './sidebar_cart.tsx';
-import DeliveryAddress from './delivery_address.tsx';
-import Contact from './contact.tsx';
+import SidebarCart from './order_sidebar_cart.tsx';
+import DeliveryAddress from './order_delivery_address.tsx';
+import Contact from './order_contact.tsx';
 import ContactPreview from './contact_preview.tsx';
-import DateTime from './datetime.tsx';
+import DateTime from './order_datetime.tsx';
 //import Name from './name.tsx';
-import NamePreview from './name_preview.tsx';
+//import NamePreview from './name_preview.tsx';
 import PaymentMethod from './payment_method.tsx';
 
 //import { getPublicMenu } from './reducers/name';
@@ -880,7 +881,6 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <DateTime />
                             <br/>
-                            <NamePreview />
                             <br/>
                             <DeliveryAddress />
                             <br/>
@@ -942,7 +942,7 @@ function mapDispatchToProps(dispatch: any) {
       //dispatch(setTime(e.target.value))
     },
     setSpecificTime: (e: any) => {
-      dispatch(setSpecificTime(e.target.value))
+      //dispatch(setSpecificTime(e.target.value))
     },
     //setFirstName: (e: any) => {
     //  dispatch(setFirstName(e.target.value))

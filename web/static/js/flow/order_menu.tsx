@@ -5,13 +5,16 @@ import { Link, browserHistory } from 'react-router';
 
 import {connect} from 'react-redux';
 
+//import _ from 'lodash';
+
 import {getMenuItems} from './actions/menu.ts';
 import {cartValidated} from './actions/order_validations.ts';
-import {addCartItem} from './actions/cart.ts';
+import {addCartItem} from './actions/guest_cart.ts';
 import {createOrder} from './actions/order.ts';
 
-import SidebarCart from './sidebar_cart.tsx';
+import SidebarCart from './order_sidebar_cart.tsx';
 import MobileCheckoutButton from './mobile_checkout_button.tsx';
+import PublicTopNavbar from './public/public_top_navbar.tsx';
 
 import {getYoursMenuItems} from './selectors/menu.ts'; 
 
@@ -33,16 +36,17 @@ class OrderMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menu_items: [],
+        menuItems: [],
         selected_item_id: "",
-        selected_item_type: "",
+        selected_item_mini: "",
         selected_item_quantity: "",
-        selected_item_title: "",
-        selected_item_story: "",
+        selected_item_name: "",
+        selected_item_description: "",
         selected_item_ingredients: "",
         add_cart_item_button_classname: "btn btn-default disabled",
         images: [],
-        hover_images: [] 
+        hover_images: [],
+        options_count_array: []
 
     };
 
@@ -58,7 +62,7 @@ class OrderMenu extends React.Component<any, any> {
   componentDidMount(){
 
     //get active items from the database
-    console.log(this.props.params);
+    console.log("mi" + JSON.stringify(this.props.menuItems));
 
     //alert(JSON.stringify(this.props.cart_items));
     //this.props.dispatch();
@@ -93,7 +97,8 @@ class OrderMenu extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProp:any){
 
-      console.log("menu props");
+      //console.log("menu props");
+      console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
 
   }
 
@@ -105,7 +110,7 @@ class OrderMenu extends React.Component<any, any> {
 
   showItem(item_id: any){
 
-      //alert(item_id);
+      console.log("item_id " + item_id);
 
       this.setState({selected_item_id: item_id});
 
@@ -113,13 +118,13 @@ class OrderMenu extends React.Component<any, any> {
 
       /*this.props.menuItems.map(function(item: any){
 
-          if(item.item_id === item_id){
+          if(item.item_id === item_id){*/
 
-              this.setState({selected_item_title: item.title});
-              this.setState({selected_item_story: item.story});
-              this.setState({selected_item_ingredients: item.ingredients});
+              this.setState({selected_item_name: this.props.menuItems[item_id-1]["name"]});
+              this.setState({selected_item_description: this.props.menuItems[item_id-1]["description"]});
+              this.setState({selected_item_ingredients: this.props.menuItems[item_id-1]["ingredients"]});
 
-          }
+      /*    }
 
 
       }.bind(this));*/
@@ -128,14 +133,14 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
-  selectedItemType = (e: any) => {
+  /*selectedItemType = (e: any) => {
 
       //alert(e.target.value);
 
       this.setState({selected_item_type: e.target.value});
       this.setState({add_cart_item_button_classname: "btn btn-default"});
       
-  }
+  }*/
 
 
   selectedItemQuantity(e: any){
@@ -157,9 +162,9 @@ class OrderMenu extends React.Component<any, any> {
     //if they haven't selected quantity and dozens dont submit and show them an error
 
     
-    let item_count = 0
+    //let item_count = 0
 
-    this.props.cart.cart_items.map(function(item: any){
+    /*this.props.cart.cart_items.map(function(item: any){
 
             //console.log("item " + JSON.stringify(item));
             //console.log("order type" + JSON.stringify(that.props.order));
@@ -174,18 +179,20 @@ class OrderMenu extends React.Component<any, any> {
 
             //}else{
 
-    });
+    });*/
 
-    console.log("yours items count" + item_count);
+    //console.log("yours items count" + item_count);
 
-    if(item_count < 12){
+    //if(item_count < 12){
 
-        this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
-        this.setState({selected_item_quantity: ""});
+        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_mini, this.state.selected_item_quantity);
+        
 
-    }
+        //this.setState({selected_item_quantity: ""});
 
-    this.props.cartValidated();
+    //}
+
+    //this.props.cartValidated();
 
     $('#myModal').modal('toggle');
 
@@ -270,8 +277,8 @@ class OrderMenu extends React.Component<any, any> {
 
   render(): JSX.Element{
 
-          //var that = this;
-          //var page = "";
+    //var that = this;
+    //var page = "";
 
 
     //if(this.state.page == "items"){
@@ -281,38 +288,30 @@ class OrderMenu extends React.Component<any, any> {
 
     //if yours order show yours menu if social order show social menu
 
+    let options_count_array = [];
+
+    //if(this.props.cartItemsTotalQuantity > 0){
+
+    for (let i = 2; i < 12 - this.props.cartItemsTotalQuantity; i++){ 
+
+        console.log(i);
+        
+        options_count_array.push(i);
+    
+    };
+
+    console.log("oca " + JSON.stringify(11 - this.props.cartItemsTotalQuantity));
+
+    //let options = {for (let i = 1; i == this.props.cartItemsTotalQuantity - 1; i++){ 
+    //                          <option value={i}>{i}</option>
+    //              })}
+
+    //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
+
 
 
           return(<div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                        <div className="container-fluid">
-                          <div className="navbar-header">
-                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                              <span className="sr-only">Toggle navigation</span>
-                              <span className="icon-bar"></span>
-                              <span className="icon-bar"></span>
-                              <span className="icon-bar"></span>
-                            </button>
-                            <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
-                          </div>
-                          <div className="hidden-xs navbar-form navbar-right">
-                          </div>
-                          <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                            <ul className="nav navbar-nav">
-                              <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                            </ul>
-                            <ul className="nav navbar-nav">
-                              <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                            </ul>
-                            <ul className="nav navbar-nav">
-                              <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                            </ul>
-                            <ul className="nav navbar-nav">
-                              <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                            </ul>
-                          </div>
-                        </div>
-                    </nav>
+                    <PublicTopNavbar/>
                     <div className="row">
                           <div className="hidden-xs col-md-3">
                             <br/>
@@ -323,7 +322,7 @@ class OrderMenu extends React.Component<any, any> {
                             Sconely Yours
                             <br/>
                             <br/>
-                            <SidebarCart order={this.props.order} cart={this.props.cart}/>
+                            <SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
@@ -332,14 +331,14 @@ class OrderMenu extends React.Component<any, any> {
                             <MobileCheckoutButton/>
                             <br/>
                             <br/>
+                            mobile link to cart with number of items in cart
                             <br/>
                             <br/>
                             <br/>
                             <br/>
                             {this.props.menuItems.map(function(item: any, index: any){
 
-                                console.log(item);
-                            
+                                //console.log(item);
 
                                 //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
 
@@ -353,7 +352,7 @@ class OrderMenu extends React.Component<any, any> {
 
                                 return(
                                         <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                              <img id="1" onClick={() => this.showItem(item.item_id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                              <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           <br/>    
                                           <br/>
                                           <b>{item.name}</b>
@@ -375,10 +374,10 @@ class OrderMenu extends React.Component<any, any> {
                       <div className="modal-content">
                         <div className="modal-header">
                           <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_title}</h4>
+                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
                         </div>
                         <div className="modal-body">
-                            {this.state.selected_item_story}
+                            {this.state.selected_item_description}
                             <br/>
                             <br/>
                             Ingredients: {this.state.selected_item_ingredients}
@@ -389,25 +388,20 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
-                              <div className="col-md-3">
-                                <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
-                                  <option value="">Select Quantity</option> 
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                                  <option value="6">6</option>
-                                  <option value="7">7</option>
-                                  <option value="8">8</option>
-                                  <option value="9">9</option>
-                                  <option value="10">10</option>
-                                  <option value="11">11</option>
-                                  <option value="12">12</option>
-                                </select>
-                              </div>
-                              <div className="col-md-3">
-                                <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
-                              </div>
+                                {this.props.cartItemsTotalQuantity < 10 &&
+                                  (<div>
+                                    <div className="col-md-3">
+                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
+                                      <option value="">Select Quantity</option> 
+                                      {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                      
+                                    </select>
+                                  </div>
+                                  <div className="col-md-3">
+                                    <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                  </div>
+                                  </div>)
+                                }
                             </div>
                           </form>
                         </div>
@@ -424,7 +418,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
   console.log("mapstatetoprops order menu " + JSON.stringify(state));
   return {
     //if yours
-    menuItems: getYoursMenuItems(state),
+    //menuItems: getYoursMenuItems(state),
     //else
     //menuItems: getYoursMenuItems(state),
     
@@ -433,9 +427,16 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        menu_items: state.menuItems.items,
-        order: state.Order,
-        cart: state.cart
+        menuItems: state.menuItems.items,
+        guestOrder: state.guestOrder,
+        cartItems: state.guestOrder.cart_items, //computed
+        
+        //cart_total_items //computed
+        //cart_total_cost //cost
+        //delivery_cost: state.guestOrder.delivery_cost
+        
+        cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
+        
 
     //}
   }
@@ -449,8 +450,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       console.log("here");
       dispatch(getMenuItems());
     },
-    addCartItem: (order_id: any, item_id: any, item_type: any, quantity: any) => {
-      dispatch(addCartItem(order_id, item_id, item_type, quantity));
+    addCartItem: (order_id: any, item_id: any, mini: any, quantity: any) => {
+      dispatch(addCartItem(order_id, item_id, mini, quantity));
     },
     cartValidated: () => {
       dispatch(cartValidated());

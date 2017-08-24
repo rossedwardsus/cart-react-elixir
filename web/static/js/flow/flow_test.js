@@ -23,7 +23,7 @@ import thunk from 'redux-thunk';
 import PublicHomePage from './public/public_home_page.tsx';
 import PublicMenu from './public/public_menu.tsx';
 import PublicAboutUs from './public/public_about_us';
-import YoursRedirect from './yours_redirect.tsx';
+//import YoursRedirect from './yours_redirect.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
 import UserProfile from './user/user_profile.tsx';
@@ -34,12 +34,12 @@ import UserAboutMe from './user/user_about_me.tsx';
 import UserOrder from './user/user_order.tsx';
 
 //import Order from "./order.jsx";
-import Menu from "./order_menu.tsx";
-import Checkout from "./order_checkout.tsx";
-import PaymentMethod from './payment_method.tsx'
+import OrderMenu from "./order_menu.tsx";
+import OrderCheckout from "./order_checkout.tsx";
+//import PaymentMethod from './order_payment_method.tsx'
 import OrderCart from "./order_cart.tsx";
+import OrderPreview from './order_preview.tsx';
 import OrderComplete from './order_complete.jsx';
-import Preview from './preview.tsx';
 
 import Login from './login.tsx';
 import Register from './register.tsx';
@@ -180,9 +180,9 @@ const Root = () => (
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
         <Route component={checkLogin}>
-          <Route path="/order/menu" component={Menu} />
-          <Route path="/order/checkout" component={Checkout} />
-          <Route path="/order/preview" component={Preview} />
+          <Route path="/order/menu" component={OrderMenu} />
+          <Route path="/order/checkout" component={OrderCheckout} />
+          <Route path="/order/preview" component={OrderPreview} />
           <Route path="/order/cart" component={OrderCart} />
           <Route path="/order/complete" component={OrderComplete} />
         </Route>
@@ -198,8 +198,7 @@ const Root = () => (
         <Route path="/order/:order_id/preview" component={SignatureOrderPreview} />
         <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
         <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />
-        <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />
-        <Route path="/:name" component={YoursRedirect} />                
+        <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />               
       </Route>
     </Router>
   </Provider>

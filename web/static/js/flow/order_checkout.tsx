@@ -16,13 +16,13 @@ import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, 
 import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
 import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
-import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/cart.ts';
+import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
 import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
 
-import SidebarCart from './sidebar_cart.tsx';
-import DeliveryAddress from './delivery_address.tsx';
+import SidebarCart from './order_sidebar_cart.tsx';
+import DeliveryAddress from './order_delivery_address.tsx';
 import Contact from './order_contact.tsx';
 import Datetime from './order_datetime.tsx';
 //import Name from './name.tsx';
@@ -780,6 +780,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <SidebarCart/>
                           <br/>
                           <br/>
                           <br/>

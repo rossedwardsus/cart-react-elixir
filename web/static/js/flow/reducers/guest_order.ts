@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM } from '../constants/actionTypes.ts';
+import { ADD_GUEST_ORDER_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,11 +20,11 @@ let inititalState: CartState = {
 
 }*/
 
-export default function cart_items(state:any = {cart_items: []}, action: any){
+export default function cart_items(state:any = {order_type: "", datetime_order_started: "", cart_items: []}, action: any){
   switch (action.type) {
-    case ADD_CART_ITEM:
+    case ADD_GUEST_ORDER_CART_ITEM:
 
-      console.log("add cart item" + JSON.stringify(state));
+      console.log("add guest cart item reducer" + JSON.stringify(state));
 
       let items = state.cart_items;
       items.push({item_id: 1, item_type: action.item_type, quantity: parseInt(action.quantity)});

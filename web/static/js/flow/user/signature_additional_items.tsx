@@ -5,7 +5,7 @@ import SidebarCart from './sconely_signature_sidebar_cart.tsx';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import {addCartItem} from '../actions/cart.ts';
+import {addCartItem} from '../actions/guest_cart.ts';
 //import {processSignatureOrder} from './actions/user_order.ts';
 
 import UserNavbar from './user_navbar.tsx';

@@ -5,21 +5,29 @@ import login from './login.ts';
 import session from './session.ts';
 //import Register from './register.ts';
 //import root from './root.ts';
+
 import menuItems from './menu.ts';
-import Order from './social_yours_order.ts';
+
+//import Order from './social_yours_order.ts';
 //import OrderDeliveryAddress from './order_delivery_Address.ts';
 //import OrderDatetime from './order_datetime.ts';
 //import OrderPayment from './order_payment.ts';
+
 import OrderValidations from './order_validated.ts';
 import User from './user.ts';
+
 //import user_delivery_addresses from './user_delivery_addresses.ts';
-import GuestOrder from './cart.ts';
+
+import guestOrder from './guest_order.ts';
+
 //import name from './name.ts';
 //import contact from './contact.ts';
 //import OrderDeliveryAddress from './order_delivery_address.ts';
 //import UserPaymentMethods from './user_payment_methods.ts';
 //import OrderContact from './order_contact';
+
 import SignatureOrderGuestResponse from './signature_guest_response.ts';
+
 //import UserOrders from './user_order.ts';
 //import UserOrderCart from './user_order_cart.ts';
 //import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -42,12 +50,12 @@ export default combineReducers({
   session,
   menuItems,
   SignatureOrderGuestResponse,
-  Order,
+  //Order,
   //OrderDatetime,
   //OrderPayment,
   //OrderDeliveryAddress,
   //OrderValidations,
-  GuestOrder,
+  guestOrder,
   //name,
   //contact,
   User,

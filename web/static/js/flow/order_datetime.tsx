@@ -86,6 +86,11 @@ class DateTime extends React.Component<any, any> {
   
   }
 
+  componentWillReceiveProps = () => {
+
+
+  }
+
   
   setDate(date: any){
 
@@ -118,7 +123,7 @@ class DateTime extends React.Component<any, any> {
 
     let delivery_address_pickup_datetime:any = "";
 
-    if(this.props.order.order_type == "sconely_yours"){
+    /*if(this.props.order.order_type == "sconely_yours"){
 
         delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
 
@@ -126,14 +131,13 @@ class DateTime extends React.Component<any, any> {
 
         delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
 
-    }
+    }*/
    
     return ( <div>
                 <div className="hidden-xs">
                     <form className="form-horizontal">
                         <div className="form-group">
                           <div className="col-sm-12">
-                          {delivery_address_pickup_datetime}
                           </div>
                         </div>
                     </form>
