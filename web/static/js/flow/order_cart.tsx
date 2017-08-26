@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 //import * as getAllProducts from './actions/menu';
 
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity} from './actions/guest_cart.ts';
+import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
 
 //import { getPublicMenu } from './reducers/menu';
 
@@ -481,7 +481,7 @@ class OrderCart extends React.Component<any, any> {
 
   }
 
-  goMenu(){
+  /*goMenu(){
 
       this.context.router.push('/order/12345');
       
@@ -497,7 +497,7 @@ class OrderCart extends React.Component<any, any> {
 
       this.context.router.push('/order/12345/signature');
       
-  }  
+  }*/
 
 
   updateCartItemQuantity(item_id:any, quantity: any){
@@ -557,15 +557,15 @@ class OrderCart extends React.Component<any, any> {
 
     let cart = "";
     //let total_items = 0;
-    let item_count = 0;
+    let total_items = 0;
     let subtotal = 0;
     let total_cost = 0;
     let delivery_cost = 0;
     let that = this;
 
-    console.log("order cart" + JSON.stringify(this.props.cart_items));
+    console.log("order cart" + JSON.stringify(this.props.cartItems));
 
-    /*if(this.props.cart_items.length === 0){
+    if(this.props.cartItems.length === 0){
 
         cart = "<div>there are no items in your cart<br/><Link to='/public/menu' className='btn btn-default'>Go to Menu</Link><br/></div>";
 
@@ -573,16 +573,16 @@ class OrderCart extends React.Component<any, any> {
 
         //console.log("order cart" + JSON.stringify(this.props.cart_items));
 
-        total_cost = 0;
-        item_count = 0;
+        //total_cost = 0;
+        //item_count = 0;
 
         //if(that.props.order.order_type == "sconely_yours"){
 
 
         //put this in a selector?
-        total_cost = cart_items.reduce((prevVal, elem) => prevVal + elem.launches, 0);
+        //total_cost = this.props.cartItems.reduce((prevVal, elem) => prevVal + elem.launches, 0);
          
-        total_cost = this.props.cart_items.map(function(item: any){
+        /*total_cost = this.props.cart_items.map(function(item: any){
 
                           //console.log("item " + JSON.stringify(item));
                           //console.log("order cart " + that.props.order);
@@ -592,19 +592,20 @@ class OrderCart extends React.Component<any, any> {
                           return subtotal + (6 * item.quantity * 24);
                           //item_count = item_count + (24 * item.quantity);
 
-                      });
+                      });*/
 
-        total_cost =  this.props.cart_items.map(function(b: any) { return b.quantity * 6; })
-            .reduce(function(p:any, c:any) { return p + c; });
+        total_cost =  this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.50, 0); 
+                      
         //}else{
 
 
 
         //}
 
-        item_count = cart_items.reduce((prevVal, elem) => prevVal + elem.launches, 0);
+        total_items = this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
-        item_count = this.props.cart_items.map(function(item: any){
+
+        /*item_count = this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
             console.log("order cart " + that.props.order);
@@ -614,7 +615,7 @@ class OrderCart extends React.Component<any, any> {
                   //change to individual calls
 
                   //total_cost = total_cost + (6 * item.quantity * 24);
-                  item_count = item_count + (24 * item.quantity);
+                  item_count = item_count + (24 * item.quantity);*/
 
 
         //delivery_cost = guest_order.delivery_cost;
@@ -622,7 +623,7 @@ class OrderCart extends React.Component<any, any> {
 
 
         //put this in render?
-        this.props.cart_items.map(function(item: any){
+        /*this.props.cart_items.map(function(item: any){
 
             console.log("item " + JSON.stringify(item));
             console.log("order cart " + that.props.order);
@@ -651,7 +652,7 @@ class OrderCart extends React.Component<any, any> {
 
             }
                           
-        });
+        });*/
 
         //for yours
         //"name" +quantity- total cost delete
@@ -669,7 +670,7 @@ class OrderCart extends React.Component<any, any> {
         //{order_type: "social", payment_method: {}, delivery_address: {}, contact: {}, cart: [{item_id: 1, mini: true, quanity: 2}, {item_id: 1, assortments: true, quanity: 2}]}
 
 
-        cart = this.props.cart_items.forEach(function(item: any, index: any){
+        cart = this.props.cartItems.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item.item_id
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
@@ -677,17 +678,17 @@ class OrderCart extends React.Component<any, any> {
 
                       //let item_name = this.props.menu_items[item.menu_item_id].name;
 
-                      if(this.props.guestOrder.order_type == "sconely_yours"){
+                      //if(this.props.guestOrder.order_type == "sconely_yours"){
 
-                          console.log("order cart" + JSON.stringify(this.props.cart_items));
+                          console.log("order cart" + JSON.stringify(this.props.cartItems));
 
                           //let total_amount = item.quantity;
                           //let item_cost = total_amount * 6.00;
 
-                          return(<div>
+                          return(
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{fontSize:16, border: 1}}>
-                                            <div className="col-md-1">{item_title}</div>
+                                            <div className="col-md-1"></div>
                                             <div className="col-md-3">
                                               <div className="row">
                                                 <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
@@ -698,64 +699,62 @@ class OrderCart extends React.Component<any, any> {
                                             <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
                                           </div>
                                       </form>
-                                </div>)
+                                )
 
-                      }else{
+                      //}else{
 
-                        if(item.item_type === "mini"){
+                          /*if(item.item_type === "mini"){
 
-                            let total_amount = item.quantity * 24;
-                            let item_cost = total_amount * 6.00;
-                        
-                            return(<div>
-                                        <form className="form-horizontal" style={{border: 1}}>
-                                            <div className="form-group" style={{border: 1}}>
-                                              <div className="col-md-4" style={{fontSize: 20}}>{item.item_title} Mini</div>
-                                              <div style={{fontSize: 10}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
-                                              <div className="col-md-1">{item.quantity}</div>
-                                              <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
-                                              <div className="col-md-1">${item_cost}</div>
-                                              <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
-                                            </div>
-                                        </form>
-                                  </div>)
+                                  let total_amount = item.quantity * 24;
+                                  let item_cost = total_amount * 6.00;
+                              
+                                  return(<div>
+                                              <form className="form-horizontal" style={{border: 1}}>
+                                                  <div className="form-group" style={{border: 1}}>
+                                                    <div className="col-md-4" style={{fontSize: 20}}>{item.item_title} Mini</div>
+                                                    <div style={{fontSize: 10}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
+                                                    <div className="col-md-1">{item.quantity}</div>
+                                                    <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
+                                                    <div className="col-md-1">${item_cost}</div>
+                                                    <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
+                                                  </div>
+                                              </form>
+                                        </div>)
 
-                        }else{
+                            }else{
 
-                            let total_amount = item.quantity * 12;
-                            let item_cost = total_amount * 6.00;
+                                let total_amount = item.quantity * 12;
+                                let item_cost = total_amount * 6.00;
 
-                            return(
-                                        <form className="form-horizontal" style={{border: 1}}>    
-                                            <div className="form-group" style={{border: 1}}>
-                                              <div className="col-md-1" style={{fontSize: 20}}>{item.item_title}</div>
-                                              <div className="col-md-3">
-                                                <div className="row">
-                                                  <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
-                                                  <div className="col-md-1">{total_amount}</div>
-                                                  <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
+                                return(
+                                            <form className="form-horizontal" style={{border: 1}}>    
+                                                <div className="form-group" style={{border: 1}}>
+                                                  <div className="col-md-1" style={{fontSize: 20}}>{item.item_title}</div>
+                                                  <div className="col-md-3">
+                                                    <div className="row">
+                                                      <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
+                                                      <div className="col-md-1">{total_amount}</div>
+                                                      <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
+                                                    </div>
+                                                  </div>
+                                                  <div className="col-md-1">${item_cost}</div>
+                                                  <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
+
                                                 </div>
-                                              </div>
-                                              <div className="col-md-1">${item_cost}</div>
-                                              <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
-                                            </div>
-                                        </form>
-                                  )
+                                            </form>
+                                      )
 
-                        }
-                      }
+                            }
+                          }*/
                   
                 }.bind(this))
 
-    }*/
+    }
     
     return ( <div>
                   <PublicTopNavbar/>
                   <div className="row">
                         <div className="hidden-xs col-md-3">
-                          <br/>
-                          <br/>
-                          <br/>
                           <br/>
                           <br/>
                           Sconely Yours
@@ -782,10 +781,14 @@ class OrderCart extends React.Component<any, any> {
                                    </div>
                                    <br/>
                                    <br/>
-                                   <div className="col-md-4">Total Due</div><div className="col-md-1"><b>$</b></div>
+                                   <div className="col-md-4">Total Items</div><div className="col-md-1"><b>{total_items}</b></div>
+                                   <br/>
+                                   <div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost}</b></div>
                                 </div>
                               </div>
                             </form>
+                            <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
+                            <Link to="/order/menu" className="btn btn-default">Menu</Link>        
                         </div>
                     </div>
               </div>
@@ -812,6 +815,16 @@ const mapStateToProps = (state: any, ownProps: any) => {
     //if(state.default.order.cart_items != undefined){
         
         //cart_items: state.cart.cart_items
+        menuItems: state.menuItems.items,
+        guestOrder: state.guestOrder,
+        cartItems: state.guestOrder.cart_items, //computed
+        
+        //cart_total_items //computed
+        //cart_total_cost //cost
+        //delivery_cost: state.guestOrder.delivery_cost
+        
+        cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
+        
 
     //}
   }
@@ -827,6 +840,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     },
     decreaseCartItemQuantity: (item_id: any) => {
       dispatch(decreaseCartItemQuantity(1))
+    },
+    removeCartItem: (item_id: any) => {
+      dispatch(removeCartItem(1))
     }
   }
 }

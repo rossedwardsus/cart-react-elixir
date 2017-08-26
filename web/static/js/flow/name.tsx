@@ -53,6 +53,7 @@ class Name extends React.Component<any, any> {
 
        first: "",
        last: "",
+       contact_email_again: "",
        first_name_border_color: "grey",
        last_name_border_color: "grey",
        first_name_validated: false,
@@ -77,8 +78,8 @@ class Name extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.setState({first_name: this.props.name.first});
-    this.setState({last_name: this.props.name.last});
+    //this.setState({first_name: this.props.name.first});
+    //this.setState({last_name: this.props.name.last});
 
   }
 
@@ -176,6 +177,109 @@ class Name extends React.Component<any, any> {
 
   }
 
+  setContactEmail(e: any){
+
+      this.setState({contact_email: e.target.value})
+      this.props.setContactEmail(e);
+
+      //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+      //let symbol_res = symbol_patt.test(e.target.value);
+
+      let number_res = (/[0-9]/.test(e.target.value));
+
+      //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //return re.test(email);
+
+      console.log(/[0-9]/.test(e.target.value));
+
+      //larger then 0
+      //no symbols
+      //no numbers
+
+      if(e.target.value.length > 0){
+
+          //can only have _ .
+          //after @ at least one characted . then domain
+
+          //if(symbol_res == false){
+            let address = e.target.value.split("@")[0];
+            let symbol_res = symbol_patt.test(address);
+
+            if(symbol_res == true){
+
+                if(e.target.value.split("@")[1].split(".")[0].length > 0){
+
+                    if(e.target.value.split("@")[1].split(".")[1].length > 1){
+
+                        //cant enter symbols????  or numbers
+          
+          
+                        //if email contains @ and at least one character and 2 character domain
+                        //validate contact and emails are same
+                    
+                        //this.props.setContactEmail(e);
+
+                        console.log("email ok")
+
+                    }
+
+                }
+
+            }
+
+          //}else{
+
+              //console.log("email ok")
+
+          //  this.setState({first_name: e.target.value})
+            //this.setState({"first_border_color": "red"});
+
+          //}
+      
+      }
+
+      
+
+  }
+
+  setContactEmailAgain(e: any){
+
+      this.setState({contact_email_again: e.target.value});
+      //this.props.setContactEmail(e);
+
+      if(this.state.contact_email == e.target.value){
+
+          //validated
+
+      }
+
+      
+
+  }
+
+  setContactMobile(e: any){
+
+      //strip out -
+      //check if only number
+
+      //if larger then 3 append "-"
+
+      let mobile_number = e.target.value.replace("_", "");
+      let number_res = (/[0-9]/.test(mobile_number));
+
+      this.setState({contact_mobile: e.target.value});
+      this.props.setContactMobile(e);
+
+      if(number_res == true){
+
+          //validate contact
+          //else invalatidate
+
+      }
+
+  }
+
   setCompanyName(e: any){
 
     this.setState({company_name: e.target.value});
@@ -203,21 +307,47 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.state.first_name_classname}>
-                      <input type="text" value={this.state.first} maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" value={this.props.guestOrder.nameContact.first} maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" value={this.state.last} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                    </div>
-                  </div>
-                  <div className="col-md-3">
-                    <div className={this.props.firstNameClassName}>
-                      <input type="text" value={this.state.company_name} onChange={(e: any) => this.setCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" value={this.props.guestOrder.nameContact.last} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.props.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                 </div>
               </form>
+              <form className="form-horizontal" style={{paddingLeft: 0}}>
+                <div className="form-group" style={{paddingLeft: 0}}>
+                  <div className="col-sm-12" style={{paddingLeft: 0}}>
+                      <b>Contact</b>
+                      <br/>
+                  </div>
+                </div>
+              </form>
+              <form className="form-horizontal">
+                <div className="form-group">
+                  <div className="col-md-3">
+                      <div className={this.state.contact_email_classname}>
+                        <input type="text" value={this.state.contact_email} onChange={(e: any) => this.props.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                      </div>
+                  </div>
+                  <div className="col-md-3">
+                      <div className={this.state.contact_email_classname}>
+                        <input type="text" value={this.state.contact_email_again} onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
+                      </div>
+                  </div>
+                </div>
+              </form>
+              <form className="form-horizontal">
+                <div className="form-group">
+                  <div className="col-md-3">
+                      <div className={this.state.contact_mobile_classname}>
+                        <input type="text" value={this.state.contact_mobile} onChange={(e: any) => this.props.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0}}/>
+                      </div>
+                  </div>
+                </div>
+              </form> 
             </div>
     )
   }

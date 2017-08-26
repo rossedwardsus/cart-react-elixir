@@ -13,7 +13,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 const Immutable  = require('immutable');
 
-import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
+import {setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
 
 
 function addTodoWithDispatch() {
@@ -144,11 +144,11 @@ function mapDispatchToProps(dispatch: any) {
   return {
     setContactEmail: (e: any) => {
       console.log(e.target.value);
-      dispatch(setContactEmail(e.target.value));
+      //dispatch(setContactEmail(e.target.value));
     },
     setContactMobile: (e: any) => {
     //  console.log(e.target.value);
-      dispatch(setContactMobile(e.target.value));
+      //dispatch(setContactMobile(e.target.value));
     },
    
   }

@@ -1,14 +1,14 @@
-import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
 
 
-export function setUserFirstName(value: any) {
+/*export function setUserFirstName(value: any) {
   //alert("GET USER details");
   console.log("set user first name action " + value);
   return {
-    type: SET_USER_FIRST_NAME,
+    type: SET_USER_NAME_FIRST,
     data: value
   }
 }
@@ -17,7 +17,7 @@ export function setUserLastName(value: any) {
   //alert("GET USER details");
   console.log("set user last name action " + value);
   return {
-    type: SET_USER_LAST_NAME,
+    type: SET_USER_NAME_LAST,
     data: value
   }
 }
@@ -26,10 +26,28 @@ export function setUserEmail(value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_EMAIL,
+    type: SET_USER_CONTACT_EMAIL,
     data: value
   }
 }
+
+export function setUserMobile(value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_CONTACT_MOBILE,
+    data: value
+  }
+}
+
+export function setUserEmail(value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_CONTACT_EMAIL,
+    data: value
+  }
+}*/
 
 
 

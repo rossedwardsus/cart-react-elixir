@@ -24,6 +24,8 @@ import "react-day-picker/lib/style.css"
 
 require('react-datepicker/dist/react-datepicker.css');
 
+import SidebarCart from './order_sidebar_cart.tsx';
+import PublicTopNavbar from './public/public_top_navbar.tsx';
 
 
 function addTodoWithDispatch() {
@@ -134,35 +136,51 @@ class DateTime extends React.Component<any, any> {
     }*/
    
     return ( <div>
-                <div className="hidden-xs">
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                          </div>
-                        </div>
-                    </form>
-                    <form className="form-horizontal" style={{border: 0}}>
-                      <div className="form-group show-lg" style={{borderRadius: 0}}>
-                        <div className="col-md-3">
-                          <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate}/>
-                        </div>
-                        <div className="col-md-3">
-                          <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10}}>
-                              <option value="">Free</option>
-                              <option value="9-11">9:00 am - 11:00 am</option>
-                              <option value="1-3">1:00 pm - 3:00 pm</option>
-                          </select>
-                        </div>
-                        <div className="col-md-3">
-                            <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
-                                <option value="">Extra</option>
-                                <option value="900">9:00</option>
-                                <option value="930">9:30</option>
-                            </select>
-                        </div>
+                <PublicTopNavbar/>
+                <div className="row">
+                      <div className="hidden-xs col-md-3">
+                        <br/>
+                        <br/>
+                        Sconely Yours
+                        <br/>
+                        <br/>
+                        <SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
+                        <br/>
                       </div>
-                    </form>
-                </div>  
+                      <div className="col-xs-12 col-md-9">
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Delivery Date Time
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal" style={{border: 0}}>
+                              <div className="form-group show-lg" style={{borderRadius: 0}}>
+                                <div className="col-md-3">
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate}/>
+                                </div>
+                                <div className="col-md-3">
+                                  <select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={(e: any) => this.props.setTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10}}>
+                                      <option value="">Free</option>
+                                      <option value="9-11">9:00 am - 11:00 am</option>
+                                      <option value="1-3">1:00 pm - 3:00 pm</option>
+                                  </select>
+                                </div>
+                                <div className="col-md-3">
+                                    <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10}}>
+                                        <option value="">Extra</option>
+                                        <option value="900">9:00</option>
+                                        <option value="930">9:30</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </form>
+                            <Link to="/order/cart" className="btn btn-default">Checkout</Link>
+                            <br/>
+                            <Link to="/order/menu" className="btn btn-default">Menu</Link>  
+                        </div>
+                    </div>  
               </div>
     )
   }
@@ -183,20 +201,25 @@ function mapStateToProps(state: any) {
    //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
+
+   menuItems: state.menuItems.items,
+   guestOrder: state.guestOrder,
+   cartItems: state.guestOrder.cart_items, //computed
+   
   };
 }
 
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    //setDate: (e: any) => {
+    setDate: (e: any) => {
     //  console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
     //  dispatch(setDate(e));
-    //},
-    //setTime: (e: any) => {
+    },
+    setTime: (e: any) => {
     //  console.log("settime" + e.target.value);
     //  dispatch(setTime(e.target.value));
-    //},
+    },
     //datetimeValidated: () => {
       //console.log(e.target.value);
     //  dispatch(datetimeValidated());
@@ -204,10 +227,10 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const DateTime1 = connect(
+const DateTimeConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(DateTime)
 
-export default DateTime;
+export default DateTimeConnected;
 

@@ -1,4 +1,4 @@
-import { ADD_GUEST_ORDER_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM } from '../constants/actionTypes.ts';
+import { ADD_GUEST_ORDER_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, SET_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_DELIVERY_CONTACT_ADDRESS_STREET1, SET_DELIVERY_CONTACT_ADDRESS_STREET2 } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,7 +20,11 @@ let inititalState: CartState = {
 
 }*/
 
-export default function cart_items(state:any = {order_type: "", datetime_order_started: "", cart_items: []}, action: any){
+export default function cart_items(state:any = {order_type: "", nameContact: {first: "ross", last: "edwards", email: "@", mobile: "1"}, deliveryContactAddress: {first: "ross", last: "edwards", email: "@", mobile: "1", company_name: "", street1: ""}, datetime_order_started: "", cart_items: []}, action: any){
+
+  let name_contact_updated = null;
+  let delivery_contact_address_updated = null;
+
   switch (action.type) {
     case ADD_GUEST_ORDER_CART_ITEM:
 
@@ -111,6 +115,130 @@ export default function cart_items(state:any = {order_type: "", datetime_order_s
 
       //else remove item
 
+
+     /*case SET_USER_NAME_FIRST:
+
+      console.log("first name reducer");
+
+      name_contact_updated = state.nameContact;
+      name_contact_updated.first = action.value; 
+
+      return Object.assign({}, state, { nameContact: name_contact_updated });
+
+      //else remove item
+
+    case SET_USER_NAME_LAST:
+
+      console.log("last name reducer");
+
+      name_contact_updated = state.nameContact;
+      name_contact_updated.last = action.value; 
+
+      return Object.assign({}, state, { nameContact: name_contact_updated });
+
+      //else remove item
+
+     case SET_CONTACT_EMAIL:
+
+      console.log("email reducer");
+
+      name_contact_updated = state.nameContact;
+      name_contact_updated.email = action.value; 
+
+      return Object.assign({}, state, { nameContact: name_contact_updated });
+
+      //else remove item
+
+
+     case SET_CONTACT_MOBILE:
+
+      console.log("mobile reducer");
+
+      name_contact_updated = state.nameContact;
+      name_contact_updated.mobile = action.value; 
+
+      return Object.assign({}, state, { nameContact: name_contact_updated });
+
+      //else remove item*/
+
+       
+
+     /*case SET_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
+
+      console.log("delivery contact address first name reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.first_name = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });
+
+      //else remove item
+
+     case SET_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
+
+      console.log("delivery contact address last name reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.last_name = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });*/
+
+      //else remove item
+
+    case SET_DELIVERY_CONTACT_ADDRESS_EMAIL:
+
+      console.log("delivery contact address email reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.email = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });
+
+      //else remove item
+
+    case SET_DELIVERY_CONTACT_ADDRESS_MOBILE:
+
+      console.log("delivery contact address mobile reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.mobile = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });
+
+      //else remove item
+
+    case SET_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME:
+
+      console.log("delivery contact address mobile reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.mobile = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });
+
+      //else remove item
+
+    case SET_DELIVERY_CONTACT_ADDRESS_STREET1:
+
+      console.log("delivery contact address street1 reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.street1 = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });
+
+      //else remove item
+
+    case SET_DELIVERY_CONTACT_ADDRESS_STREET2:
+
+      console.log("delivery contact address street2 reducer");
+
+      delivery_contact_address_updated = state.deliveryContactAddress;
+      delivery_contact_address_updated.street2 = action.value; 
+
+      return Object.assign({}, state, { deliveryContactAddress: delivery_contact_address_updated });
+
+      //else remove item
 
     default:
       //alert();

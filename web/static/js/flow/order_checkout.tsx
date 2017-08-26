@@ -13,19 +13,20 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_contact_address.ts';
-import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
+import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
+import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
+import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
 import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
 import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
-import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
+//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
-import DeliveryAddress from './order_delivery_address.tsx';
-import Contact from './order_contact.tsx';
+import DeliveryContactAddress from './order_delivery_address.tsx';
+//import Contact from './order_contact.tsx';
 import Datetime from './order_datetime.tsx';
-//import Name from './name.tsx';
+import NameContact from './name.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
@@ -314,6 +315,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
   setFirstName(e: any){
 
      //alert(e.target.value);
+
+
 
      if(e.target.value.length > 0){
 
@@ -730,6 +733,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   render(): JSX.Element{
 
+    //<SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
+                         
+
     let body: any = "";
     let item_count = this.state.item_count;
 
@@ -780,7 +786,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <SidebarCart/>
                           <br/>
                           <br/>
                           <br/>
@@ -799,17 +804,22 @@ class OrderDateTimeContact extends React.Component<any, any> {
                         <div className="col-xs-12 col-md-9">
                             <br/>
                             <br/>
-                            <Contact contact={this.props.order_contact} setContactEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
+                            <br/>
+                            <br/>
+                            <NameContact guestOrder={this.props.guestOrder} setContactFirstName={(e:any) => this.props.setContactFirstName(e)} setContactLastName={(e:any) => this.props.setLastName(e)} setEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
-                            <DeliveryAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} 
-                            setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} 
-                            setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} 
-                            setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} 
+                            <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
+                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
+                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
+                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
+                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
+                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
+                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
                             setDeliveryCost={(e: any) => this.props.setDeliveryCost(e)}
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
-                            <Datetime  order={this.props.order} setDate={(e: any) => this.props.setDate(e)} datetimeValidated={() => this.props.datetimeValidated()}/>      
-                    
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
 
@@ -855,6 +865,8 @@ function mapStateToProps(state: any) {
    order_datetime: state.OrderDatetime,
    order_payment_method: state.OrderPayment,
 
+   guestOrder: state.guestOrder,
+
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -878,38 +890,50 @@ function mapDispatchToProps(dispatch: any) {
     setSpecificTime: (e: any) => {
       dispatch(setSpecificTime(e.target.value))
     },
-    setFirstName: (e: any) => {
-      dispatch(setFirstName(e.target.value))
+    setUserNameFirst: (e: any) => {
+      dispatch(setUserNameFirst(e.target.value))
     },
-    setLastName: (e: any) => {
-      dispatch(setLastName(e.target.value))
+    setUserNameLast: (e: any) => {
+      dispatch(setUserNameLast(e.target.value))
     },
-    setCompanyName: (e: any) => {
-      dispatch(setCompanyName(e.target.value))
+    setUserContactEmail: (e: any) => {
+      dispatch(setUserContactEmail(e.target.value))
+    },
+    setUserContactMobile: (e: any) => {
+      dispatch(setUserContactMobile(e.target.value))
     },
     setNameValidated: (e: any) => {
       dispatch(nameValidated())
     },
-    setContactEmail: (e: any) => {
-      dispatch(setContactEmail(e.target.value))
+    setUserDeliveryContactAddressFirstName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
     },
-    setContactMobile: (e: any) => {
-      dispatch(setContactMobile(e.target.value))
+    setUserDeliveryContactAddressLastName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressLastName(e.target.value, ""))
     },
-    setDeliveryAddressStreet1: (e: any) => {
-      dispatch(setDeliveryAddressStreet1(e.target.value, ""))
+    setUserDeliveryContactAddressCompanyName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressCompanyName(e.target.value))
     },
-    setDeliveryAddressStreet2: (e: any) => {
-      dispatch(setDeliveryAddressStreet2(e.target.value, ""))
+    setUserDeliveryContactAddressEmail: (e: any) => {
+      dispatch(setUserDeliveryContactAddressEmail(e.target.value, ""))
     },
-    setDeliveryAddressCity: (e: any) => {
-      dispatch(setDeliveryAddressCity(e.target.value, ""))
+    setUserDeliveryContactAddressMobile: (e: any) => {
+      dispatch(setUserDeliveryContactAddressMobile(e.target.value, ""))
     },
-    setDeliveryAddressState: (e: any) => {
-      dispatch(setDeliveryAddressState(e.target.value, ""))
+    setUserDeliveryContactAddressStreet1: (e: any) => {
+      dispatch(setUserDeliveryContactAddressStreet1(e.target.value, ""))
     },
-    setDeliveryAddressZipcode: (e: any) => {
-      dispatch(setDeliveryAddressZipcode(e.target.value, ""))
+    setUserDeliveryContactAddressStreet2: (e: any) => {
+      dispatch(setUserDeliveryContactAddressStreet2(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressCity: (e: any) => {
+      dispatch(setUserDeliveryContactAddressCity(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressState: (e: any) => {
+      dispatch(setUserDeliveryContactAddressState(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressZipcode: (e: any) => {
+      dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
     },
     setDeliveryCost: (value: any) => {
       dispatch(setDeliveryCost(value));

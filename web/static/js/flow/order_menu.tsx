@@ -317,10 +317,7 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <br/>
-                            <br/>
                             Sconely Yours
-                            <br/>
                             <br/>
                             <SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
                             <br/>
@@ -332,8 +329,6 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             mobile link to cart with number of items in cart
-                            <br/>
-                            <br/>
                             <br/>
                             <br/>
                             {this.props.menuItems.map(function(item: any, index: any){

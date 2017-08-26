@@ -13,7 +13,7 @@ import SignatureOrder from './signature.tsx';
 
 import {setEventName, setInvitedGuestCount, setInvitedGuestMessage} from '../actions/signature_order_event_details.ts';
 import {setDate, setTime} from '../actions/signature_order_delivery_datetime.ts';
-import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode, setUserDefinedDeliveryContactAddress} from '../actions/order_delivery_contact_address.ts';
+import {setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setUserDefinedDeliveryContactAddress} from '../actions/order_delivery_contact_address.ts';
 import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryYear, setPaymentExpiryMonth, setPaymentSecurityCode, setUserDefinedPaymentMethod} from '../actions/order_payment_method.ts';
 import {setUserOrders, processSignatureOrder} from '../actions/user_order.ts';
 
@@ -322,7 +322,7 @@ class UserOrder extends React.Component<any, any> {
 
                             <EventDetailsDateTime order_details={this.props.order_details} setDate={(e: any) => this.props.setDate(e)} setTime={(e: any) => this.props.setTime(e)}/>
                             
-                            <EventDeliveryContactAddress user={this.props.user} order_details={this.props.order_details} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)}/>
+                            <EventDeliveryContactAddress user={this.props.user} order_details={this.props.order_details} setDeliveryAddressStreet1={(e: any) => this.props.setDeliveryContactAddressStreet1(e)} setDeliveryAddressStreet2={(e: any) => this.props.setDeliveryContactAddressStreet2(e)} setDeliveryAddressCity={(e: any) => this.props.setDeliveryContactAddressCity(e)} setDeliveryAddressState={(e: any) => this.props.setDeliveryContactAddressState(e)} setDeliveryAddressZipcode={(e: any) => this.props.setDeliveryContactAddressZipcode(e)} setUserDefinedDeliveryContactAddress={(e: any) => this.props.setUserDefinedDeliveryContactAddress(e)}/>
                             <br/>
                             <br/>
                             
@@ -376,29 +376,29 @@ function mapDispatchToProps(dispatch: any, ownProps: any) {
         dispatch(setInvitedGuestMessage(e.target.value, 1));
 
     },
-    setDeliveryAddressStreet1: (e: any) => {
+    setDeliveryContactAddressStreet1: (e: any) => {
 
-        dispatch(setDeliveryAddressStreet1(e.target.value, 1));
-
-    },
-    setDeliveryAddressStreet2: (e: any) => {
-
-        dispatch(setDeliveryAddressStreet2(e.target.value, 1));
+        dispatch(setDeliveryContactAddressStreet1(e.target.value, 1));
 
     },
-    setDeliveryAddressCity: (e: any) => {
+    setDeliveryContactAddressStreet2: (e: any) => {
 
-        dispatch(setDeliveryAddressCity(e.target.value, 1));
-
-    },
-    setDeliveryAddressState: (e: any) => {
-
-        dispatch(setDeliveryAddressState(e.target.value, 1));
+        dispatch(setDeliveryContactAddressStreet2(e.target.value, 1));
 
     },
-    setDeliveryAddressZipcode: (e: any) => {
+    setDeliveryContactAddressCity: (e: any) => {
 
-        dispatch(setDeliveryAddressZipcode(e.target.value, 1));
+        dispatch(setDeliveryContactAddressCity(e.target.value, 1));
+
+    },
+    setDeliveryContactAddressState: (e: any) => {
+
+        dispatch(setDeliveryContactAddressState(e.target.value, 1));
+
+    },
+    setDeliveryContactAddressZipcode: (e: any) => {
+
+        dispatch(setDeliveryContactAddressZipcode(e.target.value, 1));
 
     },
     setUserDefinedDeliveryContactAddress: (e: any) => {

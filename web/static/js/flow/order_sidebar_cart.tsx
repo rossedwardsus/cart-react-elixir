@@ -383,7 +383,7 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost.toFixed(2)}</div>
                         </div>
                       </form>
-                      <Link to="/order/cart" className="btn btn-default">Checkout</Link>              
+                      <Link to="/order/datetime" className="btn btn-default">Delivery Date Time</Link>              
                     </div>)
                   }
                   <br/>
