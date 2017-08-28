@@ -26,6 +26,11 @@ require('react-datepicker/dist/react-datepicker.css');
 
 import SidebarCart from './order_sidebar_cart.tsx';
 import PublicTopNavbar from './public/public_top_navbar.tsx';
+import NameContact from './name.tsx';
+import DeliveryContactAddress from './order_delivery_address.tsx';
+
+import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
+import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
 
 
 function addTodoWithDispatch() {
@@ -119,6 +124,81 @@ class DateTime extends React.Component<any, any> {
     //this.props.datetimeValidated();
 
   //}
+
+  setDelveryZipcode = (e: any) => {
+
+      let dtla_zipcodes = ["90013", "90014", "90015", "90021", "90071"];
+      let santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"]
+      let venice_zipcodes = ["90291", "90292", "90293"];
+
+
+      //if(order_type === "yours" && dtla_zipcodes.includes(e.target.value){
+
+      //    days == monday friday
+      //    9-11
+
+      //    this.props.setDeliveryAvaliableTime("9-11am")
+      //    this.props.setDeliveryCost
+      
+      //}else if(order_type === "yours" && santa_monica_zipcodes.includes(e.target.value){
+
+      //    days == monday friday
+      //    9-11
+
+      //    this.props.setDeliveryAvaliableTime("1-3pm")
+
+      //}else if(order_type === "yours" && venice_zipcodes.includes(e.target.value){
+
+      //    days == monday friday
+      //    9-11
+
+      //    this.props.setDeliveryAvaliableTime("1-3pm")
+
+      //}else if(order_type === "social" && dtla_zipcodes.includes(e.target.value){
+
+      //    days == anyday
+      //    anytime
+      //}else if(order_type === "social" && venice_zipcodes.includes(e.target.value){
+
+      //    days == anyday
+      //    anytime
+      //}
+
+
+
+
+
+      //var numOfDays = new Date(2012, 10, 0).getDate();
+      //var date = new Date();
+      //getDay()
+      //var date = new Date(year, month, 1);
+      // var days = [];
+      // while (date.getMonth() === month) {
+      //    days.push(new Date(date));
+      //    date.setDate(date.getDate() + 1);
+      // }
+      // return days;
+
+      //yours
+      //dtla
+      //if zipcode == 90015, 90014, 90013, 90021, 90071
+      //days == monday friday
+      //9-11
+      //cost == free
+
+      //yours
+      //90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
+      //90291. CA.  90292. CA.  90293. 90294. 90295. 90296. CA. 
+      //days == monday friday
+      //9-11
+      //cost == free
+
+      //social
+      //three days in advance
+      //everyday
+      //9-11 dtla, 1-3, west side
+  }
+
   
   
   render(): JSX.Element{
@@ -144,10 +224,25 @@ class DateTime extends React.Component<any, any> {
                         Sconely Yours
                         <br/>
                         <br/>
-                        <SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
+                        <SidebarCart User={this.props.User} />
                         <br/>
                       </div>
                       <div className="col-xs-12 col-md-9">
+                            <NameContact guestOrder={this.props.guestOrder} setContactFirstName={(e:any) => this.props.setContactFirstName(e)} setContactLastName={(e:any) => this.props.setLastName(e)} setEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
+                            <br/>
+                            <br/>
+                            <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
+                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
+                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
+                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
+                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
+                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
+                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
+                            setDeliveryCost={(e: any) => this.props.setDeliveryCost(e)}
+                            deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
+
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-12">
@@ -176,9 +271,14 @@ class DateTime extends React.Component<any, any> {
                                 </div>
                               </div>
                             </form>
+                            <Link to="/order/preview" className="btn btn-default">Preview</Link>  
+                            <br/>
+                            <br/>
                             <Link to="/order/cart" className="btn btn-default">Checkout</Link>
                             <br/>
                             <Link to="/order/menu" className="btn btn-default">Menu</Link>  
+                            <br/>
+
                         </div>
                     </div>  
               </div>
@@ -205,6 +305,9 @@ function mapStateToProps(state: any) {
    menuItems: state.menuItems.items,
    guestOrder: state.guestOrder,
    cartItems: state.guestOrder.cart_items, //computed
+
+   User: state.User,
+        
    
   };
 }
@@ -224,6 +327,38 @@ function mapDispatchToProps(dispatch: any) {
       //console.log(e.target.value);
     //  dispatch(datetimeValidated());
     //}
+
+    setUserDeliveryContactAddressFirstName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressLastName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressLastName(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressCompanyName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressCompanyName(e.target.value))
+    },
+    setUserDeliveryContactAddressEmail: (e: any) => {
+      dispatch(setUserDeliveryContactAddressEmail(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressMobile: (e: any) => {
+      dispatch(setUserDeliveryContactAddressMobile(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressStreet1: (e: any) => {
+      dispatch(setUserDeliveryContactAddressStreet1(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressStreet2: (e: any) => {
+      dispatch(setUserDeliveryContactAddressStreet2(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressCity: (e: any) => {
+      dispatch(setUserDeliveryContactAddressCity(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressState: (e: any) => {
+      dispatch(setUserDeliveryContactAddressState(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressZipcode: (e: any) => {
+      dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
+    },
+  
   }
 }
 

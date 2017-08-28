@@ -25,7 +25,7 @@ import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './action
 import SidebarCart from './order_sidebar_cart.tsx';
 import DeliveryContactAddress from './order_delivery_address.tsx';
 //import Contact from './order_contact.tsx';
-import Datetime from './order_datetime.tsx';
+import Datetime from './order_delivery.tsx';
 import NameContact from './name.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
@@ -808,6 +808,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <NameContact guestOrder={this.props.guestOrder} setContactFirstName={(e:any) => this.props.setContactFirstName(e)} setContactLastName={(e:any) => this.props.setLastName(e)} setEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
 
+                            <br/>
+                            <br/>
+                            
                             <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 

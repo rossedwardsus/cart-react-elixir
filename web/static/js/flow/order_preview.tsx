@@ -23,7 +23,7 @@ import SidebarCart from './order_sidebar_cart.tsx';
 import DeliveryAddress from './order_delivery_address.tsx';
 import Contact from './order_contact.tsx';
 import ContactPreview from './contact_preview.tsx';
-import DateTime from './order_datetime.tsx';
+//import DateTime from './order_datetime.tsx';
 //import Name from './name.tsx';
 //import NamePreview from './name_preview.tsx';
 import PaymentMethod from './payment_method.tsx';
@@ -878,13 +878,23 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
+                            Ross Edwards
                             <br/>
-                            <DateTime />
+                            rossedwards@gmail.com
+                            <br/>
+                            310-775-5566
                             <br/>
                             <br/>
-                            <DeliveryAddress />
+                            Sept 1st, 2017
                             <br/>
-                            <ContactPreview />
+                            11901 Santa Monica Blvd
+                            <br/>
+                            <br/>
+                            <Link to="/order/delivery" className="btn btn-default">Edit Delivery Information</Link>   
+                            <br/>
+                            <br/>
+                            Items
+                            <br/>
                             <br/>
                             <button onClick={() => this.completeOrder()}>Edit Datetime</button>
                             <form className="form-horizontal">

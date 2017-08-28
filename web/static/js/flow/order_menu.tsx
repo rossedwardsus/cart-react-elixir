@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 
 import {getMenuItems} from './actions/menu.ts';
 import {cartValidated} from './actions/order_validations.ts';
-import {addCartItem} from './actions/guest_cart.ts';
+import {addCartItem} from './actions/user.ts';
 import {createOrder} from './actions/order.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
@@ -38,7 +38,7 @@ class OrderMenu extends React.Component<any, any> {
     this.state = {
         menuItems: [],
         selected_item_id: "",
-        selected_item_mini: "",
+        selected_item_12_or_24_mini: "",
         selected_item_quantity: "",
         selected_item_name: "",
         selected_item_description: "",
@@ -51,15 +51,15 @@ class OrderMenu extends React.Component<any, any> {
     };
 
     //this.loadCart = this.loadCart.bind(this);
-    this.showItem = this.showItem.bind(this);
+    //this.showItem = this.showItem.bind(this);
     //this.selectedItemDozens = this.selectedItemDozens.bind(this);
-    this.selectedItemQuantity = this.selectedItemQuantity.bind(this);
-    this.addCartItem = this.addCartItem.bind(this);
-    this.onMouseEnter = this.onMouseEnter.bind(this);
+    //this.selectedItemQuantity = this.selectedItemQuantity.bind(this);
+    //this.addCartItem = this.addCartItem.bind(this);
+    //this.onMouseEnter = this.onMouseEnter.bind(this);
    
   }
 
-  componentDidMount(){
+  componentWillMount(){
 
     //get active items from the database
     console.log("mi" + JSON.stringify(this.props.menuItems));
@@ -95,10 +95,10 @@ class OrderMenu extends React.Component<any, any> {
     
   }
 
-  componentWillReceiveProps(nextProp:any){
+  componentWillReceiveProps = (nextProp:any) => {
 
       //console.log("menu props");
-      console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
+      //console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
 
   }
 
@@ -108,21 +108,21 @@ class OrderMenu extends React.Component<any, any> {
     };
   }
 
-  showItem(item_id: any){
+  showItem = (item_id: any) => {
 
       console.log("item_id " + item_id);
 
-      this.setState({selected_item_id: item_id});
-
+      
       //findindex
 
       /*this.props.menuItems.map(function(item: any){
 
           if(item.item_id === item_id){*/
 
-              this.setState({selected_item_name: this.props.menuItems[item_id-1]["name"]});
-              this.setState({selected_item_description: this.props.menuItems[item_id-1]["description"]});
-              this.setState({selected_item_ingredients: this.props.menuItems[item_id-1]["ingredients"]});
+              this.setState({selected_item_id: item_id});
+              this.setState({selected_item_name: this.props.menuItems[0]["name"]});
+              this.setState({selected_item_description: this.props.menuItems[0]["description"]});
+              this.setState({selected_item_ingredients: "ingredients"});
 
       /*    }
 
@@ -143,7 +143,7 @@ class OrderMenu extends React.Component<any, any> {
   }*/
 
 
-  selectedItemQuantity(e: any){
+  selectedYoursItemQuantity = (e: any) => {
 
     console.log("selected_item quantity " + e.target.value);
 
@@ -155,7 +155,33 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
-  addCartItem(){
+  selectedSocialItem12or24mini = (e: any) => {
+
+    console.log("selected_item social 12or24mini " + e.target.value);
+
+    this.setState({selected_item_12_or_24_minis: e.target.value});
+    //this.setState({add_cart_item_button_classname: "btn btn-default"});
+      
+    //set add cart button == active
+    //this.set
+
+  }
+
+  selectedSocialItemQuantity = (e: any) => {
+
+    console.log("selected_item quantity " + e.target.value);
+
+    this.setState({selected_item_quantity: e.target.value});
+    this.setState({add_cart_item_button_classname: "btn btn-default"});
+      
+    //set add cart button == active
+    //this.set
+
+  }
+
+  addCartItem = () => {
+
+    //if order type is social and 12_or_24 == 24 then mini flag == true
 
     console.log("add cart item");
 
@@ -185,7 +211,7 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(item_count < 12){
 
-        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_mini, this.state.selected_item_quantity);
+    this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_12_or_24_minis, this.state.selected_item_quantity);
         
 
         //this.setState({selected_item_quantity: ""});
@@ -206,7 +232,7 @@ class OrderMenu extends React.Component<any, any> {
       
   } 
 
-  onMouseEnter(item_id: any){
+  onMouseEnter = (item_id: any) => {
 
       console.log("mouse enter" + JSON.stringify(item_id));
 
@@ -240,7 +266,7 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
-  onMouseLeave(item_id: any){
+  onMouseLeave = (item_id: any) => {
 
       //console.log("mouse leave" + item_id);
 
@@ -294,7 +320,7 @@ class OrderMenu extends React.Component<any, any> {
 
     for (let i = 2; i < 12 - this.props.cartItemsTotalQuantity; i++){ 
 
-        console.log(i);
+        //console.log(i);
         
         options_count_array.push(i);
     
@@ -308,7 +334,47 @@ class OrderMenu extends React.Component<any, any> {
 
     //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
 
+    let yours_social_quantity_selector = null;
 
+    if(this.props.User.orders[0].order_type == "yours"){
+
+        if(this.props.cartItemsTotalQuantity < 10){
+
+            yours_social_quantity_selector =  <div>
+                                                    <div className="col-md-3">
+                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
+                                                        <option value="">Select Quantity</option> 
+                                                        {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                                        
+                                                      </select>
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                      <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                                    </div>
+                                                  </div>
+        }
+    }else{
+
+        if(this.props.cartItemsTotalQuantity < 10){
+
+            yours_social_quantity_selector =  <div>
+                                                    <div className="col-md-3">
+                                                      12<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItem12or24mini}/>24-mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemQuantity} style={{height: 35, width: 120}}>
+                                                        <option value="">Select Quantity</option> 
+                                                        {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                                        
+                                                      </select>
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                      <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                                    </div>
+                                                  </div>
+        }
+
+    }
 
           return(<div>
                     <PublicTopNavbar/>
@@ -319,7 +385,7 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             Sconely Yours
                             <br/>
-                            <SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
+                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems} />
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
@@ -383,10 +449,12 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
+                                {yours_social_quantity_selector}
                                 {this.props.cartItemsTotalQuantity < 10 &&
+                                  //if order type == "yours"
                                   (<div>
                                     <div className="col-md-3">
-                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
+                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedYoursItemQuantity(e)} style={{height: 35, width: 120}}>
                                       <option value="">Select Quantity</option> 
                                       {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                       
@@ -423,8 +491,9 @@ const mapStateToProps = (state: any, ownProps: any) => {
     //if(state.default.order.cart_items != undefined){
         
         menuItems: state.menuItems.items,
-        guestOrder: state.guestOrder,
-        cartItems: state.guestOrder.cart_items, //computed
+        //guestOrder: state.guestOrder,
+        //cartItems: state.User.orders[0].cartItems, //computed
+        User: state.User,
         
         //cart_total_items //computed
         //cart_total_cost //cost

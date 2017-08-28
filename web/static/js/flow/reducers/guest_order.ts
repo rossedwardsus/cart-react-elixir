@@ -31,7 +31,7 @@ export default function cart_items(state:any = {order_type: "", nameContact: {fi
       console.log("add guest cart item reducer" + JSON.stringify(state));
 
       let items = state.cart_items;
-      items.push({item_id: 1, item_type: action.item_type, quantity: parseInt(action.quantity)});
+      items.push({item_id: 1, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: parseInt(action.quantity)});
       
       return Object.assign({}, state, {cart_items: items});
     

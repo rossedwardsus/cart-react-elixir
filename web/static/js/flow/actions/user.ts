@@ -1,7 +1,29 @@
-import {SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {ADD_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_EMAIL, SET_USER_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
+
+export function addCartItem(order_id: any, item_id: any, twelveortwentyfourminis: any, quantity: any) {
+  console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+
+  //if uorder_id != undefined
+  //else
+
+  return {
+    type: ADD_CART_ITEM,
+    order_id, 
+    item_id,
+    twelveortwentyfourminis,
+    quantity
+  }
+
+  /*return {
+    type: ADD_CART_ITEM,
+    item_id,
+    item_type,
+    quantity
+  }*/
+}
 
 
 /*export function setUserFirstName(value: any) {

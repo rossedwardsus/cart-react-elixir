@@ -73,15 +73,15 @@ class SidebarCart extends React.Component<any, any> {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
 
 
     //get menu items
     //this.setState({menuItemNames: this.props.menuItems})
 
-    console.log("sc menu items " + JSON.stringify(this.props.menuItems));
+    console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
 
-    this.setState({menuItemNames: this.props.menuItems})
+    //this.setState({menuItemNames: this.props.menuItems})
     //this.setState({cartItems: this.props.cartItems})
 
     
@@ -99,12 +99,12 @@ class SidebarCart extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProps: any){
 
-      console.log("sc menu items cwrp " + JSON.stringify(this.props.menuItems));
-
+      //console.log("sbc menu items cwrp " + JSON.stringify(this.props.menuItems));
+      //console.log("sbc cart items cwrp " + JSON.stringify(this.props.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 
-      this.setState({menuItemNames: this.props.menuItems})
-      this.setState({cartItems: this.props.cartItems})
+      //this.setState({menuItemNames: this.props.menuItems})
+      this.setState({cartItems: this.props.User.orders[0].cartItems})
 
   }
 
@@ -197,22 +197,21 @@ class SidebarCart extends React.Component<any, any> {
   render(){
 
     let body: any = "";
-    let { removeCartItem, increaseCartItemQuantity, decreaseCartItemQuantity } = this.props;
+    let { removeCartItem } = this.props;
     
 
-    if(this.state.page == "menu"){
-
-        //body = <SconelyYoursMenu/>;
-
-    }else{
-
-        body = "delivery address payment";
-
-    }
-
-    let total_cost = 0;
+    
+    let order_type = this.props.User.orders[0].order_type;
+    let social_regular_items = [];
+    let social_mini_items = [];
+    let total_items_cost = 0;
+    let total_social_regular_items = 0;
+    let total_social_regular_items_cost = 0;
+    let total_social_mini_items = 0;
+    let total_social_mini_items_cost = 0;
     let total_items = 0;
     let item_limit = "";
+    let item_cost = 0;
 
     //alert(JSON.stringify(this.props.order.toJS()));
    
@@ -229,7 +228,7 @@ class SidebarCart extends React.Component<any, any> {
     //console.log("order type" + JSON.stringify(this.props.order));
 
 
-    /*if(this.props.cart.cart_items.length === 0){
+    if(cart != ""){
 
         cart = "There are no items in your cart.";
 
@@ -237,17 +236,125 @@ class SidebarCart extends React.Component<any, any> {
 
         //console.log("order " + JSON.stringify(this.props.cart));
 
-        let that = this;*/
+        let that = this;
 
         //let cart_items = [{item_id: 1, quantity: 2}];
 
-        total_cost = this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.4, 0);
-        total_items = this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        social_regular_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+            if(item.twelveortwentyfourminis == "12"){
+
+                return item;
+
+            }
+
+            return
+
+        });
+
+        social_mini_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+            if(item.twelveortwentyfourminis == "24_minis"){
+
+                return item;
+
+            }
+
+            return
+
+        });
+
+        console.log("sri" + JSON.stringify(social_regular_items));
+        
+        //1 doz/12 - 5/60 doz regular sized scones, $5 each
+        //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
+        //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
+
+        if(social_regular_items.length > 0){
+
+            console.log("sri" + JSON.stringify(social_regular_items));
+        
+            total_social_regular_items = social_regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 5.4}, 0);
+
+            if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+
+                item_cost = 5.00;
+
+            }else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
+
+                item_cost = 4.75;
+
+            }else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
+
+                item_cost = 4.50;
+
+            }
+            
+        }
+
+        if(social_mini_items.length > 0){
+
+            console.log("sri" + JSON.stringify(social_regular_items));
+        
+            total_social_mini_items = social_mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 5.4}, 0);
+
+            if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
+
+                item_cost = 5.00;
+
+            }else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
+
+                item_cost = 4.75;
+
+            }else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
+
+                item_cost = 4.50;
+
+            }
+            
+        }
+        
+
+
+
+        //social_mini_items = this.state.cartItems.map((item: any) => {
+
+            //if(item.twelveortwentyfourminis == "24_minis"){
+
+            //    return item;
+
+            //}
+
+        //});
+
+        //if(social_regular_items.length != 0){
+        
+          total_social_regular_items_cost = social_regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * item_cost; }, 0)
+
+          total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * item_cost; }, 0)
+
+
+        //}
+
+
+        //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
+
+        
+        total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.4, 0);
+
+        total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
+
+
+        total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
         
          
         
 
-    /*this.props.cart.cart_items.map(function(item: any){
+        /*this.props.cart.cart_items.map(function(item: any){
 
             //console.log("item " + JSON.stringify(item));
             //console.log("order type" + JSON.stringify(that.props.order));
@@ -282,26 +389,29 @@ class SidebarCart extends React.Component<any, any> {
 
     //alert(total_cost);
 
-        cart = this.props.cartItems.map(function(item: any, index: any){
+        cart = this.state.cartItems.map(function(item: any, index: any){
 
                       //console.log("cart menuitems " + JSON.stringify(this.state.menuItemNames));
 
-                      let menu_item_name_index = this.state.menuItemNames.findIndex((menu_item: any) => {
+                      //let menu_item_name_index = this.state.menuItemNames.findIndex((menu_item: any) => {
 
                           //console.log(JSON.stringify(menu_item) + " " + item.item_id);
 
-                          return menu_item.id === "" + item.item_id;
+                          //return menu_item.id === "" + item.item_id;
 
-                      });
+                      //});
 
-                      console.log("index " + menu_item_name_index);
+                      //console.log("index " + menu_item_name_index);
 
                       //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-                      let item_name = this.state.menuItemNames[menu_item_name_index].name;
+                      let item_name = this.props.menuItems[0].name;
                       //let item_name = "";
 
+                      //console.log("sidebar cart " + JSON.stringify(that.Order));
 
-                      //if(that.props.order.order_type == "sconely_yours"){
+                      console.log(order_type);
+
+                      if(order_type == "yours"){
 
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
@@ -312,15 +422,15 @@ class SidebarCart extends React.Component<any, any> {
                                           </div>
                                         </form>
                                 )
-                      /*}else{
+                      }else{
                           
-                          if(item.item_type == "mini"){
+                          if(item.twelveortwentyfourminis == "24_minis"){
                           
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-6">ruby q</div>
-                                                <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}title-mini</div>
+                                                <div className="col-md-6">{item_name} mini</div>
+                                                <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}</div>
                                               </div>
                                         </form>
                               )
@@ -330,18 +440,18 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                             <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-6">ruby q</div>
-                                                <div className="col-md-6">{item.quantity * 12}</div>
+                                                <div className="col-md-6">ruby q regular</div>
+                                                <div className="col-md-6">{12 * item.quantity}</div>
                                               </div>
                                             </form>
                                     )
 
                           }
-                      }*/
+                      }
                   
                 }.bind(this))
 
-    //}
+    }
 
     if(total_items == 12){
 
@@ -355,11 +465,11 @@ class SidebarCart extends React.Component<any, any> {
 
     return (<div> 
                   <br/>
-                  {this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}
+                  {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}
                   <br/>
                   {cart}
                   <br/>
-                  {this.props.cartItems.length == 0 ? 'cart is empty' :
+                  {this.state.cartItems.length == 0 ? 'cart is empty' :
 
                     (<div>
                       <form className="form-horizontal" style={{border: 1}}>
@@ -373,17 +483,17 @@ class SidebarCart extends React.Component<any, any> {
                         <div className="form-group" style={{border: 1}}>
                           <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
                           <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost}0</div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost}0</div>
                         </div>
                       </form>
                       <form className="form-horizontal" style={{border: 1}}>
                         <div className="form-group" style={{border: 1}}>
                           <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
                           <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Cost</b></div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_cost.toFixed(2)}</div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                         </div>
                       </form>
-                      <Link to="/order/datetime" className="btn btn-default">Delivery Date Time</Link>              
+                      <Link to="/order/delivery" className="btn btn-default">Delivery</Link>              
                     </div>)
                   }
                   <br/>
@@ -403,7 +513,7 @@ class SidebarCart extends React.Component<any, any> {
 
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.guestOrder.cart_items));
+  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.menuItems.items));
   return {
 
     //cart_items: getCartItems(state); 
@@ -413,13 +523,14 @@ const mapStateToProps = (state: any, ownProps: any) => {
     //if(state.default.order.cart_items != undefined){
         
         menuItems: state.menuItems.items,
-        cartItems: state.guestOrder.cart_items,
+        //cartItems: state.guestOrder.cart_items,
+        //Order: state.User.orders[1],
 
     //}
   }
 };
 
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+/*const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
@@ -438,6 +549,6 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 const SidebarCartConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SidebarCart);
+)(SidebarCart);*/
 
 export default SidebarCart;

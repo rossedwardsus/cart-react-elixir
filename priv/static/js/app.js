@@ -76,13 +76,13 @@ webpackJsonp([0],[
 	
 	var _order_menu2 = _interopRequireDefault(_order_menu);
 	
-	var _order_checkout = __webpack_require__(1134);
+	var _order_checkout = __webpack_require__(1133);
 	
 	var _order_checkout2 = _interopRequireDefault(_order_checkout);
 	
-	var _order_datetime = __webpack_require__(1141);
+	var _order_delivery = __webpack_require__(1141);
 	
-	var _order_datetime2 = _interopRequireDefault(_order_datetime);
+	var _order_delivery2 = _interopRequireDefault(_order_delivery);
 	
 	var _order_cart = __webpack_require__(1142);
 	
@@ -92,59 +92,59 @@ webpackJsonp([0],[
 	
 	var _order_preview2 = _interopRequireDefault(_order_preview);
 	
-	var _order_complete = __webpack_require__(1145);
+	var _order_complete = __webpack_require__(1144);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1146);
+	var _login = __webpack_require__(1145);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1147);
+	var _register = __webpack_require__(1146);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1148);
+	var _register_completed = __webpack_require__(1147);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1149);
+	var _checkLogin = __webpack_require__(1148);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1150);
+	var _user = __webpack_require__(1149);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu_items = __webpack_require__(1151);
+	var _menu_items = __webpack_require__(1150);
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1155);
+	var _name = __webpack_require__(1154);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1156);
+	var _order_completed = __webpack_require__(1155);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1157);
+	var _sconely_signature_guests = __webpack_require__(1156);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _signature_additional_items = __webpack_require__(1158);
+	var _signature_additional_items = __webpack_require__(1157);
 	
 	var _signature_additional_items2 = _interopRequireDefault(_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1159);
+	var _sconely_signature_order_history = __webpack_require__(1158);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _sconely_signature_preview = __webpack_require__(1160);
+	var _sconely_signature_preview = __webpack_require__(1159);
 	
 	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
 	
-	var _index = __webpack_require__(1161);
+	var _index = __webpack_require__(1160);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -292,7 +292,7 @@ webpackJsonp([0],[
 	          { component: _checkLogin2.default },
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/menu', component: _order_menu2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/checkout', component: _order_checkout2.default }),
-	          _react2.default.createElement(_reactRouter.Route, { path: '/order/datetime', component: _order_datetime2.default }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/order/delivery', component: _order_delivery2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/preview', component: _order_preview2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/cart', component: _order_cart2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/complete', component: _order_complete2.default })
@@ -30345,6 +30345,25 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var axios_1 = __webpack_require__(924);
+	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
+	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+	    //if uorder_id != undefined
+	    //else
+	    return {
+	        type: actionTypes_ts_1.ADD_CART_ITEM,
+	        order_id: order_id,
+	        item_id: item_id,
+	        twelveortwentyfourminis: twelveortwentyfourminis,
+	        quantity: quantity
+	    };
+	    /*return {
+	      type: ADD_CART_ITEM,
+	      item_id,
+	      item_type,
+	      quantity
+	    }*/
+	}
+	exports.addCartItem = addCartItem;
 	/*export function setUserFirstName(value: any) {
 	  //alert("GET USER details");
 	  console.log("set user first name action " + value);
@@ -39778,11 +39797,11 @@ webpackJsonp([0],[
 	//import _ from 'lodash';
 	var menu_ts_1 = __webpack_require__(923);
 	var order_validations_ts_1 = __webpack_require__(949);
-	var guest_cart_ts_1 = __webpack_require__(1130);
+	var user_ts_1 = __webpack_require__(954);
 	var order_ts_1 = __webpack_require__(920);
-	var order_sidebar_cart_tsx_1 = __webpack_require__(1131);
-	var mobile_checkout_button_tsx_1 = __webpack_require__(1132);
-	var public_top_navbar_tsx_1 = __webpack_require__(1133);
+	var order_sidebar_cart_tsx_1 = __webpack_require__(1130);
+	var mobile_checkout_button_tsx_1 = __webpack_require__(1131);
+	var public_top_navbar_tsx_1 = __webpack_require__(1132);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -39796,14 +39815,119 @@ webpackJsonp([0],[
 	    function OrderMenu(props) {
 	        _classCallCheck(this, OrderMenu);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (OrderMenu.__proto__ || Object.getPrototypeOf(OrderMenu)).call(this, props));
 	
+	        _this.componentWillReceiveProps = function (nextProp) {
+	            //console.log("menu props");
+	            //console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
+	        };
+	        _this.showItem = function (item_id) {
+	            console.log("item_id " + item_id);
+	            //findindex
+	            /*this.props.menuItems.map(function(item: any){
+	                       if(item.item_id === item_id){*/
+	            _this.setState({ selected_item_id: item_id });
+	            _this.setState({ selected_item_name: _this.props.menuItems[0]["name"] });
+	            _this.setState({ selected_item_description: _this.props.menuItems[0]["description"] });
+	            _this.setState({ selected_item_ingredients: "ingredients" });
+	            /*    }
+	             
+	            }.bind(this));*/
+	            $('#myModal').modal('show');
+	        };
+	        /*selectedItemType = (e: any) => {
+	                   //alert(e.target.value);
+	                   this.setState({selected_item_type: e.target.value});
+	            this.setState({add_cart_item_button_classname: "btn btn-default"});
+	            
+	        }*/
+	        _this.selectedYoursItemQuantity = function (e) {
+	            console.log("selected_item quantity " + e.target.value);
+	            _this.setState({ selected_item_quantity: e.target.value });
+	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
+	            //set add cart button == active
+	            //this.set
+	        };
+	        _this.selectedSocialItem12or24mini = function (e) {
+	            console.log("selected_item social 12or24mini " + e.target.value);
+	            _this.setState({ selected_item_12_or_24_minis: e.target.value });
+	            //this.setState({add_cart_item_button_classname: "btn btn-default"});
+	            //set add cart button == active
+	            //this.set
+	        };
+	        _this.selectedSocialItemQuantity = function (e) {
+	            console.log("selected_item quantity " + e.target.value);
+	            _this.setState({ selected_item_quantity: e.target.value });
+	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
+	            //set add cart button == active
+	            //this.set
+	        };
+	        _this.addCartItem = function () {
+	            //if order type is social and 12_or_24 == 24 then mini flag == true
+	            console.log("add cart item");
+	            //if they haven't selected quantity and dozens dont submit and show them an error
+	            //let item_count = 0
+	            /*this.props.cart.cart_items.map(function(item: any){
+	                             //console.log("item " + JSON.stringify(item));
+	                    //console.log("order type" + JSON.stringify(that.props.order));
+	                             //if(that.props.order.order_type == "sconely_yours"){
+	                               //if total_cost is more then 2 then cost = 5 else 6
+	                      //dont have to loop.  just times cart length
+	                               //total_cost = total_cost + (5 * item.quantity);
+	                      item_count = item_count + item.quantity;
+	                             //}else{
+	                     });*/
+	            //console.log("yours items count" + item_count);
+	            //if(item_count < 12){
+	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_12_or_24_minis, _this.state.selected_item_quantity);
+	            //this.setState({selected_item_quantity: ""});
+	            //}
+	            //this.props.cartValidated();
+	            $('#myModal').modal('toggle');
+	            //cart validated in redux
+	        };
+	        _this.onMouseEnter = function (item_id) {
+	            console.log("mouse enter" + JSON.stringify(item_id));
+	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+	            //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
+	            //get index of of element with item id
+	            //also get name of image and append "rollover to it"
+	            //let images_temp = this.state.images;
+	            //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
+	            var menu_items_updated = _this.state.menu_items.map(function (item) {
+	                if (item.item_id == item_id) {
+	                    //let image_name = item.image_id;
+	                    item.image_id = item.image_id + "roll";
+	                }
+	                return item;
+	            });
+	            console.log(JSON.stringify(menu_items_updated));
+	            _this.setState({ menu_items: menu_items_updated });
+	        };
+	        _this.onMouseLeave = function (item_id) {
+	            //console.log("mouse leave" + item_id);
+	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+	            //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
+	            //this.setState({["image_src_" + item_id]: image_id});
+	            var menu_items_updated = _this.state.menu_items.map(function (item) {
+	                if (item.item_id == item_id) {
+	                    //let image_name = item.image_id;
+	                    //remove "roll"
+	                    var roll_index = item.image_id.indexOf("roll");
+	                    item.image_id = item.image_id.slice(0, roll_index);
+	                    console.log("item.image_id");
+	                }
+	                return item;
+	            });
+	            console.log(JSON.stringify(menu_items_updated));
+	            _this.setState({ menu_items: menu_items_updated });
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            menuItems: [],
 	            selected_item_id: "",
-	            selected_item_mini: "",
+	            selected_item_12_or_24_mini: "",
 	            selected_item_quantity: "",
 	            selected_item_name: "",
 	            selected_item_description: "",
@@ -39814,17 +39938,17 @@ webpackJsonp([0],[
 	            options_count_array: []
 	        };
 	        //this.loadCart = this.loadCart.bind(this);
-	        _this.showItem = _this.showItem.bind(_this);
+	        //this.showItem = this.showItem.bind(this);
 	        //this.selectedItemDozens = this.selectedItemDozens.bind(this);
-	        _this.selectedItemQuantity = _this.selectedItemQuantity.bind(_this);
-	        _this.addCartItem = _this.addCartItem.bind(_this);
-	        _this.onMouseEnter = _this.onMouseEnter.bind(_this);
+	        //this.selectedItemQuantity = this.selectedItemQuantity.bind(this);
+	        //this.addCartItem = this.addCartItem.bind(this);
+	        //this.onMouseEnter = this.onMouseEnter.bind(this);
 	        return _this;
 	    }
 	
 	    _createClass(OrderMenu, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
+	        key: "componentWillMount",
+	        value: function componentWillMount() {
 	            //get active items from the database
 	            console.log("mi" + JSON.stringify(this.props.menuItems));
 	            //alert(JSON.stringify(this.props.cart_items));
@@ -39847,116 +39971,14 @@ webpackJsonp([0],[
 	            //this.setState({menu_items: this.props.menuItems.menu_items});
 	        }
 	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps(nextProp) {
-	            //console.log("menu props");
-	            console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
-	        }
-	    }, {
-	        key: "showItem",
-	        value: function showItem(item_id) {
-	            console.log("item_id " + item_id);
-	            this.setState({ selected_item_id: item_id });
-	            //findindex
-	            /*this.props.menuItems.map(function(item: any){
-	                   if(item.item_id === item_id){*/
-	            this.setState({ selected_item_name: this.props.menuItems[item_id - 1]["name"] });
-	            this.setState({ selected_item_description: this.props.menuItems[item_id - 1]["description"] });
-	            this.setState({ selected_item_ingredients: this.props.menuItems[item_id - 1]["ingredients"] });
-	            /*    }
-	                  }.bind(this));*/
-	            $('#myModal').modal('show');
-	        }
-	        /*selectedItemType = (e: any) => {
-	               //alert(e.target.value);
-	               this.setState({selected_item_type: e.target.value});
-	            this.setState({add_cart_item_button_classname: "btn btn-default"});
-	            
-	        }*/
-	
-	    }, {
-	        key: "selectedItemQuantity",
-	        value: function selectedItemQuantity(e) {
-	            console.log("selected_item quantity " + e.target.value);
-	            this.setState({ selected_item_quantity: e.target.value });
-	            this.setState({ add_cart_item_button_classname: "btn btn-default" });
-	            //set add cart button == active
-	            //this.set
-	        }
-	    }, {
-	        key: "addCartItem",
-	        value: function addCartItem() {
-	            console.log("add cart item");
-	            //if they haven't selected quantity and dozens dont submit and show them an error
-	            //let item_count = 0
-	            /*this.props.cart.cart_items.map(function(item: any){
-	                         //console.log("item " + JSON.stringify(item));
-	                    //console.log("order type" + JSON.stringify(that.props.order));
-	                         //if(that.props.order.order_type == "sconely_yours"){
-	                           //if total_cost is more then 2 then cost = 5 else 6
-	                      //dont have to loop.  just times cart length
-	                           //total_cost = total_cost + (5 * item.quantity);
-	                      item_count = item_count + item.quantity;
-	                         //}else{
-	                 });*/
-	            //console.log("yours items count" + item_count);
-	            //if(item_count < 12){
-	            this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_mini, this.state.selected_item_quantity);
-	            //this.setState({selected_item_quantity: ""});
-	            //}
-	            //this.props.cartValidated();
-	            $('#myModal').modal('toggle');
-	            //cart validated in redux
-	        }
-	    }, {
 	        key: "goToDateTimeContact",
 	        value: function goToDateTimeContact() {
 	            this.context.router.push("/order/12345/signature");
 	        }
 	    }, {
-	        key: "onMouseEnter",
-	        value: function onMouseEnter(item_id) {
-	            console.log("mouse enter" + JSON.stringify(item_id));
-	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-	            //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
-	            //get index of of element with item id
-	            //also get name of image and append "rollover to it"
-	            //let images_temp = this.state.images;
-	            //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
-	            var menu_items_updated = this.state.menu_items.map(function (item) {
-	                if (item.item_id == item_id) {
-	                    //let image_name = item.image_id;
-	                    item.image_id = item.image_id + "roll";
-	                }
-	                return item;
-	            });
-	            console.log(JSON.stringify(menu_items_updated));
-	            this.setState({ menu_items: menu_items_updated });
-	        }
-	    }, {
-	        key: "onMouseLeave",
-	        value: function onMouseLeave(item_id) {
-	            //console.log("mouse leave" + item_id);
-	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-	            //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
-	            //this.setState({["image_src_" + item_id]: image_id});
-	            var menu_items_updated = this.state.menu_items.map(function (item) {
-	                if (item.item_id == item_id) {
-	                    //let image_name = item.image_id;
-	                    //remove "roll"
-	                    var roll_index = item.image_id.indexOf("roll");
-	                    item.image_id = item.image_id.slice(0, roll_index);
-	                    console.log("item.image_id");
-	                }
-	                return item;
-	            });
-	            console.log(JSON.stringify(menu_items_updated));
-	            this.setState({ menu_items: menu_items_updated });
-	        }
-	    }, {
 	        key: "render",
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 	
 	            //var that = this;
 	            //var page = "";
@@ -39967,7 +39989,7 @@ webpackJsonp([0],[
 	            var options_count_array = [];
 	            //if(this.props.cartItemsTotalQuantity > 0){
 	            for (var i = 2; i < 12 - this.props.cartItemsTotalQuantity; i++) {
-	                console.log(i);
+	                //console.log(i);
 	                options_count_array.push(i);
 	            }
 	            ;
@@ -39976,8 +39998,26 @@ webpackJsonp([0],[
 	            //                          <option value={i}>{i}</option>
 	            //              })}
 	            //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { order: this.props.order, menuItems: this.props.menuItems, cartItems: this.props.cartItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), "mobile link to cart with number of items in cart", React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
-	                var _this2 = this;
+	            var yours_social_quantity_selector = null;
+	            if (this.props.User.orders[0].order_type == "yours") {
+	                if (this.props.cartItemsTotalQuantity < 10) {
+	                    yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
+	                        return React.createElement("option", { value: value }, value);
+	                    }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                            return _this2.addCartItem();
+	                        }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
+	                }
+	            } else {
+	                if (this.props.cartItemsTotalQuantity < 10) {
+	                    yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, "12", React.createElement("input", { type: "radio", name: "12_or_24", value: "12", onChange: this.selectedSocialItem12or24mini }), "24-mini", React.createElement("input", { type: "radio", name: "12_or_24", value: "24_minis", onChange: this.selectedSocialItem12or24mini })), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedSocialItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
+	                        return React.createElement("option", { value: value }, value);
+	                    }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                            return _this2.addCartItem();
+	                        }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
+	                }
+	            }
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), "mobile link to cart with number of items in cart", React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
+	                var _this3 = this;
 	
 	                //console.log(item);
 	                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
@@ -39986,18 +40026,20 @@ webpackJsonp([0],[
 	                //console.log("image id " + this.state["image_src_" + item.item_id]);
 	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
-	                        return _this2.showItem(item.id);
+	                        return _this3.showItem(item.id);
 	                    }, onMouseEnter: function onMouseEnter(e) {
 	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg";
 	                    }, onMouseLeave: function onMouseLeave(e) {
 	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg";
 	                    }, src: "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$5.50"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, this.props.cartItemsTotalQuantity < 10 && React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: function onChange(e) {
-	                    return _this3.selectedItemQuantity(e);
+	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$5.50"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, yours_social_quantity_selector, this.props.cartItemsTotalQuantity < 10 &&
+	            //if order type == "yours"
+	            React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: function onChange(e) {
+	                    return _this2.selectedYoursItemQuantity(e);
 	                }, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
 	                return React.createElement("option", { value: value }, value);
 	            }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
-	                    return _this3.addCartItem();
+	                    return _this2.addCartItem();
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart"))))))))));
 	        }
 	    }], [{
@@ -40022,8 +40064,9 @@ webpackJsonp([0],[
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
 	        menuItems: state.menuItems.items,
-	        guestOrder: state.guestOrder,
-	        cartItems: state.guestOrder.cart_items,
+	        //guestOrder: state.guestOrder,
+	        //cartItems: state.User.orders[0].cartItems, //computed
+	        User: state.User,
 	        //cart_total_items //computed
 	        //cart_total_cost //cost
 	        //delivery_cost: state.guestOrder.delivery_cost
@@ -40041,7 +40084,7 @@ webpackJsonp([0],[
 	            dispatch(menu_ts_1.getMenuItems());
 	        },
 	        addCartItem: function addCartItem(order_id, item_id, mini, quantity) {
-	            dispatch(guest_cart_ts_1.addCartItem(order_id, item_id, mini, quantity));
+	            dispatch(user_ts_1.addCartItem(order_id, item_id, mini, quantity));
 	        },
 	        cartValidated: function cartValidated() {
 	            dispatch(order_validations_ts_1.cartValidated());
@@ -40056,57 +40099,6 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function addCartItem(order_id, item_id, item_type, quantity) {
-	    console.log("add cart item quantity action " + item_id + " " + item_type + " " + quantity);
-	    //if uorder_id != undefined
-	    //else
-	    return {
-	        type: actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM,
-	        order_id: order_id,
-	        item_id: item_id,
-	        item_type: item_type,
-	        quantity: quantity
-	    };
-	    /*return {
-	      type: ADD_CART_ITEM,
-	      item_id,
-	      item_type,
-	      quantity
-	    }*/
-	}
-	exports.addCartItem = addCartItem;
-	function increaseCartItemQuantity(item_id) {
-	    console.log("increase cart item quantity action " + item_id);
-	    return {
-	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
-	    };
-	}
-	exports.increaseCartItemQuantity = increaseCartItemQuantity;
-	function decreaseCartItemQuantity(item_id) {
-	    console.log("DECREASE cart item quantity action " + item_id);
-	    return {
-	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
-	    };
-	}
-	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
-	function removeCartItem(index) {
-	    return {
-	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
-	        index: index
-	    };
-	}
-	exports.removeCartItem = removeCartItem;
-
-/***/ }),
-/* 1131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40124,8 +40116,6 @@ webpackJsonp([0],[
 	//import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
 	//import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 	var react_router_1 = __webpack_require__(546);
-	//import { bindActionCreators } from 'redux';
-	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
 	//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 	//import { getPublicMenu } from './reducers/menu';
@@ -40168,12 +40158,12 @@ webpackJsonp([0],[
 	    }
 	
 	    _createClass(SidebarCart, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
+	        key: "componentWillMount",
+	        value: function componentWillMount() {
 	            //get menu items
 	            //this.setState({menuItemNames: this.props.menuItems})
-	            console.log("sc menu items " + JSON.stringify(this.props.menuItems));
-	            this.setState({ menuItemNames: this.props.menuItems });
+	            console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
+	            //this.setState({menuItemNames: this.props.menuItems})
 	            //this.setState({cartItems: this.props.cartItems})
 	            //this.props;
 	            //alert(JSON.stringify(this.state.menu_items));
@@ -40186,10 +40176,11 @@ webpackJsonp([0],[
 	    }, {
 	        key: "componentWillReceiveProps",
 	        value: function componentWillReceiveProps(nextProps) {
-	            console.log("sc menu items cwrp " + JSON.stringify(this.props.menuItems));
+	            //console.log("sbc menu items cwrp " + JSON.stringify(this.props.menuItems));
+	            //console.log("sbc cart items cwrp " + JSON.stringify(this.props.User));
 	            //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
-	            this.setState({ menuItemNames: this.props.menuItems });
-	            this.setState({ cartItems: this.props.cartItems });
+	            //this.setState({menuItemNames: this.props.menuItems})
+	            this.setState({ cartItems: this.props.User.orders[0].cartItems });
 	        }
 	    }, {
 	        key: "increaseCartItemQuantity",
@@ -40243,19 +40234,19 @@ webpackJsonp([0],[
 	        key: "render",
 	        value: function render() {
 	            var body = "";
-	            var _props = this.props,
-	                removeCartItem = _props.removeCartItem,
-	                increaseCartItemQuantity = _props.increaseCartItemQuantity,
-	                decreaseCartItemQuantity = _props.decreaseCartItemQuantity;
+	            var removeCartItem = this.props.removeCartItem;
 	
-	            if (this.state.page == "menu") {
-	                //body = <SconelyYoursMenu/>;
-	            } else {
-	                body = "delivery address payment";
-	            }
-	            var total_cost = 0;
+	            var order_type = this.props.User.orders[0].order_type;
+	            var social_regular_items = [];
+	            var social_mini_items = [];
+	            var total_items_cost = 0;
+	            var total_social_regular_items = 0;
+	            var total_social_regular_items_cost = 0;
+	            var total_social_mini_items = 0;
+	            var total_social_mini_items_cost = 0;
 	            var total_items = 0;
 	            var item_limit = "";
+	            var item_cost = 0;
 	            //alert(JSON.stringify(this.props.order.toJS()));
 	            //this.props.order.toJS().cart.map(function(item: any){
 	            //    item_count = item.dozens * item.quantity;
@@ -40263,19 +40254,78 @@ webpackJsonp([0],[
 	            var cart = "";
 	            //console.log("length order" + JSON.stringify(this.props.cart));
 	            //console.log("order type" + JSON.stringify(this.props.order));
-	            /*if(this.props.cart.cart_items.length === 0){
-	                     cart = "There are no items in your cart.";
-	                 }else{
-	                     //console.log("order " + JSON.stringify(this.props.cart));
-	                     let that = this;*/
-	            //let cart_items = [{item_id: 1, quantity: 2}];
-	            total_cost = this.props.cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity * 5.4;
-	            }, 0);
-	            total_items = this.props.cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity;
-	            }, 0);
-	            /*this.props.cart.cart_items.map(function(item: any){
+	            if (cart != "") {
+	                cart = "There are no items in your cart.";
+	            } else {
+	                //console.log("order " + JSON.stringify(this.props.cart));
+	                var that = this;
+	                //let cart_items = [{item_id: 1, quantity: 2}];
+	                social_regular_items = this.state.cartItems.filter(function (item) {
+	                    //console.log(JSON.stringify(item));
+	                    if (item.twelveortwentyfourminis == "12") {
+	                        return item;
+	                    }
+	                    return;
+	                });
+	                social_mini_items = this.state.cartItems.filter(function (item) {
+	                    //console.log(JSON.stringify(item));
+	                    if (item.twelveortwentyfourminis == "24_minis") {
+	                        return item;
+	                    }
+	                    return;
+	                });
+	                console.log("sri" + JSON.stringify(social_regular_items));
+	                //1 doz/12 - 5/60 doz regular sized scones, $5 each
+	                //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
+	                //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
+	                if (social_regular_items.length > 0) {
+	                    console.log("sri" + JSON.stringify(social_regular_items));
+	                    total_social_regular_items = social_regular_items.reduce(function (amount, item) {
+	                        console.log(JSON.stringify(item));amount + item.quantity * 5.4;
+	                    }, 0);
+	                    if (total_social_regular_items >= 12 && total_social_regular_items <= 60) {
+	                        item_cost = 5.00;
+	                    } else if (total_social_regular_items >= 72 && total_social_regular_items <= 174) {
+	                        item_cost = 4.75;
+	                    } else if (total_social_regular_items >= 186 && total_social_regular_items <= 200) {
+	                        item_cost = 4.50;
+	                    }
+	                }
+	                if (social_mini_items.length > 0) {
+	                    console.log("sri" + JSON.stringify(social_regular_items));
+	                    total_social_mini_items = social_mini_items.reduce(function (amount, item) {
+	                        console.log(JSON.stringify(item));amount + item.quantity * 5.4;
+	                    }, 0);
+	                    if (total_social_mini_items >= 12 && total_social_regular_items <= 60) {
+	                        item_cost = 5.00;
+	                    } else if (total_social_mini_items >= 72 && total_social_regular_items <= 174) {
+	                        item_cost = 4.75;
+	                    } else if (total_social_mini_items >= 186 && total_social_regular_items <= 200) {
+	                        item_cost = 4.50;
+	                    }
+	                }
+	                //social_mini_items = this.state.cartItems.map((item: any) => {
+	                //if(item.twelveortwentyfourminis == "24_minis"){
+	                //    return item;
+	                //}
+	                //});
+	                //if(social_regular_items.length != 0){
+	                total_social_regular_items_cost = social_regular_items.reduce(function (amount, item) {
+	                    return amount + item.quantity * item_cost;
+	                }, 0);
+	                total_social_mini_items_cost = social_mini_items.reduce(function (amount, item) {
+	                    return amount + item.quantity * item_cost;
+	                }, 0);
+	                //}
+	                //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
+	                total_social_mini_items_cost = this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity * 5.4;
+	                }, 0);
+	                total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
+	                total_items = this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0);
+	                /*this.props.cart.cart_items.map(function(item: any){
 	                         //console.log("item " + JSON.stringify(item));
 	                    //console.log("order type" + JSON.stringify(that.props.order));
 	                         if(that.props.order.order_type == "sconely_yours"){
@@ -40283,8 +40333,8 @@ webpackJsonp([0],[
 	                      //dont have to loop.  just times cart length
 	                           //total_cost = total_cost + (5 * item.quantity);
 	                      item_count = item_count + item.quantity;
-	             
-	                         }else{
+	                  
+	                    }else{
 	                           if(item.item_type == "mini"){
 	                                    
 	                        total_cost = total_cost + (5 * item.quantity * 24);
@@ -40296,52 +40346,38 @@ webpackJsonp([0],[
 	                         }
 	                                  
 	                });*/
-	            //alert(total_cost);
-	            cart = this.props.cartItems.map(function (item, index) {
-	                //console.log("cart menuitems " + JSON.stringify(this.state.menuItemNames));
-	                var menu_item_name_index = this.state.menuItemNames.findIndex(function (menu_item) {
+	                //alert(total_cost);
+	                cart = this.state.cartItems.map(function (item, index) {
+	                    //console.log("cart menuitems " + JSON.stringify(this.state.menuItemNames));
+	                    //let menu_item_name_index = this.state.menuItemNames.findIndex((menu_item: any) => {
 	                    //console.log(JSON.stringify(menu_item) + " " + item.item_id);
-	                    return menu_item.id === "" + item.item_id;
-	                });
-	                console.log("index " + menu_item_name_index);
-	                //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-	                var item_name = this.state.menuItemNames[menu_item_name_index].name;
-	                //let item_name = "";
-	                //if(that.props.order.order_type == "sconely_yours"){
-	                return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-5" }), React.createElement("div", { className: "col-md-3" }, item.quantity)));
-	                /*}else{
-	                    
-	                    if(item.item_type == "mini"){
-	                    
-	                        return(
-	                                  <form className="form-horizontal" style={{border: 1, position: "static"}}>
-	                                        <div className="form-group" style={{border: 1}}>
-	                                          <div className="col-md-6">ruby q</div>
-	                                          <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}title-mini</div>
-	                                        </div>
-	                                  </form>
-	                        )
-	                     }else{
-	                         return(
-	                                      <form className="form-horizontal" style={{border: 1, position: "static"}}>
-	                                        <div className="form-group" style={{border: 1}}>
-	                                          <div className="col-md-6">ruby q</div>
-	                                          <div className="col-md-6">{item.quantity * 12}</div>
-	                                        </div>
-	                                      </form>
-	                              )
-	                     }
-	                }*/
-	            }.bind(this));
-	            //}
+	                    //return menu_item.id === "" + item.item_id;
+	                    //});
+	                    //console.log("index " + menu_item_name_index);
+	                    //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
+	                    var item_name = this.props.menuItems[0].name;
+	                    //let item_name = "";
+	                    //console.log("sidebar cart " + JSON.stringify(that.Order));
+	                    console.log(order_type);
+	                    if (order_type == "yours") {
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-5" }), React.createElement("div", { className: "col-md-3" }, item.quantity)));
+	                    } else {
+	                        if (item.twelveortwentyfourminis == "24_minis") {
+	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-6" }, item_name, " mini"), React.createElement("div", { className: "col-xs-6", style: { fontSize: 15 } }, 24 * item.quantity)));
+	                        } else {
+	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-6" }, "ruby q regular"), React.createElement("div", { className: "col-md-6" }, 12 * item.quantity)));
+	                        }
+	                    }
+	                }.bind(this));
+	            }
 	            if (total_items == 12) {
 	                item_limit = "You have reached your item limit";
 	            }
 	            //{this.props.params.repoName}
 	            //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
-	            return React.createElement("div", null, React.createElement("br", null), this.props.cartItems.reduce(function (amount, item) {
+	            return React.createElement("div", null, React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
-	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.props.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_cost, "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/datetime", className: "btn btn-default" }, "Delivery Date Time")), React.createElement("br", null), React.createElement("br", null));
+	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost, "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Delivery")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -40356,23 +40392,38 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.guestOrder.cart_items));
+	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.menuItems.items));
 	    return {
 	        //cart_items: getCartItems(state); 
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
-	        menuItems: state.menuItems.items,
-	        cartItems: state.guestOrder.cart_items
+	        menuItems: state.menuItems.items
 	    };
 	};
-	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	    return {};
-	};
-	var SidebarCartConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SidebarCart);
+	/*const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+	  return {
+	    //viewmenuthunk
+	
+	    //addCartItem: (item_id: any, dozens: any, quantity: any) => {
+	    //  dispatch(addCartItem(1));
+	    //},
+	    //increaseCartItemQuantity: () => {
+	    //  dispatch(increaseCartItemQuantity(1, 12));
+	    //},
+	    //decreaseCartItemQuantity: () => {
+	    //  dispatch(decreaseCartItemQuantity(1, 12));
+	    //}
+	  }
+	}
+	
+	const SidebarCartConnected = connect(
+	  mapStateToProps,
+	  mapDispatchToProps
+	)(SidebarCart);*/
 	exports.default = SidebarCart;
 
 /***/ }),
-/* 1132 */
+/* 1131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40462,7 +40513,7 @@ webpackJsonp([0],[
 	exports.default = MobileCheckoutButton;
 
 /***/ }),
-/* 1133 */
+/* 1132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40630,7 +40681,7 @@ webpackJsonp([0],[
 	exports.default = Menu;
 
 /***/ }),
-/* 1134 */
+/* 1133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40651,10 +40702,10 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	var order_validations_ts_1 = __webpack_require__(949);
-	var user_delivery_contact_address_ts_1 = __webpack_require__(1135);
-	var user_name_contact_ts_1 = __webpack_require__(1136);
+	var user_delivery_contact_address_ts_1 = __webpack_require__(1134);
+	var user_name_contact_ts_1 = __webpack_require__(1135);
 	var signature_order_delivery_datetime_ts_1 = __webpack_require__(966);
-	var guest_cart_ts_1 = __webpack_require__(1130);
+	var guest_cart_ts_1 = __webpack_require__(1136);
 	var order_payment_method_ts_1 = __webpack_require__(968);
 	//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 	var order_ts_1 = __webpack_require__(920);
@@ -41140,7 +41191,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setContactEmail(e);
 	                }, setContactMobile: function setContactMobile(e) {
 	                    return _this2.props.setContactMobile(e);
-	                } }), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
 	                    return _this2.props.setUserDeliveryContactAddressFirstName(e);
 	                }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
 	                    return _this2.props.setUserDeliveryContactAddressLastName(e);
@@ -41333,7 +41384,7 @@ webpackJsonp([0],[
 	exports.default = CheckoutConnected;
 
 /***/ }),
-/* 1135 */
+/* 1134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41521,7 +41572,7 @@ webpackJsonp([0],[
 	exports.setUserDeliveryContactAddressZipcode = setUserDeliveryContactAddressZipcode;
 
 /***/ }),
-/* 1136 */
+/* 1135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -41567,6 +41618,57 @@ webpackJsonp([0],[
 	    value
 	  }
 	}*/
+
+/***/ }),
+/* 1136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
+	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+	    //if uorder_id != undefined
+	    //else
+	    return {
+	        type: actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM,
+	        order_id: order_id,
+	        item_id: item_id,
+	        twelveortwentyfourminis: twelveortwentyfourminis,
+	        quantity: quantity
+	    };
+	    /*return {
+	      type: ADD_CART_ITEM,
+	      item_id,
+	      item_type,
+	      quantity
+	    }*/
+	}
+	exports.addCartItem = addCartItem;
+	function increaseCartItemQuantity(item_id) {
+	    console.log("increase cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.increaseCartItemQuantity = increaseCartItemQuantity;
+	function decreaseCartItemQuantity(item_id) {
+	    console.log("DECREASE cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
+	function removeCartItem(index) {
+	    return {
+	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
+	        index: index
+	    };
+	}
+	exports.removeCartItem = removeCartItem;
 
 /***/ }),
 /* 1137 */
@@ -41793,7 +41895,7 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            var delivery_address = "";
-	            return React.createElement("div", null, React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", value: this.state.company_name, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", value: this.state.company_name, onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", value: this.state.company_name, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", value: this.state.company_name, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressCompanyName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet1(e);
@@ -41805,7 +41907,7 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free")))))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42034,7 +42136,7 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { paddingLeft: 0 } }, React.createElement("div", { className: "form-group", style: { paddingLeft: 0 } }, React.createElement("div", { className: "col-sm-12", style: { paddingLeft: 0 } }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.props.guestOrder.nameContact.first, maxLength: 20, onFocus: function onFocus() {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.props.guestOrder.nameContact.first, maxLength: 20, onFocus: function onFocus() {
 	                    return _this2.onFirstNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.props.setFirstName(e);
@@ -42042,7 +42144,7 @@ webpackJsonp([0],[
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.props.setLastName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal", style: { paddingLeft: 0 } }, React.createElement("div", { className: "form-group", style: { paddingLeft: 0 } }, React.createElement("div", { className: "col-sm-12", style: { paddingLeft: 0 } }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: function onChange(e) {
 	                    return _this2.props.setContactEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: function onChange(e) {
 	                    return _this2.setContactEmailAgain(e);
@@ -42478,8 +42580,11 @@ webpackJsonp([0],[
 	var DayPickerInput = __webpack_require__(1100);
 	__webpack_require__(1121);
 	__webpack_require__(1125);
-	var order_sidebar_cart_tsx_1 = __webpack_require__(1131);
-	var public_top_navbar_tsx_1 = __webpack_require__(1133);
+	var order_sidebar_cart_tsx_1 = __webpack_require__(1130);
+	var public_top_navbar_tsx_1 = __webpack_require__(1132);
+	var name_tsx_1 = __webpack_require__(1138);
+	var order_delivery_address_tsx_1 = __webpack_require__(1137);
+	var user_delivery_contact_address_ts_1 = __webpack_require__(1134);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -42497,6 +42602,65 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
 	
 	        _this.componentWillReceiveProps = function () {};
+	        //setDay(day: any){
+	        //console.log("date " + moment(day).format("YYYY/MM/DD"));
+	        //this.setState({selectedDate: date});
+	        //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+	        //this.props.setDate(moment(date).toISOString());
+	        //this.props.cartValidated();
+	        //this.props.datetimeValidated();
+	        //}
+	        _this.setDelveryZipcode = function (e) {
+	            var dtla_zipcodes = ["90013", "90014", "90015", "90021", "90071"];
+	            var santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"];
+	            var venice_zipcodes = ["90291", "90292", "90293"];
+	            //if(order_type === "yours" && dtla_zipcodes.includes(e.target.value){
+	            //    days == monday friday
+	            //    9-11
+	            //    this.props.setDeliveryAvaliableTime("9-11am")
+	            //    this.props.setDeliveryCost
+	            //}else if(order_type === "yours" && santa_monica_zipcodes.includes(e.target.value){
+	            //    days == monday friday
+	            //    9-11
+	            //    this.props.setDeliveryAvaliableTime("1-3pm")
+	            //}else if(order_type === "yours" && venice_zipcodes.includes(e.target.value){
+	            //    days == monday friday
+	            //    9-11
+	            //    this.props.setDeliveryAvaliableTime("1-3pm")
+	            //}else if(order_type === "social" && dtla_zipcodes.includes(e.target.value){
+	            //    days == anyday
+	            //    anytime
+	            //}else if(order_type === "social" && venice_zipcodes.includes(e.target.value){
+	            //    days == anyday
+	            //    anytime
+	            //}
+	            //var numOfDays = new Date(2012, 10, 0).getDate();
+	            //var date = new Date();
+	            //getDay()
+	            //var date = new Date(year, month, 1);
+	            // var days = [];
+	            // while (date.getMonth() === month) {
+	            //    days.push(new Date(date));
+	            //    date.setDate(date.getDate() + 1);
+	            // }
+	            // return days;
+	            //yours
+	            //dtla
+	            //if zipcode == 90015, 90014, 90013, 90021, 90071
+	            //days == monday friday
+	            //9-11
+	            //cost == free
+	            //yours
+	            //90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
+	            //90291. CA.  90292. CA.  90293. 90294. 90295. 90296. CA. 
+	            //days == monday friday
+	            //9-11
+	            //cost == free
+	            //social
+	            //three days in advance
+	            //everyday
+	            //9-11 dtla, 1-3, west side
+	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
@@ -42529,15 +42693,6 @@ webpackJsonp([0],[
 	            //this.props.cartValidated();
 	            this.props.datetimeValidated();
 	        }
-	        //setDay(day: any){
-	        //console.log("date " + moment(day).format("YYYY/MM/DD"));
-	        //this.setState({selectedDate: date});
-	        //this.props.setDate(moment(date).format("YYYY/MM/DD"));
-	        //this.props.setDate(moment(date).toISOString());
-	        //this.props.cartValidated();
-	        //this.props.datetimeValidated();
-	        //}
-	
 	    }, {
 	        key: "render",
 	        value: function render() {
@@ -42549,13 +42704,47 @@ webpackJsonp([0],[
 	                 }else{
 	                     delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { order: this.props.order, menuItems: this.props.menuItems, cartItems: this.props.cartItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { guestOrder: this.props.guestOrder, setContactFirstName: function setContactFirstName(e) {
+	                    return _this2.props.setContactFirstName(e);
+	                }, setContactLastName: function setContactLastName(e) {
+	                    return _this2.props.setLastName(e);
+	                }, setEmail: function setEmail(e) {
+	                    return _this2.props.setContactEmail(e);
+	                }, setContactMobile: function setContactMobile(e) {
+	                    return _this2.props.setContactMobile(e);
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
+	                    return _this2.props.setUserDeliveryContactAddressFirstName(e);
+	                }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
+	                    return _this2.props.setUserDeliveryContactAddressLastName(e);
+	                }, setDeliveryContactAddressEmail: function setDeliveryContactAddressEmail(e) {
+	                    return _this2.props.setUserDeliveryContactAddressEmail(e);
+	                }, setDeliveryContactAddressMobile: function setDeliveryContactAddressMobile(e) {
+	                    return _this2.props.setUserDeliveryContactAddressMobile(e);
+	                }, setDeliveryContactAddressCompanyName: function setDeliveryContactAddressCompanyName(e) {
+	                    return _this2.props.setUserDeliveryContactAddressCompanyName(e);
+	                }, setDeliveryContactAddressStreet1: function setDeliveryContactAddressStreet1(e) {
+	                    return _this2.props.setUserDeliveryContactAddressStreet1(e);
+	                }, setDeliveryContactAddressStreet2: function setDeliveryContactAddressStreet2(e) {
+	                    return _this2.props.setUserDeliveryContactAddressStreet2(e);
+	                }, setDeliveryContactAddressCity: function setDeliveryContactAddressCity(e) {
+	                    return _this2.props.setUserDeliveryContactAddressCity(e);
+	                }, setDeliveryContactAddressState: function setDeliveryContactAddressState(e) {
+	                    return _this2.props.setUserDeliveryContactAddressState(e);
+	                }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
+	                    return _this2.props.setUserDeliveryContactAddressZipcode(e);
+	                }, setDeliveryCost: function setDeliveryCost(e) {
+	                    return _this2.props.setDeliveryCost(e);
+	                }, deliveryAddressValidated: function deliveryAddressValidated() {
+	                    return _this2.props.deliveryAddressValidated();
+	                }, deliveryAddressInvalidated: function deliveryAddressInvalidated() {
+	                    return _this2.props.deliveryAddressInvalidated();
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
 	                    return _this2.setDate(e);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate })), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
 	                    return _this2.props.setTime(e);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Checkout"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Checkout"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42577,7 +42766,8 @@ webpackJsonp([0],[
 	        //menu_items: dispatch()
 	        menuItems: state.menuItems.items,
 	        guestOrder: state.guestOrder,
-	        cartItems: state.guestOrder.cart_items
+	        cartItems: state.guestOrder.cart_items,
+	        User: state.User
 	    };
 	}
 	function mapDispatchToProps(dispatch) {
@@ -42590,6 +42780,40 @@ webpackJsonp([0],[
 	        setTime: function setTime(e) {
 	            //  console.log("settime" + e.target.value);
 	            //  dispatch(setTime(e.target.value));
+	        },
+	        //datetimeValidated: () => {
+	        //console.log(e.target.value);
+	        //  dispatch(datetimeValidated());
+	        //}
+	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressLastName: function setUserDeliveryContactAddressLastName(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressLastName(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressCompanyName: function setUserDeliveryContactAddressCompanyName(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCompanyName(e.target.value));
+	        },
+	        setUserDeliveryContactAddressEmail: function setUserDeliveryContactAddressEmail(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressEmail(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressMobile(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressStreet1: function setUserDeliveryContactAddressStreet1(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet1(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressStreet2: function setUserDeliveryContactAddressStreet2(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet2(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressCity: function setUserDeliveryContactAddressCity(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCity(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressState: function setUserDeliveryContactAddressState(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressState(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressZipcode: function setUserDeliveryContactAddressZipcode(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressZipcode(e.target.value, ""));
 	        }
 	    };
 	}
@@ -42615,10 +42839,10 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	var guest_cart_ts_1 = __webpack_require__(1130);
+	var guest_cart_ts_1 = __webpack_require__(1136);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(956);
-	var public_top_navbar_tsx_1 = __webpack_require__(1133);
+	var public_top_navbar_tsx_1 = __webpack_require__(1132);
 	
 	var OrderCart = function (_React$Component) {
 	    _inherits(OrderCart, _React$Component);
@@ -43159,9 +43383,6 @@ webpackJsonp([0],[
 	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var order_delivery_address_tsx_1 = __webpack_require__(1137);
-	var contact_preview_tsx_1 = __webpack_require__(1144);
-	var order_datetime_tsx_1 = __webpack_require__(1141);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(956);
 	var DatePicker = __webpack_require__(972);
@@ -43687,7 +43908,7 @@ webpackJsonp([0],[
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), React.createElement(order_datetime_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, null), React.createElement("br", null), React.createElement(contact_preview_tsx_1.default, null), React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
+	                } }, "cart()"), React.createElement("br", null), "Ross Edwards", React.createElement("br", null), "rossedwards@gmail.com", React.createElement("br", null), "310-775-5566", React.createElement("br", null), React.createElement("br", null), "Sept 1st, 2017", React.createElement("br", null), "11901 Santa Monica Blvd", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
 	                } }, "Edit Datetime"), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
@@ -43780,112 +44001,6 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	var react_redux_1 = __webpack_require__(190);
-	var Immutable = __webpack_require__(956);
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var ContactPreview = function (_React$Component) {
-	    _inherits(ContactPreview, _React$Component);
-	
-	    //props: Props;
-	    function ContactPreview(props) {
-	        _classCallCheck(this, ContactPreview);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (ContactPreview.__proto__ || Object.getPrototypeOf(ContactPreview)).call(this, props));
-	
-	        _this.state = {
-	            email: "",
-	            mobile: ""
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(ContactPreview, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            this.setState({ email: this.props.contact.email });
-	            this.setState({ mobile: this.props.contact.mobile });
-	        }
-	    }, {
-	        key: "setContactEmail",
-	        value: function setContactEmail(e) {
-	            this.setState({ email: "this.input.value" });
-	            this.props.setContactEmail(e);
-	        }
-	    }, {
-	        key: "setContactMobile",
-	        value: function setContactMobile(e) {}
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, "email")), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, "mobile")))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return ContactPreview;
-	}(React.Component);
-	
-	function mapStateToProps(state) {
-	    console.log("contact component/state" + JSON.stringify(state.contact));
-	    return {
-	        contact: state.contact
-	        //menu_items: getPublicMenu
-	        //menu_items: dispatch()
-	    };
-	}
-	function mapDispatchToProps(dispatch) {
-	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {
-	        setContactEmail: function setContactEmail(e) {
-	            console.log(e.target.value);
-	            //dispatch(setContactEmail(e.target.value));
-	        },
-	        setContactMobile: function setContactMobile(e) {
-	            //  console.log(e.target.value);
-	            //dispatch(setContactMobile(e.target.value));
-	        }
-	    };
-	}
-	var ContactPreview1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(ContactPreview);
-	exports.default = ContactPreview1;
-
-/***/ }),
-/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -44603,7 +44718,7 @@ webpackJsonp([0],[
 	exports.default = OrderCompleted1;
 
 /***/ }),
-/* 1146 */
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44757,7 +44872,7 @@ webpackJsonp([0],[
 	exports.default = Login;
 
 /***/ }),
-/* 1147 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45034,7 +45149,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1148 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45206,7 +45321,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1149 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45257,7 +45372,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1150 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45398,7 +45513,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1151 */
+/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45415,10 +45530,10 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1152);
+	var signature_guest_response_ts_1 = __webpack_require__(1151);
 	var menu_ts_1 = __webpack_require__(923);
-	var signature_guest_response_ts_2 = __webpack_require__(1153);
-	var navbar_tsx_1 = __webpack_require__(1154);
+	var signature_guest_response_ts_2 = __webpack_require__(1152);
+	var navbar_tsx_1 = __webpack_require__(1153);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45599,7 +45714,7 @@ webpackJsonp([0],[
 	exports.default = GuestMenuConnected;
 
 /***/ }),
-/* 1152 */
+/* 1151 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -45697,7 +45812,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1153 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45813,7 +45928,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1154 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45885,7 +46000,7 @@ webpackJsonp([0],[
 	exports.default = NavBar1;
 
 /***/ }),
-/* 1155 */
+/* 1154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45902,9 +46017,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
-	var signature_guest_response_ts_1 = __webpack_require__(1153);
-	var signature_guest_response_ts_2 = __webpack_require__(1152);
-	var navbar_tsx_1 = __webpack_require__(1154);
+	var signature_guest_response_ts_1 = __webpack_require__(1152);
+	var signature_guest_response_ts_2 = __webpack_require__(1151);
+	var navbar_tsx_1 = __webpack_require__(1153);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -46055,7 +46170,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1156 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46071,8 +46186,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1152);
-	var navbar_tsx_1 = __webpack_require__(1154);
+	var signature_guest_response_ts_1 = __webpack_require__(1151);
+	var navbar_tsx_1 = __webpack_require__(1153);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -46163,7 +46278,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1157 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46297,7 +46412,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderGuestsConnected;
 
 /***/ }),
-/* 1158 */
+/* 1157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46315,7 +46430,7 @@ webpackJsonp([0],[
 	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(970);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var guest_cart_ts_1 = __webpack_require__(1130);
+	var guest_cart_ts_1 = __webpack_require__(1136);
 	//import {processSignatureOrder} from './actions/user_order.ts';
 	var user_navbar_tsx_1 = __webpack_require__(958);
 	
@@ -46473,7 +46588,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItemsConnected;
 
 /***/ }),
-/* 1159 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46595,7 +46710,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderSummaryConnected;
 
 /***/ }),
-/* 1160 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46744,7 +46859,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderPreviewConnected;
 
 /***/ }),
-/* 1161 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46752,19 +46867,19 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1162);
+	var session_ts_1 = __webpack_require__(1161);
 	//import Register from './register.ts';
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1163);
-	var user_ts_1 = __webpack_require__(1164);
+	var menu_ts_1 = __webpack_require__(1162);
+	var user_ts_1 = __webpack_require__(1163);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
-	var guest_order_ts_1 = __webpack_require__(1165);
+	var guest_order_ts_1 = __webpack_require__(1164);
 	//import name from './name.ts';
 	//import contact from './contact.ts';
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1166);
+	var signature_guest_response_ts_1 = __webpack_require__(1165);
 	//import UserOrders from './user_order.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -46806,7 +46921,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1162 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46846,7 +46961,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1163 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46873,29 +46988,56 @@ webpackJsonp([0],[
 	
 	}*/
 	exports.default = function () {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { items: [] };
-	    var action = arguments[1];
+	                  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { items: [] };
+	                  var action = arguments[1];
 	
-	    switch (action.type) {
-	        case actionTypes_ts_1.VIEW_PUBLIC_MENU:
-	            console.log("menu_items reducer" + JSON.stringify(action.menu_items));
-	            return Object.assign({}, state, { items: action.items });
-	        //return Object.assign({}, state, {items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]})
-	        case actionTypes_ts_1.SET_MENU:
-	            console.log("menu_items reducer" + JSON.stringify(action.menu_items));
-	            return Object.assign({}, state, { menu_items: action.menu_items });
-	        default:
-	            //return Object.assign({}, state, {menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]})
-	            //return {}
-	            return state;
-	    }
+	                  switch (action.type) {
+	                                    case actionTypes_ts_1.VIEW_PUBLIC_MENU:
+	                                                      console.log("menu_items reducer" + JSON.stringify(action.menu_items));
+	                                                      return Object.assign({}, state, { items: action.items });
+	                                    //return Object.assign({}, state, {items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]})
+	                                    case actionTypes_ts_1.SET_MENU:
+	                                                      //console.log("menu_items reducer" + JSON.stringify(action.menu_items));
+	                                                      return Object.assign({}, state, { menu_items: action.menu_items });
+	                                    default:
+	                                                      /*axios.post('/api/graphql',
+	                                                                     {query: 'query {get_menu_items {id name description ingredients}}'}
+	                                                                     //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
+	                                                            )
+	                                                            .then((response: any) => {
+	                                                                         //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	                                                                         //that.props.history.push('/user');
+	                                                                  //context.router
+	                                                                         //that.props.setOrderId(1);
+	                                                                         //this.context.router.push('/order/complete');
+	                                                                         //dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems});
+	                                                                    //dispatch(push("/order/url_name/guest/name"));
+	                                                                         //return response.data.data.getMenuItems;
+	                                                                  //return state;
+	                                                                         //return Object.assign({}, state, {items: response.data.data.getMenuItems})
+	                                                      
+	                                                            })
+	                                                            .catch((error: any) => {
+	                                                                         console.log("error" + error);
+	                                                                  //go to code/payment screen
+	                                                          //        this.props.loadView();
+	                                                       
+	                                                                  //display errror to user - payment
+	                                                                  //if (!error.status) {
+	                                                              // network error
+	                                                            //}
+	                                                                   })*/
+	                                                      //return Object.assign({}, state, {items: [{id: 1, name: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {id: 2, name: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {id: 3, name: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {id: 4, name: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {id: 5, name: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {id: 6, name: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {id: 7, name: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {id: 8, name: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {id: 9, name: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {id: 10, name: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]})
+	                                                      //return {}
+	                                                      return state;
+	                  }
 	};
 	//export const getPublicMenu = 
 	//state.visibleIds.map(id => getProduct(state, id))
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1164 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46922,18 +47064,29 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "signature", delivery_date: "", event_name: "" }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: { "personal": { name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, "work": { name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" } } };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: { "personal": { name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, "work": { name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" } } };
 	    var action = arguments[1];
 	
 	    var delivery_contacts_addresses_updated = null;
 	    var payment_methods_updated = null;
 	    var user_updated = null;
+	    var orders_updated = null;
 	    switch (action.type) {
 	        case actionTypes_ts_1.GET_USER:
 	            console.log("set user email" + JSON.stringify(state));
 	            //normalizr
 	            //delivery addrress
 	            return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
+	        /*case CREATE_ORDER:
+	          console.log("add cart reducer";
+	               user_updated = state.cartItems;
+	          user_updated["first_name"] = action.value;
+	               return Object.assign({}, state, {user: user_updated});*/
+	        case actionTypes_ts_1.ADD_CART_ITEM:
+	            console.log("add cart reducer");
+	            orders_updated = state.orders;
+	            orders_updated[0].cartItems.push({ item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1" });
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	        case actionTypes_ts_1.SET_USER_NAME_FIRST:
 	            console.log("user first name reducer" + JSON.stringify(state));
 	            user_updated = state.user;
@@ -47002,6 +47155,12 @@ webpackJsonp([0],[
 	            delivery_contacts_addresses_updated[0].street1 = action.value;
 	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
 	        //else remove item
+	        /*case SET_USER_PAYMENT_METHOD_CARD_NUMBER:
+	             console.log("user delivery contact address zipcode reducer");
+	             payment_methods_updated = state.paymentMethods;
+	         payment_methods_updated[0].card_number = action.value;
+	             return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });*/
+	        //else remove item
 	        /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
 	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
 	               delivery_contacts_addresses_updated = state.delivery_addresses;
@@ -47050,7 +47209,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1165 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47086,7 +47245,7 @@ webpackJsonp([0],[
 	            case actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM:
 	                  console.log("add guest cart item reducer" + JSON.stringify(state));
 	                  var items = state.cart_items;
-	                  items.push({ item_id: 1, item_type: action.item_type, quantity: parseInt(action.quantity) });
+	                  items.push({ item_id: 1, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: parseInt(action.quantity) });
 	                  return Object.assign({}, state, { cart_items: items });
 	            case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
 	                  console.log("increase reducer " + JSON.stringify(state));
@@ -47216,7 +47375,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1166 */
+/* 1165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

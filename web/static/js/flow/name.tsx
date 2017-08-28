@@ -295,9 +295,9 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-              <form className="form-horizontal" style={{paddingLeft: 0}}>
-                <div className="form-group" style={{paddingLeft: 0}}>
-                  <div className="col-sm-12" style={{paddingLeft: 0}}>
+              <form className="form-horizontal">
+                <div className="form-group">
+                  <div className="col-md-3">
                       <b>Name</b>
                       <br/>
                   </div>
@@ -317,9 +317,9 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-horizontal" style={{paddingLeft: 0}}>
-                <div className="form-group" style={{paddingLeft: 0}}>
-                  <div className="col-sm-12" style={{paddingLeft: 0}}>
+              <form className="form-horizontal">
+                <div className="form-group">
+                  <div className="col-md-12">
                       <b>Contact</b>
                       <br/>
                   </div>

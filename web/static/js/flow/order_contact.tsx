@@ -287,7 +287,7 @@ class Contact extends React.Component<any, any> {
               <br/>
               <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-md-12">
+                  <div className="col-md-3">
                       <b>Contact</b>
                       <br/>
                   </div>
