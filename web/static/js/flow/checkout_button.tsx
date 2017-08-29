@@ -142,9 +142,11 @@ class CheckoutButton extends React.Component<any, any> {
     //please enter a valid date
     //please enter a valid contact
 
+    //do in action?
+
     return ( <div>
 
-                <button className={this.state.validated} onClick={() => this.completeOrder()}>checkout button</button>
+                <button className={this.state.validated} onClick={this.props.processYoursSocialOrder}>Complete Order</button>
               </div>
     )
   }

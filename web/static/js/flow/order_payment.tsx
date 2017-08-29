@@ -12,21 +12,25 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-//import {setDeliveryAddressStreet1, setDeliveryAddressStreet2, setDeliveryAddressCity, setDeliveryAddressState, setDeliveryAddressZipcode} from './actions/order_delivery_address.ts';
-import {completeOrder} from './actions/complete_order.ts';
-//import {setFirstName, setLastName} from './actions/order_name.ts';
-//import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
-//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
-//import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
+import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
+import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
+import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
+import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
+import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
+import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
+//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
+import {processYoursSocialOrder, setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
+//import {processYoursSocialOrder1} from './actions/'
 
 import SidebarCart from './order_sidebar_cart.tsx';
-import DeliveryAddress from './order_delivery_address.tsx';
-import Contact from './order_contact.tsx';
-import ContactPreview from './contact_preview.tsx';
-//import DateTime from './order_datetime.tsx';
-//import Name from './name.tsx';
-//import NamePreview from './name_preview.tsx';
+//import DeliveryContactAddress from './order_delivery_address.tsx';
+//import Contact from './order_contact.tsx';
+//import Datetime from './order_delivery.tsx';
+//import NameContact from './name.tsx';
+import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
+import CheckoutButton from './checkout_button.tsx';
 
 //import { getPublicMenu } from './reducers/name';
 const Immutable  = require('immutable');
@@ -58,7 +62,7 @@ interface Order {
   //completed: boolean
 }
 
-class Preview extends React.Component<any, any> {
+class OrderDateTimeContact extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -92,7 +96,8 @@ class Preview extends React.Component<any, any> {
         name_on_card: "form-group has-error",
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         selected_time: "",
-        selected_specific_time: ""
+        selected_specific_time: "",
+        button_complete_order_classname: "btn btn-default disabled"
 
     };
 
@@ -130,133 +135,20 @@ class Preview extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //alert(this.props.params.order_id);
+      ///if(this.props.order.order_type == undefined){
 
-    /*this._isMounted = true;
-    window.onpopstate = ()=> {
-      if(this._isMounted) {
-        const { hash } = location;
-        if(hash.indexOf('home')>-1 && this.state.value!==0)
-          this.setState({value: 0})
-        if(hash.indexOf('users')>-1 && this.state.value!==1)
-          this.setState({value: 1})
-        if(hash.indexOf('data')>-1 && this.state.value!==2)
-          this.setState({value: 2})
-      }
-    }*/
+      //    redirect to homepage
 
+      //}
+      
+  }
 
+  //componentWillReceiveProps
+  componentWillReceiveProps(nextProps: any){
 
-    //alert();
+    console.log("<b>recieved</b>");
 
-    //window.onhashchange = function() {
-     //blah blah blah
-     //alert(this.state.page);
-    //}.bind(this);
-
-    //var result = map.find(function(obj){return obj.get('id') === 4;});
-
-    //var result = [{'id': 'a'}, {'id': 'b'}];
-    //var map = Immutable.Map(result.reduce(function(previous, current) { 
-    //    previous[ current.id ] = current;
-    //    return previous;
-    //}, {}));
-
-    
-
-    let demoRecord = Immutable.List.of(Immutable.Record({
-                     property:'defaultValue',
-                     index:0,
-                     works:true,
-                     valueList:Immutable.List([])
-    }));
-
-    //alert(demoRecord.getIn(["0"], "index"));
-
-    /*let list = demoRecord.update(
-      demoRecord.findIndex(function(item: any) { 
-        return item.get("index") === "0"; 
-      }), function(item: any) {
-        return item.set("index", 4);
-      }
-    );*/
-
-    var result = [{'id': 2}, {'id': 4}];
-    var map = Immutable.fromJS(result);
-    var map_updated = map.set()
-    var result1 = map.find(function(obj: any){return obj.get('id') === 4;});
-
-    //alert(result1.get("id"));
-
-    /*let arr = fromJS(
-      elem: [
-        {id: 1, name: "first", count: 2},
-        {id: 2, name: "second", count: 1},
-        {id: 3, name: "third", count: 2},
-        {id: 4, name: "fourth", count: 1}
-      ]
-    );
-
-    arr = arr.setIn(['elem', 3, 'count'], 4);
-    If we don’t know the index of the entry we want to update. It’s pretty easy to find it using .findIndex():
-
-    
-    const indexOfListToUpdate = arr.get('elem').findIndex(listItem => {
-      return listItem.get('name') === 'third';
-    });
-    arr = arr.setIn(['elem', indexOfListingToUpdate, 'count'], 4);*/
-
-
-
-    //let cart_items_temp = this.state.cart_items;
-    //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
-    //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-    //const myNewMap = cart_items_temp.push({item_id: 5});
-    //let hello = cart_items_temp.push({item_id: 5});
-
-    //alert(JSON.stringify(myNewMap));
-
-    //alert(JSON.stringify(myNewMap.delete("0")));
-
-    //hello.findIndex(function(item: any) { 
-    //    return item.get("item_id") === "1"; 
-    //})
-
-    //var result = map.find(function(obj){return obj.get('id') === 4;});
-
-    //hello = hello.find((layout: any) => {layout.get('item_id') === 1});
-
-
-    /*let list = hello.update(
-      hello.findIndex(function(item: any) { 
-        return item.get("item_id") === "1"; 
-      }), function(item: any) {
-        return item.set("quantity", 44444444444444);
-      }
-    );*/
-
-    //let list = hello.update(0, function(v: any) {
-    //    return {quantity: 44444444444};
-    //});
-
-    //alert(JSON.stringify(list.toJS()));
-
-
-    //alert(cart_items_temp_updated);
-
-
-    //get menu items
-
-
-    //this.props;
-
-    //alert(JSON.stringify(this.state.menu_items));
-
-    //alert("products" + JSON.stringify(this.props.menu_items));
-    //console.log(this.props.getAllProducts());
-    //this.setState({here: this.props.getAllProducts()});
-    //console.log(this.props.dispatch(addTodoWithDispatch));
-    //this.props.getAllProducts();
+    //this.props.cart_validated;
 
   }
 
@@ -424,6 +316,8 @@ class Preview extends React.Component<any, any> {
   setFirstName(e: any){
 
      //alert(e.target.value);
+
+
 
      if(e.target.value.length > 0){
 
@@ -751,10 +645,23 @@ class Preview extends React.Component<any, any> {
       //if this.props.order_state = "completed"?
       //else error
 
-      this.context.router.push('/order/order_completed');
+
+      //export default function getBook(dispatch) {
+      /*  $.ajax({
+            method: "GET",
+            url: "/api/data",
+            dataType: "json"
+          }).success(function(data){
+            //return dispatch({type:'GET_BOOK', data: data});
+            this.context.router.push('/order/12345/order_complete');
+
+          });
+      //}
+
+      this.context.router.push('/order/12345/order_complete');*/
 
 
-      /*axios.post('http://localhost:4000/graphql', {
+      axios.post('http://localhost:4000/graphql', {
              query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
       })
       .then( response => {
@@ -790,7 +697,7 @@ class Preview extends React.Component<any, any> {
         // network error
       //}
 
-      })*/
+      })
 
       //alert(JSON.stringify(this.state.delivery_address_street));
 
@@ -798,13 +705,37 @@ class Preview extends React.Component<any, any> {
 
   }
 
-  goToCompleteOrder(){
+  goToMenu(){
 
-      this.context.router.push('/order/complete_order');
+      this.context.router.push('/order/12345');
       
   }  
 
+  goToPaymentMethod(){
+
+      this.context.router.push('/order/payment_method');
+      
+  }
+
+  terms(e: any){
+
+      console.log(e.target.value)
+
+      this.props.faq(e);
+
+  }
+
+  saveForLater(e: any){
+
+      //this.props.mailingList(e);
+
+  }
+
+
   render(): JSX.Element{
+
+    //<SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
+                         
 
     let body: any = "";
     let item_count = this.state.item_count;
@@ -815,40 +746,42 @@ class Preview extends React.Component<any, any> {
 
     //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 
+    //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
+
+
 
     return ( <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                            </div>
-                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                              </ul>
-                            </div>
-                          </div>
-                    </nav> 
-                <div className="container-fluid">
-                  <div className="row">
-                        <div className="hidden-xs col-md-2">
+                <nav className="navbar navbar-default navbar-fixed-top">
+                      <div className="container-fluid">
+                        <div className="navbar-header">
+                          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                          </button>
+                          <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
+                        </div>
+                        <div className="hidden-xs navbar-form navbar-right">
+                        </div>
+                        <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
+                          <ul className="nav navbar-nav">
+                            <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
+                          </ul>
+                          <ul className="nav navbar-nav">
+                            <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
+                          </ul>
+                          <ul className="nav navbar-nav">
+                            <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
+                          </ul>
+                          <ul className="nav navbar-nav">
+                            <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                </nav>
+                <div className="row">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
@@ -857,7 +790,8 @@ class Preview extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          
+                          <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
+                          <br/>
                           <br/>
                           <br/>
                           <br/>
@@ -868,70 +802,23 @@ class Preview extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-10">
+                        <div className="col-xs-12 col-md-9">
                             <br/>
                             <br/>
                             <br/>
                             <br/>
+            
+                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
-                            only show on mobile
+                            <input type="checkbox" onChange={this.saveForLater}/>Save for later
                             <br/>
-                            <button onClick={() => this.showCart()}>cart()</button>
-                            <br/>
-                            User:
-                            <br/>
-                            Name:
-                            <br/>
-                            Ross Edwards
-                            <br/>
-                            Contact:
-                            <br/>
-                            rossedwards@gmail.com
-                            <br/>
-                            310-775-5566
-                            <br/>
-                            <Link to="/order/delivery" className="btn btn-default">Edit Name and Contact</Link>   
-                            <br/>
-                            Delivery Contact
-                            <br/>
-                            Delivery Date
-                            <br/>
-                            Monday Sept 1st, 2017
-                            <br/>
-                            9-11 am
-                            <br/>
-                            Delivery Address
-                            <br/>
-                            11901 Santa Monica Blvd, Los Angeles, CA, 90025
+
+                             <button className={this.state.validated} onClick={this.props.processYoursSocialOrder}>Complete Order</button>
+                        
                             <br/>
                             <br/>
-                            <Link to="/order/delivery" className="btn btn-default">Edit Delivery Information</Link>   
-                            <br/>
-                            <br/>
-                            Items
-                            <br/>
-                            <br/>
-                            <button onClick={() => this.completeOrder()}>Edit Datetime</button>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-10">
-                                    <b>Cart Items</b>
-                                    <br/>
-                                    <br/>
-                                    <b>Total Due</b>
-                                    <br/>
-                                </div>
-                              </div>
-                            </form>
-                            
-                            <button onClick={() => this.completeOrder()}>Complete Order</button>
-                            <br/>
-                        </div>
-                        <div className="hidden-xs col-md-2">
-                              maybe put something here
                         </div>
                 </div>
-            </div>
             </div>
     )
   }
@@ -949,9 +836,20 @@ class Preview extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("state" + JSON.stringify(state));
+  console.log("order payment state" + JSON.stringify(state));
   return {
-   //order: state.default.order
+   session: state.session,
+   order_validations: state.order_validations,
+   order: state.Order,
+   order_delivery_address: state.delivery_address,
+   order_contact: state.contact,
+   order_name: state.name,
+   //order_cart_items: state.cart.cart_items,
+   order_datetime: state.OrderDatetime,
+   order_payment_method: state.OrderPayment,
+
+   guestOrder: state.guestOrder,
+
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
@@ -966,51 +864,114 @@ function mapDispatchToProps(dispatch: any) {
     setTime: (e: any) => {
       //dispatch(setTime(e.target.value))
     },
-    setSpecificTime: (e: any) => {
-      //dispatch(setSpecificTime(e.target.value))
+    cartValidated: () => {
+      dispatch(cartValidated());
     },
-    //setFirstName: (e: any) => {
-    //  dispatch(setFirstName(e.target.value))
-    //},
-    //setLastName: (e: any) => {
-    //  dispatch(setLastName(e.target.value))
-    //},
-    //setContactEmail: (e: any) => {
-    //  dispatch(setContactEmail(e.target.value))
-    //},
-    //setContactPhone: (e: any) => {
-    //  dispatch(setContactPhone(e.target.value))
-    //},
+    datetimeValidated: () => {
+        dispatch(datetimeValidated());
+    },
+    setSpecificTime: (e: any) => {
+      dispatch(setSpecificTime(e.target.value))
+    },
+    setUserNameFirst: (e: any) => {
+      dispatch(setUserNameFirst(e.target.value))
+    },
+    setUserNameLast: (e: any) => {
+      dispatch(setUserNameLast(e.target.value))
+    },
+    setUserContactEmail: (e: any) => {
+      dispatch(setUserContactEmail(e.target.value))
+    },
+    setUserContactMobile: (e: any) => {
+      dispatch(setUserContactMobile(e.target.value))
+    },
+    setNameValidated: (e: any) => {
+      dispatch(nameValidated())
+    },
+    setUserDeliveryContactAddressFirstName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressLastName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressLastName(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressCompanyName: (e: any) => {
+      dispatch(setUserDeliveryContactAddressCompanyName(e.target.value))
+    },
+    setUserDeliveryContactAddressEmail: (e: any) => {
+      dispatch(setUserDeliveryContactAddressEmail(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressMobile: (e: any) => {
+      dispatch(setUserDeliveryContactAddressMobile(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressStreet1: (e: any) => {
+      dispatch(setUserDeliveryContactAddressStreet1(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressStreet2: (e: any) => {
+      dispatch(setUserDeliveryContactAddressStreet2(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressCity: (e: any) => {
+      dispatch(setUserDeliveryContactAddressCity(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressState: (e: any) => {
+      dispatch(setUserDeliveryContactAddressState(e.target.value, ""))
+    },
+    setUserDeliveryContactAddressZipcode: (e: any) => {
+      dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
+    },
+    setDeliveryCost: (value: any) => {
+      dispatch(setDeliveryCost(value));
+    },
+    deliveryAddressValidated: () => {
+      dispatch(deliveryAddressValidated())
+    },
+    deliveryAddressInvalidated: () => {
+      dispatch(deliveryAddressInvalidated())
+    },
+    increaseCartItemQuantity: (e: any) => {
+      dispatch(increaseCartItemQuantity(e));
+    },
+    decreaseCartItemQuantity: (e: any) => {
+      dispatch(decreaseCartItemQuantity(e));
+    },
+    removeCartItem: (item_id: any) => {
+      dispatch(removeCartItem(item_id));
+    },
+    setPaymentNameOnCard: (e: any) => {
+      dispatch(setPaymentNameOnCard(e.target.value, ""))
+    },
+    setPaymentCardNumber: (e: any) => {
+      dispatch(setPaymentMethodCardNumber(e.target.value, ""))
+    },
+    setPaymentExpiryMonth: (e: any) => {
+      dispatch(setPaymentExpiryMonth(e.target.value, ""))
+    },
+    setPaymentExpiryYear: (e: any) => {
+      dispatch(setPaymentExpiryYear(e.target.value, ""))
+    },
+    setPaymentSecurityCode: (e: any) => {
+      dispatch(setPaymentSecurityCode(e.target.value, ""))
+    },
+    termsValidated: (value: any) => {
+
+      dispatch(termsValidated(value));
+
+    },
+    mailingList: (value: any) => {
+
+      dispatch(mailingList(value));
+
+    },
+    setOrderId: (value: any) => {
+
+      dispatch(setOrderId(value));
+
+    },
+    processYoursSocialOrder: () => {
+
+      dispatch(processYoursSocialOrder());
+
+    },
     
-    //setDeliveryAddressStreet1: (e: any) => {
-    //  dispatch(setDeliveryAddressStreet1(e.target.value))
-    //},
-    
-    //setDeliveryAddressStreet2: (e: any) => {
-    //  dispatch(setDeliveryAddressStreet1(e.target.value))
-    //},
-    
-    //setDeliveryAddressCity: (e: any) => {
-    //  dispatch(setDeliveryAddressCity(e.target.value))
-    //},
-    //setDeliveryAddressState: (e: any) => {
-    //  dispatch(setDeliveryAddressState(e.target.value))
-    //},
-    //setDeliveryAddressZipcode: (e: any) => {
-    //  dispatch(setDeliveryAddressZipcode(e.target.value))
-    //},
-    //setPaymentNameOnCard: (e: any) => {
-    //  dispatch(setPaymentNameOnCard(e.target.value))
-    //},
-    //setPaymentCardNumber: (e: any) => {
-    //  dispatch(setPaymentCardNumber(e.target.value))
-    //},
-    //setPaymentExpiryDate: (e: any) => {
-    //  dispatch(setPaymentExpiryDate(e.target.value))
-    //},
-    //setPaymentSecurityCode: (e: any) => {
-    //  dispatch(setPaymentSecurityCode(e.target.value))
-    //},
     
     //complete order thunk
 
@@ -1034,10 +995,10 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const PreviewConnected = connect(
+const CheckoutConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Preview)
+)(OrderDateTimeContact)
 
-export default PreviewConnected;
+export default CheckoutConnected;
 

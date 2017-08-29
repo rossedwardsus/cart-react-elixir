@@ -40,7 +40,7 @@ webpackJsonp([0],[
 	
 	var _public_home_page2 = _interopRequireDefault(_public_home_page);
 	
-	var _public_menu = __webpack_require__(922);
+	var _public_menu = __webpack_require__(947);
 	
 	var _public_menu2 = _interopRequireDefault(_public_menu);
 	
@@ -76,75 +76,75 @@ webpackJsonp([0],[
 	
 	var _order_menu2 = _interopRequireDefault(_order_menu);
 	
-	var _order_checkout = __webpack_require__(1133);
+	var _order_payment = __webpack_require__(1133);
+	
+	var _order_payment2 = _interopRequireDefault(_order_payment);
+	
+	var _order_checkout = __webpack_require__(1138);
 	
 	var _order_checkout2 = _interopRequireDefault(_order_checkout);
 	
-	var _order_delivery = __webpack_require__(1141);
-	
-	var _order_delivery2 = _interopRequireDefault(_order_delivery);
-	
-	var _order_cart = __webpack_require__(1142);
+	var _order_cart = __webpack_require__(1141);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_preview = __webpack_require__(1143);
+	var _order_preview = __webpack_require__(1142);
 	
 	var _order_preview2 = _interopRequireDefault(_order_preview);
 	
-	var _order_complete = __webpack_require__(1144);
+	var _order_complete = __webpack_require__(1143);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1145);
+	var _login = __webpack_require__(1144);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1146);
+	var _register = __webpack_require__(1145);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1147);
+	var _register_completed = __webpack_require__(1146);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1148);
+	var _checkLogin = __webpack_require__(1147);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1149);
+	var _user = __webpack_require__(1148);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu_items = __webpack_require__(1150);
+	var _menu_items = __webpack_require__(1149);
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1154);
+	var _name = __webpack_require__(1153);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1155);
+	var _order_completed = __webpack_require__(1154);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1156);
+	var _sconely_signature_guests = __webpack_require__(1155);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _signature_additional_items = __webpack_require__(1157);
+	var _signature_additional_items = __webpack_require__(1156);
 	
 	var _signature_additional_items2 = _interopRequireDefault(_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1158);
+	var _sconely_signature_order_history = __webpack_require__(1157);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _sconely_signature_preview = __webpack_require__(1159);
+	var _sconely_signature_preview = __webpack_require__(1158);
 	
 	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
 	
-	var _index = __webpack_require__(1160);
+	var _index = __webpack_require__(1159);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -292,8 +292,8 @@ webpackJsonp([0],[
 	          { component: _checkLogin2.default },
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/menu', component: _order_menu2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/checkout', component: _order_checkout2.default }),
-	          _react2.default.createElement(_reactRouter.Route, { path: '/order/delivery', component: _order_delivery2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/preview', component: _order_preview2.default }),
+	          _react2.default.createElement(_reactRouter.Route, { path: '/order/payment', component: _order_payment2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/cart', component: _order_cart2.default }),
 	          _react2.default.createElement(_reactRouter.Route, { path: '/order/complete', component: _order_complete2.default })
 	        ),
@@ -27180,7 +27180,9 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	//import {getMenuItems} from './menu.ts';
 	var react_router_redux_1 = __webpack_require__(617);
+	var axios_1 = __webpack_require__(922);
 	//const receiveProducts = products => ({
 	//  type: types.RECEIVE_PRODUCTS,
 	//  products: products
@@ -27224,7 +27226,7 @@ webpackJsonp([0],[
 	        //}
 	        //if user if logged in then dispatch(user_orders)
 	        //else dispatch(orders)
-	        dispatch(createOrder1(order_type, name, 123));
+	        //dispatch(createOrder1(order_type, name, 123));
 	        //dispatch(getMenuItems(order_type));
 	        if (order_type == "sconely_signature") {
 	            dispatch(react_router_redux_1.push("/order/1/signature"));
@@ -27235,16 +27237,39 @@ webpackJsonp([0],[
 	    //}
 	}
 	exports.createOrder = createOrder;
-	function createOrder1(order_type, name, order_id) {
-	    console.log("create order action " + order_type);
-	    return {
-	        type: actionTypes_ts_1.CREATE_ORDER,
-	        order_type: order_type,
-	        name: name,
-	        order_id: order_id
+	function processYoursSocialOrder() {
+	    console.log("process yours social order action ");
+	    //console.log("action");
+	    return function (dispatch, getState) {
+	        //event full name
+	        //getState()
+	        //state.User.orders
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (user_name_first: "f", user_name_last: "l", user_contact_email: "e", user_contact_mobile: "m", order_type: "social") {status token}}' }
+	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
+	        ).then(function (response) {
+	            console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	            //that.props.history.push('/user');
+	            //context.router
+	            //that.props.setOrderId(1);
+	            //this.context.router.push('/order/complete');
+	            //dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems});
+	            //dispatch(push("/order/url_name/guest/name"));
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	        //call the reducer themn redirect
+	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+	        //dispatch(push("/order/complete"));
+	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
 	    };
 	}
-	exports.createOrder1 = createOrder1;
+	exports.processYoursSocialOrder = processYoursSocialOrder;
 	function orderCompleted(order_type) {
 	    console.log("create order action " + order_type);
 	    return {
@@ -27326,10 +27351,10 @@ webpackJsonp([0],[
 	exports.ADD_USER_PAYMENT_METHOD = 'ADD_USER_PAYMENT_METHOD';
 	exports.SAVE_USER_PAYMENT_METHOD = 'SAVE_USER_PAYMENT_METHOD';
 	exports.SET_USER_PAYMENT_METHOD_NAME = 'SET_USER_PAYMENT_METHOD_NAME';
-	exports.SET_USER_PAYMENT_METHOD_CARD_NUMBER = 'SET_USER_PAYMENT_METHOD_CARD_NUMBER';
-	exports.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_PAYMENT_METHOD_EXPIRY_MONTH';
-	exports.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_PAYMENT_METHOD_EXPIRY_YEAR';
-	exports.SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE';
+	//export const SET_USER_PAYMENT_METHOD_CARD_NUMBER = 'SET_USER_PAYMENT_METHOD_CARD_NUMBER'
+	//export const SET_USER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_PAYMENT_METHOD_EXPIRY_MONTH'
+	//export const SET_USER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_PAYMENT_METHOD_EXPIRY_YEAR'
+	//export const SET_PAYMENT_SECURITY_CODE = 'SET_PAYMENT_SECURY_CODE'
 	//USER DELIVERY CONTACT ADDRESSES
 	//USER
 	exports.GET_USER = 'GET_USER';
@@ -27348,6 +27373,10 @@ webpackJsonp([0],[
 	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_STATE';
 	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE';
 	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE';
+	exports.SET_USER_PAYMENT_METHOD_CARD_NUMBER = 'SET_USER_PAYMENT_METHOD_CARD_NUMBER';
+	exports.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_PAYMENT_METHOD_EXPIRY_MONTH';
+	exports.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_PAYMENT_METHOD_EXPIRY_YEAR';
+	exports.SET_USER_PAYMENT_METHOD_SECURITY_CODE = 'SET_USER_PAYMENT_METHOD_SECURITY_CODE';
 	//export const SET_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS'
 	//export const ADD_USER_DELIVERY_CONTACT = 'ADD_USER_DELIVERY_CONTACT'
 	//export const GET_USER_DELIVERY_CONTACTS = 'GET_USER_DELIVERY_CONTACTS'
@@ -27382,9 +27411,9 @@ webpackJsonp([0],[
 	exports.SET_DELIVERY_CONTACT_ADDRESS_CITY = 'SET_DELIVERY_CONTACT_ADDRESS_CITY';
 	exports.SET_DELIVERY_CONTACT_ADDRESS_STATE = 'SET_DELIVERY_CONTACT_ADDRESS_STATE';
 	exports.SET_DELIVERY_CONTACT_ADDRESS_ZIPCODE = 'SET_DELIVERY_CONTACT_ADDRESS_ZIPCODE';
-	exports.SET_ORDER_PAYMENT_METHOD_CARD_NUMBER = 'SET_ORDER_PAYMENT_METHOD_CARD_NUMBER';
-	exports.SET_ORDER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_ORDER_PAYMENT_METHOD_EXPIRY_MONTH';
-	exports.SET_ORDER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_ORDER_PAYMENT_METHOD_EXPIRY_YEAR';
+	exports.SET_PAYMENT_METHOD_CARD_NUMBER = 'SET_PAYMENT_METHOD_CARD_NUMBER';
+	exports.SET_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_PAYMENT_METHOD_EXPIRY_MONTH';
+	exports.SET_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_PAYMENT_METHOD_EXPIRY_YEAR';
 	exports.VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU';
 	exports.SET_MENU = 'SET_MENU';
 	//SIGNATURE
@@ -27446,395 +27475,18 @@ webpackJsonp([0],[
 /* 922 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	var react_redux_1 = __webpack_require__(190);
-	var menu_ts_1 = __webpack_require__(923);
-	var order_validations_ts_1 = __webpack_require__(949);
-	//import {addCartItem} from '../actions/cart.ts';
-	var order_ts_1 = __webpack_require__(920);
-	//import SidebarCart from './sidebar_cart.tsx';
-	//import MobileCheckoutButton from './mobile_checkout_button.tsx';
-	var user_top_navbar_tsx_1 = __webpack_require__(950);
-	//type Props = {
-	//title: string,
-	//visited: boolean,
-	//  setDeliveryAddrss: () => void,
-	//};
-	
-	var OrderMenu = function (_React$Component) {
-	    _inherits(OrderMenu, _React$Component);
-	
-	    //props: Props;
-	    function OrderMenu(props) {
-	        _classCallCheck(this, OrderMenu);
-	
-	        var _this = _possibleConstructorReturn(this, (OrderMenu.__proto__ || Object.getPrototypeOf(OrderMenu)).call(this, props));
-	
-	        _this.selectedItemType = function (e) {
-	            //alert(e.target.value);
-	            _this.setState({ selected_item_type: e.target.value });
-	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
-	        };
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        _this.state = {
-	            //menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_green"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}],
-	            crafted_kitchen_menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "SavvymenuJuneb5x5", hover_image_id: "SavvymenuJuneb5x5rollover" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }],
-	            menu_items: [],
-	            selected_item_id: "",
-	            selected_item_type: "",
-	            selected_item_quantity: "",
-	            selected_item_title: "",
-	            selected_item_story: "",
-	            selected_item_ingredients: "",
-	            add_cart_item_button_classname: "btn btn-default disabled",
-	            images: [],
-	            hover_images: []
-	        };
-	        //this.loadCart = this.loadCart.bind(this);
-	        _this.showItem = _this.showItem.bind(_this);
-	        //this.selectedItemDozens = this.selectedItemDozens.bind(this);
-	        _this.selectedItemQuantity = _this.selectedItemQuantity.bind(_this);
-	        _this.addCartItem = _this.addCartItem.bind(_this);
-	        _this.onMouseEnter = _this.onMouseEnter.bind(_this);
-	        return _this;
-	    }
-	
-	    _createClass(OrderMenu, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //get active items from the database
-	            //alert(this.props.params);
-	            //alert(JSON.stringify(this.props.cart_items));
-	            //this.props.dispatch();
-	            //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
-	            var that = this;
-	            /*this.state.crafted_kitchen_menu_items.map(function(item: any, index: any){
-	                       //console.log(value.item_id);
-	                  let images_temp = that.state.images;
-	                  images_temp.push(item.image_id);
-	                       let hover_images_temp = that.state.hover_images;
-	                  hover_images_temp.push(item.hover_image_id);
-	                       that.setState({images: images_temp});
-	                  that.setState({hover_images: hover_images_temp});
-	                 });*/
-	            //this.props.createOrder("sconely_yours", this.props.params.name);
-	            //this.props.getMenuItems();
-	            //get menu items here
-	            this.setState({ menu_items: this.props.menu_items.menu_items });
-	        }
-	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps(nextProp) {
-	            console.log("menu props");
-	        }
-	    }, {
-	        key: "showItem",
-	        value: function showItem(item_id) {
-	            //alert(item_id);
-	            this.setState({ selected_item_id: item_id });
-	            this.state.menu_items.map(function (item) {
-	                if (item.item_id === item_id) {
-	                    this.setState({ selected_item_title: item.title });
-	                    this.setState({ selected_item_story: item.story });
-	                    this.setState({ selected_item_ingredients: item.ingredients });
-	                }
-	            }.bind(this));
-	            $('#myModal').modal('show');
-	        }
-	    }, {
-	        key: "selectedItemQuantity",
-	        value: function selectedItemQuantity(e) {
-	            console.log("selected_item quantity " + e.target.value);
-	            this.setState({ selected_item_quantity: e.target.value });
-	            this.setState({ add_cart_item_button_classname: "btn btn-default" });
-	            //set add cart button == active
-	            //this.set
-	        }
-	    }, {
-	        key: "addCartItem",
-	        value: function addCartItem() {
-	            console.log("add cart item");
-	            //if they haven't selected quantity and dozens dont submit and show them an error
-	            var item_count = 0;
-	            this.props.cart.cart_items.map(function (item) {
-	                //console.log("item " + JSON.stringify(item));
-	                //console.log("order type" + JSON.stringify(that.props.order));
-	                //if(that.props.order.order_type == "sconely_yours"){
-	                //if total_cost is more then 2 then cost = 5 else 6
-	                //dont have to loop.  just times cart length
-	                //total_cost = total_cost + (5 * item.quantity);
-	                item_count = item_count + item.quantity;
-	                //}else{
-	            });
-	            console.log("yours items count" + item_count);
-	            if (item_count < 12) {
-	                this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
-	                this.setState({ selected_item_quantity: "" });
-	            }
-	            this.props.cartValidated();
-	            $('#myModal').modal('toggle');
-	            //cart validated in redux
-	        }
-	    }, {
-	        key: "goToDateTimeContact",
-	        value: function goToDateTimeContact() {
-	            this.context.router.push("/order/12345/signature");
-	        }
-	    }, {
-	        key: "onMouseEnter",
-	        value: function onMouseEnter(item_id) {
-	            console.log("mouse enter" + JSON.stringify(item_id));
-	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-	            //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
-	            //get index of of element with item id
-	            //also get name of image and append "rollover to it"
-	            //let images_temp = this.state.images;
-	            //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
-	            var menu_items_updated = this.state.menu_items.map(function (item) {
-	                if (item.item_id == item_id) {
-	                    //let image_name = item.image_id;
-	                    item.image_id = item.image_id + "roll";
-	                }
-	                return item;
-	            });
-	            console.log(JSON.stringify(menu_items_updated));
-	            this.setState({ menu_items: menu_items_updated });
-	        }
-	    }, {
-	        key: "onMouseLeave",
-	        value: function onMouseLeave(item_id) {
-	            //console.log("mouse leave" + item_id);
-	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-	            //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
-	            //this.setState({["image_src_" + item_id]: image_id});
-	            var menu_items_updated = this.state.menu_items.map(function (item) {
-	                if (item.item_id == item_id) {
-	                    //let image_name = item.image_id;
-	                    //remove "roll"
-	                    var roll_index = item.image_id.indexOf("roll");
-	                    item.image_id = item.image_id.slice(0, roll_index);
-	                    console.log("item.image_id");
-	                }
-	                return item;
-	            });
-	            console.log(JSON.stringify(menu_items_updated));
-	            this.setState({ menu_items: menu_items_updated });
-	        }
-	    }, {
-	        key: "createOrder",
-	        value: function createOrder(order_type) {
-	            console.log(order_type);
-	            //this.props.createOrder(order_type, "");
-	            //if user is logged in then 
-	            //this.context.router.push('/order/menu');
-	            if (order_type == "sconely_yours") {
-	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	                //alert(orders);
-	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	                //if user is logged in then 
-	                //this.props.startOrder()
-	                this.context.router.push('/order/menu');
-	                //this.context.router.push('/order/12345');
-	            } else if (order_type == "sconely_social") {
-	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	                //alert(orders);
-	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	                //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-	                //this.context.router.push('/order/12345');
-	            } else if (order_type == "sconely_signature") {
-	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	                //alert(orders);
-	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	                this.props.createSignatureOrder();
-	                //this.context.router.push('/user/order/12345');
-	                //this.props.createOrder("sconely_signature");
-	            }
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
-	
-	            //var that = this;
-	            //var page = "";
-	            //if(this.state.page == "items"){
-	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	            //alert(this.props.cart_items.length);
-	            return React.createElement("div", null, React.createElement(user_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_yours");
-	                } }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_social");
-	                } }, "Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
-	                var _this3 = this;
-	
-	                console.log(item);
-	                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
-	                //this.setState({image_id: image_id});
-	                //console.log("image id" + image_id);
-	                //console.log("image id " + this.state["image_src_" + item.item_id]);
-	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
-	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
-	                        return _this3.showItem(item.item_id);
-	                    }, onMouseEnter: function onMouseEnter(index) {
-	                        return _this3.onMouseEnter(item.item_id);
-	                    }, onMouseLeave: function onMouseLeave() {
-	                        return _this3.onMouseLeave(item.item_id);
-	                    }, src: "/images/menu/" + item.image_id + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.title), " / ", item.description, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" })))))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return OrderMenu;
-	}(React.Component);
-	
-	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("mapstatetoprops public menu" + JSON.stringify(state));
-	    return {
-	        //active: ownProps.filter === state.visibilityFilter
-	        //if(state.default.order.cart_items != undefined){
-	        menu_items: state.menuItems,
-	        order: state.Order,
-	        cart: state.cart
-	        //}
-	    };
-	};
-	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	    return {
-	        //viewmenuthunk
-	        getMenuItems: function getMenuItems() {
-	            dispatch(menu_ts_1.getMenuItems());
-	        },
-	        addCartItem: function addCartItem(order_id, item_id, item_type, quantity) {
-	            //dispatch(addCartItem(order_id, item_id, item_type, quantity));
-	        },
-	        cartValidated: function cartValidated() {
-	            dispatch(order_validations_ts_1.cartValidated());
-	        },
-	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder(order_type, name));
-	        }
-	    };
-	};
-	var OrderMenu1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderMenu);
-	exports.default = OrderMenu1;
+	module.exports = __webpack_require__(923);
 
 /***/ }),
 /* 923 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	//import {push} from 'react-router-redux';
-	var axios_1 = __webpack_require__(924);
-	//declare var module: { viewPublicMenu: any };
-	//check login
-	function getMenuItems() {
-	    console.log("action");
-	    return function (dispatch) {
-	        //event full name
-	        axios_1.default.post('/api/graphql', { query: 'query {get_menu_items {id name description ingredients}}' }
-	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
-	        ).then(function (response) {
-	            console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
-	            //that.props.history.push('/user');
-	            //context.router
-	            //that.props.setOrderId(1);
-	            //this.context.router.push('/order/complete');
-	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems });
-	            //dispatch(push("/order/url_name/guest/name"));
-	        }).catch(function (error) {
-	            console.log("error" + error);
-	            //go to code/payment screen
-	            //        this.props.loadView();
-	            //display errror to user - payment
-	            //if (!error.status) {
-	            // network error
-	            //}
-	        });
-	        //call the reducer themn redirect
-	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
-	        //dispatch(push("/order/1/guest/name"));
-	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
-	    };
-	    //dispatch({ 
-	    //  type: "VIEW_PUBLIC_MENU", 
-	    //  menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]
-	    //});
-	}
-	exports.getMenuItems = getMenuItems;
-	exports.getMenuItemsBad = function () {
-	    return function (dispatch) {
-	        //dispatch(setMenuItems(menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]));
-	        ({
-	            type: "VIEW_PUBLIC_MENU",
-	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
-	        });
-	        //set menu
-	    };
-	};
-	exports.setMenuItems = function () {
-	    //dispatch(setMenuItems());
-	    ({
-	        type: "SET_MENU",
-	        menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
-	    });
-	    //set menu
-	};
-	//const receiveProducts = products => ({
-	//  type: types.RECEIVE_PRODUCTS,
-	//  products: products
-	//})
-	exports.getAllProducts = function () {
-	    return function (dispatch) {
-	        //shop.getProducts(products => {
-	        //  dispatch(receiveProducts(products))
-	        //})
-	        //dispatch(viewPublicMenu(1));
-	        //dispatch(viewPublicMenu());
-	        //alert();
-	        //return "hello";
-	        //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
-	    };
-	};
-
-/***/ }),
-/* 924 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(925);
-
-/***/ }),
-/* 925 */
-/***/ (function(module, exports, __webpack_require__) {
-
 	'use strict';
 	
-	var utils = __webpack_require__(926);
-	var bind = __webpack_require__(927);
-	var Axios = __webpack_require__(928);
-	var defaults = __webpack_require__(929);
+	var utils = __webpack_require__(924);
+	var bind = __webpack_require__(925);
+	var Axios = __webpack_require__(926);
+	var defaults = __webpack_require__(927);
 	
 	/**
 	 * Create an instance of Axios
@@ -27867,15 +27519,15 @@ webpackJsonp([0],[
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(946);
-	axios.CancelToken = __webpack_require__(947);
-	axios.isCancel = __webpack_require__(943);
+	axios.Cancel = __webpack_require__(944);
+	axios.CancelToken = __webpack_require__(945);
+	axios.isCancel = __webpack_require__(941);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(948);
+	axios.spread = __webpack_require__(946);
 	
 	module.exports = axios;
 	
@@ -27884,12 +27536,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 926 */
+/* 924 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bind = __webpack_require__(927);
+	var bind = __webpack_require__(925);
 	
 	/*global toString:true*/
 	
@@ -28189,7 +27841,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 927 */
+/* 925 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28206,17 +27858,17 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 928 */
+/* 926 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(929);
-	var utils = __webpack_require__(926);
-	var InterceptorManager = __webpack_require__(940);
-	var dispatchRequest = __webpack_require__(941);
-	var isAbsoluteURL = __webpack_require__(944);
-	var combineURLs = __webpack_require__(945);
+	var defaults = __webpack_require__(927);
+	var utils = __webpack_require__(924);
+	var InterceptorManager = __webpack_require__(938);
+	var dispatchRequest = __webpack_require__(939);
+	var isAbsoluteURL = __webpack_require__(942);
+	var combineURLs = __webpack_require__(943);
 	
 	/**
 	 * Create a new instance of Axios
@@ -28297,13 +27949,13 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 929 */
+/* 927 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(926);
-	var normalizeHeaderName = __webpack_require__(930);
+	var utils = __webpack_require__(924);
+	var normalizeHeaderName = __webpack_require__(928);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -28320,10 +27972,10 @@ webpackJsonp([0],[
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(931);
+	    adapter = __webpack_require__(929);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(931);
+	    adapter = __webpack_require__(929);
 	  }
 	  return adapter;
 	}
@@ -28397,12 +28049,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 930 */
+/* 928 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -28415,18 +28067,18 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 931 */
+/* 929 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(926);
-	var settle = __webpack_require__(932);
-	var buildURL = __webpack_require__(935);
-	var parseHeaders = __webpack_require__(936);
-	var isURLSameOrigin = __webpack_require__(937);
-	var createError = __webpack_require__(933);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(938);
+	var utils = __webpack_require__(924);
+	var settle = __webpack_require__(930);
+	var buildURL = __webpack_require__(933);
+	var parseHeaders = __webpack_require__(934);
+	var isURLSameOrigin = __webpack_require__(935);
+	var createError = __webpack_require__(931);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(936);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -28522,7 +28174,7 @@ webpackJsonp([0],[
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(939);
+	      var cookies = __webpack_require__(937);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -28599,12 +28251,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 932 */
+/* 930 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(933);
+	var createError = __webpack_require__(931);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -28630,12 +28282,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 933 */
+/* 931 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(934);
+	var enhanceError = __webpack_require__(932);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -28653,7 +28305,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 934 */
+/* 932 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28678,12 +28330,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 935 */
+/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -28752,12 +28404,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 936 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	/**
 	 * Parse headers into an object
@@ -28795,12 +28447,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 937 */
+/* 935 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -28869,7 +28521,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 938 */
+/* 936 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28911,12 +28563,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 939 */
+/* 937 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -28970,12 +28622,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 940 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -29028,15 +28680,15 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 941 */
+/* 939 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
-	var transformData = __webpack_require__(942);
-	var isCancel = __webpack_require__(943);
-	var defaults = __webpack_require__(929);
+	var utils = __webpack_require__(924);
+	var transformData = __webpack_require__(940);
+	var isCancel = __webpack_require__(941);
+	var defaults = __webpack_require__(927);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -29113,12 +28765,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 942 */
+/* 940 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(926);
+	var utils = __webpack_require__(924);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -29139,7 +28791,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 943 */
+/* 941 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29150,7 +28802,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 944 */
+/* 942 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29170,7 +28822,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 945 */
+/* 943 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29188,7 +28840,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 946 */
+/* 944 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29213,12 +28865,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 947 */
+/* 945 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(946);
+	var Cancel = __webpack_require__(944);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -29276,7 +28928,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 948 */
+/* 946 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29307,6 +28959,383 @@ webpackJsonp([0],[
 	  };
 	};
 
+
+/***/ }),
+/* 947 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_redux_1 = __webpack_require__(190);
+	var menu_ts_1 = __webpack_require__(948);
+	var order_validations_ts_1 = __webpack_require__(949);
+	//import {addCartItem} from '../actions/cart.ts';
+	var order_ts_1 = __webpack_require__(920);
+	//import SidebarCart from './sidebar_cart.tsx';
+	//import MobileCheckoutButton from './mobile_checkout_button.tsx';
+	var user_top_navbar_tsx_1 = __webpack_require__(950);
+	//type Props = {
+	//title: string,
+	//visited: boolean,
+	//  setDeliveryAddrss: () => void,
+	//};
+	
+	var OrderMenu = function (_React$Component) {
+	    _inherits(OrderMenu, _React$Component);
+	
+	    //props: Props;
+	    function OrderMenu(props) {
+	        _classCallCheck(this, OrderMenu);
+	
+	        var _this = _possibleConstructorReturn(this, (OrderMenu.__proto__ || Object.getPrototypeOf(OrderMenu)).call(this, props));
+	
+	        _this.selectedItemType = function (e) {
+	            //alert(e.target.value);
+	            _this.setState({ selected_item_type: e.target.value });
+	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        _this.state = {
+	            //menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_green"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_green"}],
+	            crafted_kitchen_menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll" }, { item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "SavvymenuJuneb5x5", hover_image_id: "SavvymenuJuneb5x5rollover" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_green" }],
+	            menu_items: [],
+	            selected_item_id: "",
+	            selected_item_type: "",
+	            selected_item_quantity: "",
+	            selected_item_title: "",
+	            selected_item_story: "",
+	            selected_item_ingredients: "",
+	            add_cart_item_button_classname: "btn btn-default disabled",
+	            images: [],
+	            hover_images: []
+	        };
+	        //this.loadCart = this.loadCart.bind(this);
+	        _this.showItem = _this.showItem.bind(_this);
+	        //this.selectedItemDozens = this.selectedItemDozens.bind(this);
+	        _this.selectedItemQuantity = _this.selectedItemQuantity.bind(_this);
+	        _this.addCartItem = _this.addCartItem.bind(_this);
+	        _this.onMouseEnter = _this.onMouseEnter.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(OrderMenu, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //get active items from the database
+	            //alert(this.props.params);
+	            //alert(JSON.stringify(this.props.cart_items));
+	            //this.props.dispatch();
+	            //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
+	            var that = this;
+	            /*this.state.crafted_kitchen_menu_items.map(function(item: any, index: any){
+	                       //console.log(value.item_id);
+	                  let images_temp = that.state.images;
+	                  images_temp.push(item.image_id);
+	                       let hover_images_temp = that.state.hover_images;
+	                  hover_images_temp.push(item.hover_image_id);
+	                       that.setState({images: images_temp});
+	                  that.setState({hover_images: hover_images_temp});
+	                 });*/
+	            //this.props.createOrder("sconely_yours", this.props.params.name);
+	            //this.props.getMenuItems();
+	            //get menu items here
+	            this.setState({ menu_items: this.props.menu_items.menu_items });
+	        }
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProp) {
+	            console.log("menu props");
+	        }
+	    }, {
+	        key: "showItem",
+	        value: function showItem(item_id) {
+	            //alert(item_id);
+	            this.setState({ selected_item_id: item_id });
+	            this.state.menu_items.map(function (item) {
+	                if (item.item_id === item_id) {
+	                    this.setState({ selected_item_title: item.title });
+	                    this.setState({ selected_item_story: item.story });
+	                    this.setState({ selected_item_ingredients: item.ingredients });
+	                }
+	            }.bind(this));
+	            $('#myModal').modal('show');
+	        }
+	    }, {
+	        key: "selectedItemQuantity",
+	        value: function selectedItemQuantity(e) {
+	            console.log("selected_item quantity " + e.target.value);
+	            this.setState({ selected_item_quantity: e.target.value });
+	            this.setState({ add_cart_item_button_classname: "btn btn-default" });
+	            //set add cart button == active
+	            //this.set
+	        }
+	    }, {
+	        key: "addCartItem",
+	        value: function addCartItem() {
+	            console.log("add cart item");
+	            //if they haven't selected quantity and dozens dont submit and show them an error
+	            var item_count = 0;
+	            this.props.cart.cart_items.map(function (item) {
+	                //console.log("item " + JSON.stringify(item));
+	                //console.log("order type" + JSON.stringify(that.props.order));
+	                //if(that.props.order.order_type == "sconely_yours"){
+	                //if total_cost is more then 2 then cost = 5 else 6
+	                //dont have to loop.  just times cart length
+	                //total_cost = total_cost + (5 * item.quantity);
+	                item_count = item_count + item.quantity;
+	                //}else{
+	            });
+	            console.log("yours items count" + item_count);
+	            if (item_count < 12) {
+	                this.props.addCartItem(this.state.selected_item_id, this.state.selected_item_type, this.state.selected_item_quantity);
+	                this.setState({ selected_item_quantity: "" });
+	            }
+	            this.props.cartValidated();
+	            $('#myModal').modal('toggle');
+	            //cart validated in redux
+	        }
+	    }, {
+	        key: "goToDateTimeContact",
+	        value: function goToDateTimeContact() {
+	            this.context.router.push("/order/12345/signature");
+	        }
+	    }, {
+	        key: "onMouseEnter",
+	        value: function onMouseEnter(item_id) {
+	            console.log("mouse enter" + JSON.stringify(item_id));
+	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+	            //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
+	            //get index of of element with item id
+	            //also get name of image and append "rollover to it"
+	            //let images_temp = this.state.images;
+	            //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
+	            var menu_items_updated = this.state.menu_items.map(function (item) {
+	                if (item.item_id == item_id) {
+	                    //let image_name = item.image_id;
+	                    item.image_id = item.image_id + "roll";
+	                }
+	                return item;
+	            });
+	            console.log(JSON.stringify(menu_items_updated));
+	            this.setState({ menu_items: menu_items_updated });
+	        }
+	    }, {
+	        key: "onMouseLeave",
+	        value: function onMouseLeave(item_id) {
+	            //console.log("mouse leave" + item_id);
+	            //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
+	            //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
+	            //this.setState({["image_src_" + item_id]: image_id});
+	            var menu_items_updated = this.state.menu_items.map(function (item) {
+	                if (item.item_id == item_id) {
+	                    //let image_name = item.image_id;
+	                    //remove "roll"
+	                    var roll_index = item.image_id.indexOf("roll");
+	                    item.image_id = item.image_id.slice(0, roll_index);
+	                    console.log("item.image_id");
+	                }
+	                return item;
+	            });
+	            console.log(JSON.stringify(menu_items_updated));
+	            this.setState({ menu_items: menu_items_updated });
+	        }
+	    }, {
+	        key: "createOrder",
+	        value: function createOrder(order_type) {
+	            console.log(order_type);
+	            //this.props.createOrder(order_type, "");
+	            //if user is logged in then 
+	            //this.context.router.push('/order/menu');
+	            if (order_type == "sconely_yours") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //if user is logged in then 
+	                //this.props.startOrder()
+	                this.context.router.push('/order/menu');
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_social") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+	                //this.context.router.push('/order/12345');
+	            } else if (order_type == "sconely_signature") {
+	                //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	                //alert(orders);
+	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	                this.props.createSignatureOrder();
+	                //this.context.router.push('/user/order/12345');
+	                //this.props.createOrder("sconely_signature");
+	            }
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            //var that = this;
+	            //var page = "";
+	            //if(this.state.page == "items"){
+	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	            //alert(this.props.cart_items.length);
+	            return React.createElement("div", null, React.createElement(user_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.createOrder("sconely_yours");
+	                } }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.createOrder("sconely_social");
+	                } }, "Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
+	                var _this3 = this;
+	
+	                console.log(item);
+	                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
+	                //this.setState({image_id: image_id});
+	                //console.log("image id" + image_id);
+	                //console.log("image id " + this.state["image_src_" + item.item_id]);
+	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
+	                        return _this3.showItem(item.item_id);
+	                    }, onMouseEnter: function onMouseEnter(index) {
+	                        return _this3.onMouseEnter(item.item_id);
+	                    }, onMouseLeave: function onMouseLeave() {
+	                        return _this3.onMouseLeave(item.item_id);
+	                    }, src: "/images/menu/" + item.image_id + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.title), " / ", item.description, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
+	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_title)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_story, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$60/Mini - $54"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" })))))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return OrderMenu;
+	}(React.Component);
+	
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    console.log("mapstatetoprops public menu" + JSON.stringify(state));
+	    return {
+	        //active: ownProps.filter === state.visibilityFilter
+	        //if(state.default.order.cart_items != undefined){
+	        menu_items: state.menuItems,
+	        order: state.Order,
+	        cart: state.cart
+	        //}
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	    return {
+	        //viewmenuthunk
+	        getMenuItems: function getMenuItems() {
+	            dispatch(menu_ts_1.getMenuItems());
+	        },
+	        addCartItem: function addCartItem(order_id, item_id, item_type, quantity) {
+	            //dispatch(addCartItem(order_id, item_id, item_type, quantity));
+	        },
+	        cartValidated: function cartValidated() {
+	            dispatch(order_validations_ts_1.cartValidated());
+	        },
+	        createOrder: function createOrder(order_type, name) {
+	            dispatch(order_ts_1.createOrder(order_type, name));
+	        }
+	    };
+	};
+	var OrderMenu1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderMenu);
+	exports.default = OrderMenu1;
+
+/***/ }),
+/* 948 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	//import {push} from 'react-router-redux';
+	var axios_1 = __webpack_require__(922);
+	//declare var module: { viewPublicMenu: any };
+	//check login
+	function getMenuItems() {
+	    console.log("action");
+	    return function (dispatch) {
+	        //event full name
+	        axios_1.default.post('/api/graphql', { query: 'query {get_menu_items {id name description ingredients}}' }
+	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
+	        ).then(function (response) {
+	            console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	            //that.props.history.push('/user');
+	            //context.router
+	            //that.props.setOrderId(1);
+	            //this.context.router.push('/order/complete');
+	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems });
+	            //dispatch(push("/order/url_name/guest/name"));
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	        //call the reducer themn redirect
+	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+	        //dispatch(push("/order/1/guest/name"));
+	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
+	    };
+	    //dispatch({ 
+	    //  type: "VIEW_PUBLIC_MENU", 
+	    //  menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]
+	    //});
+	}
+	exports.getMenuItems = getMenuItems;
+	exports.getMenuItemsBad = function () {
+	    return function (dispatch) {
+	        //dispatch(setMenuItems(menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]));
+	        ({
+	            type: "VIEW_PUBLIC_MENU",
+	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	        });
+	        //set menu
+	    };
+	};
+	exports.setMenuItems = function () {
+	    //dispatch(setMenuItems());
+	    ({
+	        type: "SET_MENU",
+	        menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	    });
+	    //set menu
+	};
+	//const receiveProducts = products => ({
+	//  type: types.RECEIVE_PRODUCTS,
+	//  products: products
+	//})
+	exports.getAllProducts = function () {
+	    return function (dispatch) {
+	        //shop.getProducts(products => {
+	        //  dispatch(receiveProducts(products))
+	        //})
+	        //dispatch(viewPublicMenu(1));
+	        //dispatch(viewPublicMenu());
+	        //alert();
+	        //return "hello";
+	        //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
+	    };
+	};
 
 /***/ }),
 /* 949 */
@@ -30166,7 +30195,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	var react_router_redux_1 = __webpack_require__(617);
 	function createSignatureOrder(user_id) {
 	    console.log("create signature order action");
@@ -30344,7 +30373,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
 	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
 	    //if uorder_id != undefined
@@ -32719,7 +32748,7 @@ webpackJsonp([0],[
 	    console.log("action payment card number");
 	    return function (dispatch, getState) {
 	        console.log("state " + JSON.stringify(getState()));
-	        dispatch({ type: actionTypes_ts_1.SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, value: value });
+	        dispatch({ type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER, value: value });
 	    };
 	    //if user == logged in
 	    //return {
@@ -32733,7 +32762,7 @@ webpackJsonp([0],[
 	    //IF logged in use SET_USER_ORDER_PAYMENT_EXPIRY_MONTH
 	    //else SET_ORDER_PAYMENT_EXPIRY_MONTH
 	    return {
-	        type: actionTypes_ts_1.SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH,
+	        type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH,
 	        value: value
 	    };
 	}
@@ -32743,15 +32772,15 @@ webpackJsonp([0],[
 	    //IF logged in use SET_USER_ORDER_PAYMENT_EXPIRY_YEAR
 	    //else SET_ORDER_PAYMENT_EXPIRY_YEAR
 	    return {
-	        type: actionTypes_ts_1.SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR,
+	        type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR,
 	        value: value
 	    };
 	}
 	exports.setPaymentExpiryYear = setPaymentExpiryYear;
 	function setPaymentSecurityCode(value, order_id) {
-	    console.log("addCartItem from redux");
+	    console.log("set payment method security code action");
 	    return {
-	        type: actionTypes_ts_1.SET_PAYMENT_SECURITY_CODE,
+	        type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE,
 	        value: value
 	    };
 	}
@@ -39795,7 +39824,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import _ from 'lodash';
-	var menu_ts_1 = __webpack_require__(923);
+	var menu_ts_1 = __webpack_require__(948);
 	var order_validations_ts_1 = __webpack_require__(949);
 	var user_ts_1 = __webpack_require__(954);
 	var order_ts_1 = __webpack_require__(920);
@@ -40377,7 +40406,7 @@ webpackJsonp([0],[
 	            //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
 	            return React.createElement("div", null, React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
-	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost, "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Delivery")), React.createElement("br", null), React.createElement("br", null));
+	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost, "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -40709,15 +40738,12 @@ webpackJsonp([0],[
 	var order_payment_method_ts_1 = __webpack_require__(968);
 	//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 	var order_ts_1 = __webpack_require__(920);
-	var order_delivery_address_tsx_1 = __webpack_require__(1137);
-	var name_tsx_1 = __webpack_require__(1138);
-	var payment_method_tsx_1 = __webpack_require__(1139);
-	var checkout_button_tsx_1 = __webpack_require__(1140);
+	var payment_method_tsx_1 = __webpack_require__(1137);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(956);
 	var DatePicker = __webpack_require__(972);
 	var moment = __webpack_require__(973);
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	__webpack_require__(1125);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -41167,9 +41193,9 @@ webpackJsonp([0],[
 	            this.props.faq(e);
 	        }
 	    }, {
-	        key: "mailingList",
-	        value: function mailingList(e) {
-	            this.props.mailingList(e);
+	        key: "saveForLater",
+	        value: function saveForLater(e) {
+	            //this.props.mailingList(e);
 	        }
 	    }, {
 	        key: "render",
@@ -41183,41 +41209,7 @@ webpackJsonp([0],[
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { guestOrder: this.props.guestOrder, setContactFirstName: function setContactFirstName(e) {
-	                    return _this2.props.setContactFirstName(e);
-	                }, setContactLastName: function setContactLastName(e) {
-	                    return _this2.props.setLastName(e);
-	                }, setEmail: function setEmail(e) {
-	                    return _this2.props.setContactEmail(e);
-	                }, setContactMobile: function setContactMobile(e) {
-	                    return _this2.props.setContactMobile(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
-	                    return _this2.props.setUserDeliveryContactAddressFirstName(e);
-	                }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
-	                    return _this2.props.setUserDeliveryContactAddressLastName(e);
-	                }, setDeliveryContactAddressEmail: function setDeliveryContactAddressEmail(e) {
-	                    return _this2.props.setUserDeliveryContactAddressEmail(e);
-	                }, setDeliveryContactAddressMobile: function setDeliveryContactAddressMobile(e) {
-	                    return _this2.props.setUserDeliveryContactAddressMobile(e);
-	                }, setDeliveryContactAddressCompanyName: function setDeliveryContactAddressCompanyName(e) {
-	                    return _this2.props.setUserDeliveryContactAddressCompanyName(e);
-	                }, setDeliveryContactAddressStreet1: function setDeliveryContactAddressStreet1(e) {
-	                    return _this2.props.setUserDeliveryContactAddressStreet1(e);
-	                }, setDeliveryContactAddressStreet2: function setDeliveryContactAddressStreet2(e) {
-	                    return _this2.props.setUserDeliveryContactAddressStreet2(e);
-	                }, setDeliveryContactAddressCity: function setDeliveryContactAddressCity(e) {
-	                    return _this2.props.setUserDeliveryContactAddressCity(e);
-	                }, setDeliveryContactAddressState: function setDeliveryContactAddressState(e) {
-	                    return _this2.props.setUserDeliveryContactAddressState(e);
-	                }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
-	                    return _this2.props.setUserDeliveryContactAddressZipcode(e);
-	                }, setDeliveryCost: function setDeliveryCost(e) {
-	                    return _this2.props.setDeliveryCost(e);
-	                }, deliveryAddressValidated: function deliveryAddressValidated() {
-	                    return _this2.props.deliveryAddressValidated();
-	                }, deliveryAddressInvalidated: function deliveryAddressInvalidated() {
-	                    return _this2.props.deliveryAddressInvalidated();
-	                } }), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
@@ -41227,11 +41219,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement("input", { type: "checkbox", onChange: function onChange(e) {
-	                    return _this2.mailingList(e);
-	                } }), "Save for later", React.createElement("br", null), React.createElement(checkout_button_tsx_1.default, { setOrderId: function setOrderId(order_id) {
-	                    return _this2.props.setOrderId(order_id);
-	                }, thisorder: this.props.order, order_delivery_address: this.props.order_delivery_address, order_datetime: this.props.order_datetime, order_contact: this.props.order_contact, order_name: this.props.order_name, order_payment_method: this.props.order_payment_method, validations: this.props.order_validations }), React.createElement("br", null), React.createElement("br", null))));
+	                } }), React.createElement("br", null), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41246,7 +41234,7 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	function mapStateToProps(state) {
-	    console.log("checkout state" + JSON.stringify(state));
+	    console.log("order payment state" + JSON.stringify(state));
 	    return {
 	        session: state.session,
 	        order_validations: state.order_validations,
@@ -41364,6 +41352,9 @@ webpackJsonp([0],[
 	        },
 	        setOrderId: function setOrderId(value) {
 	            dispatch(order_ts_1.setOrderId(value));
+	        },
+	        processYoursSocialOrder: function processYoursSocialOrder() {
+	            dispatch(order_ts_1.processYoursSocialOrder());
 	        },
 	        //complete order thunk
 	        completeOrder: function completeOrder() {
@@ -41687,6 +41678,822 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
+	//import * as getAllProducts from './actions/menu';
+	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(956);
+	//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var PaymentMethod = function (_React$Component) {
+	    _inherits(PaymentMethod, _React$Component);
+	
+	    //props: Props;
+	    function PaymentMethod(props) {
+	        _classCallCheck(this, PaymentMethod);
+	
+	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
+	
+	        _this.setPaymentCardNumber = function (e) {
+	            //if e.target.value > 0
+	            //Amex Card: ^3[47][0-9]{13}$
+	            //if(/^3[47][0-9]{13}$/.test(e.target.value)){
+	            console.log("amex");
+	            //this.setState({card_number_border_color: "red"})
+	            //this.setState({card_type: "AMEX"});
+	            _this.setState({ card_number: e.target.value });
+	            _this.props.setPaymentCardNumber(e);
+	            //
+	            //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
+	            //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
+	            //    alert("visa");
+	            //
+	            //}else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
+	            //    alert("discovery");
+	            //
+	            //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
+	            //}
+	        };
+	        _this.setPaymentExpiryMonth = function (e) {
+	            //only 1-12
+	            console.log(e.target.value);
+	            if (e.target.value.length > 0) {
+	                //01-12, only numbers
+	                if (/^[0-9]{2}/.test(e.target.value)) {
+	                    if (e.target.value > 0 && e.target.value < 13) {
+	                        console.log("ok month");
+	                        _this.setState({ expiry_month_border_color: "grey" });
+	                        _this.setState({ expiry_month: e.target.value });
+	                        _this.props.setPaymentExpiryMonth(e);
+	                        //if(this.state.payment_expiry_year.length > 0){
+	                        //this.props.paymentValidated();
+	                        //this.props.paymentInvalidated();
+	                        //}
+	                    }
+	                } else {
+	                        //this.setState({expiry_month_border_color: "red"});
+	                    }
+	            }
+	        };
+	        _this.setPaymentExpiryYear = function (e) {
+	            //can only be this year up to 2028
+	            /*if(e.target.value.length > 0){
+	                //2017-only numbers
+	                //01-12, only numbers
+	                if(/^[0-9]{4}/.test(e.target.value)){
+	                           if((parseInt(e.target.value) >= 2017) && (parseInt(e.target.value) <= 2025)){
+	                               console.log("ok year");
+	                        this.setState({expiry_year_border_color: "grey"})
+	                        this.setState({expiry_year: e.target.value});*/
+	            _this.props.setPaymentExpiryYear(e);
+	            /*if(this.state.payment_expiry_month.length > 0){
+	                 //if card number
+	                //if security code
+	                 //this.props.paymentValidated();
+	             }
+	            }else{
+	             //paymentinvalidated
+	            }
+	            }else{
+	            //this.setState({expiry_month_border_color: "red"});
+	            }
+	            }*/
+	        };
+	        _this.setPaymentSecurityCode = function (e) {
+	            //this.setState({payment_security_code: e.target.value});
+	            //this.props.setPaymentSecurityCode(e);
+	            //if length > 0 or less then 4, only numbers
+	            /*if(e.target.value.length > 0){
+	               
+	                if(/^[0-9]{4}/.test(e.target.value)){
+	                         console.log("ok year");
+	                   //this.setState({expiry_year_border_color: "grey"})
+	                   this.setState({expiry_security_code: e.target.value});*/
+	            _this.props.setPaymentSecurityCode(e);
+	            /*if(this.state.payment_expiry_month.length > 0){
+	                 //if number
+	                //month
+	                //year
+	                 //this.props.paymentValidated();
+	             }
+	            }else{
+	             //this.setState({expiry_month_border_color: "red"});
+	            }
+	            }*/
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        _this.state = {
+	            payment_name_on_card: "",
+	            payment_card_number: "",
+	            payment_expiry_month: "",
+	            payment_expiry_year: "",
+	            payment_security_code: "",
+	            card_number_border_color: "grey",
+	            expiry_month_border_color: "grey",
+	            expiry_year_border_color: "grey",
+	            cvc_border_color: "grey",
+	            card_type: ""
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(PaymentMethod, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {}
+	    }, {
+	        key: "componentWillReceiveProps",
+	        value: function componentWillReceiveProps(nextProps) {
+	            //check for payment invalidated error
+	            console.log("payment props" + JSON.stringify(nextProps));
+	        }
+	    }, {
+	        key: "setPaymentNameOnCard",
+	        value: function setPaymentNameOnCard(e) {
+	            this.setState({ name_on_card: e.target.value });
+	            this.props.setPaymentNameOnCard(e);
+	            //this.props.setNameOnCard();
+	            //this.props.validatePayment();
+	        }
+	    }, {
+	        key: "onPaymentExpiryMonthFocus",
+	        value: function onPaymentExpiryMonthFocus() {
+	            //this.setState({expiry_month_border_color: "red"});
+	        }
+	    }, {
+	        key: "onPaymentExpiryYearFocus",
+	        value: function onPaymentExpiryYearFocus() {
+	            //this.setState({expiry_year_border_color: "red"});
+	        }
+	    }, {
+	        key: "goToPreview",
+	        value: function goToPreview() {
+	            this.context.router.push('/order/preview');
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            //if session.user_id != guest
+	            //then get the users payment methods
+	            /*let dropdown: any = <form className="form-horizontal">
+	                              <div className="form-group">
+	                                  <div className="col-sm-3">
+	                                      <b>Payment</b>
+	                                      <br/>
+	                                        <select className="form-control">
+	                                            <option>Home - 2444</option>
+	                                            <option>Office - 1234</option>
+	                                        </select>
+	                                  </div>
+	                              </div>
+	                          </form>*/
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                    return _this2.setPaymentCardNumber(e);
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_type))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
+	                    return _this2.onPaymentExpiryMonthFocus();
+	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
+	                    return _this2.onPaymentExpiryYearFocus();
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return PaymentMethod;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    console.log("payment method component/state" + JSON.stringify(state));
+	    return {
+	        user: state.user,
+	        user_payment_methods: state.user_payment_methods
+	        //menu_items: dispatch()
+	    };
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {};
+	}
+	var PaymentMethod1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
+	exports.default = PaymentMethod;
+
+/***/ }),
+/* 1138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	//import SconelyYoursMenu from './menu.tsx';
+	//import Cart from './cart.tsx';
+	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
+	var react_router_1 = __webpack_require__(546);
+	var react_redux_1 = __webpack_require__(190);
+	//import {datetimeValidated} from './actions/order_validations.ts';
+	//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
+	//import { getPublicMenu } from './reducers/menu';
+	var menu_ts_1 = __webpack_require__(948);
+	var Immutable = __webpack_require__(956);
+	var DatePicker = __webpack_require__(972);
+	var moment = __webpack_require__(973);
+	var DayPickerInput = __webpack_require__(1100);
+	__webpack_require__(1121);
+	__webpack_require__(1125);
+	var order_sidebar_cart_tsx_1 = __webpack_require__(1130);
+	var public_top_navbar_tsx_1 = __webpack_require__(1132);
+	var name_tsx_1 = __webpack_require__(1139);
+	var order_delivery_address_tsx_1 = __webpack_require__(1140);
+	var user_delivery_contact_address_ts_1 = __webpack_require__(1134);
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var DateTime = function (_React$Component) {
+	    _inherits(DateTime, _React$Component);
+	
+	    //props: Props;
+	    function DateTime(props) {
+	        _classCallCheck(this, DateTime);
+	
+	        var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
+	
+	        _this.componentWillReceiveProps = function () {
+	            //this.setState({delivery_times: "9-11am"});
+	        };
+	        _this.setUserDeliveryContactAddressZipcode = function (e) {
+	            var dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
+	            var santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"];
+	            var venice_zipcodes = ["90291", "90292", "90293"];
+	            var order_type = _this.props.User.orders[0].order_type;
+	            console.log(order_type === "social");
+	            console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
+	            //this.props.setDeliveryAddressZipcode(e.target.value)
+	            if (_this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))) {
+	                console.log("here000");
+	                //    days == monday friday
+	                //    9-11
+	                //    
+	                //    setUserDeliveryContactAddressZipcode
+	                //    this.props.setDeliveryAvaliableTime("9-11am")
+	                //    this.setstate date_values
+	                //    this.setState({delivery_time: "9-11am"});
+	                //    
+	                _this.setState({ delivery_time: ["9:00", "9:30"] });
+	                //    this.props.setDeliveryCost("15.00")   
+	            } else if (_this.props.User.orders[0].order_type === "yours" && santa_monica_zipcodes.includes(e.target.value)) {
+	                console.log("here00");
+	                //    days == monday friday
+	                //    9-11
+	                //    this.props.setDeliveryAvaliableTime("1-3pm")
+	                //    this.setState({delivery_time: "9-11am"});
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "yours" && venice_zipcodes.includes(e.target.value)) {
+	                console.log("here0");
+	                //    days == monday friday
+	                //    9-11
+	                //    this.props.setDeliveryAvaliableTime("1-3pm")
+	                //    this.setState({delivery_time: "9-11am"});
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "social" && santa_monica_zipcodes.includes(e.target.value)) {
+	                console.log("here1");
+	                //    days == anyday
+	                //    anytime
+	                _this.setState({ delivery_times: "1-3pm" });
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))) {
+	                console.log("here2");
+	                //    days == anyday
+	                //    anytime
+	                //      this.setState({time_value: ["8:00", "9:00"]});
+	                //      this.setState({delivery_times: "9-11pm"});
+	                //    this.props.deliveryCost     
+	                _this.setState({ delivery_times: "1-3pm" });
+	            } else if (_this.props.User.orders[0].order_type === "social" && venice_zipcodes.includes(e.target.value)) {
+	                console.log("here3");
+	                //    days == anyday
+	                //    anytime
+	                //    this.props.deliveryCost      
+	            }
+	            //var numOfDays = new Date(2012, 10, 0).getDate();
+	            //var date = new Date();
+	            //getDay()
+	            //var date = new Date(year, month, 1);
+	            // var days = [];
+	            // while (date.getMonth() === month) {
+	            //    days.push(new Date(date));
+	            //    date.setDate(date.getDate() + 1);
+	            // }
+	            // return days;
+	            //yours
+	            //dtla
+	            //if zipcode == 90015, 90014, 90013, 90021, 90071
+	            //days == monday friday
+	            //9-11
+	            //cost == free
+	            //yours
+	            //90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
+	            //90291. CA.  90292. CA.  90293. 90294. 90295. 90296. CA. 
+	            //days == monday friday
+	            //9-11
+	            //cost == free
+	            //social
+	            //three days in advance
+	            //everyday
+	            //9-11 dtla, 1-3, west side
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        _this.state = {
+	            selectedDate: moment().format("YYYY/MM/DD"),
+	            selected_time: "",
+	            selected_specific_time: "",
+	            delivery_dates: [],
+	            delivery_times: "",
+	            daysOfWeek: []
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(DateTime, [{
+	        key: "componentWillMount",
+	        value: function componentWillMount() {
+	            //alert();
+	            this.props.getMenuItems();
+	            //this.setState({delivery_times: "1-3am"});
+	            //if(this.props.User.orders[0].order_type == "social"){
+	            //delivery_dates == all
+	            //delivery start day three days from now
+	            this.setState({ daysOfWeek: [0, 1, 2, 3, 4, 5, 6] });
+	            //}
+	            //if yours disable selectable days until zipcode is selected and set delivery dates on zipcode selection
+	            //
+	        }
+	    }, {
+	        key: "setDate",
+	        value: function setDate(date) {
+	            console.log("date " + moment(date).toISOString());
+	            this.setState({ selectedDate: moment(date).format("YYYY/MM/DD") });
+	            this.props.setDate(moment(date).format("YYYY/MM/DD"));
+	            //this.props.setDate(moment(date).toISOString());
+	            //this.props.cartValidated();
+	            this.props.datetimeValidated();
+	        }
+	        //setDay(day: any){
+	        //console.log("date " + moment(day).format("YYYY/MM/DD"));
+	        //this.setState({selectedDate: date});
+	        //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+	        //this.props.setDate(moment(date).toISOString());
+	        //this.props.cartValidated();
+	        //this.props.datetimeValidated();
+	        //}
+	
+	    }, {
+	        key: "setTimeRange",
+	        value: function setTimeRange(date) {
+	            console.log("date " + moment(date).toISOString());
+	            //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+	            //this.props.setTime();
+	            //this.props.setDeliveryCost
+	            //this.props.cartValidated();
+	            //this.props.datetimeValidated();
+	        }
+	    }, {
+	        key: "setSpecificTime",
+	        value: function setSpecificTime(date) {
+	            console.log("date " + moment(date).toISOString());
+	            //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+	            //this.props.setSpecificTime();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var delivery_address_pickup_datetime = "";
+	            var delivery_times = "";
+	            //console.log(typeof(this.state.delivery_times));
+	            /*if(this.props.User.orders[0].order_type === "social"){
+	                     //console.log("array");
+	                     delivery_times = <select><option>9:30</option></select>
+	                 }else{
+	                     //console.log("array");
+	                     delivery_times = this.state.delivery_times;
+	                 }*/
+	            /*if(this.props.order.order_type == "sconely_yours"){
+	                     delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
+	                 }else{
+	                     delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
+	                 }*/
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setContactFirstName: function setContactFirstName(e) {
+	                    return _this2.props.setContactFirstName(e);
+	                }, setContactLastName: function setContactLastName(e) {
+	                    return _this2.props.setLastName(e);
+	                }, setEmail: function setEmail(e) {
+	                    return _this2.props.setContactEmail(e);
+	                }, setContactMobile: function setContactMobile(e) {
+	                    return _this2.props.setContactMobile(e);
+	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
+	                    return _this2.props.setUserDeliveryContactAddressFirstName(e);
+	                }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
+	                    return _this2.props.setUserDeliveryContactAddressLastName(e);
+	                }, setDeliveryContactAddressEmail: function setDeliveryContactAddressEmail(e) {
+	                    return _this2.props.setUserDeliveryContactAddressEmail(e);
+	                }, setDeliveryContactAddressMobile: function setDeliveryContactAddressMobile(e) {
+	                    return _this2.props.setUserDeliveryContactAddressMobile(e);
+	                }, setDeliveryContactAddressCompanyName: function setDeliveryContactAddressCompanyName(e) {
+	                    return _this2.props.setUserDeliveryContactAddressCompanyName(e);
+	                }, setDeliveryContactAddressStreet1: function setDeliveryContactAddressStreet1(e) {
+	                    return _this2.props.setUserDeliveryContactAddressStreet1(e);
+	                }, setDeliveryContactAddressStreet2: function setDeliveryContactAddressStreet2(e) {
+	                    return _this2.props.setUserDeliveryContactAddressStreet2(e);
+	                }, setDeliveryContactAddressCity: function setDeliveryContactAddressCity(e) {
+	                    return _this2.props.setUserDeliveryContactAddressCity(e);
+	                }, setDeliveryContactAddressState: function setDeliveryContactAddressState(e) {
+	                    return _this2.props.setUserDeliveryContactAddressState(e);
+	                }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
+	                    return _this2.setUserDeliveryContactAddressZipcode(e);
+	                }, deliveryAddressValidated: function deliveryAddressValidated() {
+	                    return _this2.props.deliveryAddressValidated();
+	                }, deliveryAddressInvalidated: function deliveryAddressInvalidated() {
+	                    return _this2.props.deliveryAddressInvalidated();
+	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
+	                    return _this2.setDate(e);
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { disabledDays: { daysOfWeek: this.state.daysOfWeek } } })), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: this.props.setTimeRange, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, delivery_times, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
+	                    return _this2.props.setSpecificTime(e);
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Checkout"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return DateTime;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    console.log("datetime component/state" + JSON.stringify(state));
+	    return {
+	        //order: state.default.order
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	        menuItems: state.menuItems.items,
+	        //guestOrder: state.guestOrder,
+	        //cartItems: state.guestOrder.cart_items, //computed
+	        User: state.User
+	    };
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {
+	        setDate: function setDate(e) {
+	            //  console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
+	            //  dispatch(setDate(e));
+	        },
+	        setTime: function setTime(e) {
+	            //  console.log("settime" + e.target.value);
+	            //  dispatch(setTime(e.target.value));
+	        },
+	        //datetimeValidated: () => {
+	        //console.log(e.target.value);
+	        //  dispatch(datetimeValidated());
+	        //}
+	        getMenuItems: function getMenuItems() {
+	            dispatch(menu_ts_1.getMenuItems());
+	        },
+	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressLastName: function setUserDeliveryContactAddressLastName(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressLastName(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressCompanyName: function setUserDeliveryContactAddressCompanyName(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCompanyName(e.target.value));
+	        },
+	        setUserDeliveryContactAddressEmail: function setUserDeliveryContactAddressEmail(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressEmail(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressMobile(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressStreet1: function setUserDeliveryContactAddressStreet1(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet1(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressStreet2: function setUserDeliveryContactAddressStreet2(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet2(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressCity: function setUserDeliveryContactAddressCity(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCity(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressState: function setUserDeliveryContactAddressState(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressState(e.target.value, ""));
+	        },
+	        setUserDeliveryContactAddressZipcode: function setUserDeliveryContactAddressZipcode(e) {
+	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressZipcode(e.target.value, ""));
+	        }
+	    };
+	}
+	var DateTimeConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(DateTime);
+	exports.default = DateTimeConnected;
+
+/***/ }),
+/* 1139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_redux_1 = __webpack_require__(190);
+	//import * as getAllProducts from './actions/menu';
+	//import {validateName} from './actions/cart/order_validations.ts';
+	//import { getPublicMenu } from './reducers/menu';
+	var Immutable = __webpack_require__(956);
+	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
+	function addTodoWithDispatch() {
+	    var action = {
+	        type: "VIEW_PUBLIC_MENU"
+	    };
+	    //dispatch(action)
+	}
+	
+	var Name = function (_React$Component) {
+	    _inherits(Name, _React$Component);
+	
+	    //props: Props;
+	    function Name(props) {
+	        _classCallCheck(this, Name);
+	
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
+	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
+	
+	        _this.state = {
+	            first: "",
+	            last: "",
+	            contact_email_again: "",
+	            first_name_border_color: "grey",
+	            last_name_border_color: "grey",
+	            first_name_validated: false,
+	            last_name_validated: false
+	        };
+	        //user_type=guest
+	        //order_type=yours load 
+	        //state==menu
+	        //yours_menu
+	        //just show cart if guest
+	        //or separate into order_menu and order_delivery_address_payment objects
+	        //or have everything work of a "pages" flag
+	        return _this;
+	    }
+	
+	    _createClass(Name, [{
+	        key: "componentDidMount",
+	        value: function componentDidMount() {
+	            //this.setState({first_name: this.props.name.first});
+	            //this.setState({last_name: this.props.name.last});
+	        }
+	    }, {
+	        key: "onFirstNameFocus",
+	        value: function onFirstNameFocus() {
+	            //alert();
+	            //this.setState({first_name_border_color: "red"});
+	        }
+	    }, {
+	        key: "setFirstName",
+	        value: function setFirstName(e) {
+	            //only letters
+	            this.setState({ first: e.target.value });
+	            if (e.target.value.length > 0) {
+	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+	                //let symbol_res = symbol_patt.test(e.target.value);
+	                //let number_res = (/[0-9]/.test(e.target.value));
+	                //if(!symbol_res){
+	                //this.setState({first_name_border_color: "grey"});
+	                this.props.setFirstName(e);
+	                if (this.state.last_name.length > 0) {
+	                    this.props.setNameValidated(e);
+	                }
+	                //}else{
+	                //this.setState({first_name_border_color: "red"});
+	                //this.props.setNameInvalidated(e);
+	                //}
+	            }
+	            //this.props.nameValidated();
+	            //this.props.nameInvalidated();
+	        }
+	    }, {
+	        key: "onLastNameFocus",
+	        value: function onLastNameFocus() {
+	            //alert();
+	            //this.setState({last_name_border_color: "red"});
+	        }
+	    }, {
+	        key: "setLastName",
+	        value: function setLastName(e) {
+	            this.setState({ last: e.target.value });
+	            if (e.target.value.length > 0) {
+	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+	                //let symbol_res = symbol_patt.test(e.target.value);
+	                //console.log(symbol_res);
+	                //let number_res = (/[0-9]/.test(e.target.value));
+	                //if(!symbol_res){
+	                //this.setState({last_name_border_color: "grey"});
+	                this.props.setLastName(e);
+	                if (this.state.first_name.length > 0) {
+	                    this.props.setNameValidated(e);
+	                }
+	                //}else{
+	                //this.setState({last_name_border_color: "red"});
+	                //this.props.setNameInvalidated(e);
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setContactEmail",
+	        value: function setContactEmail(e) {
+	            this.setState({ contact_email: e.target.value });
+	            this.props.setContactEmail(e);
+	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+	            var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+	            //let symbol_res = symbol_patt.test(e.target.value);
+	            var number_res = /[0-9]/.test(e.target.value);
+	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	            //return re.test(email);
+	            console.log(/[0-9]/.test(e.target.value));
+	            //larger then 0
+	            //no symbols
+	            //no numbers
+	            if (e.target.value.length > 0) {
+	                //can only have _ .
+	                //after @ at least one characted . then domain
+	                //if(symbol_res == false){
+	                var address = e.target.value.split("@")[0];
+	                var symbol_res = symbol_patt.test(address);
+	                if (symbol_res == true) {
+	                    if (e.target.value.split("@")[1].split(".")[0].length > 0) {
+	                        if (e.target.value.split("@")[1].split(".")[1].length > 1) {
+	                            //cant enter symbols????  or numbers
+	                            //if email contains @ and at least one character and 2 character domain
+	                            //validate contact and emails are same
+	                            //this.props.setContactEmail(e);
+	                            console.log("email ok");
+	                        }
+	                    }
+	                }
+	                //}else{
+	                //console.log("email ok")
+	                //  this.setState({first_name: e.target.value})
+	                //this.setState({"first_border_color": "red"});
+	                //}
+	            }
+	        }
+	    }, {
+	        key: "setContactEmailAgain",
+	        value: function setContactEmailAgain(e) {
+	            this.setState({ contact_email_again: e.target.value });
+	            //this.props.setContactEmail(e);
+	            if (this.state.contact_email == e.target.value) {
+	                //validated
+	            }
+	        }
+	    }, {
+	        key: "setContactMobile",
+	        value: function setContactMobile(e) {
+	            //strip out -
+	            //check if only number
+	            //if larger then 3 append "-"
+	            var mobile_number = e.target.value.replace("_", "");
+	            var number_res = /[0-9]/.test(mobile_number);
+	            this.setState({ contact_mobile: e.target.value });
+	            this.props.setContactMobile(e);
+	            if (number_res == true) {
+	                //validate contact
+	                //else invalatidate
+	            }
+	        }
+	    }, {
+	        key: "setCompanyName",
+	        value: function setCompanyName(e) {
+	            this.setState({ company_name: e.target.value });
+	            this.props.setCompanyName(e);
+	            //this.props.nameValidated();
+	            //this.props.nameInvalidated();
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var _this2 = this;
+	
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", maxLength: 20, onFocus: function onFocus() {
+	                    return _this2.onFirstNameFocus();
+	                }, onChange: function onChange(e) {
+	                    return _this2.props.setFirstName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onFocus: function onFocus() {
+	                    return _this2.onLastNameFocus();
+	                }, onChange: function onChange(e) {
+	                    return _this2.props.setLastName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: function onChange(e) {
+	                    return _this2.props.setContactEmail(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: function onChange(e) {
+	                    return _this2.setContactEmailAgain(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: function onChange(e) {
+	                    return _this2.props.setContactMobile(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0 } }))))));
+	        }
+	    }], [{
+	        key: "contextTypes",
+	        get: function get() {
+	            return {
+	                router: React.PropTypes.object.isRequired
+	            };
+	        }
+	    }]);
+	
+	    return Name;
+	}(React.Component);
+	
+	function mapStateToProps(state) {
+	    console.log("name component/state" + JSON.stringify(state.name));
+	    return {
+	        name: state.name
+	        //menu_items: getPublicMenu
+	        //menu_items: dispatch()
+	    };
+	}
+	function mapDispatchToProps(dispatch) {
+	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
+	    return {};
+	}
+	var Name1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Name);
+	exports.default = Name;
+
+/***/ }),
+/* 1140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var React = __webpack_require__(153);
+	var react_redux_1 = __webpack_require__(190);
 	//import {deliveryAddressValidated} from './actions/cart_validations.ts';
 	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
 	var Immutable = __webpack_require__(956);
@@ -41940,952 +42747,7 @@ webpackJsonp([0],[
 	exports.default = DeliveryAddress;
 
 /***/ }),
-/* 1138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	var react_redux_1 = __webpack_require__(190);
-	//import * as getAllProducts from './actions/menu';
-	//import {validateName} from './actions/cart/order_validations.ts';
-	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(956);
-	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var Name = function (_React$Component) {
-	    _inherits(Name, _React$Component);
-	
-	    //props: Props;
-	    function Name(props) {
-	        _classCallCheck(this, Name);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
-	
-	        _this.state = {
-	            first: "",
-	            last: "",
-	            contact_email_again: "",
-	            first_name_border_color: "grey",
-	            last_name_border_color: "grey",
-	            first_name_validated: false,
-	            last_name_validated: false
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(Name, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //this.setState({first_name: this.props.name.first});
-	            //this.setState({last_name: this.props.name.last});
-	        }
-	    }, {
-	        key: "onFirstNameFocus",
-	        value: function onFirstNameFocus() {
-	            //alert();
-	            //this.setState({first_name_border_color: "red"});
-	        }
-	    }, {
-	        key: "setFirstName",
-	        value: function setFirstName(e) {
-	            //only letters
-	            this.setState({ first: e.target.value });
-	            if (e.target.value.length > 0) {
-	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	                //let symbol_res = symbol_patt.test(e.target.value);
-	                //let number_res = (/[0-9]/.test(e.target.value));
-	                //if(!symbol_res){
-	                //this.setState({first_name_border_color: "grey"});
-	                this.props.setFirstName(e);
-	                if (this.state.last_name.length > 0) {
-	                    this.props.setNameValidated(e);
-	                }
-	                //}else{
-	                //this.setState({first_name_border_color: "red"});
-	                //this.props.setNameInvalidated(e);
-	                //}
-	            }
-	            //this.props.nameValidated();
-	            //this.props.nameInvalidated();
-	        }
-	    }, {
-	        key: "onLastNameFocus",
-	        value: function onLastNameFocus() {
-	            //alert();
-	            //this.setState({last_name_border_color: "red"});
-	        }
-	    }, {
-	        key: "setLastName",
-	        value: function setLastName(e) {
-	            this.setState({ last: e.target.value });
-	            if (e.target.value.length > 0) {
-	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	                //let symbol_res = symbol_patt.test(e.target.value);
-	                //console.log(symbol_res);
-	                //let number_res = (/[0-9]/.test(e.target.value));
-	                //if(!symbol_res){
-	                //this.setState({last_name_border_color: "grey"});
-	                this.props.setLastName(e);
-	                if (this.state.first_name.length > 0) {
-	                    this.props.setNameValidated(e);
-	                }
-	                //}else{
-	                //this.setState({last_name_border_color: "red"});
-	                //this.props.setNameInvalidated(e);
-	                //}
-	            }
-	        }
-	    }, {
-	        key: "setContactEmail",
-	        value: function setContactEmail(e) {
-	            this.setState({ contact_email: e.target.value });
-	            this.props.setContactEmail(e);
-	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	            var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
-	            //let symbol_res = symbol_patt.test(e.target.value);
-	            var number_res = /[0-9]/.test(e.target.value);
-	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	            //return re.test(email);
-	            console.log(/[0-9]/.test(e.target.value));
-	            //larger then 0
-	            //no symbols
-	            //no numbers
-	            if (e.target.value.length > 0) {
-	                //can only have _ .
-	                //after @ at least one characted . then domain
-	                //if(symbol_res == false){
-	                var address = e.target.value.split("@")[0];
-	                var symbol_res = symbol_patt.test(address);
-	                if (symbol_res == true) {
-	                    if (e.target.value.split("@")[1].split(".")[0].length > 0) {
-	                        if (e.target.value.split("@")[1].split(".")[1].length > 1) {
-	                            //cant enter symbols????  or numbers
-	                            //if email contains @ and at least one character and 2 character domain
-	                            //validate contact and emails are same
-	                            //this.props.setContactEmail(e);
-	                            console.log("email ok");
-	                        }
-	                    }
-	                }
-	                //}else{
-	                //console.log("email ok")
-	                //  this.setState({first_name: e.target.value})
-	                //this.setState({"first_border_color": "red"});
-	                //}
-	            }
-	        }
-	    }, {
-	        key: "setContactEmailAgain",
-	        value: function setContactEmailAgain(e) {
-	            this.setState({ contact_email_again: e.target.value });
-	            //this.props.setContactEmail(e);
-	            if (this.state.contact_email == e.target.value) {
-	                //validated
-	            }
-	        }
-	    }, {
-	        key: "setContactMobile",
-	        value: function setContactMobile(e) {
-	            //strip out -
-	            //check if only number
-	            //if larger then 3 append "-"
-	            var mobile_number = e.target.value.replace("_", "");
-	            var number_res = /[0-9]/.test(mobile_number);
-	            this.setState({ contact_mobile: e.target.value });
-	            this.props.setContactMobile(e);
-	            if (number_res == true) {
-	                //validate contact
-	                //else invalatidate
-	            }
-	        }
-	    }, {
-	        key: "setCompanyName",
-	        value: function setCompanyName(e) {
-	            this.setState({ company_name: e.target.value });
-	            this.props.setCompanyName(e);
-	            //this.props.nameValidated();
-	            //this.props.nameInvalidated();
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
-	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", maxLength: 20, onFocus: function onFocus() {
-	                    return _this2.onFirstNameFocus();
-	                }, onChange: function onChange(e) {
-	                    return _this2.props.setFirstName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onFocus: function onFocus() {
-	                    return _this2.onLastNameFocus();
-	                }, onChange: function onChange(e) {
-	                    return _this2.props.setLastName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: function onChange(e) {
-	                    return _this2.props.setContactEmail(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: function onChange(e) {
-	                    return _this2.setContactEmailAgain(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: function onChange(e) {
-	                    return _this2.props.setContactMobile(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0 } }))))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return Name;
-	}(React.Component);
-	
-	function mapStateToProps(state) {
-	    console.log("name component/state" + JSON.stringify(state.name));
-	    return {
-	        name: state.name
-	        //menu_items: getPublicMenu
-	        //menu_items: dispatch()
-	    };
-	}
-	function mapDispatchToProps(dispatch) {
-	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {};
-	}
-	var Name1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Name);
-	exports.default = Name;
-
-/***/ }),
-/* 1139 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	var react_redux_1 = __webpack_require__(190);
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(956);
-	//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var PaymentMethod = function (_React$Component) {
-	    _inherits(PaymentMethod, _React$Component);
-	
-	    //props: Props;
-	    function PaymentMethod(props) {
-	        _classCallCheck(this, PaymentMethod);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
-	
-	        _this.state = {
-	            payment_name_on_card: "",
-	            payment_card_number: "",
-	            payment_expiry_month: "",
-	            payment_expiry_year: "",
-	            payment_security_code: "",
-	            card_number_border_color: "grey",
-	            expiry_month_border_color: "grey",
-	            expiry_year_border_color: "grey",
-	            cvc_border_color: "grey",
-	            card_type: ""
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(PaymentMethod, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {}
-	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps(nextProps) {
-	            //check for payment invalidated error
-	            console.log("payment props" + JSON.stringify(nextProps));
-	        }
-	    }, {
-	        key: "setPaymentNameOnCard",
-	        value: function setPaymentNameOnCard(e) {
-	            this.setState({ name_on_card: e.target.value });
-	            this.props.setPaymentNameOnCard(e);
-	            //this.props.setNameOnCard();
-	            //this.props.validatePayment();
-	        }
-	    }, {
-	        key: "setPaymentCardNumber",
-	        value: function setPaymentCardNumber(e) {
-	            //if e.target.value > 0
-	            //Amex Card: ^3[47][0-9]{13}$
-	            //if(/^3[47][0-9]{13}$/.test(e.target.value)){
-	            console.log("amex");
-	            //this.setState({card_number_border_color: "red"})
-	            //this.setState({card_type: "AMEX"});
-	            this.setState({ card_number: e.target.value });
-	            this.props.setPaymentCardNumber(e);
-	            //
-	            //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
-	            //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
-	            //    alert("visa");
-	            //
-	            //}else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
-	            //    alert("discovery");
-	            //
-	            //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
-	            //}
-	        }
-	    }, {
-	        key: "onPaymentExpiryMonthFocus",
-	        value: function onPaymentExpiryMonthFocus() {
-	            //this.setState({expiry_month_border_color: "red"});
-	        }
-	    }, {
-	        key: "setPaymentExpiryMonth",
-	        value: function setPaymentExpiryMonth(e) {
-	            //only 1-12
-	            console.log(e.target.value);
-	            if (e.target.value.length > 0) {
-	                //01-12, only numbers
-	                if (/^[0-9]{2}/.test(e.target.value)) {
-	                    if (e.target.value > 0 && e.target.value < 13) {
-	                        console.log("ok month");
-	                        this.setState({ expiry_month_border_color: "grey" });
-	                        this.setState({ expiry_month: e.target.value });
-	                        this.props.setPaymentExpiryMonth(e);
-	                        //if(this.state.payment_expiry_year.length > 0){
-	                        //this.props.paymentValidated();
-	                        //this.props.paymentInvalidated();
-	                        //}
-	                    }
-	                } else {
-	                        //this.setState({expiry_month_border_color: "red"});
-	                    }
-	            }
-	        }
-	    }, {
-	        key: "onPaymentExpiryYearFocus",
-	        value: function onPaymentExpiryYearFocus() {
-	            //this.setState({expiry_year_border_color: "red"});
-	        }
-	    }, {
-	        key: "setPaymentExpiryYear",
-	        value: function setPaymentExpiryYear(e) {
-	            //can only be this year up to 2028
-	            if (e.target.value.length > 0) {
-	                //2017-only numbers
-	                //01-12, only numbers
-	                if (/^[0-9]{4}/.test(e.target.value)) {
-	                    if (parseInt(e.target.value) >= 2017 && parseInt(e.target.value) <= 2025) {
-	                        console.log("ok year");
-	                        this.setState({ expiry_year_border_color: "grey" });
-	                        this.setState({ expiry_year: e.target.value });
-	                        this.props.setPaymentExpiryYear(e);
-	                        if (this.state.payment_expiry_month.length > 0) {
-	                            //if card number
-	                            //if security code
-	                            //this.props.paymentValidated();
-	                        }
-	                    } else {
-	                            //paymentinvalidated
-	                        }
-	                } else {
-	                        //this.setState({expiry_month_border_color: "red"});
-	                    }
-	            }
-	        }
-	    }, {
-	        key: "setPaymentSecurityCode",
-	        value: function setPaymentSecurityCode(e) {
-	            this.setState({ payment_security_code: e.target.value });
-	            this.props.setPaymentSecurityCode(e);
-	            //if length > 0 or less then 4, only numbers
-	            if (e.target.value.length > 0) {
-	                if (/^[0-9]{4}/.test(e.target.value)) {
-	                    console.log("ok year");
-	                    //this.setState({expiry_year_border_color: "grey"})
-	                    this.setState({ expiry_security_code: e.target.value });
-	                    this.props.setPaymentSecurityCode(e);
-	                    if (this.state.payment_expiry_month.length > 0) {
-	                        //if number
-	                        //month
-	                        //year
-	                        //this.props.paymentValidated();
-	                    }
-	                } else {
-	                        //this.setState({expiry_month_border_color: "red"});
-	                    }
-	            }
-	        }
-	    }, {
-	        key: "goToPreview",
-	        value: function goToPreview() {
-	            this.context.router.push('/order/preview');
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
-	
-	            //if session.user_id != guest
-	            //then get the users payment methods
-	            /*let dropdown: any = <form className="form-horizontal">
-	                              <div className="form-group">
-	                                  <div className="col-sm-3">
-	                                      <b>Payment</b>
-	                                      <br/>
-	                                        <select className="form-control">
-	                                            <option>Home - 2444</option>
-	                                            <option>Office - 1234</option>
-	                                        </select>
-	                                  </div>
-	                              </div>
-	                          </form>*/
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
-	                    return _this2.setPaymentCardNumber(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_type))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
-	                    return _this2.onPaymentExpiryMonthFocus();
-	                }, onChange: function onChange(e) {
-	                    return _this2.setPaymentExpiryMonth(e);
-	                }, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
-	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: function onChange(e) {
-	                    return _this2.setPaymentExpiryYear(e);
-	                }, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: function onChange(e) {
-	                    return _this2.setPaymentSecurityCode(e);
-	                }, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return PaymentMethod;
-	}(React.Component);
-	
-	function mapStateToProps(state) {
-	    console.log("payment method component/state" + JSON.stringify(state));
-	    return {
-	        user: state.user,
-	        user_payment_methods: state.user_payment_methods
-	        //menu_items: dispatch()
-	    };
-	}
-	function mapDispatchToProps(dispatch) {
-	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {};
-	}
-	var PaymentMethod1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(PaymentMethod);
-	exports.default = PaymentMethod;
-
-/***/ }),
-/* 1140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	//import * as getAllProducts from './actions/menu';
-	//import {addItemToCart, removeItemFromCart, addAddress} from './actions/cart';
-	//import { getPublicMenu } from './reducers/menu';
-	var Immutable = __webpack_require__(956);
-	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
-	var axios_1 = __webpack_require__(924);
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var CheckoutButton = function (_React$Component) {
-	    _inherits(CheckoutButton, _React$Component);
-	
-	    //props: Props;
-	    function CheckoutButton(props) {
-	        _classCallCheck(this, CheckoutButton);
-	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (CheckoutButton.__proto__ || Object.getPrototypeOf(CheckoutButton)).call(this, props));
-	
-	        _this.state = {
-	            first_name: "",
-	            last_name: "",
-	            validated: "btn btn-default"
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(CheckoutButton, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {}
-	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps() {
-	            console.log("checkout button componentwillreceiveprops" + JSON.stringify(this.props.validations));
-	            //if(this.props.validations.datetime_validated && this.props.validations.name_validated){
-	            this.setState({ validated: "btn btn-default" });
-	            //}
-	        }
-	    }, {
-	        key: "completeOrder",
-	        value: function completeOrder() {
-	            var _this2 = this;
-	
-	            var that = this;
-	            //if(this.state.first_name_validated === false){
-	            //this.props.order_datetime;
-	            //this.props.order_delivery_address
-	            //this.props.order_payment_method
-	            //this.props.cart_items
-	            axios_1.default.post('/api/graphql', {
-	                //axios.post('http://localhost:4000/api/graphql', {
-	                query: 'mutation {completeOrder (order_type: "social", order_delivery_address_street1: "' + this.props.order_delivery_address.street1 + '", order_delivery_address_city: "' + this.props.order_delivery_address.city + '", order_delivery_address_state: "' + this.props.order_delivery_address.state + '", order_delivery_address_zipcode: "' + this.props.order_delivery_address.zipcode + '", order_datetime_date: "' + this.props.order_datetime.date + '", order_first_name: "' + that.props.order_name.first_name + '", order_last_name: "' + that.props.order_name.last_name + '", order_contact_email: "' + this.props.order_contact.email + '", order_contact_mobile: "' + this.props.order_contact.mobile + '", order_payment_name_on_card: "' + this.props.order_payment_method.name_on_card + '", order_payment_card_number: "' + this.props.order_payment_method.card_number + '", order_payment_expiry_month: "' + this.props.order_payment_method.expiry_month + '", order_payment_expiry_year: "' + this.props.order_payment_method.expiry_year + '", order_payment_security_code: "' + this.props.order_payment_method.security_code + '") { status, order_id }}'
-	            }).then(function (response) {
-	                console.log("graphql response" + JSON.stringify(response));
-	                //that.props.history.push('/user');
-	                //context.router
-	                that.props.setOrderId(1);
-	                _this2.context.router.push('/order/complete');
-	            }).catch(function (error) {
-	                console.log("error" + error);
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //display errror to user - payment
-	                //if (!error.status) {
-	                // network error
-	                //}
-	            });
-	            //}
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this3 = this;
-	
-	            //please enter a valid name
-	            //please enter a valid date
-	            //please enter a valid contact
-	            return React.createElement("div", null, React.createElement("button", { className: this.state.validated, onClick: function onClick() {
-	                    return _this3.completeOrder();
-	                } }, "checkout button"));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return CheckoutButton;
-	}(React.Component);
-	
-	exports.default = CheckoutButton;
-
-/***/ }),
 /* 1141 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var React = __webpack_require__(153);
-	//import SconelyYoursMenu from './menu.tsx';
-	//import Cart from './cart.tsx';
-	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
-	var react_router_1 = __webpack_require__(546);
-	var react_redux_1 = __webpack_require__(190);
-	//import {datetimeValidated} from './actions/order_validations.ts';
-	//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
-	//import { getPublicMenu } from './reducers/menu';
-	var menu_ts_1 = __webpack_require__(923);
-	var Immutable = __webpack_require__(956);
-	var DatePicker = __webpack_require__(972);
-	var moment = __webpack_require__(973);
-	var DayPickerInput = __webpack_require__(1100);
-	__webpack_require__(1121);
-	__webpack_require__(1125);
-	var order_sidebar_cart_tsx_1 = __webpack_require__(1130);
-	var public_top_navbar_tsx_1 = __webpack_require__(1132);
-	var name_tsx_1 = __webpack_require__(1138);
-	var order_delivery_address_tsx_1 = __webpack_require__(1137);
-	var user_delivery_contact_address_ts_1 = __webpack_require__(1134);
-	function addTodoWithDispatch() {
-	    var action = {
-	        type: "VIEW_PUBLIC_MENU"
-	    };
-	    //dispatch(action)
-	}
-	
-	var DateTime = function (_React$Component) {
-	    _inherits(DateTime, _React$Component);
-	
-	    //props: Props;
-	    function DateTime(props) {
-	        _classCallCheck(this, DateTime);
-	
-	        var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
-	
-	        _this.componentWillReceiveProps = function () {
-	            //this.setState({delivery_times: "9-11am"});
-	        };
-	        _this.setUserDeliveryContactAddressZipcode = function (e) {
-	            var dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
-	            var santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"];
-	            var venice_zipcodes = ["90291", "90292", "90293"];
-	            var order_type = _this.props.User.orders[0].order_type;
-	            console.log(order_type === "social");
-	            console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
-	            if (_this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))) {
-	                console.log("here000");
-	                //    days == monday friday
-	                //    9-11
-	                //    
-	                //    setUserDeliveryContactAddressZipcode
-	                //    this.props.setDeliveryAvaliableTime("9-11am")
-	                //    this.setstate date_values
-	                //    this.setState({delivery_time: "9-11am"});
-	                //    
-	                _this.setState({ delivery_time: ["9:00", "9:30"] });
-	                //    this.props.deliveryCost      
-	            } else if (_this.props.User.orders[0].order_type === "yours" && santa_monica_zipcodes.includes(e.target.value)) {
-	                console.log("here00");
-	                //    days == monday friday
-	                //    9-11
-	                //    this.props.setDeliveryAvaliableTime("1-3pm")
-	                //    this.setState({delivery_time: "9-11am"});
-	                //    this.props.deliveryCost      
-	            } else if (_this.props.User.orders[0].order_type === "yours" && venice_zipcodes.includes(e.target.value)) {
-	                console.log("here0");
-	                //    days == monday friday
-	                //    9-11
-	                //    this.props.setDeliveryAvaliableTime("1-3pm")
-	                //    this.setState({delivery_time: "9-11am"});
-	                //    this.props.deliveryCost      
-	            } else if (_this.props.User.orders[0].order_type === "social" && santa_monica_zipcodes.includes(e.target.value)) {
-	                console.log("here1");
-	                //    days == anyday
-	                //    anytime
-	                _this.setState({ delivery_times: "1-3pm" });
-	                //    this.props.deliveryCost      
-	            } else if (_this.props.User.orders[0].order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))) {
-	                console.log("here2");
-	                //    days == anyday
-	                //    anytime
-	                //      this.setState({time_value: ["8:00", "9:00"]});
-	                //      this.setState({delivery_times: "9-11pm"});
-	                //    this.props.deliveryCost     
-	                _this.setState({ delivery_times: "1-3pm" });
-	            } else if (_this.props.User.orders[0].order_type === "social" && venice_zipcodes.includes(e.target.value)) {
-	                console.log("here3");
-	                //    days == anyday
-	                //    anytime
-	                //    this.props.deliveryCost      
-	            }
-	            //var numOfDays = new Date(2012, 10, 0).getDate();
-	            //var date = new Date();
-	            //getDay()
-	            //var date = new Date(year, month, 1);
-	            // var days = [];
-	            // while (date.getMonth() === month) {
-	            //    days.push(new Date(date));
-	            //    date.setDate(date.getDate() + 1);
-	            // }
-	            // return days;
-	            //yours
-	            //dtla
-	            //if zipcode == 90015, 90014, 90013, 90021, 90071
-	            //days == monday friday
-	            //9-11
-	            //cost == free
-	            //yours
-	            //90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
-	            //90291. CA.  90292. CA.  90293. 90294. 90295. 90296. CA. 
-	            //days == monday friday
-	            //9-11
-	            //cost == free
-	            //social
-	            //three days in advance
-	            //everyday
-	            //9-11 dtla, 1-3, west side
-	        };
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        _this.state = {
-	            selectedDate: moment().format("YYYY/MM/DD"),
-	            selected_time: "",
-	            selected_specific_time: "",
-	            delivery_dates: [],
-	            delivery_times: "",
-	            daysOfWeek: []
-	        };
-	        //user_type=guest
-	        //order_type=yours load 
-	        //state==menu
-	        //yours_menu
-	        //just show cart if guest
-	        //or separate into order_menu and order_delivery_address_payment objects
-	        //or have everything work of a "pages" flag
-	        return _this;
-	    }
-	
-	    _createClass(DateTime, [{
-	        key: "componentWillMount",
-	        value: function componentWillMount() {
-	            //alert();
-	            this.props.getMenuItems();
-	            this.setState({ delivery_times: "1-3am" });
-	            //if(order_type == "social"){
-	            //delivery_dates == all
-	            //delivery start day three days from now
-	            //}
-	            //if yours disable selectable days until zipcode is selected and set delivery dates on zipcode selection
-	            //
-	        }
-	    }, {
-	        key: "setDate",
-	        value: function setDate(date) {
-	            console.log("date " + moment(date).toISOString());
-	            this.setState({ selectedDate: moment(date).format("YYYY/MM/DD") });
-	            this.props.setDate(moment(date).format("YYYY/MM/DD"));
-	            //this.props.setDate(moment(date).toISOString());
-	            //this.props.cartValidated();
-	            this.props.datetimeValidated();
-	        }
-	        //setDay(day: any){
-	        //console.log("date " + moment(day).format("YYYY/MM/DD"));
-	        //this.setState({selectedDate: date});
-	        //this.props.setDate(moment(date).format("YYYY/MM/DD"));
-	        //this.props.setDate(moment(date).toISOString());
-	        //this.props.cartValidated();
-	        //this.props.datetimeValidated();
-	        //}
-	
-	    }, {
-	        key: "setTime",
-	        value: function setTime(date) {
-	            console.log("date " + moment(date).toISOString());
-	            //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-	            //this.props.setTime();
-	            //this.props.setDeliveryCost
-	            //this.props.cartValidated();
-	            //this.props.datetimeValidated();
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
-	
-	            var delivery_address_pickup_datetime = "";
-	            var delivery_times = "";
-	            //console.log(typeof(this.state.delivery_times));
-	            /*if(this.props.User.orders[0].order_type === "social"){
-	                     //console.log("array");
-	                     delivery_times = <select><option>9:30</option></select>
-	                 }else{
-	                     //console.log("array");
-	                     delivery_times = this.state.delivery_times;
-	                 }*/
-	            /*if(this.props.order.order_type == "sconely_yours"){
-	                     delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
-	                 }else{
-	                     delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
-	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setContactFirstName: function setContactFirstName(e) {
-	                    return _this2.props.setContactFirstName(e);
-	                }, setContactLastName: function setContactLastName(e) {
-	                    return _this2.props.setLastName(e);
-	                }, setEmail: function setEmail(e) {
-	                    return _this2.props.setContactEmail(e);
-	                }, setContactMobile: function setContactMobile(e) {
-	                    return _this2.props.setContactMobile(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
-	                    return _this2.props.setUserDeliveryContactAddressFirstName(e);
-	                }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
-	                    return _this2.props.setUserDeliveryContactAddressLastName(e);
-	                }, setDeliveryContactAddressEmail: function setDeliveryContactAddressEmail(e) {
-	                    return _this2.props.setUserDeliveryContactAddressEmail(e);
-	                }, setDeliveryContactAddressMobile: function setDeliveryContactAddressMobile(e) {
-	                    return _this2.props.setUserDeliveryContactAddressMobile(e);
-	                }, setDeliveryContactAddressCompanyName: function setDeliveryContactAddressCompanyName(e) {
-	                    return _this2.props.setUserDeliveryContactAddressCompanyName(e);
-	                }, setDeliveryContactAddressStreet1: function setDeliveryContactAddressStreet1(e) {
-	                    return _this2.props.setUserDeliveryContactAddressStreet1(e);
-	                }, setDeliveryContactAddressStreet2: function setDeliveryContactAddressStreet2(e) {
-	                    return _this2.props.setUserDeliveryContactAddressStreet2(e);
-	                }, setDeliveryContactAddressCity: function setDeliveryContactAddressCity(e) {
-	                    return _this2.props.setUserDeliveryContactAddressCity(e);
-	                }, setDeliveryContactAddressState: function setDeliveryContactAddressState(e) {
-	                    return _this2.props.setUserDeliveryContactAddressState(e);
-	                }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
-	                    return _this2.setUserDeliveryContactAddressZipcode(e);
-	                }, deliveryAddressValidated: function deliveryAddressValidated() {
-	                    return _this2.props.deliveryAddressValidated();
-	                }, deliveryAddressInvalidated: function deliveryAddressInvalidated() {
-	                    return _this2.props.deliveryAddressInvalidated();
-	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
-	                    return _this2.setDate(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { disabledDays: { daysOfWeek: [0, 1, 2, 3, 4, 5, 6] } } })), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
-	                    return _this2.props.setTime(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, delivery_times, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
-	                    return _this2.props.setSpecificTime(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Checkout"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return DateTime;
-	}(React.Component);
-	
-	function mapStateToProps(state) {
-	    console.log("datetime component/state" + JSON.stringify(state));
-	    return {
-	        //order: state.default.order
-	        //menu_items: getPublicMenu
-	        //menu_items: dispatch()
-	        menuItems: state.menuItems.items,
-	        //guestOrder: state.guestOrder,
-	        //cartItems: state.guestOrder.cart_items, //computed
-	        User: state.User
-	    };
-	}
-	function mapDispatchToProps(dispatch) {
-	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-	    return {
-	        setDate: function setDate(e) {
-	            //  console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
-	            //  dispatch(setDate(e));
-	        },
-	        setTime: function setTime(e) {
-	            //  console.log("settime" + e.target.value);
-	            //  dispatch(setTime(e.target.value));
-	        },
-	        //datetimeValidated: () => {
-	        //console.log(e.target.value);
-	        //  dispatch(datetimeValidated());
-	        //}
-	        getMenuItems: function getMenuItems() {
-	            dispatch(menu_ts_1.getMenuItems());
-	        },
-	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressLastName: function setUserDeliveryContactAddressLastName(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressLastName(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressCompanyName: function setUserDeliveryContactAddressCompanyName(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCompanyName(e.target.value));
-	        },
-	        setUserDeliveryContactAddressEmail: function setUserDeliveryContactAddressEmail(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressEmail(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressMobile(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressStreet1: function setUserDeliveryContactAddressStreet1(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet1(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressStreet2: function setUserDeliveryContactAddressStreet2(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet2(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressCity: function setUserDeliveryContactAddressCity(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCity(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressState: function setUserDeliveryContactAddressState(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressState(e.target.value, ""));
-	        },
-	        setUserDeliveryContactAddressZipcode: function setUserDeliveryContactAddressZipcode(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressZipcode(e.target.value, ""));
-	        }
-	    };
-	}
-	var DateTimeConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(DateTime);
-	exports.default = DateTimeConnected;
-
-/***/ }),
-/* 1142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43427,7 +43289,7 @@ webpackJsonp([0],[
 	exports.default = OrderCartConnected;
 
 /***/ }),
-/* 1143 */
+/* 1142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43972,7 +43834,7 @@ webpackJsonp([0],[
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), "Ross Edwards", React.createElement("br", null), "rossedwards@gmail.com", React.createElement("br", null), "310-775-5566", React.createElement("br", null), React.createElement("br", null), "Sept 1st, 2017", React.createElement("br", null), "11901 Santa Monica Blvd", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
+	                } }, "cart()"), React.createElement("br", null), "User:", React.createElement("br", null), "Name:", React.createElement("br", null), "Ross Edwards", React.createElement("br", null), "Contact:", React.createElement("br", null), "rossedwards@gmail.com", React.createElement("br", null), "310-775-5566", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Name and Contact"), React.createElement("br", null), "Delivery Contact", React.createElement("br", null), "Delivery Date", React.createElement("br", null), "Monday Sept 1st, 2017", React.createElement("br", null), "9-11 am", React.createElement("br", null), "Delivery Address", React.createElement("br", null), "11901 Santa Monica Blvd, Los Angeles, CA, 90025", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
 	                } }, "Edit Datetime"), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.completeOrder();
@@ -44064,7 +43926,7 @@ webpackJsonp([0],[
 	exports.default = PreviewConnected;
 
 /***/ }),
-/* 1144 */
+/* 1143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -44782,7 +44644,7 @@ webpackJsonp([0],[
 	exports.default = OrderCompleted1;
 
 /***/ }),
-/* 1145 */
+/* 1144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44803,7 +44665,7 @@ webpackJsonp([0],[
 	//import {setEmail, loginUser} from './actions/login.ts';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -44936,7 +44798,7 @@ webpackJsonp([0],[
 	exports.default = Login;
 
 /***/ }),
-/* 1146 */
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44958,7 +44820,7 @@ webpackJsonp([0],[
 	//import {registerSetFirstName, registerSetLastName, registerSetEmail, registerSetPassword, registerUser} from './actions/register.ts';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -45213,7 +45075,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1147 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45234,7 +45096,7 @@ webpackJsonp([0],[
 	//import {registerUser} from './actions/register.ts';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -45385,7 +45247,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1148 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45436,7 +45298,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1149 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45577,7 +45439,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1150 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45594,10 +45456,10 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1151);
-	var menu_ts_1 = __webpack_require__(923);
-	var signature_guest_response_ts_2 = __webpack_require__(1152);
-	var navbar_tsx_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_1 = __webpack_require__(1150);
+	var menu_ts_1 = __webpack_require__(948);
+	var signature_guest_response_ts_2 = __webpack_require__(1151);
+	var navbar_tsx_1 = __webpack_require__(1152);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45778,7 +45640,7 @@ webpackJsonp([0],[
 	exports.default = GuestMenuConnected;
 
 /***/ }),
-/* 1151 */
+/* 1150 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -45876,7 +45738,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1152 */
+/* 1151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45884,7 +45746,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var react_router_redux_1 = __webpack_require__(617);
-	var axios_1 = __webpack_require__(924);
+	var axios_1 = __webpack_require__(922);
 	function loadSignatureGuestResponseOrderDetails(event_url_name) {
 	    //alert(item_id)
 	    console.log("action");
@@ -45992,7 +45854,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1153 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46064,7 +45926,7 @@ webpackJsonp([0],[
 	exports.default = NavBar1;
 
 /***/ }),
-/* 1154 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46081,9 +45943,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
-	var signature_guest_response_ts_1 = __webpack_require__(1152);
-	var signature_guest_response_ts_2 = __webpack_require__(1151);
-	var navbar_tsx_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_1 = __webpack_require__(1151);
+	var signature_guest_response_ts_2 = __webpack_require__(1150);
+	var navbar_tsx_1 = __webpack_require__(1152);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -46234,7 +46096,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1155 */
+/* 1154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46250,8 +46112,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1151);
-	var navbar_tsx_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_1 = __webpack_require__(1150);
+	var navbar_tsx_1 = __webpack_require__(1152);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -46342,7 +46204,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1156 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46476,7 +46338,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderGuestsConnected;
 
 /***/ }),
-/* 1157 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46652,7 +46514,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItemsConnected;
 
 /***/ }),
-/* 1158 */
+/* 1157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46774,7 +46636,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderSummaryConnected;
 
 /***/ }),
-/* 1159 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46923,7 +46785,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderPreviewConnected;
 
 /***/ }),
-/* 1160 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46931,19 +46793,19 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1161);
+	var session_ts_1 = __webpack_require__(1160);
 	//import Register from './register.ts';
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1162);
-	var user_ts_1 = __webpack_require__(1163);
+	var menu_ts_1 = __webpack_require__(1161);
+	var user_ts_1 = __webpack_require__(1162);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
-	var guest_order_ts_1 = __webpack_require__(1164);
+	var guest_order_ts_1 = __webpack_require__(1163);
 	//import name from './name.ts';
 	//import contact from './contact.ts';
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1165);
+	var signature_guest_response_ts_1 = __webpack_require__(1164);
 	//import UserOrders from './user_order.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -46985,7 +46847,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1161 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47025,7 +46887,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1162 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47101,7 +46963,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1163 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47128,7 +46990,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: { "personal": { name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, "work": { name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" } } };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" }] };
 	    var action = arguments[1];
 	
 	    var delivery_contacts_addresses_updated = null;
@@ -47219,12 +47081,30 @@ webpackJsonp([0],[
 	            delivery_contacts_addresses_updated[0].street1 = action.value;
 	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
 	        //else remove item
-	        /*case SET_USER_PAYMENT_METHOD_CARD_NUMBER:
-	             console.log("user delivery contact address zipcode reducer");
-	             payment_methods_updated = state.paymentMethods;
-	         payment_methods_updated[0].card_number = action.value;
-	             return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });*/
-	        //else remove item
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
+	            console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.payment_methods;
+	            payment_methods_updated[0]["card_number"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	            console.log("set user payment methods reducer month " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.payment_methods;
+	            payment_methods_updated[0]["expiry_month"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	            console.log("set user payment methods reducer year " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.payment_methods;
+	            payment_methods_updated[0]["expiry_year"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
+	            console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.payment_methods;
+	            payment_methods_updated[0]["security_code"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
 	        /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
 	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
 	               delivery_contacts_addresses_updated = state.delivery_addresses;
@@ -47239,30 +47119,31 @@ webpackJsonp([0],[
 	        //case GET_USER_PAYMENT_METHODS:
 	        //  console.log("user" + JSON.stringify(state));
 	        //  return Object.assign({}, state, {...state, user_delivery_methods: []});
-	        case actionTypes_ts_1.ADD_USER_PAYMENT_METHOD:
-	            console.log("ADD user payment methods reducer" + JSON.stringify(state));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated["work"] = { STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01" };
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
-	            console.log("set user payment methods reducer" + JSON.stringify(state));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated["personal"]["card_number"] = "987654321";
-	        //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
-	            console.log("set user payment methods reducer" + JSON.stringify(state));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated[action.id]["expiry_month"] = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
-	            console.log("set user payment methods reducer" + JSON.stringify(state));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated[action.id]["expiry_year"] = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	        /*case ADD_USER_PAYMENT_METHOD:
+	          console.log("ADD user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated["work"] = {STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01"};
+	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	             case SET_PAYMENT_METHOD_CARD_NUMBER:
+	          console.log("set user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated[0]["card_number"] = "987654321";
+	               //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	             case SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	          console.log("set user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated[action.id]["expiry_month"] = action.value;
+	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	         
+	        case SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	          console.log("set user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated[action.id]["expiry_year"] = action.value;
+	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
 	        default:
 	            //alert();
 	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
@@ -47273,7 +47154,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1164 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47439,7 +47320,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1165 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

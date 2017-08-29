@@ -35,8 +35,8 @@ import UserOrder from './user/user_order.tsx';
 
 //import Order from "./order.jsx";
 import OrderMenu from "./order_menu.tsx";
-import OrderCheckout from "./order_checkout.tsx";
-import OrderDelivery from './order_delivery.tsx';
+import OrderPayment from "./order_payment.tsx";
+import OrderCheckout from './order_checkout.tsx';
 //import PaymentMethod from './order_payment_method.tsx'
 import OrderCart from "./order_cart.tsx";
 import OrderPreview from './order_preview.tsx';
@@ -183,8 +183,8 @@ const Root = () => (
         <Route component={checkLogin}>
           <Route path="/order/menu" component={OrderMenu} />
           <Route path="/order/checkout" component={OrderCheckout} />
-          <Route path="/order/delivery" component={OrderDelivery} />
           <Route path="/order/preview" component={OrderPreview} />
+          <Route path="/order/payment" component={OrderPayment} />
           <Route path="/order/cart" component={OrderCart} />
           <Route path="/order/complete" component={OrderComplete} />
         </Route>

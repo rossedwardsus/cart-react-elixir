@@ -9,14 +9,15 @@ defmodule Sconely.CompleteOrderEmail do
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.CompletedOrderEmailView, "completed_order_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.YoursOrderEmailView, "yours_order_email.html", key: _params)
 
-    IO.inspect(_params["order_first_name"])
+    IO.inspect(_params[:user_contact_mobile])
 
     #send to admin as well
 
     new_email(
-      to: _params["order_contact_email"],
+      #to: _params["order_contact_email"],
+      to: ["rossedwards.us@gmail.com"],
       from: "order@sconely.com",
       subject: "Sconely.com order: " <> _params["order_id"],
       html_body: template,

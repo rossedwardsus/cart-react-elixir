@@ -1,4 +1,4 @@
-import {SET_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_PAYMENT_SECURITY_CODE, SET_USER_DEFINED_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_DEFINED_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 
 //setDeliveryContactAddressPredefined
@@ -44,7 +44,7 @@ export function setPaymentMethodCardNumber(value: any, order_id: any) {
 
     console.log("state " + JSON.stringify(getState()));
   
-    dispatch({type: SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, value: value});
+    dispatch({type: SET_USER_PAYMENT_METHOD_CARD_NUMBER, value: value});
 
   }
 
@@ -62,7 +62,7 @@ export function setPaymentExpiryMonth(value: any, order_id: any) {
   //else SET_ORDER_PAYMENT_EXPIRY_MONTH
 
   return {
-    type: SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH,
+    type: SET_USER_PAYMENT_METHOD_EXPIRY_MONTH,
     value
   }
 }
@@ -74,15 +74,15 @@ export function setPaymentExpiryYear(value: any, order_id: any) {
   //else SET_ORDER_PAYMENT_EXPIRY_YEAR
 
   return {
-    type: SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR,
+    type: SET_USER_PAYMENT_METHOD_EXPIRY_YEAR,
     value
   }
 }
 
 export function setPaymentSecurityCode(value: any, order_id: any) {
-  console.log("addCartItem from redux");
+  console.log("set payment method security code action");
   return {
-    type: SET_PAYMENT_SECURITY_CODE,
+    type: SET_USER_PAYMENT_METHOD_SECURITY_CODE,
     value
   }
 }

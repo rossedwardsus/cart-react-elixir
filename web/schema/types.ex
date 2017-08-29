@@ -112,6 +112,22 @@ defmodule Sconely.Schema.Types do
     #field :status, :string
   end
 
+  object :process_yours_social_order_response do
+    #field :order_id, :string
+    #field :order_first_name, :string
+    #field :order_last_name, :string
+    #field :order_company_name, :string
+    #field :order_contact_email, :string
+    #field :order_contact_mobile, :string
+    #field :order_delivery_address_street1, :string
+    #field :order_delivery_address_street2, :string
+    #field :order_delivery_address_city, :string
+    #field :order_delivery_address_state, :string
+    #field :order_delivery_address_zipcode, :string
+    #field :delivery_datetime, :string
+    #field :order_stripe_auth_code, :string
+    field :status, :string
+  end
   
 
 

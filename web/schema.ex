@@ -218,6 +218,33 @@ defmodule Sconely.Schema do
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
+    field :process_yours_social_order, type: :process_yours_social_order_response do
+        arg :order_type, :string
+        arg :user_name_first, :string
+        arg :user_name_last, :string
+        arg :user_contact_email, :string
+        arg :user_contact_mobile, :string
+        #arg :delivery_contact_address_contact_name_first, :string
+        #arg :user_company_name, :string
+        #arg :order_delivery_address_street1, :string
+        #arg :order_delivery_address_street2, :string
+        #arg :order_delivery_address_city, :string
+        #arg :order_delivery_address_state, :string
+        #arg :order_delivery_address_zipcode, :string
+        #arg :order_datetime_date, :string
+        #arg :time, :string
+        #arg :order_payment_name_on_card, :string
+        #arg :order_payment_card_number, :string
+        #arg :order_payment_expiry_month, :string
+        #arg :order_payment_expiry_year, :string
+        #arg :order_payment_security_code, :string
+        #arg :cart_items, list_of(:item)
+        #arg :terms
+        #arg :mailing_list
+
+        resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
+      end
+
   
 
 

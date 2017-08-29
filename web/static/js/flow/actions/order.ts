@@ -1,6 +1,7 @@
 import { CREATE_ORDER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER } from '../constants/actionTypes.ts';
-import {getMenuItems} from './menu.ts';
+//import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
+import axios from 'axios';
 
 
 
@@ -56,7 +57,7 @@ export function createOrder(order_type: any, name: any) {
       //if user if logged in then dispatch(user_orders)
       //else dispatch(orders)
 
-      dispatch(createOrder1(order_type, name, 123));
+      //dispatch(createOrder1(order_type, name, 123));
       //dispatch(getMenuItems(order_type));
       
       if(order_type == "sconely_signature"){
@@ -72,15 +73,66 @@ export function createOrder(order_type: any, name: any) {
   //}
 }
 
-export function createOrder1(order_type: any, name: any, order_id: any) {
-  console.log("create order action " + order_type);
-  return {
-    type: CREATE_ORDER,
-    order_type,
-    name,
-    order_id
-  }
+
+
+export function processYoursSocialOrder() {
+  console.log("process yours social order action ");
+  //console.log("action");
+
+  return function (dispatch: any, getState: any) { 
+
+            //event full name
+
+            //getState()
+            //state.User.orders
+
+            axios.post('/api/graphql',
+                     {query: 'mutation {process_yours_social_order (user_name_first: "f", user_name_last: "l", user_contact_email: "e", user_contact_mobile: "m", order_type: "social") {status token}}'}
+                     //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
+            )
+            .then((response: any) => {
+
+                  console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+
+                  //that.props.history.push('/user');
+                  //context.router
+
+                  //that.props.setOrderId(1);
+
+                  //this.context.router.push('/order/complete');
+
+                  //dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems});
+                    //dispatch(push("/order/url_name/guest/name"));
+      
+
+            })
+            .catch((error: any) => {
+
+                  console.log("error" + error);
+                  //go to code/payment screen
+          //        this.props.loadView();
+
+
+                  //display errror to user - payment
+
+           //if (!error.status) {
+              // network error
+            //}
+
+            })
+            
+
+
+            //call the reducer themn redirect
+            //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+            //dispatch(push("/order/complete"));
+            //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
+                    
+        }
+
 }
+
+
 
 export function orderCompleted(order_type: any) {
   console.log("create order action " + order_type);

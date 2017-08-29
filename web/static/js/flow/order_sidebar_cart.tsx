@@ -493,7 +493,7 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                         </div>
                       </form>
-                      <Link to="/order/delivery" className="btn btn-default">Delivery</Link>              
+                      <Link to="/order/checkout" className="btn btn-default">Checkout</Link>              
                     </div>)
                   }
                   <br/>

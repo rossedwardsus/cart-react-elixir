@@ -5,39 +5,35 @@
 import * as React from 'react';
 
 //import SconelyYoursMenu from './menu.tsx';
-//import Cart from './order_datetime_contact_cart.tsx';
+//import Cart from './cart.tsx';
 //import DeliveryAddressPayment from './delivery_address_payment.tsx';
 
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
-import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
-import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
-import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
-import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
-import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
-import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
-//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
+//import {datetimeValidated} from './actions/order_validations.ts';
+//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
+//import { getPublicMenu } from './reducers/menu';
+import {getMenuItems} from './actions/menu.ts';
 
-import SidebarCart from './order_sidebar_cart.tsx';
-import DeliveryContactAddress from './order_delivery_address.tsx';
-//import Contact from './order_contact.tsx';
-import Datetime from './order_delivery.tsx';
-import NameContact from './name.tsx';
-import OrderCart from './order_cart.tsx';
-import PaymentMethod from './payment_method.tsx';
-import CheckoutButton from './checkout_button.tsx';
-
-//import { getPublicMenu } from './reducers/name';
 const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
-import axios from 'axios';
+
+var DayPickerInput = require("react-day-picker/DayPickerInput");
+
+import "react-day-picker/lib/style.css"
 
 require('react-datepicker/dist/react-datepicker.css');
+
+import SidebarCart from './order_sidebar_cart.tsx';
+import PublicTopNavbar from './public/public_top_navbar.tsx';
+import NameContact from './name.tsx';
+import DeliveryContactAddress from './order_delivery_address.tsx';
+
+import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
+import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
 
 
 function addTodoWithDispatch() {
@@ -61,7 +57,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderDateTimeContact extends React.Component<any, any> {
+class DateTime extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -72,32 +68,13 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     this.state = {
 
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: "",
-        business_name: "",
-        delivery_addresses: [{street: "santa monica blvd"}],
-        street: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        startDate: moment(),
-        form_inputs_validated: false,
-        first_name_classname: "form-group has-error",
-        first_name_validated: false,
-        last_name_classname: "form-group has-error",
-        last_name_validated: false,
-        contact_email_classname: "form-group has-error", 
-        contact_email_validated: false,
-        contact_mobile_classname: "form-group has-error",
-        comtact_mobile_validated: false,
-        name_on_card: "form-group has-error",
-        order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
+        selectedDate: moment().format("YYYY/MM/DD"),
         selected_time: "",
         selected_specific_time: "",
-        button_complete_order_classname: "btn btn-default disabled"
-
+        delivery_dates: [],
+        delivery_times: "",
+        daysOfWeek: []
+        
     };
 
     //user_type=guest
@@ -107,23 +84,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
     //just show cart if guest
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
-    
-    /*this.addCartItem = this.addCartItem.bind(this);
-    this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
-    this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
-    this.removeCartItem = this.removeCartItem.bind(this);
-    this.addDeliveryAddress = this.addDeliveryAddress.bind(this);
-    this.setDeliveryAddressStreet = this.setDeliveryAddressStreet.bind(this);
-    this.setDeliveryAddressCity = this.setDeliveryAddressCity.bind(this);
-    this.setDeliveryAddressZipcode = this.setDeliveryAddressZipcode.bind(this);
-    this.setCardNumber = this.setCardNumber.bind(this);
-    this.setExpiryDate = this.setExpiryDate.bind(this);
-    this.setSecurityCode = this.setSecurityCode.bind(this);
-    this.showMenu = this.showMenu.bind(this);
-    this.showCart = this.showCart.bind(this);
-    this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
-    this.completeOrder = this.completeOrder.bind(this);*/
-
+   
   }
 
   static get contextTypes() {
@@ -132,685 +93,261 @@ class OrderDateTimeContact extends React.Component<any, any> {
     };
   }
 
-  componentDidMount(){
+  componentWillMount(){
 
-      ///if(this.props.order.order_type == undefined){
+    //alert();
 
-      //    redirect to homepage
+    this.props.getMenuItems();
+    //this.setState({delivery_times: "1-3am"});
 
-      //}
-      
-  }
+    //if(this.props.User.orders[0].order_type == "social"){
 
-  //componentWillReceiveProps
-  componentWillReceiveProps(nextProps: any){
+    //delivery_dates == all
+    //delivery start day three days from now
+    this.setState({daysOfWeek: [0, 1, 2, 3, 4, 5, 6]});
 
-    console.log("<b>recieved</b>");
+    //}
 
-    //this.props.cart_validated;
-
-  }
-
-  /*showMenu(){
-
-      //alert();
-
-      this.setState({page: "menu"});
-
-  }
-
-  showDeliveryAddressPayment(){
-
-      //alert();
-
-      this.setState({page: "delivery_address_payment"})
-
-  }*/
-
-  showCart(){
-
-      this.setState({page: "cart"})
-
-  }
-
-
-  //goToDateTime(){
-  
-      //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
-      
-  //}
-
-  
-
-  /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
-
-    //alert(item_id + "" + item_dozens + "" + item_quantity);
-
-    let order_temp = this.state.order;
-
-    //item_id, quanity, mini
-
-    let new_cart_items: any = [];
-
-    //order_temp.set('key', .get('key').push
-    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
-
-
-    //for(let i: any = 0; i <= item_quantity - 1; i++){
-
-      //alert();
-
-      //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});*/
-
+    //if yours disable selectable days until zipcode is selected and set delivery dates on zipcode selection
+    //
     
-
-    /*const myMap = Immutable.fromJS({
-      nested: {
-        someKey: ['hello', 'world'],
-      },
-    });
-
-    //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
-
-    //var newMap = myMap.set('key', myMap.get('key').push(newData))
-
-
-    //let cart_items_temp = this.state.cart_items;
-    //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
-
-      
-     //}
-
-     //alert(JSON.stringify(new_cart_items));
-
-     //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
-
-     //alert(JSON.stringify(cart_items_temp_updated));
-
-     //this.setState({order: order_temp_updated});
-
-
-  //}
-
-  //selectItemDozens(e: any){
-
-  //    alert(e.target.value);
-
-  //}
-
-  //addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
-
-      //alert(street);
-
-      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-
-  //}
-
-  /*removeCartItem(index: any){
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.delete(index);
-
-      this.setState({cart_items: cart_items_temp_updated});
-
   }
 
-  increaseCartItemQuantity(item_id: any, index: any){
+  componentWillReceiveProps = () => {
 
-    //alert(JSON.stringify(item_id + "" + index));
-
-    let cart_items_temp = this.state.cart_items;
-
-    let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
-
-    this.setState({cart_items: cart_items_temp_updated});
-
-  }  
-
-  decreaseCartItemQuantity(item_id: any, index: any){
-
-    let cart_items_temp = this.state.cart_items;
-
-    let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") - 1; return item.set("quantity", quantity_updated)});
-
-    this.setState({cart_items: cart_items_temp_updated});
-
-  }*/
-
-  setDate(e: any){
-
-
-      alert(e);
-
-      //if value is not ""
-      this.props.setDate(e);
-      //date validated
-
-  }
-
-  setTime(e: any){
-
-
-      alert(e.target.value);
-
-      //if value is not ""
-      this.setState({selected_time: e.target.value});
-      this.setState({selected_specific_time: ""});
-      //this.props.setTime(e);
-      //time validated
-
-  }
-
-  setSpecificTime(e: any){
-
-      alert(e.target.value);
-
-      this.setState({selected_specific_time: e.target.value});
-      this.setState({selected_time: ""});
-      //this.props.setSpecificTime(e);
-      //specific time validated
-  }
-
-  setFirstName(e: any){
-
-     //alert(e.target.value);
-
-
-
-     if(e.target.value.length > 0){
-
-        //alert(/^[a-zA-Z]+$/.test(e.target.value));
-
-        if(/^[a-zA-Z]+$/.test(e.target.value)){
-
-            //alert("correct");
-
-            //this.setState({"first_name": e.target.value});
-            this.setState({"first_name_classname": "form-group"});
-            //this.setState({"first_name_validated": true});
-
-            this.props.setFirstName(e)
-            //first name validated
-
-        }else{
-
-            alert("error");
-
-            this.setState({"first_name_classname": "form-group has-error"});
-
-        }
-      }   
-
-  }
-
-  onBlurFirstName(){
-
-      //alert();
-
-  }
-
-  setLastName(e: any){
-
-     alert(e.target.value);
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        if(/^[a-zA-Z]/.test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"last_name": e.target.value});
-            //this.setState({"last_name_classname": "form-group"});
-            //this.setState({"last_name_validated": true});
-
-            this.props.setLastName(e);
-
-        }
-      }
-  }
-
-  setContactEmail(e: any){
-
-      alert(e.target.value);
-
-      if(e.target.value.length > 0){
-
-        //alert();
-
-        //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        //return re.test(email);
-
-        if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"contact_email": e.target.value});
-            this.setState({"contact_email_classname": "form-group"});
-            this.setState({"contact_email_validated": true});
-
-            this.props.setContactEmail(e);
-
-        }
-      }   
-
-  }
-
-  setContactPhone(e: any){
-
-     alert(e.target.value);
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"first_name": e.target.value});
-            //this.setState({"first_name_classname": "form-group"});
-
-            this.props.setContactPhone(e);
-
-        //}
-      }   
-  }
-
-  setCompanyName(e: any){
-
-      //let order_temp = this.state.order;
-      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-
-      //alert(e.target.value);
-
-      //this.setState({order: order_temp_udated});
-
-      //validate and this.props
-
-  }
-
-
-  setDeliveryAddressStreet1(e: any){
-
-    alert(e.target.value);
-
-    if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressStreet1(e);
-
-        //}
-      }   
-
-  }
-
-   setDeliveryAddressStreet2(e: any){
-
-     alert(e.target.value);
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressStreet2(e);
-
-        //}
-      }   
-
-  }
-
-  setDeliveryAddressCity(e: any){
-
-     alert(e.target.value);
-
-
-    if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressCity(e);
-
-        //}
-      }  
-
-  }
-
-  setDeliveryAddressState(e: any){
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressState(e);
-
-        //}
-      }   
+      //this.setState({delivery_times: "9-11am"});
 
   }
 
   
+  setDate(date: any){
 
-  setDeliveryAddressZipcode(e: any){
+    console.log("date " + moment(date).toISOString());
 
-    if(e.target.value.length > 0){
+    this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.props.setDate(moment(date).toISOString());
 
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressZipcode(e);
-
-        //}
-      }  
+    //this.props.cartValidated();
+    this.props.datetimeValidated();
 
   }
 
-  setPaymentNameOnCard(e: any){
+  //setDay(day: any){
 
-      alert(e.target.value);
+    //console.log("date " + moment(day).format("YYYY/MM/DD"));
 
-      if(e.target.value.length > 0){
+    //this.setState({selectedDate: date});
+    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.props.setDate(moment(date).toISOString());
 
-        //alert();
+    //this.props.cartValidated();
+    //this.props.datetimeValidated();
 
-        //if(/^[a-zA-Z]/.test(e.target.value)){
+  //}
 
-            alert();
+  setTimeRange(date: any){
 
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
+    console.log("date " + moment(date).toISOString());
 
-            this.props.setPaymentNameOnCard(e);
+    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    //this.props.setTime();
+    //this.props.setDeliveryCost
 
-        //}
-      }   
-  }
-
-  setPaymentCardNumber(e: any){
-
-      if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setPaymentCardNumber(e);
-
-        //}
-      }   
+    //this.props.cartValidated();
+    //this.props.datetimeValidated();
 
   }
 
-  setPaymentExpiryDate(e: any){
+  setSpecificTime(date: any){
 
-      //01/17
+    console.log("date " + moment(date).toISOString());
 
-      if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setPaymentExpiryDate(e);
-
-        //}
-      }   
-
-      //this.props.setExpiry
-
+    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    //this.props.setSpecificTime();
+    
   }
 
-  setPaymentSecurityCode(e: any){
+  setUserDeliveryContactAddressZipcode = (e: any) => {
 
-      //this.props.setSecurityCode
-
-      if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setPaymentSecurityCode(e);
-
-        //}
-      }   
-
-  }
-
-  completeOrder(){
-
-      //alert("order complete this.props.order");
-
-      //if all inputs are validated
-
-      //alert(JSON.stringify(this.props.order));
-
-      //if first_name_validated == true && last_name_validated == true
-      //process order/dispatch
-
-      //if this.props.order_state = "completed"?
-      //else error
-
-
-      //export default function getBook(dispatch) {
-      /*  $.ajax({
-            method: "GET",
-            url: "/api/data",
-            dataType: "json"
-          }).success(function(data){
-            //return dispatch({type:'GET_BOOK', data: data});
-            this.context.router.push('/order/12345/order_complete');
-
-          });
-      //}
-
-      this.context.router.push('/order/12345/order_complete');*/
-
-
-      axios.post('http://localhost:4000/graphql', {
-             query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
-      })
-      .then( response => {
-
-            console.log(JSON.stringify(response));
-            //go to code/payment screen
-    //        this.props.loadView();
-            //this.props.setSubscription();
-
-            //addtosubscribedblocklist
-
-            //setsubscriptiontype == 1 block
-            //setsubscriptionpaid == true
-            //setsusbcriptindatetime
-
-
-            //store in cookie
-
-            //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-            //setCookie("sconely_session_id", 1, 1)
-            //setCookie("sconely_first_name", 1, 1)
-            //setCookie("sconely_last_name", 1, 1)
-
-
-      })
-      .catch( error => {
-
-            console.log("error");
-            //go to code/payment screen
-    //        this.props.loadView();
-
-     //if (!error.status) {
-        // network error
-      //}
-
-      })
-
-      //alert(JSON.stringify(this.state.delivery_address_street));
-
-      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-
-  }
-
-  goToMenu(){
-
-      this.context.router.push('/order/12345');
       
-  }  
+      let dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
+      let santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"]
+      let venice_zipcodes = ["90291", "90292", "90293"];
 
-  goToPaymentMethod(){
+      let order_type = this.props.User.orders[0].order_type;
 
-      this.context.router.push('/order/payment_method');
+      console.log(order_type === "social");
+      console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
+
+      //this.props.setDeliveryAddressZipcode(e.target.value)
+
+
+      if(this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))){
+
+          console.log("here000");
+
+
+      //    days == monday friday
+      //    9-11
+      //    
+      //    setUserDeliveryContactAddressZipcode
+      //    this.props.setDeliveryAvaliableTime("9-11am")
+      //    this.setstate date_values
+      //    this.setState({delivery_time: "9-11am"});
+      //    
+            this.setState({delivery_time: ["9:00", "9:30"]});
+
+      //    this.props.setDeliveryCost("15.00")   
+
       
+      }else if(this.props.User.orders[0].order_type === "yours" && santa_monica_zipcodes.includes(e.target.value)){
+
+          console.log("here00");
+
+
+      //    days == monday friday
+      //    9-11
+
+      //    this.props.setDeliveryAvaliableTime("1-3pm")
+      //    this.setState({delivery_time: "9-11am"});
+     
+      //    this.props.deliveryCost      
+
+      }else if(this.props.User.orders[0].order_type === "yours" && venice_zipcodes.includes(e.target.value)){
+
+      console.log("here0");
+
+
+      //    days == monday friday
+      //    9-11
+
+      //    this.props.setDeliveryAvaliableTime("1-3pm")
+      
+      //    this.setState({delivery_time: "9-11am"});
+      //    this.props.deliveryCost      
+     
+
+      }else if(this.props.User.orders[0].order_type === "social" && santa_monica_zipcodes.includes(e.target.value)){
+
+          console.log("here1");
+
+
+      //    days == anyday
+      //    anytime
+            this.setState({delivery_times: "1-3pm"});
+      //    this.props.deliveryCost      
+     
+      }else if(this.props.User.orders[0].order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))){
+
+          console.log("here2");
+
+          //    days == anyday
+          //    anytime
+          //      this.setState({time_value: ["8:00", "9:00"]});
+          //      this.setState({delivery_times: "9-11pm"});
+          //    this.props.deliveryCost     
+
+          this.setState({delivery_times: "1-3pm"}); 
+         
+
+      }else if(this.props.User.orders[0].order_type === "social" && venice_zipcodes.includes(e.target.value)){
+
+          console.log("here3");
+
+
+      //    days == anyday
+      //    anytime
+      //    this.props.deliveryCost      
+     
+      }
+
+
+
+
+
+      //var numOfDays = new Date(2012, 10, 0).getDate();
+      //var date = new Date();
+      //getDay()
+      //var date = new Date(year, month, 1);
+      // var days = [];
+      // while (date.getMonth() === month) {
+      //    days.push(new Date(date));
+      //    date.setDate(date.getDate() + 1);
+      // }
+      // return days;
+
+      //yours
+      //dtla
+      //if zipcode == 90015, 90014, 90013, 90021, 90071
+      //days == monday friday
+      //9-11
+      //cost == free
+
+      //yours
+      //90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
+      //90291. CA.  90292. CA.  90293. 90294. 90295. 90296. CA. 
+      //days == monday friday
+      //9-11
+      //cost == free
+
+      //social
+      //three days in advance
+      //everyday
+      //9-11 dtla, 1-3, west side
   }
 
-  terms(e: any){
-
-      console.log(e.target.value)
-
-      this.props.faq(e);
-
-  }
-
-  mailingList(e: any){
-
-      this.props.mailingList(e);
-
-  }
-
-
+  
+  
   render(): JSX.Element{
 
-    //<SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
-                         
+    let delivery_address_pickup_datetime:any = "";
 
-    let body: any = "";
-    let item_count = this.state.item_count;
+    let delivery_times = "";
 
-    //alert(item_count);
+    //console.log(typeof(this.state.delivery_times));
 
-    //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
+    /*if(this.props.User.orders[0].order_type === "social"){
 
-    //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+        //console.log("array");
 
-    //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
+        delivery_times = <select><option>9:30</option></select>
+
+    }else{
+
+        //console.log("array");
+
+        delivery_times = this.state.delivery_times;
+
+    }*/
 
 
+    /*if(this.props.order.order_type == "sconely_yours"){
 
+        delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
+
+    }else{
+
+        delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
+
+    }*/
+   
     return ( <div>
-                <nav className="navbar navbar-default navbar-fixed-top">
-                      <div className="container-fluid">
-                        <div className="navbar-header">
-                          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                          </button>
-                          <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
-                        </div>
-                        <div className="hidden-xs navbar-form navbar-right">
-                        </div>
-                        <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                          </ul>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                          </ul>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                          </ul>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                </nav>
+                <PublicTopNavbar/>
                 <div className="row">
-                        <div className="hidden-xs col-md-3">
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                        </div>
-                        <div className="col-xs-12 col-md-9">
+                      <div className="hidden-xs col-md-3">
+                        <br/>
+                        <br/>
+                        Sconely Yours
+                        <br/>
+                        <br/>
+                        <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
+                        <br/>
+                      </div>
+                      <div className="col-xs-12 col-md-9">
+                            <NameContact setContactFirstName={(e:any) => this.props.setContactFirstName(e)} setContactLastName={(e:any) => this.props.setLastName(e)} setEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
                             <br/>
                             <br/>
-                            <br/>
-                            <br/>
-                            <NameContact guestOrder={this.props.guestOrder} setContactFirstName={(e:any) => this.props.setContactFirstName(e)} setContactLastName={(e:any) => this.props.setLastName(e)} setEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
-
-                            <br/>
-                            <br/>
-                            
                             <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
@@ -819,27 +356,50 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
                             setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
-                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
-                            setDeliveryCost={(e: any) => this.props.setDeliveryCost(e)}
+                            setDeliveryContactAddressZipcode={(e: any) => this.setUserDeliveryContactAddressZipcode(e)} 
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Delivery Date Time
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal" style={{border: 0}}>
+                              <div className="form-group show-lg" style={{borderRadius: 0}}>
+                                <div className="col-md-3">
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{disabledDays: {daysOfWeek: this.state.daysOfWeek,}}}/>
+                                </div>
+                                <div className="col-md-3">
+                                  {this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : 
+                                    (<select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={this.props.setTimeRange} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
+                                      <option value="">Free</option>
+                                      <option value="9-11">9:00 am - 11:00 am</option>
+                                      <option value="1-3">1:00 pm - 3:00 pm</option>
+                                  </select>)}
+                                </div>
+                                <div className="col-md-3">
+                                    {delivery_times}
+                                    <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
+                                        <option value="">Extra</option>
+                                        <option value="900">9:00</option>
+                                        <option value="930">9:30</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </form>
+                            <Link to="/order/preview" className="btn btn-default">Preview</Link>  
+                            <br/>
+                            <br/>
+                            <Link to="/order/cart" className="btn btn-default">Checkout</Link>
+                            <br/>
+                            <Link to="/order/menu" className="btn btn-default">Menu</Link>  
                             <br/>
 
-                            <br/>
-                            <input type="checkbox" onChange={(e: any) => this.mailingList(e)}/>Save for later
-                            <br/>
-
-                            <CheckoutButton setOrderId={(order_id: any) => this.props.setOrderId(order_id)} thisorder={this.props.order} order_delivery_address={this.props.order_delivery_address} 
-                            order_datetime={this.props.order_datetime}
-                            order_contact={this.props.order_contact} order_name={this.props.order_name}  
-                            order_payment_method={this.props.order_payment_method}
-                            validations={this.props.order_validations}/>
-                            <br/>
-                            <br/>
                         </div>
-                </div>
-            </div>
+                    </div>  
+              </div>
     )
   }
 
@@ -853,25 +413,20 @@ class OrderDateTimeContact extends React.Component<any, any> {
 }
 
 
-
-
 function mapStateToProps(state: any) {
-  console.log("checkout state" + JSON.stringify(state));
+  console.log("datetime component/state" + JSON.stringify(state));
   return {
-   session: state.session,
-   order_validations: state.order_validations,
-   order: state.Order,
-   order_delivery_address: state.delivery_address,
-   order_contact: state.contact,
-   order_name: state.name,
-   //order_cart_items: state.cart.cart_items,
-   order_datetime: state.OrderDatetime,
-   order_payment_method: state.OrderPayment,
-
-   guestOrder: state.guestOrder,
-
+   //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
+
+   menuItems: state.menuItems.items,
+   //guestOrder: state.guestOrder,
+   //cartItems: state.guestOrder.cart_items, //computed
+
+   User: state.User,
+        
+   
   };
 }
 
@@ -879,35 +434,22 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     setDate: (e: any) => {
-      //dispatch(setDate(e))
+    //  console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
+    //  dispatch(setDate(e));
     },
     setTime: (e: any) => {
-      //dispatch(setTime(e.target.value))
+    //  console.log("settime" + e.target.value);
+    //  dispatch(setTime(e.target.value));
     },
-    cartValidated: () => {
-      dispatch(cartValidated());
+    //datetimeValidated: () => {
+      //console.log(e.target.value);
+    //  dispatch(datetimeValidated());
+    //}
+
+    getMenuItems: () => {
+      dispatch(getMenuItems());
     },
-    datetimeValidated: () => {
-        dispatch(datetimeValidated());
-    },
-    setSpecificTime: (e: any) => {
-      dispatch(setSpecificTime(e.target.value))
-    },
-    setUserNameFirst: (e: any) => {
-      dispatch(setUserNameFirst(e.target.value))
-    },
-    setUserNameLast: (e: any) => {
-      dispatch(setUserNameLast(e.target.value))
-    },
-    setUserContactEmail: (e: any) => {
-      dispatch(setUserContactEmail(e.target.value))
-    },
-    setUserContactMobile: (e: any) => {
-      dispatch(setUserContactMobile(e.target.value))
-    },
-    setNameValidated: (e: any) => {
-      dispatch(nameValidated())
-    },
+
     setUserDeliveryContactAddressFirstName: (e: any) => {
       dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
     },
@@ -938,81 +480,14 @@ function mapDispatchToProps(dispatch: any) {
     setUserDeliveryContactAddressZipcode: (e: any) => {
       dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
     },
-    setDeliveryCost: (value: any) => {
-      dispatch(setDeliveryCost(value));
-    },
-    deliveryAddressValidated: () => {
-      dispatch(deliveryAddressValidated())
-    },
-    deliveryAddressInvalidated: () => {
-      dispatch(deliveryAddressInvalidated())
-    },
-    increaseCartItemQuantity: (e: any) => {
-      dispatch(increaseCartItemQuantity(e));
-    },
-    decreaseCartItemQuantity: (e: any) => {
-      dispatch(decreaseCartItemQuantity(e));
-    },
-    removeCartItem: (item_id: any) => {
-      dispatch(removeCartItem(item_id));
-    },
-    setPaymentNameOnCard: (e: any) => {
-      dispatch(setPaymentNameOnCard(e.target.value, ""))
-    },
-    setPaymentCardNumber: (e: any) => {
-      dispatch(setPaymentMethodCardNumber(e.target.value, ""))
-    },
-    setPaymentExpiryMonth: (e: any) => {
-      dispatch(setPaymentExpiryMonth(e.target.value, ""))
-    },
-    setPaymentExpiryYear: (e: any) => {
-      dispatch(setPaymentExpiryYear(e.target.value, ""))
-    },
-    setPaymentSecurityCode: (e: any) => {
-      dispatch(setPaymentSecurityCode(e.target.value, ""))
-    },
-    termsValidated: (value: any) => {
-
-      dispatch(termsValidated(value));
-
-    },
-    mailingList: (value: any) => {
-
-      dispatch(mailingList(value));
-
-    },
-    setOrderId: (value: any) => {
-
-      dispatch(setOrderId(value));
-
-    },
-    
-    //complete order thunk
-
-    completeOrder: () => {
-
-       /*$.ajax({
-            method: "GET",
-            url: "/api/data",
-            dataType: "json"
-          }).success(function(data){
-            return dispatch({type:'GET_BOOK', data: data});
-          });
-       }*/
-
-      //dispatch(completeOrder());
-
-    }
+  
   }
 }
 
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Order);
-
-const CheckoutConnected = connect(
+const DateTimeConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderDateTimeContact)
+)(DateTime)
 
-export default CheckoutConnected;
+export default DateTimeConnected;
 

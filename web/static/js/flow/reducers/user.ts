@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, GET_USER, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR } from '../constants/actionTypes.ts';
+import { ADD_CART_ITEM, GET_USER, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1"}]}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], payment_methods: {"personal": {name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: ""}, "work": {name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: ""}}, }, action: any){
+export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1"}]}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], payment_methods: [{name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: ""}]}, action: any){
 
   let delivery_contacts_addresses_updated = null;
   let payment_methods_updated = null;
@@ -185,17 +185,49 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
 
       //else remove item
-     
-     /*case SET_USER_PAYMENT_METHOD_CARD_NUMBER:
 
-      console.log("user delivery contact address zipcode reducer");
 
-      payment_methods_updated = state.paymentMethods;
-      payment_methods_updated[0].card_number = action.value; 
+    case SET_USER_PAYMENT_METHOD_CARD_NUMBER:
+      console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
 
-      return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });*/
+      //let delivery_addresses_temp = state.delivery_addresses;
 
-      //else remove item
+      payment_methods_updated = state.payment_methods;
+      payment_methods_updated[0]["card_number"] = action.value;
+
+      return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+
+    case SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+      console.log("set user payment methods reducer month " + JSON.stringify(action.value));
+
+      //let delivery_addresses_temp = state.delivery_addresses;
+
+      payment_methods_updated = state.payment_methods;
+      payment_methods_updated[0]["expiry_month"] = action.value;
+
+      return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+
+
+    case SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+      console.log("set user payment methods reducer year " + JSON.stringify(action.value));
+
+      //let delivery_addresses_temp = state.delivery_addresses;
+
+      payment_methods_updated = state.payment_methods;
+      payment_methods_updated[0]["expiry_year"] = action.value;
+
+      return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+
+
+    case SET_USER_PAYMENT_METHOD_SECURITY_CODE:
+      console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
+
+      //let delivery_addresses_temp = state.delivery_addresses;
+
+      payment_methods_updated = state.payment_methods;
+      payment_methods_updated[0]["security_code"] = action.value;
+
+      return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
      
   
 
@@ -225,7 +257,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
     //  return Object.assign({}, state, {...state, user_delivery_methods: []});
 
 
-    case ADD_USER_PAYMENT_METHOD:
+    /*case ADD_USER_PAYMENT_METHOD:
       console.log("ADD user payment methods reducer" + JSON.stringify(state));
 
       //let delivery_addresses_temp = state.delivery_addresses;
@@ -235,13 +267,13 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
 
-    case SET_USER_PAYMENT_METHOD_CARD_NUMBER:
+    case SET_PAYMENT_METHOD_CARD_NUMBER:
       console.log("set user payment methods reducer" + JSON.stringify(state));
 
       //let delivery_addresses_temp = state.delivery_addresses;
 
       payment_methods_updated = state.payment_methods;
-      payment_methods_updated["personal"]["card_number"] = "987654321";
+      payment_methods_updated[0]["card_number"] = "987654321";
 
       //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
 
@@ -264,7 +296,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       payment_methods_updated = state.payment_methods;
       payment_methods_updated[action.id]["expiry_year"] = action.value;
 
-      return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+      return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
 
 
 

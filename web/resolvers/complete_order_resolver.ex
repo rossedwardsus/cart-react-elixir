@@ -168,8 +168,10 @@ defmodule Sconely.CompleteOrderResolver do
     IO.inspect(args)
 
     #IO.inspect(args)
-    IO.inspect(args[:order_contact_email])
-    IO.inspect(Map.fetch(args, :order_contact_email))
+    IO.inspect(args[:user_contact_email])
+    IO.inspect(args[:user_contact_mobile])
+    
+    #IO.inspect(Map.fetch(args, :order_contact_email))
 
     #Poison.Parser.parse!(args)
 
@@ -234,13 +236,14 @@ defmodule Sconely.CompleteOrderResolver do
 
             #validate payment info
 
-            IO.inspect(charge[:balance_transaction])
+            IO.inspect("charge[:balance_transaction]")
             
             #get stripe charge id
             #insert into database
             #send email
 
-            order_id = UUID.uuid1()
+            order_id = SecureRandom.uuid
+            #order_id = UUID.uuid1()
             #change order_id to random number
             random_number = :rand.uniform(1000000)
             IO.puts("random number")
@@ -264,16 +267,18 @@ defmodule Sconely.CompleteOrderResolver do
 
             #Multi.new
 
-            order_changeset = Order.changeset(%Order{}, %{user_id: "guest", order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
+            #user_id = SecureRandom.uuid
+
+            #order_changeset = Order.changeset(%Order{}, %{user_id: "guest", order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_name_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id})
 
-            IO.inspect(order_changeset)
+            #IO.inspect(order_changeset)
            
-            if order_changeset.valid? do
+            #if order_changeset.valid? do
                 #Repo.insert(order_datetime_changeset)
                 #Repo.insert(order_delivery_address_changeset)
                 #Repo.insert(order_payment_changeset)    
@@ -457,7 +462,7 @@ defmodule Sconely.CompleteOrderResolver do
 
 
                         #working
-                        Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                        Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, "user_name_first" => args[:user_name_first], "user_name_last" => args[:user_name_last], "user_contact_email" => args[:user_contact_email], "user_contact_mobile" => args[:user_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
                 
                 #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
 
@@ -471,7 +476,7 @@ defmodule Sconely.CompleteOrderResolver do
 
                 #end
 
-          else
+          #else
 
             IO.inspect("error")
 
@@ -487,11 +492,11 @@ defmodule Sconely.CompleteOrderResolver do
 
 
 
-            Enum.map(order_changeset.errors, fn {field, detail} ->
+            #Enum.map(order_changeset.errors, fn {field, detail} ->
 
-                IO.inspect(Atom.to_string(field) <> " " <> detail)
+             #   IO.inspect(Atom.to_string(field) <> " " <> detail)
 
-            end)
+            #end)
 
             #Enum.each(order_changeset.errors),  fn {k, v} ->
             #  IO.puts "#{k} --> #{v}"
@@ -517,11 +522,11 @@ defmodule Sconely.CompleteOrderResolver do
 
           end
 
-        {:error, error} -> IO.inspect(error)
+        #{:error, error} -> IO.inspect(error)
             #log error in database
             {:ok, %{status: "card declined - limit reached"}}
 
-    end
+    #end
 
     #{:ok, %{status: "card declined"}}
 
