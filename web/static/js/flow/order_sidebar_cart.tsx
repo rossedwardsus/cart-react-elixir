@@ -409,7 +409,7 @@ class SidebarCart extends React.Component<any, any> {
 
                       //console.log("sidebar cart " + JSON.stringify(that.Order));
 
-                      console.log(order_type);
+                      //console.log(order_type);
 
                       if(order_type == "yours"){
 

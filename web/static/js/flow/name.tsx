@@ -307,12 +307,12 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.state.first_name_classname}>
-                      <input type="text" value={this.props.guestOrder.nameContact.first} maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" value={this.props.guestOrder.nameContact.last} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.props.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.props.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                 </div>

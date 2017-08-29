@@ -40358,7 +40358,7 @@ webpackJsonp([0],[
 	                    var item_name = this.props.menuItems[0].name;
 	                    //let item_name = "";
 	                    //console.log("sidebar cart " + JSON.stringify(that.Order));
-	                    console.log(order_type);
+	                    //console.log(order_type);
 	                    if (order_type == "yours") {
 	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-5" }), React.createElement("div", { className: "col-md-3" }, item.quantity)));
 	                    } else {
@@ -41906,8 +41906,8 @@ webpackJsonp([0],[
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
-	                    return _this2.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"))))));
+	                    return _this2.props.setDeliveryContactAddressZipcode(value);
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42136,11 +42136,11 @@ webpackJsonp([0],[
 	        value: function render() {
 	            var _this2 = this;
 	
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.props.guestOrder.nameContact.first, maxLength: 20, onFocus: function onFocus() {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", maxLength: 20, onFocus: function onFocus() {
 	                    return _this2.onFirstNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.props.setFirstName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.props.guestOrder.nameContact.last, onFocus: function onFocus() {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onFocus: function onFocus() {
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.props.setLastName(e);
@@ -42574,6 +42574,7 @@ webpackJsonp([0],[
 	//import {datetimeValidated} from './actions/order_validations.ts';
 	//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
 	//import { getPublicMenu } from './reducers/menu';
+	var menu_ts_1 = __webpack_require__(923);
 	var Immutable = __webpack_require__(956);
 	var DatePicker = __webpack_require__(972);
 	var moment = __webpack_require__(973);
@@ -42601,39 +42602,62 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (DateTime.__proto__ || Object.getPrototypeOf(DateTime)).call(this, props));
 	
-	        _this.componentWillReceiveProps = function () {};
-	        //setDay(day: any){
-	        //console.log("date " + moment(day).format("YYYY/MM/DD"));
-	        //this.setState({selectedDate: date});
-	        //this.props.setDate(moment(date).format("YYYY/MM/DD"));
-	        //this.props.setDate(moment(date).toISOString());
-	        //this.props.cartValidated();
-	        //this.props.datetimeValidated();
-	        //}
-	        _this.setDelveryZipcode = function (e) {
-	            var dtla_zipcodes = ["90013", "90014", "90015", "90021", "90071"];
+	        _this.componentWillReceiveProps = function () {
+	            //this.setState({delivery_times: "9-11am"});
+	        };
+	        _this.setUserDeliveryContactAddressZipcode = function (e) {
+	            var dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
 	            var santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"];
 	            var venice_zipcodes = ["90291", "90292", "90293"];
-	            //if(order_type === "yours" && dtla_zipcodes.includes(e.target.value){
-	            //    days == monday friday
-	            //    9-11
-	            //    this.props.setDeliveryAvaliableTime("9-11am")
-	            //    this.props.setDeliveryCost
-	            //}else if(order_type === "yours" && santa_monica_zipcodes.includes(e.target.value){
-	            //    days == monday friday
-	            //    9-11
-	            //    this.props.setDeliveryAvaliableTime("1-3pm")
-	            //}else if(order_type === "yours" && venice_zipcodes.includes(e.target.value){
-	            //    days == monday friday
-	            //    9-11
-	            //    this.props.setDeliveryAvaliableTime("1-3pm")
-	            //}else if(order_type === "social" && dtla_zipcodes.includes(e.target.value){
-	            //    days == anyday
-	            //    anytime
-	            //}else if(order_type === "social" && venice_zipcodes.includes(e.target.value){
-	            //    days == anyday
-	            //    anytime
-	            //}
+	            var order_type = _this.props.User.orders[0].order_type;
+	            console.log(order_type === "social");
+	            console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
+	            if (_this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))) {
+	                console.log("here000");
+	                //    days == monday friday
+	                //    9-11
+	                //    
+	                //    setUserDeliveryContactAddressZipcode
+	                //    this.props.setDeliveryAvaliableTime("9-11am")
+	                //    this.setstate date_values
+	                //    this.setState({delivery_time: "9-11am"});
+	                //    
+	                _this.setState({ delivery_time: ["9:00", "9:30"] });
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "yours" && santa_monica_zipcodes.includes(e.target.value)) {
+	                console.log("here00");
+	                //    days == monday friday
+	                //    9-11
+	                //    this.props.setDeliveryAvaliableTime("1-3pm")
+	                //    this.setState({delivery_time: "9-11am"});
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "yours" && venice_zipcodes.includes(e.target.value)) {
+	                console.log("here0");
+	                //    days == monday friday
+	                //    9-11
+	                //    this.props.setDeliveryAvaliableTime("1-3pm")
+	                //    this.setState({delivery_time: "9-11am"});
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "social" && santa_monica_zipcodes.includes(e.target.value)) {
+	                console.log("here1");
+	                //    days == anyday
+	                //    anytime
+	                _this.setState({ delivery_times: "1-3pm" });
+	                //    this.props.deliveryCost      
+	            } else if (_this.props.User.orders[0].order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))) {
+	                console.log("here2");
+	                //    days == anyday
+	                //    anytime
+	                //      this.setState({time_value: ["8:00", "9:00"]});
+	                //      this.setState({delivery_times: "9-11pm"});
+	                //    this.props.deliveryCost     
+	                _this.setState({ delivery_times: "1-3pm" });
+	            } else if (_this.props.User.orders[0].order_type === "social" && venice_zipcodes.includes(e.target.value)) {
+	                console.log("here3");
+	                //    days == anyday
+	                //    anytime
+	                //    this.props.deliveryCost      
+	            }
 	            //var numOfDays = new Date(2012, 10, 0).getDate();
 	            //var date = new Date();
 	            //getDay()
@@ -42666,7 +42690,10 @@ webpackJsonp([0],[
 	        _this.state = {
 	            selectedDate: moment().format("YYYY/MM/DD"),
 	            selected_time: "",
-	            selected_specific_time: ""
+	            selected_specific_time: "",
+	            delivery_dates: [],
+	            delivery_times: "",
+	            daysOfWeek: []
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -42679,9 +42706,17 @@ webpackJsonp([0],[
 	    }
 	
 	    _createClass(DateTime, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
+	        key: "componentWillMount",
+	        value: function componentWillMount() {
 	            //alert();
+	            this.props.getMenuItems();
+	            this.setState({ delivery_times: "1-3am" });
+	            //if(order_type == "social"){
+	            //delivery_dates == all
+	            //delivery start day three days from now
+	            //}
+	            //if yours disable selectable days until zipcode is selected and set delivery dates on zipcode selection
+	            //
 	        }
 	    }, {
 	        key: "setDate",
@@ -42693,18 +42728,46 @@ webpackJsonp([0],[
 	            //this.props.cartValidated();
 	            this.props.datetimeValidated();
 	        }
+	        //setDay(day: any){
+	        //console.log("date " + moment(day).format("YYYY/MM/DD"));
+	        //this.setState({selectedDate: date});
+	        //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+	        //this.props.setDate(moment(date).toISOString());
+	        //this.props.cartValidated();
+	        //this.props.datetimeValidated();
+	        //}
+	
+	    }, {
+	        key: "setTime",
+	        value: function setTime(date) {
+	            console.log("date " + moment(date).toISOString());
+	            //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+	            //this.props.setTime();
+	            //this.props.setDeliveryCost
+	            //this.props.cartValidated();
+	            //this.props.datetimeValidated();
+	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
 	
 	            var delivery_address_pickup_datetime = "";
+	            var delivery_times = "";
+	            //console.log(typeof(this.state.delivery_times));
+	            /*if(this.props.User.orders[0].order_type === "social"){
+	                     //console.log("array");
+	                     delivery_times = <select><option>9:30</option></select>
+	                 }else{
+	                     //console.log("array");
+	                     delivery_times = this.state.delivery_times;
+	                 }*/
 	            /*if(this.props.order.order_type == "sconely_yours"){
 	                     delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
 	                 }else{
 	                     delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { guestOrder: this.props.guestOrder, setContactFirstName: function setContactFirstName(e) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setContactFirstName: function setContactFirstName(e) {
 	                    return _this2.props.setContactFirstName(e);
 	                }, setContactLastName: function setContactLastName(e) {
 	                    return _this2.props.setLastName(e);
@@ -42731,18 +42794,16 @@ webpackJsonp([0],[
 	                }, setDeliveryContactAddressState: function setDeliveryContactAddressState(e) {
 	                    return _this2.props.setUserDeliveryContactAddressState(e);
 	                }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
-	                    return _this2.props.setUserDeliveryContactAddressZipcode(e);
-	                }, setDeliveryCost: function setDeliveryCost(e) {
-	                    return _this2.props.setDeliveryCost(e);
+	                    return _this2.setUserDeliveryContactAddressZipcode(e);
 	                }, deliveryAddressValidated: function deliveryAddressValidated() {
 	                    return _this2.props.deliveryAddressValidated();
 	                }, deliveryAddressInvalidated: function deliveryAddressInvalidated() {
 	                    return _this2.props.deliveryAddressInvalidated();
 	                } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
 	                    return _this2.setDate(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate })), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { disabledDays: { daysOfWeek: [0, 1, 2, 3, 4, 5, 6] } } })), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: function onChange(e) {
 	                    return _this2.props.setTime(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 10 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, delivery_times, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 26, fontSize: 10 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Checkout"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null))));
 	        }
@@ -42765,8 +42826,8 @@ webpackJsonp([0],[
 	        //menu_items: getPublicMenu
 	        //menu_items: dispatch()
 	        menuItems: state.menuItems.items,
-	        guestOrder: state.guestOrder,
-	        cartItems: state.guestOrder.cart_items,
+	        //guestOrder: state.guestOrder,
+	        //cartItems: state.guestOrder.cart_items, //computed
 	        User: state.User
 	    };
 	}
@@ -42785,6 +42846,9 @@ webpackJsonp([0],[
 	        //console.log(e.target.value);
 	        //  dispatch(datetimeValidated());
 	        //}
+	        getMenuItems: function getMenuItems() {
+	            dispatch(menu_ts_1.getMenuItems());
+	        },
 	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
 	        },

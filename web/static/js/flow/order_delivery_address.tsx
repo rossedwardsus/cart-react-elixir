@@ -455,9 +455,14 @@ class DeliveryAddress extends React.Component<any, any> {
                           </select>
                         </div>
                         <div className="col-sm-3">
-                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                          <select className="form-control" onChange={(value) => this.props.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zipcode</option>
                             <option>Free</option>
+                            <option>90013</option>
+                            <option>90014</option>
+                            <option>90015</option>
+                            <option>90021</option>
+                            <option>90071</option>
                           </select>
                         </div>
                     </div>
