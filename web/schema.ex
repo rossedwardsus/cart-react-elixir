@@ -236,16 +236,16 @@ defmodule Sconely.Schema do
         #arg :order_delivery_address_zipcode, :string
         #arg :order_datetime_date, :string
         #arg :time, :string
-        #arg :order_payment_name_on_card, :string
-        #arg :order_payment_card_number, :string
-        #arg :order_payment_expiry_month, :string
-        #arg :order_payment_expiry_year, :string
-        #arg :order_payment_security_code, :string
+        #arg :payment_name_on_card, :string
+        arg :payment_method_card_number, :string
+        arg :payment_method_expiry_month, :string
+        arg :payment_method_expiry_year, :string
+        arg :payment_method_security_code, :string
         #arg :cart_items, list_of(:item)
         #arg :terms
         #arg :mailing_list
 
-        resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
+        resolve &Sconely.YoursSocialOrderResolver.complete_yours_order/2
       end
 
   

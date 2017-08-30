@@ -1,4 +1,4 @@
-defmodule Sconely.CompleteOrderResolver do
+defmodule Sconely.YoursSocialOrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
@@ -210,6 +210,14 @@ defmodule Sconely.CompleteOrderResolver do
     #{:ok, res} = Stripe.Customers.create new_customer
 
 
+    #params[:payment_method_card_number]
+    #params[:payment_method_expiry_month]
+    #params[:payment_method_expiry_year]
+    #params[:payment_method_security_code]
+
+    #create customer for guest
+    #create user profile
+
     params = [
         source: [
           object: "card",
@@ -220,15 +228,14 @@ defmodule Sconely.CompleteOrderResolver do
           name: "Ducky Test",
           cvc: 123
         ],
-        description: "1000 Scones"
+        description: "Sconely order id for customer id"
       ]
   
     IO.inspect(Stripe.Charges.create(51, params))
 
     charge = Stripe.Charges.create(51, params)
 
-    #create customer for guest
-    #create user profile
+    
                     
     case charge do
         {:ok, charge} -> 

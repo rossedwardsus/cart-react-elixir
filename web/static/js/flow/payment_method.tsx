@@ -143,16 +143,17 @@ class PaymentMethod extends React.Component<any, any> {
 
       //only 1-12
 
-      console.log(e.target.value);
+      //console.log(e.target.value);
 
-      if(e.target.value.length > 0){
+      /*if(e.target.value.length > 0){
 
               //01-12, only numbers
               if(/^[0-9]{2}/.test(e.target.value)){
 
                   if(e.target.value > 0 && e.target.value < 13){
 
-                      console.log("ok month");
+                      console.log("ok month");*/
+
                       this.setState({expiry_month_border_color: "grey"});
                       this.setState({expiry_month: e.target.value});
                       this.props.setPaymentExpiryMonth(e);
@@ -164,14 +165,14 @@ class PaymentMethod extends React.Component<any, any> {
 
                       //}
 
-                  }
+                  /*}
 
               }else{
 
                   //this.setState({expiry_month_border_color: "red"});
 
               }
-      }
+      }*/
   }
 
   onPaymentExpiryYearFocus(){

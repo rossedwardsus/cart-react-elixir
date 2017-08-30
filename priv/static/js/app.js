@@ -27242,9 +27242,9 @@ webpackJsonp([0],[
 	    //console.log("action");
 	    return function (dispatch, getState) {
 	        //event full name
-	        //getState()
+	        console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
 	        //state.User.orders
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "first", user_name_last: "last", user_contact_email: "e", user_contact_mobile: "m", delivery_contact_address_contact_name_first: "", delivery_contact_address_contact_name_last: "", delivery_contact_address_contact_email: "", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "") {status sconely_user_token error_reason}}' }
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "first", user_name_last: "last", user_contact_email: "e", user_contact_mobile: "m", delivery_contact_address_name_first: "", delivery_contact_address_name_last: "", delivery_contact_address_contact_email: "", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }
 	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
 	        ).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
@@ -41724,24 +41724,24 @@ webpackJsonp([0],[
 	        };
 	        _this.setPaymentExpiryMonth = function (e) {
 	            //only 1-12
-	            console.log(e.target.value);
-	            if (e.target.value.length > 0) {
-	                //01-12, only numbers
-	                if (/^[0-9]{2}/.test(e.target.value)) {
-	                    if (e.target.value > 0 && e.target.value < 13) {
-	                        console.log("ok month");
-	                        _this.setState({ expiry_month_border_color: "grey" });
-	                        _this.setState({ expiry_month: e.target.value });
-	                        _this.props.setPaymentExpiryMonth(e);
-	                        //if(this.state.payment_expiry_year.length > 0){
-	                        //this.props.paymentValidated();
-	                        //this.props.paymentInvalidated();
-	                        //}
-	                    }
-	                } else {
-	                        //this.setState({expiry_month_border_color: "red"});
-	                    }
+	            //console.log(e.target.value);
+	            /*if(e.target.value.length > 0){
+	                           //01-12, only numbers
+	                    if(/^[0-9]{2}/.test(e.target.value)){
+	                               if(e.target.value > 0 && e.target.value < 13){
+	                                   console.log("ok month");*/
+	            _this.setState({ expiry_month_border_color: "grey" });
+	            _this.setState({ expiry_month: e.target.value });
+	            _this.props.setPaymentExpiryMonth(e);
+	            //if(this.state.payment_expiry_year.length > 0){
+	            //this.props.paymentValidated();
+	            //this.props.paymentInvalidated();
+	            //}
+	            /*}
+	            }else{
+	             //this.setState({expiry_month_border_color: "red"});
 	            }
+	            }*/
 	        };
 	        _this.setPaymentExpiryYear = function (e) {
 	            //can only be this year up to 2028
@@ -42161,7 +42161,7 @@ webpackJsonp([0],[
 	                    return _this2.setDate(e);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { disabledDays: { daysOfWeek: this.state.daysOfWeek } } })), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: this.props.setTimeRange, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, delivery_times, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                    return _this2.props.setSpecificTime(e);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Checkout"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Payment"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -46993,7 +46993,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" }] };
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	      var action = arguments[1];
 	
 	      var delivery_contacts_addresses_updated = null;
@@ -47105,27 +47105,27 @@ webpackJsonp([0],[
 	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
 	                  console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
 	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated = state.paymentMethods;
 	                  payment_methods_updated[0]["card_number"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
 	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
 	                  console.log("set user payment methods reducer month " + JSON.stringify(action.value));
 	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated = state.paymentMethods;
 	                  payment_methods_updated[0]["expiry_month"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
 	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
 	                  console.log("set user payment methods reducer year " + JSON.stringify(action.value));
 	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated = state.paymentMethods;
 	                  payment_methods_updated[0]["expiry_year"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
 	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
 	                  console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
 	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated = state.paymentMethods;
 	                  payment_methods_updated[0]["security_code"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
 	            /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
 	              console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
 	                   delivery_contacts_addresses_updated = state.delivery_addresses;

@@ -392,11 +392,12 @@ class DateTime extends React.Component<any, any> {
                             <Link to="/order/preview" className="btn btn-default">Preview</Link>  
                             <br/>
                             <br/>
-                            <Link to="/order/cart" className="btn btn-default">Checkout</Link>
+                            <Link to="/order/payment" className="btn btn-default">Payment</Link>
                             <br/>
-                            <Link to="/order/menu" className="btn btn-default">Menu</Link>  
+                            <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
                             <br/>
-
+                            <br/>
+                            <br/>
                         </div>
                     </div>  
               </div>
