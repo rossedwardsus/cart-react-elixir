@@ -117,6 +117,28 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       //else remove item
 
+    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
+
+      console.log("user delivery contact address mobile reducer");
+
+      delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+      delivery_contacts_addresses_updated[0].mobile = action.value; 
+
+      return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+
+      //else remove item
+
+    case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE2:
+
+      console.log("user delivery contact address mobile reducer");
+
+      delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+      delivery_contacts_addresses_updated[0].mobile = action.value; 
+
+      return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+
+      //else remove item*/
+
     case SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME:
 
       console.log("user delivery contact address company name reducer");
@@ -185,6 +207,17 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
 
       //else remove item
+
+    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE:
+
+      console.log("user delivery contact address mobile reducer");
+
+      delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+      delivery_contacts_addresses_updated[0].mobile = action.value; 
+
+      return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+
+      //else remove item*/
 
 
     case SET_USER_PAYMENT_METHOD_CARD_NUMBER:

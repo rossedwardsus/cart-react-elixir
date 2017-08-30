@@ -4,7 +4,7 @@ defmodule Sconely.CompleteOrderEmail do
   def welcome_email(_params) do
 
   	#IO.puts("hello")
-  	#IO.inspect(_params)
+  	IO.inspect(_params)
   	#IO.inspect(_params["order_contact_email"])
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
@@ -19,7 +19,7 @@ defmodule Sconely.CompleteOrderEmail do
       #to: _params["order_contact_email"],
       to: ["rossedwards.us@gmail.com"],
       from: "order@sconely.com",
-      subject: "Sconely.com order: " <> _params["order_id"],
+      subject: "Sconely.com order: " <> _params.order_id,
       html_body: template,
       #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
       #text_body: "Thanks for joining!"
@@ -44,7 +44,7 @@ defmodule Sconely.CompleteOrderEmail do
     new_email(
       to: "rossedwards.us@gmail.com",
       from: "order@sconely.com",
-      subject: "Admin - A Sconely.com order has been placed: " <> _params["order_id"],
+      subject: "Admin - order for jan 1, 2017 - dtla/99025: " <> _params["order_id"],
       html_body: template,
       #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
       #text_body: "Thanks for joining!"

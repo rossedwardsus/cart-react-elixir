@@ -2,10 +2,10 @@ defmodule SconeHomeElixir.ActivateController do
   use SconeHomeElixir.Web, :controller
   use Timex
 
-  import Ecto.Query, only: [from: 2]
+  #import Ecto.Query, only: [from: 2]
 
   alias Sconely.Registration
-  alias SconeHomeElixir.Repo
+  #alias SconeHomeElixir.Repo
 
   #plug :action
 

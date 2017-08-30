@@ -87,12 +87,18 @@ export function processYoursSocialOrder() {
             //state.User.orders
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_order (user_name_first: "f", user_name_last: "l", user_contact_email: "e", user_contact_mobile: "m", order_type: "social") {status token}}'}
+                     {query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "first", user_name_last: "last", user_contact_email: "e", user_contact_mobile: "m", delivery_contact_address_name_first: "", delivery_contact_address_name_last: "", delivery_contact_address_contact_email: "", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "") {status sconely_user_token error_reason}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )
             .then((response: any) => {
 
-                  console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+                  console.log("graphql response " + JSON.stringify(response));
+
+                  //if save_info_for_later == true...
+                  //last four card number
+
+                  //localstorage.setitem("sconely_user", {});
+
 
                   //that.props.history.push('/user');
                   //context.router

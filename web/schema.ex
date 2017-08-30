@@ -224,8 +224,11 @@ defmodule Sconely.Schema do
         arg :user_name_last, :string
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
-        #arg :delivery_contact_address_contact_name_first, :string
-        #arg :user_company_name, :string
+        arg :delivery_contact_address_name_first, :string
+        arg :delivery_contact_address_name_last, :string
+        arg :delivery_contact_address_contact_email, :string
+        arg :delivery_contact_address_contact_mobile, :string
+        arg :delivery_contact_address_company_name, :string
         #arg :order_delivery_address_street1, :string
         #arg :order_delivery_address_street2, :string
         #arg :order_delivery_address_city, :string

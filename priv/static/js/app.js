@@ -27244,10 +27244,13 @@ webpackJsonp([0],[
 	        //event full name
 	        //getState()
 	        //state.User.orders
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (user_name_first: "f", user_name_last: "l", user_contact_email: "e", user_contact_mobile: "m", order_type: "social") {status token}}' }
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "first", user_name_last: "last", user_contact_email: "e", user_contact_mobile: "m", delivery_contact_address_contact_name_first: "", delivery_contact_address_contact_name_last: "", delivery_contact_address_contact_email: "", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "") {status sconely_user_token error_reason}}' }
 	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
 	        ).then(function (response) {
-	            console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	            console.log("graphql response " + JSON.stringify(response));
+	            //if save_info_for_later == true...
+	            //last four card number
+	            //localstorage.setitem("sconely_user", {});
 	            //that.props.history.push('/user');
 	            //context.router
 	            //that.props.setOrderId(1);
@@ -46990,165 +46993,183 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" }] };
-	    var action = arguments[1];
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], payment_methods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "" }] };
+	      var action = arguments[1];
 	
-	    var delivery_contacts_addresses_updated = null;
-	    var payment_methods_updated = null;
-	    var user_updated = null;
-	    var orders_updated = null;
-	    switch (action.type) {
-	        case actionTypes_ts_1.GET_USER:
-	            console.log("set user email" + JSON.stringify(state));
-	            //normalizr
-	            //delivery addrress
-	            return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
-	        /*case CREATE_ORDER:
-	          console.log("add cart reducer";
-	               user_updated = state.cartItems;
-	          user_updated["first_name"] = action.value;
-	               return Object.assign({}, state, {user: user_updated});*/
-	        case actionTypes_ts_1.ADD_CART_ITEM:
-	            console.log("add cart reducer");
-	            orders_updated = state.orders;
-	            orders_updated[0].cartItems.push({ item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1" });
-	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
-	        case actionTypes_ts_1.SET_USER_NAME_FIRST:
-	            console.log("user first name reducer" + JSON.stringify(state));
-	            user_updated = state.user;
-	            user_updated["first_name"] = action.value;
-	            return Object.assign({}, state, { user: user_updated });
-	        case actionTypes_ts_1.SET_USER_NAME_LAST:
-	            console.log("user last name reducer" + JSON.stringify(state));
-	            return Object.assign({}, state, Object.assign({}, state, { last_name: action.data }));
-	        case actionTypes_ts_1.SET_USER_CONTACT_EMAIL:
-	            console.log("set user email" + JSON.stringify(state));
-	            return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
-	        case actionTypes_ts_1.SET_USER_CONTACT_MOBILE:
-	            console.log("set user email" + JSON.stringify(state));
-	            return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
-	            console.log("user delivery contact address first name reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].first_name = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactAddress: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
-	            console.log("user delivery contact address last name reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].last_name = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE:
-	            console.log("user delivery contact address mobile reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].mobile = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME:
-	            console.log("user delivery contact address company name reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].company = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1:
-	            console.log("user delivery contact address street1 reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].street1 = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2:
-	            console.log("user delivery contact address street2 reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].street1 = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_CITY:
-	            console.log("user delivery contact address city reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].city = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE:
-	            console.log("user delivery contact address state reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].street1 = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE:
-	            console.log("user delivery contact address zipcode reducer");
-	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	            delivery_contacts_addresses_updated[0].street1 = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	        //else remove item
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
-	            console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated[0]["card_number"] = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
-	            console.log("set user payment methods reducer month " + JSON.stringify(action.value));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated[0]["expiry_month"] = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
-	            console.log("set user payment methods reducer year " + JSON.stringify(action.value));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated[0]["expiry_year"] = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
-	            console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
-	            //let delivery_addresses_temp = state.delivery_addresses;
-	            payment_methods_updated = state.payment_methods;
-	            payment_methods_updated[0]["security_code"] = action.value;
-	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
-	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
-	               delivery_contacts_addresses_updated = state.delivery_addresses;
-	          delivery_contacts_addresses_updated.push({name: "n", street1: "street1", street2: "street2"});
-	               return Object.assign({}, state, {...state, delivery_contacts_addresses: delivery_contacts_addresses_updated});
-	         
-	        case SAVE_USER_DELIVERY_CONTACT_ADDRESS:
-	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
-	               let delivery_addresses_temp = state.delivery_addresses;
-	          let delivery_addresses_updated = delivery_addresses_temp["new_address"] = {id: 1234, street1: "street1", street2: "street2"};
-	               return Object.assign({}, state, {...state, delivery_addresses: {...state.delivery_addresses, ["new_address"]: {id: 1234, street1: "street1", street2: "street2"}}});*/
-	        //case GET_USER_PAYMENT_METHODS:
-	        //  console.log("user" + JSON.stringify(state));
-	        //  return Object.assign({}, state, {...state, user_delivery_methods: []});
-	        /*case ADD_USER_PAYMENT_METHOD:
-	          console.log("ADD user payment methods reducer" + JSON.stringify(state));
-	               //let delivery_addresses_temp = state.delivery_addresses;
-	               payment_methods_updated = state.payment_methods;
-	          payment_methods_updated["work"] = {STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01"};
-	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	             case SET_PAYMENT_METHOD_CARD_NUMBER:
-	          console.log("set user payment methods reducer" + JSON.stringify(state));
-	               //let delivery_addresses_temp = state.delivery_addresses;
-	               payment_methods_updated = state.payment_methods;
-	          payment_methods_updated[0]["card_number"] = "987654321";
-	               //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	             case SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
-	          console.log("set user payment methods reducer" + JSON.stringify(state));
-	               //let delivery_addresses_temp = state.delivery_addresses;
-	               payment_methods_updated = state.payment_methods;
-	          payment_methods_updated[action.id]["expiry_month"] = action.value;
-	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	         
-	        case SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
-	          console.log("set user payment methods reducer" + JSON.stringify(state));
-	               //let delivery_addresses_temp = state.delivery_addresses;
-	               payment_methods_updated = state.payment_methods;
-	          payment_methods_updated[action.id]["expiry_year"] = action.value;
-	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
-	        default:
-	            //alert();
-	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	            return state;
-	    }
+	      var delivery_contacts_addresses_updated = null;
+	      var payment_methods_updated = null;
+	      var user_updated = null;
+	      var orders_updated = null;
+	      switch (action.type) {
+	            case actionTypes_ts_1.GET_USER:
+	                  console.log("set user email" + JSON.stringify(state));
+	                  //normalizr
+	                  //delivery addrress
+	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
+	            /*case CREATE_ORDER:
+	              console.log("add cart reducer";
+	                   user_updated = state.cartItems;
+	              user_updated["first_name"] = action.value;
+	                   return Object.assign({}, state, {user: user_updated});*/
+	            case actionTypes_ts_1.ADD_CART_ITEM:
+	                  console.log("add cart reducer");
+	                  orders_updated = state.orders;
+	                  orders_updated[0].cartItems.push({ item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1" });
+	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	            case actionTypes_ts_1.SET_USER_NAME_FIRST:
+	                  console.log("user first name reducer" + JSON.stringify(state));
+	                  user_updated = state.user;
+	                  user_updated["first_name"] = action.value;
+	                  return Object.assign({}, state, { user: user_updated });
+	            case actionTypes_ts_1.SET_USER_NAME_LAST:
+	                  console.log("user last name reducer" + JSON.stringify(state));
+	                  return Object.assign({}, state, Object.assign({}, state, { last_name: action.data }));
+	            case actionTypes_ts_1.SET_USER_CONTACT_EMAIL:
+	                  console.log("set user email" + JSON.stringify(state));
+	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
+	            case actionTypes_ts_1.SET_USER_CONTACT_MOBILE:
+	                  console.log("set user email" + JSON.stringify(state));
+	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
+	                  console.log("user delivery contact address first name reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].first_name = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactAddress: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
+	                  console.log("user delivery contact address last name reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].last_name = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE:
+	                  console.log("user delivery contact address mobile reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].mobile = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
+	                   console.log("user delivery contact address mobile reducer");
+	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	              delivery_contacts_addresses_updated[0].mobile = action.value;
+	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	                   //else remove item
+	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE2:
+	                   console.log("user delivery contact address mobile reducer");
+	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	              delivery_contacts_addresses_updated[0].mobile = action.value;
+	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	                   //else remove item*/
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME:
+	                  console.log("user delivery contact address company name reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].company = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1:
+	                  console.log("user delivery contact address street1 reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].street1 = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2:
+	                  console.log("user delivery contact address street2 reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].street1 = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_CITY:
+	                  console.log("user delivery contact address city reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].city = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE:
+	                  console.log("user delivery contact address state reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].street1 = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE:
+	                  console.log("user delivery contact address zipcode reducer");
+	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	                  delivery_contacts_addresses_updated[0].street1 = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            /*case SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE:
+	                   console.log("user delivery contact address mobile reducer");
+	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	              delivery_contacts_addresses_updated[0].mobile = action.value;
+	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	                   //else remove item*/
+	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
+	                  console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
+	                  //let delivery_addresses_temp = state.delivery_addresses;
+	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated[0]["card_number"] = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	                  console.log("set user payment methods reducer month " + JSON.stringify(action.value));
+	                  //let delivery_addresses_temp = state.delivery_addresses;
+	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated[0]["expiry_month"] = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	                  console.log("set user payment methods reducer year " + JSON.stringify(action.value));
+	                  //let delivery_addresses_temp = state.delivery_addresses;
+	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated[0]["expiry_year"] = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
+	                  console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
+	                  //let delivery_addresses_temp = state.delivery_addresses;
+	                  payment_methods_updated = state.payment_methods;
+	                  payment_methods_updated[0]["security_code"] = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
+	            /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
+	              console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
+	                   delivery_contacts_addresses_updated = state.delivery_addresses;
+	              delivery_contacts_addresses_updated.push({name: "n", street1: "street1", street2: "street2"});
+	                   return Object.assign({}, state, {...state, delivery_contacts_addresses: delivery_contacts_addresses_updated});
+	             
+	            case SAVE_USER_DELIVERY_CONTACT_ADDRESS:
+	              console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
+	                   let delivery_addresses_temp = state.delivery_addresses;
+	              let delivery_addresses_updated = delivery_addresses_temp["new_address"] = {id: 1234, street1: "street1", street2: "street2"};
+	                   return Object.assign({}, state, {...state, delivery_addresses: {...state.delivery_addresses, ["new_address"]: {id: 1234, street1: "street1", street2: "street2"}}});*/
+	            //case GET_USER_PAYMENT_METHODS:
+	            //  console.log("user" + JSON.stringify(state));
+	            //  return Object.assign({}, state, {...state, user_delivery_methods: []});
+	            /*case ADD_USER_PAYMENT_METHOD:
+	              console.log("ADD user payment methods reducer" + JSON.stringify(state));
+	                   //let delivery_addresses_temp = state.delivery_addresses;
+	                   payment_methods_updated = state.payment_methods;
+	              payment_methods_updated["work"] = {STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01"};
+	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	                 case SET_PAYMENT_METHOD_CARD_NUMBER:
+	              console.log("set user payment methods reducer" + JSON.stringify(state));
+	                   //let delivery_addresses_temp = state.delivery_addresses;
+	                   payment_methods_updated = state.payment_methods;
+	              payment_methods_updated[0]["card_number"] = "987654321";
+	                   //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	                 case SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	              console.log("set user payment methods reducer" + JSON.stringify(state));
+	                   //let delivery_addresses_temp = state.delivery_addresses;
+	                   payment_methods_updated = state.payment_methods;
+	              payment_methods_updated[action.id]["expiry_month"] = action.value;
+	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	             
+	            case SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	              console.log("set user payment methods reducer" + JSON.stringify(state));
+	                   //let delivery_addresses_temp = state.delivery_addresses;
+	                   payment_methods_updated = state.payment_methods;
+	              payment_methods_updated[action.id]["expiry_year"] = action.value;
+	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
+	            default:
+	                  //alert();
+	                  //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	                  return state;
+	      }
 	}
 	exports.default = user;
 	;
