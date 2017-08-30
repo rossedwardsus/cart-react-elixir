@@ -200,11 +200,9 @@ export default class Menu extends React.Component<any, any> {
                           <li><Link to="/register">About Us</Link></li>
                           <li><Link to="/register">Faq</Link></li>
                         </ul>
-                        
                       </div>
                     </div>
                   </nav>
-              <br/>
             </div>
     )
   }

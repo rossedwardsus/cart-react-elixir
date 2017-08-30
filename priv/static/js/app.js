@@ -27183,10 +27183,12 @@ webpackJsonp([0],[
 	//import {getMenuItems} from './menu.ts';
 	var react_router_redux_1 = __webpack_require__(617);
 	var axios_1 = __webpack_require__(922);
-	//const receiveProducts = products => ({
-	//  type: types.RECEIVE_PRODUCTS,
-	//  products: products
-	//})
+	exports.saveForLater = function (value) {
+	    return {
+	        type: actionTypes_ts_1.SAVE_FOR_LATER,
+	        value: value
+	    };
+	};
 	//export const createOrder = (order_type) => dispatch => {
 	//shop.getProducts(products => {
 	//  dispatch(receiveProducts(products))
@@ -27197,16 +27199,21 @@ webpackJsonp([0],[
 	//return "hello";
 	//Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
 	//}
-	//export const save = () => dispatch => {
-	//shop.getProducts(products => {
-	//  dispatch(receiveProducts(products))
-	//})
-	//dispatch(viewPublicMenu(1));
-	//dispatch(saveDeliveryAddress());
-	//alert();
-	//return "hello";
-	//Promise.res
-	//}
+	/*export const saveForLater = (value: any) => (dispatch: any) => {
+	  //shop.getProducts(products => {
+	  //  dispatch(receiveProducts(products))
+	  //})
+	  //dispatch(viewPublicMenu(1));
+	  //dispatch(saveDeliveryAddress());
+	  //alert();
+	  //return "hello";
+	  //Promise.res
+	
+	  ({
+	    type: SAVE_FOR_LATER,
+	    value
+	  });
+	}*/
 	//const completeOrder = (order_type: any) =>
 	//  console.log("create order action");
 	//  ({ 
@@ -27244,10 +27251,13 @@ webpackJsonp([0],[
 	        //event full name
 	        console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
 	        //state.User.orders
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "first", user_name_last: "last", user_contact_email: "e", user_contact_mobile: "m", delivery_contact_address_name_first: "", delivery_contact_address_name_last: "", delivery_contact_address_contact_email: "", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }
 	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
 	        ).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
+	            if (response.data.data.processYoursSocialOrder.errorReason != "") {
+	                console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+	            }
 	            //if save_info_for_later == true...
 	            //last four card number
 	            //localstorage.setitem("sconely_user", {});
@@ -27396,6 +27406,7 @@ webpackJsonp([0],[
 	exports.SET_ORDER_ID = 'SET_ORDER_ID';
 	exports.TERMS = 'TERMS';
 	exports.MAILING_LIST = 'MAILING_LIST';
+	exports.SAVE_FOR_LATER = 'SAVE_FOR_LATER';
 	exports.ORDER_COMPLETED = 'ORDER_COMPLETED';
 	exports.CLEAR_ORDER = 'CLEAR_ORDER';
 	exports.SET_DELIVERY_COST = 'SETDELIVERY_COST';
@@ -40696,7 +40707,7 @@ webpackJsonp([0],[
 	                                 })}
 	                          </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))), React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -40742,6 +40753,7 @@ webpackJsonp([0],[
 	//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 	var order_ts_1 = __webpack_require__(920);
 	var payment_method_tsx_1 = __webpack_require__(1137);
+	var public_top_navbar_tsx_1 = __webpack_require__(1132);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(956);
 	var DatePicker = __webpack_require__(972);
@@ -40762,10 +40774,15 @@ webpackJsonp([0],[
 	    function OrderDateTimeContact(props) {
 	        _classCallCheck(this, OrderDateTimeContact);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (OrderDateTimeContact.__proto__ || Object.getPrototypeOf(OrderDateTimeContact)).call(this, props));
 	
+	        _this.saveForLater = function (e) {
+	            if (e.target.value == "on") {
+	                _this.props.saveForLater(true);
+	            }
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            first_name: "",
 	            last_name: "",
@@ -41196,11 +41213,6 @@ webpackJsonp([0],[
 	            this.props.faq(e);
 	        }
 	    }, {
-	        key: "saveForLater",
-	        value: function saveForLater(e) {
-	            //this.props.mailingList(e);
-	        }
-	    }, {
 	        key: "render",
 	        value: function render() {
 	            var _this2 = this;
@@ -41212,7 +41224,7 @@ webpackJsonp([0],[
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "/images/logo/Sconelylogo.5.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
@@ -41222,7 +41234,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("br", null), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
+	                } }), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41350,12 +41362,12 @@ webpackJsonp([0],[
 	        termsValidated: function termsValidated(value) {
 	            dispatch(order_ts_1.termsValidated(value));
 	        },
-	        mailingList: function mailingList(value) {
-	            dispatch(order_ts_1.mailingList(value));
+	        saveForLater: function saveForLater(value) {
+	            dispatch(order_ts_1.saveForLater(value));
 	        },
-	        setOrderId: function setOrderId(value) {
-	            dispatch(order_ts_1.setOrderId(value));
-	        },
+	        //setOrderId: (value: any) => {
+	        //  dispatch(setOrderId(value));
+	        //},
 	        processYoursSocialOrder: function processYoursSocialOrder() {
 	            dispatch(order_ts_1.processYoursSocialOrder());
 	        },
@@ -41725,69 +41737,68 @@ webpackJsonp([0],[
 	        _this.setPaymentExpiryMonth = function (e) {
 	            //only 1-12
 	            //console.log(e.target.value);
-	            /*if(e.target.value.length > 0){
-	                           //01-12, only numbers
-	                    if(/^[0-9]{2}/.test(e.target.value)){
-	                               if(e.target.value > 0 && e.target.value < 13){
-	                                   console.log("ok month");*/
-	            _this.setState({ expiry_month_border_color: "grey" });
-	            _this.setState({ expiry_month: e.target.value });
-	            _this.props.setPaymentExpiryMonth(e);
-	            //if(this.state.payment_expiry_year.length > 0){
-	            //this.props.paymentValidated();
-	            //this.props.paymentInvalidated();
-	            //}
-	            /*}
-	            }else{
-	             //this.setState({expiry_month_border_color: "red"});
+	            if (e.target.value.length > 0) {
+	                //01-12, only numbers
+	                if (/^[0-9]{2}/.test(e.target.value)) {
+	                    if (e.target.value > 0 && e.target.value < 13) {
+	                        //console.log("ok month");
+	                        _this.setState({ expiry_month_border_color: "grey" });
+	                        //this.setState({expiry_month: e.target.value});
+	                        _this.props.setPaymentExpiryMonth(e);
+	                        //if(this.state.payment_expiry_year.length > 0){
+	                        //this.props.paymentValidated();
+	                        //this.props.paymentInvalidated();
+	                        //}
+	                    }
+	                } else {
+	                    _this.setState({ expiry_month_border_color: "red" });
+	                }
 	            }
-	            }*/
 	        };
 	        _this.setPaymentExpiryYear = function (e) {
 	            //can only be this year up to 2028
-	            /*if(e.target.value.length > 0){
+	            if (e.target.value.length > 0) {
 	                //2017-only numbers
 	                //01-12, only numbers
-	                if(/^[0-9]{4}/.test(e.target.value)){
-	                           if((parseInt(e.target.value) >= 2017) && (parseInt(e.target.value) <= 2025)){
-	                               console.log("ok year");
-	                        this.setState({expiry_year_border_color: "grey"})
-	                        this.setState({expiry_year: e.target.value});*/
-	            _this.props.setPaymentExpiryYear(e);
-	            /*if(this.state.payment_expiry_month.length > 0){
-	                 //if card number
-	                //if security code
-	                 //this.props.paymentValidated();
-	             }
-	            }else{
-	             //paymentinvalidated
+	                if (/^[0-9]{4}/.test(e.target.value)) {
+	                    if (parseInt(e.target.value) >= 2017 && parseInt(e.target.value) <= 2025) {
+	                        //console.log("ok year");
+	                        _this.setState({ cvc_border_color: "grey" });
+	                        //this.setState({expiry_year: e.target.value});
+	                        _this.props.setPaymentExpiryYear(e);
+	                        /*if(this.state.payment_expiry_month.length > 0){
+	                                   //if card number
+	                            //if security code
+	                                   //this.props.paymentValidated();
+	                               }*/
+	                    } else {
+	                            //paymentinvalidated
+	                        }
+	                } else {
+	                    _this.setState({ expiry_year_border_color: "red" });
+	                }
 	            }
-	            }else{
-	            //this.setState({expiry_month_border_color: "red"});
-	            }
-	            }*/
 	        };
 	        _this.setPaymentSecurityCode = function (e) {
 	            //this.setState({payment_security_code: e.target.value});
 	            //this.props.setPaymentSecurityCode(e);
 	            //if length > 0 or less then 4, only numbers
-	            /*if(e.target.value.length > 0){
-	               
-	                if(/^[0-9]{4}/.test(e.target.value)){
-	                         console.log("ok year");
-	                   //this.setState({expiry_year_border_color: "grey"})
-	                   this.setState({expiry_security_code: e.target.value});*/
-	            _this.props.setPaymentSecurityCode(e);
-	            /*if(this.state.payment_expiry_month.length > 0){
-	                 //if number
-	                //month
-	                //year
-	                 //this.props.paymentValidated();
-	             }
-	            }else{
-	             //this.setState({expiry_month_border_color: "red"});
+	            if (e.target.value.length > 0) {
+	                if (/^[0-9]{3}/.test(e.target.value)) {
+	                    //console.log("ok year");
+	                    _this.setState({ cvc_border_color: "grey" });
+	                    _this.setState({ security_code: e.target.value });
+	                    _this.props.setPaymentSecurityCode(e);
+	                    /*if(this.state.payment_expiry_month.length > 0){
+	                               //if number
+	                        //month
+	                        //year
+	                               //this.props.paymentValidated();
+	                           }*/
+	                } else {
+	                    _this.setState({ cvc_border_color: "red" });
+	                }
 	            }
-	            }*/
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
@@ -41870,7 +41881,7 @@ webpackJsonp([0],[
 	                    return _this2.onPaymentExpiryMonthFocus();
 	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -46993,13 +47004,14 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: "", orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	      var action = arguments[1];
 	
 	      var delivery_contacts_addresses_updated = null;
 	      var payment_methods_updated = null;
 	      var user_updated = null;
 	      var orders_updated = null;
+	      var save_for_later_updated = null;
 	      switch (action.type) {
 	            case actionTypes_ts_1.GET_USER:
 	                  console.log("set user email" + JSON.stringify(state));
@@ -47095,6 +47107,12 @@ webpackJsonp([0],[
 	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
 	                  delivery_contacts_addresses_updated[0].street1 = action.value;
 	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	            //else remove item
+	            case actionTypes_ts_1.SAVE_FOR_LATER:
+	                  console.log("user save for later reducer");
+	                  save_for_later_updated = state.saveForLater;
+	                  save_for_later_updated = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { saveForLater: save_for_later_updated }));
 	            //else remove item
 	            /*case SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE:
 	                   console.log("user delivery contact address mobile reducer");

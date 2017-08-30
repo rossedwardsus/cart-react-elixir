@@ -1,14 +1,14 @@
-import { CREATE_ORDER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 //import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
 
 
 
-//const receiveProducts = products => ({
-//  type: types.RECEIVE_PRODUCTS,
-//  products: products
-//})
+export const saveForLater = (value: any) => ({
+  type: SAVE_FOR_LATER,
+  value
+})
 
 //export const createOrder = (order_type) => dispatch => {
   //shop.getProducts(products => {
@@ -22,7 +22,7 @@ import axios from 'axios';
 //}
 
 
-//export const save = () => dispatch => {
+/*export const saveForLater = (value: any) => (dispatch: any) => {
   //shop.getProducts(products => {
   //  dispatch(receiveProducts(products))
   //})
@@ -31,7 +31,12 @@ import axios from 'axios';
   //alert();
   //return "hello";
   //Promise.res
-//}
+
+  ({ 
+    type: SAVE_FOR_LATER, 
+    value
+  });
+}*/
 
 
 //const completeOrder = (order_type: any) =>
@@ -87,12 +92,19 @@ export function processYoursSocialOrder() {
             //state.User.orders
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "first", user_name_last: "last", user_contact_email: "e", user_contact_mobile: "m", delivery_contact_address_name_first: "", delivery_contact_address_name_last: "", delivery_contact_address_contact_email: "", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}
+                     {query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )
             .then((response: any) => {
 
                   console.log("graphql response " + JSON.stringify(response));
+
+                  if(response.data.data.processYoursSocialOrder.errorReason != ""){
+
+                      console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+
+                  }
+
 
                   //if save_info_for_later == true...
                   //last four card number
@@ -114,7 +126,7 @@ export function processYoursSocialOrder() {
             })
             .catch((error: any) => {
 
-                  console.log("error" + error);
+                  console.log("axios error handler " + error);
                   //go to code/payment screen
           //        this.props.loadView();
 

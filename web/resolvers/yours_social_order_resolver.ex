@@ -221,7 +221,7 @@ defmodule Sconely.YoursSocialOrderResolver do
     params = [
         source: [
           object: "card",
-          number: "411111111111111",
+          number: "4111111111111111",
           exp_month: 10,
           exp_year: 2020,
           country: "US",
@@ -488,13 +488,15 @@ defmodule Sconely.YoursSocialOrderResolver do
 
                         #Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, :user_name_first => args[:user_name_first], "user_name_last" => args[:user_name_last], "user_contact_email" => args[:user_contact_email], "user_contact_mobile" => args[:user_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
                 
-                #        Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
+                        #Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
 
                         #Sconely.CompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
               
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
+
+                        IO.puts("ok")
                         
-                        {:ok, %{status: "completed", user_id: user_id, stripe_payment_token: "charge[:id]"}}
+                        {:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]"}}
 
                   #{:error, :error}
                       #{:ok, %{status: "changeset error"}}
@@ -548,7 +550,7 @@ defmodule Sconely.YoursSocialOrderResolver do
           #end
 
         {:error, error} -> IO.inspect(error)
-            {:ok, %{status: "error", reason: "card declined - limit reached"}}
+            {:ok, %{status: "error", error_reason: "card declined - limit reached"}}
 
             #IO.inspect(error)
             #log error in database

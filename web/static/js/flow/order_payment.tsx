@@ -20,7 +20,7 @@ import {setDate, setTime, setSpecificTime} from './actions/signature_order_deliv
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
 import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {processYoursSocialOrder, setDeliveryCost, termsValidated, mailingList, setOrderId} from './actions/order.ts';
+import {processYoursSocialOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
 //import {processYoursSocialOrder1} from './actions/'
 
 import SidebarCart from './order_sidebar_cart.tsx';
@@ -31,6 +31,7 @@ import SidebarCart from './order_sidebar_cart.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
+import PublicTopNavbar from './public/public_top_navbar.tsx';
 
 //import { getPublicMenu } from './reducers/name';
 const Immutable  = require('immutable');
@@ -725,9 +726,13 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   }
 
-  saveForLater(e: any){
+  saveForLater = (e: any) => {
 
-      //this.props.mailingList(e);
+      if(e.target.value == "on"){
+
+          this.props.saveForLater(true);
+
+      }
 
   }
 
@@ -751,35 +756,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
     return ( <div>
-                <nav className="navbar navbar-default navbar-fixed-top">
-                      <div className="container-fluid">
-                        <div className="navbar-header">
-                          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                          </button>
-                          <a className="navbar-brand" href="#"><img src="/images/logo/Sconelylogo.5.jpg"/></a>
-                        </div>
-                        <div className="hidden-xs navbar-form navbar-right">
-                        </div>
-                        <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                          </ul>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                          </ul>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                          </ul>
-                          <ul className="nav navbar-nav">
-                            <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                </nav>
+                <PublicTopNavbar/>
                 <div className="row">
                         <div className="hidden-xs col-md-3">
                           <br/>
@@ -805,16 +782,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
                         <div className="col-xs-12 col-md-9">
                             <br/>
                             <br/>
-                            <br/>
-                            <br/>
-            
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
-                            <br/>
                             <input type="checkbox" onChange={this.saveForLater}/>Save for later
                             <br/>
-
-                             <button className={this.state.validated} onClick={this.props.processYoursSocialOrder}>Complete Order</button>
-                        
+                            <br/>
+                            <button className={this.state.validated} onClick={this.props.processYoursSocialOrder}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>
@@ -956,16 +928,16 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(termsValidated(value));
 
     },
-    mailingList: (value: any) => {
+    saveForLater: (value: any) => {
 
-      dispatch(mailingList(value));
-
-    },
-    setOrderId: (value: any) => {
-
-      dispatch(setOrderId(value));
+      dispatch(saveForLater(value));
 
     },
+    //setOrderId: (value: any) => {
+
+    //  dispatch(setOrderId(value));
+
+    //},
     processYoursSocialOrder: () => {
 
       dispatch(processYoursSocialOrder());
