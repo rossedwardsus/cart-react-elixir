@@ -318,7 +318,7 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(this.props.cartItemsTotalQuantity > 0){
 
-    for (let i = 2; i < 12 - this.props.cartItemsTotalQuantity; i++){ 
+    for (let i = 1; i < 12 - this.props.cartItemsTotalQuantity; i++){ 
 
         //console.log(i);
         
@@ -354,6 +354,8 @@ class OrderMenu extends React.Component<any, any> {
                                                   </div>
         }
     }else{
+
+        //if assortment == true
 
         if(this.props.cartItemsTotalQuantity < 10){
 

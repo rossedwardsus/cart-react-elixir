@@ -63,6 +63,7 @@ class DeliveryAddress extends React.Component<any, any> {
         last_name_border_color: "grey",
         email_border_color: "grey",
         mobile_border_color: "grey",
+        company_name_border_color: "grey",
         street1_border_color: "grey",
         street2_border_color: "grey"
     };
@@ -99,6 +100,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       // /^[a-zA-Z]*$/
       let first_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
+      console.log(first_name_result);
 
       if(first_name_result){
 
@@ -108,7 +110,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       }else{
           
-          this.setState({first_name_border_class: "red"});
+          this.setState({first_name_border_color: "red"});
 
       }
          
@@ -132,7 +134,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       }else{
           
-          this.setState({last_name_border_class: "red"});
+          this.setState({last_name_border_color: "red"});
 
       }
          
@@ -145,11 +147,11 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.setState({contact_email: e.target.value})
       //this.props.setOrderDeliveryContactAddressEmail(e);
       //complete order gets the information from user
-      this.props.setUserDeliveryContactAddressEmail(e);
+      
+      this.props.setDeliveryContactAddressEmail(e);
 
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-      let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
       //let symbol_res = symbol_patt.test(e.target.value);
 
       let number_res = (/[0-9]/.test(e.target.value));
@@ -157,7 +159,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       //return re.test(email);
 
-      console.log(/[0-9]/.test(e.target.value));
+      //console.log(/[0-9]/.test(e.target.value));
 
       //larger then 0
       //no symbols
@@ -170,13 +172,14 @@ class DeliveryAddress extends React.Component<any, any> {
 
           //if(symbol_res == false){
             let address = e.target.value.split("@")[0];
-            let symbol_res = symbol_patt.test(address);
+            let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+            let symbol_result = symbol_patt.test(address);
 
-            if(symbol_res == true){
+            if(!symbol_result){
 
-                if(e.target.value.split("@")[1].split(".")[0].length > 0){
+                //if(e.target.value.split("@")[1].split(".")[0].length > 0){
 
-                    if(e.target.value.split("@")[1].split(".")[1].length > 1){
+                  //  if(e.target.value.split("@")[1].split(".")[1].length > 1){
 
                         //cant enter symbols????  or numbers
           
@@ -184,24 +187,27 @@ class DeliveryAddress extends React.Component<any, any> {
                         //if email contains @ and at least one character and 2 character domain
                         //validate contact and emails are same
                     
+                        this.setState({"email_border_color": "grey"});
+
                         //this.props.setContactEmail(e);
+                        //this.props.setDeliveryContactAddressEmail
 
                         console.log("email ok")
 
-                    }
+                  //  }
 
-                }
+                //}
+
+            //}
+
+            }else{
+
+                //console.log("email ok")
+
+            //  this.setState({first_name: e.target.value})
+              this.setState({"email_border_color": "red"});
 
             }
-
-          //}else{
-
-              //console.log("email ok")
-
-          //  this.setState({first_name: e.target.value})
-            //this.setState({"first_border_color": "red"});
-
-          //}
       
       }
 
@@ -270,7 +276,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       }else{
           
-          this.setState({company_name_border_class: "red"});
+          this.setState({company_name_border_color: "red"});
 
       }
          
@@ -289,7 +295,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressInvalidated();
 
       // /^[a-zA-Z]*$/
-      let street1_result = (/^[a-zA-Z]*$/.test(e.target.value));
+      let street1_result = (/^[0-9a-zA-Z\s]+$/.test(e.target.value));
 
       if(street1_result){
 
@@ -299,7 +305,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       }else{
           
-          this.setState({street1_border_class: "red"});
+          this.setState({street1_border_color: "red"});
 
       }
          
@@ -327,7 +333,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       }else{
           
-          this.setState({street2_border_class: "red"});
+          this.setState({street2_border_color: "red"});
 
       }
 
@@ -411,17 +417,12 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-md-3">
                         <div className={this.state.first_name_classname}>
-                          <input type="text" value={this.state.first} onChange={this.setDeliveryContactAddressFirstName} maxLength={20}  className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.state.first}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                       <div className="col-md-3">
                         <div className={this.state.last_name_classname}>
-                          <input type="text" value={this.state.last} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                        </div>
-                      </div>
-                      <div className="col-md-3">
-                        <div className={this.props.firstNameClassName}>
-                          <input type="text" value={this.state.company_name}  className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.state.last} maxLength={4} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                     </div>
@@ -430,7 +431,7 @@ class DeliveryAddress extends React.Component<any, any> {
                   <div className="form-group">
                     <div className="col-md-3">
                         <div className={this.state.contact_email_classname}>
-                          <input type="text" value={this.state.contact_email}onChange={this.setDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                          <input type="text" value={this.state.contact_email} onChange={this.setDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                         </div>
                     </div>
                     <div className="col-md-3">
@@ -442,9 +443,19 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-md-3">
+                    <div className="col-md-2">
                         <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className={this.state.contact_mobile_classname}>
+                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className={this.state.contact_mobile_classname}>
+                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="111"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                         </div>
                     </div>
                   </div>
@@ -461,7 +472,7 @@ class DeliveryAddress extends React.Component<any, any> {
                       <div className="form-group">
                          <div className="col-md-3">
                             <div>
-                              <input type="text" value={this.state.company_name} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
+                              <input type="text" value={this.state.company_name} maxLength={4} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
                             </div>
                           </div>
                       </div>
@@ -469,10 +480,10 @@ class DeliveryAddress extends React.Component<any, any> {
                  <form className="form-horizontal">
                       <div className="form-group">
                         <div className="col-sm-3">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                          <input type="text" maxLength={20} className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
                         </div>
                         <div className="col-sm-3">
-                          <input type="text" value={this.state.street2} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
+                          <input type="text" value={this.state.street2} maxLength={20} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
                         </div>
                       </div>
                  </form>
@@ -494,12 +505,25 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.props.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zipcode</option>
-                            <option>Free</option>
+                            <option>Venice</option>
                             <option>90013</option>
                             <option>90014</option>
                             <option>90015</option>
                             <option>90021</option>
                             <option>90071</option>
+                            <option>Santa Monica</option>
+                            <option>90291</option>
+                            <option>90401</option>
+                            <option>90402</option>
+                            <option>90403</option>
+                            <option>90404</option>
+                            <option>90405</option>
+                            <option>90406</option>
+                            <option>90407</option>
+                            <option>90408</option>
+                            <option>90409</option>
+                            <option>90410</option>
+                            <option>90411</option>
                           </select>
                         </div>
                     </div>

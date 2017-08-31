@@ -32,6 +32,7 @@ import PublicTopNavbar from './public/public_top_navbar.tsx';
 import NameContact from './name.tsx';
 import DeliveryContactAddress from './order_delivery_address.tsx';
 
+import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
 
@@ -345,7 +346,7 @@ class DateTime extends React.Component<any, any> {
                         <br/>
                       </div>
                       <div className="col-xs-12 col-md-9">
-                            <NameContact setContactFirstName={(e:any) => this.props.setContactFirstName(e)} setContactLastName={(e:any) => this.props.setLastName(e)} setEmail={(e:any) => this.props.setContactEmail(e)} setContactMobile={(e:any) => this.props.setContactMobile(e)}/>
+                            <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
                             <br/>
                             <br/>
                             <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
@@ -451,6 +452,18 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(getMenuItems());
     },
 
+    setUserFirstName: (e: any) => {
+      dispatch(setUserFirstName(e.target.value))
+    },
+    setUserLastName: (e: any) => {
+      dispatch(setUserLastName(e.target.value))
+    },
+    setUserEmail: (e: any) => {
+      dispatch(setUserLastName(e.target.value))
+    },
+    setUserMobile: (e: any) => {
+      dispatch(setUserLastName(e.target.value))
+    },
     setUserDeliveryContactAddressFirstName: (e: any) => {
       dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
     },

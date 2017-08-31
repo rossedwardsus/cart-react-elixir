@@ -221,6 +221,7 @@ defmodule Sconely.YoursSocialOrderResolver do
   #emails
   #datetime
   #cart
+  #graphql response
 
   def complete_yours_order(args, _info) do
 
@@ -551,7 +552,7 @@ defmodule Sconely.YoursSocialOrderResolver do
 
                         IO.puts("ok")
                         
-                        {:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]"}}
+                        {:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]", user_type: "guest"}}
 
                   #{:error, :error}
                       #{:ok, %{status: "changeset error"}}

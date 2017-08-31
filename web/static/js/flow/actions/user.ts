@@ -26,7 +26,7 @@ export function addCartItem(order_id: any, item_id: any, twelveortwentyfourminis
 }
 
 
-/*export function setUserFirstName(value: any) {
+export function setUserFirstName(value: any) {
   //alert("GET USER details");
   console.log("set user first name action " + value);
   return {
@@ -48,7 +48,7 @@ export function setUserEmail(value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_CONTACT_EMAIL,
+    type: SET_USER_EMAIL,
     data: value
   }
 }
@@ -57,19 +57,10 @@ export function setUserMobile(value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_CONTACT_MOBILE,
+    type: SET_USER_MOBILE,
     data: value
   }
 }
-
-export function setUserEmail(value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_CONTACT_EMAIL,
-    data: value
-  }
-}*/
 
 
 

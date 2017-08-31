@@ -92,7 +92,7 @@ class Name extends React.Component<any, any> {
 
   }
 
-  setFirstName(e: any){
+  setUserFirstName = (e: any) => {
 
     //only letters
 
@@ -100,29 +100,29 @@ class Name extends React.Component<any, any> {
 
     if(e.target.value.length > 0){
 
-        //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-        //let symbol_res = symbol_patt.test(e.target.value);
+        let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+        let symbol_res = symbol_patt.test(e.target.value);
 
         //let number_res = (/[0-9]/.test(e.target.value));
 
-        //if(!symbol_res){
+        if(!symbol_res){
         
-          //this.setState({first_name_border_color: "grey"});
-          this.props.setFirstName(e);
+          this.setState({first_name_border_color: "grey"});
+          this.props.setUserFirstName(e);
 
-          if(this.state.last_name.length > 0){
+          //if(this.state.last_name.length > 0){
           
-              this.props.setNameValidated(e);
+              //this.props.setNameValidated(e);
 
-          }
+          //}
 
-        //}else{
+        }else{
 
-          //this.setState({first_name_border_color: "red"});
+          this.setState({first_name_border_color: "red"});
 
           //this.props.setNameInvalidated(e);
 
-        //}
+        }
 
     }
 
@@ -141,46 +141,44 @@ class Name extends React.Component<any, any> {
 
   }
 
-  setLastName(e: any){
+  setUserLastName = (e: any) => {
 
       this.setState({last: e.target.value});
 
       if(e.target.value.length > 0){    
 
-          //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-          //let symbol_res = symbol_patt.test(e.target.value);
+          let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+          let symbol_res = symbol_patt.test(e.target.value);
 
           //console.log(symbol_res);
 
           //let number_res = (/[0-9]/.test(e.target.value));
 
-          //if(!symbol_res){
+          if(!symbol_res){
           
-            //this.setState({last_name_border_color: "grey"});
-            this.props.setLastName(e);
+            this.setState({last_name_border_color: "grey"});
+            this.props.setUserLastName(e);
 
-            if(this.state.first_name.length > 0){
+            //if(this.state.first_name.length > 0){
              
-              this.props.setNameValidated(e);
+            //  this.props.setNameValidated(e);
             
-            }
+          }else{
 
-          //}else{
-
-            //this.setState({last_name_border_color: "red"});
+            this.setState({last_name_border_color: "red"});
 
              //this.props.setNameInvalidated(e);
 
-          //}
+          }
 
       }
 
   }
 
-  setContactEmail(e: any){
+  setUserEmail = (e: any) => {
 
       this.setState({contact_email: e.target.value})
-      this.props.setContactEmail(e);
+      this.props.setUserEmail(e);
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
       let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
@@ -218,7 +216,7 @@ class Name extends React.Component<any, any> {
                         //if email contains @ and at least one character and 2 character domain
                         //validate contact and emails are same
                     
-                        //this.props.setContactEmail(e);
+                        //this.props.setUserEmail(e);
 
                         console.log("email ok")
 
@@ -243,10 +241,10 @@ class Name extends React.Component<any, any> {
 
   }
 
-  setContactEmailAgain(e: any){
+  setUserEmailAgain = (e: any) => {
 
       this.setState({contact_email_again: e.target.value});
-      //this.props.setContactEmail(e);
+      this.props.setUserEmail(e);
 
       if(this.state.contact_email == e.target.value){
 
@@ -254,11 +252,9 @@ class Name extends React.Component<any, any> {
 
       }
 
-      
-
   }
 
-  setContactMobile(e: any){
+  setUserMobile = (e: any) => {
 
       //strip out -
       //check if only number
@@ -269,7 +265,7 @@ class Name extends React.Component<any, any> {
       let number_res = (/[0-9]/.test(mobile_number));
 
       this.setState({contact_mobile: e.target.value});
-      this.props.setContactMobile(e);
+      this.props.setUserMobile(e);
 
       if(number_res == true){
 
@@ -280,7 +276,7 @@ class Name extends React.Component<any, any> {
 
   }
 
-  setCompanyName(e: any){
+  setCompanyName = (e: any) => {
 
     this.setState({company_name: e.target.value});
     this.props.setCompanyName(e);
@@ -307,12 +303,12 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.state.first_name_classname}>
-                      <input type="text" maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.props.setFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.props.setLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                 </div>
@@ -329,12 +325,12 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.contact_email} onChange={(e: any) => this.props.setContactEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" value={this.state.contact_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.contact_email_again} onChange={(e: any) => this.setContactEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
+                        <input type="text" value={this.state.contact_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>
@@ -343,7 +339,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_mobile_classname}>
-                        <input type="text" value={this.state.contact_mobile} onChange={(e: any) => this.props.setContactMobile(e)} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0}}/>
+                        <input type="text" value={this.state.contact_mobile} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>

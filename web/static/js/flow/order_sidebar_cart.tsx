@@ -465,6 +465,9 @@ class SidebarCart extends React.Component<any, any> {
 
     return (<div> 
                   <br/>
+                  a minimum of 2 items is required
+                  <br/>
+                  <br/>
                   {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}
                   <br/>
                   {cart}

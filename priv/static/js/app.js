@@ -27263,10 +27263,8 @@ webpackJsonp([0],[
 	            //localstorage.setitem("sconely_user", {});
 	            //that.props.history.push('/user');
 	            //context.router
-	            //that.props.setOrderId(1);
 	            //this.context.router.push('/order/complete');
-	            //dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems});
-	            //dispatch(push("/order/url_name/guest/name"));
+	            //dispatch(push("/order/complete"));
 	        }).catch(function (error) {
 	            console.log("axios error handler " + error);
 	            //go to code/payment screen
@@ -30407,50 +30405,42 @@ webpackJsonp([0],[
 	    }*/
 	}
 	exports.addCartItem = addCartItem;
-	/*export function setUserFirstName(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user first name action " + value);
-	  return {
-	    type: SET_USER_NAME_FIRST,
-	    data: value
-	  }
+	function setUserFirstName(value) {
+	    //alert("GET USER details");
+	    console.log("set user first name action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_NAME_FIRST,
+	        data: value
+	    };
 	}
-	
-	export function setUserLastName(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user last name action " + value);
-	  return {
-	    type: SET_USER_NAME_LAST,
-	    data: value
-	  }
+	exports.setUserFirstName = setUserFirstName;
+	function setUserLastName(value) {
+	    //alert("GET USER details");
+	    console.log("set user last name action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_NAME_LAST,
+	        data: value
+	    };
 	}
-	
-	export function setUserEmail(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_CONTACT_EMAIL,
-	    data: value
-	  }
+	exports.setUserLastName = setUserLastName;
+	function setUserEmail(value) {
+	    //alert("GET USER details");
+	    console.log("set user email action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_EMAIL,
+	        data: value
+	    };
 	}
-	
-	export function setUserMobile(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_CONTACT_MOBILE,
-	    data: value
-	  }
+	exports.setUserEmail = setUserEmail;
+	function setUserMobile(value) {
+	    //alert("GET USER details");
+	    console.log("set user email action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_USER_MOBILE,
+	        data: value
+	    };
 	}
-	
-	export function setUserEmail(value: any) {
-	  //alert("GET USER details");
-	  console.log("set user email action " + value);
-	  return {
-	    type: SET_USER_CONTACT_EMAIL,
-	    data: value
-	  }
-	}*/
+	exports.setUserMobile = setUserMobile;
 	function getUser(user_id) {
 	    //alert("GET USER details");
 	    return function (dispatch) {
@@ -40031,7 +40021,7 @@ webpackJsonp([0],[
 	            //if yours order show yours menu if social order show social menu
 	            var options_count_array = [];
 	            //if(this.props.cartItemsTotalQuantity > 0){
-	            for (var i = 2; i < 12 - this.props.cartItemsTotalQuantity; i++) {
+	            for (var i = 1; i < 12 - this.props.cartItemsTotalQuantity; i++) {
 	                //console.log(i);
 	                options_count_array.push(i);
 	            }
@@ -40051,6 +40041,7 @@ webpackJsonp([0],[
 	                        }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
 	                }
 	            } else {
+	                //if assortment == true
 	                if (this.props.cartItemsTotalQuantity < 10) {
 	                    yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, "12", React.createElement("input", { type: "radio", name: "12_or_24", value: "12", onChange: this.selectedSocialItem12or24mini }), "24-mini", React.createElement("input", { type: "radio", name: "12_or_24", value: "24_minis", onChange: this.selectedSocialItem12or24mini })), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedSocialItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
 	                        return React.createElement("option", { value: value }, value);
@@ -40418,7 +40409,7 @@ webpackJsonp([0],[
 	            }
 	            //{this.props.params.repoName}
 	            //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
-	            return React.createElement("div", null, React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
+	            return React.createElement("div", null, React.createElement("br", null), "a minimum of 2 items is required", React.createElement("br", null), React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
 	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost, "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
@@ -41224,7 +41215,7 @@ webpackJsonp([0],[
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), "if user is saved", React.createElement("br", null), "if user is registered", React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
@@ -41234,7 +41225,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
+	                } }), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), "an error occured with your payment", React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41945,6 +41936,7 @@ webpackJsonp([0],[
 	var public_top_navbar_tsx_1 = __webpack_require__(1132);
 	var name_tsx_1 = __webpack_require__(1139);
 	var order_delivery_address_tsx_1 = __webpack_require__(1140);
+	var user_ts_1 = __webpack_require__(954);
 	var user_delivery_contact_address_ts_1 = __webpack_require__(1134);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -42136,14 +42128,14 @@ webpackJsonp([0],[
 	                 }else{
 	                     delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setContactFirstName: function setContactFirstName(e) {
-	                    return _this2.props.setContactFirstName(e);
-	                }, setContactLastName: function setContactLastName(e) {
-	                    return _this2.props.setLastName(e);
-	                }, setEmail: function setEmail(e) {
-	                    return _this2.props.setContactEmail(e);
-	                }, setContactMobile: function setContactMobile(e) {
-	                    return _this2.props.setContactMobile(e);
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
+	                    return _this2.props.setUserFirstName(e);
+	                }, setUserLastName: function setUserLastName(e) {
+	                    return _this2.props.setUserLastName(e);
+	                }, setUserEmail: function setUserEmail(e) {
+	                    return _this2.props.setUserEmail(e);
+	                }, setUserMobile: function setUserMobile(e) {
+	                    return _this2.props.setUserMobile(e);
 	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
 	                    return _this2.props.setUserDeliveryContactAddressFirstName(e);
 	                }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
@@ -42216,6 +42208,18 @@ webpackJsonp([0],[
 	        getMenuItems: function getMenuItems() {
 	            dispatch(menu_ts_1.getMenuItems());
 	        },
+	        setUserFirstName: function setUserFirstName(e) {
+	            dispatch(user_ts_1.setUserFirstName(e.target.value));
+	        },
+	        setUserLastName: function setUserLastName(e) {
+	            dispatch(user_ts_1.setUserLastName(e.target.value));
+	        },
+	        setUserEmail: function setUserEmail(e) {
+	            dispatch(user_ts_1.setUserLastName(e.target.value));
+	        },
+	        setUserMobile: function setUserMobile(e) {
+	            dispatch(user_ts_1.setUserLastName(e.target.value));
+	        },
 	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
 	        },
@@ -42287,10 +42291,112 @@ webpackJsonp([0],[
 	    function Name(props) {
 	        _classCallCheck(this, Name);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
 	
+	        _this.setUserFirstName = function (e) {
+	            //only letters
+	            _this.setState({ first: e.target.value });
+	            if (e.target.value.length > 0) {
+	                var symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+	                var symbol_res = symbol_patt.test(e.target.value);
+	                //let number_res = (/[0-9]/.test(e.target.value));
+	                if (!symbol_res) {
+	                    _this.setState({ first_name_border_color: "grey" });
+	                    _this.props.setUserFirstName(e);
+	                    //if(this.state.last_name.length > 0){
+	                    //this.props.setNameValidated(e);
+	                    //}
+	                } else {
+	                    _this.setState({ first_name_border_color: "red" });
+	                    //this.props.setNameInvalidated(e);
+	                }
+	            }
+	            //this.props.nameValidated();
+	            //this.props.nameInvalidated();
+	        };
+	        _this.setUserLastName = function (e) {
+	            _this.setState({ last: e.target.value });
+	            if (e.target.value.length > 0) {
+	                var symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+	                var symbol_res = symbol_patt.test(e.target.value);
+	                //console.log(symbol_res);
+	                //let number_res = (/[0-9]/.test(e.target.value));
+	                if (!symbol_res) {
+	                    _this.setState({ last_name_border_color: "grey" });
+	                    _this.props.setUserLastName(e);
+	                    //if(this.state.first_name.length > 0){
+	                    //  this.props.setNameValidated(e);
+	                } else {
+	                    _this.setState({ last_name_border_color: "red" });
+	                    //this.props.setNameInvalidated(e);
+	                }
+	            }
+	        };
+	        _this.setUserEmail = function (e) {
+	            _this.setState({ contact_email: e.target.value });
+	            _this.props.setUserEmail(e);
+	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+	            var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+	            //let symbol_res = symbol_patt.test(e.target.value);
+	            var number_res = /[0-9]/.test(e.target.value);
+	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	            //return re.test(email);
+	            console.log(/[0-9]/.test(e.target.value));
+	            //larger then 0
+	            //no symbols
+	            //no numbers
+	            if (e.target.value.length > 0) {
+	                //can only have _ .
+	                //after @ at least one characted . then domain
+	                //if(symbol_res == false){
+	                var address = e.target.value.split("@")[0];
+	                var symbol_res = symbol_patt.test(address);
+	                if (symbol_res == true) {
+	                    if (e.target.value.split("@")[1].split(".")[0].length > 0) {
+	                        if (e.target.value.split("@")[1].split(".")[1].length > 1) {
+	                            //cant enter symbols????  or numbers
+	                            //if email contains @ and at least one character and 2 character domain
+	                            //validate contact and emails are same
+	                            //this.props.setUserEmail(e);
+	                            console.log("email ok");
+	                        }
+	                    }
+	                }
+	                //}else{
+	                //console.log("email ok")
+	                //  this.setState({first_name: e.target.value})
+	                //this.setState({"first_border_color": "red"});
+	                //}
+	            }
+	        };
+	        _this.setUserEmailAgain = function (e) {
+	            _this.setState({ contact_email_again: e.target.value });
+	            _this.props.setUserEmail(e);
+	            if (_this.state.contact_email == e.target.value) {
+	                //validated
+	            }
+	        };
+	        _this.setUserMobile = function (e) {
+	            //strip out -
+	            //check if only number
+	            //if larger then 3 append "-"
+	            var mobile_number = e.target.value.replace("_", "");
+	            var number_res = /[0-9]/.test(mobile_number);
+	            _this.setState({ contact_mobile: e.target.value });
+	            _this.props.setUserMobile(e);
+	            if (number_res == true) {
+	                //validate contact
+	                //else invalatidate
+	            }
+	        };
+	        _this.setCompanyName = function (e) {
+	            _this.setState({ company_name: e.target.value });
+	            _this.props.setCompanyName(e);
+	            //this.props.nameValidated();
+	            //this.props.nameInvalidated();
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            first: "",
 	            last: "",
@@ -42323,125 +42429,10 @@ webpackJsonp([0],[
 	            //this.setState({first_name_border_color: "red"});
 	        }
 	    }, {
-	        key: "setFirstName",
-	        value: function setFirstName(e) {
-	            //only letters
-	            this.setState({ first: e.target.value });
-	            if (e.target.value.length > 0) {
-	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	                //let symbol_res = symbol_patt.test(e.target.value);
-	                //let number_res = (/[0-9]/.test(e.target.value));
-	                //if(!symbol_res){
-	                //this.setState({first_name_border_color: "grey"});
-	                this.props.setFirstName(e);
-	                if (this.state.last_name.length > 0) {
-	                    this.props.setNameValidated(e);
-	                }
-	                //}else{
-	                //this.setState({first_name_border_color: "red"});
-	                //this.props.setNameInvalidated(e);
-	                //}
-	            }
-	            //this.props.nameValidated();
-	            //this.props.nameInvalidated();
-	        }
-	    }, {
 	        key: "onLastNameFocus",
 	        value: function onLastNameFocus() {
 	            //alert();
 	            //this.setState({last_name_border_color: "red"});
-	        }
-	    }, {
-	        key: "setLastName",
-	        value: function setLastName(e) {
-	            this.setState({ last: e.target.value });
-	            if (e.target.value.length > 0) {
-	                //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	                //let symbol_res = symbol_patt.test(e.target.value);
-	                //console.log(symbol_res);
-	                //let number_res = (/[0-9]/.test(e.target.value));
-	                //if(!symbol_res){
-	                //this.setState({last_name_border_color: "grey"});
-	                this.props.setLastName(e);
-	                if (this.state.first_name.length > 0) {
-	                    this.props.setNameValidated(e);
-	                }
-	                //}else{
-	                //this.setState({last_name_border_color: "red"});
-	                //this.props.setNameInvalidated(e);
-	                //}
-	            }
-	        }
-	    }, {
-	        key: "setContactEmail",
-	        value: function setContactEmail(e) {
-	            this.setState({ contact_email: e.target.value });
-	            this.props.setContactEmail(e);
-	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	            var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
-	            //let symbol_res = symbol_patt.test(e.target.value);
-	            var number_res = /[0-9]/.test(e.target.value);
-	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	            //return re.test(email);
-	            console.log(/[0-9]/.test(e.target.value));
-	            //larger then 0
-	            //no symbols
-	            //no numbers
-	            if (e.target.value.length > 0) {
-	                //can only have _ .
-	                //after @ at least one characted . then domain
-	                //if(symbol_res == false){
-	                var address = e.target.value.split("@")[0];
-	                var symbol_res = symbol_patt.test(address);
-	                if (symbol_res == true) {
-	                    if (e.target.value.split("@")[1].split(".")[0].length > 0) {
-	                        if (e.target.value.split("@")[1].split(".")[1].length > 1) {
-	                            //cant enter symbols????  or numbers
-	                            //if email contains @ and at least one character and 2 character domain
-	                            //validate contact and emails are same
-	                            //this.props.setContactEmail(e);
-	                            console.log("email ok");
-	                        }
-	                    }
-	                }
-	                //}else{
-	                //console.log("email ok")
-	                //  this.setState({first_name: e.target.value})
-	                //this.setState({"first_border_color": "red"});
-	                //}
-	            }
-	        }
-	    }, {
-	        key: "setContactEmailAgain",
-	        value: function setContactEmailAgain(e) {
-	            this.setState({ contact_email_again: e.target.value });
-	            //this.props.setContactEmail(e);
-	            if (this.state.contact_email == e.target.value) {
-	                //validated
-	            }
-	        }
-	    }, {
-	        key: "setContactMobile",
-	        value: function setContactMobile(e) {
-	            //strip out -
-	            //check if only number
-	            //if larger then 3 append "-"
-	            var mobile_number = e.target.value.replace("_", "");
-	            var number_res = /[0-9]/.test(mobile_number);
-	            this.setState({ contact_mobile: e.target.value });
-	            this.props.setContactMobile(e);
-	            if (number_res == true) {
-	                //validate contact
-	                //else invalatidate
-	            }
-	        }
-	    }, {
-	        key: "setCompanyName",
-	        value: function setCompanyName(e) {
-	            this.setState({ company_name: e.target.value });
-	            this.props.setCompanyName(e);
-	            //this.props.nameValidated();
-	            //this.props.nameInvalidated();
 	        }
 	    }, {
 	        key: "render",
@@ -42451,17 +42442,17 @@ webpackJsonp([0],[
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Name"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", maxLength: 20, onFocus: function onFocus() {
 	                    return _this2.onFirstNameFocus();
 	                }, onChange: function onChange(e) {
-	                    return _this2.props.setFirstName(e);
+	                    return _this2.setUserFirstName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", onFocus: function onFocus() {
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
-	                    return _this2.props.setLastName(e);
+	                    return _this2.setUserLastName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: function onChange(e) {
-	                    return _this2.props.setContactEmail(e);
+	                    return _this2.setUserEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: function onChange(e) {
-	                    return _this2.setContactEmailAgain(e);
+	                    return _this2.setUserEmailAgain(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: function onChange(e) {
-	                    return _this2.props.setContactMobile(e);
+	                    return _this2.setUserMobile(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0 } }))))));
 	        }
 	    }], [{
@@ -42534,11 +42525,12 @@ webpackJsonp([0],[
 	            //if larger then 3 append "-"
 	            // /^[a-zA-Z]*$/
 	            var first_name_result = /^[a-zA-Z]*$/.test(e.target.value);
+	            console.log(first_name_result);
 	            if (first_name_result) {
 	                _this.setState({ first_name_border_color: "grey" });
 	                _this.props.setDeliveryContactAddressFirstName(e);
 	            } else {
-	                _this.setState({ first_name_border_class: "red" });
+	                _this.setState({ first_name_border_color: "red" });
 	            }
 	            //this.props.setDeliveryContactAddressFirstName(e);
 	        };
@@ -42551,7 +42543,7 @@ webpackJsonp([0],[
 	                _this.setState({ last_name_border_color: "grey" });
 	                _this.props.setDeliveryContactAddressLastName(e);
 	            } else {
-	                _this.setState({ last_name_border_class: "red" });
+	                _this.setState({ last_name_border_color: "red" });
 	            }
 	            //this.props.setDeliveryContactAddressFirstName(e);
 	        };
@@ -42559,14 +42551,13 @@ webpackJsonp([0],[
 	            //this.setState({contact_email: e.target.value})
 	            //this.props.setOrderDeliveryContactAddressEmail(e);
 	            //complete order gets the information from user
-	            _this.props.setUserDeliveryContactAddressEmail(e);
+	            _this.props.setDeliveryContactAddressEmail(e);
 	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	            var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
 	            //let symbol_res = symbol_patt.test(e.target.value);
 	            var number_res = /[0-9]/.test(e.target.value);
 	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	            //return re.test(email);
-	            console.log(/[0-9]/.test(e.target.value));
+	            //console.log(/[0-9]/.test(e.target.value));
 	            //larger then 0
 	            //no symbols
 	            //no numbers
@@ -42575,23 +42566,26 @@ webpackJsonp([0],[
 	                //after @ at least one characted . then domain
 	                //if(symbol_res == false){
 	                var address = e.target.value.split("@")[0];
-	                var symbol_res = symbol_patt.test(address);
-	                if (symbol_res == true) {
-	                    if (e.target.value.split("@")[1].split(".")[0].length > 0) {
-	                        if (e.target.value.split("@")[1].split(".")[1].length > 1) {
-	                            //cant enter symbols????  or numbers
-	                            //if email contains @ and at least one character and 2 character domain
-	                            //validate contact and emails are same
-	                            //this.props.setContactEmail(e);
-	                            console.log("email ok");
-	                        }
-	                    }
+	                var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+	                var symbol_result = symbol_patt.test(address);
+	                if (!symbol_result) {
+	                    //if(e.target.value.split("@")[1].split(".")[0].length > 0){
+	                    //  if(e.target.value.split("@")[1].split(".")[1].length > 1){
+	                    //cant enter symbols????  or numbers
+	                    //if email contains @ and at least one character and 2 character domain
+	                    //validate contact and emails are same
+	                    _this.setState({ "email_border_color": "grey" });
+	                    //this.props.setContactEmail(e);
+	                    //this.props.setDeliveryContactAddressEmail
+	                    console.log("email ok");
+	                    //  }
+	                    //}
+	                    //}
+	                } else {
+	                    //console.log("email ok")
+	                    //  this.setState({first_name: e.target.value})
+	                    _this.setState({ "email_border_color": "red" });
 	                }
-	                //}else{
-	                //console.log("email ok")
-	                //  this.setState({first_name: e.target.value})
-	                //this.setState({"first_border_color": "red"});
-	                //}
 	            }
 	        };
 	        _this.setDeliveryContactAddressEmailAgain = function (e) {
@@ -42630,7 +42624,7 @@ webpackJsonp([0],[
 	                _this.setState({ company_name_border_color: "grey" });
 	                //this.props.setDeliveryContactAddressCompanyName(e);
 	            } else {
-	                _this.setState({ company_name_border_class: "red" });
+	                _this.setState({ company_name_border_color: "red" });
 	            }
 	            //this.props.setDeliveryContactAddressFirstName(e);
 	        };
@@ -42641,12 +42635,12 @@ webpackJsonp([0],[
 	            //this.props.deliveryAddressValidated();
 	            //this.props.deliveryAddressInvalidated();
 	            // /^[a-zA-Z]*$/
-	            var street1_result = /^[a-zA-Z]*$/.test(e.target.value);
+	            var street1_result = /^[0-9a-zA-Z\s]+$/.test(e.target.value);
 	            if (street1_result) {
 	                _this.setState({ street1_border_color: "grey" });
 	                //this.props.setDeliveryContactAddressStreet1(e);
 	            } else {
-	                _this.setState({ street1_border_class: "red" });
+	                _this.setState({ street1_border_color: "red" });
 	            }
 	            //this.props.setDeliveryContactAddressFirstName(e);
 	        };
@@ -42661,7 +42655,7 @@ webpackJsonp([0],[
 	                _this.setState({ street2_border_color: "grey" });
 	                //this.props.setDeliveryContactAddressStreet2(e);
 	            } else {
-	                _this.setState({ street2_border_class: "red" });
+	                _this.setState({ street2_border_color: "red" });
 	            }
 	        };
 	        _this.setDeliveryContactAddressCity = function (e) {
@@ -42709,6 +42703,7 @@ webpackJsonp([0],[
 	            last_name_border_color: "grey",
 	            email_border_color: "grey",
 	            mobile_border_color: "grey",
+	            company_name_border_color: "grey",
 	            street1_border_color: "grey",
 	            street2_border_color: "grey"
 	        };
@@ -42734,11 +42729,11 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            var delivery_address = "";
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.props.firstNameClassName }, React.createElement("input", { type: "text", value: this.state.company_name, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", null, React.createElement("input", { type: "text", value: this.state.company_name, onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, maxLength: 4, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))), React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))), React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", null, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 4, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressCompanyName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet1(e);
-	                }, style: { borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, maxLength: 20, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet2(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressCity(value);
@@ -42746,7 +42741,7 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.props.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Free"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"))))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"))))));
 	        }
 	    }], [{
 	        key: "contextTypes",

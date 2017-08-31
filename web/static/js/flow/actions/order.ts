@@ -115,12 +115,8 @@ export function processYoursSocialOrder() {
                   //that.props.history.push('/user');
                   //context.router
 
-                  //that.props.setOrderId(1);
-
                   //this.context.router.push('/order/complete');
-
-                  //dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems});
-                    //dispatch(push("/order/url_name/guest/name"));
+                  //dispatch(push("/order/complete"));
       
 
             })
