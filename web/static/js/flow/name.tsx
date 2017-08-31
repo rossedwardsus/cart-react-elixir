@@ -318,12 +318,12 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.state.first_name_classname}>
-                      <input type="text" maxLength={20} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
-                      <input type="text" onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <input type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)}  className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
                 </div>
@@ -359,6 +359,25 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form> 
+              <form className="form-horizontal">
+                  <div className="form-group">
+                    <div className="col-md-2">
+                        <div className={this.state.contact_mobile_classname}>
+                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setUserMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className={this.state.contact_mobile_classname}>
+                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setUserMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <div className={this.state.contact_mobile_classname}>
+                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setUserMobile} className="form-control" id="exampleInputName2" placeholder="111"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        </div>
+                    </div>
+                  </div>
+                </form>
             </div>
     )
   }

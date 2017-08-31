@@ -911,7 +911,6 @@ class Preview extends React.Component<any, any> {
                             Items
                             <br/>
                             <br/>
-                            <button onClick={() => this.completeOrder()}>Edit Datetime</button>
                             <form className="form-horizontal">
                               <div className="form-group">
                                 <div className="col-sm-10">
@@ -924,7 +923,7 @@ class Preview extends React.Component<any, any> {
                               </div>
                             </form>
                             
-                            <button onClick={() => this.completeOrder()}>Complete Order</button>
+                            <Link to="/order/payment" className="btn btn-default">Payment</Link>   
                             <br/>
                         </div>
                         <div className="hidden-xs col-md-2">
