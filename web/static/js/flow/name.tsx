@@ -56,6 +56,8 @@ class Name extends React.Component<any, any> {
        contact_email_again: "",
        first_name_border_color: "grey",
        last_name_border_color: "grey",
+       email_border_color: "grey",
+       mobile_border_color: "grey",
        first_name_validated: false,
        last_name_validated: false
     };
@@ -181,7 +183,6 @@ class Name extends React.Component<any, any> {
       this.props.setUserEmail(e);
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-      let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
       //let symbol_res = symbol_patt.test(e.target.value);
 
       let number_res = (/[0-9]/.test(e.target.value));
@@ -202,27 +203,41 @@ class Name extends React.Component<any, any> {
 
           //if(symbol_res == false){
             let address = e.target.value.split("@")[0];
-            let symbol_res = symbol_patt.test(address);
+            let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+            let symbol_result = symbol_patt.test(address);
 
-            if(symbol_res == true){
+            if(!symbol_result){
 
-                if(e.target.value.split("@")[1].split(".")[0].length > 0){
+                //check if @ has been entered before texting
 
-                    if(e.target.value.split("@")[1].split(".")[1].length > 1){
+                if(e.target.value.indexOf("@") > 0){
 
-                        //cant enter symbols????  or numbers
-          
-          
-                        //if email contains @ and at least one character and 2 character domain
-                        //validate contact and emails are same
-                    
-                        //this.props.setUserEmail(e);
+                    if(e.target.value.split("@")[1].indexOf(".") > 0){
 
-                        console.log("email ok")
+                        if(e.target.value.split("@")[1].split(".")[0].length > 0){
+
+                            if(e.target.value.split("@")[1].split(".")[1].length > 1){
+
+                                //cant enter symbols????  or numbers
+                  
+                  
+                                //if email contains @ and at least one character and 2 character domain
+                                //validate contact and emails are same
+                            
+                                //this.props.setUserEmail(e);
+                                this.setState({"email_border_color": "grey"});
+
+                                console.log("email ok")
+
+                            }
+                        }
 
                     }
-
                 }
+
+            }else{
+
+                this.setState({"email_border_color": "red"});
 
             }
 
@@ -231,7 +246,7 @@ class Name extends React.Component<any, any> {
               //console.log("email ok")
 
           //  this.setState({first_name: e.target.value})
-            //this.setState({"first_border_color": "red"});
+            //this.setState({"email_color": "red"});
 
           //}
       
@@ -325,12 +340,12 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.contact_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" value={this.state.user_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.contact_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
+                        <input type="text" value={this.state.user_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>

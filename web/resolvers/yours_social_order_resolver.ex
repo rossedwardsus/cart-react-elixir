@@ -154,16 +154,20 @@ defmodule Sconely.YoursSocialOrderResolver do
 
   #move these to /lib
 
-  def proccess_cart(args) do
+  def process_cart(payment) do
+
+      #
 
   end
 
-  def proccess_date(args) do
+  def process_date(args) do
+
+
 
   end
 
 
-  def process_stripe_payment1(args) do
+  def process_stripe_payment1() do
 
        #new_customer = [
     #  email: "test@test.com",
@@ -336,12 +340,12 @@ defmodule Sconely.YoursSocialOrderResolver do
             user_id = SecureRandom.uuid
 
             #order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
-            #user_profile
+            #user_profile - probably don't need but might be useful for just knowing who a guest user is.  actually can use order data?
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id})
-            #order_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id}) get from user profile
             #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
-            #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
 
             #IO.inspect(order_changeset)
            

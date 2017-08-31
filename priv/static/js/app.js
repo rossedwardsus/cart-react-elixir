@@ -42336,7 +42336,6 @@ webpackJsonp([0],[
 	            _this.setState({ contact_email: e.target.value });
 	            _this.props.setUserEmail(e);
 	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
-	            var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
 	            //let symbol_res = symbol_patt.test(e.target.value);
 	            var number_res = /[0-9]/.test(e.target.value);
 	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -42350,22 +42349,31 @@ webpackJsonp([0],[
 	                //after @ at least one characted . then domain
 	                //if(symbol_res == false){
 	                var address = e.target.value.split("@")[0];
-	                var symbol_res = symbol_patt.test(address);
-	                if (symbol_res == true) {
-	                    if (e.target.value.split("@")[1].split(".")[0].length > 0) {
-	                        if (e.target.value.split("@")[1].split(".")[1].length > 1) {
-	                            //cant enter symbols????  or numbers
-	                            //if email contains @ and at least one character and 2 character domain
-	                            //validate contact and emails are same
-	                            //this.props.setUserEmail(e);
-	                            console.log("email ok");
+	                var symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+	                var symbol_result = symbol_patt.test(address);
+	                if (!symbol_result) {
+	                    //check if @ has been entered before texting
+	                    if (e.target.value.indexOf("@") > 0) {
+	                        if (e.target.value.split("@")[1].indexOf(".") > 0) {
+	                            if (e.target.value.split("@")[1].split(".")[0].length > 0) {
+	                                if (e.target.value.split("@")[1].split(".")[1].length > 1) {
+	                                    //cant enter symbols????  or numbers
+	                                    //if email contains @ and at least one character and 2 character domain
+	                                    //validate contact and emails are same
+	                                    //this.props.setUserEmail(e);
+	                                    _this.setState({ "email_border_color": "grey" });
+	                                    console.log("email ok");
+	                                }
+	                            }
 	                        }
 	                    }
+	                } else {
+	                    _this.setState({ "email_border_color": "red" });
 	                }
 	                //}else{
 	                //console.log("email ok")
 	                //  this.setState({first_name: e.target.value})
-	                //this.setState({"first_border_color": "red"});
+	                //this.setState({"email_color": "red"});
 	                //}
 	            }
 	        };
@@ -42403,6 +42411,8 @@ webpackJsonp([0],[
 	            contact_email_again: "",
 	            first_name_border_color: "grey",
 	            last_name_border_color: "grey",
+	            email_border_color: "grey",
+	            mobile_border_color: "grey",
 	            first_name_validated: false,
 	            last_name_validated: false
 	        };
@@ -42447,9 +42457,9 @@ webpackJsonp([0],[
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.setUserLastName(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email, onChange: function onChange(e) {
 	                    return _this2.setUserEmail(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email_again, onChange: function onChange(e) {
 	                    return _this2.setUserEmailAgain(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: function onChange(e) {
 	                    return _this2.setUserMobile(e);

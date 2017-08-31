@@ -43,8 +43,8 @@ defmodule Sconely.ProcessStripePayment do
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
-    Stripe.Charges.create(51, params)
+    #Stripe.Charges.create(51, params)
 
   end
-  
+
 end
