@@ -58,7 +58,13 @@ class DeliveryAddress extends React.Component<any, any> {
         city: "",
         state: "",
         zipcode: "",
-        zipcodes: [90012, 90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086, 90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
+        zipcodes: [90012, 90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086, 90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411],
+        first_name_border_color: "grey",
+        last_name_border_color: "grey",
+        email_border_color: "grey",
+        mobile_border_color: "grey",
+        street1_border_color: "grey",
+        street2_border_color: "grey"
     };
 
     //user_type=guest
@@ -91,22 +97,23 @@ class DeliveryAddress extends React.Component<any, any> {
 
       //if larger then 3 append "-"
 
-      /*let mobile_number = e.target.value.replace("_", "");
-      let number_res = (/[0-9]/.test(mobile_number));
+      // /^[a-zA-Z]*$/
+      let first_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
 
-      this.setState({contact_mobile: e.target.value});
-      this.props.setContactMobile(e);
+      if(first_name_result){
 
-      if(number_res == true){
+          this.setState({first_name_border_color: "grey"});
 
-          //validate contact
-          //else invalatidate
+          this.props.setDeliveryContactAddressFirstName(e);
 
-      }*/
+      }else{
+          
+          this.setState({first_name_border_class: "red"});
 
-      this.props.setDeliveryContactAddressFirstName(e);
-      //this.props.setOrderDeliveryContactAddressFirstName(e);
-
+      }
+         
+          //this.props.setDeliveryContactAddressFirstName(e);
+          
   }
 
   setDeliveryContactAddressLastName = (e: any) => {
@@ -114,22 +121,22 @@ class DeliveryAddress extends React.Component<any, any> {
       //strip out -
       //check if only number
 
-      //if larger then 3 append "-"
+     // /^[a-zA-Z]*$/
+      let last_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
 
-      /*let mobile_number = e.target.value.replace("_", "");
-      let number_res = (/[0-9]/.test(mobile_number));
+      if(last_name_result){
 
-      this.setState({contact_mobile: e.target.value});
-      this.props.setContactMobile(e);
+          this.setState({last_name_border_color: "grey"});
 
-      if(number_res == true){
+          this.props.setDeliveryContactAddressLastName(e);
 
-          //validate contact
-          //else invalatidate
+      }else{
+          
+          this.setState({last_name_border_class: "red"});
 
-      }*/
-
-      this.props.setDeliveryContactAddressLastName(e);
+      }
+         
+          //this.props.setDeliveryContactAddressFirstName(e);
 
   }
 
@@ -244,7 +251,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       }*/
 
-      this.props.setDeliveryContactAddressMobile(e);
+      //this.props.setDeliveryContactAddressMobile(e);
 
   }
 
@@ -252,23 +259,22 @@ class DeliveryAddress extends React.Component<any, any> {
 
       this.props.setDeliveryContactAddressCompanyName(e);
 
-      //strip out -
-      //check if only number
+      // /^[a-zA-Z]*$/
+      let company_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
 
-      //if larger then 3 append "-"
+      if(company_name_result){
 
-      /*let mobile_number = e.target.value.replace("_", "");
-      let number_res = (/[0-9]/.test(mobile_number));
+          this.setState({company_name_border_color: "grey"});
 
-      this.setState({contact_mobile: e.target.value});
-      this.props.setContactMobile(e);
+          //this.props.setDeliveryContactAddressCompanyName(e);
 
-      if(number_res == true){
+      }else{
+          
+          this.setState({company_name_border_class: "red"});
 
-          //validate contact
-          //else invalatidate
-
-      }*/
+      }
+         
+          //this.props.setDeliveryContactAddressFirstName(e);
 
   }
   
@@ -282,6 +288,23 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
+      // /^[a-zA-Z]*$/
+      let street1_result = (/^[a-zA-Z]*$/.test(e.target.value));
+
+      if(street1_result){
+
+          this.setState({street1_border_color: "grey"});
+
+          //this.props.setDeliveryContactAddressStreet1(e);
+
+      }else{
+          
+          this.setState({street1_border_class: "red"});
+
+      }
+         
+          //this.props.setDeliveryContactAddressFirstName(e);
+
   }
 
   setDeliveryContactAddressStreet2 = (e: any) => {
@@ -293,6 +316,20 @@ class DeliveryAddress extends React.Component<any, any> {
 
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
+
+      let street2_result = (/^[a-zA-Z]*$/.test(e.target.value));
+
+      if(street2_result){
+
+          this.setState({street2_border_color: "grey"});
+
+          //this.props.setDeliveryContactAddressStreet2(e);
+
+      }else{
+          
+          this.setState({street2_border_class: "red"});
+
+      }
 
   }
   
@@ -398,7 +435,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     </div>
                     <div className="col-md-3">
                         <div className={this.state.contact_email_classname}>
-                          <input type="text" value={this.state.contact_email_again} onChange={this.setDeliveryContactAddressEmailAgain} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
+                          <input type="text" value={this.state.contact_email_again} onChange={this.setDeliveryContactAddressEmailAgain} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                         </div>
                     </div>
                   </div>
@@ -407,7 +444,7 @@ class DeliveryAddress extends React.Component<any, any> {
                   <div className="form-group">
                     <div className="col-md-3">
                         <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0}}/>
+                          <input type="text" value={this.state.contact_mobile} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                         </div>
                     </div>
                   </div>
@@ -423,8 +460,8 @@ class DeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                       <div className="form-group">
                          <div className="col-md-3">
-                            <div className={this.props.firstNameClassName}>
-                              <input type="text" value={this.state.company_name} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, WebkitAppearance: "none"}}/>
+                            <div>
+                              <input type="text" value={this.state.company_name} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
                             </div>
                           </div>
                       </div>
@@ -432,10 +469,10 @@ class DeliveryAddress extends React.Component<any, any> {
                  <form className="form-horizontal">
                       <div className="form-group">
                         <div className="col-sm-3">
-                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, fontSize: 16}}/>
+                          <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
                         </div>
                         <div className="col-sm-3">
-                          <input type="text" value={this.state.street2} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, fontSize: 16}}/>
+                          <input type="text" value={this.state.street2} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
                         </div>
                       </div>
                  </form>

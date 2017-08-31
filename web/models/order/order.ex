@@ -12,8 +12,9 @@ defmodule Sconely.Order do
 	schema "orders" do
 
 		field :order_id, :string #primary key #secure random
-		field :user_id, :string #Ecto.UUID or "guest" guest will also have uuid
+		field :user_id, :string #Ecto.UUID
 		field :order_type, :string
+		#field delivery_contact_address_id
 		field :delivery_contact_first_name, :string
 		field :delivery_contact_last_name, :string
 		field :delivery_contact_email, :string
@@ -23,11 +24,13 @@ defmodule Sconely.Order do
 		#field :delivery_address_city
 		#field :delivery_address_state
 		#field :delivery_address_zipcode # only certain zipcodes
+		#delivery_contact_address_note
 		field :delivery_datetime, Ecto.DateTime
 		#field :delivery_date, Ecto.Date #only certain days
-		#field :delivery_time, :string #range
-		#field :delivery_time_range, :string
+		#field :social_delivery_time, :string #range
+		#field :yours_delivery_time_range, :string
 		#field message
+		#payment_method_id
 		#stripe_token
 		#status
 		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc

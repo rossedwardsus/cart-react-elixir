@@ -11,6 +11,7 @@ defmodule Sconely.YoursSocialOrderResolver do
 
   import Ecto.DateTime
   import Ecto.Query
+  import Sconely.ProcessStripePayment
 
   
   def get_user_order(%{order_id: order_id}, _info) do
@@ -141,35 +142,94 @@ defmodule Sconely.YoursSocialOrderResolver do
   
 
 
-  defmodule Person do
-      @derive [Poison.Encoder]
-      defstruct [:id]
+  #defmodule Person do
+  #    @derive [Poison.Encoder]
+  #    defstruct [:id]
+  #end
+
+
+
+
+
+
+  #move these to /lib
+
+  def proccess_cart(args) do
+
+  end
+
+  def proccess_date(args) do
+
   end
 
 
+  def process_stripe_payment1(args) do
+
+       #new_customer = [
+    #  email: "test@test.com",
+    #  description: "An Test Account",
+    #  metadata:[
+    #    app_order_id: "ABC123"
+    #    app_state_x: "xyz"
+    #  ],
+    #  card: [
+    #    number: "4111111111111111",
+    #    exp_month: 01,
+    #    exp_year: 2018,
+    #    cvc: 123,
+    #    name: "Joe Test User"
+    #  ]
+    #]
+    #{:ok, res} = Stripe.Customers.create new_customer
 
 
+    #params[:payment_method_card_number]
+    #params[:payment_method_expiry_month]
+    #params[:payment_method_expiry_year]
+    #params[:payment_method_security_code]
+
+    #create customer for guest
+    #create user profile
+
+    params = [
+        source: [
+          object: "card",
+          number: "4111111111111111",
+          exp_month: 10,
+          exp_year: 2020,
+          country: "US",
+          name: "Ducky Test",
+          cvc: 123
+        ],
+        description: "Sconely order id for customer id"
+      ]
+  
+    #IO.inspect(Stripe.Charges.create(51, params))
+
+    Stripe.Charges.create(51, params)
+
+  end
 
 
-
-
-
-
-
-
-
-
-
-
-
+  #unit test
+  #stripe
+  #user_profile
+  #user_payment_method
+  #user_delivery_contact_addresses
+  #session
+  #order
+  #emails
+  #datetime
+  #cart
 
   def complete_yours_order(args, _info) do
 
-    IO.inspect(args)
+    #IO.inspect(args)
+    IO.inspect(process_stripe_payment(args))
 
     #IO.inspect(args)
-    IO.inspect(args[:user_contact_email])
-    IO.inspect(args[:user_contact_mobile])
+    #IO.inspect(args[:user_contact_email])
+    #IO.inspect(args[:user_contact_mobile])
     
     #IO.inspect(Map.fetch(args, :order_contact_email))
 
@@ -210,11 +270,6 @@ defmodule Sconely.YoursSocialOrderResolver do
     #{:ok, res} = Stripe.Customers.create new_customer
 
 
-    #params[:payment_method_card_number]
-    #params[:payment_method_expiry_month]
-    #params[:payment_method_expiry_year]
-    #params[:payment_method_security_code]
-
     #create customer for guest
     #create user profile
 
@@ -231,7 +286,7 @@ defmodule Sconely.YoursSocialOrderResolver do
         description: "Sconely order id for customer id"
       ]
   
-    IO.inspect(Stripe.Charges.create(51, params))
+    #IO.inspect(Stripe.Charges.create(51, params))
 
     charge = Stripe.Charges.create(51, params)
 

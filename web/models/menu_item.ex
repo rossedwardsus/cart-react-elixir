@@ -16,6 +16,7 @@ defmodule Sconely.MenuItem do
 			field :description, :string
 			field :ingredients, :string
 			#field :cost, :string
+			#assortment, :boolean
 			
 			#timestamps()
 		end
