@@ -42387,15 +42387,22 @@ webpackJsonp([0],[
 	        _this.setUserMobile = function (e) {
 	            //strip out -
 	            //check if only number
+	            var mobile_number = e.target.value.replace("-", "");
+	            var number_result = /[0-9]/.test(mobile_number);
 	            //if larger then 3 append "-"
-	            var mobile_number = e.target.value.replace("_", "");
-	            var number_res = /[0-9]/.test(mobile_number);
-	            _this.setState({ contact_mobile: e.target.value });
-	            _this.props.setUserMobile(e);
-	            if (number_res == true) {
-	                //validate contact
-	                //else invalatidate
+	            if (number_result) {
+	                _this.setState({ user_mobile_border_color: "grey" });
+	                if (e.target.value.length == 3) {
+	                    _this.setState({ user_mobile: e.target.value + "-" });
+	                } else if (e.target.value.length == 7) {
+	                    _this.setState({ user_mobile: e.target.value + "-" });
+	                } else {
+	                    _this.setState({ user_mobile: e.target.value });
+	                }
+	            } else {
+	                _this.setState({ user_mobile_border_color: "red" });
 	            }
+	            _this.props.setUserMobile(e);
 	        };
 	        _this.setCompanyName = function (e) {
 	            _this.setState({ company_name: e.target.value });
@@ -42408,7 +42415,9 @@ webpackJsonp([0],[
 	        _this.state = {
 	            first: "",
 	            last: "",
-	            contact_email_again: "",
+	            user_email: "",
+	            user_email_again: "",
+	            user_mobile: "",
 	            first_name_border_color: "grey",
 	            last_name_border_color: "grey",
 	            email_border_color: "grey",
@@ -42461,9 +42470,9 @@ webpackJsonp([0],[
 	                    return _this2.setUserEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email_again, onChange: function onChange(e) {
 	                    return _this2.setUserEmailAgain(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.user_mobile_classname }, React.createElement("input", { type: "text", value: this.state.user_mobile, maxLength: 12, onChange: function onChange(e) {
 	                    return _this2.setUserMobile(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "1111111111", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setUserMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))), React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setUserMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))), React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setUserMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0 } }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42616,14 +42625,21 @@ webpackJsonp([0],[
 	            //strip out -
 	            //check if only number
 	            //if larger then 3 append "-"
-	            /*let mobile_number = e.target.value.replace("_", "");
-	            let number_res = (/[0-9]/.test(mobile_number));
-	                   this.setState({contact_mobile: e.target.value});
-	            this.props.setUserDeliveryContactAddressMobile(e);
-	                   if(number_res == true){
-	                       //validate contact
-	                //else invalatidate
-	                   }*/
+	            var mobile_number = e.target.value.replace("-", "");
+	            var number_result = /[0-9]/.test(mobile_number);
+	            _this.props.setDeliveryContactAddressMobile(e);
+	            if (number_result) {
+	                _this.setState({ user_mobile_border_color: "grey" });
+	                if (e.target.value.length == 3) {
+	                    _this.setState({ contact_mobile: e.target.value + "-" });
+	                } else if (e.target.value.length == 7) {
+	                    _this.setState({ contact_mobile: e.target.value + "-" });
+	                } else {
+	                    _this.setState({ contact_mobile: e.target.value });
+	                }
+	            } else {
+	                _this.setState({ user_mobile_border_color: "red" });
+	            }
 	            //this.props.setDeliveryContactAddressMobile(e);
 	        };
 	        _this.setDeliveryContactAddressCompanyName = function (e) {
@@ -42703,6 +42719,10 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
+	            contact_first_name: "",
+	            contact_last_name: "",
+	            contact_email: "",
+	            contact_mobile: "",
 	            street1: "",
 	            street2: "",
 	            city: "",
@@ -42739,7 +42759,7 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            var delivery_address = "";
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, maxLength: 4, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))), React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))), React.createElement("div", { className: "col-md-2" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 3, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "111", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", null, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 4, onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.first, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.last, maxLength: 4, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 12, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", null, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 4, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressCompanyName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "Street", value: this.state.street1, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet1(e);

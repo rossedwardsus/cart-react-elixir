@@ -53,6 +53,10 @@ class DeliveryAddress extends React.Component<any, any> {
 
     this.state = {
 
+        contact_first_name: "",
+        contact_last_name: "",
+        contact_email: "",
+        contact_mobile: "",
         street1: "",
         street2: "",
         city: "",
@@ -244,18 +248,36 @@ class DeliveryAddress extends React.Component<any, any> {
 
       //if larger then 3 append "-"
 
-      /*let mobile_number = e.target.value.replace("_", "");
-      let number_res = (/[0-9]/.test(mobile_number));
+      let mobile_number = e.target.value.replace("-", "");
+      let number_result = (/[0-9]/.test(mobile_number));
 
-      this.setState({contact_mobile: e.target.value});
-      this.props.setUserDeliveryContactAddressMobile(e);
+      this.props.setDeliveryContactAddressMobile(e);
 
-      if(number_res == true){
+      if(number_result){
 
-          //validate contact
-          //else invalatidate
+        this.setState({user_mobile_border_color: "grey"});
 
-      }*/
+
+        if(e.target.value.length == 3){
+
+            this.setState({contact_mobile: e.target.value + "-"});
+            
+        }else if(e.target.value.length == 7){
+
+            this.setState({contact_mobile: e.target.value + "-"});
+
+        }else{
+
+            this.setState({contact_mobile: e.target.value});
+
+        }
+
+      }else{
+
+          this.setState({user_mobile_border_color: "red"});
+
+      }
+
 
       //this.props.setDeliveryContactAddressMobile(e);
 
@@ -443,19 +465,9 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-md-2">
+                    <div className="col-md-3">
                         <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
-                        </div>
-                    </div>
-                    <div className="col-md-2">
-                        <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
-                        </div>
-                    </div>
-                    <div className="col-md-2">
-                        <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="111"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                          <input type="text" value={this.state.contact_mobile} maxLength={12} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                         </div>
                     </div>
                   </div>

@@ -53,7 +53,9 @@ class Name extends React.Component<any, any> {
 
        first: "",
        last: "",
-       contact_email_again: "",
+       user_email: "",
+       user_email_again: "",
+       user_mobile: "",
        first_name_border_color: "grey",
        last_name_border_color: "grey",
        email_border_color: "grey",
@@ -274,20 +276,36 @@ class Name extends React.Component<any, any> {
       //strip out -
       //check if only number
 
+      let mobile_number = e.target.value.replace("-", "");
+      let number_result = (/[0-9]/.test(mobile_number));
+
       //if larger then 3 append "-"
 
-      let mobile_number = e.target.value.replace("_", "");
-      let number_res = (/[0-9]/.test(mobile_number));
+      if(number_result){
 
-      this.setState({contact_mobile: e.target.value});
-      this.props.setUserMobile(e);
+          this.setState({user_mobile_border_color: "grey"});
+          
+          if(e.target.value.length == 3){
 
-      if(number_res == true){
+            this.setState({user_mobile: e.target.value + "-"});
+          
+          }else if(e.target.value.length == 7){
 
-          //validate contact
-          //else invalatidate
+            this.setState({user_mobile: e.target.value + "-"});
+          
+          }else{
 
+            this.setState({user_mobile: e.target.value});
+
+          }
+      
+      }else{
+
+          this.setState({user_mobile_border_color: "red"});
+          
       }
+
+      this.props.setUserMobile(e);
 
   }
 
@@ -353,31 +371,12 @@ class Name extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
-                      <div className={this.state.contact_mobile_classname}>
-                        <input type="text" value={this.state.contact_mobile} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="1111111111"  style={{borderRadius: 0}}/>
+                      <div className={this.state.user_mobile_classname}>
+                        <input type="text" value={this.state.user_mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0}}/>
                       </div>
                   </div>
                 </div>
               </form> 
-              <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-md-2">
-                        <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setUserMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
-                        </div>
-                    </div>
-                    <div className="col-md-2">
-                        <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setUserMobile} className="form-control" id="exampleInputName2" placeholder="111" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
-                        </div>
-                    </div>
-                    <div className="col-md-2">
-                        <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={3} onChange={this.setUserMobile} className="form-control" id="exampleInputName2" placeholder="111"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
-                        </div>
-                    </div>
-                  </div>
-                </form>
             </div>
     )
   }
