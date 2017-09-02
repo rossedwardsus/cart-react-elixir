@@ -19,7 +19,7 @@ defmodule SconeHomeElixir.Mixfile do
   def application do
     [mod: {SconeHomeElixir, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :stripity_stripe, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin, :twilex, :guardian, :calendar]]
+                    :phoenix_ecto, :postgrex, :bamboo, :timex, :tzdata, :absinthe, :absinthe_plug, :ex_aws, :hackney, :poison, :comeonin, :twilex, :guardian, :calendar, :stripe]]
   end
 
   # Specifies which paths to compile per environment.
@@ -58,6 +58,7 @@ defmodule SconeHomeElixir.Mixfile do
      {:bamboo_postmark, "~> 0.4"},
      {:twilex, "~> 0.0.1"},
      {:stripity_stripe, "~> 1.4.0"},
+     {:stripe, "~> 0.7.1", hex: :stripe_elixir},
      {:mogrify, "~> 0.3.2"},
      {:gm, "~> 0.0.1"},
      {:ex_aws, "~> 1.0.0"},
@@ -67,7 +68,7 @@ defmodule SconeHomeElixir.Mixfile do
      {:plug, "~> 1.0"},
      {:timex, "~> 3.0"},
      {:hackney, "~> 1.0", override: true},
-     {:httpoison, "~> 0.8.0"},
+     {:httpoison, "~> 0.8.0", override: true},
      {:tzdata, "~> 0.5.8"},
      #{:graphql, "~> 0.3"},
      {:absinthe, "~> 1.1.0"},

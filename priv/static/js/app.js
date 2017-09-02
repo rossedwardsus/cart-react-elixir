@@ -27257,14 +27257,16 @@ webpackJsonp([0],[
 	            console.log("graphql response " + JSON.stringify(response));
 	            if (response.data.data.processYoursSocialOrder.errorReason != "") {
 	                console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
-	            }
-	            //if save_info_for_later == true...
-	            //last four card number
-	            //localstorage.setitem("sconely_user", {});
-	            //that.props.history.push('/user');
-	            //context.router
-	            //this.context.router.push('/order/complete');
-	            //dispatch(push("/order/complete"));
+	                //if save_info_for_later == true...
+	                //last four card number
+	                //localstorage.setitem("sconely_user", {});
+	                //that.props.history.push('/user');
+	                //context.router
+	                //this.context.router.push('/order/complete');
+	                //dispatch(push("/order/complete"));
+	            } else {
+	                    //dispatch({ type: error, item_id: "session_id"});
+	                }
 	        }).catch(function (error) {
 	            console.log("axios error handler " + error);
 	            //go to code/payment screen
@@ -39860,9 +39862,9 @@ webpackJsonp([0],[
 	            /*this.props.menuItems.map(function(item: any){
 	                       if(item.item_id === item_id){*/
 	            _this.setState({ selected_item_id: item_id });
-	            _this.setState({ selected_item_name: _this.props.menuItems[0]["name"] });
-	            _this.setState({ selected_item_description: _this.props.menuItems[0]["description"] });
-	            _this.setState({ selected_item_ingredients: "ingredients" });
+	            _this.setState({ selected_item_name: _this.props.menuItems[item_id]["name"] });
+	            _this.setState({ selected_item_description: _this.props.menuItems[item_id]["description"] });
+	            _this.setState({ selected_item_ingredients: _this.props.menuItems[item_id]["ingredients"] });
 	            /*    }
 	             
 	            }.bind(this));*/
@@ -40042,13 +40044,33 @@ webpackJsonp([0],[
 	                }
 	            } else {
 	                //if assortment == true
-	                if (this.props.cartItemsTotalQuantity < 10) {
-	                    yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, "12", React.createElement("input", { type: "radio", name: "12_or_24", value: "12", onChange: this.selectedSocialItem12or24mini }), "24-mini", React.createElement("input", { type: "radio", name: "12_or_24", value: "24_minis", onChange: this.selectedSocialItem12or24mini })), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedSocialItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
-	                        return React.createElement("option", { value: value }, value);
-	                    }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
-	                            return _this2.addCartItem();
-	                        }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
-	                }
+	                //if(!true){
+	                //if(this.props.cartItemsTotalQuantity < 10){
+	                /*//yours_social_quantity_selector =  <div>
+	                                                        <div className="col-md-2">
+	                                                          Dozen<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItem12or24mini}/>
+	                                                        </div>
+	                                                        <div className="col-md-3">
+	                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
+	                                                        </div>
+	                                                        <div className="col-md-3">
+	                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemQuantity} style={{height: 35, width: 120}}>
+	                                                            <option value="">Select Quantity</option>
+	                                                            {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+	                                                          </select>
+	                                                        </div>
+	                                                        <div className="col-md-2">
+	                                                          <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
+	                                                        </div>
+	                                                      </div>*/
+	                //}else{
+	                yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
+	                    return React.createElement("option", { value: value }, value);
+	                }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                        return _this2.addCartItem();
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
+	                //}
+	                //}
 	            }
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), "mobile link to cart with number of items in cart", React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
 	                var _this3 = this;
@@ -40411,7 +40433,7 @@ webpackJsonp([0],[
 	            //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
 	            return React.createElement("div", null, React.createElement("br", null), "a minimum of 2 items is required", React.createElement("br", null), React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
-	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost, "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2), "0"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42716,6 +42738,24 @@ webpackJsonp([0],[
 	            //if street1 street2 city state
 	            //this.props.setdeliveryAddressValidated();
 	        };
+	        _this.zipcodeAutocomplete = function (e) {
+	            var sm = ["90291", "90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411"];
+	            //function matchPeople(e.target.value: any) {
+	            var reg = new RegExp(e.target.value.split('').join('\\w*').replace(/\W/, ""), 'i');
+	            var result = sm.filter(function (s) {
+	                if (s.match(reg)) {
+	                    return s;
+	                    //console.log("ok ");
+	                    //console.log("yes");
+	                    //this.setState({zipcode_border_color: "grey"});
+	                    //}else{
+	                    //console.log("no");
+	                    //this.setState({zipcode_border_color: "red"});
+	                }
+	            });
+	            console.log(JSON.stringify(result));
+	            //}
+	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
@@ -42765,13 +42805,15 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryContactAddressStreet1(e);
 	                }, style: { borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.street2, maxLength: 20, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet2(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Street 2", style: { borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16 } })), React.createElement("div", null, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 4, onChange: function onChange(e) {
+	                    return _this2.setDeliveryContactAddressCompanyName(e);
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressCity(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "City"), React.createElement("option", { value: "los_angeles" }, "Los Angeles"), React.createElement("option", { value: "santa_monica" }, "Santa Monica"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.props.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zipcode"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"))))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { maxLength: 5, className: "form-control", onChange: this.zipcodeAutocomplete, style: { borderRadius: 0, borderColor: this.state.zipcode_border_color, fontSize: 16 } })))));
 	        }
 	    }], [{
 	        key: "contextTypes",

@@ -2,7 +2,96 @@ defmodule Sconely.ProcessStripePayment do
 
   def process_stripe_payment(args) do
 
-       #new_customer = [
+    #total cost == total items * 12
+    
+
+    #if order_type == "sconely_social"
+    
+    #total_cost = Enum.reduce(cart_items, fn(x) ->
+
+    #    case x[:item_type] do
+
+    #      "mini" ->  acc = acc + (1 * 5)
+
+    #      "regular" -> acc = acc + (1 * 6)
+
+    #    end
+
+    #end)
+
+    #Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
+
+    mini_items_count = 0
+    regular_items_count = 0
+
+    mini_items_total_amount = 0
+    regular_items_total_amount = 0
+
+    total_items_count = 0
+
+    #order_type = "social"
+
+    #cart_items = [%{"item_type": "mini", "item_id": 1, "quantity": 5}, %{"item_type": "mini", "item_id": 1, "quantity": 8}, %{"item_type": "regular", "item_id": 1, "quantity": 15}]
+    #total_cost = 0
+
+    cart_items = [%{id: 1, "title": "rubyq", twelveortwentyfourminis: "24_minis", quantity: 2}, %{id: 2, "title": "ishkabible", twelveortwentyfourminis: "12", quantity: 1}, %{id: 2, "title": "ishkabible", twelveortwentyfourminis: "12", quantity: 1}]
+
+    order_type = "social"
+
+    case order_type do
+
+        "social" -> 
+
+                  #mini_items = Enum.filter(cart_items, fn(x) ->  
+
+                   #   x[:twelveortwentyfourminis] == "twelve"
+
+                  #end)
+
+                  #Enum.map(mini_items, fn(x) -> 
+
+                  #    mini_total = x[:quantity]
+
+                  #end)
+
+                  #mini_total = Enum.reduce(mini_items, {0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+                  regular_items_total_amount = cart_items
+                    |> Enum.filter(fn(x) ->  x[:twelveortwentyfourminis] == "12" end)
+                    |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+                  #regular_items_count = length(Enum.filter(cart_items, fn(x) ->  
+
+                  #    x[:item_type] == "regular"
+
+                  #end))
+
+                  mini_items_total_amount = cart_items
+                    |> Enum.filter(fn(x) ->  x[:twelveortwentyfourminis] == "24_minis" end)
+                    |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+                  #items_count = 1
+
+        "yours" -> 
+                  regular_items_total_amount = cart_items
+                    |> Enum.filter(fn(x) ->  x[:twelveortwentyfourminis] == "12" end)
+                    |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
+    end
+
+    total_cost = (elem(mini_items_total_amount, 0) * 24 * 5.00) + (elem(regular_items_total_amount, 0) * 12 * 5.00)
+
+    IO.puts("process stripe payment")
+    #IO.inspect(elem(regular_items_total_amount, 0))
+    IO.inspect(total_cost)
+
+
+    #params[:payment_method_card_number]
+    #params[:payment_method_expiry_month]
+    #params[:payment_method_expiry_year]
+    #params[:payment_method_security_code]
+
+    #new_customer = [
     #  email: "test@test.com",
     #  description: "An Test Account",
     #  metadata:[
@@ -19,31 +108,168 @@ defmodule Sconely.ProcessStripePayment do
     #]
     #{:ok, res} = Stripe.Customers.create new_customer
 
-
-    #params[:payment_method_card_number]
-    #params[:payment_method_expiry_month]
-    #params[:payment_method_expiry_year]
-    #params[:payment_method_security_code]
+ 
 
     #create customer for guest
     #create user profile
 
     params = [
         source: [
-          object: "card",
-          number: "4111111111111111",
-          exp_month: 10,
-          exp_year: 2020,
-          country: "US",
-          name: "Ducky Test",
-          cvc: 123
+          object: "customer",
+          #number: "4111111111111111",
+          customer_id: "cus_BJyLo6fCtMZCOT",
+          #exp_month: 10,
+          #exp_year: 2020,
+          #country: "US",
+          #name: "Ducky Test",
+          #cvc: 123
         ],
         description: "Sconely order id for customer id"
-      ]
+    ]
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
     #Stripe.Charges.create(51, params)
+
+    new_customer = [
+      email: "test@test.com",
+      description: "An Test Account",
+      metadata: [
+        app_order_id: "ABC123",
+        app_state_x: "xyz"
+      ],
+      card: [
+        number: "4111111111111111",
+        exp_month: 01,
+        exp_year: 2018,
+        cvc: 123,
+        name: "Joe Test User"
+      ]
+    ]
+
+    #{:ok, res} = Stripe.Customers.create new_customer
+
+    IO.puts("")
+    IO.puts("")
+
+    #IO.inspect(res)
+
+    
+    #{:ok, cust} = Stripe.Customers.get "cus_BJxvRgEJZuX07K"
+
+    #IO.inspect(cust)
+
+    params = [
+      source: [
+        object: "card",
+        number: "4111111111111111",
+        cvc: 123,
+        exp_month: 12,
+        exp_year: 2020,
+        metadata: [
+          test_field: "test val"
+        ]
+      ]
+    ]
+
+    #{:ok, card} = Stripe.Cards.create(:customer, "cus_BJyHH3jNze7e3E", params)
+
+    #{:ok, card} = Stripe.Cards.get(:customer, "cus_BJyLo6fCtMZCOT", "card_1AxKOMH6MNtZcTO4Q73576gH")
+
+    #IO.inspect(card)
+
+    params = [
+        source: [
+          "object": "card", 
+          "card": "card_1AxKOMH6MNtZcTO4Q73576gH", 
+          "exp_month": 10,
+          "exp_year": 2020,
+          "country": "US",
+          "name": "Ducky Test",
+          "cvc": 123
+        ],
+        description: "Sconely order id for customer id"
+    ]
+
+    #{:ok, charge} = Stripe.Charges.create(51, params)
+
+    #IO.inspect(charge)
+
+    #params = [
+    #      card: card.id
+    #]
+
+    token_params = [
+          card: [id: "card_1AxKOMH6MNtZcTO4Q73576gH"]
+    ]
+
+    #{:ok, token} = Stripe.Tokens.create token_params
+    #IO.inspect(token)
+
+    params = [
+        #source: "tok_1AxKt9H6MNtZcTO4L1zgILPc",
+        customer:  "cus_BJyLo6fCtMZCOT",
+        card: "card_1AxKOMH6MNtZcTO4Q73576gH",
+        description: "Sconely order id for customer id"
+    ]
+
+    #{:ok, charge} = Stripe.Charges.create(51, params)
+    #IO.inspect(charge)
+
+    #customer = Stripy.req(:post, "customers", %{"email" => "a@b.c", "metadata[user_id]" => 1})
+
+    #"cus_BK30g9Fg4KNza3"
+
+    #cus_BK3lQMlABIOi2V
+    #card_1AxPeJH6MNtZcTO4e0w0tCCL
+
+    #customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+
+    #case customer do
+
+    #  {:ok, customer} -> IO.inspect(customer)
+    #  {:error, error} -> IO.inspect(error)
+
+    #end
+
+    #token = Stripe.Token.create(card: %{number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+    #token = Stripe.Token.create(customer: "cus_BK3lQMlABIOi2V", card: "card_1AxPeJH6MNtZcTO4e0w0tCCL")
+
+    #case token do
+
+    #  {:ok, token} -> IO.inspect(token)
+    #  {:error, error} -> IO.inspect(error)
+
+    #end
+
+    #existing_customer = Stripe.Customer.retrieve("cus_BK30g9Fg4KNza3")
+
+    #case existing_customer do
+
+    #  {:ok, existing_customer} -> IO.inspect(existing_customer)
+                                  #source = existing_customer.source.create("sources": "card_1AxP6WH6MNtZcTO4KImodL8Z")
+     #                             sources = existing_customer["sources"]
+     #                             sources.create(token: "card_1AxPP0H6MNtZcTO4fmhS5KUV")
+
+     # {:error, error} -> IO.inspect(error)
+
+    #end
+
+    #IO.inspect(Stripe.Charge.create(amount: 1395, currency: "usd", source: "cus_BK3lQMlABIOi2V", description: "Fuzzy eyeglasses"))
+
+    IO.inspect(Stripe.Charge.create(amount: 1000, currency: "usd", customer: "cus_BK3lQMlABIOi2V"))
+
+
+    
+
+    #IO.inspect(source)
+
+    #case source do
+
+    #  {:ok, source} -> IO.inspect(source)
+    #  {:error, error} -> IO.inspect(error)
+
+    #end
 
   end
 

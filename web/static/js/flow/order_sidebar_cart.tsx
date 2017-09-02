@@ -486,7 +486,7 @@ class SidebarCart extends React.Component<any, any> {
                         <div className="form-group" style={{border: 1}}>
                           <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
                           <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost}0</div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}0</div>
                         </div>
                       </form>
                       <form className="form-horizontal" style={{border: 1}}>

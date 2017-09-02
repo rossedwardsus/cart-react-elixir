@@ -2,7 +2,7 @@ defmodule Sconely.YoursSocialOrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
-  #alias Sconely.MenuItem
+  alias Sconely.MenuItem
   alias Sconely.Order
   #alias Ecto.Multi
   alias Sconely.CompleteOrderResolverHelper
@@ -230,7 +230,7 @@ defmodule Sconely.YoursSocialOrderResolver do
   def complete_yours_order(args, _info) do
 
     #IO.inspect(args)
-    IO.inspect(process_stripe_payment(args))
+    process_stripe_payment(args)
 
     #IO.inspect(args)
     #IO.inspect(args[:user_contact_email])
@@ -293,12 +293,12 @@ defmodule Sconely.YoursSocialOrderResolver do
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
-    charge = Stripe.Charges.create(51, params)
+    #charge = Stripe.Charges.create(51, params)
 
     
                     
-    case charge do
-        {:ok, charge} -> 
+    #case charge do
+    #    {:ok, charge} -> 
 
             #validated entered order data
             #if validate process payment
@@ -306,7 +306,7 @@ defmodule Sconely.YoursSocialOrderResolver do
 
             #validate payment info
 
-            IO.inspect("charge[:balance_transaction]")
+            #IO.inspect("charge[:balance_transaction]")
             
             #get stripe charge id
             #insert into database
@@ -339,15 +339,35 @@ defmodule Sconely.YoursSocialOrderResolver do
 
             user_id = SecureRandom.uuid
 
-            #order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
+            #check if user exists before entering in a user profile.
+            #actually only really ued during registration
+
             #user_profile - probably don't need but might be useful for just knowing who a guest user is.  actually can use order data?
+            
+
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
-            #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            
+            #order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
+            #delivery_id, contact_id, payment_id
+            
+            #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id}
+            #user_delivery_contact_address_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
+
             #order_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id}) get from user profile
-            #order_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            #user_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
+            
+            #user_contact_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
+            
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
+            #user_payment_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
+
 
             #IO.inspect(order_changeset)
+
+            #query = from mi in MenuItems,
+                     #select: {mi.id, mi.name}
+            #menu_items = Repo.all(query)
+            #menu_item[0].name
            
             #if order_changeset.valid? do
                 #Repo.insert(order_datetime_changeset)
@@ -538,9 +558,9 @@ defmodule Sconely.YoursSocialOrderResolver do
 
                         #Result := menu_items.Contains(1);
 
-                        IO.inspect(CompleteOrderResolverHelper.formatDeliveryDate("2017-05-27"))
+                        #IO.inspect(CompleteOrderResolverHelper.formatDeliveryDate("2017-05-27"))
 
-                        IO.inspect(args["order_first_name"])
+                        #IO.inspect(args["order_first_name"])
 
 
                         #working
@@ -609,8 +629,8 @@ defmodule Sconely.YoursSocialOrderResolver do
 
           #end
 
-        {:error, error} -> IO.inspect(error)
-            {:ok, %{status: "error", error_reason: "card declined - limit reached"}}
+        #{:error, error} -> IO.inspect(error)
+        #    {:ok, %{status: "error", error_reason: "card declined - limit reached"}}
 
             #IO.inspect(error)
             #log error in database
@@ -618,7 +638,7 @@ defmodule Sconely.YoursSocialOrderResolver do
             #{:error, %{status: "completed", sconely_user_token: user_id}}
             #{:ok, %{error_response: "response"}}
 
-    end
+    #end
     
     #{:ok, %{status: "card declined"}}
 

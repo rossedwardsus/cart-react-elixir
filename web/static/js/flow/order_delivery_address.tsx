@@ -419,6 +419,37 @@ class DeliveryAddress extends React.Component<any, any> {
 
   }
 
+  zipcodeAutocomplete = (e: any) => {
+
+      let sm = ["90291", "90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411"]
+
+      //function matchPeople(e.target.value: any) {
+        let reg = new RegExp(e.target.value.split('').join('\\w*').replace(/\W/, ""), 'i');
+        let result = sm.filter((s: any) => {
+          if (s.match(reg)) {
+
+            return s;
+
+            //console.log("ok ");
+            //console.log("yes");
+
+            //this.setState({zipcode_border_color: "grey"});
+
+          //}else{
+
+            //console.log("no");
+
+            //this.setState({zipcode_border_color: "red"});
+
+          }
+        });
+
+        console.log(JSON.stringify(result));
+
+      //}
+
+  }
+
   
   
   render(): JSX.Element{
@@ -497,6 +528,9 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <input type="text" value={this.state.street2} maxLength={20} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
                         </div>
+                        <div>
+                          <input type="text" value={this.state.company_name} maxLength={4} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
+                        </div>
                       </div>
                  </form>
                 <form className="form-horizontal">
@@ -516,7 +550,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         </div>
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.props.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                            <option>Zipcode</option>
+                            <option>Zip Code</option>
                             <option>Venice</option>
                             <option>90013</option>
                             <option>90014</option>
@@ -537,6 +571,9 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option>90410</option>
                             <option>90411</option>
                           </select>
+                        </div>
+                        <div className="col-sm-3">
+                            <input maxLength={5} className="form-control" onChange={this.zipcodeAutocomplete} style={{borderRadius: 0, borderColor: this.state.zipcode_border_color, fontSize: 16}}/>
                         </div>
                     </div>
                 </form>

@@ -103,20 +103,26 @@ export function processYoursSocialOrder() {
 
                       console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
 
+                      
+
+
+                      //if save_info_for_later == true...
+                      //last four card number
+
+                      //localstorage.setitem("sconely_user", {});
+
+
+                      //that.props.history.push('/user');
+                      //context.router
+
+                      //this.context.router.push('/order/complete');
+                      //dispatch(push("/order/complete"));
+
+                  }else{
+
+                    //dispatch({ type: error, item_id: "session_id"});
+
                   }
-
-
-                  //if save_info_for_later == true...
-                  //last four card number
-
-                  //localstorage.setitem("sconely_user", {});
-
-
-                  //that.props.history.push('/user');
-                  //context.router
-
-                  //this.context.router.push('/order/complete');
-                  //dispatch(push("/order/complete"));
       
 
             })

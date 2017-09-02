@@ -120,9 +120,9 @@ class OrderMenu extends React.Component<any, any> {
           if(item.item_id === item_id){*/
 
               this.setState({selected_item_id: item_id});
-              this.setState({selected_item_name: this.props.menuItems[0]["name"]});
-              this.setState({selected_item_description: this.props.menuItems[0]["description"]});
-              this.setState({selected_item_ingredients: "ingredients"});
+              this.setState({selected_item_name: this.props.menuItems[item_id]["name"]});
+              this.setState({selected_item_description: this.props.menuItems[item_id]["description"]});
+              this.setState({selected_item_ingredients:  this.props.menuItems[item_id]["ingredients"]});
 
       /*    }
 
@@ -356,26 +356,45 @@ class OrderMenu extends React.Component<any, any> {
     }else{
 
         //if assortment == true
+        //if(!true){
+            
+            //if(this.props.cartItemsTotalQuantity < 10){
 
-        if(this.props.cartItemsTotalQuantity < 10){
+                /*//yours_social_quantity_selector =  <div>
+                                                        <div className="col-md-2">
+                                                          Dozen<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItem12or24mini}/>
+                                                        </div>
+                                                        <div className="col-md-3">
+                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
+                                                        </div>
+                                                        <div className="col-md-3">
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemQuantity} style={{height: 35, width: 120}}>
+                                                            <option value="">Select Quantity</option> 
+                                                            {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                                          </select>
+                                                        </div>
+                                                        <div className="col-md-2">
+                                                          <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
+                                                        </div>
+                                                      </div>*/
+            //}else{
 
-            yours_social_quantity_selector =  <div>
-                                                    <div className="col-md-3">
-                                                      12<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItem12or24mini}/>24-mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
-                                                    </div>
-                                                    <div className="col-md-3">
-                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemQuantity} style={{height: 35, width: 120}}>
-                                                        <option value="">Select Quantity</option> 
-                                                        {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
-                                                        
-                                                      </select>
-                                                    </div>
-                                                    <div className="col-md-3">
-                                                      <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
-                                                    </div>
-                                                  </div>
-        }
+                 yours_social_quantity_selector =  <div>
+                                                        <div className="col-md-3">
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
+                                                            <option value="">Select Quantity</option> 
+                                                            {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                                            
+                                                          </select>
+                                                        </div>
+                                                        <div className="col-md-3">
+                                                          <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                                        </div>
+                                                      </div>
 
+
+          //}
+        //}
     }
 
           return(<div>
