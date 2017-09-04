@@ -227,7 +227,9 @@ defmodule Sconely.YoursSocialOrderResolver do
   #cart
   #graphql response
 
-  def complete_yours_order(args, _info) do
+  def complete_yours_order(args, %{context: context}) do
+
+    IO.inspect(context)
 
     #IO.inspect(args)
     process_stripe_payment(args)
@@ -343,6 +345,7 @@ defmodule Sconely.YoursSocialOrderResolver do
             #actually only really ued during registration
 
             #user_profile - probably don't need but might be useful for just knowing who a guest user is.  actually can use order data?
+            #add name and contact info here
             
 
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
@@ -350,9 +353,10 @@ defmodule Sconely.YoursSocialOrderResolver do
             #order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
             #delivery_id, contact_id, payment_id
             
-            #order_delivery_address_changeset = Order.changeset(%Order{}, %{order_id: order_id}
+            #order_delivery_contact_address_changeset = Order.changeset(%Order{}, %{order_id: order_id}
             #user_delivery_contact_address_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
 
+            #
             #order_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id}) get from user profile
             #user_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             
@@ -585,7 +589,7 @@ defmodule Sconely.YoursSocialOrderResolver do
 
           #else
 
-            IO.inspect("error")
+            #IO.inspect("error")
 
             #log_error_changeset = LogError.changeset(%Order{}, %{error: error})
 

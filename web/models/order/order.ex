@@ -14,6 +14,8 @@ defmodule Sconely.Order do
 		field :order_id, :string #primary key #secure random
 		field :user_id, :string #Ecto.UUID
 		field :order_type, :string
+		#delivery contact address id
+		
 		#field delivery_contact_address_id
 		field :delivery_contact_first_name, :string
 		field :delivery_contact_last_name, :string
@@ -31,8 +33,9 @@ defmodule Sconely.Order do
 		#field :yours_delivery_time_range, :string
 		#field message
 		#payment_method_id
-		#stripe_token
+		#stripe_token, :string
 		#status
+		#note
 		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 
 		#has_one :order_delivery_address, {"order_delivery_address", OrderDeliveryAddress}

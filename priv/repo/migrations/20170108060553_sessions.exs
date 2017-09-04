@@ -18,8 +18,9 @@ defmodule SconeHomeElixir.Repo.Migrations.Sessions do
     create table(:sessions, primary_key: true) do
       #add :session_id, :uuid, primary_key: true
 	    add :user_id, :uuid
-      add :token, :string
+      add :token, :uuid
 	    add :logged_in_datetime, :string
+      add :logged_out_datetime, :string
 
       #timestamps
 

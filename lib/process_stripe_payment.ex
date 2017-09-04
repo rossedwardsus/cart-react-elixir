@@ -257,7 +257,7 @@ defmodule Sconely.ProcessStripePayment do
 
     #IO.inspect(Stripe.Charge.create(amount: 1395, currency: "usd", source: "cus_BK3lQMlABIOi2V", description: "Fuzzy eyeglasses"))
 
-    IO.inspect(Stripe.Charge.create(amount: 1000, currency: "usd", customer: "cus_BK3lQMlABIOi2V"))
+    #IO.inspect(Stripe.Charge.create(amount: 1000, currency: "usd", customer: "cus_BK3lQMlABIOi2V"))
 
 
     

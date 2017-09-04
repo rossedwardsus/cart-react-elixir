@@ -8,18 +8,45 @@ defmodule SconeHomeElixir.Web.Context do
   def call(conn, _) do
     #case Guardian.Plug.current_resource(conn) do
     #  nil -> 
-        #IO.inspect("conn")
+        IO.inspect(get_req_header(conn, "authorization") |> List.first)
         #IO.inspect(conn)
+
         #IO.inspect(get_req_header(conn, "authorization"))
+
+        #if get_req_header(conn, "authorization")
+
+        #with ["bearer " <> auth_token] <- get_req_header(conn, "authorization") do
+
+            #if no bearer toek then create one and create a session and pass the toekn to the resolver
+
+            #else if there is one then look in the session table and pass the user id
+
+
+            
+            IO.inspect(String.length(get_req_header(conn, "authorization") |> List.first))
+
+            #if there is no bearer token
+            #case auth_token do
+            #if String.length(auth_token) > 0 do 
+            #    put_private(conn, :absinthe, %{context: %{user_id: "user_id"}})
+            #else
+            #    put_private(conn, :absinthe, %{context: %{user_id: "no user_id"}})
+            #end
+        #end
+
+            put_private(conn, :absinthe, %{context: %{user_id: "no user_id"}})
+            
+
         #if nil then just add to database
         #or login
 
         #might be a bad call though
 
         #{:ok, context} ->
-        #put_private(conn, :absinthe, %{context: context})
-        #{:error, reason} ->
-          conn
+
+
+         #{:error, reason} ->
+        #  conn
         #|> send_resp(403, reason)
         #|> halt()
         #_ ->
@@ -33,7 +60,7 @@ defmodule SconeHomeElixir.Web.Context do
         #if authorization is empty then but regiesteration
         #register user
 
-        conn
+        #conn
     #  user ->
     #    IO.inspect(Guardian.Plug.current_resource(conn))
     #    IO.puts("got it")

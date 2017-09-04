@@ -27251,15 +27251,15 @@ webpackJsonp([0],[
 	        //event full name
 	        console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
 	        //state.User.orders
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }
-	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
-	        ).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            if (response.data.data.processYoursSocialOrder.errorReason != "") {
 	                console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
 	                //if save_info_for_later == true...
 	                //last four card number
-	                //localstorage.setitem("sconely_user", {});
+	                localStorage.setItem("sconely_user", JSON.stringify({ token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{ street1: "1109 santa monica blvd" }], pament_methods: [{ last_four_digits: "4444" }] }));
+	                console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+	                //else delete from redux
 	                //that.props.history.push('/user');
 	                //context.router
 	                //this.context.router.push('/order/complete');
