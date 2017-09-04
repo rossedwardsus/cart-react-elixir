@@ -2,6 +2,8 @@ defmodule SconeHomeElixir.Web.Context do
   @behaviour Plug
  
   import Plug.Conn
+
+  alias Sconely.Session
  
   def init(opts), do: opts
  
@@ -19,9 +21,31 @@ defmodule SconeHomeElixir.Web.Context do
 
             #if no bearer toek then create one and create a session and pass the toekn to the resolver
 
+            #
+            session_changeset = Session.changeset(%Session{}, %{user_id: "user_id", token_id: "", logged_out_datetime: nil})
+            #Repo.insert
+
+            #Session 
+            #    |> %Session{title: "Hello World"}
+            #    |> %Post{} 
+            #    |> changeset(%Session{}, %{user_id: "user_id", token_id: "", session_start_datetime: "", session_end_datetime: nil}
+            #    |> Repo.insert!
+
+            #post = Session
+            #|> Repo.get(context[:post].id) 
+            #|> Repo.preload(:comments)
+
+            #Todo.changeset(%Todo{}, %{item: item})
+            #|> Repo.insert!
+
+            #case Repo.insert(session_changeset) do
+            #  {:ok, response} -> IO.inspect(response)
+                
+
+
             #else if there is one then look in the session table and pass the user id
 
-
+            #Repo.one(from p in "people", select: count(p.id))
             
             IO.inspect(String.length(get_req_header(conn, "authorization") |> List.first))
 
@@ -30,7 +54,7 @@ defmodule SconeHomeElixir.Web.Context do
             #if String.length(auth_token) > 0 do 
             #    put_private(conn, :absinthe, %{context: %{user_id: "user_id"}})
             #else
-            #    put_private(conn, :absinthe, %{context: %{user_id: "no user_id"}})
+            #    put_private(conn, :absinthe, %{context: %{user_id: "new_user"}})
             #end
         #end
 

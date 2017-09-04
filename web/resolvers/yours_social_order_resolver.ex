@@ -365,6 +365,7 @@ defmodule Sconely.YoursSocialOrderResolver do
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
             #user_payment_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
 
+            
 
             #IO.inspect(order_changeset)
 
