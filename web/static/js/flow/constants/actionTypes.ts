@@ -87,6 +87,7 @@ export const SAVE_FOR_LATER = 'SAVE_FOR_LATER'
 
 export const ORDER_COMPLETED = 'ORDER_COMPLETED'
 export const CLEAR_ORDER = 'CLEAR_ORDER'
+export const CLEAR_USER = 'CLEAR_USER'
 export const SET_DELIVERY_COST  = 'SETDELIVERY_COST'
 
 export const ADD_CART_ITEM = 'ADD_CART_ITEM'

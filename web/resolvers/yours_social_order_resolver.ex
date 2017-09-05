@@ -150,19 +150,31 @@ defmodule Sconely.YoursSocialOrderResolver do
 
 
 
+  def calculate_total_items() do
+
+  end
+
+  def calculate_total_cost() do
+
+  end  
+
+  def calculate_delivery_cost() do
+
+  end
 
 
   #move these to /lib
 
-  def process_cart(payment) do
-
-      #
-
-  end
 
   def process_date(args) do
 
 
+
+  end
+
+  def process_cart(payment) do
+
+      #need costs and menu items and contact and address and date
 
   end
 
@@ -229,9 +241,10 @@ defmodule Sconely.YoursSocialOrderResolver do
 
   def complete_yours_order(args, %{context: context}) do
 
-    IO.inspect(context)
+    #IO.inspect(context)
 
-    #IO.inspect(args)
+    IO.inspect(args[:save_for_later])
+
     process_stripe_payment(args)
 
     #IO.inspect(args)
@@ -365,7 +378,7 @@ defmodule Sconely.YoursSocialOrderResolver do
             #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
             #user_payment_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
 
-            
+
 
             #IO.inspect(order_changeset)
 

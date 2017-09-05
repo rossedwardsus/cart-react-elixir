@@ -271,6 +271,16 @@ defmodule Sconely.ProcessStripePayment do
 
     #end
 
+
+    #if save_for_later then create customer and add payment
+    #if not then just run as basic charge
+
+
+
+
+
+
+
   end
 
 end

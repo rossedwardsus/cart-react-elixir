@@ -336,6 +336,10 @@ class OrderMenu extends React.Component<any, any> {
 
     let yours_social_quantity_selector = null;
 
+
+    //if order type == "pool"
+
+
     if(this.props.User.orders[0].order_type == "yours"){
 
         if(this.props.cartItemsTotalQuantity < 10){

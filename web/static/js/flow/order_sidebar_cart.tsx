@@ -429,8 +429,9 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-6">{item_name} mini</div>
-                                                <div className="col-xs-6" style={{fontSize: 15}}>{24 * item.quantity}</div>
+                                                <div className="col-md-4">{item_name}</div>
+                                                <div className="col-md-4">mini</div>
+                                                <div className="col-xs-4" style={{fontSize: 15}}>{24 * item.quantity}</div>
                                               </div>
                                         </form>
                               )
@@ -440,8 +441,9 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                             <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-6">ruby q regular</div>
-                                                <div className="col-md-6">{12 * item.quantity}</div>
+                                                <div className="col-md-4">ruby q regular</div>
+                                                <div className="col-md-4">ruby q regular</div>
+                                                <div className="col-md-4">{12 * item.quantity}</div>
                                               </div>
                                             </form>
                                     )
@@ -462,6 +464,9 @@ class SidebarCart extends React.Component<any, any> {
     //{this.props.params.repoName}
 
     //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
+
+
+    //message if pool
 
     return (<div> 
                   <br/>
@@ -486,7 +491,7 @@ class SidebarCart extends React.Component<any, any> {
                         <div className="form-group" style={{border: 1}}>
                           <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
                           <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}0</div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                         </div>
                       </form>
                       <form className="form-horizontal" style={{border: 1}}>

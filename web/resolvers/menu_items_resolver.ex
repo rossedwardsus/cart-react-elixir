@@ -22,42 +22,6 @@ defmodule Sconely.MenuItemsResolver do
     #IO.inspect(Timex.diff(date2, date1, :days))
 
     #Duration.now
-
-    new_customer = [
-      email: "test@test.com",
-      description: "An Test Account",
-    #  metadata:[
-    #    app_order_id: "ABC123"
-    #    app_state_x: "xyz"
-    #  ],
-    #  card: [
-    #    number: "4111111111111111",
-    #    exp_month: 01,
-    #    exp_year: 2018,
-    #    cvc: 123,
-    #    name: "Joe Test User"
-    #  ]
-    ]
-    {:ok, res} = Stripe.Customers.create new_customer
-
-    IO.inspect(res[:id])
-
-    #params = [
-    #  source: [
-    #    object: "card",
-    #    number: "4111111111111111",
-    #    cvc: 123,
-    #    exp_month: 12,
-    #    exp_year: 2020,
-    #    metadata: [
-    #      test_field: "test val"
-    #    ]
-    #  ]
-    #]
-
-    #{:ok, card} = Stripe.Cards.create(:customer, customer_id, params)
-
-
     #IO.inspect(Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}))
 
     {:ok, Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}

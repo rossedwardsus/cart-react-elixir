@@ -220,6 +220,7 @@ defmodule Sconely.Schema do
 
     field :process_yours_social_order, type: :process_yours_social_order_response do
         arg :order_type, :string
+        arg :save_for_later, :boolean
         arg :user_name_first, :string
         arg :user_name_last, :string
         arg :user_contact_email, :string

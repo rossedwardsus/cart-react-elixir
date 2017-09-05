@@ -1,4 +1,4 @@
-import { CREATE_ORDER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 //import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
@@ -20,23 +20,6 @@ export const saveForLater = (value: any) => ({
   //return "hello";
   //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
 //}
-
-
-/*export const saveForLater = (value: any) => (dispatch: any) => {
-  //shop.getProducts(products => {
-  //  dispatch(receiveProducts(products))
-  //})
-  //dispatch(viewPublicMenu(1));
-  //dispatch(saveDeliveryAddress());
-  //alert();
-  //return "hello";
-  //Promise.res
-
-  ({ 
-    type: SAVE_FOR_LATER, 
-    value
-  });
-}*/
 
 
 //const completeOrder = (order_type: any) =>
@@ -92,7 +75,7 @@ export function processYoursSocialOrder() {
             //state.User.orders
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_order (order_type: "social" user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -113,6 +96,10 @@ export function processYoursSocialOrder() {
                       console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
 
                       //else delete from redux
+                      //console.log("clear order");
+                      
+                      dispatch({type: CLEAR_USER});
+            
 
                       //that.props.history.push('/user');
                       //context.router
@@ -193,10 +180,10 @@ export function setDeliveryCost(cost: any) {
   }
 }
 
-export function clearOrder() {
-  console.log("clear action ");
+export function clearUser() {
+  console.log("clear order action ");
   return {
-    type: CLEAR_ORDER,
+    type: CLEAR_USER,
   }
 }
 

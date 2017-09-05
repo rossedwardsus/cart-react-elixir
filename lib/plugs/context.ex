@@ -22,6 +22,10 @@ defmodule SconeHomeElixir.Web.Context do
             #if no bearer toek then create one and create a session and pass the toekn to the resolver
 
             #
+
+            #user_id = secure_random.uuid
+            #token_id = secure_random..uuid
+
             session_changeset = Session.changeset(%Session{}, %{user_id: "user_id", token_id: "", logged_out_datetime: nil})
             #Repo.insert
 
@@ -47,7 +51,7 @@ defmodule SconeHomeElixir.Web.Context do
 
             #Repo.one(from p in "people", select: count(p.id))
             
-            IO.inspect(String.length(get_req_header(conn, "authorization") |> List.first))
+            #IO.inspect(String.length(get_req_header(conn, "authorization") |> List.first))
 
             #if there is no bearer token
             #case auth_token do

@@ -332,6 +332,9 @@ class DateTime extends React.Component<any, any> {
         delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
 
     }*/
+
+
+    //if pool then only show name and then link to payment
    
     return ( <div>
                 <PublicTopNavbar/>
