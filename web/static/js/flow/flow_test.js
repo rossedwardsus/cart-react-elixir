@@ -22,7 +22,7 @@ import thunk from 'redux-thunk';
 
 import PublicHomePage from './public/public_home_page.tsx';
 import PublicMenu from './public/public_menu.tsx';
-import PublicAboutUs from './public/public_about_us';
+import PublicAboutUs from './public/public_about_us.tsx';
 
 import YoursRedirect from './yours_redirect.tsx';
 import SocialRedirect from './social_redirect.tsx';

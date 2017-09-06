@@ -18,7 +18,7 @@ import 'jsdom-global/register';
 //global.document = doc
 //global.window = doc.defaultView
 
-describe("Hello", () => {
+describe("Order Menu", () => {
 
 	let renderer: any;
 

@@ -30,7 +30,7 @@ function getCookie(name: string): string {
 }
 
 //@connect(null, mapDispatchToProps)
-class PublicHomePage extends React.Component<any, any> {
+export class PublicHomePage extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -447,9 +447,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   }
 }
 
-const PublicHomePage1 = connect(
+const PublicHomePageConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(PublicHomePage)
 
-export default PublicHomePage1
+export default PublicHomePageConnected

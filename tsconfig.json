@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        //"allowJs": true,
         "jsx": "react",
         "module" :"es6",
         "sourceMap": true,
@@ -10,7 +9,7 @@
         "jsx": "react",
         "moduleResolution": "node",
         "lib": ["es6", "dom", "es2017"]
-        //"outDir": "./web/static/js/typescript"
+        
     },
      "exclude": [
         "node_modules"
@@ -18,8 +17,5 @@
     
     "files": [
         "./web/static/js/flow/reducers/menu.ts"
-        //"./web/static/js/flow/menu.tsx"
-        //"./web/static/js/typescript/components/DeliveryAddress.tsx",
-        //"./web/static/js/typescript/SconelyYours.tsx"
     ]
 }
