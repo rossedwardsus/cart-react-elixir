@@ -9,7 +9,9 @@ defmodule Sconely.OrderDeliveryContactAddress do
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "order_delivery_contact_address" do
-			field :order_id, :string
+			field :user_id, Ecto.UUID
+			field :order_id, Ecto.UUID
+			field :pool_name, :string
 			field :delivery_contact_first_name, :string
 			field :delivery_contact_last_name, :string
 			field :delivery_contact_email, :string
@@ -19,6 +21,8 @@ defmodule Sconely.OrderDeliveryContactAddress do
 			#field :delivery_address_city
 			#field :delivery_address_state
 			#field :delivery_address_zipcode
+			#datetime created
+			#delivery datetime
 			
 			#belongs_to :order, Order		
 			#has_one :order, Order, join_key: :order_id

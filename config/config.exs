@@ -104,9 +104,17 @@ config :absinthe,
 #  token: "fe9f28931893620d4d8110d3659da685"
 
 
-
+#rossedwards.us@gmail.com
 #test secret key sk_test_Bmak0PLr7NSsKLjZeFvRPptz
 #test publishable key pk_test_pY3YMi18Gcw0iUB3BSfmPtpb
+
+#sconely
+#test
+#publishable pk_test_pY3YMi18Gcw0iUB3BSfmPtpb
+#live
+#pk_live_bNEIJSnUf5kVncZHt5NMiiBY
+#sk_live_V4rKgMKdlpl3CwUHHMLH0h1K
+
 
 #config :stripity_stripe, secret_key: "sk_test_Bmak0PLr7NSsKLjZeFvRPptz"
 #config :stripity_stripe, platform_client_id: "pk_test_pY3YMi18Gcw0iUB3BSfmPtpb"
@@ -116,7 +124,9 @@ config :absinthe,
 #  endpoint: "https://api.stripe.com/v1/", # optional
 #  version: "2017-06-05" # optional
 
+
 config :stripe, :secret_key, "sk_test_Bmak0PLr7NSsKLjZeFvRPptz"
+
 
 
 config :guardian, Guardian,

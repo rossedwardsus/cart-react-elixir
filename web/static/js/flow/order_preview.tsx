@@ -816,6 +816,9 @@ class Preview extends React.Component<any, any> {
     //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 
 
+    //if pool only show name
+
+
     return ( <div>
                     <nav className="navbar navbar-default navbar-fixed-top">
                           <div className="container-fluid">
@@ -892,7 +895,9 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <Link to="/order/delivery" className="btn btn-default">Edit Name and Contact</Link>   
                             <br/>
-                            Delivery Contact
+                            {"yours" == "yours" &&
+                            <div>
+                              Delivery Contact
                             <br/>
                             Delivery Date
                             <br/>
@@ -921,7 +926,7 @@ class Preview extends React.Component<any, any> {
                                     <br/>
                                 </div>
                               </div>
-                            </form>
+                            </form></div>}
                             
                             <Link to="/order/payment" className="btn btn-default">Payment</Link>   
                             <br/>

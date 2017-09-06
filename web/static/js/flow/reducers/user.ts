@@ -53,6 +53,8 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       orders_updated = state.orders;
       orders_updated[0]["order_type"] = action.value;
+      //if order_type == pool then add pool_name to order
+      //also need to load the message for the pool order
 
       return Object.assign({}, state, {orders: orders_updated});
 

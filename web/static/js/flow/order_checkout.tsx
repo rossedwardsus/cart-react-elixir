@@ -336,8 +336,56 @@ class DateTime extends React.Component<any, any> {
 
     //if pool then only show name and then link to
 
-    //if pool then just show name
-    //else show everything
+    let screen = null;
+
+    if("pool" == "pool"){
+      
+      screen = <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+    
+    }else{ 
+
+      screen = <div><DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
+                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
+                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
+                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
+                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
+                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
+                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.setUserDeliveryContactAddressZipcode(e)} 
+                            deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
+
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Delivery Date Time
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal" style={{border: 0}}>
+                              <div className="form-group show-lg" style={{borderRadius: 0}}>
+                                <div className="col-md-3">
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{disabledDays: {daysOfWeek: this.state.daysOfWeek,}}}/>
+                                </div>
+                                <div className="col-md-3">
+                                  {this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : 
+                                    (<select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={this.props.setTimeRange} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
+                                      <option value="">Free</option>
+                                      <option value="9-11">9:00 am - 11:00 am</option>
+                                      <option value="1-3">1:00 pm - 3:00 pm</option>
+                                  </select>)}
+                                </div>
+                                <div className="col-md-3">
+                                    {delivery_times}
+                                    <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
+                                        <option value="">Extra</option>
+                                        <option value="900">9:00</option>
+                                        <option value="930">9:30</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </form></div>
+    }
    
     return ( <div>
                 <PublicTopNavbar/>

@@ -19143,7 +19143,7 @@ webpackJsonp([0],[
 	                    return _this2.createOrder("sconely_yours");
 	                } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
-	                } }, "Order Sconely Social"), React.createElement("br", null), "12-250 Scones.  Regular or Minis.  Baked and delivered for events")), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-2" }), React.createElement("div", { className: "col-md-8" }, "footer"), React.createElement("div", { className: "col-md-2" })));
+	                } }, "Order Sconely Social"), React.createElement("br", null), "12-250 Scones.  Regular or Minis.  Baked and delivered for events")), React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-2" }), React.createElement("div", { className: "col-md-8" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Instagram"), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Twitter")), React.createElement("div", { className: "col-md-2" })));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -27240,6 +27240,41 @@ webpackJsonp([0],[
 	        //}
 	        //}else if(order_type == "social"){
 	        //}else if(order_type == "pool"){
+	        //get pool order data
+	        /*  axios.post('/api/graphql',
+	                 {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
+	        )
+	        .then((response: any) => {
+	               console.log("graphql response " + JSON.stringify(response));
+	               if(response.data.data.processYoursSocialOrder.errorReason != ""){
+	                   console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+	                   
+	                    //if save_info_for_later == true...
+	                  //last four card number
+	                   localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+	                   console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+	                   //else delete from redux
+	                  //console.log("clear order");
+	                  
+	                  dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_message: ""});
+	        
+	                   //that.props.history.push('/user');
+	                  //context.router
+	                   //this.context.router.push('/order/complete');
+	                  //dispatch(push("/order/complete"));
+	               }else{
+	                 //dispatch({ type: , item_id: "session_id"});
+	               }
+	            })
+	        .catch((error: any) => {
+	               console.log("axios error handler " + error);
+	              //go to code/payment screen
+	        //        this.props.loadView();
+	                //display errror to user - payment
+	        //if (!error.status) {
+	          // network error
+	        //}
+	         })*/
 	        //}
 	    };
 	    //}
@@ -29379,9 +29414,9 @@ webpackJsonp([0],[
 	            //<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	            //alert(this.props.cart_items.length);
 	            return React.createElement("div", null, React.createElement(user_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_yours");
+	                    return _this2.createOrder("yours");
 	                } }, "Yours"), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_social");
+	                    return _this2.createOrder("social");
 	                } }, "Social"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.menu_items.map(function (item, index) {
 	                var _this3 = this;
 	
@@ -42568,7 +42603,49 @@ webpackJsonp([0],[
 	                 }else{
 	                     delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
 	                 }*/
-	            //if pool then only show name and then link to payment
+	            //if pool then only show name and then link to
+	            var screen = null;
+	            if (true) {
+	                screen = React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
+	                        return _this2.props.setUserFirstName(e);
+	                    }, setUserLastName: function setUserLastName(e) {
+	                        return _this2.props.setUserLastName(e);
+	                    }, setUserEmail: function setUserEmail(e) {
+	                        return _this2.props.setUserEmail(e);
+	                    }, setUserMobile: function setUserMobile(e) {
+	                        return _this2.props.setUserMobile(e);
+	                    } });
+	            } else {
+	                screen = React.createElement("div", null, React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
+	                        return _this2.props.setUserDeliveryContactAddressFirstName(e);
+	                    }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
+	                        return _this2.props.setUserDeliveryContactAddressLastName(e);
+	                    }, setDeliveryContactAddressEmail: function setDeliveryContactAddressEmail(e) {
+	                        return _this2.props.setUserDeliveryContactAddressEmail(e);
+	                    }, setDeliveryContactAddressMobile: function setDeliveryContactAddressMobile(e) {
+	                        return _this2.props.setUserDeliveryContactAddressMobile(e);
+	                    }, setDeliveryContactAddressCompanyName: function setDeliveryContactAddressCompanyName(e) {
+	                        return _this2.props.setUserDeliveryContactAddressCompanyName(e);
+	                    }, setDeliveryContactAddressStreet1: function setDeliveryContactAddressStreet1(e) {
+	                        return _this2.props.setUserDeliveryContactAddressStreet1(e);
+	                    }, setDeliveryContactAddressStreet2: function setDeliveryContactAddressStreet2(e) {
+	                        return _this2.props.setUserDeliveryContactAddressStreet2(e);
+	                    }, setDeliveryContactAddressCity: function setDeliveryContactAddressCity(e) {
+	                        return _this2.props.setUserDeliveryContactAddressCity(e);
+	                    }, setDeliveryContactAddressState: function setDeliveryContactAddressState(e) {
+	                        return _this2.props.setUserDeliveryContactAddressState(e);
+	                    }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
+	                        return _this2.setUserDeliveryContactAddressZipcode(e);
+	                    }, deliveryAddressValidated: function deliveryAddressValidated() {
+	                        return _this2.props.deliveryAddressValidated();
+	                    }, deliveryAddressInvalidated: function deliveryAddressInvalidated() {
+	                        return _this2.props.deliveryAddressInvalidated();
+	                    } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
+	                        return _this2.setDate(e);
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { disabledDays: { daysOfWeek: this.state.daysOfWeek } } })), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: this.props.setTimeRange, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, delivery_times, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
+	                        return _this2.props.setSpecificTime(e);
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))));
+	            }
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
 	                    return _this2.props.setUserFirstName(e);
 	                }, setUserLastName: function setUserLastName(e) {
@@ -44350,9 +44427,10 @@ webpackJsonp([0],[
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
+	            //if pool only show name
 	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default navbar-fixed-top" }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { height: "100", width: "250", src: "/images/logo/Sconely_color_web_300_space3.jpg" }))), React.createElement("div", { className: "hidden-xs navbar-form navbar-right" }), React.createElement("div", { id: "navbar", className: "navbar-collapse collapse navbar-right", style: { zIndex: 10010, background: "white" } }, React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement("a", { href: "./" }, "Profile", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/login" }, "Login", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/register" }, "Signup", React.createElement("span", { className: "sr-only" }, "(current)")))), React.createElement("ul", { className: "nav navbar-nav" }, React.createElement("li", { className: "inactive" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("span", { className: "sr-only" }, "(current)")))))), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-10" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), "User:", React.createElement("br", null), "Name:", React.createElement("br", null), "Ross Edwards", React.createElement("br", null), "Contact:", React.createElement("br", null), "rossedwards@gmail.com", React.createElement("br", null), "310-775-5566", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Name and Contact"), React.createElement("br", null), "Delivery Contact", React.createElement("br", null), "Delivery Date", React.createElement("br", null), "Monday Sept 1st, 2017", React.createElement("br", null), "9-11 am", React.createElement("br", null), "Delivery Address", React.createElement("br", null), "11901 Santa Monica Blvd, Los Angeles, CA, 90025", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))), React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Payment"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
+	                } }, "cart()"), React.createElement("br", null), "User:", React.createElement("br", null), "Name:", React.createElement("br", null), "Ross Edwards", React.createElement("br", null), "Contact:", React.createElement("br", null), "rossedwards@gmail.com", React.createElement("br", null), "310-775-5566", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Name and Contact"), React.createElement("br", null), "yours" == "yours" && React.createElement("div", null, "Delivery Contact", React.createElement("br", null), "Delivery Date", React.createElement("br", null), "Monday Sept 1st, 2017", React.createElement("br", null), "9-11 am", React.createElement("br", null), "Delivery Address", React.createElement("br", null), "11901 Santa Monica Blvd, Los Angeles, CA, 90025", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery", className: "btn btn-default" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null))))), React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Payment"), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, "maybe put something here"))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -47528,6 +47606,8 @@ webpackJsonp([0],[
 	                  console.log("set order type reducer");
 	                  orders_updated = state.orders;
 	                  orders_updated[0]["order_type"] = action.value;
+	                  //if order_type == pool then add pool_name to order
+	                  //also need to load the message for the pool order
 	                  return Object.assign({}, state, { orders: orders_updated });
 	            /*case CREATE_ORDER:
 	              console.log("add cart reducer";
