@@ -80,6 +80,7 @@ export const SET_USER_PAYMENT_METHODS = 'SET_USER_PAYMENT_METHODS'
 
 export const CREATE_ORDER = 'CREATE_ORDER'
 export const SET_ORDER_ID = 'SET_ORDER_ID'
+export const SET_ORDER_TYPE = 'SET_ORDER_TYPE'
 
 export const TERMS = 'TERMS'
 export const MAILING_LIST = 'MAILING_LIST'

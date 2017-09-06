@@ -343,9 +343,9 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <a onClick={() => this.createOrder("sconely_yours")}>Yours</a>
+                            <a onClick={() => this.createOrder("yours")}>Yours</a>
                             <br/>
-                            <a onClick={() => this.createOrder("sconely_social")}>Social</a>
+                            <a onClick={() => this.createOrder("social")}>Social</a>
                             <br/>
                             <br/>
                             <br/>

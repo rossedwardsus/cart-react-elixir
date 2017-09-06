@@ -334,7 +334,10 @@ class DateTime extends React.Component<any, any> {
     }*/
 
 
-    //if pool then only show name and then link to payment
+    //if pool then only show name and then link to
+
+    //if pool then just show name
+    //else show everything
    
     return ( <div>
                 <PublicTopNavbar/>

@@ -31,6 +31,8 @@ defmodule SconeHomeElixir.HomeController do
 
   	if params["name"] != nil do
 
+  		#get order type and name
+
   		signature_order = Repo.get_by(SignatureOrder, %{event_url_name: params["name"]})
   		#order = Repo.get_by(Order, %{order_id: signature_order.parent_order_id})
 
@@ -57,15 +59,23 @@ defmodule SconeHomeElixir.HomeController do
   		#if the date is more then 3 days before the event
   		#else redirect to event not found
 
-  		if signature_order != nil do
+  		#if order_type == "signature"
+  		#else if order_type == "pool"
+
+  		#if signature_order != nil do
 
   			#sconely.herokuapp.com
 
-	  		event_name = params["name"]
-	  		url = "/#/order/" <> event_name <> "/guest/menu"
+	  		#event_name = params["name"]
+	  		#url = "/#/order/" <> event_name <> "/guest/menu"
+	  		#redirect conn, to: url
+
+	  	#else
+
+	  		url = "/#/pool_redirect/"
 	  		redirect conn, to: url
 
-	  	end
+	  	#end
 
 	else
     	render conn, "index.html"

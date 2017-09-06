@@ -174,7 +174,7 @@ defmodule Sconely.YoursSocialOrderResolver do
 
   def process_cart(payment) do
 
-      #need costs and menu items and contact and address and date
+      #need costs and menu items and contact and address and date and last four of payment method number
 
   end
 

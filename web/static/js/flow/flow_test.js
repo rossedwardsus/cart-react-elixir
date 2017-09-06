@@ -23,7 +23,10 @@ import thunk from 'redux-thunk';
 import PublicHomePage from './public/public_home_page.tsx';
 import PublicMenu from './public/public_menu.tsx';
 import PublicAboutUs from './public/public_about_us';
+
 import YoursRedirect from './yours_redirect.tsx';
+import SocialRedirect from './social_redirect.tsx';
+import PoolRedirect from './pool_redirect.tsx';
 
 import UserHomePage from './user/user_home_page.tsx';
 import UserProfile from './user/user_profile.tsx';
@@ -201,7 +204,9 @@ const Root = () => (
         <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
         <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />
         <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />               
-        <Route path="/yours/menu" component={YoursRedirect} />                 
+        <Route path="/yours/menu" component={YoursRedirect} />
+        <Route path="/social/menu" component={SocialRedirect} /> 
+        <Route path="/pool_redirect" component={PoolRedirect} />                    
       </Route>
     </Router>
   </Provider>

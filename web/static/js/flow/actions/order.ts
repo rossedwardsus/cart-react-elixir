@@ -1,4 +1,4 @@
-import { CREATE_ORDER, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, SET_ORDER_TYPE, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 //import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
@@ -48,15 +48,23 @@ export function createOrder(order_type: any, name: any) {
       //dispatch(createOrder1(order_type, name, 123));
       //dispatch(getMenuItems(order_type));
       
-      if(order_type == "sconely_signature"){
-          
-          dispatch(push("/order/1/signature"));
+      //if(order_type == "signature"){
 
-      }else{
+      //      dispatch({type: SET_ORDER_TYPE});
+      //    dispatch(push("/order/1/signature"));
 
-          dispatch(push("/order/menu"));
+      //if(order_type == "yours"){
 
-      }
+            dispatch({type: SET_ORDER_TYPE, value: order_type});
+            dispatch(push("/order/menu"));
+
+      //}
+      //}else if(order_type == "social"){
+
+
+      //}else if(order_type == "pool"){
+
+      //}
     }
   //}
 }

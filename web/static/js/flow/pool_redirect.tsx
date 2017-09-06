@@ -21,7 +21,7 @@ import {createOrder} from './actions/order.ts';
 //};
 
 
-class YoursRedirect extends React.Component<any, any> {
+class PoolRedirect extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -141,16 +141,16 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       //dispatch(cartValidated());
     },
     createOrder: (order_type: any, name: any) => {
-      dispatch(createOrder("social", name));
+      dispatch(createOrder("pool", name));
     }
   }
 }
 
-const YoursRedirectConnected = connect(
+const PoolRedirectConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(YoursRedirect);
+)(PoolRedirect);
 
-export default YoursRedirectConnected;
+export default PoolRedirectConnected;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

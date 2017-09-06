@@ -7,7 +7,10 @@ import {connect} from 'react-redux';
 
 import {createOrder} from '../actions/order.ts';
 
+import PublicTopNavbar from './public_top_navbar.tsx';
+
 import {List, Map} from 'immutable';
+
 //import * as Cookie from 'js-cookie';
 //const cookie: any = require('react-cookie');
 
@@ -360,33 +363,7 @@ class PublicHomePage extends React.Component<any, any> {
 
     return (
               <div>
-                    <nav className="navbar navbar-default" style={{border: 1}}>
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
-                                 <span className="sr-only">Toggle navigation</span>
-                                 <span className="icon-bar"></span>
-                                 <span className="icon-bar"></span>
-                                 <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" style={{textAlign: "center"}} href="#"><img src="http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
-                            </div>
-                            <div className="collapse navbar-collapse" id="navigationbar">
-                              <ul id="navbar" className="nav navbar-nav navbar-right">
-                                <li><Link to="/login">Login</Link></li>
-                                <li><Link to="/register">Signup</Link></li>
-                                <li><Link to="/register">About Us</Link></li>
-                                <li><Link to="/register">Faq</Link></li>
-                              </ul>
-                              <form id="navbar" className="navbar-form navbar-left">
-                                <div className="form-group">
-                                  <input type="text" className="form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                                </div>
-                                <button type="submit" className="btn btn-default">Submit</button>
-                              </form>
-                            </div>
-                          </div>
-                    </nav>
+                   <PublicTopNavbar/>
                     <div className="row">
                         <div className="hidden-xs col-md-3">
                           <br/>
@@ -435,6 +412,17 @@ class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           12-250 Scones.  Regular or Minis.  Baked and delivered for events
                         </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-md-2">
+                      </div>
+                      <div className="col-md-8">
+                          <Link to="/public/menu">Instagram</Link>
+                          <Link to="/public/menu">Twitter</Link>
+                          
+                      </div>
+                      <div className="col-md-2">
+                      </div>
                     </div>
               </div>
     )
