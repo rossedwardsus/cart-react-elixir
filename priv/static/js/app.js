@@ -29817,7 +29817,7 @@ webpackJsonp([0],[
 	    _createClass(Menu, [{
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, "about us", React.createElement("br", null));
+	            return React.createElement("div", null, React.createElement("div", null, "about us"));
 	        }
 	    }]);
 	

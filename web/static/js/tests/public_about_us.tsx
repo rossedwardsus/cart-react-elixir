@@ -46,6 +46,8 @@ describe("Public About Us", () => {
 
 		const wrapper = shallow(<PublicAboutUs />);
 		//expect(wrapper.find('img')).to.have.length(1);
+
+		const selectPlayer = sinon.stub();
 		
 		//const p = wrapper.find('div');
   		//expect(p.text()).toBe('about us');
