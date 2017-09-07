@@ -394,11 +394,6 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
                         </div>
                         <div className="col-md-2">
                           <br/>
@@ -414,12 +409,22 @@ export class PublicHomePage extends React.Component<any, any> {
                         </div>
                     </div>
                     <div className="row">
-                      <div className="col-md-2">
+                      <div className="col-md-4">
                       </div>
-                      <div className="col-md-8">
+                      <div className="col-md-2">
+                          <Link to="/public/menu">About Us</Link>
+                          <br/>
+                          <Link to="/public/menu">Our Story</Link>
+                          <br/>
+                          <Link to="/public/menu">Faq</Link>
+                          <br/>
+                          <br/>
+                          <br/>
+                      </div>
+                      <div className="col-md-4">
                           <Link to="/public/menu">Instagram</Link>
+                          <br/>
                           <Link to="/public/menu">Twitter</Link>
-                          
                       </div>
                       <div className="col-md-2">
                       </div>
