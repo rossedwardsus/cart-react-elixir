@@ -63,7 +63,7 @@
     "immutable": "^3.8.1",
     "istanbul-lib-report": "^1.0.0",
     "istanbul-lib-source-maps": "^1.1.1",
-    "jest": "^18.1.0",
+    "jest": "^21.0.1",
     "jsdom": "^9.5.0",
     "jsdom-global": "^2.1.1",
     "jshint": "^2.9.2",
@@ -95,7 +95,7 @@
     "sinon": "^2.4.1",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
-    "ts-jest": "^19.0.7",
+    "ts-jest": "^19.0.14",
     "ts-loader": "^1.2.2",
     "ts-mocha": "^1.0.3",
     "ts-node": "^3.3.0",
@@ -111,19 +111,23 @@
     "//test": "mocha --compilers ts:./node_modules/ts-node/register,tsx:./node_modules/ts-node/register,js:babel-core/register web/static/js/tests/test.tsx",
     "uglify": "uglifyjs ./web/static/js/flow/bundle.js -o ./web/static/js/flow/bundle.min.js",
     "eslint": "",
-    "jest": "",
+    "jest": "jest",
     "typescript": "",
     "lint": "tslint --config tslint.json --project tsconfig.json || exit 0",
-    "test": "mocha -r ./node_modules/ts-node/register web/static/js/tests/public_homepage.tsx",
+    "test1": "mocha -r ./node_modules/ts-node/register web/static/js/tests/public_homepage.tsx",
+    "test": "./node_modules/.bin/ts-mocha -p ./tsconfig.json web/static/js/tests/*.tsx",
     "build": "webpack --config webpack.config_chunks.js",
     "": "./node_modules/.bin/ts-mocha -p ./ web/static/js/tests/public_homepage.tsx"
   },
   "jest": {
-    "testRegex": "(/web/static/js/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
-    ]
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/web/static/js/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$"
   }
 }

@@ -30,13 +30,9 @@ export default class Menu extends React.Component<any, any> {
   
   render(): JSX.Element {
 
-   
-
-
     return (
       <div>
-        about us
-        <br/>
+        <div>about us</div>
       </div>
     )
   }

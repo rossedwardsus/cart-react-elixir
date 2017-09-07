@@ -29,6 +29,9 @@ defmodule SconeHomeElixir.HomeController do
 
   	#Enum.each(test_array, fn (v) -> {IO.inspect(v[:one])} end)
 
+  	#/signature_order_pool_name/pool_order_date
+
+
   	if params["name"] != nil do
 
   		#get order type and name

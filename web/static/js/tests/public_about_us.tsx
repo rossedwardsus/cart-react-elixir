@@ -11,13 +11,16 @@ import PublicAboutUs from '../flow/public/public_about_us.tsx';
 import { assert, expect } from 'chai';
 //import assert from 'assert';
 import * as sinon from 'sinon';
-import 'jsdom-global/register';
+//import 'jsdom-global/register';
 //import 'mocha';
 
-//import jsdom from 'jsdom'
-//const doc = jsdom.jsdom('<!doctype html><html><body></body></html>')
-//global.document = doc
-//global.window = doc.defaultView
+//import jsdom from 'jsdom';
+//const doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
+//global.document = doc;
+//global.window = doc.defaultView;
+//global.window = document.defaultView;
+//global.window.location = "https://www.bobsaget.com/"
+
 
 
 //./node_modules/.bin/ts-mocha -p ./tsconfig.json web/static/js/tests/public_homepage.tsx
@@ -42,7 +45,12 @@ describe("Public About Us", () => {
 	it("should render correctly", () => {
 
 		const wrapper = shallow(<PublicAboutUs />);
-		expect(wrapper.find('img')).to.have.length(1);
+		//expect(wrapper.find('img')).to.have.length(1);
+		
+		//const p = wrapper.find('div');
+  		//expect(p.text()).toBe('about us');
+
+  		expect(wrapper.contains(<div>about us</div>)).to.equal(true);
 
         //const result = renderer.getRenderOutput();
         //assert.strictEqual(result.type, "div");
