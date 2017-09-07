@@ -38,7 +38,8 @@ defmodule SconeHomeElixir.Mixfile do
   #{:tzdata, "~> 0.5.8"},
   #{:httpoison, "~> 0.8.0"},
   #{:erlcloud, git: "https://github.com/gleber/erlcloud"},
-     
+
+  #{:stripity_stripe, "~> 1.4.0"},
      
     
      
@@ -57,7 +58,6 @@ defmodule SconeHomeElixir.Mixfile do
      {:mailgun, "~> 0.1.2"},
      {:bamboo_postmark, "~> 0.4"},
      {:twilex, "~> 0.0.1"},
-     {:stripity_stripe, "~> 1.4.0"},
      {:stripe, "~> 0.7.1", hex: :stripe_elixir},
      {:mogrify, "~> 0.3.2"},
      {:gm, "~> 0.0.1"},
