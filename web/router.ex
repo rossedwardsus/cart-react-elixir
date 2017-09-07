@@ -64,6 +64,8 @@ defmodule SconeHomeElixir.Router do
     post "/register", Sconely.RegisterController, :create
     post "/login", Sconely.LoginController, :create
 
+    #get "/menu_items", Sconely.MenuItemsController, :index   
+
     get "/guest/list", Sconely.GuestListDownloadController, :index   
 
     get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema

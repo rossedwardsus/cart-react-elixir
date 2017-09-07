@@ -1,11 +1,13 @@
 defmodule Sconely.MenuItemsController do
+  use SconeHomeElixir.Web, :controller
+
   alias Sconely.MenuItem
   alias SconeHomeElixir.Repo
 
   import Ecto.Query
   use Timex
   
-  def getMenuItems(_args, _info) do
+  def getMenuItems(conn, _args) do
     #IO.puts("create graphql")
 
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
@@ -24,8 +26,11 @@ defmodule Sconely.MenuItemsController do
     #Duration.now
     #IO.inspect(Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}))
 
-    {:ok, Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
+    #{:ok, Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
+
+    json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
+
   end
 
 
