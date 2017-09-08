@@ -3,7 +3,8 @@ defmodule Sconely.YoursSocialOrderResolver do
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
   alias Sconely.MenuItem
-  alias Sconely.Order
+  #alias Sconely.Order
+  #alias Sconely.PoolOrder
   #alias Ecto.Multi
   alias Sconely.CompleteOrderResolverHelper
 
