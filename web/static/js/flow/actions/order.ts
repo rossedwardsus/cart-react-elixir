@@ -53,7 +53,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
       //      dispatch({type: SET_ORDER_TYPE});
       //    dispatch(push("/order/1/signature"));
 
-      //if(order_type == "yours"){
+      if(order_type == "yours"){
 
 
 
@@ -61,26 +61,34 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
             dispatch(push("/order/menu"));
 
       //}
-      //}else if(order_type == "social"){
+      }else if(order_type == "social"){
 
 
-      //}else if(order_type == "pool"){
+      }else if(order_type == "pool"){
+
+            console.log("pool");
 
             //get pool order data
             //possibly do as an api and not graphql
 
-            /*  axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
+            axios.post('/api/graphql',
+                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_message}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
                   console.log("graphql response " + JSON.stringify(response));
 
-                  if(response.data.data.processYoursSocialOrder.errorReason != ""){
+                  dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+
+                  dispatch(push("/order/menu"));
+
+
+
+                  /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
 
                       console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
 
-                      
+                      dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
 
 
                       //if save_info_for_later == true...
@@ -106,7 +114,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
 
                     //dispatch({ type: , item_id: "session_id"});
 
-                  }
+                  }*/
       
 
             })
@@ -123,16 +131,16 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
               // network error
             //}
 
-            })*/
+            })
 
-      //}
+      }
     }
   //}
 }
 
 
 
-export function processYoursSocialOrder() {
+export function processYoursSocialPoolOrder() {
   console.log("process yours social order action ");
   //console.log("action");
 

@@ -1,4 +1,4 @@
-defmodule Sconely.YoursSocialOrderResolver do
+defmodule Sconely.YoursSocialPoolOrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
@@ -74,54 +74,7 @@ defmodule Sconely.YoursSocialOrderResolver do
   #end
 
 
-  #mutation SaveSconelySignatureOrderEventDetails {
-  #  save_sconely_signature_order_event_details(order_id: "Second", event_name: "1", event_date: "", event_time: "") {
-  #    status
-  #  }
-  #}
-
-
-  #save event details
-  def save_sconely_signature_order_event_details(%{order_id: order_id, event_name: event_name, event_date: event_date, event_time: event_time}, _info) do
-  #  event name
-  #  delivery date
-  #  delivery time
-  #  code
-  #  guest amount
-
-     #sconely_signature_order = Repo.get_by(SconelySignatureOrder, order_id: order_id)
-
-     #IO.inspect(sconely_signature_order)
-
-     #order_total = guest_count * 6
   
-     #sconely_signature_order_changeset = SconelySignatureOrder.changeset(sconely_signature_order, %{event_name: event_name, event_date: event_date, event_time: event_time})
-     #{:error, sconely_signature_order} = Repo.insert(sconely_signature_order_changeset)
-
-     #case Repo.update(sconely_signature_order_changeset) do
-     #   {:ok, sconely_signature_order} -> IO.inspect("sconely_signature_order_changeset")
-          #conn
-          #|> put_flash(:info, "User updated successfully.")
-          #|> redirect(to: user_path(conn, :show, user))
-    #    {:error, changeset} -> IO.inspect("error")
-          #render(conn, "edit.html", user: user, changeset: changeset)
-    #end
-
-    #update cost to reflect guest count
-        
-
-  #  Repo.get!(SconelySignatureOrderEventDetails, order_id)
-  #  |> SconelySignatureOrder.changeset(order_params)
-  #  |> Repo.update
-    {:ok, %{status: "hello"}}
-  end
-
-  #def save_sconely_signature_order_guest_orders(%{order_id: order_id, order: order_params}, _info) do
-    #first name, last name, email, item_id
-  #  Repo.get!(SconelySignatureOrder, order_id)
-  #  |> SconelySignatureOrder.changeset(order_params)
-  #  |> Repo.update
-  #end
 
   def check_code(%{host_id: host_id}, _info) do
     #check for full code at each typing
@@ -135,18 +88,13 @@ defmodule Sconely.YoursSocialOrderResolver do
   end
   
 
-  #mutation SaveSconelySignatureOrderAdditionalItems {
-  #save_sconely_signature_order_additional_items(order_id: "24a6d87f-5892-4467-924e-2d33a1e33d2f", item_id: "12", quantity: "time") {
-    #status
-  #}
-  
-  
+  def get_pool_order_details(args, _info) do
+  #  Repo.get!(SconelySignatureOrder, order_id)
+  #  |> SconelySignatureOrder.changeset(order_params)
+  #  |> Repo.update
 
-
-  #defmodule Person do
-  #    @derive [Poison.Encoder]
-  #    defstruct [:id]
-  #end
+      {:ok, %{pool_message: ""}}
+  end
 
 
 

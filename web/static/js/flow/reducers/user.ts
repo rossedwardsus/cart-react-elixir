@@ -63,7 +63,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       orders_updated = state.orders;
 
 
-      orders_updated.push({order_type: "pool", pool_name: "pn", pool_date: "pd", status: "started", created_datetime: "", cartItems: [{item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1"}]})
+      orders_updated.push({order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "started", created_datetime: "", cartItems: []})
 
       let started_order = state.orders.findIndex((order: any) => order.status == "started");
 
@@ -98,8 +98,8 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
 
 
-    /*case ADD_CART_ITEM:
-      console.log("add cart reducer");
+    case ADD_CART_ITEM:
+      console.log("add cart item reducer");
 
       orders_updated = state.orders;
       orders_updated[0].cartItems.push({item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1"});
@@ -109,7 +109,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
 
 
-    case SET_USER_NAME_FIRST:
+    /*case SET_USER_NAME_FIRST:
       console.log("user first name reducer" + JSON.stringify(state));
 
       user_updated = state.user;

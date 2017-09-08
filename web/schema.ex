@@ -68,6 +68,18 @@ defmodule Sconely.Schema do
         resolve &Sconely.SconelySignatureOrderResolver.get/2
     end
 
+    field :get_pool_order_details, type: :pool_order_details do
+        #arg :order_id, :string
+        arg :pool_name, :string
+        arg :pool_date, :string
+        #arg :code, :string
+        #arg :guest_count, :string
+        #arg :delivery_date, :string
+        #arg :delivery_time, :string
+     
+        resolve &Sconely.YoursSocialPoolOrderResolver.get_pool_order_details/2
+    end
+
 
 
     #field :get_sconely_signature_order_details, type: :sconely_signature_order_details do
@@ -218,13 +230,15 @@ defmodule Sconely.Schema do
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
-    field :process_yours_social_order, type: :process_yours_social_order_response do
+    field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do
         arg :order_type, :string
         arg :save_for_later, :boolean
         arg :user_name_first, :string
         arg :user_name_last, :string
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
+        arg :pool_name, :string
+        arg :pool_date, :string
         arg :delivery_contact_address_name_first, :string
         arg :delivery_contact_address_name_last, :string
         arg :delivery_contact_address_contact_email, :string

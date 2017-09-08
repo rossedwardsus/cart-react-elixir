@@ -118,11 +118,20 @@ defmodule Sconely.Schema.Types do
     #field :quantity, :string
   end
 
-  object :process_yours_social_order_response do
+  object :process_yours_social_pool_order_response do
     field :status, :string
     field :sconely_user_token, :string
     #field :stripe__token, :string
     field :error_reason, :string
+  end
+
+
+  object :pool_order_details do
+    #field :status, :string
+    #field :sconely_user_token, :string
+    #field :stripe__token, :string
+    #field :error_reason, :string
+    field :pool_message, :string
   end
   
 

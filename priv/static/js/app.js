@@ -27235,54 +27235,51 @@ webpackJsonp([0],[
 	        //if(order_type == "signature"){
 	        //      dispatch({type: SET_ORDER_TYPE});
 	        //    dispatch(push("/order/1/signature"));
-	        //if(order_type == "yours"){
-	        dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, order_type: order_type, pool_name: pool_name, pool_date: pool_date });
-	        dispatch(react_router_redux_1.push("/order/menu"));
-	        //}
-	        //}else if(order_type == "social"){
-	        //}else if(order_type == "pool"){
-	        //get pool order data
-	        //possibly do as an api and not graphql
-	        /*  axios.post('/api/graphql',
-	                 {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
-	        )
-	        .then((response: any) => {
-	               console.log("graphql response " + JSON.stringify(response));
-	               if(response.data.data.processYoursSocialOrder.errorReason != ""){
-	                   console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
-	                   
-	                    //if save_info_for_later == true...
-	                  //last four card number
-	                   localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
-	                   console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
-	                   //else delete from redux
-	                  //console.log("clear order");
-	                  
-	                  //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
-	        
-	                   //that.props.history.push('/user');
-	                  //context.router
-	                   //this.context.router.push('/order/complete');
-	                  //dispatch(push("/order/complete"));
-	               }else{
-	                 //dispatch({ type: , item_id: "session_id"});
-	               }
-	            })
-	        .catch((error: any) => {
-	               console.log("axios error handler " + error);
-	              //go to code/payment screen
-	        //        this.props.loadView();
+	        if (order_type == "yours") {
+	            dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, order_type: order_type, pool_name: pool_name, pool_date: pool_date });
+	            dispatch(react_router_redux_1.push("/order/menu"));
+	            //}
+	        } else if (order_type == "social") {} else if (order_type == "pool") {
+	            console.log("pool");
+	            //get pool order data
+	            //possibly do as an api and not graphql
+	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	                console.log("graphql response " + JSON.stringify(response));
+	                dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message" });
+	                dispatch(react_router_redux_1.push("/order/menu"));
+	                /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
+	                     console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+	                     dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
+	                      //if save_info_for_later == true...
+	                    //last four card number
+	                     localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+	                     console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+	                     //else delete from redux
+	                    //console.log("clear order");
+	                    
+	                    //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
+	                                //that.props.history.push('/user');
+	                    //context.router
+	                     //this.context.router.push('/order/complete');
+	                    //dispatch(push("/order/complete"));
+	                 }else{
+	                   //dispatch({ type: , item_id: "session_id"});
+	                 }*/
+	            }).catch(function (error) {
+	                console.log("axios error handler " + error);
+	                //go to code/payment screen
+	                //        this.props.loadView();
 	                //display errror to user - payment
-	        //if (!error.status) {
-	          // network error
-	        //}
-	         })*/
-	        //}
+	                //if (!error.status) {
+	                // network error
+	                //}
+	            });
+	        }
 	    };
 	    //}
 	}
 	exports.createOrder = createOrder;
-	function processYoursSocialOrder() {
+	function processYoursSocialPoolOrder() {
 	    console.log("process yours social order action ");
 	    //console.log("action");
 	    return function (dispatch, getState) {
@@ -27322,7 +27319,7 @@ webpackJsonp([0],[
 	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
 	    };
 	}
-	exports.processYoursSocialOrder = processYoursSocialOrder;
+	exports.processYoursSocialPoolOrder = processYoursSocialPoolOrder;
 	function orderCompleted(order_type) {
 	    console.log("create order action " + order_type);
 	    return {
@@ -29036,151 +29033,151 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	
 	var Menu = function (_React$Component) {
-	    _inherits(Menu, _React$Component);
+	  _inherits(Menu, _React$Component);
 	
-	    //props: Props;
-	    function Menu(props) {
-	        _classCallCheck(this, Menu);
+	  //props: Props;
+	  function Menu(props) {
+	    _classCallCheck(this, Menu);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+	    //this.getData();
+	    //alert("sconely yours1" + this.props.params.order_id);
+	    var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
 	
-	        _this.state = {
-	            page: "items",
-	            items: [{ item_id: 1 }],
-	            cart: _this.props.cart
-	        };
-	        //this.loadCart = this.loadCart.bind(this);
-	        return _this;
+	    _this.state = {
+	      page: "items",
+	      items: [{ item_id: 1 }],
+	      cart: _this.props.cart
+	    };
+	    //this.loadCart = this.loadCart.bind(this);
+	    return _this;
+	  }
+	
+	  _createClass(Menu, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      //get active items from the database
 	    }
-	
-	    _createClass(Menu, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //get active items from the database
-	        }
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var that = this;
-	            var page = "";
-	            var value_12 = "";
-	            var value_24 = "";
-	            var mini_12 = "";
-	            /*this.state.items.map(function(item){
-	             
-	                value_12 = item.item_id + "_" + 12;
-	                value_24 = item.item_id + "_" + 24;
-	                mini_12 = value_12 + "_mini";
-	                 });
-	                 if(this.state.page == "items"){
-	                       page = <div>
-	                          cart(<a onClick={() => that.loadCart()}>{this.props.total_items}</a>)
-	                          <br/>
-	                          <br/>
-	                          <div className="container-fluid">
-	                              <div className="row">
-	                                <div className="col-xs-12 col-md-4">
-	                                  <div className="thumbnail" >
-	                                    <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.props.selectItem(1)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
-	                                    <div className="caption" onClick={() => this.props.selectItem}>
-	                                      <h3>Strawberry Scone1</h3>
-	                                      <p>Cost</p>
-	                                    </div>
-	                                  </div>
-	                                </div>
-	                                <div className="col-xs-12 col-md-4">
-	                                  <div className="thumbnail">
-	                                    <img src="/images/strawberry_scones.png" alt="..."/>
-	                                    <div className="caption">
-	                                      <h3>Strawberry Scone2</h3>
-	                                      <p>Cost</p>
-	                                    </div>
-	                                  </div>
-	                                </div>
-	                                <div className="col-xs-12 col-md-4">
-	                                  <div className="thumbnail">
-	                                    <img src="/images/strawberry_scones.png" alt="..."/>
-	                                    <div className="caption">
-	                                      <h3>Strawberry Scone2</h3>
-	                                      <p>Cost</p>
-	                                    </div>
-	                                  </div>
-	                                </div>
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var that = this;
+	      var page = "";
+	      var value_12 = "";
+	      var value_24 = "";
+	      var mini_12 = "";
+	      /*this.state.items.map(function(item){
+	       
+	          value_12 = item.item_id + "_" + 12;
+	          value_24 = item.item_id + "_" + 24;
+	          mini_12 = value_12 + "_mini";
+	           });
+	           if(this.state.page == "items"){
+	                 page = <div>
+	                    cart(<a onClick={() => that.loadCart()}>{this.props.total_items}</a>)
+	                    <br/>
+	                    <br/>
+	                    <div className="container-fluid">
+	                        <div className="row">
+	                          <div className="col-xs-12 col-md-4">
+	                            <div className="thumbnail" >
+	                              <img id="1" onMouseOver={(e) => this.mouseOver(e)} onMouseOut={(e) => this.mouseOut(e)} onClick={() => this.props.selectItem(1)} src="/images/menu/DWK_greenrollover1.jpg" data-target="myModal" alt="..."/>
+	                              <div className="caption" onClick={() => this.props.selectItem}>
+	                                <h3>Strawberry Scone1</h3>
+	                                <p>Cost</p>
 	                              </div>
+	                            </div>
 	                          </div>
-	                          {this.state.items.map(function(item){
-	                                   var value_12 = item.item_id + "_" + 12;
-	                              var value_24 = item.item_id + "_" + 24;
-	                              
-	                              return(
-	                                  <div>
-	                                  <select onChange={(e) => this.props.addItemToCart(e.target.value)}>
-	                                    <option value=""></option>
-	                                    <option value={value_12}>12</option>
-	                                    <option value={value_24}>24</option>
-	                                  </select>
-	                                  <br/>
-	                                  </div>
-	                              )
-	                               }.bind(this))}
-	                          <br/>
-	                          <br/>
-	                          <br/>
-	                          <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-	                            <div className="modal-dialog" role="document">
-	                              <div className="modal-content">
-	                                <div className="modal-header">
-	                                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                                  <h4 className="modal-title" id="myModalLabel">Modal title</h4>
-	                                </div>
-	                                <div className="modal-body">
-	                                       ...
-	                                  <img src="/images/strawberry_scones.png"></img>
-	                                </div>
-	                                <div className="modal-footer">
-	                                  <select onChange={(value) => this.props.addItemToCart(value)}>
-	                                    <option value=""></option>
-	                                    <option value={value_12}>12</option>
-	                                    <option value={mini_12}>Mini 12</option>
-	                                    <option value={value_24}>24</option>
-	                                  </select>
-	                                  <br/>
-	                                  X
-	                                  <br/>
-	                                    <select onChange={this.props.selectQuantity}>
-	                                    <option value="">1</option>
-	                                    <option value={value_12}>2</option>
-	                                  </select>
-	                                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-	                                </div>
+	                          <div className="col-xs-12 col-md-4">
+	                            <div className="thumbnail">
+	                              <img src="/images/strawberry_scones.png" alt="..."/>
+	                              <div className="caption">
+	                                <h3>Strawberry Scone2</h3>
+	                                <p>Cost</p>
+	                              </div>
+	                            </div>
+	                          </div>
+	                          <div className="col-xs-12 col-md-4">
+	                            <div className="thumbnail">
+	                              <img src="/images/strawberry_scones.png" alt="..."/>
+	                              <div className="caption">
+	                                <h3>Strawberry Scone2</h3>
+	                                <p>Cost</p>
 	                              </div>
 	                            </div>
 	                          </div>
 	                        </div>
-	                 }else{
-	                       page = <div>
-	                            <a onClick={() => this.loadItems()}>items</a>
+	                    </div>
+	                    {this.state.items.map(function(item){
+	                             var value_12 = item.item_id + "_" + 12;
+	                        var value_24 = item.item_id + "_" + 24;
+	                        
+	                        return(
+	                            <div>
+	                            <select onChange={(e) => this.props.addItemToCart(e.target.value)}>
+	                              <option value=""></option>
+	                              <option value={value_12}>12</option>
+	                              <option value={value_24}>24</option>
+	                            </select>
 	                            <br/>
-	                            {this.props.cart.map(function(item){
-	                                       var item_id = item.item_id;
-	                                       return(<div>description{item.item_id}xquantity-<a onClick={() => that.props.removeItemFromCart(item_id)}>remove</a></div>)
-	                                 })}
+	                            </div>
+	                        )
+	                         }.bind(this))}
+	                    <br/>
+	                    <br/>
+	                    <br/>
+	                    <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+	                      <div className="modal-dialog" role="document">
+	                        <div className="modal-content">
+	                          <div className="modal-header">
+	                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                            <h4 className="modal-title" id="myModalLabel">Modal title</h4>
 	                          </div>
-	                 }*/
-	            return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "About Us")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Faq")))))));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
+	                          <div className="modal-body">
+	                                 ...
+	                            <img src="/images/strawberry_scones.png"></img>
+	                          </div>
+	                          <div className="modal-footer">
+	                            <select onChange={(value) => this.props.addItemToCart(value)}>
+	                              <option value=""></option>
+	                              <option value={value_12}>12</option>
+	                              <option value={mini_12}>Mini 12</option>
+	                              <option value={value_24}>24</option>
+	                            </select>
+	                            <br/>
+	                            X
+	                            <br/>
+	                              <select onChange={this.props.selectQuantity}>
+	                              <option value="">1</option>
+	                              <option value={value_12}>2</option>
+	                            </select>
+	                            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+	                          </div>
+	                        </div>
+	                      </div>
+	                    </div>
+	                  </div>
+	           }else{
+	                 page = <div>
+	                      <a onClick={() => this.loadItems()}>items</a>
+	                      <br/>
+	                      {this.props.cart.map(function(item){
+	                                 var item_id = item.item_id;
+	                                 return(<div>description{item.item_id}xquantity-<a onClick={() => that.props.removeItemFromCart(item_id)}>remove</a></div>)
+	                           })}
+	                    </div>
+	           }*/
+	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "http://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")))))));
+	    }
+	  }], [{
+	    key: "contextTypes",
+	    get: function get() {
+	      return {
+	        router: React.PropTypes.object.isRequired
+	      };
+	    }
+	  }]);
 	
-	    return Menu;
+	  return Menu;
 	}(React.Component);
 	
 	exports.default = Menu;
@@ -40262,21 +40259,27 @@ webpackJsonp([0],[
 	            //if yours order show yours menu if social order show social menu
 	            var options_count_array = [];
 	            //if(this.props.cartItemsTotalQuantity > 0){
-	            for (var i = 1; i < 12 - this.props.cartItemsTotalQuantity; i++) {
+	            var count = this.props.order.cartItems.reduce(function (amount, item) {
+	                return amount + item.quantity;
+	            }, 0);
+	            for (var i = 1; i < 12 - count; i++) {
 	                //console.log(i);
 	                options_count_array.push(i);
 	            }
 	            ;
-	            console.log("oca " + JSON.stringify(11 - this.props.cartItemsTotalQuantity));
+	            console.log("options count array " + JSON.stringify(11 - this.props.order.cartItems.reduce(function (amount, item) {
+	                return amount + item.quantity;
+	            }, 0)));
+	            //this.setState{options_count_array: options_count_array};
 	            //let options = {for (let i = 1; i == this.props.cartItemsTotalQuantity - 1; i++){ 
 	            //                          <option value={i}>{i}</option>
 	            //              })}
 	            //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
-	            var yours_social_quantity_selector = null;
+	            var yours_social_pool_quantity_selector = null;
 	            //if order type == "pool"
 	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
 	                if (this.props.cartItemsTotalQuantity < 10) {
-	                    yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
+	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
 	                        return React.createElement("option", { value: value }, value);
 	                    }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                            return _this2.addCartItem();
@@ -40304,13 +40307,13 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Regular or Minis"), React.createElement("option", { value: "regular" }, "Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Regular or Minis"), React.createElement("option", { value: "regular" }, "Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
 	                //}
 	                //}
 	            }
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), "mobile link to cart with number of items in cart", React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), this.props.order.cartItems.length == 0 && this.props.order.pool_message, React.createElement("br", null), "else show cart", React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement(mobile_checkout_button_tsx_1.default, null), React.createElement("br", null), React.createElement("br", null), "mobile link to cart with number of items in cart", React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
 	                var _this3 = this;
 	
 	                //console.log(item);
@@ -40326,7 +40329,7 @@ webpackJsonp([0],[
 	                    }, onMouseLeave: function onMouseLeave(e) {
 	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg";
 	                    }, src: "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$5.50"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, yours_social_quantity_selector, this.props.cartItemsTotalQuantity < 10 &&
+	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "$5.50"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, yours_social_pool_quantity_selector, this.props.cartItemsTotalQuantity < 10 &&
 	            //if order type == "yours"
 	            React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: function onChange(e) {
 	                    return _this2.selectedYoursItemQuantity(e);
@@ -40362,7 +40365,7 @@ webpackJsonp([0],[
 	        //if(state.default.order.cart_items != undefined){
 	        menuItems: state.menuItems.items,
 	        //guestOrder: state.guestOrder,
-	        //cartItems: state.User.orders[0].cartItems, //computed
+	        order: state.User.orders[0],
 	        User: state.User,
 	        //cart_total_items //computed
 	        //cart_total_cost //cost
@@ -41321,7 +41324,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), "an error occured with your payment", React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
+	                } }), React.createElement("input", { type: "checkbox", onChange: this.saveForLater }), "Save for later", React.createElement("br", null), "an error occured with your payment", React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialPoolOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41455,8 +41458,8 @@ webpackJsonp([0],[
 	        //setOrderId: (value: any) => {
 	        //  dispatch(setOrderId(value));
 	        //},
-	        processYoursSocialOrder: function processYoursSocialOrder() {
-	            dispatch(order_ts_1.processYoursSocialOrder());
+	        processYoursSocialPoolOrder: function processYoursSocialPoolOrder() {
+	            dispatch(order_ts_1.processYoursSocialPoolOrder());
 	        },
 	        //complete order thunk
 	        completeOrder: function completeOrder() {
@@ -47240,7 +47243,7 @@ webpackJsonp([0],[
 	                  //if none exists that add the order
 	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
-	                  orders_updated.push({ order_type: "pool", pool_name: "pn", pool_date: "pd", status: "started", created_datetime: "", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] });
+	                  orders_updated.push({ order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "started", created_datetime: "", cartItems: [] });
 	                  var started_order = state.orders.findIndex(function (order) {
 	                        return order.status == "started";
 	                  });
@@ -47260,14 +47263,12 @@ webpackJsonp([0],[
 	                  user_updated = state.cartItems;
 	                  user_updated["first_name"] = action.value;
 	                  return Object.assign({}, state, { user: user_updated });
-	            /*case ADD_CART_ITEM:
-	              console.log("add cart reducer");
-	                   orders_updated = state.orders;
-	              orders_updated[0].cartItems.push({item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1"});
-	                   return Object.assign({}, state, {...state, orders: orders_updated});
-	             
-	             
-	            case SET_USER_NAME_FIRST:
+	            case actionTypes_ts_1.ADD_CART_ITEM:
+	                  console.log("add cart item reducer");
+	                  orders_updated = state.orders;
+	                  orders_updated[0].cartItems.push({ item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1" });
+	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	            /*case SET_USER_NAME_FIRST:
 	              console.log("user first name reducer" + JSON.stringify(state));
 	                   user_updated = state.user;
 	              user_updated["first_name"] = action.value;

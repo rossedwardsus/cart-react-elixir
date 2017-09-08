@@ -318,7 +318,9 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(this.props.cartItemsTotalQuantity > 0){
 
-    for (let i = 1; i < 12 - this.props.cartItemsTotalQuantity; i++){ 
+    let count = this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+
+    for (let i = 1; i < (12 - count); i++){ 
 
         //console.log(i);
         
@@ -326,7 +328,9 @@ class OrderMenu extends React.Component<any, any> {
     
     };
 
-    console.log("oca " + JSON.stringify(11 - this.props.cartItemsTotalQuantity));
+    console.log("options count array " + JSON.stringify(11 - this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)));
+
+    //this.setState{options_count_array: options_count_array};
 
     //let options = {for (let i = 1; i == this.props.cartItemsTotalQuantity - 1; i++){ 
     //                          <option value={i}>{i}</option>
@@ -334,7 +338,7 @@ class OrderMenu extends React.Component<any, any> {
 
     //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
 
-    let yours_social_quantity_selector = null;
+    let yours_social_pool_quantity_selector = null;
 
 
     //if order type == "pool"
@@ -344,7 +348,7 @@ class OrderMenu extends React.Component<any, any> {
 
         if(this.props.cartItemsTotalQuantity < 10){
 
-            yours_social_quantity_selector =  <div>
+            yours_social_pool_quantity_selector =  <div>
                                                     <div className="col-md-3">
                                                       <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
                                                         <option value="">Select Quantity</option> 
@@ -383,7 +387,7 @@ class OrderMenu extends React.Component<any, any> {
                                                       </div>*/
             //}else{
 
-                 yours_social_quantity_selector =  <div>
+                 yours_social_pool_quantity_selector =  <div>
                                                         <div className="col-md-3">
                                                           <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
                                                             <option value="">Regular or Minis</option> 
@@ -413,9 +417,16 @@ class OrderMenu extends React.Component<any, any> {
                     <div className="row">
                           <div className="hidden-xs col-md-3">
                             <br/>
+                            {this.props.order.cartItems.length == 0 &&
+                                
+                                this.props.order.pool_message
+
+                            }
+                            <br/>
+                            else show cart
                             <br/>
                             <br/>
-                            Sconely Yours
+                            Sconely {this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1)}
                             <br/>
                             <SidebarCart User={this.props.User} menuItems={this.props.menuItems} />
                             <br/>
@@ -481,7 +492,7 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="form-group">
-                                {yours_social_quantity_selector}
+                                {yours_social_pool_quantity_selector}
                                 {this.props.cartItemsTotalQuantity < 10 &&
                                   //if order type == "yours"
                                   (<div>
@@ -527,7 +538,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         
         menuItems: state.menuItems.items,
         //guestOrder: state.guestOrder,
-        //cartItems: state.User.orders[0].cartItems, //computed
+        order: state.User.orders[0], //computed
         User: state.User,
         
         //cart_total_items //computed

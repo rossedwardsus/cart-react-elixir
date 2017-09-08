@@ -20,7 +20,7 @@ import {setDate, setTime, setSpecificTime} from './actions/signature_order_deliv
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
 import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {processYoursSocialOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
+import {processYoursSocialPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
 //import {processYoursSocialOrder1} from './actions/'
 
 import SidebarCart from './order_sidebar_cart.tsx';
@@ -791,7 +791,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             an error occured with your payment
                             <br/>
-                            <button className={this.state.validated} onClick={this.props.processYoursSocialOrder}>Complete Order</button>
+                            <button className={this.state.validated} onClick={this.props.processYoursSocialPoolOrder}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>
@@ -943,9 +943,9 @@ function mapDispatchToProps(dispatch: any) {
     //  dispatch(setOrderId(value));
 
     //},
-    processYoursSocialOrder: () => {
+    processYoursSocialPoolOrder: () => {
 
-      dispatch(processYoursSocialOrder());
+      dispatch(processYoursSocialPoolOrder());
 
     },
     
