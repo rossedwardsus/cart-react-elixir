@@ -1,7 +1,7 @@
 defmodule Sconely.Order do
 	#use Ecto.Schema
 	#import Ecto.Changeset
-	alias Sconely.OrderDeliveryAddress
+	#alias Sconely.OrderDeliveryAddress
 
 	use SconeHomeElixir.Web, :model
 
@@ -15,7 +15,7 @@ defmodule Sconely.Order do
 		field :user_id, :string #Ecto.UUID
 		field :order_type, :string
 		#delivery contact address id
-		
+
 		#field delivery_contact_address_id
 		field :delivery_contact_first_name, :string
 		field :delivery_contact_last_name, :string
@@ -32,8 +32,8 @@ defmodule Sconely.Order do
 		#field :social_delivery_time, :string #range
 		#field :yours_delivery_time_range, :string
 		#field message
-		#payment_method_id
-		#stripe_token, :string
+		#payment_method_id 0 for guest?
+		#stripe_receipt_token, :string
 		#status
 		#note
 		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc

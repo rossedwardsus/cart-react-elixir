@@ -141,7 +141,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       //dispatch(cartValidated());
     },
     createOrder: (order_type: any, name: any) => {
-      dispatch(createOrder("yours", name));
+      dispatch(createOrder("yours", "name", "date"));
     }
   }
 }

@@ -206,7 +206,7 @@ const Root = () => (
         <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />               
         <Route path="/yours/menu" component={YoursRedirect} />
         <Route path="/social/menu" component={SocialRedirect} /> 
-        <Route path="/pool_redirect" component={PoolRedirect} />                    
+        <Route path="/pool/:pool_name/:pool_date" component={PoolRedirect} />                    
       </Route>
     </Router>
   </Provider>

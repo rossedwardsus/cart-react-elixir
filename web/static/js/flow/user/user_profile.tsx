@@ -298,11 +298,11 @@ function mapDispatchToProps(dispatch: any) {
     },
     createOrder: (order_type: any) => {
     //  console.log(e.target.value);
-      dispatch(createOrder(order_type, ""));
+    //  dispatch(createOrder(order_type, ""));
     },
     createSignatureOrder: (user_id: any) => {
     //  console.log(e.target.value);
-      dispatch(createSignatureOrder(1));
+    //  dispatch(createSignatureOrder(1));
     },
    
   }

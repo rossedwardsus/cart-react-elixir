@@ -89,23 +89,23 @@ defmodule Sconely.YoursSocialOrderResolver do
   #  code
   #  guest amount
 
-     sconely_signature_order = Repo.get_by(SconelySignatureOrder, order_id: order_id)
+     #sconely_signature_order = Repo.get_by(SconelySignatureOrder, order_id: order_id)
 
-     IO.inspect(sconely_signature_order)
+     #IO.inspect(sconely_signature_order)
 
      #order_total = guest_count * 6
   
-     sconely_signature_order_changeset = SconelySignatureOrder.changeset(sconely_signature_order, %{event_name: event_name, event_date: event_date, event_time: event_time})
+     #sconely_signature_order_changeset = SconelySignatureOrder.changeset(sconely_signature_order, %{event_name: event_name, event_date: event_date, event_time: event_time})
      #{:error, sconely_signature_order} = Repo.insert(sconely_signature_order_changeset)
 
-     case Repo.update(sconely_signature_order_changeset) do
-        {:ok, sconely_signature_order} -> IO.inspect("sconely_signature_order_changeset")
+     #case Repo.update(sconely_signature_order_changeset) do
+     #   {:ok, sconely_signature_order} -> IO.inspect("sconely_signature_order_changeset")
           #conn
           #|> put_flash(:info, "User updated successfully.")
           #|> redirect(to: user_path(conn, :show, user))
-        {:error, changeset} -> IO.inspect("error")
+    #    {:error, changeset} -> IO.inspect("error")
           #render(conn, "edit.html", user: user, changeset: changeset)
-    end
+    #end
 
     #update cost to reflect guest count
         
@@ -223,7 +223,7 @@ defmodule Sconely.YoursSocialOrderResolver do
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
-    Stripe.Charges.create(51, params)
+    #Stripe.Charges.create(51, params)
 
   end
 
@@ -240,13 +240,16 @@ defmodule Sconely.YoursSocialOrderResolver do
   #cart
   #graphql response
 
+
+  #complete_yours_social_pool_order
+
   def complete_yours_order(args, %{context: context}) do
 
     #IO.inspect(context)
 
     IO.inspect(args[:save_for_later])
 
-    process_stripe_payment(args)
+    #process_stripe_payment(args)
 
     #IO.inspect(args)
     #IO.inspect(args[:user_contact_email])
@@ -357,6 +360,46 @@ defmodule Sconely.YoursSocialOrderResolver do
 
             #check if user exists before entering in a user profile.
             #actually only really ued during registration
+
+
+            #if order_type == pool
+            #look up user_pools to get the user pool id by pool_name
+
+            #look in pool orders for the pool with the specifed poolname and date for pool id
+
+            #pool_date_day_year = String.slice(args[:pd], (String.length(args[:pd])-6), String.length(args[:pd]))
+            pool_date_day_year_as_date = "01-2007"
+
+            #pool_date_month_name = String.slice(params["pool_date"], 0, String.length(params["pool_date"])-6)
+
+            pool_date_month_name = "september"
+
+            pool_date_month_number = ""
+
+            case pool_date_month_name do
+
+                "january" -> pool_date_month_number = "01"
+                "february" -> pool_date_month_number = "02"
+                "march" -> pool_month_number = "03"
+                "april" -> pool_month_number = "04"
+                "may" -> pool_month_number = "05"
+                "june" -> pool_month_number = "06"
+                "july" -> pool_month_number = "07"
+                "august" -> pool_month_number = "08"
+                "september" -> pool_date_month_number = "09"
+                "october" -> pool_date_month_number = "10"
+                "november" -> pool_date_month_number = "11"
+                "december" -> pool_month_number = "12"
+
+            end
+
+            IO.inspect(pool_date_month_number <> "-" <> pool_date_day_year_as_date)
+
+            #add to pool_orders
+            #create guest user account
+            #send pool acknowledgemtn
+
+
 
             #user_profile - probably don't need but might be useful for just knowing who a guest user is.  actually can use order data?
             #add name and contact info here

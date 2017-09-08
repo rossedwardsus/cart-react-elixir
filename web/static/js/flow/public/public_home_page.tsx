@@ -455,7 +455,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     createOrder: (order_type: any, name: any) => {
       //alert("check");
-      dispatch(createOrder(order_type, name))
+      dispatch(createOrder(order_type, "name", "date"))
     }
   }
 }

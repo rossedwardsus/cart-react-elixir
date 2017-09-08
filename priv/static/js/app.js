@@ -321,7 +321,7 @@ webpackJsonp([0],[
 	        _react2.default.createElement(_reactRouter.Route, { path: '/order/:event_name/guest/completed', component: _order_completed2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/yours/menu', component: _yours_redirect2.default }),
 	        _react2.default.createElement(_reactRouter.Route, { path: '/social/menu', component: _social_redirect2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/pool_redirect', component: _pool_redirect2.default })
+	        _react2.default.createElement(_reactRouter.Route, { path: '/pool/:pool_name/:pool_date', component: _pool_redirect2.default })
 	      )
 	    )
 	  );
@@ -19170,7 +19170,7 @@ webpackJsonp([0],[
 	    return {
 	        createOrder: function createOrder(order_type, name) {
 	            //alert("check");
-	            dispatch(order_ts_1.createOrder(order_type, name));
+	            dispatch(order_ts_1.createOrder(order_type, "name", "date"));
 	        }
 	    };
 	};
@@ -27217,7 +27217,7 @@ webpackJsonp([0],[
 	//    type: "VIEW_PUBLIC_MENU", 
 	//    order_type
 	//  });
-	function createOrder(order_type, name) {
+	function createOrder(order_type, pool_name, pool_date) {
 	    //return (dispatch: any, getState: any) => {
 	    console.log("create order action " + order_type);
 	    return function (dispatch) {
@@ -27236,12 +27236,13 @@ webpackJsonp([0],[
 	        //      dispatch({type: SET_ORDER_TYPE});
 	        //    dispatch(push("/order/1/signature"));
 	        //if(order_type == "yours"){
-	        dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, value: order_type });
+	        dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, order_type: order_type, pool_name: pool_name, pool_date: pool_date });
 	        dispatch(react_router_redux_1.push("/order/menu"));
 	        //}
 	        //}else if(order_type == "social"){
 	        //}else if(order_type == "pool"){
 	        //get pool order data
+	        //possibly do as an api and not graphql
 	        /*  axios.post('/api/graphql',
 	                 {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
 	        )
@@ -27257,7 +27258,7 @@ webpackJsonp([0],[
 	                   //else delete from redux
 	                  //console.log("clear order");
 	                  
-	                  dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_message: ""});
+	                  //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
 	        
 	                   //that.props.history.push('/user');
 	                  //context.router
@@ -27288,7 +27289,7 @@ webpackJsonp([0],[
 	        //event full name
 	        console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
 	        //state.User.orders
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_order (order_type: "social", pool_name: "pn", pd: "september082017", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            if (response.data.data.processYoursSocialOrder.errorReason != "") {
 	                console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
@@ -27325,7 +27326,7 @@ webpackJsonp([0],[
 	function orderCompleted(order_type) {
 	    console.log("create order action " + order_type);
 	    return {
-	        type: actionTypes_ts_1.ORDER_COMPLETED,
+	        type: actionTypes_ts_1.COMPLETE_ORDER,
 	        order_type: order_type
 	    };
 	}
@@ -27384,6 +27385,8 @@ webpackJsonp([0],[
 	exports.LOGIN = 'LOGIN';
 	exports.REGISTER_USER = 'REGISTER_USER';
 	exports.SET_SESSION = 'SET_SESSION';
+	exports.VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU';
+	exports.SET_MENU = 'SET_MENU';
 	/*export const REGISTER_SET_FIRST_NAME = 'REGISTER_SET_FIRST_NAME'
 	export const REGISTER_SET_LAST_NAME = 'REGISTER_SET_LAST_NAME'
 	export const REGISTER_SET_EMAIL = 'REGISTER_SET_EMAIL'
@@ -27444,18 +27447,19 @@ webpackJsonp([0],[
 	exports.CREATE_ORDER = 'CREATE_ORDER';
 	exports.SET_ORDER_ID = 'SET_ORDER_ID';
 	exports.SET_ORDER_TYPE = 'SET_ORDER_TYPE';
-	exports.TERMS = 'TERMS';
-	exports.MAILING_LIST = 'MAILING_LIST';
-	exports.SAVE_FOR_LATER = 'SAVE_FOR_LATER';
-	exports.ORDER_COMPLETED = 'ORDER_COMPLETED';
+	exports.COMPLETE_ORDER = 'COMPLETE_ORDER';
 	exports.CLEAR_ORDER = 'CLEAR_ORDER';
 	exports.CLEAR_USER = 'CLEAR_USER';
 	exports.SET_DELIVERY_COST = 'SETDELIVERY_COST';
+	exports.TERMS = 'TERMS';
+	exports.MAILING_LIST = 'MAILING_LIST';
+	exports.SAVE_FOR_LATER = 'SAVE_FOR_LATER';
+	//CART
 	exports.ADD_CART_ITEM = 'ADD_CART_ITEM';
 	exports.REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
 	exports.INCREASE_CART_ITEM_QUANTITY = 'INCREASE_CART_ITEM_QUANTITY';
 	exports.DECREASE_CART_ITEM_QUANTITY = 'DECREASE_CART_ITEM_QUANTITY';
-	exports.COMPLETE_ORDER = 'COMPLETE_ORDER';
+	//DELIVERY CONTACT ADDRESSES
 	exports.SET_DELIVERY_CONTACT_ADDRESS_FIRST_NAME = 'SET_DELIVERY_CONTACT_ADDRESS_FIRST_NAME';
 	exports.SET_DELIVERY_CONTACT_ADDRESS_LAST_NAME = 'SET_DELIVERY_CONTACT_ADDRESS_LAST_NAME';
 	exports.SET_DELIVERY_CONTACT_ADDRESS_EMAIL = 'SET_DELIVERY_CONTACT_ADDRESS_EMAIL';
@@ -27469,8 +27473,6 @@ webpackJsonp([0],[
 	exports.SET_PAYMENT_METHOD_CARD_NUMBER = 'SET_PAYMENT_METHOD_CARD_NUMBER';
 	exports.SET_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_PAYMENT_METHOD_EXPIRY_MONTH';
 	exports.SET_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_PAYMENT_METHOD_EXPIRY_YEAR';
-	exports.VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU';
-	exports.SET_MENU = 'SET_MENU';
 	//SIGNATURE
 	exports.SET_DATE = 'SET_DATE';
 	exports.SET_TIME = 'SET_TIME';
@@ -29472,7 +29474,7 @@ webpackJsonp([0],[
 	            dispatch(order_validations_ts_1.cartValidated());
 	        },
 	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder(order_type, name));
+	            dispatch(order_ts_1.createOrder(order_type, "name", "date"));
 	        }
 	    };
 	};
@@ -29495,15 +29497,14 @@ webpackJsonp([0],[
 	    console.log("action");
 	    return function (dispatch) {
 	        //event full name
-	        axios_1.default.post('/api/graphql', { query: 'query {get_menu_items {id name description ingredients}}' }
-	        //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
-	        ).then(function (response) {
-	            console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	        axios_1.default.get('/api/menu_items').then(function (response) {
+	            //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	            console.log("menu items response " + JSON.stringify(response));
 	            //that.props.history.push('/user');
 	            //context.router
 	            //that.props.setOrderId(1);
 	            //this.context.router.push('/order/complete');
-	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.data.getMenuItems });
+	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.items });
 	            //dispatch(push("/order/url_name/guest/name"));
 	        }).catch(function (error) {
 	            console.log("error" + error);
@@ -29956,7 +29957,7 @@ webpackJsonp([0],[
 	            //dispatch(cartValidated());
 	        },
 	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder("yours", name));
+	            dispatch(order_ts_1.createOrder("yours", "name", "date"));
 	        }
 	    };
 	};
@@ -30093,7 +30094,7 @@ webpackJsonp([0],[
 	            //dispatch(cartValidated());
 	        },
 	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder("social", name));
+	            dispatch(order_ts_1.createOrder("social", "name", "date"));
 	        }
 	    };
 	};
@@ -30161,26 +30162,7 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //this.context.router.push("/order/menu");
-	            this.props.createOrder();
-	            //get active items from the database
-	            //alert(this.props.params);
-	            //alert(JSON.stringify(this.props.cart_items));
-	            //this.props.dispatch();
-	            //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
-	            var that = this;
-	            /*this.state.crafted_kitchen_menu_items.map(function(item: any, index: any){
-	                       //console.log(value.item_id);
-	                  let images_temp = that.state.images;
-	                  images_temp.push(item.image_id);
-	                       let hover_images_temp = that.state.hover_images;
-	                  hover_images_temp.push(item.hover_image_id);
-	                       that.setState({images: images_temp});
-	                  that.setState({hover_images: hover_images_temp});
-	                 });*/
-	            this.props.createOrder("sconely_yours", this.props.params.name);
-	            //this.props.getMenuItems();
-	            //get menu items here
-	            //this.setState({menu_items: this.props.menu_items.menu_items});
+	            this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
 	        }
 	    }, {
 	        key: "componentWillReceiveProps",
@@ -30229,8 +30211,8 @@ webpackJsonp([0],[
 	        cartValidated: function cartValidated() {
 	            //dispatch(cartValidated());
 	        },
-	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder("pool", name));
+	        createOrder: function createOrder(order_type, pool_name, pool_date) {
+	            dispatch(order_ts_1.createOrder("pool", "name", "date"));
 	        }
 	    };
 	};
@@ -30450,7 +30432,7 @@ webpackJsonp([0],[
 	        },
 	        createOrder: function createOrder(order_type) {
 	            //  console.log(e.target.value);
-	            dispatch(order_ts_1.createOrder(order_type, ""));
+	            dispatch(order_ts_1.createOrder(order_type, "", ""));
 	        },
 	        createSignatureOrder: function createSignatureOrder(user_id) {
 	            //  console.log(e.target.value);
@@ -31561,10 +31543,8 @@ webpackJsonp([0],[
 	//import Swipeable from 'react-swipeable';
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
-	var order_ts_1 = __webpack_require__(920);
-	var user_order_ts_1 = __webpack_require__(957);
 	var user_ts_1 = __webpack_require__(958);
-	var user_order_ts_2 = __webpack_require__(957);
+	var user_order_ts_1 = __webpack_require__(957);
 	var user_ts_2 = __webpack_require__(959);
 	var immutable_1 = __webpack_require__(960);
 	var user_navbar_tsx_1 = __webpack_require__(962);
@@ -31741,7 +31721,7 @@ webpackJsonp([0],[
 	        },
 	        setUserOrders: function setUserOrders() {
 	            //console.log(e.target.value);
-	            dispatch(user_order_ts_2.setUserOrders());
+	            dispatch(user_order_ts_1.setUserOrders());
 	        },
 	        getUserDeliveryAddresses: function getUserDeliveryAddresses(e) {
 	            //console.log(e.target.value);
@@ -31753,11 +31733,11 @@ webpackJsonp([0],[
 	        },
 	        createOrder: function createOrder(order_type) {
 	            //  console.log(e.target.value);
-	            dispatch(order_ts_1.createOrder(order_type, ""));
+	            //  dispatch(createOrder(order_type, ""));
 	        },
 	        createSignatureOrder: function createSignatureOrder(user_id) {
 	            //  console.log(e.target.value);
-	            dispatch(user_order_ts_1.createSignatureOrder(1));
+	            //  dispatch(createSignatureOrder(1));
 	        }
 	    };
 	}
@@ -40093,7 +40073,6 @@ webpackJsonp([0],[
 	var menu_ts_1 = __webpack_require__(949);
 	var order_validations_ts_1 = __webpack_require__(950);
 	var user_ts_1 = __webpack_require__(958);
-	var order_ts_1 = __webpack_require__(920);
 	var order_sidebar_cart_tsx_1 = __webpack_require__(1134);
 	var mobile_checkout_button_tsx_1 = __webpack_require__(1135);
 	var public_top_navbar_tsx_1 = __webpack_require__(947);
@@ -40295,7 +40274,7 @@ webpackJsonp([0],[
 	            //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
 	            var yours_social_quantity_selector = null;
 	            //if order type == "pool"
-	            if (this.props.User.orders[0].order_type == "yours") {
+	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
 	                if (this.props.cartItemsTotalQuantity < 10) {
 	                    yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
 	                        return React.createElement("option", { value: value }, value);
@@ -40325,9 +40304,7 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
-	                    return React.createElement("option", { value: value }, value);
-	                }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                yours_social_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Regular or Minis"), React.createElement("option", { value: "regular" }, "Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedYoursItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
 	                //}
@@ -40374,6 +40351,9 @@ webpackJsonp([0],[
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
 	    console.log("mapstatetoprops order menu " + JSON.stringify(state));
 	    return {
+	        started_order: state.User.orders.findIndex(function (order) {
+	            return order.status == "started";
+	        }),
 	        //if yours
 	        //menuItems: getYoursMenuItems(state),
 	        //else
@@ -40407,7 +40387,7 @@ webpackJsonp([0],[
 	            dispatch(order_validations_ts_1.cartValidated());
 	        },
 	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder(order_type, name));
+	            //dispatch(createOrder(order_type, name));
 	        }
 	    };
 	};
@@ -42246,7 +42226,8 @@ webpackJsonp([0],[
 	                 }*/
 	            //if pool then only show name and then link to
 	            var screen = null;
-	            if (true) {
+	            console.log("order type" + this.props.User.orders[0].order_type);
+	            if (this.props.User.orders[0].order_type == "pool") {
 	                screen = React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
 	                    }, setUserLastName: function setUserLastName(e) {
@@ -42257,7 +42238,15 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserMobile(e);
 	                    } });
 	            } else {
-	                screen = React.createElement("div", null, React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
+	                screen = React.createElement("div", null, React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
+	                        return _this2.props.setUserFirstName(e);
+	                    }, setUserLastName: function setUserLastName(e) {
+	                        return _this2.props.setUserLastName(e);
+	                    }, setUserEmail: function setUserEmail(e) {
+	                        return _this2.props.setUserEmail(e);
+	                    }, setUserMobile: function setUserMobile(e) {
+	                        return _this2.props.setUserMobile(e);
+	                    } }), React.createElement(order_delivery_address_tsx_1.default, { session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
 	                        return _this2.props.setUserDeliveryContactAddressFirstName(e);
 	                    }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
 	                        return _this2.props.setUserDeliveryContactAddressLastName(e);
@@ -42287,7 +42276,7 @@ webpackJsonp([0],[
 	                        return _this2.props.setSpecificTime(e);
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))));
 	            }
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, screen, React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { setUserFirstName: function setUserFirstName(e) {
 	                    return _this2.props.setUserFirstName(e);
 	                }, setUserLastName: function setUserLastName(e) {
 	                    return _this2.props.setUserLastName(e);
@@ -47223,7 +47212,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	      var action = arguments[1];
 	
 	      var delivery_contacts_addresses_updated = null;
@@ -47237,6 +47226,8 @@ webpackJsonp([0],[
 	                  //normalizr
 	                  //delivery addrress
 	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
+	            //complete_order
+	            //set order status to "completed"
 	            case actionTypes_ts_1.CLEAR_USER:
 	                  console.log("CLEAR USER REDUCER " + JSON.stringify(state));
 	                  //normalizr
@@ -47245,54 +47236,73 @@ webpackJsonp([0],[
 	                  return { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	            case actionTypes_ts_1.SET_ORDER_TYPE:
 	                  console.log("set order type reducer");
+	                  //find order where status == "started"
+	                  //if none exists that add the order
+	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
-	                  orders_updated[0]["order_type"] = action.value;
-	                  //if order_type == pool then add pool_name to order
-	                  //also need to load the message for the pool order
+	                  orders_updated.push({ order_type: "pool", pool_name: "pn", pool_date: "pd", status: "started", created_datetime: "", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] });
+	                  var started_order = state.orders.findIndex(function (order) {
+	                        return order.status == "started";
+	                  });
+	                  console.log("started order " + started_order);
+	                  /*if(action.order_type == "pool"){
+	                             //orders_updated = state.orders;
+	                      //orders_updated[0]["order_type"] = action.order_type;
+	                      //orders_updated[0]["pool_name"] = action.pool_name;
+	                      //orders_updated[0]["pool_date"] = action.pool_date;
+	                             //if order_type == pool then add pool_name to order
+	                      //also need to load the message for the pool order
+	                         }*/
+	                  //return Object.assign({}, state, {orders: orders_updated});
 	                  return Object.assign({}, state, { orders: orders_updated });
-	            /*case CREATE_ORDER:
-	              console.log("add cart reducer";
-	                   user_updated = state.cartItems;
-	              user_updated["first_name"] = action.value;
-	                   return Object.assign({}, state, {user: user_updated});*/
-	            case actionTypes_ts_1.ADD_CART_ITEM:
+	            case actionTypes_ts_1.CREATE_ORDER:
 	                  console.log("add cart reducer");
-	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems.push({ item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1" });
-	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
-	            case actionTypes_ts_1.SET_USER_NAME_FIRST:
-	                  console.log("user first name reducer" + JSON.stringify(state));
-	                  user_updated = state.user;
+	                  user_updated = state.cartItems;
 	                  user_updated["first_name"] = action.value;
 	                  return Object.assign({}, state, { user: user_updated });
-	            case actionTypes_ts_1.SET_USER_NAME_LAST:
-	                  console.log("user last name reducer" + JSON.stringify(state));
-	                  return Object.assign({}, state, Object.assign({}, state, { last_name: action.data }));
-	            case actionTypes_ts_1.SET_USER_CONTACT_EMAIL:
-	                  console.log("set user email" + JSON.stringify(state));
-	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
-	            case actionTypes_ts_1.SET_USER_CONTACT_MOBILE:
-	                  console.log("set user email" + JSON.stringify(state));
-	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
-	                  console.log("user delivery contact address first name reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].first_name = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactAddress: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
-	                  console.log("user delivery contact address last name reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].last_name = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE:
-	                  console.log("user delivery contact address mobile reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].mobile = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
+	            /*case ADD_CART_ITEM:
+	              console.log("add cart reducer");
+	                   orders_updated = state.orders;
+	              orders_updated[0].cartItems.push({item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1"});
+	                   return Object.assign({}, state, {...state, orders: orders_updated});
+	             
+	             
+	            case SET_USER_NAME_FIRST:
+	              console.log("user first name reducer" + JSON.stringify(state));
+	                   user_updated = state.user;
+	              user_updated["first_name"] = action.value;
+	                   return Object.assign({}, state, {user: user_updated});
+	                 case SET_USER_NAME_LAST:
+	              console.log("user last name reducer" + JSON.stringify(state));
+	                   return Object.assign({}, state, {...state, last_name: action.data});
+	                
+	                 case SET_USER_CONTACT_EMAIL:
+	              console.log("set user email" + JSON.stringify(state));
+	                   return Object.assign({}, state, {...state, email: action.data});
+	            
+	            case SET_USER_CONTACT_MOBILE:
+	              console.log("set user email" + JSON.stringify(state));
+	                   return Object.assign({}, state, {...state, email: action.data});
+	            
+	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
+	                   console.log("user delivery contact address first name reducer");
+	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	              delivery_contacts_addresses_updated[0].first_name = action.value;
+	                   return Object.assign({}, state, {...state, deliveryContactAddress: delivery_contacts_addresses_updated });
+	                   //else remove item
+	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
+	                   console.log("user delivery contact address last name reducer");
+	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	              delivery_contacts_addresses_updated[0].last_name = action.value;
+	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	                   //else remove item
+	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE:
+	                   console.log("user delivery contact address mobile reducer");
+	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	              delivery_contacts_addresses_updated[0].mobile = action.value;
+	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	                   //else remove item
+	                 /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
 	                   console.log("user delivery contact address mobile reducer");
 	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
 	              delivery_contacts_addresses_updated[0].mobile = action.value;

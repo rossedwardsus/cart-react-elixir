@@ -52,39 +52,9 @@ class PoolRedirect extends React.Component<any, any> {
 
 
     //this.context.router.push("/order/menu");
-    this.props.createOrder();
+    this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
 
 
-    //get active items from the database
-    //alert(this.props.params);
-
-    //alert(JSON.stringify(this.props.cart_items));
-    //this.props.dispatch();
-
-    //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
-
-    let that = this;
-
-    /*this.state.crafted_kitchen_menu_items.map(function(item: any, index: any){
-
-          //console.log(value.item_id);
-          let images_temp = that.state.images;
-          images_temp.push(item.image_id);
-
-          let hover_images_temp = that.state.hover_images;
-          hover_images_temp.push(item.hover_image_id);
-
-          that.setState({images: images_temp});
-          that.setState({hover_images: hover_images_temp});          
-
-    });*/
-
-    this.props.createOrder("sconely_yours", this.props.params.name);
-    //this.props.getMenuItems();
-
-    //get menu items here
-    //this.setState({menu_items: this.props.menu_items.menu_items});
-    
   }
 
   componentWillReceiveProps(nextProp:any){
@@ -140,8 +110,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     cartValidated: () => {
       //dispatch(cartValidated());
     },
-    createOrder: (order_type: any, name: any) => {
-      dispatch(createOrder("pool", name));
+    createOrder: (order_type: any, pool_name: any, pool_date: any) => {
+      dispatch(createOrder("pool", "name", "date"));
     }
   }
 }

@@ -338,13 +338,17 @@ class DateTime extends React.Component<any, any> {
 
     let screen = null;
 
-    if("pool" == "pool"){
+    console.log("order type" + this.props.User.orders[0].order_type);
+
+    if(this.props.User.orders[0].order_type == "pool"){
       
       screen = <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
     
     }else{ 
 
-      screen = <div><DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+      screen = <div>
+                      <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                      <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
                             setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
@@ -400,6 +404,9 @@ class DateTime extends React.Component<any, any> {
                         <br/>
                       </div>
                       <div className="col-xs-12 col-md-9">
+                            {screen}
+                            <br/>
+                            <br/>
                             <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
                             <br/>
                             <br/>

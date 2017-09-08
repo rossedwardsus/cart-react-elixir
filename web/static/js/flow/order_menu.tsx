@@ -340,7 +340,7 @@ class OrderMenu extends React.Component<any, any> {
     //if order type == "pool"
 
 
-    if(this.props.User.orders[0].order_type == "yours"){
+    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
         if(this.props.cartItemsTotalQuantity < 10){
 
@@ -386,9 +386,16 @@ class OrderMenu extends React.Component<any, any> {
                  yours_social_quantity_selector =  <div>
                                                         <div className="col-md-3">
                                                           <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
-                                                            <option value="">Select Quantity</option> 
-                                                            {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
-                                                            
+                                                            <option value="">Regular or Minis</option> 
+                                                            <option value="regular">Regular</option>
+                                                            <option value="minis">Minis</option>
+                                                          </select>
+                                                        </div>
+                                                        <div className="col-md-3">
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
+                                                            <option value="">Quantity</option> 
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
                                                           </select>
                                                         </div>
                                                         <div className="col-md-3">
@@ -505,6 +512,9 @@ class OrderMenu extends React.Component<any, any> {
 const mapStateToProps = (state: any, ownProps: any) => {
   console.log("mapstatetoprops order menu " + JSON.stringify(state));
   return {
+
+    started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
+
     //if yours
     //menuItems: getYoursMenuItems(state),
     //else
@@ -546,7 +556,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(cartValidated());
     },
     createOrder: (order_type: any, name: any) => {
-      dispatch(createOrder(order_type, name));
+      //dispatch(createOrder(order_type, name));
     }
   }
 }

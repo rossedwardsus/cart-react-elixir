@@ -1,4 +1,4 @@
-import { CREATE_ORDER, SET_ORDER_TYPE, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, ORDER_COMPLETED, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, SET_ORDER_TYPE, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 //import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
@@ -30,7 +30,7 @@ export const saveForLater = (value: any) => ({
 //  });
 
 
-export function createOrder(order_type: any, name: any) {
+export function createOrder(order_type: any, pool_name: any, pool_date: any) {
   //return (dispatch: any, getState: any) => {
     console.log("create order action " + order_type);
     return function(dispatch: any){
@@ -55,7 +55,9 @@ export function createOrder(order_type: any, name: any) {
 
       //if(order_type == "yours"){
 
-            dispatch({type: SET_ORDER_TYPE, value: order_type});
+
+
+            dispatch({type: SET_ORDER_TYPE, order_type: order_type, pool_name: pool_name, pool_date: pool_date});
             dispatch(push("/order/menu"));
 
       //}
@@ -65,6 +67,7 @@ export function createOrder(order_type: any, name: any) {
       //}else if(order_type == "pool"){
 
             //get pool order data
+            //possibly do as an api and not graphql
 
             /*  axios.post('/api/graphql',
                      {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
@@ -90,7 +93,7 @@ export function createOrder(order_type: any, name: any) {
                       //else delete from redux
                       //console.log("clear order");
                       
-                      dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_message: ""});
+                      //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
             
 
                       //that.props.history.push('/user');
@@ -141,7 +144,7 @@ export function processYoursSocialOrder() {
             //state.User.orders
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_order (order_type: "social", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {process_yours_social_order (order_type: "social", pool_name: "pn", pd: "september082017", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -212,7 +215,7 @@ export function processYoursSocialOrder() {
 export function orderCompleted(order_type: any) {
   console.log("create order action " + order_type);
   return {
-    type: ORDER_COMPLETED,
+    type: COMPLETE_ORDER,
     order_type
   }
 }

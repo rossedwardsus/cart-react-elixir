@@ -7,7 +7,7 @@ defmodule Sconely.MenuItemsController do
   import Ecto.Query
   use Timex
   
-  def getMenuItems(conn, _args) do
+  def index(conn, _args) do
     #IO.puts("create graphql")
 
     #IO.inspect(Timex.parse("2016-02-29", "{YYYY}-{0M}-{D}"))
