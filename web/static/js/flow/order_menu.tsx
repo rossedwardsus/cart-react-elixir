@@ -538,7 +538,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         
         menuItems: state.menuItems.items,
         //guestOrder: state.guestOrder,
-        order: state.User.orders[0], //computed
+        order: state.User.orders.find((order: any) => order.status == "current"),
         User: state.User,
         
         //cart_total_items //computed

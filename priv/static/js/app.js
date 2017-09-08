@@ -40365,7 +40365,9 @@ webpackJsonp([0],[
 	        //if(state.default.order.cart_items != undefined){
 	        menuItems: state.menuItems.items,
 	        //guestOrder: state.guestOrder,
-	        order: state.User.orders[0],
+	        order: state.User.orders.find(function (order) {
+	            return order.status == "current";
+	        }),
 	        User: state.User,
 	        //cart_total_items //computed
 	        //cart_total_cost //cost
@@ -47243,7 +47245,7 @@ webpackJsonp([0],[
 	                  //if none exists that add the order
 	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
-	                  orders_updated.push({ order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "started", created_datetime: "", cartItems: [] });
+	                  orders_updated.push({ order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", cartItems: [] });
 	                  var started_order = state.orders.findIndex(function (order) {
 	                        return order.status == "started";
 	                  });

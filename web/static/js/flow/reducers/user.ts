@@ -62,8 +62,9 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       orders_updated = state.orders;
 
+      //if another pool order exists change it's status to "saved"
 
-      orders_updated.push({order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "started", created_datetime: "", cartItems: []})
+      orders_updated.push({order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", cartItems: []})
 
       let started_order = state.orders.findIndex((order: any) => order.status == "started");
 
