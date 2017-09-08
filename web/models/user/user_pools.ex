@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.UserProfilePaymentMethods do
+defmodule SconeHomeElixir.UserPools do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -8,9 +8,9 @@ defmodule SconeHomeElixir.UserProfilePaymentMethods do
 
 		schema "user_payment_methods" do
 			field :user_id, Ecto.UUID
-			#field :payment_name, :string
-			field :last_4_digits, :string
-			field :stripe_payment_token, :string
+			field :pool_id, :string
+			#field :pool_name, :string
+			#field :stripe_payment_token, :string
 			#field :default
 			
 			#timestamps()
