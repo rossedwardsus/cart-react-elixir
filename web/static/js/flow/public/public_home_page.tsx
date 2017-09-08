@@ -365,7 +365,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3">
+                        <div className="hidden-xs col-md-2">
                           <br/>
                           <br/>
                           <Link to="/public/menu">Menu</Link>
@@ -395,15 +395,23 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <br/>
                           <br/>
-                          <a onClick={() => this.createOrder("sconely_yours")}>Order Sconely Yours</a>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <a onClick={() => this.createOrder("sconely_yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
                           <br/>
                           2-12 Scones.  Baked and delivered.
                           <br/>
                           <br/>
-                          <a onClick={() => this.createOrder("sconely_social")}>Order Sconely Social</a>
+                          <br/>
+                          <a onClick={() => this.createOrder("sconely_social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
                           <br/>
                           12-250 Scones.  Regular or Minis.  Baked and delivered for events
                         </div>
@@ -412,11 +420,11 @@ export class PublicHomePage extends React.Component<any, any> {
                       <div className="col-md-4">
                       </div>
                       <div className="col-md-2">
-                          <Link to="/public/menu">About Us</Link>
+                          <Link to="/public/menu">ABOUT US</Link>
                           <br/>
-                          <Link to="/public/menu">Our Story</Link>
+                          <Link to="/public/menu">OUR STORY</Link>
                           <br/>
-                          <Link to="/public/menu">Faq</Link>
+                          <Link to="/public/menu">FAQ</Link>
                           <br/>
                           <br/>
                           <br/>

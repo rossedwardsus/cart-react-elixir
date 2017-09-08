@@ -1,12 +1,12 @@
-defmodule Sconely.OrderDeliveryContactAddress do
+defmodule Sconely.PoolOrder do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
-		alias Sconely.Order
+		#alias Sconely.Order
 
 		use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "order_delivery_contact_address" do
 			field :user_id, Ecto.UUID
