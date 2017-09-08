@@ -1,4 +1,4 @@
-defmodule Sconely.Order do
+defmodule Sconely.PoolOrderChosenItemsAndPayments do
 	#use Ecto.Schema
 	#import Ecto.Changeset
 
