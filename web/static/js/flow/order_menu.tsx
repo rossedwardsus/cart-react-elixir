@@ -9,8 +9,8 @@ import {connect} from 'react-redux';
 
 import {getMenuItems} from './actions/menu.ts';
 import {cartValidated} from './actions/order_validations.ts';
-import {addCartItem} from './actions/user.ts';
-import {createOrder} from './actions/order.ts';
+//import {addCartItem} from './actions/user.ts';
+import {createOrder, addCartItem} from './actions/order.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
 import MobileCheckoutButton from './mobile_checkout_button.tsx';
@@ -39,7 +39,7 @@ class OrderMenu extends React.Component<any, any> {
         menuItems: [],
         selected_item_id: "",
         selected_item_12_or_24_mini: "",
-        selected_item_quantity: "",
+        selected_item_quantity: 0,
         selected_item_name: "",
         selected_item_description: "",
         selected_item_ingredients: "",
@@ -143,11 +143,11 @@ class OrderMenu extends React.Component<any, any> {
   }*/
 
 
-  selectedYoursItemQuantity = (e: any) => {
+  selectedItemQuantity = (e: any) => {
 
     console.log("selected_item quantity " + e.target.value);
 
-    this.setState({selected_item_quantity: e.target.value});
+    this.setState({selected_item_quantity: parseInt(e.target.value)});
     this.setState({add_cart_item_button_classname: "btn btn-default"});
       
     //set add cart button == active
@@ -167,17 +167,17 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
-  selectedSocialItemQuantity = (e: any) => {
+  /*selectedSocialItemQuantity = (e: any) => {
 
-    console.log("selected_item quantity " + e.target.value);
+    console.log("selected_item quantity " + parseInt(e.target.value));
 
-    this.setState({selected_item_quantity: e.target.value});
+    //this.setState({selected_item_quantity: parseInt(e.target.value)});
     this.setState({add_cart_item_button_classname: "btn btn-default"});
       
     //set add cart button == active
     //this.set
 
-  }
+  }*/
 
   addCartItem = () => {
 
@@ -214,7 +214,7 @@ class OrderMenu extends React.Component<any, any> {
     this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_12_or_24_minis, this.state.selected_item_quantity);
         
 
-        //this.setState({selected_item_quantity: ""});
+      //this.setState({selected_item_quantity: ""});
 
     //}
 
@@ -350,7 +350,7 @@ class OrderMenu extends React.Component<any, any> {
 
             yours_social_pool_quantity_selector =  <div>
                                                     <div className="col-md-3">
-                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
+                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
                                                         <option value="">Select Quantity</option> 
                                                         {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                         
@@ -376,7 +376,7 @@ class OrderMenu extends React.Component<any, any> {
                                                           2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
                                                         </div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemQuantity} style={{height: 35, width: 120}}>
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
                                                             <option value="">Select Quantity</option> 
                                                             {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                           </select>
@@ -389,14 +389,14 @@ class OrderMenu extends React.Component<any, any> {
 
                  yours_social_pool_quantity_selector =  <div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
                                                             <option value="">Regular or Minis</option> 
                                                             <option value="regular">Regular</option>
                                                             <option value="minis">Minis</option>
                                                           </select>
                                                         </div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedYoursItemQuantity} style={{height: 35, width: 120}}>
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
                                                             <option value="">Quantity</option> 
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
@@ -497,7 +497,7 @@ class OrderMenu extends React.Component<any, any> {
                                   //if order type == "yours"
                                   (<div>
                                     <div className="col-md-3">
-                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedYoursItemQuantity(e)} style={{height: 35, width: 120}}>
+                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
                                       <option value="">Select Quantity</option> 
                                       {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                       

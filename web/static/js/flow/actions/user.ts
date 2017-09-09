@@ -3,27 +3,7 @@ import {ADD_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_EMAIL, 
 import axios from 'axios';
 import {push} from 'react-router-redux';
 
-export function addCartItem(order_id: any, item_id: any, twelveortwentyfourminis: any, quantity: any) {
-  console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
 
-  //if uorder_id != undefined
-  //else
-
-  return {
-    type: ADD_CART_ITEM,
-    order_id, 
-    item_id,
-    twelveortwentyfourminis,
-    quantity
-  }
-
-  /*return {
-    type: ADD_CART_ITEM,
-    item_id,
-    item_type,
-    quantity
-  }*/
-}
 
 
 export function setUserFirstName(value: any) {

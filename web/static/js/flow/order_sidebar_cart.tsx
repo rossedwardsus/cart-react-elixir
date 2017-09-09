@@ -79,10 +79,11 @@ class SidebarCart extends React.Component<any, any> {
     //get menu items
     //this.setState({menuItemNames: this.props.menuItems})
 
-    console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
+    //console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
+    console.log("sidebarcart user " + JSON.stringify(this.props.User));
 
     //this.setState({menuItemNames: this.props.menuItems})
-    //this.setState({cartItems: this.props.cartItems})
+    this.setState({cartItems: this.props.User.orders[0].cartItems})
 
     
     //this.props;
@@ -100,7 +101,7 @@ class SidebarCart extends React.Component<any, any> {
   componentWillReceiveProps(nextProps: any){
 
       //console.log("sbc menu items cwrp " + JSON.stringify(this.props.menuItems));
-      //console.log("sbc cart items cwrp " + JSON.stringify(this.props.User));
+      console.log("sbc cart items cwrp " + JSON.stringify(this.props.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 
       //this.setState({menuItemNames: this.props.menuItems})
@@ -268,7 +269,7 @@ class SidebarCart extends React.Component<any, any> {
 
         });
 
-        console.log("sri" + JSON.stringify(social_regular_items));
+        console.log("social regular items " + JSON.stringify(social_regular_items));
         
         //1 doz/12 - 5/60 doz regular sized scones, $5 each
         //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
@@ -348,7 +349,6 @@ class SidebarCart extends React.Component<any, any> {
 
         total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
 
-
         total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
         
          
@@ -411,7 +411,10 @@ class SidebarCart extends React.Component<any, any> {
 
                       //console.log(order_type);
 
-                      if(order_type == "yours"){
+
+                      //code is here to check for minis existing???
+
+                      if(order_type == "yours" || order_type == "pool"){
 
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>

@@ -1,8 +1,30 @@
-import { CREATE_ORDER, SET_ORDER_TYPE, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, SET_ORDER_TYPE, ADD_CART_ITEM, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 //import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
 
+
+export function addCartItem(order_id: any, item_id: any, twelveortwentyfourminis: any, quantity: any) {
+  console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+
+  //if uorder_id != undefined
+  //else
+
+  return {
+    type: ADD_CART_ITEM,
+    order_id, 
+    item_id: item_id,
+    twelveortwentyfourminis: twelveortwentyfourminis,
+    quantity: quantity
+  }
+
+  /*return {
+    type: ADD_CART_ITEM,
+    item_id,
+    item_type,
+    quantity
+  }*/
+}
 
 
 export const saveForLater = (value: any) => ({

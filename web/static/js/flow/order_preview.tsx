@@ -27,8 +27,12 @@ import ContactPreview from './contact_preview.tsx';
 //import Name from './name.tsx';
 //import NamePreview from './name_preview.tsx';
 import PaymentMethod from './payment_method.tsx';
+import PublicTopNavbar from './public/public_top_navbar.tsx';
 
 //import { getPublicMenu } from './reducers/name';
+import {getMenuItems} from './actions/menu.ts';
+
+
 const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
@@ -129,6 +133,13 @@ class Preview extends React.Component<any, any> {
   }
 
   componentDidMount(){
+
+    window.scrollTo(0, 0);
+
+    //console.log("checkout user" + JSON.stringify(this.props.User));
+    //console.log("checkout menuItems" + JSON.stringify(this.props.menuItems));        
+
+    //this.props.getMenuItems();
 
     //alert(this.props.params.order_id);
 
@@ -818,49 +829,128 @@ class Preview extends React.Component<any, any> {
 
     //if pool only show name
 
+    let screen = null;
+
+    if(this.props.User.orders[0].order_type = "pool"){
+
+          screen =    <div>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Name:
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Ross Edwards
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Contact
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      rossedwards@gmail.com
+                                  </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      310-775-5566
+                                  </div>
+                                </div>
+                            </form>
+                      </div>
+
+    }else{
+
+      screen = <div>
+                <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-12">
+                              Name:
+                          </div>
+                        </div>
+                    </form>
+                    <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-12">
+                              Ross Edwards
+                          </div>
+                        </div>
+                    </form>
+                    <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-12">
+                              Contact
+                          </div>
+                        </div>
+                    </form>
+                    <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-12">
+                              rossedwards@gmail.com
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <div className="col-sm-12">
+                              310-775-5566
+                          </div>
+                        </div>
+                    </form>
+                    <br/>
+                    Delivery Contact
+                    <br/>
+                    Delivery Date
+                    <br/>
+                    Monday Sept 1st, 2017
+                    <br/>
+                    9-11 am
+                    <br/>
+                    Delivery Address
+                    <br/>
+                    11901 Santa Monica Blvd, Los Angeles, CA, 90025
+                    <br/>
+                    <br/>
+                    <Link to="/order/delivery">Edit Delivery Information</Link>   
+                    <br/>
+                    <br/>
+                    Items
+                    <br/>
+                    <br/>
+                    <form className="form-horizontal">
+                      <div className="form-group">
+                        <div className="col-sm-10">
+                            <b>Cart Items</b>
+                            <br/>
+                            <br/>
+                            <b>Total Due</b>
+                            <br/>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+
+    }
+
 
     return ( <div>
-                    <nav className="navbar navbar-default navbar-fixed-top">
-                          <div className="container-fluid">
-                            <div className="navbar-header">
-                              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                              </button>
-                              <a className="navbar-brand" href="#"><img height="100" width="250" src="/images/logo/Sconely_color_web_300_space3.jpg"/></a>
-                            </div>
-                            <div className="hidden-xs navbar-form navbar-right">
-                            </div>
-                            <div id="navbar" className="navbar-collapse collapse navbar-right" style={{zIndex: 10010, background: "white"}}>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><a href="./">Profile<span className="sr-only">(current)</span></a></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/login">Login<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/register">Signup<span className="sr-only">(current)</span></Link></li>
-                              </ul>
-                              <ul className="nav navbar-nav">
-                                <li className="inactive"><Link to="/public/menu">Menu</Link><span className="sr-only">(current)</span></li>
-                              </ul>
-                            </div>
-                          </div>
-                    </nav> 
+                <PublicTopNavbar/>
                 <div className="container-fluid">
                   <div className="row">
-                        <div className="hidden-xs col-md-2">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
                           <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          
+                          <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
                           <br/>
                           <br/>
                           <br/>
@@ -871,9 +961,7 @@ class Preview extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-10">
-                            <br/>
-                            <br/>
+                        <div className="col-md-9">
                             <br/>
                             <br/>
                             <br/>
@@ -881,59 +969,93 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
-                            User:
                             <br/>
-                            Name:
-                            <br/>
-                            Ross Edwards
-                            <br/>
-                            Contact:
-                            <br/>
-                            rossedwards@gmail.com
-                            <br/>
-                            310-775-5566
-                            <br/>
-                            <Link to="/order/delivery" className="btn btn-default">Edit Name and Contact</Link>   
-                            <br/>
-                            {"yours" == "yours" &&
-                            <div>
-                              Delivery Contact
-                            <br/>
-                            Delivery Date
-                            <br/>
-                            Monday Sept 1st, 2017
-                            <br/>
-                            9-11 am
-                            <br/>
-                            Delivery Address
-                            <br/>
-                            11901 Santa Monica Blvd, Los Angeles, CA, 90025
-                            <br/>
-                            <br/>
-                            <Link to="/order/delivery" className="btn btn-default">Edit Delivery Information</Link>   
-                            <br/>
-                            <br/>
-                            Items
-                            <br/>
+                            {screen}
                             <br/>
                             <form className="form-horizontal">
-                              <div className="form-group">
-                                <div className="col-sm-10">
-                                    <b>Cart Items</b>
-                                    <br/>
-                                    <br/>
-                                    <b>Total Due</b>
-                                    <br/>
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Name:
+                                  </div>
                                 </div>
-                              </div>
-                            </form></div>}
-                            
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Ross Edwards
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      Contact
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      rossedwards@gmail.com
+                                  </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-sm-12">
+                                      310-775-5566
+                                  </div>
+                                </div>
+                            </form>
+                            <br/>
+                            <br/>
+                            <Link to="/order/checkout">Edit Name and Contact</Link>   
+                            <br/>
+                            <br/>
+                            <br/>
+                            if not "pool"
+                            <br/>
+                            <br/>
+                            {this.props.User.orders[0].cartItems[0] == "yours" &&
+                                <div>
+                                Delivery Contact
+                                <br/>
+                                Delivery Date
+                                <br/>
+                                Monday Sept 1st, 2017
+                                <br/>
+                                9-11 am
+                                <br/>
+                                Delivery Address
+                                <br/>
+                                11901 Santa Monica Blvd, Los Angeles, CA, 90025
+                                <br/>
+                                <br/>
+                                <Link to="/order/delivery">Edit Delivery Information</Link>   
+                                <br/>
+                                <br/>
+                                Items
+                                <br/>
+                                <br/>
+                                <form className="form-horizontal">
+                                  <div className="form-group">
+                                    <div className="col-sm-10">
+                                        <b>Cart Items</b>
+                                        <br/>
+                                        <br/>
+                                        <b>Total Due</b>
+                                        <br/>
+                                    </div>
+                                  </div>
+                                </form>
+                                </div>
+                            }
+                            <br/>
+                            <Link to="/order/cart">Cart</Link>   
+                            <br/>
+                            <br/>
                             <Link to="/order/payment" className="btn btn-default">Payment</Link>   
                             <br/>
                         </div>
-                        <div className="hidden-xs col-md-2">
-                              maybe put something here
-                        </div>
+                        
                 </div>
             </div>
             </div>
@@ -953,10 +1075,10 @@ class Preview extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("state" + JSON.stringify(state));
+  console.log("preview state" + JSON.stringify(state));
   return {
-   //order: state.default.order
-   //menu_items: getPublicMenu
+   User: state.User,
+   menuItems: state.menuItems.items,
    //menu_items: dispatch()
   };
 }
@@ -964,6 +1086,9 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
+    getMenuItems: () => {
+      dispatch(getMenuItems());
+    },
     setDate: (e: any) => {
       //dispatch(setDate(e))
     },

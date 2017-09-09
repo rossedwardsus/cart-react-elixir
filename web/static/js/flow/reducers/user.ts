@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]}, action: any){
+export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]}, action: any){
 
   let delivery_contacts_addresses_updated = null;
   let payment_methods_updated = null;
@@ -64,7 +64,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       //if another pool order exists change it's status to "saved"
 
-      orders_updated.push({order_type: "pool", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", cartItems: []})
+      orders_updated.push({order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", cartItems: []})
 
       let started_order = state.orders.findIndex((order: any) => order.status == "started");
 
@@ -100,10 +100,18 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
 
     case ADD_CART_ITEM:
-      console.log("add cart item reducer");
+      console.log("add cart item reducer here " + JSON.stringify(action));
+
+      //if order_type == social
+
+      //orders.filter((order: ) => order.order_type == "social"
 
       orders_updated = state.orders;
-      orders_updated[0].cartItems.push({item_id: 10, twelveortwentyfourminis: "24_minis", quantity: "1"});
+      //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
+
+      //else
+      orders_updated[0].cartItems.push({item_id: action.item_id, quantity: action.quantity});
+
 
       return Object.assign({}, state, {...state, orders: orders_updated});
 

@@ -74,7 +74,9 @@ class DateTime extends React.Component<any, any> {
         selected_specific_time: "",
         delivery_dates: [],
         delivery_times: "",
-        daysOfWeek: []
+        daysOfWeek: [],
+        menuItems: [],
+        User: [],
         
     };
 
@@ -94,11 +96,23 @@ class DateTime extends React.Component<any, any> {
     };
   }
 
-  componentWillMount(){
+  componentDidMount = () => {
+
+    window.scrollTo(0, 0);
+
+  }
+
+  componentWillMount = () => {
+
+    console.log("checkout User " + JSON.stringify(this.props.User));
+    //console.log("checkout menuItems " + JSON.stringify(this.props.menuItems));
+
+    //this.setState({User: this.props.User});
+    //this.setState({menuItems: this.props.menuItems});        
 
     //alert();
 
-    this.props.getMenuItems();
+    //this.props.getMenuItems();
     //this.setState({delivery_times: "1-3am"});
 
     //if(this.props.User.orders[0].order_type == "social"){
@@ -338,7 +352,7 @@ class DateTime extends React.Component<any, any> {
 
     let screen = null;
 
-    console.log("order type" + this.props.User.orders[0].order_type);
+    console.log("order type " + this.props.User.orders[0].order_type);
 
     if(this.props.User.orders[0].order_type == "pool"){
       
@@ -451,12 +465,13 @@ class DateTime extends React.Component<any, any> {
                                 </div>
                               </div>
                             </form>
-                            <Link to="/order/preview" className="btn btn-default">Preview</Link>  
+                            <Link to="/order/preview">Preview</Link>  
                             <br/>
                             <br/>
-                            <Link to="/order/payment" className="btn btn-default">Payment</Link>
+                            <Link to="/order/payment">Payment</Link>
                             <br/>
-                            <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
+                            <br/>
+                            <Link to="/order/menu">Back to Menu</Link>  
                             <br/>
                             <br/>
                             <br/>
@@ -477,7 +492,7 @@ class DateTime extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("datetime component/state" + JSON.stringify(state));
+  console.log("checkout state" + JSON.stringify(state));
   return {
    //order: state.default.order
    //menu_items: getPublicMenu
