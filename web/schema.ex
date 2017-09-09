@@ -201,9 +201,7 @@ defmodule Sconely.Schema do
 
 
 
-    #order
-
-  	
+    #order-is this still being used?
   	field :complete_order, type: :order do
   		arg :order_type, non_null(:string)
       arg :order_first_name, :string
@@ -230,6 +228,8 @@ defmodule Sconely.Schema do
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
+
+
     field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do
         arg :order_type, :string
         arg :save_for_later, :boolean
@@ -237,6 +237,7 @@ defmodule Sconely.Schema do
         arg :user_name_last, :string
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
+        arg :pool_id, :string
         arg :pool_name, :string
         arg :pool_date, :string
         arg :delivery_contact_address_name_first, :string

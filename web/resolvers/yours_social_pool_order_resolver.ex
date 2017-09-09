@@ -93,7 +93,40 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   #  |> SconelySignatureOrder.changeset(order_params)
   #  |> Repo.update
 
-      {:ok, %{pool_message: ""}}
+      #get user id from user_pools based on the pool name
+      #get pool order id based on the user id and the pool date and time
+
+      #pool_date_day_year = String.slice(args[:pool_date], (String.length(args[:pool_date])-6), String.length(args[:pool_date]))
+      pool_date_day_year_as_date = "01-2007"
+
+      #pool_date_month_name = String.slice(params["pool_date"], 0, String.length(params["pool_date"])-6)
+
+      pool_date_month_name = "september"
+
+      pool_date_month_number = ""
+
+      case pool_date_month_name do
+
+          "january" -> pool_date_month_number = "01"
+          "february" -> pool_date_month_number = "02"
+          "march" -> pool_month_number = "03"
+          "april" -> pool_month_number = "04"
+          "may" -> pool_month_number = "05"
+          "june" -> pool_month_number = "06"
+          "july" -> pool_month_number = "07"
+          "august" -> pool_month_number = "08"
+          "september" -> pool_date_month_number = "09"
+          "october" -> pool_date_month_number = "10"
+          "november" -> pool_date_month_number = "11"
+          "december" -> pool_month_number = "12"
+
+      end
+
+      IO.inspect(pool_date_month_number <> "-" <> pool_date_day_year_as_date)
+
+
+
+      {:ok, %{pool_order_id: "1", pool_order_message: ""}}
   end
 
 
@@ -582,6 +615,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #Sconely.CompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
               
+                        #Sconely.CompletePoolOrderEmail.admin(%{"pool_order_id" => order_id, "pool_order_name" => "", order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+
+
+
+
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
 
                         IO.puts("ok")

@@ -7,7 +7,9 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateMenuItemsTable do
       add :name, :string, size: 40
       add :description, :text
       add :ingredients, :text
+      add :assortment, :boolean
       add :active, :string, size: 40
+
     end
   end
 

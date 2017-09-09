@@ -50,6 +50,17 @@ defmodule SconeHomeElixir.Router do
   #  post "/", LoginController, :create
   #end
 
+  scope "/api1" do
+    #pipe_through :api
+
+    #get "/upload", Sconely.UserProfilePhotoController, :create
+    #post "/upload", Sconely.UserProfilePhotoController, :create
+
+    #post "/register", Sconely.RegisterController, :create
+    #post "/login", Sconely.LoginController, :create
+
+    #get "/menu_items", Sconely.MenuItemsController, :index   
+  end
 
   scope "/api"  do
     #pipe_through :api
@@ -92,10 +103,15 @@ defmodule SconeHomeElixir.Router do
      #   get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
     #end
 
+    
+
     get "/", HomeController, :index
     get "/:signature_event_name", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
     #get "/activate", ActivateController, :index
+
+
+
 
     #forward "/graphql/signature", Absinthe.Plug, schema: SconeHomeElixir.SignatureSchema
     #forward "/graphql/social", Absinthe.Plug, schema: SconeHomeElixir.SocialSchema

@@ -354,14 +354,14 @@ class DateTime extends React.Component<any, any> {
 
     console.log("order type " + this.props.User.orders[0].order_type);
 
-    if(this.props.User.orders[0].order_type == "pool"){
+    /*if(this.props.User.orders[0].order_type == "pool"){
       
-      screen = <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+      screen = <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
     
     }else{ 
 
       screen = <div>
-                      <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                      <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
                       <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
@@ -402,10 +402,41 @@ class DateTime extends React.Component<any, any> {
                                     </select>
                                 </div>
                               </div>
-                            </form></div>
-    }
+                            </form>
+                        </div>
+    }*/
+
+
+    if(this.props.User.orders[0].order_type == "pool"){
+
+          return(<div>
+                    <PublicTopNavbar/>
+                    <div className="row">
+                          <div className="hidden-xs col-md-3">
+                            <br/>
+                            <br/>
+                            Sconely Yours
+                            <br/>
+                            <br/>
+                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
+                            <br/>
+                          </div>
+                          <div className="col-xs-12 col-md-9">
+                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                          </div>
+                          <Link to="/order/preview">Preview</Link>  
+                          <br/>
+                          <br/>
+                          <Link to="/order/payment">Payment</Link>
+                          <br/>
+                          <br/>
+                          <Link to="/order/menu">Back to Menu</Link> 
+                    </div>
+                </div>)
    
-    return ( <div>
+    }else{
+          
+          return ( <div>
                 <PublicTopNavbar/>
                 <div className="row">
                       <div className="hidden-xs col-md-3">
@@ -421,7 +452,7 @@ class DateTime extends React.Component<any, any> {
                             {screen}
                             <br/>
                             <br/>
-                            <NameContact setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
                             <br/>
                             <br/>
                             <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
@@ -477,8 +508,9 @@ class DateTime extends React.Component<any, any> {
                             <br/>
                         </div>
                     </div>  
-              </div>
-    )
+              </div>)
+
+        }
   }
 
   /*render(){

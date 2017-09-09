@@ -11,7 +11,7 @@ export function setUserFirstName(value: any) {
   console.log("set user first name action " + value);
   return {
     type: SET_USER_NAME_FIRST,
-    data: value
+    value: value
   }
 }
 
@@ -20,7 +20,7 @@ export function setUserLastName(value: any) {
   console.log("set user last name action " + value);
   return {
     type: SET_USER_NAME_LAST,
-    data: value
+    value: value
   }
 }
 
@@ -29,7 +29,7 @@ export function setUserEmail(value: any) {
   console.log("set user email action " + value);
   return {
     type: SET_USER_EMAIL,
-    data: value
+    value: value
   }
 }
 
@@ -38,7 +38,7 @@ export function setUserMobile(value: any) {
   console.log("set user email action " + value);
   return {
     type: SET_USER_MOBILE,
-    data: value
+    value: value
   }
 }
 

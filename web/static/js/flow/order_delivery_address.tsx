@@ -528,9 +528,6 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <input type="text" value={this.state.street2} maxLength={20} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
                         </div>
-                        <div>
-                          <input type="text" value={this.state.company_name} maxLength={4} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
-                        </div>
                       </div>
                  </form>
                 <form className="form-horizontal">

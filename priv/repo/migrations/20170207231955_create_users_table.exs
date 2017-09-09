@@ -3,7 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserProfilesTable do
 
   def change do
     create table(:users) do
-      add :user_id, :uuid, null: false
+      add :user_id, Ecto.UUID, null: false
   	  add :first_name, :string
   	  add :last_name, :string
   	  add :about_me, :string

@@ -118,33 +118,33 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
 
 
-    /*case SET_USER_NAME_FIRST:
-      console.log("user first name reducer" + JSON.stringify(state));
+    case SET_USER_NAME_FIRST:
+      console.log("user first name reducer " + JSON.stringify(action.value));
 
-      user_updated = state.user;
-      user_updated["first_name"] = action.value;
+      //user_updated = state;
+      //user_updated["first_name"] = action.value;
 
-      return Object.assign({}, state, {user: user_updated});
+      return Object.assign({}, state, {...state, first_name: action.value});
 
     case SET_USER_NAME_LAST:
-      console.log("user last name reducer" + JSON.stringify(state));
+      console.log("user last name reducer " + JSON.stringify(state));
 
-      return Object.assign({}, state, {...state, last_name: action.data});
+      return Object.assign({}, state, {...state, last_name: action.value});
 
    
 
     case SET_USER_CONTACT_EMAIL:
-      console.log("set user email" + JSON.stringify(state));
+      console.log("set user email reducer " + JSON.stringify(action.value));
 
-      return Object.assign({}, state, {...state, email: action.data});
+      return Object.assign({}, state, {...state, email: action.value});
     
     case SET_USER_CONTACT_MOBILE:
-      console.log("set user email" + JSON.stringify(state));
+      console.log("set user mobile reducer " + JSON.stringify(state));
 
-      return Object.assign({}, state, {...state, email: action.data});
+      return Object.assign({}, state, {...state, mobile: action.value});
     
 
-    case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
+    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
 
       console.log("user delivery contact address first name reducer");
 
