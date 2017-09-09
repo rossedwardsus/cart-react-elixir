@@ -857,12 +857,10 @@ class Preview extends React.Component<any, any> {
                             </form>
                             <form className="form-horizontal">
                                 <div className="form-group">
-                                  <div className="col-sm-12">
+                                  <div className="col-sm-6">
                                       rossedwards@gmail.com
                                   </div>
-                                </div>
-                                <div className="form-group">
-                                  <div className="col-sm-12">
+                                  <div className="col-sm-6">
                                       310-775-5566
                                   </div>
                                 </div>
@@ -947,9 +945,6 @@ class Preview extends React.Component<any, any> {
                   <div className="row">
                         <div className="hidden-xs col-md-3">
                           <br/>
-                          <br/>
-                          <br/>
-                          <br/>
                           <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
                           <br/>
                           <br/>
@@ -989,18 +984,16 @@ class Preview extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-12">
-                                      Contact
+                                      Contact:
                                   </div>
                                 </div>
                             </form>
                             <form className="form-horizontal">
                                 <div className="form-group">
-                                  <div className="col-sm-12">
+                                  <div className="col-sm-6">
                                       rossedwards@gmail.com
                                   </div>
-                                </div>
-                                <div className="form-group">
-                                  <div className="col-sm-12">
+                                  <div className="col-sm-6">
                                       310-775-5566
                                   </div>
                                 </div>
