@@ -96,20 +96,20 @@ defmodule SconeHomeElixir.HomeController do
 
 	  	#end
 
-	if params["pool_name"] != nil && params["pool_date"] != nil do
+	#if params["pool_name"] != nil && params["pool_date"] != nil do
 
-		pool_name = params["pool_name"]
-  		pool_date = params["pool_date"]
+	#	pool_name = params["pool_name"]
+  	#	pool_date = params["pool_date"]
 
-  		url = "/#/pool/" <> pool_name <> "/" <> pool_date
+  		#url = "/#/pool/" <> pool_name <> "/" <> pool_date
   		#url = url <> "/"
-  		redirect conn, to: url
+  		#redirect conn, to: url
 
-    else
+    #else
 
     	render conn, "index.html"
 
-    end
+    #end
   end
 
   #def index(conn, _params) do

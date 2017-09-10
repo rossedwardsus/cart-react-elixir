@@ -785,6 +785,32 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             if user is registered
                             <br/>
+                             <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-3">
+                                    <div className={this.state.first_name_classname}>
+                                      Total Due: 
+                                    </div>
+                                  </div>
+                                  <div className="col-md-3">
+                                    <div className={this.state.first_name_classname}>
+                                      50.00
+                                    </div>
+                                  </div>
+                                </div>
+                             </form>
+                             <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-3">
+                                      Promo Code
+                                  </div>
+                                  <div className="col-md-3">
+                                    <div className={this.state.last_name_classname}>
+                                      <input type="text" maxLength={30}  className="form-control" value={this.state.last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                    </div>
+                                  </div>
+                                </div>
+                            </form>
                             <br/>
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <input type="checkbox" onChange={this.saveForLater}/>Save for later

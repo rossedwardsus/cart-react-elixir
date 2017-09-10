@@ -72,7 +72,7 @@ defmodule Sconely.Schema do
         #arg :order_id, :string
         arg :pool_name, :string
         arg :pool_date, :string
-        #arg :code, :string
+        arg :cart_items, list_of(:item)
         #arg :guest_count, :string
         #arg :delivery_date, :string
         #arg :delivery_time, :string
@@ -261,7 +261,7 @@ defmodule Sconely.Schema do
         #arg :terms
         #arg :mailing_list
 
-        resolve &Sconely.YoursSocialOrderResolver.complete_yours_order/2
+        resolve &Sconely.YoursSocialPoolOrderResolver.complete_yours_social_pool_order/2
       end
 
   

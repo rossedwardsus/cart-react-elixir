@@ -1,4 +1,4 @@
-defmodule Sconely.CompleteOrderEmail do
+defmodule Sconely.CompleteYoursSocialPoolOrderEmail do
   use Bamboo.Phoenix, view: SconeHomeElixir.UserOrderProcessedEmailView
 
   def welcome_email(_params) do
@@ -27,7 +27,7 @@ defmodule Sconely.CompleteOrderEmail do
 
   end
 
-  def pool(_params) do
+  def pool_order(_params) do
 
   	#IO.puts("hello")
   	IO.inspect(_params)
@@ -35,9 +35,9 @@ defmodule Sconely.CompleteOrderEmail do
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.PoolOrderEmailView, "yours_order_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.PoolOrderEmailView, "pool_order_email.html", key: _params)
 
-    IO.inspect(_params[:user_contact_mobile])
+    #IO.inspect(_params[:user_contact_mobile])
 
     #send to admin as well
 

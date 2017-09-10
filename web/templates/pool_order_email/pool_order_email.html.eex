@@ -1,0 +1,32 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+  <table width="100%">
+  <tr><td><br></td></tr>
+  <tr><td><img height="50" width="200" src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
+  <tr><td><br><br></td></tr>
+  <tr><td>Dear <%= @key.args.user_name_first %><%= @key.args.user_name_last %></td><tr>
+  <tr><td>You ar part of a pool named 8thandHope which is scheduled for delivery on monday jan 1, 2017 between 9-11 am, at <%= @key.delivery_contact_address.street1 %>, los angeles ca, 90025</td></tr>
+  <tr><td><%= @key.args.user_contact_email %><%= @key.args.user_contact_mobile %>,</td></tr>
+  <tr><td><br></td></tr>
+  <tr><td><br>You have ordered the following items</td></tr>
+  <table width="100%">
+  <tr><td>item name</td><td>/thumbnail image/</td><td>quantity</td></tr>
+  </table>
+  <tr><td><br></td></tr>
+  <tr><td>total cost</td></tr>
+  <tr><td>Your delivery on monday jan 1, 2017 between 9-11 am, at 11901 santa monica blvd, los angeles ca, 90025</td></tr>
+  <tr><td>Billed to:</td></tr>
+  <tr><td>ross edwards 11901</td></tr>
+  <tr><td>visa xxx-xxx-xxxx-9999</td></tr>
+  <tr><td><br>if you have any questions please contact us at </td></tr>
+  <tr><td><br></td></tr>
+  <tr><td>Enjoy your scone!</td></tr>
+  <tr><td><br></td></tr>
+  <tr><td>Sconely yours,</td></tr>
+  <tr><td>The Sconely Team</td></tr>
+  <tr><td>social links</td></tr>
+  </table>
+
+</html>

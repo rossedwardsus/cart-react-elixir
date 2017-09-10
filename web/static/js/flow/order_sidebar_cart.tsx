@@ -473,7 +473,8 @@ class SidebarCart extends React.Component<any, any> {
 
     return (<div> 
                   <br/>
-                  a minimum of 2 items is required
+                  {(this.props.User.orders[0].order_type == "pool" && this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0) && "a minimum of 1 item is required"}
+                  {this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
                   <br/>
                   <br/>
                   {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}
@@ -490,7 +491,9 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
                         </div>
                       </form>
-                       <form className="form-horizontal" style={{border: 1}}>
+                      dont show if pool
+                      <br/>
+                      <form className="form-horizontal" style={{border: 1}}>
                         <div className="form-group" style={{border: 1}}>
                           <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
                           <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>

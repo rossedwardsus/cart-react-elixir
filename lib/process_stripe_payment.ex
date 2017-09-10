@@ -129,6 +129,19 @@ defmodule Sconely.ProcessStripePayment do
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
+    #Stripe::Token.create(
+    #  :card => {
+    #    :number => "4242424242424242",
+    #    :exp_month => 9,
+    #    :exp_year => 2018,
+    #    :cvc => "314"
+    #  },
+    #)
+
+    IO.inspect(Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}))
+
+    Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}})    
+
     #Stripe.Charges.create(51, params)
 
     new_customer = [

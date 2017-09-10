@@ -757,7 +757,7 @@ class OrderCart extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
-                          Sconely Yours
+                          Sconely Yours/Social/Pool
                           <br/>
                           <br/>
                           <br/>
@@ -773,13 +773,11 @@ class OrderCart extends React.Component<any, any> {
                               <div className="form-group" style={{border: 1}}>
                                 <div className="col-md-8">                         
                                    <br/>
+                                   dont show if cart
+                                   <br/>
                                    <div className="col-md-4">Delivery charge</div><div className="col-md-1">$</div>
                                    <br/>
                                    <br/> 
-                                   <div className="col-md-4">Promo Code</div><div className="col-md-4">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Street" style={{borderRadius: 0, fontSize: 16}}/>
-                                   </div>
-                                   <br/>
                                    <br/>
                                    <div className="col-md-4">Total Items</div><div className="col-md-1"><b>{total_items}</b></div>
                                    <br/>
@@ -817,7 +815,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //cart_items: state.cart.cart_items
         menuItems: state.menuItems.items,
         guestOrder: state.guestOrder,
-        cartItems: state.guestOrder.cart_items, //computed
+        Order: state.guestOrder.cart_items, //computed
         
         //cart_total_items //computed
         //cart_total_cost //cost

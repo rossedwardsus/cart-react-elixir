@@ -1,4 +1,4 @@
-defmodule Sconely.OrderPayment do
+defmodule Sconely.YoursSocialOrder do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -8,12 +8,16 @@ defmodule Sconely.OrderPayment do
 
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
-		schema "order_items" do
-			field :order_id, Ecto.UUID
-			field :name_on_card, :string
-			field :card_number, :string
-			field :expiry_month, :string
-			field :expiry_year, :string
+		schema "yours_social_orders" do
+			field :order_id, :string #primary key #secure random
+			field :user_id, :string #Ecto.UUID
+			field :delivery_contact_address_id, :string #primary key #secure random
+			field :payment_method_id, :string #Ecto.UUID
+			#delivery_datetime
+			#datetime_created
+			#stripe_payment_token
+			#field message
+		
 		end
 
 		def changeset(model, params \\ %{}) do

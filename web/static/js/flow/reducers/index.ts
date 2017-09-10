@@ -55,7 +55,7 @@ export default combineReducers({
   //OrderPayment,
   //OrderDeliveryAddress,
   //OrderValidations,
-  guestOrder,
+  //guestOrder,
   //name,
   //contact,
   User,

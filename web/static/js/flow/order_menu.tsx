@@ -318,9 +318,9 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(this.props.cartItemsTotalQuantity > 0){
 
-    let count = this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+    let cartItemsQuantity = this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
-    for (let i = 1; i < (12 - count); i++){ 
+    for (let i = 1; i < (12 - cartItemsQuantity); i++){ 
 
         //console.log(i);
         
@@ -346,7 +346,7 @@ class OrderMenu extends React.Component<any, any> {
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-        if(this.props.cartItemsTotalQuantity < 10){
+        if(cartItemsQuantity < 10){
 
             yours_social_pool_quantity_selector =  <div>
                                                     <div className="col-md-3">
@@ -487,7 +487,6 @@ class OrderMenu extends React.Component<any, any> {
                             Ingredients: {this.state.selected_item_ingredients}
                             <br/>
                             <br/>
-                            $5.50
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
@@ -545,7 +544,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //cart_total_cost //cost
         //delivery_cost: state.guestOrder.delivery_cost
         
-        cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
+        //cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
         
 
     //}
