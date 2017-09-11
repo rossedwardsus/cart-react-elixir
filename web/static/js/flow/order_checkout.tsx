@@ -427,15 +427,19 @@ class DateTime extends React.Component<any, any> {
                           <form className="form-horizontal">
                               <div className="form-group">
                                 <div className="col-md-3">
-                                  <Link to="/order/preview">Preview</Link>  
+                                  <Link to="/order/preview" className="btn btn-default">Preview</Link>  
                                     <br/>
                                 </div>
                                 <div className="col-md-3">
-                                  <Link to="/order/preview">Preview</Link>  
+                                  <Link to="/order/payment" className="btn btn-default">Preview</Link>  
                                     <br/>
                                 </div>
                                 <div className="col-md-3">
-                                  <Link to="/order/preview">Preview</Link>  
+                                  <Link to="/order/menu" className="btn btn-default">Menu</Link>  
+                                    <br/>
+                                </div>
+                                <div className="col-md-3">
+                                  <Link to="/order/cart" className="btn btn-default">Cart</Link>  
                                     <br/>
                                 </div>
                               </div>
