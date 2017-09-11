@@ -42302,7 +42302,7 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
-	                    } })), React.createElement(react_router_1.Link, { to: "/order/preview" }, "Preview"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/payment" }, "Payment"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu" }, "Back to Menu")));
+	                    } })), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/preview" }, "Preview"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/preview" }, "Preview"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/preview" }, "Preview"), React.createElement("br", null))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, screen, React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
@@ -42598,6 +42598,7 @@ webpackJsonp([0],[
 	            first_name_border_color: "grey",
 	            last_name_border_color: "grey",
 	            email_border_color: "grey",
+	            email_again_border_color: "grey",
 	            mobile_border_color: "grey",
 	            first_name_validated: false,
 	            last_name_validated: false
@@ -42647,9 +42648,9 @@ webpackJsonp([0],[
 	                    return _this2.setUserEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email_again, onChange: function onChange(e) {
 	                    return _this2.setUserEmailAgain(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0 } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.user_mobile_classname }, React.createElement("input", { type: "text", value: this.state.user_mobile, maxLength: 12, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_again_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.user_mobile_classname }, React.createElement("input", { type: "text", value: this.state.user_mobile, maxLength: 12, onChange: function onChange(e) {
 	                    return _this2.setUserMobile(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0 } }))))));
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",

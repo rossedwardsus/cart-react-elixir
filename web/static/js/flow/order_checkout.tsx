@@ -424,13 +424,22 @@ class DateTime extends React.Component<any, any> {
                           <div className="col-xs-12 col-md-9">
                                 <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
                           </div>
-                          <Link to="/order/preview">Preview</Link>  
-                          <br/>
-                          <br/>
-                          <Link to="/order/payment">Payment</Link>
-                          <br/>
-                          <br/>
-                          <Link to="/order/menu">Back to Menu</Link> 
+                          <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-md-3">
+                                  <Link to="/order/preview">Preview</Link>  
+                                    <br/>
+                                </div>
+                                <div className="col-md-3">
+                                  <Link to="/order/preview">Preview</Link>  
+                                    <br/>
+                                </div>
+                                <div className="col-md-3">
+                                  <Link to="/order/preview">Preview</Link>  
+                                    <br/>
+                                </div>
+                              </div>
+                          </form>
                     </div>
                 </div>)
    

@@ -59,6 +59,7 @@ class Name extends React.Component<any, any> {
        first_name_border_color: "grey",
        last_name_border_color: "grey",
        email_border_color: "grey",
+       email_again_border_color: "grey",
        mobile_border_color: "grey",
        first_name_validated: false,
        last_name_validated: false
@@ -363,7 +364,7 @@ class Name extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.user_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0}}/>
+                        <input type="text" value={this.state.user_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_again_border_color}}/>
                       </div>
                   </div>
                 </div>
@@ -372,7 +373,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>
-                        <input type="text" value={this.state.user_mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0}}/>
+                        <input type="text" value={this.state.user_mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                       </div>
                   </div>
                 </div>
