@@ -42302,7 +42302,7 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
-	                    } })), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Preview"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Cart"), React.createElement("br", null))))));
+	                    } })), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Payment"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default" }, "Cart"), React.createElement("br", null))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, screen, React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
@@ -43367,7 +43367,7 @@ webpackJsonp([0],[
 	            var delivery_cost = 0;
 	            var that = this;
 	            console.log("order cart" + JSON.stringify(this.props.cartItems));
-	            if (this.props.cartItems.length === 0) {
+	            if (this.props.User.orders[0].cartItems.length === 0) {
 	                cart = "<div>there are no items in your cart<br/><Link to='/public/menu' className='btn btn-default'>Go to Menu</Link><br/></div>";
 	            } else {
 	                //console.log("order cart" + JSON.stringify(this.props.cart_items));
@@ -43431,7 +43431,7 @@ webpackJsonp([0],[
 	                //{order_type: "yours", payment_method: {}, delivery_address: {}, contact: {}, cart: [{item_id: 1, quanity: 2}]}
 	                //social
 	                //{order_type: "social", payment_method: {}, delivery_address: {}, contact: {}, cart: [{item_id: 1, mini: true, quanity: 2}, {item_id: 1, assortments: true, quanity: 2}]}
-	                cart = this.props.cartItems.map(function (item, index) {
+	                cart = this.props.User.orders[0].cartItems.map(function (item, index) {
 	                    var _this2 = this;
 	
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item.item_id
@@ -43510,8 +43510,8 @@ webpackJsonp([0],[
 	        //if(state.default.order.cart_items != undefined){
 	        //cart_items: state.cart.cart_items
 	        menuItems: state.menuItems.items,
-	        guestOrder: state.guestOrder,
-	        Order: state.guestOrder.cart_items,
+	        //guestOrder: state.guestOrder,
+	        USer: state.User,
 	        //cart_total_items //computed
 	        //cart_total_cost //cost
 	        //delivery_cost: state.guestOrder.delivery_cost

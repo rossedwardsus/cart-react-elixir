@@ -431,7 +431,7 @@ class DateTime extends React.Component<any, any> {
                                     <br/>
                                 </div>
                                 <div className="col-md-3">
-                                  <Link to="/order/payment" className="btn btn-default">Preview</Link>  
+                                  <Link to="/order/payment" className="btn btn-default">Payment</Link>  
                                     <br/>
                                 </div>
                                 <div className="col-md-3">

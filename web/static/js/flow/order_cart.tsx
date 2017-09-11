@@ -565,7 +565,7 @@ class OrderCart extends React.Component<any, any> {
 
     console.log("order cart" + JSON.stringify(this.props.cartItems));
 
-    if(this.props.cartItems.length === 0){
+    if(this.props.User.orders[0].cartItems.length === 0){
 
         cart = "<div>there are no items in your cart<br/><Link to='/public/menu' className='btn btn-default'>Go to Menu</Link><br/></div>";
 
@@ -670,7 +670,7 @@ class OrderCart extends React.Component<any, any> {
         //{order_type: "social", payment_method: {}, delivery_address: {}, contact: {}, cart: [{item_id: 1, mini: true, quanity: 2}, {item_id: 1, assortments: true, quanity: 2}]}
 
 
-        cart = this.props.cartItems.map(function(item: any, index: any){
+        cart = this.props.User.orders[0].cartItems.map(function(item: any, index: any){
 
                       //let menu_item_title_index = menu_items.findIndex where item_id == item.item_id
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
@@ -814,8 +814,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
         
         //cart_items: state.cart.cart_items
         menuItems: state.menuItems.items,
-        guestOrder: state.guestOrder,
-        Order: state.guestOrder.cart_items, //computed
+        //guestOrder: state.guestOrder,
+        USer: state.User, //computed
         
         //cart_total_items //computed
         //cart_total_cost //cost
