@@ -492,21 +492,6 @@ class OrderMenu extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="form-group">
                                 {yours_social_pool_quantity_selector}
-                                {this.props.cartItemsTotalQuantity < 10 &&
-                                  //if order type == "yours"
-                                  (<div>
-                                    <div className="col-md-3">
-                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={(e: any) => this.selectedItemQuantity(e)} style={{height: 35, width: 120}}>
-                                      <option value="">Select Quantity</option> 
-                                      {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
-                                      
-                                    </select>
-                                  </div>
-                                  <div className="col-md-3">
-                                    <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
-                                  </div>
-                                  </div>)
-                                }
                             </div>
                           </form>
                         </div>

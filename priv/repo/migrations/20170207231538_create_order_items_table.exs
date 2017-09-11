@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Repo.Migrations.CreateSconelyOrderItemsTable do
+defmodule SconeHomeElixir.Repo.Migrations.CreateOrderItemsTable do
   use Ecto.Migration
 
   def change do

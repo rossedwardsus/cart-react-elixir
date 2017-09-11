@@ -5,8 +5,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
   	create table(:user_delivery_contacts_addresses) do
   		add :user_id, :uuid
   		add :user_delivery_contact_address_id, :integer
-  		add :company_name, :string
-  		add :first_name, :string
+  		add :company_name, :string, size: 40
+  		add :first_name, :string, size: 40
   		add :last_name, :string
   		add :email, :string
   		add :mobile, :string
@@ -17,6 +17,6 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
   		add :zipcode, :string
 
   		#add :note, :string
-
+  	end
   end
 end

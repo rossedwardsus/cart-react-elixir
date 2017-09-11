@@ -496,15 +496,22 @@ class DateTime extends React.Component<any, any> {
                                 </div>
                               </div>
                             </form>
-                            <form className="form-horizontal" style={{border: 0}}>
-                              <div className="form-group" style={{borderRadius: 0}}>
+                            <form className="form-horizontal">
+                              <div className="form-group">
                                 <div className="col-md-3">
-                                    <Link to="/order/preview">Preview</Link>  
+                                  <Link to="/order/preview">Preview</Link>  
+                                    <br/>
+                                </div>
+                                <div className="col-md-3">
+                                  <Link to="/order/preview">Preview</Link>  
+                                    <br/>
+                                </div>
+                                <div className="col-md-3">
+                                  <Link to="/order/preview">Preview</Link>  
                                     <br/>
                                 </div>
                               </div>
                             </form>
-                          
                             <br/>
                             <Link to="/order/payment">Payment</Link>
                             <br/>

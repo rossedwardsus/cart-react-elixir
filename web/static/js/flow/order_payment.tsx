@@ -812,10 +812,13 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                             </form>
                             <br/>
+                            an error occured with your payment
+                            <br/>
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <input type="checkbox" onChange={this.saveForLater}/>Save for later
                             <br/>
-                            an error occured with your payment
+                            <br/>
+                            check payment status for order
                             <br/>
                             <button className={this.state.validated} onClick={this.props.processYoursSocialPoolOrder}>Complete Order</button>
                             <br/>

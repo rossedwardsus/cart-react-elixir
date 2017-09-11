@@ -3,8 +3,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateOrdersTable do
 
   def change do
     create table(:orders) do
-      add :user_id, Ecto.UUID
-      add :order_id, Ecto.UUID
+      add :user_id, :uuid
+      add :order_id, :uuid
   	  add :order_type, :string #yours, social, pool
       #add :delivery_contact_address_id, Ecto.UUID
 

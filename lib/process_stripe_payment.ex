@@ -138,32 +138,47 @@ defmodule Sconely.ProcessStripePayment do
     #  },
     #)
 
-    IO.inspect(Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}))
 
-    Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}})    
+    #IO.inspect(Stripe.Token.create(%{:card => %{"number" => "4000000000000002", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}))
 
-    #Stripe.Charges.create(51, params)
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000002", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
-    new_customer = [
-      email: "test@test.com",
-      description: "An Test Account",
-      metadata: [
-        app_order_id: "ABC123",
-        app_state_x: "xyz"
-      ],
-      card: [
-        number: "4111111111111111",
-        exp_month: 01,
-        exp_year: 2018,
-        cvc: 123,
-        name: "Joe Test User"
-      ]
-    ]
+        #IO.inspect(token["id"])  
+
+        {:ok, token} -> {:ok, "token"}
+
+        case Stripe.Charge.create(%{:amount => 2000, :currency => "usd", :source => token["id"], :description => "Charge for ella.robinson@example.com"}) do
+
+          {:ok, charge} -> {:ok, "charged"}
+          {:error, error} -> {:error, error}
+
+        end
+
+        {:error, error} -> {:error, "error"}
+
+    end
+
+
+    #new_customer = [
+    #  email: "test@test.com",
+    #  description: "An Test Account",
+    #  metadata: [
+    #    app_order_id: "ABC123",
+    #    app_state_x: "xyz"
+    #  ],
+    #  card: [
+    #    number: "4111111111111111",
+    #    exp_month: 01,
+    #    exp_year: 2018,
+    #    cvc: 123,
+    #    name: "Joe Test User"
+    #  ]
+    #]
 
     #{:ok, res} = Stripe.Customers.create new_customer
 
-    IO.puts("")
-    IO.puts("")
+    #IO.puts("")
+    #IO.puts("")
 
     #IO.inspect(res)
 
@@ -172,18 +187,18 @@ defmodule Sconely.ProcessStripePayment do
 
     #IO.inspect(cust)
 
-    params = [
-      source: [
-        object: "card",
-        number: "4111111111111111",
-        cvc: 123,
-        exp_month: 12,
-        exp_year: 2020,
-        metadata: [
-          test_field: "test val"
-        ]
-      ]
-    ]
+    #params = [
+    #  source: [
+    #    object: "card",
+    #    number: "4111111111111111",
+    #    cvc: 123,
+    #    exp_month: 12,
+    #    exp_year: 2020,
+    #    metadata: [
+    #      test_field: "test val"
+    #    ]
+    #  ]
+    #]
 
     #{:ok, card} = Stripe.Cards.create(:customer, "cus_BJyHH3jNze7e3E", params)
 
@@ -191,18 +206,18 @@ defmodule Sconely.ProcessStripePayment do
 
     #IO.inspect(card)
 
-    params = [
-        source: [
-          "object": "card", 
-          "card": "card_1AxKOMH6MNtZcTO4Q73576gH", 
-          "exp_month": 10,
-          "exp_year": 2020,
-          "country": "US",
-          "name": "Ducky Test",
-          "cvc": 123
-        ],
-        description: "Sconely order id for customer id"
-    ]
+    #params = [
+    #    source: [
+    #      "object": "card", 
+    #      "card": "card_1AxKOMH6MNtZcTO4Q73576gH", 
+    #      "exp_month": 10,
+    #      "exp_year": 2020,
+    #      "country": "US",
+    #      "name": "Ducky Test",
+    #      "cvc": 123
+    #    ],
+    #    description: "Sconely order id for customer id"
+    #]
 
     #{:ok, charge} = Stripe.Charges.create(51, params)
 
@@ -212,19 +227,19 @@ defmodule Sconely.ProcessStripePayment do
     #      card: card.id
     #]
 
-    token_params = [
-          card: [id: "card_1AxKOMH6MNtZcTO4Q73576gH"]
-    ]
+    #token_params = [
+    #      card: [id: "card_1AxKOMH6MNtZcTO4Q73576gH"]
+    #]
 
     #{:ok, token} = Stripe.Tokens.create token_params
     #IO.inspect(token)
 
-    params = [
+    #params = [
         #source: "tok_1AxKt9H6MNtZcTO4L1zgILPc",
-        customer:  "cus_BJyLo6fCtMZCOT",
-        card: "card_1AxKOMH6MNtZcTO4Q73576gH",
-        description: "Sconely order id for customer id"
-    ]
+    #    customer:  "cus_BJyLo6fCtMZCOT",
+    #    card: "card_1AxKOMH6MNtZcTO4Q73576gH",
+    #    description: "Sconely order id for customer id"
+    #]
 
     #{:ok, charge} = Stripe.Charges.create(51, params)
     #IO.inspect(charge)

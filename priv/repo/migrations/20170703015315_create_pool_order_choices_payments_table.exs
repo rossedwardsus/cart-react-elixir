@@ -4,8 +4,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactTable do
   def change do
 
   	  create table(:pool_order_choices_payments) do
-	      add :pool_order_id, Ecto.UUID, null: false
-	      add :user_id, Ecto.UUID
+	      add :pool_order_id, :uuid, null: false
+	      add :user_id, :uuid
 	  	  add :item_id, :integer
 	  	  add :stripe_payment_token, :string
 	  	  add :order_datetime, :datetime

@@ -182,15 +182,15 @@ export function processYoursSocialPoolOrder() {
             //if order type == pool then address isnt needed
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status sconely_user_token error_reason}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
                   console.log("graphql response " + JSON.stringify(response));
 
-                  if(response.data.data.processYoursSocialOrder.errorReason != ""){
+                  /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){
 
-                      console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+                      //console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialPoolOrder.errorReason));
 
                       
 
@@ -198,14 +198,14 @@ export function processYoursSocialPoolOrder() {
                       //if save_info_for_later == true...
                       //last four card number
 
-                      localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+                      //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
 
                       console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
 
                       //else delete from redux
                       //console.log("clear order");
                       
-                      dispatch({type: CLEAR_USER});
+                      //dispatch({type: CLEAR_USER});
             
 
                       //that.props.history.push('/user');
@@ -218,7 +218,14 @@ export function processYoursSocialPoolOrder() {
 
                     //dispatch({ type: error, item_id: "session_id"});
 
-                  }
+                    //if status == card_error
+                    //set status of order to payment error?
+
+                    dispatch({type: SET_PAYMENT_ERROR, error: "response.data.data.processYoursSocialPoolOrder.errorReason"});
+
+                  
+
+                  }*/
       
 
             })

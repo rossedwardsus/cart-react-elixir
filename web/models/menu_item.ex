@@ -7,16 +7,12 @@ defmodule Sconely.MenuItem do
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "menu_items" do
-			#field :item_id, Ecto.UUID
-			#field :order_type, 
-			#field :yours
-			#field :social
-			#field :signature
+			field :menu_item_id, :integer
 			field :name, :string
 			field :description, :string
 			field :ingredients, :string
-			#field :cost, :string
-			#assortment, :boolean
+			field :assortment, :boolean
+			field :active, :boolean
 			
 			#timestamps()
 		end
