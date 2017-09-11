@@ -318,7 +318,7 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(this.props.cartItemsTotalQuantity > 0){
 
-    let cartItemsQuantity = this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+    let cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
     for (let i = 1; i < (12 - cartItemsQuantity); i++){ 
 

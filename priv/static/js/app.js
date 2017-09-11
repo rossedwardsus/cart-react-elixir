@@ -40271,7 +40271,7 @@ webpackJsonp([0],[
 	            //if yours order show yours menu if social order show social menu
 	            var options_count_array = [];
 	            //if(this.props.cartItemsTotalQuantity > 0){
-	            var cartItemsQuantity = this.props.order.cartItems.reduce(function (amount, item) {
+	            var cartItemsQuantity = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
 	            }, 0);
 	            for (var i = 1; i < 12 - cartItemsQuantity; i++) {
@@ -40648,14 +40648,18 @@ webpackJsonp([0],[
 	                });*/
 	                //alert(total_cost);
 	                cart = this.state.cartItems.map(function (item, index) {
-	                    //console.log("cart menuitems " + JSON.stringify(this.state.menuItemNames));
-	                    //let menu_item_name_index = this.state.menuItemNames.findIndex((menu_item: any) => {
-	                    //console.log(JSON.stringify(menu_item) + " " + item.item_id);
-	                    //return menu_item.id === "" + item.item_id;
-	                    //});
-	                    //console.log("index " + menu_item_name_index);
+	                    //console.log("cart menuitems " + JSON.stringify(this.props.menuItems));
+	                    var menu_item = this.props.menuItems.find(function (menu_item) {
+	                        //console.log(JSON.stringify(menu_item) + " " + item.item_id);
+	                        return menu_item.id === 1;
+	                    });
+	                    //console.log("index " + JSON.stringify(menu_item.name));
 	                    //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-	                    var item_name = this.props.menuItems[0].name;
+	                    //let item_name = this.props.menuItems[0].name;
+	                    var item_name = "";
+	                    if (menu_item != undefined) {
+	                        item_name = menu_item.name;
+	                    }
 	                    //let item_name = "";
 	                    //console.log("sidebar cart " + JSON.stringify(that.Order));
 	                    //console.log(order_type);
@@ -47185,7 +47189,7 @@ webpackJsonp([0],[
 	
 	                  switch (action.type) {
 	                                    case actionTypes_ts_1.VIEW_PUBLIC_MENU:
-	                                                      console.log("menu_items reducer" + JSON.stringify(action.menu_items));
+	                                                      console.log("menu_items reducer " + JSON.stringify(action.items));
 	                                                      return Object.assign({}, state, { items: action.items });
 	                                    //return Object.assign({}, state, {items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]})
 	                                    case actionTypes_ts_1.SET_MENU:
@@ -47256,7 +47260,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { dateTimeCreated: "", paymentError: "", validations: "" }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { dateTimeCreated: "", paymentError: "", validations: "", analytics_logging: "" }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	      var action = arguments[1];
 	
 	      var delivery_contacts_addresses_updated = null;

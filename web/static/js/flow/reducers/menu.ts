@@ -27,7 +27,7 @@ export default (state:any = {items: []}, action: any) => {
   switch (action.type) {
     case VIEW_PUBLIC_MENU:
 
-      console.log("menu_items reducer" + JSON.stringify(action.menu_items));
+      console.log("menu_items reducer " + JSON.stringify(action.items));
       
       return Object.assign({}, state, {items: action.items})
 

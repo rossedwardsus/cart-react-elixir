@@ -391,20 +391,29 @@ class SidebarCart extends React.Component<any, any> {
 
         cart = this.state.cartItems.map(function(item: any, index: any){
 
-                      //console.log("cart menuitems " + JSON.stringify(this.state.menuItemNames));
+                      //console.log("cart menuitems " + JSON.stringify(this.props.menuItems));
 
-                      //let menu_item_name_index = this.state.menuItemNames.findIndex((menu_item: any) => {
+                      let menu_item = this.props.menuItems.find((menu_item: any) => {
 
                           //console.log(JSON.stringify(menu_item) + " " + item.item_id);
 
-                          //return menu_item.id === "" + item.item_id;
+                          return menu_item.id === 1;
 
-                      //});
+                      });
 
-                      //console.log("index " + menu_item_name_index);
+                      //console.log("index " + JSON.stringify(menu_item.name));
 
                       //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-                      let item_name = this.props.menuItems[0].name;
+                      //let item_name = this.props.menuItems[0].name;
+
+                      let item_name = "";
+
+                      if( menu_item != undefined){
+                        
+                        item_name = menu_item.name;
+
+                      }
+
                       //let item_name = "";
 
                       //console.log("sidebar cart " + JSON.stringify(that.Order));
