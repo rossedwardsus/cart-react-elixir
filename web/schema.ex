@@ -257,7 +257,8 @@ defmodule Sconely.Schema do
         arg :payment_method_expiry_month, :string
         arg :payment_method_expiry_year, :string
         arg :payment_method_security_code, :string
-        #arg :cart_items, list_of(:item)
+        arg :cart_items, list_of(:item)
+        arg :promo_code, :string
         #arg :terms
         #arg :mailing_list
 

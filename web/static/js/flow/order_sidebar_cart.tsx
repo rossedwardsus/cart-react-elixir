@@ -391,7 +391,7 @@ class SidebarCart extends React.Component<any, any> {
 
         cart = this.state.cartItems.map(function(item: any, index: any){
 
-                      //console.log("cart menuitems " + JSON.stringify(this.props.menuItems));
+                      console.log("cart menuitems " + JSON.stringify(this.props.menuItems));
 
                       let menu_item = this.props.menuItems.find((menu_item: any) => {
 
@@ -408,11 +408,11 @@ class SidebarCart extends React.Component<any, any> {
 
                       let item_name = "";
 
-                      if( menu_item != undefined){
+                      //if( menu_item != undefined){
                         
                         item_name = menu_item.name;
 
-                      }
+                      //}
 
                       //let item_name = "";
 
@@ -429,7 +429,7 @@ class SidebarCart extends React.Component<any, any> {
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-4">{item_name}</div>
-                                            <div className="col-md-5"></div>
+                                            <div className="col-md-5">Cost</div>
                                             <div className="col-md-3">{item.quantity}</div>
                                           </div>
                                         </form>
@@ -481,7 +481,6 @@ class SidebarCart extends React.Component<any, any> {
     //message if pool
 
     return (<div> 
-                  <br/>
                   {(this.props.User.orders[0].order_type == "pool" && this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0) && "a minimum of 1 item is required"}
                   {this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
                   <br/>
@@ -500,13 +499,12 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
                         </div>
                       </form>
-                      dont show if pool
                       <br/>
                       <form className="form-horizontal" style={{border: 1}}>
                         <div className="form-group" style={{border: 1}}>
                           <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
                           <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
+                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
                         </div>
                       </form>
                       <form className="form-horizontal" style={{border: 1}}>
@@ -516,7 +514,7 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                         </div>
                       </form>
-                      <Link to="/order/checkout" className="btn btn-default">Checkout</Link>              
+                      <Link to="/order/checkout" className="btn btn-default btn-block">Checkout</Link>              
                     </div>)
                   }
                   <br/>

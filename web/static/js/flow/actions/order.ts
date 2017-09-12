@@ -1,5 +1,5 @@
-import { CREATE_ORDER, SET_ORDER_TYPE, ADD_CART_ITEM, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
-//import {getMenuItems} from './menu.ts';
+import { CREATE_ORDER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, ADD_CART_ITEM, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, SET_PROMO_CODE, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
 
@@ -56,6 +56,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
   //return (dispatch: any, getState: any) => {
     console.log("create order action " + order_type);
     return function(dispatch: any){
+      //getMenuItems();
       //dispatch(getMenuItems());
       //if name != "" then redirect
       //return {
@@ -93,8 +94,10 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
             //get pool order data
             //possibly do as an api and not graphql
 
+
+
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd", cartItems: []) {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -102,7 +105,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
 
                   dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
 
-                  dispatch(push("/order/menu"));
+                  //dispatch(push("/order/menu"));
 
 
 
@@ -182,11 +185,14 @@ export function processYoursSocialPoolOrder() {
             //if order type == pool then address isnt needed
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
                   console.log("graphql response " + JSON.stringify(response));
+
+                  dispatch({type: SET_PAYMENT_ERROR, error: "response.data.data.processYoursSocialPoolOrder.errorReason"});
+
 
                   /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){
 
@@ -291,6 +297,14 @@ export function setDeliveryCost(cost: any) {
   return {
     type: SET_DELIVERY_COST,
     cost
+  }
+}
+
+export function setPromoCode(code: any) {
+  console.log("set promo code action " + code);
+  return {
+    type: SET_PROMO_CODE,
+    code: code
   }
 }
 

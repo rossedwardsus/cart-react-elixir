@@ -23,7 +23,8 @@ defmodule Sconely.PoolOrder do
 			#field :delivery_address_zipcode
 			#datetime created
 			#delivery datetime
-			
+			#total cost
+
 			#belongs_to :order, Order		
 			#has_one :order, Order, join_key: :order_id
 			

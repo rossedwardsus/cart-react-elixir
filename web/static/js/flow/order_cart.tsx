@@ -594,7 +594,7 @@ class OrderCart extends React.Component<any, any> {
 
                       });*/
 
-        total_cost =  this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.50, 0); 
+        total_cost =  this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.50, 0); 
                       
         //}else{
 
@@ -602,7 +602,7 @@ class OrderCart extends React.Component<any, any> {
 
         //}
 
-        total_items = this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        total_items = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
 
         /*item_count = this.props.cart_items.map(function(item: any){
@@ -676,11 +676,11 @@ class OrderCart extends React.Component<any, any> {
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
                       //let item_name = result.get("name");
 
-                      //let item_name = this.props.menu_items[item.menu_item_id].name;
+                      let item_name = this.props.menu_items[item.menu_item_id].name;
 
-                      //if(this.props.guestOrder.order_type == "sconely_yours"){
+                      //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-                          console.log("order cart" + JSON.stringify(this.props.cartItems));
+                          console.log("order cart " + JSON.stringify(this.props.User.orders[0].cartItems));
 
                           //let total_amount = item.quantity;
                           //let item_cost = total_amount * 6.00;
@@ -688,7 +688,7 @@ class OrderCart extends React.Component<any, any> {
                           return(
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{fontSize:16, border: 1}}>
-                                            <div className="col-md-1"></div>
+                                            <div className="col-md-1">{item_name}xcost</div>
                                             <div className="col-md-3">
                                               <div className="row">
                                                 <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
@@ -711,7 +711,7 @@ class OrderCart extends React.Component<any, any> {
                                   return(<div>
                                               <form className="form-horizontal" style={{border: 1}}>
                                                   <div className="form-group" style={{border: 1}}>
-                                                    <div className="col-md-4" style={{fontSize: 20}}>{item.item_title} Mini</div>
+                                                    <div className="col-md-4" style={{fontSize: 20}}>{item_name}- Mini-xcost</div>
                                                     <div style={{fontSize: 10}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}>+</a></div>
                                                     <div className="col-md-1">{item.quantity}</div>
                                                     <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}>-</a></div>
@@ -786,7 +786,9 @@ class OrderCart extends React.Component<any, any> {
                               </div>
                             </form>
                             <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
-                            <Link to="/order/menu" className="btn btn-default">Menu</Link>        
+                            <Link to="/order/menu" className="btn btn-default">Menu</Link>    
+                            <Link to="/order/payment" className="btn btn-default">Payment</Link>
+                            <Link to="/order/preview" className="btn btn-default">Preview</Link>    
                         </div>
                     </div>
               </div>
@@ -815,13 +817,13 @@ const mapStateToProps = (state: any, ownProps: any) => {
         //cart_items: state.cart.cart_items
         menuItems: state.menuItems.items,
         //guestOrder: state.guestOrder,
-        USer: state.User, //computed
+        User: state.User, //computed
         
         //cart_total_items //computed
         //cart_total_cost //cost
         //delivery_cost: state.guestOrder.delivery_cost
         
-        cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
+        cartItemsTotalQuantity: state.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
         
 
     //}

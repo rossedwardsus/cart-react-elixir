@@ -13,7 +13,7 @@ import {cartValidated} from './actions/order_validations.ts';
 import {createOrder, addCartItem} from './actions/order.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
-import MobileCheckoutButton from './mobile_checkout_button.tsx';
+//import MobileCheckoutButton from './mobile_checkout_button.tsx';
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 
 import {getYoursMenuItems} from './selectors/menu.ts'; 
@@ -320,6 +320,8 @@ class OrderMenu extends React.Component<any, any> {
 
     let cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
+    //let cartItemsQuantity = 12;
+
     for (let i = 1; i < (12 - cartItemsQuantity); i++){ 
 
         //console.log(i);
@@ -328,7 +330,7 @@ class OrderMenu extends React.Component<any, any> {
     
     };
 
-    console.log("options count array " + JSON.stringify(11 - this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)));
+    //console.log("options count array " + JSON.stringify(11 - this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)));
 
     //this.setState{options_count_array: options_count_array};
 
@@ -427,17 +429,27 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             Sconely {this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1)}
-                            <br/>
                             <SidebarCart User={this.props.User} menuItems={this.props.menuItems} />
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
                             <br/>
                             <br/>
-                            <MobileCheckoutButton/>
-                            <br/>
-                            <br/>
-                            mobile link to cart with number of items in cart
+                            <div className="hidden-md hidden-lg">
+                              <br/>
+                              {this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)}
+                              <br/>
+                              <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-md-2">
+                                        <Link to="/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>  
+                                      </div>
+                                      <div className="col-md-2">
+                                        <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
+                                      </div>
+                                    </div>
+                                </form>
+                            </div>
                             <br/>
                             <br/>
                             {this.props.menuItems.map(function(item: any, index: any){

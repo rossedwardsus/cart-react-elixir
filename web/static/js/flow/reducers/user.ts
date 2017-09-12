@@ -1,4 +1,4 @@
-import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,12 +20,13 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: {dateTimeCreated: "", paymentError: "", validations: "", analytics_logging: ""}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]}, action: any){
+export default function user(state:any = {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: {datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", validations: {cartValidated: false, nameContactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]}, action: any){
 
   let delivery_contacts_addresses_updated = null;
   let payment_methods_updated = null;
   let user_updated = null;
   let orders_updated = null;
+  let order_session_updated = null;
   let save_for_later_updated = null;
 
   switch (action.type) {
@@ -87,14 +88,22 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       return Object.assign({}, state, {orders: orders_updated});
 
+    case SET_PROMO_CODE:
+      console.log("promo code reducer");
+
+      order_session_updated = state.orderSession;
+      order_session_updated["promoCode"] = action.code;
+
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
+
 
     case SET_PAYMENT_ERROR:
       console.log("add cart reducer");
 
-      orders_updated = state.orders;
-      orders_updated["paymenr_error"] = action.value;
+      order_session_updated = state.orderSession;
+      order_session_updated["paymentError"] = action.error;
 
-      return Object.assign({}, state, {...state, orders: orders_updated});
+      return Object.assign({}, state, {...state, orderdSession: order_session_updated});
 
 
     case CREATE_ORDER:

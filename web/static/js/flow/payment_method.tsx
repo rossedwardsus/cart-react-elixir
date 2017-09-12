@@ -61,7 +61,7 @@ class PaymentMethod extends React.Component<any, any> {
        expiry_year_border_color: "grey",
        cvc_border_color: "grey",
        
-       card_type: ""
+       card_brand: ""
 
     };
 
@@ -107,28 +107,41 @@ class PaymentMethod extends React.Component<any, any> {
 
   setPaymentCardNumber = (e: any) => {
 
+      this.props.setPaymentCardNumber(e);
+
       //if e.target.value > 0
       //Amex Card: ^3[47][0-9]{13}$
-      //if(/^3[47][0-9]{13}$/.test(e.target.value)){
+      if(/^3[47][0-9]{13}$/.test(e.target.value)){
 
           console.log("amex");
           //this.setState({card_number_border_color: "red"})
-          //this.setState({card_type: "AMEX"});
-          this.setState({card_number: e.target.value});
-          this.props.setPaymentCardNumber(e);
-          
-
+          this.setState({card_brand: "AMEX"});
+          //this.setState({card_number: e.target.value});
+           
       //
-      //}else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
+      }else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
       //Visa Card: ^4[0-9]{12}(?:[0-9]{3})?$
 
-      //    alert("visa");
+          console.log("visa");
+          this.setState({card_brand: "VISA"});
+          this.props.setCardBrand("VISA");
+         
       //
-      //}else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
-      //    alert("discovery");
+      }else if(/^5[1-5][0-9]{14}$/.test(e.target.value)){
+
+          console.log("mastercard");
+          this.setState({card_brand: "VISA"});
+          this.props.setCardBrand("VISA");
+         
+      }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
+          
+          console.log("discovery");
+          this.setState({card_brand: "DISCOVER"});
+          this.props.setCardBrand("DISCOVER");
+         
       //
       //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
-      //}
+      }
 
 
   }
@@ -192,9 +205,12 @@ class PaymentMethod extends React.Component<any, any> {
 
               if((parseInt(e.target.value) >= 2017) && (parseInt(e.target.value) <= 2025)){
 
+                  this.setState({expiry_year_border_color: "grey"});
+
                   //console.log("ok year");
-                  this.setState({cvc_border_color: "grey"})
+                  //this.setState({cvc_border_color: "grey"})
                   //this.setState({expiry_year: e.target.value});
+
                   this.props.setPaymentExpiryYear(e);
 
                   /*if(this.state.payment_expiry_month.length > 0){
@@ -207,6 +223,8 @@ class PaymentMethod extends React.Component<any, any> {
                   }*/
 
               }else{
+
+                  this.setState({expiry_year_border_color: "red"});
 
                   //paymentinvalidated
 
@@ -292,10 +310,10 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
-                        <input type="text" maxLength={14} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="col-sm-3">
-                          {this.state.card_type}
+                          {this.state.card_brand}
                       </div>
                     </div>
                   </form>

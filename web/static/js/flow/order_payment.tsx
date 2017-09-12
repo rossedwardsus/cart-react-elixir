@@ -18,6 +18,9 @@ import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLas
 import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
 import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
+
+import {setPromoCode} from './actions/order.ts';
+
 import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {processYoursSocialPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
@@ -566,6 +569,28 @@ class OrderDateTimeContact extends React.Component<any, any> {
       }   
   }
 
+  setPromoCode = (e: any) => {
+
+      //if(e.target.value.length > 0){
+
+        //alert();
+
+        //if(/^[a-zA-Z]/.test(e.target.value)){
+
+            //alert();
+
+            //this.setState({"delivery_address_street1": e.target.value});
+            //this.setState({"delivery_address_street1_classname": "form-group"});
+
+            //if peomo code is validate apply to total cost
+
+            this.props.setPromoCode(e.target.value);
+
+        //}
+      //}   
+
+  }
+
   setPaymentCardNumber(e: any){
 
       if(e.target.value.length > 0){
@@ -785,40 +810,47 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             if user is registered
                             <br/>
-                             <form className="form-horizontal">
+                            <div className="hidden-md">
+                                <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
+                            </div>
+                            <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
-                                    <div className={this.state.first_name_classname}>
-                                      Total Due: 
-                                    </div>
+                                    Subtotal Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    <div className={this.state.first_name_classname}>
-                                      50.00
-                                    </div>
+                                    50.00{this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0)}
                                   </div>
                                 </div>
-                             </form>
-                             <form className="form-horizontal">
+                            </form>
+                            <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
                                       Promo Code
                                   </div>
                                   <div className="col-md-3">
-                                    <div className={this.state.last_name_classname}>
-                                      <input type="text" maxLength={30}  className="form-control" value={this.state.last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                    </div>
+                                      <input type="text" maxLength={30} onChange={this.setPromoCode} className="form-control" value={this.props.User.orderSession.promoCode} id="exampleInputName2" placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-3">
+                                    Total Due: 
+                                  </div>
+                                  <div className="col-md-3">
+                                    {this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.state.promo_code}
                                   </div>
                                 </div>
                             </form>
                             <br/>
-                            an error occured with your payment
+                            {this.props.User.orderSession.paymentError}
+                            <br/>
+                            An error occured with your payment
                             <br/>
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
-                            <input type="checkbox" onChange={this.saveForLater}/>Save for later
                             <br/>
                             <br/>
-                            check payment status for order
                             <br/>
                             <button className={this.state.validated} onClick={this.props.processYoursSocialPoolOrder}>Complete Order</button>
                             <br/>
@@ -844,7 +876,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("order payment state" + JSON.stringify(state));
   return {
-   session: state.session,
+   /*session: state.session,
    order_validations: state.order_validations,
    order: state.Order,
    order_delivery_address: state.delivery_address,
@@ -852,9 +884,11 @@ function mapStateToProps(state: any) {
    order_name: state.name,
    //order_cart_items: state.cart.cart_items,
    order_datetime: state.OrderDatetime,
-   order_payment_method: state.OrderPayment,
+   order_payment_method: state.OrderPayment,*/
 
-   guestOrder: state.guestOrder,
+   User: state.User,
+
+   //guestOrder: state.guestOrder,
 
    //menu_items: getPublicMenu
    //menu_items: dispatch()
@@ -926,6 +960,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setDeliveryCost: (value: any) => {
       dispatch(setDeliveryCost(value));
+    },
+    setPromoCode: (value: any) => {
+      dispatch(setPromoCode(value));
     },
     deliveryAddressValidated: () => {
       dispatch(deliveryAddressValidated())

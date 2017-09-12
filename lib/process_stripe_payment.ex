@@ -138,10 +138,21 @@ defmodule Sconely.ProcessStripePayment do
     #  },
     #)
 
+    IO.inspect(args[:payment_method_card_number])
+    IO.inspect(args[:cart_items])
 
-    #IO.inspect(Stripe.Token.create(%{:card => %{"number" => "4000000000000002", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}))
+    #cart_items = [%{"quantity": 1}, %{"quantity": 10}]
 
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000002", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+    #if order_type == "pool"
+    #promo code
+
+    amount = Enum.reduce(args[:cart_items], 0, fn %{quantity: quantity}, count -> count = count + quantity * 5.50 end)
+
+    IO.inspect(amount * 100 )
+
+    IO.inspect(Stripe.Token.create(%{:card => %{"number" => "args[:payment_method_card_number]", "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
+
+    case Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
         #IO.inspect(token["id"])  
 

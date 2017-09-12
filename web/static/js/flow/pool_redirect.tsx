@@ -5,7 +5,7 @@ import { Link, browserHistory } from 'react-router';
 
 import {connect} from 'react-redux';
 
-//import {getMenuItems} from './actions/menu.ts';
+import {loadMenuItemsCreateOrder, getMenuItems} from './actions/menu.ts';
 //import {cartValidated} from './actions/order_validations.ts';
 //import {addCartItem} from './actions/cart.ts';
 import {createOrder} from './actions/order.ts';
@@ -48,12 +48,17 @@ class PoolRedirect extends React.Component<any, any> {
 
   }
 
+  componentWillMount(){
+
+    this.props.loadMenuItemsCreateOrder();
+    this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
+    //this.context.router.push("/order/menu");
+    
+  }
   componentDidMount(){
 
-
+    //this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
     //this.context.router.push("/order/menu");
-    this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
-
 
   }
 
@@ -83,7 +88,7 @@ class PoolRedirect extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops yours" + JSON.stringify(state));
+  console.log("mapstatetoprops pool" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
@@ -100,9 +105,11 @@ const mapStateToProps = (state: any, ownProps: any) => {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
-
+    loadMenuItemsCreateOrder: () => {
+      dispatch(loadMenuItemsCreateOrder());
+    },
     getMenuItems: () => {
-      //dispatch(getMenuItems());
+      dispatch(getMenuItems());
     },
     addCartItem: (order_id: any, item_id: any, item_type: any, quantity: any) => {
       //dispatch(addCartItem(order_id, item_id, item_type, quantity));
