@@ -92,71 +92,71 @@ webpackJsonp([0],[
 	
 	var _order_payment2 = _interopRequireDefault(_order_payment);
 	
-	var _order_checkout = __webpack_require__(1140);
+	var _order_checkout = __webpack_require__(1137);
 	
 	var _order_checkout2 = _interopRequireDefault(_order_checkout);
 	
-	var _order_cart = __webpack_require__(1143);
+	var _order_cart = __webpack_require__(1141);
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_preview = __webpack_require__(1144);
+	var _order_preview = __webpack_require__(1143);
 	
 	var _order_preview2 = _interopRequireDefault(_order_preview);
 	
-	var _order_complete = __webpack_require__(1145);
+	var _order_complete = __webpack_require__(1144);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1146);
+	var _login = __webpack_require__(1145);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1147);
+	var _register = __webpack_require__(1146);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1148);
+	var _register_completed = __webpack_require__(1147);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1149);
+	var _checkLogin = __webpack_require__(1148);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1150);
+	var _user = __webpack_require__(1149);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu_items = __webpack_require__(1151);
+	var _menu_items = __webpack_require__(1150);
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1155);
+	var _name = __webpack_require__(1154);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1156);
+	var _order_completed = __webpack_require__(1155);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1157);
+	var _sconely_signature_guests = __webpack_require__(1156);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _signature_additional_items = __webpack_require__(1158);
+	var _signature_additional_items = __webpack_require__(1157);
 	
 	var _signature_additional_items2 = _interopRequireDefault(_signature_additional_items);
 	
-	var _sconely_signature_order_history = __webpack_require__(1159);
+	var _sconely_signature_order_history = __webpack_require__(1158);
 	
 	var _sconely_signature_order_history2 = _interopRequireDefault(_sconely_signature_order_history);
 	
-	var _sconely_signature_preview = __webpack_require__(1160);
+	var _sconely_signature_preview = __webpack_require__(1159);
 	
 	var _sconely_signature_preview2 = _interopRequireDefault(_sconely_signature_preview);
 	
-	var _index = __webpack_require__(1161);
+	var _index = __webpack_require__(1160);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -27308,9 +27308,9 @@ webpackJsonp([0],[
 	        console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
 	        //state.User.orders
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '") {status}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
-	            dispatch({ type: actionTypes_ts_1.SET_PAYMENT_ERROR, error: "response.data.data.processYoursSocialPoolOrder.errorReason" });
+	            dispatch({ type: actionTypes_ts_1.SET_PAYMENT_ERROR, error: response.data.data.processYoursSocialPoolOrder.errorReason });
 	            /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){
 	                 //console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialPoolOrder.errorReason));
 	                 
@@ -27482,6 +27482,7 @@ webpackJsonp([0],[
 	exports.SET_ORDER_ID = 'SET_ORDER_ID';
 	exports.SET_ORDER_TYPE = 'SET_ORDER_TYPE';
 	exports.SET_PAYMENT_ERROR = 'SET_PAYMENT_ERROR';
+	exports.SET_USER_PAYMENT_METHOD_CARD_BRAND = 'SET_USER_PAYMENT_METHOD_CARD_BRAND';
 	exports.COMPLETE_ORDER = 'COMPLETE_ORDER';
 	exports.CLEAR_ORDER = 'CLEAR_ORDER';
 	exports.CLEAR_USER = 'CLEAR_USER';
@@ -33068,6 +33069,18 @@ webpackJsonp([0],[
 	    //}
 	}
 	exports.setPaymentMethodCardNumber = setPaymentMethodCardNumber;
+	function setPaymentMethodCardBrand(value) {
+	    return function (dispatch, getState) {
+	        console.log("set card brand action");
+	        dispatch({ type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_BRAND, value: value });
+	    };
+	    //if user == logged in
+	    //return {
+	    //  type: SET_PAYMENT_CARD_NUMBER,
+	    //  value
+	    //}
+	}
+	exports.setPaymentMethodCardBrand = setPaymentMethodCardBrand;
 	function setPaymentExpiryMonth(value, order_id) {
 	    console.log(" action expiry month" + value);
 	    //IF logged in use SET_USER_ORDER_PAYMENT_EXPIRY_MONTH
@@ -40745,7 +40758,7 @@ webpackJsonp([0],[
 	                return amount + item.quantity;
 	            }, 0) == 0 && "a minimum of 1 item is required", this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required", React.createElement("br", null), React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
-	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default btn-block" }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -40811,16 +40824,16 @@ webpackJsonp([0],[
 	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var order_validations_ts_1 = __webpack_require__(950);
-	var user_delivery_contact_address_ts_1 = __webpack_require__(1136);
-	var user_name_contact_ts_1 = __webpack_require__(1137);
-	var signature_order_delivery_datetime_ts_1 = __webpack_require__(970);
-	var guest_cart_ts_1 = __webpack_require__(1138);
+	/*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
+	import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
+	import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
+	import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
+	import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';*/
 	var order_ts_1 = __webpack_require__(920);
 	var order_payment_method_ts_1 = __webpack_require__(972);
 	//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 	var order_ts_2 = __webpack_require__(920);
-	var payment_method_tsx_1 = __webpack_require__(1139);
+	var payment_method_tsx_1 = __webpack_require__(1136);
 	var public_top_navbar_tsx_1 = __webpack_require__(947);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(960);
@@ -41306,19 +41319,23 @@ webpackJsonp([0],[
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), "if user is saved", React.createElement("br", null), "if user is registered", React.createElement("br", null), React.createElement("div", { className: "hidden-md" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu")), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "50.00", this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-3" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	            }, 0)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-3" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0) * this.state.promo_code))), React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), "An error occured with your payment", React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            }, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                return amount + item.quantity * 5.5;
+	            }, 0)))), React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), "An error occured with your payment", React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
+	                }, setPaymentCardBrand: function setPaymentCardBrand(e) {
+	                    return _this2.props.setPaymentCardBrand(e);
 	                }, setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
 	                    return _this2.props.setPaymentExpiryMonth(e);
 	                }, setPaymentExpiryYear: function setPaymentExpiryYear(e) {
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialPoolOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
+	                } }), React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialPoolOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41350,92 +41367,95 @@ webpackJsonp([0],[
 	function mapDispatchToProps(dispatch) {
 	    //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
 	    return {
-	        setDate: function setDate(e) {
-	            //dispatch(setDate(e))
+	        /*setDate: (e: any) => {
+	          //dispatch(setDate(e))
 	        },
-	        setTime: function setTime(e) {
-	            //dispatch(setTime(e.target.value))
+	        setTime: (e: any) => {
+	          //dispatch(setTime(e.target.value))
 	        },
-	        cartValidated: function cartValidated() {
-	            dispatch(order_validations_ts_1.cartValidated());
+	        cartValidated: () => {
+	          dispatch(cartValidated());
 	        },
-	        datetimeValidated: function datetimeValidated() {
-	            dispatch(order_validations_ts_1.datetimeValidated());
+	        datetimeValidated: () => {
+	            dispatch(datetimeValidated());
 	        },
-	        setSpecificTime: function setSpecificTime(e) {
-	            dispatch(signature_order_delivery_datetime_ts_1.setSpecificTime(e.target.value));
+	        setSpecificTime: (e: any) => {
+	          dispatch(setSpecificTime(e.target.value))
 	        },
-	        setUserNameFirst: function setUserNameFirst(e) {
-	            dispatch(user_name_contact_ts_1.setUserNameFirst(e.target.value));
+	        setUserNameFirst: (e: any) => {
+	          dispatch(setUserNameFirst(e.target.value))
 	        },
-	        setUserNameLast: function setUserNameLast(e) {
-	            dispatch(user_name_contact_ts_1.setUserNameLast(e.target.value));
+	        setUserNameLast: (e: any) => {
+	          dispatch(setUserNameLast(e.target.value))
 	        },
-	        setUserContactEmail: function setUserContactEmail(e) {
-	            dispatch(user_name_contact_ts_1.setUserContactEmail(e.target.value));
+	        setUserContactEmail: (e: any) => {
+	          dispatch(setUserContactEmail(e.target.value))
 	        },
-	        setUserContactMobile: function setUserContactMobile(e) {
-	            dispatch(user_name_contact_ts_1.setUserContactMobile(e.target.value));
+	        setUserContactMobile: (e: any) => {
+	          dispatch(setUserContactMobile(e.target.value))
 	        },
-	        setNameValidated: function setNameValidated(e) {
-	            dispatch(order_validations_ts_1.nameValidated());
+	        setNameValidated: (e: any) => {
+	          dispatch(nameValidated())
 	        },
-	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
+	        setUserDeliveryContactAddressFirstName: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressLastName: function setUserDeliveryContactAddressLastName(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressLastName(e.target.value, ""));
+	        setUserDeliveryContactAddressLastName: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressLastName(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressCompanyName: function setUserDeliveryContactAddressCompanyName(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCompanyName(e.target.value));
+	        setUserDeliveryContactAddressCompanyName: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressCompanyName(e.target.value))
 	        },
-	        setUserDeliveryContactAddressEmail: function setUserDeliveryContactAddressEmail(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressEmail(e.target.value, ""));
+	        setUserDeliveryContactAddressEmail: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressEmail(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressMobile(e.target.value, ""));
+	        setUserDeliveryContactAddressMobile: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressMobile(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressStreet1: function setUserDeliveryContactAddressStreet1(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet1(e.target.value, ""));
+	        setUserDeliveryContactAddressStreet1: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressStreet1(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressStreet2: function setUserDeliveryContactAddressStreet2(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressStreet2(e.target.value, ""));
+	        setUserDeliveryContactAddressStreet2: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressStreet2(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressCity: function setUserDeliveryContactAddressCity(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressCity(e.target.value, ""));
+	        setUserDeliveryContactAddressCity: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressCity(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressState: function setUserDeliveryContactAddressState(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressState(e.target.value, ""));
+	        setUserDeliveryContactAddressState: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressState(e.target.value, ""))
 	        },
-	        setUserDeliveryContactAddressZipcode: function setUserDeliveryContactAddressZipcode(e) {
-	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressZipcode(e.target.value, ""));
+	        setUserDeliveryContactAddressZipcode: (e: any) => {
+	          dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
 	        },
-	        setDeliveryCost: function setDeliveryCost(value) {
-	            dispatch(order_ts_2.setDeliveryCost(value));
-	        },
+	        setDeliveryCost: (value: any) => {
+	          dispatch(setDeliveryCost(value));
+	        },*/
 	        setPromoCode: function setPromoCode(value) {
 	            dispatch(order_ts_1.setPromoCode(value));
 	        },
-	        deliveryAddressValidated: function deliveryAddressValidated() {
-	            dispatch(order_validations_ts_1.deliveryAddressValidated());
+	        /*deliveryAddressValidated: () => {
+	          dispatch(deliveryAddressValidated())
 	        },
-	        deliveryAddressInvalidated: function deliveryAddressInvalidated() {
-	            dispatch(order_validations_ts_1.deliveryAddressInvalidated());
+	        deliveryAddressInvalidated: () => {
+	          dispatch(deliveryAddressInvalidated())
 	        },
-	        increaseCartItemQuantity: function increaseCartItemQuantity(e) {
-	            dispatch(guest_cart_ts_1.increaseCartItemQuantity(e));
+	        increaseCartItemQuantity: (e: any) => {
+	          dispatch(increaseCartItemQuantity(e));
 	        },
-	        decreaseCartItemQuantity: function decreaseCartItemQuantity(e) {
-	            dispatch(guest_cart_ts_1.decreaseCartItemQuantity(e));
+	        decreaseCartItemQuantity: (e: any) => {
+	          dispatch(decreaseCartItemQuantity(e));
 	        },
-	        removeCartItem: function removeCartItem(item_id) {
-	            dispatch(guest_cart_ts_1.removeCartItem(item_id));
-	        },
+	        removeCartItem: (item_id: any) => {
+	          dispatch(removeCartItem(item_id));
+	        },*/
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	            dispatch(order_payment_method_ts_1.setPaymentNameOnCard(e.target.value, ""));
 	        },
 	        setPaymentCardNumber: function setPaymentCardNumber(e) {
 	            dispatch(order_payment_method_ts_1.setPaymentMethodCardNumber(e.target.value, ""));
+	        },
+	        setPaymentCardBrand: function setPaymentCardBrand(e) {
+	            dispatch(order_payment_method_ts_1.setPaymentMethodCardBrand(e.target.value));
 	        },
 	        setPaymentExpiryMonth: function setPaymentExpiryMonth(e) {
 	            dispatch(order_payment_method_ts_1.setPaymentExpiryMonth(e.target.value, ""));
@@ -41478,293 +41498,6 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function setUserDeliveryContactAddressFirstName(value, order_id) {
-	    console.log("user delivery contact address first name action");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if save for later
-	    //set_user_delivery_
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
-	        value: value
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressFirstName = setUserDeliveryContactAddressFirstName;
-	function setUserDeliveryContactAddressLastName(value, order_id) {
-	    console.log("user delivery contact address last name action");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME,
-	        value: value
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressLastName = setUserDeliveryContactAddressLastName;
-	function setUserDeliveryContactAddressEmail(value, order_id) {
-	    console.log("user delivery contact address email action");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressEmail = setUserDeliveryContactAddressEmail;
-	function setUserDeliveryContactAddressMobile(value, order_id) {
-	    console.log("user delivery contact address mobile action");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressMobile = setUserDeliveryContactAddressMobile;
-	function setUserDeliveryContactAddressCompanyName(value) {
-	    console.log("user delivery contact address company name");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME,
-	        value: value
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressCompanyName = setUserDeliveryContactAddressCompanyName;
-	function setUserDeliveryContactAddressStreet1(value, order_id) {
-	    console.log("user delivery contact address street1");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressStreet1 = setUserDeliveryContactAddressStreet1;
-	function setUserDeliveryContactAddressStreet2(value, order_id) {
-	    console.log("user delivery contact address street2");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressStreet2 = setUserDeliveryContactAddressStreet2;
-	function setUserDeliveryContactAddressCity(value, order_id) {
-	    console.log("user delivery contact address city");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_CITY,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressCity = setUserDeliveryContactAddressCity;
-	function setUserDeliveryContactAddressState(value, order_id) {
-	    console.log("user delivery contact address state action");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressState = setUserDeliveryContactAddressState;
-	function setUserDeliveryContactAddressZipcode(value, order_id) {
-	    console.log("user delivery contact address zipcode action");
-	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-	    //else SET_DELIVERY_ADDRESS_STREET1
-	    //if("session.user_id" == "guest"){
-	    //    return {
-	    //      type: SET_DELIVERY_ADDRESS_STREET1,
-	    //      value
-	    //    }
-	    //}else{
-	    return {
-	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE,
-	        value: value,
-	        order_id: order_id
-	    };
-	    //}
-	}
-	exports.setUserDeliveryContactAddressZipcode = setUserDeliveryContactAddressZipcode;
-
-/***/ }),
-/* 1137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function setUserNameFirst(value) {
-	    console.log("first name action: " + value);
-	    return {
-	        type: actionTypes_ts_1.SET_USER_NAME_FIRST,
-	        value: value
-	    };
-	}
-	exports.setUserNameFirst = setUserNameFirst;
-	function setUserNameLast(value) {
-	    console.log("last name action: " + value);
-	    return {
-	        type: actionTypes_ts_1.SET_USER_NAME_LAST,
-	        value: value
-	    };
-	}
-	exports.setUserNameLast = setUserNameLast;
-	function setUserContactEmail(value) {
-	    console.log("company name " + value);
-	    return {
-	        type: actionTypes_ts_1.SET_USER_CONTACT_EMAIL,
-	        value: value
-	    };
-	}
-	exports.setUserContactEmail = setUserContactEmail;
-	function setUserContactMobile(value) {
-	    console.log("company name " + value);
-	    return {
-	        type: actionTypes_ts_1.SET_USER_CONTACT_MOBILE,
-	        value: value
-	    };
-	}
-	exports.setUserContactMobile = setUserContactMobile;
-	/*export function setCompanyName(value: any) {
-	  console.log("company name " + value);
-	  return {
-	    type: SET_COMPANY_NAME,
-	    value
-	  }
-	}*/
-
-/***/ }),
-/* 1138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
-	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
-	    //if uorder_id != undefined
-	    //else
-	    return {
-	        type: actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM,
-	        order_id: order_id,
-	        item_id: item_id,
-	        twelveortwentyfourminis: twelveortwentyfourminis,
-	        quantity: quantity
-	    };
-	    /*return {
-	      type: ADD_CART_ITEM,
-	      item_id,
-	      item_type,
-	      quantity
-	    }*/
-	}
-	exports.addCartItem = addCartItem;
-	function increaseCartItemQuantity(item_id) {
-	    console.log("increase cart item quantity action " + item_id);
-	    return {
-	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
-	    };
-	}
-	exports.increaseCartItemQuantity = increaseCartItemQuantity;
-	function decreaseCartItemQuantity(item_id) {
-	    console.log("DECREASE cart item quantity action " + item_id);
-	    return {
-	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
-	    };
-	}
-	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
-	function removeCartItem(index) {
-	    return {
-	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
-	        index: index
-	    };
-	}
-	exports.removeCartItem = removeCartItem;
-
-/***/ }),
-/* 1139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42008,7 +41741,7 @@ webpackJsonp([0],[
 	exports.default = PaymentMethod;
 
 /***/ }),
-/* 1140 */
+/* 1137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42040,10 +41773,10 @@ webpackJsonp([0],[
 	__webpack_require__(1129);
 	var order_sidebar_cart_tsx_1 = __webpack_require__(1134);
 	var public_top_navbar_tsx_1 = __webpack_require__(947);
-	var name_tsx_1 = __webpack_require__(1141);
-	var order_delivery_address_tsx_1 = __webpack_require__(1142);
+	var name_tsx_1 = __webpack_require__(1138);
+	var order_delivery_address_tsx_1 = __webpack_require__(1139);
 	var user_ts_1 = __webpack_require__(958);
-	var user_delivery_contact_address_ts_1 = __webpack_require__(1136);
+	var user_delivery_contact_address_ts_1 = __webpack_require__(1140);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -42433,7 +42166,7 @@ webpackJsonp([0],[
 	exports.default = DateTimeConnected;
 
 /***/ }),
-/* 1141 */
+/* 1138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42680,7 +42413,7 @@ webpackJsonp([0],[
 	exports.default = Name;
 
 /***/ }),
-/* 1142 */
+/* 1139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43000,7 +42733,195 @@ webpackJsonp([0],[
 	exports.default = DeliveryAddress;
 
 /***/ }),
-/* 1143 */
+/* 1140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function setUserDeliveryContactAddressFirstName(value, order_id) {
+	    console.log("user delivery contact address first name action");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if save for later
+	    //set_user_delivery_
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+	        value: value
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressFirstName = setUserDeliveryContactAddressFirstName;
+	function setUserDeliveryContactAddressLastName(value, order_id) {
+	    console.log("user delivery contact address last name action");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME,
+	        value: value
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressLastName = setUserDeliveryContactAddressLastName;
+	function setUserDeliveryContactAddressEmail(value, order_id) {
+	    console.log("user delivery contact address email action");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressEmail = setUserDeliveryContactAddressEmail;
+	function setUserDeliveryContactAddressMobile(value, order_id) {
+	    console.log("user delivery contact address mobile action");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressMobile = setUserDeliveryContactAddressMobile;
+	function setUserDeliveryContactAddressCompanyName(value) {
+	    console.log("user delivery contact address company name");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME,
+	        value: value
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressCompanyName = setUserDeliveryContactAddressCompanyName;
+	function setUserDeliveryContactAddressStreet1(value, order_id) {
+	    console.log("user delivery contact address street1");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressStreet1 = setUserDeliveryContactAddressStreet1;
+	function setUserDeliveryContactAddressStreet2(value, order_id) {
+	    console.log("user delivery contact address street2");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressStreet2 = setUserDeliveryContactAddressStreet2;
+	function setUserDeliveryContactAddressCity(value, order_id) {
+	    console.log("user delivery contact address city");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_CITY,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressCity = setUserDeliveryContactAddressCity;
+	function setUserDeliveryContactAddressState(value, order_id) {
+	    console.log("user delivery contact address state action");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressState = setUserDeliveryContactAddressState;
+	function setUserDeliveryContactAddressZipcode(value, order_id) {
+	    console.log("user delivery contact address zipcode action");
+	    //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+	    //else SET_DELIVERY_ADDRESS_STREET1
+	    //if("session.user_id" == "guest"){
+	    //    return {
+	    //      type: SET_DELIVERY_ADDRESS_STREET1,
+	    //      value
+	    //    }
+	    //}else{
+	    return {
+	        type: actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE,
+	        value: value,
+	        order_id: order_id
+	    };
+	    //}
+	}
+	exports.setUserDeliveryContactAddressZipcode = setUserDeliveryContactAddressZipcode;
+
+/***/ }),
+/* 1141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43018,7 +42939,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	var guest_cart_ts_1 = __webpack_require__(1138);
+	var guest_cart_ts_1 = __webpack_require__(1142);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(960);
 	var public_top_navbar_tsx_1 = __webpack_require__(947);
@@ -43437,12 +43358,14 @@ webpackJsonp([0],[
 	                    //let menu_item_title_index = menu_items.findIndex where item_id == item.item_id
 	                    //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
 	                    //let item_name = result.get("name");
-	                    var item_name = this.props.menu_items[item.menu_item_id].name;
+	                    //console.log(JSON.stringify(this.props.menuItems));
+	                    var item_name = this.props.menuItems[item.menu_item_id - 1].name;
+	                    //let item_name = "";
 	                    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 	                    console.log("order cart " + JSON.stringify(this.props.User.orders[0].cartItems));
 	                    //let total_amount = item.quantity;
 	                    //let item_cost = total_amount * 6.00;
-	                    return React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { fontSize: 16, border: 1 } }, React.createElement("div", { className: "col-md-1" }, item_name, "xcost"), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-1", style: { fontSize: 16 } }, React.createElement("a", { onClick: function onClick() {
+	                    return React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { fontSize: 16, border: 1 } }, React.createElement("div", { className: "col-md-1" }, item_name), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-1", style: { fontSize: 16 } }, React.createElement("a", { onClick: function onClick() {
 	                            return _this2.props.increaseCartItemQuantity(item.item_id);
 	                        } }, React.createElement("b", null, "+"))), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1", style: { fontSize: 16 } }, React.createElement("a", { onClick: function onClick() {
 	                            return _this2.props.decreaseCartItemQuantity(item.item_id);
@@ -43542,7 +43465,58 @@ webpackJsonp([0],[
 	exports.default = OrderCartConnected;
 
 /***/ }),
-/* 1144 */
+/* 1142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
+	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+	    //if uorder_id != undefined
+	    //else
+	    return {
+	        type: actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM,
+	        order_id: order_id,
+	        item_id: item_id,
+	        twelveortwentyfourminis: twelveortwentyfourminis,
+	        quantity: quantity
+	    };
+	    /*return {
+	      type: ADD_CART_ITEM,
+	      item_id,
+	      item_type,
+	      quantity
+	    }*/
+	}
+	exports.addCartItem = addCartItem;
+	function increaseCartItemQuantity(item_id) {
+	    console.log("increase cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.increaseCartItemQuantity = increaseCartItemQuantity;
+	function decreaseCartItemQuantity(item_id) {
+	    console.log("DECREASE cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
+	function removeCartItem(index) {
+	    return {
+	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
+	        index: index
+	    };
+	}
+	exports.removeCartItem = removeCartItem;
+
+/***/ }),
+/* 1143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44199,7 +44173,7 @@ webpackJsonp([0],[
 	exports.default = PreviewConnected;
 
 /***/ }),
-/* 1145 */
+/* 1144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -44917,7 +44891,7 @@ webpackJsonp([0],[
 	exports.default = OrderCompleted1;
 
 /***/ }),
-/* 1146 */
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45071,7 +45045,7 @@ webpackJsonp([0],[
 	exports.default = Login;
 
 /***/ }),
-/* 1147 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45348,7 +45322,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1148 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45520,7 +45494,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1149 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45571,7 +45545,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1150 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45712,7 +45686,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1151 */
+/* 1150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45729,10 +45703,10 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1152);
+	var signature_guest_response_ts_1 = __webpack_require__(1151);
 	var menu_ts_1 = __webpack_require__(949);
-	var signature_guest_response_ts_2 = __webpack_require__(1153);
-	var navbar_tsx_1 = __webpack_require__(1154);
+	var signature_guest_response_ts_2 = __webpack_require__(1152);
+	var navbar_tsx_1 = __webpack_require__(1153);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45913,7 +45887,7 @@ webpackJsonp([0],[
 	exports.default = GuestMenuConnected;
 
 /***/ }),
-/* 1152 */
+/* 1151 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -46011,7 +45985,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1153 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46127,7 +46101,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1154 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46199,7 +46173,7 @@ webpackJsonp([0],[
 	exports.default = NavBar1;
 
 /***/ }),
-/* 1155 */
+/* 1154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46216,9 +46190,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
-	var signature_guest_response_ts_1 = __webpack_require__(1153);
-	var signature_guest_response_ts_2 = __webpack_require__(1152);
-	var navbar_tsx_1 = __webpack_require__(1154);
+	var signature_guest_response_ts_1 = __webpack_require__(1152);
+	var signature_guest_response_ts_2 = __webpack_require__(1151);
+	var navbar_tsx_1 = __webpack_require__(1153);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -46369,7 +46343,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1156 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46385,8 +46359,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1152);
-	var navbar_tsx_1 = __webpack_require__(1154);
+	var signature_guest_response_ts_1 = __webpack_require__(1151);
+	var navbar_tsx_1 = __webpack_require__(1153);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -46477,7 +46451,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1157 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46611,7 +46585,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderGuestsConnected;
 
 /***/ }),
-/* 1158 */
+/* 1157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46629,7 +46603,7 @@ webpackJsonp([0],[
 	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(974);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var guest_cart_ts_1 = __webpack_require__(1138);
+	var guest_cart_ts_1 = __webpack_require__(1142);
 	//import {processSignatureOrder} from './actions/user_order.ts';
 	var user_navbar_tsx_1 = __webpack_require__(962);
 	
@@ -46787,7 +46761,7 @@ webpackJsonp([0],[
 	exports.default = SconelySignatureAdditionalItemsConnected;
 
 /***/ }),
-/* 1159 */
+/* 1158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46909,7 +46883,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderSummaryConnected;
 
 /***/ }),
-/* 1160 */
+/* 1159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47058,7 +47032,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderPreviewConnected;
 
 /***/ }),
-/* 1161 */
+/* 1160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47066,17 +47040,17 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var redux_1 = __webpack_require__(197);
 	var react_router_redux_1 = __webpack_require__(617);
-	var session_ts_1 = __webpack_require__(1162);
+	var session_ts_1 = __webpack_require__(1161);
 	//import Register from './register.ts';
 	//import root from './root.ts';
-	var menu_ts_1 = __webpack_require__(1163);
-	var user_ts_1 = __webpack_require__(1164);
+	var menu_ts_1 = __webpack_require__(1162);
+	var user_ts_1 = __webpack_require__(1163);
 	//import name from './name.ts';
 	//import contact from './contact.ts';
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1165);
+	var signature_guest_response_ts_1 = __webpack_require__(1164);
 	//import UserOrders from './user_order.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -47118,7 +47092,7 @@ webpackJsonp([0],[
 	});
 
 /***/ }),
-/* 1162 */
+/* 1161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47158,7 +47132,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1163 */
+/* 1162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47234,7 +47208,7 @@ webpackJsonp([0],[
 	//  {item_id: 1, title: "from reducer getPublicMenu"};
 
 /***/ }),
-/* 1164 */
+/* 1163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47261,7 +47235,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", validations: { cartValidated: false, nameContactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameContactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	      var action = arguments[1];
 	
 	      var delivery_contacts_addresses_updated = null;
@@ -47283,7 +47257,7 @@ webpackJsonp([0],[
 	                  //normalizr
 	                  //delivery addrress
 	                  //return Object.assign({}, state, {...state, email: action.});
-	                  return { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	                  return { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	            case actionTypes_ts_1.SET_ORDER_TYPE:
 	                  console.log("set order type reducer");
 	                  //find order where status == "started"
@@ -47291,7 +47265,7 @@ webpackJsonp([0],[
 	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
 	                  //if another pool order exists change it's status to "saved"
-	                  orders_updated.push({ deliveryCost: "", promoCode: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: "", quantity: 1, mini: "" }] });
+	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: 1, quantity: 1, mini: "" }] });
 	                  var started_order = state.orders.findIndex(function (order) {
 	                        return order.status == "started";
 	                  });
@@ -47310,7 +47284,8 @@ webpackJsonp([0],[
 	                  console.log("promo code reducer");
 	                  order_session_updated = state.orderSession;
 	                  order_session_updated["promoCode"] = action.code;
-	                  return Object.assign({}, state, Object.assign({}, state, { orderdSession: order_session_updated }));
+	                  order_session_updated["promoCodeDiscountPercentage"] = 10;
+	                  return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
 	            case actionTypes_ts_1.SET_PAYMENT_ERROR:
 	                  console.log("add cart reducer");
 	                  order_session_updated = state.orderSession;
@@ -47428,6 +47403,12 @@ webpackJsonp([0],[
 	                  payment_methods_updated = state.paymentMethods;
 	                  payment_methods_updated[0]["card_number"] = action.value;
 	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_BRAND:
+	                  console.log("set user payment methods reducer card brand " + JSON.stringify(action.value));
+	                  //let delivery_addresses_temp = state.delivery_addresses;
+	                  payment_methods_updated = state.paymentMethods;
+	                  payment_methods_updated[0]["card_brand"] = action.value;
+	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
 	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
 	                  console.log("set user payment methods reducer month " + JSON.stringify(action.value));
 	                  //let delivery_addresses_temp = state.delivery_addresses;
@@ -47495,7 +47476,7 @@ webpackJsonp([0],[
 	;
 
 /***/ }),
-/* 1165 */
+/* 1164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";

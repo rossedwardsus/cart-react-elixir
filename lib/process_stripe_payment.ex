@@ -81,9 +81,9 @@ defmodule Sconely.ProcessStripePayment do
 
     total_cost = (elem(mini_items_total_amount, 0) * 24 * 5.00) + (elem(regular_items_total_amount, 0) * 12 * 5.00)
 
-    IO.puts("process stripe payment")
+    #IO.puts("process stripe payment")
     #IO.inspect(elem(regular_items_total_amount, 0))
-    IO.inspect(total_cost)
+    #IO.inspect(total_cost)
 
 
     #params[:payment_method_card_number]
@@ -138,8 +138,8 @@ defmodule Sconely.ProcessStripePayment do
     #  },
     #)
 
-    IO.inspect(args[:payment_method_card_number])
-    IO.inspect(args[:cart_items])
+    #IO.inspect(args[:payment_method_card_number])
+    #IO.inspect(args[:cart_items])
 
     #cart_items = [%{"quantity": 1}, %{"quantity": 10}]
 
@@ -148,24 +148,29 @@ defmodule Sconely.ProcessStripePayment do
 
     amount = Enum.reduce(args[:cart_items], 0, fn %{quantity: quantity}, count -> count = count + quantity * 5.50 end)
 
-    IO.inspect(amount * 100 )
+    #IO.inspect(amount * 100 )
 
-    IO.inspect(Stripe.Token.create(%{:card => %{"number" => "args[:payment_method_card_number]", "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
+    IO.puts("card data from app")
+    IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
 
+    #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
+
+    IO.puts("test card date")
     case Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
         #IO.inspect(token["id"])  
 
-        {:ok, token} -> {:ok, "token"}
+        {:ok, token} -> {:ok, token}
 
-        case Stripe.Charge.create(%{:amount => 2000, :currency => "usd", :source => token["id"], :description => "Charge for ella.robinson@example.com"}) do
+            case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
-          {:ok, charge} -> {:ok, "charged"}
-          {:error, error} -> {:error, error}
+              {:ok, charge} -> #IO.inspect("")
+                               {:ok, charge}
+              {:error, error} -> {:error, error}
 
-        end
+            end
 
-        {:error, error} -> {:error, "error"}
+        {:error, error} -> {:error, error}
 
     end
 

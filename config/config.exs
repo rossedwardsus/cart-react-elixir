@@ -110,10 +110,8 @@ config :absinthe,
 
 #sconely
 #test
-#publishable pk_test_pY3YMi18Gcw0iUB3BSfmPtpb
 #secret sk_test_ClIoWCLD5awvN9uqiZIqzI78
 #live
-#pk_live_bNEIJSnUf5kVncZHt5NMiiBY
 #sk_live_V4rKgMKdlpl3CwUHHMLH0h1K
 
 
@@ -125,7 +123,8 @@ config :absinthe,
 #  endpoint: "https://api.stripe.com/v1/", # optional
 #  version: "2017-06-05" # optional
 
-config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
+#config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
+config :stripe, :secret_key, "sk_live_V4rKgMKdlpl3CwUHHMLH0h1K"
 
 
 

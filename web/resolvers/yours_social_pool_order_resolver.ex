@@ -150,6 +150,72 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   def process_date(args) do
 
+      #def from_timestamp(timestamp) do
+      #   timestamp
+      #   |> +(@epoch)
+      #   |> :calendar.gregorian_seconds_to_datetime
+      # end
+
+      #IO.puts("date")
+      #IO.inspect(args[:order_datetime_date])
+      #epoch = {{1970, 1, 1}, {0, 0, 0}}
+      #@epoch :calendar.datetime_to_gregorian_seconds(epoch)
+      #Ecto.DateTime.to_erl(args[:order_datetime_date])
+
+      #epoch = :calendar.datetime_to_gregorian_seconds({{1970, 1, 1}, {0, 0, 0}})
+      #datetime = :calendar.gregorian_seconds_to_datetime(epoch + div(args[:order_datetime_date], 1000))
+      #DateTime.from_unix(args[:order_datetime_date])
+
+      #1495868400000
+      #|> +(@epoch)
+      #|> :calendar.gregorian_seconds_to_datetime
+
+      #IO.inspect(@epoch)
+
+      #Calendar.calendar(1318781876)
+      #IO.inspect(elem(DateTime.from_iso8601("2017-05-28T07:00:00.000Z"), 1).month)
+
+      #IO.inspect(DateTime.to_string(elem(DateTime.from_unix(1318781876), 1)))
+
+
+
+      #turn this into a separate function
+
+      delivery_date = ~D[2017-05-27]
+      delivery_date_formatted = ""
+      month = ""
+      day = ""
+      day_formatted = ""
+      year = ""
+      day_of_week = Integer.to_string(delivery_date.day)
+      
+      IO.inspect(delivery_date)
+
+      case Date.day_of_week(delivery_date) do
+        0 -> {day_of_week = "Sunday"}
+        1 -> {day_of_week = "Monday"}
+        2 -> {day_of_week = "Monday"}
+        3 -> {day_of_week = "Monday"}
+        4 -> {day_of_week = "Thursday"}
+        5 -> {day_of_week = "Friday"}
+        6 -> {day_of_week = "Saturday"}
+      end
+
+      case delivery_date.month do
+        0 -> {month = "January"}
+        5 -> {month = "May"}
+      end
+
+      #case delivery_date.day do
+      #  n when n in [1, 21, 31] -> {day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+      #  n when n in [2, 22] -> {day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+      #  n when n in [3, 23] -> {day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+      #  n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+      #end
+
+      delivery_date_formatted = day_of_week <> " " <> month <> " " <> day_formatted <> ", " <> Integer.to_string(delivery_date.year)
+
+      IO.puts(delivery_date_formatted)
 
 
   end
@@ -241,8 +307,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     case process_stripe_payment(args) do
 
-        {:ok, response} -> IO.inspect("response")
-        {:error, error} -> IO.inspect("error")
+        {:ok, response} -> #IO.inspect("response in yours...resolver")
+                           IO.inspect(response)
+        {:error, error} -> IO.inspect(error)
 
     end
 
@@ -506,11 +573,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         end
 
-                        total_cost = (mini_items_count * 24 * 5) + (regular_items_count * 24 * 5)
+                        total_items = Enum.reduce(cart_items, 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+
+
+                        #total_cost = (mini_items_count * 24 * 5) + (regular_items_count * 24 * 5)
+
+                        total_cost = total_items * 5.50
 
 
                         #IO.inspect(elem(mini_total, 0))
                         #IO.inspect(total_cost)
+
+
+
+
 
 
                         #dont need anymore????
@@ -543,44 +619,108 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #IO.inspect(DateTime.to_string(elem(DateTime.from_unix(1318781876), 1)))
 
 
+                        #Timex.format!(datetime, "{D}.{M}.{YYYY} {h24}:{m}")
+
+
+
 
                         #turn this into a separate function
 
+                        #for pool from ecto date time
+                        #or for yours and social from application
+
                         delivery_date = ~D[2017-05-27]
                         delivery_date_formatted = ""
-                        month = ""
-                        day = ""
-                        day_formatted = ""
-                        year = ""
-                        day_of_week = Integer.to_string(delivery_date.day)
-                        
+                        delivery_date_month = ""
+                        delivery_date_day = ""
+                        delivery_date_day_formatted = ""
+                        delivery_date_year = ""
+                        delivery_date_day_of_week = Integer.to_string(delivery_date.day)
+
                         IO.inspect(delivery_date)
 
                         case Date.day_of_week(delivery_date) do
-                          0 -> {day_of_week = "Sunday"}
-                          1 -> {day_of_week = "Monday"}
-                          2 -> {day_of_week = "Monday"}
-                          3 -> {day_of_week = "Monday"}
-                          4 -> {day_of_week = "Thursday"}
-                          5 -> {day_of_week = "Friday"}
-                          6 -> {day_of_week = "Saturday"}
+                          0 -> {delivery_date_day_of_week = "Sunday"}
+                          1 -> {delivery_date_day_of_week = "Monday"}
+                          2 -> {delivery_date_day_of_week = "Monday"}
+                          3 -> {delivery_date_day_of_week = "Monday"}
+                          4 -> {delivery_date_day_of_week = "Thursday"}
+                          5 -> {delivery_date_day_of_week = "Friday"}
+                          6 -> {delivery_date_day_of_week = "Saturday"}
                         end
 
-                        case delivery_date.month do
-                          0 -> {month = "January"}
-                          5 -> {month = "May"}
+                        case  delivery_date.month do
+                          1 -> {delivery_date_month = "January"}
+                          2 -> {delivery_date_month = "February"}
+                          3 -> {delivery_date_month = "March"}
+                          4 -> {delivery_date_month = "April"}
+                          5 -> {delivery_date_month = "May"}
+                          6 -> {delivery_date_month = "June"}
+                          7 -> {delivery_date_month = "July"}
+                          8 -> {delivery_date_month = "August"}
+                          9 -> {delivery_date_month = "September"}
+                          10 -> {delivery_date_month = "October"}
+                          11 -> {delivery_date_month = "November"}
+                          12 -> {delivery_date_month = "December"}
                         end
 
-                        #case delivery_date.day do
-                        #  n when n in [1, 21, 31] -> {day_formatted = Integer.to_string(delivery_date.day) <> "st"}
-                        #  n when n in [2, 22] -> {day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-                        #  n when n in [3, 23] -> {day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-                        #  n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {day_formatted = Integer.to_string(delivery_date.day) <> "th"}
-                        #end
 
-                        delivery_date_formatted = day_of_week <> " " <> month <> " " <> day_formatted <> ", " <> Integer.to_string(delivery_date.year)
+                        case delivery_date.day do
+                          n when n in [1, 21, 31] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                          n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                          n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                          n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+                        end
+
+                        delivery_date_formatted = delivery_date_day_of_week <> " " <> delivery_date_month <> " " <> delivery_date_day_formatted <> ", " <> Integer.to_string(delivery_date.year)
 
                         IO.puts(delivery_date_formatted)
+
+                        #IO.inspect(Timex.now.year)
+
+                        order_date = Timex.now
+                        order_date_formatted = ""
+                        order_date_month = ""
+                        order_date_day = ""
+                        order_date_day_formatted = ""
+                        order_date_year = ""
+                        order_date_day_of_week = Integer.to_string(delivery_date.day)
+                        
+                        case Date.day_of_week(order_date) do
+                          0 -> {order_date_day_of_week = "Sunday"}
+                          1 -> {order_date_day_of_week = "Monday"}
+                          2 -> {order_date_day_of_week = "Monday"}
+                          3 -> {order_date_day_of_week = "Monday"}
+                          4 -> {order_date_day_of_week = "Thursday"}
+                          5 -> {order_date_day_of_week = "Friday"}
+                          6 -> {order_date_day_of_week = "Saturday"}
+                        end
+
+                        case order_date.month do
+                          1 -> {order_date_month = "January"}
+                          2 -> {order_date_month = "February"}
+                          3 -> {order_date_month = "March"}
+                          4 -> {order_date_month = "April"}
+                          5 -> {order_date_month = "May"}
+                          6 -> {order_date_month = "June"}
+                          7 -> {order_date_month = "July"}
+                          8 -> {order_date_month = "August"}
+                          9 -> {order_date_month = "September"}
+                          10 -> {order_date_month = "October"}
+                          11 -> {order_date_month = "November"}
+                          12 -> {order_date_month = "December"}
+                        end
+
+                        case order_date.day do
+                          n when n in [1, 21, 31] -> {order_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                          n when n in [2, 22] -> {order_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                          n when n in [3, 23] -> {order_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                          n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {order_date_day_formatted = Integer.to_string(order_date.day) <> "th"}
+                        end
+
+                        order_date_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> order_date_day_formatted <> ", " <> Integer.to_string(order_date.year)
+
+                        IO.inspect(order_date_formatted)
 
                         menu_items = [%{"item_id": 1, "title": "Ruby Q"}, %{"item_id": 2, "title": "one"}]
 
@@ -629,7 +769,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #Sconely.CompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
               
-                        #Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, cart: [%{item_id: 1, name: "test", quantity: 1}]}) |> SconeHomeElixir.Mailer.deliver_later
+                        Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, delivery_cost: 0.00, total_cost: 0.00, cart: [%{item_id: 1, name: "test", quantity: 1}]}) |> SconeHomeElixir.Mailer.deliver_later
 
 
 
@@ -638,7 +778,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.puts("ok")
 
                         #just return ok
-                        {:ok, %{status: "completed", error_reason: ""}}
+                        {:ok, %{status: "successful", error_reason: ""}}
                         
                         #{:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]", user_type: "guest"}}
 
@@ -694,7 +834,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
           #end
 
         {:error, error} -> IO.inspect(error)
-            {:ok, %{status: "card_error", error_reason: error.message}}
+            {:ok, %{status: "card_error", error_reason: "error.message"}}
 
             #IO.inspect(error)
             #log error in database

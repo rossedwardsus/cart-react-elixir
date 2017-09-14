@@ -1,4 +1,4 @@
-import {SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_DEFINED_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_DEFINED_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 
 //setDeliveryContactAddressPredefined
@@ -45,6 +45,23 @@ export function setPaymentMethodCardNumber(value: any, order_id: any) {
     console.log("state " + JSON.stringify(getState()));
   
     dispatch({type: SET_USER_PAYMENT_METHOD_CARD_NUMBER, value: value});
+
+  }
+
+  //if user == logged in
+  //return {
+  //  type: SET_PAYMENT_CARD_NUMBER,
+  //  value
+  //}
+}
+
+export function setPaymentMethodCardBrand(value: any) {
+  
+  return function (dispatch: any, getState: any) { 
+
+    console.log("set card brand action");
+  
+    dispatch({type: SET_USER_PAYMENT_METHOD_CARD_BRAND, value: value});
 
   }
 

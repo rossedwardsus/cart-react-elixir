@@ -232,6 +232,7 @@ defmodule Sconely.Schema do
 
     field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do
         arg :order_type, :string
+        arg :pool_order_id, :string
         arg :save_for_later, :boolean
         arg :user_name_first, :string
         arg :user_name_last, :string
@@ -257,6 +258,7 @@ defmodule Sconely.Schema do
         arg :payment_method_expiry_month, :string
         arg :payment_method_expiry_year, :string
         arg :payment_method_security_code, :string
+        arg :payment_method_card_brand, :string
         arg :cart_items, list_of(:item)
         arg :promo_code, :string
         #arg :terms

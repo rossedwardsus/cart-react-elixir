@@ -676,7 +676,10 @@ class OrderCart extends React.Component<any, any> {
                       //let result = this.state.menu_items.find(function(obj: any){return obj.get('item_id') === 1;});
                       //let item_name = result.get("name");
 
-                      let item_name = this.props.menu_items[item.menu_item_id].name;
+                      //console.log(JSON.stringify(this.props.menuItems));
+
+                      let item_name = this.props.menuItems[item.menu_item_id-1].name;
+                      //let item_name = "";
 
                       //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
@@ -688,7 +691,7 @@ class OrderCart extends React.Component<any, any> {
                           return(
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{fontSize:16, border: 1}}>
-                                            <div className="col-md-1">{item_name}xcost</div>
+                                            <div className="col-md-1">{item_name}</div>
                                             <div className="col-md-3">
                                               <div className="row">
                                                 <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>

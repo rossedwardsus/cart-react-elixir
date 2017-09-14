@@ -13,15 +13,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
-import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
+
+/*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
 import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
 import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
-import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
+import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';*/
 
 import {setPromoCode} from './actions/order.ts';
 
-import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
+import {setPaymentNameOnCard, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
+
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {processYoursSocialPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
 //import {processYoursSocialOrder1} from './actions/'
@@ -839,7 +841,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    {this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.state.promo_code}
+                                    {this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0)}
                                   </div>
                                 </div>
                             </form>
@@ -848,9 +850,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             An error occured with your payment
                             <br/>
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
-                            <br/>
-                            <br/>
+                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentCardBrand={(e: any) => this.props.setPaymentCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
                             <button className={this.state.validated} onClick={this.props.processYoursSocialPoolOrder}>Complete Order</button>
                             <br/>
@@ -898,7 +898,7 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setDate: (e: any) => {
+    /*setDate: (e: any) => {
       //dispatch(setDate(e))
     },
     setTime: (e: any) => {
@@ -960,11 +960,11 @@ function mapDispatchToProps(dispatch: any) {
     },
     setDeliveryCost: (value: any) => {
       dispatch(setDeliveryCost(value));
-    },
+    },*/
     setPromoCode: (value: any) => {
       dispatch(setPromoCode(value));
     },
-    deliveryAddressValidated: () => {
+    /*deliveryAddressValidated: () => {
       dispatch(deliveryAddressValidated())
     },
     deliveryAddressInvalidated: () => {
@@ -978,12 +978,15 @@ function mapDispatchToProps(dispatch: any) {
     },
     removeCartItem: (item_id: any) => {
       dispatch(removeCartItem(item_id));
-    },
+    },*/
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value, ""))
     },
     setPaymentCardNumber: (e: any) => {
       dispatch(setPaymentMethodCardNumber(e.target.value, ""))
+    },
+    setPaymentCardBrand: (e: any) => {
+      dispatch(setPaymentMethodCardBrand(e.target.value))
     },
     setPaymentExpiryMonth: (e: any) => {
       dispatch(setPaymentExpiryMonth(e.target.value, ""))
