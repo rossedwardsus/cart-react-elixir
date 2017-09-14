@@ -790,7 +790,6 @@ class OrderCart extends React.Component<any, any> {
                             </form>
                             <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
                             <Link to="/order/menu" className="btn btn-default">Menu</Link>    
-                            <Link to="/order/payment" className="btn btn-default">Payment</Link>
                             <Link to="/order/preview" className="btn btn-default">Preview</Link>    
                         </div>
                     </div>

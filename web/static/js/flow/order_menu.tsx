@@ -120,7 +120,7 @@ class OrderMenu extends React.Component<any, any> {
           if(item.item_id === item_id){*/
 
               this.setState({selected_item_id: item_id});
-              this.setState({selected_item_name: this.props.menuItems[item_id]["name"]});
+              this.setState({selected_item_name: this.props.menuItems[item_id-1]["name"]});
               this.setState({selected_item_description: this.props.menuItems[item_id]["description"]});
               this.setState({selected_item_ingredients:  this.props.menuItems[item_id]["ingredients"]});
 
