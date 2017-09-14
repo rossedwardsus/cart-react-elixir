@@ -424,35 +424,25 @@ class DateTime extends React.Component<any, any> {
                           <div className="col-xs-12 col-md-9">
                                 <br/>
                                 <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <form className="form-horizontal">
+                                  <div className="form-group">
+                                    <div className="col-md-2">
+                                      <Link to="/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>  
+                                    </div>
+                                    <div className="col-md-2">
+                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
+                                    </div>
+                                    <div className="col-md-2">
+                                      <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
+                                    </div>
+                                  </div>
+                              </form>
                           </div>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <form className="form-horizontal">
-                            <div className="form-group">
-                              <div className="col-md-2">
-                                <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
-                              </div>
-                              <div className="col-md-2">
-                                <Link to="/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>  
-                              </div>
-                              <div className="col-md-2">
-                                <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Menu</Link>  
-                              </div>
-                              <div className="col-md-2">
-                                <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
-                              </div>
-                            </div>
-                        </form>
                     </div>
                 </div>)
    

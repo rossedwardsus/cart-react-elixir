@@ -1,4 +1,4 @@
-import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -133,7 +133,107 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       return Object.assign({}, state, {...state, orders: orders_updated});
 
+    /*case INCREASE_CART_ITEM_QUANTITY:
+      
+      console.log("increase reducer " + JSON.stringify(state));
 
+      //if quantity < 5 increase
+      //else do nothing
+
+      return Object.assign({}, state, {
+        cart_items: state.cart_items.map((item: any, index: any) => {
+          if (item.item_id === action.item_id) {
+              item.quantity = item.quantity + 1;
+          }
+          return item
+        })
+      })*/
+
+    case INCREASE_CART_ITEM_QUANTITY:
+      
+      console.log("increase cart item quantity reducer " + JSON.stringify(state));
+
+      //if quantity < 5 increase
+      //else do nothing
+
+      orders_updated = state.orders;
+      orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity + 1;
+
+      /*state.User.orders[0].cartItems.map((item: any, index: any) => {
+          if (item.item_id === action.item_id) {
+              item.quantity = item.quantity + 1;
+          }
+          return item
+        })*/
+
+      return Object.assign({}, state, {...state, orders: orders_updated})
+
+
+    case DECREASE_CART_ITEM_QUANTITY:
+      
+      console.log("decrease reducer " + JSON.stringify(state));
+      //todo if dozens is 0 then just remove
+
+
+      //get quantity
+      //if dozens > 0
+      let item = "";
+
+      //item = state.cart_items.find((item: any, index: any) => {
+          
+      //    return item.item_id === action.item_id;
+      
+      //})
+
+      //let item_index = state.cart_items.findIndex((item: any) => {
+          
+      //    return index;
+      
+      //})
+
+
+      console.log("quantity" + JSON.stringify(item));
+
+      orders_updated = state.orders;
+      orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity - 1;
+
+
+      /*return Object.assign({}, state, {
+        cart_items: state.cart_items.map((item: any, index: any) => {
+          if (item.item_id === action.item_id) {
+              if(item.quantity > 1){
+                  item.quantity = item.quantity - 1;
+              }
+          }
+          return item
+        })
+      })*/
+
+      //else remove item
+      //array.splice( index, 1 )
+
+
+    case REMOVE_CART_ITEM:
+      
+      console.log("REMOVE reducer " + JSON.stringify(state));
+      //todo if dozens is 0 then just remove
+
+      //if dozens > 0
+
+      /*return Object.assign({}, state, {
+        cart_items: state.cart_items.map((item: any, index: any) => {
+          if (item.item_id === action.item_id) {
+              return false
+          }
+          return item
+        })
+      })*/
+
+      let cart_items_updated = "state.cart_items.splice(action.index, 1)";
+
+      return Object.assign({}, state, { cart_items: cart_items_updated });
+
+      //else remove item
 
 
     case SET_USER_NAME_FIRST:

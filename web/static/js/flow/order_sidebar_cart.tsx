@@ -428,9 +428,11 @@ class SidebarCart extends React.Component<any, any> {
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-4">{item_name}</div>
-                                            <div className="col-md-5">Cost</div>
-                                            <div className="col-md-3">{item.quantity}</div>
+                                            <div className="col-md-5">{item_name}</div>
+                                            <div className="col-md-1"><a onClick={this.props.increaseCartItemQuantity}>+</a></div>
+                                            <div className="col-md-1">{item.quantity}</div>
+                                            <div className="col-md-1"><a onClick={this.props.decreaseCartItemQuantity}>-</a></div>
+                                            <div className="col-md-1"><a onClick={this.props.removeCartItem}>X</a></div>
                                           </div>
                                         </form>
                                 )
@@ -480,12 +482,28 @@ class SidebarCart extends React.Component<any, any> {
 
     //message if pool
 
+    let item_quantity_message = "";
+
+    if(this.props.User.orders[0].order_type == "pool"){
+        //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
+
+            item_quantity_message = "Please choose between 1 and 11 Scones";
+
+        //}
+
+    }else if(this.props.User.orders[0].order_type == "yours"){
+
+        item_quantity_message = "Please choose between 2 and 11 Scones";
+
+    }
+                  
+    /*{this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
+    <br/>
+    <br/>
+    {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
+
     return (<div> 
-                  {(this.props.User.orders[0].order_type == "pool" && this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0) && "a minimum of 1 item is required"}
-                  {this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
-                  <br/>
-                  <br/>
-                  {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}
+                  {item_quantity_message}
                   <br/>
                   {cart}
                   <br/>
@@ -494,23 +512,21 @@ class SidebarCart extends React.Component<any, any> {
                     (<div>
                       <form className="form-horizontal" style={{border: 1}}>
                         <div className="form-group" style={{border: 1}}>
-                          <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
-                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Items</b></div>
+                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
+                          <div className="col-md-1"></div>
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
                         </div>
                       </form>
                       <br/>
                       <form className="form-horizontal" style={{border: 1}}>
                         <div className="form-group" style={{border: 1}}>
-                          <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
-                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Delivery Cost</b></div>
+                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery Cost</div>
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
                         </div>
                       </form>
                       <form className="form-horizontal" style={{border: 1}}>
                         <div className="form-group" style={{border: 1}}>
-                          <div className="col-md-4" style={{fontType: "helvetica", fontSize: "14"}}><b></b></div>
-                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}><b>Total Cost</b></div>
+                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
                           <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                         </div>
                       </form>

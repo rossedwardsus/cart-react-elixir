@@ -1,4 +1,4 @@
-import { CREATE_ORDER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, ADD_CART_ITEM, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, SET_PROMO_CODE, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { CREATE_ORDER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, ADD_CART_ITEM, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, SET_PROMO_CODE, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM } from '../constants/actionTypes.ts';
 import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
@@ -321,3 +321,29 @@ export function clearUser() {
 //    type: CLEAR_ORDER,
 //  }
 //}
+
+export function increaseCartItemQuantity(item_id: any) {
+  console.log("increase cart item quantity action " + item_id);
+  return {
+    type: INCREASE_CART_ITEM_QUANTITY,
+    item_id
+  }
+}
+
+
+export function decreaseCartItemQuantity(item_id: any) {
+  console.log("DECREASE cart item quantity action " + item_id);
+  return {
+    type: DECREASE_CART_ITEM_QUANTITY,
+    item_id
+  }
+}
+
+export function removeCartItem(index: any) {
+  return {
+    type: REMOVE_CART_ITEM,
+    index
+  }
+}
+
+

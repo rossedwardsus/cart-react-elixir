@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import {getMenuItems} from './actions/menu.ts';
 import {cartValidated} from './actions/order_validations.ts';
 //import {addCartItem} from './actions/user.ts';
-import {createOrder, addCartItem} from './actions/order.ts';
+import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
@@ -121,8 +121,8 @@ class OrderMenu extends React.Component<any, any> {
 
               this.setState({selected_item_id: item_id});
               this.setState({selected_item_name: this.props.menuItems[item_id-1]["name"]});
-              this.setState({selected_item_description: this.props.menuItems[item_id]["description"]});
-              this.setState({selected_item_ingredients:  this.props.menuItems[item_id]["ingredients"]});
+              this.setState({selected_item_description: this.props.menuItems[item_id-1]["description"]});
+              this.setState({selected_item_ingredients:  this.props.menuItems[item_id-1]["ingredients"]});
 
       /*    }
 
@@ -429,7 +429,7 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             Sconely {this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1)}
-                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems} />
+                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity} removeCartItem={this.props.removeCartItem}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
@@ -558,6 +558,15 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     },
     addCartItem: (order_id: any, item_id: any, mini: any, quantity: any) => {
       dispatch(addCartItem(order_id, item_id, mini, quantity));
+    },
+    increaseCartItemQuantity: (item_id: any) => {
+      dispatch(increaseCartItemQuantity("item_id"));
+    },
+    decreaseCartItemQuantity: (item_id: any) => {
+      dispatch(decreaseCartItemQuantity("item_id"));
+    },
+    removeCartItem: (item_id: any) => {
+      dispatch(removeCartItem("item_id"));
     },
     cartValidated: () => {
       dispatch(cartValidated());

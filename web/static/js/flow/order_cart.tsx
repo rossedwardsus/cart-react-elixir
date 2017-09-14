@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 //import * as getAllProducts from './actions/menu';
 
-import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';
+import {addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
 //import { getPublicMenu } from './reducers/menu';
 

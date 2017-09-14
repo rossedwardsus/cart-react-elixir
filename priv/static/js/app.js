@@ -100,51 +100,51 @@ webpackJsonp([0],[
 	
 	var _order_cart2 = _interopRequireDefault(_order_cart);
 	
-	var _order_preview = __webpack_require__(1143);
+	var _order_preview = __webpack_require__(1142);
 	
 	var _order_preview2 = _interopRequireDefault(_order_preview);
 	
-	var _order_complete = __webpack_require__(1144);
+	var _order_complete = __webpack_require__(1143);
 	
 	var _order_complete2 = _interopRequireDefault(_order_complete);
 	
-	var _login = __webpack_require__(1145);
+	var _login = __webpack_require__(1144);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(1146);
+	var _register = __webpack_require__(1145);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _register_completed = __webpack_require__(1147);
+	var _register_completed = __webpack_require__(1146);
 	
 	var _register_completed2 = _interopRequireDefault(_register_completed);
 	
-	var _checkLogin = __webpack_require__(1148);
+	var _checkLogin = __webpack_require__(1147);
 	
 	var _checkLogin2 = _interopRequireDefault(_checkLogin);
 	
-	var _user = __webpack_require__(1149);
+	var _user = __webpack_require__(1148);
 	
 	var _user2 = _interopRequireDefault(_user);
 	
-	var _menu_items = __webpack_require__(1150);
+	var _menu_items = __webpack_require__(1149);
 	
 	var _menu_items2 = _interopRequireDefault(_menu_items);
 	
-	var _name = __webpack_require__(1154);
+	var _name = __webpack_require__(1153);
 	
 	var _name2 = _interopRequireDefault(_name);
 	
-	var _order_completed = __webpack_require__(1155);
+	var _order_completed = __webpack_require__(1154);
 	
 	var _order_completed2 = _interopRequireDefault(_order_completed);
 	
-	var _sconely_signature_guests = __webpack_require__(1156);
+	var _sconely_signature_guests = __webpack_require__(1155);
 	
 	var _sconely_signature_guests2 = _interopRequireDefault(_sconely_signature_guests);
 	
-	var _signature_additional_items = __webpack_require__(1157);
+	var _signature_additional_items = __webpack_require__(1156);
 	
 	var _signature_additional_items2 = _interopRequireDefault(_signature_additional_items);
 	
@@ -27407,6 +27407,29 @@ webpackJsonp([0],[
 	//    type: CLEAR_ORDER,
 	//  }
 	//}
+	function increaseCartItemQuantity(item_id) {
+	    console.log("increase cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.increaseCartItemQuantity = increaseCartItemQuantity;
+	function decreaseCartItemQuantity(item_id) {
+	    console.log("DECREASE cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
+	function removeCartItem(index) {
+	    return {
+	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
+	        index: index
+	    };
+	}
+	exports.removeCartItem = removeCartItem;
 
 /***/ }),
 /* 921 */
@@ -40182,8 +40205,8 @@ webpackJsonp([0],[
 	                       if(item.item_id === item_id){*/
 	            _this.setState({ selected_item_id: item_id });
 	            _this.setState({ selected_item_name: _this.props.menuItems[item_id - 1]["name"] });
-	            _this.setState({ selected_item_description: _this.props.menuItems[item_id]["description"] });
-	            _this.setState({ selected_item_ingredients: _this.props.menuItems[item_id]["ingredients"] });
+	            _this.setState({ selected_item_description: _this.props.menuItems[item_id - 1]["description"] });
+	            _this.setState({ selected_item_ingredients: _this.props.menuItems[item_id - 1]["ingredients"] });
 	            /*    }
 	             
 	            }.bind(this));*/
@@ -40396,7 +40419,7 @@ webpackJsonp([0],[
 	                //}
 	                //}
 	            }
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), this.props.order.cartItems.length == 0 && this.props.order.pool_message, React.createElement("br", null), "else show cart", React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-md hidden-lg" }, React.createElement("br", null), this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), this.props.order.cartItems.length == 0 && this.props.order.pool_message, React.createElement("br", null), "else show cart", React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity, removeCartItem: this.props.removeCartItem }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-md hidden-lg" }, React.createElement("br", null), this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
 	            }, 0), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))), React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
 	                var _this3 = this;
@@ -40457,6 +40480,15 @@ webpackJsonp([0],[
 	        },
 	        addCartItem: function addCartItem(order_id, item_id, mini, quantity) {
 	            dispatch(order_ts_1.addCartItem(order_id, item_id, mini, quantity));
+	        },
+	        increaseCartItemQuantity: function increaseCartItemQuantity(item_id) {
+	            dispatch(order_ts_1.increaseCartItemQuantity("item_id"));
+	        },
+	        decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id) {
+	            dispatch(order_ts_1.decreaseCartItemQuantity("item_id"));
+	        },
+	        removeCartItem: function removeCartItem(item_id) {
+	            dispatch(order_ts_1.removeCartItem("item_id"));
 	        },
 	        cartValidated: function cartValidated() {
 	            dispatch(order_validations_ts_1.cartValidated());
@@ -40738,7 +40770,7 @@ webpackJsonp([0],[
 	                    //console.log(order_type);
 	                    //code is here to check for minis existing???
 	                    if (order_type == "yours" || order_type == "pool") {
-	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-5" }, "Cost"), React.createElement("div", { className: "col-md-3" }, item.quantity)));
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5" }, item_name), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.increaseCartItemQuantity }, "+")), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.decreaseCartItemQuantity }, "-")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.removeCartItem }, "X"))));
 	                    } else {
 	                        if (item.twelveortwentyfourminis == "24_minis") {
 	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-4" }, "mini"), React.createElement("div", { className: "col-xs-4", style: { fontSize: 15 } }, 24 * item.quantity)));
@@ -40754,11 +40786,19 @@ webpackJsonp([0],[
 	            //{this.props.params.repoName}
 	            //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
 	            //message if pool
-	            return React.createElement("div", null, this.props.User.orders[0].order_type == "pool" && this.state.cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity;
-	            }, 0) == 0 && "a minimum of 1 item is required", this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required", React.createElement("br", null), React.createElement("br", null), this.state.cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity;
-	            }, 0) > 9 && 'You have reached the item limit for this order', React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Items")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Delivery Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null)), React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, React.createElement("b", null, "Total Cost")), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            var item_quantity_message = "";
+	            if (this.props.User.orders[0].order_type == "pool") {
+	                //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
+	                item_quantity_message = "Please choose between 1 and 11 Scones";
+	                //}
+	            } else if (this.props.User.orders[0].order_type == "yours") {
+	                item_quantity_message = "Please choose between 2 and 11 Scones";
+	            }
+	            /*{this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
+	            <br/>
+	            <br/>
+	            {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
+	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42035,7 +42075,7 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
-	                    } })), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Preview")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))));
+	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart")))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, screen, React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
@@ -42939,7 +42979,7 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	var guest_cart_ts_1 = __webpack_require__(1142);
+	var order_ts_1 = __webpack_require__(920);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(960);
 	var public_top_navbar_tsx_1 = __webpack_require__(947);
@@ -43450,13 +43490,13 @@ webpackJsonp([0],[
 	            //dispatch(addCartItem(1))
 	        },
 	        increaseCartItemQuantity: function increaseCartItemQuantity(item_id) {
-	            dispatch(guest_cart_ts_1.increaseCartItemQuantity(1));
+	            dispatch(order_ts_1.increaseCartItemQuantity(1));
 	        },
 	        decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id) {
-	            dispatch(guest_cart_ts_1.decreaseCartItemQuantity(1));
+	            dispatch(order_ts_1.decreaseCartItemQuantity(1));
 	        },
 	        removeCartItem: function removeCartItem(item_id) {
-	            dispatch(guest_cart_ts_1.removeCartItem(1));
+	            dispatch(order_ts_1.removeCartItem(1));
 	        }
 	    };
 	};
@@ -43466,57 +43506,6 @@ webpackJsonp([0],[
 
 /***/ }),
 /* 1142 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
-	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
-	    //if uorder_id != undefined
-	    //else
-	    return {
-	        type: actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM,
-	        order_id: order_id,
-	        item_id: item_id,
-	        twelveortwentyfourminis: twelveortwentyfourminis,
-	        quantity: quantity
-	    };
-	    /*return {
-	      type: ADD_CART_ITEM,
-	      item_id,
-	      item_type,
-	      quantity
-	    }*/
-	}
-	exports.addCartItem = addCartItem;
-	function increaseCartItemQuantity(item_id) {
-	    console.log("increase cart item quantity action " + item_id);
-	    return {
-	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
-	    };
-	}
-	exports.increaseCartItemQuantity = increaseCartItemQuantity;
-	function decreaseCartItemQuantity(item_id) {
-	    console.log("DECREASE cart item quantity action " + item_id);
-	    return {
-	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
-	    };
-	}
-	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
-	function removeCartItem(index) {
-	    return {
-	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
-	        index: index
-	    };
-	}
-	exports.removeCartItem = removeCartItem;
-
-/***/ }),
-/* 1143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44173,7 +44162,7 @@ webpackJsonp([0],[
 	exports.default = PreviewConnected;
 
 /***/ }),
-/* 1144 */
+/* 1143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
@@ -44891,7 +44880,7 @@ webpackJsonp([0],[
 	exports.default = OrderCompleted1;
 
 /***/ }),
-/* 1145 */
+/* 1144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45045,7 +45034,7 @@ webpackJsonp([0],[
 	exports.default = Login;
 
 /***/ }),
-/* 1146 */
+/* 1145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45322,7 +45311,7 @@ webpackJsonp([0],[
 	exports.default = Register1;
 
 /***/ }),
-/* 1147 */
+/* 1146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45494,7 +45483,7 @@ webpackJsonp([0],[
 	exports.default = RegisterCompleted;
 
 /***/ }),
-/* 1148 */
+/* 1147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45545,7 +45534,7 @@ webpackJsonp([0],[
 	exports.default = checkLogin;
 
 /***/ }),
-/* 1149 */
+/* 1148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45686,7 +45675,7 @@ webpackJsonp([0],[
 	exports.default = App;
 
 /***/ }),
-/* 1150 */
+/* 1149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -45703,10 +45692,10 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1151);
+	var signature_guest_response_ts_1 = __webpack_require__(1150);
 	var menu_ts_1 = __webpack_require__(949);
-	var signature_guest_response_ts_2 = __webpack_require__(1152);
-	var navbar_tsx_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_2 = __webpack_require__(1151);
+	var navbar_tsx_1 = __webpack_require__(1152);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
 	
 	var GuestMenu = function (_React$Component) {
@@ -45887,7 +45876,7 @@ webpackJsonp([0],[
 	exports.default = GuestMenuConnected;
 
 /***/ }),
-/* 1151 */
+/* 1150 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -45985,7 +45974,7 @@ webpackJsonp([0],[
 	};
 
 /***/ }),
-/* 1152 */
+/* 1151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46101,7 +46090,7 @@ webpackJsonp([0],[
 	}*/
 
 /***/ }),
-/* 1153 */
+/* 1152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46173,7 +46162,7 @@ webpackJsonp([0],[
 	exports.default = NavBar1;
 
 /***/ }),
-/* 1154 */
+/* 1153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46190,9 +46179,9 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import MenuItems from './menu_items';
-	var signature_guest_response_ts_1 = __webpack_require__(1152);
-	var signature_guest_response_ts_2 = __webpack_require__(1151);
-	var navbar_tsx_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_1 = __webpack_require__(1151);
+	var signature_guest_response_ts_2 = __webpack_require__(1150);
+	var navbar_tsx_1 = __webpack_require__(1152);
 	
 	var GuestName = function (_React$Component) {
 	    _inherits(GuestName, _React$Component);
@@ -46343,7 +46332,7 @@ webpackJsonp([0],[
 	exports.default = GuestName1;
 
 /***/ }),
-/* 1155 */
+/* 1154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46359,8 +46348,8 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var signature_guest_response_ts_1 = __webpack_require__(1151);
-	var navbar_tsx_1 = __webpack_require__(1153);
+	var signature_guest_response_ts_1 = __webpack_require__(1150);
+	var navbar_tsx_1 = __webpack_require__(1152);
 	
 	var SignatureGuestOrderComplete = function (_React$Component) {
 	    _inherits(SignatureGuestOrderComplete, _React$Component);
@@ -46451,7 +46440,7 @@ webpackJsonp([0],[
 	exports.default = SignatureGuestOrderComplete1;
 
 /***/ }),
-/* 1156 */
+/* 1155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46585,7 +46574,7 @@ webpackJsonp([0],[
 	exports.default = SignatureOrderGuestsConnected;
 
 /***/ }),
-/* 1157 */
+/* 1156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -46603,7 +46592,7 @@ webpackJsonp([0],[
 	var sconely_signature_sidebar_cart_tsx_1 = __webpack_require__(974);
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
-	var guest_cart_ts_1 = __webpack_require__(1142);
+	var guest_cart_ts_1 = __webpack_require__(1157);
 	//import {processSignatureOrder} from './actions/user_order.ts';
 	var user_navbar_tsx_1 = __webpack_require__(962);
 	
@@ -46759,6 +46748,57 @@ webpackJsonp([0],[
 	};
 	var SconelySignatureAdditionalItemsConnected = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(SconelySignatureAdditionalItems);
 	exports.default = SconelySignatureAdditionalItemsConnected;
+
+/***/ }),
+/* 1157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
+	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+	    //if uorder_id != undefined
+	    //else
+	    return {
+	        type: actionTypes_ts_1.ADD_GUEST_ORDER_CART_ITEM,
+	        order_id: order_id,
+	        item_id: item_id,
+	        twelveortwentyfourminis: twelveortwentyfourminis,
+	        quantity: quantity
+	    };
+	    /*return {
+	      type: ADD_CART_ITEM,
+	      item_id,
+	      item_type,
+	      quantity
+	    }*/
+	}
+	exports.addCartItem = addCartItem;
+	function increaseCartItemQuantity(item_id) {
+	    console.log("increase cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.increaseCartItemQuantity = increaseCartItemQuantity;
+	function decreaseCartItemQuantity(item_id) {
+	    console.log("DECREASE cart item quantity action " + item_id);
+	    return {
+	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
+	        item_id: item_id
+	    };
+	}
+	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
+	function removeCartItem(index) {
+	    return {
+	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
+	        index: index
+	    };
+	}
+	exports.removeCartItem = removeCartItem;
 
 /***/ }),
 /* 1158 */
@@ -47045,6 +47085,8 @@ webpackJsonp([0],[
 	//import root from './root.ts';
 	var menu_ts_1 = __webpack_require__(1162);
 	var user_ts_1 = __webpack_require__(1163);
+	//import user_delivery_addresses from './user_delivery_addresses.ts';
+	//import guestOrder from './guest_order.ts';
 	//import name from './name.ts';
 	//import contact from './contact.ts';
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
@@ -47305,6 +47347,74 @@ webpackJsonp([0],[
 	                  //else
 	                  orders_updated[0].cartItems.push({ item_id: action.item_id, quantity: action.quantity });
 	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	            /*case INCREASE_CART_ITEM_QUANTITY:
+	              
+	              console.log("increase reducer " + JSON.stringify(state));
+	                   //if quantity < 5 increase
+	              //else do nothing
+	                   return Object.assign({}, state, {
+	                cart_items: state.cart_items.map((item: any, index: any) => {
+	                  if (item.item_id === action.item_id) {
+	                      item.quantity = item.quantity + 1;
+	                  }
+	                  return item
+	                })
+	              })*/
+	            case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
+	                  console.log("increase cart item quantity reducer " + JSON.stringify(state));
+	                  //if quantity < 5 increase
+	                  //else do nothing
+	                  orders_updated = state.orders;
+	                  orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity + 1;
+	                  /*state.User.orders[0].cartItems.map((item: any, index: any) => {
+	                      if (item.item_id === action.item_id) {
+	                          item.quantity = item.quantity + 1;
+	                      }
+	                      return item
+	                    })*/
+	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	            case actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY:
+	                  console.log("decrease reducer " + JSON.stringify(state));
+	                  //todo if dozens is 0 then just remove
+	                  //get quantity
+	                  //if dozens > 0
+	                  var item = "";
+	                  //item = state.cart_items.find((item: any, index: any) => {
+	                  //    return item.item_id === action.item_id;
+	                  //})
+	                  //let item_index = state.cart_items.findIndex((item: any) => {
+	                  //    return index;
+	                  //})
+	                  console.log("quantity" + JSON.stringify(item));
+	                  orders_updated = state.orders;
+	                  orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity - 1;
+	            /*return Object.assign({}, state, {
+	              cart_items: state.cart_items.map((item: any, index: any) => {
+	                if (item.item_id === action.item_id) {
+	                    if(item.quantity > 1){
+	                        item.quantity = item.quantity - 1;
+	                    }
+	                }
+	                return item
+	              })
+	            })*/
+	            //else remove item
+	            //array.splice( index, 1 )
+	            case actionTypes_ts_1.REMOVE_CART_ITEM:
+	                  console.log("REMOVE reducer " + JSON.stringify(state));
+	                  //todo if dozens is 0 then just remove
+	                  //if dozens > 0
+	                  /*return Object.assign({}, state, {
+	                    cart_items: state.cart_items.map((item: any, index: any) => {
+	                      if (item.item_id === action.item_id) {
+	                          return false
+	                      }
+	                      return item
+	                    })
+	                  })*/
+	                  var cart_items_updated = "state.cart_items.splice(action.index, 1)";
+	                  return Object.assign({}, state, { cart_items: cart_items_updated });
+	            //else remove item
 	            case actionTypes_ts_1.SET_USER_NAME_FIRST:
 	                  console.log("user first name reducer " + JSON.stringify(action.value));
 	                  //user_updated = state;
