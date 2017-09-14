@@ -47412,8 +47412,9 @@ webpackJsonp([0],[
 	                      return item
 	                    })
 	                  })*/
-	                  var cart_items_updated = "state.cart_items.splice(action.index, 1)";
-	                  return Object.assign({}, state, { cart_items: cart_items_updated });
+	                  orders_updated = state.orders;
+	                  orders_updated[0].cartItems.splice(0, 1);
+	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	            //else remove item
 	            case actionTypes_ts_1.SET_USER_NAME_FIRST:
 	                  console.log("user first name reducer " + JSON.stringify(action.value));

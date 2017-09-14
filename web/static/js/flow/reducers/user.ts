@@ -229,9 +229,10 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
         })
       })*/
 
-      let cart_items_updated = "state.cart_items.splice(action.index, 1)";
+      orders_updated = state.orders;
+      orders_updated[0].cartItems.splice(0, 1);
 
-      return Object.assign({}, state, { cart_items: cart_items_updated });
+      return Object.assign({}, state, {...state, orders: orders_updated });
 
       //else remove item
 
