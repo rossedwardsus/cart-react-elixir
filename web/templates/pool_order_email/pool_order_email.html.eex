@@ -10,6 +10,7 @@
     <tr><td><br></td></tr>
     <tr><td>Thank you for your Sconely Order!</td><tr>
     <tr><td><br></td></tr>
+    <tr><td>Order Number</td></tr>
     <tr><td>Order Date: <%= @key.order_date %></td></tr>
     <tr><td><br></td></tr>
     <tr><td>Your delivery is scheduled for Monday January 1, 2017, between 9-11 am</td></tr>
@@ -17,13 +18,12 @@
     <tr><td>Delivery Address:</td></tr>
     <tr><td><%= @key.delivery_contact_address.street1 %>, Los Angeles ca, 90025</td></tr>
     <tr><td><br></td></tr>
-    <tr><td>Your contact information:</td></tr>
     <tr><td><br></td></tr>
     <tr><td><br>You have ordered the following items</td></tr>
     </table>
   <table width="50%">
-    <%= for item <- @key.cart do %>
-    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/menu/laci/zilla.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
+    <%= for item <- @key.cart_items do %>
+    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/menu/laci/zilla.jpg"></td><td><b>name<%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
     <% end %>
     <tr><td>item name</td><td>/thumbnail image/</td><td>quantity</td></tr>
     </table>

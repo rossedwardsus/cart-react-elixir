@@ -321,7 +321,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     #Poison.Parser.parse!(args)
 
-    cart_items = [%{"one": "one"}]
+    #cart_items = [%{"one": "one"}]
 
     #Enum.each(cart_items, fn(item) ->
     #    IO.inspect(item.item_id)
@@ -550,7 +550,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                             "social" -> 
 
-                                      #mini_items = Enum.filter(cart_items, fn(x) ->  
+                                      #mini_items = Enum.filter(args[:cart_items], fn(x) ->  
 
                                        #   x[:twelveortwentyfourminis] == "twelve"
 
@@ -564,11 +564,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                       #mini_total = Enum.reduce(mini_items, {0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
 
-                                      mini_total = cart_items
+                                      mini_total = args[:cart_items]
                                         |> Enum.filter(fn(x) ->  x[:item_type] == "mini" end)
                                         |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
 
-                                      regular_items_count = length(Enum.filter(cart_items, fn(x) ->  
+                                      regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
 
                                           x[:item_type] == "regular"
 
@@ -728,28 +728,37 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_date_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> order_date_day_formatted <> ", " <> Integer.to_string(order_date.year)
 
                         IO.inspect(order_date_formatted)
+                        IO.inspect(args[:cart_items])
 
-                        #menu_items = [%{"item_id": 1, "name": "Ruby Q"}, %{"item_id": 2, "name": "one"}]
+                        menu_items = [%{"item_id": 1, "name": "Ruby Q"}, %{"item_id": 2, "name": "lucky"}]
 
                         #loop through cart items
                         cart_items_with_name = Enum.map(args[:cart_items], fn(cart_item) ->
-                          name = Enum.filter(menu_items, fn(menu_item) ->
+                          #Map.put(cart_item, :name, "name")
+                          #IO.inspect(Enum.at(menu_items, 0).name)
+                          Map.put(cart_item, :name, Enum.at(menu_items, 0).name)
+
+                          #name = Enum.filter(menu_items, fn(menu_item) ->
                             #match?({:, _}, element)
-                            if(menu_item.item_id == cart_item.item_id) do
+                            #IO.inspect(cart_item.item_id)
+                            #IO.inspect(menu_item.item_id)
+                          #  if(menu_item.item_id == cart_item.item_id) do
+                              #IO.puts("here")
                               #IO.inspect(menu_item.name |> String.downcase |> String.replace(" ", ""))
                               #IO.inspect(String.downcase(menu_item.name) |> String.replace(menu_item.name, " ", ""))
-                              Map.put(cart_item, :name, menu_item.name)
-                             menu_item
-                            end
-                          end)
+                          #    Enum.at(Map.put(cart_item, :name, menu_item.name), 0)
+                             #menu_item
+
+                          #  end
+                          #end)
                           #IO.inspect(String.downcase(name) |> String.replace(name, " ", ""))
-                          IO.inspect(name)
+                          #IO.inspect(cart_item)
                        #   name_temp = Enum.at(name, 0)
                           #IO.inspect(title_temp[:title])
                        #   Map.put(cart_item, :title, title_temp[:title])
                         end)
 
-                        IO.inspect(cart_items_with_name)
+                        #IO.inspect(cart_items_with_name)
 
                         #cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
 
@@ -778,7 +787,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #Sconely.CompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
               
-                        #Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, delivery_cost: 0.00, total_cost: 0.00, cart: [%{item_id: 1, name: "test", quantity: 1}]}) |> SconeHomeElixir.Mailer.deliver_later
+                        Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, delivery_cost: 0.00, total_cost: 0.00, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
 
 

@@ -865,7 +865,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             {this.props.User.orderSession.paymentError}
                             <br/>
                             <br/>
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentCardBrand={(e: any) => this.props.setPaymentCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled}>Complete Order</button>
                             <br/>
@@ -1000,7 +1000,7 @@ function mapDispatchToProps(dispatch: any) {
     setPaymentCardNumber: (e: any) => {
       dispatch(setPaymentMethodCardNumber(e.target.value, ""))
     },
-    setPaymentCardBrand: (e: any) => {
+    setPaymentMethodCardBrand: (e: any) => {
       dispatch(setPaymentMethodCardBrand(e.target.value))
     },
     setPaymentExpiryMonth: (e: any) => {

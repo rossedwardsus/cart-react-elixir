@@ -155,7 +155,7 @@ defmodule Sconely.ProcessStripePayment do
 
     #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
 
-    IO.puts("test card date")
+    #IO.puts("test card date")
     case Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000069", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do

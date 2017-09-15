@@ -117,6 +117,7 @@ class PaymentMethod extends React.Component<any, any> {
           //this.setState({card_number_border_color: "red"})
           this.setState({card_brand: "AMEX"});
           //this.setState({card_number: e.target.value});
+          this.props.setPaymentMethodCardBrand("AMEX");
            
       //
       }else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
@@ -124,20 +125,20 @@ class PaymentMethod extends React.Component<any, any> {
 
           console.log("visa");
           this.setState({card_brand: "VISA"});
-          this.props.setCardBrand("VISA");
+          this.props.setPAyentMethodCardBrand("VISA");
          
       //
       }else if(/^5[1-5][0-9]{14}$/.test(e.target.value)){
 
           console.log("mastercard");
           this.setState({card_brand: "VISA"});
-          this.props.setCardBrand("VISA");
+          this.props.setPaymentMethodCardBrand("VISA");
          
       }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
           
           console.log("discovery");
           this.setState({card_brand: "DISCOVER"});
-          this.props.setCardBrand("DISCOVER");
+          this.props.setPaymentMethodCardBrand("DISCOVER");
          
       //
       //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
