@@ -14,6 +14,8 @@ import { connect } from 'react-redux';
 const Immutable  = require('immutable');
 //import _ from 'lodash';
 
+import axios from 'axios';
+
 
 function addTodoWithDispatch() {
   const action = {
@@ -50,7 +52,7 @@ class SidebarCart extends React.Component<any, any> {
         menuItemNames: [],
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}],
         cartItems: [],
-        here: ""
+        pool_message_viewed: false
 
     };
 
@@ -77,7 +79,7 @@ class SidebarCart extends React.Component<any, any> {
 
 
     //get menu items
-    //this.setState({menuItemNames: this.props.menuItems})
+    //this.setState({pool_message: "this.props.menuItems"})
 
     //console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
     console.log("sidebarcart user " + JSON.stringify(this.props.User));
@@ -96,6 +98,55 @@ class SidebarCart extends React.Component<any, any> {
     //console.log(this.props.dispatch(addTodoWithDispatch));
     //this.props.getAllProducts();
 
+            /*axios.post('/api/graphql',
+                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
+            )
+            .then((response: any) => {
+
+                  console.log("pool message graphql response " + JSON.stringify(response));
+
+                  //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+
+                  //dispatch(push("/order/menu"));
+
+                  this.setState({pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage});*/
+
+
+
+                  /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
+
+                      console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+
+                      //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
+
+
+                      //if save_info_for_later == true...
+                      //last four card number
+
+                      //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+
+                      console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+
+                      //else delete from redux
+                      //console.log("clear order");
+                      
+                      //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
+            
+
+                      //that.props.history.push('/user');
+                      //context.router
+
+                      //this.context.router.push('/order/complete');
+                      //dispatch(push("/order/complete"));
+
+                  }else{
+
+                    //dispatch({ type: , item_id: "session_id"});
+
+                  }*/
+
+            //})
+
   }
 
   componentWillReceiveProps(nextProps: any){
@@ -109,11 +160,19 @@ class SidebarCart extends React.Component<any, any> {
 
   }
 
-  increaseCartItemQuantity(item_id:any){
+  increaseCartItemQuantity = (item_index:any) => {
 
       //alert(item_id);
 
-      this.props.increaseCartItemQuantity(item_id);
+      console.log("item_index" + item_index)
+
+      //console.log("total cart item quantity " + this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
+
+      if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) < 13){
+
+        this.props.increaseCartItemQuantity(item_index);
+
+      }
 
 
       /*let cart_items_temp = this.state.cart_items;
@@ -144,11 +203,11 @@ class SidebarCart extends React.Component<any, any> {
 
   }
 
-  decreaseCartItemQuantity(item_id:any){
+  decreaseCartItemQuantity = (item_index:any) => {
 
       //alert(item_id);
 
-      this.props.decreaseCartItemQuantity(item_id);
+      this.props.decreaseCartItemQuantity(item_index);
 
 
       /*let cart_items_temp = this.state.cart_items;
@@ -179,17 +238,17 @@ class SidebarCart extends React.Component<any, any> {
 
   }
 
-  removeItemFromCart(item_id:any){
+  removeItemFromCart = (item_id:any) => {
 
       //alert(item_id);
 
-      let cart_items_temp = this.state.cart_items;
+      /*let cart_items_temp = this.state.cart_items;
 
       let cart_items_temp_updated = cart_items_temp.filter(function(item: any) {
           return item.item_id !== item_id;
       });
 
-      this.setState({cart_items: cart_items_temp_updated});
+      this.setState({cart_items: cart_items_temp_updated});*/
 
   }
 
@@ -391,7 +450,7 @@ class SidebarCart extends React.Component<any, any> {
 
         cart = this.state.cartItems.map(function(item: any, index: any){
 
-                      console.log("cart menuitems " + JSON.stringify(this.props.menuItems));
+                      console.log("cart menuitems " + JSON.stringify(index));
 
                       let menu_item = this.props.menuItems.find((menu_item: any) => {
 
@@ -408,7 +467,7 @@ class SidebarCart extends React.Component<any, any> {
 
                       let item_name = "";
 
-                      //if( menu_item != undefined){
+                      //if(menu_item != undefined){
                         
                         item_name = menu_item.name;
 
@@ -429,10 +488,10 @@ class SidebarCart extends React.Component<any, any> {
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-5">{item_name}</div>
-                                            <div className="col-md-1"><a onClick={this.props.increaseCartItemQuantity}>+</a></div>
+                                            <div className="col-md-1"><a onClick={() => this.increaseCartItemQuantity(index)}>+</a></div>
                                             <div className="col-md-1">{item.quantity}</div>
-                                            <div className="col-md-1"><a onClick={this.props.decreaseCartItemQuantity}>-</a></div>
-                                            <div className="col-md-1"><a onClick={this.props.removeCartItem}>X</a></div>
+                                            <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
+                                            <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                           </div>
                                         </form>
                                 )
@@ -487,7 +546,7 @@ class SidebarCart extends React.Component<any, any> {
     if(this.props.User.orders[0].order_type == "pool"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
-            item_quantity_message = "Please choose between 1 and 11 Scones";
+            item_quantity_message = "Please choose between 1 and 12 Scones";
 
         //}
 
@@ -505,33 +564,38 @@ class SidebarCart extends React.Component<any, any> {
     return (<div> 
                   {item_quantity_message}
                   <br/>
-                  {cart}
+                  <br/>
+                  {this.props.User.orders[0].cartItems.length == 0 ? this.props.User.orders[0].pool_message : cart}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 
                     (<div>
-                      <form className="form-horizontal" style={{border: 1}}>
-                        <div className="form-group" style={{border: 1}}>
-                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
-                          <div className="col-md-1"></div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
-                        </div>
-                      </form>
-                      <br/>
-                      <form className="form-horizontal" style={{border: 1}}>
-                        <div className="form-group" style={{border: 1}}>
-                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery Cost</div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
-                        </div>
-                      </form>
-                      <form className="form-horizontal" style={{border: 1}}>
-                        <div className="form-group" style={{border: 1}}>
-                          <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
-                          <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
-                        </div>
-                      </form>
-                      <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>              
-                    </div>)
+                        <form className="form-horizontal" style={{border: 1}}>
+                          <div className="form-group" style={{border: 1}}>
+                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
+                            <div className="col-md-1"></div>
+                            <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
+                          </div>
+                        </form>
+                        <br/>
+                        <form className="form-horizontal" style={{border: 1}}>
+                          <div className="form-group" style={{border: 1}}>
+                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery Cost</div>
+                            <div className="col-md-1"></div>
+                            <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
+                          </div>
+                        </form>
+                        <form className="form-horizontal" style={{border: 1}}>
+                          <div className="form-group" style={{border: 1}}>
+                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
+                            <div className="col-md-1"></div>
+                            <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
+                          </div>
+                        </form>
+                        {this.props.path == "/order/menu" && 
+                            <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>}
+                      </div>)
+
                   }
                   <br/>
                   <br/>
@@ -549,8 +613,8 @@ class SidebarCart extends React.Component<any, any> {
 }
 
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.menuItems.items));
+/*const mapStateToProps = (state: any, ownProps: any) => {
+  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.routing.locationBeforeTransitions));
   return {
 
     //cart_items: getCartItems(state); 
@@ -562,12 +626,13 @@ const mapStateToProps = (state: any, ownProps: any) => {
         menuItems: state.menuItems.items,
         //cartItems: state.guestOrder.cart_items,
         //Order: state.User.orders[1],
+        route: state.routing.locationBeforeTransitions.pathname
 
     //}
   }
 };
 
-/*const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 

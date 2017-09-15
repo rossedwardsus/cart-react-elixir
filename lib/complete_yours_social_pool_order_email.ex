@@ -45,7 +45,7 @@ defmodule Sconely.CompleteYoursSocialPoolOrderEmail do
       #to: _params["order_contact_email"],
       to: ["rossedwards.us@gmail.com"],
       from: "order@sconely.com",
-      subject: "Sconely.com order: " <> _params.order_id,
+      subject: "Sconely.com order: " <> _params.order_date,
       html_body: template,
       #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
       #text_body: "Thanks for joining!"

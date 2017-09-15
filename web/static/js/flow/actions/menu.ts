@@ -1,4 +1,4 @@
-import { VIEW_PUBLIC_MENU } from '../constants/actionTypes.ts';
+import { VIEW_PUBLIC_MENU, SET_ORDER_TYPE } from '../constants/actionTypes.ts';
 import {createOrder} from './order.ts';
 
 import {push} from 'react-router-redux';
@@ -9,7 +9,7 @@ import axios from 'axios';
 
 //check login
 
-export function loadMenuItemsCreateOrder(){
+export function loadMenuItemsCreateOrder(order_type: any, pool_name: any, pool_date: any){
 
       console.log("action");
       return function (dispatch: any) { 
@@ -33,11 +33,12 @@ export function loadMenuItemsCreateOrder(){
 
                   //this.context.router.push('/order/complete');
 
-                  dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.items});
-                    //dispatch(push("/order/url_name/guest/name"));
-                  dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
-                  dispatch(push("/order/menu"));
-
+                  dispatch({type: VIEW_PUBLIC_MENU, items: response.data.items});
+                  //dispatch(push("/order/url_name/guest/name"));
+                  //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
+                  //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+                  //dispatch(push("/order/menu"));
+                  
             })
             .catch((error: any) => {
 
@@ -55,7 +56,8 @@ export function loadMenuItemsCreateOrder(){
             })
             
 
-
+            //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
+                  
             //call the reducer themn redirect
             //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
             //dispatch(push("/order/1/guest/name"));
@@ -97,8 +99,8 @@ export function getMenuItems(){
 
                   dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.items});
                     //dispatch(push("/order/url_name/guest/name"));
-                  dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
-                  dispatch(push("/order/menu"));
+                  //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
+                  //dispatch(push("/order/menu"));
 
             })
             .catch((error: any) => {

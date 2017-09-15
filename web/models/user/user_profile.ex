@@ -12,7 +12,7 @@ defmodule Sconely.UserProfile do
 		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "user_profiles" do #user not user profile
-			field :user_id, Ecto.UUID
+			field :user_id, Ecto.UUID #integer
 			field :first_name, :string
 			field :last_name, :string
 			field :about_me, :string #?

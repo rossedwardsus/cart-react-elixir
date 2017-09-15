@@ -13,7 +13,7 @@ defmodule Sconely.Registration do
 		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "registration" do
-			field :user_id, Ecto.UUID
+			field :user_id, Ecto.UUID #:integer
 			field :email, :string
 			#field :password, :string
 			field :password_hash, :string

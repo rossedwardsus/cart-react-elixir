@@ -316,15 +316,24 @@ class OrderCart extends React.Component<any, any> {
 
   }
 
-  increaseCartItemQuantity(item_id: any, index: any){
+  increaseCartItemQuantity = (item_id: any, index: any) => {
+
+    console.log("total cart item quantity " + this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
+
+    if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) < 12){
+
+      this.props.increaseCartItemQuantity(item_id);
+
+    }
+
 
     //alert(JSON.stringify(item_id + "" + index));
 
-    let cart_items_temp = this.state.cart_items;
+    /*let cart_items_temp = this.state.cart_items;
 
     let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
 
-    this.setState({cart_items: cart_items_temp_updated});
+    this.setState({cart_items: cart_items_temp_updated});*/
 
   }  
 
@@ -500,11 +509,13 @@ class OrderCart extends React.Component<any, any> {
   }*/
 
 
-  updateCartItemQuantity(item_id:any, quantity: any){
+  //increaseCartItemQuantity = (item_id:any, quantity: any) => {
 
       //alert(item_id);
 
-      let cart_items_temp = this.state.cart_items;
+      
+
+      /*let cart_items_temp = this.state.cart_items;
 
       let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
 
@@ -528,9 +539,9 @@ class OrderCart extends React.Component<any, any> {
 
       //alert(JSON.stringify(cart_items_temp_updated));
 
-      this.setState({cart_items: cart_items_temp_updated});
+      this.setState({cart_items: cart_items_temp_updated});*/
 
-  }
+  //}
 
   removeItemFromCart(item_id:any){
 
@@ -735,7 +746,7 @@ class OrderCart extends React.Component<any, any> {
                                                   <div className="col-md-1" style={{fontSize: 20}}>{item.item_title}</div>
                                                   <div className="col-md-3">
                                                     <div className="row">
-                                                      <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
+                                                      <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
                                                       <div className="col-md-1">{total_amount}</div>
                                                       <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
                                                     </div>
@@ -776,13 +787,10 @@ class OrderCart extends React.Component<any, any> {
                               <div className="form-group" style={{border: 1}}>
                                 <div className="col-md-8">                         
                                    <br/>
-                                   dont show if cart
-                                   <br/>
-                                   <div className="col-md-4">Delivery charge</div><div className="col-md-1">$</div>
-                                   <br/>
-                                   <br/> 
                                    <br/>
                                    <div className="col-md-4">Total Items</div><div className="col-md-1"><b>{total_items}</b></div>
+                                   <br/>
+                                   <div className="col-md-4">Delivery Cost</div><div className="col-md-2"><b>$0.00</b></div>
                                    <br/>
                                    <div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost}</b></div>
                                 </div>

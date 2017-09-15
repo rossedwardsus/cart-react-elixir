@@ -103,7 +103,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         selected_time: "",
         selected_specific_time: "",
-        button_complete_order_classname: "btn btn-default disabled"
+        button_complete_order_classname: "btn btn-default",
+        button_complete_order_disabled: "",        
 
     };
 
@@ -155,6 +156,14 @@ class OrderDateTimeContact extends React.Component<any, any> {
     console.log("<b>recieved</b>");
 
     //this.props.cart_validated;
+
+    //if(this.props.User.orders[0].payment_error == ""){
+
+        this.setState({button_complete_order_classname: "btn btn-default"});
+        this.setState({button_complete_order_disabled: ""});
+
+
+    //}
 
   }
 
@@ -659,7 +668,13 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   }
 
-  completeOrder(){
+
+
+
+
+
+
+  processYoursSocialPoolOrder = () => {
 
       //alert("order complete this.props.order");
 
@@ -672,6 +687,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       //if this.props.order_state = "completed"?
       //else error
+
+      //this.setState({button_complete_order_classname: "btn btn-default disabled"});
+      //this.setState({button_complete_order_disabled: "disabled"});
+      
+      this.props.processYoursSocialPoolOrder();
 
 
       //export default function getBook(dispatch) {
@@ -689,7 +709,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
       this.context.router.push('/order/12345/order_complete');*/
 
 
-      axios.post('http://localhost:4000/graphql', {
+      /*axios.post('http://localhost:4000/graphql', {
              query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
       })
       .then( response => {
@@ -725,7 +745,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         // network error
       //}
 
-      })
+      })*/
 
       //alert(JSON.stringify(this.state.delivery_address_street));
 
@@ -794,8 +814,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
-                          <br/>
                           <br/>
                           <br/>
                           <br/>
@@ -808,20 +826,18 @@ class OrderDateTimeContact extends React.Component<any, any> {
                         </div>
                         <div className="col-xs-12 col-md-9">
                             <br/>
-                            if user is saved
                             <br/>
-                            if user is registered
-                            <br/>
-                            <div className="hidden-md">
-                                <Link to="/order/menu" className="btn btn-default">Back to Menu</Link>  
+                            <div className="hidden-lg">
+                                <Link to="/order/menu">{"<-"} Menu</Link>  
                             </div>
+                            <br/>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
                                     Subtotal Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    50.00{this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0)}
+                                    ${this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0).toFixed(2)}
                                   </div>
                                 </div>
                             </form>
@@ -830,7 +846,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                   <div className="col-md-3">
                                       Promo Code
                                   </div>
-                                  <div className="col-md-3">
+                                  <div className="col-md-2">
                                       <input type="text" maxLength={30} onChange={this.setPromoCode} className="form-control" value={this.props.User.orderSession.promoCode} id="exampleInputName2" placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
                                   </div>
                                 </div>
@@ -841,18 +857,17 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    {this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0)}
+                                    ${this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0).toFixed(2)}
                                   </div>
                                 </div>
                             </form>
                             <br/>
                             {this.props.User.orderSession.paymentError}
                             <br/>
-                            An error occured with your payment
                             <br/>
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentCardBrand={(e: any) => this.props.setPaymentCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
-                            <button className={this.state.validated} onClick={this.props.processYoursSocialPoolOrder}>Complete Order</button>
+                            <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>

@@ -94,18 +94,45 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
             //get pool order data
             //possibly do as an api and not graphql
 
+            //move this to order menu?
+            //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
 
+            //dispatch(push("/order/menu"));
+
+            dispatch(getMenuItems());
 
             axios.post('/api/graphql',
                      {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
-                  console.log("graphql response " + JSON.stringify(response));
+                  console.log("pool order graphql response " + JSON.stringify(response));
 
-                  dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+                  dispatch({
+                              type: SET_ORDER_TYPE, 
+                              value: order_type, 
+                              pool_name: "this.props.params", 
+                              pool_date: "this.props.params", 
+                              pool_order_id: "response.data.data.getPoolOrderDetails.pool_id", 
+                              pool_message: "pool_message",
+                  
+                  })
 
-                  //dispatch(push("/order/menu"));
+                  //const delay = (ms: any) => new Promise(resolve =>
+                  //  setTimeout(resolve, ms)
+                  //);
+
+                  //delay(2000).then(() => dispatch(push("/order/menu")));
+
+                  //dispatch(setPoolOrder("pool_name", "pool_date", "pool_id", "pool_message")).then(() => {});
+
+                  dispatch(push("/order/menu"));
+
+            
+            }).then((response: any) => {
+                  
+                  
+                   dispatch(push("/order/menu"));
 
 
 
@@ -169,6 +196,9 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
   //}
 }
 
+function setPoolOrder(pool_name: any, pool_date: any, pool_id: any, pool_message: any) {
+  return {type: SET_ORDER_TYPE, value: "pool", pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "setpoolorderresponse.data.pool_message"}
+}
 
 
 export function processYoursSocialPoolOrder() {
@@ -182,10 +212,13 @@ export function processYoursSocialPoolOrder() {
             console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
             //state.User.orders
 
+            //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
+
+
             //if order type == pool then address isnt needed
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -322,27 +355,27 @@ export function clearUser() {
 //  }
 //}
 
-export function increaseCartItemQuantity(item_id: any) {
-  console.log("increase cart item quantity action " + item_id);
+export function increaseCartItemQuantity(item_index: any) {
+  console.log("increase cart item quantity action " + item_index);
   return {
     type: INCREASE_CART_ITEM_QUANTITY,
-    item_id
+    item_index
   }
 }
 
 
-export function decreaseCartItemQuantity(item_id: any) {
-  console.log("DECREASE cart item quantity action " + item_id);
+export function decreaseCartItemQuantity(item_index: any) {
+  console.log("DECREASE cart item quantity action " + item_index);
   return {
     type: DECREASE_CART_ITEM_QUANTITY,
-    item_id
+    item_index
   }
 }
 
-export function removeCartItem(index: any) {
+export function removeCartItem(item_index: any) {
   return {
     type: REMOVE_CART_ITEM,
-    index
+    item_index
   }
 }
 

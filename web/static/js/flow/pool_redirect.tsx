@@ -50,7 +50,7 @@ class PoolRedirect extends React.Component<any, any> {
 
   componentWillMount(){
 
-    this.props.loadMenuItemsCreateOrder();
+    //this.props.loadMenuItemsCreateOrder("", this.props.params.pool_name, this.props.params.pool_date);
     this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
     //this.context.router.push("/order/menu");
     
@@ -59,6 +59,8 @@ class PoolRedirect extends React.Component<any, any> {
 
     //this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
     //this.context.router.push("/order/menu");
+
+    console.log("cartitems " + JSON.stringify(this.props.orders));
 
   }
 
@@ -80,23 +82,32 @@ class PoolRedirect extends React.Component<any, any> {
           //var that = this;
           //var page = "";
 
-          return(<div></div>)
-  
+          //console.log("cartitems " + JSON.stringify(this.props.orders));
 
+          //if(this.props.orders.length != 0){
+              
+          //    this.context.router.push("/order/menu");
+          
+          //}else{
+
+              return(<div></div>)
     
+          //}
   }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops pool" + JSON.stringify(state));
+  console.log("mapstatetoprops pool " + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
 
     //if(state.default.order.cart_items != undefined){
         
-        menu_items: state.MenuItems,
-        order: state.Order,
-        cart: state.cart
+        //menu_items: state.MenuItems,
+        orders: state.User.orders,
+        //cart: state.cart
+
+        //this.context.router.push("/order/menu");
 
     //}
   }
@@ -105,8 +116,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
-    loadMenuItemsCreateOrder: () => {
-      dispatch(loadMenuItemsCreateOrder());
+    loadMenuItemsCreateOrder: (order_type: any, pool_name: any, pool_date: any) => {
+      dispatch(loadMenuItemsCreateOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"));
     },
     getMenuItems: () => {
       dispatch(getMenuItems());

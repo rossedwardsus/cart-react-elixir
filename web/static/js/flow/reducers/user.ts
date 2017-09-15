@@ -65,7 +65,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       //if another pool order exists change it's status to "saved"
 
-      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: action.pool_order_id, pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
 
       let started_order = state.orders.findIndex((order: any) => order.status == "started");
 
@@ -110,10 +110,9 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
     case CREATE_ORDER:
       console.log("add cart reducer");
 
-      user_updated = state.cartItems;
-      user_updated["first_name"] = action.value;
-
-      return Object.assign({}, state, {user: user_updated});
+      orders_updated = state.orders;
+      //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+      return Object.assign({}, state, {orders: orders_updated});
 
 
 
@@ -125,11 +124,11 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //orders.filter((order: ) => order.order_type == "social"
 
       orders_updated = state.orders;
+
       //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 
       //else
       orders_updated[0].cartItems.push({item_id: action.item_id, quantity: action.quantity});
-
 
       return Object.assign({}, state, {...state, orders: orders_updated});
 
@@ -151,13 +150,13 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
     case INCREASE_CART_ITEM_QUANTITY:
       
-      console.log("increase cart item quantity reducer " + JSON.stringify(state));
+      console.log("increase cart item quantity reducer " + JSON.stringify(action.item_index));
 
       //if quantity < 5 increase
       //else do nothing
 
       orders_updated = state.orders;
-      orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity + 1;
+      orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
 
       /*state.User.orders[0].cartItems.map((item: any, index: any) => {
           if (item.item_id === action.item_id) {
@@ -171,13 +170,13 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
     case DECREASE_CART_ITEM_QUANTITY:
       
-      console.log("decrease reducer " + JSON.stringify(state));
+      console.log("decrease reducer " + JSON.stringify(action.item_index));
       //todo if dozens is 0 then just remove
 
 
       //get quantity
       //if dozens > 0
-      let item = "";
+      //let item = "";
 
       //item = state.cart_items.find((item: any, index: any) => {
           
@@ -192,10 +191,10 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //})
 
 
-      console.log("quantity" + JSON.stringify(item));
+      //console.log("quantity" + JSON.stringify(item));
 
       orders_updated = state.orders;
-      orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity - 1;
+      orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
 
 
       /*return Object.assign({}, state, {
@@ -215,7 +214,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
     case REMOVE_CART_ITEM:
       
-      console.log("REMOVE reducer " + JSON.stringify(state));
+      console.log("REMOVE reducer " + JSON.stringify(action.item_index));
       //todo if dozens is 0 then just remove
 
       //if dozens > 0
@@ -230,9 +229,9 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       })*/
 
       orders_updated = state.orders;
-      orders_updated[0].cartItems.splice(0, 1);
+      orders_updated[0].cartItems.splice(action.item_index, 1);
 
-      return Object.assign({}, state, {...state, orders: orders_updated });
+      return Object.assign({}, state, {...state, orders: orders_updated});
 
       //else remove item
 

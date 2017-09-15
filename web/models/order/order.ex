@@ -11,7 +11,7 @@ defmodule Sconely.Order do
 
 	schema "orders" do
 
-		field :order_id, :string #primary key #secure random
+		field :order_id, :string #primary key #secure random #integer
 		field :user_id, :string #Ecto.UUID
 		field :order_type, :string
 		#delivery contact address id

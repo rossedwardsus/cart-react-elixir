@@ -7,7 +7,7 @@ defmodule SconeHomeElixir.UserProfilePaymentMethods do
 		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "user_payment_methods" do
-			field :user_id, Ecto.UUID
+			field :user_id, Ecto.UUID #:integer
 			field :brand, :string
 			field :last_4_digits, :string
 			field :stripe_payment_token, :string

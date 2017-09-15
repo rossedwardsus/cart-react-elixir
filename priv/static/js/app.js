@@ -40,7 +40,7 @@ webpackJsonp([0],[
 	
 	var _public_home_page2 = _interopRequireDefault(_public_home_page);
 	
-	var _public_menu = __webpack_require__(948);
+	var _public_menu = __webpack_require__(949);
 	
 	var _public_menu2 = _interopRequireDefault(_public_menu);
 	
@@ -18879,7 +18879,7 @@ webpackJsonp([0],[
 	//import { routeActions, push } from 'react-router-redux'
 	var react_redux_1 = __webpack_require__(190);
 	var order_ts_1 = __webpack_require__(920);
-	var public_top_navbar_tsx_1 = __webpack_require__(947);
+	var public_top_navbar_tsx_1 = __webpack_require__(948);
 	//import * as Cookie from 'js-cookie';
 	//const cookie: any = require('react-cookie');
 	function getCookie(name) {
@@ -27192,8 +27192,9 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var menu_ts_1 = __webpack_require__(922);
 	var react_router_redux_1 = __webpack_require__(617);
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
 	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
 	    //if uorder_id != undefined
@@ -27262,10 +27263,28 @@ webpackJsonp([0],[
 	            console.log("pool");
 	            //get pool order data
 	            //possibly do as an api and not graphql
+	            //move this to order menu?
+	            //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+	            //dispatch(push("/order/menu"));
+	            dispatch(menu_ts_1.getMenuItems());
 	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
-	                console.log("graphql response " + JSON.stringify(response));
-	                dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message" });
-	                //dispatch(push("/order/menu"));
+	                console.log("pool order graphql response " + JSON.stringify(response));
+	                dispatch({
+	                    type: actionTypes_ts_1.SET_ORDER_TYPE,
+	                    value: order_type,
+	                    pool_name: "this.props.params",
+	                    pool_date: "this.props.params",
+	                    pool_order_id: "response.data.data.getPoolOrderDetails.pool_id",
+	                    pool_message: "pool_message"
+	                });
+	                //const delay = (ms: any) => new Promise(resolve =>
+	                //  setTimeout(resolve, ms)
+	                //);
+	                //delay(2000).then(() => dispatch(push("/order/menu")));
+	                //dispatch(setPoolOrder("pool_name", "pool_date", "pool_id", "pool_message")).then(() => {});
+	                dispatch(react_router_redux_1.push("/order/menu"));
+	            }).then(function (response) {
+	                dispatch(react_router_redux_1.push("/order/menu"));
 	                /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
 	                     console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
 	                     dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
@@ -27300,6 +27319,9 @@ webpackJsonp([0],[
 	    //}
 	}
 	exports.createOrder = createOrder;
+	function setPoolOrder(pool_name, pool_date, pool_id, pool_message) {
+	    return { type: actionTypes_ts_1.SET_ORDER_TYPE, value: "pool", pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "setpoolorderresponse.data.pool_message" };
+	}
 	function processYoursSocialPoolOrder() {
 	    console.log("process yours social order action ");
 	    //console.log("action");
@@ -27307,8 +27329,9 @@ webpackJsonp([0],[
 	        //event full name
 	        console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
 	        //state.User.orders
+	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            dispatch({ type: actionTypes_ts_1.SET_PAYMENT_ERROR, error: response.data.data.processYoursSocialPoolOrder.errorReason });
 	            /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){
@@ -27407,26 +27430,26 @@ webpackJsonp([0],[
 	//    type: CLEAR_ORDER,
 	//  }
 	//}
-	function increaseCartItemQuantity(item_id) {
-	    console.log("increase cart item quantity action " + item_id);
+	function increaseCartItemQuantity(item_index) {
+	    console.log("increase cart item quantity action " + item_index);
 	    return {
 	        type: actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
+	        item_index: item_index
 	    };
 	}
 	exports.increaseCartItemQuantity = increaseCartItemQuantity;
-	function decreaseCartItemQuantity(item_id) {
-	    console.log("DECREASE cart item quantity action " + item_id);
+	function decreaseCartItemQuantity(item_index) {
+	    console.log("DECREASE cart item quantity action " + item_index);
 	    return {
 	        type: actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY,
-	        item_id: item_id
+	        item_index: item_index
 	    };
 	}
 	exports.decreaseCartItemQuantity = decreaseCartItemQuantity;
-	function removeCartItem(index) {
+	function removeCartItem(item_index) {
 	    return {
 	        type: actionTypes_ts_1.REMOVE_CART_ITEM,
-	        index: index
+	        item_index: item_index
 	    };
 	}
 	exports.removeCartItem = removeCartItem;
@@ -27592,18 +27615,136 @@ webpackJsonp([0],[
 /* 922 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(923);
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
+	var axios_1 = __webpack_require__(923);
+	//declare var module: { viewPublicMenu: any };
+	//check login
+	function loadMenuItemsCreateOrder(order_type, pool_name, pool_date) {
+	    console.log("action");
+	    return function (dispatch) {
+	        //event full name
+	        axios_1.default.get('/api/menu_items').then(function (response) {
+	            //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	            console.log("menu items response " + JSON.stringify(response));
+	            //that.props.history.push('/user');
+	            //context.router
+	            //that.props.setOrderId(1);
+	            //this.context.router.push('/order/complete');
+	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.items });
+	            //dispatch(push("/order/url_name/guest/name"));
+	            //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
+	            //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+	            //dispatch(push("/order/menu"));
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	        //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
+	        //call the reducer themn redirect
+	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+	        //dispatch(push("/order/1/guest/name"));
+	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
+	    };
+	    //dispatch({ 
+	    //  type: "VIEW_PUBLIC_MENU", 
+	    //  menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]
+	    //});
+	}
+	exports.loadMenuItemsCreateOrder = loadMenuItemsCreateOrder;
+	function getMenuItems() {
+	    console.log("action");
+	    return function (dispatch) {
+	        //event full name
+	        axios_1.default.get('/api/menu_items').then(function (response) {
+	            //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
+	            console.log("menu items response " + JSON.stringify(response));
+	            //that.props.history.push('/user');
+	            //context.router
+	            //that.props.setOrderId(1);
+	            //this.context.router.push('/order/complete');
+	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.items });
+	            //dispatch(push("/order/url_name/guest/name"));
+	            //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
+	            //dispatch(push("/order/menu"));
+	        }).catch(function (error) {
+	            console.log("error" + error);
+	            //go to code/payment screen
+	            //        this.props.loadView();
+	            //display errror to user - payment
+	            //if (!error.status) {
+	            // network error
+	            //}
+	        });
+	        //call the reducer themn redirect
+	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+	        //dispatch(push("/order/1/guest/name"));
+	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
+	    };
+	    //dispatch({ 
+	    //  type: "VIEW_PUBLIC_MENU", 
+	    //  menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]
+	    //});
+	}
+	exports.getMenuItems = getMenuItems;
+	exports.getMenuItemsBad = function () {
+	    return function (dispatch) {
+	        //dispatch(setMenuItems(menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]));
+	        ({
+	            type: "VIEW_PUBLIC_MENU",
+	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	        });
+	        //set menu
+	    };
+	};
+	exports.setMenuItems = function () {
+	    //dispatch(setMenuItems());
+	    ({
+	        type: "SET_MENU",
+	        menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
+	    });
+	    //set menu
+	};
+	//const receiveProducts = products => ({
+	//  type: types.RECEIVE_PRODUCTS,
+	//  products: products
+	//})
+	exports.getAllProducts = function () {
+	    return function (dispatch) {
+	        //shop.getProducts(products => {
+	        //  dispatch(receiveProducts(products))
+	        //})
+	        //dispatch(viewPublicMenu(1));
+	        //dispatch(viewPublicMenu());
+	        //alert();
+	        //return "hello";
+	        //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
+	    };
+	};
 
 /***/ }),
 /* 923 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(924);
+
+/***/ }),
+/* 924 */
+/***/ (function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
-	var utils = __webpack_require__(924);
-	var bind = __webpack_require__(925);
-	var Axios = __webpack_require__(926);
-	var defaults = __webpack_require__(927);
+	var utils = __webpack_require__(925);
+	var bind = __webpack_require__(926);
+	var Axios = __webpack_require__(927);
+	var defaults = __webpack_require__(928);
 	
 	/**
 	 * Create an instance of Axios
@@ -27636,15 +27777,15 @@ webpackJsonp([0],[
 	};
 	
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(944);
-	axios.CancelToken = __webpack_require__(945);
-	axios.isCancel = __webpack_require__(941);
+	axios.Cancel = __webpack_require__(945);
+	axios.CancelToken = __webpack_require__(946);
+	axios.isCancel = __webpack_require__(942);
 	
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(946);
+	axios.spread = __webpack_require__(947);
 	
 	module.exports = axios;
 	
@@ -27653,12 +27794,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 924 */
+/* 925 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var bind = __webpack_require__(925);
+	var bind = __webpack_require__(926);
 	
 	/*global toString:true*/
 	
@@ -27958,7 +28099,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 925 */
+/* 926 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -27975,17 +28116,17 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 926 */
+/* 927 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(927);
-	var utils = __webpack_require__(924);
-	var InterceptorManager = __webpack_require__(938);
-	var dispatchRequest = __webpack_require__(939);
-	var isAbsoluteURL = __webpack_require__(942);
-	var combineURLs = __webpack_require__(943);
+	var defaults = __webpack_require__(928);
+	var utils = __webpack_require__(925);
+	var InterceptorManager = __webpack_require__(939);
+	var dispatchRequest = __webpack_require__(940);
+	var isAbsoluteURL = __webpack_require__(943);
+	var combineURLs = __webpack_require__(944);
 	
 	/**
 	 * Create a new instance of Axios
@@ -28066,13 +28207,13 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 927 */
+/* 928 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(924);
-	var normalizeHeaderName = __webpack_require__(928);
+	var utils = __webpack_require__(925);
+	var normalizeHeaderName = __webpack_require__(929);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -28089,10 +28230,10 @@ webpackJsonp([0],[
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(929);
+	    adapter = __webpack_require__(930);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(929);
+	    adapter = __webpack_require__(930);
 	  }
 	  return adapter;
 	}
@@ -28166,12 +28307,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 928 */
+/* 929 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -28184,18 +28325,18 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 929 */
+/* 930 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
-	var utils = __webpack_require__(924);
-	var settle = __webpack_require__(930);
-	var buildURL = __webpack_require__(933);
-	var parseHeaders = __webpack_require__(934);
-	var isURLSameOrigin = __webpack_require__(935);
-	var createError = __webpack_require__(931);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(936);
+	var utils = __webpack_require__(925);
+	var settle = __webpack_require__(931);
+	var buildURL = __webpack_require__(934);
+	var parseHeaders = __webpack_require__(935);
+	var isURLSameOrigin = __webpack_require__(936);
+	var createError = __webpack_require__(932);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(937);
 	
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -28291,7 +28432,7 @@ webpackJsonp([0],[
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(937);
+	      var cookies = __webpack_require__(938);
 	
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -28368,12 +28509,12 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(155)))
 
 /***/ }),
-/* 930 */
+/* 931 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var createError = __webpack_require__(931);
+	var createError = __webpack_require__(932);
 	
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -28399,12 +28540,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 931 */
+/* 932 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var enhanceError = __webpack_require__(932);
+	var enhanceError = __webpack_require__(933);
 	
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -28422,7 +28563,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 932 */
+/* 933 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28447,12 +28588,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 933 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -28521,12 +28662,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 934 */
+/* 935 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	/**
 	 * Parse headers into an object
@@ -28564,12 +28705,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 935 */
+/* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -28638,7 +28779,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 936 */
+/* 937 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28680,12 +28821,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 937 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -28739,12 +28880,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 938 */
+/* 939 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -28797,15 +28938,15 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 939 */
+/* 940 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
-	var transformData = __webpack_require__(940);
-	var isCancel = __webpack_require__(941);
-	var defaults = __webpack_require__(927);
+	var utils = __webpack_require__(925);
+	var transformData = __webpack_require__(941);
+	var isCancel = __webpack_require__(942);
+	var defaults = __webpack_require__(928);
 	
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -28882,12 +29023,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 940 */
+/* 941 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(924);
+	var utils = __webpack_require__(925);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -28908,7 +29049,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 941 */
+/* 942 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28919,7 +29060,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 942 */
+/* 943 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28939,7 +29080,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 943 */
+/* 944 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28957,7 +29098,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 944 */
+/* 945 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28982,12 +29123,12 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 945 */
+/* 946 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var Cancel = __webpack_require__(944);
+	var Cancel = __webpack_require__(945);
 	
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -29045,7 +29186,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 946 */
+/* 947 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29078,7 +29219,7 @@ webpackJsonp([0],[
 
 
 /***/ }),
-/* 947 */
+/* 948 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29246,7 +29387,7 @@ webpackJsonp([0],[
 	exports.default = Menu;
 
 /***/ }),
-/* 948 */
+/* 949 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29262,7 +29403,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var menu_ts_1 = __webpack_require__(949);
+	var menu_ts_1 = __webpack_require__(922);
 	var order_validations_ts_1 = __webpack_require__(950);
 	//import {addCartItem} from '../actions/cart.ts';
 	var order_ts_1 = __webpack_require__(920);
@@ -29540,124 +29681,6 @@ webpackJsonp([0],[
 	};
 	var OrderMenu1 = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(OrderMenu);
 	exports.default = OrderMenu1;
-
-/***/ }),
-/* 949 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	var order_ts_1 = __webpack_require__(920);
-	var react_router_redux_1 = __webpack_require__(617);
-	var axios_1 = __webpack_require__(922);
-	//declare var module: { viewPublicMenu: any };
-	//check login
-	function loadMenuItemsCreateOrder() {
-	    console.log("action");
-	    return function (dispatch) {
-	        //event full name
-	        axios_1.default.get('/api/menu_items').then(function (response) {
-	            //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
-	            console.log("menu items response " + JSON.stringify(response));
-	            //that.props.history.push('/user');
-	            //context.router
-	            //that.props.setOrderId(1);
-	            //this.context.router.push('/order/complete');
-	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.items });
-	            //dispatch(push("/order/url_name/guest/name"));
-	            dispatch(order_ts_1.createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"));
-	            dispatch(react_router_redux_1.push("/order/menu"));
-	        }).catch(function (error) {
-	            console.log("error" + error);
-	            //go to code/payment screen
-	            //        this.props.loadView();
-	            //display errror to user - payment
-	            //if (!error.status) {
-	            // network error
-	            //}
-	        });
-	        //call the reducer themn redirect
-	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
-	        //dispatch(push("/order/1/guest/name"));
-	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
-	    };
-	    //dispatch({ 
-	    //  type: "VIEW_PUBLIC_MENU", 
-	    //  menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]
-	    //});
-	}
-	exports.loadMenuItemsCreateOrder = loadMenuItemsCreateOrder;
-	function getMenuItems() {
-	    console.log("action");
-	    return function (dispatch) {
-	        //event full name
-	        axios_1.default.get('/api/menu_items').then(function (response) {
-	            //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
-	            console.log("menu items response " + JSON.stringify(response));
-	            //that.props.history.push('/user');
-	            //context.router
-	            //that.props.setOrderId(1);
-	            //this.context.router.push('/order/complete');
-	            dispatch({ type: actionTypes_ts_1.VIEW_PUBLIC_MENU, items: response.data.items });
-	            //dispatch(push("/order/url_name/guest/name"));
-	            dispatch(order_ts_1.createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"));
-	            dispatch(react_router_redux_1.push("/order/menu"));
-	        }).catch(function (error) {
-	            console.log("error" + error);
-	            //go to code/payment screen
-	            //        this.props.loadView();
-	            //display errror to user - payment
-	            //if (!error.status) {
-	            // network error
-	            //}
-	        });
-	        //call the reducer themn redirect
-	        //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
-	        //dispatch(push("/order/1/guest/name"));
-	        //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
-	    };
-	    //dispatch({ 
-	    //  type: "VIEW_PUBLIC_MENU", 
-	    //  menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]
-	    //});
-	}
-	exports.getMenuItems = getMenuItems;
-	exports.getMenuItemsBad = function () {
-	    return function (dispatch) {
-	        //dispatch(setMenuItems(menu_items: [{item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu"}, {item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu"}, {item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}]));
-	        ({
-	            type: "VIEW_PUBLIC_MENU",
-	            menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
-	        });
-	        //set menu
-	    };
-	};
-	exports.setMenuItems = function () {
-	    //dispatch(setMenuItems());
-	    ({
-	        type: "SET_MENU",
-	        menu_items: [{ item_id: 1, title: "DWK", description: "With caramelized pears, candied pecans and fresh ginger, DWK is a great combination of flavors and textures. Many have called DWK exquisite! ", image_id: "DWKmenu" }, { item_id: 2, title: "Snorker", description: "This decadent dessert scone combines the finest dark chocolate with toasted hazelnuts. Beware, the Snorker may be life altering!", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "Snorkermenu" }, { item_id: 3, title: "Ruby Q", description: "The mouthwatering Ruby Q has just the right balance of fresh cherries, chocolate chunks and Madagascar vanilla bean. Simply delicious!", image_id: "RubyQmenu" }, { item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll" }, { item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1" }, { item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }, { item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1" }]
-	    });
-	    //set menu
-	};
-	//const receiveProducts = products => ({
-	//  type: types.RECEIVE_PRODUCTS,
-	//  products: products
-	//})
-	exports.getAllProducts = function () {
-	    return function (dispatch) {
-	        //shop.getProducts(products => {
-	        //  dispatch(receiveProducts(products))
-	        //})
-	        //dispatch(viewPublicMenu(1));
-	        //dispatch(viewPublicMenu());
-	        //alert();
-	        //return "hello";
-	        //Promise.resolve(dispatch({type: "VIEW_PUBLIC_MENU", menu_items: {item_id: 1, title: "menu item from action"}})).then((data) => alert("promise" + JSON.stringify(data)));
-	    };
-	};
 
 /***/ }),
 /* 950 */
@@ -30216,7 +30239,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
-	var menu_ts_1 = __webpack_require__(949);
+	var menu_ts_1 = __webpack_require__(922);
 	//import {cartValidated} from './actions/order_validations.ts';
 	//import {addCartItem} from './actions/cart.ts';
 	var order_ts_1 = __webpack_require__(920);
@@ -30259,7 +30282,7 @@ webpackJsonp([0],[
 	    _createClass(PoolRedirect, [{
 	        key: "componentWillMount",
 	        value: function componentWillMount() {
-	            this.props.loadMenuItemsCreateOrder();
+	            //this.props.loadMenuItemsCreateOrder("", this.props.params.pool_name, this.props.params.pool_date);
 	            this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
 	            //this.context.router.push("/order/menu");
 	        }
@@ -30268,6 +30291,7 @@ webpackJsonp([0],[
 	        value: function componentDidMount() {
 	            //this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
 	            //this.context.router.push("/order/menu");
+	            console.log("cartitems " + JSON.stringify(this.props.orders));
 	        }
 	    }, {
 	        key: "componentWillReceiveProps",
@@ -30279,7 +30303,12 @@ webpackJsonp([0],[
 	        value: function render() {
 	            //var that = this;
 	            //var page = "";
+	            //console.log("cartitems " + JSON.stringify(this.props.orders));
+	            //if(this.props.orders.length != 0){
+	            //    this.context.router.push("/order/menu");
+	            //}else{
 	            return React.createElement("div", null);
+	            //}
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -30294,21 +30323,19 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("mapstatetoprops pool" + JSON.stringify(state));
+	    console.log("mapstatetoprops pool " + JSON.stringify(state));
 	    return {
 	        //active: ownProps.filter === state.visibilityFilter
 	        //if(state.default.order.cart_items != undefined){
-	        menu_items: state.MenuItems,
-	        order: state.Order,
-	        cart: state.cart
-	        //}
+	        //menu_items: state.MenuItems,
+	        orders: state.User.orders
 	    };
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 	    return {
 	        //viewmenuthunk
-	        loadMenuItemsCreateOrder: function loadMenuItemsCreateOrder() {
-	            dispatch(menu_ts_1.loadMenuItemsCreateOrder());
+	        loadMenuItemsCreateOrder: function loadMenuItemsCreateOrder(order_type, pool_name, pool_date) {
+	            dispatch(menu_ts_1.loadMenuItemsCreateOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"));
 	        },
 	        getMenuItems: function getMenuItems() {
 	            dispatch(menu_ts_1.getMenuItems());
@@ -30559,7 +30586,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	var react_router_redux_1 = __webpack_require__(617);
 	function createSignatureOrder(user_id) {
 	    console.log("create signature order action");
@@ -30737,7 +30764,7 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	function setUserFirstName(value) {
 	    //alert("GET USER details");
 	    console.log("set user first name action " + value);
@@ -40172,13 +40199,13 @@ webpackJsonp([0],[
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import _ from 'lodash';
-	var menu_ts_1 = __webpack_require__(949);
+	var menu_ts_1 = __webpack_require__(922);
 	var order_validations_ts_1 = __webpack_require__(950);
 	//import {addCartItem} from './actions/user.ts';
 	var order_ts_1 = __webpack_require__(920);
 	var order_sidebar_cart_tsx_1 = __webpack_require__(1134);
 	//import MobileCheckoutButton from './mobile_checkout_button.tsx';
-	var public_top_navbar_tsx_1 = __webpack_require__(947);
+	var public_top_navbar_tsx_1 = __webpack_require__(948);
 	//type Props = {
 	//title: string,
 	//visited: boolean,
@@ -40258,6 +40285,7 @@ webpackJsonp([0],[
 	            //console.log("yours items count" + item_count);
 	            //if(item_count < 12){
 	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_12_or_24_minis, _this.state.selected_item_quantity);
+	            _this.setState({ pool_message_viewed: true });
 	            //this.setState({selected_item_quantity: ""});
 	            //}
 	            //this.props.cartValidated();
@@ -40313,7 +40341,8 @@ webpackJsonp([0],[
 	            add_cart_item_button_classname: "btn btn-default disabled",
 	            images: [],
 	            hover_images: [],
-	            options_count_array: []
+	            options_count_array: [],
+	            pool_message_viewed: false
 	        };
 	        //this.loadCart = this.loadCart.bind(this);
 	        //this.showItem = this.showItem.bind(this);
@@ -40342,11 +40371,40 @@ webpackJsonp([0],[
 	                       that.setState({images: images_temp});
 	                  that.setState({hover_images: hover_images_temp});
 	                 });*/
-	            //this.props.createOrder("sconely_yours", this.props.params.name);
+	            //call the backend to get id and message
+	            //or maybe call this in pool redirect 
+	            //this.props.createOrder("pool", this.props.params.pool_name);
 	            //this.props.getMenuItems();
 	            //get menu items here
-	            this.props.getMenuItems();
+	            //this.props.getMenuItems();
 	            //this.setState({menu_items: this.props.menuItems.menu_items});
+	            /*axios.post('/api/graphql',
+	                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
+	            )
+	            .then((response: any) => {
+	                       console.log("order menu pool graphql response " + JSON.stringify(response));
+	                       dispatch({type: SET_ORDER_TYPE, order_type: "pool", pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+	                       //dispatch(push("/order/menu"));
+	                       //this.setState({pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage});*/
+	            /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
+	                 console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+	                 //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
+	                  //if save_info_for_later == true...
+	                //last four card number
+	                 //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+	                 console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+	                 //else delete from redux
+	                //console.log("clear order");
+	                
+	                //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
+	                    //that.props.history.push('/user');
+	                //context.router
+	                 //this.context.router.push('/order/complete');
+	                //dispatch(push("/order/complete"));
+	             }else{
+	               //dispatch({ type: , item_id: "session_id"});
+	             }*/
+	            //});
 	        }
 	    }, {
 	        key: "goToDateTimeContact",
@@ -40366,9 +40424,12 @@ webpackJsonp([0],[
 	            //if yours order show yours menu if social order show social menu
 	            var options_count_array = [];
 	            //if(this.props.cartItemsTotalQuantity > 0){
-	            var cartItemsQuantity = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity;
-	            }, 0);
+	            var cartItemsQuantity = 0;
+	            if (this.props.User.orders.length > 0) {
+	                cartItemsQuantity = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0);
+	            }
 	            //let cartItemsQuantity = 12;
 	            for (var i = 1; i < 12 - cartItemsQuantity; i++) {
 	                //console.log(i);
@@ -40419,7 +40480,13 @@ webpackJsonp([0],[
 	                //}
 	                //}
 	            }
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), this.props.order.cartItems.length == 0 && this.props.order.pool_message, React.createElement("br", null), "else show cart", React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems, increaseCartItemQuantity: this.props.increaseCartItemQuantity, decreaseCartItemQuantity: this.props.decreaseCartItemQuantity, removeCartItem: this.props.removeCartItem }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-md hidden-lg" }, React.createElement("br", null), this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type.charAt(0).toUpperCase() + this.props.User.orders[0].order_type.slice(1), React.createElement("br", null), this.state.pool_message_viewed == false ? this.props.User.orders[0].pool_message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	                    return _this2.props.increaseCartItemQuantity(item_index);
+	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
+	                    return _this2.props.decreaseCartItemQuantity(item_index);
+	                }, removeCartItem: function removeCartItem(item_index) {
+	                    return _this2.props.removeCartItem(item_index);
+	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-md hidden-lg" }, React.createElement("br", null), this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity;
 	            }, 0), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))), React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
 	                var _this3 = this;
@@ -40427,7 +40494,7 @@ webpackJsonp([0],[
 	                //console.log(item);
 	                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
 	                //this.setState({image_id: image_id});
-	                //console.log("image id" + image_id);
+	                //console.log("rerender ");
 	                //console.log("image id " + this.state["image_src_" + item.item_id]);
 	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
@@ -40452,11 +40519,9 @@ webpackJsonp([0],[
 	}(React.Component);
 	
 	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("mapstatetoprops order menu " + JSON.stringify(state));
+	    //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
 	    return {
-	        started_order: state.User.orders.findIndex(function (order) {
-	            return order.status == "started";
-	        }),
+	        //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
 	        //if yours
 	        //menuItems: getYoursMenuItems(state),
 	        //else
@@ -40465,10 +40530,9 @@ webpackJsonp([0],[
 	        //if(state.default.order.cart_items != undefined){
 	        menuItems: state.menuItems.items,
 	        //guestOrder: state.guestOrder,
-	        order: state.User.orders.find(function (order) {
-	            return order.status == "current";
-	        }),
-	        User: state.User
+	        //order: state.User.orders.find((order: any) => order.status == "current"),
+	        User: state.User,
+	        path: state.routing.locationBeforeTransitions.pathname
 	    };
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
@@ -40481,14 +40545,14 @@ webpackJsonp([0],[
 	        addCartItem: function addCartItem(order_id, item_id, mini, quantity) {
 	            dispatch(order_ts_1.addCartItem(order_id, item_id, mini, quantity));
 	        },
-	        increaseCartItemQuantity: function increaseCartItemQuantity(item_id) {
-	            dispatch(order_ts_1.increaseCartItemQuantity("item_id"));
+	        increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	            dispatch(order_ts_1.increaseCartItemQuantity(item_index));
 	        },
-	        decreaseCartItemQuantity: function decreaseCartItemQuantity(item_id) {
-	            dispatch(order_ts_1.decreaseCartItemQuantity("item_id"));
+	        decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
+	            dispatch(order_ts_1.decreaseCartItemQuantity(item_index));
 	        },
-	        removeCartItem: function removeCartItem(item_id) {
-	            dispatch(order_ts_1.removeCartItem("item_id"));
+	        removeCartItem: function removeCartItem(item_index) {
+	            dispatch(order_ts_1.removeCartItem(item_index));
 	        },
 	        cartValidated: function cartValidated() {
 	            dispatch(order_validations_ts_1.cartValidated());
@@ -40524,7 +40588,6 @@ webpackJsonp([0],[
 	//import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(960);
-	//import _ from 'lodash';
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -40539,15 +40602,63 @@ webpackJsonp([0],[
 	    function SidebarCart(props) {
 	        _classCallCheck(this, SidebarCart);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (SidebarCart.__proto__ || Object.getPrototypeOf(SidebarCart)).call(this, props));
 	
+	        _this.increaseCartItemQuantity = function (item_index) {
+	            //alert(item_id);
+	            console.log("item_index" + item_index);
+	            //console.log("total cart item quantity " + this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
+	            if (_this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                return amount + item.quantity;
+	            }, 0) < 13) {
+	                _this.props.increaseCartItemQuantity(item_index);
+	            }
+	            /*let cart_items_temp = this.state.cart_items;
+	                   let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+	                       let new_item: any = "";
+	                       if(item.item_id == item_id){
+	                           new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+	                       }else{
+	                           new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+	                       }
+	                       return new_item;
+	                   });
+	                   //cart_items_temp.
+	                   //alert(JSON.stringify(cart_items_temp_updated));
+	                   this.setState({cart_items: cart_items_temp_updated});*/
+	        };
+	        _this.decreaseCartItemQuantity = function (item_index) {
+	            //alert(item_id);
+	            _this.props.decreaseCartItemQuantity(item_index);
+	            /*let cart_items_temp = this.state.cart_items;
+	                   let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+	                       let new_item: any = "";
+	                       if(item.item_id == item_id){
+	                           new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+	                       }else{
+	                           new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+	                       }
+	                       return new_item;
+	                   });
+	                   //cart_items_temp.
+	                   //alert(JSON.stringify(cart_items_temp_updated));
+	                   this.setState({cart_items: cart_items_temp_updated});*/
+	        };
+	        _this.removeItemFromCart = function (item_id) {
+	            //alert(item_id);
+	            /*let cart_items_temp = this.state.cart_items;
+	                   let cart_items_temp_updated = cart_items_temp.filter(function(item: any) {
+	                return item.item_id !== item_id;
+	            });
+	                   this.setState({cart_items: cart_items_temp_updated});*/
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            menuItemNames: [],
 	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 3, title: "freedom", description: "let freedom ring!" }, { item_id: 4, title: "freedom", description: "let freedom ring!" }, { item_id: 5, title: "freedom", description: "let freedom ring!" }, { item_id: 6, title: "freedom", description: "let freedom ring!" }, { item_id: 7, title: "freedom", description: "let freedom ring!" }],
 	            cartItems: [],
-	            here: ""
+	            pool_message_viewed: false
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -40565,7 +40676,7 @@ webpackJsonp([0],[
 	        key: "componentWillMount",
 	        value: function componentWillMount() {
 	            //get menu items
-	            //this.setState({menuItemNames: this.props.menuItems})
+	            //this.setState({pool_message: "this.props.menuItems"})
 	            //console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
 	            console.log("sidebarcart user " + JSON.stringify(this.props.User));
 	            //this.setState({menuItemNames: this.props.menuItems})
@@ -40577,6 +40688,33 @@ webpackJsonp([0],[
 	            //this.setState({here: this.props.getAllProducts()});
 	            //console.log(this.props.dispatch(addTodoWithDispatch));
 	            //this.props.getAllProducts();
+	            /*axios.post('/api/graphql',
+	                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
+	            )
+	            .then((response: any) => {
+	                   console.log("pool message graphql response " + JSON.stringify(response));
+	                   //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+	                   //dispatch(push("/order/menu"));
+	                   this.setState({pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage});*/
+	            /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
+	                 console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+	                 //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
+	                  //if save_info_for_later == true...
+	                //last four card number
+	                 //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+	                 console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+	                 //else delete from redux
+	                //console.log("clear order");
+	                
+	                //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
+	                    //that.props.history.push('/user');
+	                //context.router
+	                 //this.context.router.push('/order/complete');
+	                //dispatch(push("/order/complete"));
+	             }else{
+	               //dispatch({ type: , item_id: "session_id"});
+	             }*/
+	            //})
 	        }
 	    }, {
 	        key: "componentWillReceiveProps",
@@ -40586,54 +40724,6 @@ webpackJsonp([0],[
 	            //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 	            //this.setState({menuItemNames: this.props.menuItems})
 	            this.setState({ cartItems: this.props.User.orders[0].cartItems });
-	        }
-	    }, {
-	        key: "increaseCartItemQuantity",
-	        value: function increaseCartItemQuantity(item_id) {
-	            //alert(item_id);
-	            this.props.increaseCartItemQuantity(item_id);
-	            /*let cart_items_temp = this.state.cart_items;
-	               let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-	                   let new_item: any = "";
-	                   if(item.item_id == item_id){
-	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-	                   }else{
-	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-	                   }
-	                   return new_item;
-	               });
-	               //cart_items_temp.
-	               //alert(JSON.stringify(cart_items_temp_updated));
-	               this.setState({cart_items: cart_items_temp_updated});*/
-	        }
-	    }, {
-	        key: "decreaseCartItemQuantity",
-	        value: function decreaseCartItemQuantity(item_id) {
-	            //alert(item_id);
-	            this.props.decreaseCartItemQuantity(item_id);
-	            /*let cart_items_temp = this.state.cart_items;
-	               let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-	                   let new_item: any = "";
-	                   if(item.item_id == item_id){
-	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-	                   }else{
-	                       new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-	                   }
-	                   return new_item;
-	               });
-	               //cart_items_temp.
-	               //alert(JSON.stringify(cart_items_temp_updated));
-	               this.setState({cart_items: cart_items_temp_updated});*/
-	        }
-	    }, {
-	        key: "removeItemFromCart",
-	        value: function removeItemFromCart(item_id) {
-	            //alert(item_id);
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.filter(function (item) {
-	                return item.item_id !== item_id;
-	            });
-	            this.setState({ cart_items: cart_items_temp_updated });
 	        }
 	    }, {
 	        key: "render",
@@ -40753,7 +40843,9 @@ webpackJsonp([0],[
 	                });*/
 	                //alert(total_cost);
 	                cart = this.state.cartItems.map(function (item, index) {
-	                    console.log("cart menuitems " + JSON.stringify(this.props.menuItems));
+	                    var _this2 = this;
+	
+	                    console.log("cart menuitems " + JSON.stringify(index));
 	                    var menu_item = this.props.menuItems.find(function (menu_item) {
 	                        //console.log(JSON.stringify(menu_item) + " " + item.item_id);
 	                        return menu_item.id === 1;
@@ -40762,7 +40854,7 @@ webpackJsonp([0],[
 	                    //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
 	                    //let item_name = this.props.menuItems[0].name;
 	                    var item_name = "";
-	                    //if( menu_item != undefined){
+	                    //if(menu_item != undefined){
 	                    item_name = menu_item.name;
 	                    //}
 	                    //let item_name = "";
@@ -40770,7 +40862,13 @@ webpackJsonp([0],[
 	                    //console.log(order_type);
 	                    //code is here to check for minis existing???
 	                    if (order_type == "yours" || order_type == "pool") {
-	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5" }, item_name), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.increaseCartItemQuantity }, "+")), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.decreaseCartItemQuantity }, "-")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: this.props.removeCartItem }, "X"))));
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5" }, item_name), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.increaseCartItemQuantity(index);
+	                            } }, "+")), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.decreaseCartItemQuantity(index);
+	                            } }, "-")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.removeCartItem(index);
+	                            } }, "X"))));
 	                    } else {
 	                        if (item.twelveortwentyfourminis == "24_minis") {
 	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-4" }, "mini"), React.createElement("div", { className: "col-xs-4", style: { fontSize: 15 } }, 24 * item.quantity)));
@@ -40789,7 +40887,7 @@ webpackJsonp([0],[
 	            var item_quantity_message = "";
 	            if (this.props.User.orders[0].order_type == "pool") {
 	                //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
-	                item_quantity_message = "Please choose between 1 and 11 Scones";
+	                item_quantity_message = "Please choose between 1 and 12 Scones";
 	                //}
 	            } else if (this.props.User.orders[0].order_type == "yours") {
 	                item_quantity_message = "Please choose between 2 and 11 Scones";
@@ -40798,7 +40896,7 @@ webpackJsonp([0],[
 	            <br/>
 	            <br/>
 	            {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
-	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), React.createElement("br", null), this.props.User.orders[0].cartItems.length == 0 ? this.props.User.orders[0].pool_message : cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), this.props.path == "/order/menu" && React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -40811,17 +40909,26 @@ webpackJsonp([0],[
 	
 	    return SidebarCart;
 	}(React.Component);
+	/*const mapStateToProps = (state: any, ownProps: any) => {
+	  console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.routing.locationBeforeTransitions));
+	  return {
 	
-	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    console.log("sidebar_cart mapstatetoprops " + JSON.stringify(state.menuItems.items));
-	    return {
-	        //cart_items: getCartItems(state); 
-	        //active: ownProps.filter === state.visibilityFilter
-	        //if(state.default.order.cart_items != undefined){
-	        menuItems: state.menuItems.items
-	    };
+	    //cart_items: getCartItems(state);
+	
+	    //active: ownProps.filter === state.visibilityFilter
+	
+	    //if(state.default.order.cart_items != undefined){
+	        
+	        menuItems: state.menuItems.items,
+	        //cartItems: state.guestOrder.cart_items,
+	        //Order: state.User.orders[1],
+	        route: state.routing.locationBeforeTransitions.pathname
+	
+	    //}
+	  }
 	};
-	/*const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+	
+	const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 	  return {
 	    //viewmenuthunk
 	
@@ -40841,6 +40948,8 @@ webpackJsonp([0],[
 	  mapStateToProps,
 	  mapDispatchToProps
 	)(SidebarCart);*/
+	
+	
 	exports.default = SidebarCart;
 
 /***/ }),
@@ -40874,12 +40983,11 @@ webpackJsonp([0],[
 	//import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 	var order_ts_2 = __webpack_require__(920);
 	var payment_method_tsx_1 = __webpack_require__(1136);
-	var public_top_navbar_tsx_1 = __webpack_require__(947);
+	var public_top_navbar_tsx_1 = __webpack_require__(948);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(960);
 	var DatePicker = __webpack_require__(976);
 	var moment = __webpack_require__(977);
-	var axios_1 = __webpack_require__(922);
 	__webpack_require__(1129);
 	function addTodoWithDispatch() {
 	    var action = {
@@ -40908,6 +41016,59 @@ webpackJsonp([0],[
 	            _this.props.setPromoCode(e.target.value);
 	            //}
 	            //}   
+	        };
+	        _this.processYoursSocialPoolOrder = function () {
+	            //alert("order complete this.props.order");
+	            //if all inputs are validated
+	            //alert(JSON.stringify(this.props.order));
+	            //if first_name_validated == true && last_name_validated == true
+	            //process order/dispatch
+	            //if this.props.order_state = "completed"?
+	            //else error
+	            //this.setState({button_complete_order_classname: "btn btn-default disabled"});
+	            //this.setState({button_complete_order_disabled: "disabled"});
+	            _this.props.processYoursSocialPoolOrder();
+	            //export default function getBook(dispatch) {
+	            /*  $.ajax({
+	                  method: "GET",
+	                  url: "/api/data",
+	                  dataType: "json"
+	                }).success(function(data){
+	                  //return dispatch({type:'GET_BOOK', data: data});
+	                  this.context.router.push('/order/12345/order_complete');
+	                       });
+	            //}
+	                   this.context.router.push('/order/12345/order_complete');*/
+	            /*axios.post('http://localhost:4000/graphql', {
+	                   query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
+	            })
+	            .then( response => {
+	                         console.log(JSON.stringify(response));
+	                  //go to code/payment screen
+	            //        this.props.loadView();
+	                  //this.props.setSubscription();
+	                         //addtosubscribedblocklist
+	                         //setsubscriptiontype == 1 block
+	                  //setsubscriptionpaid == true
+	                  //setsusbcriptindatetime
+	             
+	                  //store in cookie
+	                         //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
+	                  //setCookie("sconely_session_id", 1, 1)
+	                  //setCookie("sconely_first_name", 1, 1)
+	                  //setCookie("sconely_last_name", 1, 1)
+	             
+	            })
+	            .catch( error => {
+	                         console.log("error");
+	                  //go to code/payment screen
+	            //        this.props.loadView();
+	                  //if (!error.status) {
+	              // network error
+	            //}
+	                   })*/
+	            //alert(JSON.stringify(this.state.delivery_address_street));
+	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 	        };
 	        _this.saveForLater = function (e) {
 	            if (e.target.value == "on") {
@@ -40941,7 +41102,8 @@ webpackJsonp([0],[
 	            order: Immutable.fromJS({ name: "name", contact: "contact", cart: [], delivery_address: { street: "" }, payment: "" }),
 	            selected_time: "",
 	            selected_specific_time: "",
-	            button_complete_order_classname: "btn btn-default disabled"
+	            button_complete_order_classname: "btn btn-default",
+	            button_complete_order_disabled: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -40982,6 +41144,10 @@ webpackJsonp([0],[
 	        value: function componentWillReceiveProps(nextProps) {
 	            console.log("<b>recieved</b>");
 	            //this.props.cart_validated;
+	            //if(this.props.User.orders[0].payment_error == ""){
+	            this.setState({ button_complete_order_classname: "btn btn-default" });
+	            this.setState({ button_complete_order_disabled: "" });
+	            //}
 	        }
 	        /*showMenu(){
 	               //alert();
@@ -41282,54 +41448,6 @@ webpackJsonp([0],[
 	            }
 	        }
 	    }, {
-	        key: "completeOrder",
-	        value: function completeOrder() {
-	            //alert("order complete this.props.order");
-	            //if all inputs are validated
-	            //alert(JSON.stringify(this.props.order));
-	            //if first_name_validated == true && last_name_validated == true
-	            //process order/dispatch
-	            //if this.props.order_state = "completed"?
-	            //else error
-	            //export default function getBook(dispatch) {
-	            /*  $.ajax({
-	                  method: "GET",
-	                  url: "/api/data",
-	                  dataType: "json"
-	                }).success(function(data){
-	                  //return dispatch({type:'GET_BOOK', data: data});
-	                  this.context.router.push('/order/12345/order_complete');
-	                   });
-	            //}
-	               this.context.router.push('/order/12345/order_complete');*/
-	            axios_1.default.post('http://localhost:4000/graphql', {
-	                query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
-	            }).then(function (response) {
-	                console.log(JSON.stringify(response));
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //this.props.setSubscription();
-	                //addtosubscribedblocklist
-	                //setsubscriptiontype == 1 block
-	                //setsubscriptionpaid == true
-	                //setsusbcriptindatetime
-	                //store in cookie
-	                //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	                //setCookie("sconely_session_id", 1, 1)
-	                //setCookie("sconely_first_name", 1, 1)
-	                //setCookie("sconely_last_name", 1, 1)
-	            }).catch(function (error) {
-	                console.log("error");
-	                //go to code/payment screen
-	                //        this.props.loadView();
-	                //if (!error.status) {
-	                // network error
-	                //}
-	            });
-	            //alert(JSON.stringify(this.state.delivery_address_street));
-	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-	        }
-	    }, {
 	        key: "goToMenu",
 	        value: function goToMenu() {
 	            this.context.router.push('/order/12345');
@@ -41357,13 +41475,13 @@ webpackJsonp([0],[
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), "if user is saved", React.createElement("br", null), "if user is registered", React.createElement("br", null), React.createElement("div", { className: "hidden-md" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Back to Menu")), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "50.00", this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, React.createElement(react_router_1.Link, { to: "/order/menu" }, "<-", " Menu")), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-3" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	            }, 0).toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
 	            }, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0)))), React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), "An error occured with your payment", React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            }, 0).toFixed(2)))), React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
@@ -41375,7 +41493,7 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("br", null), React.createElement("button", { className: this.state.validated, onClick: this.props.processYoursSocialPoolOrder }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
+	                } }), React.createElement("br", null), React.createElement("button", { className: this.state.button_complete_order_classname, onClick: this.processYoursSocialPoolOrder, disabled: this.state.button_complete_order_disabled }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -41804,7 +41922,7 @@ webpackJsonp([0],[
 	//import {datetimeValidated} from './actions/order_validations.ts';
 	//import {setDate, setTime} from './actions/order_delivery_datetime.ts';
 	//import { getPublicMenu } from './reducers/menu';
-	var menu_ts_1 = __webpack_require__(949);
+	var menu_ts_1 = __webpack_require__(922);
 	var Immutable = __webpack_require__(960);
 	var DatePicker = __webpack_require__(976);
 	var moment = __webpack_require__(977);
@@ -41812,7 +41930,7 @@ webpackJsonp([0],[
 	__webpack_require__(1125);
 	__webpack_require__(1129);
 	var order_sidebar_cart_tsx_1 = __webpack_require__(1134);
-	var public_top_navbar_tsx_1 = __webpack_require__(947);
+	var public_top_navbar_tsx_1 = __webpack_require__(948);
 	var name_tsx_1 = __webpack_require__(1138);
 	var order_delivery_address_tsx_1 = __webpack_require__(1139);
 	var user_ts_1 = __webpack_require__(958);
@@ -42075,7 +42193,7 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
-	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart")))))));
+	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart")))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, screen, React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
@@ -42982,7 +43100,7 @@ webpackJsonp([0],[
 	var order_ts_1 = __webpack_require__(920);
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(960);
-	var public_top_navbar_tsx_1 = __webpack_require__(947);
+	var public_top_navbar_tsx_1 = __webpack_require__(948);
 	
 	var OrderCart = function (_React$Component) {
 	    _inherits(OrderCart, _React$Component);
@@ -42991,10 +43109,24 @@ webpackJsonp([0],[
 	    function OrderCart(props) {
 	        _classCallCheck(this, OrderCart);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
 	        var _this = _possibleConstructorReturn(this, (OrderCart.__proto__ || Object.getPrototypeOf(OrderCart)).call(this, props));
 	
+	        _this.increaseCartItemQuantity = function (item_id, index) {
+	            console.log("total cart item quantity " + _this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                return amount + item.quantity;
+	            }, 0));
+	            if (_this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                return amount + item.quantity;
+	            }, 0) < 12) {
+	                _this.props.increaseCartItemQuantity(item_id);
+	            }
+	            //alert(JSON.stringify(item_id + "" + index));
+	            /*let cart_items_temp = this.state.cart_items;
+	                     let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
+	                     this.setState({cart_items: cart_items_temp_updated});*/
+	        };
+	        //this.getData();
+	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
 	            page: "menu",
 	            //menu_items: this.props.menu_items,
@@ -43173,16 +43305,6 @@ webpackJsonp([0],[
 	            this.setState({ cart_items: cart_items_temp_updated });
 	        }
 	    }, {
-	        key: "increaseCartItemQuantity",
-	        value: function increaseCartItemQuantity(item_id, index) {
-	            //alert(JSON.stringify(item_id + "" + index));
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.update(index, function (item) {
-	                var quantity_updated = item.get("quantity") + 1;return item.set("quantity", quantity_updated);
-	            });
-	            this.setState({ cart_items: cart_items_temp_updated });
-	        }
-	    }, {
 	        key: "decreaseCartItemQuantity",
 	        value: function decreaseCartItemQuantity(item_id, index) {
 	            var cart_items_temp = this.state.cart_items;
@@ -43284,25 +43406,23 @@ webpackJsonp([0],[
 	               this.context.router.push('/order/12345/signature');
 	            
 	        }*/
+	        //increaseCartItemQuantity = (item_id:any, quantity: any) => {
+	        //alert(item_id);
+	        /*let cart_items_temp = this.state.cart_items;
+	         let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
+	             let new_item: any = "";
+	             if(item.item_id == item_id){
+	                 new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
+	             }else{
+	                 new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
+	             }
+	             return new_item;
+	         });
+	         //cart_items_temp.
+	         //alert(JSON.stringify(cart_items_temp_updated));
+	         this.setState({cart_items: cart_items_temp_updated});*/
+	        //}
 	
-	    }, {
-	        key: "updateCartItemQuantity",
-	        value: function updateCartItemQuantity(item_id, quantity) {
-	            //alert(item_id);
-	            var cart_items_temp = this.state.cart_items;
-	            var cart_items_temp_updated = cart_items_temp.map(function (item) {
-	                var new_item = "";
-	                if (item.item_id == item_id) {
-	                    new_item = { item_id: item.item_id, item_title: item.item_title, quantity: quantity };
-	                } else {
-	                    new_item = { item_id: item.item_id, item_title: item.item_title, quantity: item.quantity };
-	                }
-	                return new_item;
-	            });
-	            //cart_items_temp.
-	            //alert(JSON.stringify(cart_items_temp_updated));
-	            this.setState({ cart_items: cart_items_temp_updated });
-	        }
 	    }, {
 	        key: "removeItemFromCart",
 	        value: function removeItemFromCart(item_id) {
@@ -43438,7 +43558,7 @@ webpackJsonp([0],[
 	                                            <div className="col-md-1" style={{fontSize: 20}}>{item.item_title}</div>
 	                                            <div className="col-md-3">
 	                                              <div className="row">
-	                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
+	                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
 	                                                <div className="col-md-1">{total_amount}</div>
 	                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
 	                                              </div>
@@ -43452,7 +43572,7 @@ webpackJsonp([0],[
 	                    }*/
 	                }.bind(this));
 	            }
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours/Social/Pool", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("b", null, "Cart Items"), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), "dont show if cart", React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Delivery charge"), React.createElement("div", { className: "col-md-1" }, "$"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Total Items"), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, total_items)), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Total Due"), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, "$", total_cost))))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout"), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"))));
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours/Social/Pool", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("b", null, "Cart Items"), React.createElement("br", null), cart, React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-8" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Total Items"), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, total_items)), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Delivery Cost"), React.createElement("div", { className: "col-md-2" }, React.createElement("b", null, "$0.00")), React.createElement("br", null), React.createElement("div", { className: "col-md-4" }, "Total Due"), React.createElement("div", { className: "col-md-1" }, React.createElement("b", null, "$", total_cost))))), React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default" }, "Checkout"), React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default" }, "Menu"), React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default" }, "Preview"))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -43530,9 +43650,9 @@ webpackJsonp([0],[
 	//import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 	//import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 	var order_sidebar_cart_tsx_1 = __webpack_require__(1134);
-	var public_top_navbar_tsx_1 = __webpack_require__(947);
+	var public_top_navbar_tsx_1 = __webpack_require__(948);
 	//import { getPublicMenu } from './reducers/name';
-	var menu_ts_1 = __webpack_require__(949);
+	var menu_ts_1 = __webpack_require__(922);
 	var Immutable = __webpack_require__(960);
 	var DatePicker = __webpack_require__(976);
 	var moment = __webpack_require__(977);
@@ -44901,7 +45021,7 @@ webpackJsonp([0],[
 	//import {setEmail, loginUser} from './actions/login.ts';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -45056,7 +45176,7 @@ webpackJsonp([0],[
 	//import {registerSetFirstName, registerSetLastName, registerSetEmail, registerSetPassword, registerUser} from './actions/register.ts';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -45332,7 +45452,7 @@ webpackJsonp([0],[
 	//import {registerUser} from './actions/register.ts';
 	//import * as Autocomplete from "react-google-autocomplete";
 	//const Autocomplete = require("react-google-autocomplete");
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	//declare var module: { Order: any };
 	//interface LoginRegister {
 	//  state: any,
@@ -45693,7 +45813,7 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	var signature_guest_response_ts_1 = __webpack_require__(1150);
-	var menu_ts_1 = __webpack_require__(949);
+	var menu_ts_1 = __webpack_require__(922);
 	var signature_guest_response_ts_2 = __webpack_require__(1151);
 	var navbar_tsx_1 = __webpack_require__(1152);
 	//import Background from 'http://localhost:4000/images/menu/DWK_green.jpg';
@@ -45982,7 +46102,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
 	var react_router_redux_1 = __webpack_require__(617);
-	var axios_1 = __webpack_require__(922);
+	var axios_1 = __webpack_require__(923);
 	function loadSignatureGuestResponseOrderDetails(event_url_name) {
 	    //alert(item_id)
 	    console.log("action");
@@ -47307,7 +47427,7 @@ webpackJsonp([0],[
 	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
 	                  //if another pool order exists change it's status to "saved"
-	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: 1, quantity: 1, mini: "" }] });
+	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: action.pool_order_id, pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: 1, quantity: 1, mini: "" }] });
 	                  var started_order = state.orders.findIndex(function (order) {
 	                        return order.status == "started";
 	                  });
@@ -47335,9 +47455,9 @@ webpackJsonp([0],[
 	                  return Object.assign({}, state, Object.assign({}, state, { orderdSession: order_session_updated }));
 	            case actionTypes_ts_1.CREATE_ORDER:
 	                  console.log("add cart reducer");
-	                  user_updated = state.cartItems;
-	                  user_updated["first_name"] = action.value;
-	                  return Object.assign({}, state, { user: user_updated });
+	                  orders_updated = state.orders;
+	                  //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+	                  return Object.assign({}, state, { orders: orders_updated });
 	            case actionTypes_ts_1.ADD_CART_ITEM:
 	                  console.log("add cart item reducer here " + JSON.stringify(action));
 	                  //if order_type == social
@@ -47361,11 +47481,11 @@ webpackJsonp([0],[
 	                })
 	              })*/
 	            case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
-	                  console.log("increase cart item quantity reducer " + JSON.stringify(state));
+	                  console.log("increase cart item quantity reducer " + JSON.stringify(action.item_index));
 	                  //if quantity < 5 increase
 	                  //else do nothing
 	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity + 1;
+	                  orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
 	                  /*state.User.orders[0].cartItems.map((item: any, index: any) => {
 	                      if (item.item_id === action.item_id) {
 	                          item.quantity = item.quantity + 1;
@@ -47374,20 +47494,20 @@ webpackJsonp([0],[
 	                    })*/
 	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	            case actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY:
-	                  console.log("decrease reducer " + JSON.stringify(state));
+	                  console.log("decrease reducer " + JSON.stringify(action.item_index));
 	                  //todo if dozens is 0 then just remove
 	                  //get quantity
 	                  //if dozens > 0
-	                  var item = "";
+	                  //let item = "";
 	                  //item = state.cart_items.find((item: any, index: any) => {
 	                  //    return item.item_id === action.item_id;
 	                  //})
 	                  //let item_index = state.cart_items.findIndex((item: any) => {
 	                  //    return index;
 	                  //})
-	                  console.log("quantity" + JSON.stringify(item));
+	                  //console.log("quantity" + JSON.stringify(item));
 	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems[0].quantity = orders_updated[0].cartItems[0].quantity - 1;
+	                  orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
 	            /*return Object.assign({}, state, {
 	              cart_items: state.cart_items.map((item: any, index: any) => {
 	                if (item.item_id === action.item_id) {
@@ -47401,7 +47521,7 @@ webpackJsonp([0],[
 	            //else remove item
 	            //array.splice( index, 1 )
 	            case actionTypes_ts_1.REMOVE_CART_ITEM:
-	                  console.log("REMOVE reducer " + JSON.stringify(state));
+	                  console.log("REMOVE reducer " + JSON.stringify(action.item_index));
 	                  //todo if dozens is 0 then just remove
 	                  //if dozens > 0
 	                  /*return Object.assign({}, state, {
@@ -47413,7 +47533,7 @@ webpackJsonp([0],[
 	                    })
 	                  })*/
 	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems.splice(0, 1);
+	                  orders_updated[0].cartItems.splice(action.item_index, 1);
 	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	            //else remove item
 	            case actionTypes_ts_1.SET_USER_NAME_FIRST:

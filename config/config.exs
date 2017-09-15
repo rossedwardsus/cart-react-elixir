@@ -123,8 +123,8 @@ config :absinthe,
 #  endpoint: "https://api.stripe.com/v1/", # optional
 #  version: "2017-06-05" # optional
 
-#config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
-config :stripe, :secret_key, "sk_live_V4rKgMKdlpl3CwUHHMLH0h1K"
+config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
+#config :stripe, :secret_key, "sk_live_V4rKgMKdlpl3CwUHHMLH0h1K"
 
 
 

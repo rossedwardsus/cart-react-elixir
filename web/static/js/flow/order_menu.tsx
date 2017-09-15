@@ -18,6 +18,8 @@ import PublicTopNavbar from './public/public_top_navbar.tsx';
 
 import {getYoursMenuItems} from './selectors/menu.ts'; 
 
+import axios from 'axios';
+
 
 //type Props = {
   //title: string,
@@ -46,7 +48,8 @@ class OrderMenu extends React.Component<any, any> {
         add_cart_item_button_classname: "btn btn-default disabled",
         images: [],
         hover_images: [],
-        options_count_array: []
+        options_count_array: [],
+        pool_message_viewed: false
 
     };
 
@@ -85,13 +88,66 @@ class OrderMenu extends React.Component<any, any> {
 
     });*/
 
-    //this.props.createOrder("sconely_yours", this.props.params.name);
+    //call the backend to get id and message
+    //or maybe call this in pool redirect 
+    //this.props.createOrder("pool", this.props.params.pool_name);
+
+
     //this.props.getMenuItems();
 
     //get menu items here
     
-    this.props.getMenuItems();
+    //this.props.getMenuItems();
     //this.setState({menu_items: this.props.menuItems.menu_items});
+
+    /*axios.post('/api/graphql',
+             {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
+    )
+    .then((response: any) => {
+
+          console.log("order menu pool graphql response " + JSON.stringify(response));
+
+          dispatch({type: SET_ORDER_TYPE, order_type: "pool", pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
+
+          //dispatch(push("/order/menu"));
+
+          //this.setState({pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage});*/
+
+
+
+          /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
+
+              console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
+
+              //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
+
+
+              //if save_info_for_later == true...
+              //last four card number
+
+              //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+
+              console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+
+              //else delete from redux
+              //console.log("clear order");
+              
+              //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
+    
+
+              //that.props.history.push('/user');
+              //context.router
+
+              //this.context.router.push('/order/complete');
+              //dispatch(push("/order/complete"));
+
+          }else{
+
+            //dispatch({ type: , item_id: "session_id"});
+
+          }*/
+
+    //});
     
   }
 
@@ -211,8 +267,10 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(item_count < 12){
 
+
+
     this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_12_or_24_minis, this.state.selected_item_quantity);
-        
+    this.setState({pool_message_viewed: true});    
 
       //this.setState({selected_item_quantity: ""});
 
@@ -318,7 +376,13 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(this.props.cartItemsTotalQuantity > 0){
 
-    let cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+    let cartItemsQuantity = 0;
+
+    if(this.props.User.orders.length > 0){
+
+      cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+
+    }
 
     //let cartItemsQuantity = 12;
 
@@ -419,17 +483,12 @@ class OrderMenu extends React.Component<any, any> {
                     <div className="row">
                           <div className="hidden-xs col-md-3">
                             <br/>
-                            {this.props.order.cartItems.length == 0 &&
-                                
-                                this.props.order.pool_message
-
-                            }
-                            <br/>
-                            else show cart
                             <br/>
                             <br/>
-                            Sconely {this.props.order.order_type.charAt(0).toUpperCase() + this.props.order.order_type.slice(1)}
-                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity} removeCartItem={this.props.removeCartItem}/>
+                            <br/>
+                            Sconely {this.props.User.orders[0].order_type.charAt(0).toUpperCase() + this.props.User.orders[0].order_type.slice(1)}
+                            <br/>
+                            {this.state.pool_message_viewed == false ? this.props.User.orders[0].pool_message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
@@ -460,7 +519,7 @@ class OrderMenu extends React.Component<any, any> {
 
                                 //this.setState({image_id: image_id});
 
-                                //console.log("image id" + image_id);
+                                //console.log("rerender ");
 
                                 //console.log("image id " + this.state["image_src_" + item.item_id]);
 
@@ -517,10 +576,10 @@ class OrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order menu " + JSON.stringify(state));
+  //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
   return {
 
-    started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
+    //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
 
     //if yours
     //menuItems: getYoursMenuItems(state),
@@ -534,8 +593,9 @@ const mapStateToProps = (state: any, ownProps: any) => {
         
         menuItems: state.menuItems.items,
         //guestOrder: state.guestOrder,
-        order: state.User.orders.find((order: any) => order.status == "current"),
+        //order: state.User.orders.find((order: any) => order.status == "current"),
         User: state.User,
+        path: state.routing.locationBeforeTransitions.pathname,
         
         //cart_total_items //computed
         //cart_total_cost //cost
@@ -559,14 +619,14 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (order_id: any, item_id: any, mini: any, quantity: any) => {
       dispatch(addCartItem(order_id, item_id, mini, quantity));
     },
-    increaseCartItemQuantity: (item_id: any) => {
-      dispatch(increaseCartItemQuantity("item_id"));
+    increaseCartItemQuantity: (item_index: any) => {
+      dispatch(increaseCartItemQuantity(item_index));
     },
-    decreaseCartItemQuantity: (item_id: any) => {
-      dispatch(decreaseCartItemQuantity("item_id"));
+    decreaseCartItemQuantity: (item_index: any) => {
+      dispatch(decreaseCartItemQuantity(item_index));
     },
-    removeCartItem: (item_id: any) => {
-      dispatch(removeCartItem("item_id"));
+    removeCartItem: (item_index: any) => {
+      dispatch(removeCartItem(item_index));
     },
     cartValidated: () => {
       dispatch(cartValidated());

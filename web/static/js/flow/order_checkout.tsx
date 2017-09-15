@@ -427,8 +427,6 @@ class DateTime extends React.Component<any, any> {
                                 <br/>
                                 <br/>
                                 <br/>
-                                <br/>
-                                <br/>
                                 <form className="form-horizontal">
                                   <div className="form-group">
                                     <div className="col-md-2">

@@ -12,7 +12,7 @@ defmodule Sconely.Session do
 
 		schema "sessions" do
 			#field :session_id, Ecto.UUID
-			field :user_id, :string
+			field :user_id, :string #integer
 			field :token, Ecto.UUID
 			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
 			#field :active, :string
