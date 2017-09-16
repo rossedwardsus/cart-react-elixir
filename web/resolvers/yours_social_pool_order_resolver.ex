@@ -738,6 +738,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                           #IO.inspect(Enum.at(menu_items, 0).name)
                           Map.put(cart_item, :name, Enum.at(menu_items, 0).name)
 
+
                           #name = Enum.filter(menu_items, fn(menu_item) ->
                             #match?({:, _}, element)
                             #IO.inspect(cart_item.item_id)
@@ -796,7 +797,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.puts("ok")
 
                         #just return ok
-                        {:ok, %{status: "successful", error_reason: ""}}
+                        {:ok, %{status: "successful", error_reason: "", last_four_card_digits: "1111", card_brand: "Visa", token: ""}}
                         
                         #{:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]", user_type: "guest"}}
 

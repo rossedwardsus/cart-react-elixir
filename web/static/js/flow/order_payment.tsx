@@ -157,11 +157,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //this.props.cart_validated;
 
-    //if(this.props.User.orders[0].payment_error == ""){
+    //if(this.props.User.orderSession.payment_error_details != ""){
+    //if(this.props.User.orderSession.payment_status == "error"){
+
+        //display error
+        //if cvc then make the cvc border red
+        //if card number
 
         this.setState({button_complete_order_classname: "btn btn-default"});
         this.setState({button_complete_order_disabled: ""});
-
 
     //}
 

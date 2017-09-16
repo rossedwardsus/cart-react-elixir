@@ -271,6 +271,12 @@ export function processYoursSocialPoolOrder() {
             .catch((error: any) => {
 
                   console.log("axios error handler " + error);
+
+                  //if network error reset button
+
+                  dispatch({type: SET_PAYMENT_ERROR, error: "response.data.data.processYoursSocialPoolOrder.errorReason"});
+
+
                   //go to code/payment screen
           //        this.props.loadView();
 

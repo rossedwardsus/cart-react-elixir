@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {createOrder} from '../actions/order.ts';
 
 import PublicTopNavbar from './public_top_navbar.tsx';
+import PublicBottomNavbar from './public_bottom_navbar.tsx';
 
 import {List, Map} from 'immutable';
 
@@ -30,7 +31,7 @@ function getCookie(name: string): string {
 }
 
 //@connect(null, mapDispatchToProps)
-export class PublicHomePage extends React.Component<any, any> {
+export class PublicStory extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -374,27 +375,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                         </div>
                         <div className="col-md-7">
-                                  <br/>
-                                  <br/>
-                                  <img style={{height:650, width:650}} src={this.state.gallery_image}/>
-                                  <br/>
-                                  <br/>
-                                  <div className="visible-xs">
-                                    mobile
-                                    <div>
-                                      <Link to="/" style={{fontSize:17}}>Order Sconely Yours</Link>
-                                      <br/>
-                                      2-12 Scones.  Baked and delivered.
-                                      <br/>
-                                      <Link to="/public/menu">Menu</Link>
-                                      <br/>
-                                    </div>
-                                  </div>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                        </div>
+                              </div>
                         <div className="col-md-3">
                           <br/>
                           <br/>
@@ -405,44 +386,15 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <a onClick={() => this.createOrder("sconely_yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
-                          <br/>
-                          2-12 Scones.  Baked and delivered.
-                          <br/>
-                          <br/>
-                          <br/>
-                          <a onClick={() => this.createOrder("sconely_social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
-                          <br/>
-                          12-250 Scones.  Regular or Minis.  Baked and delivered for events
-                        </div>
+                                </div>
                     </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                      </div>
-                      <div className="col-md-2">
-                          <Link to="/public/about_us">ABOUT US</Link>
-                          <br/>
-                          <Link to="/public/story">OUR STORY</Link>
-                          <br/>
-                          <Link to="/public/menu">FAQ</Link>
-                          <br/>
-                          <br/>
-                          <br/>
-                      </div>
-                      <div className="col-md-4">
-                          <Link to="http://www.instagram.com/sconelyla">Instagram</Link>
-                          <br/>
-                          <Link to="/public/menu">Twitter</Link>
-                      </div>
-                      <div className="col-md-2">
-                      </div>
-                    </div>
+                    <PublicBottomNavbar/>
               </div>
     )
   }
 }
 
-const mapStateToProps = (state: any, ownProps: any) => {
+/*const mapStateToProps = (state: any, ownProps: any) => {
   console.log("homepage" + JSON.stringify(state));
   return {
     //active: ownProps.filter === state.visibilityFilter
@@ -463,6 +415,6 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 const PublicHomePageConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(PublicHomePage)
+)(PublicHomePage)*/
 
-export default PublicHomePageConnected
+export default PublicStory
