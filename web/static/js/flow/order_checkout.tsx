@@ -589,10 +589,10 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(setUserLastName(e.target.value))
     },
     setUserEmail: (e: any) => {
-      dispatch(setUserLastName(e.target.value))
+      dispatch(setUserEmail(e.target.value))
     },
     setUserMobile: (e: any) => {
-      dispatch(setUserLastName(e.target.value))
+      dispatch(setUserMobile(e.target.value))
     },
     setUserDeliveryContactAddressFirstName: (e: any) => {
       dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))

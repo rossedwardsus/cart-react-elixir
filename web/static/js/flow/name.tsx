@@ -182,7 +182,7 @@ class Name extends React.Component<any, any> {
 
   setUserEmail = (e: any) => {
 
-      this.setState({contact_email: e.target.value})
+      //this.setState({contact_email: e.target.value})
       this.props.setUserEmail(e);
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
@@ -193,7 +193,7 @@ class Name extends React.Component<any, any> {
       //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       //return re.test(email);
 
-      console.log(/[0-9]/.test(e.target.value));
+      //console.log(/[0-9]/.test(e.target.value));
 
       //larger then 0
       //no symbols
@@ -261,8 +261,8 @@ class Name extends React.Component<any, any> {
 
   setUserEmailAgain = (e: any) => {
 
-      this.setState({contact_email_again: e.target.value});
-      this.props.setUserEmail(e);
+      this.setState({user_email_again: e.target.value});
+      //this.props.setUserEmail(e);
 
       if(this.state.contact_email == e.target.value){
 
@@ -359,7 +359,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.user_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" value={this.props.User.email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="col-md-3">
@@ -373,7 +373,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>
-                        <input type="text" value={this.state.user_mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        <input type="text" value={this.props.User.mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                       </div>
                   </div>
                 </div>

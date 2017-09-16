@@ -450,20 +450,20 @@ class SidebarCart extends React.Component<any, any> {
 
         cart = this.state.cartItems.map(function(item: any, index: any){
 
-                      console.log("cart menuitems " + JSON.stringify(index));
+                      console.log("cart menuitems " + JSON.stringify(item));
 
                       let menu_item = this.props.menuItems.find((menu_item: any) => {
 
                           //console.log(JSON.stringify(menu_item) + " " + item.item_id);
 
-                          return menu_item.id === 1;
+                          return menu_item.id === item.menu_item_id;
 
                       });
 
                       //console.log("index " + JSON.stringify(menu_item.name));
 
                       //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-                      //let item_name = this.props.menuItems[0].name;
+                      //let item_name = this.props.menuItems[item.menu_item_id].name;
 
                       let item_name = "";
 
@@ -561,11 +561,20 @@ class SidebarCart extends React.Component<any, any> {
     <br/>
     {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
 
+    //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
+
+    //let message = this.props.User.orders[0].pool_message.split('\n').map((item: any, i: any) => {
+    //    return <p key={i}>{item}</p>;
+    //});
+
+    console.log("message");
+
     return (<div> 
                   {item_quantity_message}
                   <br/>
                   <br/>
-                  {this.props.User.orders[0].cartItems.length == 0 ? this.props.User.orders[0].pool_message : cart}
+                  <br/>
+                  <br/>
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 

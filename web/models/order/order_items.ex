@@ -9,7 +9,7 @@ defmodule Sconely.OrderItems do
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
 		schema "order_items" do
-			field :order_id, Ecto.UUID
+			field :order_id, Ecto.UUID #integer
 			field :item_id, :string #integer
 			field :quantity, :string #integer
 			field :mini, :boolean		

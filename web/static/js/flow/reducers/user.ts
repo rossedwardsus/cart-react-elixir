@@ -48,7 +48,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //delivery addrress
 
       //return Object.assign({}, state, {...state, email: action.});
-      return {first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1"}]}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
+      return {first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1"}]}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
 
 
     case SET_ORDER_TYPE:
@@ -65,7 +65,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       //if another pool order exists change it's status to "saved"
 
-      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: action.pool_order_id, pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
 
       let started_order = state.orders.findIndex((order: any) => order.status == "started");
 
@@ -78,6 +78,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
           //orders_updated[0]["order_type"] = action.order_type;
           //orders_updated[0]["pool_name"] = action.pool_name;
           //orders_updated[0]["pool_date"] = action.pool_date;
+          orders_updated[0]["pool_message"] = action.pool_message;
 
           //if order_type == pool then add pool_name to order
           //also need to load the message for the pool order
@@ -111,7 +112,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       console.log("add cart reducer");
 
       orders_updated = state.orders;
-      //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+      //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{item_id: 1, quantity: 1, mini: ""}]})
       return Object.assign({}, state, {orders: orders_updated});
 
 
@@ -128,7 +129,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 
       //else
-      orders_updated[0].cartItems.push({item_id: action.item_id, quantity: action.quantity});
+      orders_updated[0].cartItems.push({menu_item_id: action.item_id, quantity: action.quantity});
 
       return Object.assign({}, state, {...state, orders: orders_updated});
 

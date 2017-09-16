@@ -126,7 +126,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
 
 
-      {:ok, %{pool_order_id: "1", pool_order_message: "message"}}
+      {:ok, %{pool_order_id: "1", pool_order_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
+
   end
 
 
@@ -545,6 +546,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         items_count = 0
                         order_type = "social"
 
+                        #mini = 2.25
+                        #2 dozen == 54 - no bulk discount
+
+                        #regular = 5.00 for social or 6 for yours or pool
+                        #60 dollars for a dozen
+
 
                         case order_type do
 
@@ -576,7 +583,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                       #items_count = 1
 
-                            "yours" -> ""
+                            "yours" -> "just total items"
+
+                            "pool" -> "just total items"
 
                         end
 

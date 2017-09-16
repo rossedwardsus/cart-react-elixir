@@ -27285,7 +27285,7 @@ webpackJsonp([0],[
 	                    pool_name: "this.props.params",
 	                    pool_date: "this.props.params",
 	                    pool_order_id: "response.data.data.getPoolOrderDetails.pool_id",
-	                    pool_message: "pool_message"
+	                    pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage
 	                });
 	                //const delay = (ms: any) => new Promise(resolve =>
 	                //  setTimeout(resolve, ms)
@@ -29382,7 +29382,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "Login")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "Signup")))))));
+	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "LOGIN")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "SIGN UP")))))));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -31609,16 +31609,16 @@ webpackJsonp([0],[
 	    //alert("GET USER details");
 	    console.log("set user email action " + value);
 	    return {
-	        type: actionTypes_ts_1.SET_USER_EMAIL,
+	        type: actionTypes_ts_1.SET_USER_CONTACT_EMAIL,
 	        value: value
 	    };
 	}
 	exports.setUserEmail = setUserEmail;
 	function setUserMobile(value) {
 	    //alert("GET USER details");
-	    console.log("set user email action " + value);
+	    console.log("set user mobile action " + value);
 	    return {
-	        type: actionTypes_ts_1.SET_USER_MOBILE,
+	        type: actionTypes_ts_1.SET_USER_CONTACT_MOBILE,
 	        value: value
 	    };
 	}
@@ -41108,7 +41108,7 @@ webpackJsonp([0],[
 	            //if(item_count < 12){
 	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_12_or_24_minis, _this.state.selected_item_quantity);
 	            _this.setState({ pool_message_viewed: true });
-	            //this.setState({selected_item_quantity: ""});
+	            _this.setState({ selected_item_quantity: 1 });
 	            //}
 	            //this.props.cartValidated();
 	            $('#myModal').modal('toggle');
@@ -41253,7 +41253,7 @@ webpackJsonp([0],[
 	                }, 0);
 	            }
 	            //let cartItemsQuantity = 12;
-	            for (var i = 1; i < 12 - cartItemsQuantity; i++) {
+	            for (var i = 1; i < 13 - cartItemsQuantity; i++) {
 	                //console.log(i);
 	                options_count_array.push(i);
 	            }
@@ -41302,7 +41302,10 @@ webpackJsonp([0],[
 	                //}
 	                //}
 	            }
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type.charAt(0).toUpperCase() + this.props.User.orders[0].order_type.slice(1), React.createElement("br", null), this.state.pool_message_viewed == false ? this.props.User.orders[0].pool_message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	            var message = this.props.User.orders[0].pool_message.split("\n").map(function (item, key) {
+	                return React.createElement("span", { key: key }, item, React.createElement("br", null));
+	            });
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type.charAt(0).toUpperCase() + this.props.User.orders[0].order_type.slice(1), React.createElement("br", null), React.createElement("br", null), this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                    return _this2.props.increaseCartItemQuantity(item_index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
 	                    return _this2.props.decreaseCartItemQuantity(item_index);
@@ -41667,14 +41670,14 @@ webpackJsonp([0],[
 	                cart = this.state.cartItems.map(function (item, index) {
 	                    var _this2 = this;
 	
-	                    console.log("cart menuitems " + JSON.stringify(index));
+	                    console.log("cart menuitems " + JSON.stringify(item));
 	                    var menu_item = this.props.menuItems.find(function (menu_item) {
 	                        //console.log(JSON.stringify(menu_item) + " " + item.item_id);
-	                        return menu_item.id === 1;
+	                        return menu_item.id === item.menu_item_id;
 	                    });
 	                    //console.log("index " + JSON.stringify(menu_item.name));
 	                    //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-	                    //let item_name = this.props.menuItems[0].name;
+	                    //let item_name = this.props.menuItems[item.menu_item_id].name;
 	                    var item_name = "";
 	                    //if(menu_item != undefined){
 	                    item_name = menu_item.name;
@@ -41718,7 +41721,12 @@ webpackJsonp([0],[
 	            <br/>
 	            <br/>
 	            {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
-	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), React.createElement("br", null), this.props.User.orders[0].cartItems.length == 0 ? this.props.User.orders[0].pool_message : cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), this.props.path == "/order/menu" && React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
+	            //let message = this.props.User.orders[0].pool_message.split('\n').map((item: any, i: any) => {
+	            //    return <p key={i}>{item}</p>;
+	            //});
+	            console.log("message");
+	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), this.props.path == "/order/menu" && React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -43110,10 +43118,10 @@ webpackJsonp([0],[
 	            dispatch(user_ts_1.setUserLastName(e.target.value));
 	        },
 	        setUserEmail: function setUserEmail(e) {
-	            dispatch(user_ts_1.setUserLastName(e.target.value));
+	            dispatch(user_ts_1.setUserEmail(e.target.value));
 	        },
 	        setUserMobile: function setUserMobile(e) {
-	            dispatch(user_ts_1.setUserLastName(e.target.value));
+	            dispatch(user_ts_1.setUserMobile(e.target.value));
 	        },
 	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
@@ -43228,14 +43236,14 @@ webpackJsonp([0],[
 	            }
 	        };
 	        _this.setUserEmail = function (e) {
-	            _this.setState({ contact_email: e.target.value });
+	            //this.setState({contact_email: e.target.value})
 	            _this.props.setUserEmail(e);
 	            //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
 	            //let symbol_res = symbol_patt.test(e.target.value);
 	            var number_res = /[0-9]/.test(e.target.value);
 	            //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	            //return re.test(email);
-	            console.log(/[0-9]/.test(e.target.value));
+	            //console.log(/[0-9]/.test(e.target.value));
 	            //larger then 0
 	            //no symbols
 	            //no numbers
@@ -43273,8 +43281,8 @@ webpackJsonp([0],[
 	            }
 	        };
 	        _this.setUserEmailAgain = function (e) {
-	            _this.setState({ contact_email_again: e.target.value });
-	            _this.props.setUserEmail(e);
+	            _this.setState({ user_email_again: e.target.value });
+	            //this.props.setUserEmail(e);
 	            if (_this.state.contact_email == e.target.value) {
 	                //validated
 	            }
@@ -43362,11 +43370,11 @@ webpackJsonp([0],[
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.setUserLastName(e);
-	                }, className: "form-control", value: this.state.last_name, id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email, onChange: function onChange(e) {
+	                }, className: "form-control", value: this.state.last_name, id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-12" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.props.User.email, onChange: function onChange(e) {
 	                    return _this2.setUserEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email_again, onChange: function onChange(e) {
 	                    return _this2.setUserEmailAgain(e);
-	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_again_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.user_mobile_classname }, React.createElement("input", { type: "text", value: this.state.user_mobile, maxLength: 12, onChange: function onChange(e) {
+	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_again_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.user_mobile_classname }, React.createElement("input", { type: "text", value: this.props.User.mobile, maxLength: 12, onChange: function onChange(e) {
 	                    return _this2.setUserMobile(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))));
 	        }
@@ -48246,7 +48254,7 @@ webpackJsonp([0],[
 	                  //normalizr
 	                  //delivery addrress
 	                  //return Object.assign({}, state, {...state, email: action.});
-	                  return { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	                  return { first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	            case actionTypes_ts_1.SET_ORDER_TYPE:
 	                  console.log("set order type reducer");
 	                  //find order where status == "started"
@@ -48254,7 +48262,7 @@ webpackJsonp([0],[
 	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
 	                  //if another pool order exists change it's status to "saved"
-	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: action.pool_order_id, pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: 1, quantity: 1, mini: "" }] });
+	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: 1, quantity: 1, mini: "" }] });
 	                  var started_order = state.orders.findIndex(function (order) {
 	                        return order.status == "started";
 	                  });
@@ -48264,6 +48272,7 @@ webpackJsonp([0],[
 	                      //orders_updated[0]["order_type"] = action.order_type;
 	                      //orders_updated[0]["pool_name"] = action.pool_name;
 	                      //orders_updated[0]["pool_date"] = action.pool_date;
+	                      orders_updated[0]["pool_message"] = action.pool_message;
 	                             //if order_type == pool then add pool_name to order
 	                      //also need to load the message for the pool order
 	                         }*/
@@ -48283,7 +48292,7 @@ webpackJsonp([0],[
 	            case actionTypes_ts_1.CREATE_ORDER:
 	                  console.log("add cart reducer");
 	                  orders_updated = state.orders;
-	                  //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+	                  //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{item_id: 1, quantity: 1, mini: ""}]})
 	                  return Object.assign({}, state, { orders: orders_updated });
 	            case actionTypes_ts_1.ADD_CART_ITEM:
 	                  console.log("add cart item reducer here " + JSON.stringify(action));
@@ -48292,7 +48301,7 @@ webpackJsonp([0],[
 	                  orders_updated = state.orders;
 	                  //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 	                  //else
-	                  orders_updated[0].cartItems.push({ item_id: action.item_id, quantity: action.quantity });
+	                  orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity });
 	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	            /*case INCREASE_CART_ITEM_QUANTITY:
 	              

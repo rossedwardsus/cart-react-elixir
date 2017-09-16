@@ -272,7 +272,7 @@ class OrderMenu extends React.Component<any, any> {
     this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_12_or_24_minis, this.state.selected_item_quantity);
     this.setState({pool_message_viewed: true});    
 
-      //this.setState({selected_item_quantity: ""});
+    this.setState({selected_item_quantity: 1});
 
     //}
 
@@ -386,7 +386,7 @@ class OrderMenu extends React.Component<any, any> {
 
     //let cartItemsQuantity = 12;
 
-    for (let i = 1; i < (12 - cartItemsQuantity); i++){ 
+    for (let i = 1; i < (13 - cartItemsQuantity); i++){ 
 
         //console.log(i);
         
@@ -478,6 +478,9 @@ class OrderMenu extends React.Component<any, any> {
         //}
     }
 
+    let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
+
+
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
@@ -488,7 +491,8 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                             Sconely {this.props.User.orders[0].order_type.charAt(0).toUpperCase() + this.props.User.orders[0].order_type.slice(1)}
                             <br/>
-                            {this.state.pool_message_viewed == false ? this.props.User.orders[0].pool_message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
+                            <br/>
+                            {this.state.pool_message_viewed == false ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">

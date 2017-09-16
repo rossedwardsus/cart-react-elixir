@@ -114,7 +114,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
                               pool_name: "this.props.params", 
                               pool_date: "this.props.params", 
                               pool_order_id: "response.data.data.getPoolOrderDetails.pool_id", 
-                              pool_message: "pool_message",
+                              pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage,
                   
                   })
 
