@@ -19149,7 +19149,7 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_yours");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
@@ -29382,7 +29382,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", style: { textAlign: "center" }, href: "#" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "LOGIN")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "SIGN UP")))))));
+	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" }, React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/login" }, "LOGIN")), React.createElement("li", null, React.createElement(react_router_1.Link, { to: "/register" }, "SIGN UP")))))));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -41601,10 +41601,10 @@ webpackJsonp([0],[
 	                if (social_regular_items.length > 0) {
 	                    console.log("sri" + JSON.stringify(social_regular_items));
 	                    total_social_regular_items = social_regular_items.reduce(function (amount, item) {
-	                        console.log(JSON.stringify(item));amount + item.quantity * 5.4;
+	                        console.log(JSON.stringify(item));amount + item.quantity * 6.00;
 	                    }, 0);
 	                    if (total_social_regular_items >= 12 && total_social_regular_items <= 60) {
-	                        item_cost = 5.00;
+	                        item_cost = 6.00;
 	                    } else if (total_social_regular_items >= 72 && total_social_regular_items <= 174) {
 	                        item_cost = 4.75;
 	                    } else if (total_social_regular_items >= 186 && total_social_regular_items <= 200) {
@@ -41614,7 +41614,7 @@ webpackJsonp([0],[
 	                if (social_mini_items.length > 0) {
 	                    console.log("sri" + JSON.stringify(social_regular_items));
 	                    total_social_mini_items = social_mini_items.reduce(function (amount, item) {
-	                        console.log(JSON.stringify(item));amount + item.quantity * 5.4;
+	                        console.log(JSON.stringify(item));amount + item.quantity * 6.0;
 	                    }, 0);
 	                    if (total_social_mini_items >= 12 && total_social_regular_items <= 60) {
 	                        item_cost = 5.00;
@@ -41639,7 +41639,7 @@ webpackJsonp([0],[
 	                //}
 	                //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
 	                total_social_mini_items_cost = this.state.cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity * 5.4;
+	                    return amount + item.quantity * 6.0;
 	                }, 0);
 	                total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
 	                total_items = this.state.cartItems.reduce(function (amount, item) {

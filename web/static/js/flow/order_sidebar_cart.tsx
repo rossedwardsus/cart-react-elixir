@@ -338,11 +338,11 @@ class SidebarCart extends React.Component<any, any> {
 
             console.log("sri" + JSON.stringify(social_regular_items));
         
-            total_social_regular_items = social_regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 5.4}, 0);
+            total_social_regular_items = social_regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
 
             if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
 
-                item_cost = 5.00;
+                item_cost = 6.00;
 
             }else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
 
@@ -360,7 +360,7 @@ class SidebarCart extends React.Component<any, any> {
 
             console.log("sri" + JSON.stringify(social_regular_items));
         
-            total_social_mini_items = social_mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 5.4}, 0);
+            total_social_mini_items = social_mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
 
             if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
 
@@ -404,7 +404,7 @@ class SidebarCart extends React.Component<any, any> {
         //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
 
         
-        total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.4, 0);
+        total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
 
         total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
 

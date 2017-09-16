@@ -48,19 +48,19 @@
     }
 
     .navbar-brand {
-        padding-top: 0px;
-        padding-left: 0px;
+        padding-top: 10px;
+        padding-left: 30px;
         color: #FFFFFF;
     }
 
     .dropdown {
-        padding-top: 0px;
+        padding-top: 1px;
         padding-left: .5;
         color: #FFFFFF;
     }
 
     .navbar-right {
-        padding-top: 0px;
+        padding-top: 10px;
         padding-left: .5;
         color: #FFFFFF;
     }
