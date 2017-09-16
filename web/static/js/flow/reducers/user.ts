@@ -212,6 +212,8 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //else remove item
       //array.splice( index, 1 )
 
+      return Object.assign({}, state, {...state, orders: orders_updated});
+
 
     case REMOVE_CART_ITEM:
       

@@ -48344,18 +48344,19 @@ webpackJsonp([0],[
 	                  //console.log("quantity" + JSON.stringify(item));
 	                  orders_updated = state.orders;
 	                  orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
-	            /*return Object.assign({}, state, {
-	              cart_items: state.cart_items.map((item: any, index: any) => {
-	                if (item.item_id === action.item_id) {
-	                    if(item.quantity > 1){
-	                        item.quantity = item.quantity - 1;
-	                    }
-	                }
-	                return item
-	              })
-	            })*/
-	            //else remove item
-	            //array.splice( index, 1 )
+	                  /*return Object.assign({}, state, {
+	                    cart_items: state.cart_items.map((item: any, index: any) => {
+	                      if (item.item_id === action.item_id) {
+	                          if(item.quantity > 1){
+	                              item.quantity = item.quantity - 1;
+	                          }
+	                      }
+	                      return item
+	                    })
+	                  })*/
+	                  //else remove item
+	                  //array.splice( index, 1 )
+	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	            case actionTypes_ts_1.REMOVE_CART_ITEM:
 	                  console.log("REMOVE reducer " + JSON.stringify(action.item_index));
 	                  //todo if dozens is 0 then just remove
