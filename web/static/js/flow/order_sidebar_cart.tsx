@@ -460,7 +460,7 @@ class SidebarCart extends React.Component<any, any> {
 
                       });
 
-                      //console.log("index " + JSON.stringify(menu_item.name));
+                      console.log("index " + JSON.stringify(menu_item.name));
 
                       //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
                       //let item_name = this.props.menuItems[item.menu_item_id].name;
@@ -572,9 +572,7 @@ class SidebarCart extends React.Component<any, any> {
     return (<div> 
                   {item_quantity_message}
                   <br/>
-                  <br/>
-                  <br/>
-                  <br/>
+                  {cart}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 

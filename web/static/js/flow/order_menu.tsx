@@ -487,9 +487,7 @@ class OrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3">
                             <br/>
                             <br/>
-                            <br/>
-                            <br/>
-                            Sconely {this.props.User.orders[0].order_type.charAt(0).toUpperCase() + this.props.User.orders[0].order_type.slice(1)}
+                            <img src="https://sconely-test.herokuapp.com/images/8thandhope_logo.png"/>
                             <br/>
                             <br/>
                             {this.state.pool_message_viewed == false ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
