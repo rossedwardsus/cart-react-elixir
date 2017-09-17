@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {cartValidated, cartInvalidated, datetimeValidated, datetimeInvalidated, deliveryAddressValidated, deliveryAddressInvalidated, nameValidated} from './actions/order_validations.ts';
+import {paymentMethodValidated} from './actions/order_validations.ts';
 
 /*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
@@ -653,8 +653,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
   setPaymentSecurityCode(e: any){
 
       //this.props.setSecurityCode
+      this.props.setPaymentSecurityCode(e);
 
-      if(e.target.value.length > 0){
+      if(e.target.value.length > 2){
 
         //alert();
 
@@ -665,7 +666,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
             //this.setState({"delivery_address_street1": e.target.value});
             //this.setState({"delivery_address_street1_classname": "form-group"});
 
-            this.props.setPaymentSecurityCode(e);
+            this.props.paymentMethodValidated();
 
         //}
       }   
@@ -1015,6 +1016,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setPaymentSecurityCode: (e: any) => {
       dispatch(setPaymentSecurityCode(e.target.value, ""))
+    },
+    paymentMethodValidated: (e: any) => {
+      dispatch(paymentMethodValidated())
     },
     termsValidated: (value: any) => {
 

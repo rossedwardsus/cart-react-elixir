@@ -35,6 +35,8 @@ import DeliveryContactAddress from './order_delivery_address.tsx';
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
+import {nameValidated} from './actions/order_validations.ts';
+import {contactValidated} from './actions/order_validations.ts';
 
 
 function addTodoWithDispatch() {
@@ -77,6 +79,7 @@ class DateTime extends React.Component<any, any> {
         daysOfWeek: [],
         menuItems: [],
         User: [],
+        payment_button_classname: "btn btn-default btn-block"
         
     };
 
@@ -131,6 +134,8 @@ class DateTime extends React.Component<any, any> {
   componentWillReceiveProps = () => {
 
       //this.setState({delivery_times: "9-11am"});
+
+      //if nameValidated and contactValidated then payment_button_classname
 
   }
 
@@ -423,7 +428,7 @@ class DateTime extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-9">
                                 <br/>
-                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()}/>
                                 <br/>
                                 <br/>
                                 <br/>
@@ -515,7 +520,7 @@ class DateTime extends React.Component<any, any> {
                                       <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
                                     </div>
                                     <div className="col-md-1">
-                                      <Link to="/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>  
+                                      <Link to="/order/payment" className={this.state.payment_button_classname} style={{borderRadius: 0}}>Payment</Link>  
                                     </div>
                                     <div className="col-md-1">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Menu</Link>  
@@ -593,6 +598,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setUserMobile: (e: any) => {
       dispatch(setUserMobile(e.target.value))
+    },
+    nameValidated: (e: any) => {
+      dispatch(nameValidated());
     },
     setUserDeliveryContactAddressFirstName: (e: any) => {
       dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))

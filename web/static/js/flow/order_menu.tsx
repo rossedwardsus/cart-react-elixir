@@ -40,7 +40,7 @@ class OrderMenu extends React.Component<any, any> {
     this.state = {
         menuItems: [],
         selected_item_id: "",
-        selected_item_12_or_24_mini: "",
+        selected_item_size: "",
         selected_item_quantity: 0,
         selected_item_name: "",
         selected_item_description: "",
@@ -211,11 +211,20 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
-  selectedSocialItem12or24mini = (e: any) => {
+  selectedSocialItemSize = (e: any) => {
 
     console.log("selected_item social 12or24mini " + e.target.value);
 
-    this.setState({selected_item_12_or_24_minis: e.target.value});
+    //if(e.target.value == "regular"){
+
+        this.setState({size: e.target.value});
+
+    //}else{
+
+    //    this.setState({size: true});
+
+    //}
+
     //this.setState({add_cart_item_button_classname: "btn btn-default"});
       
     //set add cart button == active
@@ -269,7 +278,7 @@ class OrderMenu extends React.Component<any, any> {
 
 
 
-    this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_12_or_24_minis, this.state.selected_item_quantity);
+    this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
     this.setState({pool_message_viewed: true});    
 
     this.setState({selected_item_quantity: 1});
@@ -436,10 +445,10 @@ class OrderMenu extends React.Component<any, any> {
 
                 /*//yours_social_quantity_selector =  <div>
                                                         <div className="col-md-2">
-                                                          Dozen<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItem12or24mini}/>
+                                                          Dozen<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItemMini}/>
                                                         </div>
                                                         <div className="col-md-3">
-                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
+                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItemMini}/>
                                                         </div>
                                                         <div className="col-md-3">
                                                           <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
@@ -455,9 +464,9 @@ class OrderMenu extends React.Component<any, any> {
 
                  yours_social_pool_quantity_selector =  <div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
-                                                            <option value="">Regular or Minis</option> 
-                                                            <option value="regular">Regular</option>
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{height: 35, width: 120}}>
+                                                            <option value="mini">2 Dozen Minis</option> 
+                                                            <option value="regular">1 Dozen Regular</option>
                                                             <option value="minis">Minis</option>
                                                           </select>
                                                         </div>
@@ -486,9 +495,7 @@ class OrderMenu extends React.Component<any, any> {
                     <div className="row">
                           <div className="hidden-xs col-md-3">
                             <br/>
-                            <br/>
                             <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>
-                            <br/>
                             <br/>
                             {this.state.pool_message_viewed == false ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
                             <br/>
@@ -618,8 +625,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       console.log("here");
       dispatch(getMenuItems());
     },
-    addCartItem: (order_id: any, item_id: any, mini: any, quantity: any) => {
-      dispatch(addCartItem(order_id, item_id, mini, quantity));
+    addCartItem: (order_id: any, item_id: any, size: any, quantity: any) => {
+      dispatch(addCartItem(order_id, item_id, size, quantity));
     },
     increaseCartItemQuantity: (item_index: any) => {
       dispatch(increaseCartItemQuantity(item_index));

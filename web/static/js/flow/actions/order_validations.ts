@@ -1,4 +1,4 @@
-import {CART_VALIDATED, CART_INVALIDATED, DELIVERY_ADDRESS_VALIDATED, DELIVERY_ADDRESS_INVALIDATED, DATETIME_VALIDATED, DATETIME_INVALIDATED, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_VALIDATED} from '../constants/actionTypes.ts';
+import {CART_VALIDATED, CART_INVALIDATED, DELIVERY_ADDRESS_VALIDATED, DELIVERY_ADDRESS_INVALIDATED, DATETIME_VALIDATED, DATETIME_INVALIDATED, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED} from '../constants/actionTypes.ts';
 
 export function cartValidated() {
   console.log("cart validated ");
@@ -72,10 +72,10 @@ export function nameValidated() {
   }
 }
 
-export function paymentValidated() {
+export function paymentMethodValidated() {
   console.log("cart validated ");
   return {
-    type: DELIVERY_ADDRESS_VALIDATED,
+    type: PAYMENT_METHOD_VALIDATED,
     
   }
 }

@@ -4,7 +4,7 @@ defmodule Sconely.OrderItems do
 
 		use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
@@ -12,7 +12,7 @@ defmodule Sconely.OrderItems do
 			field :order_id, Ecto.UUID #integer
 			field :item_id, :string #integer
 			field :quantity, :string #integer
-			field :mini, :boolean		
+			field :size, :string	
 		end
 
 		#def changeset(struct, params \\ %{}) do

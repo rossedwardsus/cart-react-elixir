@@ -1,4 +1,4 @@
-import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SAVE_FOR_LATER } from '../constants/actionTypes.ts';
+import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -48,7 +48,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //delivery addrress
 
       //return Object.assign({}, state, {...state, email: action.});
-      return {first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1"}]}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
+      return {first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: []}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
 
 
     case SET_ORDER_TYPE:
@@ -65,7 +65,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       //if another pool order exists change it's status to "saved"
 
-      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{menu_item_id: 1, quantity: 1, mini: ""}]})
+      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: []})
 
       let started_order = state.orders.findIndex((order: any) => order.status == "started");
 
@@ -109,10 +109,11 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
 
     case CREATE_ORDER:
-      console.log("add cart reducer");
+      console.log("CREATE order reducer " + JSON.stringify(action));
 
       orders_updated = state.orders;
-      //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{item_id: 1, quantity: 1, mini: ""}]})
+      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: "POOL ORDER_ID", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: []})
+
       return Object.assign({}, state, {orders: orders_updated});
 
 
@@ -129,7 +130,7 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
       //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 
       //else
-      orders_updated[0].cartItems.push({menu_item_id: action.item_id, quantity: action.quantity});
+      orders_updated[0].cartItems.push({menu_item_id: action.item_id, quantity: action.quantity, size: "mini"});
 
       return Object.assign({}, state, {...state, orders: orders_updated});
 
@@ -536,6 +537,16 @@ export default function user(state:any = {first_name: "Ross", last_name: "Edward
 
       return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
 
+    case NAME_VALIDATED:
+
+      console.log("NAME VALIDATED reducer" + JSON.stringify(state));
+
+      let order_session = state.orderSession;
+      order_session["name_validated"] = true;
+  
+      return Object.assign({}, state, {...state, orderSession: order_session});
+   
+   
 
 
     default:

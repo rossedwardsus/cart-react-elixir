@@ -12,7 +12,6 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 //import * as getAllProducts from './actions/menu';
-//import {validateName} from './actions/cart/order_validations.ts';
 //import { getPublicMenu } from './reducers/menu';
 const Immutable  = require('immutable');
 //import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
@@ -267,6 +266,8 @@ class Name extends React.Component<any, any> {
       if(this.state.contact_email == e.target.value){
 
           //validated
+          //this.props.nameValidated();
+          this.props.contactValidatd();
 
       }
 

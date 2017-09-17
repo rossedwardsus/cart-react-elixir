@@ -4,8 +4,8 @@ import {push} from 'react-router-redux';
 import axios from 'axios';
 
 
-export function addCartItem(order_id: any, item_id: any, twelveortwentyfourminis: any, quantity: any) {
-  console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+export function addCartItem(order_id: any, item_id: any, size: any, quantity: any) {
+  console.log("add cart item quantity action " + item_id + " " + size + " " + quantity);
 
   //if uorder_id != undefined
   //else
@@ -14,7 +14,7 @@ export function addCartItem(order_id: any, item_id: any, twelveortwentyfourminis
     type: ADD_CART_ITEM,
     order_id, 
     item_id: item_id,
-    twelveortwentyfourminis: twelveortwentyfourminis,
+    size: size,
     quantity: quantity
   }
 
@@ -109,9 +109,9 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
                   console.log("pool order graphql response " + JSON.stringify(response));
 
                   dispatch({
-                              type: SET_ORDER_TYPE, 
+                              type: CREATE_ORDER, 
                               value: order_type, 
-                              pool_name: "this.props.params", 
+                              //pool_name: "this.props.params", 
                               pool_date: "this.props.params", 
                               pool_order_id: "response.data.data.getPoolOrderDetails.pool_id", 
                               pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage,

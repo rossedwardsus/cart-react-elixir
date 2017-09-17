@@ -27205,15 +27205,15 @@ webpackJsonp([0],[
 	var menu_ts_1 = __webpack_require__(922);
 	var react_router_redux_1 = __webpack_require__(617);
 	var axios_1 = __webpack_require__(923);
-	function addCartItem(order_id, item_id, twelveortwentyfourminis, quantity) {
-	    console.log("add cart item quantity action " + item_id + " " + twelveortwentyfourminis + " " + quantity);
+	function addCartItem(order_id, item_id, size, quantity) {
+	    console.log("add cart item quantity action " + item_id + " " + size + " " + quantity);
 	    //if uorder_id != undefined
 	    //else
 	    return {
 	        type: actionTypes_ts_1.ADD_CART_ITEM,
 	        order_id: order_id,
 	        item_id: item_id,
-	        twelveortwentyfourminis: twelveortwentyfourminis,
+	        size: size,
 	        quantity: quantity
 	    };
 	    /*return {
@@ -27280,9 +27280,9 @@ webpackJsonp([0],[
 	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	                console.log("pool order graphql response " + JSON.stringify(response));
 	                dispatch({
-	                    type: actionTypes_ts_1.SET_ORDER_TYPE,
+	                    type: actionTypes_ts_1.CREATE_ORDER,
 	                    value: order_type,
-	                    pool_name: "this.props.params",
+	                    //pool_name: "this.props.params", 
 	                    pool_date: "this.props.params",
 	                    pool_order_id: "response.data.data.getPoolOrderDetails.pool_id",
 	                    pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage
@@ -27591,7 +27591,7 @@ webpackJsonp([0],[
 	exports.CONTACT_INVALIDATED = 'CONTACT_INVALIDATED';
 	exports.NAME_VALIDATED = 'NAME_VALIDATED';
 	exports.NAME_INVALIDATED = 'NAME_INVALIDATED';
-	exports.PAYMENT_VALIDATED = 'PAYMENT_VALIDATED';
+	exports.PAYMENT_METHOD_VALIDATED = 'PAYMENT_METHOD_VALIDATED';
 	exports.PAYMENT_INVALIDATED = 'PAYMENT_INVALIDATED';
 	exports.PROCESS_SIGNATURE_ORDER = 'PROCESS_SIGNATURE_ORDER';
 	exports.PROCESS_USER_ORDER = 'PROCESS_CREATE_ORDER';
@@ -29765,13 +29765,13 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.nameValidated = nameValidated;
-	function paymentValidated() {
+	function paymentMethodValidated() {
 	    console.log("cart validated ");
 	    return {
-	        type: actionTypes_ts_1.DELIVERY_ADDRESS_VALIDATED
+	        type: actionTypes_ts_1.PAYMENT_METHOD_VALIDATED
 	    };
 	}
-	exports.paymentValidated = paymentValidated;
+	exports.paymentMethodValidated = paymentMethodValidated;
 
 /***/ }),
 /* 951 */
@@ -29955,7 +29955,7 @@ webpackJsonp([0],[
 	    _createClass(Menu, [{
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }), React.createElement("div", { className: "col-md-3" })), React.createElement(public_bottom_navbar_tsx_1.default, null));
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, "We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.", React.createElement("br", null), React.createElement("br", null), "We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.", React.createElement("br", null), React.createElement("br", null), "Sconely specializes in artisanal sweet and savory scones that are perfect for events, meetings, conferences and parties. Sconely ensures that everyone at an event has something they can eat, decreases waste by allowing guests to pre-select their preferred scone, and creates community through shared food experiences.", React.createElement("br", null), React.createElement("br", null), "Have you ever hosted an event and wondered if your guests would find something they could eat? Sconely solves that problem by offering a variety of scones, including vegan and gluten-free options.", React.createElement("br", null), React.createElement("br", null), "Event hosts can order 12 - 250 regular or 24 - 500 mini scones with Sconely Social. Sconely Signature provides the option for guests to pre-select their preferred scone before an event. The scones are then delivered in individual personalized packages.", React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch with the finest ingredients and freshly baked to order. We use organic ingredients when possible and all of our scones are free of refined sugars and soy.", React.createElement("br", null), React.createElement("br", null), "Sconely is partnering up to use hyperlocal produce grown by Community Healing Gardens in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.", React.createElement("br", null), React.createElement("br", null), "Sconely bakes at Crafted Kitchen in Downtown Los Angeles. Contact us at eat@sconely.com for more information."), React.createElement("div", { className: "col-md-3" })), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
 	        }
 	    }]);
 	
@@ -41074,9 +41074,13 @@ webpackJsonp([0],[
 	            //set add cart button == active
 	            //this.set
 	        };
-	        _this.selectedSocialItem12or24mini = function (e) {
+	        _this.selectedSocialItemSize = function (e) {
 	            console.log("selected_item social 12or24mini " + e.target.value);
-	            _this.setState({ selected_item_12_or_24_minis: e.target.value });
+	            //if(e.target.value == "regular"){
+	            _this.setState({ size: e.target.value });
+	            //}else{
+	            //    this.setState({size: true});
+	            //}
 	            //this.setState({add_cart_item_button_classname: "btn btn-default"});
 	            //set add cart button == active
 	            //this.set
@@ -41106,7 +41110,7 @@ webpackJsonp([0],[
 	                     });*/
 	            //console.log("yours items count" + item_count);
 	            //if(item_count < 12){
-	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_12_or_24_minis, _this.state.selected_item_quantity);
+	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_size, _this.state.selected_item_quantity);
 	            _this.setState({ pool_message_viewed: true });
 	            _this.setState({ selected_item_quantity: 1 });
 	            //}
@@ -41155,7 +41159,7 @@ webpackJsonp([0],[
 	        _this.state = {
 	            menuItems: [],
 	            selected_item_id: "",
-	            selected_item_12_or_24_mini: "",
+	            selected_item_size: "",
 	            selected_item_quantity: 0,
 	            selected_item_name: "",
 	            selected_item_description: "",
@@ -41280,10 +41284,10 @@ webpackJsonp([0],[
 	                //if(this.props.cartItemsTotalQuantity < 10){
 	                /*//yours_social_quantity_selector =  <div>
 	                                                        <div className="col-md-2">
-	                                                          Dozen<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItem12or24mini}/>
+	                                                          Dozen<input type="radio" name="12_or_24" value="12" onChange={this.selectedSocialItemMini}/>
 	                                                        </div>
 	                                                        <div className="col-md-3">
-	                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItem12or24mini}/>
+	                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItemMini}/>
 	                                                        </div>
 	                                                        <div className="col-md-3">
 	                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
@@ -41296,7 +41300,7 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Regular or Minis"), React.createElement("option", { value: "regular" }, "Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedSocialItemSize, style: { height: 35, width: 120 } }, React.createElement("option", { value: "mini" }, "2 Dozen Minis"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
 	                //}
@@ -41305,7 +41309,7 @@ webpackJsonp([0],[
 	            var message = this.props.User.orders[0].pool_message.split("\n").map(function (item, key) {
 	                return React.createElement("span", { key: key }, item, React.createElement("br", null));
 	            });
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), React.createElement("br", null), this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                    return _this2.props.increaseCartItemQuantity(item_index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
 	                    return _this2.props.decreaseCartItemQuantity(item_index);
@@ -41367,8 +41371,8 @@ webpackJsonp([0],[
 	            console.log("here");
 	            dispatch(menu_ts_1.getMenuItems());
 	        },
-	        addCartItem: function addCartItem(order_id, item_id, mini, quantity) {
-	            dispatch(order_ts_1.addCartItem(order_id, item_id, mini, quantity));
+	        addCartItem: function addCartItem(order_id, item_id, size, quantity) {
+	            dispatch(order_ts_1.addCartItem(order_id, item_id, size, quantity));
 	        },
 	        increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	            dispatch(order_ts_1.increaseCartItemQuantity(item_index));
@@ -41582,14 +41586,14 @@ webpackJsonp([0],[
 	                //let cart_items = [{item_id: 1, quantity: 2}];
 	                social_regular_items = this.state.cartItems.filter(function (item) {
 	                    //console.log(JSON.stringify(item));
-	                    if (item.twelveortwentyfourminis == "12") {
+	                    if (item.size == "regular") {
 	                        return item;
 	                    }
 	                    return;
 	                });
 	                social_mini_items = this.state.cartItems.filter(function (item) {
 	                    //console.log(JSON.stringify(item));
-	                    if (item.twelveortwentyfourminis == "24_minis") {
+	                    if (item.size == "mini") {
 	                        return item;
 	                    }
 	                    return;
@@ -41671,21 +41675,22 @@ webpackJsonp([0],[
 	                    var _this2 = this;
 	
 	                    console.log("cart menuitems " + JSON.stringify(item));
-	                    var menu_item = this.props.menuItems.find(function (menu_item) {
-	                        //console.log(JSON.stringify(menu_item) + " " + item.item_id);
-	                        return menu_item.id === item.menu_item_id;
-	                    });
-	                    console.log("index " + JSON.stringify(menu_item.name));
+	                    //let menu_item = this.props.menuItems.find((menu_item: any) => {
+	                    //console.log(JSON.stringify(menu_item) + " " + item.item_id);
+	                    //    return menu_item.id === item.menu_item_id;
+	                    //});
+	                    //console.log("index " + JSON.stringify(menu_item.name));
 	                    //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-	                    //let item_name = this.props.menuItems[item.menu_item_id].name;
-	                    var item_name = "";
+	                    var item_name = this.props.menuItems[item.menu_item_id - 1].name;
+	                    //let item_name = "";
 	                    //if(menu_item != undefined){
-	                    item_name = menu_item.name;
+	                    //  item_name = menu_item.name;
 	                    //}
 	                    //let item_name = "";
 	                    //console.log("sidebar cart " + JSON.stringify(that.Order));
 	                    //console.log(order_type);
 	                    //code is here to check for minis existing???
+	                    //if item.size == "" then pool or yours
 	                    if (order_type == "yours" || order_type == "pool") {
 	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5" }, item_name), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.increaseCartItemQuantity(index);
@@ -41695,10 +41700,10 @@ webpackJsonp([0],[
 	                                return _this2.props.removeCartItem(index);
 	                            } }, "X"))));
 	                    } else {
-	                        if (item.twelveortwentyfourminis == "24_minis") {
-	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-4" }, "mini"), React.createElement("div", { className: "col-xs-4", style: { fontSize: 15 } }, 24 * item.quantity)));
+	                        if (item.size == "mini") {
+	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name, " mini"), React.createElement("div", { className: "col-xs-4", style: { fontSize: 15 } }, 24 * item.quantity)));
 	                        } else {
-	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, "ruby q regular"), React.createElement("div", { className: "col-md-4" }, "ruby q regular"), React.createElement("div", { className: "col-md-4" }, 12 * item.quantity)));
+	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-4" }, 12 * item.quantity)));
 	                        }
 	                    }
 	                }.bind(this));
@@ -41803,6 +41808,7 @@ webpackJsonp([0],[
 	//import DeliveryAddressPayment from './delivery_address_payment.tsx';
 	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
+	var order_validations_ts_1 = __webpack_require__(950);
 	/*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
 	import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
 	import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
@@ -42271,13 +42277,14 @@ webpackJsonp([0],[
 	        key: "setPaymentSecurityCode",
 	        value: function setPaymentSecurityCode(e) {
 	            //this.props.setSecurityCode
-	            if (e.target.value.length > 0) {
+	            this.props.setPaymentSecurityCode(e);
+	            if (e.target.value.length > 2) {
 	                //alert();
 	                //if(/^[a-zA-Z]/.test(e.target.value)){
 	                //alert();
 	                //this.setState({"delivery_address_street1": e.target.value});
 	                //this.setState({"delivery_address_street1_classname": "form-group"});
-	                this.props.setPaymentSecurityCode(e);
+	                this.props.paymentMethodValidated();
 	                //}
 	            }
 	        }
@@ -42457,6 +42464,9 @@ webpackJsonp([0],[
 	        },
 	        setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	            dispatch(order_payment_method_ts_1.setPaymentSecurityCode(e.target.value, ""));
+	        },
+	        paymentMethodValidated: function paymentMethodValidated(e) {
+	            dispatch(order_validations_ts_1.paymentMethodValidated());
 	        },
 	        termsValidated: function termsValidated(value) {
 	            dispatch(order_ts_2.termsValidated(value));
@@ -42770,6 +42780,7 @@ webpackJsonp([0],[
 	var order_delivery_address_tsx_1 = __webpack_require__(1142);
 	var user_ts_1 = __webpack_require__(961);
 	var user_delivery_contact_address_ts_1 = __webpack_require__(1143);
+	var order_validations_ts_1 = __webpack_require__(950);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -42807,6 +42818,7 @@ webpackJsonp([0],[
 	        };
 	        _this.componentWillReceiveProps = function () {
 	            //this.setState({delivery_times: "9-11am"});
+	            //if nameValidated and contactValidated then payment_button_classname
 	        };
 	        _this.setUserDeliveryContactAddressZipcode = function (e) {
 	            var dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
@@ -42899,7 +42911,8 @@ webpackJsonp([0],[
 	            delivery_times: "",
 	            daysOfWeek: [],
 	            menuItems: [],
-	            User: []
+	            User: [],
+	            payment_button_classname: "btn btn-default btn-block"
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -43028,6 +43041,10 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
+	                    }, nameValidated: function nameValidated() {
+	                        return _this2.props.nameValidated();
+	                    }, contactValidated: function contactValidated() {
+	                        return _this2.props.contactValidated();
 	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart")))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), "Sconely Yours", React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, screen, React.createElement("br", null), React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
@@ -43066,7 +43083,7 @@ webpackJsonp([0],[
 	                        return _this2.setDate(e);
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { disabledDays: { daysOfWeek: this.state.daysOfWeek } } })), React.createElement("div", { className: "col-md-3" }, this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : React.createElement("select", { className: "form-control", id: "exampleInputEmail2", value: this.props.selectedTime, onChange: this.props.setTimeRange, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Free"), React.createElement("option", { value: "9-11" }, "9:00 am - 11:00 am"), React.createElement("option", { value: "1-3" }, "1:00 pm - 3:00 pm"))), React.createElement("div", { className: "col-md-3" }, delivery_times, React.createElement("select", { className: "form-control", value: this.props.selectedSpecificTime, onChange: function onChange(e) {
 	                        return _this2.props.setSpecificTime(e);
-	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Preview")), React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Menu")), React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))), React.createElement("br", null), React.createElement("br", null))));
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12 } }, React.createElement("option", { value: "" }, "Extra"), React.createElement("option", { value: "900" }, "9:00"), React.createElement("option", { value: "930" }, "9:30"))))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-6" }, React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/preview", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Preview")), React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: this.state.payment_button_classname, style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Menu")), React.createElement("div", { className: "col-md-1" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))), React.createElement("br", null), React.createElement("br", null))));
 	            }
 	        }
 	    }], [{
@@ -43123,6 +43140,9 @@ webpackJsonp([0],[
 	        setUserMobile: function setUserMobile(e) {
 	            dispatch(user_ts_1.setUserMobile(e.target.value));
 	        },
+	        nameValidated: function nameValidated(e) {
+	            dispatch(order_validations_ts_1.nameValidated());
+	        },
 	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
 	        },
@@ -43176,7 +43196,6 @@ webpackJsonp([0],[
 	var React = __webpack_require__(153);
 	var react_redux_1 = __webpack_require__(190);
 	//import * as getAllProducts from './actions/menu';
-	//import {validateName} from './actions/cart/order_validations.ts';
 	//import { getPublicMenu } from './reducers/menu';
 	var Immutable = __webpack_require__(963);
 	//import {setFirstName, setLastName, setCompanyName} from './actions/order_name.ts';
@@ -43285,6 +43304,8 @@ webpackJsonp([0],[
 	            //this.props.setUserEmail(e);
 	            if (_this.state.contact_email == e.target.value) {
 	                //validated
+	                //this.props.nameValidated();
+	                _this.props.contactValidatd();
 	            }
 	        };
 	        _this.setUserMobile = function (e) {
@@ -48039,6 +48060,11 @@ webpackJsonp([0],[
 	//import Register from './register.ts';
 	//import root from './root.ts';
 	var menu_ts_1 = __webpack_require__(1165);
+	//import Order from './social_yours_order.ts';
+	//import OrderDeliveryAddress from './order_delivery_Address.ts';
+	//import OrderDatetime from './order_datetime.ts';
+	//import OrderPayment from './order_payment.ts';
+	//import OrderValidations from './order_validated.ts';
 	var user_ts_1 = __webpack_require__(1166);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
 	//import guestOrder from './guest_order.ts';
@@ -48254,7 +48280,7 @@ webpackJsonp([0],[
 	                  //normalizr
 	                  //delivery addrress
 	                  //return Object.assign({}, state, {...state, email: action.});
-	                  return { first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [{ item_id: 1, twelveortwentyfourminis: "24_minis", quantity: "1" }] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	                  return { first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
 	            case actionTypes_ts_1.SET_ORDER_TYPE:
 	                  console.log("set order type reducer");
 	                  //find order where status == "started"
@@ -48262,7 +48288,7 @@ webpackJsonp([0],[
 	                  //set name here or just set it in default
 	                  orders_updated = state.orders;
 	                  //if another pool order exists change it's status to "saved"
-	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{ menu_item_id: 1, quantity: 1, mini: "" }] });
+	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [] });
 	                  var started_order = state.orders.findIndex(function (order) {
 	                        return order.status == "started";
 	                  });
@@ -48290,9 +48316,9 @@ webpackJsonp([0],[
 	                  order_session_updated["paymentError"] = action.error;
 	                  return Object.assign({}, state, Object.assign({}, state, { orderdSession: order_session_updated }));
 	            case actionTypes_ts_1.CREATE_ORDER:
-	                  console.log("add cart reducer");
+	                  console.log("CREATE order reducer " + JSON.stringify(action));
 	                  orders_updated = state.orders;
-	                  //orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [{item_id: 1, quantity: 1, mini: ""}]})
+	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: "POOL ORDER_ID", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [] });
 	                  return Object.assign({}, state, { orders: orders_updated });
 	            case actionTypes_ts_1.ADD_CART_ITEM:
 	                  console.log("add cart item reducer here " + JSON.stringify(action));
@@ -48301,7 +48327,7 @@ webpackJsonp([0],[
 	                  orders_updated = state.orders;
 	                  //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 	                  //else
-	                  orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity });
+	                  orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity, size: "mini" });
 	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	            /*case INCREASE_CART_ITEM_QUANTITY:
 	              
@@ -48534,6 +48560,11 @@ webpackJsonp([0],[
 	                   payment_methods_updated = state.payment_methods;
 	              payment_methods_updated[action.id]["expiry_year"] = action.value;
 	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
+	            case actionTypes_ts_1.NAME_VALIDATED:
+	                  console.log("NAME VALIDATED reducer" + JSON.stringify(state));
+	                  var order_session = state.orderSession;
+	                  order_session["name_validated"] = true;
+	                  return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session }));
 	            default:
 	                  //alert();
 	                  //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})

@@ -13,7 +13,7 @@ import menuItems from './menu.ts';
 //import OrderDatetime from './order_datetime.ts';
 //import OrderPayment from './order_payment.ts';
 
-import OrderValidations from './order_validated.ts';
+//import OrderValidations from './order_validated.ts';
 import User from './user.ts';
 
 //import user_delivery_addresses from './user_delivery_addresses.ts';

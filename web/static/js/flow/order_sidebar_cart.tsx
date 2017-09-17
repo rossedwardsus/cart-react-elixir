@@ -304,7 +304,7 @@ class SidebarCart extends React.Component<any, any> {
 
             //console.log(JSON.stringify(item));
 
-            if(item.twelveortwentyfourminis == "12"){
+            if(item.size == "regular"){
 
                 return item;
 
@@ -318,7 +318,7 @@ class SidebarCart extends React.Component<any, any> {
 
             //console.log(JSON.stringify(item));
 
-            if(item.twelveortwentyfourminis == "24_minis"){
+            if(item.size == "mini"){
 
                 return item;
 
@@ -452,24 +452,25 @@ class SidebarCart extends React.Component<any, any> {
 
                       console.log("cart menuitems " + JSON.stringify(item));
 
-                      let menu_item = this.props.menuItems.find((menu_item: any) => {
+                      //let menu_item = this.props.menuItems.find((menu_item: any) => {
 
                           //console.log(JSON.stringify(menu_item) + " " + item.item_id);
 
-                          return menu_item.id === item.menu_item_id;
+                      //    return menu_item.id === item.menu_item_id;
 
-                      });
+                      //});
 
-                      console.log("index " + JSON.stringify(menu_item.name));
+                      //console.log("index " + JSON.stringify(menu_item.name));
 
                       //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-                      //let item_name = this.props.menuItems[item.menu_item_id].name;
+                      
+                      let item_name = this.props.menuItems[item.menu_item_id - 1].name;
 
-                      let item_name = "";
+                      //let item_name = "";
 
                       //if(menu_item != undefined){
                         
-                        item_name = menu_item.name;
+                      //  item_name = menu_item.name;
 
                       //}
 
@@ -481,6 +482,7 @@ class SidebarCart extends React.Component<any, any> {
 
 
                       //code is here to check for minis existing???
+                      //if item.size == "" then pool or yours
 
                       if(order_type == "yours" || order_type == "pool"){
 
@@ -497,13 +499,12 @@ class SidebarCart extends React.Component<any, any> {
                                 )
                       }else{
                           
-                          if(item.twelveortwentyfourminis == "24_minis"){
+                          if(item.size == "mini"){
                           
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-4">{item_name}</div>
-                                                <div className="col-md-4">mini</div>
+                                                <div className="col-md-4">{item_name} mini</div>
                                                 <div className="col-xs-4" style={{fontSize: 15}}>{24 * item.quantity}</div>
                                               </div>
                                         </form>
@@ -514,8 +515,7 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                             <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-4">ruby q regular</div>
-                                                <div className="col-md-4">ruby q regular</div>
+                                                <div className="col-md-4">{item_name}</div>
                                                 <div className="col-md-4">{12 * item.quantity}</div>
                                               </div>
                                             </form>
