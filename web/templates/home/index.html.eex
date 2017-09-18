@@ -136,7 +136,7 @@
       margin: 0px;
       padding: 0px;
       margin-right: 0px;
-      padding-right: 30px
+      padding-right: 0px
     }
 
     .container-fluid {
