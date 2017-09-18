@@ -538,16 +538,13 @@ class OrderMenu extends React.Component<any, any> {
                                         <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
                                               <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           <br/>    
-                                          <br/>
-                                          <div className="form-group">
-                                              <div className="col-md-1 col-lg-1 pull-left">
-                                                <b>{item.name}</b>
-                                              </div>
-                                              <div className="col-md-1">
-                                              </div>
-                                              <div className="col-md-1 col-lg-1 pull-right">
-                                                  <button className="btn btn-default btn-sm">View</button>
-                                              </div>
+                                          <div className="col-md-1 col-lg-1 pull-left">
+                                            <b>{item.name}</b>
+                                          </div>
+                                          <div className="col-md-1">
+                                          </div>
+                                          <div className="col-md-1 col-lg-1 pull-right">
+                                              <button className="btn btn-default btn-sm">View</button>
                                           </div>
                                           <br/>
                                           <br/>
