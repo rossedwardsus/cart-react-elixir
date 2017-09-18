@@ -535,7 +535,7 @@ class OrderMenu extends React.Component<any, any> {
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
-                                        <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
+                                        <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
                                           <div>
                                               <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           </div>
@@ -543,7 +543,7 @@ class OrderMenu extends React.Component<any, any> {
                                           <div className="col-md-1 col-lg-1 pull-left">
                                             <b>{item.name}</b>
                                           </div>
-                                          <div className="col-md-1">
+                                          <div className="col-md-1" col-lg-1>
                                           </div>
                                           <div className="col-md-1 col-lg-1 pull-right">
                                               <button className="btn btn-default btn-sm">View</button>
