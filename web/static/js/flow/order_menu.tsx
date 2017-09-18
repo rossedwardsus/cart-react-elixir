@@ -540,12 +540,12 @@ class OrderMenu extends React.Component<any, any> {
                                           <br/>    
                                           <br/>
                                           <div className="form-group">
-                                              <div className="col-md-4 pull-left">
+                                              <div className="col-md-1 col-lg-1 pull-left">
                                                 <b>{item.name}</b>
                                               </div>
-                                              <div className="col-md-4">
+                                              <div className="col-md-1">
                                               </div>
-                                              <div className="col-md-2 pull-right">
+                                              <div className="col-md-1 col-lg-1 pull-right">
                                                   <button className="btn btn-default btn-sm">View</button>
                                               </div>
                                           </div>
