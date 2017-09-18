@@ -539,7 +539,16 @@ class OrderMenu extends React.Component<any, any> {
                                               <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           <br/>    
                                           <br/>
-                                          <b>{item.name}</b><button className="btn btn-default pull-right" type="button" onClick={() => this.showItem(item.id)} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>View Item</button>
+                                          <div className="form-group">
+                                              <div className="col-md-4 pull-left">
+                                                <b>{item.name}</b>
+                                              </div>
+                                              <div className="col-md-4">
+                                              </div>
+                                              <div className="col-md-2 pull-right">
+                                                  <button className="btn btn-default btn-sm">View</button>
+                                              </div>
+                                          </div>
                                           <br/>
                                           <br/>
                                           <br/>

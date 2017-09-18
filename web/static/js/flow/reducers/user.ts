@@ -539,14 +539,23 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
 
     case NAME_VALIDATED:
 
-      console.log("NAME VALIDATED reducer" + JSON.stringify(state));
+      console.log("name VALIDATED reducer" + JSON.stringify(state));
 
-      let order_session = state.orderSession;
-      order_session["name_validated"] = true;
+      order_session_updated = state.orderSession;
+      order_session_updated.validations["nameValidated"] = true;
   
-      return Object.assign({}, state, {...state, orderSession: order_session});
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
    
+    case CONTACT_VALIDATED:
+
+      console.log("contact VALIDATED reducer" + JSON.stringify(state));
+
+      order_session_updated = state.orderSession;
+      order_session_updated.validations["contactValidated"] = true;
+  
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
    
+      
 
 
     default:

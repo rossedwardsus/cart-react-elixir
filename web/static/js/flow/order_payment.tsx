@@ -597,7 +597,29 @@ class OrderDateTimeContact extends React.Component<any, any> {
             //this.setState({"delivery_address_street1": e.target.value});
             //this.setState({"delivery_address_street1_classname": "form-group"});
 
-            //if peomo code is validate apply to total cost
+            //if promo code is validate apply to total cost
+
+            //let promo_codes = ["8thandhope", "grains"];
+
+            if(e.target.value == "8thandhope"){
+
+              //if(promo_codes.indexof(e.target.value) > -1){
+
+                  this.setState({promo_code_discount: 10})
+
+              //}
+            
+            }else{
+
+              //if(e.target.value == "grains"){
+
+              //if(promo_codes.indexof(e.target.value) > -1){
+
+                  this.setState({promo_code_discount: 10})
+
+              //}
+            
+            }
 
             this.props.setPromoCode(e.target.value);
 
@@ -862,7 +884,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                       Discount
                                   </div>
                                   <div className="col-md-2">
-                                      10%
+                                      %{this.state.promo_code_discount}
                                   </div>
                                 </div>
                             </form>
@@ -872,7 +894,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0).toFixed(2)}
+                                    ${this.state.promo_code_discount != 0 ? this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.state.promo_code_discount : this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0).toFixed(2)}
                                   </div>
                                 </div>
                             </form>

@@ -165,13 +165,11 @@ class Name extends React.Component<any, any> {
 
             //if(this.state.first_name.length > 0){
              
-            //  this.props.setNameValidated(e);
+            this.props.nameValidated(e);
             
           }else{
 
             this.setState({last_name_border_color: "red"});
-
-             //this.props.setNameInvalidated(e);
 
           }
 
@@ -267,7 +265,7 @@ class Name extends React.Component<any, any> {
 
           //validated
           //this.props.nameValidated();
-          this.props.contactValidatd();
+          this.props.contactValidated();
 
       }
 
@@ -298,6 +296,7 @@ class Name extends React.Component<any, any> {
           }else{
 
             this.setState({user_mobile: e.target.value});
+            this.props.contactValidated();
 
           }
       

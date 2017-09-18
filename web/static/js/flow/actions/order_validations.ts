@@ -57,15 +57,15 @@ export function contactValidated() {
 }
 
 export function contactInvalidated() {
-  console.log("cart validated ");
+  console.log("contact validated ");
   return {
-    type: DELIVERY_ADDRESS_VALIDATED,
+    type: CONTACT_VALIDATED,
     
   }
 }
 
 export function nameValidated() {
-  console.log("cart validated action");
+  console.log("name validated action");
   return {
     type: NAME_VALIDATED,
     
