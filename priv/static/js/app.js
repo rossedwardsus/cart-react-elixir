@@ -41327,7 +41327,7 @@ webpackJsonp([0],[
 	                //console.log("rerender ");
 	                //console.log("image id " + this.state["image_src_" + item.item_id]);
 	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
-	                return React.createElement("div", { className: "col-xs-12 col-md-4 col-lg-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("div", { className: "col-xl-12" }, React.createElement("img", { id: "1", onClick: function onClick() {
+	                return React.createElement("div", { className: "col-xs-12 col-md-4 col-lg-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("div", { className: "col-lg-12" }, React.createElement("img", { id: "1", onClick: function onClick() {
 	                        return _this3.showItem(item.id);
 	                    }, onMouseEnter: function onMouseEnter(e) {
 	                        return e.currentTarget.src = "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg";
