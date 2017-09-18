@@ -89,7 +89,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
 
       }else if(order_type == "pool"){
 
-            console.log("pool");
+            console.log("create order action pool");
 
             //get pool order data
             //possibly do as an api and not graphql
@@ -108,9 +108,11 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
 
                   console.log("pool order graphql response " + JSON.stringify(response));
 
+                  //if pool date is greater then 24 hours before
+
                   dispatch({
                               type: CREATE_ORDER, 
-                              value: order_type, 
+                              order_type: order_type, 
                               //pool_name: "this.props.params", 
                               pool_date: "this.props.params", 
                               pool_order_id: "response.data.data.getPoolOrderDetails.pool_id", 

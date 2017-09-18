@@ -27270,7 +27270,7 @@ webpackJsonp([0],[
 	            dispatch(react_router_redux_1.push("/order/menu"));
 	            //}
 	        } else if (order_type == "social") {} else if (order_type == "pool") {
-	            console.log("pool");
+	            console.log("create order action pool");
 	            //get pool order data
 	            //possibly do as an api and not graphql
 	            //move this to order menu?
@@ -27279,9 +27279,10 @@ webpackJsonp([0],[
 	            dispatch(menu_ts_1.getMenuItems());
 	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	                console.log("pool order graphql response " + JSON.stringify(response));
+	                //if pool date is greater then 24 hours before
 	                dispatch({
 	                    type: actionTypes_ts_1.CREATE_ORDER,
-	                    value: order_type,
+	                    order_type: order_type,
 	                    //pool_name: "this.props.params", 
 	                    pool_date: "this.props.params",
 	                    pool_order_id: "response.data.data.getPoolOrderDetails.pool_id",
@@ -31105,7 +31106,7 @@ webpackJsonp([0],[
 	        key: "componentWillMount",
 	        value: function componentWillMount() {
 	            //this.props.loadMenuItemsCreateOrder("", this.props.params.pool_name, this.props.params.pool_date);
-	            this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
+	            this.props.createOrder("pool", this.props.params.pool_name, this.props.params.pool_date);
 	            //this.context.router.push("/order/menu");
 	        }
 	    }, {
@@ -41329,10 +41330,12 @@ webpackJsonp([0],[
 	                return React.createElement("div", { className: "col-xs-12 col-md-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", onClick: function onClick() {
 	                        return _this3.showItem(item.id);
 	                    }, onMouseEnter: function onMouseEnter(e) {
-	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg";
+	                        return e.currentTarget.src = "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg";
 	                    }, onMouseLeave: function onMouseLeave(e) {
-	                        return e.currentTarget.src = "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg";
-	                    }, src: "/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
+	                        return e.currentTarget.src = "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg";
+	                    }, src: "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" }), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, item.name), React.createElement("button", { className: "btn btn-default pull-right", type: "button", onClick: function onClick() {
+	                        return _this3.showItem(item.id);
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "View Item"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
 	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, yours_social_pool_quantity_selector)))))));
 	        }
 	    }], [{
@@ -42318,7 +42321,7 @@ webpackJsonp([0],[
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, React.createElement(react_router_1.Link, { to: "/order/menu" }, "<-", " Menu")), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0).toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	            }, 0).toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Discount"), React.createElement("div", { className: "col-md-2" }, "10%"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orderSession.promoCodeDiscountPercentage != 0 ? this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
 	            }, 0) * this.props.User.orderSession.promoCodeDiscountPercentage : this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
@@ -48258,7 +48261,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "Ross", last_name: "Edwards", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameContactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "", last_name: "", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: "" }, { name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: "" }] };
 	      var action = arguments[1];
 	
 	      var delivery_contacts_addresses_updated = null;

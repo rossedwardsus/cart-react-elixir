@@ -51,7 +51,7 @@ class PoolRedirect extends React.Component<any, any> {
   componentWillMount(){
 
     //this.props.loadMenuItemsCreateOrder("", this.props.params.pool_name, this.props.params.pool_date);
-    this.props.createOrder("", this.props.params.pool_name, this.props.params.pool_date);
+    this.props.createOrder("pool", this.props.params.pool_name, this.props.params.pool_date);
     //this.context.router.push("/order/menu");
     
   }

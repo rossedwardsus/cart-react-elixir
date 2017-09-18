@@ -29,8 +29,9 @@
     </table>
   <table width="30%">
     <tr><td><br><br></td></tr>
-    <tr><td>Subtotal Cost</td><td>$50.00</td></tr>
-    <tr><td>Delivery Cost</td><td>$0.00</td></tr>
+    <tr><td>Subtotal Cost</td><td>$<%= @key.subtotal %></td></tr>
+    <tr><td>Delivery Cost</td><td><%= @key.delivery_cost %></td></tr>
+    <tr><td>Discount</td><td><%= @key.promo_code_discount %></td></tr>
     <tr><td>Total Cost</td><td>$<%= @key.total_cost %></td></tr>
     <tr><td><br><br></td></tr>
     <tr><td></td></tr>

@@ -859,6 +859,16 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
+                                      Discount
+                                  </div>
+                                  <div className="col-md-2">
+                                      10%
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-3">
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">

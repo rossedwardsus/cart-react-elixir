@@ -37,13 +37,19 @@ defmodule Sconely.Plugs.RedirectsPlug do
 
         %{"pool_name" => pool_name, "pool_date" => pool_date} ->
                 IO.puts("pool")
-                url = "/#/pool/" <> pool_name <> "/" <> pool_date
-                IO.puts(url)
-                #url = url <> "/"
-                #redirect conn, to: url
-                conn
-                  |> Phoenix.Controller.redirect(to: url)
+                if(pool_name == "image") do
+                  conn
+                  #|> Phoenix.Controller.redirect(to: url)
                   |> halt
+                else
+                  url = "/#/pool/" <> pool_name <> "/" <> pool_date
+                  IO.puts(url)
+                  #url = url <> "/"
+                  #redirect conn, to: url
+                  conn
+                    |> Phoenix.Controller.redirect(to: url)
+                    |> halt
+                end
 
         _ -> conn
 

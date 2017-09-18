@@ -86,6 +86,40 @@ defmodule Sconely.ProcessStripePayment do
     #IO.inspect(total_cost)
 
 
+    cart_items = [%{"quantity": 1, "mini": false}, %{"quantity": 2, "mini": true}]
+
+
+    total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "mini": mini}, count) -> 
+        case mini do
+          false ->  IO.puts("false")
+                    count + (quantity * 1.00)
+          true -> IO.puts("true")
+                  count + (quantity * 2.00)
+        end
+    end)
+
+    IO.puts("total_cost")
+    IO.puts(total_cost)
+
+    promo_code_discount = 0;
+
+    promo_code = "8thandhope"
+
+    case promo_code do
+
+      "8thandhope" -> promo_code_discount = 10
+      "grain" -> promo_code_discount = 10
+
+    end
+
+    total_cost_with_promo_discount = total_cost - total_cost * (promo_code_discount/100)
+
+    
+
+    IO.puts("promo_code_dicsount")
+    IO.puts(total_cost_with_promo_discount)
+
+
     #params[:payment_method_card_number]
     #params[:payment_method_expiry_month]
     #params[:payment_method_expiry_year]

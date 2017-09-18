@@ -536,10 +536,10 @@ class OrderMenu extends React.Component<any, any> {
 
                                 return(
                                         <div className="col-xs-12 col-md-4" style={{marginTop: 0, marginBottom: 0}}>
-                                              <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/laci/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
+                                              <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           <br/>    
                                           <br/>
-                                          <b>{item.name}</b>
+                                          <b>{item.name}</b><button className="btn btn-default pull-right" type="button" onClick={() => this.showItem(item.id)} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>View Item</button>
                                           <br/>
                                           <br/>
                                           <br/>
