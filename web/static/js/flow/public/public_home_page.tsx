@@ -378,7 +378,9 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-2">
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
+                          <div className="hidden-xl">
+                            <Link to="/public/menu">Menu</Link>
+                          </div>
                           <br/>
                           <br/>   
                           <br/>
@@ -406,7 +408,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                           <br/>
                           <br/>
                           <br/>
