@@ -133,25 +133,34 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   end
 
 
+  def total_items() do
 
-
-  def calculate_total_items() do
+      #reduce
 
   end
-
-  def calculate_total_cost() do
-
-  end  
 
   def calculate_delivery_cost() do
 
   end
 
+  def total_cost() do
+
+      #reduce with promo code and delivery
+
+  end
+
+  def promo_code_discount() do
+
+
+  end
+
+  
+
 
   #move these to /lib
 
 
-  def process_date(args) do
+  def format_order_date(args) do
 
       #def from_timestamp(timestamp) do
       #   timestamp

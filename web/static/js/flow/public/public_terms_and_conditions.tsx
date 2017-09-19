@@ -408,9 +408,7 @@ export class PublicPrivacyTermsNavbar extends React.Component<any, any> {
                           </div>
                     </div>
                     <br/>
-                    <br/>
                     <PublicBottomNavbar/>
-                    <br/>
                     <PublicPrivacyTermsNavbar/>
               </div>
     )

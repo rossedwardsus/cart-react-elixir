@@ -403,10 +403,6 @@ export class PublicHomePage extends React.Component<any, any> {
                                       <img className="img-responsive" src={this.state.gallery_image}/>
                                     </div>
                                   </div>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  <br/>
                         </div>
                         <div className="col-md-3">
                           <br/>
