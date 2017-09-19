@@ -368,7 +368,14 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3">
+                        <div className="hidden-xs col-md-1">
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>   
+                          <br/>
+                        </div>
+                        <div className="hidden-xs col-md-1">
                           <br/>
                           <br/>
                           <Link to="/public/menu">Menu</Link>
