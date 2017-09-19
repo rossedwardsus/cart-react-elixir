@@ -182,9 +182,13 @@ export default class Menu extends React.Component<any, any> {
 
     return (
             <div className="row">
-                      <div className="col-md-4">
+                      <div className="col-md-3">
+                        <br/>
+                        <br/>
                       </div>
                       <div className="col-md-2">
+                          <br/>
+                          <br/>
                           <Link to="/public/about_us">ABOUT US</Link>
                           <br/>
                           <Link to="/public/story">OUR STORY</Link>
@@ -193,8 +197,11 @@ export default class Menu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          
                       </div>
                       <div className="col-md-4">
+                          <br/>
+                          <br/>
                           <a href="http://www.instagram.com/sconelyla">Instagram</a>
                           <br/>
                           <a href="http://www.twitter.com/sconelyla">Twitter</a>

@@ -487,7 +487,20 @@ class OrderMenu extends React.Component<any, any> {
         //}
     }
 
-    let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
+    //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
+
+    let message = <div>
+                      <b>Delivery address</b>: {this.props.User.orders[0].pool_order_address}
+                      <br/>
+                      <br/>
+                      <b>Delivery date</b>: {this.props.User.orders[0].pool_order_date_formatted}
+                      <br/>
+                      <br/>
+                      <b>Delivery time</b>: 9:00 AM
+                      <br/>
+                      <br/>
+                      <b>Order by:</b> Thursday, September 21st at midnight 
+                  </div>
 
 
           return(<div>
@@ -537,16 +550,9 @@ class OrderMenu extends React.Component<any, any> {
                                 return(
                                         <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
                                           <div>
-                                              <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="350" width="350"/>
+                                              <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
                                           </div>
-                                          <div>
-                                            <div className="col-xs-12 col-md-7 col-lg-6" style={{float: "left"}}> 
-                                              <b>{item.name}</b>
-                                            </div>
-                                            <div className="col-xs-12 col-md-5 col-lg-6 pull-right"> 
-                                              <button style={{float: "right"}}>View</button>
-                                            </div>
-                                          </div>
+                                          <b>{item.name}</b>
                                           <br/>
                                           <br/>
                                           <br/>

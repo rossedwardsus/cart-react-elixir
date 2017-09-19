@@ -2,6 +2,7 @@ import { CREATE_ORDER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, ADD_CART_ITEM, CLEAR_U
 import {getMenuItems} from './menu.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
+var moment = require('moment');
 
 
 export function addCartItem(order_id: any, item_id: any, size: any, quantity: any) {
@@ -54,7 +55,7 @@ export const saveForLater = (value: any) => ({
 
 export function createOrder(order_type: any, pool_name: any, pool_date: any) {
   //return (dispatch: any, getState: any) => {
-    console.log("create order action " + order_type);
+    console.log("create order action " + pool_date);
     return function(dispatch: any){
       //getMenuItems();
       //dispatch(getMenuItems());
@@ -110,13 +111,22 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
 
                   //if pool date is greater then 24 hours before
 
+                  //console.log(pool_date);
+                  //console.log("pool date" + moment(pool_date).format('dddd'));
+                  //Wednesday January 20th, 2017 
+                  let pool_order_date_formatted = moment(pool_date).format('dddd') + ", " + moment(pool_date).format('MMMM') + " " + moment(pool_date).date();
+
+                  //console.log(pool_order_date_formatted);
+
                   dispatch({
                               type: CREATE_ORDER, 
                               order_type: order_type, 
                               //pool_name: "this.props.params", 
-                              pool_date: "this.props.params", 
-                              pool_order_id: "response.data.data.getPoolOrderDetails.pool_id", 
-                              pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage,
+                              pool_order_id: response.data.data.getPoolOrderDetails.poolOrderId, 
+                              pool_order_date_formatted: pool_order_date_formatted,
+                              pool_order_address: 
+                              "8th and Hope Lobby"
+                              //pool_message: response.data.data.getPoolOrderDetails.poolOrderTime,
                   
                   })
 

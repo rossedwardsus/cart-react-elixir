@@ -112,7 +112,7 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       console.log("CREATE order reducer " + JSON.stringify(action));
 
       orders_updated = state.orders;
-      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: "POOL ORDER_ID", pool_name: action.pool_name, pool_date: action.pool_date, pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: []})
+      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: "action.pool_message", status: "current", created_datetime: "", payment_error: "", cartItems: []})
 
       return Object.assign({}, state, {orders: orders_updated});
 

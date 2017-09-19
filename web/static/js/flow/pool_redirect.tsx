@@ -50,6 +50,8 @@ class PoolRedirect extends React.Component<any, any> {
 
   componentWillMount(){
 
+    console.log(this.props.params.pool_date);
+
     //this.props.loadMenuItemsCreateOrder("", this.props.params.pool_name, this.props.params.pool_date);
     this.props.createOrder("pool", this.props.params.pool_name, this.props.params.pool_date);
     //this.context.router.push("/order/menu");
@@ -129,7 +131,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       //dispatch(cartValidated());
     },
     createOrder: (order_type: any, pool_name: any, pool_date: any) => {
-      dispatch(createOrder("pool", "name", "date"));
+      dispatch(createOrder("pool", pool_name, pool_date));
     }
   }
 }

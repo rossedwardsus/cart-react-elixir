@@ -8,6 +8,9 @@ import {connect} from 'react-redux';
 import {createOrder} from '../actions/order.ts';
 
 import PublicTopNavbar from './public_top_navbar.tsx';
+import PublicBottomNavbar from './public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
+
 
 import {List, Map} from 'immutable';
 
@@ -416,27 +419,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           12-250 Scones.  Regular or Minis.  Baked and delivered for events
                         </div>
                     </div>
-                    <div className="row">
-                      <div className="col-md-4">
-                      </div>
-                      <div className="col-md-2">
-                          <Link to="/public/about_us">ABOUT US</Link>
-                          <br/>
-                          <Link to="/public/story">OUR STORY</Link>
-                          <br/>
-                          <Link to="/public/menu">FAQ</Link>
-                          <br/>
-                          <br/>
-                          <br/>
-                      </div>
-                      <div className="col-md-4">
-                          <Link to="http://www.instagram.com/sconelyla">Instagram</Link>
-                          <br/>
-                          <Link to="/public/menu">Twitter</Link>
-                      </div>
-                      <div className="col-md-2">
-                      </div>
-                    </div>
+                    <PublicBottomNavbar/>
+                    <PublicPrivacyTermsNavbar/>
               </div>
     )
   }

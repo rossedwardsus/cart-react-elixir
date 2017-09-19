@@ -128,6 +128,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       {:ok, %{pool_order_id: "1", pool_order_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
 
+      #{:ok, %{pool_order_id: 1, pool_address: "8th and Hope lobby", pool_datetime: ""}
+
   end
 
 
