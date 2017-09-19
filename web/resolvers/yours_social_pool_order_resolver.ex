@@ -826,7 +826,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #Sconely.CompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
               
-                        Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                        #Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
 
 
@@ -890,8 +890,21 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
           #end
 
-        {:error, error} -> IO.inspect(error)
-            {:ok, %{status: "card_error", error_reason: error.message}}
+        {:error, error} -> IO.inspect(error.code)
+
+            error_message = ""
+
+            case error.code do
+
+              "incorrect_cvc" -> error_message = "You have entered an incorrect CVC"
+
+                #IO.puts("cvc")
+
+              _ ->                error_message = "There was an error please try another card"
+
+            end
+
+            {:ok, %{status: "error", error_reason: error_message}}
 
             #IO.inspect(error)
             #log error in database

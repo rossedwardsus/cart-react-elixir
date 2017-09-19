@@ -116,7 +116,7 @@ defmodule Sconely.ProcessStripePayment do
 
     
 
-    IO.puts("promo_code_dicsount")
+    IO.puts("promo_code_discount")
     IO.puts(total_cost_with_promo_discount)
 
 
@@ -185,14 +185,19 @@ defmodule Sconely.ProcessStripePayment do
     #IO.inspect(amount * 100 )
 
     IO.puts("card data from app")
-    IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
+    #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
 
     #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
 
     #IO.puts("test card date")
-    case Stripe.Token.create(%{:card => %{"number" => "4242424242424242", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+    #fraudulent
+    #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+    #cvc
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
 
 
         #IO.inspect(token["id"])  

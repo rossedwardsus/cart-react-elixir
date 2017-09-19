@@ -19151,7 +19151,7 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-1" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xl" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-1" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xl" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-5" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image }))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_yours");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
@@ -27351,14 +27351,14 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "8thandhope", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "8thandhope", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", ", payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
 	            ////error_message = "There was an error in your CVC code."
 	            //incorrect card number
 	            //
-	            dispatch({ type: actionTypes_ts_1.SET_PAYMENT_ERROR, errorMessage: error_message });
+	            dispatch({ type: actionTypes_ts_1.SET_PAYMENT_ERROR, errorMessage: response.data.data.processYoursSocialPoolOrder.errorReason });
 	            /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){
 	                 //console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialPoolOrder.errorReason));
 	                 
@@ -27535,6 +27535,7 @@ webpackJsonp([0],[
 	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_STATE';
 	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE';
 	exports.SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE = 'SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE';
+	exports.SET_USER_PAYMENT_METHOD_NAME_ON_CARD = 'SET_USER_PAYMENT_METHOD_NAME_ON_CARD';
 	exports.SET_USER_PAYMENT_METHOD_CARD_NUMBER = 'SET_USER_PAYMENT_METHOD_CARD_NUMBER';
 	exports.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_PAYMENT_METHOD_EXPIRY_MONTH';
 	exports.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_PAYMENT_METHOD_EXPIRY_YEAR';
@@ -27580,6 +27581,7 @@ webpackJsonp([0],[
 	exports.SET_DELIVERY_CONTACT_ADDRESS_CITY = 'SET_DELIVERY_CONTACT_ADDRESS_CITY';
 	exports.SET_DELIVERY_CONTACT_ADDRESS_STATE = 'SET_DELIVERY_CONTACT_ADDRESS_STATE';
 	exports.SET_DELIVERY_CONTACT_ADDRESS_ZIPCODE = 'SET_DELIVERY_CONTACT_ADDRESS_ZIPCODE';
+	exports.SET_PAYMENT_METHOD_NAME_ON_CARD = 'SET_PAYMENT_METHOD_NAME_ON_CARD';
 	exports.SET_PAYMENT_METHOD_CARD_NUMBER = 'SET_PAYMENT_METHOD_CARD_NUMBER';
 	exports.SET_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_PAYMENT_METHOD_EXPIRY_MONTH';
 	exports.SET_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_PAYMENT_METHOD_EXPIRY_YEAR';
@@ -27617,7 +27619,7 @@ webpackJsonp([0],[
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_CITY = 'SET_USER_ORDER_DELIVERY_ADDRESS_CITY';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_STATE = 'SET_USER_ORDER_DELIVERY_ADDRESS_STATE';
 	exports.SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE = 'SET_USER_ORDER_DELIVERY_ADDRESS_ZIPCODE';
-	exports.SET_USER_ORDER_PAYMENT_NAME_ON_CARD = 'SET_USER_ORDER_PAYMENT_NAME_ON_CARD';
+	exports.SET_USER_ORDER_PAYMENT_METHOD_NAME_ON_CARD = 'SET_USER_ORDER_PAYMENT_METHOD_NAME_ON_CARD';
 	exports.SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER = 'SET_USER_ORDER_PAYMENT_METHOD_CARD_NUMBER';
 	exports.SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_YEAR';
 	exports.SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_ORDER_PAYMENT_METHOD_EXPIRY_MONTH';
@@ -29682,7 +29684,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/about_us" }, "ABOUT US"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/story" }, "OUR STORY"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "FAQ"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter")), React.createElement("div", { className: "col-md-2" }));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/public/about_us" }, "ABOUT US"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/story" }, "OUR STORY"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "FAQ"), React.createElement("br", null)), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("br", null), React.createElement("br", null), React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter")), React.createElement("div", { className: "col-md-2" }));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -29850,7 +29852,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-12" }, React.createElement("br", null), React.createElement("br", null), "2017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-12" }, React.createElement("br", null), React.createElement("br", null), "2017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY"), React.createElement("br", null), React.createElement("br", null)));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -32172,6 +32174,14 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.addUserPaymentMethod = addUserPaymentMethod;
+	function setUserPaymentMethodNameOnCard(id, name) {
+	    //console.log("state" + JSON.stringify(state));
+	    console.log("set user payment name action");
+	    return function (dispatch) {
+	        dispatch({ type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_NAME_ON_CARD, id: id, value: name });
+	    };
+	}
+	exports.setUserPaymentMethodNameOnCard = setUserPaymentMethodNameOnCard;
 	function setUserPaymentMethodCardNumber(id, number) {
 	    //console.log("state" + JSON.stringify(state));
 	    console.log("set user payment name action");
@@ -42133,7 +42143,8 @@ webpackJsonp([0],[
 	            selected_time: "",
 	            selected_specific_time: "",
 	            button_complete_order_classname: "btn btn-default",
-	            button_complete_order_disabled: ""
+	            button_complete_order_disabled: "",
+	            promo_code_discount: 0
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -42516,7 +42527,7 @@ webpackJsonp([0],[
 	                return amount + item.quantity * 5.5;
 	            }, 0) * this.state.promo_code_discount : this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0).toFixed(2)))), React.createElement("br", null), "if cvc then tell the user", React.createElement("br", null), "else just say there was an error please try another payment method", React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            }, 0).toFixed(2)))), React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
@@ -42902,7 +42913,9 @@ webpackJsonp([0],[
 	                                  </div>
 	                              </div>
 	                          </form>*/
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	                    return _this2.setPaymentNameOnCard(e);
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
 	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryMonthFocus();
@@ -45234,11 +45247,11 @@ webpackJsonp([0],[
 	            if (this.props.User.orders[0].order_type = "pool") {
 	                screen = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Name:"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Ross Edwards"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Contact"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-6" }, "rossedwards@gmail.com"), React.createElement("div", { className: "col-sm-6" }, "310-775-5566"))));
 	            } else {
-	                screen = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Name:"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Ross Edwards"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Contact"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "rossedwards@gmail.com")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "310-775-5566"))), React.createElement("br", null), "Delivery Contact", React.createElement("br", null), "Delivery Date", React.createElement("br", null), "Monday Sept 1st, 2017", React.createElement("br", null), "9-11 am", React.createElement("br", null), "Delivery Address", React.createElement("br", null), "11901 Santa Monica Blvd, Los Angeles, CA, 90025", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null)))));
+	                screen = React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Name:"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Ross Edwards"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Contact"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "rossedwards@gmail.com")), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "310-775-5566"))), React.createElement("br", null), "Delivery Contact", React.createElement("br", null), "Delivery Date", React.createElement("br", null), "Monday Sept 1st, 2017", React.createElement("br", null), "9-11 am", React.createElement("br", null), "Delivery Address", React.createElement("br", null), "11901 Santa Monica Blvd, Los Angeles, CA, 90025", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null));
 	            }
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "only show on mobile", React.createElement("br", null), React.createElement("button", { onClick: function onClick() {
 	                    return _this2.showCart();
-	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), screen, React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Name:"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Ross Edwards"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Contact:"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-6" }, "rossedwards@gmail.com"), React.createElement("div", { className: "col-sm-6" }, "310-775-5566"))), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/checkout" }, "Edit Name and Contact"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), "if not \"pool\"", React.createElement("br", null), React.createElement("br", null), this.props.User.orders[0].cartItems[0] == "yours" && React.createElement("div", null, "Delivery Contact", React.createElement("br", null), "Delivery Date", React.createElement("br", null), "Monday Sept 1st, 2017", React.createElement("br", null), "9-11 am", React.createElement("br", null), "Delivery Address", React.createElement("br", null), "11901 Santa Monica Blvd, Los Angeles, CA, 90025", React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/delivery" }, "Edit Delivery Information"), React.createElement("br", null), React.createElement("br", null), "Items", React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-10" }, React.createElement("b", null, "Cart Items"), React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Total Due"), React.createElement("br", null))))), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Payment"), React.createElement("br", null)))));
+	                } }, "cart()"), React.createElement("br", null), React.createElement("br", null), screen, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/cart" }, "Cart"), React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default" }, "Payment"), React.createElement("br", null)))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -48452,323 +48465,329 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "", last_name: "", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: "" }, { name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: "" }] };
-	      var action = arguments[1];
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { first_name: "", last_name: "", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: { datetimeCreated: "", paymentError: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: "" }, { name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: "" }] };
+	    var action = arguments[1];
 	
-	      var delivery_contacts_addresses_updated = null;
-	      var payment_methods_updated = null;
-	      var user_updated = null;
-	      var orders_updated = null;
-	      var order_session_updated = null;
-	      var save_for_later_updated = null;
-	      switch (action.type) {
-	            case actionTypes_ts_1.GET_USER:
-	                  console.log("set user email" + JSON.stringify(state));
-	                  //normalizr
-	                  //delivery addrress
-	                  return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
-	            //complete_order
-	            //set order status to "completed"
-	            case actionTypes_ts_1.CLEAR_USER:
-	                  console.log("CLEAR USER REDUCER " + JSON.stringify(state));
-	                  //normalizr
-	                  //delivery addrress
-	                  //return Object.assign({}, state, {...state, email: action.});
-	                  return { first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
-	            case actionTypes_ts_1.SET_ORDER_TYPE:
-	                  console.log("set order type reducer");
-	                  //find order where status == "started"
-	                  //if none exists that add the order
-	                  //set name here or just set it in default
-	                  orders_updated = state.orders;
-	                  //if another pool order exists change it's status to "saved"
-	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [] });
-	                  var started_order = state.orders.findIndex(function (order) {
-	                        return order.status == "started";
-	                  });
-	                  console.log("started order " + started_order);
-	                  /*if(action.order_type == "pool"){
-	                             //orders_updated = state.orders;
-	                      //orders_updated[0]["order_type"] = action.order_type;
-	                      //orders_updated[0]["pool_name"] = action.pool_name;
-	                      //orders_updated[0]["pool_date"] = action.pool_date;
-	                      orders_updated[0]["pool_message"] = action.pool_message;
-	                             //if order_type == pool then add pool_name to order
-	                      //also need to load the message for the pool order
-	                         }*/
-	                  //return Object.assign({}, state, {orders: orders_updated});
-	                  return Object.assign({}, state, { orders: orders_updated });
-	            case actionTypes_ts_1.SET_PROMO_CODE:
-	                  console.log("promo code reducer");
-	                  order_session_updated = state.orderSession;
-	                  order_session_updated["promoCode"] = action.code;
-	                  order_session_updated["promoCodeDiscountPercentage"] = 10;
-	                  return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
-	            case actionTypes_ts_1.SET_PAYMENT_ERROR:
-	                  console.log("add cart reducer");
-	                  order_session_updated = state.orderSession;
-	                  order_session_updated["paymentError"] = action.error;
-	                  return Object.assign({}, state, Object.assign({}, state, { orderdSession: order_session_updated }));
-	            case actionTypes_ts_1.CREATE_ORDER:
-	                  console.log("CREATE order reducer " + JSON.stringify(action));
-	                  orders_updated = state.orders;
-	                  orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: "action.pool_message", status: "current", created_datetime: "", payment_error: "", cartItems: [] });
-	                  return Object.assign({}, state, { orders: orders_updated });
-	            case actionTypes_ts_1.ADD_CART_ITEM:
-	                  console.log("add cart item reducer here " + JSON.stringify(action));
-	                  //if order_type == social
-	                  //orders.filter((order: ) => order.order_type == "social"
-	                  orders_updated = state.orders;
-	                  //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
-	                  //else
-	                  orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity, size: "mini" });
-	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
-	            /*case INCREASE_CART_ITEM_QUANTITY:
-	              
-	              console.log("increase reducer " + JSON.stringify(state));
-	                   //if quantity < 5 increase
-	              //else do nothing
-	                   return Object.assign({}, state, {
-	                cart_items: state.cart_items.map((item: any, index: any) => {
-	                  if (item.item_id === action.item_id) {
-	                      item.quantity = item.quantity + 1;
-	                  }
-	                  return item
-	                })
+	    var delivery_contacts_addresses_updated = null;
+	    var payment_methods_updated = null;
+	    var user_updated = null;
+	    var orders_updated = null;
+	    var order_session_updated = null;
+	    var save_for_later_updated = null;
+	    switch (action.type) {
+	        case actionTypes_ts_1.GET_USER:
+	            console.log("set user email" + JSON.stringify(state));
+	            //normalizr
+	            //delivery addrress
+	            return Object.assign({}, state, Object.assign({}, state, { email: action.data }));
+	        //complete_order
+	        //set order status to "completed"
+	        case actionTypes_ts_1.CLEAR_USER:
+	            console.log("CLEAR USER REDUCER " + JSON.stringify(state));
+	            //normalizr
+	            //delivery addrress
+	            //return Object.assign({}, state, {...state, email: action.});
+	            return { first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{ order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: [] }], delivery_address_names: [], deliveryContactsAddresses: [{ name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2" }, { name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2" }], paymentMethods: [{ name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "" }, { name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: "" }] };
+	        case actionTypes_ts_1.SET_ORDER_TYPE:
+	            console.log("set order type reducer");
+	            //find order where status == "started"
+	            //if none exists that add the order
+	            //set name here or just set it in default
+	            orders_updated = state.orders;
+	            //if another pool order exists change it's status to "saved"
+	            orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: "pool", pool_order_id: "action.pool_order_id", pool_name: "action.pool_name", pool_date: "action.pool_date", pool_message: action.pool_message, status: "current", created_datetime: "", payment_error: "", cartItems: [] });
+	            var started_order = state.orders.findIndex(function (order) {
+	                return order.status == "started";
+	            });
+	            console.log("started order " + started_order);
+	            /*if(action.order_type == "pool"){
+	                       //orders_updated = state.orders;
+	                //orders_updated[0]["order_type"] = action.order_type;
+	                //orders_updated[0]["pool_name"] = action.pool_name;
+	                //orders_updated[0]["pool_date"] = action.pool_date;
+	                orders_updated[0]["pool_message"] = action.pool_message;
+	                       //if order_type == pool then add pool_name to order
+	                //also need to load the message for the pool order
+	                   }*/
+	            //return Object.assign({}, state, {orders: orders_updated});
+	            return Object.assign({}, state, { orders: orders_updated });
+	        case actionTypes_ts_1.SET_PROMO_CODE:
+	            console.log("promo code reducer");
+	            order_session_updated = state.orderSession;
+	            order_session_updated["promoCode"] = action.code;
+	            order_session_updated["promoCodeDiscountPercentage"] = 10;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
+	        case actionTypes_ts_1.SET_PAYMENT_ERROR:
+	            console.log("add cart reducer");
+	            order_session_updated = state.orderSession;
+	            order_session_updated["paymentError"] = action.error;
+	            return Object.assign({}, state, Object.assign({}, state, { orderdSession: order_session_updated }));
+	        case actionTypes_ts_1.CREATE_ORDER:
+	            console.log("CREATE order reducer " + JSON.stringify(action));
+	            orders_updated = state.orders;
+	            orders_updated.push({ deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: "action.pool_message", status: "current", created_datetime: "", payment_error: "", cartItems: [] });
+	            return Object.assign({}, state, { orders: orders_updated });
+	        case actionTypes_ts_1.ADD_CART_ITEM:
+	            console.log("add cart item reducer here " + JSON.stringify(action));
+	            //if order_type == social
+	            //orders.filter((order: ) => order.order_type == "social"
+	            orders_updated = state.orders;
+	            //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
+	            //else
+	            orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity, size: "mini" });
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	        /*case INCREASE_CART_ITEM_QUANTITY:
+	          
+	          console.log("increase reducer " + JSON.stringify(state));
+	               //if quantity < 5 increase
+	          //else do nothing
+	               return Object.assign({}, state, {
+	            cart_items: state.cart_items.map((item: any, index: any) => {
+	              if (item.item_id === action.item_id) {
+	                  item.quantity = item.quantity + 1;
+	              }
+	              return item
+	            })
+	          })*/
+	        case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
+	            console.log("increase cart item quantity reducer " + JSON.stringify(action.item_index));
+	            //if quantity < 5 increase
+	            //else do nothing
+	            orders_updated = state.orders;
+	            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
+	            /*state.User.orders[0].cartItems.map((item: any, index: any) => {
+	                if (item.item_id === action.item_id) {
+	                    item.quantity = item.quantity + 1;
+	                }
+	                return item
 	              })*/
-	            case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
-	                  console.log("increase cart item quantity reducer " + JSON.stringify(action.item_index));
-	                  //if quantity < 5 increase
-	                  //else do nothing
-	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
-	                  /*state.User.orders[0].cartItems.map((item: any, index: any) => {
-	                      if (item.item_id === action.item_id) {
-	                          item.quantity = item.quantity + 1;
-	                      }
-	                      return item
-	                    })*/
-	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
-	            case actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY:
-	                  console.log("decrease reducer " + JSON.stringify(action.item_index));
-	                  //todo if dozens is 0 then just remove
-	                  //get quantity
-	                  //if dozens > 0
-	                  //let item = "";
-	                  //item = state.cart_items.find((item: any, index: any) => {
-	                  //    return item.item_id === action.item_id;
-	                  //})
-	                  //let item_index = state.cart_items.findIndex((item: any) => {
-	                  //    return index;
-	                  //})
-	                  //console.log("quantity" + JSON.stringify(item));
-	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
-	                  /*return Object.assign({}, state, {
-	                    cart_items: state.cart_items.map((item: any, index: any) => {
-	                      if (item.item_id === action.item_id) {
-	                          if(item.quantity > 1){
-	                              item.quantity = item.quantity - 1;
-	                          }
-	                      }
-	                      return item
-	                    })
-	                  })*/
-	                  //else remove item
-	                  //array.splice( index, 1 )
-	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
-	            case actionTypes_ts_1.REMOVE_CART_ITEM:
-	                  console.log("REMOVE reducer " + JSON.stringify(action.item_index));
-	                  //todo if dozens is 0 then just remove
-	                  //if dozens > 0
-	                  /*return Object.assign({}, state, {
-	                    cart_items: state.cart_items.map((item: any, index: any) => {
-	                      if (item.item_id === action.item_id) {
-	                          return false
-	                      }
-	                      return item
-	                    })
-	                  })*/
-	                  orders_updated = state.orders;
-	                  orders_updated[0].cartItems.splice(action.item_index, 1);
-	                  return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	        case actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY:
+	            console.log("decrease reducer " + JSON.stringify(action.item_index));
+	            //todo if dozens is 0 then just remove
+	            //get quantity
+	            //if dozens > 0
+	            //let item = "";
+	            //item = state.cart_items.find((item: any, index: any) => {
+	            //    return item.item_id === action.item_id;
+	            //})
+	            //let item_index = state.cart_items.findIndex((item: any) => {
+	            //    return index;
+	            //})
+	            //console.log("quantity" + JSON.stringify(item));
+	            orders_updated = state.orders;
+	            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
+	            /*return Object.assign({}, state, {
+	              cart_items: state.cart_items.map((item: any, index: any) => {
+	                if (item.item_id === action.item_id) {
+	                    if(item.quantity > 1){
+	                        item.quantity = item.quantity - 1;
+	                    }
+	                }
+	                return item
+	              })
+	            })*/
 	            //else remove item
-	            case actionTypes_ts_1.SET_USER_NAME_FIRST:
-	                  console.log("user first name reducer " + JSON.stringify(action.value));
-	                  //user_updated = state;
-	                  //user_updated["first_name"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { first_name: action.value }));
-	            case actionTypes_ts_1.SET_USER_NAME_LAST:
-	                  console.log("user last name reducer " + JSON.stringify(state));
-	                  return Object.assign({}, state, Object.assign({}, state, { last_name: action.value }));
-	            case actionTypes_ts_1.SET_USER_CONTACT_EMAIL:
-	                  console.log("set user email reducer " + JSON.stringify(action.value));
-	                  return Object.assign({}, state, Object.assign({}, state, { email: action.value }));
-	            case actionTypes_ts_1.SET_USER_CONTACT_MOBILE:
-	                  console.log("set user mobile reducer " + JSON.stringify(state));
-	                  return Object.assign({}, state, Object.assign({}, state, { mobile: action.value }));
-	            /*case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
-	                   console.log("user delivery contact address first name reducer");
-	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	              delivery_contacts_addresses_updated[0].first_name = action.value;
-	                   return Object.assign({}, state, {...state, deliveryContactAddress: delivery_contacts_addresses_updated });
-	                   //else remove item
-	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
-	                   console.log("user delivery contact address last name reducer");
-	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	              delivery_contacts_addresses_updated[0].last_name = action.value;
-	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
-	                   //else remove item
-	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE:
-	                   console.log("user delivery contact address mobile reducer");
-	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	              delivery_contacts_addresses_updated[0].mobile = action.value;
-	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
-	                   //else remove item
-	                 /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
-	                   console.log("user delivery contact address mobile reducer");
-	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	              delivery_contacts_addresses_updated[0].mobile = action.value;
-	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
-	                   //else remove item
-	                 case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE2:
-	                   console.log("user delivery contact address mobile reducer");
-	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	              delivery_contacts_addresses_updated[0].mobile = action.value;
-	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
-	                   //else remove item*/
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME:
-	                  console.log("user delivery contact address company name reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].company = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1:
-	                  console.log("user delivery contact address street1 reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].street1 = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2:
-	                  console.log("user delivery contact address street2 reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].street1 = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_CITY:
-	                  console.log("user delivery contact address city reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].city = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE:
-	                  console.log("user delivery contact address state reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].street1 = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE:
-	                  console.log("user delivery contact address zipcode reducer");
-	                  delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	                  delivery_contacts_addresses_updated[0].street1 = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
-	            //else remove item
-	            case actionTypes_ts_1.SAVE_FOR_LATER:
-	                  console.log("user save for later reducer");
-	                  save_for_later_updated = state.saveForLater;
-	                  save_for_later_updated = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { saveForLater: save_for_later_updated }));
-	            //else remove item
-	            /*case SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE:
-	                   console.log("user delivery contact address mobile reducer");
-	                   delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-	              delivery_contacts_addresses_updated[0].mobile = action.value;
-	                   return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
-	                   //else remove item*/
-	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
-	                  console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
-	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.paymentMethods;
-	                  payment_methods_updated[0]["card_number"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
-	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_BRAND:
-	                  console.log("set user payment methods reducer card brand " + JSON.stringify(action.value));
-	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.paymentMethods;
-	                  payment_methods_updated[0]["card_brand"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
-	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
-	                  console.log("set user payment methods reducer month " + JSON.stringify(action.value));
-	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.paymentMethods;
-	                  payment_methods_updated[0]["expiry_month"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
-	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
-	                  console.log("set user payment methods reducer year " + JSON.stringify(action.value));
-	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.paymentMethods;
-	                  payment_methods_updated[0]["expiry_year"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
-	            case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
-	                  console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
-	                  //let delivery_addresses_temp = state.delivery_addresses;
-	                  payment_methods_updated = state.paymentMethods;
-	                  payment_methods_updated[0]["security_code"] = action.value;
-	                  return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
-	            /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
-	              console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
-	                   delivery_contacts_addresses_updated = state.delivery_addresses;
-	              delivery_contacts_addresses_updated.push({name: "n", street1: "street1", street2: "street2"});
-	                   return Object.assign({}, state, {...state, delivery_contacts_addresses: delivery_contacts_addresses_updated});
-	             
-	            case SAVE_USER_DELIVERY_CONTACT_ADDRESS:
-	              console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
-	                   let delivery_addresses_temp = state.delivery_addresses;
-	              let delivery_addresses_updated = delivery_addresses_temp["new_address"] = {id: 1234, street1: "street1", street2: "street2"};
-	                   return Object.assign({}, state, {...state, delivery_addresses: {...state.delivery_addresses, ["new_address"]: {id: 1234, street1: "street1", street2: "street2"}}});*/
-	            //case GET_USER_PAYMENT_METHODS:
-	            //  console.log("user" + JSON.stringify(state));
-	            //  return Object.assign({}, state, {...state, user_delivery_methods: []});
-	            /*case ADD_USER_PAYMENT_METHOD:
-	              console.log("ADD user payment methods reducer" + JSON.stringify(state));
-	                   //let delivery_addresses_temp = state.delivery_addresses;
-	                   payment_methods_updated = state.payment_methods;
-	              payment_methods_updated["work"] = {STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01"};
-	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	                 case SET_PAYMENT_METHOD_CARD_NUMBER:
-	              console.log("set user payment methods reducer" + JSON.stringify(state));
-	                   //let delivery_addresses_temp = state.delivery_addresses;
-	                   payment_methods_updated = state.payment_methods;
-	              payment_methods_updated[0]["card_number"] = "987654321";
-	                   //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	                 case SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
-	              console.log("set user payment methods reducer" + JSON.stringify(state));
-	                   //let delivery_addresses_temp = state.delivery_addresses;
-	                   payment_methods_updated = state.payment_methods;
-	              payment_methods_updated[action.id]["expiry_month"] = action.value;
-	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
-	             
-	            case SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
-	              console.log("set user payment methods reducer" + JSON.stringify(state));
-	                   //let delivery_addresses_temp = state.delivery_addresses;
-	                   payment_methods_updated = state.payment_methods;
-	              payment_methods_updated[action.id]["expiry_year"] = action.value;
-	                   return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
-	            case actionTypes_ts_1.NAME_VALIDATED:
-	                  console.log("name VALIDATED reducer" + JSON.stringify(state));
-	                  order_session_updated = state.orderSession;
-	                  order_session_updated.validations["nameValidated"] = true;
-	                  return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
-	            case actionTypes_ts_1.CONTACT_VALIDATED:
-	                  console.log("contact VALIDATED reducer" + JSON.stringify(state));
-	                  order_session_updated = state.orderSession;
-	                  order_session_updated.validations["contactValidated"] = true;
-	                  return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
-	            default:
-	                  //alert();
-	                  //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	                  return state;
-	      }
+	            //array.splice( index, 1 )
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	        case actionTypes_ts_1.REMOVE_CART_ITEM:
+	            console.log("REMOVE reducer " + JSON.stringify(action.item_index));
+	            //todo if dozens is 0 then just remove
+	            //if dozens > 0
+	            /*return Object.assign({}, state, {
+	              cart_items: state.cart_items.map((item: any, index: any) => {
+	                if (item.item_id === action.item_id) {
+	                    return false
+	                }
+	                return item
+	              })
+	            })*/
+	            orders_updated = state.orders;
+	            orders_updated[0].cartItems.splice(action.item_index, 1);
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_USER_NAME_FIRST:
+	            console.log("user first name reducer " + JSON.stringify(action.value));
+	            //user_updated = state;
+	            //user_updated["first_name"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { first_name: action.value }));
+	        case actionTypes_ts_1.SET_USER_NAME_LAST:
+	            console.log("user last name reducer " + JSON.stringify(state));
+	            return Object.assign({}, state, Object.assign({}, state, { last_name: action.value }));
+	        case actionTypes_ts_1.SET_USER_CONTACT_EMAIL:
+	            console.log("set user email reducer " + JSON.stringify(action.value));
+	            return Object.assign({}, state, Object.assign({}, state, { email: action.value }));
+	        case actionTypes_ts_1.SET_USER_CONTACT_MOBILE:
+	            console.log("set user mobile reducer " + JSON.stringify(state));
+	            return Object.assign({}, state, Object.assign({}, state, { mobile: action.value }));
+	        /*case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
+	               console.log("user delivery contact address first name reducer");
+	               delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	          delivery_contacts_addresses_updated[0].first_name = action.value;
+	               return Object.assign({}, state, {...state, deliveryContactAddress: delivery_contacts_addresses_updated });
+	               //else remove item
+	             case SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME:
+	               console.log("user delivery contact address last name reducer");
+	               delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	          delivery_contacts_addresses_updated[0].last_name = action.value;
+	               return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	               //else remove item
+	             case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE:
+	               console.log("user delivery contact address mobile reducer");
+	               delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	          delivery_contacts_addresses_updated[0].mobile = action.value;
+	               return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	               //else remove item
+	             /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
+	               console.log("user delivery contact address mobile reducer");
+	               delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	          delivery_contacts_addresses_updated[0].mobile = action.value;
+	               return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	               //else remove item
+	             case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE2:
+	               console.log("user delivery contact address mobile reducer");
+	               delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	          delivery_contacts_addresses_updated[0].mobile = action.value;
+	               return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	               //else remove item*/
+	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME:
+	            console.log("user delivery contact address company name reducer");
+	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	            delivery_contacts_addresses_updated[0].company = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1:
+	            console.log("user delivery contact address street1 reducer");
+	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	            delivery_contacts_addresses_updated[0].street1 = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2:
+	            console.log("user delivery contact address street2 reducer");
+	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	            delivery_contacts_addresses_updated[0].street1 = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_CITY:
+	            console.log("user delivery contact address city reducer");
+	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	            delivery_contacts_addresses_updated[0].city = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_STATE:
+	            console.log("user delivery contact address state reducer");
+	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	            delivery_contacts_addresses_updated[0].street1 = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE:
+	            console.log("user delivery contact address zipcode reducer");
+	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	            delivery_contacts_addresses_updated[0].street1 = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SAVE_FOR_LATER:
+	            console.log("user save for later reducer");
+	            save_for_later_updated = state.saveForLater;
+	            save_for_later_updated = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { saveForLater: save_for_later_updated }));
+	        //else remove item
+	        /*case SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE:
+	               console.log("user delivery contact address mobile reducer");
+	               delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+	          delivery_contacts_addresses_updated[0].mobile = action.value;
+	               return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+	               //else remove item*/
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_NAME_ON_CARD:
+	            console.log("set user payment methods reducer name on card " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["name_on_card"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_NUMBER:
+	            console.log("set user payment methods reducer card number " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["card_number"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_CARD_BRAND:
+	            console.log("set user payment methods reducer card brand " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["card_brand"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	            console.log("set user payment methods reducer month " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["expiry_month"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	            console.log("set user payment methods reducer year " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["expiry_year"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
+	            console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["security_code"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        /*case ADD_USER_DELIVERY_CONTACT_ADDRESS:
+	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
+	               delivery_contacts_addresses_updated = state.delivery_addresses;
+	          delivery_contacts_addresses_updated.push({name: "n", street1: "street1", street2: "street2"});
+	               return Object.assign({}, state, {...state, delivery_contacts_addresses: delivery_contacts_addresses_updated});
+	         
+	        case SAVE_USER_DELIVERY_CONTACT_ADDRESS:
+	          console.log("add user delivery addresses reducer" + JSON.stringify({...state.delivery_addresses, new_address: {id: 1234, street1: "street1", street2: "street2"}}));
+	               let delivery_addresses_temp = state.delivery_addresses;
+	          let delivery_addresses_updated = delivery_addresses_temp["new_address"] = {id: 1234, street1: "street1", street2: "street2"};
+	               return Object.assign({}, state, {...state, delivery_addresses: {...state.delivery_addresses, ["new_address"]: {id: 1234, street1: "street1", street2: "street2"}}});*/
+	        //case GET_USER_PAYMENT_METHODS:
+	        //  console.log("user" + JSON.stringify(state));
+	        //  return Object.assign({}, state, {...state, user_delivery_methods: []});
+	        /*case ADD_USER_PAYMENT_METHOD:
+	          console.log("ADD user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated["work"] = {STRIPE_TOKEN: "", card_number: "012345678", expiry_month: "01"};
+	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	             case SET_PAYMENT_METHOD_CARD_NUMBER:
+	          console.log("set user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated[0]["card_number"] = "987654321";
+	               //return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	             case SET_USER_PAYMENT_METHOD_EXPIRY_MONTH:
+	          console.log("set user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated[action.id]["expiry_month"] = action.value;
+	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
+	         
+	        case SET_USER_PAYMENT_METHOD_EXPIRY_YEAR:
+	          console.log("set user payment methods reducer" + JSON.stringify(state));
+	               //let delivery_addresses_temp = state.delivery_addresses;
+	               payment_methods_updated = state.payment_methods;
+	          payment_methods_updated[action.id]["expiry_year"] = action.value;
+	               return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});*/
+	        case actionTypes_ts_1.NAME_VALIDATED:
+	            console.log("name VALIDATED reducer" + JSON.stringify(state));
+	            order_session_updated = state.orderSession;
+	            order_session_updated.validations["nameValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
+	        case actionTypes_ts_1.CONTACT_VALIDATED:
+	            console.log("contact VALIDATED reducer" + JSON.stringify(state));
+	            order_session_updated = state.orderSession;
+	            order_session_updated.validations["contactValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: order_session_updated }));
+	        default:
+	            //alert();
+	            //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	            return state;
+	    }
 	}
 	exports.default = user;
 	;

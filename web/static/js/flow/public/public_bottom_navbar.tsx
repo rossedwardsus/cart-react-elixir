@@ -186,15 +186,17 @@ export default class Menu extends React.Component<any, any> {
                         <br/>
                         <br/>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-4">
                           <br/>
                           <br/>
-                          <Link to="/public/about_us">ABOUT US</Link>
-                          <br/>
-                          <Link to="/public/story">OUR STORY</Link>
-                          <br/>
-                          <Link to="/public/menu">FAQ</Link>
-                          <br/>
+                          <div>
+                            <Link to="/public/about_us">ABOUT US</Link>
+                            <br/>
+                            <Link to="/public/story">OUR STORY</Link>
+                            <br/>
+                            <Link to="/public/menu">FAQ</Link>
+                            <br/>
+                          </div>
                           <br/>
                           <br/>
                           

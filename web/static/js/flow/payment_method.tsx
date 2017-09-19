@@ -311,6 +311,13 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
+                        <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                      </div>
+                    </div>
+                  </form>
+                  <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-4">
                         <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="col-sm-3">

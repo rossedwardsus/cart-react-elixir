@@ -870,70 +870,56 @@ class Preview extends React.Component<any, any> {
     }else{
 
       screen = <div>
-                <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                              Name:
-                          </div>
-                        </div>
-                    </form>
                     <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                              Ross Edwards
-                          </div>
-                        </div>
-                    </form>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                              Contact
-                          </div>
-                        </div>
-                    </form>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                              rossedwards@gmail.com
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <div className="col-sm-12">
-                              310-775-5566
-                          </div>
-                        </div>
-                    </form>
-                    <br/>
-                    Delivery Contact
-                    <br/>
-                    Delivery Date
-                    <br/>
-                    Monday Sept 1st, 2017
-                    <br/>
-                    9-11 am
-                    <br/>
-                    Delivery Address
-                    <br/>
-                    11901 Santa Monica Blvd, Los Angeles, CA, 90025
-                    <br/>
-                    <br/>
-                    <Link to="/order/delivery">Edit Delivery Information</Link>   
-                    <br/>
-                    <br/>
-                    Items
-                    <br/>
-                    <br/>
-                    <form className="form-horizontal">
-                      <div className="form-group">
-                        <div className="col-sm-10">
-                            <b>Cart Items</b>
-                            <br/>
-                            <br/>
-                            <b>Total Due</b>
-                            <br/>
-                        </div>
-                      </div>
-                    </form>
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Name:
+                              </div>
+                            </div>
+                        </form>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Ross Edwards
+                              </div>
+                            </div>
+                        </form>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Contact
+                              </div>
+                            </div>
+                        </form>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  rossedwards@gmail.com
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  310-775-5566
+                              </div>
+                            </div>
+                        </form>
+                        <br/>
+                        Delivery Contact
+                        <br/>
+                        Delivery Date
+                        <br/>
+                        Monday Sept 1st, 2017
+                        <br/>
+                        9-11 am
+                        <br/>
+                        Delivery Address
+                        <br/>
+                        11901 Santa Monica Blvd, Los Angeles, CA, 90025
+                        <br/>
+                        <br/>
+                        <Link to="/order/delivery">Edit Delivery Information</Link>   
+                        <br/>
+                        <br/>
                     </div>
 
     }
@@ -967,80 +953,6 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             {screen}
                             <br/>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Name:
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Ross Edwards
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Contact:
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-6">
-                                      rossedwards@gmail.com
-                                  </div>
-                                  <div className="col-sm-6">
-                                      310-775-5566
-                                  </div>
-                                </div>
-                            </form>
-                            <br/>
-                            <br/>
-                            <Link to="/order/checkout">Edit Name and Contact</Link>   
-                            <br/>
-                            <br/>
-                            <br/>
-                            if not "pool"
-                            <br/>
-                            <br/>
-                            {this.props.User.orders[0].cartItems[0] == "yours" &&
-                                <div>
-                                Delivery Contact
-                                <br/>
-                                Delivery Date
-                                <br/>
-                                Monday Sept 1st, 2017
-                                <br/>
-                                9-11 am
-                                <br/>
-                                Delivery Address
-                                <br/>
-                                11901 Santa Monica Blvd, Los Angeles, CA, 90025
-                                <br/>
-                                <br/>
-                                <Link to="/order/delivery">Edit Delivery Information</Link>   
-                                <br/>
-                                <br/>
-                                Items
-                                <br/>
-                                <br/>
-                                <form className="form-horizontal">
-                                  <div className="form-group">
-                                    <div className="col-sm-10">
-                                        <b>Cart Items</b>
-                                        <br/>
-                                        <br/>
-                                        <b>Total Due</b>
-                                        <br/>
-                                    </div>
-                                  </div>
-                                </form>
-                                </div>
-                            }
                             <br/>
                             <Link to="/order/cart">Cart</Link>   
                             <br/>
@@ -1048,7 +960,6 @@ class Preview extends React.Component<any, any> {
                             <Link to="/order/payment" className="btn btn-default">Payment</Link>   
                             <br/>
                         </div>
-                        
                 </div>
             </div>
             </div>

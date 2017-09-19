@@ -186,6 +186,8 @@ export default class PublicPrivacyTermsNavbar extends React.Component<any, any> 
                         <br/>
                         <br/>
                         2017 Sconely LLC | <Link to="/public/privacy_policy">PRIVACY POLICY</Link>
+                        <br/>
+                        <br/>
                       </div>
                       
             </div>
