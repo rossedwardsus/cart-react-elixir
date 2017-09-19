@@ -236,7 +236,14 @@ export function processYoursSocialPoolOrder() {
 
                   console.log("graphql response " + JSON.stringify(response));
 
-                  dispatch({type: SET_PAYMENT_ERROR, error: response.data.data.processYoursSocialPoolOrder.errorReason});
+                  let error_message = "";
+
+                  //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
+                  ////error_message = "There was an error in your CVC code."
+                  //incorrect card number
+                  //
+                  
+                  dispatch({type: SET_PAYMENT_ERROR, errorMessage: error_message});
 
 
                   /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){

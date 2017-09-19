@@ -899,6 +899,10 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                             </form>
                             <br/>
+                            if cvc then tell the user
+                            <br/>
+                            else just say there was an error please try another payment method
+                            <br/>
                             {this.props.User.orderSession.paymentError}
                             <br/>
                             <br/>
