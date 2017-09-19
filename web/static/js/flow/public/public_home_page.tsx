@@ -385,7 +385,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-5">
                                   <br/>
                                   <br/>
                                   <img className="img-responsive" src={this.state.gallery_image}/>
@@ -400,7 +400,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                       <br/>
                                       <Link to="/public/menu">Menu</Link>
                                       <br/>
-                                      <img style={{height:650, width:650}} src={this.state.gallery_image}/>
+                                      <img className="img-responsive" src={this.state.gallery_image}/>
                                     </div>
                                   </div>
                                   <br/>
