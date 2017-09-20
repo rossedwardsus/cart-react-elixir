@@ -506,7 +506,7 @@ class OrderMenu extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-md-3">
+                          <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                             <br/>
                             <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>
                             <br/>
