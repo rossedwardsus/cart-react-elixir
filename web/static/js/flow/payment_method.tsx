@@ -105,6 +105,16 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
+  setPaymentZipCode(e: any){
+
+      this.setState({zipcode: e.target.value})
+      this.props.setPaymentZipCode(e);
+      
+      //this.props.setNameOnCard();
+      //this.props.validatePayment();
+
+  }
+
   setPaymentCardNumber = (e: any) => {
 
       this.props.setPaymentCardNumber(e);
@@ -315,6 +325,12 @@ class PaymentMethod extends React.Component<any, any> {
                       </div>
                     </div>
                   </form>
+                    <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-md-2">
+                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      </div>
+                    </div>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
@@ -337,6 +353,8 @@ class PaymentMethod extends React.Component<any, any> {
                         <input type="email" maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
+                  </form>
+
                   </form>  
             </div>
     )

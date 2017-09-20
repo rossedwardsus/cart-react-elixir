@@ -19151,11 +19151,11 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-1" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xl" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image })))), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-1" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xl" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6", style: { border: "1px solid black" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: this.state.gallery_image, className: "img-responsive" }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image })))), React.createElement("div", { className: "col-md-3", style: { float: "right" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_yours");
-	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-10 freshly baked scones.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.createOrder("sconely_social");
-	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "12-250 Scones.  Regular or Minis.  Baked and delivered for events")), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
+	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "1 doz  - 20 doz regular sized scones", React.createElement("br", null), "2 doz - 40 doz mini scones", React.createElement("br", null), "Freshly baked, delivered to your event")), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -27351,7 +27351,7 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "8thandhope", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '", ", payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "8thandhope", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
@@ -27540,6 +27540,7 @@ webpackJsonp([0],[
 	exports.SET_USER_PAYMENT_METHOD_EXPIRY_MONTH = 'SET_USER_PAYMENT_METHOD_EXPIRY_MONTH';
 	exports.SET_USER_PAYMENT_METHOD_EXPIRY_YEAR = 'SET_USER_PAYMENT_METHOD_EXPIRY_YEAR';
 	exports.SET_USER_PAYMENT_METHOD_SECURITY_CODE = 'SET_USER_PAYMENT_METHOD_SECURITY_CODE';
+	exports.SET_USER_PAYMENT_METHOD_ZIPCODE = 'SET_USER_PAYMENT_METHOD_ZIPCODE';
 	//export const SET_USER_DELIVERY_ADDRESS = 'SET_USER_DELIVERY_ADDRESS'
 	//export const ADD_USER_DELIVERY_CONTACT = 'ADD_USER_DELIVERY_CONTACT'
 	//export const GET_USER_DELIVERY_CONTACTS = 'GET_USER_DELIVERY_CONTACTS'
@@ -29852,7 +29853,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-12" }, React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-4" }, "2017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("div", { className: "col-md-6" }), React.createElement("br", null), React.createElement("br", null)));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-14" }, React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), "\xA92017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("br", null), React.createElement("br", null)));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -32206,6 +32207,14 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setUserPaymentMethodExpiryYear = setUserPaymentMethodExpiryYear;
+	function setUserPaymentMethodZipCode(id, number) {
+	    //console.log("state" + JSON.stringify(state));
+	    console.log("set user payment year action");
+	    return function (dispatch) {
+	        dispatch({ type: actionTypes_ts_1.SET_USER_PAYMENT_METHOD_ZIPCODE, id: id, value: number });
+	    };
+	}
+	exports.setUserPaymentMethodZipCode = setUserPaymentMethodZipCode;
 	function saveUserPaymentMethod(payment_name) {
 	    //console.log("state" + JSON.stringify(state));
 	    //save on stripe
@@ -34239,6 +34248,19 @@ webpackJsonp([0],[
 	    //}
 	}
 	exports.setPaymentNameOnCard = setPaymentNameOnCard;
+	function setPaymentZipcode(value, order_id) {
+	    console.log("name on card action");
+	    //if user is logged u dispatch to user order payment
+	    return function (dispatch, getState) {
+	        console.log("state " + JSON.stringify(getState()));
+	        //dispatch({type: SET_USER_DEFINED_PAYMENT_METHOD, card_number: predefined_payment_method.card_number, street2: "", city: "", state: "", zipcode: "", order_id: order_id});
+	    };
+	    //return {
+	    //  type: SET_PAYMENT_NAME_ON_CARD,
+	    //  value
+	    //}
+	}
+	exports.setPaymentZipcode = setPaymentZipcode;
 	function setPaymentMethodCardNumber(value, order_id) {
 	    console.log("action payment card number");
 	    return function (dispatch, getState) {
@@ -42529,6 +42551,8 @@ webpackJsonp([0],[
 	                return amount + item.quantity * 5.5;
 	            }, 0).toFixed(2)))), React.createElement("br", null), this.props.User.orderSession.paymentError, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
+	                }, setPaymentZipcode: function setPaymentZipcode(e) {
+	                    return _this2.props.setPaymentZipcode(e);
 	                }, setPaymentCardNumber: function setPaymentCardNumber(e) {
 	                    return _this2.props.setPaymentCardNumber(e);
 	                }, setPaymentMethodCardBrand: function setPaymentMethodCardBrand(e) {
@@ -42653,6 +42677,9 @@ webpackJsonp([0],[
 	          dispatch(removeCartItem(item_id));
 	        },*/
 	        setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            dispatch(order_payment_method_ts_1.setPaymentNameOnCard(e.target.value, ""));
+	        },
+	        setPaymentZipcode: function setPaymentZipcode(e) {
 	            dispatch(order_payment_method_ts_1.setPaymentNameOnCard(e.target.value, ""));
 	        },
 	        setPaymentCardNumber: function setPaymentCardNumber(e) {
@@ -42880,6 +42907,14 @@ webpackJsonp([0],[
 	            //this.props.validatePayment();
 	        }
 	    }, {
+	        key: "setPaymentZipCode",
+	        value: function setPaymentZipCode(e) {
+	            this.setState({ zipcode: e.target.value });
+	            this.props.setPaymentZipCode(e);
+	            //this.props.setNameOnCard();
+	            //this.props.validatePayment();
+	        }
+	    }, {
 	        key: "onPaymentExpiryMonthFocus",
 	        value: function onPaymentExpiryMonthFocus() {
 	            //this.setState({expiry_month_border_color: "red"});
@@ -42915,13 +42950,13 @@ webpackJsonp([0],[
 	                          </form>*/
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
 	                    return _this2.setPaymentNameOnCard(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
 	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryMonthFocus();
 	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -48729,6 +48764,12 @@ webpackJsonp([0],[
 	            payment_methods_updated[0]["expiry_year"] = action.value;
 	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
 	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_SECURITY_CODE:
+	            console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
+	            //let delivery_addresses_temp = state.delivery_addresses;
+	            payment_methods_updated = state.paymentMethods;
+	            payment_methods_updated[0]["security_code"] = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { paymentMethods: payment_methods_updated }));
+	        case actionTypes_ts_1.SET_USER_PAYMENT_METHOD_ZIPCODE:
 	            console.log("set user payment methods reducer security code " + JSON.stringify(action.value));
 	            //let delivery_addresses_temp = state.delivery_addresses;
 	            payment_methods_updated = state.paymentMethods;

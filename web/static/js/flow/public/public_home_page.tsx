@@ -385,10 +385,10 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6" style={{border:"1px solid black"}}>
                                   <br/>
                                   <br/>
-                                  <img className="img-responsive" src={this.state.gallery_image}/>
+                                  <img src={this.state.gallery_image} className="img-responsive"/>
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
@@ -404,7 +404,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                   </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3" style={{float: "right"}}>
+                          <br/>
+                          <br/>
                           <br/>
                           <br/>
                           <br/>
@@ -416,13 +418,17 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <a onClick={() => this.createOrder("sconely_yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
                           <br/>
-                          2-12 Scones.  Baked and delivered.
+                          2-10 freshly baked scones.
                           <br/>
                           <br/>
                           <br/>
                           <a onClick={() => this.createOrder("sconely_social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
                           <br/>
-                          12-250 Scones.  Regular or Minis.  Baked and delivered for events
+                          1 doz  - 20 doz regular sized scones
+                          <br/>
+                          2 doz - 40 doz mini scones
+                          <br/>
+                          Freshly baked, delivered to your event
                         </div>
                     </div>
                     <PublicBottomNavbar/>
