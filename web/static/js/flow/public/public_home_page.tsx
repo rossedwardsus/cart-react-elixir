@@ -388,7 +388,7 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="col-md-6" style={{border:"1px solid black"}}>
                                   <br/>
                                   <br/>
-                                  <img src={this.state.gallery_image} className="img-responsive"/>
+                                  <img src={this.state.gallery_image} height="100%" width="100%"/>
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
