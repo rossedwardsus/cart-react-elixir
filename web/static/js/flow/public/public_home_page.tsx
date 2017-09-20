@@ -385,7 +385,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6" style={{paddingLeft: "30px"}}>
                                   <br/>
                                   <br/>
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>
@@ -405,6 +405,11 @@ export class PublicHomePage extends React.Component<any, any> {
                                   </div>
                         </div>
                         <div className="col-md-3" style={{paddingLeft: 20}}>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
                           <br/>
                           <br/>
                           <br/>
