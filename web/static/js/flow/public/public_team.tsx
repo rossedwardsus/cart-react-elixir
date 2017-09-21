@@ -32,7 +32,7 @@ function getCookie(name: string): string {
 }
 
 //@connect(null, mapDispatchToProps)
-export class PublicStory extends React.Component<any, any> {
+export class PublicTeam extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -378,26 +378,33 @@ export class PublicStory extends React.Component<any, any> {
                         <div className="col-md-7">
                           <br/>
                           <br/>
-                          Colossal cookies, apple pie and chocolate mush cake – these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings. 
+                          Julia Friedman, Founder & CEO
+                          <br/>
+                          An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor.
+                          <br/>
+                          A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.
+                          ​<br/>
+                          <br/>
+                          Chenin Burnett-Doering, Head Baker
+                          <br/>
+                          ​Chenin Burnett-Doering loved baking from a young age. She graduated from the California School of Culinary Arts in Pasadena, CA with
+                          degrees in baking as well as culinary arts. She was the Head Baker of Good Life Cafe in Columbia, SC; Executive Pastry Chef of The Nose Wine Cellar in Pasadena, CA; and co-owner of Sweetheart's Cakes. She has also worked as a personal chef. In her free time Chenin loves spending time with her family, writing, and is an avid Baltimore Ravens fan. 
+                          ​<br/>
+                          <br/>
+                          Dadi Revivo, Recipe Consultant
+                          <br/>
+                          With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.
+                          ​<br/>
+                          <br/>
+                          Ross Edwards, Lead Engineer
+                          <br/>
+                          Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
                           <br/>
                           <br/>
-                          Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. I started thinking of healthier ways to satisfy my sweet tooth. I experimented with baking scones and shared them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social. 
-                          <br/> 
+                          Debi Saltzberg, Advisor
                           <br/>
-                          When I was leaving NYC to move west, I envisioned driving a bakery truck named Scone Home, with an oversized scone on top. I imagined stopping to bake scones with local ingredients and selling them along the way. That idea was only half-baked. 
-​                          <br/>
-                          <br/>
-                          More recently, in discussions with technologist, Ross Edwards, Scone Home evolved into the technology driven business called Sconely. Ross and I spent a year developing a plan to merge a social app with gourmet scones. We spoke with bakers and nutritional experts to develop a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.
-​                          <br/>
-                          <br/>
-                          Sconely is dedicated to my Mom, Marcia Friedman, who loved to bake, build community around food and made sure everyone at the table had something they could eat. Sconely follows in her tradition.
-​                          <br/>
-                          <br/>
-                          We hope you enjoy the Sconely experience, as much as we have enjoyed creating it!
-​                          <br/>
-                          <br/>
-                          Julia Friedman, Sconely Founder
-                        </div>
+                          A graduate from The Hotel Restaurant department at the University of Massachusetts in Amherst, Debi has spent 25 years in the Restaurant Industry experiencing all positions from the Back of the House to Upper Management and Operations at top restaurants and resorts. Her love for food and beverage has also taken her on a journey into Biodynamic and Organic Farming.   
+                          </div>
                     </div>
                     <br/>
                     <br/>
@@ -431,4 +438,4 @@ const PublicHomePageConnected = connect(
   mapDispatchToProps
 )(PublicHomePage)*/
 
-export default PublicStory
+export default PublicTeam

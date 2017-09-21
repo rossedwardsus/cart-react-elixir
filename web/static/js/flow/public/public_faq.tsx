@@ -9,6 +9,7 @@ import {createOrder} from '../actions/order.ts';
 
 import PublicTopNavbar from './public_top_navbar.tsx';
 import PublicBottomNavbar from './public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
 
 import {List, Map} from 'immutable';
 
@@ -418,6 +419,7 @@ export class PublicFaq extends React.Component<any, any> {
                         </div>
                     </div>
                     <PublicBottomNavbar/>
+                    <PublicPrivacyTermsNavbar/>
               </div>
     )
   }

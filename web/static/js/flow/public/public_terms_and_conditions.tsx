@@ -9,6 +9,7 @@ import {createOrder} from '../actions/order.ts';
 
 import PublicTopNavbar from './public_top_navbar.tsx';
 import PublicBottomNavbar from './public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
 
 import {List, Map} from 'immutable';
 
@@ -31,7 +32,7 @@ function getCookie(name: string): string {
 }
 
 //@connect(null, mapDispatchToProps)
-export class PublicPrivacyTermsNavbar extends React.Component<any, any> {
+export class PublicTermsAndConditions extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -322,46 +323,7 @@ export class PublicPrivacyTermsNavbar extends React.Component<any, any> {
 
   render(){
 
-    let menu = null;
-
-
-    
-    /*if(this.props.user.user_id != undefined){
-        
-        menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-header">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Start Order</li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><span className="sr-only">Home</span></li>
-                      </ul>
-                    </div>
-    }else{
-
-        menu = <div>
-                      <ul id="navbar" className="nav navbar-nav navbar-left">
-                      <li><Link to="/login">Login</Link></li>
-                      <li><Link to="/register">Signup</Link></li>
-                      <ul className="nav navbar-nav">
-                        <li><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </ul>
-                    <div id="navbar" className="nav navbar-form navbar-right">
-                              <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                              </div>
-                              <button type="submit" className="btn btn-default">Submit</button>
-                    </div>
-                </div>
-
-    }*/
-
+  
     return (
               <div>
                    <PublicTopNavbar/>

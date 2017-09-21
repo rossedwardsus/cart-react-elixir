@@ -340,6 +340,8 @@ class Name extends React.Component<any, any> {
                       <input type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} className="form-control" value={this.state.first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                     </div>
                   </div>
+                </div>
+                <div className="form-group">
                   <div className="col-md-3">
                     <div className={this.state.last_name_classname}>
                       <input type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)}  className="form-control" value={this.state.last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
@@ -362,6 +364,8 @@ class Name extends React.Component<any, any> {
                         <input type="text" value={this.props.User.email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
+                </div>
+                <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
                         <input type="text" value={this.state.user_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_again_border_color}}/>

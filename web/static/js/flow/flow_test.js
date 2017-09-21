@@ -25,6 +25,9 @@ import PublicMenu from './public/public_menu.tsx';
 import PublicAboutUs from './public/public_about_us.tsx';
 import PublicFaq from './public/public_faq.tsx';
 import PublicStory from './public/public_story.tsx';
+import PublicTeam from './public/public_team.tsx';
+import PublicPrivacyPolicy from './public/public_privacy_policy.tsx';
+
 
 import YoursRedirect from './yours_redirect.tsx';
 import SocialRedirect from './social_redirect.tsx';
@@ -185,9 +188,10 @@ const Root = () => (
         <Route path="/register_complete" component={RegisterCompleted} />
         <Route path="/public/menu" component={PublicMenu} />
         <Route path="/public/about_us" component={PublicAboutUs} />
+        <Route path="/public/team" component={PublicTeam} />
         <Route path="/public/faq" component={PublicFaq} />
         <Route path="/public/story" component={PublicStory} />
-        
+        <Route path="/public/privacy_policy" component={PublicPrivacyPolicy} />
         <Route component={checkLogin}>
           <Route path="/order/menu" component={OrderMenu} />
           <Route path="/order/checkout" component={OrderCheckout} />

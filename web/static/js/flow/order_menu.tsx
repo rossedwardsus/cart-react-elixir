@@ -62,13 +62,23 @@ class OrderMenu extends React.Component<any, any> {
    
   }
 
+  componentWillUnmount(){
+
+    //window.onpopstate = () => {
+      
+      $('#myModal').modal('hide');
+
+    //}
+
+  }
+
   componentWillMount(){
 
-    window.onpopstate = () => {
+    //window.onpopstate = () => {
       
-      $('#myModal').modal('toggle');
+      //$('#myModal').modal('toggle');
 
-    }
+    //}
 
 
     //get active items from the database
@@ -192,7 +202,7 @@ class OrderMenu extends React.Component<any, any> {
 
       }.bind(this));*/
 
-      $('#myModal').modal('show');
+      $('#myModal').modal('show').css("background", "");;
 
   }
 

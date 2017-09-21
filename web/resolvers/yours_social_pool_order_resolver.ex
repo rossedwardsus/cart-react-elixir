@@ -594,9 +594,46 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                       #items_count = 1
 
+                                      total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+
+                                      #total cost
+
+
                             "yours" -> "just total items"
 
+                                        regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
+
+                                            x[:item_type] == "regular"
+
+                                        end))
+
+                                        total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+
+                                        #total_items
+
+
+
                             "pool" -> "just total items"
+
+                                      regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
+
+                                          x[:item_type] == "regular"
+
+                                      end))
+
+                                      #if order_type == "social"
+                                      
+
+
+                                      #if mini key exists
+                                      #Enum.map(cart_items_test, fn(cart_item) ->
+
+                                       #    acc = acc + (1 * 5)
+
+                                      #end)
+
+                                      total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+
 
                         end
 
@@ -800,15 +837,30 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         promo_code_discount = ""
                         cart_items = [%{"quantity": 1, "mini": false}]
-                        
-                        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "mini": mini}, count) -> 
-                            case mini do
-                              false ->  IO.puts("false")
-                                        count + (quantity * 1.00)
-                              true -> IO.puts("true")
-                                      count + (quantity * 2.00)
-                            end
-                        end)
+
+                        case order_type do
+
+                          "yours" -> 
+
+                            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+
+
+                          "social" -> 
+
+                            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "mini": mini}, count) -> 
+                              case mini do
+                                false ->  IO.puts("false")
+                                          count + (quantity * 1.00)
+                                true -> IO.puts("true")
+                                        count + (quantity * 2.00)
+                              end
+                            end)
+
+                          "pool" ->
+
+                            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+
+                        end
 
                         subtotal = total_cost
                         subtotal_formatted = :erlang.float_to_binary(subtotal, [decimals: 2])
@@ -826,17 +878,19 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         total_cost_formatted = :erlang.float_to_binary(total_cost, [decimals: 2])
 
+                        #if order_type == "yours" || order_type == "social"
+
+                            #working
+                            #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
+
+                            #Sconely.YoursSocialPoolCompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+
+                        #else
+                  
+                          #Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+
                         #working
-                        #Sconely.CompleteOrderEmail.welcome_email(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
-
-                        #Sconely.CompleteOrderEmail.welcome_email(%{"order_id" => order_id, :user_name_first => args[:user_name_first], "user_name_last" => args[:user_name_last], "user_contact_email" => args[:user_contact_email], "user_contact_mobile" => args[:user_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
-                
-                        #Sconely.CompleteOrderAdminEmail.welcome_email(%{"email" => "rossedwards.us@gmail.com", "order_id" => order_id}) |> SconeHomeElixir.Mailer.deliver_now
-
-                        #Sconely.CompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
-              
-                        #Sconely.CompleteYoursSocialPoolOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
-
+                        #Sconely.YoursSocialPoolCompleteOrderEmail.yours_pool_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
 
 
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}

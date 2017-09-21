@@ -196,7 +196,9 @@ export default class Menu extends React.Component<any, any> {
                         <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/story">OUR STORY</Link>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/menu">FAQ</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/team">TEAM</Link>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/faq">FAQ</Link>
                         <br/>
                     </div>
                     <br/>

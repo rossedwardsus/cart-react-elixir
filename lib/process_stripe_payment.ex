@@ -28,6 +28,7 @@ defmodule Sconely.ProcessStripePayment do
     regular_items_total_amount = 0
 
     total_items_count = 0
+    total_cost = 0.00
 
     #order_type = "social"
 
@@ -38,7 +39,13 @@ defmodule Sconely.ProcessStripePayment do
 
     order_type = "social"
 
+    #total cost
     case order_type do
+
+        "yours" -> 
+                  total_cost = cart_items
+                    |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+
 
         "social" -> 
 
@@ -72,9 +79,8 @@ defmodule Sconely.ProcessStripePayment do
 
                   #items_count = 1
 
-        "yours" -> 
-                  regular_items_total_amount = cart_items
-                    |> Enum.filter(fn(x) ->  x[:twelveortwentyfourminis] == "12" end)
+        "pool" -> 
+                  total_cost = cart_items
                     |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
 
     end
@@ -89,17 +95,17 @@ defmodule Sconely.ProcessStripePayment do
     cart_items = [%{"quantity": 1, "mini": false}, %{"quantity": 2, "mini": true}]
 
 
-    total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "mini": mini}, count) -> 
-        case mini do
-          false ->  IO.puts("false")
-                    count + (quantity * 1.00)
-          true -> IO.puts("true")
-                  count + (quantity * 2.00)
-        end
-    end)
+    #total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "mini": mini}, count) -> 
+    #    case mini do
+    #      false ->  IO.puts("false")
+    #                count + (quantity * 1.00)
+    #      true -> IO.puts("true")
+    #              count + (quantity * 2.00)
+    #    end
+    #end)
 
-    IO.puts("total_cost")
-    IO.puts(total_cost)
+    #IO.puts("total_cost")
+    #IO.puts(total_cost)
 
     promo_code_discount = 0;
 
@@ -119,6 +125,44 @@ defmodule Sconely.ProcessStripePayment do
     IO.puts("promo_code_discount")
     IO.puts(total_cost_with_promo_discount)
 
+
+ 
+    amount = Enum.reduce(args[:cart_items], 0, fn %{quantity: quantity}, count -> count = count + quantity * 5.50 end)
+
+    #IO.inspect(amount * 100 )
+
+    IO.puts("card data from app")
+    #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
+
+    #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
+
+    #IO.puts("test card date")
+    #fraudulent
+    #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+
+    #cvc
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+        #IO.inspect(token["id"])  
+
+        {:ok, token} -> {:ok, token}
+
+            case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+
+              {:ok, charge} -> #IO.inspect("")
+                               {:ok, charge}
+              {:error, error} -> {:error, error}
+
+            end
+
+        {:error, error} -> {:error, error}
+
+    end
+
+
+    
 
     #params[:payment_method_card_number]
     #params[:payment_method_expiry_month]
@@ -180,41 +224,6 @@ defmodule Sconely.ProcessStripePayment do
     #if order_type == "pool"
     #promo code
 
-    amount = Enum.reduce(args[:cart_items], 0, fn %{quantity: quantity}, count -> count = count + quantity * 5.50 end)
-
-    #IO.inspect(amount * 100 )
-
-    IO.puts("card data from app")
-    #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
-
-    #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
-
-    #IO.puts("test card date")
-    #fraudulent
-    #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
-
-    #cvc
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
-
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
-
-
-
-        #IO.inspect(token["id"])  
-
-        {:ok, token} -> {:ok, token}
-
-            case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
-
-              {:ok, charge} -> #IO.inspect("")
-                               {:ok, charge}
-              {:error, error} -> {:error, error}
-
-            end
-
-        {:error, error} -> {:error, error}
-
-    end
 
 
     #new_customer = [
