@@ -19151,10 +19151,14 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-1" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xl" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6", style: { paddingLeft: "30px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: this.state.gallery_image, height: "100%", width: "100%" }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("img", { className: "img-responsive", src: this.state.gallery_image })))), React.createElement("div", { className: "col-md-3", style: { paddingLeft: 20 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_yours");
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-1" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-xl" }, React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu")), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6", style: { paddingLeft: "30px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: this.state.gallery_image, height: "100%", width: "100%" }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, React.createElement("a", { onClick: function onClick() {
+	                    return _this2.props.createOrder("yours");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-10 freshly baked scones.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_social");
+	                    return _this2.props.createOrder("social");
+	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "1 doz  - 20 doz regular sized scones", React.createElement("br", null), "2 doz - 40 doz mini scones", React.createElement("br", null), "Freshly baked, delivered to your event")), React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 20 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.props.createOrder("yours");
+	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-10 scones, freshly baked and delivered to you", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                    return _this2.props.createOrder("social");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "1 doz  - 20 doz regular sized scones", React.createElement("br", null), "2 doz - 40 doz mini scones", React.createElement("br", null), "Freshly baked, delivered to your event")), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
 	        }
 	    }], [{
@@ -19182,7 +19186,7 @@ webpackJsonp([0],[
 	    return {
 	        createOrder: function createOrder(order_type, name) {
 	            //alert("check");
-	            dispatch(order_ts_1.createOrder(order_type, "name", "date"));
+	            dispatch(order_ts_1.createOrder(order_type, "", ""));
 	        }
 	    };
 	};
@@ -27269,10 +27273,18 @@ webpackJsonp([0],[
 	        //      dispatch({type: SET_ORDER_TYPE});
 	        //    dispatch(push("/order/1/signature"));
 	        if (order_type == "yours") {
-	            dispatch({ type: actionTypes_ts_1.SET_ORDER_TYPE, order_type: order_type, pool_name: pool_name, pool_date: pool_date });
+	            //load menu
+	            //if menu items alrady exist then dont get from the database again
+	            dispatch(menu_ts_1.getMenuItems());
+	            dispatch({ type: actionTypes_ts_1.CREATE_ORDER, order_type: order_type });
 	            dispatch(react_router_redux_1.push("/order/menu"));
 	            //}
-	        } else if (order_type == "social") {} else if (order_type == "pool") {
+	        } else if (order_type == "social") {
+	            //load menu
+	            dispatch(menu_ts_1.getMenuItems());
+	            dispatch({ type: actionTypes_ts_1.CREATE_ORDER, order_type: order_type });
+	            dispatch(react_router_redux_1.push("/order/menu"));
+	        } else if (order_type == "pool") {
 	            console.log("create order action pool");
 	            //get pool order data
 	            //possibly do as an api and not graphql
@@ -29685,7 +29697,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/public/about_us" }, "ABOUT US"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/story" }, "OUR STORY"), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "FAQ"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter")), React.createElement("div", { className: "col-md-8" }));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-11 col-md-3" }, React.createElement("div", null, React.createElement("div", { className: "hidden-lg" }, React.createElement("br", null), React.createElement("br", null)), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/about_us" }, "ABOUT US"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/story" }, "OUR STORY"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/menu" }, "FAQ"), React.createElement("br", null)), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, "\xA0\xA0\xA0\xA0", React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter"))), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter")), React.createElement("div", { className: "col-md-8" }));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -29853,7 +29865,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "col-md-14" }, React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), "\xA92017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("br", null), React.createElement("br", null)));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "coll-xs-12 col-md-12" }, React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "hidden-lg col-md-3" }, React.createElement("br", null), "\xA92017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("div", { className: "hidden-xs" }, "\xA92017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("br", null), React.createElement("br", null)));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -31134,7 +31146,7 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //this.context.router.push("/order/menu");
-	            this.props.createOrder();
+	            this.props.createOrder("yours");
 	            //get active items from the database
 	            //alert(this.props.params);
 	            //alert(JSON.stringify(this.props.cart_items));
@@ -31202,8 +31214,8 @@ webpackJsonp([0],[
 	        cartValidated: function cartValidated() {
 	            //dispatch(cartValidated());
 	        },
-	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder("yours", "name", "date"));
+	        createOrder: function createOrder(order_type) {
+	            dispatch(order_ts_1.createOrder(order_type, "", ""));
 	        }
 	    };
 	};
@@ -31271,7 +31283,7 @@ webpackJsonp([0],[
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            //this.context.router.push("/order/menu");
-	            this.props.createOrder();
+	            this.props.createOrder("social");
 	            //get active items from the database
 	            //alert(this.props.params);
 	            //alert(JSON.stringify(this.props.cart_items));
@@ -31339,8 +31351,8 @@ webpackJsonp([0],[
 	        cartValidated: function cartValidated() {
 	            //dispatch(cartValidated());
 	        },
-	        createOrder: function createOrder(order_type, name) {
-	            dispatch(order_ts_1.createOrder("social", "name", "date"));
+	        createOrder: function createOrder(order_type) {
+	            dispatch(order_ts_1.createOrder(order_type, "", ""));
 	        }
 	    };
 	};
@@ -41234,7 +41246,6 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var React = __webpack_require__(153);
-	var react_router_1 = __webpack_require__(546);
 	var react_redux_1 = __webpack_require__(190);
 	//import _ from 'lodash';
 	var menu_ts_1 = __webpack_require__(922);
@@ -41398,6 +41409,9 @@ webpackJsonp([0],[
 	    _createClass(OrderMenu, [{
 	        key: "componentWillMount",
 	        value: function componentWillMount() {
+	            window.onpopstate = function () {
+	                $('#myModal').modal('toggle');
+	            };
 	            //get active items from the database
 	            console.log("mi" + JSON.stringify(this.props.menuItems));
 	            //alert(JSON.stringify(this.props.cart_items));
@@ -41488,11 +41502,11 @@ webpackJsonp([0],[
 	            //if order type == "pool"
 	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
 	                if (cartItemsQuantity < 10) {
-	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Select Quantity"), options_count_array.map(function (value) {
+	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12" }, React.createElement("div", { className: "col-xs-6 col-md-2" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 100 } }, React.createElement("option", { value: "" }, "Quantity"), options_count_array.map(function (value) {
 	                        return React.createElement("option", { value: value }, value);
-	                    }))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                    }))), React.createElement("div", { className: "col-xs-6 col-md-2" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                            return _this2.addCartItem();
-	                        }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
+	                        }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100 } }, "Add To Cart"))));
 	                }
 	            } else {
 	                //if assortment == true
@@ -41516,23 +41530,27 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedSocialItemSize, style: { height: 35, width: 120 } }, React.createElement("option", { value: "mini" }, "2 Dozen Minis"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 120 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12" }, React.createElement("div", { className: "col-xs-4 col-md-3", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedSocialItemSize, style: { borderRadius: 0, height: 35, width: 200 } }, React.createElement("option", { value: "mini" }, "Mini/Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "minis" }, "Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", { value: "" }, "Quantity"), React.createElement("option", { value: "1" }, "1"), React.createElement("option", { value: "2" }, "2"))), React.createElement("div", { className: "col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
-	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120 } }, "Add To Cart")));
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50 } }, "Add"))));
 	                //}
 	                //}
 	            }
 	            //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
 	            var message = React.createElement("div", null, React.createElement("b", null, "Delivery address"), ": ", this.props.User.orders[0].pool_order_address, React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Delivery date"), ": ", this.props.User.orders[0].pool_order_date_formatted, React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Delivery time"), ": 9:00 AM", React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Order by:"), " Thursday, September 21st at midnight");
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 50 } }, React.createElement("br", null), React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 50 } }, React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                    return _this2.props.increaseCartItemQuantity(item_index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
 	                    return _this2.props.decreaseCartItemQuantity(item_index);
 	                }, removeCartItem: function removeCartItem(item_index) {
 	                    return _this2.props.removeCartItem(item_index);
-	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-md hidden-lg" }, React.createElement("br", null), this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity;
-	            }, 0), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))), React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
+	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("div", { className: "hidden-lg", style: { paddingLeft: 50 } }, this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	                    return _this2.props.increaseCartItemQuantity(item_index);
+	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
+	                    return _this2.props.decreaseCartItemQuantity(item_index);
+	                }, removeCartItem: function removeCartItem(item_index) {
+	                    return _this2.props.removeCartItem(item_index);
+	                } }), React.createElement("br", null)), React.createElement("br", null), React.createElement("br", null), this.props.menuItems.map(function (item, index) {
 	                var _this3 = this;
 	
 	                //console.log(item);
@@ -41907,11 +41925,11 @@ webpackJsonp([0],[
 	                    //code is here to check for minis existing???
 	                    //if item.size == "" then pool or yours
 	                    if (order_type == "yours" || order_type == "pool") {
-	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5" }, item_name), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.increaseCartItemQuantity(index);
-	                            } }, "+")), React.createElement("div", { className: "col-md-1" }, item.quantity), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                            } }, "+")), React.createElement("div", { className: "col-xs-1" }, item.quantity), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.decreaseCartItemQuantity(index);
-	                            } }, "-")), React.createElement("div", { className: "col-md-1" }, React.createElement("a", { onClick: function onClick() {
+	                            } }, "-")), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
 	                                return _this2.props.removeCartItem(index);
 	                            } }, "X"))));
 	                    } else {
@@ -41946,7 +41964,7 @@ webpackJsonp([0],[
 	            //    return <p key={i}>{item}</p>;
 	            //});
 	            console.log("message");
-	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), this.props.path == "/order/menu" && React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5 col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1 col-xs-1" }), React.createElement("div", { className: "col-md-3 col-xs-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-3", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), this.props.path == "/order/menu" && React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",

@@ -52,7 +52,7 @@ class YoursRedirect extends React.Component<any, any> {
 
 
     //this.context.router.push("/order/menu");
-    this.props.createOrder();
+    this.props.createOrder("yours");
 
 
     //get active items from the database
@@ -140,8 +140,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     cartValidated: () => {
       //dispatch(cartValidated());
     },
-    createOrder: (order_type: any, name: any) => {
-      dispatch(createOrder("yours", "name", "date"));
+    createOrder: (order_type: any) => {
+      dispatch(createOrder(order_type, "", ""));
     }
   }
 }

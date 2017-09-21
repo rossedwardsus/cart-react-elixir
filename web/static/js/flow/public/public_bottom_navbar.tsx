@@ -182,21 +182,31 @@ export default class Menu extends React.Component<any, any> {
 
     return (
             <div className="row">
-                  <div className="col-md-3">
+                  <div className="hidden-xs col-md-3">
                         <br/>
                         <br/>
                   </div>
-                  <div className="col-md-2">
-                        <Link to="/public/about_us">ABOUT US</Link>
+                  <div className="col-xs-11 col-md-3">
+                    <div>
+                        <div className="hidden-lg">
+                          <br/>
+                          <br/>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/about_us">ABOUT US</Link>
                         <br/>
-                        <Link to="/public/story">OUR STORY</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/story">OUR STORY</Link>
                         <br/>
-                        <Link to="/public/menu">FAQ</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/menu">FAQ</Link>
                         <br/>
-                      <br/>
-                      <br/>
+                    </div>
+                    <br/>
+                    <div className="hidden-lg">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.instagram.com/sconelyla">Instagram</a>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.twitter.com/sconelyla">Twitter</a>
+                    </div>
                   </div>
-                  <div className="col-md-2">
+                  <div className="hidden-xs col-md-2">
                       <a href="http://www.instagram.com/sconelyla">Instagram</a>
                       <br/>
                       <a href="http://www.twitter.com/sconelyla">Twitter</a>

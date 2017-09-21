@@ -64,6 +64,13 @@ class OrderMenu extends React.Component<any, any> {
 
   componentWillMount(){
 
+    window.onpopstate = () => {
+      
+      $('#myModal').modal('toggle');
+
+    }
+
+
     //get active items from the database
     console.log("mi" + JSON.stringify(this.props.menuItems));
 
@@ -424,15 +431,17 @@ class OrderMenu extends React.Component<any, any> {
         if(cartItemsQuantity < 10){
 
             yours_social_pool_quantity_selector =  <div>
-                                                    <div className="col-md-3">
-                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
-                                                        <option value="">Select Quantity</option> 
-                                                        {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
-                                                        
-                                                      </select>
-                                                    </div>
-                                                    <div className="col-md-3">
-                                                      <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
+                                                    <div className="col-xs-12">
+                                                      <div className="col-xs-6 col-md-2">
+                                                        <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 100}}>
+                                                          <option value="">Quantity</option> 
+                                                          {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                                          
+                                                        </select>
+                                                      </div>
+                                                      <div className="col-xs-6 col-md-2">
+                                                        <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
+                                                      </div>
                                                     </div>
                                                   </div>
         }
@@ -463,23 +472,25 @@ class OrderMenu extends React.Component<any, any> {
             //}else{
 
                  yours_social_pool_quantity_selector =  <div>
-                                                        <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{height: 35, width: 120}}>
-                                                            <option value="mini">2 Dozen Minis</option> 
-                                                            <option value="regular">1 Dozen Regular</option>
-                                                            <option value="minis">Minis</option>
-                                                          </select>
-                                                        </div>
-                                                        <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
-                                                            <option value="">Quantity</option> 
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                          </select>
-                                                        </div>
-                                                        <div className="col-md-3">
-                                                          <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 120}}>Add To Cart</button>
-                                                        </div>
+                                                          <div className="col-xs-12">
+                                                              <div className="col-xs-4 col-md-3" style={{paddingLeft: "0px"}}>
+                                                                <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 200}}>
+                                                                  <option value="mini">Mini/Regular</option> 
+                                                                  <option value="regular">1 Dozen Regular</option>
+                                                                  <option value="minis">Minis</option>
+                                                                </select>
+                                                              </div>
+                                                              <div className="col-xs-4 col-md-3">
+                                                                <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
+                                                                  <option value="">Quantity</option> 
+                                                                  <option value="1">1</option>
+                                                                  <option value="2">2</option>
+                                                                </select>
+                                                              </div>
+                                                              <div className="col-md-4">
+                                                                <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
+                                                              </div>
+                                                          </div>
                                                       </div>
 
 
@@ -508,28 +519,19 @@ class OrderMenu extends React.Component<any, any> {
                     <div className="row">
                           <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                             <br/>
-                            <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>
+                            {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
+                              <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
                             <br/>
-                            {this.state.pool_message_viewed == false ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
+                            {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
-                            <br/>
-                            <br/>
-                            <div className="hidden-md hidden-lg">
+                            <div className="hidden-lg" style={{paddingLeft: 50}}>
+                              {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
+                                <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
                               <br/>
-                              {this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)}
+                              {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
                               <br/>
-                              <form className="form-horizontal">
-                                    <div className="form-group">
-                                      <div className="col-md-2">
-                                        <Link to="/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>  
-                                      </div>
-                                      <div className="col-md-2">
-                                        <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
-                                      </div>
-                                    </div>
-                                </form>
                             </div>
                             <br/>
                             <br/>

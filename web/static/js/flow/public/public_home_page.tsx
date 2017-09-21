@@ -392,19 +392,22 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    mobile
-                                    <div>
-                                      <Link to="/" style={{fontSize:17}}>Order Sconely Yours</Link>
-                                      <br/>
-                                      2-12 Scones.  Baked and delivered.
-                                      <br/>
-                                      <Link to="/public/menu">Menu</Link>
-                                      <br/>
-                                      <img className="img-responsive" src={this.state.gallery_image}/>
-                                    </div>
+                                    <a onClick={() => this.props.createOrder("yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
+                                    <br/>
+                                    2-10 freshly baked scones.
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
+                                    <br/>
+                                    1 doz  - 20 doz regular sized scones
+                                    <br/>
+                                    2 doz - 40 doz mini scones
+                                    <br/>
+                                    Freshly baked, delivered to your event
                                   </div>
                         </div>
-                        <div className="col-md-3" style={{paddingLeft: 20}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
                           <br/>
                           <br/>
                           <br/>
@@ -421,13 +424,13 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <a onClick={() => this.createOrder("sconely_yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
+                          <a onClick={() => this.props.createOrder("yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
                           <br/>
-                          2-10 freshly baked scones.
+                          2-10 scones, freshly baked and delivered to you
                           <br/>
                           <br/>
                           <br/>
-                          <a onClick={() => this.createOrder("sconely_social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
+                          <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
                           <br/>
                           1 doz  - 20 doz regular sized scones
                           <br/>
@@ -456,7 +459,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     createOrder: (order_type: any, name: any) => {
       //alert("check");
-      dispatch(createOrder(order_type, "name", "date"))
+      dispatch(createOrder(order_type, "", ""))
     }
   }
 }

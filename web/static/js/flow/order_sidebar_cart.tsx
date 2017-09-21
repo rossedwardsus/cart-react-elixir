@@ -489,11 +489,11 @@ class SidebarCart extends React.Component<any, any> {
                           return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
-                                            <div className="col-md-5">{item_name}</div>
-                                            <div className="col-md-1"><a onClick={() => this.increaseCartItemQuantity(index)}>+</a></div>
-                                            <div className="col-md-1">{item.quantity}</div>
-                                            <div className="col-md-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
-                                            <div className="col-md-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
+                                            <div className="col-md-5 col-xs-5">{item_name}</div>
+                                            <div className="col-xs-1"><a onClick={() => this.increaseCartItemQuantity(index)}>+</a></div>
+                                            <div className="col-xs-1">{item.quantity}</div>
+                                            <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
+                                            <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                           </div>
                                         </form>
                                 )
@@ -579,9 +579,9 @@ class SidebarCart extends React.Component<any, any> {
                     (<div>
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
-                            <div className="col-md-1"></div>
-                            <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
+                            <div className="col-md-5 col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
+                            <div className="col-md-1 col-xs-1"></div>
+                            <div className="col-md-3 col-xs-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
                           </div>
                         </form>
                         <br/>

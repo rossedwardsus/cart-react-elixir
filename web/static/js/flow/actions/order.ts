@@ -79,13 +79,22 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
 
       if(order_type == "yours"){
 
+            //load menu
+            //if menu items alrady exist then dont get from the database again
 
+            dispatch(getMenuItems());
 
-            dispatch({type: SET_ORDER_TYPE, order_type: order_type, pool_name: pool_name, pool_date: pool_date});
+            dispatch({type: CREATE_ORDER, order_type: order_type});
             dispatch(push("/order/menu"));
 
       //}
       }else if(order_type == "social"){
+
+            //load menu
+            dispatch(getMenuItems());
+
+            dispatch({type: CREATE_ORDER, order_type: order_type});
+            dispatch(push("/order/menu"));
 
 
       }else if(order_type == "pool"){
