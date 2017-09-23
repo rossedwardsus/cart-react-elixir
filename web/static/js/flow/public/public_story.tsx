@@ -378,6 +378,11 @@ export class PublicStory extends React.Component<any, any> {
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
+                          <img src="/images/mom_kids_scones.jpg"/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
                           Colossal cookies, apple pie and chocolate mush cake – these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings. 
                           <br/>
                           <br/>
