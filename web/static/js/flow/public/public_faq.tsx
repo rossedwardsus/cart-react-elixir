@@ -376,12 +376,9 @@ export class PublicFaq extends React.Component<any, any> {
                           <br/>
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
-
                             Faq
-                                  
                         </div>
                         <div className="col-md-3">
-                          
                         </div>
                     </div>
                     <PublicBottomNavbar/>

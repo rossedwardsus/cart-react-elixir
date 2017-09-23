@@ -78,6 +78,7 @@ export default class Menu extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <PublicBottomNavbar/>
+                    <PublicPrivacyTermsNavbar/>
             </div>
     )
   }
