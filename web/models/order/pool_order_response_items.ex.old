@@ -1,4 +1,4 @@
-defmodule Sconely.PoolOrder do
+defmodule Sconely.PoolOrderResponseItem do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -9,19 +9,20 @@ defmodule Sconely.PoolOrder do
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		schema "order_delivery_contact_address" do
-			field :host_user_id, Ecto.UUID
-			field :order_id, Ecto.UUID
-			field :pool_name, :string
-			field :delivery_contact_first_name, :string
-			field :delivery_contact_last_name, :string
-			field :delivery_contact_email, :string
-			field :delivery_contact_mobile, :string
+			field :user_id, Ecto.UUID
+			field :pool_order_id, Ecto.UUID
+			field :menu_item_id, :string
+			field :quantity, :integer
+			field :choice_datetime, Ecto.DateTime
+		
+			#field :delivery_contact_last_name, :string
+			#field :delivery_contact_email, :string
+			#field :delivery_contact_mobile, :string
 			#field :delivery_address_street1
 			#field :delivery_address_street2
 			#field :delivery_address_city
 			#field :delivery_address_state
 			#field :delivery_address_zipcode
-			#delivery location - 8th and hope lobby
 			#datetime created
 			#delivery datetime
 			#total cost

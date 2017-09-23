@@ -7,13 +7,13 @@ defmodule Sconely.Registration do
 		#@derive {Poison.Encoder, only: [:email, :password]}
 
 		#@valid_attrs %{email: "", password: ""}
-		@optional_fields ~W(user_id email password_hash)
+		@optional_fields ~W(email password_hash)
 		@required_fields ~W()
 
 		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "registration" do
-			field :user_id, Ecto.UUID #:integer
+			#field :user_id, Ecto.UUID #:integer
 			field :email, :string
 			#field :password, :string
 			field :password_hash, :string
@@ -25,7 +25,7 @@ defmodule Sconely.Registration do
 		    struct
 		    |> cast(params, @required_fields, @optional_fields)
 		    #|> validate_required([:email])
-		    |> validate_length(:user_id, min: 2)
+		    #|> validate_length(:user_id, min: 2)
 		    |> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)
 		    #contains

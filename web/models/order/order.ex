@@ -1,4 +1,9 @@
 defmodule Sconely.Order do
+
+	#is this needed
+	#provdes for a faster lookup maybe??
+	#can lookup based on order_type
+
 	#use Ecto.Schema
 	#import Ecto.Changeset
 	#alias Sconely.OrderDeliveryAddress
@@ -13,21 +18,22 @@ defmodule Sconely.Order do
 
 		field :order_id, :string #primary key #secure random #integer
 		field :user_id, :string #Ecto.UUID
-		field :order_type, :string
+		field :order_type, :string #yours, social, pool_host, pool_response
 		#delivery contact address id
 
 		#field delivery_contact_address_id
-		field :delivery_contact_first_name, :string
-		field :delivery_contact_last_name, :string
-		field :delivery_contact_email, :string
-		field :delivery_contact_mobile, :string
+		#field :delivery_contact_first_name, :string
+		#field :delivery_contact_last_name, :string
+		#field :delivery_contact_email, :string
+		#field :delivery_contact_mobile, :string
 		#field :delivery_address_street1
 		#field :delivery_address_street2
 		#field :delivery_address_city
 		#field :delivery_address_state
 		#field :delivery_address_zipcode # only certain zipcodes
 		#delivery_contact_address_note
-		field :delivery_datetime, Ecto.DateTime
+		#field :delivery_datetime, Ecto.DateTime
+		#field :delivery_time, :string
 		#field :delivery_date, Ecto.Date #only certain days
 		#field :social_delivery_time, :string #range
 		#field :yours_delivery_time_range, :string

@@ -249,10 +249,14 @@ webpackJsonp([0],[
 	
 	var store = (0, _redux.createStore)(_index2.default, DevTools.instrument(), middleware);
 	
-	var historyWithoutAnnoyingQueryKey = (0, _reactRouter.useRouterHistory)(_history.createHashHistory)({ queryKey: false });
+	//const historyWithoutAnnoyingQueryKey = useRouterHistory(createHashHistory)({ queryKey: false })
 	//const history = syncHistoryWithStore(historyWithoutAnnoyingQueryKey, store)
 	
 	var history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
+	
+	//works
+	//const history = syncHistoryWithStore(browserHistory, store)
+	
 	
 	//store = {session_id: "", event: {event_name: "", delivery_address: "", date: "", time: ""}, guests: {choose: "", number: 0}, payment_methods: [{personal: ""}], orders: [subtotal: ""], menu_items: [1234, 5678], additional_items:[{}], completed: "yes"}
 	
@@ -43617,13 +43621,13 @@ webpackJsonp([0],[
 	                          </form>*/
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
 	                    return _this2.setPaymentNameOnCard(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-inline" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryMonthFocus();
 	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } }))), React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
 	        }
 	    }], [{
 	        key: "contextTypes",

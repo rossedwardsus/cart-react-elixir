@@ -10,6 +10,7 @@ defmodule Sconely.OrderName do
 
 		schema "order_name" do
 			field :order_id, Ecto.UUID
+			#field user_id
 			field :first_name, :string
 			field :last_name, :string
 		end

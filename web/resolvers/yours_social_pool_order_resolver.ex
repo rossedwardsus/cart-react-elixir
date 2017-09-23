@@ -3,8 +3,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
   alias Sconely.MenuItem
+  alias Sconely.Registration
+  alias Sconely.User
   #alias Sconely.Order
-  #alias Sconely.PoolOrder
+  alias Sconely.PoolOrder
+  alias Sconely.PoolOrderResponseUser
+  alias Sconely.PoolOrderResponseItem
   #alias Ecto.Multi
   alias Sconely.CompleteOrderResolverHelper
 
@@ -484,16 +488,16 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #create guest user account
             #send pool acknowledgemtn
 
-
-
-            #user_profile - probably don't need but might be useful for just knowing who a guest user is.  actually can use order data?
-            #add name and contact info here
-            
+            registration_changeset = Registration.changeset(%Registration{}, %{email: "email", password: ""})  
 
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             
-            #order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "social", order_id: order_id, payment_confirmation: charge[:balance_transaction]})
+            #order_changeset = Order.changeset(%Order{}, %{user_id: "user_id", order_type: "social", order_id: order_id, delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", delivery_time: "", payment_confirmation: ""})
             #delivery_id, contact_id, payment_id
+
+            #pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{user_id: "user_id", pool_order_id: "", order_id: order_id, contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", payment_confirmation: ""})
+            #delivery_id, contact_id, payment_id
+           
             
             #order_delivery_contact_address_changeset = Order.changeset(%Order{}, %{order_id: order_id}
             #user_delivery_contact_address_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
@@ -519,6 +523,60 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             #menu_item[0].name
            
+            #pool_order_response has no order inserted
+            #Repo.insert(pool_order_response_user_changeset)    
+            
+            #no need
+
+            #if no token/user_id
+
+            case Repo.insert(registration_changeset) do
+                {:ok, response} -> IO.inspect(response)
+
+                    #add to the session table
+            
+                    #if order_type == "pool"
+                    #Repo.insert(user_changeset)
+
+                    user_changeset = User.changeset(%User{}, %{user_id: response.id, first_name: "fn", last_name: "ln", email: "e", mobile: "m", about_me: "am", company_name: "cn"})
+          
+                    case Repo.insert(user_changeset) do
+                        {:ok, response} -> IO.inspect(response)
+                    end
+
+                    #user id is response.id
+                    #Repo.insert(user_name_changeset)
+                        #order_name is the id of this
+
+                    #Repo.insert(user_contact_changeset)
+                        #order_contact is the id of this    
+
+                    #if order_type == "pool"
+
+                      #Repo.insert(pool_order_response_user_changeset)
+
+                        #order id from response
+                        #Enum.map
+                        #Repo.insert(order_items_changeset) 
+                      
+                    #get this from stripe
+                    #Repo.insert(order_payment_changeset)    
+                    
+                    
+            end
+
+                
+            #Repo.insert(order_contact_changeset)    
+            #Repo.insert(order_name_changeset)
+            #else      
+            #Repo.insert(yours_social_order_changeset) 
+            #Repo.insert(order_items_changeset)
+            #Repo.insert(order_payment_changeset)    
+            #Repo.insert(order_contact_changeset)    
+            #Repo.insert(order_name_changeset)
+               
+  
+
             #if order_changeset.valid? do
                 #Repo.insert(order_datetime_changeset)
                 #Repo.insert(order_delivery_address_changeset)
@@ -527,8 +585,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                 #Repo.insert(order_contact_changeset)    
                 #Repo.insert(order_name_changeset)      
 
-                #case Repo.insert(order_changeset) do
-                #  {:ok, response} -> IO.inspect(response)
+                #case Repo.insert(pool_order_response_user_changeset) do
+                #  {:ok, response} -> IO.inspect(response.id)
                 #    conn
                 #      |> put_flash(:info, "User created successfully.")
                 #      |> redirect(to: user_path(conn, :index))

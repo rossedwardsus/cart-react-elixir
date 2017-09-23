@@ -325,12 +325,13 @@ class PaymentMethod extends React.Component<any, any> {
                       </div>
                     </div>
                   </form>
-                    <form className="form-horizontal">
+                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-md-2">
                         <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
+                  </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
@@ -341,7 +342,7 @@ class PaymentMethod extends React.Component<any, any> {
                       </div>
                     </div>
                   </form>
-                  <form className="form-horizontal">
+                  <form className="form-inline">
                     <div className="form-group">
                       <div className="col-md-2">
                         <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
@@ -358,8 +359,6 @@ class PaymentMethod extends React.Component<any, any> {
                       </div>
                     </div>
                   </form>
-
-                  </form>  
             </div>
     )
   }

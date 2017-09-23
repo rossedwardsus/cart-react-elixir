@@ -1,4 +1,4 @@
-defmodule Sconely.UserProfile do
+defmodule Sconely.User do
 		use Ecto.Schema
 		import Ecto.Changeset
 
@@ -11,16 +11,14 @@ defmodule Sconely.UserProfile do
 
 		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
-		schema "user_profiles" do #user not user profile
-			field :user_id, Ecto.UUID #integer
+		schema "user" do #user not user profile
+			field :user_id, :integer
 			field :first_name, :string
 			field :last_name, :string
-			field :about_me, :string #?
-			#field :pool_name, :string
 			field :email, :string
 			field :mobile, :string
-			#field :company_name, :string put in address instead
-			#field :stripe_cus_token, :string
+			field :about_me, :string #?
+			field :company_name, :string #put in address instead
 			
 			#timestamps()
 		end

@@ -1,4 +1,4 @@
-defmodule Sconely.PoolOrderChosenItemsAndPayments do
+defmodule Sconely.PoolOrderResponseUser do
 	#use Ecto.Schema
 	#import Ecto.Changeset
 
@@ -10,12 +10,13 @@ defmodule Sconely.PoolOrderChosenItemsAndPayments do
 
 	schema "orders" do
 
-		#field :pool_id, :string #primary key
+		field :pool_order_id, :string #primary key
+		field :order_id, :string
 		field :user_id, :string #Ecto.UUID or "guest"
 		field :first_name, :string
-		#field :last_name
-		#field :email
-		#field :mobile
+		field :last_name
+		field :email
+		field :mobile
 		field :choice_datetime, Ecto.DateTime
 		field :stripe_token, :string
 

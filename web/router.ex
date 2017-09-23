@@ -41,7 +41,7 @@ defmodule SconeHomeElixir.Router do
   #get "/user", UserController, :index
 
 
-  
+  #remove????
  
   #scope "/login", SconeHomeElixir do
  #   pipe_through :browser # Use the default browser stack
@@ -50,7 +50,7 @@ defmodule SconeHomeElixir.Router do
   #  post "/", LoginController, :create
   #end
 
-  scope "/api1" do
+  #scope "/api1" do
     #pipe_through :api
 
     #get "/upload", Sconely.UserProfilePhotoController, :create
@@ -60,7 +60,12 @@ defmodule SconeHomeElixir.Router do
     #post "/login", Sconely.LoginController, :create
 
     #get "/menu_items", Sconely.MenuItemsController, :index   
-  end
+  #end
+
+
+
+  
+
 
   scope "/api"  do
     #pipe_through :api
@@ -87,14 +92,19 @@ defmodule SconeHomeElixir.Router do
 
   #scope "/graphql", Absinthe do
 
+    #pipe_through :graphql
+
+
   #    forward "/", Plug, schema: Sconely.Schema
   #    forward "/1", Plug, schema: Sconely.Schema
+
+    #get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
+    #forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
+    #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
      
   #end
 
-
-
-  #mobile
+  #root
   scope "/", SconeHomeElixir do
     pipe_through :browser # Use the default browser stack
 
@@ -107,6 +117,8 @@ defmodule SconeHomeElixir.Router do
 
 
     get "/", HomeController, :index
+    #get "/*anything", HomeController, :index
+
     get "/:signature_event_name", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
     #get "/activate", ActivateController, :index
@@ -121,6 +133,9 @@ defmodule SconeHomeElixir.Router do
     
   end
 
+
+
+  
   #get "/graphql", Absinthe.Plug.GraphiQL, schema: SconeHomeElixir.Schema
   #forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
     

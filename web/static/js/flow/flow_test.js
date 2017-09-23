@@ -128,11 +128,13 @@ const store = createStore(
     middleware
 )
 
-const historyWithoutAnnoyingQueryKey = useRouterHistory(createHashHistory)({ queryKey: false })
+//const historyWithoutAnnoyingQueryKey = useRouterHistory(createHashHistory)({ queryKey: false })
 //const history = syncHistoryWithStore(historyWithoutAnnoyingQueryKey, store)
 
 const history = syncHistoryWithStore(hashHistory, store)
 
+//works
+//const history = syncHistoryWithStore(browserHistory, store)
 
 
 

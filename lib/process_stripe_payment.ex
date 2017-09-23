@@ -191,19 +191,19 @@ defmodule Sconely.ProcessStripePayment do
     #create customer for guest
     #create user profile
 
-    params = [
-        source: [
-          object: "customer",
-          #number: "4111111111111111",
-          customer_id: "cus_BJyLo6fCtMZCOT",
+    #params = [
+    #    source: [
+    #      object: "customer",
+    #      #number: "4111111111111111",
+    #      customer_id: "cus_BJyLo6fCtMZCOT",
           #exp_month: 10,
           #exp_year: 2020,
           #country: "US",
           #name: "Ducky Test",
           #cvc: 123
-        ],
-        description: "Sconely order id for customer id"
-    ]
+    #    ],
+    #    description: "Sconely order id for customer id"
+    #]
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
