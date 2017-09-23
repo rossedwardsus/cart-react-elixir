@@ -46,8 +46,10 @@ export default class Menu extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-7">
-                            We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.
+                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
+                            <br/>
+                            <br/>
+                            <p>We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.</p>
                             <br/>
                             <br/>
                             We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.

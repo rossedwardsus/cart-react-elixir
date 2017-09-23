@@ -375,7 +375,7 @@ export class PublicStory extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-7">
+                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
                           Colossal cookies, apple pie and chocolate mush cake – these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings. 

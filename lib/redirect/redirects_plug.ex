@@ -32,9 +32,26 @@ defmodule Sconely.Plugs.RedirectsPlug do
 
     case conn.params do
 
+        #if no paramas
+        #_ -> conn
+        #if one then signature order
+        #check if signature order valid
+        #if two
+        #param1 == yours
+        #or param1 == social
+        #or image
+        #or pool
+        #check pool still valid
+
+
+        #if only one param1 is not empty and param2 is not empty
+
+        #signature event name - sconelylaunchatlaci
         %{"signature_event_name" => signature_event_name} -> 
                 IO.puts("pattern matching")
 
+
+        #8thandhope/thursdayseptember23rd
         %{"pool_name" => pool_name, "pool_date" => pool_date} ->
                 IO.puts("pool")
                 if(pool_name == "image") do

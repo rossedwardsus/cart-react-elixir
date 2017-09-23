@@ -19165,7 +19165,7 @@ webpackJsonp([0],[
 	                    return _this2.props.createOrder("yours");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-10 freshly baked scones.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.props.createOrder("social");
-	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "1 doz  - 20 doz regular sized scones", React.createElement("br", null), "2 doz - 40 doz mini scones", React.createElement("br", null), "Freshly baked, delivered to your event")), React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 20 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
+	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "1 doz  - 20 doz regular sized scones", React.createElement("br", null), "2 doz - 40 doz mini scones", React.createElement("br", null), "Freshly baked, delivered to your event")), React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 20 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.props.createOrder("yours");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-10 scones, freshly baked and delivered to you", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.props.createOrder("social");
@@ -27373,9 +27373,10 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "8thandhope", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "social", pool_order_id: "1", pool_name: "pn", pool_date: "september082017", promo_code: "8thandhope", cart_items: [{item_id: 1, quantity: 1}, {item_id: 2, quantity: 2}], save_for_later: ' + getState().User.saveForLater + ', user_name_first: "' + getState().User.first_name + '", user_name_last: "' + getState().User.last_name + '", user_contact_email: "' + getState().User.email + '", user_contact_mobile: "' + getState().User.mobile + '", delivery_contact_address_name_first: "' + getState().User.deliveryContactsAddresses[0].first_name + '", delivery_contact_address_name_last: "' + getState().User.deliveryContactsAddresses[0].last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].email + '", delivery_contact_address_contact_mobile: "", delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].mobile + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status erro_code error_reason}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
+	            //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
 	            //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
 	            ////error_message = "There was an error in your CVC code."
 	            //incorrect card number
@@ -29707,7 +29708,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-11 col-md-3" }, React.createElement("div", null, React.createElement("div", { className: "hidden-lg" }, React.createElement("br", null), React.createElement("br", null)), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/about_us" }, "ABOUT US"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/story" }, "OUR STORY"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/team" }, "TEAM"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/faq" }, "FAQ"), React.createElement("br", null)), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, "\xA0\xA0\xA0\xA0", React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter"))), React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("a", { href: "http://www.instagram.com/sconelyla" }, "Instagram"), React.createElement("br", null), React.createElement("a", { href: "http://www.twitter.com/sconelyla" }, "Twitter")), React.createElement("div", { className: "col-md-8" }));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-11 col-md-3" }, React.createElement("div", null, React.createElement("div", { className: "hidden-lg" }, React.createElement("br", null), React.createElement("br", null)), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/about_us" }, "ABOUT US"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/story" }, "OUR STORY"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/team" }, "TEAM"), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement(react_router_1.Link, { to: "/public/faq" }, "FAQ"), React.createElement("br", null)), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, "\xA0\xA0\xA0\xA0", React.createElement("a", { className: "fa fa-instagram", style: { fontSize: 20, textDecoration: "none", color: "grey" }, href: "http://www.instagram.com/sconelyla" }), React.createElement("br", null), "\xA0\xA0\xA0\xA0", React.createElement("a", { className: "fa-twitter", style: { fontSize: 20, textDecoration: "none", color: "grey" }, href: "http://www.twitter.com/sconelyla" }, "Twitter"))), React.createElement("div", { className: "hidden-xs col-md-2" }, "@sconelyla", React.createElement("br", null), React.createElement("a", { className: "fa fa-instagram", style: { fontSize: 20, textDecoration: "none", color: "grey" }, href: "http://www.instagram.com/sconelyla" }), React.createElement("a", { className: "fa fa-twitter", style: { fontSize: 20, textDecoration: "none", color: "grey" }, href: "http://www.twitter.com/sconelyla" })), React.createElement("div", { className: "col-md-8" }));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -30448,7 +30449,7 @@ webpackJsonp([0],[
 	    _createClass(Menu, [{
 	        key: "render",
 	        value: function render() {
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, "We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.", React.createElement("br", null), React.createElement("br", null), "We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.", React.createElement("br", null), React.createElement("br", null), "Sconely specializes in artisanal sweet and savory scones that are perfect for events, meetings, conferences and parties. Sconely ensures that everyone at an event has something they can eat, decreases waste by allowing guests to pre-select their preferred scone, and creates community through shared food experiences.", React.createElement("br", null), React.createElement("br", null), "Have you ever hosted an event and wondered if your guests would find something they could eat? Sconely solves that problem by offering a variety of scones, including vegan and gluten-free options.", React.createElement("br", null), React.createElement("br", null), "Event hosts can order 12 - 250 regular or 24 - 500 mini scones with Sconely Social. Sconely Signature provides the option for guests to pre-select their preferred scone before an event. The scones are then delivered in individual personalized packages.", React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch with the finest ingredients and freshly baked to order. We use organic ingredients when possible and all of our scones are free of refined sugars and soy.", React.createElement("br", null), React.createElement("br", null), "Sconely is partnering up to use hyperlocal produce grown by Community Healing Gardens in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.", React.createElement("br", null), React.createElement("br", null), "Sconely bakes at Crafted Kitchen in Downtown Los Angeles. Contact us at eat@sconely.com for more information."), React.createElement("div", { className: "col-md-3" })), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7", style: { paddingLeft: "30px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("p", null, "We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them."), React.createElement("br", null), React.createElement("br", null), "We believe in high quality and sustainably baked scones that are best shared with others. With an emphasis on organic ingredients and superfoods, Sconely updates traditional scones and the experience of eating them.", React.createElement("br", null), React.createElement("br", null), "Sconely specializes in artisanal sweet and savory scones that are perfect for events, meetings, conferences and parties. Sconely ensures that everyone at an event has something they can eat, decreases waste by allowing guests to pre-select their preferred scone, and creates community through shared food experiences.", React.createElement("br", null), React.createElement("br", null), "Have you ever hosted an event and wondered if your guests would find something they could eat? Sconely solves that problem by offering a variety of scones, including vegan and gluten-free options.", React.createElement("br", null), React.createElement("br", null), "Event hosts can order 12 - 250 regular or 24 - 500 mini scones with Sconely Social. Sconely Signature provides the option for guests to pre-select their preferred scone before an event. The scones are then delivered in individual personalized packages.", React.createElement("br", null), React.createElement("br", null), "All of our scones are made from scratch with the finest ingredients and freshly baked to order. We use organic ingredients when possible and all of our scones are free of refined sugars and soy.", React.createElement("br", null), React.createElement("br", null), "Sconely is partnering up to use hyperlocal produce grown by Community Healing Gardens in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.", React.createElement("br", null), React.createElement("br", null), "Sconely bakes at Crafted Kitchen in Downtown Los Angeles. Contact us at eat@sconely.com for more information."), React.createElement("div", { className: "col-md-3" })), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
 	        }
 	    }]);
 	
@@ -30481,278 +30482,272 @@ webpackJsonp([0],[
 	//import * as Cookie from 'js-cookie';
 	//const cookie: any = require('react-cookie');
 	function getCookie(name) {
-	    var nameLenPlus = name.length + 1;
-	    return document.cookie.split(';').map(function (c) {
-	        return c.trim();
-	    }).filter(function (cookie) {
-	        return cookie.substring(0, nameLenPlus) === name + "=";
-	    }).map(function (cookie) {
-	        return decodeURIComponent(cookie.substring(nameLenPlus));
-	    })[0] || null;
+	  var nameLenPlus = name.length + 1;
+	  return document.cookie.split(';').map(function (c) {
+	    return c.trim();
+	  }).filter(function (cookie) {
+	    return cookie.substring(0, nameLenPlus) === name + "=";
+	  }).map(function (cookie) {
+	    return decodeURIComponent(cookie.substring(nameLenPlus));
+	  })[0] || null;
 	}
 	//@connect(null, mapDispatchToProps)
 	
 	var PublicFaq = function (_React$Component) {
-	    _inherits(PublicFaq, _React$Component);
+	  _inherits(PublicFaq, _React$Component);
 	
-	    //props: Props;
-	    function PublicFaq(props) {
-	        _classCallCheck(this, PublicFaq);
+	  //props: Props;
+	  function PublicFaq(props) {
+	    _classCallCheck(this, PublicFaq);
 	
-	        //this.getData();
-	        //alert("sconely yours1" + this.props.params.order_id);
-	        var _this = _possibleConstructorReturn(this, (PublicFaq.__proto__ || Object.getPrototypeOf(PublicFaq)).call(this, props));
+	    //this.getData();
+	    //alert("sconely yours1" + this.props.params.order_id);
+	    var _this = _possibleConstructorReturn(this, (PublicFaq.__proto__ || Object.getPrototypeOf(PublicFaq)).call(this, props));
 	
-	        _this.state = {
-	            gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
-	            gallery_image: "",
-	            gallery_image_index: 0,
-	            guest_code: "",
-	            interval: ""
-	        };
-	        //this.createSignatureOrder = this.createSignatureOrder.bind(this);
-	        _this.guestCode = _this.guestCode.bind(_this);
-	        _this.onSubmit = _this.onSubmit.bind(_this);
-	        _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
-	        _this.onSwipedRight = _this.onSwipedRight.bind(_this);
-	        _this.guestCodeChange = _this.guestCodeChange.bind(_this);
-	        _this.changeImage = _this.changeImage.bind(_this);
-	        return _this;
+	    _this.state = {
+	      gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
+	      gallery_image: "",
+	      gallery_image_index: 0,
+	      guest_code: "",
+	      interval: ""
+	    };
+	    //this.createSignatureOrder = this.createSignatureOrder.bind(this);
+	    _this.guestCode = _this.guestCode.bind(_this);
+	    _this.onSubmit = _this.onSubmit.bind(_this);
+	    _this.onSwipedLeft = _this.onSwipedLeft.bind(_this);
+	    _this.onSwipedRight = _this.onSwipedRight.bind(_this);
+	    _this.guestCodeChange = _this.guestCodeChange.bind(_this);
+	    _this.changeImage = _this.changeImage.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(PublicFaq, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      //dispatch(checkLoggedIn);
+	      //this.props.checkLoggedIn();
+	      //alert("jsx");
+	      //get active items from the database
+	      this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
+	      var interval = setInterval(this.changeImage, 5000);
+	      this.setState({ interval: interval });
+	      //Cookies.set('name', 'value');
+	      //alert(Cookies.get('name'));
+	      //function setCookie(cname, cvalue, exdays) {
+	      var d = new Date();
+	      d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
+	      var expires = "expires=" + d.toUTCString();
+	      document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
+	      //}
+	      //alert(document.cookie);
+	      //alert(getCookie("mommy_id"));
+	      //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	      //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 	    }
-	
-	    _createClass(PublicFaq, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            //dispatch(checkLoggedIn);
-	            //this.props.checkLoggedIn();
-	            //alert("jsx");
-	            //get active items from the database
-	            this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
-	            var interval = setInterval(this.changeImage, 5000);
-	            this.setState({ interval: interval });
-	            //Cookies.set('name', 'value');
-	            //alert(Cookies.get('name'));
-	            //function setCookie(cname, cvalue, exdays) {
-	            var d = new Date();
-	            d.setTime(d.getTime() + 1 * 24 * 60 * 60 * 1000);
-	            var expires = "expires=" + d.toUTCString();
-	            document.cookie = "sconely_session_id=12345;" + expires + ";path=/";
-	            //}
-	            //alert(document.cookie);
-	            //alert(getCookie("mommy_id"));
-	            //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-	            //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      // use intervalId from the state to clear the interval
+	      clearInterval(this.state.interval);
+	    }
+	  }, {
+	    key: "onSubmit",
+	    value: function onSubmit(e) {
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: "guestCode",
+	    value: function guestCode() {
+	      //e.preventDefault();
+	      //alert(order_type);
+	      //if(order_type == "sconely_yours"){
+	      //if user is logged in then 
+	      //guest code is right then
+	      //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
+	      this.context.router.push('/order/' + this.state.guest_code + '/guest/event');
+	      //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
+	      //this.props.dispatch(routeActions.push('/foo'));
+	      //}
+	    }
+	  }, {
+	    key: "guestCodeChange",
+	    value: function guestCodeChange(e) {
+	      this.setState({ guest_code: e.target.value });
+	    }
+	  }, {
+	    key: "onSwipedLeft",
+	    value: function onSwipedLeft() {
+	      //alert("left");
+	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	      this.changeImage();
+	    }
+	  }, {
+	    key: "onSwipedRight",
+	    value: function onSwipedRight() {
+	      //alert("right");
+	      //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
+	      this.changeImage();
+	    }
+	  }, {
+	    key: "changeImage",
+	    value: function changeImage() {
+	      //console.log("changeimage");
+	      if (this.state.gallery_image_index == 3) {
+	        //let gallery_image_index_temp = this.state.gallery_image_index; 
+	        this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
+	        this.setState({ gallery_image_index: 0 });
+	      } else {
+	        //console.log("changeimage else");
+	        //let gallery_image_index_temp = this.state.gallery_image_index; 
+	        this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
+	        this.setState({ gallery_image_index: this.state.gallery_image_index + 1 });
+	      }
+	      //if(this.state.gallery_image == "/images/gallery/sconely_group_HPb.jpg"){
+	      //    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
+	      //}else{
+	      //    this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
+	      //}
+	    }
+	  }, {
+	    key: "createOrder",
+	    value: function createOrder(order_type) {
+	      console.log(order_type);
+	      this.props.createOrder(order_type, "");
+	      //if user is logged in then 
+	      //this.context.router.push('/order/menu');
+	      /*if(order_type == "sconely_yours"){
+	               //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	          //alert(orders);
+	               //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	         
+	          //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
+	               this.props.createOrder("sconely_yours", "");
+	               //if user is logged in then
+	          this.context.router.push('/order/menu');
+	               //this.context.router.push('/public/menu');
+	       
+	      }else if(order_type == "sconely_social"){
+	               //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	          //alert(orders);
+	          //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	               //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
+	               this.props.createOrder("sconely_social", "");
+	               this.context.router.push('/order/menu');
+	           
+	      }else if(order_type == "sconely_signature"){
+	               //var orders = JSON.parse(localStorage.getItem("user")).orders;
+	          //alert(orders);
+	          //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
+	               this.context.router.push('/order/signature');
+	          
+	           
+	      }*/
+	      /*const client = GQLClient('http://localhost:3000', {
+	        // anything passed here is merged with
+	        // the options passed to fetch()
+	        credentials: true,
+	        headers: {
+	          'X-Requested-With': 'XMLHttpRequest'
 	        }
-	    }, {
-	        key: "componentWillUnmount",
-	        value: function componentWillUnmount() {
-	            // use intervalId from the state to clear the interval
-	            clearInterval(this.state.interval);
-	        }
-	    }, {
-	        key: "onSubmit",
-	        value: function onSubmit(e) {
-	            e.preventDefault();
-	        }
-	    }, {
-	        key: "guestCode",
-	        value: function guestCode() {
-	            //e.preventDefault();
-	            //alert(order_type);
-	            //if(order_type == "sconely_yours"){
-	            //if user is logged in then 
-	            //guest code is right then
-	            //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-	            this.context.router.push('/order/' + this.state.guest_code + '/guest/event');
-	            //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-	            //this.props.dispatch(routeActions.push('/foo'));
-	            //}
-	        }
-	    }, {
-	        key: "guestCodeChange",
-	        value: function guestCodeChange(e) {
-	            this.setState({ guest_code: e.target.value });
-	        }
-	    }, {
-	        key: "onSwipedLeft",
-	        value: function onSwipedLeft() {
-	            //alert("left");
-	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	            this.changeImage();
-	        }
-	    }, {
-	        key: "onSwipedRight",
-	        value: function onSwipedRight() {
-	            //alert("right");
-	            //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-	            this.changeImage();
-	        }
-	    }, {
-	        key: "changeImage",
-	        value: function changeImage() {
-	            //console.log("changeimage");
-	            if (this.state.gallery_image_index == 3) {
-	                //let gallery_image_index_temp = this.state.gallery_image_index; 
-	                this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
-	                this.setState({ gallery_image_index: 0 });
-	            } else {
-	                //console.log("changeimage else");
-	                //let gallery_image_index_temp = this.state.gallery_image_index; 
-	                this.setState({ gallery_image: this.state.gallery_images[this.state.gallery_image_index] });
-	                this.setState({ gallery_image_index: this.state.gallery_image_index + 1 });
+	      });*/
+	      /*client.mutate(`
+	        mutation ($id: RecordID!, $name: String!) {
+	          updateUser(input: {id: $id, name: $name}) {
+	            user {
+	              id
+	              name
 	            }
-	            //if(this.state.gallery_image == "/images/gallery/sconely_group_HPb.jpg"){
-	            //    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
-	            //}else{
-	            //    this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
-	            //}
+	          }
 	        }
-	    }, {
-	        key: "createOrder",
-	        value: function createOrder(order_type) {
-	            console.log(order_type);
-	            this.props.createOrder(order_type, "");
-	            //if user is logged in then 
-	            //this.context.router.push('/order/menu');
-	            /*if(order_type == "sconely_yours"){
-	                     //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	                //alert(orders);
-	                     //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	               
-	                //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-	                     this.props.createOrder("sconely_yours", "");
-	                     //if user is logged in then
-	                this.context.router.push('/order/menu');
-	                     //this.context.router.push('/public/menu');
-	             
-	            }else if(order_type == "sconely_social"){
-	                     //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	                //alert(orders);
-	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	                     //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-	                     this.props.createOrder("sconely_social", "");
-	                     this.context.router.push('/order/menu');
-	                 
-	            }else if(order_type == "sconely_signature"){
-	                     //var orders = JSON.parse(localStorage.getItem("user")).orders;
-	                //alert(orders);
-	                //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-	                     this.context.router.push('/order/signature');
-	                
-	                 
-	            }*/
-	            /*const client = GQLClient('http://localhost:3000', {
-	              // anything passed here is merged with
-	              // the options passed to fetch()
-	              credentials: true,
-	              headers: {
-	                'X-Requested-With': 'XMLHttpRequest'
-	              }
-	            });*/
-	            /*client.mutate(`
-	              mutation ($id: RecordID!, $name: String!) {
-	                updateUser(input: {id: $id, name: $name}) {
-	                  user {
-	                    id
-	                    name
-	                  }
-	                }
-	              }
-	            `, { id: 1234, name: 'Danny' }).then((result) => {
-	              console.log(result.data.user);
-	              // => { id: 1234, name: 'Danny' }
-	            });*/
-	            /*var query = `
-	              query q (id: String!) {
-	                user(id: $id) {
-	                  id,
-	                  email,
-	                  name
-	                }
-	              }
-	            `
-	            var queryVars = {
-	              id: 'abcdef'
-	            }
-	            var opts = {
-	              // custom fetch options
-	            }*/
-	            /**
-	             * @param  {Query} query graphql query
-	             * @param  {Object} [vars]  graphql query args, optional
-	             * @param  {Object} [opts]  fetch options, optional
-	             */
-	            /*fetch(query, queryVars, opts).then(function (results) {
-	              if (results.errors) {
-	                //...
-	                return
-	              }
-	              var user = result.data.user
-	              //...
-	            })*/
-	            //alert(order_type);
-	            //this.context.router.push('/order/12345/event_details');
-	            //browserHistory.push('#/order/12345');
-	            //browserHistory.push('/mobile/user#/order/12345');
-	            //save id in local storage
+	      `, { id: 1234, name: 'Danny' }).then((result) => {
+	        console.log(result.data.user);
+	        // => { id: 1234, name: 'Danny' }
+	      });*/
+	      /*var query = `
+	        query q (id: String!) {
+	          user(id: $id) {
+	            id,
+	            email,
+	            name
+	          }
 	        }
-	        //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
+	      `
+	      var queryVars = {
+	        id: 'abcdef'
+	      }
+	      var opts = {
+	        // custom fetch options
+	      }*/
+	      /**
+	       * @param  {Query} query graphql query
+	       * @param  {Object} [vars]  graphql query args, optional
+	       * @param  {Object} [opts]  fetch options, optional
+	       */
+	      /*fetch(query, queryVars, opts).then(function (results) {
+	        if (results.errors) {
+	          //...
+	          return
+	        }
+	        var user = result.data.user
+	        //...
+	      })*/
+	      //alert(order_type);
+	      //this.context.router.push('/order/12345/event_details');
+	      //browserHistory.push('#/order/12345');
+	      //browserHistory.push('/mobile/user#/order/12345');
+	      //save id in local storage
+	    }
+	    //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
 	
-	    }, {
-	        key: "render",
-	        value: function render() {
-	            var _this2 = this;
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var menu = null;
+	      /*if(this.props.user.user_id != undefined){
+	          
+	          menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
+	                        <ul className="nav navbar-header">
+	                          <li className="inactive">Profile<span className="sr-only">(current)</span></li>
+	                        </ul>
+	                        <ul className="nav navbar-nav">
+	                          <li className="inactive">Start Order</li>
+	                        </ul>
+	                        <ul className="nav navbar-nav">
+	                          <li className="inactive"><span className="sr-only">(current)</span></li>
+	                        </ul>
+	                        <ul className="nav navbar-nav">
+	                          <li className="inactive"><span className="sr-only">Home</span></li>
+	                        </ul>
+	                      </div>
+	      }else{
+	               menu = <div>
+	                        <ul id="navbar" className="nav navbar-nav navbar-left">
+	                        <li><Link to="/login">Login</Link></li>
+	                        <li><Link to="/register">Signup</Link></li>
+	                        <ul className="nav navbar-nav">
+	                          <li><span className="sr-only">(current)</span></li>
+	                        </ul>
+	                      </ul>
+	                      <div id="navbar" className="nav navbar-form navbar-right">
+	                                <div className="hidden-xs form-group">
+	                                  <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
+	                                </div>
+	                                <button type="submit" className="btn btn-default">Submit</button>
+	                      </div>
+	                  </div>
+	           }*/
+	      return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7", style: { paddingLeft: "30px" } }, "Faq"), React.createElement("div", { className: "col-md-3" })), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
+	    }
+	  }], [{
+	    key: "contextTypes",
+	    get: function get() {
+	      return {
+	        router: React.PropTypes.object.isRequired
+	      };
+	    }
+	  }]);
 	
-	            var menu = null;
-	            /*if(this.props.user.user_id != undefined){
-	                
-	                menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
-	                              <ul className="nav navbar-header">
-	                                <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-	                              </ul>
-	                              <ul className="nav navbar-nav">
-	                                <li className="inactive">Start Order</li>
-	                              </ul>
-	                              <ul className="nav navbar-nav">
-	                                <li className="inactive"><span className="sr-only">(current)</span></li>
-	                              </ul>
-	                              <ul className="nav navbar-nav">
-	                                <li className="inactive"><span className="sr-only">Home</span></li>
-	                              </ul>
-	                            </div>
-	            }else{
-	                     menu = <div>
-	                              <ul id="navbar" className="nav navbar-nav navbar-left">
-	                              <li><Link to="/login">Login</Link></li>
-	                              <li><Link to="/register">Signup</Link></li>
-	                              <ul className="nav navbar-nav">
-	                                <li><span className="sr-only">(current)</span></li>
-	                              </ul>
-	                            </ul>
-	                            <div id="navbar" className="nav navbar-form navbar-right">
-	                                      <div className="hidden-xs form-group">
-	                                        <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-	                                      </div>
-	                                      <button type="submit" className="btn btn-default">Submit</button>
-	                            </div>
-	                        </div>
-	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { style: { height: 650, width: 650 }, src: this.state.gallery_image }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, "mobile", React.createElement("div", null, React.createElement(react_router_1.Link, { to: "/", style: { fontSize: 17 } }, "Order Sconely Yours"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_yours");
-	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-12 Scones.  Baked and delivered.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
-	                    return _this2.createOrder("sconely_social");
-	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY SOCIAL"), React.createElement("br", null), "12-250 Scones.  Regular or Minis.  Baked and delivered for events")), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
-	        }
-	    }], [{
-	        key: "contextTypes",
-	        get: function get() {
-	            return {
-	                router: React.PropTypes.object.isRequired
-	            };
-	        }
-	    }]);
-	
-	    return PublicFaq;
+	  return PublicFaq;
 	}(React.Component);
 	
 	exports.PublicFaq = PublicFaq;
@@ -31058,7 +31053,7 @@ webpackJsonp([0],[
 	                      </div>
 	                  </div>
 	           }*/
-	      return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), "Colossal cookies, apple pie and chocolate mush cake \u2013 these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings.", React.createElement("br", null), React.createElement("br", null), "Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. I started thinking of healthier ways to satisfy my sweet tooth. I experimented with baking scones and shared them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social.", React.createElement("br", null), React.createElement("br", null), "When I was leaving NYC to move west, I envisioned driving a bakery truck named Scone Home, with an oversized scone on top. I imagined stopping to bake scones with local ingredients and selling them along the way. That idea was only half-baked.", React.createElement("br", null), React.createElement("br", null), "More recently, in discussions with technologist, Ross Edwards, Scone Home evolved into the technology driven business called Sconely. Ross and I spent a year developing a plan to merge a social app with gourmet scones. We spoke with bakers and nutritional experts to develop a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.", React.createElement("br", null), React.createElement("br", null), "Sconely is dedicated to my Mom, Marcia Friedman, who loved to bake, build community around food and made sure everyone at the table had something they could eat. Sconely follows in her tradition.", React.createElement("br", null), React.createElement("br", null), "We hope you enjoy the Sconely experience, as much as we have enjoyed creating it!", React.createElement("br", null), React.createElement("br", null), "Julia Friedman, Sconely Founder")), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
+	      return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7", style: { paddingLeft: "30px" } }, React.createElement("br", null), React.createElement("br", null), "Colossal cookies, apple pie and chocolate mush cake \u2013 these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings.", React.createElement("br", null), React.createElement("br", null), "Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. I started thinking of healthier ways to satisfy my sweet tooth. I experimented with baking scones and shared them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social.", React.createElement("br", null), React.createElement("br", null), "When I was leaving NYC to move west, I envisioned driving a bakery truck named Scone Home, with an oversized scone on top. I imagined stopping to bake scones with local ingredients and selling them along the way. That idea was only half-baked.", React.createElement("br", null), React.createElement("br", null), "More recently, in discussions with technologist, Ross Edwards, Scone Home evolved into the technology driven business called Sconely. Ross and I spent a year developing a plan to merge a social app with gourmet scones. We spoke with bakers and nutritional experts to develop a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.", React.createElement("br", null), React.createElement("br", null), "Sconely is dedicated to my Mom, Marcia Friedman, who loved to bake, build community around food and made sure everyone at the table had something they could eat. Sconely follows in her tradition.", React.createElement("br", null), React.createElement("br", null), "We hope you enjoy the Sconely experience, as much as we have enjoyed creating it!", React.createElement("br", null), React.createElement("br", null), "Julia Friedman, Sconely Founder")), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -31375,7 +31370,7 @@ webpackJsonp([0],[
 	                      </div>
 	                  </div>
 	           }*/
-	      return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), "Julia Friedman, Founder & CEO", React.createElement("br", null), "An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor.", React.createElement("br", null), "A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.", React.createElement("br", null), React.createElement("br", null), "Chenin Burnett-Doering, Head Baker", React.createElement("br", null), "Chenin Burnett-Doering loved baking from a young age. She graduated from the California School of Culinary Arts in Pasadena, CA with degrees in baking as well as culinary arts. She was the Head Baker of Good Life Cafe in Columbia, SC; Executive Pastry Chef of The Nose Wine Cellar in Pasadena, CA; and co-owner of Sweetheart's Cakes. She has also worked as a personal chef. In her free time Chenin loves spending time with her family, writing, and is an avid Baltimore Ravens fan.", React.createElement("br", null), React.createElement("br", null), "Dadi Revivo, Recipe Consultant", React.createElement("br", null), "With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.", React.createElement("br", null), React.createElement("br", null), "Ross Edwards, Lead Engineer", React.createElement("br", null), "Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.", React.createElement("br", null), React.createElement("br", null), "Debi Saltzberg, Advisor", React.createElement("br", null), "A graduate from The Hotel Restaurant department at the University of Massachusetts in Amherst, Debi has spent 25 years in the Restaurant Industry experiencing all positions from the Back of the House to Upper Management and Operations at top restaurants and resorts. Her love for food and beverage has also taken her on a journey into Biodynamic and Organic Farming.")), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
+	      return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7", style: { paddingLeft: "30px" } }, React.createElement("br", null), React.createElement("br", null), "Julia Friedman, Founder & CEO", React.createElement("br", null), "An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor.", React.createElement("br", null), "A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.", React.createElement("br", null), React.createElement("br", null), "Chenin Burnett-Doering, Head Baker", React.createElement("br", null), "Chenin Burnett-Doering loved baking from a young age. She graduated from the California School of Culinary Arts in Pasadena, CA with degrees in baking as well as culinary arts. She was the Head Baker of Good Life Cafe in Columbia, SC; Executive Pastry Chef of The Nose Wine Cellar in Pasadena, CA; and co-owner of Sweetheart's Cakes. She has also worked as a personal chef. In her free time Chenin loves spending time with her family, writing, and is an avid Baltimore Ravens fan.", React.createElement("br", null), React.createElement("br", null), "Dadi Revivo, Recipe Consultant", React.createElement("br", null), "With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.", React.createElement("br", null), React.createElement("br", null), "Ross Edwards, Lead Engineer", React.createElement("br", null), "Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.", React.createElement("br", null), React.createElement("br", null), "Debi Saltzberg, Advisor", React.createElement("br", null), "A graduate from The Hotel Restaurant department at the University of Massachusetts in Amherst, Debi has spent 25 years in the Restaurant Industry experiencing all positions from the Back of the House to Upper Management and Operations at top restaurants and resorts. Her love for food and beverage has also taken her on a journey into Biodynamic and Organic Farming.")), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -31691,7 +31686,7 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-2" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, "Colossal cookies, apple pie and chocolate mush cake \u2013 these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings.", React.createElement("br", null), React.createElement("br", null), "Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. I started thinking of healthier ways to satisfy my sweet tooth. I experimented with baking scones and shared them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social.", React.createElement("br", null), React.createElement("br", null), "When I was leaving NYC to move west, I envisioned driving a bakery truck named Scone Home, with an oversized scone on top. I imagined stopping to bake scones with local ingredients and selling them along the way. That idea was only half-baked.", React.createElement("br", null), React.createElement("br", null), "More recently, in discussions with technologist, Ross Edwards, Scone Home evolved into the technology driven business called Sconely. Ross and I spent a year developing a plan to merge a social app with gourmet scones. We spoke with bakers and nutritional experts to develop a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.", React.createElement("br", null), React.createElement("br", null), "Sconely is dedicated to my Mom, Marcia Friedman, who loved to bake, build community around food and made sure everyone at the table had something they could eat. Sconely follows in her tradition.", React.createElement("br", null), React.createElement("br", null), "We hope you enjoy the Sconely experience, as much as we have enjoyed creating it!", React.createElement("br", null), React.createElement("br", null), "Julia Friedman, Sconely Founder"), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), "Privacy Policy"), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -49235,6 +49230,7 @@ webpackJsonp([0],[
 	            return Object.assign({}, state, { orders: orders_updated });
 	        case actionTypes_ts_1.ADD_CART_ITEM:
 	            console.log("add cart item reducer here " + JSON.stringify(action));
+	            //find order where order type == current order type
 	            //if order_type == social
 	            //orders.filter((order: ) => order.order_type == "social"
 	            orders_updated = state.orders;
@@ -49256,6 +49252,7 @@ webpackJsonp([0],[
 	            })
 	          })*/
 	        case actionTypes_ts_1.INCREASE_CART_ITEM_QUANTITY:
+	            //find order where order type == current order type
 	            console.log("increase cart item quantity reducer " + JSON.stringify(action.item_index));
 	            //if quantity < 5 increase
 	            //else do nothing
@@ -49269,6 +49266,7 @@ webpackJsonp([0],[
 	              })*/
 	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	        case actionTypes_ts_1.DECREASE_CART_ITEM_QUANTITY:
+	            //find order where order type == current order type
 	            console.log("decrease reducer " + JSON.stringify(action.item_index));
 	            //todo if dozens is 0 then just remove
 	            //get quantity

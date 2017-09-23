@@ -14,7 +14,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   import Ecto.Query
   import Sconely.ProcessStripePayment
 
-  
+  #dont need
   def get_user_order(%{order_id: order_id}, _info) do
 
     #status, guests if signature, items
@@ -38,7 +38,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     end
   end
 
-
+  #dont need
   def create_user_order(args, _info) do
   	IO.puts("create order graphql")
     IO.inspect(args)
@@ -133,17 +133,17 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   end
 
 
-  def total_items() do
+  def total_order_items() do
 
       #reduce
 
   end
 
-  def calculate_delivery_cost() do
+  def calculate_order_delivery_cost() do
 
   end
 
-  def total_cost() do
+  def total_order_cost() do
 
       #reduce with promo code and delivery
 
@@ -309,6 +309,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   #graphql response
 
 
+
+
+
+
   #complete_yours_social_pool_order
 
   def complete_yours_social_pool_order(args, %{context: context}) do
@@ -408,7 +412,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             order_id = SecureRandom.uuid
             #order_id = UUID.uuid1()
             #change order_id to random number
+            
             random_number = :rand.uniform(9999999999)
+            #check if it exists in the database?
+            #user_id
+            #order_id
+
             IO.puts("random number9999")
             IO.inspect(random_number)
             #Float.round
@@ -955,19 +964,21 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
         {:error, error} -> IO.inspect(error.code)
 
-            error_message = ""
+            #error_message = ""
 
-            case error.code do
+            #case error.code do
 
-              "incorrect_cvc" -> error_message = "You have entered an incorrect CVC"
+            #  "incorrect_cvc" -> error_message = "You have entered an incorrect CVC"
 
-                #IO.puts("cvc")
+            #    #IO.puts("cvc")
 
-              _ ->                error_message = "There was an error please try another card"
+            #  _ ->                error_message = "There was an error please try another card"
 
-            end
+            #end
 
-            {:ok, %{status: "error", error_reason: error_message}}
+            #code and reason
+
+            {:ok, %{status: "error", error_code: "error.code", error_reason: "error reason"}}
 
             #IO.inspect(error)
             #log error in database

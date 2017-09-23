@@ -203,15 +203,16 @@ export default class Menu extends React.Component<any, any> {
                     </div>
                     <br/>
                     <div className="hidden-lg">
-                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.instagram.com/sconelyla">Instagram</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa fa-instagram" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.instagram.com/sconelyla"></a>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.twitter.com/sconelyla">Twitter</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa-twitter" style={{fontSize: 20, textDecoration: "none", color: "grey"}}  href="http://www.twitter.com/sconelyla">Twitter</a>
                     </div>
                   </div>
                   <div className="hidden-xs col-md-2">
-                      <a href="http://www.instagram.com/sconelyla">Instagram</a>
+                      @sconelyla
                       <br/>
-                      <a href="http://www.twitter.com/sconelyla">Twitter</a>
+                      <a className="fa fa-instagram" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.instagram.com/sconelyla"></a>
+                      <a className="fa fa-twitter" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.twitter.com/sconelyla"></a>
                   </div>
                   <div className="col-md-8">
                   </div>

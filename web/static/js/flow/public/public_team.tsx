@@ -375,7 +375,7 @@ export class PublicTeam extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-7">
+                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
                           Julia Friedman, Founder & CEO

@@ -420,10 +420,6 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
                           <a onClick={() => this.props.createOrder("yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
                           <br/>
                           2-10 scones, freshly baked and delivered to you

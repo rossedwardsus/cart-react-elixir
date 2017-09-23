@@ -111,8 +111,10 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
     case CREATE_ORDER:
       console.log("CREATE order reducer " + JSON.stringify(action));
 
+      //set session current order type
+
       orders_updated = state.orders;
-      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: "action.pool_message", status: "current", created_datetime: "", payment_error: "", cartItems: []})
+      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: "action.pool_message", status: "current", created_datetime: "", cartItems: []})
 
       return Object.assign({}, state, {orders: orders_updated});
 
@@ -120,6 +122,8 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
 
     case ADD_CART_ITEM:
       console.log("add cart item reducer here " + JSON.stringify(action));
+
+      //find order where order type == current order type
 
       //if order_type == social
 
@@ -151,6 +155,8 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       })*/
 
     case INCREASE_CART_ITEM_QUANTITY:
+
+      //find order where order type == current order type
       
       console.log("increase cart item quantity reducer " + JSON.stringify(action.item_index));
 
@@ -171,6 +177,8 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
 
 
     case DECREASE_CART_ITEM_QUANTITY:
+
+      //find order where order type == current order type
       
       console.log("decrease reducer " + JSON.stringify(action.item_index));
       //todo if dozens is 0 then just remove
