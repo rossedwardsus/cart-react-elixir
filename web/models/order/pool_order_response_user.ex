@@ -17,7 +17,7 @@ defmodule Sconely.PoolOrderResponseUser do
 		field :last_name, :string
 		field :email, :string
 		field :mobile, :string
-		#field :choice_datetime, Ecto.DateTime
+		field :order_datetime, Ecto.DateTime, default: Ecto.DateTime.utc
 		field :payment_token, :string
 
 		#datetime

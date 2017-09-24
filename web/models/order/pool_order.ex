@@ -25,6 +25,7 @@ defmodule Sconely.PoolOrder do
 			#datetime created
 			#delivery datetime
 			#total cost
+			#payment method
 
 			#belongs_to :order, Order		
 			#has_one :order, Order, join_key: :order_id

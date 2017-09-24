@@ -1,19 +1,32 @@
-defmodule SconeHomeElixir.UserProfilePaymentMethods do
+defmodule Sconely.UserPaymentMethod do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
 		use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+
+		@optional_fields ~W(user_id payment_method_id brand)
+		@required_fields ~W()
 
 		schema "user_payment_methods" do
-			field :user_id, Ecto.UUID #:integer
+			field :user_id, :integer
+			field :payment_method_id, :integer
 			field :brand, :string
-			field :last_4_digits, :string
+			field :last_four_digits, :string
 			field :stripe_payment_token, :string
 			#field :default
 			
 			#timestamps()
+		end
+
+		def changeset(struct, params \\ %{}) do
+		    struct
+		    |> cast(params, @required_fields, @optional_fields)
+		    #|> validate_required([:email])
+		    #|> validate_length(:email, min: 2)
+		    #|> validate_length(:password, min: 2)
+		    #contains
 		end
 
 

@@ -5,12 +5,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   alias Sconely.MenuItem
   alias Sconely.Registration
   alias Sconely.User
-  #alias Sconely.UserPayment
+  alias Sconely.UserPaymentMethod
   #alias Sconely.Order
   alias Sconely.PoolOrder
   alias Sconely.PoolOrderResponseUser
   alias Sconely.PoolOrderResponseItem
   alias Sconely.YoursSocialOrder
+  alias Sconely.OrderItem
   #alias Ecto.Multi
   alias Sconely.CompleteOrderResolverHelper
 
@@ -255,6 +256,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #response
     #format date time
 
+    order_datetime = nil
+
 
        #new_customer = [
     #  email: "test@test.com",
@@ -282,18 +285,18 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #create customer for guest
     #create user profile
 
-    params = [
-        source: [
-          object: "card",
-          number: "4111111111111111",
-          exp_month: 10,
-          exp_year: 2020,
-          country: "US",
-          name: "Ducky Test",
-          cvc: 123
-        ],
-        description: "Sconely order id for customer id"
-      ]
+    #params = [
+    #    source: [
+    #      object: "card",
+    #      number: "4111111111111111",
+    #      exp_month: 10,
+    #      exp_year: 2020,
+    #      country: "US",
+    #      name: "Ducky Test",
+    #      cvc: 123
+    #    ],
+    #    description: "Sconely order id for customer id"
+    #  ]
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
@@ -323,7 +326,25 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   def complete_yours_social_pool_order(args, %{context: context}) do
 
+    IO.inspect(args[:user_contact_email])
     #IO.inspect(context)
+
+    user_id = nil
+    menu_items = nil
+    order_datetime = nil
+    order_datetime_formatted = nil
+    stripe_customer_token = nil
+    payment_method_last_four_digits = nil
+    promo_code_discount = nil
+    delivery_date = nil
+    delivery_date_formatted = nil
+    delivery_date_month = nil
+    delivery_date_day = ""
+    delivery_date_day_formatted = nil
+    delivery_date_year = nil
+    delivery_date_day_of_week = nil
+    delivery_date_formatted = nil
+                        
 
     IO.inspect(args[:save_for_later])
 
@@ -383,25 +404,90 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #create customer for guest
     #create user profile
 
-    params = [
-        source: [
-          object: "card",
-          number: "4111111111111111",
-          exp_month: 10,
-          exp_year: 2020,
-          country: "US",
-          name: "Ducky Test",
-          cvc: 123
-        ],
-        description: "Sconely order id for customer id"
-      ]
+    #params = [
+    #    source: [
+    #      object: "card",
+    #      number: "4111111111111111",
+    #      exp_month: 10,
+    #      exp_year: 2020,
+    #      country: "US",
+    #      name: "Ducky Test",
+    #      cvc: 123
+    #    ],
+    #    description: "Sconely order id for customer id"
+    #  ]
   
     #IO.inspect(Stripe.Charges.create(51, params))
 
     #charge = Stripe.Charges.create(51, params)
 
-    
-                    
+    IO.puts("card data from app")
+    #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
+
+    #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
+
+    #IO.puts("test card date")
+    #fraudulent
+    #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+
+    #cvc
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+        #IO.inspect(token["id"])  
+
+        #{:ok, token} -> {:ok, token}
+
+            #case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+
+            #  {:ok, charge} -> #IO.inspect("")
+            #                   {:ok, charge}
+            #  {:error, error} -> {:error, error}
+
+            #end
+
+        #{:error, error} -> {:error, error}
+
+    #end
+
+    #cus_BK3lQMlABIOi2V
+    #card_1AxPeJH6MNtZcTO4e0w0tCCL
+
+    customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+
+    case customer do
+
+      {:ok, customer} -> IO.inspect(customer)
+          #{:ok, customer}
+      {:error, error} -> #IO.inspect(error)
+          #{:error, error}
+
+    end
+
+    #token = Stripe.Token.create(card: %{number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+    #token = Stripe.Token.create(customer: "cus_BK3lQMlABIOi2V", card: "card_1AxPeJH6MNtZcTO4e0w0tCCL")
+
+    #case token do
+
+    #  {:ok, token} -> IO.inspect(token)
+    #  {:error, error} -> IO.inspect(error)
+
+    #end
+
+    #existing_customer = Stripe.Customer.retrieve("cus_BK30g9Fg4KNza3")
+
+    #case existing_customer do
+
+    #  {:ok, existing_customer} -> IO.inspect(existing_customer)
+                                  #source = existing_customer.source.create("sources": "card_1AxP6WH6MNtZcTO4KImodL8Z")
+     #                             sources = existing_customer["sources"]
+     #                             sources.create(token: "card_1AxPP0H6MNtZcTO4fmhS5KUV")
+
+     # {:error, error} -> IO.inspect(error)
+
+    #end
+              
     case process_stripe_payment(args) do
         {:ok, charge} -> 
 
@@ -492,13 +578,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #create guest user account
             #send pool acknowledgemtn
 
-            registration_changeset = Registration.changeset(%Registration{}, %{email: "email", password: ""})  
-
             #order_datetime_changeset = Order.changeset(%Order{}, %{order_id: order_id})
-            
-            #order_changeset = Order.changeset(%Order{}, %{user_id: "user_id", order_type: "social", order_id: order_id, delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", delivery_time: "", payment_confirmation: ""})
-            #delivery_id, contact_id, payment_id
-   
             
             #order_delivery_contact_address_changeset = Order.changeset(%Order{}, %{order_id: order_id}
             #user_delivery_contact_address_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
@@ -529,6 +609,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #get customer token if user exists
             #if payment suucceeds
 
+            registration_changeset = Registration.changeset(%Registration{}, %{email: args[:user_contact_email], password: ""})  
+
+            #get the user based on entered email address
+            #or store the token obviously 
+            #if they end up registering either change their user id
+            #or delete and recreate them
+            #does payment method have to be stored for a guest?           
+
             case Repo.insert(registration_changeset) do
                 {:ok, response} -> IO.inspect(response)
 
@@ -539,7 +627,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #if order_type == "pool"
                     #Repo.insert(user_changeset)
 
-                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: "fn", last_name: "ln", email: "e", mobile: "m", about_me: "am", company_name: "cn"})
+                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: "args[:user_name_last]", last_name: "args[:user_name_first]", email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", company_name: "", stripe_customer_id: ""})
           
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
@@ -555,19 +643,42 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #if order_type == "pool"
 
                         #admin/receipt id = 
-                        #random_number = :rand.uniform(9999999999)
-                        pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{user_id: user_id, pool_order_id: 1, first_name: "", last_name: "", email: "", mobile: ""})
+                        admin_receipt_order_id = :rand.uniform(9999999999)
+                        pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{user_id: user_id, admin_receipt_order_id: admin_receipt_order_id, admin_receipt_pool_order_id: 1, first_name: "", last_name: "", email: "", mobile: ""})
                         #delivery_id, contact_id, payment_id
 
-                        case Repo.insert(pool_order_response_user_changeset) do
+                        order_id = 0
+                        order_datetime = nil
+
+                        case Repo.insert(pool_order_response_user_changeset, returning: :order_datetime) do
                             {:ok, response} -> IO.inspect(response)
+                                    order_id = response.id
+                                    order_datetime = response.order_datetime
                         end
+
+                        #IO.inspect(order_datetime.month)
 
                         #order id from response
                         #Enum.map
                         #Repo.insert(order_items_changeset) 
 
+                        order_items = [%{menu_item_id: 1, quantity: 1}]
+
+                        Enum.map(order_items, fn(item) -> 
+                            IO.inspect(item)
+
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: order_id, menu_item_id: 1, quantity: 1, size: "regular"})
+
+                            #case Repo.insert(order_item_changeset) do
+
+                            #    {:ok, response} -> IO.inspect(response)
+
+                            #end
+
+                        end)
+
                     #order_type == "social/yours"
+                    #order_type with
 
                         #admin/receipt id = 
                         #random_number = :rand.uniform(9999999999)
@@ -579,11 +690,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #end
 
 
-                        order_items = [%{menu_item_id: 1, quantit: 1}]
+                        order_items = [%{menu_item_id: 1, quantity: 1}]
 
-                        #Enum.map(order_items, fn({k, v}) -> {IO.puts(k)} end)
+                        Enum.map(order_items, fn(item) -> 
+                            IO.inspect(item)
 
-                        #order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: response.id, menu_item_id: 1, quantity: 1})
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: 1, menu_item_id: 1, quantity: 1, size: "regular"})
+
+                            case Repo.insert(order_item_changeset) do
+
+                                {:ok, response} -> IO.inspect(response)
+
+                            end
+
+                        end)
 
                         #order id from response
                         #Enum.map
@@ -604,8 +724,23 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                     #user_contact_changeset = Order.changeset(%Order{}, %{use_id: user_id, payment_id})
             
-                    #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
-                    #user_payment_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
+                    #order_payment_changeset = Order.changeset(%OrderPayment{}, %{user_id: user_id, last_four_digits: "1234"})
+
+                    #get the max for the user and add one
+                    IO.inspect(Repo.one(from upm in "user_payment_methods", where: upm.user_id == 1, select: count(upm.payment_method_id)))
+
+                    card_number = "1234567890"
+                    last_four_digits = String.slice(card_number, (String.length(card_number) -4), String.length(card_number))
+
+                    #user_payment_id = Repo.get_by!(UserPayment, {user_id: 1})
+                    user_payment_changeset = UserPaymentMethod.changeset(%UserPaymentMethod{}, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
+
+                    Repo.insert(user_payment_changeset)
+
+                    #user_payment_id = Repo.get_by!(UserPayment, {user_id: 1})
+                    #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
+
+                    #Repo.insert(user_payment_changeset)
                
             end
 
@@ -805,13 +940,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #or for yours and social from application
 
                         delivery_date = ~D[2017-05-27]
-                        delivery_date_formatted = ""
-                        delivery_date_month = ""
-                        delivery_date_day = ""
-                        delivery_date_day_formatted = ""
-                        delivery_date_year = ""
                         delivery_date_day_of_week = Integer.to_string(delivery_date.day)
 
+                        
                         IO.inspect(delivery_date)
 
                         case Date.day_of_week(delivery_date) do
@@ -948,7 +1079,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #IO.inspect(args["order_first_name"])
 
-                        promo_code_discount = ""
                         cart_items = [%{"quantity": 1, "mini": false}]
 
                         case order_type do
