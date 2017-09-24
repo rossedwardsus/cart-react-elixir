@@ -5,10 +5,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   alias Sconely.MenuItem
   alias Sconely.Registration
   alias Sconely.User
+  #alias Sconely.UserPayment
   #alias Sconely.Order
   alias Sconely.PoolOrder
   alias Sconely.PoolOrderResponseUser
   alias Sconely.PoolOrderResponseItem
+  alias Sconely.YoursSocialOrder
   #alias Ecto.Multi
   alias Sconely.CompleteOrderResolverHelper
 
@@ -331,6 +333,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                            IO.inspect(response)
         {:error, error} -> IO.inspect(error)
 
+        {_, response} -> IO.inspect(response)
+
     end
 
     #IO.inspect(args)
@@ -494,10 +498,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             
             #order_changeset = Order.changeset(%Order{}, %{user_id: "user_id", order_type: "social", order_id: order_id, delivery_contact_first_name: "", delivery_contact_last_name: "", delivery_contact_email: "", delivery_contact_mobile: "", delivery_time: "", payment_confirmation: ""})
             #delivery_id, contact_id, payment_id
-
-            #pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{user_id: "user_id", pool_order_id: "", order_id: order_id, contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", payment_confirmation: ""})
-            #delivery_id, contact_id, payment_id
-           
+   
             
             #order_delivery_contact_address_changeset = Order.changeset(%Order{}, %{order_id: order_id}
             #user_delivery_contact_address_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
@@ -506,11 +507,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #order_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id}) get from user profile
             #user_name_contact_changeset = Order.changeset(%Order{}, %{order_id: order_id})
             
-            #user_contact_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
-            
-            #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
-            #user_payment_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
-
+           
 
 
             #IO.inspect(order_changeset)
@@ -529,16 +526,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #no need
 
             #if no token/user_id
+            #get customer token if user exists
+            #if payment suucceeds
 
             case Repo.insert(registration_changeset) do
                 {:ok, response} -> IO.inspect(response)
+
+                    user_id = response.id
 
                     #add to the session table
             
                     #if order_type == "pool"
                     #Repo.insert(user_changeset)
 
-                    user_changeset = User.changeset(%User{}, %{user_id: response.id, first_name: "fn", last_name: "ln", email: "e", mobile: "m", about_me: "am", company_name: "cn"})
+                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: "fn", last_name: "ln", email: "e", mobile: "m", about_me: "am", company_name: "cn"})
           
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
@@ -553,16 +554,59 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                     #if order_type == "pool"
 
-                      #Repo.insert(pool_order_response_user_changeset)
+                        #admin/receipt id = 
+                        #random_number = :rand.uniform(9999999999)
+                        pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{user_id: user_id, pool_order_id: 1, first_name: "", last_name: "", email: "", mobile: ""})
+                        #delivery_id, contact_id, payment_id
+
+                        case Repo.insert(pool_order_response_user_changeset) do
+                            {:ok, response} -> IO.inspect(response)
+                        end
 
                         #order id from response
                         #Enum.map
                         #Repo.insert(order_items_changeset) 
-                      
+
+                    #order_type == "social/yours"
+
+                        #admin/receipt id = 
+                        #random_number = :rand.uniform(9999999999)
+                        #yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, payment_token: ""})
+                        #delivery_contact_address_id, contact_id, payment_id
+
+                        #case Repo.insert(yours_social_order_changeset) do
+                        #    {:ok, response} -> IO.inspect(response)
+                        #end
+
+
+                        order_items = [%{menu_item_id: 1, quantit: 1}]
+
+                        #Enum.map(order_items, fn({k, v}) -> {IO.puts(k)} end)
+
+                        #order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: response.id, menu_item_id: 1, quantity: 1})
+
+                        #order id from response
+                        #Enum.map
+                        #Repo.insert(order_item_changeset) 
+
+                    #end
+
+
+                    #order id from response
+                    #Enum.map
+                    #Repo.insert(order_items_changeset) 
+
+                    #user_payment_changeset = UserPayment.changeset(%UserPayment{}, %{use_id: user_id, customer_token, payment_token})
+
+                  
                     #get this from stripe
-                    #Repo.insert(order_payment_changeset)    
-                    
-                    
+                    #Repo.insert(order_payment_changeset)  
+
+                    #user_contact_changeset = Order.changeset(%Order{}, %{use_id: user_id, payment_id})
+            
+                    #order_payment_changeset = Order.changeset(%Order{}, %{order_id: order_id, stripe_payment_token})
+                    #user_payment_changeset = Order.changeset(%Order{}, %{use_id: order_id, payment_id})
+               
             end
 
                 
@@ -816,15 +860,17 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_date_day_formatted = ""
                         order_date_year = ""
                         order_date_day_of_week = Integer.to_string(delivery_date.day)
+
+                        IO.inspect(Date.day_of_week(order_date))
                         
                         case Date.day_of_week(order_date) do
-                          0 -> {order_date_day_of_week = "Sunday"}
-                          1 -> {order_date_day_of_week = "Monday"}
+                          1 -> {order_date_day_of_week = "Sunday"}
                           2 -> {order_date_day_of_week = "Monday"}
                           3 -> {order_date_day_of_week = "Monday"}
-                          4 -> {order_date_day_of_week = "Thursday"}
-                          5 -> {order_date_day_of_week = "Friday"}
-                          6 -> {order_date_day_of_week = "Saturday"}
+                          4 -> {order_date_day_of_week = "Monday"}
+                          5 -> {order_date_day_of_week = "Thursday"}
+                          6 -> {order_date_day_of_week = "Friday"}
+                          7 -> {order_date_day_of_week = "Saturday"}
                         end
 
                         case order_date.month do

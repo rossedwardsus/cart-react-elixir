@@ -6,19 +6,19 @@ defmodule Sconely.PoolOrderResponseUser do
 
 	#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 	@optional_fields ~W()
-	@required_fields ~W(user_id order_type delivery_datetime)
+	@required_fields ~W(user_id first_name last_name email mobile)
 
-	schema "orders" do
+	schema "pool_order_response_user" do
 
 		field :pool_order_id, :string #primary key
-		field :order_id, :string
-		field :user_id, :string #Ecto.UUID or "guest"
+		#field :order_id, :string
+		field :user_id, :integer #Ecto.UUID or "guest"
 		field :first_name, :string
-		field :last_name
-		field :email
-		field :mobile
-		field :choice_datetime, Ecto.DateTime
-		field :stripe_token, :string
+		field :last_name, :string
+		field :email, :string
+		field :mobile, :string
+		#field :choice_datetime, Ecto.DateTime
+		field :payment_token, :string
 
 		#datetime
 		#payment confirmation
@@ -26,7 +26,9 @@ defmodule Sconely.PoolOrderResponseUser do
 		#guest count
 		#deliverydatetime for signature
 		#name if guest
-		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+		
+		#field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
+		
 		#field :payment_confirmation, :string #stripe receipt
 		#payment choice for signature
 		#event photo

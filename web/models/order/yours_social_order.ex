@@ -4,14 +4,14 @@ defmodule Sconely.YoursSocialOrder do
 
 		use SconeHomeElixir.Web, :model
 
-		@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
 		schema "yours_social_orders" do
 			field :order_id, :string #primary key #secure random
 			field :user_id, :string #Ecto.UUID
-			field :delivery_contact_address_id, :string #primary key #secure random
+			#field :delivery_contact_address_id, :string #primary key #secure random
 			field :payment_method_id, :string #Ecto.UUID
 			#delivery_datetime
 			#datetime_created

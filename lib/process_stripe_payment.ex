@@ -143,23 +143,60 @@ defmodule Sconely.ProcessStripePayment do
     #cvc
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
         #IO.inspect(token["id"])  
 
-        {:ok, token} -> {:ok, token}
+        #{:ok, token} -> {:ok, token}
 
-            case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+            #case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
-              {:ok, charge} -> #IO.inspect("")
-                               {:ok, charge}
-              {:error, error} -> {:error, error}
+            #  {:ok, charge} -> #IO.inspect("")
+            #                   {:ok, charge}
+            #  {:error, error} -> {:error, error}
 
-            end
+            #end
 
-        {:error, error} -> {:error, error}
+        #{:error, error} -> {:error, error}
+
+    #end
+
+    #cus_BK3lQMlABIOi2V
+    #card_1AxPeJH6MNtZcTO4e0w0tCCL
+
+    customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+
+    case customer do
+
+      {:ok, customer} -> #IO.inspect(customer)
+          {:ok, customer}
+      {:error, error} -> #IO.inspect(error)
+          {:error, error}
 
     end
+
+    #token = Stripe.Token.create(card: %{number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+    #token = Stripe.Token.create(customer: "cus_BK3lQMlABIOi2V", card: "card_1AxPeJH6MNtZcTO4e0w0tCCL")
+
+    #case token do
+
+    #  {:ok, token} -> IO.inspect(token)
+    #  {:error, error} -> IO.inspect(error)
+
+    #end
+
+    #existing_customer = Stripe.Customer.retrieve("cus_BK30g9Fg4KNza3")
+
+    #case existing_customer do
+
+    #  {:ok, existing_customer} -> IO.inspect(existing_customer)
+                                  #source = existing_customer.source.create("sources": "card_1AxP6WH6MNtZcTO4KImodL8Z")
+     #                             sources = existing_customer["sources"]
+     #                             sources.create(token: "card_1AxPP0H6MNtZcTO4fmhS5KUV")
+
+     # {:error, error} -> IO.inspect(error)
+
+    #end
 
 
     
@@ -315,40 +352,7 @@ defmodule Sconely.ProcessStripePayment do
 
     #"cus_BK30g9Fg4KNza3"
 
-    #cus_BK3lQMlABIOi2V
-    #card_1AxPeJH6MNtZcTO4e0w0tCCL
-
-    #customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
-
-    #case customer do
-
-    #  {:ok, customer} -> IO.inspect(customer)
-    #  {:error, error} -> IO.inspect(error)
-
-    #end
-
-    #token = Stripe.Token.create(card: %{number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
-    #token = Stripe.Token.create(customer: "cus_BK3lQMlABIOi2V", card: "card_1AxPeJH6MNtZcTO4e0w0tCCL")
-
-    #case token do
-
-    #  {:ok, token} -> IO.inspect(token)
-    #  {:error, error} -> IO.inspect(error)
-
-    #end
-
-    #existing_customer = Stripe.Customer.retrieve("cus_BK30g9Fg4KNza3")
-
-    #case existing_customer do
-
-    #  {:ok, existing_customer} -> IO.inspect(existing_customer)
-                                  #source = existing_customer.source.create("sources": "card_1AxP6WH6MNtZcTO4KImodL8Z")
-     #                             sources = existing_customer["sources"]
-     #                             sources.create(token: "card_1AxPP0H6MNtZcTO4fmhS5KUV")
-
-     # {:error, error} -> IO.inspect(error)
-
-    #end
+    
 
     #IO.inspect(Stripe.Charge.create(amount: 1395, currency: "usd", source: "cus_BK3lQMlABIOi2V", description: "Fuzzy eyeglasses"))
 

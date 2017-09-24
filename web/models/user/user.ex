@@ -18,7 +18,8 @@ defmodule Sconely.User do
 			field :email, :string
 			field :mobile, :string
 			field :about_me, :string #?
-			field :company_name, :string #put in address instead
+			#field :company_name, :string #put in address instead
+			#field :stripe_token, :string
 			
 			#timestamps()
 		end
