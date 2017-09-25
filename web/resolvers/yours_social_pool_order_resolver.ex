@@ -350,6 +350,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     order_id = nil
     menu_items = nil
     order_datetime = nil
+    order_date_day_of_week = nil
+    order_date_month = nil
     order_datetime_formatted = nil
     stripe_response = nil
     stripe_customer_token = nil
@@ -692,6 +694,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             {:ok, response} -> IO.inspect(response)
                                     order_id = response.id
                                     order_datetime = response.order_datetime
+
+
                         end
 
                         #case args[:order_type] do
@@ -744,7 +748,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
 
-                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1})
+                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1})
                         #delivery_id, contact_id, payment_id
 
                         #order_id = 0
@@ -754,6 +758,54 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             {:ok, response} -> IO.inspect(response)
                                     order_id = response.id
                                     order_datetime = response.order_datetime
+
+                                    #{:ok, date} = Ecto.DateTime.dump(order_datetime)
+                                    order_as_date = Ecto.DateTime.to_date(order_datetime)
+
+                                    order_date_tuple = nil
+                                    order_date_as_elixir_date = nil
+
+                                    case Ecto.Date.dump(order_as_date) do
+
+                                        {:ok, date} -> IO.inspect(date)
+                                            order_date_tuple = date
+                                            IO.inspect(Date.from_erl(order_date_tuple))
+
+                                        {:error, error} -> IO.inspect(error)
+
+                                    end
+
+                                    
+
+                                    #case Date.day_of_week(order_date_tuple) do
+                                    #  0 -> {order_date_day_of_week = "Sunday"}
+                                    #  1 -> {order_date_day_of_week = "Monday"}
+                                    #  2 -> {order_date_day_of_week = "Monday"}
+                                    #  3 -> {order_date_day_of_week = "Monday"}
+                                    #  4 -> {order_date_day_of_week = "Thursday"}
+                                    #  5 -> {order_date_day_of_week = "Friday"}
+                                    #  6 -> {order_date_day_of_week = "Saturday"}
+                                    #end
+
+                                    case  order_datetime.month do
+                                      1 -> {order_date_month = "January"}
+                                      2 -> {order_date_month = "February"}
+                                      3 -> {order_date_month = "March"}
+                                      4 -> {order_date_month = "April"}
+                                      5 -> {order_date_month = "May"}
+                                      6 -> {order_date_month = "June"}
+                                      7 -> {order_date_month = "July"}
+                                      8 -> {order_date_month = "August"}
+                                      9 -> {order_date_month = "September"}
+                                      10 -> {order_date_month = "October"}
+                                      11 -> {order_date_month = "November"}
+                                      12 -> {order_date_month = "December"}
+                                    end
+
+                                    #timex_datetime = Date.from(date)
+
+                                    IO.inspect("day")
+                                    IO.inspect("date")
                         end
 
 
@@ -1077,7 +1129,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_date_year = ""
                         order_date_day_of_week = Integer.to_string(delivery_date.day)
 
-                        IO.inspect(Date.day_of_week(order_date))
+                        #IO.inspect(Date.day_of_week(order_date))
                         
                         case Date.day_of_week(order_date) do
                           1 -> {order_date_day_of_week = "Sunday"}
