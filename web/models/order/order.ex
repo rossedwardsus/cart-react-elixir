@@ -11,15 +11,19 @@ defmodule Sconely.Order do
 	use SconeHomeElixir.Web, :model
 
 	#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
-	@optional_fields ~W(user_id order_id order_type delivery_contact_first_name delivery_contact_last_name delivery_contact_email delivery_contact_mobile delivery_datetime delivery_time)
+	@optional_fields ~W(user_id order_type parent_order_id admin_receipt_order_id order_datetime)
 	@required_fields ~W()
 
 	schema "orders" do
 
-		field :order_id, :string #primary key #secure random #integer
-		field :user_id, :string #Ecto.UUID
+		field :parent_order_id, :integer
+		field :admin_receipt_order_id, :integer #primary key #secure random #integer
+		field :user_id, :integer #Ecto.UUID
 		field :order_type, :string #yours, social, pool_host, pool_response
-		#delivery contact address id
+		#field :delivery_contact_address_id, :integer
+		#payment_method_id
+		field :order_datetime, Ecto.DateTime, default: Ecto.DateTime.utc
+		#field :status, :string
 
 		#field delivery_contact_address_id
 		#field :delivery_contact_first_name, :string
@@ -42,8 +46,7 @@ defmodule Sconely.Order do
 		#stripe_receipt_token, :string
 		#status
 		#note
-		field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-
+		
 		#has_one :order_delivery_address, {"order_delivery_address", OrderDeliveryAddress}
 		#has_one :order_delivery_address, OrderDeliveryAddress, foreign_key: :order_id
 		#belongs_to :order_delivery_address, OrderDeliveryAddress, foreign_key: :order_id

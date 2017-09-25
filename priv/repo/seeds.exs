@@ -19,6 +19,8 @@ alias Sconely.MenuItem
 
 #menu_item_id?
 
+menu_item_id = Repo.one(from mi in "menu_items", select: count(mi.menu_item_id))
+
 menu_item_changeset = MenuItem.changeset(%MenuItem{"name":"DWK","ingredients":"Unbleached white all-purpose flour*, Anjou pears*, Pecans, Butter*, Eggs*, Heavy Cream*, Coconut sugar*, Fresh ginger*, Ground ginger, Baking powder, Pure vanilla extract*, Sea salt. *Organic\r","menu_item_id":1,"description":"DWK is an exquisite combination of flavors and textures, with caramelized pears, praline pecans and fresh ginger.", assortment: "", mini: "", active: ""})
 #Repo.insert!(menu_item_changeset)
 

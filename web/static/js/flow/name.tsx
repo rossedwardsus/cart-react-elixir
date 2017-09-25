@@ -325,7 +325,7 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-              <form className="form-horizontal">
+              <form className="form-inline">
                 <div className="form-group">
                   <div className="col-md-3">
                       <b>Name</b>
@@ -333,23 +333,20 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-horizontal">
+              <form role="form" className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
-                    <div className={this.state.first_name_classname}>
-                      <input type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} className="form-control" value={this.state.first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                    </div>
+                    <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} value={this.state.first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
-                </div>
-                <div className="form-group">
+                  <div className="hidden-lg col-xs-1">
+                    <br/>
+                  </div>
                   <div className="col-md-3">
-                    <div className={this.state.last_name_classname}>
-                      <input type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)}  className="form-control" value={this.state.last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                    </div>
+                    <input className="form-control margin-bottom" type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)} value={this.state.last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                 </div>
               </form>
-              <form className="form-horizontal">
+              <form className="form-inline">
                 <div className="form-group">
                   <div className="col-md-12">
                       <b>Contact</b>
@@ -357,7 +354,7 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-horizontal">
+              <form className="form-inline">
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
@@ -373,7 +370,7 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-horizontal">
+              <form className="form-inline">
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>

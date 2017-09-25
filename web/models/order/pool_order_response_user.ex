@@ -10,8 +10,8 @@ defmodule Sconely.PoolOrderResponseUser do
 
 	schema "pool_order_response_user" do
 
-		field :pool_order_id, :string #primary key
-		#field :order_id, :string
+		#field :pool_order_id, :string #primary key
+		field :order_id, :integer
 		field :user_id, :integer #Ecto.UUID or "guest"
 		field :first_name, :string
 		field :last_name, :string

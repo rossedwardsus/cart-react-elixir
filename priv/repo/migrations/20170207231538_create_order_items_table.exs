@@ -3,10 +3,11 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateOrderItemsTable do
 
   def change do
 	create table(:order_items) do
-	  add :user_id, :uuid #uuid or "guest"
-      add :order_id, :uuid
+	  add :user_id, :integer #uuid or "guest"
+      add :pool_yours_social_order_id, :bigint
       add :item_id, :integer
-      #add :mini, :boolean
+      add :quantity, :integer
+      add :size, :string
       #assorted
       #active
       #date time added

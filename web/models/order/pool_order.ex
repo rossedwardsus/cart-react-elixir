@@ -8,14 +8,15 @@ defmodule Sconely.PoolOrder do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		schema "order_delivery_contact_address" do
+		schema "pool_order" do
 			field :host_user_id, Ecto.UUID
 			field :order_id, Ecto.UUID
 			field :pool_name, :string
-			field :delivery_contact_first_name, :string
-			field :delivery_contact_last_name, :string
-			field :delivery_contact_email, :string
-			field :delivery_contact_mobile, :string
+			field :delivery_contact_id, :integer
+			#field :delivery_contact_first_name, :string
+			#field :delivery_contact_last_name, :string
+			#field :delivery_contact_email, :string
+			#field :delivery_contact_mobile, :string
 			#field :delivery_address_street1
 			#field :delivery_address_street2
 			#field :delivery_address_city

@@ -8,11 +8,14 @@ defmodule Sconely.YoursSocialOrder do
 
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
+		@optional_fields ~W(user_id order_id delivery_contact_address_id payment_method_id)
+		@required_fields ~W()
+
 		schema "yours_social_orders" do
-			field :order_id, :string #primary key #secure random
-			field :user_id, :string #Ecto.UUID
-			#field :delivery_contact_address_id, :string #primary key #secure random
-			field :payment_method_id, :string #Ecto.UUID
+			field :order_id, :integer #primary key #secure random
+			field :user_id, :integer #Ecto.UUID
+			field :delivery_contact_address_id, :integer #primary key #secure random
+			field :payment_method_id, :integer #Ecto.UUID
 			#delivery_datetime
 			#datetime_created
 			#stripe_payment_token
@@ -22,8 +25,8 @@ defmodule Sconely.YoursSocialOrder do
 
 		def changeset(model, params \\ %{}) do
 		    model
-		    |> cast(params, [:email, :password, :registration_datetime])
-		    #|> cast(params, [])
+		    |> cast(params, @required_fields, @optional_fields)
+	    	#|> cast(params, [])
 		    #|> validate_required([:name, :email, :bio, :number_of_pets])
 		end
 
