@@ -656,8 +656,45 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #check if the user exists in the registreation table    
 
             pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
-            IO.inspect(pool_order)
-     
+            IO.inspect(pool_order.delivery_date.month)
+
+            case  pool_order.delivery_date.month do
+              #1 -> {delivery_date_month = "January"}
+              #2 -> {delivery_date_month = "February"}
+              #3 -> {delivery_date_month = "March"}
+              #4 -> {delivery_date_month = "April"}
+              #5 -> {order_date_month = "May"}
+              #6 -> {order_date_month = "June"}
+              #7 -> {order_date_month = "July"}
+              #8 -> {order_date_month = "August"}
+              9 -> {delivery_date_month = "September"}
+              #10 -> {order_date_month = "October"}
+              #11 -> {order_date_month = "November"}
+              #12 -> {order_date_month = "December"}
+            end
+
+            
+            {:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
+            {:ok, date_from_erl} = Date.from_erl(date)    
+
+            #IO.inspect(Date.day_of_week(date_from_erl))           
+
+            case Date.day_of_week(date_from_erl) do
+            #case Timex.weekday do
+              0 -> {delivery_date_day_of_week = "Sunday"}
+              1 -> {delivery_date_day_of_week = "Monday"}
+              2 -> {delivery_date_day_of_week = "Tuesday"}
+              3 -> {delivery_date_day_of_week = "Wednesday"}
+              4 -> {delivery_date_day_of_week = "Thursday"}
+              5 -> {delivery_date_day_of_week = "Friday"}
+              6 -> {delivery_date_day_of_week = "Saturday"}
+            end                     
+
+            #IO.inspect(delivery_date_day_of_week)
+
+            delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
+            
+            IO.inspect(delivery_date_formatted)
 
             case Repo.insert(registration_changeset) do
                 {:ok, response} -> IO.inspect(response)
@@ -808,11 +845,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     case Timex.weekday(order_datetime_converted) do
                                       0 -> {order_date_day_of_week = "Sunday"}
                                       1 -> {order_date_day_of_week = "Monday"}
-                                    #  2 -> {order_date_day_of_week = "Monday"}
-                                    #  3 -> {order_date_day_of_week = "Monday"}
-                                    #  4 -> {order_date_day_of_week = "Thursday"}
-                                    #  5 -> {order_date_day_of_week = "Friday"}
-                                    #  6 -> {order_date_day_of_week = "Saturday"}
+                                      2 -> {order_date_day_of_week = "Tuesday"}
+                                      3 -> {order_date_day_of_week = "Wednesday"}
+                                      4 -> {order_date_day_of_week = "Thursday"}
+                                      5 -> {order_date_day_of_week = "Friday"}
+                                      6 -> {order_date_day_of_week = "Saturday"}
                                     end
 
                                     
