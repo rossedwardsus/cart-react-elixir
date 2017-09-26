@@ -653,7 +653,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #or delete and recreate them
             #does payment method have to be stored for a guest?  
 
-            #check if the user exists in the registreation table         
+            #check if the user exists in the registreation table    
+
+            pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
+            IO.inspect(pool_order)
+     
 
             case Repo.insert(registration_changeset) do
                 {:ok, response} -> IO.inspect(response)
@@ -676,7 +680,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #order_name is the id of this
 
                     #Repo.insert(user_contact_changeset)
-                        #order_contact is the id of this    
+                    #order_contact is the id of this    
 
                     if args[:order_type] == "pool" do
 
@@ -685,6 +689,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #or it does with a type "pool_response"
 
                         #delivery dateime
+
+                        pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
+                        IO.inspect(pool_order)
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
 
@@ -751,66 +758,37 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     else args[:order_type] in ["yours", "social"]
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
+                        order_datetime = Ecto.DateTime.utc
 
-                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1})
+                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1})
                         #delivery_id, contact_id, payment_id
 
                         #order_id = 0
                         #order_datetime = nil
 
-                        case Repo.insert(order_changeset, returning: :order_datetime) do
+                        case Repo.insert(order_changeset) do
                             {:ok, response} -> IO.inspect(response)
                                     order_id = response.id
-                                    order_datetime = response.order_datetime
+                                    #order_datetime = order_datetime
 
-                                    IO.inspect(Ecto.DateTime.utc)
-
+                                    #IO.inspect(Ecto.DateTime.utc)
 
 
                                     {:ok, date} = Ecto.DateTime.dump(order_datetime)
-                                    order_as_date = Ecto.DateTime.to_date(order_datetime)
-
+                                    
                                     #IO.inspect(Timex.shift(date, hours: 2, minutes: 0))
 
-                                    #timezone = Timezone.get("America/Los_Angeles", Timex.now)
+                                    timezone = Timezone.get("America/Los_Angeles", Timex.now)
 
                                     #IO.inspect(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"))
 
-                                    #IO.inspect(Timezone.convert(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"), timezone))
 
-                                    order_date_tuple = nil
-                                    order_date_as_elixir_date = nil
 
-                                    #IO.inspect(Timezone.get("America/Chicago", order_datetime))
-                                    #IO.inspect(Timex.shift(order_datetime, hours: 2, minutes: 0))
+                                    order_datetime_converted = Timezone.convert(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"), timezone)
 
-                                    case Ecto.Date.dump(order_as_date) do
+                                    #order_as_date = Ecto.DateTime.to_date(order_datetime_converted)
 
-                                        {:ok, date} -> IO.inspect(date)
-                                            order_date_tuple = date
-                                            case Date.from_erl(order_date_tuple) do
-                                                {:ok, date_tuple} -> 
-                                                    #date_as_tuple = date_tuple
-                                                    #IO.inspect(Timex.shift(date_tuple, hours: 2, minutes: 0))
-
-                                            end
-
-                                            
-                                        {:error, error} -> IO.inspect(error)
-
-                                    end
-
-                                    
-
-                                    #case Date.day_of_week(order_date_tuple) do
-                                    #  0 -> {order_date_day_of_week = "Sunday"}
-                                    #  1 -> {order_date_day_of_week = "Monday"}
-                                    #  2 -> {order_date_day_of_week = "Monday"}
-                                    #  3 -> {order_date_day_of_week = "Monday"}
-                                    #  4 -> {order_date_day_of_week = "Thursday"}
-                                    #  5 -> {order_date_day_of_week = "Friday"}
-                                    #  6 -> {order_date_day_of_week = "Saturday"}
-                                    #end
+                                    IO.inspect(Timex.weekday(order_datetime_converted))
 
                                     case  order_datetime.month do
                                       1 -> {order_date_month = "January"}
@@ -827,6 +805,49 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                       12 -> {order_date_month = "December"}
                                     end
 
+                                    case Timex.weekday(order_datetime_converted) do
+                                      0 -> {order_date_day_of_week = "Sunday"}
+                                      1 -> {order_date_day_of_week = "Monday"}
+                                    #  2 -> {order_date_day_of_week = "Monday"}
+                                    #  3 -> {order_date_day_of_week = "Monday"}
+                                    #  4 -> {order_date_day_of_week = "Thursday"}
+                                    #  5 -> {order_date_day_of_week = "Friday"}
+                                    #  6 -> {order_date_day_of_week = "Saturday"}
+                                    end
+
+                                    
+
+
+                                    order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted.minute)
+                                    IO.inspect(order_datetime_formatted)
+
+
+
+                                    order_date_tuple = nil
+                                    order_date_as_elixir_date = nil
+
+                                    #IO.inspect(Timezone.get("America/Chicago", order_datetime))
+                                    #IO.inspect(Timex.shift(order_datetime, hours: 2, minutes: 0))
+
+                                    #case Ecto.Date.dump(order_as_date) do
+
+                                     #   {:ok, date} -> IO.inspect(date)
+                                     #       order_date_tuple = date
+                                     #       case Date.from_erl(order_date_tuple) do
+                                     #           {:ok, date_tuple} -> 
+                                     #               date_as_tuple = date_tuple
+                                                    #IO.inspect(Timex.shift(date_tuple, hours: 2, minutes: 0))
+
+                                      #      end
+
+                                            
+                                       # {:error, error} -> IO.inspect(error)
+
+                                    #end
+
+                                    
+
+                            
                                     #timex_datetime = Date.from(date)
 
                                     IO.inspect("day")
