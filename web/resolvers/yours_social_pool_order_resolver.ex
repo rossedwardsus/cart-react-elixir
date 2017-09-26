@@ -15,7 +15,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   #alias Ecto.Multi
   alias Sconely.CompleteOrderResolverHelper
 
-  #use Timex
+  use Timex
 
   import Ecto.DateTime
   import Ecto.Query
@@ -651,7 +651,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #or store the token obviously 
             #if they end up registering either change their user id
             #or delete and recreate them
-            #does payment method have to be stored for a guest?           
+            #does payment method have to be stored for a guest?  
+
+            #check if the user exists in the registreation table         
 
             case Repo.insert(registration_changeset) do
                 {:ok, response} -> IO.inspect(response)
@@ -681,6 +683,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #insert into orders first and then use the order id from there a the order if for poolorderresponseuser
                         #actually pool respnse doesnt go in the order table perhaps
                         #or it does with a type "pool_response"
+
+                        #delivery dateime
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
 
@@ -759,18 +763,39 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     order_id = response.id
                                     order_datetime = response.order_datetime
 
-                                    #{:ok, date} = Ecto.DateTime.dump(order_datetime)
+                                    IO.inspect(Ecto.DateTime.utc)
+
+
+
+                                    {:ok, date} = Ecto.DateTime.dump(order_datetime)
                                     order_as_date = Ecto.DateTime.to_date(order_datetime)
+
+                                    #IO.inspect(Timex.shift(date, hours: 2, minutes: 0))
+
+                                    #timezone = Timezone.get("America/Los_Angeles", Timex.now)
+
+                                    #IO.inspect(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"))
+
+                                    #IO.inspect(Timezone.convert(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"), timezone))
 
                                     order_date_tuple = nil
                                     order_date_as_elixir_date = nil
+
+                                    #IO.inspect(Timezone.get("America/Chicago", order_datetime))
+                                    #IO.inspect(Timex.shift(order_datetime, hours: 2, minutes: 0))
 
                                     case Ecto.Date.dump(order_as_date) do
 
                                         {:ok, date} -> IO.inspect(date)
                                             order_date_tuple = date
-                                            IO.inspect(Date.from_erl(order_date_tuple))
+                                            case Date.from_erl(order_date_tuple) do
+                                                {:ok, date_tuple} -> 
+                                                    #date_as_tuple = date_tuple
+                                                    #IO.inspect(Timex.shift(date_tuple, hours: 2, minutes: 0))
 
+                                            end
+
+                                            
                                         {:error, error} -> IO.inspect(error)
 
                                     end

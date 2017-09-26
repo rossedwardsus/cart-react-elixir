@@ -22,7 +22,7 @@ defmodule Sconely.Order do
 		field :order_type, :string #yours, social, pool_host, pool_response
 		#field :delivery_contact_address_id, :integer
 		#payment_method_id
-		field :order_datetime, Ecto.DateTime, default: Ecto.DateTime.utc
+		field :order_datetime, Ecto.DateTime
 		#field :status, :string
 
 		#field delivery_contact_address_id
