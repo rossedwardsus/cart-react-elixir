@@ -2,8 +2,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
   use Ecto.Migration
 
   def change do
-  	create table(:user_delivery_contacts_addresses) do
-  		add :user_id, :uuid
+  	create_if_not_exists table(:user_delivery_contacts_addresses) do
+  		add :user_id, :bigint
   		add :user_delivery_contact_address_id, :integer
   		add :company_name, :string, size: 40
   		add :first_name, :string, size: 40

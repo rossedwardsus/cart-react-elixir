@@ -1,4 +1,4 @@
-defmodule Sconely.YoursSocialPoolOrderCompleteEmail do
+defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
   use Bamboo.Phoenix, view: SconeHomeElixir.UserOrderProcessedEmailView
 
   def yours_complete_order_user(_params) do
@@ -106,7 +106,7 @@ defmodule Sconely.YoursSocialPoolOrderCompleteEmail do
   def pool_order(_params) do
 
   	#IO.puts("hello")
-  	IO.inspect(_params)
+  	#IO.inspect(_params)
   	#IO.inspect(_params["order_contact_email"])
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
@@ -121,7 +121,7 @@ defmodule Sconely.YoursSocialPoolOrderCompleteEmail do
       #to: _params["order_contact_email"],
       to: ["rossedwards.us@gmail.com"],
       from: "order@sconely.com",
-      subject: "Sconely.com order: " <> _params.order_date,
+      subject: "Sconely.com order: " <> _params.order_datetime_formatted,
       html_body: template,
       #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
       #text_body: "Thanks for joining!"

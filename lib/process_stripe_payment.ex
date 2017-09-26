@@ -127,7 +127,7 @@ defmodule Sconely.ProcessStripePayment do
 
 
  
-    amount = Enum.reduce(args[:cart_items], 0, fn %{quantity: quantity}, count -> count = count + quantity * 5.50 end)
+    #amount = Enum.reduce(args[:cart_items], 0, fn %{quantity: quantity}, count -> count = count + quantity * 5.50 end)
 
     #IO.inspect(amount * 100 )
 
@@ -164,16 +164,17 @@ defmodule Sconely.ProcessStripePayment do
     #cus_BK3lQMlABIOi2V
     #card_1AxPeJH6MNtZcTO4e0w0tCCL
 
-    customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+    #customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
 
-    case customer do
+    #case customer do
 
-      {:ok, customer} -> #IO.inspect(customer)
-          {:ok, customer}
-      {:error, error} -> #IO.inspect(error)
-          {:error, error}
+    #  {:ok, customer} -> #IO.inspect(customer)
+    #      {:ok, customer}
+            {:ok, ""}
+    #  {:error, error} -> #IO.inspect(error)
+    #      {:error, error}
 
-    end
+    #end
 
     #token = Stripe.Token.create(card: %{number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
     #token = Stripe.Token.create(customer: "cus_BK3lQMlABIOi2V", card: "card_1AxPeJH6MNtZcTO4e0w0tCCL")

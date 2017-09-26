@@ -3,7 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrdersTable do
 
   def change do
 
-  	create table(:pool_orders) do
+  	create_if_not_exists table(:pool_orders) do
       add :user_id, :integer
       add :admin_receipt_order_id, :bigint
   	  #add :order_type, :string

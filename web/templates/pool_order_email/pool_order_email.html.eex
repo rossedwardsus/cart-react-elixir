@@ -11,9 +11,9 @@
     <tr><td>Thank you for your Sconely Order!</td><tr>
     <tr><td><br></td></tr>
     <tr><td>Order Number</td></tr>
-    <tr><td>Order Date: <%= @key.order_date %></td></tr>
+    <tr><td>Order Date: <%= @key.order_datetime_formatted %></td></tr>
     <tr><td><br></td></tr>
-    <tr><td>Your delivery is scheduled for Monday January 1, 2017, between 9-11 am</td></tr>
+    <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, between 9-11 am</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>
     <tr><td><%= @key.delivery_contact_address.street1 %>, Los Angeles ca, 90025</td></tr>
@@ -23,7 +23,7 @@
     </table>
   <table width="50%">
     <%= for item <- @key.cart_items do %>
-    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/menu/laci/zilla.jpg"></td><td><b>name<%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
+    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/menu/<%= String.downcase(item.name) |> String.replace(" ", "") %>.jpg"></td><td><b>name<%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
     <% end %>
     <tr><td>item name</td><td>/thumbnail image/</td><td>quantity</td></tr>
     </table>
@@ -36,7 +36,7 @@
     <tr><td><br><br></td></tr>
     <tr><td></td></tr>
     <tr><td>Billed to:</td></tr>
-    <tr><td>Visa xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
+    <tr><td>Brand xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
     <tr><td><br>If you have any questions please contact us at eat@sconely.com</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Enjoy!</td></tr>

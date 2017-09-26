@@ -334,26 +334,35 @@ class PaymentMethod extends React.Component<any, any> {
                     </div>
                   </form>
                   <br/>
-                  <form className="form-inline">
+                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
                         <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                      </div>
+                      <div className="hidden-lg col-xs-1">
+                        <br/>
                       </div>
                       <div className="col-sm-3">
                           {this.state.card_brand}
                       </div>
                     </div>
                   </form>
-                  <form className="form-inline">
+                  <form className="form-hosrizontal">
                     <div className="form-group">
                       <div className="col-md-1">
                         <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
+                    <div className="hidden-lg col-xs-1">
+                      <br/>
+                    </div>
                     <div className="form-group">
                       <div className="col-md-1">
                         <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
+                    </div>
+                    <div className="hidden-lg col-xs-1">
+                      <br/>
                     </div>
                     <div className="form-group">
                       <div className="col-md-1">

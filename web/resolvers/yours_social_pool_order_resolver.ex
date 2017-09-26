@@ -353,19 +353,31 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     order_date_day_of_week = nil
     order_date_month = nil
     order_datetime_formatted = nil
+
+    cart_item_with_name = nil
+
     stripe_response = nil
     stripe_customer_token = nil
+    stripe_charge_token = nil
     payment_method_last_four_digits = nil
     promo_code_discount = nil
 
     delivery_date = nil
-    delivery_date_formatted = nil
     delivery_date_month = nil
     delivery_date_day = ""
     delivery_date_day_formatted = nil
     delivery_date_year = nil
     delivery_date_day_of_week = nil
     delivery_date_formatted = nil
+
+    mini_items_count = 0
+    regular_items_count = 0
+    mini_total = 0
+    regular_total = 0
+    items_count = 0
+    order_type = "social"
+
+  
                         
 
     IO.inspect(args[:save_for_later])
@@ -443,7 +455,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     #charge = Stripe.Charges.create(51, params)
 
-    IO.puts("card data from app")
+    #IO.puts("card data from app")
     #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
 
     #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
@@ -455,37 +467,39 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #cvc
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    #working
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
         #IO.inspect(token["id"])  
 
-        #{:ok, token} -> {:ok, token}
+        {:ok, token} -> {:ok, token}
 
-            #case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+            case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
-            #  {:ok, charge} -> #IO.inspect("")
+              {:ok, charge} -> IO.inspect(charge["id"])
+              #stripe_charge_token = charge["id"]
             #                   {:ok, charge}
             #  {:error, error} -> {:error, error}
 
-            #end
+            end
 
         #{:error, error} -> {:error, error}
 
-    #end
+    end
 
     #cus_BK3lQMlABIOi2V
     #card_1AxPeJH6MNtZcTO4e0w0tCCL
 
-    customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
+    #customer = Stripe.Customer.create(email: "example@gmail.com", source: %{object: "card", number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
 
-    case customer do
+    #case customer do
 
-      {:ok, customer} -> IO.inspect(customer)
+    #  {:ok, customer} -> IO.inspect(customer)
           #{:ok, customer}
-      {:error, error} -> #IO.inspect(error)
+   #   {:error, error} -> #IO.inspect(error)
           #{:error, error}
 
-    end
+    #end
 
     #token = Stripe.Token.create(card: %{number: "4242424242424242", exp_month: 9, exp_year: 2018, cvc: "314"})
     #token = Stripe.Token.create(customer: "cus_BK3lQMlABIOi2V", card: "card_1AxPeJH6MNtZcTO4e0w0tCCL")
@@ -653,54 +667,19 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #or delete and recreate them
             #does payment method have to be stored for a guest?  
 
-            #check if the user exists in the registreation table    
+            user = Repo.get_by(Registration, %{email: "rossedwards.us@gmail.com"})
+            IO.inspect(user)
 
-            pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
-            IO.inspect(pool_order.delivery_date.month)
 
-            case  pool_order.delivery_date.month do
-              #1 -> {delivery_date_month = "January"}
-              #2 -> {delivery_date_month = "February"}
-              #3 -> {delivery_date_month = "March"}
-              #4 -> {delivery_date_month = "April"}
-              #5 -> {order_date_month = "May"}
-              #6 -> {order_date_month = "June"}
-              #7 -> {order_date_month = "July"}
-              #8 -> {order_date_month = "August"}
-              9 -> {delivery_date_month = "September"}
-              #10 -> {order_date_month = "October"}
-              #11 -> {order_date_month = "November"}
-              #12 -> {order_date_month = "December"}
-            end
+            #check if the user exists in the registreation table
 
-            
-            {:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
-            {:ok, date_from_erl} = Date.from_erl(date)    
-
-            #IO.inspect(Date.day_of_week(date_from_erl))           
-
-            case Date.day_of_week(date_from_erl) do
-            #case Timex.weekday do
-              0 -> {delivery_date_day_of_week = "Sunday"}
-              1 -> {delivery_date_day_of_week = "Monday"}
-              2 -> {delivery_date_day_of_week = "Tuesday"}
-              3 -> {delivery_date_day_of_week = "Wednesday"}
-              4 -> {delivery_date_day_of_week = "Thursday"}
-              5 -> {delivery_date_day_of_week = "Friday"}
-              6 -> {delivery_date_day_of_week = "Saturday"}
-            end                     
-
-            #IO.inspect(delivery_date_day_of_week)
-
-            delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
-            
-            IO.inspect(delivery_date_formatted)
-
-            case Repo.insert(registration_changeset) do
+            if user.id == nil do
+              case Repo.insert(registration_changeset) do
                 {:ok, response} -> IO.inspect(response)
 
                     user_id = response.id
 
+            
                     #add to the session table
             
                     #if order_type == "pool"
@@ -711,6 +690,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
                     end
+
+              end
+
+            else
+
+                user_id = user.id
+            end
 
                     #user id is response.id
                     #Repo.insert(user_name_changeset)
@@ -728,7 +714,49 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #delivery dateime
 
                         pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
-                        IO.inspect(pool_order)
+                        IO.inspect(pool_order.delivery_date.month)
+
+                        case  pool_order.delivery_date.month do
+                          #1 -> {delivery_date_month = "January"}
+                          #2 -> {delivery_date_month = "February"}
+                          #3 -> {delivery_date_month = "March"}
+                          #4 -> {delivery_date_month = "April"}
+                          #5 -> {delivery_date_month = "May"}
+                          #6 -> {delivery_date_month = "June"}
+                          #7 -> {delivery_date_month = "July"}
+                          #8 -> {delivery_date_month = "August"}
+                          9 -> {delivery_date_month = "September"}
+                          10 -> {delivery__date_month = "October"}
+                          11 -> {delivery_date_month = "November"}
+                          12 -> {delivery_date_month = "December"}
+                        end
+
+                        
+                        {:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
+                        {:ok, date_from_erl} = Date.from_erl(date)    
+
+                        #IO.inspect(Date.day_of_week(date_from_erl))           
+
+                        case Date.day_of_week(date_from_erl) do
+                        #case Timex.weekday do
+                          0 -> {delivery_date_day_of_week = "Sunday"}
+                          1 -> {delivery_date_day_of_week = "Monday"}
+                          2 -> {delivery_date_day_of_week = "Tuesday"}
+                          3 -> {delivery_date_day_of_week = "Wednesday"}
+                          4 -> {delivery_date_day_of_week = "Thursday"}
+                          5 -> {delivery_date_day_of_week = "Friday"}
+                          6 -> {delivery_date_day_of_week = "Saturday"}
+                        end                     
+
+                        #IO.inspect(delivery_date_day_of_week)
+
+                        delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
+            
+                        IO.inspect(delivery_date_formatted)
+
+
+                        #pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
+                        #IO.inspect(pool_order)
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
 
@@ -754,7 +782,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #admin/receipt id = 
                         admin_receipt_order_id = :rand.uniform(9999999999)
-                        pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{order_id: order_id, user_id: user_id, admin_receipt_order_id: admin_receipt_order_id, admin_receipt_pool_order_id: 1, first_name: "", last_name: "", email: "", mobile: ""})
+
+                        pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{order_id: order_id, user_id: user_id, admin_receipt_order_id: admin_receipt_order_id, pool_order_id: pool_order.id, first_name: "", last_name: "", email: "", mobile: ""})
                         #delivery_id, contact_id, payment_id
 
                         #order_id = 0
@@ -891,9 +920,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     IO.inspect("date")
                         end
 
+                        #delivery_contact_address_changeset
+
 
                         #admin/receipt id = 
                         #random_number = :rand.uniform(9999999999)
+                        
                         yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, delivery_contact_address_id: 0, payment_method_id: 0, stripe_token: ""})
                         #delivery_contact_address_id, contact_id, payment_id
 
@@ -923,6 +955,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #order id from response
                         #Enum.map
                         #Repo.insert(order_item_changeset) 
+
+                        #send receipt email here
+                        #yours and social have different receipts though
 
                     end
 
@@ -959,7 +994,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                     #Repo.insert(session_changeset)
                
-            end
+            #end
 
                 
             #Repo.insert(order_contact_changeset)    
@@ -1016,13 +1051,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end)
 
                         #Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
-
-                        mini_items_count = 0
-                        regular_items_count = 0
-                        mini_total = 0
-                        regular_total = 0
-                        items_count = 0
-                        order_type = "social"
 
                         #mini = 2.25
                         #2 dozen == 54 - no bulk discount
@@ -1159,105 +1187,99 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #for pool from ecto date time
                         #or for yours and social from application
 
-                        delivery_date = ~D[2017-05-27]
-                        delivery_date_day_of_week = Integer.to_string(delivery_date.day)
+                        #delivery_date = ~D[2017-05-27]
+                        #delivery_date_day_of_week = Integer.to_string(delivery_date.day)
 
                         
-                        IO.inspect(delivery_date)
+                        #IO.inspect(delivery_date)
 
-                        case Date.day_of_week(delivery_date) do
-                          0 -> {delivery_date_day_of_week = "Sunday"}
-                          1 -> {delivery_date_day_of_week = "Monday"}
-                          2 -> {delivery_date_day_of_week = "Monday"}
-                          3 -> {delivery_date_day_of_week = "Monday"}
-                          4 -> {delivery_date_day_of_week = "Thursday"}
-                          5 -> {delivery_date_day_of_week = "Friday"}
-                          6 -> {delivery_date_day_of_week = "Saturday"}
-                        end
+                        #case Date.day_of_week(delivery_date) do
+                        #  0 -> {delivery_date_day_of_week = "Sunday"}
+                        #  1 -> {delivery_date_day_of_week = "Monday"}
+                        #  2 -> {delivery_date_day_of_week = "Monday"}
+                        #  3 -> {delivery_date_day_of_week = "Monday"}
+                        #  4 -> {delivery_date_day_of_week = "Thursday"}
+                        #  5 -> {delivery_date_day_of_week = "Friday"}
+                        #  6 -> {delivery_date_day_of_week = "Saturday"}
+                        #end
 
-                        case  delivery_date.month do
-                          1 -> {delivery_date_month = "January"}
-                          2 -> {delivery_date_month = "February"}
-                          3 -> {delivery_date_month = "March"}
-                          4 -> {delivery_date_month = "April"}
-                          5 -> {delivery_date_month = "May"}
-                          6 -> {delivery_date_month = "June"}
-                          7 -> {delivery_date_month = "July"}
-                          8 -> {delivery_date_month = "August"}
-                          9 -> {delivery_date_month = "September"}
-                          10 -> {delivery_date_month = "October"}
-                          11 -> {delivery_date_month = "November"}
-                          12 -> {delivery_date_month = "December"}
-                        end
+                        #case  delivery_date.month do
+                        #  1 -> {delivery_date_month = "January"}
+                        #  2 -> {delivery_date_month = "February"}
+                        #  3 -> {delivery_date_month = "March"}
+                        #  4 -> {delivery_date_month = "April"}
+                        #  5 -> {delivery_date_month = "May"}
+                        #  6 -> {delivery_date_month = "June"}
+                        #  7 -> {delivery_date_month = "July"}
+                        #  8 -> {delivery_date_month = "August"}
+                        #  9 -> {delivery_date_month = "September"}
+                        #  10 -> {delivery_date_month = "October"}
+                        #  11 -> {delivery_date_month = "November"}
+                        #  12 -> {delivery_date_month = "December"}
+                        #end
 
 
-                        case delivery_date.day do
-                          n when n in [1, 21, 31] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
-                          n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-                          n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-                          n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
-                        end
+                        #case delivery_date.day do
+                        #  n when n in [1, 21, 31] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                        #  n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                        #  n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                        #  n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+                        #end
 
-                        delivery_date_formatted = delivery_date_day_of_week <> " " <> delivery_date_month <> " " <> delivery_date_day_formatted <> ", " <> Integer.to_string(delivery_date.year)
+                        #delivery_date_formatted = delivery_date_day_of_week <> " " <> delivery_date_month <> " " <> delivery_date_day_formatted <> ", " <> Integer.to_string(delivery_date.year)
 
-                        IO.puts(delivery_date_formatted)
+                        #IO.puts(delivery_date_formatted)
 
                         #IO.inspect(Timex.now.year)
 
-                        order_date = Timex.now
-                        order_date_formatted = ""
-                        order_date_month = ""
-                        order_date_day = ""
-                        order_date_day_formatted = ""
-                        order_date_year = ""
-                        order_date_day_of_week = Integer.to_string(delivery_date.day)
+                        #order_date = Timex.now
+                        #order_date_formatted = ""
+                        #order_date_month = ""
+                        #order_date_day = ""
+                        #order_date_day_formatted = ""
+                        #order_date_year = ""
+                        #order_date_day_of_week = Integer.to_string(delivery_date.day)
 
                         #IO.inspect(Date.day_of_week(order_date))
                         
-                        case Date.day_of_week(order_date) do
-                          1 -> {order_date_day_of_week = "Sunday"}
-                          2 -> {order_date_day_of_week = "Monday"}
-                          3 -> {order_date_day_of_week = "Monday"}
-                          4 -> {order_date_day_of_week = "Monday"}
-                          5 -> {order_date_day_of_week = "Thursday"}
-                          6 -> {order_date_day_of_week = "Friday"}
-                          7 -> {order_date_day_of_week = "Saturday"}
-                        end
+                        #case Date.day_of_week(order_date) do
+                        #  1 -> {order_date_day_of_week = "Sunday"}
+                        #  2 -> {order_date_day_of_week = "Monday"}
+                        #  3 -> {order_date_day_of_week = "Monday"}
+                        #  4 -> {order_date_day_of_week = "Monday"}
+                        #  5 -> {order_date_day_of_week = "Thursday"}
+                        #  6 -> {order_date_day_of_week = "Friday"}
+                        #  7 -> {order_date_day_of_week = "Saturday"}
+                        #end
 
-                        case order_date.month do
-                          1 -> {order_date_month = "January"}
-                          2 -> {order_date_month = "February"}
-                          3 -> {order_date_month = "March"}
-                          4 -> {order_date_month = "April"}
-                          5 -> {order_date_month = "May"}
-                          6 -> {order_date_month = "June"}
-                          7 -> {order_date_month = "July"}
-                          8 -> {order_date_month = "August"}
-                          9 -> {order_date_month = "September"}
-                          10 -> {order_date_month = "October"}
-                          11 -> {order_date_month = "November"}
-                          12 -> {order_date_month = "December"}
-                        end
+                        #case order_date.month do
+                        #  1 -> {order_date_month = "January"}
+                        #  2 -> {order_date_month = "February"}
+                        #  3 -> {order_date_month = "March"}
+                        #  4 -> {order_date_month = "April"}
+                        #  5 -> {order_date_month = "May"}
+                        #  6 -> {order_date_month = "June"}
+                        #  7 -> {order_date_month = "July"}
+                        #  8 -> {order_date_month = "August"}
+                        #  9 -> {order_date_month = "September"}
+                        #  10 -> {order_date_month = "October"}
+                        #  11 -> {order_date_month = "November"}
+                        #  12 -> {order_date_month = "December"}
+                        #end
 
-                        case order_date.day do
-                          n when n in [1, 21, 31] -> {order_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
-                          n when n in [2, 22] -> {order_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-                          n when n in [3, 23] -> {order_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-                          n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {order_date_day_formatted = Integer.to_string(order_date.day) <> "th"}
-                        end
+                        #order_date_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> order_date_day_formatted <> ", " <> Integer.to_string(order_date.year)
 
-                        order_date_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> order_date_day_formatted <> ", " <> Integer.to_string(order_date.year)
-
-                        IO.inspect(order_date_formatted)
+                        #IO.inspect(order_date_formatted)
                         IO.inspect(args[:cart_items])
 
-                        menu_items = [%{"item_id": 1, "name": "Ruby Q"}, %{"item_id": 2, "name": "lucky"}]
+                        #menu_items = [%{"item_id": 1, "name": "Ruby Q"}, %{"item_id": 2, "name": "juliefreedom(veganandgluten-free)"}]
 
                         #loop through cart items
                         cart_items_with_name = Enum.map(args[:cart_items], fn(cart_item) ->
                           #Map.put(cart_item, :name, "name")
                           #IO.inspect(Enum.at(menu_items, 0).name)
-                          Map.put(cart_item, :name, Enum.at(menu_items, 0).name)
+                          IO.inspect(cart_item[:item_id])
+                          Map.put(cart_item, :name, Enum.at(menu_items, cart_item[:item_id]-1).name)
 
 
                           #name = Enum.filter(menu_items, fn(menu_item) ->
@@ -1346,14 +1368,17 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             #working
                             #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
 
+                            #working
+                            #Sconely.YoursSocialPoolCompleteOrderEmail.yours_pool_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
+
+
                             #Sconely.YoursSocialPoolCompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #else
                   
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: order_id, order_date: order_date_formatted, delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                        #working
-                        #Sconely.YoursSocialPoolCompleteOrderEmail.yours_pool_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
+                          #Sconely.YoursSocialPoolCompleteOrderEmail.pool_admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
 
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}

@@ -3,9 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserPoolsTable do
 
   def change do
 
-  	def change do
-
-  	  create table(:pool_order_choices_payments) do
+  	  create_if_not_exists  table(:pool_order_choices_payments) do
 	      add :user_id, :integer
 	      add :admin_receipt_pool_order_id, :bigint, null: false
 	  	  add :delivery_date, Ecto.Date
@@ -13,7 +11,6 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserPoolsTable do
 	  	  add :order_datetime, :datetime
   	  end
   
-  	end
 
   end
 end
