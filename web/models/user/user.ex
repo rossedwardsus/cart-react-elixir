@@ -11,7 +11,7 @@ defmodule Sconely.User do
 
 		#@primary_key {:user_id, :binary_id, autogenerate: true}
 
-		schema "user" do #user not user profile
+		schema "users" do #user not user profile
 			field :user_id, :integer
 			field :first_name, :string
 			field :last_name, :string

@@ -6,6 +6,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   alias Sconely.Registration
   alias Sconely.User
   alias Sconely.UserPaymentMethod
+  alias Sconely.UserDeliveryContactAddress
   alias Sconely.Order
   alias Sconely.PoolOrder
   alias Sconely.PoolOrderResponseUser
@@ -382,15 +383,15 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     IO.inspect(args[:save_for_later])
 
-    case process_stripe_payment(args) do
+    #case process_stripe_payment(args) do
 
-        {:ok, response} -> #IO.inspect("response in yours...resolver")
-                           IO.inspect(response)
-        {:error, error} -> IO.inspect(error)
+    #    {:ok, response} -> #IO.inspect("response in yours...resolver")
+    #                       IO.inspect(response)
+    #    {:error, error} -> IO.inspect(error)
 
-        {_, response} -> IO.inspect(response)
+    #    {_, response} -> IO.inspect(response)
 
-    end
+    #end
 
     #IO.inspect(args)
     #IO.inspect(args[:user_contact_email])
@@ -477,7 +478,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
               {:ok, charge} -> IO.inspect(charge["id"])
-              #stripe_charge_token = charge["id"]
+              stripe_charge_token = charge["id"]
             #                   {:ok, charge}
             #  {:error, error} -> {:error, error}
 
@@ -659,8 +660,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #get customer token if user exists
             #if payment suucceeds
 
-            registration_changeset = Registration.changeset(%Registration{}, %{email: args[:user_contact_email], password: ""})  
-
+            
             #get the user based on entered email address
             #or store the token obviously 
             #if they end up registering either change their user id
@@ -673,8 +673,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             #check if the user exists in the registreation table
 
-            if user.id == nil do
+            if user == nil do
+
+              registration_changeset = Registration.changeset(%Registration{}, %{email: args[:user_contact_email], password: "", order_datetime: Ecto.DateTime.utc})  
+
               case Repo.insert(registration_changeset) do
+
                 {:ok, response} -> IO.inspect(response)
 
                     user_id = response.id
@@ -685,7 +689,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #if order_type == "pool"
                     #Repo.insert(user_changeset)
 
-                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: "args[:user_name_last]", last_name: "args[:user_name_first]", email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", company_name: "", stripe_customer_id: ""})
+                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: args[:user_name_last], last_name: args[:user_name_first], email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", company_name: "", stripe_customer_id: ""})
           
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
@@ -760,7 +764,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
 
-                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1, first_name: "", last_name: "", email: "", mobile: ""})
+                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1, first_name: "", last_name: "", email: "", mobile: "", stripe_charge_token: stripe_charge_token})
                         #delivery_id, contact_id, payment_id
 
                         #order_id = 0
@@ -826,7 +830,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         admin_receipt_order_id = :rand.uniform(9999999999)
                         order_datetime = Ecto.DateTime.utc
 
-                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1})
+                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
                         #delivery_id, contact_id, payment_id
 
                         #order_id = 0
@@ -921,12 +925,18 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end
 
                         #delivery_contact_address_changeset
+                        #check if delivery address exists for a user.  if not add it else update whatever is there.
 
+                        #delivery_contact_address_id = Repo.get_by(UserDeliveryContactAddress, %{user_id: user_id})
 
-                        #admin/receipt id = 
-                        #random_number = :rand.uniform(9999999999)
-                        
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, delivery_contact_address_id: 0, payment_method_id: 0, stripe_token: ""})
+                        #IO.inspect(delivery_contact_address_id)
+
+                        #if nil
+                        #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: "", last_name: "", street1: ""})
+                        #else update
+
+    
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, delivery_contact_address_id: 1, payment_method_id: 0, stripe_charge_token: stripe_charge_token})
                         #delivery_contact_address_id, contact_id, payment_id
 
                         case Repo.insert(yours_social_order_changeset) do
@@ -940,9 +950,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         Enum.map(order_items, fn(item) -> 
                             IO.inspect(item)
 
-                            #pool_order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: 1, menu_item_id: 1, order_id: order_id, quantity: 1, size: "regular"})
+                            #pool_order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: 1, menu_item_id: 1, user_id: user_id, order_id: order_id, quantity: 1, size: "regular"})
 
-                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: order_id, menu_item_id: 1, quantity: 1, size: item.size})
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: order_id, user_id: user_id, menu_item_id: 1, quantity: 1, size: item.size})
 
                             case Repo.insert(order_item_changeset) do
 
@@ -972,8 +982,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #get this from stripe
                     #Repo.insert(order_payment_changeset)  
 
-                    #user_contact_changeset = Order.changeset(%Order{}, %{use_id: user_id, payment_id})
-            
                     #order_payment_changeset = Order.changeset(%OrderPayment{}, %{user_id: user_id, last_four_digits: "1234"})
 
 
