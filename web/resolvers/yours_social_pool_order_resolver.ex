@@ -468,6 +468,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #cvc
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
+    stripe_response = nil
+
     #working
     case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
@@ -477,16 +479,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
-              {:ok, charge} -> IO.inspect(charge["id"])
+              {:ok, charge} -> #IO.inspect(charge["id"])
               stripe_charge_token = charge["id"]
+              stripe_response = {:ok, charge}
             #                   {:ok, charge}
-            #  {:error, error} -> {:error, error}
+              {:error, error} -> {:error, error}
+                  stripe_response = {:error, error}
 
             end
 
         #{:error, error} -> {:error, error}
 
     end
+
+    IO.inspect(stripe_response)
 
     #cus_BK3lQMlABIOi2V
     #card_1AxPeJH6MNtZcTO4e0w0tCCL
@@ -527,7 +533,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     #if stripe_response == ok
               
-    case process_stripe_payment(args) do
+    case stripe_response do
         {:ok, charge} -> 
 
             #create stripe customer and do everything else
@@ -761,19 +767,53 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             
                         IO.inspect(delivery_date_formatted)
 
+                        order_datetime = Ecto.DateTime.utc
+
+                        timezone = Timezone.get("America/Los_Angeles", Timex.now)
+
+                        #IO.inspect(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"))
+
+                        order_datetime_converted = Timezone.convert(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"), timezone)
 
                         #pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
                         #IO.inspect(pool_order)
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
+                        
+                        case  order_datetime.month do
+                          1 -> {order_date_month = "January"}
+                          2 -> {order_date_month = "February"}
+                          3 -> {order_date_month = "March"}
+                          4 -> {order_date_month = "April"}
+                          5 -> {order_date_month = "May"}
+                          6 -> {order_date_month = "June"}
+                          7 -> {order_date_month = "July"}
+                          8 -> {order_date_month = "August"}
+                          9 -> {order_date_month = "September"}
+                          10 -> {order_date_month = "October"}
+                          11 -> {order_date_month = "November"}
+                          12 -> {order_date_month = "December"}
+                        end
 
-                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, parent_order_id: 1, first_name: "", last_name: "", email: "", mobile: "", stripe_charge_token: stripe_charge_token})
+                        case Timex.weekday(order_datetime_converted) do
+                          0 -> {order_date_day_of_week = "Sunday"}
+                          1 -> {order_date_day_of_week = "Monday"}
+                          2 -> {order_date_day_of_week = "Tuesday"}
+                          3 -> {order_date_day_of_week = "Wednesday"}
+                          4 -> {order_date_day_of_week = "Thursday"}
+                          5 -> {order_date_day_of_week = "Friday"}
+                          6 -> {order_date_day_of_week = "Saturday"}
+                        end
+
+                        order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime.day) <> ", " <> Integer.to_string(order_datetime.year)
+
+                        order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, order_datetime: order_datetime, stripe_charge_token: stripe_charge_token})
                         #delivery_id, contact_id, payment_id
 
                         #order_id = 0
                         #order_datetime = nil
 
-                        case Repo.insert(order_changeset, returning: :order_datetime) do
+                        case Repo.insert(order_changeset) do
                             {:ok, response} -> IO.inspect(response)
                                     order_id = response.id
                                     order_datetime = response.order_datetime
@@ -844,7 +884,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     order_id = response.id
                                     #order_datetime = order_datetime
 
-                                    #IO.inspect(Ecto.DateTime.utc)
+                                    #IO.inspect(order_datetime)
 
 
                                     {:ok, date} = Ecto.DateTime.dump(order_datetime)
@@ -1374,7 +1414,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         total_cost_formatted = :erlang.float_to_binary(total_cost, [decimals: 2])
 
-                        #if order_type == "yours" || order_type == "social"
+                        if order_type == "yours" || order_type == "social" do
 
                             #working
                             #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
@@ -1385,12 +1425,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                             #Sconely.YoursSocialPoolCompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
-                        #else
+                        else
                   
-                          Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: "order_id", order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal: "subtotal_formatted", delivery_cost: 0.00, promo_code_discount: "promo_code_discount", total_cost: "total_cost_formatted", cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           #Sconely.YoursSocialPoolCompleteOrderEmail.pool_admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
+                        end
 
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
 
