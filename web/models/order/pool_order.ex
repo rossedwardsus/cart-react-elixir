@@ -8,7 +8,7 @@ defmodule Sconely.PoolOrder do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		@optional_fields ~W(user_id order_id admin_receipt_order_id order_datetime pool_name pool_date)
+		@optional_fields ~W(user_id order_id admin_receipt_order_id order_datetime pool_name delivery_date delivery_time)
 		@required_fields ~W()
 
 		schema "pool_orders" do
@@ -19,6 +19,7 @@ defmodule Sconely.PoolOrder do
 			#field :delivery_contact_id, :integer
 			#field :order_datetime, Ecto.Date
 			field :delivery_date, Ecto.Date
+			field :delivery_time, :string
 			#field :delivery_contact_first_name, :string
 			#field :delivery_contact_last_name, :string
 			#field :delivery_contact_email, :string
@@ -28,10 +29,10 @@ defmodule Sconely.PoolOrder do
 			#field :delivery_address_city
 			#field :delivery_address_state
 			#field :delivery_address_zipcode
+			
 			#delivery location - 8th and hope lobby
+			
 			#datetime created
-			#delivery datetime
-			#total cost
 			#payment method
 
 			#belongs_to :order, Order		

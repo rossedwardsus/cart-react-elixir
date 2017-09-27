@@ -689,7 +689,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #if order_type == "pool"
                     #Repo.insert(user_changeset)
 
-                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: args[:user_name_last], last_name: args[:user_name_first], email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", company_name: "", stripe_customer_id: ""})
+                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: "args[:user_name_last]", last_name: "args[:user_name_first]", email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", company_name: "", stripe_customer_id: ""})
           
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
@@ -707,9 +707,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #order_name is the id of this
 
                     #Repo.insert(user_contact_changeset)
-                    #order_contact is the id of this    
+                    #order_contact is the id of this   
 
-                    if args[:order_type] == "pool" do
+                    #order_type = args[:order_type]
+                    order_type = "pool" 
+
+                    if order_type == "pool" do
 
                         #insert into orders first and then use the order id from there a the order if for poolorderresponseuser
                         #actually pool respnse doesnt go in the order table perhaps

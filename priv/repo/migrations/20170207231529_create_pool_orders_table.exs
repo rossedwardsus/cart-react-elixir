@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrdersTable do
   def change do
 
   	create_if_not_exists table(:pool_orders) do
-      add :user_id, :integer
+      add :user_id, :bigint
       add :admin_receipt_order_id, :bigint
   	  #add :order_type, :string
       #add :delivery_contact_address_id, :Ecto.UUID
@@ -19,10 +19,10 @@ defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrdersTable do
       #add :delivery_address_zipcode
       add :delivery_date, :date
       #add :specific_delivery_time, :string
-      add :delivery_time_range, :string
-      #add :payment_method_id, Ecto.UUID
+      add :delivery_time, :string
+      add :payment_method_id, :integer
       #delivery note
-      add :order_datetime, :datetime
+      #add :order_datetime, :datetime
       #status
     end
   end
