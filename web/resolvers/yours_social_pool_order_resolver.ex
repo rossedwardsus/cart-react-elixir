@@ -349,6 +349,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     user_id = nil
     order_id = nil
+    admin_receipt_id = nil
     menu_items = nil
     order_datetime = nil
     order_date_day_of_week = nil
@@ -362,6 +363,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     stripe_charge_token = nil
 
     payment_method_last_four_digits = nil
+
+    promo_code = nil
     promo_code_discount = nil
 
     delivery_date = nil
@@ -372,6 +375,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     delivery_date_day_of_week = nil
     delivery_date_formatted = nil
 
+    delivery_address = nil
+
     mini_items_count = 0
     regular_items_count = 0
     mini_total = 0
@@ -379,8 +384,58 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     items_count = 0
     order_type = "social"
 
-  
-                        
+    total_cost = nil
+    total_cost_formatted = nil
+
+
+    #move all of this before payment
+
+    cart_items = [%{"menu_item_id": 1, "quantity": 1, "size": "regular"}, %{"menu_item_id": 2, "quantity": 100, "size": "mini"}]
+
+    order_type == "pool"
+    #order_type = args[:order_type]
+
+    case order_type do
+
+      "yours" -> 
+
+        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+
+
+      "social" -> 
+
+        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
+          case size do
+            "regular" ->  IO.puts("regular")
+                      count + (quantity * 1.00)
+            "mini" -> IO.puts("mini")
+                    count + (quantity * 2.00)
+          end
+        end)
+
+      "pool" ->
+
+        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+
+    end
+
+    subtotal = total_cost
+    subtotal_formatted = :erlang.float_to_binary(subtotal, [decimals: 2])
+    promo_code = "8thandhope"
+
+    case promo_code do
+
+        "8thandhope" -> promo_code_discount = "10%"
+                        total_cost = total_cost - (total_cost * 10/100)
+        "grain" ->  promo_code_discount = "10%"
+                    total_cost = total_cost - (total_cost * 10/100)
+
+
+    end
+
+    total_cost_formatted = :erlang.float_to_binary(total_cost, [decimals: 2])
+
+    
 
     IO.inspect(args[:save_for_later])
 
@@ -719,7 +774,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #order_contact is the id of this   
 
                     #order_type = args[:order_type]
-                    order_type = "pool" 
+                    #order_type = "pool_response" 
 
                     if order_type == "pool" do
 
@@ -731,6 +786,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
                         IO.inspect(pool_order.delivery_date.month)
+
+                        #get delivery contact address for pool order
+
+
+                        delivery_address = %{street1: "s1", street2: "s2", city: "c", state: "s", zipcode: "zc"}
 
                         case  pool_order.delivery_date.month do
                           #1 -> {delivery_date_month = "January"}
@@ -764,7 +824,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                           6 -> {delivery_date_day_of_week = "Saturday"}
                         end                     
 
-                        #IO.inspect(delivery_date_day_of_week)
+                        IO.inspect(delivery_date_day_of_week)
 
                         delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
             
@@ -809,6 +869,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end
 
                         order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime.day) <> ", " <> Integer.to_string(order_datetime.year)
+
 
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, order_datetime: order_datetime, stripe_charge_token: stripe_charge_token})
                         #delivery_id, contact_id, payment_id
@@ -961,27 +1022,29 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     #end
 
-                                    
+                                    delivery_date_formatted = "Thursday Septempter 27th"
 
                             
                                     #timex_datetime = Date.from(date)
 
                                     IO.inspect("day")
                                     IO.inspect("date")
-                        end
 
-                        #delivery_contact_address_changeset
-                        #check if delivery address exists for a user.  if not add it else update whatever is there.
+                                    #delivery_contact_address_changeset
+                                    #check if delivery address exists for a user.  if not add it else update whatever is there.
 
-                        #delivery_contact_address_id = Repo.get_by(UserDeliveryContactAddress, %{user_id: user_id})
+                                    #delivery_contact_address_id = Repo.get_by(UserDeliveryContactAddress, %{user_id: user_id})
 
-                        #IO.inspect(delivery_contact_address_id)
+                                    #IO.inspect(delivery_contact_address_id)
 
-                        #if nil
-                        #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: "", last_name: "", street1: ""})
-                        #else update
+                                    #if nil
+                                    #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: "", last_name: "", street1: ""})
+                                    #else update
 
     
+                        end
+
+                        
                         yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, delivery_contact_address_id: 1, payment_method_id: 0, stripe_charge_token: stripe_charge_token})
                         #delivery_contact_address_id, contact_id, payment_id
 
@@ -1007,6 +1070,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             end
 
                         end)
+
+                        delivery_address = %{street1: "s1", street2: "s2", city: "c", state: "s", zipcode: "zc"}
 
                         #order id from response
                         #Enum.map
@@ -1085,14 +1150,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #turn this into a separate function
 
                         #total cost == total items * 12
-                        cart_items_test = [%{"mini": true, "item_id": 1, "quantity": 5}, %{"mini": true, "item_id": 1, "quantity": 8}, %{"item_type": "regular", "item_id": 1, "quantity": 15}]
+                        #cart_items_test = [%{"mini": true, "item_id": 1, "quantity": 5}, %{"mini": true, "item_id": 1, "quantity": 8}, %{"item_type": "regular", "item_id": 1, "quantity": 15}]
                         #total_cost = 0
 
                         #if order_type == "social"
                         #if mini key exists
-                        Enum.map(cart_items_test, fn(cart_item) ->
+                        #Enum.map(cart_items_test, fn(cart_item) ->
 
-                             IO.inspect(cart_item[:mini])
+                        #     IO.inspect(cart_item[:mini])
 
                         #    case x[:mini] do
 
@@ -1102,7 +1167,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #    end
 
-                        end)
+                        #end)
 
                         #Enum.filter([1, 2, 3], fn(x) -> rem(x, 2) == 0 end)
 
@@ -1112,9 +1177,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #regular = 5.00 for social or 6 for yours or pool
                         #60 dollars for a dozen
 
-                        case order_type do
+                        #case order_type do
 
-                            "social" -> 
+                        #    "social" -> 
 
                                       #mini_items = Enum.filter(args[:cart_items], fn(x) ->  
 
@@ -1130,44 +1195,44 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                       #mini_total = Enum.reduce(mini_items, {0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
 
-                                      mini_total = args[:cart_items]
-                                        |> Enum.filter(fn(x) ->  x[:item_type] == "mini" end)
-                                        |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
+                        #              mini_total = args[:cart_items]
+                        #                |> Enum.filter(fn(x) ->  x[:item_type] == "mini" end)
+                         #               |> Enum.reduce({0}, fn %{"quantity": quantity}, {count} -> {count = count + quantity} end)
 
-                                      regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
+                         #             regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
 
-                                          x[:item_type] == "regular"
+                          #                x[:item_type] == "regular"
 
-                                      end))
+                          #            end))
 
                                       #items_count = 1
 
-                                      total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+                          #            total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
 
                                       #total cost
 
 
-                            "yours" -> "just total items"
+                          #  "yours" -> "just total items"
 
-                                        regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
+                          #              regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
 
-                                            x[:item_type] == "regular"
+                          #                  x[:item_type] == "regular"
 
-                                        end))
+                          #              end))
 
-                                        total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+                          #              total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
 
                                         #total_items
 
 
 
-                            "pool" -> "just total items"
+                          #  "pool" -> "just total items"
 
-                                      regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
+                          #            regular_items_count = length(Enum.filter(args[:cart_items], fn(x) ->  
 
-                                          x[:item_type] == "regular"
+                          #                x[:item_type] == "regular"
 
-                                      end))
+                          #            end))
 
                                       #if order_type == "social"
                                       
@@ -1180,17 +1245,17 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                       #end)
 
-                                      total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+                        #              total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
 
 
-                        end
+                        #end
 
-                        total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
+                        #total_items = Enum.reduce(args[:cart_items], 0, fn %{"quantity": quantity}, count -> count = count + quantity end)
 
 
                         #total_cost = (mini_items_count * 24 * 5) + (regular_items_count * 24 * 5)
 
-                        total_cost = total_items * 5.50
+                        #total_cost = total_items * 5.50
 
 
                         #IO.inspect(elem(mini_total, 0))
@@ -1323,18 +1388,54 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #order_date_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> order_date_day_formatted <> ", " <> Integer.to_string(order_date.year)
 
+
+
+
+
+
                         #IO.inspect(order_date_formatted)
-                        IO.inspect(args[:cart_items])
+                        
+                        #IO.inspect(args[:cart_items])
 
                         #menu_items = [%{"item_id": 1, "name": "Ruby Q"}, %{"item_id": 2, "name": "juliefreedom(veganandgluten-free)"}]
 
                         #loop through cart items
-                        cart_items_with_name = Enum.map(args[:cart_items], fn(cart_item) ->
+                        cart_items_with_name = Enum.map(cart_items, fn(cart_item) ->
                           #Map.put(cart_item, :name, "name")
                           #IO.inspect(Enum.at(menu_items, 0).name)
-                          IO.inspect(cart_item[:item_id])
-                          Map.put(cart_item, :name, Enum.at(menu_items, cart_item[:item_id]-1).name)
+                          IO.inspect(cart_item[:size])
 
+                          if cart_item[:size] == "regular" do
+
+                            menu_item_index = cart_item[:menu_item_id]-1
+
+                            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name
+
+                            #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
+                            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
+
+                            Map.merge(cart_item, %{
+                              :name => item_name,
+                              :menu_image_name => Enum.at(menu_items, menu_item_index).name
+                            })
+
+                          else
+
+                            #IO.inspect(cart_item[:menu_item_id]-1)
+
+                            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " mini"
+
+                            menu_item_index = cart_item[:menu_item_id]-1
+
+                            #Map.put(cart_item, :name, item_name)
+                            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
+
+                            Map.merge(cart_item, %{
+                              :name => item_name,
+                              :menu_image_name => Enum.at(menu_items, menu_item_index).name
+                            })
+
+                          end
 
                           #name = Enum.filter(menu_items, fn(menu_item) ->
                             #match?({:, _}, element)
@@ -1356,7 +1457,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                        #   Map.put(cart_item, :title, title_temp[:title])
                         end)
 
-                        #IO.inspect(cart_items_with_name)
+                        IO.inspect(cart_items_with_name)
 
                         #cart_items_with_title = Enum.map(cart_items_with_title_temp, fn(item) ->
 
@@ -1375,49 +1476,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #IO.inspect(args["order_first_name"])
 
-                        cart_items = [%{"quantity": 1, "mini": false}]
-
-                        case order_type do
-
-                          "yours" -> 
-
-                            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
 
 
-                          "social" -> 
 
-                            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "mini": mini}, count) -> 
-                              case mini do
-                                false ->  IO.puts("false")
-                                          count + (quantity * 1.00)
-                                true -> IO.puts("true")
-                                        count + (quantity * 2.00)
-                              end
-                            end)
+                       
 
-                          "pool" ->
-
-                            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
-
-                        end
-
-                        subtotal = total_cost
-                        subtotal_formatted = :erlang.float_to_binary(subtotal, [decimals: 2])
-                        promo_code = "8thandhope"
-
-                        case promo_code do
-
-                            "8thandhope" -> promo_code_discount = "10%"
-                                            total_cost = total_cost - (total_cost * 10/100)
-                            "grain" ->  promo_code_discount = "10%"
-                                        total_cost = total_cost - (total_cost * 10/100)
-
-
-                        end
-
-                        total_cost_formatted = :erlang.float_to_binary(total_cost, [decimals: 2])
-
-                        if order_type == "yours" || order_type == "social" do
+                        #if order_type == "yours" || order_type == "social" do
 
                             #working
                             #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_order(%{order_id: order_id, args: args}) |> SconeHomeElixir.Mailer.deliver_later
@@ -1428,13 +1492,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                             #Sconely.YoursSocialPoolCompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
-                        else
+                        #else
                   
-                          Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: "order_id", order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_contact_address: %{street1: "1", street2: "2", city: "city", state: "state", zipcode: "zipcode"}, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: "promo_code_discount", total_cost: "total_cost_formatted", cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: "order_id", admin_receipt_id: admin_receipt_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           #Sconely.YoursSocialPoolCompleteOrderEmail.pool_admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
-                        end
+                        #end
 
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
 

@@ -296,8 +296,8 @@ class OrderMenu extends React.Component<any, any> {
 
 
     this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
+    
     this.setState({pool_message_viewed: true});    
-
     this.setState({selected_item_quantity: 1});
 
     //}
@@ -486,7 +486,7 @@ class OrderMenu extends React.Component<any, any> {
                                                                 <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 200}}>
                                                                   <option value="mini">Mini/Regular</option> 
                                                                   <option value="regular">1 Dozen Regular</option>
-                                                                  <option value="minis">Minis</option>
+                                                                  <option value="mini">2 Dozen Minis</option>
                                                                 </select>
                                                               </div>
                                                               <div className="col-xs-4 col-md-3">
@@ -527,6 +527,8 @@ class OrderMenu extends React.Component<any, any> {
                     <PublicTopNavbar/>
                     <div className="row">
                           <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
+                            <br/>
+                            Sconely {this.props.User.orders[0].order_type}
                             <br/>
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                               <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
@@ -591,6 +593,7 @@ class OrderMenu extends React.Component<any, any> {
                             Ingredients: {this.state.selected_item_ingredients}
                             <br/>
                             <br/>
+                            6 each
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">

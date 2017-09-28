@@ -454,10 +454,10 @@ class DateTime extends React.Component<any, any> {
           return ( <div>
                 <PublicTopNavbar/>
                 <div className="row">
-                      <div className="hidden-xs col-md-3">
+                      <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                         <br/>
                         <br/>
-                        Sconely Yours
+                        Sconely {this.props.User.orders[0].order_type}
                         <br/>
                         <br/>
                         <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>

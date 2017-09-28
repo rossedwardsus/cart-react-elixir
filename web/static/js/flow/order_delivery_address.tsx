@@ -473,8 +473,6 @@ class DeliveryAddress extends React.Component<any, any> {
                           <input type="text" value={this.state.first}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
-                    </div>
-                    <div className="form-group">
                       <div className="col-md-3">
                         <div className={this.state.last_name_classname}>
                           <input type="text" value={this.state.last} maxLength={4} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
@@ -489,8 +487,6 @@ class DeliveryAddress extends React.Component<any, any> {
                           <input type="text" value={this.state.contact_email} onChange={this.setDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                         </div>
                     </div>
-                  </div>
-                  <div className="form-group">
                     <div className="col-md-3">
                         <div className={this.state.contact_email_classname}>
                           <input type="text" value={this.state.contact_email_again} onChange={this.setDeliveryContactAddressEmailAgain} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>

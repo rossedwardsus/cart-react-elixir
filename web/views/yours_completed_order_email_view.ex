@@ -1,4 +1,4 @@
-defmodule Sconely.YoursSocialCompletedOrderEmailView do
+defmodule Sconely.YoursCompletedOrderEmailView do
   use SconeHomeElixir.Web, :view
 
   def key(conn) do

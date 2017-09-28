@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {first_name: "", last_name: "", email: "email", mobile: "mobile", saveForLater: false, currentOrder: "social", orderSession: {datetimeCreated: "", paymentErrorCode: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: {cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: ""}, {name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: ""}]}, action: any){
+export default function user(state:any = {first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, currentOrder: "social", orderSession: {datetimeCreated: "", paymentErrorCode: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: {cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: ""}, {name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: ""}]}, action: any){
 
   let delivery_contacts_addresses_updated = null;
   let payment_methods_updated = null;
@@ -123,7 +123,16 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       //set session current order type
 
       orders_updated = state.orders;
-      orders_updated.push({deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: "action.pool_message", status: "current", created_datetime: "", cartItems: []})
+
+      if(action.order_type == "yours" || action.order_type == "social"){
+
+          orders_updated[0] = {deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, cartItems: []};
+
+      }else{
+
+          orders_updated[0] = {deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: action.pool_message, cartItems: []};
+
+      }
 
       return Object.assign({}, state, {orders: orders_updated});
 

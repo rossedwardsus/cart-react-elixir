@@ -206,7 +206,7 @@ class Name extends React.Component<any, any> {
             let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
             let symbol_result = symbol_patt.test(address);
 
-            if(!symbol_result){
+            if(symbol_result){
 
                 //check if @ has been entered before texting
 
@@ -226,6 +226,7 @@ class Name extends React.Component<any, any> {
                             
                                 //this.props.setUserEmail(e);
                                 this.setState({"email_border_color": "grey"});
+                                //validate user email
 
                                 console.log("email ok")
 
@@ -296,7 +297,7 @@ class Name extends React.Component<any, any> {
           }else{
 
             this.setState({user_mobile: e.target.value});
-            this.props.contactValidated();
+            //this.props.contactMobileValidated();
 
           }
       
