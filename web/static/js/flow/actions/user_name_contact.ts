@@ -1,9 +1,9 @@
-import {SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE} from '../constants/actionTypes.ts';
+import {SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE} from '../constants/actionTypes.ts';
 
 export function setUserNameFirst(value: any) {
   console.log("first name action: " + value);
   return {
-    type: SET_USER_NAME_FIRST,
+    type: SET_USER_FIRST_NAME,
     value
   }
 }
@@ -11,7 +11,7 @@ export function setUserNameFirst(value: any) {
 export function setUserNameLast(value: any) {
   console.log("last name action: " + value);
   return {
-    type: SET_USER_NAME_LAST,
+    type: SET_USER_LAST_NAME,
     value
   }
 }

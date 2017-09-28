@@ -234,23 +234,23 @@ defmodule Sconely.Schema do
         arg :order_type, :string
         arg :pool_order_id, :string
         arg :save_for_later, :boolean
-        arg :user_name_first, :string
-        arg :user_name_last, :string
+        arg :user_first_name, :string
+        arg :user_last_name, :string
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
         arg :pool_id, :string
         arg :pool_name, :string
         arg :pool_date, :string
-        arg :delivery_contact_address_name_first, :string
-        arg :delivery_contact_address_name_last, :string
+        arg :delivery_contact_address_contact_first_name, :string
+        arg :delivery_contact_address_contact_last_name, :string
         arg :delivery_contact_address_contact_email, :string
         arg :delivery_contact_address_contact_mobile, :string
         arg :delivery_contact_address_company_name, :string
-        #arg :order_delivery_address_street1, :string
-        #arg :order_delivery_address_street2, :string
-        #arg :order_delivery_address_city, :string
-        #arg :order_delivery_address_state, :string
-        #arg :order_delivery_address_zipcode, :string
+        arg :order_delivery_address_street1, :string
+        arg :order_delivery_address_street2, :string
+        arg :order_delivery_address_city, :string
+        arg :order_delivery_address_state, :string
+        arg :order_delivery_address_zipcode, :string
         #arg :order_datetime_date, :string
         #arg :time, :string
         arg :payment_method_name_on_card, :string

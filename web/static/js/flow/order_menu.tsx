@@ -438,22 +438,22 @@ class OrderMenu extends React.Component<any, any> {
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-        if(cartItemsQuantity < 10){
+      if(cartItemsQuantity < 10){
 
-            yours_social_pool_quantity_selector =  <div>
-                                                    <div className="col-xs-12 col-md-9">
-                                                      <div className="col-xs-6 col-md-4">
-                                                        <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 100}}>
-                                                          <option value="">Quantity</option> 
-                                                          {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
-                                                        </select>
-                                                      </div>
-                                                      <div className="col-xs-6 col-md-4">
-                                                        <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
-                                                      </div>
-                                                    </div>
+        yours_social_pool_quantity_selector =  <div>
+                                                <div className="col-xs-12 col-md-9">
+                                                  <div className="col-xs-6 col-md-4">
+                                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 100, borderRadius: 0}}>
+                                                      <option value="">Quantity</option> 
+                                                      {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                                    </select>
                                                   </div>
-        }
+                                                  <div className="col-xs-6 col-md-4">
+                                                    <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+      }
     }else{
 
         //if assortment == true
@@ -469,7 +469,7 @@ class OrderMenu extends React.Component<any, any> {
                                                           2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItemMini}/>
                                                         </div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120}}>
+                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0}}>
                                                             <option value="">Select Quantity</option> 
                                                             {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                           </select>
@@ -480,27 +480,27 @@ class OrderMenu extends React.Component<any, any> {
                                                       </div>*/
             //}else{
 
-                yours_social_pool_quantity_selector =  <div>
-                                                          <div className="col-xs-12 col-md-12">
-                                                              <div className="col-xs-4 col-md-3" style={{paddingLeft: "0px"}}>
-                                                                <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 200}}>
-                                                                  <option value="mini">Mini/Regular</option> 
-                                                                  <option value="regular">1 Dozen Regular</option>
-                                                                  <option value="mini">2 Dozen Minis</option>
-                                                                </select>
-                                                              </div>
-                                                              <div className="col-xs-4 col-md-3">
-                                                                <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
-                                                                  <option value="">Quantity</option> 
-                                                                  <option value="1">1</option>
-                                                                  <option value="2">2</option>
-                                                                </select>
-                                                              </div>
-                                                              <div className="col-md-4">
-                                                                <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
-                                                              </div>
-                                                          </div>
-                                                      </div>
+      yours_social_pool_quantity_selector =  <div>
+                                                <div className="col-xs-12 col-md-12">
+                                                    <div className="col-xs-4 col-md-3" style={{paddingLeft: "0px"}}>
+                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 200}}>
+                                                        <option value="mini">Mini/Regular</option> 
+                                                        <option value="regular">1 Dozen Regular</option>
+                                                        <option value="mini">2 Dozen Minis</option>
+                                                      </select>
+                                                    </div>
+                                                    <div className="col-xs-4 col-md-3">
+                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
+                                                        <option value="">Quantity</option> 
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                      </select>
+                                                    </div>
+                                                    <div className="col-md-4">
+                                                      <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
           //}

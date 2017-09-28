@@ -1,4 +1,4 @@
-import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_NAME_FIRST, SET_USER_NAME_LAST, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED } from '../constants/actionTypes.ts';
+import { GET_USER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, currentOrder: "social", orderSession: {datetimeCreated: "", paymentErrorCode: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: {cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: ""}, {name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: ""}]}, action: any){
+export default function user(state:any = {user_first_name: "", user_last_name: "", user_contact_email: "", user_contact_mobile: "", saveForLater: false, currentOrder: "social", orderSession: {datetimeCreated: "", paymentErrorCode: "", deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: {cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", street1: "", street2: ""}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: "", stripe_token: ""}, {name: "work", name_on_card: "", card_number: "", expiry_month: "", expiry_year: "", security_code: ""}]}, action: any){
 
   let delivery_contacts_addresses_updated = null;
   let payment_methods_updated = null;
@@ -48,7 +48,7 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       //delivery addrress
 
       //return Object.assign({}, state, {...state, email: action.});
-      return {first_name: "", last_name: "", email: "", mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: []}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", first_name: "fn", last_name: "ln", email: "", mobile: "", street1: "street1", street2: "street2"}, {name: "2", first_name: "fn", last_name: "ln", street1: "street1", street2: "street2"}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
+      return {user_first_name: "", user_last_name: "", user_email: "", user_mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: []}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", contact_first_name: "fn", contact_last_name: "ln", contact_email: "", contact_mobile: "", street1: "", street2: ""}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
 
 
     case SET_ORDER_TYPE:
@@ -266,38 +266,39 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       //else remove item
 
 
-    case SET_USER_NAME_FIRST:
+    case SET_USER_FIRST_NAME:
       console.log("user first name reducer " + JSON.stringify(action.value));
 
       //user_updated = state;
-      //user_updated["first_name"] = action.value;
+      //user_updated["user_first_name"] = action.value;
 
-      return Object.assign({}, state, {...state, first_name: action.value});
+      return Object.assign({}, state, {...state, user_first_name: action.value});
 
-    case SET_USER_NAME_LAST:
+    case SET_USER_LAST_NAME:
       console.log("user last name reducer " + JSON.stringify(state));
 
-      return Object.assign({}, state, {...state, last_name: action.value});
+      return Object.assign({}, state, {...state, user_last_name: action.value});
 
    
 
     case SET_USER_CONTACT_EMAIL:
-      console.log("set user email reducer " + JSON.stringify(action.value));
+      console.log("set user contact email reducer " + JSON.stringify(action.value));
 
-      return Object.assign({}, state, {...state, email: action.value});
+      return Object.assign({}, state, {...state, user_contact_email: action.value});
+    
     
     case SET_USER_CONTACT_MOBILE:
-      console.log("set user mobile reducer " + JSON.stringify(state));
+      console.log("set user contact mobile reducer " + JSON.stringify(state));
 
-      return Object.assign({}, state, {...state, mobile: action.value});
+      return Object.assign({}, state, {...state, user_contact_mobile: action.value});
     
 
-    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
+    case SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME:
 
       console.log("user delivery contact address first name reducer");
 
       delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-      delivery_contacts_addresses_updated[0].first_name = action.value; 
+      delivery_contacts_addresses_updated[0].contact_first_name = action.value; 
 
       return Object.assign({}, state, {...state, deliveryContactAddress: delivery_contacts_addresses_updated });
 
@@ -308,7 +309,18 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       console.log("user delivery contact address last name reducer");
 
       delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-      delivery_contacts_addresses_updated[0].last_name = action.value; 
+      delivery_contacts_addresses_updated[0].contact_last_name = action.value; 
+
+      return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
+
+      //else remove item
+
+    case SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL:
+
+      console.log("user delivery contact address email reducer");
+
+      delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
+      delivery_contacts_addresses_updated[0].contact_email = action.value; 
 
       return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
 
@@ -319,24 +331,13 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       console.log("user delivery contact address mobile reducer");
 
       delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-      delivery_contacts_addresses_updated[0].mobile = action.value; 
+      delivery_contacts_addresses_updated[0].contact_mobile = action.value; 
 
       return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
 
       //else remove item
 
-    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE1:
-
-      console.log("user delivery contact address mobile reducer");
-
-      delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-      delivery_contacts_addresses_updated[0].mobile = action.value; 
-
-      return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
-
-      //else remove item
-
-    case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE2:
+    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE2:
 
       console.log("user delivery contact address mobile reducer");
 
@@ -375,13 +376,13 @@ export default function user(state:any = {first_name: "", last_name: "", email: 
       console.log("user delivery contact address street2 reducer");
 
       delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-      delivery_contacts_addresses_updated[0].street1 = action.value; 
+      delivery_contacts_addresses_updated[0].street2 = action.value; 
 
       return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
 
       //else remove item
 
-    case SET_USER_DELIVERY_CONTACT_ADDRESS_CITY:
+    /*case SET_USER_DELIVERY_CONTACT_ADDRESS_CITY:
 
       console.log("user delivery contact address city reducer");
 

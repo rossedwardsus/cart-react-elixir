@@ -349,7 +349,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     user_id = nil
     order_id = nil
-    admin_receipt_id = nil
+    admin_receipt_order_id = nil
     menu_items = nil
     order_datetime = nil
     order_date_day_of_week = nil
@@ -891,9 +891,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #get the pool order from the database
 
-                        #admin/receipt id = 
-                        admin_receipt_order_id = :rand.uniform(9999999999)
-
                         pool_order_response_user_changeset = PoolOrderResponseUser.changeset(%PoolOrderResponseUser{}, %{order_id: order_id, user_id: user_id, admin_receipt_order_id: admin_receipt_order_id, pool_order_id: pool_order.id, first_name: "", last_name: "", email: "", mobile: ""})
                         #delivery_id, contact_id, payment_id
 
@@ -1038,7 +1035,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     #IO.inspect(delivery_contact_address_id)
 
                                     #if nil
-                                    #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: "", last_name: "", street1: ""})
+                                    #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: args[:user_first_name, last_name: args[:user_last_name], street1: "", street2: "", city: "", state: ""})
                                     #else update
 
     
@@ -1494,9 +1491,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #else
                   
-                          Sconely.YoursSocialPoolCompleteOrderEmail.pool_order(%{order_id: "order_id", admin_receipt_id: admin_receipt_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.pool_admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 

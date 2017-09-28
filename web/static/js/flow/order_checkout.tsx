@@ -381,7 +381,7 @@ class DateTime extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-12">
-                                      Delivery Date Time
+                                      <b/>Delivery Date Time</b>
                                   </div>
                                 </div>
                             </form>
@@ -417,10 +417,10 @@ class DateTime extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-md-3">
+                          <div className="hidden-xs col-md-3"style={{paddingLeft: 50}}>
                             <br/>
                             <br/>
-                            Sconely Yours
+                            Sconely {this.props.User.orders[0].order_type}
                             <br/>
                             <br/>
                             <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
@@ -516,16 +516,16 @@ class DateTime extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <div className="col-md-1">
+                                    <div className="col-md-3">
                                       <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-3">
                                       <Link to="/order/payment" className={this.state.payment_button_classname} style={{borderRadius: 0}}>Payment</Link>  
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-3">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Menu</Link>  
                                     </div>
-                                    <div className="col-md-1">
+                                    <div className="col-md-3">
                                       <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
                                     </div>
                                   </div>

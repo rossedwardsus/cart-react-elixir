@@ -56,6 +56,7 @@ class DeliveryAddress extends React.Component<any, any> {
         contact_first_name: "",
         contact_last_name: "",
         contact_email: "",
+        contact_email_again: "",
         contact_mobile: "",
         street1: "",
         street2: "",
@@ -153,6 +154,8 @@ class DeliveryAddress extends React.Component<any, any> {
       //complete order gets the information from user
       
       this.props.setDeliveryContactAddressEmail(e);
+      this.setState({contact_email: e.target.value});
+                        
 
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
@@ -169,7 +172,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //no symbols
       //no numbers
 
-      if(e.target.value.length > 0){
+      //if(e.target.value.length > 0){
 
           //can only have _ .
           //after @ at least one characted . then domain
@@ -191,12 +194,12 @@ class DeliveryAddress extends React.Component<any, any> {
                         //if email contains @ and at least one character and 2 character domain
                         //validate contact and emails are same
                     
-                        this.setState({"email_border_color": "grey"});
+                        this.setState({email_border_color: "grey"});
 
                         //this.props.setContactEmail(e);
                         //this.props.setDeliveryContactAddressEmail
 
-                        console.log("email ok")
+                        console.log("delivery contact email ok")
 
                   //  }
 
@@ -208,16 +211,18 @@ class DeliveryAddress extends React.Component<any, any> {
 
                 //console.log("email ok")
 
-            //  this.setState({first_name: e.target.value})
+              this.setState({contact_email: e.target.value})
               this.setState({"email_border_color": "red"});
 
             }
       
-      }
+      //}
 
   }
 
   setDeliveryContactAddressEmailAgain = (e: any) => {
+
+      this.setState({contact_email_again: e.target.value});
 
       //strip out -
       //check if only number
@@ -227,8 +232,7 @@ class DeliveryAddress extends React.Component<any, any> {
       /*let mobile_number = e.target.value.replace("_", "");
       let number_res = (/[0-9]/.test(mobile_number));
 
-      this.setState({contact_mobile: e.target.value});
-      this.props.setContactMobile(e);
+            //this.props.setContactMobile(e);
 
       if(number_res == true){
 
@@ -317,7 +321,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressInvalidated();
 
       // /^[a-zA-Z]*$/
-      let street1_result = (/^[0-9a-zA-Z\s]+$/.test(e.target.value));
+      /*let street1_result = (/^[0-9a-zA-Z\s]+$/.test(e.target.value));
 
       if(street1_result){
 
@@ -329,7 +333,7 @@ class DeliveryAddress extends React.Component<any, any> {
           
           this.setState({street1_border_color: "red"});
 
-      }
+      }*/
          
           //this.props.setDeliveryContactAddressFirstName(e);
 
@@ -345,7 +349,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
-      let street2_result = (/^[a-zA-Z]*$/.test(e.target.value));
+      /*let street2_result = (/^[a-zA-Z]*$/.test(e.target.value));
 
       if(street2_result){
 
@@ -357,7 +361,7 @@ class DeliveryAddress extends React.Component<any, any> {
           
           this.setState({street2_border_color: "red"});
 
-      }
+      }*/
 
   }
   
@@ -460,7 +464,7 @@ class DeliveryAddress extends React.Component<any, any> {
       
                  <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-md-3">
+                      <div className="col-sm-3 col-md-3">
                           <b>Delivery Contact</b>
                           <br/>
                        </div>
@@ -468,26 +472,32 @@ class DeliveryAddress extends React.Component<any, any> {
                  </form>
                  <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-md-3">
+                      <div className="col-sm-3 col-md-3">
                         <div className={this.state.first_name_classname}>
                           <input type="text" value={this.state.first}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
-                      <div className="col-md-3">
+                      <div className="hidden-lg col-xs-1">
+                        <br/>
+                      </div>
+                      <div className="col-sm-3 col-md-3">
                         <div className={this.state.last_name_classname}>
-                          <input type="text" value={this.state.last} maxLength={4} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.state.last} maxLength={20} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                     </div>
                 </form>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-md-3">
+                    <div className="col-sm-3 col-md-3">
                         <div className={this.state.contact_email_classname}>
                           <input type="text" value={this.state.contact_email} onChange={this.setDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="hidden-lg col-xs-1">
+                      <br/>
+                    </div>
+                    <div className="col-sm-3 col-md-3">
                         <div className={this.state.contact_email_classname}>
                           <input type="text" value={this.state.contact_email_again} onChange={this.setDeliveryContactAddressEmailAgain} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                         </div>
@@ -496,7 +506,7 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-md-3">
+                    <div className="col-sm-3 col-md-3">
                         <div className={this.state.contact_mobile_classname}>
                           <input type="text" value={this.state.contact_mobile} maxLength={12} onChange={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                         </div>
@@ -505,15 +515,15 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-sm-3">
+                      <div className="col-sm-3 col-md-3">
                           <b>Delivery Address</b>
                           <br/>
                        </div>
                     </div>
-                 </form>
+                </form>
                 <form className="form-horizontal">
                       <div className="form-group">
-                         <div className="col-md-3">
+                         <div className="col-sm-3 col-md-3">
                             <div>
                               <input type="text" value={this.state.company_name} maxLength={4} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
                             </div>
@@ -522,12 +532,13 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                  <form className="form-horizontal">
                       <div className="form-group">
-                        <div className="col-sm-3">
-                          <input type="text" maxLength={20} className="form-control" id="exampleInputName2" placeholder="Street" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                        <div className="col-sm-3 col-md-3">
+                          <input type="text" maxLength={20} className="form-control" id="exampleInputName2" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
                         </div>
-                      </div>
-                      <div className="form-group">
-                        <div className="col-sm-3">
+                        <div className="hidden-lg col-xs-1">
+                          <br/>
+                        </div>
+                        <div className="col-sm-3 col-md-3">
                           <input type="text" value={this.state.street2} maxLength={20} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
                         </div>
                       </div>
@@ -541,8 +552,9 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option value="santa_monica">Santa Monica</option>
                           </select>
                         </div>
-                      </div>
-                      <div className="form-group">
+                        <div className="hidden-lg col-xs-1">
+                          <br/>
+                        </div>
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>State</option>

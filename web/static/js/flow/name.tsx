@@ -61,7 +61,8 @@ class Name extends React.Component<any, any> {
        email_again_border_color: "grey",
        mobile_border_color: "grey",
        first_name_validated: false,
-       last_name_validated: false
+       last_name_validated: false,
+       delete_key_pressed: false
     };
 
     //user_type=guest
@@ -181,6 +182,7 @@ class Name extends React.Component<any, any> {
 
       //this.setState({contact_email: e.target.value})
       this.props.setUserEmail(e);
+      this.setState({user_email: e.target.value})
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
       //let symbol_res = symbol_patt.test(e.target.value);
@@ -206,7 +208,7 @@ class Name extends React.Component<any, any> {
             let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
             let symbol_result = symbol_patt.test(address);
 
-            if(symbol_result){
+            if(!symbol_result){
 
                 //check if @ has been entered before texting
 
@@ -266,11 +268,22 @@ class Name extends React.Component<any, any> {
 
           //validated
           //this.props.nameValidated();
-          this.props.contactValidated();
+          //this.props.contactEmailValidated();
 
       }
 
   }
+
+  mobileKeyPress = (event: any) => {
+        if(event.keyCode == 8){
+          console.log('delete press here! ' + event.keyCode)
+          this.setState({delete_key_pressed: true});
+        }else{
+          console.log('delete press here! ' + event.keyCode)
+          this.setState({delete_key_pressed: false});
+        }
+  }
+
 
   setUserMobile = (e: any) => {
 
@@ -282,28 +295,36 @@ class Name extends React.Component<any, any> {
 
       //if larger then 3 append "-"
 
+      
       if(number_result){
 
-          this.setState({user_mobile_border_color: "grey"});
-          
-          if(e.target.value.length == 3){
+          if(!this.state.delete_key_pressed){
+            
+            this.setState({mobile_border_color: "grey"});
+            
+            if(e.target.value.length == 3){
 
-            this.setState({user_mobile: e.target.value + "-"});
-          
-          }else if(e.target.value.length == 7){
+              this.setState({user_mobile: e.target.value + "-"});
+            
+            }else if(e.target.value.length == 7){
 
-            this.setState({user_mobile: e.target.value + "-"});
-          
+              this.setState({user_mobile: e.target.value + "-"});
+            
+            }else{
+
+              this.setState({user_mobile: e.target.value});
+              //this.props.contactMobileValidated();
+
+            }
           }else{
 
             this.setState({user_mobile: e.target.value});
-            //this.props.contactMobileValidated();
-
           }
       
       }else{
 
-          this.setState({user_mobile_border_color: "red"});
+          this.setState({user_mobile: e.target.value});
+          this.setState({mobile_border_color: "red"});
           
       }
 
@@ -359,7 +380,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.props.User.email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" value={this.state.user_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="hidden-lg col-xs-1">
@@ -376,7 +397,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>
-                        <input type="text" value={this.props.User.mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        <input type="text" value={this.state.user_mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                       </div>
                   </div>
                 </div>

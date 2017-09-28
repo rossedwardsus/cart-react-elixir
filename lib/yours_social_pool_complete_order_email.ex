@@ -1,7 +1,8 @@
 defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
   use Bamboo.Phoenix, view: SconeHomeElixir.UserOrderProcessedEmailView
 
-  def yours_complete_order_user(_params) do
+  #not used
+  def yours_complete_order_user1(_params) do
 
   	#IO.puts("hello")
   	IO.inspect(_params)
@@ -27,7 +28,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
   end
 
-  def yours_admin(_params) do
+  def yours_admin1(_params) do
 
   	#IO.puts("hello")
   	#IO.inspect(_params)
@@ -52,7 +53,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
   end
 
-  def social_complete_order_user(_params) do
+  def social_complete_order_user1(_params) do
 
   	#IO.puts("hello")
   	IO.inspect(_params)
@@ -78,7 +79,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
   end
 
-  def social_complete_order_admin(_params) do
+  def social_complete_order_admin1(_params) do
 
   	#IO.puts("hello")
   	#IO.inspect(_params)
@@ -103,7 +104,15 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
   end
 
-  def pool_order(_params) do
+
+
+
+
+
+
+
+
+  def yours_social_pool_complete_order_email(_params) do
 
   	#IO.puts("hello")
   	#IO.inspect(_params)
@@ -131,7 +140,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
   
 
-  def pool_admin(_params) do
+  def yours_social_pool_complete_order_admin_email(_params) do
 
   	#IO.puts("hello")
   	#IO.inspect(_params)
@@ -139,7 +148,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.CompletedOrderEmailView, "completed_order_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompletedOrderAdminEmailView, "yours_social_pool_completed_order_admin_email.html", key: _params)
 
     IO.inspect(_params["order_first_name"])
 

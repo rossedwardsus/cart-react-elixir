@@ -6,7 +6,7 @@
     <tr><td><br></td></tr>
     <tr><td><img height="50" width="200" src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"></td></tr>
     <tr><td><br><br></td></tr>
-    <tr><td>Dear <%= @key.args.user_name_first %>,</td></tr>
+    <tr><td>Dear <%= @key.args.user_first_name %>,</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Thank you for your Sconely Order!</td><tr>
     <tr><td><br></td></tr>
