@@ -30,7 +30,7 @@
   <br/>
   <table width="40%">
     <tr><td><br><br></td></tr>
-    <tr><td>Subtotal Cost</td><td>$<%= @key.subtotal %></td></tr>
+    <tr><td>Subtotal Cost</td><td>$<%= @key.subtotal_formatted %></td></tr>
     <tr><td>Delivery Cost</td><td><%= @key.delivery_cost %></td></tr>
     <tr><td>Discount</td><td><%= @key.promo_code_discount %></td></tr>
     <tr><td><b>Total Cost</b></td><td>$<%= @key.total_cost %></td></tr>
@@ -48,7 +48,7 @@
     <tr><td><br></td></tr>
   </table>
   <table>
-    <tr><td><img src="https://sconely-test.herokuapp.com/images/twitter.jpg"></img></td><td><img src="https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/facebook-icon_16x16.png"></img></td></tr>
+    <tr><td><a href="http://www.twitter.com/sconelyla"><img src="https://sconely-test.herokuapp.com/images/twitter.png"></img></a></td><td><img src="https://sconely-test.herokuapp.com/images/facebook.png"></img></td><td><a href=""><img src="https://sconely-test.herokuapp.com/images/instagram.png"></img></a></td></tr>
   </table>
 
 </html>
