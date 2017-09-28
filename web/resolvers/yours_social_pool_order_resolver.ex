@@ -360,6 +360,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     stripe_response = nil
     stripe_customer_token = nil
     stripe_charge_token = nil
+
     payment_method_last_four_digits = nil
     promo_code_discount = nil
 
@@ -463,13 +464,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     #IO.puts("test card date")
     #fraudulent
-    #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+    #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "name" => "Ross", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
     #cvc
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    stripe_response = nil
-
+    #luhn check
+    #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    
     #working
     case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
@@ -488,7 +490,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             end
 
-        #{:error, error} -> {:error, error}
+        {:error, error} -> {:error, error}
+            stripe_response = {:error, error}
 
     end
 
@@ -1509,7 +1512,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             #code and reason
 
-            {:ok, %{status: "error", error_code: "error.code", error_reason: "error reason"}}
+            {:ok, %{status: "error", error_code: error.code}}
 
             #IO.inspect(error)
             #log error in database

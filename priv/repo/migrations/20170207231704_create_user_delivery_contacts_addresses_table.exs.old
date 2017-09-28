@@ -7,14 +7,14 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
   		add :user_delivery_contact_address_id, :integer
   		add :company_name, :string, size: 40
   		add :first_name, :string, size: 40
-  		add :last_name, :string
-  		add :email, :string
-  		add :mobile, :string
-  		add :street1, :string
-  		add :street2, :string
-  		add :city, :string
-  		add :state, :string
-  		add :zipcode, :string
+  		add :last_name, :string, size: 40
+  		add :email, :string, size: 40
+  		add :mobile, :string, size: 40
+  		add :street1, :string, size: 40
+  		add :street2, :string, size: 40
+  		add :city, :string, size: 40
+  		add :state, :string, size: 40
+  		add :zipcode, :string, size: 40
 
   		#add :note, :string
   	end

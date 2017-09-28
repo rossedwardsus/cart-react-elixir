@@ -3,12 +3,12 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserProfilesTable do
 
   def change do
     create_if_not_exists  table(:users) do
-      add :user_id, :integer, null: false
-  	  add :first_name, :string
-  	  add :last_name, :string
-  	  add :about_me, :string
-      add :email, :string #gotten in registration?
-      add :mobile, :string
+      add :user_id, :bigint, null: false
+  	  add :first_name, :string, size: 40
+  	  add :last_name, :string, size: 40
+  	  add :about_me, :string, size: 40
+      add :email, :string, size: 40
+      add :mobile, :string, size: 20
       #add :company_name, :string
 
       #create index(:posts, [:slug], concurrently: true)

@@ -122,7 +122,7 @@ defmodule Sconely.Schema.Types do
     field :status, :string
     field :sconely_user_token, :string
     #field :stripe__token, :string
-    field :error_reason, :string
+    field :error_code, :string
   end
 
 

@@ -18,34 +18,37 @@
     <tr><td>Delivery Address:</td></tr>
     <tr><td><%= @key.delivery_contact_address.street1 %>, Los Angeles ca, 90025</td></tr>
     <tr><td><br></td></tr>
-    <tr><td><br></td></tr>
     <tr><td><br>You have ordered the following items</td></tr>
-    </table>
+    <tr><td><br></td></tr>
+  </table>
   <table width="50%">
     <%= for item <- @key.cart_items do %>
-    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/menu/<%= String.downcase(item.name) |> String.replace(" ", "") %>.jpg"></td><td><b>name<%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
+    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/menu/<%= String.downcase(item.name) |> String.replace(" ", "") %>.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
     <% end %>
-    <tr><td>item name</td><td>/thumbnail image/</td><td>quantity</td></tr>
-    </table>
-  <table width="30%">
+  </table>
+  <br/>
+  <br/>
+  <table width="40%">
     <tr><td><br><br></td></tr>
     <tr><td>Subtotal Cost</td><td>$<%= @key.subtotal %></td></tr>
     <tr><td>Delivery Cost</td><td><%= @key.delivery_cost %></td></tr>
     <tr><td>Discount</td><td><%= @key.promo_code_discount %></td></tr>
-    <tr><td>Total Cost</td><td>$<%= @key.total_cost %></td></tr>
+    <tr><td><b>Total Cost</b></td><td>$<%= @key.total_cost %></td></tr>
     <tr><td><br><br></td></tr>
     <tr><td></td></tr>
-    <tr><td>Billed to:</td></tr>
-    <tr><td>Brand xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
-    <tr><td><br>If you have any questions please contact us at eat@sconely.com</td></tr>
+  </table>
+  <table width="60%">
+    <tr><td>Billed to:</td><td>Brand xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
+    <tr><td colspan="3"><br>If you have any questions please contact us at eat@sconely.com</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Enjoy!</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Thank you,</td></tr>
     <tr><td>The Sconely Team</td></tr>
     <tr><td><br></td></tr>
-    <tr><td>Instagram</td></tr>
-    <tr><td>Facebook</td></tr>
+  </table>
+  <table>
+    <tr><td><img src="https://sconely-test.herokuapp.com/images/email_template_instagram.png"></img></td><td><img src="https://68ef2f69c7787d4078ac-7864ae55ba174c40683f10ab811d9167.ssl.cf1.rackcdn.com/facebook-icon_16x16.png"></img></td></tr>
   </table>
 
 </html>

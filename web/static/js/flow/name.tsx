@@ -325,7 +325,7 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-              <form className="form-inline">
+              <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
                       <b>Name</b>
@@ -346,23 +346,24 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-inline">
+              <form className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-md-12">
+                  <div className="col-md-3">
                       <b>Contact</b>
                       <br/>
                   </div>
                 </div>
               </form>
-              <form className="form-inline">
+              <form role="form" className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
                         <input type="text" value={this.props.User.email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
-                </div>
-                <div className="form-group">
+                  <div className="hidden-lg col-xs-1">
+                    <br/>
+                  </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
                         <input type="text" value={this.state.user_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_again_border_color}}/>
@@ -370,7 +371,7 @@ class Name extends React.Component<any, any> {
                   </div>
                 </div>
               </form>
-              <form className="form-inline">
+              <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>

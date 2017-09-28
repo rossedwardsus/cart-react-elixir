@@ -900,7 +900,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                             </form>
                             <br/>
-                            {this.props.User.orderSession.paymentError}
+                            {this.props.User.orderSession.paymentErrorCode}
                             <br/>
                             <br/>
                             <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipcode={(e: any) => this.props.setPaymentZipcode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
