@@ -70,7 +70,8 @@ class DeliveryAddress extends React.Component<any, any> {
         mobile_border_color: "grey",
         company_name_border_color: "grey",
         street1_border_color: "grey",
-        street2_border_color: "grey"
+        street2_border_color: "grey",
+        city_border_color: "grey"
     };
 
     //user_type=guest
@@ -478,7 +479,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
                         <div className={this.state.first_name_classname}>
-                          <input type="text" value={this.state.first}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.props.User.user_first_name}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                       <div className="hidden-lg col-xs-1">
@@ -528,28 +529,26 @@ class DeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                       <div className="form-group">
                          <div className="col-sm-3 col-md-3">
-                            <div>
-                              <input type="text" value={this.state.company_name} maxLength={4} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
-                            </div>
-                          </div>
+                            <input type="text" value={this.state.company_name} maxLength={40} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
+                         </div>
                       </div>
                 </form>
-                 <form className="form-horizontal">
-                      <div className="form-group">
-                        <div className="col-sm-3 col-md-3">
-                          <input type="text" maxLength={20} className="form-control" id="exampleInputName2" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
-                        </div>
-                        <div className="hidden-lg col-xs-1">
-                          <br/>
-                        </div>
-                        <div className="col-sm-3 col-md-3">
-                          <input type="text" value={this.state.street2} maxLength={20} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
-                        </div>
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3 col-md-3">
+                        <input type="text" maxLength={40} className="form-control" id="exampleInputName2" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
                       </div>
-                 </form>
+                      <div className="hidden-lg col-xs-1">
+                        <br/>
+                      </div>
+                      <div className="col-sm-3 col-md-3">
+                        <input type="text" value={this.state.street2} maxLength={30} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
+                      </div>
+                    </div>
+                </form>
                 <form className="form-horizontal">
                       <div className="form-group">
-                        <div className="col-sm-3">
+                        <div className="col-sm-3 col-md-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>City</option>
                             <option value="los_angeles">Los Angeles</option>
@@ -587,11 +586,10 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option>90409</option>
                             <option>90410</option>
                             <option>90411</option>
+                            <option>DTLA</option>
                           </select>
                         </div>
-                        <div className="col-sm-3">
-                            <input maxLength={5} className="form-control" onChange={this.zipcodeAutocomplete} style={{borderRadius: 0, borderColor: this.state.zipcode_border_color, fontSize: 16}}/>
-                        </div>
+                    
                     </div>
                 </form>
                 </div>
@@ -609,12 +607,12 @@ class DeliveryAddress extends React.Component<any, any> {
 }
 
 
-function mapStateToProps(state: any) {
+/*function mapStateToProps(state: any) {
   console.log("delivery address component/state" + JSON.stringify(state));
   return {
    order: state.Order,
    delivery_address: state.delivery_address,
-   user_delivery_addresses: state.user_delivery_addresses
+   User: state.User
    //order: state.default.order
    //menu_items: getPublicMenu
    //menu_items: dispatch()
@@ -646,7 +644,7 @@ function mapDispatchToProps(dispatch: any) {
 const DeliveryAddress1 = connect(
   mapStateToProps,
   mapDispatchToProps
-)(DeliveryAddress)
+)(DeliveryAddress)*/
 
 export default DeliveryAddress;
 

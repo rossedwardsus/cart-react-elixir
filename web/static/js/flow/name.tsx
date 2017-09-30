@@ -124,6 +124,7 @@ class Name extends React.Component<any, any> {
         
           this.setState({first_name_border_color: "grey"});
           this.props.setUserFirstName(e);
+          this.props.setUserDeliveryContactAddressFirstName(e);
 
           //if(this.state.last_name.length > 0){
           
@@ -279,6 +280,12 @@ class Name extends React.Component<any, any> {
           //validated
           //this.props.nameValidated();
           //this.props.contactEmailValidated();
+
+          this.setState({"email_again_border_color": "grey"});
+
+      }else{
+
+           this.setState({"email_again_border_color": "red"});
 
       }
 

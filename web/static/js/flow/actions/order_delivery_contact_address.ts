@@ -176,4 +176,12 @@ export function setDeliveryContactAddressZipcode(value: any, order_id: any) {
   }
 }
 
+/*export function setDeliveryContactAddressNote(value: any, order_id: any) {
+  console.log("delivery contact address zipcode action");
+  return {
+    type: SET_DELIVERY_CONTACT_ADDRESS_NOTE,
+    value
+  }
+}*/
+
 

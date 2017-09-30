@@ -1,4 +1,4 @@
-import {SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE} from '../constants/actionTypes.ts';
+import {SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE} from '../constants/actionTypes.ts';
 
 export function setUserDeliveryContactAddressFirstName(value: any, order_id: any) {
   console.log("user delivery contact address first name action");
@@ -196,6 +196,26 @@ export function setUserDeliveryContactAddressZipcode(value: any, order_id: any) 
   //}else{
       return {
         type: SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE,
+        value,
+        order_id
+      }
+  //}
+
+}
+
+export function setUserDeliveryContactAddressNote(value: any, order_id: any) {
+  console.log("user delivery contact address zipcode action");
+  //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
+  //else SET_DELIVERY_ADDRESS_STREET1
+
+  //if("session.user_id" == "guest"){
+  //    return {
+  //      type: SET_DELIVERY_ADDRESS_STREET1,
+  //      value
+  //    }
+  //}else{
+      return {
+        type: SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE,
         value,
         order_id
       }

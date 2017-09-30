@@ -443,7 +443,7 @@ class OrderMenu extends React.Component<any, any> {
         yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-9">
                                                   <div className="col-xs-6 col-md-4">
-                                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 100, borderRadius: 0}}>
+                                                    <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none"}}>
                                                       <option value="">Quantity</option> 
                                                       {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                     </select>

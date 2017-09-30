@@ -22,7 +22,7 @@ import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from
 
 import {setPromoCode} from './actions/order.ts';
 
-import {setPaymentNameOnCard, setPaymentZipcode, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
+import {setPaymentNameOnCard, setPaymentZipCode, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 import {processYoursSocialPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
@@ -905,7 +905,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             {this.props.User.orderSession.paymentErrorCode}
                             <br/>
                             <br/>
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipcode={(e: any) => this.props.setPaymentZipcode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
@@ -1037,8 +1037,8 @@ function mapDispatchToProps(dispatch: any) {
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value, ""))
     },
-    setPaymentZipcode: (e: any) => {
-      dispatch(setPaymentNameOnCard(e.target.value, ""))
+    setPaymentZipCode: (e: any) => {
+      dispatch(setPaymentZipCode(e.target.value, ""))
     },
     
     setPaymentCardNumber: (e: any) => {

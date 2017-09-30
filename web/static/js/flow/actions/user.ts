@@ -1,4 +1,4 @@
-import {ADD_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
+import {ADD_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_DETAILS, SET_USER_ORDERS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_NAME, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_USER_PAYMENT_METHOD} from '../constants/actionTypes.ts';
 
 import axios from 'axios';
 import {push} from 'react-router-redux';
@@ -155,15 +155,6 @@ export function addUserDeliveryContactAddress(delivery_contact_address_name: any
   
 }
 
-/*export function setUserNewDeliveryAddressFirstName(value: any) {
-  //alert("GET USER details");
-  console.log("set user email action " + value);
-  return {
-    type: SET_USER_EMAIL,
-    data: value
-  }
-}*/
-
 export function setUserDeliveryContactAddressFirstName(user_id: any, value: any) {
   //alert("GET USER details");
   console.log("set user contact address first name action " + value);
@@ -196,7 +187,7 @@ export function setUserDeliveryContactAddressEmail(user_id: any, value: any) {
   return function (dispatch: any) { 
     
     return {
-      type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+      type: SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL,
       data: value
     }
 
@@ -209,31 +200,18 @@ export function setUserDeliveryContactAddressMobile(user_id: any, value: any) {
   return function (dispatch: any) { 
     
     return {
-      type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
+      type: SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE,
       data: value
     }
 
   }
 }
 
-export function setUserDeliveryContactAddressNote(user_id: any, value: any) {
-  //alert("GET USER details");
-  console.log("set user contact address mobile action " + value);
-  return function (dispatch: any) { 
-    
-    return {
-    //  type: SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME,
-    //  data: value
-    }
-
-  }
-}
-
-/*export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
+export function setUserDeliveryAddressStreet1(user_id: any, delivery_address_id: any, value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_EMAIL,
+    type: SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1,
     data: value
   }
 }
@@ -242,7 +220,7 @@ export function setUserDeliveryAddressStreet2(user_id: any, delivery_address_id:
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_EMAIL,
+    type: SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2,
     data: value
   }
 }
@@ -251,7 +229,7 @@ export function setUserDeliveryAddressCity(user_id: any, delivery_address_id: an
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_EMAIL,
+    type: SET_USER_DELIVERY_CONTACT_ADDRESS_CITY,
     data: value
   }
 }
@@ -260,10 +238,19 @@ export function setUserDeliveryAddressZipcode(value: any) {
   //alert("GET USER details");
   console.log("set user email action " + value);
   return {
-    type: SET_USER_EMAIL,
+    type: SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE,
     data: value
   }
-}*/
+}
+
+export function setUserDeliveryAddressNote(value: any) {
+  //alert("GET USER details");
+  console.log("set user email action " + value);
+  return {
+    type: SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE,
+    data: value
+  }
+}
 
 
 export function saveUserDeliveryContactAddress(id: any, delivery_contact_address_name: any, first_name: any, last_name: any, email: any, mobile: any, street1: any, street2: any, city: any, state: any, zipcode: any) {

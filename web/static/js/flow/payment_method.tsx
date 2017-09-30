@@ -95,7 +95,7 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
-  setPaymentNameOnCard(e: any){
+  setPaymentNameOnCard = (e: any) => {
 
       this.setState({name_on_card: e.target.value})
       this.props.setPaymentNameOnCard(e);
@@ -105,7 +105,7 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
-  setPaymentZipCode(e: any){
+  setPaymentZipCode = (e: any) => {
 
       this.setState({zipcode: e.target.value})
       this.props.setPaymentZipCode(e);
@@ -209,6 +209,8 @@ class PaymentMethod extends React.Component<any, any> {
 
       //can only be this year up to 2028
 
+      this.props.setPaymentExpiryYear(e);
+
       if(e.target.value.length > 0){
           //2017-only numbers
           //01-12, only numbers
@@ -222,8 +224,7 @@ class PaymentMethod extends React.Component<any, any> {
                   //this.setState({cvc_border_color: "grey"})
                   //this.setState({expiry_year: e.target.value});
 
-                  this.props.setPaymentExpiryYear(e);
-
+                  
                   /*if(this.state.payment_expiry_month.length > 0){
 
                       //if card number
@@ -328,7 +329,7 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-md-2">
-                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
                   </form>

@@ -581,22 +581,22 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5 col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
                             <div className="col-md-1 col-xs-1"></div>
-                            <div className="col-md-3 col-xs-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
+                            <div className="col-md-1 col-xs-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
                           </div>
                         </form>
                         <br/>
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery Cost</div>
+                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
                           </div>
                         </form>
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-3" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                           </div>
                         </form>
                         {this.props.path == "/order/menu" && 

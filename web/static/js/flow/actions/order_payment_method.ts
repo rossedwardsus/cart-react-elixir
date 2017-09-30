@@ -25,9 +25,12 @@ export function setPaymentNameOnCard(value: any, order_id: any) {
 
   return function (dispatch: any, getState: any) { 
 
-    console.log("state " + JSON.stringify(getState()));
+    //console.log("state " + JSON.stringify(getState()));
   
-    //dispatch({type: SET_USER_DEFINED_PAYMENT_METHOD, card_number: predefined_payment_method.card_number, street2: "", city: "", state: "", zipcode: "", order_id: order_id});
+    dispatch({
+        type: SET_USER_PAYMENT_METHOD_NAME_ON_CARD, 
+        value: value
+    });
 
   }
 
@@ -37,7 +40,7 @@ export function setPaymentNameOnCard(value: any, order_id: any) {
   //}
 }
 
-export function setPaymentZipcode(value: any, order_id: any) {
+export function setPaymentZipCode(value: any, order_id: any) {
   console.log("name on card action");
   //if user is logged u dispatch to user order payment
 
@@ -45,7 +48,7 @@ export function setPaymentZipcode(value: any, order_id: any) {
 
     console.log("state " + JSON.stringify(getState()));
   
-    //dispatch({type: SET_USER_DEFINED_PAYMENT_METHOD, card_number: predefined_payment_method.card_number, street2: "", city: "", state: "", zipcode: "", order_id: order_id});
+    dispatch({type: SET_USER_PAYMENT_METHOD_ZIPCODE, value: value});
 
   }
 
