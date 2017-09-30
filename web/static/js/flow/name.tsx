@@ -50,8 +50,8 @@ class Name extends React.Component<any, any> {
 
     this.state = {
 
-       first_name: "",
-       last_name: "",
+       user_first_name: "",
+       user_last_name: "",
        user_email: "",
        user_email_again: "",
        user_mobile: "",
@@ -81,10 +81,20 @@ class Name extends React.Component<any, any> {
     };
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
 
-    this.setState({first_name: this.props.User.first_name});
-    this.setState({last_name: this.props.User.last_name});
+    this.setState({user_first_name: this.props.User.user_first_name});
+    this.setState({user_last_name: this.props.User.user_last_name});
+    this.setState({user_email: this.props.User.user_email});
+    this.setState({user_mobile: this.props.User.user_mobile});
+
+
+  }
+
+  componentWillReceiveProps = () => {
+
+    //this.setState({first_name: this.props.User.first_name});
+    //this.setState({last_name: this.props.User.last_name});
 
   }
 
@@ -101,7 +111,7 @@ class Name extends React.Component<any, any> {
 
     //only letters
 
-    this.setState({first_name: e.target.value});
+    this.setState({user_first_name: e.target.value});
 
     if(e.target.value.length > 0){
 
@@ -148,7 +158,7 @@ class Name extends React.Component<any, any> {
 
   setUserLastName = (e: any) => {
 
-      this.setState({last_name: e.target.value});
+      this.setState({user_last_name: e.target.value});
 
       if(e.target.value.length > 0){    
 
@@ -358,13 +368,13 @@ class Name extends React.Component<any, any> {
               <form role="form" className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-3">
-                    <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} value={this.state.first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                    <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} value={this.state.user_first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                   <div className="hidden-lg col-xs-1">
                     <br/>
                   </div>
                   <div className="col-md-3">
-                    <input className="form-control margin-bottom" type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)} value={this.state.last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                    <input className="form-control margin-bottom" type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)} value={this.state.user_last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                 </div>
               </form>

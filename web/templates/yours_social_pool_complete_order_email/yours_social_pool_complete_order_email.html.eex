@@ -10,9 +10,13 @@
     <tr><td><br></td></tr>
     <tr><td>Thank you for your Sconely Order!</td><tr>
     <tr><td><br></td></tr>
-    <tr><td>Order Number</td><td><%= @key.admin_receipt_order_id %></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td width="15%">Order Number</td><td width="35%"><%= @key.admin_receipt_order_id %></td></tr>
     <tr><td>Order Date: </td><td><%= @key.order_datetime_formatted %></td></tr>
     <tr><td><br></td></tr>
+  </table>
+  <table width="50%">
     <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, between 9-11 am</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>

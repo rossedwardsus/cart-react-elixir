@@ -165,6 +165,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
         //if cvc then make the cvc border red
         //if card number
 
+        //paymenterror set border color
+
         this.setState({button_complete_order_classname: "btn btn-default"});
         this.setState({button_complete_order_disabled: ""});
 

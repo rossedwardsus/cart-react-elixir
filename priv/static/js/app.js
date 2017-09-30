@@ -42884,6 +42884,7 @@ webpackJsonp([0],[
 	            //display error
 	            //if cvc then make the cvc border red
 	            //if card number
+	            //paymenterror set border color
 	            this.setState({ button_complete_order_classname: "btn btn-default" });
 	            this.setState({ button_complete_order_disabled: "" });
 	            //}
@@ -44129,9 +44130,19 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (Name.__proto__ || Object.getPrototypeOf(Name)).call(this, props));
 	
+	        _this.componentDidMount = function () {
+	            _this.setState({ user_first_name: _this.props.User.user_first_name });
+	            _this.setState({ user_last_name: _this.props.User.user_last_name });
+	            _this.setState({ user_email: _this.props.User.user_email });
+	            _this.setState({ user_mobile: _this.props.User.user_mobile });
+	        };
+	        _this.componentWillReceiveProps = function () {
+	            //this.setState({first_name: this.props.User.first_name});
+	            //this.setState({last_name: this.props.User.last_name});
+	        };
 	        _this.setUserFirstName = function (e) {
 	            //only letters
-	            _this.setState({ first_name: e.target.value });
+	            _this.setState({ user_first_name: e.target.value });
 	            if (e.target.value.length > 0) {
 	                var symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
 	                var symbol_res = symbol_patt.test(e.target.value);
@@ -44151,7 +44162,7 @@ webpackJsonp([0],[
 	            //this.props.nameInvalidated();
 	        };
 	        _this.setUserLastName = function (e) {
-	            _this.setState({ last_name: e.target.value });
+	            _this.setState({ user_last_name: e.target.value });
 	            if (e.target.value.length > 0) {
 	                var symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
 	                var symbol_res = symbol_patt.test(e.target.value);
@@ -44267,8 +44278,8 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            first_name: "",
-	            last_name: "",
+	            user_first_name: "",
+	            user_last_name: "",
 	            user_email: "",
 	            user_email_again: "",
 	            user_mobile: "",
@@ -44292,12 +44303,6 @@ webpackJsonp([0],[
 	    }
 	
 	    _createClass(Name, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {
-	            this.setState({ first_name: this.props.User.first_name });
-	            this.setState({ last_name: this.props.User.last_name });
-	        }
-	    }, {
 	        key: "onFirstNameFocus",
 	        value: function onFirstNameFocus() {
 	            //alert();
@@ -44318,11 +44323,11 @@ webpackJsonp([0],[
 	                    return _this2.onFirstNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.setUserFirstName(e);
-	                }, value: this.state.first_name, id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("input", { className: "form-control margin-bottom", type: "text", maxLength: 30, onFocus: function onFocus() {
+	                }, value: this.state.user_first_name, id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("input", { className: "form-control margin-bottom", type: "text", maxLength: 30, onFocus: function onFocus() {
 	                    return _this2.onLastNameFocus();
 	                }, onChange: function onChange(e) {
 	                    return _this2.setUserLastName(e);
-	                }, value: this.state.last_name, id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { role: "form", className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email, onChange: function onChange(e) {
+	                }, value: this.state.user_last_name, id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { role: "form", className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email, onChange: function onChange(e) {
 	                    return _this2.setUserEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_email_again, onChange: function onChange(e) {
 	                    return _this2.setUserEmailAgain(e);
@@ -44630,6 +44635,10 @@ webpackJsonp([0],[
 	    _createClass(DeliveryAddress, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
+	            this.setState({ contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name });
+	            this.setState({ contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name });
+	            //this.setState({contact_email: this.props.deliveryAddress.street1})
+	            //this.setState({contact_mobile: this.props.deliveryAddress.street1})
 	            //this.setState({street1: this.props.deliveryAddress.street1})
 	            //this.setState({street2: this.props.deliveryAddress.street2})
 	        }

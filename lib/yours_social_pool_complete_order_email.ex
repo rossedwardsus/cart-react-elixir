@@ -120,7 +120,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.PoolOrderEmailView, "pool_order_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompleteOrderEmailView, "yours_social_pool_complete_order_email.html", key: _params)
 
     #IO.inspect(_params[:user_contact_mobile])
 

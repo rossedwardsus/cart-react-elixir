@@ -91,6 +91,10 @@ class DeliveryAddress extends React.Component<any, any> {
 
   componentDidMount(){
 
+    this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name})
+    this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name})
+    //this.setState({contact_email: this.props.deliveryAddress.street1})
+    //this.setState({contact_mobile: this.props.deliveryAddress.street1})
     //this.setState({street1: this.props.deliveryAddress.street1})
     //this.setState({street2: this.props.deliveryAddress.street2})
 
