@@ -118,7 +118,8 @@ const DevTools = createDevTools(
 
 const middleware = applyMiddleware(
   //createLogger(),
-  routerMiddleware(hashHistory),
+  //routerMiddleware(hashHistory),
+  routerMiddleware(browserHistory),
   thunk
 );
 
@@ -128,13 +129,13 @@ const store = createStore(
     middleware
 )
 
-//const historyWithoutAnnoyingQueryKey = useRouterHistory(createHashHistory)({ queryKey: false })
+//const historyWithoutAnnoyingQueryKey = useRouterHistory(createHashHistory)({ queryKey: true })
 //const history = syncHistoryWithStore(historyWithoutAnnoyingQueryKey, store)
 
-const history = syncHistoryWithStore(hashHistory, store)
+//const history = syncHistoryWithStore(hashHistory, store)
 
 //works
-//const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)
 
 
 

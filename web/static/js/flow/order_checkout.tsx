@@ -82,8 +82,8 @@ class DateTime extends React.Component<any, any> {
         daysOfWeek: [],
         menuItems: [],
         User: [],
-        payment_button_classname: "btn btn-default btn-block disabled",
-        payment_button_disabled: true
+        payment_button_classname: "btn btn-default btn-block",
+        payment_button_disabled: ""
         
     };
 
@@ -146,8 +146,8 @@ class DateTime extends React.Component<any, any> {
 
       if(this.props.User.orderSession.validations.userNameEmailMobilValidated == true && this.props.User.orderSession.validations.deliveryContactAddressValidated == true){
       
-        this.setState({payment_button_classname: "btn btn-default btn-block"});
-        this.setState({payment_button_disabled: false})
+        //this.setState({payment_button_classname: "btn btn-default btn-block"});
+        //this.setState({payment_button_disabled: "disabled"})
       
       }
 

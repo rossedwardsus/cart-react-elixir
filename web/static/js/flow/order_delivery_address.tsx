@@ -479,7 +479,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
                         <div className={this.state.first_name_classname}>
-                          <input type="text" value={this.props.User.user_first_name}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.props.User.deliveryContactsAddresses.contact_first_name}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                       <div className="hidden-lg col-xs-1">
@@ -487,7 +487,7 @@ class DeliveryAddress extends React.Component<any, any> {
                       </div>
                       <div className="col-sm-3 col-md-3">
                         <div className={this.state.last_name_classname}>
-                          <input type="text" value={this.state.last} maxLength={20} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.props.User.deliveryContactsAddresses.contact_last_name} maxLength={20} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                     </div>
