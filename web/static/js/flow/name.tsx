@@ -243,10 +243,26 @@ class Name extends React.Component<any, any> {
 
                                 console.log("email ok")
 
+                            }else{
+
+                              this.setState({"email_border_color": "red"});
+
                             }
+                        }else{
+
+                          this.setState({"email_border_color": "red"});
+
                         }
 
+                    }else{
+
+                      this.setState({"email_border_color": "red"});
+
                     }
+                }else{
+
+                  this.setState({"email_border_color": "red"});
+
                 }
 
             }else{
@@ -275,7 +291,7 @@ class Name extends React.Component<any, any> {
       this.setState({user_email_again: e.target.value});
       //this.props.setUserEmail(e);
 
-      if(this.state.contact_email == e.target.value){
+      if(this.state.user_email == e.target.value){
 
           //validated
           //this.props.nameValidated();
@@ -326,7 +342,13 @@ class Name extends React.Component<any, any> {
             }else if(e.target.value.length == 7){
 
               this.setState({user_mobile: e.target.value + "-"});
-            
+
+            }else if(e.target.value.length == 13){
+
+                    console.log("user email/mobile validated");
+  
+                    this.props.userNameEmailMobileValidated();
+
             }else{
 
               this.setState({user_mobile: e.target.value});
@@ -414,7 +436,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>
-                        <input type="text" value={this.state.user_mobile} maxLength={12} onChange={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        <input type="text" value={this.state.user_mobile} maxLength={13} onChange={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                       </div>
                   </div>
                 </div>

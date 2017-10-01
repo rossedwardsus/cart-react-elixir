@@ -410,7 +410,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //console.log("sm" + sm.indexOf(parseInt(e.target.value)));
 
 
-      if(dtla.indexOf(parseInt(e.target.value)) > -1){
+      /*if(dtla.indexOf(parseInt(e.target.value)) > -1){
 
           this.props.setDeliveryCost(0);
 
@@ -418,13 +418,13 @@ class DeliveryAddress extends React.Component<any, any> {
 
           this.props.setDeliveryCost(10);
 
-      }
+      }*/
 
       //this.props.setDeliveryAddressZipcode(e);
       //set location for delivery time
 
       //if street1 street2 city state
-      //this.props.setdeliveryAddressValidated();
+      this.props.deliveryContactAddressValidated();
 
   }
 
@@ -565,7 +565,7 @@ class DeliveryAddress extends React.Component<any, any> {
                           </select>
                         </div>
                         <div className="col-sm-3">
-                          <select className="form-control" onChange={(value) => this.props.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zip Code</option>
                             <option>Venice</option>
                             <option>90013</option>

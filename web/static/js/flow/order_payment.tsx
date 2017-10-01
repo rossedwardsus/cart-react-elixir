@@ -618,7 +618,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
               //if(promo_codes.indexof(e.target.value) > -1){
 
-                  this.setState({promo_code_discount: 10})
+              //    this.setState({promo_code_discount: 10})
 
               //}
             
@@ -854,7 +854,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-xs-12 col-md-9">
+                        <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
                             <div className="hidden-lg">

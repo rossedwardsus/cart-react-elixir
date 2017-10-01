@@ -1,4 +1,4 @@
-import {CART_VALIDATED, CART_INVALIDATED, DELIVERY_ADDRESS_VALIDATED, DELIVERY_ADDRESS_INVALIDATED, DATETIME_VALIDATED, DATETIME_INVALIDATED, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED} from '../constants/actionTypes.ts';
+import {CART_VALIDATED, CART_INVALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATETIME_VALIDATED, DATETIME_INVALIDATED, PAYMENT_METHOD_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED} from '../constants/actionTypes.ts';
 
 export function cartValidated() {
   console.log("cart validated ");
@@ -32,15 +32,15 @@ export function datetimeInvalidated() {
   }
 }
 
-export function deliveryAddressValidated() {
-  console.log("cart validated ");
+export function deliveryContactAddressValidated() {
+  console.log("delivery contact address validated ");
   return {
-    type: DELIVERY_ADDRESS_VALIDATED,
+    type: DELIVERY_CONTACT_ADDRESS_VALIDATED,
     
   }
 }
 
-export function deliveryAddressInvalidated() {
+/*export function deliveryAddressInvalidated() {
   console.log("cart validated ");
   return {
     type: DELIVERY_ADDRESS_VALIDATED,
@@ -70,7 +70,7 @@ export function nameValidated() {
     type: NAME_VALIDATED,
     
   }
-}
+}*/
 
 export function paymentMethodValidated() {
   console.log("cart validated ");
@@ -78,4 +78,12 @@ export function paymentMethodValidated() {
     type: PAYMENT_METHOD_VALIDATED,
     
   }
+}
+
+export function userNameEmailMobileValidated() {
+  console.log("user name email mobile validated ");
+  return {
+    type: USER_NAME_EMAIL_MOBILE_VALIDATED,
+    
+  }	
 }

@@ -135,7 +135,7 @@ class PaymentMethod extends React.Component<any, any> {
 
           console.log("visa");
           this.setState({card_brand: "VISA"});
-          this.props.setPAyentMethodCardBrand("VISA");
+          this.props.setPaymentMethodCardBrand("VISA");
          
       //
       }else if(/^5[1-5][0-9]{14}$/.test(e.target.value)){

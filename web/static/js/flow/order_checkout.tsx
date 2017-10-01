@@ -38,8 +38,8 @@ import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './
 
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode, setUserDeliveryContactAddressNote} from './actions/user_delivery_contact_address.ts';
 
-import {nameValidated} from './actions/order_validations.ts';
-import {contactValidated} from './actions/order_validations.ts';
+import {userNameEmailMobileValidated, deliveryContactAddressValidated} from './actions/order_validations.ts';
+//import {contactValidated} from './actions/order_validations.ts';
 
 
 function addTodoWithDispatch() {
@@ -82,7 +82,8 @@ class DateTime extends React.Component<any, any> {
         daysOfWeek: [],
         menuItems: [],
         User: [],
-        payment_button_classname: "btn btn-default btn-block"
+        payment_button_classname: "btn btn-default btn-block disabled",
+        payment_button_disabled: true
         
     };
 
@@ -135,6 +136,20 @@ class DateTime extends React.Component<any, any> {
   }
 
   componentWillReceiveProps = () => {
+
+      console.log("order checkout cwrp" + JSON.stringify(this.props.User.orderSession.validations))
+
+      //if order type == "pool"
+      //else validate name contact
+      //delivery contact and address
+      //also date time
+
+      if(this.props.User.orderSession.validations.userNameEmailMobilValidated == true && this.props.User.orderSession.validations.deliveryContactAddressValidated == true){
+      
+        this.setState({payment_button_classname: "btn btn-default btn-block"});
+        this.setState({payment_button_disabled: false})
+      
+      }
 
       //this.setState({delivery_times: "9-11am"});
 
@@ -431,7 +446,7 @@ class DateTime extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                                 <br/>
-                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()}/>
+                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={this.props.userMobileEmailMobileValidated()}/>
                                 <br/>
                                 <br/>
                                 <br/>
@@ -469,7 +484,7 @@ class DateTime extends React.Component<any, any> {
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
-                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
+                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)}/>
                             <br/>
                             <br/>
                             <DeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
@@ -481,7 +496,7 @@ class DateTime extends React.Component<any, any> {
                             setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
                             setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} setDeliveryContactAddressNote={(e: any) => this.props.setUserDeliveryContactAddressNote(e)} 
-                            deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
+                            deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
 
                             <form className="form-horizontal">
                                 <div className="form-group">
@@ -516,15 +531,15 @@ class DateTime extends React.Component<any, any> {
                             <br/>
                             <form className="form-horizontal">
                                 <div className="form-group">
-                                  <div className="col-md-6">
+                                  <div className="col-md-9">
                                     <div className="col-md-3">
                                       <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
                                     </div>
                                     <div className="col-md-3">
-                                      <Link to="/order/payment" className={this.state.payment_button_classname} style={{borderRadius: 0}}>Payment</Link>  
+                                      <Link to="/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}}>Payment</Link>  
                                     </div>
                                     <div className="col-md-3">
-                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Menu</Link>  
+                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
                                     </div>
                                     <div className="col-md-3">
                                       <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
@@ -600,8 +615,11 @@ function mapDispatchToProps(dispatch: any) {
     setUserMobile: (e: any) => {
       dispatch(setUserMobile(e.target.value))
     },
-    nameValidated: (e: any) => {
-      dispatch(nameValidated());
+    //nameValidated: (e: any) => {
+    //  dispatch(nameValidated());
+    //},
+    userNameEmailMobileValidated: () => {
+      dispatch(userNameEmailMobileValidated());
     },
     setUserDeliveryContactAddressFirstName: (e: any) => {
       dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
@@ -636,6 +654,9 @@ function mapDispatchToProps(dispatch: any) {
     setUserDeliveryContactAddressNote: (e: any) => {
       dispatch(setUserDeliveryContactAddressNote(e.target.value, ""))
     },
+    deliveryContactAddressValidated: () => {
+      dispatch(deliveryContactAddressValidated());
+    }
   
   }
 }
