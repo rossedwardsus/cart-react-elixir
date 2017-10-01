@@ -148,6 +148,12 @@ class OrderDateTimeContact extends React.Component<any, any> {
       //    redirect to homepage
 
       //}
+
+      componentDidMount = () => {
+
+        window.scrollTo(0, 0);
+
+      }
       
   }
 

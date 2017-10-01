@@ -390,9 +390,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     #move all of this before payment
 
-    cart_items = [%{"menu_item_id": 1, "quantity": 1, "size": "regular"}, %{"menu_item_id": 2, "quantity": 100, "size": "mini"}]
+    #cart_items = [%{menu_item_id: 1, quantity: 1, size: "regular"}, %{menu_item_id: 2, quantity: 100, size: "mini"}]
+    cart_items = args[:cart_items]
+    IO.inspect(args[:cart_items])
 
-    order_type == "pool"
+    order_type = "pool"
     #order_type = args[:order_type]
 
     case order_type do
@@ -415,7 +417,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       "pool" ->
 
-        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+        total_cost = Enum.reduce(cart_items, 0, fn(%{quantity: quantity}, count) -> count + (quantity * 1.00) end)
 
     end
 
@@ -815,13 +817,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         case Date.day_of_week(date_from_erl) do
                         #case Timex.weekday do
-                          0 -> {delivery_date_day_of_week = "Sunday"}
-                          1 -> {delivery_date_day_of_week = "Monday"}
-                          2 -> {delivery_date_day_of_week = "Tuesday"}
-                          3 -> {delivery_date_day_of_week = "Wednesday"}
-                          4 -> {delivery_date_day_of_week = "Thursday"}
-                          5 -> {delivery_date_day_of_week = "Friday"}
-                          6 -> {delivery_date_day_of_week = "Saturday"}
+                          1 -> {delivery_date_day_of_week = "Sunday"}
+                          2 -> {delivery_date_day_of_week = "Monday"}
+                          3 -> {delivery_date_day_of_week = "Tuesday"}
+                          4 -> {delivery_date_day_of_week = "Wednesday"}
+                          5 -> {delivery_date_day_of_week = "Thursday"}
+                          6 -> {delivery_date_day_of_week = "Friday"}
+                          7 -> {delivery_date_day_of_week = "Saturday"}
                         end                     
 
                         IO.inspect(delivery_date_day_of_week)
@@ -909,9 +911,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #Enum.map
                         #Repo.insert(order_items_changeset) 
 
-                        order_items = [%{menu_item_id: 1, quantity: 1, size: "regular"}, %{menu_item_id: 1, quantity: 1, size: "regular"}]
+                        #order_items = [%{menu_item_id: 1, quantity: 1, size: "regular"}, %{menu_item_id: 1, quantity: 1, size: "regular"}]
 
-                        Enum.map(order_items, fn(item) -> 
+                        Enum.map(cart_items, fn(item) -> 
                             IO.inspect(item)
 
                             #pool_order_items?
@@ -980,13 +982,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     end
 
                                     case Timex.weekday(order_datetime_converted) do
-                                      0 -> {order_date_day_of_week = "Sunday"}
-                                      1 -> {order_date_day_of_week = "Monday"}
-                                      2 -> {order_date_day_of_week = "Tuesday"}
-                                      3 -> {order_date_day_of_week = "Wednesday"}
-                                      4 -> {order_date_day_of_week = "Thursday"}
-                                      5 -> {order_date_day_of_week = "Friday"}
-                                      6 -> {order_date_day_of_week = "Saturday"}
+                                      1 -> {order_date_day_of_week = "Sunday"}
+                                      2 -> {order_date_day_of_week = "Monday"}
+                                      3 -> {order_date_day_of_week = "Tuesday"}
+                                      4 -> {order_date_day_of_week = "Wednesday"}
+                                      5 -> {order_date_day_of_week = "Thursday"}
+                                      6 -> {order_date_day_of_week = "Friday"}
+                                      7 -> {order_date_day_of_week = "Saturday"}
                                     end
 
                                     
@@ -1032,7 +1034,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     #delivery_contact_address_id = Repo.get_by(UserDeliveryContactAddress, %{user_id: user_id})
 
-                                    #IO.inspect(delivery_contact_address_id)
+                                    delivery_contact_address_id = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == ^user_id, select: count(dca.delivery_contact_address_id))
+
+                                    IO.puts("dca_id")
+                                    IO.inspect(delivery_contact_address_id)
 
                                     #if nil
                                     #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: args[:user_first_name, last_name: args[:user_last_name], street1: "", street2: "", city: "", state: ""})
@@ -1068,7 +1073,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         end)
 
-                        delivery_address = %{street1: "s1", street2: "s2", city: "c", state: "s", zipcode: "zc"}
+                        delivery_address = %{street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]}
 
                         #order id from response
                         #Enum.map
@@ -1493,7 +1498,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{"order_id" => order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 

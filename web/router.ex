@@ -121,6 +121,8 @@ defmodule SconeHomeElixir.Router do
 
     get "/:signature_event_name", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
+    get "/pool/:pool_name/:pool_date", HomeController, :index
+    
     #get "/activate", ActivateController, :index
 
 

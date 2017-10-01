@@ -89,10 +89,10 @@ defmodule Sconely.Schema.Types do
   #	field :item_id, :string
   #end
 
-  input_object :item do
-	 field :item_id, :integer
-   field :item_type, :string
+  input_object :cart_item do
+	 field :menu_item_id, :integer
    field :quantity, :integer
+   field :size, :string
   end
 
   object :order do

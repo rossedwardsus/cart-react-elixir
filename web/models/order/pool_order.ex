@@ -19,7 +19,7 @@ defmodule Sconely.PoolOrder do
 			#field :delivery_contact_id, :integer
 			#field :order_datetime, Ecto.Date
 			field :delivery_date, Ecto.Date
-			field :delivery_time, :string
+			field :delivery_time_range, :string
 			#field :delivery_contact_first_name, :string
 			#field :delivery_contact_last_name, :string
 			#field :delivery_contact_email, :string

@@ -72,7 +72,7 @@ defmodule Sconely.Schema do
         #arg :order_id, :string
         arg :pool_name, :string
         arg :pool_date, :string
-        arg :cart_items, list_of(:item)
+        #arg :cart_items, list_of(:cart_item)
         #arg :guest_count, :string
         #arg :delivery_date, :string
         #arg :delivery_time, :string
@@ -260,7 +260,7 @@ defmodule Sconely.Schema do
         arg :payment_method_security_code, :string
         arg :payment_method_card_brand, :string
         arg :payment_method_zipcode, :string
-        arg :cart_items, list_of(:item)
+        arg :cart_items, list_of(:cart_item)
         arg :promo_code, :string
         #arg :terms
         #arg :mailing_list

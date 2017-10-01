@@ -11,8 +11,9 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #IO.puts("redirect plug")
     #do_redirect(conn, to)
     IO.inspect(conn)
-    IO.inspect(get_req_header(conn, "host") |> List.first)
+    #IO.inspect(get_req_header(conn, "host") |> List.first)
     #IO.inspect(get_req_header(conn, "request_path") |> List.first)
+    IO.inspect(conn.path_info |> List.first)
     
     #if Map.has_key?(conn.params, "pool_name") && Map.has_key?(conn.params, "pool_date") do
 
@@ -30,7 +31,29 @@ defmodule Sconely.Plugs.RedirectsPlug do
       # username is not in params
     #end
 
-    case conn.params do
+    case conn.path_info |> List.first do
+        nil -> IO.puts("nil")
+               conn
+               |> halt
+        "image" -> IO.puts("image")
+        "pool" -> conn
+                  #|> Phoenix.Controller.redirect(to: url)
+                  |> halt
+        "yours" -> IO.puts("yours")
+                    conn
+                    |> halt
+        "social" -> IO.puts("social")
+        _ -> IO.puts("anything else")
+             url = "/pool/1/1"
+        #          IO.puts(url)
+        #          #url = url <> "/"
+                   conn
+                    |> Phoenix.Controller.redirect(to: url)
+                    |> halt
+        
+    end
+
+    #case conn.params do
 
         #if no paramas
         #_ -> conn
@@ -47,30 +70,35 @@ defmodule Sconely.Plugs.RedirectsPlug do
         #if only one param1 is not empty and param2 is not empty
 
         #signature event name - sconelylaunchatlaci
-        %{"signature_event_name" => signature_event_name} -> 
-                IO.puts("pattern matching")
+        #%{"signature_event_name" => signature_event_name} -> 
+        #        IO.puts("pattern matching")
 
 
         #8thandhope/thursdayseptember23rd
-        %{"pool_name" => pool_name, "pool_date" => pool_date} ->
-                IO.puts("pool")
-                if(pool_name == "image") do
-                  conn
+        #pool redirect
+
+        #if 2 params
+        #else if 3 params
+
+        #%{"pool_name" => pool_name, "pool_date" => pool_date} ->
+                #IO.puts("pool")
+        #        if(pool_name == "image") do
+        #          conn
                   #|> Phoenix.Controller.redirect(to: url)
-                  |> halt
-                else
-                  url = "/#/pool/" <> pool_name <> "/" <> pool_date
-                  IO.puts(url)
-                  #url = url <> "/"
-                  #redirect conn, to: url
-                  conn
-                    |> Phoenix.Controller.redirect(to: url)
-                    |> halt
-                end
+        #          |> halt
+        #        else
+        #          url = "/pool/" <> pool_name <> "/" <> pool_date
+        #          IO.puts(url)
+        #          #url = url <> "/"
+        #          #redirect conn, to: url
+        #          conn
+        #            |> Phoenix.Controller.redirect(to: url)
+        #            |> halt
+        #        end
 
-        _ -> conn
+        #_ -> conn
 
-    end
+    #end
 
     if Map.has_key?(conn.params, "signature_event_name") do
 
