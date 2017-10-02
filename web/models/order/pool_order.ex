@@ -8,27 +8,17 @@ defmodule Sconely.PoolOrder do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		@optional_fields ~W(user_id order_id admin_receipt_order_id order_datetime pool_name delivery_date delivery_time)
+		@optional_fields ~W(user_id parent_order_id admin_receipt_order_id field user_delivery_contact_address_id order_datetime pool_name delivery_date delivery_time)
 		@required_fields ~W()
 
 		schema "pool_orders" do
 			field :user_id, :integer
-			field :order_id, :integer
+			field :parent_order_id, :integer
 			field :admin_receipt_order_id, :integer
 			field :pool_name, :string
-			#field :delivery_contact_id, :integer
-			#field :order_datetime, Ecto.Date
 			field :delivery_date, Ecto.Date
-			field :delivery_time_range, :string
-			#field :delivery_contact_first_name, :string
-			#field :delivery_contact_last_name, :string
-			#field :delivery_contact_email, :string
-			#field :delivery_contact_mobile, :string
-			#field :delivery_address_street1
-			#field :delivery_address_street2
-			#field :delivery_address_city
-			#field :delivery_address_state
-			#field :delivery_address_zipcode
+			field :delivery_time_range, :string, size: 20
+			field :user_delivery_contact_address_id, :integer
 			
 			#delivery location - 8th and hope lobby
 			

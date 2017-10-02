@@ -24,17 +24,6 @@ defmodule Sconely.Order do
 		#payment_method_id
 		field :order_datetime, Ecto.DateTime
 		#field :status, :string
-
-		#field delivery_contact_address_id
-		#field :delivery_contact_first_name, :string
-		#field :delivery_contact_last_name, :string
-		#field :delivery_contact_email, :string
-		#field :delivery_contact_mobile, :string
-		#field :delivery_address_street1
-		#field :delivery_address_street2
-		#field :delivery_address_city
-		#field :delivery_address_state
-		#field :delivery_address_zipcode # only certain zipcodes
 		#delivery_contact_address_note
 		#field :delivery_datetime, Ecto.DateTime
 		#field :delivery_time, :string

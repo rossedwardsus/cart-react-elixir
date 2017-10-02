@@ -15,12 +15,12 @@ defmodule SconeHomeElixir.Repo.Migrations.Sessions do
   #end
 
   def change do
-    create table(:sessions, primary_key: true) do
+    create_if_not_exists table(:sessions) do
       #add :session_id, :uuid, primary_key: true
 	    add :user_id, :integer
       add :token, :uuid
-	    #add :logged_in_datetime, :string
-      #add :logged_out_datetime, :string
+	    #add :logged_in_datetime, :string, size: 40
+      #add :logged_out_datetime, :string, size: 40
 
       #timestamps
 
@@ -30,10 +30,8 @@ defmodule SconeHomeElixir.Repo.Migrations.Sessions do
   end
 
 
-  def down do
-    drop table(:sessions)
-  end
+  #def down do
+  #  drop table(:sessions)
+  #end
 
-  def change do
-  end
 end

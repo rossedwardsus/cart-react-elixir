@@ -569,6 +569,39 @@ class SidebarCart extends React.Component<any, any> {
 
     console.log("message");
 
+    let checkoutButton = null;
+
+
+    if(this.props.User.orders[0].order_type == "pool"){
+
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
+
+          //{this.props.path == "/order/menu" && 
+
+          checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
+
+      }
+
+    }else if(this.props.User.orders[0].order_type == "yours"){
+
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
+
+          checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
+
+      }
+
+    }else if(this.props.User.orders[0].order_type == "social"){
+
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 11){
+
+          checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
+
+      }
+
+    }
+
+
+
     return (<div> 
                   {item_quantity_message}
                   <br/>
@@ -599,11 +632,9 @@ class SidebarCart extends React.Component<any, any> {
                             <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                           </div>
                         </form>
-                        {this.props.path == "/order/menu" && 
-                            <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>}
                       </div>)
-
                   }
+                  {checkoutButton}
                   <br/>
                   <br/>
             </div>

@@ -141,7 +141,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
     };
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
 
       ///if(this.props.order.order_type == undefined){
 
@@ -149,22 +149,22 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       //}
 
-      componentDidMount = () => {
+      //componentDidMount = () => {
 
         window.scrollTo(0, 0);
 
-      }
+      //}
       
   }
 
   //componentWillReceiveProps
-  componentWillReceiveProps(nextProps: any){
+  componentWillReceiveProps = (nextProps: any) => {
 
-    console.log("<b>recieved</b>");
+    //console.log("<b>recieved</b>");
 
     //this.props.cart_validated;
 
-    //if(this.props.User.orderSession.payment_error_details != ""){
+    //if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
     //if(this.props.User.orderSession.payment_status == "error"){
 
         //display error
@@ -173,8 +173,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
         //paymenterror set border color
 
-        this.setState({button_complete_order_classname: "btn btn-default"});
-        this.setState({button_complete_order_disabled: ""});
+    //    this.setState({card_number_border_color: "red"});
+      //  this.setState({security_code_border_color: "red"});        
+
+     //   this.setState({button_complete_order_classname: "btn btn-default"});
+     //   this.setState({button_complete_order_disabled: ""});
 
     //}
 
@@ -908,10 +911,10 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                 </div>
                             </form>
                             <br/>
-                            {this.props.User.orderSession.paymentErrorCode}
+                            {this.state.payment_error_message}
                             <br/>
                             <br/>
-                            <PaymentMethod setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>

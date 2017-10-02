@@ -15,11 +15,12 @@ defmodule Sconely.YoursSocialOrder do
 			field :order_id, :integer #primary key #secure random
 			field :user_id, :integer #Ecto.UUID
 			field :admin_receipt_order_id, :integer
-			field :delivery_contact_address_id, :integer #primary key #secure random
+			field :user_delivery_contact_address_id, :integer #primary key #secure random
 			field :payment_method_id, :integer #Ecto.UUID
-			#delivery_datetime
-			field :stripe_charge_token, :string
-			#field message
+			field :delivery_date, Ecto.Date
+			field :delivery_time, :string, size: 20
+			field :stripe_charge_token, :string, size: 30
+			#field note
 		
 		end
 

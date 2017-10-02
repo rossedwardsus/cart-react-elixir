@@ -514,14 +514,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     #charge = Stripe.Charges.create(51, params)
 
+
     #IO.puts("card data from app")
     #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
 
-    #case Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}) do
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+
+
 
     #IO.puts("test card date")
     #fraudulent
     #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "name" => "Ross", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
+
+    #expired card
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000069", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
     #cvc
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
@@ -530,7 +536,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
         #IO.inspect(token["id"])  
 
@@ -786,25 +792,30 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #delivery dateime
 
-                        pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
+                        pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 0})
                         IO.inspect(pool_order.delivery_date.month)
+
+                        IO.inspect(pool_order.delivery_date.day)
 
                         #get delivery contact address for pool order
 
 
                         delivery_address = %{street1: "s1", street2: "s2", city: "c", state: "s", zipcode: "zc"}
 
+                        #covert the time zone?
+                        #actually this is only date
+
                         case  pool_order.delivery_date.month do
-                          #1 -> {delivery_date_month = "January"}
-                          #2 -> {delivery_date_month = "February"}
-                          #3 -> {delivery_date_month = "March"}
-                          #4 -> {delivery_date_month = "April"}
-                          #5 -> {delivery_date_month = "May"}
-                          #6 -> {delivery_date_month = "June"}
-                          #7 -> {delivery_date_month = "July"}
-                          #8 -> {delivery_date_month = "August"}
+                          1 -> {delivery_date_month = "January"}
+                          2 -> {delivery_date_month = "February"}
+                          3 -> {delivery_date_month = "March"}
+                          4 -> {delivery_date_month = "April"}
+                          5 -> {delivery_date_month = "May"}
+                          6 -> {delivery_date_month = "June"}
+                          7 -> {delivery_date_month = "July"}
+                          8 -> {delivery_date_month = "August"}
                           9 -> {delivery_date_month = "September"}
-                          10 -> {delivery__date_month = "October"}
+                          10 -> {delivery_date_month = "October"}
                           11 -> {delivery_date_month = "November"}
                           12 -> {delivery_date_month = "December"}
                         end
@@ -861,16 +872,33 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end
 
                         case Timex.weekday(order_datetime_converted) do
-                          0 -> {order_date_day_of_week = "Sunday"}
-                          1 -> {order_date_day_of_week = "Monday"}
-                          2 -> {order_date_day_of_week = "Tuesday"}
-                          3 -> {order_date_day_of_week = "Wednesday"}
-                          4 -> {order_date_day_of_week = "Thursday"}
-                          5 -> {order_date_day_of_week = "Friday"}
-                          6 -> {order_date_day_of_week = "Saturday"}
+                          1 -> {order_date_day_of_week = "Sunday"}
+                          2 -> {order_date_day_of_week = "Monday"}
+                          3 -> {order_date_day_of_week = "Tuesday"}
+                          4 -> {order_date_day_of_week = "Wednesday"}
+                          5 -> {order_date_day_of_week = "Thursday"}
+                          6 -> {order_date_day_of_week = "Friday"}
+                          7 -> {order_date_day_of_week = "Saturday"}
                         end
 
-                        order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime.day) <> ", " <> Integer.to_string(order_datetime.year)
+                        converted_hour = nil
+                        am_pm = nil
+
+                        IO.puts("hour")
+                        IO.puts(order_datetime_converted.hour < 13)
+
+                        if order_datetime_converted.hour < 13 do
+                            converted_hour = order_datetime_converted.hour
+                            am_pm = "am"
+                        else
+                            IO.puts(">13")
+                            converted_hour = order_datetime_converted.hour - 12
+                            am_pm = "pm"
+                        end
+
+                        #use converted year month day as well
+
+                        order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime.day) <> ", " <> Integer.to_string(order_datetime.year) <> " " <> Integer.to_string(converted_hour) <> ":" <> Integer.to_string(order_datetime.min) <> " " <> am_pm 
 
 
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, order_datetime: order_datetime, stripe_charge_token: stripe_charge_token})
@@ -882,9 +910,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         case Repo.insert(order_changeset) do
                             {:ok, response} -> IO.inspect(response)
                                     order_id = response.id
-                                    order_datetime = response.order_datetime
-
-
+                                    #order_datetime = response.order_datetime
                         end
 
                         #case args[:order_type] do
@@ -899,7 +925,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #order_id = 0
                         #order_datetime = nil
 
-                        case Repo.insert(pool_order_response_user_changeset, returning: :order_datetime) do
+                        case Repo.insert(pool_order_response_user_changeset) do
                             {:ok, response} -> IO.inspect(response)
                                     #order_id = response.id
                                     #order_datetime = response.order_datetime
@@ -919,7 +945,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             #pool_order_items?
                             #probably not
 
-                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: order_id, menu_item_id: 1, quantity: 1, size: "regular"})
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: order_id, menu_item_id: 1, quantity: 1, size: "regular"})
 
                             case Repo.insert(order_item_changeset) do
 
@@ -1029,22 +1055,26 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     IO.inspect("day")
                                     IO.inspect("date")
 
-                                    #delivery_contact_address_changeset
-                                    #check if delivery address exists for a user.  if not add it else update whatever is there.
-
-                                    #delivery_contact_address_id = Repo.get_by(UserDeliveryContactAddress, %{user_id: user_id})
-
-                                    delivery_contact_address_id = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == ^user_id, select: count(dca.delivery_contact_address_id))
-
-                                    IO.puts("dca_id")
-                                    IO.inspect(delivery_contact_address_id)
-
-                                    #if nil
-                                    #user_contact_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: 1, first_name: args[:user_first_name, last_name: args[:user_last_name], street1: "", street2: "", city: "", state: ""})
-                                    #else update
-
-    
                         end
+
+
+                        #delivery_contact_address_changeset
+                        #check if delivery address exists for a user.  if not add it else update whatever is there.
+
+                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == ^user_id, select: count(dca.delivery_contact_address_id))
+
+                        IO.puts("dca_id")
+                        IO.inspect(user_delivery_contact_address_count)
+
+                        #if 0 then add
+                        #lse update
+                        #user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: user_delivery_contact_address_count + 1, first_name: args[:delivery_contact_address_contact_first_name, last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
+                        #else update
+
+                        #case Repo.insert(user_delivery_contact_address_changeset) do
+                        #    {:ok, response} -> IO.inspect(response)
+                        #        #order_id = response.id
+                        #end
 
                         
                         yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, delivery_contact_address_id: 1, payment_method_id: 0, stripe_charge_token: stripe_charge_token})

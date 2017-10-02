@@ -79,7 +79,7 @@ class DateTime extends React.Component<any, any> {
         selected_specific_time: "",
         delivery_dates: [],
         delivery_times: "",
-        daysOfWeek: [],
+        daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
         menuItems: [],
         User: [],
         payment_button_classname: "btn btn-default btn-block",

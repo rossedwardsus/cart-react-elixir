@@ -53,15 +53,15 @@ class PaymentMethod extends React.Component<any, any> {
 
        payment_name_on_card: "",
        payment_card_number: "",
+       payment_card_brand: "",
        payment_expiry_month: "",
        payment_expiry_year: "",
        payment_security_code: "",
        card_number_border_color: "grey",
        expiry_month_border_color: "grey",
        expiry_year_border_color: "grey",
-       cvc_border_color: "grey",
+       security_code_border_color: "grey",
        
-       card_brand: ""
 
     };
 
@@ -87,11 +87,44 @@ class PaymentMethod extends React.Component<any, any> {
 
   }
 
-  componentWillReceiveProps(nextProps: any){
+  componentWillReceiveProps = (nextProps: any) => {
 
       //check for payment invalidated error
 
-      console.log("payment props" + JSON.stringify(nextProps));
+      //network error
+
+      if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
+
+          this.setState({error_message_text: "An incorrect CVC was entered."});
+
+      //    this.setState({card_number_border_color: "red"});
+          this.setState({security_code_border_color: "red"});        
+
+      //    this.setState({button_complete_order_classname: "btn btn-default"});
+      //    this.setState({button_complete_order_disabled: ""});
+
+      }else if(this.props.User.orderSession.paymentErrorCode == "card_declined"){
+
+          //console.log("payment props" + JSON.stringify(nextProps));
+
+          this.setState({error_message_text: "An error occured with your card."});
+          this.setState({security_code_border_color: "grey"});        
+
+      }else if(this.props.User.orderSession.paymentErrorCode == "incorrect_number"){
+
+          //console.log("payment props" + JSON.stringify(nextProps));
+
+          this.setState({error_message_text: "An error occured with your card."});
+          this.setState({security_code_border_color: "grey"});        
+
+      }else if(this.props.User.orderSession.paymentErrorCode == "expired_card"){
+
+          //console.log("payment props" + JSON.stringify(nextProps));
+
+          this.setState({error_message_text: "An error occured with your card."});
+          this.setState({security_code_border_color: "grey"});        
+
+      }
 
   }
 
@@ -322,6 +355,13 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
+                          {this.state.error_message_text}
+                      </div>
+                    </div>
+                  </form>
+                  <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-4">
                         <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                     </div>
@@ -361,7 +401,7 @@ class PaymentMethod extends React.Component<any, any> {
                         <br/>
                       </div>
                       <div className="col-md-2">
-                        <input type="email" maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="email" maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
                   </form>

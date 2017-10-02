@@ -27377,7 +27377,7 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_order_id: "1", promo_code: "8thandhope", cart_items: [{menu_item_id: 1, quantity: 1, mini: true}, {menu_item_id: 2, quantity: 2, mini: false}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_order_id: "1", promo_code: "8thandhope", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
@@ -42633,7 +42633,28 @@ webpackJsonp([0],[
 	            //    return <p key={i}>{item}</p>;
 	            //});
 	            console.log("message");
-	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5 col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1 col-xs-1" }), React.createElement("div", { className: "col-md-1 col-xs-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2)))), this.props.path == "/order/menu" && React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout")), React.createElement("br", null), React.createElement("br", null));
+	            var checkoutButton = null;
+	            if (this.props.User.orders[0].order_type == "pool") {
+	                if (this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0) > 0) {
+	                    //{this.props.path == "/order/menu" && 
+	                    checkoutButton = React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	                }
+	            } else if (this.props.User.orders[0].order_type == "yours") {
+	                if (this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0) > 0) {
+	                    checkoutButton = React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	                }
+	            } else if (this.props.User.orders[0].order_type == "social") {
+	                if (this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0) > 11) {
+	                    checkoutButton = React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	                }
+	            }
+	            return React.createElement("div", null, item_quantity_message, React.createElement("br", null), cart, React.createElement("br", null), this.state.cartItems.length == 0 ? 'cart is empty' : React.createElement("div", null, React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5 col-xs-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Items"), React.createElement("div", { className: "col-md-1 col-xs-1" }), React.createElement("div", { className: "col-md-1 col-xs-3", style: { fontType: "helvetica", fontSize: "14" } }, total_items))), React.createElement("br", null), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Delivery"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1", style: { fontType: "helvetica", fontSize: "14" } }, "$0.00"))), React.createElement("form", { className: "form-horizontal", style: { border: 1 } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5", style: { fontType: "helvetica", fontSize: "14" } }, "Total Cost"), React.createElement("div", { className: "col-md-1" }), React.createElement("div", { className: "col-md-1", style: { fontType: "helvetica", fontSize: "14" } }, "$", total_items_cost.toFixed(2))))), checkoutButton, React.createElement("br", null), React.createElement("br", null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42743,6 +42764,30 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (OrderDateTimeContact.__proto__ || Object.getPrototypeOf(OrderDateTimeContact)).call(this, props));
 	
+	        _this.componentDidMount = function () {
+	            ///if(this.props.order.order_type == undefined){
+	            //    redirect to homepage
+	            //}
+	            //componentDidMount = () => {
+	            window.scrollTo(0, 0);
+	            //}
+	        };
+	        //componentWillReceiveProps
+	        _this.componentWillReceiveProps = function (nextProps) {
+	            //console.log("<b>recieved</b>");
+	            //this.props.cart_validated;
+	            //if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
+	            //if(this.props.User.orderSession.payment_status == "error"){
+	            //display error
+	            //if cvc then make the cvc border red
+	            //if card number
+	            //paymenterror set border color
+	            //    this.setState({card_number_border_color: "red"});
+	            //  this.setState({security_code_border_color: "red"});        
+	            //   this.setState({button_complete_order_classname: "btn btn-default"});
+	            //   this.setState({button_complete_order_disabled: ""});
+	            //}
+	        };
 	        _this.setPromoCode = function (e) {
 	            //if(e.target.value.length > 0){
 	            //alert();
@@ -42881,29 +42926,8 @@ webpackJsonp([0],[
 	    }
 	
 	    _createClass(OrderDateTimeContact, [{
-	        key: "componentDidMount",
-	        value: function componentDidMount() {}
-	        ///if(this.props.order.order_type == undefined){
-	        //    redirect to homepage
-	        //}
+	        key: "showCart",
 	
-	        //componentWillReceiveProps
-	
-	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps(nextProps) {
-	            console.log("<b>recieved</b>");
-	            //this.props.cart_validated;
-	            //if(this.props.User.orderSession.payment_error_details != ""){
-	            //if(this.props.User.orderSession.payment_status == "error"){
-	            //display error
-	            //if cvc then make the cvc border red
-	            //if card number
-	            //paymenterror set border color
-	            this.setState({ button_complete_order_classname: "btn btn-default" });
-	            this.setState({ button_complete_order_disabled: "" });
-	            //}
-	        }
 	        /*showMenu(){
 	               //alert();
 	               this.setState({page: "menu"});
@@ -42912,9 +42936,6 @@ webpackJsonp([0],[
 	               //alert();
 	               this.setState({page: "delivery_address_payment"})
 	           }*/
-	
-	    }, {
-	        key: "showCart",
 	        value: function showCart() {
 	            this.setState({ page: "cart" });
 	        }
@@ -43237,7 +43258,7 @@ webpackJsonp([0],[
 	                return amount + item.quantity * 5.5;
 	            }, 0) * this.state.promo_code_discount : this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0).toFixed(2)))), React.createElement("br", null), this.props.User.orderSession.paymentErrorCode, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            }, 0).toFixed(2)))), React.createElement("br", null), this.state.payment_error_message, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { User: this.props.User, setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentZipCode: function setPaymentZipCode(e) {
 	                    return _this2.props.setPaymentZipCode(e);
@@ -43456,6 +43477,29 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (PaymentMethod.__proto__ || Object.getPrototypeOf(PaymentMethod)).call(this, props));
 	
+	        _this.componentWillReceiveProps = function (nextProps) {
+	            //check for payment invalidated error
+	            //network error
+	            if (_this.props.User.orderSession.paymentErrorCode == "incorrect_cvc") {
+	                _this.setState({ error_message_text: "An incorrect CVC was entered." });
+	                //    this.setState({card_number_border_color: "red"});
+	                _this.setState({ security_code_border_color: "red" });
+	                //    this.setState({button_complete_order_classname: "btn btn-default"});
+	                //    this.setState({button_complete_order_disabled: ""});
+	            } else if (_this.props.User.orderSession.paymentErrorCode == "card_declined") {
+	                //console.log("payment props" + JSON.stringify(nextProps));
+	                _this.setState({ error_message_text: "An error occured with your card." });
+	                _this.setState({ security_code_border_color: "grey" });
+	            } else if (_this.props.User.orderSession.paymentErrorCode == "incorrect_number") {
+	                //console.log("payment props" + JSON.stringify(nextProps));
+	                _this.setState({ error_message_text: "An error occured with your card." });
+	                _this.setState({ security_code_border_color: "grey" });
+	            } else if (_this.props.User.orderSession.paymentErrorCode == "expired_card") {
+	                //console.log("payment props" + JSON.stringify(nextProps));
+	                _this.setState({ error_message_text: "An error occured with your card." });
+	                _this.setState({ security_code_border_color: "grey" });
+	            }
+	        };
 	        _this.setPaymentNameOnCard = function (e) {
 	            _this.setState({ name_on_card: e.target.value });
 	            _this.props.setPaymentNameOnCard(e);
@@ -43570,14 +43614,14 @@ webpackJsonp([0],[
 	        _this.state = {
 	            payment_name_on_card: "",
 	            payment_card_number: "",
+	            payment_card_brand: "",
 	            payment_expiry_month: "",
 	            payment_expiry_year: "",
 	            payment_security_code: "",
 	            card_number_border_color: "grey",
 	            expiry_month_border_color: "grey",
 	            expiry_year_border_color: "grey",
-	            cvc_border_color: "grey",
-	            card_brand: ""
+	            security_code_border_color: "grey"
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -43592,12 +43636,6 @@ webpackJsonp([0],[
 	    _createClass(PaymentMethod, [{
 	        key: "componentDidMount",
 	        value: function componentDidMount() {}
-	    }, {
-	        key: "componentWillReceiveProps",
-	        value: function componentWillReceiveProps(nextProps) {
-	            //check for payment invalidated error
-	            console.log("payment props" + JSON.stringify(nextProps));
-	        }
 	    }, {
 	        key: "onPaymentExpiryMonthFocus",
 	        value: function onPaymentExpiryMonthFocus() {
@@ -43632,7 +43670,7 @@ webpackJsonp([0],[
 	                                  </div>
 	                              </div>
 	                          </form>*/
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, this.state.error_message_text))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
 	                    return _this2.setPaymentNameOnCard(e);
 	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 5, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentZipCode, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
@@ -43640,7 +43678,7 @@ webpackJsonp([0],[
 	                    return _this2.onPaymentExpiryMonthFocus();
 	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -43846,7 +43884,7 @@ webpackJsonp([0],[
 	            selected_specific_time: "",
 	            delivery_dates: [],
 	            delivery_times: "",
-	            daysOfWeek: [],
+	            daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
 	            menuItems: [],
 	            User: [],
 	            payment_button_classname: "btn btn-default btn-block",
