@@ -375,9 +375,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <div style={{fontSize: 18}}>
                             <b>FREE DELIVERY</b>
                           </div>
-                            <br/>
-                            <br/>
-                            Downtown LA,
+                            Downtown LA
                             <br/>
                             Santa Monica 
                             <br/>
@@ -416,6 +414,8 @@ export class PublicHomePage extends React.Component<any, any> {
                                   </div>
                         </div>
                         <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
+                          <br/>
+                          <br/>
                           <br/>
                           <br/>
                           <br/>
