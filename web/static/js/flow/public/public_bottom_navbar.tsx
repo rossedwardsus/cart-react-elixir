@@ -185,34 +185,44 @@ export default class Menu extends React.Component<any, any> {
                   <div className="hidden-xs col-md-3">
                         <br/>
                         <br/>
+                        <br/>
+                        <br/>
                   </div>
                   <div className="col-xs-11 col-md-3">
                     <div>
                         <div className="hidden-lg">
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
                         </div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/about_us">ABOUT US</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/about_us" style={{color: "grey", textDecoration: "none"}}>ABOUT US</Link>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/story">OUR STORY</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/faq" style={{color: "grey", textDecoration: "none"}}>FAQ</Link>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/team">TEAM</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/team" style={{color: "grey", textDecoration: "none"}}>TEAM</Link>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/faq">FAQ</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/press" style={{color: "grey", textDecoration: "none"}}>PRESS</Link>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/story" style={{color: "grey", textDecoration: "none"}}>OUR STORY</Link>
+                        <br/>
                         <br/>
                     </div>
                     <br/>
                     <div className="hidden-lg">
                         &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa fa-instagram" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.instagram.com/sconelyla"></a>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa-twitter" style={{fontSize: 20, textDecoration: "none", color: "grey"}}  href="http://www.twitter.com/sconelyla">Twitter</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa fa-twitter" style={{fontSize: 20, textDecoration: "none", color: "grey"}}  href="http://www.twitter.com/sconelyla"></a>
+                        <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa fa-facebook" style={{fontSize: 20, textDecoration: "none", color: "grey"}}  href="http://www.facebook.com/sconelyla"></a>
                     </div>
                   </div>
                   <div className="hidden-xs col-md-2">
-                      @sconelyla
+                      <div style={{fontSize: 15, height: 10}}>@sconelyla</div>
                       <br/>
                       <a className="fa fa-instagram" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.instagram.com/sconelyla"></a>
                       <a className="fa fa-twitter" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.twitter.com/sconelyla"></a>
+                      <a className="fa fa-facebook" style={{fontSize: 20, textDecoration: "none", color: "grey"}}  href="http://www.facebook.com/sconelyla"></a>
                   </div>
                   <div className="col-md-8">
                   </div>

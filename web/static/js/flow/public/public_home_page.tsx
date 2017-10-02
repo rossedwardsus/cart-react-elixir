@@ -368,20 +368,19 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-1">
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: "70px"}}>
                           <br/>
                           <br/>
+                          Currently delivering to:
                           <br/>
-                          <br/>   
+                          Downtown LA, 
                           <br/>
-                        </div>
-                        <div className="hidden-xs col-md-2">
+                          Santa Monica, 
+                          <br/>
+                          Venice
                           <br/>
                           <br/>
-                          <div className="hidden-xl">
-                            <Link to="/public/menu">Menu</Link>
-                          </div>
-                          <br/>
+                          Wednesday - Saturday 9-12 am
                           <br/>   
                           <br/>
                         </div>
