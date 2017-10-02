@@ -13,6 +13,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 //import {datetimeValidated} from './actions/order_validations.ts';
+//remove
 //import {setDate, setTime} from './actions/order_delivery_datetime.ts';
 //import { getPublicMenu } from './reducers/menu';
 import {getMenuItems} from './actions/menu.ts';
@@ -33,6 +34,8 @@ import NameContact from './name.tsx';
 import DeliveryContactAddress from './order_delivery_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
+
+import {setOrderDeliveryDatetimeDate} from './actions/order.ts';
 
 //import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setDeliveryContactAddressNote} from './actions/order_delivery_contact_address.ts';
 
@@ -160,14 +163,15 @@ class DateTime extends React.Component<any, any> {
   
   setDate(date: any){
 
-    console.log("date " + moment(date).toISOString());
+    //console.log("date " + moment(date).toISOString());
 
     this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-    this.props.setDate(moment(date).format("YYYY/MM/DD"));
-    //this.props.setDate(moment(date).toISOString());
+    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
+    //this.props.setOrderDeliveryDatetime(moment(date).toISOString());
+    this.props.setOrderDeliveryDatetimeDate(moment(date).format("YYYY-MM-DD"));    
 
     //this.props.cartValidated();
-    this.props.datetimeValidated();
+    //this.props.datetimeValidated();
 
   }
 
@@ -564,10 +568,6 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    setDate: (e: any) => {
-    //  console.log("setdate" + moment(e).format('MMMM Do YYYY, h:mm:ss a'));
-    //  dispatch(setDate(e));
-    },
     setTime: (e: any) => {
     //  console.log("settime" + e.target.value);
     //  dispatch(setTime(e.target.value));
@@ -634,6 +634,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     deliveryContactAddressValidated: () => {
       dispatch(deliveryContactAddressValidated());
+    },
+    setOrderDeliveryDatetimeDate: (value: any) => {
+      dispatch(setOrderDeliveryDatetimeDate(value));
     }
   
   }

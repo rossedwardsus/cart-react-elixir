@@ -1,0 +1,366 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>
+
+  var i = 0;
+
+  $(document).ready(function(){
+
+      $('#btnLoginSubmit').on('click',function(e){
+
+          //alert('it works' + e.target.id);
+          //$("#cart_amount").html(10);
+
+          //check if email and password are correct
+
+          if("email" == "email"){
+
+              //e.preventDefault();
+
+              var valid_email = true;
+
+              var email = $("#login_email").val();
+
+              //if(email.length <= 30){
+
+                  //alert("please enter a valid email");
+
+                  var at_sign = RegExp('@');
+                  var upperCase= new RegExp('[A-Z]');
+                  var numbers = new RegExp('[0-9]')
+
+                  if(email.length < 2){
+
+                      valid_email = false;
+
+                  }
+
+                  if(email == null){
+
+                      valid_email = false;
+
+                  }
+
+                  if(email && email.match(upperCase).length == 0){
+
+                          //has a domain attached to it
+
+                          //alert("good");
+
+                          valid_email = false;
+
+                          //there is no email with that password in our database
+
+                  }
+
+                  if(email.indexOf("!") >= 0){
+
+                            valid_email = false;
+
+                  }
+
+                  //also check password
+                  
+                  //if email is valid call the backend to check for password
+                  //redirect to user if good
+                  //else alert bad email
+
+
+
+              //}
+          }
+          
+          //$("#formLogin").submit();
+
+          alert(valid_email);
+
+      })
+
+      $('#btnRegistrationSubmit').on('click',function(e){
+
+          alert();
+
+      })
+
+
+      //registration
+      //you must enter a first name last name email
+      //your passwords do not match
+      //that email alrady exists
+
+  })
+
+</script>
+
+<style type="text/css">
+   .navbar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    left: 0;
+    z-index: 20;
+    }
+
+    /* Flip around the padding for proper display in narrow viewports */
+    .navbar-wrapper > .container {
+        padding-right: 0;
+        padding-left: 0;
+        width: inherit;
+    }
+
+    .navbar-wrapper .navbar {
+        width: 100% !important;
+    }
+
+    .navbar-inverse {
+      width: 100% !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+      border-radius: 0;
+    }
+
+    .navbar-inverse .nav > li > a {
+        color: #FFFFFF;
+    }
+
+    .navbar-inverse .nav > li > a:hover {
+        background: none;
+    }
+
+    .navbar-brand {
+        padding-top: 5px;
+        padding-left: .5;
+        color: #FFFFFF;
+    }
+
+    .navbar-default {
+    background-color: white;
+    border-color: #E7E7E7;
+    }
+
+    .main-header-background {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center; 
+        background-image: url('http://www.riwakawebsitedesigns.com/external/images/stars/img-stars-2.jpg');
+      height: 620px;
+      width: 100%;
+      margin-bottom: 60px;
+    }
+
+    body {
+    padding-right: 0 !important;
+    padding-left: 100 !important;
+    }
+
+    html, body {
+      width: auto;
+      overflow-x: hidden;
+    }
+
+    .container-fluid {
+      width: 100%;
+      padding:0;
+      margin:0;
+      padding-right: -50px;
+      padding-left: 30px;
+      margin-right: -50px;
+      margin-left: 100px;
+    }
+
+    .row {
+      width: 100%;
+      padding:0;
+      margin:0;
+      padding-right: -30px;
+      padding-left: 30px;
+      margin-right: -30px;
+      margin-left: 100px;
+    }
+</style>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="/images/logo/sconely_logo_tiny.jpg"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/login">Login</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">User</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Upload photo</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#"></a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/mobile/order/guest/choose/item">Guest Choose Item</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+</nav>
+
+
+
+<br>
+<br>
+Login:
+<br/>
+<form id="formSubmit" action="/mobile/login" method="post">
+email
+<br>
+<input id="login_email" name="email">
+<br/>
+password
+<br>
+<input id="login_email" name="password">
+<br>
+<button id="btnLoginSubmit">Submit</button>
+</form>
+<br/>
+or click here to register
+<br/>
+<form action="/mobile/registration" method="post" enctype="multipart/form-data">
+<input type="file" name="image">
+<br>
+first name
+<br>
+<input id="registration_first_name" name="first_name">
+<br>
+last name
+<br>
+<input id="registration_last_name" name="last_name">
+<br/>
+email
+<br>
+<input id="registration_email" name="email">
+<br/>
+password
+<br>
+<input id="registration_password" name="password">
+<br>
+password again
+<br>
+<input id="registration_password_again" name="password">
+<br>
+<br>
+<button id="btnRegistrationSubmit">Submit</button>
+<br/>
+</form>
+<br/>
+or enter a code
+<br>
+<form action="/order/guests/code" method="post">
+<input name="code">
+<br>
+<br>
+<button id="btnCodeSubmit">Submit</button>
+<br>
+</form>
+<br>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone</h3>
+            <p>Cost</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone2</h3>
+            <p>Cost</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone3</h3>
+            <p>Cost</p>
+            <p><a href="/mobile/login" class="btn btn-primary" role="button">Order</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone4</h3>
+            <p>Cost</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Add To Cart</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone5</h3>
+            <p>Cost</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone6</h3>
+            <p>Cost</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone7</h3>
+            <p>Cost</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <div class="thumbnail">
+          <img src="/images/strawberry_scones.png" alt="...">
+          <div class="caption">
+            <h3>Strawberry Scone8</h3>
+            <p>Cost</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+      <a href="/mobile/order">Start your order here</a>
+  </div>
+</div>

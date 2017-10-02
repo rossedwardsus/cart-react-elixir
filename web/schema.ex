@@ -251,7 +251,7 @@ defmodule Sconely.Schema do
         arg :user_delivery_contact_address_city, :string
         arg :user_delivery_contact_address_state, :string
         arg :user_delivery_contact_address_zipcode, :string
-        #arg :order_datetime_date, :string
+        arg :user_order_delivery_datetime_date, :string
         #arg :time, :string
         arg :payment_method_name_on_card, :string
         arg :payment_method_card_number, :string

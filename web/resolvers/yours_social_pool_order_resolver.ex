@@ -428,6 +428,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     case promo_code do
 
+        "" -> nil
+
         "8thandhope" -> promo_code_discount = "10%"
                         total_cost = total_cost - (total_cost * 10/100)
         "grain" ->  promo_code_discount = "10%"

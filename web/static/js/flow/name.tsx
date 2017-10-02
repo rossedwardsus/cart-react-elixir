@@ -52,9 +52,9 @@ class Name extends React.Component<any, any> {
 
        user_first_name: "",
        user_last_name: "",
-       user_email: "",
-       user_email_again: "",
-       user_mobile: "",
+       user_contact_email: "",
+       user_contact_email_again: "",
+       user_contact_mobile: "",
        first_name_border_color: "grey",
        last_name_border_color: "grey",
        email_border_color: "grey",
@@ -85,8 +85,8 @@ class Name extends React.Component<any, any> {
 
     this.setState({user_first_name: this.props.User.user_first_name});
     this.setState({user_last_name: this.props.User.user_last_name});
-    this.setState({user_email: this.props.User.user_email});
-    this.setState({user_mobile: this.props.User.user_mobile});
+    this.setState({user_contact_email: this.props.User.user_contact_email});
+    this.setState({user_contact_mobile: this.props.User.user_contact_mobile});
 
 
   }
@@ -193,7 +193,7 @@ class Name extends React.Component<any, any> {
 
       //this.setState({contact_email: e.target.value})
       this.props.setUserEmail(e);
-      this.setState({user_email: e.target.value})
+      this.setState({user_contact_email: e.target.value})
 
       //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
       //let symbol_res = symbol_patt.test(e.target.value);
@@ -288,7 +288,7 @@ class Name extends React.Component<any, any> {
 
   setUserEmailAgain = (e: any) => {
 
-      this.setState({user_email_again: e.target.value});
+      this.setState({user_contact_email_again: e.target.value});
       //this.props.setUserEmail(e);
 
       if(this.state.user_email == e.target.value){
@@ -337,11 +337,11 @@ class Name extends React.Component<any, any> {
             
             if(e.target.value.length == 3){
 
-              this.setState({user_mobile: e.target.value + "-"});
+              this.setState({user_contact_mobile: e.target.value + "-"});
             
             }else if(e.target.value.length == 7){
 
-              this.setState({user_mobile: e.target.value + "-"});
+              this.setState({user_contact_mobile: e.target.value + "-"});
 
             }else if(e.target.value.length == 13){
 
@@ -351,7 +351,7 @@ class Name extends React.Component<any, any> {
 
             }else{
 
-              this.setState({user_mobile: e.target.value});
+              this.setState({user_contact_mobile: e.target.value});
               //this.props.contactMobileValidated();
 
             }
@@ -362,7 +362,7 @@ class Name extends React.Component<any, any> {
       
       }else{
 
-          this.setState({user_mobile: e.target.value});
+          this.setState({user_contact_mobile: e.target.value});
           this.setState({mobile_border_color: "red"});
           
       }
@@ -419,7 +419,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.user_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" value={this.state.user_contact_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="hidden-lg col-xs-1">
@@ -427,7 +427,7 @@ class Name extends React.Component<any, any> {
                   </div>
                   <div className="col-md-3">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.user_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_again_border_color}}/>
+                        <input type="text" value={this.state.user_contact_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_again_border_color}}/>
                       </div>
                   </div>
                 </div>
@@ -436,7 +436,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>
-                        <input type="text" value={this.state.user_mobile} maxLength={13} onChange={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        <input type="text" value={this.state.user_contact_mobile} maxLength={13} onChange={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                       </div>
                   </div>
                 </div>
