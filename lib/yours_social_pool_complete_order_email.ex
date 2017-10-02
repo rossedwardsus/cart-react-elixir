@@ -122,13 +122,13 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     
     template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompleteOrderEmailView, "yours_social_pool_complete_order_email.html", key: _params)
 
-    #IO.inspect(_params[:user_contact_mobile])
+    IO.inspect(_params.args[:user_contact_mobile])
 
     #send to admin as well
 
     new_email(
       #to: _params["order_contact_email"],
-      to: ["rossedwards.us@gmail.com"],
+      to: ["rossedwards.us@gmail.com", _params.args[:user_contact_mobile]],
       from: "order@sconely.com",
       subject: "Sconely.com order: " <> _params.order_datetime_formatted,
       html_body: template,
@@ -148,7 +148,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompletedOrderAdminEmailView, "yours_social_pool_completed_order_admin_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompletedOrderAdminEmailView, "yours_social_pool_complete_order_admin_email.html", key: _params)
 
     IO.inspect(_params["order_first_name"])
 

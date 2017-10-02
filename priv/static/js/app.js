@@ -27376,7 +27376,7 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_order_id: "1", promo_code: "8thandhope", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_order_id: "1", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            if (response.data.data.processYoursSocialPoolOrder.status == "suuccess") {
@@ -42792,6 +42792,7 @@ webpackJsonp([0],[
 	            //}
 	        };
 	        _this.setPromoCode = function (e) {
+	            _this.setState({ promo_code: e.target.value });
 	            //if(e.target.value.length > 0){
 	            //alert();
 	            //if(/^[a-zA-Z]/.test(e.target.value)){
@@ -42803,16 +42804,16 @@ webpackJsonp([0],[
 	            if (e.target.value == "8thandhope") {
 	                //if(promo_codes.indexof(e.target.value) > -1){
 	                _this.setState({ promo_code_discount: 10 });
+	                _this.props.setPromoCode(e.target.value);
 	                //}
-	            } else {
-	                    //if(e.target.value == "grains"){
-	                    //if(promo_codes.indexof(e.target.value) > -1){
-	                    //    this.setState({promo_code_discount: 10})
-	                    //}
-	                }
-	            _this.props.setPromoCode(e.target.value);
-	            //}
-	            //}   
+	            } else {}
+	                //if(e.target.value == "grains"){
+	                //if(promo_codes.indexof(e.target.value) > -1){
+	                //    this.setState({promo_code_discount: 10})
+	                //}
+	
+	                //}
+	                //}   
 	        };
 	        _this.processYoursSocialPoolOrder = function () {
 	            //alert("order complete this.props.order");
@@ -42901,6 +42902,7 @@ webpackJsonp([0],[
 	            selected_specific_time: "",
 	            button_complete_order_classname: "btn btn-default",
 	            button_complete_order_disabled: "",
+	            promo_code: "",
 	            promo_code_discount: 0
 	        };
 	        //user_type=guest
@@ -43255,13 +43257,23 @@ webpackJsonp([0],[
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
+	            var total_due = 0.00;
+	            var total_due_formatted = null;
+	            if (this.state.promo_code == 0) {
+	                total_due = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity * 5.5;
+	                }, 0);
+	            } else {
+	                total_due = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity * 5.5;
+	                }, 0) - this.props.User.orders[0].cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity * 5.5;
+	                }, 0) * (this.state.promo_code_discount / 100);
+	            }
+	            total_due_formatted = total_due.toFixed(2);
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, React.createElement(react_router_1.Link, { to: "/order/menu" }, "<-", " Menu")), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orders[0].cartItems.reduce(function (amount, item) {
 	                return amount + item.quantity * 5.5;
-	            }, 0).toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.props.User.orderSession.promoCode, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Discount"), React.createElement("div", { className: "col-md-2" }, "%", this.state.promo_code_discount))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.state.promo_code_discount != 0 ? this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity * 5.5;
-	            }, 0) * this.state.promo_code_discount : this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity * 5.5;
-	            }, 0).toFixed(2)))), React.createElement("br", null), this.state.payment_error_message, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { User: this.props.User, setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            }, 0).toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.state.promo_code, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Discount"), React.createElement("div", { className: "col-md-2" }, "%", this.state.promo_code_discount))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", total_due_formatted))), React.createElement("br", null), this.state.payment_error_message, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { User: this.props.User, setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentZipCode: function setPaymentZipCode(e) {
 	                    return _this2.props.setPaymentZipCode(e);

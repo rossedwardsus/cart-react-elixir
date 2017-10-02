@@ -105,6 +105,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         selected_specific_time: "",
         button_complete_order_classname: "btn btn-default",
         button_complete_order_disabled: "",      
+        promo_code: "",
         promo_code_discount: 0,  
 
     };
@@ -596,7 +597,18 @@ class OrderDateTimeContact extends React.Component<any, any> {
       }   
   }
 
+
+
+
+
+
+
+
+
+
   setPromoCode = (e: any) => {
+
+      this.setState({promo_code: e.target.value})
 
       //if(e.target.value.length > 0){
 
@@ -618,6 +630,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
               //if(promo_codes.indexof(e.target.value) > -1){
 
                   this.setState({promo_code_discount: 10})
+                  this.props.setPromoCode(e.target.value);
 
               //}
             
@@ -633,12 +646,20 @@ class OrderDateTimeContact extends React.Component<any, any> {
             
             }
 
-            this.props.setPromoCode(e.target.value);
+            
 
         //}
       //}   
 
   }
+
+
+
+
+
+
+
+
 
   setPaymentCardNumber(e: any){
 
@@ -839,6 +860,21 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
 
+    let total_due = 0.00;
+    let total_due_formatted = null
+
+    if(this.state.promo_code == 0){
+
+        total_due = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0);
+
+    }else{
+
+        total_due = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) - (this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * (this.state.promo_code_discount/100));
+
+    }
+
+    total_due_formatted = total_due.toFixed(2);
+
 
 
     return ( <div>
@@ -886,7 +922,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                       Promo Code
                                   </div>
                                   <div className="col-md-2">
-                                      <input type="text" maxLength={30} onChange={this.setPromoCode} className="form-control" value={this.props.User.orderSession.promoCode} id="exampleInputName2" placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
+                                      <input type="text" maxLength={30} onChange={this.setPromoCode} className="form-control" value={this.state.promo_code} id="exampleInputName2" placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
                                   </div>
                                 </div>
                             </form>
@@ -906,7 +942,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${this.state.promo_code_discount != 0 ? this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * this.state.promo_code_discount : this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0).toFixed(2)}
+                                    ${total_due_formatted}
                                   </div>
                                 </div>
                             </form>

@@ -423,7 +423,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     subtotal = total_cost
     subtotal_formatted = :erlang.float_to_binary(subtotal, [decimals: 2])
-    promo_code = "8thandhope"
+    #promo_code = "8thandhope"
+    promo_code = args[:promo_code]
 
     case promo_code do
 
@@ -872,13 +873,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end
 
                         case Timex.weekday(order_datetime_converted) do
-                          1 -> {order_date_day_of_week = "Sunday"}
-                          2 -> {order_date_day_of_week = "Monday"}
-                          3 -> {order_date_day_of_week = "Tuesday"}
-                          4 -> {order_date_day_of_week = "Wednesday"}
-                          5 -> {order_date_day_of_week = "Thursday"}
-                          6 -> {order_date_day_of_week = "Friday"}
-                          7 -> {order_date_day_of_week = "Saturday"}
+                          0 -> {order_date_day_of_week = "Sunday"}
+                          1 -> {order_date_day_of_week = "Monday"}
+                          2 -> {order_date_day_of_week = "Tuesday"}
+                          3 -> {order_date_day_of_week = "Wednesday"}
+                          4 -> {order_date_day_of_week = "Thursday"}
+                          5 -> {order_date_day_of_week = "Friday"}
+                          6 -> {order_date_day_of_week = "Saturday"}
                         end
 
                         converted_hour = nil
@@ -1008,13 +1009,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     end
 
                                     case Timex.weekday(order_datetime_converted) do
-                                      1 -> {order_date_day_of_week = "Sunday"}
-                                      2 -> {order_date_day_of_week = "Monday"}
-                                      3 -> {order_date_day_of_week = "Tuesday"}
-                                      4 -> {order_date_day_of_week = "Wednesday"}
-                                      5 -> {order_date_day_of_week = "Thursday"}
-                                      6 -> {order_date_day_of_week = "Friday"}
-                                      7 -> {order_date_day_of_week = "Saturday"}
+                                      0 -> {order_date_day_of_week = "Sunday"}
+                                      1 -> {order_date_day_of_week = "Monday"}
+                                      2 -> {order_date_day_of_week = "Tuesday"}
+                                      3 -> {order_date_day_of_week = "Wednesday"}
+                                      4 -> {order_date_day_of_week = "Thursday"}
+                                      5 -> {order_date_day_of_week = "Friday"}
+                                      6 -> {order_date_day_of_week = "Saturday"}
                                     end
 
                                     
