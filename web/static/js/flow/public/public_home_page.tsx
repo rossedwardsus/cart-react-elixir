@@ -371,16 +371,25 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3" style={{paddingLeft: "70px"}}>
                           <br/>
                           <br/>
-                          Currently delivering to:
                           <br/>
-                          Downtown LA, 
-                          <br/>
-                          Santa Monica, 
-                          <br/>
-                          Venice
-                          <br/>
-                          <br/>
-                          Wednesday - Saturday 9-12 am
+                          <div style={{fontSize: 18}}>
+                            <b>FREE DELIVERY</b>
+                          </div>
+                            <br/>
+                            <br/>
+                            Downtown LA,
+                            <br/>
+                            Santa Monica 
+                            <br/>
+                            Venice
+                            <br/>
+                            <br/>
+                            Wednesday - Saturday
+                            <br/>
+                            9am - Noon
+                            <br/>
+                            <br/>
+                            Contact us about delivery in your area
                           <br/>   
                           <br/>
                         </div>
