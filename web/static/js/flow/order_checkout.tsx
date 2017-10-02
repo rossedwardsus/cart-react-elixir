@@ -79,7 +79,7 @@ class DateTime extends React.Component<any, any> {
         selected_specific_time: "",
         delivery_dates: [],
         delivery_times: "",
-        daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
+        daysOfWeek: [],
         menuItems: [],
         User: [],
         payment_button_classname: "btn btn-default btn-block",
@@ -409,22 +409,8 @@ class DateTime extends React.Component<any, any> {
                                   <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{disabledDays: {daysOfWeek: this.state.daysOfWeek,}}}/>
                                 </div>
                                 <div className="col-md-3">
-                                  {this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : 
-                                    (<select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={this.props.setTimeRange} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
-                                      <option value="">Free</option>
-                                      <option value="9-11">9:00 am - 11:00 am</option>
-                                      <option value="1-3">1:00 pm - 3:00 pm</option>
-                                  </select>)}
+                                  9:00 am - 11:00 am
                                 </div>
-                                <div className="col-md-3">
-                                    {delivery_times}
-                                    <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
-                                        <option value="">Extra</option>
-                                        <option value="900">9:00</option>
-                                        <option value="930">9:30</option>
-                                    </select>
-                                </div>
-                              </div>
                             </form>
                         </div>
     }*/
@@ -508,23 +494,15 @@ class DateTime extends React.Component<any, any> {
                             <form className="form-horizontal" style={{border: 0}}>
                               <div className="form-group show-lg" style={{borderRadius: 0}}>
                                 <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{disabledDays: {daysOfWeek: this.state.daysOfWeek,}}}/>
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: {daysOfWeek: [0, 1, 2],}}}/>
                                 </div>
                                 <div className="col-md-3">
-                                  {this.props.User.orders[0].order_type === "social" ? this.state.delivery_times : 
-                                    (<select className="form-control" id="exampleInputEmail2" value={this.props.selectedTime} onChange={this.props.setTimeRange} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
-                                      <option value="">Free</option>
-                                      <option value="9-12">9:00 am - 12:00 am</option>
-                                  </select>)}
+                                  9:00 am - 12:00 am
                                 </div>
-                                <div className="col-md-3">
-                                    {delivery_times}
-                                    <select className="form-control" value={this.props.selectedSpecificTime}  onChange={(e: any) => this.props.setSpecificTime(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 12}}>
-                                        <option value="">Extra</option>
-                                        <option value="900">9:00</option>
-                                        <option value="930">9:30</option>
-                                    </select>
-                                </div>
+                                {this.props.User.orders[0].order_type == "social" &&
+                                  <div className="col-md-3">
+                                    For other times please email eat@sconely.com
+                                  </div>}
                               </div>
                             </form>
                             <br/>

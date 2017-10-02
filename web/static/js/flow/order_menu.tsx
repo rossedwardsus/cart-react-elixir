@@ -528,7 +528,7 @@ class OrderMenu extends React.Component<any, any> {
                     <div className="row">
                           <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                             <br/>
-                            Sconely {this.props.User.orders[0].order_type}
+                            Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
                             <br/>
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                               <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}

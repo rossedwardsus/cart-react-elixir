@@ -124,6 +124,10 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({error_message_text: "An error occured with your card."});
           this.setState({security_code_border_color: "grey"});        
 
+      }else if(this.props.User.orderSession.networkError == true){
+
+          this.setState({error_message_text: "An error occured please try again."});
+
       }
 
   }

@@ -527,7 +527,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4100000000000019", "name" => "Ross", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025"}}) do
 
     #expired card
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000069", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000069", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
     #cvc
     #case Stripe.Token.create(%{:card => %{"number" => "4000000000000127", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
@@ -536,7 +536,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
         #IO.inspect(token["id"])  
 
@@ -1537,7 +1537,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.puts("ok")
 
                         #just return ok
-                        {:ok, %{status: "successful", error_reason: "", last_four_card_digits: "1111", card_brand: "Visa", token: ""}}
+                        {:ok, %{status: "successful", error_code: "", token: ""}}
                         
                         #{:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]", user_type: "guest"}}
 
@@ -1607,6 +1607,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #end
 
             #code and reason
+
+
 
             {:ok, %{status: "error", error_code: error.code}}
 

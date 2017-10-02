@@ -247,13 +247,20 @@ export function processYoursSocialPoolOrder() {
 
                   let error_message = "";
 
-                  //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
-                  //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
-                  ////error_message = "There was an error in your CVC code."
-                  //incorrect card number
-                  //
+                  if(response.data.data.processYoursSocialPoolOrder.status == "suuccess"){
+                    //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
+                    //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
+                    ////error_message = "There was an error in your CVC code."
+                    //incorrect card number
+                    //
+
+                    dispatch(push("/order/complete"));
+                    
+                  }else{
                   
-                  dispatch({type: SET_PAYMENT_ERROR, paymentErrorCode: response.data.data.processYoursSocialPoolOrder.errorCode});
+                    dispatch({type: SET_PAYMENT_ERROR, paymentErrorCode: response.data.data.processYoursSocialPoolOrder.errorCode});
+
+                  }
 
 
                   /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){

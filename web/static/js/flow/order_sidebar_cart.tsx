@@ -584,7 +584,7 @@ class SidebarCart extends React.Component<any, any> {
 
     }else if(this.props.User.orders[0].order_type == "yours"){
 
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 1){
 
           checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
 
