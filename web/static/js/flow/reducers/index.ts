@@ -14,7 +14,6 @@ import menuItems from './menu.ts';
 //import OrderPayment from './order_payment.ts';
 
 //import OrderValidations from './order_validated.ts';
-import User from './user.ts';
 
 //import user_delivery_addresses from './user_delivery_addresses.ts';
 
@@ -28,6 +27,8 @@ import User from './user.ts';
 
 import SignatureOrderGuestResponse from './signature_guest_response.ts';
 
+//COMBINE REDUCER
+import User from './user.ts';
 //import UserOrders from './user_order.ts';
 //import UserOrderCart from './user_order_cart.ts';
 //import UserOrderDeliveryAddress from './user_order_delivery_address.ts';

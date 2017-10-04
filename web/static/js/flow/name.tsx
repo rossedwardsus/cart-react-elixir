@@ -309,10 +309,10 @@ class Name extends React.Component<any, any> {
 
   mobileKeyPress = (event: any) => {
         if(event.keyCode == 8){
-          console.log('delete press here! ' + event.keyCode)
+          console.log('delete key pressed here! ' + event.keyCode)
           this.setState({delete_key_pressed: true});
         }else{
-          console.log('delete press here! ' + event.keyCode)
+          console.log('non delete key pressed here! ' + event.keyCode)
           this.setState({delete_key_pressed: false});
         }
   }
@@ -356,8 +356,8 @@ class Name extends React.Component<any, any> {
 
             }
           }else{
-
-            this.setState({user_mobile: e.target.value});
+            console.log("user contact mobile");
+            this.setState({user_contact_mobile: e.target.value});
           }
       
       }else{

@@ -589,7 +589,13 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option>DTLA</option>
                           </select>
                         </div>
-                    
+                    </div>
+                </form>
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3 col-md-3">
+                        <textarea cols={50} rows={50}></textarea>
+                      </div>
                     </div>
                 </form>
                 </div>

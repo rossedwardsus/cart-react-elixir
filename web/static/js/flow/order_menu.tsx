@@ -443,7 +443,7 @@ class OrderMenu extends React.Component<any, any> {
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-      if(cartItemsQuantity < 10){
+      if(cartItemsQuantity < 11){
 
         yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-9">
@@ -515,16 +515,20 @@ class OrderMenu extends React.Component<any, any> {
     //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
 
     let message = <div>
-                      <b>Delivery address</b>: {this.props.User.orders[0].pool_order_address}
+                      {this.props.User.orders[0].pool_name}
                       <br/>
                       <br/>
-                      <b>Delivery date</b>: {this.props.User.orders[0].pool_order_date_formatted}
+                      <b>Delivery Address</b>: {this.props.User.orders[0].pool_address}
+                      <br/>
+                      <b>Delivery Location</b>: {this.props.User.orders[0].pool_location}
+                      <br/>
+                      <b>Delivery Date</b>: {this.props.User.orders[0].pool_delivery_date_formatted}
                       <br/>
                       <br/>
-                      <b>Delivery time</b>: 9:00 AM
+                      <b>Delivery time</b>: 9:00 AM - 12:00 AM
                       <br/>
                       <br/>
-                      <b>Order by:</b> Thursday, September 21st at midnight 
+                      <b>Order by:</b> Thursday, September 21st at midnight {this.props.User.orders[0].pool_order_by_date_formatted}
                   </div>
 
 

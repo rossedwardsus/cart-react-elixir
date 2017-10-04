@@ -19164,7 +19164,7 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: "55px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { fontSize: 18 } }, React.createElement("b", null, "FREE DELIVERY")), "Downtown LA", React.createElement("br", null), "Santa Monica", React.createElement("br", null), "Venice", React.createElement("br", null), React.createElement("br", null), "Wednesday - Saturday", React.createElement("br", null), "9am - Noon", React.createElement("br", null), React.createElement("br", null), "Contact us about delivery in your area", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6", style: { paddingLeft: "80px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: this.state.gallery_image, height: "100%", width: "100%" }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, React.createElement("a", { onClick: function onClick() {
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: "55px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { style: { fontSize: 18 } }, React.createElement("b", null, "FREE DELIVERY")), "Downtown LA", React.createElement("br", null), "Santa Monica", React.createElement("br", null), "Venice", React.createElement("br", null), React.createElement("br", null), "Wednesday - Saturday", React.createElement("br", null), "9am - Noon", React.createElement("br", null), React.createElement("br", null), "Contact us about delivery in your area", React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-6", style: { paddingLeft: "30px" } }, React.createElement("br", null), React.createElement("br", null), React.createElement("img", { src: this.state.gallery_image, height: "100%", width: "100%" }), React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "visible-xs" }, React.createElement("a", { onClick: function onClick() {
 	                    return _this2.props.createOrder("yours");
 	                }, style: { fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec" } }, "ORDER SCONELY YOURS"), React.createElement("br", null), "2-10 freshly baked scones.", React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("a", { onClick: function onClick() {
 	                    return _this2.props.createOrder("social");
@@ -27305,13 +27305,17 @@ webpackJsonp([0],[
 	            //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
 	            //dispatch(push("/order/menu"));
 	            dispatch(menu_ts_1.getMenuItems());
-	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	                console.log("pool order graphql response " + JSON.stringify(response));
 	                //if pool date is greater then 24 hours before
 	                //console.log(pool_date);
 	                //console.log("pool date" + moment(pool_date).format('dddd'));
 	                //Wednesday January 20th, 2017 
-	                var pool_date_formatted = moment(pool_url_date).format('dddd') + ", " + moment(pool_url_date).format('MMMM') + " " + moment(pool_url_date).date();
+	                var pool_url_date_split = pool_url_date.split("-");
+	                var pool_delivery_date = moment(pool_url_date_split[2] + "" + pool_url_date_split[0] + "" + pool_url_date_split[1]);
+	                var pool_delivery_date_formatted = moment(pool_delivery_date).format('dddd') + ", " + moment(pool_delivery_date).format('MMMM') + ", " + moment(pool_delivery_date).format('do') + " " + moment(pool_delivery_date).format('YYYY');
+	                var order_by_date = moment(pool_delivery_date).subtract(3, 'days');
+	                var pool_order_by_date_formatted = moment(order_by_date).format('dddd') + ", " + moment(order_by_date).format('MMMM') + ", " + moment(order_by_date).format('do') + " " + moment(order_by_date).format('YYYY');
 	                //console.log(pool_order_date_formatted);
 	                dispatch({
 	                    type: actionTypes_ts_1.CREATE_ORDER,
@@ -27320,8 +27324,9 @@ webpackJsonp([0],[
 	                    pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
 	                    pool_name: response.data.data.getPoolOrderDetails.poolName,
 	                    pool_address: response.data.data.getPoolOrderDetails.poolAddress,
-	                    pool_location: "lobby",
-	                    delivery_date_formatted: pool_date_formatted,
+	                    pool_location: response.data.data.getPoolOrderDetails.poolLocation,
+	                    pool_delivery_date_formatted: pool_delivery_date_formatted,
+	                    pool_order_by_date_formatted: pool_order_by_date_formatted,
 	                    pool_message: response.data.data.getPoolOrderDetails.poolMessage
 	                });
 	                //const delay = (ms: any) => new Promise(resolve =>
@@ -31716,7 +31721,7 @@ webpackJsonp([0],[
 	                            </div>
 	                        </div>
 	                 }*/
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), "Privacy Policy:", React.createElement("br", null), "Last modified: September 20, 2017", React.createElement("br", null), "Sconely LLC respects your privacy and is committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit the website www.sconely.com (our \xD2Website\xD3) and our practices for collecting, using, maintaining, protecting, and disclosing that information.", React.createElement("br", null), "This policy applies to information we collect:", React.createElement("br", null), "on this Website;", React.createElement("br", null), "in email, text, and other electronic messages between you and this Website; and", React.createElement("br", null), "when you interact with our advertising and applications on third-party websites and services, if those applications or advertising include links to this policy.", React.createElement("br", null), "It does not apply to information collected by:", React.createElement("br", null), "us offline or through any other means, including on any other website operated by Company or any third party (including our affiliates and subsidiaries); or", React.createElement("br", null), "any third party (including our affiliates and subsidiaries), including through any application or content that may link to or be accessible from or on the Website.", React.createElement("br", null), "Please read this policy carefully to understand our policies and practices regarding your information and how we will treat it. If you do not agree with our policies and practices, your choice is not to use our Website. By accessing or using this Website, you agree to this privacy policy. This policy may change from time to time (see Changes to Our Privacy Policy below). Your continued use of this Website after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.", React.createElement("br", null), "WHAT WE COLLECT", React.createElement("br", null), "We may collect the following information from and about users of our Website:", React.createElement("br", null), "name;", React.createElement("br", null), "contact information including address, e-mail address, and telephone number;", React.createElement("br", null), "payment information;", React.createElement("br", null), "demographic information such as preferences, interests, and postal codes;", React.createElement("br", null), "information relevant to customer surveys and/or offers; and", React.createElement("br", null), "about your internet connection, the equipment you use to access our Website, and usage details.", React.createElement("br", null), "SECURITY", React.createElement("br", null), "We are committed to ensuring that your information is secure. We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure.", React.createElement("br", null), "The safety and security of your information also depends on you. Where we have given you (or where you have chosen) a password for access to certain parts of our Website, you are responsible for keeping this password confidential. We ask you not to share your password with anyone.", React.createElement("br", null), "Unfortunately, the transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted to our Website. Any transmission of personal information is at your own risk. We are not responsible for circumvention of any privacy settings or security measures contained on the Website.", React.createElement("br", null), "COOKIES", React.createElement("br", null), "Our Website uses cookies to deliver a better and more personalized service, including by enabling us to store information about your preferences and recognizing when you return to our Website.", React.createElement("br", null), "A cookie is a small file placed on the hard drive of your computer. A cookie does not give us access to your computer or any information about you, other than the data you choose to share with us. You may refuse to accept browser cookies by activating the appropriate setting on your browser. However, if you select this setting you may be unable to access certain parts of our Website. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you direct your browser to our Website."), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement(react_router_1.Link, { to: "/public/menu" }, "Menu"), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-md-7" }, React.createElement("br", null), React.createElement("br", null), "Privacy Policy:", React.createElement("br", null), "Last modified: September 20, 2017", React.createElement("br", null), "Sconely LLC respects your privacy and is committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit the website www.sconely.com (our \xD2Website\xD3) and our practices for collecting, using, maintaining, protecting, and disclosing that information.", React.createElement("br", null), "This policy applies to information we collect:", React.createElement("br", null), "on this Website;", React.createElement("br", null), "in email, text, and other electronic messages between you and this Website; and", React.createElement("br", null), "when you interact with our advertising and applications on third-party websites and services, if those applications or advertising include links to this policy.", React.createElement("br", null), "It does not apply to information collected by:", React.createElement("br", null), "us offline or through any other means, including on any other website operated by Company or any third party (including our affiliates and subsidiaries); or", React.createElement("br", null), "any third party (including our affiliates and subsidiaries), including through any application or content that may link to or be accessible from or on the Website.", React.createElement("br", null), "Please read this policy carefully to understand our policies and practices regarding your information and how we will treat it. If you do not agree with our policies and practices, your choice is not to use our Website. By accessing or using this Website, you agree to this privacy policy. This policy may change from time to time (see Changes to Our Privacy Policy below). Your continued use of this Website after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.", React.createElement("br", null), "WHAT WE COLLECT", React.createElement("br", null), "We may collect the following information from and about users of our Website:", React.createElement("br", null), "name;", React.createElement("br", null), "contact information including address, e-mail address, and telephone number;", React.createElement("br", null), "payment information;", React.createElement("br", null), "demographic information such as preferences, interests, and postal codes;", React.createElement("br", null), "information relevant to customer surveys and/or offers; and", React.createElement("br", null), "about your internet connection, the equipment you use to access our Website, and usage details.", React.createElement("br", null), "SECURITY", React.createElement("br", null), "We are committed to ensuring that your information is secure. We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure.", React.createElement("br", null), "The safety and security of your information also depends on you. Where we have given you (or where you have chosen) a password for access to certain parts of our Website, you are responsible for keeping this password confidential. We ask you not to share your password with anyone.", React.createElement("br", null), "Unfortunately, the transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted to our Website. Any transmission of personal information is at your own risk. We are not responsible for circumvention of any privacy settings or security measures contained on the Website.", React.createElement("br", null), "COOKIES", React.createElement("br", null), "Our Website uses cookies to deliver a better and more personalized service, including by enabling us to store information about your preferences and recognizing when you return to our Website.", React.createElement("br", null), "A cookie is a small file placed on the hard drive of your computer. A cookie does not give us access to your computer or any information about you, other than the data you choose to share with us. You may refuse to accept browser cookies by activating the appropriate setting on your browser. However, if you select this setting you may be unable to access certain parts of our Website. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you direct your browser to our Website.", React.createElement("br", null), "CALIFORNIA DO NOT TRACK DISCLOSURE", React.createElement("br", null), "Do Not Track (\xD2DNT\xD3) is a privacy preference that users can set in their web browsers.  When a user turns on the DNT signal, the browser sends a message to websites requesting them not to track the user. We do not track our customers over time and across third-party websites to provide targeted advertising and therefore do not respond to DNT signals.", React.createElement("br", null), "CORRECTING AND CONTROLLING YOUR INFORMATION", React.createElement("br", null), "If you do not wish to have your contact information used by the Company to promote our own products or services, you can opt-out by checking the relevant box located on the form on which we collect your data (for example, the order form or registration form) or at any other time by sending us an email stating your request to eat@sconely.com. If we have sent you a promotional email, you may send us a return email asking to be omitted from future email distributions. This opt out does not apply to information provided to the Company as a result of a product purchase, product service experience or other transactions.", React.createElement("br", null), "You may send us an email at eat@sconely.com to request access to, correct or delete any personal information that you have provided to us. We cannot delete your personal information except by also deleting your user account. We may not accommodate a request to change information if we believe the change would violate any law or legal requirement or cause the information to be incorrect."), React.createElement("div", { className: "col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("br", null), React.createElement(public_bottom_navbar_tsx_1.default, null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42186,7 +42191,7 @@ webpackJsonp([0],[
 	            var yours_social_pool_quantity_selector = null;
 	            //if order type == "pool"
 	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
-	                if (cartItemsQuantity < 10) {
+	                if (cartItemsQuantity < 11) {
 	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("div", { className: "col-xs-6 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none" } }, React.createElement("option", { value: 0 }, "Quantity"), options_count_array.map(function (value) {
 	                        return React.createElement("option", { value: value }, value);
 	                    }))), React.createElement("div", { className: "col-xs-6 col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
@@ -42222,7 +42227,7 @@ webpackJsonp([0],[
 	                //}
 	            }
 	            //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
-	            var message = React.createElement("div", null, React.createElement("b", null, "Delivery address"), ": ", this.props.User.orders[0].pool_order_address, React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Delivery date"), ": ", this.props.User.orders[0].pool_order_date_formatted, React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Delivery time"), ": 9:00 AM", React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Order by:"), " Thursday, September 21st at midnight");
+	            var message = React.createElement("div", null, this.props.User.orders[0].pool_name, React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Delivery Address"), ": ", this.props.User.orders[0].pool_address, React.createElement("br", null), React.createElement("b", null, "Delivery Location"), ": ", this.props.User.orders[0].pool_location, React.createElement("br", null), React.createElement("b", null, "Delivery Date"), ": ", this.props.User.orders[0].pool_delivery_date_formatted, React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Delivery time"), ": 9:00 AM - 12:00 AM", React.createElement("br", null), React.createElement("br", null), React.createElement("b", null, "Order by:"), " Thursday, September 21st at midnight ", this.props.User.orders[0].pool_order_by_date_formatted);
 	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 55 } }, React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                    return _this2.props.increaseCartItemQuantity(item_index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
@@ -44366,10 +44371,10 @@ webpackJsonp([0],[
 	        };
 	        _this.mobileKeyPress = function (event) {
 	            if (event.keyCode == 8) {
-	                console.log('delete press here! ' + event.keyCode);
+	                console.log('delete key pressed here! ' + event.keyCode);
 	                _this.setState({ delete_key_pressed: true });
 	            } else {
-	                console.log('delete press here! ' + event.keyCode);
+	                console.log('non delete key pressed here! ' + event.keyCode);
 	                _this.setState({ delete_key_pressed: false });
 	            }
 	        };
@@ -44394,7 +44399,8 @@ webpackJsonp([0],[
 	                        //this.props.contactMobileValidated();
 	                    }
 	                } else {
-	                    _this.setState({ user_mobile: e.target.value });
+	                    console.log("user contact mobile");
+	                    _this.setState({ user_contact_mobile: e.target.value });
 	                }
 	            } else {
 	                _this.setState({ user_contact_mobile: e.target.value });
@@ -44793,7 +44799,7 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"), React.createElement("option", null, "DTLA"))))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"), React.createElement("option", null, "DTLA"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("textarea", { cols: 50, rows: 50 })))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -49196,7 +49202,6 @@ webpackJsonp([0],[
 	//import OrderDatetime from './order_datetime.ts';
 	//import OrderPayment from './order_payment.ts';
 	//import OrderValidations from './order_validated.ts';
-	var user_ts_1 = __webpack_require__(1169);
 	//import user_delivery_addresses from './user_delivery_addresses.ts';
 	//import guestOrder from './guest_order.ts';
 	//import name from './name.ts';
@@ -49204,7 +49209,9 @@ webpackJsonp([0],[
 	//import OrderDeliveryAddress from './order_delivery_address.ts';
 	//import UserPaymentMethods from './user_payment_methods.ts';
 	//import OrderContact from './order_contact';
-	var signature_guest_response_ts_1 = __webpack_require__(1170);
+	var signature_guest_response_ts_1 = __webpack_require__(1169);
+	//COMBINE REDUCER
+	var user_ts_1 = __webpack_require__(1170);
 	//import UserOrders from './user_order.ts';
 	//import UserOrderCart from './user_order_cart.ts';
 	//import UserOrderDeliveryAddress from './user_order_delivery_address.ts';
@@ -49369,6 +49376,82 @@ webpackJsonp([0],[
 	
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var actionTypes_ts_1 = __webpack_require__(921);
+	var Immutable = __webpack_require__(1083);
+	/*let menu_items: any;
+	
+	interface CartState {
+	  user_type: string;
+	  address: string;
+	  payment_method: string;
+	  menu_items: any;
+	  cart: any;
+	};
+	
+	let inititalState: CartState = {
+	
+	  user_type: "",
+	  address: "",
+	  payment_method: "",
+	  menu_items: [],
+	  cart: [],
+	
+	}*/
+	/*const { Map, List, fromJS } = Immutable
+	const initialState = Map({
+	  foo: 'bar',
+	  fooList: List()
+	})
+	
+	export function someStore (state = initialState, action) {
+	  if (action.type === 'FOO') {
+	    return state.set('foo', fromJS(action.foo))
+	  }
+	  if (action.type === 'FOO_LIST') {
+	    return state.set('fooList', fromJS(action.fooList))
+	  }
+	
+	  return state
+	}*/
+	//make initial state immutable???  and normalizd
+	//nrmalizer for menu as title needs to be gotten in the cart
+	//actually that is really more on the host end
+	//let initial_state = Immutable.fromJs({order_id: 1, chosen_item_id: 0, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
+	function SignatureGuestResponse() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", order_delivery_date: "", first_name: "", last_name: "", email: "", guest_response_validated: "" };
+	  var action = arguments[1];
+	
+	  var delivery_addresses = [];
+	  var delivery_address_updated = null;
+	  switch (action.type) {
+	    case actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER:
+	      //alert("CartState " + action.item_id);
+	      console.log("load order " + JSON.stringify(action.data));
+	      return Object.assign({}, state, { event_long_name: action.data.event_long_name, invited_guest_message: action.data.invited_guest_message });
+	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE:
+	      //alert("CartState " + action.item_id);
+	      console.log("chosen item " + JSON.stringify(action));
+	      return Object.assign({}, state, { chosen_item_id: action.data.chosen_item_id });
+	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE:
+	      //alert("CartState " + action.item_id);
+	      console.log("chosen item " + JSON.stringify(action));
+	      return Object.assign({}, state, { chosen_item_id: 0 });
+	    default:
+	      //alert();
+	      //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
+	      return state;
+	  }
+	}
+	exports.default = SignatureGuestResponse;
+	;
+
+/***/ }),
+/* 1170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var actionTypes_ts_1 = __webpack_require__(921);
 	/*let menu_items: any;
 	
 	interface CartState {
@@ -49458,7 +49541,7 @@ webpackJsonp([0],[
 	            if (action.order_type == "yours" || action.order_type == "social") {
 	                orders_updated[0] = { deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, cartItems: [] };
 	            } else {
-	                orders_updated[0] = { deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_order_delivery_date_formatted: action.delivery_date_formatted, pool_order_address: action.pool_address, pool_location: action.location, pool_message: action.pool_message, cartItems: [] };
+	                orders_updated[0] = { deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address: action.pool_address, pool_location: action.pool_location, pool_message: action.pool_message, cartItems: [] };
 	            }
 	            return Object.assign({}, state, { orders: orders_updated });
 	        case actionTypes_ts_1.ADD_CART_ITEM:
@@ -49759,82 +49842,6 @@ webpackJsonp([0],[
 	    }
 	}
 	exports.default = user;
-	;
-
-/***/ }),
-/* 1170 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", { value: true });
-	var actionTypes_ts_1 = __webpack_require__(921);
-	var Immutable = __webpack_require__(1083);
-	/*let menu_items: any;
-	
-	interface CartState {
-	  user_type: string;
-	  address: string;
-	  payment_method: string;
-	  menu_items: any;
-	  cart: any;
-	};
-	
-	let inititalState: CartState = {
-	
-	  user_type: "",
-	  address: "",
-	  payment_method: "",
-	  menu_items: [],
-	  cart: [],
-	
-	}*/
-	/*const { Map, List, fromJS } = Immutable
-	const initialState = Map({
-	  foo: 'bar',
-	  fooList: List()
-	})
-	
-	export function someStore (state = initialState, action) {
-	  if (action.type === 'FOO') {
-	    return state.set('foo', fromJS(action.foo))
-	  }
-	  if (action.type === 'FOO_LIST') {
-	    return state.set('fooList', fromJS(action.fooList))
-	  }
-	
-	  return state
-	}*/
-	//make initial state immutable???  and normalizd
-	//nrmalizer for menu as title needs to be gotten in the cart
-	//actually that is really more on the host end
-	//let initial_state = Immutable.fromJs({order_id: 1, chosen_item_id: 0, event_full_name: "", first_name: "", last_name: "", email: "", guest_response_validated: "", menu_items: []});
-	function SignatureGuestResponse() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { order_id: 1, event_full_name: "", order_delivery_date: "", first_name: "", last_name: "", email: "", guest_response_validated: "" };
-	  var action = arguments[1];
-	
-	  var delivery_addresses = [];
-	  var delivery_address_updated = null;
-	  switch (action.type) {
-	    case actionTypes_ts_1.SIGNATURE_GUEST_LOAD_ORDER:
-	      //alert("CartState " + action.item_id);
-	      console.log("load order " + JSON.stringify(action.data));
-	      return Object.assign({}, state, { event_long_name: action.data.event_long_name, invited_guest_message: action.data.invited_guest_message });
-	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE:
-	      //alert("CartState " + action.item_id);
-	      console.log("chosen item " + JSON.stringify(action));
-	      return Object.assign({}, state, { chosen_item_id: action.data.chosen_item_id });
-	    case actionTypes_ts_1.SIGNATURE_GUEST_SAVE_CHOICE_NO_SCONE:
-	      //alert("CartState " + action.item_id);
-	      console.log("chosen item " + JSON.stringify(action));
-	      return Object.assign({}, state, { chosen_item_id: 0 });
-	    default:
-	      //alert();
-	      //return Object.assign({}, state, {cart_items: [{item_id: 1, title: "from reducer view public menu"}]})
-	      return state;
-	  }
-	}
-	exports.default = SignatureGuestResponse;
 	;
 
 /***/ })

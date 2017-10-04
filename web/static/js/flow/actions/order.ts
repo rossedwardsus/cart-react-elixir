@@ -113,7 +113,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(getMenuItems());
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_message}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -124,8 +124,16 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                   //console.log(pool_date);
                   //console.log("pool date" + moment(pool_date).format('dddd'));
                   //Wednesday January 20th, 2017 
+
+                  let pool_url_date_split = pool_url_date.split("-");
+
+                  let pool_delivery_date = moment(pool_url_date_split[2] + "" + pool_url_date_split[0] + "" + pool_url_date_split[1]);
+
+                  let pool_delivery_date_formatted = moment(pool_delivery_date).format('dddd') + ", " + moment(pool_delivery_date).format('MMMM') + ", " + moment(pool_delivery_date).format('do') + " " + moment(pool_delivery_date).format('YYYY');
+
+                  let order_by_date = moment(pool_delivery_date).subtract(3, 'days');
                   
-                  let pool_date_formatted = moment(pool_url_date).format('dddd') + ", " + moment(pool_url_date).format('MMMM') + " " + moment(pool_url_date).date();
+                  let pool_order_by_date_formatted = moment(order_by_date).format('dddd') + ", " + moment(order_by_date).format('MMMM') + ", " + moment(order_by_date).format('do') + " " + moment(order_by_date).format('YYYY');
 
                   //console.log(pool_order_date_formatted);
 
@@ -137,8 +145,9 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                               pool_name: response.data.data.getPoolOrderDetails.poolName, 
                               pool_address: 
                               response.data.data.getPoolOrderDetails.poolAddress,
-                              pool_location: "lobby",
-                              delivery_date_formatted: pool_date_formatted,
+                              pool_location: response.data.data.getPoolOrderDetails.poolLocation,
+                              pool_delivery_date_formatted: pool_delivery_date_formatted,
+                              pool_order_by_date_formatted: pool_order_by_date_formatted,
                               pool_message: response.data.data.getPoolOrderDetails.poolMessage,
                   
                   })
