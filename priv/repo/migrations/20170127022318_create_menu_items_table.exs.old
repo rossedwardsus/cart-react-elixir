@@ -3,8 +3,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateMenuItemsTable do
 
   def up do
   	create table(:menu_items) do
-      add :menu_item_id, :integer
-      add :name, :string, size: 40
+      add :menu_item_id, :smallint
+      add :name, :string, size: 100
       add :description, :text
       add :ingredients, :text
       add :assortment, :boolean
@@ -14,6 +14,6 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateMenuItemsTable do
   end
 
   def down do
-    drop table(:weather)
+    #drop table(:weather)
   end
 end

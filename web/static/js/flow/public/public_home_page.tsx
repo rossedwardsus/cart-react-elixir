@@ -368,7 +368,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: "70px"}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
                           <br/>
                           <br/>
                           <br/>
@@ -391,7 +391,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-6" style={{paddingLeft: "80px"}}>
                                   <br/>
                                   <br/>
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>

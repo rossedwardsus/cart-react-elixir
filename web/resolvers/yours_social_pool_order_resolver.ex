@@ -132,9 +132,35 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       IO.inspect(pool_date_month_number <> "-" <> pool_date_day_year_as_date)
 
+      IO.inspect(args)
 
+      #check of pool order exists
 
-      {:ok, %{pool_order_id: "1", pool_order_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
+      #pool_url_name
+      #pool_url_date
+
+      pool_url_date_split = String.split(args[:pool_url_date], "-")
+
+      {_, date} = Ecto.Date.cast(Enum.at(pool_url_date_split, 2) <> "-" <> Enum.at(pool_url_date_split, 0) <> "-" <> Enum.at(pool_url_date_split, 1))
+
+      #{_, date} = Ecto.Date.cast("2017-10-01")
+
+      IO.inspect(date)
+
+      pool_order = Repo.get_by(PoolOrder, %{pool_url_name: args[:pool_url_name], delivery_date: date})
+      
+      #IO.inspect(pool_order.pool_message)
+
+      #pool_order = Repo.get_by(UserDeliveryContactAddresses, %{pool_url_name: args[:pool_url_name], delivery_date: args[:pool_url_date]})
+      
+      IO.inspect(pool_order.pool_message)
+
+      #if pool_order not equal to nil
+
+      #{:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: pool_order.pool_name, pool_address: "pool_address", pool_location: "location", pool_message: pool_order.pool_message}}
+                      
+
+      #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
 
       #{:ok, %{pool_order_id: 1, pool_address: "8th and Hope lobby", pool_datetime: ""}
 
@@ -853,9 +879,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #IO.inspect(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"))
 
                         order_datetime_converted = Timezone.convert(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"), timezone)
-
-                        #pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: 12345})
-                        #IO.inspect(pool_order)
 
                         admin_receipt_order_id = :rand.uniform(9999999999)
                         

@@ -44,6 +44,9 @@ import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLas
 import {userNameEmailMobileValidated, deliveryContactAddressValidated} from './actions/order_validations.ts';
 //import {contactValidated} from './actions/order_validations.ts';
 
+import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
+
+
 
 function addTodoWithDispatch() {
   const action = {
@@ -114,6 +117,8 @@ class DateTime extends React.Component<any, any> {
 
   componentWillMount = () => {
 
+    window.scrollTo(0, 0);
+
     console.log("checkout User " + JSON.stringify(this.props.User));
     //console.log("checkout menuItems " + JSON.stringify(this.props.menuItems));
 
@@ -129,7 +134,7 @@ class DateTime extends React.Component<any, any> {
 
     //delivery_dates == all
     //delivery start day three days from now
-    this.setState({daysOfWeek: [0, 1, 2, 3, 4, 5, 6]});
+    //this.setState({daysOfWeek: [0, 1, 2, 3, 4, 5, 6]});
 
     //}
 
@@ -150,9 +155,19 @@ class DateTime extends React.Component<any, any> {
       if(this.props.User.orderSession.validations.userNameEmailMobilValidated == true && this.props.User.orderSession.validations.deliveryContactAddressValidated == true){
       
         //this.setState({payment_button_classname: "btn btn-default btn-block"});
-        //this.setState({payment_button_disabled: "disabled"})
+        //this.setState({payment_button_disabled: ""})
       
       }
+
+      if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0){
+
+        //if cart items total quantity = 0 then disable payment button
+        
+        this.setState({payment_button_classname: "btn btn-default btn-block disabled"});
+        this.setState({payment_button_disabled: "disabled"})
+
+      }
+        
 
       //this.setState({delivery_times: "9-11am"});
 
@@ -425,10 +440,10 @@ class DateTime extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-md-3"style={{paddingLeft: 50}}>
+                          <div className="hidden-xs col-md-3"style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
-                            Sconely {this.props.User.orders[0].order_type}
+                            Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
                             <br/>
                             <br/>
                             <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
@@ -465,10 +480,10 @@ class DateTime extends React.Component<any, any> {
                       <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                         <br/>
                         <br/>
-                        Sconely {this.props.User.orders[0].order_type}
+                        Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
                         <br/>
                         <br/>
-                        <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
+                        <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
                         <br/>
                       </div>
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
@@ -637,8 +652,16 @@ function mapDispatchToProps(dispatch: any) {
     },
     setOrderDeliveryDatetimeDate: (value: any) => {
       dispatch(setOrderDeliveryDatetimeDate(value));
+    },
+    increaseCartItemQuantity: (index: any) => {
+      dispatch(increaseCartItemQuantity(index));
+    },
+    decreaseCartItemQuantity: (index: any) => {
+      dispatch(decreaseCartItemQuantity(index));
+    },
+    removeCartItem: (index: any) => {
+      dispatch(removeCartItem(index));
     }
-  
   }
 }
 

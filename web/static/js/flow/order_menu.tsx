@@ -14,7 +14,10 @@ import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuan
 
 import SidebarCart from './order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
+
 import PublicTopNavbar from './public/public_top_navbar.tsx';
+import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
 import {getYoursMenuItems} from './selectors/menu.ts'; 
 
@@ -79,6 +82,8 @@ class OrderMenu extends React.Component<any, any> {
       //$('#myModal').modal('toggle');
 
     //}
+
+    window.scrollTo(0, 0);
 
 
     //get active items from the database
@@ -298,7 +303,7 @@ class OrderMenu extends React.Component<any, any> {
     this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
     
     this.setState({pool_message_viewed: true});    
-    this.setState({selected_item_quantity: 1});
+    this.setState({selected_item_quantity: 0});
 
     //}
 
@@ -412,7 +417,7 @@ class OrderMenu extends React.Component<any, any> {
 
     //let cartItemsQuantity = 12;
 
-    for (let i = 1; i < (13 - cartItemsQuantity); i++){ 
+    for (let i = 1; i < (12 - cartItemsQuantity); i++){ 
 
         //console.log(i);
         
@@ -444,7 +449,7 @@ class OrderMenu extends React.Component<any, any> {
                                                 <div className="col-xs-12 col-md-9">
                                                   <div className="col-xs-6 col-md-4">
                                                     <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none"}}>
-                                                      <option value="">Quantity</option> 
+                                                      <option value={0}>Quantity</option> 
                                                       {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                     </select>
                                                   </div>
@@ -526,7 +531,8 @@ class OrderMenu extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
+                          <div className="hidden-xs col-md-3" style={{paddingLeft: 55}}>
+                            <br/>
                             <br/>
                             Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
                             <br/>
@@ -605,6 +611,8 @@ class OrderMenu extends React.Component<any, any> {
                       </div>
                     </div>
                   </div>
+                  <PublicBottomNavbar/>
+                  <PublicPrivacyTermsNavbar/>
                 </div>)
 
     

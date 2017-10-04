@@ -53,9 +53,10 @@ export const saveForLater = (value: any) => ({
 //  });
 
 
-export function createOrder(order_type: any, pool_name: any, pool_date: any) {
+export function createOrder(order_type: any, pool_url_name: any, pool_url_date: any) {
   //return (dispatch: any, getState: any) => {
-    console.log("create order action " + pool_date);
+    //console.log("create order action " + pool_url_date);
+
     return function(dispatch: any){
       //getMenuItems();
       //dispatch(getMenuItems());
@@ -112,7 +113,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
             dispatch(getMenuItems());
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_message}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -123,7 +124,8 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
                   //console.log(pool_date);
                   //console.log("pool date" + moment(pool_date).format('dddd'));
                   //Wednesday January 20th, 2017 
-                  let pool_order_date_formatted = moment(pool_date).format('dddd') + ", " + moment(pool_date).format('MMMM') + " " + moment(pool_date).date();
+                  
+                  let pool_date_formatted = moment(pool_url_date).format('dddd') + ", " + moment(pool_url_date).format('MMMM') + " " + moment(pool_url_date).date();
 
                   //console.log(pool_order_date_formatted);
 
@@ -131,11 +133,13 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
                               type: CREATE_ORDER, 
                               order_type: order_type, 
                               //pool_name: "this.props.params", 
-                              pool_order_id: response.data.data.getPoolOrderDetails.poolOrderId, 
-                              pool_order_date_formatted: pool_order_date_formatted,
-                              pool_order_address: 
-                              "8th and Hope Lobby"
-                              //pool_message: response.data.data.getPoolOrderDetails.poolOrderTime,
+                              pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
+                              pool_name: response.data.data.getPoolOrderDetails.poolName, 
+                              pool_address: 
+                              response.data.data.getPoolOrderDetails.poolAddress,
+                              pool_location: "lobby",
+                              delivery_date_formatted: pool_date_formatted,
+                              pool_message: response.data.data.getPoolOrderDetails.poolMessage,
                   
                   })
 
@@ -174,7 +178,7 @@ export function createOrder(order_type: any, pool_name: any, pool_date: any) {
                       //else delete from redux
                       //console.log("clear order");
                       
-                      //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
+                      //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_admin_receipt_id: "", pool_message: response.data.pool_message});
             
 
                       //that.props.history.push('/user');
@@ -239,7 +243,7 @@ export function processYoursSocialPoolOrder() {
             //if order type == pool then address isnt needed
 
             axios.post('/api/graphql',
-                     {query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_order_id: "1", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 

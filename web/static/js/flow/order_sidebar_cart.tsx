@@ -487,10 +487,10 @@ class SidebarCart extends React.Component<any, any> {
                       if(order_type == "yours" || order_type == "pool"){
 
                           return(
-                                        <form className="form-horizontal" style={{border: 1, position: "static"}}>
+                                        <form className="form-horizontal" style={{paddingLeft: 50, border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-5 col-xs-5">{item_name}</div>
-                                            <div className="col-xs-1"><a onClick={() => this.increaseCartItemQuantity(index)}>+</a></div>
+                                            <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
                                             <div className="col-xs-1">{item.quantity}</div>
                                             <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
                                             <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
@@ -546,13 +546,13 @@ class SidebarCart extends React.Component<any, any> {
     if(this.props.User.orders[0].order_type == "pool"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
-            item_quantity_message = "Please choose between 1 and 12 Scones";
+            item_quantity_message = "Please choose between 1 and 12 scones";
 
         //}
 
     }else if(this.props.User.orders[0].order_type == "yours"){
 
-        item_quantity_message = "Please choose between 2 and 11 Scones";
+        item_quantity_message = "Please choose between 2 and 11 scones";
 
     }
                   
@@ -603,6 +603,8 @@ class SidebarCart extends React.Component<any, any> {
 
 
     return (<div> 
+                  {item_limit}
+                  <br/>
                   {item_quantity_message}
                   <br/>
                   {cart}

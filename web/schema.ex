@@ -70,8 +70,8 @@ defmodule Sconely.Schema do
 
     field :get_pool_order_details, type: :pool_order_details do
         #arg :order_id, :string
-        arg :pool_name, :string
-        arg :pool_date, :string
+        arg :pool_url_name, :string
+        arg :pool_url_date, :string
         #arg :cart_items, list_of(:cart_item)
         #arg :guest_count, :string
         #arg :delivery_date, :string
@@ -239,8 +239,8 @@ defmodule Sconely.Schema do
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
         arg :pool_id, :string
-        arg :pool_name, :string
-        arg :pool_date, :string
+        #arg :pool_url_name, :string
+        #arg :pool_url_date, :string
         arg :user_delivery_contact_address_contact_first_name, :string
         arg :user_delivery_contact_address_contact_last_name, :string
         arg :user_delivery_contact_address_contact_email, :string

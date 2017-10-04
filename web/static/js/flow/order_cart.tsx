@@ -62,7 +62,8 @@ class OrderCart extends React.Component<any, any> {
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
-      
+        payment_button_classname: "btn btn-default btn-block",
+        payment_button_disabled: "disabled"
 
     };
 
@@ -211,6 +212,19 @@ class OrderCart extends React.Component<any, any> {
     //console.log(this.props.dispatch(addTodoWithDispatch));
     //this.props.getAllProducts();
 
+  }
+
+  componentWillReceiveProps = () => {
+
+    if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0){
+
+        //if cart items total quantity = 0 then disable payment button
+        
+        this.setState({payment_button_classname: "btn btn-default btn-block disabled"});
+        this.setState({payment_button_disabled: "disabled"})
+
+    }
+    
   }
 
   /*showMenu(){
@@ -574,7 +588,7 @@ class OrderCart extends React.Component<any, any> {
     let delivery_cost = 0;
     let that = this;
 
-    console.log("order cart" + JSON.stringify(this.props.cartItems));
+    //console.log("order cart" + JSON.stringify(this.props.cartItems));
 
     if(this.props.User.orders[0].cartItems.length === 0){
 
@@ -702,15 +716,15 @@ class OrderCart extends React.Component<any, any> {
                           return(
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{fontSize:16, border: 1}}>
-                                            <div className="col-md-1">{item_name}</div>
-                                            <div className="col-md-3">
+                                            <div className="col-md-1"></div><div className="col-md-3">{item_name}</div>
+                                            <div className="col-md-4">
                                               <div className="row">
-                                                <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(item.item_id)}><b>+</b></a></div>
+                                                <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(index)}><b>+</b></a></div>
                                                 <div className="col-md-1">{item.quantity}</div>
-                                                <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.decreaseCartItemQuantity(item.item_id)}><b>-</b></a></div>
+                                                <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.decreaseCartItemQuantity(index)}><b>-</b></a></div>
+                                                <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
                                               </div>
                                             </div>
-                                            <div className="col-md-1" style={{fontSize: 15}}><a onClick={() => this.props.removeCartItem(index)}><b>X</b></a></div>
                                           </div>
                                       </form>
                                 )
@@ -771,7 +785,7 @@ class OrderCart extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
-                          Sconely Yours/Social/Pool
+                          Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
                           <br/>
                           <br/>
                           <br/>
@@ -788,17 +802,35 @@ class OrderCart extends React.Component<any, any> {
                                 <div className="col-md-8">                         
                                    <br/>
                                    <br/>
-                                   <div className="col-md-4">Total Items</div><div className="col-md-1"><b>{total_items}</b></div>
+                                   <div className="col-md-3"></div><div className="col-md-4">Total Items</div>
+                                   <div className="col-md-1"><b>{total_items}</b></div>
                                    <br/>
-                                   <div className="col-md-4">Delivery Cost</div><div className="col-md-2"><b>$0.00</b></div>
+                                   <div className="col-md-3"></div><div className="col-md-4">Delivery Cost</div><div className="col-md-2"><b>$0.00</b></div>
                                    <br/>
-                                   <div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost}</b></div>
+                                   <div className="col-md-3"></div><div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost.toFixed(2)}</b></div>
                                 </div>
                               </div>
                             </form>
-                            <Link to="/order/checkout" className="btn btn-default">Checkout</Link>
-                            <Link to="/order/menu" className="btn btn-default">Menu</Link>    
-                            <Link to="/order/preview" className="btn btn-default">Preview</Link>    
+                            <br/>
+                            <br/>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-9">
+                                    <div className="col-md-3">
+                                      <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
+                                    </div>
+                                    <div className="col-md-3">
+                                      <Link to="/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}}>Payment</Link>  
+                                    </div>
+                                    <div className="col-md-3">
+                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
+                                    </div>
+                                    <div className="col-md-3">
+                                      <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
+                                    </div>
+                                  </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
               </div>
@@ -845,14 +877,14 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     addCartItem: (item_id: any, dozens: any, quantity: any) => {
       //dispatch(addCartItem(1))
     },
-    increaseCartItemQuantity: (item_id: any) => {
-      dispatch(increaseCartItemQuantity(1))
+    increaseCartItemQuantity: (index: any) => {
+      dispatch(increaseCartItemQuantity(index))
     },
-    decreaseCartItemQuantity: (item_id: any) => {
-      dispatch(decreaseCartItemQuantity(1))
+    decreaseCartItemQuantity: (index: any) => {
+      dispatch(decreaseCartItemQuantity(index))
     },
-    removeCartItem: (item_id: any) => {
-      dispatch(removeCartItem(1))
+    removeCartItem: (index: any) => {
+      dispatch(removeCartItem(index))
     }
   }
 }

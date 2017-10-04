@@ -44,8 +44,9 @@ defmodule Sconely.Plugs.RedirectsPlug do
                     |> halt
         "social" -> IO.puts("social")
         _ -> IO.puts("anything else")
-             url = "/pool/1/1"
-        #          IO.puts(url)
+              IO.inspect(Enum.at(conn.path_info, 0))
+             url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)
+                   IO.puts(url)
         #          #url = url <> "/"
                    conn
                     |> Phoenix.Controller.redirect(to: url)

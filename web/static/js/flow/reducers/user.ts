@@ -48,7 +48,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       //delivery addrress
 
       //return Object.assign({}, state, {...state, email: action.});
-      return {user_first_name: "", user_last_name: "", user_email: "", user_mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: []}], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", contact_first_name: "fn", contact_last_name: "ln", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: ""}], paymentMethods: [{name: "personal", name_on_card: "ross", card_number: "12345678", card_brand: "", expiry_month: "12", expiry_year: ""}, {name: "work", name_on_card: "ross", card_number: "987654321", expiry_month: "01", expiry_year: "", security_code: ""}]};
+      return {user_first_name: "", user_last_name: "", user_email: "", user_mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: []}], deliveryContactsAddresses: [{name: "1", contact_first_name: "fn", contact_last_name: "ln", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: ""}], paymentMethods: [{name_on_card: "", card_number: "", card_brand: "", expiry_month: "", expiry_year: ""}]};
 
 
     case SET_ORDER_TYPE:
@@ -130,7 +130,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       }else{
 
-          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_order_id: action.pool_order_id, pool_order_name: action.pool_order_name, pool_order_date_formatted: action.pool_order_date_formatted, pool_order_address: action.pool_order_address, pool_message: action.pool_message, cartItems: []};
+          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_order_delivery_date_formatted: action.delivery_date_formatted, pool_order_address: action.pool_address, pool_location: action.location, pool_message: action.pool_message, cartItems: []};
 
       }
 

@@ -396,13 +396,13 @@ class Name extends React.Component<any, any> {
               </form>
               <form role="form" className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} value={this.state.user_first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                   <div className="hidden-lg col-xs-1">
                     <br/>
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <input className="form-control margin-bottom" type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)} value={this.state.user_last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                 </div>
@@ -417,7 +417,7 @@ class Name extends React.Component<any, any> {
               </form>
               <form role="form" className="form-horizontal">
                 <div className="form-group">
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                       <div className={this.state.contact_email_classname}>
                         <input type="text" value={this.state.user_contact_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
@@ -425,7 +425,7 @@ class Name extends React.Component<any, any> {
                   <div className="hidden-lg col-xs-1">
                     <br/>
                   </div>
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                       <div className={this.state.contact_email_classname}>
                         <input type="text" value={this.state.user_contact_email_again} onChange={(e: any) => this.setUserEmailAgain(e)} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_again_border_color}}/>
                       </div>

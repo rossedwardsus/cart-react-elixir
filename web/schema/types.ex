@@ -131,8 +131,12 @@ defmodule Sconely.Schema.Types do
     #field :sconely_user_token, :string
     #field :stripe__token, :string
     #field :error_reason, :string
-    field :pool_order_id, :string
-    field :pool_order_message, :string
+    field :pool_order_id, :integer
+    field :pool_admin_receipt_order_id, :integer
+    field :pool_name, :string
+    field :pool_address, :string
+    field :pool_location, :string
+    field :pool_message, :string
   end
   
 
