@@ -22,67 +22,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   import Ecto.Query
   import Sconely.ProcessStripePayment
 
-  #dont need
-  def get_user_order(%{order_id: order_id}, _info) do
-
-    #status, guests if signature, items
-
-    #{:ok, Enum.map(Repo.get_by!(SconelySignatureOrder, order_id: order_id), &order_json/1)}
-    #{:ok, %{eventName: "event"}}
-    case Repo.get(SconelySignatureOrder, order_id) do
-      nil -> {:error, "No order found with order_id #{order_id}"}
-      #order -> Task.start_link(fn -> IO.puts "Hello, World" end); {:ok, order}
-        #Task.start_link(fn -> IO.puts "Hello, World" end)
-        #Task.start_link(fn -> Sconely.SconelySignatureOrderProcessedEmail.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now end)
-      order -> Task.start_link(fn -> Sconely.SconelySignatureOrderProcessedEmail.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now end); 
-               {:ok, order}
-      
-
-    #case order do
-    #    1 -> Task.start_link(fn -> IO.puts "Hello, World" end);
-    #Task.start_link(fn -> Sconely.SconelySignatureOrderProcessedEmail.welcome_email(%{"address" => "santa monica"}) |> SconeHomeElixir.Mailer.deliver_now end)
-    #end
-    
-    end
-  end
-
-  #dont need
-  def create_user_order(args, _info) do
-  	IO.puts("create order graphql")
-    IO.inspect(args)
-
-
-
-    #if args.order_type == "yours", "social", "signature"
-
-	  #%SconelyOrder{}
-	  #|> SconelyOrder.changeset(args)
-	  #|> Repo.insert
-
-    #%SconelyOrder{}
-    #|> SconelyOrder.changeset(args)
-    #|> Repo.insert
-
-  end
-
-  #def save_sconely_yours_order_details(%{order_id: order_id, order: order_params}, _info) do
-  #  order_id
-  #  delivery_address
-  #  items
-  #
-  #  Repo.get!(SconelySignatureOrder, order_id)
-  #  |> SconelySignatureOrder.changeset(order_params)
-  #  |> Repo.update
-  #end
-
-  #def save_sconely_social_order_details(%{order_id: order_id, order: order_params}, _info) do
-  #  Repo.get!(SconelySignatureOrder, order_id)
-  #  |> SconelySignatureOrder.changeset(order_params)
-  #  |> Repo.update
-  #end
-
-
-  
+ 
 
   def check_code(%{host_id: host_id}, _info) do
     #check for full code at each typing
@@ -143,26 +83,42 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       {_, date} = Ecto.Date.cast(Enum.at(pool_url_date_split, 2) <> "-" <> Enum.at(pool_url_date_split, 0) <> "-" <> Enum.at(pool_url_date_split, 1))
 
+      #Date.now
+      #date1 = {{2016,3,21},{0,0,0}}
+      #date2= {{1983,12,27},{0,0,0}}
+      #:calendar.time_difference(date1,date2)
+
+
       #{_, date} = Ecto.Date.cast("2017-10-01")
 
       IO.inspect(date)
 
       pool_order = Repo.get_by(PoolOrder, %{pool_url_name: args[:pool_url_name], delivery_date: date})
+
+      if pool_order != nil do
       
-      #IO.inspect(pool_order.pool_message)
+        #IO.inspect(pool_order.pool_message)
 
-      #pool_order = Repo.get_by(UserDeliveryContactAddresses, %{pool_url_name: args[:pool_url_name], delivery_date: args[:pool_url_date]})
-      
-      IO.inspect(pool_order.pool_message)
+        #pool_order = Repo.get_by(UserDeliveryContactAddresses, %{pool_url_name: args[:pool_url_name], delivery_date: args[:pool_url_date]})
+        
+        IO.inspect(pool_order.pool_message)
 
-      #if pool_order not equal to nil
+        #if pool_order not equal to nil
 
-      #{:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: pool_order.pool_name, pool_address: "pool_address", pool_location: "location", pool_message: pool_order.pool_message}}
-                      
+        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: pool_order.pool_name, pool_address: "pool_address", pool_location: "location", pool_message: pool_order.pool_message}}
+                        
 
-      #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
+        #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
 
-      #{:ok, %{pool_order_id: 1, pool_address: "8th and Hope lobby", pool_datetime: ""}
+        #{:ok, %{pool_order_id: 1, pool_address: "8th and Hope lobby", pool_datetime: ""}
+
+      else
+
+        IO.puts("there is no pool order")
+
+        #{:ok, %{status: "error", error_message: "no pool order"}
+
+      end
 
   end
 

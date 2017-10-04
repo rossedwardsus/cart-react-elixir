@@ -130,7 +130,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       }else{
 
-          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_order_delivery_date_formatted: action.delivery_date_formatted, pool_order_address: action.pool_address, pool_location: action.location, pool_message: action.pool_message, cartItems: []};
+          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_order_delivery_date_formatted: action.delivery_date_formatted, pool_address: action.pool_address, pool_location: action.location, pool_message: action.pool_message, cartItems: []};
 
       }
 
