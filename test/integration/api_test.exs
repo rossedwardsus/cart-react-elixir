@@ -25,7 +25,7 @@ defmodule Sconely.ApiTest do
     response = Router.call(conn, @opts)
     #IO.inspect(response)
     
-    assert response.status == 404
+    assert response.status == 200
   end
 
 end

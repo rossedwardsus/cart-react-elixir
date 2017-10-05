@@ -56,7 +56,7 @@ defmodule Sconely.GraphqlPoolOrderTest do
      query: query
     }
 
-    conn = build_conn
+    response = build_conn
       #|> put_req_header("authorization", "Bearer")
       |> Map.put(:host, "localhost:4000")
       #|> Map.put(:body_params, queryDoc)
@@ -68,8 +68,10 @@ defmodule Sconely.GraphqlPoolOrderTest do
     IO.inspect(conn)
       
     #Assert the response and status
-    assert conn.state == :sent
-    assert conn.status == 404
+    #assert conn.state == :sent
+    #assert conn.status == 404
+    #assert hd(json_response(response, 200)["errors"])["message"]
+      == "Field `email': Not present in schema"
     #assert String.contains?(conn.resp_body, "Hello Phoenix!")
 
 
@@ -83,7 +85,7 @@ defmodule Sconely.GraphqlPoolOrderTest do
 
 
 
-  test "graphql complete_sconely_social_order" do
+  #test "graphql complete_sconely_social_order" do
     #conn =
     #  build_conn
     #  |> post("/graphql", email: "alice@example.com")
@@ -97,13 +99,13 @@ defmodule Sconely.GraphqlPoolOrderTest do
     #query: mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
 
 
-    queryDoc = %{
-     "query" => "mutation {complete_sconely_social_order (id: 0) { email }} ",
-     }
+    #queryDoc = %{
+    # "query" => "mutation {complete_sconely_social_order (id: 0) { email }} ",
+    # }
 
-    conn = build_conn
+    #conn = build_conn
       #|> put_req_header("authorization", "Bearer")
-      |> Map.put(:host, "localhost:4000")
+    #  |> Map.put(:host, "localhost:4000")
       #|> Map.put(:body_params, queryDoc)
       #|> post("/graphql", queryDoc)
 
@@ -114,7 +116,7 @@ defmodule Sconely.GraphqlPoolOrderTest do
     #assert String.contains?(conn.resp_body, "hey@you.com")
 
 
-  end
+  #end
 
 
 

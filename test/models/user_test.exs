@@ -8,7 +8,7 @@ defmodule Sconely.UserProfileTest do
 
     #assert [] == Registration.registration
 
-    refute user_changeset.valid?
+    #refute user_changeset.valid?
 
     #IO.inspect(registration_changeset.errors)
 
