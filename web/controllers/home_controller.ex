@@ -24,9 +24,9 @@ defmodule SconeHomeElixir.HomeController do
   	#changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
     #{:error, changeset} = Repo.insert(changeset)
 
-    IO.inspect(params["signature_event_name"])
+    #IO.inspect(params["signature_event_name"])
 
-  	IO.inspect(params["pool_name"])
+  	#IO.inspect(params["pool_name"])
 
   	#IO.inspect(String.length(params["pool_date"]))
 

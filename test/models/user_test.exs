@@ -1,10 +1,10 @@
 defmodule Sconely.UserProfileTest do
-  alias Sconely.UserProfile
+  alias Sconely.User
   use ExUnit.Case
 
   test "user first name cant be empty" do
     
-    user_changeset = UserProfile.changeset(%UserProfile{}, %{first_name: "", last_name: "Edwards", about_me: "about me", email: "rossedwards.us@gmail.com", mobile: "310-775-5566"})
+    user_changeset = User.changeset(%User{}, %{first_name: "", last_name: "Edwards", about_me: "about me", email: "rossedwards.us@gmail.com", mobile: "310-775-5566"})
 
     #assert [] == Registration.registration
 
@@ -26,7 +26,7 @@ defmodule Sconely.UserProfileTest do
 
   test "user last name cant be empty" do
     
-    user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{first_name: "Ross", last_name: "", about_me: "about me", email: "rossedwards.us@gmail.com", mobile: "310-775-5566"})
+    user_profile_changeset = User.changeset(%User{}, %{first_name: "Ross", last_name: "", about_me: "about me", email: "rossedwards.us@gmail.com", mobile: "310-775-5566"})
 
     #assert [] == Registration.registration
 

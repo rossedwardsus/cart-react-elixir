@@ -488,7 +488,7 @@ class OrderMenu extends React.Component<any, any> {
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
                                                     <div className="col-xs-4 col-md-3" style={{paddingLeft: "0px"}}>
-                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 200}}>
+                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
                                                         <option value="mini">Mini/Regular</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Minis</option>
@@ -528,7 +528,7 @@ class OrderMenu extends React.Component<any, any> {
                       <b>Delivery time</b>: 9:00 AM - 12:00 AM
                       <br/>
                       <br/>
-                      <b>Order by:</b> Thursday, September 21st at midnight {this.props.User.orders[0].pool_order_by_date_formatted}
+                      <b>Order by:</b>{this.props.User.orders[0].pool_order_by_date_formatted}
                   </div>
 
 

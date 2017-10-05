@@ -6,14 +6,6 @@ defmodule SconeHomeElixir.Repo.Migrations.Sessions do
 
   IO.puts("migration run")
 
-   #def up do
-   # "CREATE TABLE if NOT EXISTS sessions(
-   #   add :session_id, Ecto.UUID
-	#  add :user_id, :string
-	#  add :logged_in_datetime, :string
-    #)"
-  #end
-
   def change do
     create_if_not_exists table(:sessions) do
       #add :session_id, :uuid, primary_key: true

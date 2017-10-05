@@ -11,7 +11,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrderResponsesTable do
       add :payment_method_id, :smallint
       #delivery note
       add :order_datetime, :datetime
-      add :stripe_token, :string
+      add :stripe_token, :string, size: 30
       
       #add :status, :string
       

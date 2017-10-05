@@ -4,8 +4,8 @@ defmodule SconeHomeElixir.Repo.Migrations.AddSignatureOrderItemsTable do
   def change do
 
   	create table(:signature_order_items) do
-      add :parent_order_id, :string, null: false
-  	  add :item_id, :integer
+      add :parent_order_id, :bigint, null: false
+  	  add :item_id, :smallint
   	  add :mini, :string
   	  add :quantity, :string
   	  #datetime added

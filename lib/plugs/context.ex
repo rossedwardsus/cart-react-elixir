@@ -11,7 +11,7 @@ defmodule SconeHomeElixir.Web.Context do
     #case Guardian.Plug.current_resource(conn) do
     #  nil -> 
         IO.inspect(get_req_header(conn, "authorization") |> List.first)
-        #IO.inspect(conn)
+        IO.inspect(conn)
 
         #IO.inspect(get_req_header(conn, "authorization"))
 

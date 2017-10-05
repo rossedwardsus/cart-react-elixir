@@ -15,6 +15,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
   		add :city, :string, size: 40
   		add :state, :string, size: 40
   		add :zipcode, :string, size: 40
+  		#note - per order meaning reusable
 
   		#add :note, :string
   	end

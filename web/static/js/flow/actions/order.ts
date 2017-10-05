@@ -148,7 +148,6 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                               pool_location: response.data.data.getPoolOrderDetails.poolLocation,
                               pool_delivery_date_formatted: pool_delivery_date_formatted,
                               pool_order_by_date_formatted: pool_order_by_date_formatted,
-                              pool_message: response.data.data.getPoolOrderDetails.poolMessage,
                   
                   })
 

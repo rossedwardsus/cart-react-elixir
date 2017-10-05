@@ -14,22 +14,15 @@ defmodule Sconely.PoolOrder do
 		schema "pool_orders" do
 			field :user_id, :integer
 			field :parent_order_id, :integer
+			field :pool_id, :integer
 			field :admin_receipt_order_id, :integer
 			field :pool_url_name, :string
 			field :pool_name, :string
 			field :delivery_date, Ecto.Date
 			field :delivery_time_range, :string, size: 20
 			field :user_delivery_contact_address_id, :integer
-			field :pool_message, :string, size: 255
-
-			#delivery location - 8th and hope lobby
-			
-			#datetime created
-			#payment method
-
-			#belongs_to :order, Order		
-			#has_one :order, Order, join_key: :order_id
-			
+			#field :pickup_location - 8th and hope lobby
+		
 			#timestamps()
 		end
 

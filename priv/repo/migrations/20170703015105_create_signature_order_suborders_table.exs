@@ -3,8 +3,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureOrderSubordersTable do
 
   def change do
 
-	create table(:signature_orders_suborders) do
-  	  add :parent_order_id, :uuid, null: false
+	create_if_not_exists table(:signature_orders_suborders) do
+  	  add :parent_order_id, :bigint, null: false
 	  add :suborder_id, :string
 	  add :item, :string
 	  add :quantity, :string

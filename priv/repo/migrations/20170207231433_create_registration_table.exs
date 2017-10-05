@@ -7,7 +7,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateRegistrationTable do
   	  add :email, :string, null: false
   	  #add :password, :string
       add :password_hash, :string
-  	  add :registration_datetime, :datetime, default: fragment("now()")
+  	  add :registration_datetime, :datetime
+      #, default: fragment("now()")
       
       #create index(:posts, [:slug], concurrently: true)
     end
