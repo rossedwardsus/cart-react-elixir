@@ -65,12 +65,12 @@ defmodule Sconely.GraphqlPoolOrderTest do
     #conn = build_conn(:post, "/api/graphql", queryDoc)
     #Plug.Conn.fetch_cookies/2
 
-    IO.inspect(conn)
+    #IO.inspect(conn)
       
     #Assert the response and status
     #assert conn.state == :sent
     #assert conn.status == 404
-    #assert hd(json_response(response, 200)["errors"])["message"]
+    assert hd(json_response(response, 200)["errors"])["message"]
       == "Field `email': Not present in schema"
     #assert String.contains?(conn.resp_body, "Hello Phoenix!")
 
@@ -85,39 +85,243 @@ defmodule Sconely.GraphqlPoolOrderTest do
 
 
 
-  #test "graphql complete_sconely_social_order" do
+  test "process yours order" do
     #conn =
     #  build_conn
     #  |> post("/graphql", email: "alice@example.com")
 
-    #body = conn |> response(201) |> Poison.decode!
 
-    #assert body["id"] > 0
-    #assert body["email"] == "alice@example.com"
+    query = "query {get_pool_order_details (pool_url_name: \"8thandhope\", pool_url_date: \"09-20-2017\") {email}}"
 
-    #conn = conn(:post, "/graphql", \query: {mutation: complete_order(){}}}\")
-    #query: mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
+    queryDoc = %{
+     #"query" => 'mutation {process_yours_social_pool_order_details (pool_admin_receipt_order_id: 1, user_first_name: "ross", user_last_name: "edwards", user_last_name: user_contact_email: "rossedwards@", user_contact_mobile: "123-456-7890", promo_code: "", cart_items: [{menu_item_id: 1, quantity: 100, size: "mini"}], delivery_contact_address_contact_first_name: "ross", delivery_contact_address_contact_last_name: "edwards", delivery_contact_address_contact_email: "ross@", delivery_contact_address_contact_mobile: "123-456-7890", delivery_contact_address_street1: "street", delivery_contact_address_street2: "street2", delivery_contact_address_city: "city", delivery_contact_address_state: "state", delivery_contact_address_zipcode: "zipcode") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'
+     query: query
+    }
 
-
-    #queryDoc = %{
-    # "query" => "mutation {complete_sconely_social_order (id: 0) { email }} ",
-    # }
-
-    #conn = build_conn
+    response = build_conn
       #|> put_req_header("authorization", "Bearer")
-    #  |> Map.put(:host, "localhost:4000")
+      |> Map.put(:host, "localhost:4000")
       #|> Map.put(:body_params, queryDoc)
-      #|> post("/graphql", queryDoc)
+      |> post("/api/graphql", queryDoc)
 
-    #body = conn |> response(201) |> IO.inspect
+    #conn = build_conn(:post, "/api/graphql", queryDoc)
+    #Plug.Conn.fetch_cookies/2
 
+    #IO.inspect(conn)
+      
+    #Assert the response and status
     #assert conn.state == :sent
-    #assert conn.status == 200
-    #assert String.contains?(conn.resp_body, "hey@you.com")
+    #assert conn.status == 404
+    assert hd(json_response(response, 200)["errors"])["message"]
+      == "Field `email': Not present in schema"
+    #assert String.contains?(conn.resp_body, "Hello Phoenix!")
+
+    #assert that the order went into the database
+    #user
+    #orders
+    #pool order response
+    #delivery 
+    #payment
+
+  end
+
+   test "process social order" do
+    #conn =
+    #  build_conn
+    #  |> post("/graphql", email: "alice@example.com")
 
 
-  #end
+    query = "query {get_pool_order_details (pool_url_name: \"8thandhope\", pool_url_date: \"09-20-2017\") {email}}"
+
+    queryDoc = %{
+     #"query" => 'mutation {process_yours_social_pool_order_details (order_type: "social", pool_admin_receipt_order_id: 1, user_first_name: "ross", user_last_name: "edwards", user_last_name: user_contact_email: "rossedwards@", user_contact_mobile: "123-456-7890", promo_code: "", cart_items: [{menu_item_id: 1, quantity: 100, size: "mini"}], delivery_contact_address_contact_first_name: "ross", delivery_contact_address_contact_last_name: "edwards", delivery_contact_address_contact_email: "ross@", delivery_contact_address_contact_mobile: "123-456-7890", delivery_contact_address_street1: "street", delivery_contact_address_street2: "street2", delivery_contact_address_city: "city", delivery_contact_address_state: "state", delivery_contact_address_zipcode: "zipcode") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'
+     query: query
+    }
+
+    response = build_conn
+      #|> put_req_header("authorization", "Bearer")
+      |> Map.put(:host, "localhost:4000")
+      #|> Map.put(:body_params, queryDoc)
+      |> post("/api/graphql", queryDoc)
+
+    #conn = build_conn(:post, "/api/graphql", queryDoc)
+    #Plug.Conn.fetch_cookies/2
+
+    #IO.inspect(conn)
+      
+    #Assert the response and status
+    #assert conn.state == :sent
+    #assert conn.status == 404
+    assert hd(json_response(response, 200)["errors"])["message"]
+      == "Field `email': Not present in schema"
+    #assert String.contains?(conn.resp_body, "Hello Phoenix!")
+
+    #assert that the order went into the database
+    #user
+    #orders
+    #pool order response
+    #delivery 
+    #payment
+
+  end
+
+   test "process pool order" do
+    #conn =
+    #  build_conn
+    #  |> post("/graphql", email: "alice@example.com")
 
 
+    query = "query {get_pool_order_details (pool_url_name: \"8thandhope\", pool_url_date: \"09-20-2017\") {email}}"
+
+    queryDoc = %{
+     #"query" => 'mutation {process_yours_social_pool_order_details (pool_admin_receipt_order_id: 1, user_first_name: "ross", user_last_name: "edwards", user_last_name: user_contact_email: "rossedwards@", user_contact_mobile: "123-456-7890", promo_code: "", cart_items: [{menu_item_id: 1, quantity: 100, size: "mini"}], delivery_contact_address_contact_first_name: "ross", delivery_contact_address_contact_last_name: "edwards", delivery_contact_address_contact_email: "ross@", delivery_contact_address_contact_mobile: "123-456-7890", delivery_contact_address_street1: "street", delivery_contact_address_street2: "street2", delivery_contact_address_city: "city", delivery_contact_address_state: "state", delivery_contact_address_zipcode: "zipcode") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'
+     query: query
+    }
+
+    response = build_conn
+      #|> put_req_header("authorization", "Bearer")
+      |> Map.put(:host, "localhost:4000")
+      #|> Map.put(:body_params, queryDoc)
+      |> post("/api/graphql", queryDoc)
+
+    #conn = build_conn(:post, "/api/graphql", queryDoc)
+    #Plug.Conn.fetch_cookies/2
+
+    #IO.inspect(conn)
+      
+    #Assert the response and status
+    #assert conn.state == :sent
+    #assert conn.status == 404
+    assert hd(json_response(response, 200)["errors"])["message"]
+      == "Field `email': Not present in schema"
+    #assert String.contains?(conn.resp_body, "Hello Phoenix!")
+
+    #assert that the order went into the database
+    #user
+    #orders
+    #pool order response
+    #delivery 
+    #payment
+
+    #http posion
+
+    #users_as_json =
+    #%User{first_name: "Bob", last_name: "Dylan", email: "bob@aol.com"}
+    #|> Repo.insert
+    #|> List.wrap
+    #|> Poison.encode!
+
+    #response = conn(:get, "/api/users") |> send_request
+
+    #assert response.status == 200
+    #assert response.resp_body == users_as_json
+
+  end
+
+  test "user create pool" do
+    #conn =
+    #  build_conn
+    #  |> post("/graphql", email: "alice@example.com")
+
+
+    query = "query {get_pool_order_details (pool_url_name: \"8thandhope\", pool_url_date: \"09-20-2017\") {email}}"
+
+    queryDoc = %{
+     #"query" => 'mutation {process_yours_social_pool_order_details (pool_admin_receipt_order_id: 1, user_first_name: "ross", user_last_name: "edwards", user_last_name: user_contact_email: "rossedwards@", user_contact_mobile: "123-456-7890", promo_code: "", cart_items: [{menu_item_id: 1, quantity: 100, size: "mini"}], delivery_contact_address_contact_first_name: "ross", delivery_contact_address_contact_last_name: "edwards", delivery_contact_address_contact_email: "ross@", delivery_contact_address_contact_mobile: "123-456-7890", delivery_contact_address_street1: "street", delivery_contact_address_street2: "street2", delivery_contact_address_city: "city", delivery_contact_address_state: "state", delivery_contact_address_zipcode: "zipcode") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'
+     query: query
+    }
+
+    response = build_conn
+      #|> put_req_header("authorization", "Bearer")
+      |> Map.put(:host, "localhost:4000")
+      #|> Map.put(:body_params, queryDoc)
+      |> post("/api/graphql", queryDoc)
+
+    #conn = build_conn(:post, "/api/graphql", queryDoc)
+    #Plug.Conn.fetch_cookies/2
+
+    #IO.inspect(conn)
+      
+    #Assert the response and status
+    #assert conn.state == :sent
+    #assert conn.status == 404
+    assert hd(json_response(response, 200)["errors"])["message"]
+      == "Field `email': Not present in schema"
+    #assert String.contains?(conn.resp_body, "Hello Phoenix!")
+
+    #assert that the order went into the database
+    #user
+    #orders
+    #pool order response
+    #delivery 
+    #payment
+
+    #http posion
+
+    #users_as_json =
+    #%User{first_name: "Bob", last_name: "Dylan", email: "bob@aol.com"}
+    #|> Repo.insert
+    #|> List.wrap
+    #|> Poison.encode!
+
+    #response = conn(:get, "/api/users") |> send_request
+
+    #assert response.status == 200
+    #assert response.resp_body == users_as_json
+
+  end
+
+  test "user create pool order" do
+    #conn =
+    #  build_conn
+    #  |> post("/graphql", email: "alice@example.com")
+
+
+    query = "query {get_pool_order_details (pool_url_name: \"8thandhope\", pool_url_date: \"09-20-2017\") {email}}"
+
+    queryDoc = %{
+     #"query" => 'mutation {process_yours_social_pool_order_details (pool_admin_receipt_order_id: 1, user_first_name: "ross", user_last_name: "edwards", user_last_name: user_contact_email: "rossedwards@", user_contact_mobile: "123-456-7890", promo_code: "", cart_items: [{menu_item_id: 1, quantity: 100, size: "mini"}], delivery_contact_address_contact_first_name: "ross", delivery_contact_address_contact_last_name: "edwards", delivery_contact_address_contact_email: "ross@", delivery_contact_address_contact_mobile: "123-456-7890", delivery_contact_address_street1: "street", delivery_contact_address_street2: "street2", delivery_contact_address_city: "city", delivery_contact_address_state: "state", delivery_contact_address_zipcode: "zipcode") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'
+     query: query
+    }
+
+    response = build_conn
+      #|> put_req_header("authorization", "Bearer")
+      |> Map.put(:host, "localhost:4000")
+      #|> Map.put(:body_params, queryDoc)
+      |> post("/api/graphql", queryDoc)
+
+    #conn = build_conn(:post, "/api/graphql", queryDoc)
+    #Plug.Conn.fetch_cookies/2
+
+    #IO.inspect(conn)
+      
+    #Assert the response and status
+    #assert conn.state == :sent
+    #assert conn.status == 404
+    assert hd(json_response(response, 200)["errors"])["message"]
+      == "Field `email': Not present in schema"
+    #assert String.contains?(conn.resp_body, "Hello Phoenix!")
+
+    #assert that the order went into the database
+    #user
+    #orders
+    #pool order response
+    #delivery 
+    #payment
+
+    #http posion
+
+    #users_as_json =
+    #%User{first_name: "Bob", last_name: "Dylan", email: "bob@aol.com"}
+    #|> Repo.insert
+    #|> List.wrap
+    #|> Poison.encode!
+
+    #response = conn(:get, "/api/users") |> send_request
+
+    #assert response.status == 200
+    #assert response.resp_body == users_as_json
+
+  end
 
 end

@@ -1,4 +1,4 @@
-defmodule Sconely.UserProfileTest do
+defmodule Sconely.UserTest do
   alias Sconely.User
   use ExUnit.Case
 
