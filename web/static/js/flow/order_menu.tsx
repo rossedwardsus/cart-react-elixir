@@ -52,6 +52,7 @@ class OrderMenu extends React.Component<any, any> {
         images: [],
         hover_images: [],
         options_count_array: [],
+        selected_item_quantity_options_array: [],
         pool_message_viewed: false
 
     };
@@ -252,6 +253,8 @@ class OrderMenu extends React.Component<any, any> {
     //set add cart button == active
     //this.set
 
+    this.setState({selected_item_size: e.target.value});
+
   }
 
   /*selectedSocialItemQuantity = (e: any) => {
@@ -404,6 +407,7 @@ class OrderMenu extends React.Component<any, any> {
     //if yours order show yours menu if social order show social menu
 
     let options_count_array = [];
+    let selected_item_quantity_options_array = [];
 
     //if(this.props.cartItemsTotalQuantity > 0){
 
@@ -439,6 +443,36 @@ class OrderMenu extends React.Component<any, any> {
 
 
     //if order type == "pool"
+
+    //let social_item_quantity_options = null;
+
+    if(this.state.selected_item_size == "regular"){
+        
+    //    for (let i = 1; i <= 20; i++){
+
+    //          social_item_quantity_options = social_item_quantity_options =  + <option value={i}>{i}</option>})
+
+    //    };
+
+          for (let i = 1; i <= 20; i++){ 
+
+              //console.log(i);
+              
+              selected_item_quantity_options_array.push(i);
+          
+          };
+
+    }else{
+
+          for (let i = 1; i <= 40; i++){ 
+
+              //console.log(i);
+              
+              selected_item_quantity_options_array.push(i);
+          
+          };
+
+    }
 
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
@@ -487,9 +521,9 @@ class OrderMenu extends React.Component<any, any> {
 
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
-                                                    <div className="col-xs-4 col-md-3" style={{paddingLeft: "0px"}}>
-                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
-                                                        <option value="mini">Mini/Regular</option> 
+                                                    <div className="col-xs-4 col-md-4" style={{paddingLeft: "0px"}}>
+                                                      <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
+                                                        <option value="">Mini/Regular</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Minis</option>
                                                       </select>
@@ -497,8 +531,7 @@ class OrderMenu extends React.Component<any, any> {
                                                     <div className="col-xs-4 col-md-3">
                                                       <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
                                                         <option value="">Quantity</option> 
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
+                                                        {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                                       </select>
                                                     </div>
                                                     <div className="col-md-4">

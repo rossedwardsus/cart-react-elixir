@@ -504,7 +504,7 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-4">{item_name} mini</div>
+                                                <div className="col-md-5">{item_name} mini</div>
                                                 <div className="col-xs-4" style={{fontSize: 15}}>{24 * item.quantity}</div>
                                               </div>
                                         </form>
@@ -515,7 +515,7 @@ class SidebarCart extends React.Component<any, any> {
                               return(
                                             <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-4">{item_name}</div>
+                                                <div className="col-md-5">{item_name}</div>
                                                 <div className="col-md-4">{12 * item.quantity}</div>
                                               </div>
                                             </form>
