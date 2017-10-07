@@ -86,6 +86,16 @@ class OrderMenu extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
+    /*if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+
+        this.setState({cost_text: "6 each"});
+
+    }else{
+
+        this.setState({cost_text: <p>60 dollars per dozen regular</p><p>54 dollars per 2 dozen mini</p>});
+
+    }*/
+
 
     //get active items from the database
     console.log("mi" + JSON.stringify(this.props.menuItems));
@@ -234,24 +244,9 @@ class OrderMenu extends React.Component<any, any> {
 
   }
 
-  selectedSocialItemSize = (e: any) => {
+  selectedItemSize = (e: any) => {
 
-    console.log("selected_item social 12or24mini " + e.target.value);
-
-    //if(e.target.value == "regular"){
-
-        this.setState({size: e.target.value});
-
-    //}else{
-
-    //    this.setState({size: true});
-
-    //}
-
-    //this.setState({add_cart_item_button_classname: "btn btn-default"});
-      
-    //set add cart button == active
-    //this.set
+    console.log("selected_item size " + e.target.value);
 
     this.setState({selected_item_size: e.target.value});
 
@@ -307,6 +302,8 @@ class OrderMenu extends React.Component<any, any> {
     
     this.setState({pool_message_viewed: true});    
     this.setState({selected_item_quantity: 0});
+    this.setState({selected_item_size: ""});
+
 
     //}
 
@@ -474,6 +471,18 @@ class OrderMenu extends React.Component<any, any> {
 
     }
 
+    let cost_text = null;
+
+    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+
+        cost_text = <div>6 each</div>
+
+    }else{
+
+        cost_text = <div><p>$60 per dozen</p><p>$54 per 2 dozen mini</p></div>;
+
+    }
+
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
@@ -522,8 +531,8 @@ class OrderMenu extends React.Component<any, any> {
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
                                                     <div className="col-xs-4 col-md-4" style={{paddingLeft: "0px"}}>
-                                                      <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedSocialItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
-                                                        <option value="">Mini/Regular</option> 
+                                                      <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
+                                                        <option value="">Mini or Regular</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Minis</option>
                                                       </select>
@@ -636,7 +645,7 @@ class OrderMenu extends React.Component<any, any> {
                             Ingredients: {this.state.selected_item_ingredients}
                             <br/>
                             <br/>
-                            6 each
+                            {cost_text}
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">

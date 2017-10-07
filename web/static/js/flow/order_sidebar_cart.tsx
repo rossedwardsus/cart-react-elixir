@@ -52,7 +52,8 @@ class SidebarCart extends React.Component<any, any> {
         menuItemNames: [],
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}],
         cartItems: [],
-        pool_message_viewed: false
+        pool_message_viewed: false,
+        cost_text: ""
 
     };
 
@@ -334,7 +335,7 @@ class SidebarCart extends React.Component<any, any> {
         //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
         //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
 
-        if(social_regular_items.length > 0){
+        /*if(social_regular_items.length > 0){
 
             console.log("sri" + JSON.stringify(social_regular_items));
         
@@ -342,7 +343,7 @@ class SidebarCart extends React.Component<any, any> {
 
             if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
 
-                item_cost = 6.00;
+                item_cost = 5.00;
 
             }else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
 
@@ -376,7 +377,7 @@ class SidebarCart extends React.Component<any, any> {
 
             }
             
-        }
+        }*/
         
 
 
@@ -393,9 +394,9 @@ class SidebarCart extends React.Component<any, any> {
 
         //if(social_regular_items.length != 0){
         
-          total_social_regular_items_cost = social_regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * item_cost; }, 0)
+          total_social_regular_items_cost = social_regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 12 * 5.00; }, 0)
 
-          total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * item_cost; }, 0)
+          total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 24 * 2.25; }, 0)
 
 
         //}
@@ -403,8 +404,8 @@ class SidebarCart extends React.Component<any, any> {
 
         //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
 
-        
-        total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
+        //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
+
 
         total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
 
@@ -499,20 +500,23 @@ class SidebarCart extends React.Component<any, any> {
                                 )
                       }else{
                           
-                          if(item.size == "mini"){
+                          //if(item.size == "mini"){
                           
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                                <div className="col-md-5">{item_name} mini</div>
-                                                <div className="col-xs-4" style={{fontSize: 15}}>{24 * item.quantity}</div>
-                                              </div>
+                                            {item.size == "mini" ? <div className="col-md-5 col-xs-5">{item_name} mini</div> : <div className="col-md-5 col-xs-5">{item_name}</div>}
+                                            <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
+                                            {item.size == "mini" ? <div className="col-xs-1">{item.quantity * 24}</div> : <div className="col-xs-1">{item.quantity * 12}</div>}
+                                            <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
+                                            <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
+                                          </div>
                                         </form>
                               )
 
-                          }else{
+                          //}else{
 
-                              return(
+                          /*    return(
                                             <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
                                                 <div className="col-md-5">{item_name}</div>
@@ -521,7 +525,7 @@ class SidebarCart extends React.Component<any, any> {
                                             </form>
                                     )
 
-                          }
+                          }*/
                       }
                   
                 }.bind(this))

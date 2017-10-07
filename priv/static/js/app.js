@@ -41982,16 +41982,8 @@ webpackJsonp([0],[
 	            //set add cart button == active
 	            //this.set
 	        };
-	        _this.selectedSocialItemSize = function (e) {
-	            console.log("selected_item social 12or24mini " + e.target.value);
-	            //if(e.target.value == "regular"){
-	            _this.setState({ size: e.target.value });
-	            //}else{
-	            //    this.setState({size: true});
-	            //}
-	            //this.setState({add_cart_item_button_classname: "btn btn-default"});
-	            //set add cart button == active
-	            //this.set
+	        _this.selectedItemSize = function (e) {
+	            console.log("selected_item size " + e.target.value);
 	            _this.setState({ selected_item_size: e.target.value });
 	        };
 	        /*selectedSocialItemQuantity = (e: any) => {
@@ -42022,6 +42014,7 @@ webpackJsonp([0],[
 	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_size, _this.state.selected_item_quantity);
 	            _this.setState({ pool_message_viewed: true });
 	            _this.setState({ selected_item_quantity: 0 });
+	            _this.setState({ selected_item_size: "" });
 	            //}
 	            //this.props.cartValidated();
 	            $('#myModal').modal('toggle');
@@ -42103,6 +42096,11 @@ webpackJsonp([0],[
 	            //$('#myModal').modal('toggle');
 	            //}
 	            window.scrollTo(0, 0);
+	            /*if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+	                     this.setState({cost_text: "6 each"});
+	                 }else{
+	                     this.setState({cost_text: <p>60 dollars per dozen regular</p><p>54 dollars per 2 dozen mini</p>});
+	                 }*/
 	            //get active items from the database
 	            console.log("mi" + JSON.stringify(this.props.menuItems));
 	            //alert(JSON.stringify(this.props.cart_items));
@@ -42209,6 +42207,12 @@ webpackJsonp([0],[
 	                }
 	                ;
 	            }
+	            var cost_text = null;
+	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
+	                cost_text = React.createElement("div", null, "6 each");
+	            } else {
+	                cost_text = React.createElement("div", null, React.createElement("p", null, "$60 per dozen"), React.createElement("p", null, "$54 per 2 dozen mini"));
+	            }
 	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
 	                if (cartItemsQuantity < 11) {
 	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("div", { className: "col-xs-6 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none" } }, React.createElement("option", { value: 0 }, "Quantity"), options_count_array.map(function (value) {
@@ -42239,7 +42243,7 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedSocialItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini/Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", { value: "" }, "Quantity"), selected_item_quantity_options_array.map(function (value) {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", { value: "" }, "Quantity"), selected_item_quantity_options_array.map(function (value) {
 	                    return React.createElement("option", { value: value }, value);
 	                }))), React.createElement("div", { className: "col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
@@ -42277,7 +42281,7 @@ webpackJsonp([0],[
 	                    }, onMouseLeave: function onMouseLeave(e) {
 	                        return e.currentTarget.src = "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg";
 	                    }, src: "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg", "data-target": "myModal", alt: "...", height: "270", width: "270" })), React.createElement("b", null, item.name), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null));
-	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), "6 each"), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, yours_social_pool_quantity_selector)))))), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
+	            }.bind(this)), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null))), React.createElement("br", null), React.createElement("div", { className: "modal fade", id: "myModal", role: "dialog", "aria-labelledby": "myModalLabel", "max-height": " 700px" }, React.createElement("div", { className: "modal-dialog", role: "document" }, React.createElement("div", { className: "modal-content" }, React.createElement("div", { className: "modal-header" }, React.createElement("button", { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" }, React.createElement("span", { "aria-hidden": "true" }, "\xD7")), React.createElement("h4", { className: "modal-title", id: "myModalLabel" }, this.state.selected_item_name)), React.createElement("div", { className: "modal-body" }, this.state.selected_item_description, React.createElement("br", null), React.createElement("br", null), "Ingredients: ", this.state.selected_item_ingredients, React.createElement("br", null), React.createElement("br", null), cost_text), React.createElement("div", { className: "modal-footer" }, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, yours_social_pool_quantity_selector)))))), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -42431,7 +42435,8 @@ webpackJsonp([0],[
 	            menuItemNames: [],
 	            menu_items: [{ item_id: 1, title: "freedom", description: "let freedom ring!" }, { item_id: 2, title: "suzy sunshine", description: "let freedom ring!" }, { item_id: 3, title: "freedom", description: "let freedom ring!" }, { item_id: 4, title: "freedom", description: "let freedom ring!" }, { item_id: 5, title: "freedom", description: "let freedom ring!" }, { item_id: 6, title: "freedom", description: "let freedom ring!" }, { item_id: 7, title: "freedom", description: "let freedom ring!" }],
 	            cartItems: [],
-	            pool_message_viewed: false
+	            pool_message_viewed: false,
+	            cost_text: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -42546,32 +42551,32 @@ webpackJsonp([0],[
 	                //1 doz/12 - 5/60 doz regular sized scones, $5 each
 	                //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
 	                //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
-	                if (social_regular_items.length > 0) {
-	                    console.log("sri" + JSON.stringify(social_regular_items));
-	                    total_social_regular_items = social_regular_items.reduce(function (amount, item) {
-	                        console.log(JSON.stringify(item));amount + item.quantity * 6.00;
-	                    }, 0);
-	                    if (total_social_regular_items >= 12 && total_social_regular_items <= 60) {
-	                        item_cost = 6.00;
-	                    } else if (total_social_regular_items >= 72 && total_social_regular_items <= 174) {
-	                        item_cost = 4.75;
-	                    } else if (total_social_regular_items >= 186 && total_social_regular_items <= 200) {
-	                        item_cost = 4.50;
-	                    }
+	                /*if(social_regular_items.length > 0){
+	                         console.log("sri" + JSON.stringify(social_regular_items));
+	                
+	                    total_social_regular_items = social_regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
+	                         if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+	                             item_cost = 5.00;
+	                         }else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
+	                             item_cost = 4.75;
+	                         }else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
+	                             item_cost = 4.50;
+	                         }
+	                    
 	                }
-	                if (social_mini_items.length > 0) {
-	                    console.log("sri" + JSON.stringify(social_regular_items));
-	                    total_social_mini_items = social_mini_items.reduce(function (amount, item) {
-	                        console.log(JSON.stringify(item));amount + item.quantity * 6.0;
-	                    }, 0);
-	                    if (total_social_mini_items >= 12 && total_social_regular_items <= 60) {
-	                        item_cost = 5.00;
-	                    } else if (total_social_mini_items >= 72 && total_social_regular_items <= 174) {
-	                        item_cost = 4.75;
-	                    } else if (total_social_mini_items >= 186 && total_social_regular_items <= 200) {
-	                        item_cost = 4.50;
-	                    }
-	                }
+	                     if(social_mini_items.length > 0){
+	                         console.log("sri" + JSON.stringify(social_regular_items));
+	                
+	                    total_social_mini_items = social_mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
+	                         if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
+	                             item_cost = 5.00;
+	                         }else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
+	                             item_cost = 4.75;
+	                         }else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
+	                             item_cost = 4.50;
+	                         }
+	                    
+	                }*/
 	                //social_mini_items = this.state.cartItems.map((item: any) => {
 	                //if(item.twelveortwentyfourminis == "24_minis"){
 	                //    return item;
@@ -42579,16 +42584,14 @@ webpackJsonp([0],[
 	                //});
 	                //if(social_regular_items.length != 0){
 	                total_social_regular_items_cost = social_regular_items.reduce(function (amount, item) {
-	                    return amount + item.quantity * item_cost;
+	                    return amount + item.quantity * 12 * 5.00;
 	                }, 0);
 	                total_social_mini_items_cost = social_mini_items.reduce(function (amount, item) {
-	                    return amount + item.quantity * item_cost;
+	                    return amount + item.quantity * 24 * 2.25;
 	                }, 0);
 	                //}
 	                //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
-	                total_social_mini_items_cost = this.state.cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity * 6.0;
-	                }, 0);
+	                //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
 	                total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
 	                total_items = this.state.cartItems.reduce(function (amount, item) {
 	                    return amount + item.quantity;
@@ -42644,11 +42647,24 @@ webpackJsonp([0],[
 	                                return _this2.props.removeCartItem(index);
 	                            } }, "X"))));
 	                    } else {
-	                        if (item.size == "mini") {
-	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name, " mini"), React.createElement("div", { className: "col-xs-4", style: { fontSize: 15 } }, 24 * item.quantity)));
-	                        } else {
-	                            return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-4" }, item_name), React.createElement("div", { className: "col-md-4" }, 12 * item.quantity)));
-	                        }
+	                        //if(item.size == "mini"){
+	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, item.size == "mini" ? React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name, " mini") : React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.increaseCartItemQuantity(index);
+	                            } }, "+")), item.size == "mini" ? React.createElement("div", { className: "col-xs-1" }, item.quantity * 24) : React.createElement("div", { className: "col-xs-1" }, item.quantity * 12), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.decreaseCartItemQuantity(index);
+	                            } }, "-")), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                                return _this2.props.removeCartItem(index);
+	                            } }, "X"))));
+	                        //}else{
+	                        /*    return(
+	                                          <form className="form-horizontal" style={{border: 1, position: "static"}}>
+	                                            <div className="form-group" style={{border: 1}}>
+	                                              <div className="col-md-5">{item_name}</div>
+	                                              <div className="col-md-4">{12 * item.quantity}</div>
+	                                            </div>
+	                                          </form>
+	                                  )
+	                         }*/
 	                    }
 	                }.bind(this));
 	            }
@@ -49573,7 +49589,7 @@ webpackJsonp([0],[
 	            orders_updated = state.orders;
 	            //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 	            //else
-	            orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity, size: "mini" });
+	            orders_updated[0].cartItems.push({ menu_item_id: action.item_id, quantity: action.quantity, size: action.size });
 	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	        /*case INCREASE_CART_ITEM_QUANTITY:
 	          

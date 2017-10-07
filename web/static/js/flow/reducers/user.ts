@@ -152,7 +152,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       //orders_updated[0].cartItems.push({item_id: action.item_id, twelveortwentyfourminis: action.twelveortwentyfourminis, quantity: action.quantity});
 
       //else
-      orders_updated[0].cartItems.push({menu_item_id: action.item_id, quantity: action.quantity, size: "mini"});
+      orders_updated[0].cartItems.push({menu_item_id: action.item_id, quantity: action.quantity, size: action.size});
 
       return Object.assign({}, state, {...state, orders: orders_updated});
 

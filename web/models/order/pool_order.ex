@@ -21,7 +21,8 @@ defmodule Sconely.PoolOrder do
 			field :delivery_date, Ecto.Date
 			field :delivery_time_range, :string, size: 20
 			field :user_delivery_contact_address_id, :integer
-			#field :pickup_location - 8th and hope lobby
+			field :pickup_location, :string, size: 50
+			field :note, :string, size: 255
 		
 			#timestamps()
 		end
