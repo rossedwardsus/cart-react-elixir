@@ -459,6 +459,17 @@ class DeliveryAddress extends React.Component<any, any> {
 
   }
 
+  setOrderNote = (e: any) => {
+
+      this.setState({order_note: e.target.value});
+      this.props.setOrderNote(e);
+
+      //if street1 street2 city state
+
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
+
+  }
   
   
   render(): JSX.Element{
@@ -594,7 +605,14 @@ class DeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
-                        <textarea cols={50} rows={50}></textarea>
+                        <input type="text" maxLength={40} className="form-control" id="exampleInputName2" placeholder="Parking" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                      </div>
+                    </div>
+                </form>
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3 col-md-3">
+                        <textarea cols={50} rows={5} placeholder="Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
                       </div>
                     </div>
                 </form>

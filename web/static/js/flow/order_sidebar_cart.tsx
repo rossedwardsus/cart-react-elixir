@@ -409,7 +409,9 @@ class SidebarCart extends React.Component<any, any> {
 
         total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
 
-        total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+
+        total_items = (social_regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0) * 12) + (social_mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0) * 24);
         
          
         
@@ -596,7 +598,9 @@ class SidebarCart extends React.Component<any, any> {
 
     }else if(this.props.User.orders[0].order_type == "social"){
 
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 11){
+      
+
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){
 
           checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
 

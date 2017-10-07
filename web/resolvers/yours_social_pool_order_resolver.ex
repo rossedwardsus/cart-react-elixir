@@ -128,6 +128,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   end
 
 
+
+
+
+
+
+
   def total_order_items() do
 
       #reduce
@@ -148,8 +154,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
 
   end
-
-  
 
 
   #move these to /lib
@@ -233,7 +237,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
-
   def process_stripe_payment1() do
 
     #process charge
@@ -293,20 +296,34 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   end
 
 
-  #unit test
+  #unit test and functions
+  #total items
+  #total payment due
   #stripe
   #user_profile
   #user_payment_method
   #user_delivery_contact_addresses
   #session
   #order
-  #emails
+  #emails - cart, date time, payment method, delivery
   #datetime
   #cart
   #graphql response
 
+  def add_order_to_database() do
+
+  end
+
+  def send_order_complete_email() do
+
+    #order number
+    #payment method
+    #delivery address
+    #delivery date time
+    #cart with menu names
 
 
+  end
 
 
 
@@ -396,8 +413,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
         total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
           case size do
             "regular" ->  IO.puts("regular")
+                      #quantity * 12 * 5.00
                       count + (quantity * 1.00)
             "mini" -> IO.puts("mini")
+                    #quantity * 24 * 2.25
                     count + (quantity * 2.00)
           end
         end)

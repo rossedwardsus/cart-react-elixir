@@ -4,11 +4,9 @@ defmodule Sconely.YoursSocialOrder do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
-
 		#@primary_key {:order_id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id order_id delivery_contact_address_id payment_method_id stripe_charge_token)
+		@optional_fields ~W(user_id order_id delivery_contact_address_id payment_method_id stripe_charge_token delivery_date delivery_time_range)
 		@required_fields ~W()
 
 		schema "yours_social_orders" do
@@ -18,9 +16,9 @@ defmodule Sconely.YoursSocialOrder do
 			field :user_delivery_contact_address_id, :integer #primary key #secure random
 			field :payment_method_id, :integer #Ecto.UUID
 			field :delivery_date, Ecto.Date
-			field :delivery_time, :string, size: 20
+			field :delivery_time_range, :string, size: 20
 			field :stripe_charge_token, :string, size: 30
-			#field note
+			field :order_note, :string, size: 255
 		
 		end
 

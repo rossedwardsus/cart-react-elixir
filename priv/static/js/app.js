@@ -27382,7 +27382,7 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", order_note: "' + getState().User.orders[0].order_note + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            if (response.data.data.processYoursSocialPoolOrder.status == "suuccess") {
@@ -27523,6 +27523,13 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setOrderDeliveryDatetimeDate = setOrderDeliveryDatetimeDate;
+	function setOrderNote(value) {
+	    return {
+	        type: actionTypes_ts_1.SET_ORDER_NOTE,
+	        value: value
+	    };
+	}
+	exports.setOrderNote = setOrderNote;
 
 /***/ }),
 /* 921 */
@@ -27611,6 +27618,7 @@ webpackJsonp([0],[
 	exports.TERMS = 'TERMS';
 	exports.MAILING_LIST = 'MAILING_LIST';
 	exports.SAVE_FOR_LATER = 'SAVE_FOR_LATER';
+	exports.SET_ORDER_NOTE = 'SET_ORDER_NOTE';
 	//CART
 	exports.ADD_CART_ITEM = 'ADD_CART_ITEM';
 	exports.REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
@@ -42593,9 +42601,12 @@ webpackJsonp([0],[
 	                //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
 	                //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
 	                total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
-	                total_items = this.state.cartItems.reduce(function (amount, item) {
+	                //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+	                total_items = social_regular_items.reduce(function (amount, item) {
 	                    return amount + item.quantity;
-	                }, 0);
+	                }, 0) * 12 + social_mini_items.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0) * 24;
 	                /*this.props.cart.cart_items.map(function(item: any){
 	                         //console.log("item " + JSON.stringify(item));
 	                    //console.log("order type" + JSON.stringify(that.props.order));
@@ -42707,7 +42718,7 @@ webpackJsonp([0],[
 	                }
 	            } else if (this.props.User.orders[0].order_type == "social") {
 	                if (this.state.cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity;
+	                    return amount + item.quantity * 12;
 	                }, 0) > 11) {
 	                    checkoutButton = React.createElement(react_router_1.Link, { to: "/order/checkout", className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
 	                }
@@ -44058,7 +44069,7 @@ webpackJsonp([0],[
 	                                    setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)}
 	                                    setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)}
 	                                    setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)}
-	                                    setDeliveryContactAddressZipcode={(e: any) => this.setUserDeliveryContactAddressZipcode(e)}
+	                                    setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e) setOrderNote(e: any) => this.props.setOrderNote(e)}
 	                                    deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 	                                         <form className="form-horizontal">
 	                                        <div className="form-group">
@@ -44133,8 +44144,8 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserDeliveryContactAddressState(e);
 	                    }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
 	                        return _this2.props.setUserDeliveryContactAddressZipcode(e);
-	                    }, setDeliveryContactAddressNote: function setDeliveryContactAddressNote(e) {
-	                        return _this2.props.setUserDeliveryContactAddressNote(e);
+	                    }, setOrderNote: function setOrderNote(e) {
+	                        return _this2.props.setOrderNote(e);
 	                    }, deliveryContactAddressValidated: function deliveryContactAddressValidated() {
 	                        return _this2.props.deliveryContactAddressValidated();
 	                    }, deliveryContactAddressInvalidated: function deliveryContactAddressInvalidated() {
@@ -44232,6 +44243,9 @@ webpackJsonp([0],[
 	        },
 	        setUserDeliveryContactAddressNote: function setUserDeliveryContactAddressNote(e) {
 	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressNote(e.target.value, ""));
+	        },
+	        setOrderNote: function setOrderNote(e) {
+	            dispatch(order_ts_1.setOrderNote(e.target.value));
 	        },
 	        deliveryContactAddressValidated: function deliveryContactAddressValidated() {
 	            dispatch(order_validations_ts_1.deliveryContactAddressValidated());
@@ -44775,6 +44789,13 @@ webpackJsonp([0],[
 	            console.log(JSON.stringify(result));
 	            //}
 	        };
+	        _this.setOrderNote = function (e) {
+	            _this.setState({ order_note: e.target.value });
+	            _this.props.setOrderNote(e);
+	            //if street1 street2 city state
+	            //this.props.deliveryAddressValidated();
+	            //this.props.deliveryAddressInvalidated();
+	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
@@ -44836,7 +44857,11 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"), React.createElement("option", null, "DTLA"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("textarea", { cols: 50, rows: 50 })))));
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"), React.createElement("option", null, "DTLA"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", maxLength: 40, className: "form-control", id: "exampleInputName2", placeholder: "Parking", value: this.state.street1, onChange: function onChange(e) {
+	                    return _this2.setDeliveryContactAddressStreet1(e);
+	                }, style: { borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("textarea", { cols: 50, rows: 5, placeholder: "Note", style: { resize: "none" }, onChange: function onChange(e) {
+	                    return _this2.setOrderNote(e);
+	                } })))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -49576,7 +49601,7 @@ webpackJsonp([0],[
 	            //set session current order type
 	            orders_updated = state.orders;
 	            if (action.order_type == "yours" || action.order_type == "social") {
-	                orders_updated[0] = { deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, cartItems: [] };
+	                orders_updated[0] = { deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", cartItems: [] };
 	            } else {
 	                orders_updated[0] = { deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address: action.pool_address, pool_location: action.pool_location, cartItems: [] };
 	            }
@@ -49748,6 +49773,12 @@ webpackJsonp([0],[
 	            delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
 	            delivery_contacts_addresses_updated[0].note = action.value;
 	            return Object.assign({}, state, Object.assign({}, state, { deliveryContactsAddresses: delivery_contacts_addresses_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_ORDER_NOTE:
+	            console.log("ORDER note reducer");
+	            orders_updated = state.orders;
+	            orders_updated[0].orderNote = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	        //else remove item
 	        case actionTypes_ts_1.SAVE_FOR_LATER:
 	            console.log("user save for later reducer");

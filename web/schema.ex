@@ -134,7 +134,7 @@ defmodule Sconely.Schema do
 
 
     #user
-
+    #what is this?
     field :save_user_profile, type: :registration do
       arg :first, (:string)
       arg :last, (:string)
@@ -262,6 +262,7 @@ defmodule Sconely.Schema do
         arg :payment_method_zipcode, :string
         arg :cart_items, list_of(:cart_item)
         arg :promo_code, :string
+        arg :order_note, :string
         #arg :terms
         #arg :mailing_list
 

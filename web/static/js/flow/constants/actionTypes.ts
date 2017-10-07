@@ -110,6 +110,8 @@ export const TERMS = 'TERMS'
 export const MAILING_LIST = 'MAILING_LIST'
 export const SAVE_FOR_LATER = 'SAVE_FOR_LATER'
 
+export const SET_ORDER_NOTE = 'SET_ORDER_NOTE'
+
 
 //CART
 export const ADD_CART_ITEM = 'ADD_CART_ITEM'

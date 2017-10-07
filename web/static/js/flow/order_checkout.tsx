@@ -35,7 +35,7 @@ import DeliveryContactAddress from './order_delivery_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
-import {setOrderDeliveryDatetimeDate} from './actions/order.ts';
+import {setOrderDeliveryDatetimeDate, setOrderNote} from './actions/order.ts';
 
 //import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setDeliveryContactAddressNote} from './actions/order_delivery_contact_address.ts';
 
@@ -412,7 +412,7 @@ class DateTime extends React.Component<any, any> {
                             setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
                             setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
-                            setDeliveryContactAddressZipcode={(e: any) => this.setUserDeliveryContactAddressZipcode(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e) setOrderNote(e: any) => this.props.setOrderNote(e)} 
                             deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 
                             <form className="form-horizontal">
@@ -500,7 +500,7 @@ class DateTime extends React.Component<any, any> {
                             setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
                             setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
-                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} setDeliveryContactAddressNote={(e: any) => this.props.setUserDeliveryContactAddressNote(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} setOrderNote={(e: any) => this.props.setOrderNote(e)} 
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
 
                             <form className="form-horizontal">
@@ -646,6 +646,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setUserDeliveryContactAddressNote: (e: any) => {
       dispatch(setUserDeliveryContactAddressNote(e.target.value, ""))
+    },
+    setOrderNote: (e: any) => {
+      dispatch(setOrderNote(e.target.value));
     },
     deliveryContactAddressValidated: () => {
       dispatch(deliveryContactAddressValidated());
