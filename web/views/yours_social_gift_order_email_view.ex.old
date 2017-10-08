@@ -1,0 +1,3 @@
+defmodule Sconely.YoursSocialGiftOrderEmailView do
+  use SconeHomeElixir.Web, :view
+end
