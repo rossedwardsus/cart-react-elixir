@@ -1,9 +1,10 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreateRegistrationTable do
   use Ecto.Migration
 
-  def change do
-    create_if_not_exists table(:registration) do
+  def up do
+    create_if_not_exists table(:registration, primary_key: false) do
       #add :user_id, :bigint, null: false
+      add :id, :uuid, primary_key: true
   	  add :email, :string, null: false
   	  #add :password, :string
       add :password_hash, :string
@@ -12,6 +13,10 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateRegistrationTable do
       
       #create index(:posts, [:slug], concurrently: true)
     end
+
+  end
+
+  def down do
 
   end
 end

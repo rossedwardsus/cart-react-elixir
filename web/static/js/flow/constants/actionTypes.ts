@@ -111,6 +111,8 @@ export const MAILING_LIST = 'MAILING_LIST'
 export const SAVE_FOR_LATER = 'SAVE_FOR_LATER'
 
 export const SET_ORDER_NOTE = 'SET_ORDER_NOTE'
+export const SET_GIFT_ORDER = 'SET_GIFT_ORDER'
+export const SET_GIFT_NOTE = 'SET_GIFT_NOTE'
 
 
 //CART

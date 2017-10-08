@@ -71,7 +71,9 @@ class DeliveryAddress extends React.Component<any, any> {
         company_name_border_color: "grey",
         street1_border_color: "grey",
         street2_border_color: "grey",
-        city_border_color: "grey"
+        city_border_color: "grey",
+        gift_order_checked: "",
+        gift_note: ""
     };
 
     //user_type=guest
@@ -470,6 +472,40 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressInvalidated();
 
   }
+
+  setGift = (e: any) => {
+
+      if(this.state.gift_selector_checked == ""){
+      
+          this.setState({gift_order_checked: "checked"});
+          this.props.setGiftOrder(true);
+      
+      }else{
+
+          this.setState({gift_order_checked: ""});
+          this.props.setGiftOrder(false);
+
+      }
+
+      //this.props.setOrderNote(e);
+
+      //if street1 street2 city state
+
+      //this.props.deliveryAddressInvalidated();
+
+  }
+
+  setGiftNote = (e: any) => {
+
+      this.setState({gift_note: e.target.value});
+      this.props.setGiftNote(e);
+
+      //if street1 street2 city state
+
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
+
+  }
   
   
   render(): JSX.Element{
@@ -477,7 +513,15 @@ class DeliveryAddress extends React.Component<any, any> {
     let delivery_address:any = "";
 
     return ( <div>
-      
+                <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3 col-md-3">
+                          <div className="checkbox">
+                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGift(e)}/>Gift
+                          </div>
+                      </div>
+                    </div>
+                 </form>
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
@@ -604,18 +648,19 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
-                        <input type="text" maxLength={40} className="form-control" id="exampleInputName2" placeholder="Parking" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                      <div className="col-sm-3 col-md-5">
+                        <textarea className="form-control" cols={100} rows={5} placeholder="Special delivery or parking details" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
                       </div>
                     </div>
                 </form>
-                <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
-                        <textarea cols={50} rows={5} placeholder="Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
+                {this.state.gift_order_checked == "checked" &&
+                  <form className="form-horizontal">
+                      <div className="form-group">
+                        <div className="col-sm-3 col-md-5">
+                          <textarea className="form-control" cols={1000} rows={5} placeholder="Gift note" style={{resize: "none"}} onChange={(e: any) => this.setGiftNote(e)}></textarea>
+                        </div>
                       </div>
-                    </div>
-                </form>
+                  </form>}
                 </div>
                   
     )

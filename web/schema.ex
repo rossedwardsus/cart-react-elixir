@@ -263,6 +263,8 @@ defmodule Sconely.Schema do
         arg :cart_items, list_of(:cart_item)
         arg :promo_code, :string
         arg :order_note, :string
+        arg :gift_order, :boolean
+        arg :gift_note, :string
         #arg :terms
         #arg :mailing_list
 

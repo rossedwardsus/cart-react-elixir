@@ -1083,7 +1083,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #end
 
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, delivery_contact_address_id: 1, payment_method_id: 0, stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, delivery_contact_address_id: 1, payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
                         #delivery_contact_address_id, contact_id, payment_id
 
                         case Repo.insert(yours_social_order_changeset) do

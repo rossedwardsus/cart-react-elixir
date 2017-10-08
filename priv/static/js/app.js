@@ -27382,7 +27382,7 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", order_note: "' + getState().User.orders[0].order_note + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", order_note: "' + getState().User.orders[0].order_note + '", gift_order: "' + getState().User.orders[0].gift_order + '", gift_note: "' + getState().User.orders[0].gift_note + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            if (response.data.data.processYoursSocialPoolOrder.status == "suuccess") {
@@ -27530,6 +27530,21 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.setOrderNote = setOrderNote;
+	function setGiftOrder(value) {
+	    console.log("gift order action " + value);
+	    return {
+	        type: actionTypes_ts_1.SET_GIFT_ORDER,
+	        value: value
+	    };
+	}
+	exports.setGiftOrder = setGiftOrder;
+	function setGiftNote(value) {
+	    return {
+	        type: actionTypes_ts_1.SET_GIFT_NOTE,
+	        value: value
+	    };
+	}
+	exports.setGiftNote = setGiftNote;
 
 /***/ }),
 /* 921 */
@@ -27619,6 +27634,8 @@ webpackJsonp([0],[
 	exports.MAILING_LIST = 'MAILING_LIST';
 	exports.SAVE_FOR_LATER = 'SAVE_FOR_LATER';
 	exports.SET_ORDER_NOTE = 'SET_ORDER_NOTE';
+	exports.SET_GIFT_ORDER = 'SET_GIFT_ORDER';
+	exports.SET_GIFT_NOTE = 'SET_GIFT_NOTE';
 	//CART
 	exports.ADD_CART_ITEM = 'ADD_CART_ITEM';
 	exports.REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
@@ -41985,7 +42002,13 @@ webpackJsonp([0],[
 	        }*/
 	        _this.selectedItemQuantity = function (e) {
 	            console.log("selected_item quantity " + e.target.value);
-	            _this.setState({ selected_item_quantity: parseInt(e.target.value) });
+	            if (_this.state.selected_item_size == "regular") {
+	                _this.setState({ selected_item_quantity: e.target.value * 12 });
+	            } else if (_this.state.selected_item_size == "mini") {
+	                _this.setState({ selected_item_quantity: e.target.value * 24 });
+	            } else {
+	                _this.setState({ selected_item_quantity: parseInt(e.target.value) });
+	            }
 	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
 	            //set add cart button == active
 	            //this.set
@@ -42019,7 +42042,11 @@ webpackJsonp([0],[
 	                     });*/
 	            //console.log("yours items count" + item_count);
 	            //if(item_count < 12){
-	            _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_size, _this.state.selected_item_quantity);
+	            if (_this.props.User.orders[0].order_type == "yours" || _this.props.User.orders[0].order_type == "social") {
+	                _this.props.addCartItem(null, _this.state.selected_item_id, "regular", _this.state.selected_item_quantity);
+	            } else {
+	                _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_size, _this.state.selected_item_quantity);
+	            }
 	            _this.setState({ pool_message_viewed: true });
 	            _this.setState({ selected_item_quantity: 0 });
 	            _this.setState({ selected_item_size: "" });
@@ -42518,13 +42545,13 @@ webpackJsonp([0],[
 	            var removeCartItem = this.props.removeCartItem;
 	
 	            var order_type = this.props.User.orders[0].order_type;
-	            var social_regular_items = [];
-	            var social_mini_items = [];
+	            var regular_items = [];
+	            var mini_items = [];
 	            var total_items_cost = 0;
-	            var total_social_regular_items = 0;
-	            var total_social_regular_items_cost = 0;
-	            var total_social_mini_items = 0;
-	            var total_social_mini_items_cost = 0;
+	            var total_regular_items = 0;
+	            var total_regular_items_cost = 0;
+	            var total_mini_items = 0;
+	            var total_mini_items_cost = 0;
 	            var total_items = 0;
 	            var item_limit = "";
 	            var item_cost = 0;
@@ -42541,72 +42568,72 @@ webpackJsonp([0],[
 	                //console.log("order " + JSON.stringify(this.props.cart));
 	                var that = this;
 	                //let cart_items = [{item_id: 1, quantity: 2}];
-	                social_regular_items = this.state.cartItems.filter(function (item) {
+	                regular_items = this.state.cartItems.filter(function (item) {
 	                    //console.log(JSON.stringify(item));
 	                    if (item.size == "regular") {
 	                        return item;
 	                    }
 	                    return;
 	                });
-	                social_mini_items = this.state.cartItems.filter(function (item) {
+	                mini_items = this.state.cartItems.filter(function (item) {
 	                    //console.log(JSON.stringify(item));
 	                    if (item.size == "mini") {
 	                        return item;
 	                    }
 	                    return;
 	                });
-	                console.log("social regular items " + JSON.stringify(social_regular_items));
+	                console.log("regular items " + JSON.stringify(regular_items));
 	                //1 doz/12 - 5/60 doz regular sized scones, $5 each
 	                //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
 	                //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
-	                /*if(social_regular_items.length > 0){
-	                         console.log("sri" + JSON.stringify(social_regular_items));
-	                
-	                    total_social_regular_items = social_regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
-	                         if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
-	                             item_cost = 5.00;
-	                         }else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
-	                             item_cost = 4.75;
-	                         }else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
-	                             item_cost = 4.50;
-	                         }
-	                    
+	                if (regular_items.length > 0) {
+	                    //console.log("regular items " + JSON.stringify(regular_items));
+	                    total_regular_items = regular_items.reduce(function (amount, item) {
+	                        console.log(JSON.stringify(item));amount + item.quantity * 6.00;
+	                    }, 0);
+	                    //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+	                    item_cost = 5.00;
+	                    //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
+	                    //    item_cost = 4.75;
+	                    //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
+	                    //    item_cost = 4.50;
+	                    //}
 	                }
-	                     if(social_mini_items.length > 0){
-	                         console.log("sri" + JSON.stringify(social_regular_items));
-	                
-	                    total_social_mini_items = social_mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
-	                         if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
-	                             item_cost = 5.00;
-	                         }else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
-	                             item_cost = 4.75;
-	                         }else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
-	                             item_cost = 4.50;
-	                         }
-	                    
-	                }*/
+	                if (mini_items.length > 0) {
+	                    //console.log("mini items " + JSON.stringify(mini_items));
+	                    total_mini_items = mini_items.reduce(function (amount, item) {
+	                        console.log(JSON.stringify(item));amount + item.quantity * 6.0;
+	                    }, 0);
+	                    //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
+	                    item_cost = 5.00;
+	                    //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
+	                    //    item_cost = 4.75;
+	                    //}else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
+	                    //    item_cost = 4.50;
+	                    //}
+	                }
 	                //social_mini_items = this.state.cartItems.map((item: any) => {
 	                //if(item.twelveortwentyfourminis == "24_minis"){
 	                //    return item;
 	                //}
 	                //});
 	                //if(social_regular_items.length != 0){
-	                total_social_regular_items_cost = social_regular_items.reduce(function (amount, item) {
-	                    return amount + item.quantity * 12 * 5.00;
+	                total_regular_items_cost = regular_items.reduce(function (amount, item) {
+	                    return amount + item.quantity * 5.00;
 	                }, 0);
-	                total_social_mini_items_cost = social_mini_items.reduce(function (amount, item) {
-	                    return amount + item.quantity * 24 * 2.25;
+	                total_mini_items_cost = mini_items.reduce(function (amount, item) {
+	                    return amount + item.quantity * 2.25;
 	                }, 0);
 	                //}
 	                //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
 	                //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
-	                total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
+	                total_items_cost = total_regular_items_cost + total_mini_items_cost;
 	                //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
-	                total_items = social_regular_items.reduce(function (amount, item) {
+	                total_items = regular_items.reduce(function (amount, item) {
 	                    return amount + item.quantity;
-	                }, 0) * 12 + social_mini_items.reduce(function (amount, item) {
+	                }, 0) + mini_items.reduce(function (amount, item) {
 	                    return amount + item.quantity;
-	                }, 0) * 24;
+	                }, 0);
 	                /*this.props.cart.cart_items.map(function(item: any){
 	                         //console.log("item " + JSON.stringify(item));
 	                    //console.log("order type" + JSON.stringify(that.props.order));
@@ -42649,34 +42676,38 @@ webpackJsonp([0],[
 	                    //console.log(order_type);
 	                    //code is here to check for minis existing???
 	                    //if item.size == "" then pool or yours
-	                    if (order_type == "yours" || order_type == "pool") {
-	                        return React.createElement("form", { className: "form-horizontal", style: { paddingLeft: 50, border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.increaseCartItemQuantity(index);
-	                            } }, "+")), React.createElement("div", { className: "col-xs-1" }, item.quantity), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.decreaseCartItemQuantity(index);
-	                            } }, "-")), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.removeCartItem(index);
-	                            } }, "X"))));
-	                    } else {
-	                        //if(item.size == "mini"){
-	                        return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, item.size == "mini" ? React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name, " mini") : React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.increaseCartItemQuantity(index);
-	                            } }, "+")), item.size == "mini" ? React.createElement("div", { className: "col-xs-1" }, item.quantity * 24) : React.createElement("div", { className: "col-xs-1" }, item.quantity * 12), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.decreaseCartItemQuantity(index);
-	                            } }, "-")), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
-	                                return _this2.props.removeCartItem(index);
-	                            } }, "X"))));
-	                        //}else{
-	                        /*    return(
-	                                          <form className="form-horizontal" style={{border: 1, position: "static"}}>
-	                                            <div className="form-group" style={{border: 1}}>
-	                                              <div className="col-md-5">{item_name}</div>
-	                                              <div className="col-md-4">{12 * item.quantity}</div>
-	                                            </div>
-	                                          </form>
-	                                  )
-	                         }*/
-	                    }
+	                    /*if(order_type == "yours" || order_type == "pool"){
+	                         return(
+	                                      <form className="form-horizontal" style={{paddingLeft: 50, border: 1, position: "static"}}>
+	                                        <div className="form-group" style={{border: 1}}>
+	                                          <div className="col-md-5 col-xs-5">{item_name}</div>
+	                                          <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
+	                                          <div className="col-xs-1">{item.quantity}</div>
+	                                          <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
+	                                          <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
+	                                        </div>
+	                                      </form>
+	                              )
+	                    }else{*/
+	                    //if(item.size == "mini"){
+	                    return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, item.size == "mini" ? React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name, " mini") : React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                            return _this2.props.increaseCartItemQuantity(index);
+	                        } }, "+")), React.createElement("div", { className: "col-xs-1" }, item.quantity), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                            return _this2.props.decreaseCartItemQuantity(index);
+	                        } }, "-")), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                            return _this2.props.removeCartItem(index);
+	                        } }, "X"))));
+	                    //}else{
+	                    /*    return(
+	                                      <form className="form-horizontal" style={{border: 1, position: "static"}}>
+	                                        <div className="form-group" style={{border: 1}}>
+	                                          <div className="col-md-5">{item_name}</div>
+	                                          <div className="col-md-4">{12 * item.quantity}</div>
+	                                        </div>
+	                                      </form>
+	                              )
+	                     }*/
+	                    //}
 	                }.bind(this));
 	            }
 	            if (total_items == 12) {
@@ -44069,7 +44100,7 @@ webpackJsonp([0],[
 	                                    setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)}
 	                                    setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)}
 	                                    setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)}
-	                                    setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e) setOrderNote(e: any) => this.props.setOrderNote(e)}
+	                                    setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e) setOrderNote(e: any) => this.props.setOrderNote(e)} setGiftOrder(e: any) => this.props.setGiftOrder(e)}
 	                                    deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
 	                                         <form className="form-horizontal">
 	                                        <div className="form-group">
@@ -44144,8 +44175,10 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserDeliveryContactAddressState(e);
 	                    }, setDeliveryContactAddressZipcode: function setDeliveryContactAddressZipcode(e) {
 	                        return _this2.props.setUserDeliveryContactAddressZipcode(e);
-	                    }, setOrderNote: function setOrderNote(e) {
-	                        return _this2.props.setOrderNote(e);
+	                    }, setGiftOrder: function setGiftOrder(e) {
+	                        return _this2.props.setGiftOrder(e);
+	                    }, setGiftNote: function setGiftNote(e) {
+	                        return _this2.props.setGiftNote(e);
 	                    }, deliveryContactAddressValidated: function deliveryContactAddressValidated() {
 	                        return _this2.props.deliveryContactAddressValidated();
 	                    }, deliveryContactAddressInvalidated: function deliveryContactAddressInvalidated() {
@@ -44246,6 +44279,12 @@ webpackJsonp([0],[
 	        },
 	        setOrderNote: function setOrderNote(e) {
 	            dispatch(order_ts_1.setOrderNote(e.target.value));
+	        },
+	        setGiftOrder: function setGiftOrder(value) {
+	            dispatch(order_ts_1.setGiftOrder(value));
+	        },
+	        setGiftNote: function setGiftNote(e) {
+	            dispatch(order_ts_1.setGiftNote(e.target.value));
 	        },
 	        deliveryContactAddressValidated: function deliveryContactAddressValidated() {
 	            dispatch(order_validations_ts_1.deliveryContactAddressValidated());
@@ -44796,6 +44835,25 @@ webpackJsonp([0],[
 	            //this.props.deliveryAddressValidated();
 	            //this.props.deliveryAddressInvalidated();
 	        };
+	        _this.setGift = function (e) {
+	            if (_this.state.gift_selector_checked == "") {
+	                _this.setState({ gift_order_checked: "checked" });
+	                _this.props.setGiftOrder(true);
+	            } else {
+	                _this.setState({ gift_order_checked: "" });
+	                _this.props.setGiftOrder(false);
+	            }
+	            //this.props.setOrderNote(e);
+	            //if street1 street2 city state
+	            //this.props.deliveryAddressInvalidated();
+	        };
+	        _this.setGiftNote = function (e) {
+	            _this.setState({ gift_note: e.target.value });
+	            _this.props.setGiftNote(e);
+	            //if street1 street2 city state
+	            //this.props.deliveryAddressValidated();
+	            //this.props.deliveryAddressInvalidated();
+	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
@@ -44817,7 +44875,9 @@ webpackJsonp([0],[
 	            company_name_border_color: "grey",
 	            street1_border_color: "grey",
 	            street2_border_color: "grey",
-	            city_border_color: "grey"
+	            city_border_color: "grey",
+	            gift_order_checked: "",
+	            gift_note: ""
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -44845,7 +44905,9 @@ webpackJsonp([0],[
 	            var _this2 = this;
 	
 	            var delivery_address = "";
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.props.User.deliveryContactsAddresses.contact_first_name, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.props.User.deliveryContactsAddresses.contact_last_name, maxLength: 20, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 12, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 40, onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: "checkbox" }, React.createElement("input", { type: "checkbox", value: "", checked: this.state.gift_order_checked, onChange: function onChange(e) {
+	                    return _this2.setGift(e);
+	                } }), "Gift")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.props.User.deliveryContactsAddresses.contact_first_name, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.props.User.deliveryContactsAddresses.contact_last_name, maxLength: 20, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 12, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 40, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressCompanyName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", maxLength: 40, className: "form-control", id: "exampleInputName2", placeholder: "Street 1", value: this.state.street1, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet1(e);
@@ -44857,10 +44919,10 @@ webpackJsonp([0],[
 	                    return _this2.setDeliveryContactAddressState(value);
 	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "State"), React.createElement("option", { value: "ca" }, "CA"))), React.createElement("div", { className: "col-sm-3" }, React.createElement("select", { className: "form-control", onChange: function onChange(value) {
 	                    return _this2.setDeliveryContactAddressZipcode(value);
-	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"), React.createElement("option", null, "DTLA"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", maxLength: 40, className: "form-control", id: "exampleInputName2", placeholder: "Parking", value: this.state.street1, onChange: function onChange(e) {
-	                    return _this2.setDeliveryContactAddressStreet1(e);
-	                }, style: { borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("textarea", { cols: 50, rows: 5, placeholder: "Note", style: { resize: "none" }, onChange: function onChange(e) {
+	                }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16 } }, React.createElement("option", null, "Zip Code"), React.createElement("option", null, "Venice"), React.createElement("option", null, "90013"), React.createElement("option", null, "90014"), React.createElement("option", null, "90015"), React.createElement("option", null, "90021"), React.createElement("option", null, "90071"), React.createElement("option", null, "Santa Monica"), React.createElement("option", null, "90291"), React.createElement("option", null, "90401"), React.createElement("option", null, "90402"), React.createElement("option", null, "90403"), React.createElement("option", null, "90404"), React.createElement("option", null, "90405"), React.createElement("option", null, "90406"), React.createElement("option", null, "90407"), React.createElement("option", null, "90408"), React.createElement("option", null, "90409"), React.createElement("option", null, "90410"), React.createElement("option", null, "90411"), React.createElement("option", null, "DTLA"))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-5" }, React.createElement("textarea", { className: "form-control", cols: 100, rows: 5, placeholder: "Special delivery or parking details", style: { resize: "none" }, onChange: function onChange(e) {
 	                    return _this2.setOrderNote(e);
+	                } })))), this.state.gift_order_checked == "checked" && React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-5" }, React.createElement("textarea", { className: "form-control", cols: 1000, rows: 5, placeholder: "Gift note", style: { resize: "none" }, onChange: function onChange(e) {
+	                    return _this2.setGiftNote(e);
 	                } })))));
 	        }
 	    }], [{
@@ -49601,7 +49663,7 @@ webpackJsonp([0],[
 	            //set session current order type
 	            orders_updated = state.orders;
 	            if (action.order_type == "yours" || action.order_type == "social") {
-	                orders_updated[0] = { deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", cartItems: [] };
+	                orders_updated[0] = { deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: [] };
 	            } else {
 	                orders_updated[0] = { deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address: action.pool_address, pool_location: action.pool_location, cartItems: [] };
 	            }
@@ -49778,6 +49840,18 @@ webpackJsonp([0],[
 	            console.log("ORDER note reducer");
 	            orders_updated = state.orders;
 	            orders_updated[0].orderNote = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_GIFT_ORDER:
+	            console.log("gift ORDER reducer");
+	            orders_updated = state.orders;
+	            orders_updated[0].giftOrder = action.value;
+	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
+	        //else remove item
+	        case actionTypes_ts_1.SET_GIFT_NOTE:
+	            console.log("ORDER note reducer");
+	            orders_updated = state.orders;
+	            orders_updated[0].giftNote = action.value;
 	            return Object.assign({}, state, Object.assign({}, state, { orders: orders_updated }));
 	        //else remove item
 	        case actionTypes_ts_1.SAVE_FOR_LATER:

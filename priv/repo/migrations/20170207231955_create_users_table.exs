@@ -2,7 +2,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUsersTable do
   use Ecto.Migration
 
   def change do
-    create_if_not_exists table(:users) do
+    create_if_not_exists table(:users, primary_key: false) do
+      add :id, :uuid, primary_key: true
       add :user_id, :bigint, null: false
   	  add :first_name, :string, size: 40
   	  add :last_name, :string, size: 40

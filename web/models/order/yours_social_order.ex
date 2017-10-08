@@ -19,6 +19,8 @@ defmodule Sconely.YoursSocialOrder do
 			field :delivery_time_range, :string, size: 20
 			field :stripe_charge_token, :string, size: 30
 			field :order_note, :string, size: 255
+			#field :gift, :boolean
+			#field :gift_note, string, size: 255
 		
 		end
 

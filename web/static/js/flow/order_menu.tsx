@@ -236,7 +236,20 @@ class OrderMenu extends React.Component<any, any> {
 
     console.log("selected_item quantity " + e.target.value);
 
-    this.setState({selected_item_quantity: parseInt(e.target.value)});
+    if(this.state.selected_item_size == "regular"){
+      
+      this.setState({selected_item_quantity: (e.target.value * 12)});
+    
+    }else if(this.state.selected_item_size == "mini"){
+      
+      this.setState({selected_item_quantity: (e.target.value * 24)});
+    
+    }else{ 
+
+      this.setState({selected_item_quantity: parseInt(e.target.value)});
+
+    }
+
     this.setState({add_cart_item_button_classname: "btn btn-default"});
       
     //set add cart button == active
@@ -296,9 +309,15 @@ class OrderMenu extends React.Component<any, any> {
 
     //if(item_count < 12){
 
+    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "social"){
 
+        this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
 
-    this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
+    }else{
+
+        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
+
+    }
     
     this.setState({pool_message_viewed: true});    
     this.setState({selected_item_quantity: 0});

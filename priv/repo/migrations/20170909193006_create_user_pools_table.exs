@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserPoolsTable do
   def change do
 
   	  create_if_not_exists  table(:user_pools) do
-	      add :user_id, :integer
+	      add :user_id, :uuid
 	      add :pool_id, :smallint
 	      add :pool_name, :string, size: 50
 	      add :pool_url_name, :string, size: 50

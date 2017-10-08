@@ -3,9 +3,10 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateYoursSocialOrdersTable do
 
   def change do
 
-  	    create_if_not_exists table(:yours_social_orders) do
+  	    create_if_not_exists table(:yours_social_orders, primary_key: false) do
+  	      add :id, :uuid, primary_key: true
 	      add :user_id, :bigint
-	      add :parent_order_id, :bigint
+	      add :parent_order_id, :uuid
 	      add :admin_receipt_order_id, :bigint
 	  	  add :user_delivery_contact_address_id, :smallint
 	  	  add :user_payment_method_id, :smallint
@@ -13,7 +14,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateYoursSocialOrdersTable do
 	  	  #add parking
 	  	  add :stripe_payment_token, :string, size: 30
 	  	  add :delivery_date, :date
-	  	  add :delivery_time_ramge, :string, size: 20
+	  	  add :delivery_time_range, :string, size: 20
+	  	  #gift
 
 	      #create index(:posts, [:slug], concurrently: true)
 	    end

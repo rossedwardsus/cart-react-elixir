@@ -263,13 +263,13 @@ class SidebarCart extends React.Component<any, any> {
 
     
     let order_type = this.props.User.orders[0].order_type;
-    let social_regular_items = [];
-    let social_mini_items = [];
+    let regular_items = [];
+    let mini_items = [];
     let total_items_cost = 0;
-    let total_social_regular_items = 0;
-    let total_social_regular_items_cost = 0;
-    let total_social_mini_items = 0;
-    let total_social_mini_items_cost = 0;
+    let total_regular_items = 0;
+    let total_regular_items_cost = 0;
+    let total_mini_items = 0;
+    let total_mini_items_cost = 0;
     let total_items = 0;
     let item_limit = "";
     let item_cost = 0;
@@ -301,7 +301,7 @@ class SidebarCart extends React.Component<any, any> {
 
         //let cart_items = [{item_id: 1, quantity: 2}];
 
-        social_regular_items = this.state.cartItems.filter((item: any) => {
+        regular_items = this.state.cartItems.filter((item: any) => {
 
             //console.log(JSON.stringify(item));
 
@@ -315,7 +315,7 @@ class SidebarCart extends React.Component<any, any> {
 
         });
 
-        social_mini_items = this.state.cartItems.filter((item: any) => {
+        mini_items = this.state.cartItems.filter((item: any) => {
 
             //console.log(JSON.stringify(item));
 
@@ -329,55 +329,55 @@ class SidebarCart extends React.Component<any, any> {
 
         });
 
-        console.log("social regular items " + JSON.stringify(social_regular_items));
+        console.log("regular items " + JSON.stringify(regular_items));
         
         //1 doz/12 - 5/60 doz regular sized scones, $5 each
         //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
         //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
 
-        /*if(social_regular_items.length > 0){
+        if(regular_items.length > 0){
 
-            console.log("sri" + JSON.stringify(social_regular_items));
+            //console.log("regular items " + JSON.stringify(regular_items));
         
-            total_social_regular_items = social_regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
+            total_regular_items = regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
 
-            if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+            //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
 
                 item_cost = 5.00;
 
-            }else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
+            //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
 
-                item_cost = 4.75;
+            //    item_cost = 4.75;
 
-            }else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
+            //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
 
-                item_cost = 4.50;
+            //    item_cost = 4.50;
 
-            }
+            //}
             
         }
 
-        if(social_mini_items.length > 0){
+        if(mini_items.length > 0){
 
-            console.log("sri" + JSON.stringify(social_regular_items));
+            //console.log("mini items " + JSON.stringify(mini_items));
         
-            total_social_mini_items = social_mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
+            total_mini_items = mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
 
-            if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
+            //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
 
                 item_cost = 5.00;
 
-            }else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
+            //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
 
-                item_cost = 4.75;
+            //    item_cost = 4.75;
 
-            }else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
+            //}else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
 
-                item_cost = 4.50;
+            //    item_cost = 4.50;
 
-            }
+            //}
             
-        }*/
+        }
         
 
 
@@ -394,9 +394,9 @@ class SidebarCart extends React.Component<any, any> {
 
         //if(social_regular_items.length != 0){
         
-          total_social_regular_items_cost = social_regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 12 * 5.00; }, 0)
+          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
-          total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 24 * 2.25; }, 0)
+          total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 
 
         //}
@@ -407,11 +407,11 @@ class SidebarCart extends React.Component<any, any> {
         //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
 
 
-        total_items_cost = total_social_regular_items_cost + total_social_mini_items_cost;
+        total_items_cost = total_regular_items_cost + total_mini_items_cost;
 
         //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
-        total_items = (social_regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0) * 12) + (social_mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0) * 24);
+        total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
         
          
         
@@ -487,7 +487,7 @@ class SidebarCart extends React.Component<any, any> {
                       //code is here to check for minis existing???
                       //if item.size == "" then pool or yours
 
-                      if(order_type == "yours" || order_type == "pool"){
+                      /*if(order_type == "yours" || order_type == "pool"){
 
                           return(
                                         <form className="form-horizontal" style={{paddingLeft: 50, border: 1, position: "static"}}>
@@ -500,7 +500,7 @@ class SidebarCart extends React.Component<any, any> {
                                           </div>
                                         </form>
                                 )
-                      }else{
+                      }else{*/
                           
                           //if(item.size == "mini"){
                           
@@ -509,7 +509,7 @@ class SidebarCart extends React.Component<any, any> {
                                               <div className="form-group" style={{border: 1}}>
                                             {item.size == "mini" ? <div className="col-md-5 col-xs-5">{item_name} mini</div> : <div className="col-md-5 col-xs-5">{item_name}</div>}
                                             <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
-                                            {item.size == "mini" ? <div className="col-xs-1">{item.quantity * 24}</div> : <div className="col-xs-1">{item.quantity * 12}</div>}
+                                            <div className="col-xs-1">{item.quantity}</div>
                                             <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
                                             <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                           </div>
@@ -528,7 +528,7 @@ class SidebarCart extends React.Component<any, any> {
                                     )
 
                           }*/
-                      }
+                      //}
                   
                 }.bind(this))
 
