@@ -89,11 +89,7 @@ defmodule Sconely.Schema.Types do
   #	field :item_id, :string
   #end
 
-  input_object :cart_item do
-	 field :menu_item_id, :integer
-   field :quantity, :integer
-   field :size, :string
-  end
+  
 
   object :order do
   	#field :order_id, :string
@@ -112,10 +108,23 @@ defmodule Sconely.Schema.Types do
     #field :status, :string
   end
 
-  input_object :yours_social_cart_items_input do
+  object :order_session_response do
+    field :status, :string
+    #field :sconely_user_token, :string
+    #field :stripe__token, :string
+    #field :error_code, :string
+  end
+
+  #input_object :yours_social_cart_items_input do
     #field :item_id, :string
-    field :twelveortwentyfourminis, :string
+  #  field :twelveortwentyfourminis, :string
     #field :quantity, :string
+  #end
+
+  input_object :cart_item do
+   field :menu_item_id, :integer
+   field :quantity, :integer
+   field :size, :string
   end
 
   object :process_yours_social_pool_order_response do

@@ -26,7 +26,7 @@ defmodule SconeHomeElixir.Web.Context do
             #user_id = secure_random.uuid
             #token_id = secure_random..uuid
 
-            session_changeset = Session.changeset(%Session{}, %{user_id: "user_id", token_id: "", logged_out_datetime: nil})
+            #session_changeset = Session.changeset(%Session{}, %{user_id: "user_id", token_id: "", logged_out_datetime: nil})
             #Repo.insert
 
             #Session 

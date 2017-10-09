@@ -31,6 +31,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
       # username is not in params
     #end
 
+    #
     case conn.path_info |> List.first do
         nil -> IO.puts("nil")
                conn

@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 
 import {getMenuItems} from './actions/menu.ts';
 import {cartValidated} from './actions/order_validations.ts';
-//import {addCartItem} from './actions/user.ts';
+import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
@@ -604,7 +604,7 @@ class OrderMenu extends React.Component<any, any> {
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                               <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
                             <br/>
-                            {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>}
+                            {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9">
@@ -742,6 +742,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     },
     createOrder: (order_type: any, name: any) => {
       //dispatch(createOrder(order_type, name));
+    },
+    updateOrderSession: (screen: any) => {
+      dispatch(updateOrderSession(screen))
     }
   }
 }

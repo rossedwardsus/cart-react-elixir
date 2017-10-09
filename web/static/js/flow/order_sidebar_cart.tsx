@@ -602,7 +602,7 @@ class SidebarCart extends React.Component<any, any> {
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){
 
-          checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
+          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
 
       }
 

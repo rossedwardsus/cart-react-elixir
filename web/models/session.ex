@@ -4,25 +4,19 @@ defmodule Sconely.Session do
 
 		#use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 		#@primary_key {:session_id, :binary_id, autogenerate: true}
 
 		@optional_fields ~W(user_id token)
 		@required_fields ~W()
 
-		schema "sessions" do
-			#field :session_id, Ecto.UUID
-			field :user_id, :string #integer
-			field :token, Ecto.UUID
-			field :created_at, Ecto.DateTime, default: Ecto.DateTime.utc
-			#field :active, :string
+		schema "order_sessions" do
+			field :session_id, Ecto.UUID
+			field :order_type, :string #integer
+			#order_id
+			field :order_started_datetime, Ecto.DateTime
+			#field :status, :string
+			field :order_completed_datetime, Ecto.DateTime
 
-			#timestamps([{:inserted_at, false}, {:updated_at, false}])
-			#timestamps([{:updated_at, false}])
-			#timestamps([{:created_at}])
-			
-			
-			#timestamps()
 		end
 
 

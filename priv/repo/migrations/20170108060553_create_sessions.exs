@@ -7,12 +7,13 @@ defmodule SconeHomeElixir.Repo.Migrations.Sessions do
   IO.puts("migration run")
 
   def change do
-    create_if_not_exists table(:sessions) do
-      #add :session_id, :uuid, primary_key: true
-	    add :user_id, :integer
-      add :token, :uuid
-	    #add :logged_in_datetime, :string, size: 40
-      #add :logged_out_datetime, :string, size: 40
+    create_if_not_exists table(:sessions, primary_key: false) do
+      add :session_id, :uuid, primary_key: true
+	    #order_type
+      #order_id
+      #add :order_started_datetime, :string, size: 40
+      #status
+      #add :order_ended_datetime, :string, size: 40
 
       #timestamps
 

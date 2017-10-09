@@ -228,6 +228,19 @@ defmodule Sconely.Schema do
   		resolve &Sconely.CompleteOrderResolver.complete_yours_order/2
   	end
 
+    field :create_order_session, type: :order_session_response do
+        #arg :session_id, :string
+        arg :order_type, :string
+
+        resolve &Sconely.OrderSessionResolver.create_order_session/2
+    end
+
+    field :update_order_session, type: :order_session_response do
+        arg :session_id, :string
+        arg :order_type, :string
+
+        resolve &Sconely.OrderSessionResolver.update_order_session/2
+    end
 
 
     field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do

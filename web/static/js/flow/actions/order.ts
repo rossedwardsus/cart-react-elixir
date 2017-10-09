@@ -1,5 +1,7 @@
 import { CREATE_ORDER, SET_ORDER_TYPE, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, ADD_CART_ITEM, CLEAR_USER, TERMS, MAILING_LIST, SET_ORDER_ID, SET_DELIVERY_COST, SET_PROMO_CODE, COMPLETE_ORDER, CLEAR_ORDER, SAVE_FOR_LATER, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_ORDER_DELIVERY_DATETIME_DATE, SET_ORDER_NOTE, SET_GIFT_ORDER, SET_GIFT_NOTE } from '../constants/actionTypes.ts';
+
 import {getMenuItems} from './menu.ts';
+import {createOrderSession} from './session.ts';
 import {push} from 'react-router-redux';
 import axios from 'axios';
 var moment = require('moment');
@@ -93,7 +95,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
             //load menu
             dispatch(getMenuItems());
-
+            dispatch(createOrderSession(order_type));
             dispatch({type: CREATE_ORDER, order_type: order_type});
             dispatch(push("/order/menu"));
 
