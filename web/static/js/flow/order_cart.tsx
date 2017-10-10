@@ -580,11 +580,18 @@ class OrderCart extends React.Component<any, any> {
 
     //body = <Cart order={this.state.order} cart_items={this.state.cart_items} showMenu={() => this.showMenu()} removeCartItem={(index: any) => this.removeCartItem(index)} showDeliveryAddressPayment={() => this.showDeliveryAddressPayment()} increaseCartItemQuantity={(item_id: any, index: any) => this.increaseCartItemQuantity(item_id, index)} decreaseCartItemQuantity={(item_id: any, index: any) => this.decreaseCartItemQuantity(item_id, index)}/>;//cart
 
+    let item_cost = 0;
+    let regular_items = [];
+    let total_regular_items = 0;
+    let total_mini_items = 0;
+    let mini_items = [];
     let cart = "";
     //let total_items = 0;
     let total_items = 0;
     let subtotal = 0;
-    let total_cost = 0;
+    let total_items_cost = 0;
+    let total_regular_items_cost = 0;
+    let total_mini_items_cost = 0;
     let delivery_cost = 0;
     let that = this;
 
@@ -619,7 +626,106 @@ class OrderCart extends React.Component<any, any> {
 
                       });*/
 
-        total_cost =  this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.50, 0); 
+        //regular items
+        //mini items
+
+        regular_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+            if(item.size == "regular"){
+
+                return item;
+
+            }
+
+            return
+
+        });
+
+        mini_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+            if(item.size == "mini"){
+
+                return item;
+
+            }
+
+            return
+
+        });
+
+        if(regular_items.length > 0){
+
+            //console.log("regular items " + JSON.stringify(regular_items));
+        
+            total_regular_items = regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
+
+            //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+
+                item_cost = 5.00;
+
+            //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
+
+            //    item_cost = 4.75;
+
+            //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
+
+            //    item_cost = 4.50;
+
+            //}
+            
+        }
+
+        if(mini_items.length > 0){
+
+            //console.log("mini items " + JSON.stringify(mini_items));
+        
+            total_mini_items = mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
+
+            //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
+
+                item_cost = 5.00;
+
+            //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
+
+            //    item_cost = 4.75;
+
+            //}else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
+
+            //    item_cost = 4.50;
+
+            //}
+            
+        }
+        
+
+
+
+        //social_mini_items = this.state.cartItems.map((item: any) => {
+
+            //if(item.twelveortwentyfourminis == "24_minis"){
+
+            //    return item;
+
+            //}
+
+        //});
+
+        //if(social_regular_items.length != 0){
+        
+          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
+
+          total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
+
+
+        //}
+
+
+
+        //total_cost = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.50, 0); 
                       
         //}else{
 
@@ -628,6 +734,8 @@ class OrderCart extends React.Component<any, any> {
         //}
 
         total_items = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+
+        total_items_cost = total_regular_items_cost + total_mini_items_cost;
 
 
         /*item_count = this.props.cart_items.map(function(item: any){
@@ -716,7 +824,9 @@ class OrderCart extends React.Component<any, any> {
                           return(
                                       <form className="form-horizontal" style={{border: 1}}>    
                                           <div className="form-group" style={{fontSize:16, border: 1}}>
-                                            <div className="col-md-1"></div><div className="col-md-3">{item_name}</div>
+                                            <div className="col-md-1"></div>
+                                            {item.size == "regular" ? 
+                                              <div className="col-md-3">{item_name}</div> : <div className="col-md-3">{item_name} mini</div>}
                                             <div className="col-md-4">
                                               <div className="row">
                                                 <div className="col-md-1" style={{fontSize: 16}}><a onClick={() => this.props.increaseCartItemQuantity(index)}><b>+</b></a></div>
@@ -807,7 +917,7 @@ class OrderCart extends React.Component<any, any> {
                                    <br/>
                                    <div className="col-md-3"></div><div className="col-md-4">Delivery Cost</div><div className="col-md-2"><b>$0.00</b></div>
                                    <br/>
-                                   <div className="col-md-3"></div><div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_cost.toFixed(2)}</b></div>
+                                   <div className="col-md-3"></div><div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_items_cost.toFixed(2)}</b></div>
                                 </div>
                               </div>
                             </form>

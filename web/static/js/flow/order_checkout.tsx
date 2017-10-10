@@ -31,7 +31,7 @@ require('react-datepicker/dist/react-datepicker.css');
 import SidebarCart from './order_sidebar_cart.tsx';
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 import NameContact from './name.tsx';
-import DeliveryContactAddress from './order_delivery_address.tsx';
+import DeliveryContactAddress from './delivery_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
@@ -46,6 +46,7 @@ import {userNameEmailMobileValidated, deliveryContactAddressValidated} from './a
 
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
+import {updateOrderSession} from './actions/session.ts';
 
 
 function addTodoWithDispatch() {
@@ -530,10 +531,10 @@ class DateTime extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-9">
                                     <div className="col-md-3">
-                                      <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
+                                      <button className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Preview</button>  
                                     </div>
                                     <div className="col-md-3">
-                                      <Link to="/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}}>Payment</Link>  
+                                      <button className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
                                     </div>
                                     <div className="col-md-3">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
@@ -670,6 +671,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     removeCartItem: (index: any) => {
       dispatch(removeCartItem(index));
+    },
+    updateOrderSession: (screen: any) => {
+      dispatch(updateOrderSession(screen));
     }
   }
 }

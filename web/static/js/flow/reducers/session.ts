@@ -1,4 +1,4 @@
-import { SET_SESSION, SET_EMAIL, SET_PASSWORD, SET_PASSWORD_AGAIN, CHECK_LOGGED_IN, LOGIN } from '../constants/actionTypes.ts';
+import { SET_SESSION_ID, SET_EMAIL, SET_PASSWORD, SET_PASSWORD_AGAIN, CHECK_LOGGED_IN, LOGIN } from '../constants/actionTypes.ts';
 
 let menu_items: any;
 
@@ -24,7 +24,7 @@ interface CartState {
 
 export default function session(state:any = {user_id: "", session_key: "", session_start_datetime: ""}, action: any){
   switch (action.type) {
-    case SET_SESSION:
+    case SET_SESSION_ID:
       //alert("CartState " + action.item_id);
 
       //default to "guest" if not logged in

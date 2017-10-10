@@ -80,25 +80,24 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
       //      dispatch({type: SET_ORDER_TYPE});
       //    dispatch(push("/order/1/signature"));
 
-      if(order_type == "yours"){
+      if(order_type == "yours" || order_type == "social"){
 
             //load menu
             //if menu items alrady exist then dont get from the database again
 
             dispatch(getMenuItems());
-
-            dispatch({type: CREATE_ORDER, order_type: order_type});
-            dispatch(push("/order/menu"));
-
-      //}
-      }else if(order_type == "social"){
-
-            //load menu
-            dispatch(getMenuItems());
             dispatch(createOrderSession(order_type));
             dispatch({type: CREATE_ORDER, order_type: order_type});
             dispatch(push("/order/menu"));
 
+      //}
+      //}else if(order_type == "social"){
+
+            //load menu
+      //      dispatch(getMenuItems());
+      //      dispatch(createOrderSession(order_type));
+      //      dispatch({type: CREATE_ORDER, order_type: order_type});
+      //      dispatch(push("/order/menu"));
 
       }else if(order_type == "pool"){
 

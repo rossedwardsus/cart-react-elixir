@@ -1,8 +1,7 @@
 export const CHECK_LOGGED_IN = 'CHECK_LOGGED_IN'
 export const LOGIN = 'LOGIN'
 export const REGISTER_USER = 'REGISTER_USER'
-export const SET_SESSION = 'SET_SESSION'
-
+export const SET_SESSION_ID = 'SET_SESSION_ID'
 
 
 export const VIEW_PUBLIC_MENU = 'VIEW_PUBLIC_MENU'

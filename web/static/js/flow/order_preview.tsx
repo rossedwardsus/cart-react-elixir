@@ -20,7 +20,7 @@ import {completeOrder} from './actions/complete_order.ts';
 //import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
-import DeliveryAddress from './order_delivery_address.tsx';
+import DeliveryAddress from './delivery_address.tsx';
 import Contact from './order_contact.tsx';
 import ContactPreview from './contact_preview.tsx';
 //import DateTime from './order_datetime.tsx';

@@ -11,11 +11,16 @@ defmodule Sconely.SessionResolver do
 
     #  {:ok, response} -> IO.inspect(response)
 
-     #       {:ok, %{session_id: response.session_id}}
+     #       Sconely.OrderStartedEmail.order_started_email(%{}) |> SconeHomeElixir.Mailer.deliver_later
+
+     #      {:ok, %{session_id: response.session_id}}
 
      # {:error, error} -> nil
     
   end
+
+
+
 
   def update_order_session(args, _info) do
     IO.inspect(args)

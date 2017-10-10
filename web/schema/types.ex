@@ -110,8 +110,8 @@ defmodule Sconely.Schema.Types do
 
   object :order_session_response do
     field :status, :string
-    #field :sconely_user_token, :string
-    #field :stripe__token, :string
+    field :session_id, :string
+    #field :stripe_token, :string
     #field :error_code, :string
   end
 

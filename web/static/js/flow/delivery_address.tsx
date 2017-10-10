@@ -657,7 +657,7 @@ class DeliveryAddress extends React.Component<any, any> {
                   <form className="form-horizontal">
                       <div className="form-group">
                         <div className="col-sm-3 col-md-5">
-                          <textarea className="form-control" cols={1000} rows={5} placeholder="Gift note" style={{resize: "none"}} onChange={(e: any) => this.setGiftNote(e)}></textarea>
+                          <textarea className="form-control" cols={100} rows={2} maxLength={150} placeholder="Gift note" style={{resize: "none"}} onChange={(e: any) => this.setGiftNote(e)}></textarea>
                         </div>
                       </div>
                   </form>}

@@ -7,11 +7,13 @@ defmodule Sconely.OrderSessionResolver do
 
     IO.inspect(args)
     
-    order_session_changeset = OrderSession.changeset(%OrderSession{}, %{order_type: args[:order_type], status: "menu"})
+    order_session_changeset = OrderSession.changeset(%OrderSession{}, %{order_type: args[:order_type], screen: "menu"})
     
     case Repo.insert(order_session_changeset) do
 
       {:ok, response} -> IO.inspect(response)
+
+            Sconely.OrderStartedEmail.order_started_email(%{order_type: args[:order_type]}) |> SconeHomeElixir.Mailer.deliver_later
 
             {:ok, %{session_id: response.session_id}}
 
@@ -24,9 +26,12 @@ defmodule Sconely.OrderSessionResolver do
     #{:ok, Blog.Repo.all(Post)}
 
     #OrderSession = Friends.Person |> Ecto.Query.first |> Friends.Repo.one
+    
     order_session = Repo.get_by!(OrderSession, %{session_id: args[:session_id]})
-    #order_changeset = OrderSession.changeset(order_session, %{status: args[:screen]})
-    #update = Repo.update(order_changeset)
+    order_changeset = OrderSession.changeset(order_session, %{screen: args[:screen]})
+    update = Repo.update(order_changeset)
+
+    IO.inspect(update)
 
     #get order
     #order_session_changeset = OrderSession.changeset(%{order_id: "1", order_id: "", time: "", quantity: "", quantity_multiplier: ""})

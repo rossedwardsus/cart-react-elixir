@@ -489,12 +489,25 @@ class SidebarCart extends React.Component<any, any> {
 
                       /*if(order_type == "yours" || order_type == "pool"){
 
+                      let item_quantity_text = null;
+
+                      if(item.quantity % 12 == 0){
+
+                          item_quantity_text = (item.quantity/12) + " dz.";
+
+                      }else{
+
+                          item_quantity_text = item.quantity;
+
+                      }
+                                              
+
                           return(
                                         <form className="form-horizontal" style={{paddingLeft: 50, border: 1, position: "static"}}>
                                           <div className="form-group" style={{border: 1}}>
                                             <div className="col-md-5 col-xs-5">{item_name}</div>
                                             <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
-                                            <div className="col-xs-1">{item.quantity}</div>
+                                            <div className="col-xs-1">{item_quantity_text}</div>
                                             <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
                                             <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                           </div>
@@ -503,18 +516,26 @@ class SidebarCart extends React.Component<any, any> {
                       }else{*/
                           
                           //if(item.size == "mini"){
+
+
+
+
                           
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                            {item.size == "mini" ? <div className="col-md-5 col-xs-5">{item_name} mini</div> : <div className="col-md-5 col-xs-5">{item_name}</div>}
-                                            <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
-                                            <div className="col-xs-1">{item.quantity}</div>
-                                            <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
-                                            <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
+                                              {item.size == "mini" ? <div className="col-md-5 col-xs-5">{item_name} mini</div> : <div className="col-md-5 col-xs-5">{item_name}</div>}
+                                              <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
+                                              <div className="col-xs-1">{item.quantity}</div>
+                                              <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
+                                              <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                           </div>
                                         </form>
                               )
+
+
+
+
 
                           //}else{
 
@@ -584,7 +605,7 @@ class SidebarCart extends React.Component<any, any> {
 
           //{this.props.path == "/order/menu" && 
 
-          checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
+          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
 
       }
 
@@ -592,7 +613,7 @@ class SidebarCart extends React.Component<any, any> {
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 1){
 
-          checkoutButton = <Link to="/order/checkout" className="btn btn-default" style={{borderRadius: 0}}>Checkout</Link>;
+          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
 
       }
 

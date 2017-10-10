@@ -376,7 +376,158 @@ export class PublicFaq extends React.Component<any, any> {
                           <br/>
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
-                            Faq
+                            <br/>
+                            <br/>
+                            <b>Why Sconely?</b>
+                            <br/>
+                            <br/>
+                            We love bringing people together around artisanal sweet and savory scones! See our story for more details about why we do what we do.
+                            <br/>
+                            <br/>
+                            <b>What is Sconely?</b>
+                            <br/>
+                            <br/>
+                            Sconely is a personalized website and delivery service specializing in handmade sweet and savory scones. Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
+                            <br/>
+                            <br/>
+                            <b>What’s on Sconely’s menu?</b>
+                            <br/>
+                            <br/>
+                            Sconely’s menu includes a variety of sweet and savory scones, with vegan and gluten-free options. Most of our scones are available all year, with additional seasonal scones being added frequently. Check out our menu often for new scone flavors!
+                            <br/>
+                            <br/>
+                            <b>What shape and size are your scones?</b>
+                            <br/>
+                            <br/>
+                            Our scones are triangular in shape and come in regular (approximately 5 inches long) and mini size (approximately 3 inches long).
+                            <br/>
+                            <br/>
+                            <b>What makes your scones different?</b>
+                            <br/>
+                            <br/>
+                            Sconely updates traditional scones by creating unique sweet and savory recipes that maximize flavor and are influenced by international cuisine. Sconely addresses special diets, such as vegan and gluten-free and we use super foods, such as kale, purple onion and turmeric.  Our scones are made with locally sourced organic ingredients whenever possible and all of our scones are free of refined sugar, soy and preservatives. We put a lot of love and care into creating unique scones!
+                            <br/>
+                            <br/>
+                            Our scones are made with locally sourced organic ingredients whenever possible and all of our scones are free of refined sugar, soy and preservatives. We put alot of love and care into creating unique scones!
+                            <br/>
+                            <br/>
+                            <b>When can Sconely be eaten?</b>
+                            <br/>
+                            <br/>
+                            Sconely is great 24/7! Think Suzy Sunshine or Bea for breakfast, Savvy Go Go or Ishkabibble for lunch, Ruby Q or Julie Freedom for an afternoon snack, Zilla as an appetizer and Snorker or DWK for dessert!
+                            <br/>
+                            <br/>
+                            <b>How can I order?</b>
+                            <br/>
+                            <br/>
+                            Ordering is easy with the following services. Just click on the links below or on our homepage to view the menu, select your scones, then check out. Sconely sends a confirmation email after an order is placed.
+                            <br/>
+                            <br/>
+                            Sconely Yours: 2-10 scones, delivered to you.
+                            <br/>
+                            <br/>
+                            Sconely Social: 1 dozen - 20 dozen regular sized scones and / or 2 dozen – 40 dozen mini scones, delivered to your event.
+                            <br/>
+                            <br/>
+                            Sconely Pool: 1-10 scones per person for a group of 5 or more people, delivered to one location. One host initiates order and sends link to others in their group to order and pay individually. (check back for this option)
+                            <br/>
+                            <br/>
+                            Sconely Signature: 1 dozen – 10 dozen regular sized scones, ordered and paid for by an event host, providing the option for guests to pre-select their preferred scone before an event. The scones are then delivered in individual personalized packages. (check back for this option)
+                            <br/>
+                            <br/>
+                            <b>Can I pre-order?</b>
+                            <br/>
+                            <br/>
+                            All Sconely services require orders to be placed two days in advance. However, we encourage you to place orders up to 2 months in advance for events and large orders.
+                            <br/>
+                            <br/>
+                            <b>Where and when does Sconely deliver?</b>  
+                            <br/>
+                            <br/>
+                            Currently we deliver to Downtown Los Angeles, Santa Monica and Venice, CA, between 9am and noon, Wednesday through Saturday. Contact us at orders@sconely.com to inquire about delivery outside these areas and times for Sconely Social orders only. Free pick up at our DTLA location is also possible.
+                            <br/>
+                            <br/>
+                            <b>Is there a charge for delivery?</b>
+                            <br/>
+                            <br/>
+                            We offer free delivery in Downtown Los Angeles, Santa Monica and Venice, CA between 9am and noon, Wednesday through Saturday. For deliveries to other areas of LA there is a $15 charge, if we can accommodate your request.
+                            <br/>
+                            <br/>
+                            <b>Can you deliver at specific times?</b>
+                            <br/>
+                            <br/>
+                            Since our scones stay fresh throughout the day, we suggest deliveries between 9am and noon. If you need a delivery at a specific time, please contact us at orders@sconely.com with your request. We try to accommodate special delivery times.
+                            <br/>
+                            <br/>
+                            <b>Who delivers the scones?</b>
+                            <br/>
+                            <br/>
+                            Our personal Sconely courier team delivers the scones by car and sometimes
+                            scooter.
+                            <br/>
+                            <br/>
+                            <b>Who makes the scones?</b>
+                            <br/>
+                            <br/>
+                            The talented Sconely culinary team prepares and bakes our homemade scones.
+                            <br/>
+                            <br/>
+                            <b>Where are the scones baked?</b>
+                            <br/>
+                            <br/>
+                            Sconely bakes at Crafted Kitchen in the Arts District in Downtown Los Angeles.
+                            <br/>
+                            <br/>
+                            <b>How long do your scones stay fresh?</b>
+                            <br/>
+                            <br/>
+                            Our scones are baked to order and best eaten within 24 hours of delivery. If your scones are delivered at 10am they will still be fresh for an evening event. If you have extra scones from an order, you can freeze them and heat them up when ready.
+                            <br/>
+                            <br/>
+                            <b>How can I keep my scones as fresh as possible?</b>
+                            <br/>
+                            <br/>
+                            We pack our scones for maximum freshness. Scones can be stored in the box or bag they were delivered in and do not need to be stored in the refrigerator.
+                            <br/>
+                            <br/>
+                            <b>What is your return policy?</b>
+                            <br/>
+                            <br/>
+                            Sconely strives for excellence with everything we do. If for any reason you are not satisfied with our service, please contact us at orders@sconely.com. Refunds will be issued on a case-by-case basis.
+                            <br/>
+                            <br/>
+                            <b>What is your cancellation policy?</b>
+                            <br/>
+                            <br/>
+                            If you need to cancel an order for any reason, please contact as soon as possible at orders@sconely.com. We can only accommodate cancellations that are placed two days prior to the delivery date. Cancelled orders will be issued a full
+                            refund within 72 hours.
+                            <br/>
+                            <br/>
+                            <b>Can I reschedule a delivery or change a delivery address?</b>
+                            <br/>
+                            <br/>
+                            Yes, we are happy to help you reschedule an order or change a delivery address. Contact us at orders@sconely.com or reply to your Sconely confirmation email with your request at least two days before the original delivery date.
+                            <br/>
+                            <br/>
+                            <b>Can I send a gift?</b>
+                            <br/>
+                            <br/>
+                            Freshly baked gourmet scones make a great gift! Yes, you can send a gift by marking the gift option at check out. Enter the delivery details and a gift note and
+                            we take care of the rest!
+                            <br/>
+                            <br/>
+                            <b>Does Sconely ship outside of Los Angeles?</b>
+                            <br/>
+                            <br/>
+                            Currently, we hand deliver our packages within LA only.
+                            <br/>
+                            <br/>
+                            <b>When is customer service available?</b>
+                            <br/>
+                            <br/>
+                            Contact us by email at orders@sconely.com anytime or contact us by phone at (213) 952-8490, Wednesday – Saturday, 9AM – 5PM.
+                            <br/>
+                            <br/>
                         </div>
                         <div className="col-md-3">
                         </div>

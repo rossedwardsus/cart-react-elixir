@@ -43,6 +43,12 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "yours" -> IO.puts("yours")
                     conn
                     |> halt
+        "orders" -> IO.puts("orders")
+                    conn
+                    |> halt
+        "public" -> IO.puts("public")
+                    conn
+                    |> halt
         "social" -> IO.puts("social")
         _ -> IO.puts("anything else")
               IO.inspect(Enum.at(conn.path_info, 0))
