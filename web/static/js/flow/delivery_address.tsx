@@ -473,14 +473,27 @@ class DeliveryAddress extends React.Component<any, any> {
 
   }
 
-  setGift = (e: any) => {
+  setGiftOrder = (e: any) => {
 
-      if(this.state.gift_selector_checked == ""){
+      if(this.state.gift_order_checked == ""){
       
+          this.setState({contact_first_name: ""});
+          this.setState({contact_last_name: ""});
+          this.setState({contact_email: ""});
+          this.setState({contact_mobile: ""});
+          
+
           this.setState({gift_order_checked: "checked"});
           this.props.setGiftOrder(true);
       
       }else{
+
+          this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+          this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+          this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+          this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
+          
+          
 
           this.setState({gift_order_checked: ""});
           this.props.setGiftOrder(false);
@@ -517,7 +530,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
                           <div className="checkbox">
-                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGift(e)}/>Gift
+                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>Gift
                           </div>
                       </div>
                     </div>
@@ -534,7 +547,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
                         <div className={this.state.first_name_classname}>
-                          <input type="text" value={this.props.User.deliveryContactsAddresses.contact_first_name}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.state.contact_first_name}  onChange={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                       <div className="hidden-lg col-xs-1">

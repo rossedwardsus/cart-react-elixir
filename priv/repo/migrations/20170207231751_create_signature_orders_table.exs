@@ -4,7 +4,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureOrdersTable do
   def change do
 
   	 create_if_not_exists table(:signature_orders) do
-      add :parent_order_id, :bigint
+      #id
+      add :parent_order_id, :uuid
       add :event_name, :string
   	  add :invited_guest_count, :smallint
   	  add :invited_guest_message, :string, size: 255

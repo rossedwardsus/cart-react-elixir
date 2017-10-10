@@ -489,17 +489,7 @@ class SidebarCart extends React.Component<any, any> {
 
                       /*if(order_type == "yours" || order_type == "pool"){
 
-                      let item_quantity_text = null;
-
-                      if(item.quantity % 12 == 0){
-
-                          item_quantity_text = (item.quantity/12) + " dz.";
-
-                      }else{
-
-                          item_quantity_text = item.quantity;
-
-                      }
+                      
                                               
 
                           return(
@@ -517,16 +507,26 @@ class SidebarCart extends React.Component<any, any> {
                           
                           //if(item.size == "mini"){
 
+                              let item_quantity_text = null;
 
+                              if(item.quantity % 12 == 0){
+
+                                  item_quantity_text = (item.quantity/12) + " dz.";
+
+                              }else{
+
+                                  item_quantity_text = item.quantity;
+
+                              }
 
 
                           
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
                                               <div className="form-group" style={{border: 1}}>
-                                              {item.size == "mini" ? <div className="col-md-5 col-xs-5">{item_name} mini</div> : <div className="col-md-5 col-xs-5">{item_name}</div>}
+                                              {item.size == "mini" ? <div className="col-md-4 col-xs-5">{item_name} mini</div> : <div className="col-md-5 col-xs-5">{item_name}</div>}
                                               <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(index)}>+</a></div>
-                                              <div className="col-xs-1">{item.quantity}</div>
+                                              <div className="col-xs-3">{item_quantity_text}</div>
                                               <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(index)}>-</a></div>
                                               <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(index)}>X</a></div>
                                           </div>

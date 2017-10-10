@@ -98,7 +98,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       IO.inspect(user_pool)
 
-      pool_order = Repo.get_by(PoolOrder, %{user_id: 0, pool_id: user_pool.pool_id})
+      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, pool_id: user_pool.pool_id})
 
       if pool_order != nil do
       
@@ -762,7 +762,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                 {:ok, response} -> IO.inspect(response)
 
-                    user_id = response.id
+                    user_id = response.user_id
 
             
                     #add to the session table
@@ -780,7 +780,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             else
 
-                user_id = user.id
+                user_id = user.user_id
             end
 
                     #user id is response.id
@@ -915,7 +915,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         case Repo.insert(order_changeset) do
                             {:ok, response} -> IO.inspect(response)
-                                    order_id = response.id
+                                    order_id = response.order_id
                                     #order_datetime = response.order_datetime
                         end
 
@@ -976,7 +976,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         case Repo.insert(order_changeset) do
                             {:ok, response} -> IO.inspect(response)
-                                    order_id = response.id
+                                    order_id = response.order_id
                                     #order_datetime = order_datetime
 
                                     #IO.inspect(order_datetime)

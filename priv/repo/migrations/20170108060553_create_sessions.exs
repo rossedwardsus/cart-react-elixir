@@ -9,11 +9,11 @@ defmodule SconeHomeElixir.Repo.Migrations.Sessions do
   def change do
     create_if_not_exists table(:sessions, primary_key: false) do
       add :session_id, :uuid, primary_key: true
-	    #order_type
+	    add :order_type, :string, size: 10
       #order_id
-      #add :order_started_datetime, :string, size: 40
-      #status
-      #add :order_ended_datetime, :string, size: 40
+      add :order_started_datetime, :string, size: 40
+      add :screen, :string, size: 10
+      add :order_ended_datetime, :string, size: 40
 
       #timestamps
 

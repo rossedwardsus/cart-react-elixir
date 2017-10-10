@@ -5,7 +5,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateYoursSocialOrdersTable do
 
   	    create_if_not_exists table(:yours_social_orders, primary_key: false) do
   	      add :id, :uuid, primary_key: true
-	      add :user_id, :bigint
+	      add :user_id, :uuid
 	      add :parent_order_id, :uuid
 	      add :admin_receipt_order_id, :bigint
 	  	  add :user_delivery_contact_address_id, :smallint

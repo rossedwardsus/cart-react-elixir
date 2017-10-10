@@ -3,8 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateRegistrationTable do
 
   def up do
     create_if_not_exists table(:registration, primary_key: false) do
-      #add :user_id, :bigint, null: false
-      add :id, :uuid, primary_key: true
+      add :user_id, :uuid, primary_key: true
   	  add :email, :string, null: false
   	  #add :password, :string
       add :password_hash, :string

@@ -75,34 +75,34 @@ export function updateOrderSession(screen: any) {
   return function (dispatch: any, getState: any) { 
     axios.post('/api/graphql',
                      {query: 'mutation {update_order_session (session_id: "' + getState().User.orderSession.sessionId + '", screen: "' + screen + '") {status}}'}, {headers: {'authorization': "bearer"}}
-            )
-            .then((response: any) => {
+    )
+    .then((response: any) => {
 
-                  dispatch(push("/order/" + screen));
+          dispatch(push("/order/" + screen));
 
-      
-                  /*dispatch({
-                              type: CREATE_ORDER, 
-                              order_type: order_type, 
-                              //pool_name: "this.props.params", 
-                              pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
-                              pool_name: response.data.data.getPoolOrderDetails.poolName, 
-                              pool_address: 
-                              response.data.data.getPoolOrderDetails.poolAddress,
-                              pool_location: response.data.data.getPoolOrderDetails.poolLocation,
-                              pool_delivery_date_formatted: pool_delivery_date_formatted,
-                              pool_order_by_date_formatted: pool_order_by_date_formatted,
-                  
-                  })*/
-           
-            })
-            .catch((error: any) => {
 
-                  console.log("axios error handler here" + error);
+          /*dispatch({
+                      type: CREATE_ORDER, 
+                      order_type: order_type, 
+                      //pool_name: "this.props.params", 
+                      pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
+                      pool_name: response.data.data.getPoolOrderDetails.poolName, 
+                      pool_address: 
+                      response.data.data.getPoolOrderDetails.poolAddress,
+                      pool_location: response.data.data.getPoolOrderDetails.poolLocation,
+                      pool_delivery_date_formatted: pool_delivery_date_formatted,
+                      pool_order_by_date_formatted: pool_order_by_date_formatted,
+          
+          })*/
+   
+    })
+    .catch((error: any) => {
 
-                  //dispatch({type: SET_NETWORK_ERROR, networkError: true});
+          console.log("axios error handler here" + error);
 
-            })
+          //dispatch({type: SET_NETWORK_ERROR, networkError: true});
+
+    })
     //dispatch({ type: SET_SESSION, user_id: "guest"});
     
   }

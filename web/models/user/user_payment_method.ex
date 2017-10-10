@@ -4,13 +4,13 @@ defmodule Sconely.UserPaymentMethod do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		@primary_key {:id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id payment_method_id brand)
+		@optional_fields ~W(user_id payment_method_id brand stripe_payment_token)
 		@required_fields ~W()
 
 		schema "user_payment_methods" do
-			field :user_id, :integer
+			field :user_id, Ecto.UUID
 			field :payment_method_id, :integer
 			field :brand, :string
 			field :last_four_digits, :string

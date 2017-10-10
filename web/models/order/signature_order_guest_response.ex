@@ -6,12 +6,13 @@ defmodule Sconely.SignatureOrderGuestResponse do
 
 		#Ecto.DateTime.from_erl(:erlang.localtime)	
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		@primary_key {:id, :binary_id, autogenerate: true}
+
 		@optional_fields ~W(parent_order_id chosen_item_id first_name last_name email)
 		@required_fields ~W()
 
 		schema "signature_order_guest_responses" do
-			field :parent_order_id, :string
+			field :parent_order_id, Ecto.UUID
 			field :chosen_item_id, :integer
 			field :first_name, :string
 			field :last_name, :string

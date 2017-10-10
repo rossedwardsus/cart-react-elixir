@@ -381,7 +381,9 @@ export class PublicFaq extends React.Component<any, any> {
                             <b>Why Sconely?</b>
                             <br/>
                             <br/>
+                            <div style={{fontFamily: 'Helvetica'}}>
                             We love bringing people together around artisanal sweet and savory scones! See our story for more details about why we do what we do.
+                            </div>
                             <br/>
                             <br/>
                             <b>What is Sconely?</b>

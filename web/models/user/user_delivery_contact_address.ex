@@ -4,14 +4,14 @@ defmodule Sconely.UserDeliveryContactAddress do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		@primary_key {:id, :binary_id, autogenerate: true}
 
 		@optional_fields ~W(user_id delivery_contact_address_name first_name last_name email)
 		@required_fields ~W()
 
 
 		schema "user_delivery_contacts_addresses" do
-			field :user_id, :string
+			field :user_id, Ecto.UUID
 			field :contact_address_id, :integer
 			#field :delivery_contact_address_name, :string
 			field :first_name, :string

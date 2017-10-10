@@ -946,7 +946,6 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            only show on mobile
                             <br/>
                             <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
@@ -957,7 +956,24 @@ class Preview extends React.Component<any, any> {
                             <Link to="/order/cart">Cart</Link>   
                             <br/>
                             <br/>
-                            <Link to="/order/payment" className="btn btn-default">Payment</Link>   
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-9">
+                                    <div className="col-md-3">
+                                      <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("preview")}>Preview</button>  
+                                    </div>
+                                    <div className="col-md-3">
+                                      <button type="button" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
+                                    </div>
+                                    <div className="col-md-3">
+                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
+                                    </div>
+                                    <div className="col-md-3">
+                                      <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
+                                    </div>
+                                  </div>
+                                </div>
+                            </form>
                             <br/>
                         </div>
                 </div>

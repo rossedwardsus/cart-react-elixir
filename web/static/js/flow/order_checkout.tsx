@@ -452,7 +452,7 @@ class DateTime extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                                 <br/>
-                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={this.props.userMobileEmailMobileValidated()}/>
+                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={this.props.userNameEmailMobileValidated()}/>
                                 <br/>
                                 <br/>
                                 <br/>
@@ -531,10 +531,10 @@ class DateTime extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-9">
                                     <div className="col-md-3">
-                                      <button className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Preview</button>  
+                                      <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("preview")}>Preview</button>  
                                     </div>
                                     <div className="col-md-3">
-                                      <button className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
+                                      <button type="button" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
                                     </div>
                                     <div className="col-md-3">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  

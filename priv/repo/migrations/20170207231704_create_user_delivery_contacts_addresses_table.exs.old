@@ -3,8 +3,9 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
 
   def change do
   	create_if_not_exists table(:user_delivery_contacts_addresses) do
-  		add :user_id, :bigint
-  		add :user_delivery_contact_address_id, :integer
+  		#id
+  		add :user_id, :uuid
+  		add :user_delivery_contact_address_id, :smallint
   		add :company_name, :string, size: 40
   		add :first_name, :string, size: 40
   		add :last_name, :string, size: 40

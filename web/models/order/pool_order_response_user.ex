@@ -4,14 +4,15 @@ defmodule Sconely.PoolOrderResponseUser do
 
 	use SconeHomeElixir.Web, :model
 
-	#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+	@primary_key {:id, :binary_id, autogenerate: true}
+
 	@optional_fields ~W(user_id order_id admin_receipt_order_id stripe_charge_token)
 	@required_fields ~W()
 
 	schema "pool_order_responses_user" do
 
-		field :order_id, :integer
-		field :user_id, :integer #Ecto.UUID or "guest" gotten from pool order response user
+		field :order_id, Ecto.UUID
+		field :user_id, Ecto.UUID
 		field :admin_receipt_order_id, :integer
 		#field :first_name, :string
 		#field :last_name, :string

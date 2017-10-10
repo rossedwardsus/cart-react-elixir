@@ -41,14 +41,11 @@ defmodule Sconely.Plugs.RedirectsPlug do
                   #|> Phoenix.Controller.redirect(to: url)
                   |> halt
         "yours" -> IO.puts("yours")
-                    conn
-                    |> halt
-        "orders" -> IO.puts("orders")
-                    conn
-                    |> halt
+                    conn |> halt
+        "order" -> IO.puts("orders")
+                    conn |> halt
         "public" -> IO.puts("public")
-                    conn
-                    |> halt
+                    conn |> halt
         "social" -> IO.puts("social")
         _ -> IO.puts("anything else")
               IO.inspect(Enum.at(conn.path_info, 0))

@@ -3,7 +3,8 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserPaymentMethodsTable do
 
   def change do
   	  create_if_not_exists table(:user_payment_methods) do
-	      add :user_id, :bigint #uuid or "guest"
+	      #id
+	      add :user_id, :uuid
 	      add :payment_method_id, :smallint
 	      add :last_four_digits, :string, size: 5
 	      add :stripe_payment_token, :string, size: 30

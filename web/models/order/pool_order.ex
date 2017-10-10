@@ -6,14 +6,14 @@ defmodule Sconely.PoolOrder do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		@primary_key {:id, :binary_id, autogenerate: true}
 
 		@optional_fields ~W(user_id parent_order_id admin_receipt_order_id field user_delivery_contact_address_id order_datetime pool_name delivery_date delivery_time)
 		@required_fields ~W()
 
 		schema "pool_orders" do
-			field :user_id, :integer
-			field :parent_order_id, :integer
+			field :user_id, Ecto.UUID
+			field :parent_order_id, Ecto.UUID
 			field :pool_id, :integer
 			field :admin_receipt_order_id, :integer
 			field :pool_url_name, :string
@@ -22,7 +22,7 @@ defmodule Sconely.PoolOrder do
 			field :delivery_time_range, :string, size: 20
 			field :user_delivery_contact_address_id, :integer
 			field :pickup_location, :string, size: 50
-			field :order_note, :string, size: 255
+			#field :order_note, :string, size: 255
 		
 			#timestamps()
 		end

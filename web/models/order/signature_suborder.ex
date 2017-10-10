@@ -4,14 +4,15 @@ defmodule Sconely.SignatureSuborder do
 
 	use SconeHomeElixir.Web, :model
 
-	#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+	@primary_key {:id, :binary_id, autogenerate: true}
+
 	@optional_fields ~W()
 	@required_fields ~W(user_id order_type delivery_datetime)
 
 	schema "signature_suborders" do
 
-		field :parent_order_id, :string #primary key #uuid
-		field :suborder_id, :string #uuid
+		field :parent_order_id, Ecto.UUID #primary key #uuid
+		field :suborder_id, Ecto.UUID #uuid
 		field :order_type, :string #invited_guests or additional items
 		field :total_amount_due, :string
 		field :paid_token, :string 
