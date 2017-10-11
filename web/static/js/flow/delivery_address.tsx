@@ -53,7 +53,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
     this.state = {
 
-        contact_first_name: "",
+        contact_first_name: "ross",
         contact_last_name: "",
         contact_email: "",
         contact_email_again: "",
@@ -100,6 +100,30 @@ class DeliveryAddress extends React.Component<any, any> {
     //this.setState({contact_mobile: this.props.deliveryAddress.street1})
     //this.setState({street1: this.props.deliveryAddress.street1})
     //this.setState({street2: this.props.deliveryAddress.street2})
+
+  }
+
+  componentWillReceiveProps = () => {
+
+    if(this.props.User.orders[0].giftOrder == false){
+      
+      //check if props.giftOrder: true or false
+
+      this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+      this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+      this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+      this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
+      //this.setState({street1: this.props.deliveryAddress.street1})
+      //this.setState({street2: this.props.deliveryAddress.street2})
+
+    }else{
+
+      this.setState({contact_first_name: ""});
+      this.setState({contact_last_name: ""});
+      this.setState({contact_email: ""});
+      this.setState({contact_mobile: ""});
+
+    }
 
   }
 
@@ -476,25 +500,36 @@ class DeliveryAddress extends React.Component<any, any> {
   setGiftOrder = (e: any) => {
 
       if(this.state.gift_order_checked == ""){
+
+          console.log("hello");
+
+          this.setState({gift_order_checked: "checked"});
+          this.props.setGiftOrder(true);
       
           this.setState({contact_first_name: ""});
           this.setState({contact_last_name: ""});
           this.setState({contact_email: ""});
           this.setState({contact_mobile: ""});
-          
 
-          this.setState({gift_order_checked: "checked"});
-          this.props.setGiftOrder(true);
+          /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+          this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+          this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+          this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
+          
+          
       
       }else{
 
-          this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+          /*this.setState({contact_first_name: ""});
+          this.setState({contact_last_name: ""});
+          this.setState({contact_email: ""});
+          this.setState({contact_mobile: ""});*/
+
+          /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
           this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
           this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
-          this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
+          this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
           
-          
-
           this.setState({gift_order_checked: ""});
           this.props.setGiftOrder(false);
 
@@ -530,7 +565,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
                           <div className="checkbox">
-                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>Gift
+                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
                           </div>
                       </div>
                     </div>
@@ -555,7 +590,7 @@ class DeliveryAddress extends React.Component<any, any> {
                       </div>
                       <div className="col-sm-3 col-md-3">
                         <div className={this.state.last_name_classname}>
-                          <input type="text" value={this.props.User.deliveryContactsAddresses.contact_last_name} maxLength={20} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                          <input type="text" value={this.state.contact_last_name} maxLength={20} onChange={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                         </div>
                       </div>
                     </div>

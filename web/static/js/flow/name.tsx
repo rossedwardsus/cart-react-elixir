@@ -174,6 +174,7 @@ class Name extends React.Component<any, any> {
           
             this.setState({last_name_border_color: "grey"});
             this.props.setUserLastName(e);
+            this.props.setUserDeliveryContactAddressLastName(e);
 
             //if(this.state.first_name.length > 0){
              
@@ -368,6 +369,7 @@ class Name extends React.Component<any, any> {
       }
 
       this.props.setUserMobile(e);
+      this.props.setUserDeliveryContactAddressMobile(e);
 
   }
 
@@ -419,7 +421,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-4">
                       <div className={this.state.contact_email_classname}>
-                        <input type="text" value={this.state.user_contact_email} onChange={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                        <input type="text" value={this.state.user_contact_email} onChange={(e: any) => this.setUserEmail(e)} onInput={(e: any) => this.setUserEmail(e)} className="form-control" id="exampleInputName2" placeholder="Email"   style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
                       </div>
                   </div>
                   <div className="hidden-lg col-xs-1">

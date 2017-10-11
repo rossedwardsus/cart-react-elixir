@@ -490,7 +490,7 @@ class DateTime extends React.Component<any, any> {
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
-                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)}/>
+                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)}/>
                             <br/>
                             <br/>
                             <DeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 

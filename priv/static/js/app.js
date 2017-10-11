@@ -27385,7 +27385,7 @@ webpackJsonp([0],[
 	        //state.User.orders
 	        //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
 	        //if order type == pool then address isnt needed
-	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", order_note: "' + getState().User.orders[0].order_note + '", gift_order: "' + getState().User.orders[0].gift_order + '", gift_note: "' + getState().User.orders[0].gift_note + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", order_note: "' + getState().User.orders[0].orderNote + '", gift_order: "' + getState().User.orders[0].giftOrder + '", gift_note: "' + getState().User.orders[0].giftNote + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", user_order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
 	            if (response.data.data.processYoursSocialPoolOrder.status == "suuccess") {
@@ -42126,7 +42126,7 @@ webpackJsonp([0],[
 	                     });*/
 	            //console.log("yours items count" + item_count);
 	            //if(item_count < 12){
-	            if (_this.props.User.orders[0].order_type == "yours" || _this.props.User.orders[0].order_type == "social") {
+	            if (_this.props.User.orders[0].order_type == "yours" || _this.props.User.orders[0].order_type == "pool") {
 	                _this.props.addCartItem(null, _this.state.selected_item_id, "regular", _this.state.selected_item_quantity);
 	            } else {
 	                _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_size, _this.state.selected_item_quantity);
@@ -42380,7 +42380,7 @@ webpackJsonp([0],[
 	                    return _this2.props.removeCartItem(item_index);
 	                }, updateOrderSession: function updateOrderSession(screen) {
 	                    return _this2.props.updateOrderSession(screen);
-	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("div", { className: "hidden-lg", style: { paddingLeft: 45 } }, this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-8" }, React.createElement("div", { className: "hidden-lg", style: { paddingLeft: 35 } }, this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                    return _this2.props.increaseCartItemQuantity(item_index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
 	                    return _this2.props.decreaseCartItemQuantity(item_index);
@@ -42784,13 +42784,13 @@ webpackJsonp([0],[
 	                    //if(item.size == "mini"){
 	                    var item_quantity_text = null;
 	                    if (item.quantity % 12 == 0) {
-	                        item_quantity_text = item.quantity / 12 + " dz.";
+	                        item_quantity_text = item.quantity / 12 + "dz";
 	                    } else {
 	                        item_quantity_text = item.quantity;
 	                    }
-	                    return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, item.size == "mini" ? React.createElement("div", { className: "col-md-4 col-xs-5" }, item_name, " mini") : React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                    return React.createElement("form", { className: "form-horizontal", style: { border: 1, position: "static" } }, React.createElement("div", { className: "form-group", style: { border: 1 } }, item.size == "mini" ? React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name, " mini") : React.createElement("div", { className: "col-md-5 col-xs-5" }, item_name), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
 	                            return _this2.props.increaseCartItemQuantity(index);
-	                        } }, "+")), React.createElement("div", { className: "col-xs-3" }, item_quantity_text), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
+	                        } }, "+")), React.createElement("div", { className: "col-xs-2" }, item_quantity_text), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
 	                            return _this2.props.decreaseCartItemQuantity(index);
 	                        } }, "-")), React.createElement("div", { className: "col-xs-1" }, React.createElement("a", { onClick: function onClick() {
 	                            return _this2.props.removeCartItem(index);
@@ -44254,10 +44254,16 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserDeliveryContactAddressFirstName(e);
 	                    }, setUserLastName: function setUserLastName(e) {
 	                        return _this2.props.setUserLastName(e);
+	                    }, setUserDeliveryContactAddressLastName: function setUserDeliveryContactAddressLastName(e) {
+	                        return _this2.props.setUserDeliveryContactAddressLastName(e);
 	                    }, setUserEmail: function setUserEmail(e) {
 	                        return _this2.props.setUserEmail(e);
+	                    }, setUserDeliveryContactAddressEmail: function setUserDeliveryContactAddressEmail(e) {
+	                        return _this2.props.setUserDeliveryContactAddressEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
+	                    }, setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(e) {
+	                        return _this2.props.setUserDeliveryContactAddressMobile(e);
 	                    }, userNameEmailMobileValidated: function userNameEmailMobileValidated(e) {
 	                        return _this2.props.userNameEmailMobileValidated(e);
 	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { User: this.props.User, session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
@@ -44497,6 +44503,7 @@ webpackJsonp([0],[
 	                if (!symbol_res) {
 	                    _this.setState({ last_name_border_color: "grey" });
 	                    _this.props.setUserLastName(e);
+	                    _this.props.setUserDeliveryContactAddressLastName(e);
 	                    //if(this.state.first_name.length > 0){
 	                    _this.props.nameValidated(e);
 	                } else {
@@ -44609,6 +44616,7 @@ webpackJsonp([0],[
 	                _this.setState({ mobile_border_color: "red" });
 	            }
 	            _this.props.setUserMobile(e);
+	            _this.props.setUserDeliveryContactAddressMobile(e);
 	        };
 	        _this.setCompanyName = function (e) {
 	            _this.setState({ company_name: e.target.value });
@@ -44669,6 +44677,8 @@ webpackJsonp([0],[
 	                }, onChange: function onChange(e) {
 	                    return _this2.setUserLastName(e);
 	                }, value: this.state.user_last_name, id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, React.createElement("b", null, "Contact"), React.createElement("br", null)))), React.createElement("form", { role: "form", className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_contact_email, onChange: function onChange(e) {
+	                    return _this2.setUserEmail(e);
+	                }, onInput: function onInput(e) {
 	                    return _this2.setUserEmail(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.user_contact_email_again, onChange: function onChange(e) {
 	                    return _this2.setUserEmailAgain(e);
@@ -44741,6 +44751,22 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (DeliveryAddress.__proto__ || Object.getPrototypeOf(DeliveryAddress)).call(this, props));
 	
+	        _this.componentWillReceiveProps = function () {
+	            if (_this.props.User.orders[0].giftOrder == false) {
+	                //check if props.giftOrder: true or false
+	                _this.setState({ contact_first_name: _this.props.User.deliveryContactsAddresses[0].contact_first_name });
+	                _this.setState({ contact_last_name: _this.props.User.deliveryContactsAddresses[0].contact_last_name });
+	                _this.setState({ contact_email: _this.props.User.deliveryContactsAddresses[0].contact_email });
+	                _this.setState({ contact_mobile: _this.props.User.deliveryContactsAddresses[0].contact_mobile });
+	                //this.setState({street1: this.props.deliveryAddress.street1})
+	                //this.setState({street2: this.props.deliveryAddress.street2})
+	            } else {
+	                _this.setState({ contact_first_name: "" });
+	                _this.setState({ contact_last_name: "" });
+	                _this.setState({ contact_email: "" });
+	                _this.setState({ contact_mobile: "" });
+	            }
+	        };
 	        _this.setDeliveryContactAddressFirstName = function (e) {
 	            //strip out -
 	            //check if only number
@@ -44949,17 +44975,26 @@ webpackJsonp([0],[
 	        };
 	        _this.setGiftOrder = function (e) {
 	            if (_this.state.gift_order_checked == "") {
+	                console.log("hello");
+	                _this.setState({ gift_order_checked: "checked" });
+	                _this.props.setGiftOrder(true);
 	                _this.setState({ contact_first_name: "" });
 	                _this.setState({ contact_last_name: "" });
 	                _this.setState({ contact_email: "" });
 	                _this.setState({ contact_mobile: "" });
-	                _this.setState({ gift_order_checked: "checked" });
-	                _this.props.setGiftOrder(true);
+	                /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+	                this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+	                this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+	                this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
 	            } else {
-	                _this.setState({ contact_first_name: _this.props.User.deliveryContactsAddresses[0].contact_first_name });
-	                _this.setState({ contact_last_name: _this.props.User.deliveryContactsAddresses[0].contact_last_name });
-	                _this.setState({ contact_email: _this.props.User.deliveryContactsAddresses[0].contact_email });
-	                _this.setState({ contact_mobile: _this.props.User.deliveryContactsAddresses[0].contact_mobile });
+	                /*this.setState({contact_first_name: ""});
+	                this.setState({contact_last_name: ""});
+	                this.setState({contact_email: ""});
+	                this.setState({contact_mobile: ""});*/
+	                /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+	                this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+	                this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+	                this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
 	                _this.setState({ gift_order_checked: "" });
 	                _this.props.setGiftOrder(false);
 	            }
@@ -44977,7 +45012,7 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            contact_first_name: "",
+	            contact_first_name: "ross",
 	            contact_last_name: "",
 	            contact_email: "",
 	            contact_email_again: "",
@@ -45027,7 +45062,7 @@ webpackJsonp([0],[
 	            var delivery_address = "";
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: "checkbox" }, React.createElement("input", { type: "checkbox", value: "", checked: this.state.gift_order_checked, onChange: function onChange(e) {
 	                    return _this2.setGiftOrder(e);
-	                } }), "Gift")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.contact_first_name, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.props.User.deliveryContactsAddresses.contact_last_name, maxLength: 20, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 12, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 40, onChange: function onChange(e) {
+	                } }), "This is a gift")))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Contact"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.first_name_classname }, React.createElement("input", { type: "text", value: this.state.contact_first_name, onChange: this.setDeliveryContactAddressFirstName, maxLength: 20, className: "form-control", id: "exampleInputName2", placeholder: "First Name", style: { borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.last_name_classname }, React.createElement("input", { type: "text", value: this.state.contact_last_name, maxLength: 20, onChange: this.setDeliveryContactAddressLastName, className: "form-control", id: "exampleInputName2", placeholder: "Last Name", style: { borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email, onChange: this.setDeliveryContactAddressEmail, className: "form-control", id: "exampleInputName2", placeholder: "Email", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_email_classname }, React.createElement("input", { type: "text", value: this.state.contact_email_again, onChange: this.setDeliveryContactAddressEmailAgain, className: "form-control", id: "exampleInputName2", placeholder: "Email Again", style: { borderRadius: 0, borderColor: this.state.email_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("div", { className: this.state.contact_mobile_classname }, React.createElement("input", { type: "text", value: this.state.contact_mobile, maxLength: 12, onChange: this.setDeliveryContactAddressMobile, className: "form-control", id: "exampleInputName2", placeholder: "Mobile", style: { borderRadius: 0, borderColor: this.state.mobile_border_color } }))))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("b", null, "Delivery Address"), React.createElement("br", null)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", value: this.state.company_name, maxLength: 40, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressCompanyName(e);
 	                }, className: "form-control", id: "exampleInputName2", placeholder: "Company Name", style: { borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3 col-md-3" }, React.createElement("input", { type: "text", maxLength: 40, className: "form-control", id: "exampleInputName2", placeholder: "Street 1", value: this.state.street1, onChange: function onChange(e) {
 	                    return _this2.setDeliveryContactAddressStreet1(e);
