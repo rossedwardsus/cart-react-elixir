@@ -399,13 +399,13 @@ class Name extends React.Component<any, any> {
               <form role="form" className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-4">
-                    <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} value={this.state.user_first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                    <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} onInput={(e: any) => this.setUserFirstName(e)} value={this.state.user_first_name} id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                   <div className="hidden-lg col-xs-1">
                     <br/>
                   </div>
                   <div className="col-md-4">
-                    <input className="form-control margin-bottom" type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)} value={this.state.user_last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                    <input className="form-control margin-bottom" type="text" maxLength={30} onFocus={() => this.onLastNameFocus()} onChange={(e: any) => this.setUserLastName(e)} onInput={(e: any) => this.setUserLastName(e)} value={this.state.user_last_name} id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                   </div>
                 </div>
               </form>
@@ -438,7 +438,7 @@ class Name extends React.Component<any, any> {
                 <div className="form-group">
                   <div className="col-md-3">
                       <div className={this.state.user_mobile_classname}>
-                        <input type="text" value={this.state.user_contact_mobile} maxLength={13} onChange={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                        <input type="text" value={this.state.user_contact_mobile} maxLength={13} onChange={(e: any) => this.setUserMobile(e)} onInput={(e: any) => this.setUserMobile(e)} onKeyDown={(e: any) => this.mobileKeyPress(e)} className="form-control" id="exampleInputName2" placeholder="Mobile"  style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                       </div>
                   </div>
                 </div>

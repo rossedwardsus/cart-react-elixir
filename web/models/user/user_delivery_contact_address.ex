@@ -6,18 +6,18 @@ defmodule Sconely.UserDeliveryContactAddress do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id delivery_contact_address_name first_name last_name email)
+		@optional_fields ~W(user_id delivery_contact_address_id first_name last_name email mobile)
 		@required_fields ~W()
 
 
 		schema "user_delivery_contacts_addresses" do
 			field :user_id, Ecto.UUID
-			field :contact_address_id, :integer
-			#field :delivery_contact_address_name, :string
+			field :delivery_contact_address_id, :integer
+			field :company_name, :string, size: 50
 			field :first_name, :string
 			field :last_name, :string
 			field :email, :string
-			#field :mobile, :string
+			field :mobile, :string
 			field :street1, :string
 			#field :street2, :string
 			#field :city, :string

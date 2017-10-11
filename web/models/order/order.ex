@@ -12,7 +12,7 @@ defmodule Sconely.Order do
 
 	@primary_key {:order_id, :binary_id, autogenerate: true}
 	
-	@optional_fields ~W(user_id order_type order_id admin_receipt_order_id order_datetime)
+	@optional_fields ~W(user_id order_type admin_receipt_order_id order_datetime)
 	@required_fields ~W()
 
 	schema "orders" do

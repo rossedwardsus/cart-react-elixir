@@ -386,8 +386,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     mini_total = 0
     regular_total = 0
     items_count = 0
-    order_type = "social"
-
+    
     total_cost = nil
     total_cost_formatted = nil
 
@@ -398,8 +397,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     cart_items = args[:cart_items]
     IO.inspect(args[:cart_items])
 
-    order_type = "pool"
-    #order_type = args[:order_type]
+    #order_type = "pool"
+    order_type = args[:order_type]
 
     case order_type do
 
@@ -756,7 +755,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             if user == nil do
 
-              registration_changeset = Registration.changeset(%Registration{}, %{email: args[:user_contact_email], password: "", order_datetime: Ecto.DateTime.utc})  
+              registration_changeset = Registration.changeset(%Registration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
 
               case Repo.insert(registration_changeset) do
 
@@ -770,7 +769,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #if order_type == "pool"
                     #Repo.insert(user_changeset)
 
-                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: "args[:user_name_last]", last_name: "args[:user_name_first]", email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", company_name: "", stripe_customer_id: ""})
+                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: args[:user_name_last], last_name: args[:user_name_first], email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", stripe_customer_id: ""})
           
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
@@ -790,9 +789,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #Repo.insert(user_contact_changeset)
                     #order_contact is the id of this   
 
-                    #order_type = args[:order_type]
-                    #order_type = "pool_response" 
-
+                    
                     if order_type == "pool" do
 
                         #insert into orders first and then use the order id from there a the order if for poolorderresponseuser
@@ -1067,7 +1064,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #delivery_contact_address_changeset
                         #check if delivery address exists for a user.  if not add it else update whatever is there.
 
-                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == ^user_id, select: count(dca.delivery_contact_address_id))
+                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == type(^user_id, Ecto.UUID), select: count(dca.delivery_contact_address_id))
 
                         IO.puts("dca_id")
                         IO.inspect(user_delivery_contact_address_count)
@@ -1083,7 +1080,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #end
 
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, delivery_contact_address_id: 1, payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
                         #delivery_contact_address_id, contact_id, payment_id
 
                         case Repo.insert(yours_social_order_changeset) do

@@ -20,7 +20,7 @@ let inititalState: CartState = {
 
 }*/
 
-export default function user(state:any = {user_first_name: "", user_last_name: "", user_contact_email: "", user_contact_mobile: "", saveForLater: false, currentOrder: "social", orderSession: {sessionId: "", datetimeCreated: "", paymentErrorCode: "", networkError: false, deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: {cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false, userNameEmailMobileValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: ""}], paymentMethods: [{name: "personal", name_on_card: "", card_number: "", card_brand: "", expiry_month: "", expiry_year: "", zipcode: "", stripe_token: ""}]}, action: any){
+export default function user(state:any = {user_first_name: "", user_last_name: "", user_contact_email: "", user_contact_mobile: "", saveForLater: false, currentOrder: "social", orderSession: {sessionId: "", datetimeCreated: "", paymentErrorCode: "", networkError: false, deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: {cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, paymentValidated: false, userNameEmailMobileValidated: false}, analytics_logging: {event: "user added item to cart"}}, orders: [], delivery_address_names: [], deliveryContactsAddresses: [{name: "1", contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: ""}], paymentMethods: [{name_on_card: "", card_number: "", card_brand: "", expiry_month: "", expiry_year: "", zipcode: "", security_code: "", stripe_token: ""}]}, action: any){
 
   let delivery_contacts_addresses_updated = null;
   let payment_methods_updated = null;
@@ -48,7 +48,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       //delivery addrress
 
       //return Object.assign({}, state, {...state, email: action.});
-      return {user_first_name: "", user_last_name: "", user_email: "", user_mobile: "", saveForLater: false, orders: [{order_id: 1, order_type: "social", delivery_date: "", event_name: "", status: "started", cartItems: []}], deliveryContactsAddresses: [{name: "1", contact_first_name: "fn", contact_last_name: "ln", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: ""}], paymentMethods: [{name_on_card: "", card_number: "", card_brand: "", expiry_month: "", expiry_year: ""}]};
+      return {user_first_name: "", user_last_name: "", user_email: "", user_mobile: "", saveForLater: false, orders: [], deliveryContactsAddresses: []};
 
      case SET_SESSION_ID:
       console.log("set SESSION id reducer");
@@ -118,7 +118,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       order_session_updated = state.orderSession;
       order_session_updated["paymentErrorCode"] = action.paymentErrorCode;
 
-      return Object.assign({}, state, {...state, orderdSession: order_session_updated});
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
 
     case SET_NETWORK_ERROR:
       console.log("set network reducer");
@@ -126,7 +126,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       order_session_updated = state.orderSession;
       order_session_updated["networkError"] = action.networkError;
 
-      return Object.assign({}, state, {...state, orderdSession: order_session_updated});
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
 
 
 
@@ -139,7 +139,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       if(action.order_type == "yours" || action.order_type == "social"){
 
-          orders_updated[0] = {deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: []};
+          orders_updated[0] = {deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: [], deliveryDatetimeDate: "", paymentSecurityCode: ""};
 
       }else{
 

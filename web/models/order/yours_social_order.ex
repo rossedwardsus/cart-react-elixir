@@ -6,7 +6,7 @@ defmodule Sconely.YoursSocialOrder do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id order_id delivery_contact_address_id payment_method_id stripe_charge_token delivery_date delivery_time_range)
+		@optional_fields ~W(user_id parent_order_id admin_receipt_order_id user_delivery_contact_address_id user_payment_method_id stripe_charge_token delivery_date delivery_time_range)
 		@required_fields ~W()
 
 		schema "yours_social_orders" do
@@ -14,13 +14,13 @@ defmodule Sconely.YoursSocialOrder do
 			field :user_id, Ecto.UUID
 			field :admin_receipt_order_id, :integer
 			field :user_delivery_contact_address_id, :integer #primary key #secure random
-			field :payment_method_id, :integer #Ecto.UUID
+			field :user_payment_method_id, :integer #Ecto.UUID
 			field :delivery_date, Ecto.Date
 			field :delivery_time_range, :string, size: 20
 			field :stripe_charge_token, :string, size: 30
 			field :order_note, :string, size: 255
-			#field :gift, :boolean
-			#field :gift_note, string, size: 255
+			field :gift, :boolean
+			field :gift_note, :string, size: 255
 		
 		end
 

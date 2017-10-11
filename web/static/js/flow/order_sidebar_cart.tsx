@@ -273,6 +273,8 @@ class SidebarCart extends React.Component<any, any> {
     let total_items = 0;
     let item_limit = "";
     let item_cost = 0;
+    let item_quantity_text = null;
+    let total_items_text = null;
 
     //alert(JSON.stringify(this.props.order.toJS()));
    
@@ -507,7 +509,7 @@ class SidebarCart extends React.Component<any, any> {
                           
                           //if(item.size == "mini"){
 
-                              let item_quantity_text = null;
+                              //item_quantity_text = null;
 
                               if(item.quantity % 12 == 0){
 
@@ -629,7 +631,15 @@ class SidebarCart extends React.Component<any, any> {
 
     }
 
+    if(total_items % 12 == 0){
 
+        total_items_text = (total_items/12) + "dz";
+
+    }else{
+
+        total_items_text = "" + total_items;
+
+    }
 
     return (<div> 
                   {item_limit}
@@ -645,7 +655,7 @@ class SidebarCart extends React.Component<any, any> {
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5 col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
                             <div className="col-md-1 col-xs-1"></div>
-                            <div className="col-md-1 col-xs-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items}</div>
+                            <div className="col-md-1 col-xs-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items_text}</div>
                           </div>
                         </form>
                         <br/>
