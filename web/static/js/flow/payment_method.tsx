@@ -237,6 +237,7 @@ class PaymentMethod extends React.Component<any, any> {
 
               }else{
 
+                  this.setState({expiry_month: e.target.value});
                   this.setState({expiry_month_border_color: "red"});
 
               }
@@ -265,7 +266,7 @@ class PaymentMethod extends React.Component<any, any> {
                   this.setState({expiry_year_border_color: "grey"});
 
                   //console.log("ok year");
-                  this.setState({cvc_border_color: "grey"})
+                  this.setState({expiry_year_border_color: "grey"})
                   this.setState({expiry_year: e.target.value});
 
                   
@@ -280,6 +281,7 @@ class PaymentMethod extends React.Component<any, any> {
 
               }else{
 
+                  this.setState({expiry_year: e.target.value});
                   this.setState({expiry_year_border_color: "red"});
 
                   //paymentinvalidated
@@ -288,6 +290,7 @@ class PaymentMethod extends React.Component<any, any> {
 
           }else{
 
+              this.setState({expiry_year: e.target.value});
               this.setState({expiry_year_border_color: "red"});
 
           }
@@ -322,6 +325,7 @@ class PaymentMethod extends React.Component<any, any> {
 
           }else{
 
+              this.setState({security_code: e.target.value});
               this.setState({cvc_border_color: "red"});
 
           }
