@@ -863,7 +863,7 @@ class Preview extends React.Component<any, any> {
                         <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Name: {this.props.User.first_name} {this.props.User.last_name}
+                                  Name: {this.props.User.user_first_name} {this.props.User.user_last_name}
                               </div>
                             </div>
                         </form>
@@ -968,6 +968,9 @@ class Preview extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-9">
+                                    <div className="col-md-3">
+                                      <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("checkout")}>Checkout</button>  
+                                    </div>
                                     <div className="col-md-3">
                                       <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("preview")}>Preview</button>  
                                     </div>
