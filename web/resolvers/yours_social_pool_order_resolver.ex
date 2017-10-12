@@ -144,9 +144,37 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
-  def total_order_cost() do
+  def total_order_cost(order_type, cart_items) do
 
-      #reduce with promo code and delivery
+    #reduce with promo code and delivery
+
+    total_cost = nil
+    
+    case order_type do
+
+      "yours" -> 
+
+        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+
+
+      "social" -> 
+
+        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
+          case size do
+            "regular" ->  IO.puts("regular")
+                      #quantity * 12 * 5.00
+                      count + (quantity * 1.00)
+            "mini" -> IO.puts("mini")
+                    #quantity * 24 * 2.25
+                    count + (quantity * 2.00)
+          end
+        end)
+
+      "pool" ->
+
+        total_cost = Enum.reduce(cart_items, 0, fn(%{quantity: quantity}, count) -> count + (quantity * 1.00) end)
+
+    end
 
   end
 
@@ -231,58 +259,61 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
+  #@spec format_order_datetime(any) : string
   defp format_order_datetime(order_datetime_converted) do
 
       order_datetime_formatted = nil
-      order_date_month = nil
-      order_date_day_of_week = nil
-      order_datetime_converted_minute_formatted = nil
+      order_datetime_month = nil
+      order_datetime_day_of_week = nil
+      order_datetime_minute_formatted = nil
 
       case  order_datetime_converted.month do
-        1 -> {order_date_month = "January"}
-        2 -> {order_date_month = "February"}
-        3 -> {order_date_month = "March"}
-        4 -> {order_date_month = "April"}
-        5 -> {order_date_month = "May"}
-        6 -> {order_date_month = "June"}
-        7 -> {order_date_month = "July"}
-        8 -> {order_date_month = "August"}
-        9 -> {order_date_month = "September"}
-        10 -> {order_date_month = "October"}
-        11 -> {order_date_month = "November"}
-        12 -> {order_date_month = "December"}
+        1 -> {order_datetime_month = "January"}
+        2 -> {order_datetime_month = "February"}
+        3 -> {order_datetime_month = "March"}
+        4 -> {order_datetime_month = "April"}
+        5 -> {order_datetime_month = "May"}
+        6 -> {order_datetime_month = "June"}
+        7 -> {order_datetime_month = "July"}
+        8 -> {order_datetime_month = "August"}
+        9 -> {order_datetime_month = "September"}
+        10 -> {order_datetime_month = "October"}
+        11 -> {order_datetime_month = "November"}
+        12 -> {order_datetime_month = "December"}
       end
 
       case Timex.weekday(order_datetime_converted) do
-        0 -> {order_date_day_of_week = "Sunday"}
-        1 -> {order_date_day_of_week = "Monday"}
-        2 -> {order_date_day_of_week = "Tuesday"}
-        3 -> {order_date_day_of_week = "Wednesday"}
-        4 -> {order_date_day_of_week = "Thursday"}
-        5 -> {order_date_day_of_week = "Friday"}
-        6 -> {order_date_day_of_week = "Saturday"}
+        0 -> {order_datetime_day_of_week = "Sunday"}
+        1 -> {order_datetime_day_of_week = "Monday"}
+        2 -> {order_datetime_day_of_week = "Tuesday"}
+        3 -> {order_datetime_day_of_week = "Wednesday"}
+        4 -> {order_datetime_day_of_week = "Thursday"}
+        5 -> {order_datetime_day_of_week = "Friday"}
+        6 -> {order_datetime_day_of_week = "Saturday"}
       end
 
       order_datetime_converted_minute_formatted = nil
 
       case order_datetime_converted.minute do
-        0 -> order_datetime_converted_minute_formatted = 00
-        1 -> order_datetime_converted_minute_formatted = 01
-        2 -> order_datetime_converted_minute_formatted = 02
-        3 -> order_datetime_converted_minute_formatted = 03
-        4 -> order_datetime_converted_minute_formatted = 04
-        5 -> order_datetime_converted_minute_formatted = 05
-        6 -> order_datetime_converted_minute_formatted = 06
-        7 -> order_datetime_converted_minute_formatted = 07
-        8 -> order_datetime_converted_minute_formatted = 08
-        9 -> order_datetime_converted_minute_formatted = 09
-        _ -> order_datetime_converted_minute_formatted = order_datetime_converted.minute
+        0 -> order_datetime_minute_formatted = 00
+        1 -> order_datetime_minute_formatted = 01
+        2 -> order_datetime_minute_formatted = 02
+        3 -> order_datetime_minute_formatted = 03
+        4 -> order_datetime_minute_formatted = 04
+        5 -> order_datetime_minute_formatted = 05
+        6 -> order_datetime_minute_formatted = 06
+        7 -> order_datetime_minute_formatted = 07
+        8 -> order_datetime_minute_formatted = 08
+        9 -> order_datetime_minute_formatted = 09
+        _ -> order_datetime_minute_formatted = order_datetime_converted.minute
       end
 
 
-      order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted_minute_formatted)
+      order_datetime_formatted = order_datetime_day_of_week <> " " <> order_datetime_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_minute_formatted)
 
+      IO.puts("")
       IO.puts("format order_datetime")
+      IO.puts("")
       IO.inspect(order_datetime_formatted)
       
 
@@ -290,6 +321,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   defp format_pool_order_delivery_datetime(pool_order_delivery_date) do
 
+      #pool_order_delivery_date
       delivery_date_month = nil
       delivery_date_day_of_week = nil
 
@@ -337,9 +369,80 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   end
 
 
-  def process_cart_with_names(cart) do
+  def process_cart_items_with_names(cart_items) do
 
       #return cart with names
+
+      menu_items = nil
+      cart_items_with_names = nil
+
+      query = from mi in MenuItem,
+                     select: %{"item_id": mi.id, "name": mi.name}
+      menu_items = Repo.all(query)
+
+
+       cart_items_with_name = Enum.map(cart_items, fn(cart_item) ->
+          #Map.put(cart_item, :name, "name")
+          #IO.inspect(Enum.at(menu_items, 0).name)
+          IO.inspect(cart_item[:size])
+
+          if cart_item[:size] == "regular" do
+
+            menu_item_index = cart_item[:menu_item_id]-1
+
+            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name
+
+            #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
+            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
+
+            Map.merge(cart_item, %{
+              :name => item_name,
+              :menu_image_name => Enum.at(menu_items, menu_item_index).name
+            })
+
+          else
+
+            #IO.inspect(cart_item[:menu_item_id]-1)
+
+            #use map to find the menu_item_id instead of by index
+            #also this code is mostly duplicate of above
+
+            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " mini"
+
+            menu_item_index = cart_item[:menu_item_id]-1
+
+            #Map.put(cart_item, :name, item_name)
+            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
+
+            Map.merge(cart_item, %{
+              :name => item_name,
+              :menu_image_name => Enum.at(menu_items, menu_item_index).name
+            })
+
+          end
+
+          #name = Enum.filter(menu_items, fn(menu_item) ->
+            #match?({:, _}, element)
+            #IO.inspect(cart_item.item_id)
+            #IO.inspect(menu_item.item_id)
+          #  if(menu_item.item_id == cart_item.item_id) do
+              #IO.puts("here")
+              #IO.inspect(menu_item.name |> String.downcase |> String.replace(" ", ""))
+              #IO.inspect(String.downcase(menu_item.name) |> String.replace(menu_item.name, " ", ""))
+          #    Enum.at(Map.put(cart_item, :name, menu_item.name), 0)
+             #menu_item
+
+          #  end
+          #end)
+          #IO.inspect(String.downcase(name) |> String.replace(name, " ", ""))
+          #IO.inspect(cart_item)
+       #   name_temp = Enum.at(name, 0)
+          #IO.inspect(title_temp[:title])
+       #   Map.put(cart_item, :title, title_temp[:title])
+        end)
+
+        IO.inspect(cart_items_with_name)
+
 
   end
 
@@ -1659,7 +1762,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, cart_items: cart_items_with_name, total_cost: total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name, total_cost: total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 

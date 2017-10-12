@@ -20,6 +20,7 @@ defmodule Sconely.User do
 			field :about_me, :string #?
 			#field :company_name, :string #put in address instead
 			field :stripe_customer_id, :string
+			#field image
 
 			#timestamps()
 		end

@@ -159,7 +159,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     new_email(
       to: "rossedwards.us@gmail.com",
       from: "order@sconely.com",
-      subject: "Admin - order for jan 1, 2017 - dtla/99025: " <> _params["order_id"],
+      subject: "Admin - order for jan 1, 2017 - dtla/99025: ",
       html_body: template,
       #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
       #text_body: "Thanks for joining!"

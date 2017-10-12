@@ -51,13 +51,13 @@ class PaymentMethod extends React.Component<any, any> {
 
     this.state = {
 
-       payment_name_on_card: "",
-       payment_zipcode: "",
-       payment_card_number: "",
-       payment_card_brand: "",
-       payment_expiry_month: "",
-       payment_expiry_year: "",
-       payment_security_code: "",
+       name_on_card: "",
+       zipcode: "",
+       card_number: "",
+       card_brand: "",
+       expiry_month: "",
+       expiry_year: "",
+       security_code: "",
        card_number_border_color: "grey",
        expiry_month_border_color: "grey",
        expiry_year_border_color: "grey",
@@ -160,6 +160,7 @@ class PaymentMethod extends React.Component<any, any> {
 
   setPaymentCardNumber = (e: any) => {
 
+      this.setState({card_number: e.target.value});
       this.props.setPaymentCardNumber(e);
 
       //if e.target.value > 0
@@ -212,7 +213,7 @@ class PaymentMethod extends React.Component<any, any> {
 
       //console.log(e.target.value);
 
-      if(e.target.value.length > 0){
+      //if(e.target.value.length > 0){
 
               //01-12, only numbers
               if(/^[0-9]{2}/.test(e.target.value)){
@@ -222,7 +223,7 @@ class PaymentMethod extends React.Component<any, any> {
                       //console.log("ok month");
 
                       this.setState({expiry_month_border_color: "grey"});
-                      //this.setState({expiry_month: e.target.value});
+                      this.setState({expiry_month: e.target.value});
                       this.props.setPaymentExpiryMonth(e);
 
                       //if(this.state.payment_expiry_year.length > 0){
@@ -239,7 +240,7 @@ class PaymentMethod extends React.Component<any, any> {
                   this.setState({expiry_month_border_color: "red"});
 
               }
-      }
+      //}
   }
 
   onPaymentExpiryYearFocus(){
@@ -254,7 +255,7 @@ class PaymentMethod extends React.Component<any, any> {
 
       this.props.setPaymentExpiryYear(e);
 
-      if(e.target.value.length > 0){
+      //if(e.target.value.length > 0){
           //2017-only numbers
           //01-12, only numbers
           if(/^[0-9]{4}/.test(e.target.value)){
@@ -264,8 +265,8 @@ class PaymentMethod extends React.Component<any, any> {
                   this.setState({expiry_year_border_color: "grey"});
 
                   //console.log("ok year");
-                  //this.setState({cvc_border_color: "grey"})
-                  //this.setState({expiry_year: e.target.value});
+                  this.setState({cvc_border_color: "grey"})
+                  this.setState({expiry_year: e.target.value});
 
                   
                   /*if(this.state.payment_expiry_month.length > 0){
@@ -290,7 +291,7 @@ class PaymentMethod extends React.Component<any, any> {
               this.setState({expiry_year_border_color: "red"});
 
           }
-      }
+      //}
   }
 
   setPaymentSecurityCode = (e: any) => {
@@ -300,7 +301,7 @@ class PaymentMethod extends React.Component<any, any> {
 
       //if length > 0 or less then 4, only numbers
 
-       if(e.target.value.length > 0){
+       //if(e.target.value.length > 0){
           
            if(/^[0-9]{3}/.test(e.target.value)){
 
@@ -324,7 +325,7 @@ class PaymentMethod extends React.Component<any, any> {
               this.setState({cvc_border_color: "red"});
 
           }
-      }
+      //}
 
   }
 
@@ -371,22 +372,18 @@ class PaymentMethod extends React.Component<any, any> {
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-sm-4">
-                        <input type="text" value={this.state.payment_name_on_card} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                      <div className="col-sm-3">
+                        <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
-                    </div>
-                  </form>
-                  <form className="form-horizontal">
-                    <div className="form-group">
                       <div className="col-md-2">
-                        <input type="text" value={this.state.payment_zipcode} maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
-                        <input type="text" value={this.state.payment_card_number} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.card_number} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
@@ -398,20 +395,20 @@ class PaymentMethod extends React.Component<any, any> {
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-md-2">
-                        <input type="text" value={this.state.payment_expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                      <div className="col-md-1">
+                        <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
                       </div>
                       <div className="col-md-2">
-                        <input type="text" value={this.state.payment_expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
                       </div>
                       <div className="col-md-2">
-                        <input type="email" value={this.state.payment_security_code} maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="email" value={this.state.security_code} maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
                   </form>

@@ -43744,6 +43744,7 @@ webpackJsonp([0],[
 	            //this.props.validatePayment();
 	        };
 	        _this.setPaymentCardNumber = function (e) {
+	            _this.setState({ card_number: e.target.value });
 	            _this.props.setPaymentCardNumber(e);
 	            //if e.target.value > 0
 	            //Amex Card: ^3[47][0-9]{13}$
@@ -43775,81 +43776,81 @@ webpackJsonp([0],[
 	        _this.setPaymentExpiryMonth = function (e) {
 	            //only 1-12
 	            //console.log(e.target.value);
-	            if (e.target.value.length > 0) {
-	                //01-12, only numbers
-	                if (/^[0-9]{2}/.test(e.target.value)) {
-	                    if (e.target.value > 0 && e.target.value < 13) {
-	                        //console.log("ok month");
-	                        _this.setState({ expiry_month_border_color: "grey" });
-	                        //this.setState({expiry_month: e.target.value});
-	                        _this.props.setPaymentExpiryMonth(e);
-	                        //if(this.state.payment_expiry_year.length > 0){
-	                        //this.props.paymentValidated();
-	                        //this.props.paymentInvalidated();
-	                        //}
-	                    }
-	                } else {
-	                    _this.setState({ expiry_month_border_color: "red" });
+	            //if(e.target.value.length > 0){
+	            //01-12, only numbers
+	            if (/^[0-9]{2}/.test(e.target.value)) {
+	                if (e.target.value > 0 && e.target.value < 13) {
+	                    //console.log("ok month");
+	                    _this.setState({ expiry_month_border_color: "grey" });
+	                    _this.setState({ expiry_month: e.target.value });
+	                    _this.props.setPaymentExpiryMonth(e);
+	                    //if(this.state.payment_expiry_year.length > 0){
+	                    //this.props.paymentValidated();
+	                    //this.props.paymentInvalidated();
+	                    //}
 	                }
+	            } else {
+	                _this.setState({ expiry_month_border_color: "red" });
 	            }
+	            //}
 	        };
 	        _this.setPaymentExpiryYear = function (e) {
 	            //can only be this year up to 2028
 	            _this.props.setPaymentExpiryYear(e);
-	            if (e.target.value.length > 0) {
-	                //2017-only numbers
-	                //01-12, only numbers
-	                if (/^[0-9]{4}/.test(e.target.value)) {
-	                    if (parseInt(e.target.value) >= 2017 && parseInt(e.target.value) <= 2025) {
-	                        _this.setState({ expiry_year_border_color: "grey" });
-	                        //console.log("ok year");
-	                        //this.setState({cvc_border_color: "grey"})
-	                        //this.setState({expiry_year: e.target.value});
-	                        /*if(this.state.payment_expiry_month.length > 0){
-	                                   //if card number
-	                            //if security code
-	                                   //this.props.paymentValidated();
-	                               }*/
-	                    } else {
-	                        _this.setState({ expiry_year_border_color: "red" });
-	                        //paymentinvalidated
-	                    }
+	            //if(e.target.value.length > 0){
+	            //2017-only numbers
+	            //01-12, only numbers
+	            if (/^[0-9]{4}/.test(e.target.value)) {
+	                if (parseInt(e.target.value) >= 2017 && parseInt(e.target.value) <= 2025) {
+	                    _this.setState({ expiry_year_border_color: "grey" });
+	                    //console.log("ok year");
+	                    _this.setState({ cvc_border_color: "grey" });
+	                    _this.setState({ expiry_year: e.target.value });
+	                    /*if(this.state.payment_expiry_month.length > 0){
+	                           //if card number
+	                        //if security code
+	                           //this.props.paymentValidated();
+	                       }*/
 	                } else {
 	                    _this.setState({ expiry_year_border_color: "red" });
+	                    //paymentinvalidated
 	                }
+	            } else {
+	                _this.setState({ expiry_year_border_color: "red" });
 	            }
+	            //}
 	        };
 	        _this.setPaymentSecurityCode = function (e) {
 	            //this.setState({payment_security_code: e.target.value});
 	            //this.props.setPaymentSecurityCode(e);
 	            //if length > 0 or less then 4, only numbers
-	            if (e.target.value.length > 0) {
-	                if (/^[0-9]{3}/.test(e.target.value)) {
-	                    //console.log("ok year");
-	                    _this.setState({ cvc_border_color: "grey" });
-	                    _this.setState({ security_code: e.target.value });
-	                    _this.props.setPaymentSecurityCode(e);
-	                    /*if(this.state.payment_expiry_month.length > 0){
-	                               //if number
-	                        //month
-	                        //year
-	                               //this.props.paymentValidated();
-	                           }*/
-	                } else {
-	                    _this.setState({ cvc_border_color: "red" });
-	                }
+	            //if(e.target.value.length > 0){
+	            if (/^[0-9]{3}/.test(e.target.value)) {
+	                //console.log("ok year");
+	                _this.setState({ cvc_border_color: "grey" });
+	                _this.setState({ security_code: e.target.value });
+	                _this.props.setPaymentSecurityCode(e);
+	                /*if(this.state.payment_expiry_month.length > 0){
+	                       //if number
+	                    //month
+	                    //year
+	                       //this.props.paymentValidated();
+	                   }*/
+	            } else {
+	                _this.setState({ cvc_border_color: "red" });
 	            }
+	            //}
 	        };
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            payment_name_on_card: "",
-	            payment_zipcode: "",
-	            payment_card_number: "",
-	            payment_card_brand: "",
-	            payment_expiry_month: "",
-	            payment_expiry_year: "",
-	            payment_security_code: "",
+	            name_on_card: "",
+	            zipcode: "",
+	            card_number: "",
+	            card_brand: "",
+	            expiry_month: "",
+	            expiry_year: "",
+	            security_code: "",
 	            card_number_border_color: "grey",
 	            expiry_month_border_color: "grey",
 	            expiry_year_border_color: "grey",
@@ -43909,15 +43910,15 @@ webpackJsonp([0],[
 	                                  </div>
 	                              </div>
 	                          </form>*/
-	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, this.state.error_message_text))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", value: this.state.payment_name_on_card, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
+	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, this.state.error_message_text))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.name_on_card, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
 	                    return _this2.setPaymentNameOnCard(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.payment_zipcode, maxLength: 5, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentZipCode, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", value: this.state.payment_card_number, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.zipcode, maxLength: 5, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentZipCode, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", value: this.state.card_number, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.payment_expiry_month, maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-1" }, React.createElement("input", { type: "text", value: this.state.expiry_month, maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryMonthFocus();
-	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.payment_expiry_year, maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
+	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.expiry_year, maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", value: this.state.payment_security_code, maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "email", value: this.state.security_code, maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } })))));
 	        }
 	    }], [{
 	        key: "contextTypes",
