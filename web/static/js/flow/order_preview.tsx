@@ -871,12 +871,12 @@ class Preview extends React.Component<any, any> {
                         <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Email: {this.props.User.contact_email}
+                                  Email: {this.props.User.user_contact_email}
                               </div>
                             </div>
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Mobile: {this.props.User.contact_mobile}
+                                  Mobile:
                               </div>
                             </div>
                         </form>
@@ -892,7 +892,7 @@ class Preview extends React.Component<any, any> {
                         <br/>
                         9-11 am
                         <br/>
-                        Delivery Address
+                        Delivery Address{this.props.User.deliveryContactsAddresses[0].street1}{this.props.User.deliveryContactsAddresses[0].street2}{this.props.User.deliveryContactsAddresses[0].city}{this.props.User.deliveryContactsAddresses[0].state}
                         <br/>
                         11901 Santa Monica Blvd, Los Angeles, CA, 90025
                         <br/>
