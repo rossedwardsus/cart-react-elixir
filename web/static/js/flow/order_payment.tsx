@@ -155,7 +155,14 @@ class OrderDateTimeContact extends React.Component<any, any> {
         window.scrollTo(0, 0);
 
       //}
-      
+
+      //this.setState({name_on_card: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
+  
   }
 
   //componentWillReceiveProps

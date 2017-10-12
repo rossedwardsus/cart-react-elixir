@@ -8,7 +8,7 @@ defmodule Sconely.OrderStartedEmail do
     #template = Phoenix.View.render_to_string(Sconely.OrderStartedEmailView, "order_started_email.html", key: _params)
 
     new_email(
-      to: ["rossedwards.us@gmail.com"],
+      to: ["rossedwards.us@gmail.com"], #add julia
       from: "orders@sconely.com",
       subject: "A new order has been started.",
       #html_body: template,

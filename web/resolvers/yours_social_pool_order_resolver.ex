@@ -159,7 +159,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   #move these to /lib
 
 
-  def format_order_date(args) do
+  def format_order_date1(args) do
 
       #def from_timestamp(timestamp) do
       #   timestamp
@@ -231,11 +231,122 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
-  def process_cart(payment) do
+  defp format_order_datetime(order_datetime_converted) do
 
-      #need costs and menu items and contact and address and date and last four of payment method number
+      order_datetime_formatted = nil
+      order_date_month = nil
+      order_date_day_of_week = nil
+      order_datetime_converted_minute_formatted = nil
+
+      case  order_datetime_converted.month do
+        1 -> {order_date_month = "January"}
+        2 -> {order_date_month = "February"}
+        3 -> {order_date_month = "March"}
+        4 -> {order_date_month = "April"}
+        5 -> {order_date_month = "May"}
+        6 -> {order_date_month = "June"}
+        7 -> {order_date_month = "July"}
+        8 -> {order_date_month = "August"}
+        9 -> {order_date_month = "September"}
+        10 -> {order_date_month = "October"}
+        11 -> {order_date_month = "November"}
+        12 -> {order_date_month = "December"}
+      end
+
+      case Timex.weekday(order_datetime_converted) do
+        0 -> {order_date_day_of_week = "Sunday"}
+        1 -> {order_date_day_of_week = "Monday"}
+        2 -> {order_date_day_of_week = "Tuesday"}
+        3 -> {order_date_day_of_week = "Wednesday"}
+        4 -> {order_date_day_of_week = "Thursday"}
+        5 -> {order_date_day_of_week = "Friday"}
+        6 -> {order_date_day_of_week = "Saturday"}
+      end
+
+      order_datetime_converted_minute_formatted = nil
+
+      case order_datetime_converted.minute do
+        0 -> order_datetime_converted_minute_formatted = 00
+        1 -> order_datetime_converted_minute_formatted = 01
+        2 -> order_datetime_converted_minute_formatted = 02
+        3 -> order_datetime_converted_minute_formatted = 03
+        4 -> order_datetime_converted_minute_formatted = 04
+        5 -> order_datetime_converted_minute_formatted = 05
+        6 -> order_datetime_converted_minute_formatted = 06
+        7 -> order_datetime_converted_minute_formatted = 07
+        8 -> order_datetime_converted_minute_formatted = 08
+        9 -> order_datetime_converted_minute_formatted = 09
+        _ -> order_datetime_converted_minute_formatted = order_datetime_converted.minute
+      end
+
+
+      order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted_minute_formatted)
+
+      IO.puts("format order_datetime")
+      IO.inspect(order_datetime_formatted)
+      
 
   end
+
+  defp format_pool_order_delivery_datetime(pool_order_delivery_date) do
+
+      delivery_date_month = nil
+      delivery_date_day_of_week = nil
+
+      pool_order_delivery_date_formatted = nil
+
+
+      case  pool_order_delivery_date.month do
+        1 -> {delivery_date_month = "January"}
+        2 -> {delivery_date_month = "February"}
+        3 -> {delivery_date_month = "March"}
+        4 -> {delivery_date_month = "April"}
+        5 -> {delivery_date_month = "May"}
+        6 -> {delivery_date_month = "June"}
+        7 -> {delivery_date_month = "July"}
+        8 -> {delivery_date_month = "August"}
+        9 -> {delivery_date_month = "September"}
+        10 -> {delivery_date_month = "October"}
+        11 -> {delivery_date_month = "November"}
+        12 -> {delivery_date_month = "December"}
+      end
+
+      
+      {:ok, date} = Ecto.Date.dump(pool_order_delivery_date)
+      {:ok, pool_order_delivery_date_from_erl} = Date.from_erl(date)    
+
+      #IO.inspect(Date.day_of_week(date_from_erl))           
+
+      case Date.day_of_week(pool_order_delivery_date_from_erl) do
+      #case Timex.weekday do
+        1 -> {delivery_date_day_of_week = "Sunday"}
+        2 -> {delivery_date_day_of_week = "Monday"}
+        3 -> {delivery_date_day_of_week = "Tuesday"}
+        4 -> {delivery_date_day_of_week = "Wednesday"}
+        5 -> {delivery_date_day_of_week = "Thursday"}
+        6 -> {delivery_date_day_of_week = "Friday"}
+        7 -> {delivery_date_day_of_week = "Saturday"}
+      end                     
+
+      IO.inspect(delivery_date_day_of_week)
+
+      pool_order_delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
+
+      IO.inspect(pool_order_delivery_date_formatted)
+
+  end
+
+
+  def process_cart_with_names(cart) do
+
+      #return cart with names
+
+  end
+
+  def process_promo_code(promo_code) do
+
+  end
+
 
   def process_stripe_payment1() do
 
@@ -995,6 +1106,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     IO.inspect(Timex.weekday(order_datetime_converted))
 
+                                    format_order_datetime(order_datetime_converted)
+
                                     case  order_datetime.month do
                                       1 -> {order_date_month = "January"}
                                       2 -> {order_date_month = "February"}
@@ -1020,10 +1133,25 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                       6 -> {order_date_day_of_week = "Saturday"}
                                     end
 
+                                    order_datetime_converted_minute_formatted = nil
+
+                                    case order_datetime_converted.minute do
+                                      0 -> order_datetime_converted_minute_formatted = 00
+                                      1 -> order_datetime_converted_minute_formatted = 01
+                                      2 -> order_datetime_converted_minute_formatted = 02
+                                      3 -> order_datetime_converted_minute_formatted = 03
+                                      4 -> order_datetime_converted_minute_formatted = 04
+                                      5 -> order_datetime_converted_minute_formatted = 05
+                                      6 -> order_datetime_converted_minute_formatted = 06
+                                      7 -> order_datetime_converted_minute_formatted = 07
+                                      8 -> order_datetime_converted_minute_formatted = 08
+                                      9 -> order_datetime_converted_minute_formatted = 09
+                                      _ -> order_datetime_converted_minute_formatted = order_datetime_converted.minute
+                                    end
+
+
+                                    order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted_minute_formatted)
                                     
-
-
-                                    order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted.minute)
                                     IO.inspect(order_datetime_formatted)
 
 
@@ -1531,7 +1659,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{"order_id" => order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, cart_items: cart_items_with_name, total_cost: total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 

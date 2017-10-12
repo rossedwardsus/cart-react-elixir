@@ -52,6 +52,7 @@ class PaymentMethod extends React.Component<any, any> {
     this.state = {
 
        payment_name_on_card: "",
+       payment_zipcode: "",
        payment_card_number: "",
        payment_card_brand: "",
        payment_expiry_month: "",
@@ -83,7 +84,12 @@ class PaymentMethod extends React.Component<any, any> {
 
   componentDidMount(){
 
-   
+      this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
+      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
+      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
 
   }
 
@@ -366,21 +372,21 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
-                        <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.payment_name_on_card} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                     </div>
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-md-2">
-                        <input type="text" maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" value={this.state.payment_zipcode} maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
-                        <input type="text" maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.payment_card_number} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
@@ -393,19 +399,19 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-md-2">
-                        <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" value={this.state.payment_expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
                       </div>
                       <div className="col-md-2">
-                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.payment_expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
                       </div>
                       <div className="col-md-2">
-                        <input type="email" maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="email" value={this.state.payment_security_code} maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                       </div>
                     </div>
                   </form>

@@ -3,25 +3,28 @@ defmodule Sconely.SessionResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.OrderSession
   
-  def createOrderSession(order_type) do
+  #@spec createOrderSession(any, any) :: {:ok} | {:error}
+  def createOrderSession(args, _info) do
     #{:ok, Blog.Repo.all(Post)}
 
-    #order_session_changeset = OrderSession.changeset(order_session, %{status: args[:screen]})
-    #case Repo.insert(order_session_changeset) do
+    order_session_changeset = OrderSession.changeset(%OrderSession{}, %{status: args[:screen]})
+    case Repo.insert(order_session_changeset) do
 
-    #  {:ok, response} -> IO.inspect(response)
+      {:ok, response} -> IO.inspect(response)
 
      #       Sconely.OrderStartedEmail.order_started_email(%{}) |> SconeHomeElixir.Mailer.deliver_later
 
-     #      {:ok, %{session_id: response.session_id}}
+           {:ok, %{session_id: response.session_id}}
 
-     # {:error, error} -> nil
+      {:error, error} -> nil
+
+    end
     
   end
 
 
 
-
+  #@spec updateOrderSession(any, any) :: {:ok} | {:error}
   def update_order_session(args, _info) do
     IO.inspect(args)
     #{:ok, Blog.Repo.all(Post)}

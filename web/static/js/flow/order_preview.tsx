@@ -834,43 +834,69 @@ class Preview extends React.Component<any, any> {
     if(this.props.User.orders[0].order_type = "pool"){
 
           screen =    <div>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Name:
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Ross Edwards
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Contact
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-6">
-                                      rossedwards@gmail.com
-                                  </div>
-                                  <div className="col-sm-6">
-                                      310-775-5566
-                                  </div>
-                                </div>
-                            </form>
+                           <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Name: {this.props.User.first_name} {this.props.User.last_name}
+                              </div>
+                            </div>
+                        </form>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Email: {this.props.User.contact_email}
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Mobile: {this.props.User.contact_mobile}
+                              </div>
+                            </div>
+                        </form>
+                        <br/>
+                        <Link to="/order/checkout">Edit Name Contact</Link>   
                       </div>
 
     }else{
 
       screen = <div>
-                    <form className="form-horizontal">
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Name: {this.props.User.first_name} {this.props.User.last_name}
+                              </div>
+                            </div>
+                        </form>
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Email: {this.props.User.contact_email}
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  Mobile: {this.props.User.contact_mobile}
+                              </div>
+                            </div>
+                        </form>
+                        <br/>
+                        <Link to="/order/checkout">Edit Name Contact</Link>   
+                        <br/>
+                        <br/>
+                        Delivery Contact
+                        <br/>
+                        Delivery Date
+                        <br/>
+                        Monday Sept 1st, 2017
+                        <br/>
+                        9-11 am
+                        <br/>
+                        Delivery Address
+                        <br/>
+                        11901 Santa Monica Blvd, Los Angeles, CA, 90025
+                        <br/>
+                        <br/>
+                        <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-sm-12">
                                   Name:
@@ -904,20 +930,7 @@ class Preview extends React.Component<any, any> {
                             </div>
                         </form>
                         <br/>
-                        Delivery Contact
-                        <br/>
-                        Delivery Date
-                        <br/>
-                        Monday Sept 1st, 2017
-                        <br/>
-                        9-11 am
-                        <br/>
-                        Delivery Address
-                        <br/>
-                        11901 Santa Monica Blvd, Los Angeles, CA, 90025
-                        <br/>
-                        <br/>
-                        <Link to="/order/delivery">Edit Delivery Information</Link>   
+                        <Link to="/order/checkout">Edit Delivery Contact Address</Link>   
                         <br/>
                         <br/>
                     </div>
@@ -947,13 +960,9 @@ class Preview extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <button onClick={() => this.showCart()}>cart()</button>
                             <br/>
                             <br/>
                             {screen}
-                            <br/>
-                            <br/>
-                            <Link to="/order/cart">Cart</Link>   
                             <br/>
                             <br/>
                             <form className="form-horizontal">

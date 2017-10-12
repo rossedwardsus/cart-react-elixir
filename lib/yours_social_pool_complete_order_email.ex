@@ -114,7 +114,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
   def yours_social_pool_complete_order_email(_params) do
 
-  	
+
 
   	#IO.puts("hello")
   	#IO.inspect(_params)
@@ -150,7 +150,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #IO.inspect(Map.fetch(_params, :order_contact_email))
     #IO.inspect(System.get_env("MIX"))
     
-    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompletedOrderAdminEmailView, "yours_social_pool_complete_order_admin_email.html", key: _params)
+    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompleteOrderAdminEmailView, "yours_social_pool_complete_order_admin_email.html", key: _params)
 
     IO.inspect(_params["order_first_name"])
 
