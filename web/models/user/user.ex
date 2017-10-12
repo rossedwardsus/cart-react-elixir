@@ -7,7 +7,7 @@ defmodule Sconely.User do
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
 		@required_fields ~W()
-		@optional_fields ~W(user_id first_name last_name email about_me)
+		@optional_fields ~W(user_id first_name last_name email mobile about_me)
 
 		@primary_key {:user_id, :binary_id, autogenerate: true}
 

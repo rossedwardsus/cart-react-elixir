@@ -44597,7 +44597,7 @@ webpackJsonp([0],[
 	        _this.setUserEmailAgain = function (e) {
 	            _this.setState({ user_contact_email_again: e.target.value });
 	            //this.props.setUserEmail(e);
-	            if (_this.state.user_email == e.target.value) {
+	            if (_this.state.user_contact_email == e.target.value) {
 	                //validated
 	                //this.props.nameValidated();
 	                //this.props.contactEmailValidated();
@@ -44799,6 +44799,10 @@ webpackJsonp([0],[
 	                _this.setState({ contact_last_name: "" });
 	                _this.setState({ contact_email: "" });
 	                _this.setState({ contact_mobile: "" });
+	                _this.setState({ contact_first_name: _this.props.User.deliveryContactsAddresses[0].contact_first_name });
+	                _this.setState({ contact_last_name: _this.props.User.deliveryContactsAddresses[0].contact_last_name });
+	                _this.setState({ contact_email: _this.props.User.deliveryContactsAddresses[0].contact_email });
+	                _this.setState({ contact_mobile: _this.props.User.deliveryContactsAddresses[0].contact_mobile });
 	            }
 	        };
 	        _this.setDeliveryContactAddressFirstName = function (e) {
@@ -44909,13 +44913,13 @@ webpackJsonp([0],[
 	        _this.setDeliveryContactAddressCompanyName = function (e) {
 	            _this.props.setDeliveryContactAddressCompanyName(e);
 	            // /^[a-zA-Z]*$/
-	            var company_name_result = /^[a-zA-Z]*$/.test(e.target.value);
-	            if (company_name_result) {
-	                _this.setState({ company_name_border_color: "grey" });
-	                //this.props.setDeliveryContactAddressCompanyName(e);
-	            } else {
-	                _this.setState({ company_name_border_color: "red" });
-	            }
+	            //let company_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
+	            //if(company_name_result){
+	            //    this.setState({company_name_border_color: "grey"});
+	            //this.props.setDeliveryContactAddressCompanyName(e);
+	            //}else{
+	            //    this.setState({company_name_border_color: "red"});
+	            //}
 	            //this.props.setDeliveryContactAddressFirstName(e);
 	        };
 	        _this.setDeliveryContactAddressStreet1 = function (e) {

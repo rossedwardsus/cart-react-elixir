@@ -1002,7 +1002,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #if order_type == "pool"
                     #Repo.insert(user_changeset)
 
-                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: args[:user_name_last], last_name: args[:user_name_first], email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", stripe_customer_id: ""})
+                    user_changeset = User.changeset(%User{}, %{user_id: user_id, first_name: args[:user_first_name], last_name: args[:user_last_name], email: args[:user_contact_email], mobile: args[:user_contact_mobile], about_me: "", stripe_customer_id: ""})
           
                     case Repo.insert(user_changeset) do
                         {:ok, response} -> IO.inspect(response)
@@ -1316,7 +1316,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #delivery_contact_address_changeset
                         #check if delivery address exists for a user.  if not add it else update whatever is there.
 
-                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == type(^user_id, Ecto.UUID), select: count(dca.delivery_contact_address_id))
+                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == type(^user_id, Ecto.UUID), select: count(dca.user_delivery_contact_address_id))
 
                         IO.puts("dca_id")
                         IO.inspect(user_delivery_contact_address_count)
@@ -1384,7 +1384,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
 
                     #get the max for the user and add one
-                    IO.inspect(Repo.one(from upm in "user_payment_methods", where: upm.user_id == 1, select: count(upm.payment_method_id)))
+                    #IO.inspect(Repo.one(from upm in "user_payment_methods", where: upm.user_id == , select: count(upm.payment_method_id)))
 
                     card_number = "1234567890"
                     last_four_digits = String.slice(card_number, (String.length(card_number) -4), String.length(card_number))
@@ -1783,7 +1783,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name, total_cost: total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name, total_cost: total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 

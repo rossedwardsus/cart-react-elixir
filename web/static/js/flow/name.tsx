@@ -292,7 +292,7 @@ class Name extends React.Component<any, any> {
       this.setState({user_contact_email_again: e.target.value});
       //this.props.setUserEmail(e);
 
-      if(this.state.user_email == e.target.value){
+      if(this.state.user_contact_email == e.target.value){
 
           //validated
           //this.props.nameValidated();

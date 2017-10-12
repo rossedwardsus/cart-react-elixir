@@ -127,6 +127,12 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({contact_email: ""});
       this.setState({contact_mobile: ""});
 
+      this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+      this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+      this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+      this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
+    
+
     }
 
   }
@@ -327,19 +333,19 @@ class DeliveryAddress extends React.Component<any, any> {
       this.props.setDeliveryContactAddressCompanyName(e);
 
       // /^[a-zA-Z]*$/
-      let company_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
+      //let company_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
 
-      if(company_name_result){
+      //if(company_name_result){
 
-          this.setState({company_name_border_color: "grey"});
+      //    this.setState({company_name_border_color: "grey"});
 
           //this.props.setDeliveryContactAddressCompanyName(e);
 
-      }else{
+      //}else{
           
-          this.setState({company_name_border_color: "red"});
+      //    this.setState({company_name_border_color: "red"});
 
-      }
+      //}
          
           //this.props.setDeliveryContactAddressFirstName(e);
 
