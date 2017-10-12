@@ -18,6 +18,7 @@ import {completeOrder} from './actions/complete_order.ts';
 //import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 //import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 //import {setContactEmail, setContactPhone} from './actions/order_contact.ts';
+import {updateOrderSession} from './actions/session.ts';
 
 import SidebarCart from './order_sidebar_cart.tsx';
 import DeliveryAddress from './delivery_address.tsx';
@@ -831,13 +832,13 @@ class Preview extends React.Component<any, any> {
 
     let screen = null;
 
-    if(this.props.User.orders[0].order_type = "pool"){
+    if(this.props.User.orders[0].order_type == "pool"){
 
           screen =    <div>
                            <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Name: {this.props.User.first_name} {this.props.User.last_name}
+                                  Name: {this.props.User.user_first_name} {this.props.User.user_last_name}
                               </div>
                             </div>
                         </form>
@@ -1029,6 +1030,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setSpecificTime: (e: any) => {
       //dispatch(setSpecificTime(e.target.value))
+    },
+    updateOrderSession: (screen: any) => {
+      dispatch(updateOrderSession(screen));
     },
     //setFirstName: (e: any) => {
     //  dispatch(setFirstName(e.target.value))

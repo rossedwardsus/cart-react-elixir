@@ -58,12 +58,13 @@ class OrderCart extends React.Component<any, any> {
         delivery_address: Immutable.Map(),
         delivery_address_street: "",
         item_count: 0,
-        cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
+        //cart_items: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         //order: Immutable.fromJS([{item_id: 1, dozen: 2, quantity: 2, mini: true}, {item_id: 2, dozen: 1, quantity: 5}]),
         order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 2, title: "Ruby Q", description: "Cherry Chocolate Chunk", story: "Ruby Q is a mouthwatering scone with cherries and chocolate throughout. It's a Sconely favorite!", ingredients: "Unbleached white all-purpose flour*, Cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", image_id: "MenuRubyQ4.5", hover_image_id: "MenuRubyQ4.5roll"}, {item_id: 3, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 4, title: "Savvy Go Go", description: "Tomato Goat Cheese Sun-dried", image_id: "MenuSavvy4.5", hover_image_id: "MenuSavvy4.5roll"}, {item_id: 5, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 6, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}, {item_id: 7, title: "freedom", description: "let freedom ring!7", image_id: "DWK_greenrollover1"},  {item_id: 8, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 9, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"},  {item_id: 10, title: "freedom", description: "let freedom ring!", image_id: "DWK_greenrollover1"}],
         payment_button_classname: "btn btn-default btn-block",
-        payment_button_disabled: "disabled"
+        payment_button_disabled: "disabled",
+        cartItems: []
 
     };
 
@@ -100,6 +101,8 @@ class OrderCart extends React.Component<any, any> {
   }
 
   componentDidMount(){
+
+    this.setState({cartItems: this.props.User.orders[0].cartItems});
 
     //alert();
 
@@ -162,10 +165,10 @@ class OrderCart extends React.Component<any, any> {
 
 
 
-    let cart_items_temp = this.state.cart_items;
+    //let cart_items_temp = this.state.cart_items;
     //let cart_items_temp_updated = cart_items_temp.updateIn(['items', 'quantity'], value = value + 1);
     //const myNewMap = cart_items_temp.updateIn(['cart_items'], (arr: any) => {arr.push({item_id: 5})});
-    const myNewMap = cart_items_temp.push({item_id: 5});
+    //const myNewMap = cart_items_temp.push({item_id: 5});
     //let hello = cart_items_temp.push({item_id: 5});
 
     //alert(JSON.stringify(myNewMap));
@@ -926,6 +929,9 @@ class OrderCart extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-9">
+                                  <div className="col-md-3">
+                                      <Link to="/order/checkout" className="btn btn-default btn-block" style={{borderRadius: 0}}>Checkout</Link>  
+                                    </div>
                                     <div className="col-md-3">
                                       <Link to="/order/preview" className="btn btn-default btn-block" style={{borderRadius: 0}}>Preview</Link>  
                                     </div>
