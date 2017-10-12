@@ -399,22 +399,25 @@ class PaymentMethod extends React.Component<any, any> {
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-md-1">
-                        <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                      </div>
-                      <div className="hidden-lg col-xs-1">
-                        <br/>
-                      </div>
-                      <div className="col-md-2">
-                        <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
-                      </div>
-                      <div className="hidden-lg col-xs-1">
-                        <br/>
-                      </div>
-                      <div className="col-md-2">
-                        <input type="email" value={this.state.security_code} maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                      </div>
-                    </div>
+                      <div className="col-md-4" style={{paddingLeft: 10}}>
+                             <div className="col-md-4">
+                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                              </div>
+                              <div className="hidden-lg col-xs-1">
+                                <br/>
+                              </div>
+                              <div className="col-md-4">
+                                <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                              </div>
+                              <div className="hidden-lg col-xs-1">
+                                <br/>
+                              </div>
+                              <div className="col-md-4">
+                                <input type="email" value={this.state.security_code} maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                              </div>
+                          </div>
+                  
+                  </div>
                   </form>
             </div>
     )
