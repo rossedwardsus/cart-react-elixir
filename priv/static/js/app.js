@@ -42086,13 +42086,17 @@ webpackJsonp([0],[
 	        }*/
 	        _this.selectedItemQuantity = function (e) {
 	            console.log("selected_item quantity " + e.target.value);
-	            if (_this.state.selected_item_size == "regular") {
-	                _this.setState({ selected_item_quantity: e.target.value * 12 });
-	            } else if (_this.state.selected_item_size == "mini") {
-	                _this.setState({ selected_item_quantity: e.target.value * 24 });
-	            } //else{ 
-	            // this.setState({selected_item_quantity: parseInt(e.target.value)});
-	            //}
+	            if (_this.props.User.orders[0].order_type == "yours" || _this.props.User.orders[0].order_type == "pool") {
+	                _this.setState({ selected_item_quantity: parseInt(e.target.value) });
+	            } else {
+	                if (_this.state.selected_item_size == "regular") {
+	                    _this.setState({ selected_item_quantity: parseInt(e.target.value) * 12 });
+	                } else if (_this.state.selected_item_size == "mini") {
+	                    _this.setState({ selected_item_quantity: parseInt(e.target.value) * 24 });
+	                } //else{ 
+	                // this.setState({selected_item_quantity: parseInt(e.target.value)});
+	                //}
+	            }
 	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
 	            //set add cart button == active
 	            //this.set
@@ -42678,45 +42682,49 @@ webpackJsonp([0],[
 	                //1 doz/12 - 5/60 doz regular sized scones, $5 each
 	                //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
 	                //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
-	                if (regular_items.length > 0) {
-	                    //console.log("regular items " + JSON.stringify(regular_items));
-	                    total_regular_items = regular_items.reduce(function (amount, item) {
-	                        console.log(JSON.stringify(item));amount + item.quantity * 6.00;
-	                    }, 0);
-	                    //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
-	                    if (this.props.User.orders[0].order_type == "social") {
-	                        item_cost = 5.00;
-	                    } else {
-	                        item_cost = 6.00;
-	                    }
-	                    //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
-	                    //    item_cost = 4.75;
-	                    //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
-	                    //    item_cost = 4.50;
-	                    //}
-	                }
-	                if (mini_items.length > 0) {
-	                    //console.log("mini items " + JSON.stringify(mini_items));
-	                    total_mini_items = mini_items.reduce(function (amount, item) {
-	                        console.log(JSON.stringify(item));amount + item.quantity * 6.0;
-	                    }, 0);
-	                    //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
-	                    item_cost = 5.00;
-	                    //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
-	                    //    item_cost = 4.75;
-	                    //}else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
-	                    //    item_cost = 4.50;
-	                    //}
-	                }
+	                /*if(regular_items.length > 0){
+	                         //console.log("regular items " + JSON.stringify(regular_items));
+	                
+	                    total_regular_items = regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
+	                         //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+	                         if(this.props.User.orders[0].order_type == "social"){
+	                             item_cost = 5.00;
+	                         }else{
+	                             item_cost = 6.00;
+	                         }
+	                         //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
+	                         //    item_cost = 4.75;
+	                         //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
+	                         //    item_cost = 4.50;
+	                         //}
+	                    
+	                }*/
+	                //if(mini_items.length > 0){
+	                //console.log("mini items " + JSON.stringify(mini_items));
+	                //total_mini_items = mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
+	                //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
+	                //    item_cost = 2.25;
+	                //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
+	                //    item_cost = 4.75;
+	                //}else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
+	                //    item_cost = 4.50;
+	                //}
+	                //}
 	                //social_mini_items = this.state.cartItems.map((item: any) => {
 	                //if(item.twelveortwentyfourminis == "24_minis"){
 	                //    return item;
 	                //}
 	                //});
 	                //if(social_regular_items.length != 0){
-	                total_regular_items_cost = regular_items.reduce(function (amount, item) {
-	                    return amount + item.quantity * 6.00;
-	                }, 0);
+	                if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
+	                    total_regular_items_cost = regular_items.reduce(function (amount, item) {
+	                        return amount + item.quantity * 6.00;
+	                    }, 0);
+	                } else {
+	                    total_regular_items_cost = regular_items.reduce(function (amount, item) {
+	                        return amount + item.quantity * 5.00;
+	                    }, 0);
+	                }
 	                total_mini_items_cost = mini_items.reduce(function (amount, item) {
 	                    return amount + item.quantity * 2.25;
 	                }, 0);

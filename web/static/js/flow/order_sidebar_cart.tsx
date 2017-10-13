@@ -337,7 +337,7 @@ class SidebarCart extends React.Component<any, any> {
         //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
         //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
 
-        if(regular_items.length > 0){
+        /*if(regular_items.length > 0){
 
             //console.log("regular items " + JSON.stringify(regular_items));
         
@@ -365,17 +365,17 @@ class SidebarCart extends React.Component<any, any> {
 
             //}
             
-        }
+        }*/
 
-        if(mini_items.length > 0){
+        //if(mini_items.length > 0){
 
             //console.log("mini items " + JSON.stringify(mini_items));
         
-            total_mini_items = mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
+            //total_mini_items = mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
 
             //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
 
-                item_cost = 5.00;
+            //    item_cost = 2.25;
 
             //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
 
@@ -387,7 +387,7 @@ class SidebarCart extends React.Component<any, any> {
 
             //}
             
-        }
+        //}
         
 
 
@@ -403,11 +403,18 @@ class SidebarCart extends React.Component<any, any> {
         //});
 
         //if(social_regular_items.length != 0){
+
+        if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
         
           total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 6.00; }, 0)
 
-          total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
+        }else{
 
+          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
+
+        }
+
+        total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 
         //}
 

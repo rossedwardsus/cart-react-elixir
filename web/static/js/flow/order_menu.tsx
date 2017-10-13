@@ -236,19 +236,27 @@ class OrderMenu extends React.Component<any, any> {
 
     console.log("selected_item quantity " + e.target.value);
 
-    if(this.state.selected_item_size == "regular"){
-      
-      this.setState({selected_item_quantity: (e.target.value * 12)});
-    
-    }else if(this.state.selected_item_size == "mini"){
-      
-      this.setState({selected_item_quantity: (e.target.value * 24)});
-    
-    }//else{ 
+    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-     // this.setState({selected_item_quantity: parseInt(e.target.value)});
+      this.setState({selected_item_quantity: parseInt(e.target.value)});
 
-    //}
+    }else{
+
+      if(this.state.selected_item_size == "regular"){
+        
+        this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
+      
+      }else if(this.state.selected_item_size == "mini"){
+        
+        this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
+      
+      }//else{ 
+
+       // this.setState({selected_item_quantity: parseInt(e.target.value)});
+
+      //}
+
+    }
 
     this.setState({add_cart_item_button_classname: "btn btn-default"});
       
