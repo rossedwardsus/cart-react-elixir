@@ -240,19 +240,19 @@ class OrderMenu extends React.Component<any, any> {
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
       this.setState({selected_item_quantity: parseInt(e.target.value)});
-      this.setState({selected_item_quantity_selector: parseInt(e.target.value)});
+      this.setState({selected_item_quantity_selector: e.target.value});
 
     }else{
 
       if(this.state.selected_item_size == "regular"){
         
         this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_selector: parseInt(e.target.value)});
+        this.setState({selected_item_quantity_selector: e.target.value});
       
       }else if(this.state.selected_item_size == "mini"){
         
         this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_selector: parseInt(e.target.value)});
+        this.setState({selected_item_quantity_selector: e.target.value});
       
       }//else{ 
 
@@ -332,7 +332,7 @@ class OrderMenu extends React.Component<any, any> {
     }
     
     this.setState({pool_message_viewed: true});    
-    this.setState({selected_item_quantity: 0});
+    this.setState({selected_item_quantity_selector: 0});
     this.setState({selected_item_size: ""});
 
 

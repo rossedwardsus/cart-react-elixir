@@ -42088,14 +42088,14 @@ webpackJsonp([0],[
 	            console.log("selected_item quantity " + e.target.value);
 	            if (_this.props.User.orders[0].order_type == "yours" || _this.props.User.orders[0].order_type == "pool") {
 	                _this.setState({ selected_item_quantity: parseInt(e.target.value) });
-	                _this.setState({ selected_item_quantity_selector: parseInt(e.target.value) });
+	                _this.setState({ selected_item_quantity_selector: e.target.value });
 	            } else {
 	                if (_this.state.selected_item_size == "regular") {
 	                    _this.setState({ selected_item_quantity: parseInt(e.target.value) * 12 });
-	                    _this.setState({ selected_item_quantity_selector: parseInt(e.target.value) });
+	                    _this.setState({ selected_item_quantity_selector: e.target.value });
 	                } else if (_this.state.selected_item_size == "mini") {
 	                    _this.setState({ selected_item_quantity: parseInt(e.target.value) * 24 });
-	                    _this.setState({ selected_item_quantity_selector: parseInt(e.target.value) });
+	                    _this.setState({ selected_item_quantity_selector: e.target.value });
 	                } //else{ 
 	                // this.setState({selected_item_quantity: parseInt(e.target.value)});
 	                //}
@@ -42139,7 +42139,7 @@ webpackJsonp([0],[
 	                _this.props.addCartItem(null, _this.state.selected_item_id, _this.state.selected_item_size, _this.state.selected_item_quantity);
 	            }
 	            _this.setState({ pool_message_viewed: true });
-	            _this.setState({ selected_item_quantity: 0 });
+	            _this.setState({ selected_item_quantity_selector: 0 });
 	            _this.setState({ selected_item_size: "" });
 	            //}
 	            //this.props.cartValidated();
@@ -44340,11 +44340,9 @@ webpackJsonp([0],[
 	                        return _this2.props.deliveryContactAddressInvalidated();
 	                    } }), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-12" }, "Delivery Date Time"))), React.createElement("form", { className: "form-horizontal", style: { border: 0 } }, React.createElement("div", { className: "form-group show-lg", style: { borderRadius: 0 } }, React.createElement("div", { className: "col-md-3" }, React.createElement(DayPickerInput, { onDayChange: function onDayChange(e) {
 	                        return _this2.setDate(e);
-	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { enableOutsideDays: false, fixedWeeks: false, disabledDays: { daysOfWeek: [0, 1, 2] } } })), React.createElement("div", { className: "col-md-3" }, "9:00 am - 12:00 am"), this.props.User.orders[0].order_type == "social" && React.createElement("div", { className: "col-md-3" }, "For other times please email eat@sconely.com"))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-9" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { type: "button", className: "btn btn-default btn-block", style: { borderRadius: 0 }, onClick: function onClick(screen) {
-	                        return _this2.props.updateOrderSession("preview");
-	                    } }, "Preview")), React.createElement("div", { className: "col-md-3" }, React.createElement("button", { type: "button", className: this.state.payment_button_classname, disabled: this.state.button_payment_disabled, style: { borderRadius: 0 }, onClick: function onClick(screen) {
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { enableOutsideDays: false, fixedWeeks: false, disabledDays: { daysOfWeek: [0, 1, 2] } } })), React.createElement("div", { className: "col-md-3" }, "9:00 am - 12:00 am"), this.props.User.orders[0].order_type == "social" && React.createElement("div", { className: "col-md-3" }, "For other times please email eat@sconely.com"))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-9" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { type: "button", className: this.state.payment_button_classname, disabled: this.state.button_payment_disabled, style: { borderRadius: 0 }, onClick: function onClick(screen) {
 	                        return _this2.props.updateOrderSession("payment");
-	                    } }, "Payment")), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart"))))), React.createElement("br", null), React.createElement("br", null))));
+	                    } }, "Payment")), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu"))))), React.createElement("br", null), React.createElement("br", null))));
 	            }
 	        }
 	    }], [{
@@ -50001,10 +49999,10 @@ webpackJsonp([0],[
 	            if (state.orders[0].order_type == "yours" || state.orders[0].order_type == "pool") {
 	                orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
 	            } else {
-	                if (orders_updated[0].cartItems[action.item_index].size = "mini") {
+	                if (orders_updated[0].cartItems[action.item_index].size == "mini") {
 	                    orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 24;
 	                } else {
-	                    orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 24;
+	                    orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 12;
 	                }
 	            }
 	            /*state.User.orders[0].cartItems.map((item: any, index: any) => {
@@ -50034,7 +50032,7 @@ webpackJsonp([0],[
 	                if (state.orders[0].order_type == "yours" || state.orders[0].order_type == "pool") {
 	                    orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
 	                } else {
-	                    if (orders_updated[0].cartItems[action.item_index].size = "mini") {
+	                    if (orders_updated[0].cartItems[action.item_index].size == "mini") {
 	                        orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 24;
 	                    } else {
 	                        orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 12;

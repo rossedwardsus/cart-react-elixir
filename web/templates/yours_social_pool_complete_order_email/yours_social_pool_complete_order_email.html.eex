@@ -20,7 +20,7 @@
     <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, between 9-11 am</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>
-    <tr><td><%= @key.delivery_address.street1 %>, <%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
+    <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street1 %>, <%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
     <tr><td><br></td></tr>
     <tr><td><br>You have ordered the following items</td></tr>
     <tr><td><br></td></tr>
@@ -37,7 +37,7 @@
     <tr><td>Subtotal Cost</td><td>$<%= @key.subtotal_formatted %></td></tr>
     <tr><td>Delivery Cost</td><td><%= @key.delivery_cost %></td></tr>
     <tr><td>Discount</td><td><%= @key.promo_code_discount %></td></tr>
-    <tr><td><b>Total Cost</b></td><td>$<%= @key.total_cost_formatted %></td></tr>
+    <tr><td><b>Total Cost</b></td><td>$<%= @key.total_formatted %></td></tr>
     <tr><td><br><br></td></tr>
     <tr><td></td></tr>
   </table>

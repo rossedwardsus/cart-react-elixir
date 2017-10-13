@@ -688,8 +688,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     regular_total = 0
     items_count = 0
     
-    subtotal = nil
-    total = nil
+    subtotal = 0.00
+    subtotal_formatted = nil
+    total = 0.00
     total_formatted = nil
 
 
@@ -744,6 +745,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     case args[:promo_code] do
 
         "" -> nil
+              total = subtotal
 
         "8thandhope" -> promo_code_discount = "10%"
                         total = subtotal - (subtotal * 10/100)
@@ -752,6 +754,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
 
     end
+
+    IO.puts("total")
+    IO.puts(total*100)
+    IO.puts(trunc(total*100))
 
     total_formatted = :erlang.float_to_binary(total, [decimals: 2])
 
@@ -852,16 +858,16 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
 
         {:ok, token} -> {:ok, token}
 
-            case Stripe.Charge.create(%{:amount => total, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+            case Stripe.Charge.create(%{:amount => trunc(total*100), :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
               {:ok, charge} -> #IO.inspect(charge["id"])
               stripe_charge_token = charge["id"]
@@ -1279,7 +1285,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
                         #delivery_id, contact_id, payment_id
 
-                        delivery_address = %{street1: args[:street1], street2: args[:street2], city: args[:city], state: args[:state], zipcode: args[:zipcode]}
+                        delivery_address = %{street1: args[:user_delivery_contact_address_street1], street2: args[:user_delivery_contact_address_street2], city: args[:user_delivery_contact_address_city], state: args[:user_delivery_contact_address_state], zipcode: args[:user_delivery_contact_address_zipcode]}
+
+                        IO.inspect(delivery_address)
 
                         #order_id = 0
                         #order_datetime = nil
@@ -1412,7 +1420,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #end
 
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, admin_receipt_order_id: admin_receipt_order_id, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
                         #delivery_contact_address_id, contact_id, payment_id
 
                         case Repo.insert(yours_social_order_changeset) do
@@ -1438,7 +1446,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         end)
 
-                        delivery_address = %{street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]}
+                        Map.merge(delivery_address, %{street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
 
                         #order id from response
                         #Enum.map
@@ -1860,6 +1868,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             #Sconely.YoursSocialPoolCompleteOrderEmail.admin(%{"order_id" => order_id, "order_first_name" => args[:order_first_name], "order_last_name" => args[:order_last_name], "order_contact_email" => args[:order_contact_email], "order_contact_mobile" => args[:order_contact_mobile], "order_delivery_address_street1" => args[:order_delivery_address_street1], "order_delivery_address_street2" => args[:order_delivery_address_street2], "order_delivery_address_city" => args[:order_delivery_address_city], "order_delivery_address_state" => args[:order_delivery_address_state], "order_delivery_address_zipcode" => args[:order_delivery_address_zipcode], "order_date_formatted" => delivery_date_formatted, "order_date_time" => "time", "order_payment_name_on_card" => args[:order_payment_name_on_card], "order_payment_card_number" => args[:order_payment_card_number], "payment_expiry_month" => args[:payment_expiry_month], "payment_expiry_year" => args[:payment_expiry_year], "payment_security_code" => args[:payment_security_code], "order_cart_items" => cart_items_with_title, "total_cost" => total_cost}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #else
+
+                          IO.inspect(delivery_address)
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
