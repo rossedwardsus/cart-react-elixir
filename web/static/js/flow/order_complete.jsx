@@ -99,10 +99,10 @@ class OrderComplete extends React.Component<any, any> {
 
   componentDidMount(){
 
-    this.setState({order_id: this.props.order.order_id});
-    this.setState({order_email: this.props.contact.email});
+    //this.setState({order_id: this.props.order.order_id});
+    //this.setState({order_email: this.props.contact.email});
 
-    this.props.clearOrder();
+    //this.props.clearOrder();
 
     //alert();
 
@@ -598,8 +598,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        order: state.Order,
-        contact: state.contact
+        //order: state.Order,
+        //contact: state.contact
 
     //}
   }

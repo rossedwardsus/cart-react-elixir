@@ -1090,7 +1090,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         order_datetime_converted = Timezone.convert(order_datetime |> Ecto.DateTime.to_erl |> NaiveDateTime.from_erl! |> DateTime.from_naive!("Etc/UTC"), timezone)
 
-                        admin_receipt_order_id = :rand.uniform(9999999999)
+                        admin_receipt_order_id = :rand.uniform(999999999)
                         
                         case  order_datetime.month do
                           1 -> {order_date_month = "January"}
@@ -1195,7 +1195,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                     else args[:order_type] in ["yours", "social"]
 
-                        admin_receipt_order_id = :rand.uniform(9999999999)
+                        admin_receipt_order_id = :rand.uniform(999999999)
                         order_datetime = Ecto.DateTime.utc
 
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
@@ -1208,7 +1208,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         case Repo.insert(order_changeset) do
                             {:ok, response} -> IO.inspect(response)
-                                    order_id = response.order_id
+                                    parent_order_id = response.order_id
                                     #order_datetime = order_datetime
 
                                     #IO.inspect(order_datetime)
@@ -1334,7 +1334,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #end
 
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, admin_receipt_order_id: admin_receipt_order_id, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
                         #delivery_contact_address_id, contact_id, payment_id
 
                         case Repo.insert(yours_social_order_changeset) do
@@ -1343,14 +1343,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end
 
 
-                        order_items = [%{menu_item_id: 1, quantity: 11, size: "mini"}, %{menu_item_id: 1, quantity: 1, size: "mini"}]
+                        #order_items = [%{menu_item_id: 1, quantity: 11, size: "mini"}, %{menu_item_id: 1, quantity: 1, size: "mini"}]
 
-                        Enum.map(order_items, fn(item) -> 
+                        Enum.map(cart_items, fn(item) -> 
                             IO.inspect(item)
 
                             #pool_order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: 1, menu_item_id: 1, user_id: user_id, order_id: order_id, quantity: 1, size: "regular"})
 
-                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: order_id, user_id: user_id, menu_item_id: 1, quantity: 1, size: item.size})
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: parent_order_id, user_id: user_id, menu_item_id: item.menu_item_id, quantity: item.quantity, size: item.size})
 
                             case Repo.insert(order_item_changeset) do
 
