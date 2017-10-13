@@ -42088,11 +42088,14 @@ webpackJsonp([0],[
 	            console.log("selected_item quantity " + e.target.value);
 	            if (_this.props.User.orders[0].order_type == "yours" || _this.props.User.orders[0].order_type == "pool") {
 	                _this.setState({ selected_item_quantity: parseInt(e.target.value) });
+	                _this.setState({ selected_item_quantity_selector: parseInt(e.target.value) });
 	            } else {
 	                if (_this.state.selected_item_size == "regular") {
 	                    _this.setState({ selected_item_quantity: parseInt(e.target.value) * 12 });
+	                    _this.setState({ selected_item_quantity_selector: parseInt(e.target.value) });
 	                } else if (_this.state.selected_item_size == "mini") {
 	                    _this.setState({ selected_item_quantity: parseInt(e.target.value) * 24 });
+	                    _this.setState({ selected_item_quantity_selector: parseInt(e.target.value) });
 	                } //else{ 
 	                // this.setState({selected_item_quantity: parseInt(e.target.value)});
 	                //}
@@ -42186,6 +42189,7 @@ webpackJsonp([0],[
 	            selected_item_id: "",
 	            selected_item_size: "",
 	            selected_item_quantity: 0,
+	            selected_item_quantity_selector: 0,
 	            selected_item_name: "",
 	            selected_item_description: "",
 	            selected_item_ingredients: "",
@@ -42338,7 +42342,7 @@ webpackJsonp([0],[
 	            }
 	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
 	                if (cartItemsQuantity < 11) {
-	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("div", { className: "col-xs-6 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none" } }, React.createElement("option", { value: 0 }, "Quantity"), options_count_array.map(function (value) {
+	                    yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-9" }, React.createElement("div", { className: "col-xs-6 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none" } }, React.createElement("option", { value: 0 }, "Quantity"), options_count_array.map(function (value) {
 	                        return React.createElement("option", { value: value }, value);
 	                    }))), React.createElement("div", { className: "col-xs-6 col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                            return _this2.addCartItem();
@@ -42366,7 +42370,7 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity / 12, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
 	                    return React.createElement("option", { value: value }, value);
 	                }))), React.createElement("div", { className: "col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
