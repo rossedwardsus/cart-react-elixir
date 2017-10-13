@@ -202,7 +202,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       }else{
 
-          orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
+          orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 12;
 
       }
 
@@ -244,7 +244,17 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       //console.log("quantity" + JSON.stringify(item));
 
       orders_updated = state.orders;
-      orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
+      //orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
+
+      if(state.orders[0].order_type == "yours" || state.orders[0].order_type == "pool"){
+
+          orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
+
+      }else{
+
+          orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 12;
+
+      }
 
 
       /*return Object.assign({}, state, {
