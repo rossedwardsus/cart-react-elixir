@@ -49986,7 +49986,11 @@ webpackJsonp([0],[
 	            //if quantity < 5 increase
 	            //else do nothing
 	            orders_updated = state.orders;
-	            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
+	            if (state.orders[0].order_type == "yours" || state.orders[0].order_type == "pool") {
+	                orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
+	            } else {
+	                orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
+	            }
 	            /*state.User.orders[0].cartItems.map((item: any, index: any) => {
 	                if (item.item_id === action.item_id) {
 	                    item.quantity = item.quantity + 1;
