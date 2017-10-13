@@ -20,7 +20,8 @@
     <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, between 9-11 am</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>
-    <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street1 %>, <%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
+    <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street1 %></td></tr>
+    <tr><td><%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
     <tr><td><br></td></tr>
     <tr><td><br>You have ordered the following items</td></tr>
     <tr><td><br></td></tr>

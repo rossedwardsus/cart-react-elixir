@@ -7,7 +7,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateYoursSocialOrdersTable do
   	      add :id, :uuid, primary_key: true
 	      add :user_id, :uuid
 	      add :parent_order_id, :uuid
-	      add :admin_receipt_order_id, :bigint
+	      #add :admin_receipt_order_id, :bigint
 	  	  add :user_delivery_contact_address_id, :smallint
 	  	  add :user_payment_method_id, :smallint
 	  	  add :order_note, :string, size: 50

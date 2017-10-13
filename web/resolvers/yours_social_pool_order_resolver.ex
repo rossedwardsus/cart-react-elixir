@@ -674,7 +674,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
     delivery_date = nil
     delivery_date_month = nil
-    delivery_date_day = ""
+    delivery_date_day = nil
     delivery_date_day_formatted = nil
     delivery_date_year = nil
     delivery_date_day_of_week = nil
@@ -1390,7 +1390,49 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     #end
 
-                                    delivery_date_formatted = "Thursday Septempter 27th"
+                                    #Ecto.Date.cast
+                                    #Date.from_iso8601!("2017-02-22")
+
+                                    #case  pool_order.delivery_date.month do
+                                    #  1 -> {delivery_date_month = "January"}
+                                    #  2 -> {delivery_date_month = "February"}
+                                    #  3 -> {delivery_date_month = "March"}
+                                    #  4 -> {delivery_date_month = "April"}
+                                    #  5 -> {delivery_date_month = "May"}
+                                    #  6 -> {delivery_date_month = "June"}
+                                    #  7 -> {delivery_date_month = "July"}
+                                    #  8 -> {delivery_date_month = "August"}
+                                    #  9 -> {delivery_date_month = "September"}
+                                    #  10 -> {delivery_date_month = "October"}
+                                    #  11 -> {delivery_date_month = "November"}
+                                    #  12 -> {delivery_date_month = "December"}
+                                    #end
+
+                                    
+                                    #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
+                                    #{:ok, date_from_erl} = Date.from_erl(date)    
+
+                                    #IO.inspect(Date.day_of_week(date_from_erl))           
+
+                                    #case Date.day_of_week(date_from_erl) do
+                                    #case Timex.weekday do
+                                    #  1 -> {delivery_date_day_of_week = "Sunday"}
+                                    #  2 -> {delivery_date_day_of_week = "Monday"}
+                                    #  3 -> {delivery_date_day_of_week = "Tuesday"}
+                                    #  4 -> {delivery_date_day_of_week = "Wednesday"}
+                                    #  5 -> {delivery_date_day_of_week = "Thursday"}
+                                    #  6 -> {delivery_date_day_of_week = "Friday"}
+                                    #  7 -> {delivery_date_day_of_week = "Saturday"}
+                                    #end                     
+
+                                    #IO.inspect(delivery_date_day_of_week)
+
+                                    #delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
+                        
+                                    #IO.inspect(delivery_date_formatted)
+
+
+                                    delivery_date_formatted = "Thursday Septempter 27th" <> args[:order_delivery_datetime_date]
 
                             
                                     #timex_datetime = Date.from(date)
@@ -1869,7 +1911,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #else
 
-                          IO.inspect(delivery_address)
+                          #IO.inspect(delivery_address)
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
@@ -1879,7 +1921,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
 
-                        IO.puts("ok")
+                        #IO.puts("ok")
 
                         #just return ok
                         {:ok, %{status: "success", error_code: "", token: ""}}
