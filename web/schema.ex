@@ -246,13 +246,13 @@ defmodule Sconely.Schema do
 
     field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do
         arg :order_type, :string
-        arg :pool_order_id, :string
+        arg :pool_admin_receipt_order_id, :string
         arg :save_for_later, :boolean
         arg :user_first_name, :string
         arg :user_last_name, :string
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
-        arg :pool_id, :string
+        #arg :pool_admin_order_receipt_id, :string
         #arg :pool_url_name, :string
         #arg :pool_url_date, :string
         arg :user_delivery_contact_address_contact_first_name, :string
@@ -265,7 +265,7 @@ defmodule Sconely.Schema do
         arg :user_delivery_contact_address_city, :string
         arg :user_delivery_contact_address_state, :string
         arg :user_delivery_contact_address_zipcode, :string
-        arg :user_order_delivery_datetime_date, :string
+        arg :order_delivery_datetime_date, :string
         #arg :time, :string
         arg :payment_method_name_on_card, :string
         arg :payment_method_card_number, :string

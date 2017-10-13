@@ -494,7 +494,7 @@ class OrderMenu extends React.Component<any, any> {
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-        cost_text = <div>6 each</div>
+        cost_text = <div>$6 each</div>
 
     }else{
 
@@ -607,8 +607,8 @@ class OrderMenu extends React.Component<any, any> {
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                             <br/>
                           </div>
-                          <div className="col-xs-12 col-md-8">
-                            <div className="hidden-lg" style={{paddingLeft: 35}}>
+                          <div className="col-xs-12 col-md-8" style={{paddingLeft: 0}}>
+                            <div className="hidden-lg" style={{paddingLeft: 15}}>
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                                 <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
                               <br/>

@@ -260,7 +260,7 @@ export function processYoursSocialPoolOrder() {
 
                   let error_message = "";
 
-                  if(response.data.data.processYoursSocialPoolOrder.status == "suuccess"){
+                  if(response.data.data.processYoursSocialPoolOrder.status == "success"){
                     //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
                     //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
                     ////error_message = "There was an error in your CVC code."

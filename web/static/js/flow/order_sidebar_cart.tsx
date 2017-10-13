@@ -396,7 +396,7 @@ class SidebarCart extends React.Component<any, any> {
 
         //if(social_regular_items.length != 0){
         
-          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
+          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 6.00; }, 0)
 
           total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 

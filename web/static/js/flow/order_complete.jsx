@@ -533,7 +533,7 @@ class OrderComplete extends React.Component<any, any> {
                     </nav> 
                 <div className="container-fluid">
                   <div className="row">
-                        <div className="hidden-xs col-md-2">
+                        <div className="hidden-xs col-md-4">
                           <br/>
                           <br/>
                           <br/>
@@ -552,19 +552,22 @@ class OrderComplete extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-10">
+                        <div className="col-md-8">
                             <br/>
                             <br/>
                             <br/>
                             <br/>
                             <br/>
-                            Your Order {this.state.order_id} has been received.
                             <br/>
-                            Check your email at {this.state.order_email}
+                            <br/>
+                            <br/>
+                            <br/>
+                            Your order has been received.
+                            <br/>
+                            Check your email for confirmation
                             <br/>
                             Check out our social links
                             <br/>
-                            A receipt has been saved if you are registered
                             <br/>
                             <Link to="/" className="btn btn-default">Home</Link>
                             <br/>

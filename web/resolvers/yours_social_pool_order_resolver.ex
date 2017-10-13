@@ -1201,6 +1201,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
                         #delivery_id, contact_id, payment_id
 
+                        #delivery_address = %{street1: args[:street1], street2: args[:street2], city: args[:city], state: args[:state], zipcode: args[:zipcode]}
+
                         #order_id = 0
                         #order_datetime = nil
 
@@ -1792,7 +1794,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.puts("ok")
 
                         #just return ok
-                        {:ok, %{status: "successful", error_code: "", token: ""}}
+                        {:ok, %{status: "success", error_code: "", token: ""}}
                         
                         #{:ok, %{status: "completed", sconely_user_token: user_id, stripe_payment_token: "charge[:id]", user_type: "guest"}}
 

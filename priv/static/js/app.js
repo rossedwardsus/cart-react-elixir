@@ -27388,7 +27388,7 @@ webpackJsonp([0],[
 	        axios_1.default.post('/api/graphql', { query: 'mutation {process_yours_social_pool_order (order_type: "' + getState().User.orders[0].order_type + '", order_note: "' + getState().User.orders[0].orderNote + '", gift_order: ' + getState().User.orders[0].giftOrder + ', gift_note: "' + getState().User.orders[0].giftNote + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: [{menu_item_id: 1, quantity: 1, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '",  payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '",      payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	            console.log("graphql response " + JSON.stringify(response));
 	            var error_message = "";
-	            if (response.data.data.processYoursSocialPoolOrder.status == "suuccess") {
+	            if (response.data.data.processYoursSocialPoolOrder.status == "success") {
 	                //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
 	                //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
 	                ////error_message = "There was an error in your CVC code."
@@ -42328,7 +42328,7 @@ webpackJsonp([0],[
 	            }
 	            var cost_text = null;
 	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
-	                cost_text = React.createElement("div", null, "6 each");
+	                cost_text = React.createElement("div", null, "$6 each");
 	            } else {
 	                cost_text = React.createElement("div", null, React.createElement("p", null, "$60 per dozen"), React.createElement("p", null, "$54 per 2 dozen mini"));
 	            }
@@ -42380,7 +42380,7 @@ webpackJsonp([0],[
 	                    return _this2.props.removeCartItem(item_index);
 	                }, updateOrderSession: function updateOrderSession(screen) {
 	                    return _this2.props.updateOrderSession(screen);
-	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-8" }, React.createElement("div", { className: "hidden-lg", style: { paddingLeft: 35 } }, this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
+	                } }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-8", style: { paddingLeft: 0 } }, React.createElement("div", { className: "hidden-lg", style: { paddingLeft: 15 } }, this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false && React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg" }), React.createElement("br", null), this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false ? message : React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, path: this.props.path, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                    return _this2.props.increaseCartItemQuantity(item_index);
 	                }, decreaseCartItemQuantity: function decreaseCartItemQuantity(item_index) {
 	                    return _this2.props.decreaseCartItemQuantity(item_index);
@@ -42711,7 +42711,7 @@ webpackJsonp([0],[
 	                //});
 	                //if(social_regular_items.length != 0){
 	                total_regular_items_cost = regular_items.reduce(function (amount, item) {
-	                    return amount + item.quantity * 5.00;
+	                    return amount + item.quantity * 6.00;
 	                }, 0);
 	                total_mini_items_cost = mini_items.reduce(function (amount, item) {
 	                    return amount + item.quantity * 2.25;
@@ -44786,35 +44786,37 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (DeliveryAddress.__proto__ || Object.getPrototypeOf(DeliveryAddress)).call(this, props));
 	
 	        _this.componentWillReceiveProps = function () {
-	            if (_this.props.User.orders[0].giftOrder == false) {
-	                //check if props.giftOrder: true or false
-	                _this.setState({ contact_first_name: _this.props.User.deliveryContactsAddresses[0].contact_first_name });
-	                _this.setState({ contact_last_name: _this.props.User.deliveryContactsAddresses[0].contact_last_name });
-	                _this.setState({ contact_email: _this.props.User.deliveryContactsAddresses[0].contact_email });
-	                _this.setState({ contact_mobile: _this.props.User.deliveryContactsAddresses[0].contact_mobile });
-	                //this.setState({street1: this.props.deliveryAddress.street1})
-	                //this.setState({street2: this.props.deliveryAddress.street2})
-	            } else {
-	                _this.setState({ contact_first_name: "" });
-	                _this.setState({ contact_last_name: "" });
-	                _this.setState({ contact_email: "" });
-	                _this.setState({ contact_mobile: "" });
-	                _this.setState({ contact_first_name: _this.props.User.deliveryContactsAddresses[0].contact_first_name });
-	                _this.setState({ contact_last_name: _this.props.User.deliveryContactsAddresses[0].contact_last_name });
-	                _this.setState({ contact_email: _this.props.User.deliveryContactsAddresses[0].contact_email });
-	                _this.setState({ contact_mobile: _this.props.User.deliveryContactsAddresses[0].contact_mobile });
-	            }
+	            //if(this.props.User.orders[0].giftOrder == false){
+	            //check if props.giftOrder: true or false
+	            _this.setState({ contact_first_name: _this.props.User.deliveryContactsAddresses[0].contact_first_name });
+	            _this.setState({ contact_last_name: _this.props.User.deliveryContactsAddresses[0].contact_last_name });
+	            _this.setState({ contact_email: _this.props.User.deliveryContactsAddresses[0].contact_email });
+	            _this.setState({ contact_mobile: _this.props.User.deliveryContactsAddresses[0].contact_mobile });
+	            //this.setState({street1: this.props.deliveryAddress.street1})
+	            //this.setState({street2: this.props.deliveryAddress.street2})
+	            /*}else{
+	                       this.setState({contact_first_name: ""});
+	              this.setState({contact_last_name: ""});
+	              this.setState({contact_email: ""});
+	              this.setState({contact_mobile: ""});
+	                       this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+	              this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+	              this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+	              this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
+	            
+	                     }*/
 	        };
 	        _this.setDeliveryContactAddressFirstName = function (e) {
 	            //strip out -
 	            //check if only number
 	            //if larger then 3 append "-"
+	            _this.setState({ contact_first_name: e.target.value });
+	            _this.props.setDeliveryContactAddressFirstName(e);
 	            // /^[a-zA-Z]*$/
 	            var first_name_result = /^[a-zA-Z]*$/.test(e.target.value);
 	            console.log(first_name_result);
 	            if (first_name_result) {
 	                _this.setState({ first_name_border_color: "grey" });
-	                _this.props.setDeliveryContactAddressFirstName(e);
 	            } else {
 	                _this.setState({ first_name_border_color: "red" });
 	            }
@@ -45015,20 +45017,21 @@ webpackJsonp([0],[
 	            if (_this.state.gift_order_checked == "") {
 	                console.log("hello");
 	                _this.setState({ gift_order_checked: "checked" });
-	                _this.props.setGiftOrder(true);
-	                //this.setState({contact_first_name: ""});
-	                //this.setState({contact_last_name: ""});
-	                //this.setState({contact_email: ""});
-	                //this.setState({contact_mobile: ""});
+	                //this.props.setGiftOrder(true);
+	                //this.props.setDeliveryContactAddressFirstName("");
+	                _this.setState({ contact_first_name: "" });
+	                _this.setState({ contact_last_name: "" });
+	                _this.setState({ contact_email: "" });
+	                _this.setState({ contact_mobile: "" });
 	                /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
 	                this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
 	                this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
 	                this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
 	            } else {
-	                /*this.setState({contact_first_name: ""});
-	                this.setState({contact_last_name: ""});
-	                this.setState({contact_email: ""});
-	                this.setState({contact_mobile: ""});*/
+	                //this.setState({contact_first_name: ""});
+	                //this.setState({contact_last_name: ""});
+	                //this.setState({contact_email: ""});
+	                //this.setState({contact_mobile: ""});
 	                /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
 	                this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
 	                this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
@@ -45050,7 +45053,7 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            contact_first_name: "ross",
+	            contact_first_name: "",
 	            contact_last_name: "",
 	            contact_email: "",
 	            contact_email_again: "",
@@ -45087,8 +45090,8 @@ webpackJsonp([0],[
 	        value: function componentDidMount() {
 	            this.setState({ contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name });
 	            this.setState({ contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name });
-	            this.setState({ contact_email: this.props.User.deliveryContactsAddresses[0].email });
-	            this.setState({ contact_mobile: this.props.User.deliveryContactsAddresses[0].mobile });
+	            this.setState({ contact_email: this.props.User.deliveryContactsAddresses[0].contact_email });
+	            this.setState({ contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile });
 	            this.setState({ street1: this.props.User.deliveryContactsAddresses[0].street1 });
 	            this.setState({ street2: this.props.User.deliveryContactsAddresses[0].street2 });
 	            this.setState({ city: this.props.User.deliveryContactsAddresses[0].city });
@@ -47288,7 +47291,7 @@ webpackJsonp([0],[
 	            { className: 'row' },
 	            React.createElement(
 	              'div',
-	              { className: 'hidden-xs col-md-2' },
+	              { className: 'hidden-xs col-md-4' },
 	              React.createElement('br', null),
 	              React.createElement('br', null),
 	              React.createElement('br', null),
@@ -47309,22 +47312,22 @@ webpackJsonp([0],[
 	            ),
 	            React.createElement(
 	              'div',
-	              { className: 'col-md-10' },
+	              { className: 'col-md-8' },
 	              React.createElement('br', null),
 	              React.createElement('br', null),
 	              React.createElement('br', null),
 	              React.createElement('br', null),
 	              React.createElement('br', null),
-	              'Your Order ',
-	              this.state.order_id,
-	              ' has been received.',
 	              React.createElement('br', null),
-	              'Check your email at ',
-	              this.state.order_email,
+	              React.createElement('br', null),
+	              React.createElement('br', null),
+	              React.createElement('br', null),
+	              'Your order has been received.',
+	              React.createElement('br', null),
+	              'Check your email for confirmation',
 	              React.createElement('br', null),
 	              'Check out our social links',
 	              React.createElement('br', null),
-	              'A receipt has been saved if you are registered',
 	              React.createElement('br', null),
 	              React.createElement(
 	                _reactRouter.Link,

@@ -53,7 +53,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
     this.state = {
 
-        contact_first_name: "ross",
+        contact_first_name: "",
         contact_last_name: "",
         contact_email: "",
         contact_email_again: "",
@@ -96,8 +96,8 @@ class DeliveryAddress extends React.Component<any, any> {
 
     this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
     this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
-    this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].email});
-    this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].mobile});
+    this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+    this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
     this.setState({street1: this.props.User.deliveryContactsAddresses[0].street1});
     this.setState({street2: this.props.User.deliveryContactsAddresses[0].street2});
     this.setState({city: this.props.User.deliveryContactsAddresses[0].city});
@@ -109,7 +109,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
   componentWillReceiveProps = () => {
 
-    if(this.props.User.orders[0].giftOrder == false){
+    //if(this.props.User.orders[0].giftOrder == false){
       
       //check if props.giftOrder: true or false
 
@@ -120,7 +120,7 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.setState({street1: this.props.deliveryAddress.street1})
       //this.setState({street2: this.props.deliveryAddress.street2})
 
-    }else{
+    /*}else{
 
       this.setState({contact_first_name: ""});
       this.setState({contact_last_name: ""});
@@ -133,7 +133,7 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
     
 
-    }
+    }*/
 
   }
 
@@ -144,6 +144,10 @@ class DeliveryAddress extends React.Component<any, any> {
 
       //if larger then 3 append "-"
 
+      this.setState({contact_first_name: e.target.value});
+      this.props.setDeliveryContactAddressFirstName(e);
+
+
       // /^[a-zA-Z]*$/
       let first_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
       console.log(first_name_result);
@@ -151,9 +155,7 @@ class DeliveryAddress extends React.Component<any, any> {
       if(first_name_result){
 
           this.setState({first_name_border_color: "grey"});
-
-          this.props.setDeliveryContactAddressFirstName(e);
-
+          
       }else{
           
           this.setState({first_name_border_color: "red"});
@@ -514,12 +516,13 @@ class DeliveryAddress extends React.Component<any, any> {
           console.log("hello");
 
           this.setState({gift_order_checked: "checked"});
-          this.props.setGiftOrder(true);
+          //this.props.setGiftOrder(true);
+          //this.props.setDeliveryContactAddressFirstName("");
       
-          //this.setState({contact_first_name: ""});
-          //this.setState({contact_last_name: ""});
-          //this.setState({contact_email: ""});
-          //this.setState({contact_mobile: ""});
+          this.setState({contact_first_name: ""});
+          this.setState({contact_last_name: ""});
+          this.setState({contact_email: ""});
+          this.setState({contact_mobile: ""});
 
           /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
           this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
@@ -530,10 +533,10 @@ class DeliveryAddress extends React.Component<any, any> {
       
       }else{
 
-          /*this.setState({contact_first_name: ""});
-          this.setState({contact_last_name: ""});
-          this.setState({contact_email: ""});
-          this.setState({contact_mobile: ""});*/
+          //this.setState({contact_first_name: ""});
+          //this.setState({contact_last_name: ""});
+          //this.setState({contact_email: ""});
+          //this.setState({contact_mobile: ""});
 
           /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
           this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
