@@ -467,6 +467,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   def process_promo_code(promo_code) do
 
+      #return the subtotal as well
+
+      promo_code_discount = nil
+
+      case promo_code do
+
+        "" -> nil
+
+        "8thandhope" -> promo_code_discount = "10%"
+                        #subtotal_cost = subtotal_cost - (subtotal_cost * 10/100)
+        "grain" ->  promo_code_discount = "10%"
+                    #subtotal_cost = subtotal_cost - (subtotal_cost * 10/100)
+      end
+
   end
 
 
@@ -558,6 +572,60 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
+  def calculate_subtotal_cost(order_type, cart_items) do
+
+      #calculate total cost
+
+      subtotal_cost = 0.00
+
+      case order_type do
+
+          "yours" -> 
+
+            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 6.00) end)
+
+          "pool" ->
+
+            total_cost = Enum.reduce(cart_items, 0, fn(%{quantity: quantity}, count) -> count + (quantity * 6.00) end)
+
+
+          "social" -> 
+
+            total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
+              case size do
+                "regular" ->  IO.puts("regular")
+                          #quantity * 12 * 5.00
+                          count + (quantity * 5.00)
+                "mini" -> IO.puts("mini")
+                        #quantity * 24 * 2.25
+                        count + (quantity * 2.50)
+              end
+            end)
+
+      end
+
+      IO.puts("calculate_total_cost")
+      IO.puts(total_cost)
+
+  end
+
+  def get_delivery_address(order_type, pool_admin_reciept_order_id, args) do
+
+      #
+
+      #if order_type 
+      #lookup pool_orders
+      #
+
+      #delivery_address = args
+
+
+  end
+
+
+
+  #get menuitems
+
 
 
   #complete_yours_social_pool_order
@@ -620,63 +688,72 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     regular_total = 0
     items_count = 0
     
-    total_cost = nil
-    total_cost_formatted = nil
+    subtotal = nil
+    total = nil
+    total_formatted = nil
 
 
     #move all of this before payment
 
     #cart_items = [%{menu_item_id: 1, quantity: 1, size: "regular"}, %{menu_item_id: 2, quantity: 100, size: "mini"}]
+    
     cart_items = args[:cart_items]
     IO.inspect(args[:cart_items])
 
     #order_type = "pool"
     order_type = args[:order_type]
 
+
+    calculate_subtotal_cost(order_type, cart_items)
+
+
     case order_type do
 
       "yours" -> 
 
-        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 1.00) end)
+        subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 6.00) end)
+
+      "pool" ->
+
+        subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 6.00) end)
 
 
       "social" -> 
 
-        total_cost = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
+        subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
           case size do
             "regular" ->  IO.puts("regular")
                       #quantity * 12 * 5.00
-                      count + (quantity * 1.00)
+                      count + (quantity * 5.00)
             "mini" -> IO.puts("mini")
                     #quantity * 24 * 2.25
-                    count + (quantity * 2.00)
+                    count + (quantity * 2.50)
           end
         end)
 
-      "pool" ->
-
-        total_cost = Enum.reduce(cart_items, 0, fn(%{quantity: quantity}, count) -> count + (quantity * 1.00) end)
+      
 
     end
 
-    subtotal = total_cost
+    #subtotal is cost without promo code and delivery cost
     subtotal_formatted = :erlang.float_to_binary(subtotal, [decimals: 2])
-    #promo_code = "8thandhope"
-    promo_code = args[:promo_code]
 
-    case promo_code do
+    #apply promo code
+    #promo_code = "8thandhope"
+    
+    case args[:promo_code] do
 
         "" -> nil
 
         "8thandhope" -> promo_code_discount = "10%"
-                        total_cost = total_cost - (total_cost * 10/100)
+                        total = subtotal - (subtotal * 10/100)
         "grain" ->  promo_code_discount = "10%"
-                    total_cost = total_cost - (total_cost * 10/100)
+                    total = subtotal - (subtotal * 10/100)
 
 
     end
 
-    total_cost_formatted = :erlang.float_to_binary(total_cost, [decimals: 2])
+    total_formatted = :erlang.float_to_binary(total, [decimals: 2])
 
     
 
@@ -759,8 +836,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #IO.puts("card data from app")
     #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
 
-    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
-
 
 
     #IO.puts("test card date")
@@ -777,13 +852,16 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+
 
         #IO.inspect(token["id"])  
 
         {:ok, token} -> {:ok, token}
 
-            case Stripe.Charge.create(%{:amount => 50, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+            case Stripe.Charge.create(%{:amount => total, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
               {:ok, charge} -> #IO.inspect(charge["id"])
               stripe_charge_token = charge["id"]
@@ -860,17 +938,17 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #insert into database
             #send email
 
-            order_id = SecureRandom.uuid
+            #order_id = SecureRandom.uuid
             #order_id = UUID.uuid1()
             #change order_id to random number
             
-            random_number = :rand.uniform(9999999999)
+            #random_number = :rand.uniform(9999999999)
             #check if it exists in the database?
             #user_id
             #order_id
 
-            IO.puts("random number9999")
-            IO.inspect(random_number)
+            #IO.puts("random number9999")
+            #IO.inspect(random_number)
             #Float.round
             #n = Random.rand(10..20)     # Random integer between 10 and 20
 
@@ -892,7 +970,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             #Multi.new
 
-            user_id = SecureRandom.uuid
+            #user_id = SecureRandom.uuid
 
             #check if user exists before entering in a user profile.
             #actually only really ued during registration
@@ -1201,7 +1279,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
                         #delivery_id, contact_id, payment_id
 
-                        #delivery_address = %{street1: args[:street1], street2: args[:street2], city: args[:city], state: args[:state], zipcode: args[:zipcode]}
+                        delivery_address = %{street1: args[:street1], street2: args[:street2], city: args[:city], state: args[:state], zipcode: args[:zipcode]}
 
                         #order_id = 0
                         #order_datetime = nil
@@ -1783,9 +1861,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #else
                   
-                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_cost_formatted: total_cost_formatted, cart_items: cart_items_with_name, total_cost: total_cost}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 
