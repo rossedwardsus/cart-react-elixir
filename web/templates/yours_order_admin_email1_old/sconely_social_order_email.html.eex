@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<table bgcolor="#00FF00" width="100%">
+	<tr><td>Thank you ross for your order!</td></tr>
+	<tr><td>Order number - 1234!</td></tr>
+	<tr><td>The delivery will be sent to:</td></tr>
+	<tr><td>delivery address street <%= @key["delivery_address_city"] %></td></tr>
+	<tr><td>delivery address city <%= @key["delivery_address_street"] %></td></tr>
+	<tr><td>delivery address state <%= @key["delivery_address_street"] %></td></tr>
+	<tr><td>delivery address zipcode <%= @key["delivery_address_street"] %></td></tr>
+	<tr><td></td></tr>
+	<tr><td>delivery date <%= @key["delivery_address_city"] %></td></tr>
+	<tr><td>delivery time <%= @key["delivery_address_street"] %></td></tr>
+	<tr><td></td></tr>
+	<tr><td>Your order items:</td></tr>
+	<%= for key <- @key["order_items"] do %>
+	    <tr><td>order items</td></tr>
+	<% end %>
+	<tr><td>total-1 dozenx2</td></tr>
+	<tr><td>you paid with card ending</td></tr>
+	<tr><td>any questions please contact us</td></tr>
+	</table>
+
+</html>
