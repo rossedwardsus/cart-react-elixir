@@ -42090,9 +42090,9 @@ webpackJsonp([0],[
 	                _this.setState({ selected_item_quantity: e.target.value * 12 });
 	            } else if (_this.state.selected_item_size == "mini") {
 	                _this.setState({ selected_item_quantity: e.target.value * 24 });
-	            } else {
-	                _this.setState({ selected_item_quantity: parseInt(e.target.value) });
-	            }
+	            } //else{ 
+	            // this.setState({selected_item_quantity: parseInt(e.target.value)});
+	            //}
 	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
 	            //set add cart button == active
 	            //this.set
@@ -42352,7 +42352,7 @@ webpackJsonp([0],[
 	                                                          2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItemMini}/>
 	                                                        </div>
 	                                                        <div className="col-md-3">
-	                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0}}>
+	                                                          <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0}}>
 	                                                            <option value="">Select Quantity</option>
 	                                                            {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
 	                                                          </select>
@@ -42362,7 +42362,7 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", { value: "" }, "Quantity"), selected_item_quantity_options_array.map(function (value) {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4", style: { paddingLeft: "0px" } }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-xs-4 col-md-3" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity / 12, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
 	                    return React.createElement("option", { value: value }, value);
 	                }))), React.createElement("div", { className: "col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
@@ -42684,7 +42684,11 @@ webpackJsonp([0],[
 	                        console.log(JSON.stringify(item));amount + item.quantity * 6.00;
 	                    }, 0);
 	                    //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
-	                    item_cost = 5.00;
+	                    if (this.props.User.orders[0].order_type == "social") {
+	                        item_cost = 5.00;
+	                    } else {
+	                        item_cost = 6.00;
+	                    }
 	                    //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
 	                    //    item_cost = 4.75;
 	                    //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){

@@ -244,11 +244,11 @@ class OrderMenu extends React.Component<any, any> {
       
       this.setState({selected_item_quantity: (e.target.value * 24)});
     
-    }else{ 
+    }//else{ 
 
-      this.setState({selected_item_quantity: parseInt(e.target.value)});
+     // this.setState({selected_item_quantity: parseInt(e.target.value)});
 
-    }
+    //}
 
     this.setState({add_cart_item_button_classname: "btn btn-default"});
       
@@ -536,7 +536,7 @@ class OrderMenu extends React.Component<any, any> {
                                                           2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItemMini}/>
                                                         </div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0}}>
+                                                          <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0}}>
                                                             <option value="">Select Quantity</option> 
                                                             {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                           </select>
@@ -557,8 +557,8 @@ class OrderMenu extends React.Component<any, any> {
                                                       </select>
                                                     </div>
                                                     <div className="col-xs-4 col-md-3">
-                                                      <select className="form-control" value={this.state.selected_item_quantity} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
-                                                        <option value="">Quantity</option> 
+                                                      <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
+                                                        <option>Quantity</option> 
                                                         {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                                       </select>
                                                     </div>

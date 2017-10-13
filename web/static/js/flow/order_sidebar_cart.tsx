@@ -345,7 +345,15 @@ class SidebarCart extends React.Component<any, any> {
 
             //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
 
+            if(this.props.User.orders[0].order_type == "social"){
+
                 item_cost = 5.00;
+
+            }else{
+
+                item_cost = 6.00;
+
+            }
 
             //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
 
