@@ -44151,7 +44151,7 @@ webpackJsonp([0],[
 	        //this.getData();
 	        //alert("sconely yours1" + this.props.params.order_id);
 	        _this.state = {
-	            selectedDate: moment().format("YYYY/MM/DD"),
+	            selectedDate: "",
 	            selected_time: "",
 	            selected_specific_time: "",
 	            delivery_dates: [],
@@ -44176,7 +44176,9 @@ webpackJsonp([0],[
 	        key: "setDate",
 	        value: function setDate(date) {
 	            //console.log("date " + moment(date).toISOString());
-	            this.setState({ selectedDate: moment(date).format("YYYY/MM/DD") });
+	            //moment().format('MMMM Do YYYY")
+	            this.setState({ selectedDate: moment(date).format("MMMM Do, YYYY") });
+	            //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
 	            //this.props.setDate(moment(date).format("YYYY/MM/DD"));
 	            //this.props.setOrderDeliveryDatetime(moment(date).toISOString());
 	            this.props.setOrderDeliveryDatetimeDate(moment(date).format("YYYY-MM-DD"));

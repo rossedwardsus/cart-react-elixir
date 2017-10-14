@@ -81,7 +81,7 @@ class DateTime extends React.Component<any, any> {
 
     this.state = {
 
-        selectedDate: moment().format("YYYY/MM/DD"),
+        selectedDate: "",
         selected_time: "",
         selected_specific_time: "",
         delivery_dates: [],
@@ -181,7 +181,10 @@ class DateTime extends React.Component<any, any> {
 
     //console.log("date " + moment(date).toISOString());
 
-    this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    //moment().format('MMMM Do YYYY")
+
+    this.setState({selectedDate: moment(date).format("MMMM Do, YYYY")});
+    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setDate(moment(date).format("YYYY/MM/DD"));
     //this.props.setOrderDeliveryDatetime(moment(date).toISOString());
     this.props.setOrderDeliveryDatetimeDate(moment(date).format("YYYY-MM-DD"));    
