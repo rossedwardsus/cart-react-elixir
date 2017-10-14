@@ -1528,7 +1528,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         else
 
-                            user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{first_name: args[:delivery_contact_address_contact_first_name], last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
+                            user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(user_delivery_contact_address, %{first_name: args[:delivery_contact_address_contact_first_name], last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
                             #else update
 
                             case Repo.update(user_delivery_contact_address_changeset) do
@@ -1539,6 +1539,33 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end
 
                         #IO.inspect(Ecto.Date.utc)
+
+                        card_number = "1234567890"
+                        last_four_digits = String.slice(card_number, (String.length(card_number) -4), String.length(card_number))
+
+                        user_payment_method = Repo.get_by(UserPaymentMethod, %{user_id: user_id})
+
+                        if user_payment_method == nil do
+                        
+                            user_payment_method_changeset = UserPaymentMethod.changeset(%UserPaymentMethod{}, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
+
+                            Repo.insert(user_payment_method_changeset)
+
+                        else
+
+                            user_payment_method_changeset = UserPaymentMethod.changeset(user_payment_method, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
+
+                            case Repo.update(user_payment_method_changeset) do
+                                {:ok, response} -> IO.inspect(response)
+                            #        #order_id = response.id
+                            end
+
+                        end
+
+
+
+                        
+                        
                         
                         yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
 
@@ -1583,26 +1610,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     #Enum.map
                     #Repo.insert(order_items_changeset) 
 
-                    #user_payment_changeset = UserPayment.changeset(%UserPayment{}, %{use_id: user_id, customer_token, payment_token})
-
-                  
-                    #get this from stripe
-                    #Repo.insert(order_payment_changeset)  
-
-                    #order_payment_changeset = Order.changeset(%OrderPayment{}, %{user_id: user_id, last_four_digits: "1234"})
-
-
-                    #get the max for the user and add one
-                    #IO.inspect(Repo.one(from upm in "user_payment_methods", where: upm.user_id == , select: count(upm.payment_method_id)))
-
-                    card_number = "1234567890"
-                    last_four_digits = String.slice(card_number, (String.length(card_number) -4), String.length(card_number))
-
-                    #user_payment_id = Repo.get_by!(UserPayment, {user_id: 1})
-                    #user_payment_changeset = UserPaymentMethod.changeset(%UserPaymentMethod{}, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
-
-                    #Repo.insert(user_payment_changeset)
-
+                    
                     #dont need
                     #session_id = Repo.get_by!(UserPayment, {user_id: 1})
                     #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, session_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})

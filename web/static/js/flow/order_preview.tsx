@@ -958,6 +958,7 @@ class Preview extends React.Component<any, any> {
                                     </div>
                                     <div className="col-md-3">
                                       <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("cart")}>Cart</button>
+                                    </div>
                                   </div>
                                 </div>
                             </form>

@@ -413,6 +413,12 @@ export class PublicFaq extends React.Component<any, any> {
                             Our scones are made with locally sourced organic ingredients whenever possible and all of our scones are free of refined sugar, soy and preservatives. We put alot of love and care into creating unique scones!
                             <br/>
                             <br/>
+                            <b>How does Sconely give back to the community?</b>
+                            <br/>
+                            <br/>
+                            Sconely is partnering up to use hyperlocal produce grown by the non-profit, Community Healing Gardens, in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.
+                            <br/>
+                            <br/>
                             <b>When can Sconely be eaten?</b>
                             <br/>
                             <br/>
@@ -492,6 +498,18 @@ export class PublicFaq extends React.Component<any, any> {
                             We pack our scones for maximum freshness. Scones can be stored in the box or bag they were delivered in and do not need to be stored in the refrigerator.
                             <br/>
                             <br/>
+                            <b>How does Sconely address food sensitivities or allergies?</b>
+                            <br/>
+                            <br/>
+                            We are continuously developing recipes that accommodate various dietary preferences. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used. 
+                            <br/>
+                            <br/>
+                            Where do the names of your scones come from?
+                            <br/>
+                            <br/>
+                            The names are inspired by nicknames of Sconely friends and family
+                            <br/>
+                            <br/>
                             <b>What is your return policy?</b>
                             <br/>
                             <br/>
@@ -527,7 +545,7 @@ export class PublicFaq extends React.Component<any, any> {
                             <b>When is customer service available?</b>
                             <br/>
                             <br/>
-                            Contact us by email at orders@sconely.com anytime or contact us by phone at (213) 952-8490, Wednesday – Saturday, 9AM – 5PM.
+                            Contact us by email at orders@sconely.com anytime or contact us by phone at (213) 952-8490, Monday – Saturday, 9AM – 5PM.
                             <br/>
                             <br/>
                         </div>
