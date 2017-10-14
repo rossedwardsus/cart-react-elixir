@@ -394,6 +394,8 @@ class DateTime extends React.Component<any, any> {
     //if pool then only show name and then link to
 
     let screen = null;
+    let today = new Date();
+    let yesterday = today.setDate(today.getDate() - 1); 
 
     console.log("order type " + this.props.User.orders[0].order_type);
 
@@ -516,7 +518,7 @@ class DateTime extends React.Component<any, any> {
                             <form className="form-horizontal" style={{border: 0}}>
                               <div className="form-group show-lg" style={{borderRadius: 0}}>
                                 <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: {daysOfWeek: [0, 1, 2],}}}/>
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+3))}, {daysOfWeek: [0, 1, 2]}]}}/>
                                 </div>
                                 <div className="col-md-3">
                                   9:00 am - 12:00 am
