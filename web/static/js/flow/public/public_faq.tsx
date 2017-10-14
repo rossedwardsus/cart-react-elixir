@@ -410,9 +410,6 @@ export class PublicFaq extends React.Component<any, any> {
                             Sconely updates traditional scones by creating unique sweet and savory recipes that maximize flavor and are influenced by international cuisine. Sconely addresses special diets, such as vegan and gluten-free and we use super foods, such as kale, purple onion and turmeric.  Our scones are made with locally sourced organic ingredients whenever possible and all of our scones are free of refined sugar, soy and preservatives. We put a lot of love and care into creating unique scones!
                             <br/>
                             <br/>
-                            Our scones are made with locally sourced organic ingredients whenever possible and all of our scones are free of refined sugar, soy and preservatives. We put alot of love and care into creating unique scones!
-                            <br/>
-                            <br/>
                             <b>How does Sconely give back to the community?</b>
                             <br/>
                             <br/>
