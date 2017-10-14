@@ -387,6 +387,56 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
+  defp format__delivery_date(delivery_date) do
+
+      #pool_order_delivery_date
+      delivery_date_month = nil
+      delivery_date_day_of_week = nil
+      delivery_date_formatted = nil
+
+
+      case  delivery_date.month do
+        1 -> {delivery_date_month = "January"}
+        2 -> {delivery_date_month = "February"}
+        3 -> {delivery_date_month = "March"}
+        4 -> {delivery_date_month = "April"}
+        5 -> {delivery_date_month = "May"}
+        6 -> {delivery_date_month = "June"}
+        7 -> {delivery_date_month = "July"}
+        8 -> {delivery_date_month = "August"}
+        9 -> {delivery_date_month = "September"}
+        10 -> {delivery_date_month = "October"}
+        11 -> {delivery_date_month = "November"}
+        12 -> {delivery_date_month = "December"}
+      end
+
+      
+      {:ok, date} = Ecto.Date.dump(delivery_date)
+      {:ok, delivery_date_from_erl} = Date.from_erl(date)    
+
+      #IO.inspect(Date.day_of_week(date_from_erl))           
+
+      case Date.day_of_week(pool_order_delivery_date_from_erl) do
+      #case Timex.weekday do
+        1 -> {delivery_date_day_of_week = "Sunday"}
+        2 -> {delivery_date_day_of_week = "Monday"}
+        3 -> {delivery_date_day_of_week = "Tuesday"}
+        4 -> {delivery_date_day_of_week = "Wednesday"}
+        5 -> {delivery_date_day_of_week = "Thursday"}
+        6 -> {delivery_date_day_of_week = "Friday"}
+        7 -> {delivery_date_day_of_week = "Saturday"}
+      end                     
+
+      IO.inspect(delivery_date_day_of_week)
+
+      delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(delivery_date.day) <> ", 2017"
+
+      IO.inspect(delivery_date_formatted)
+
+  end
+
+
+
 
   def process_cart_items_with_names(cart_items) do
 
@@ -1458,22 +1508,37 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #delivery_contact_address_changeset
                         #check if delivery address exists for a user.  if not add it else update whatever is there.
 
-                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == type(^user_id, Ecto.UUID), select: count(dca.delivery_contact_address_id))
+                        user_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: user_id})
 
-                        IO.puts("dca_id")
-                        IO.inspect(user_delivery_contact_address_count)
+                        IO.puts("udca")
+                        IO.inspect(user_delivery_contact_address)
 
                         #if 0 then add
                         #lse update
-                        #user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{use_id: user_id, delivery_contact_address_id: user_delivery_contact_address_count + 1, first_name: args[:delivery_contact_address_contact_first_name, last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
-                        #else update
 
-                        #case Repo.insert(user_delivery_contact_address_changeset) do
-                        #    {:ok, response} -> IO.inspect(response)
-                        #        #order_id = response.id
-                        #end
+                        if user_delivery_contact_address == nil do
 
-                        IO.inspect(Ecto.Date.utc)
+                            user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{user_id: user_id, user_delivery_contact_address_id: 1, first_name: args[:delivery_contact_address_contact_first_name], last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
+                            #else update
+
+                            case Repo.insert(user_delivery_contact_address_changeset) do
+                                {:ok, response} -> IO.inspect(response)
+                            #        #order_id = response.id
+                            end
+
+                        else
+
+                            user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(%UserDeliveryContactAddress{}, %{first_name: args[:delivery_contact_address_contact_first_name], last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
+                            #else update
+
+                            case Repo.update(user_delivery_contact_address_changeset) do
+                                {:ok, response} -> IO.inspect(response)
+                            #        #order_id = response.id
+                            end
+
+                        end
+
+                        #IO.inspect(Ecto.Date.utc)
                         
                         yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
 
