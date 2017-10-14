@@ -619,7 +619,7 @@ class OrderMenu extends React.Component<any, any> {
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                             <br/>
                           </div>
-                          <div className="col-xs-12 col-md-8" style={{paddingLeft: 0}}>
+                          <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                                 <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
@@ -645,9 +645,9 @@ class OrderMenu extends React.Component<any, any> {
 
                                 return(
                                         <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
-                                          <div>
-                                              <img id="1" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." height="270" width="270"/>
-                                          </div>
+                                      
+                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} onMouseEnter={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg"} onMouseLeave={(e: any) => e.currentTarget.src="/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
+                                          <br/>
                                           <b>{item.name}</b>
                                           <br/>
                                           <br/>

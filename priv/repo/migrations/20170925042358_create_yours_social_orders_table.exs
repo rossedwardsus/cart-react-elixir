@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreateYoursSocialOrdersTable do
   use Ecto.Migration
 
-  def change do
+  def up do
 
   	    create_if_not_exists table(:yours_social_orders, primary_key: false) do
   	      add :id, :uuid, primary_key: true
@@ -16,8 +16,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateYoursSocialOrdersTable do
 	  	  add :stripe_payment_token, :string, size: 30
 	  	  add :delivery_date, :date
 	  	  add :delivery_time_range, :string, size: 20
-	  	  #gift
-
+	  	  
 	      #create index(:posts, [:slug], concurrently: true)
 	    end
   end

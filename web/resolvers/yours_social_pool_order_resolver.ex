@@ -1391,22 +1391,22 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     #end
 
                                     #Ecto.Date.cast
-                                    #Date.from_iso8601!("2017-02-22")
+                                    delivery_date = Date.from_iso8601!("2017-10-16")
 
-                                    #case  pool_order.delivery_date.month do
-                                    #  1 -> {delivery_date_month = "January"}
-                                    #  2 -> {delivery_date_month = "February"}
-                                    #  3 -> {delivery_date_month = "March"}
-                                    #  4 -> {delivery_date_month = "April"}
-                                    #  5 -> {delivery_date_month = "May"}
-                                    #  6 -> {delivery_date_month = "June"}
-                                    #  7 -> {delivery_date_month = "July"}
-                                    #  8 -> {delivery_date_month = "August"}
-                                    #  9 -> {delivery_date_month = "September"}
-                                    #  10 -> {delivery_date_month = "October"}
-                                    #  11 -> {delivery_date_month = "November"}
-                                    #  12 -> {delivery_date_month = "December"}
-                                    #end
+                                    case  delivery_date.month do
+                                      1 -> {delivery_date_month = "January"}
+                                      2 -> {delivery_date_month = "February"}
+                                      3 -> {delivery_date_month = "March"}
+                                      4 -> {delivery_date_month = "April"}
+                                      5 -> {delivery_date_month = "May"}
+                                      6 -> {delivery_date_month = "June"}
+                                      7 -> {delivery_date_month = "July"}
+                                      8 -> {delivery_date_month = "August"}
+                                      9 -> {delivery_date_month = "September"}
+                                      10 -> {delivery_date_month = "October"}
+                                      11 -> {delivery_date_month = "November"}
+                                      12 -> {delivery_date_month = "December"}
+                                    end
 
                                     
                                     #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
@@ -1414,31 +1414,43 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     #IO.inspect(Date.day_of_week(date_from_erl))           
 
+                                    #IO.puts("day of week")
+                                    IO.puts(Date.day_of_week(delivery_date))
+
+                                    case Date.day_of_week(delivery_date) do
                                     #case Date.day_of_week(date_from_erl) do
                                     #case Timex.weekday do
-                                    #  1 -> {delivery_date_day_of_week = "Sunday"}
-                                    #  2 -> {delivery_date_day_of_week = "Monday"}
-                                    #  3 -> {delivery_date_day_of_week = "Tuesday"}
-                                    #  4 -> {delivery_date_day_of_week = "Wednesday"}
-                                    #  5 -> {delivery_date_day_of_week = "Thursday"}
-                                    #  6 -> {delivery_date_day_of_week = "Friday"}
-                                    #  7 -> {delivery_date_day_of_week = "Saturday"}
-                                    #end                     
+                                      0 -> {delivery_date_day_of_week = "Sunday"}
+                                      1 -> {delivery_date_day_of_week = "Monday"}
+                                      2 -> {delivery_date_day_of_week = "Tuesday"}
+                                      3 -> {delivery_date_day_of_week = "Wednesday"}
+                                      4 -> {delivery_date_day_of_week = "Thursday"}
+                                      5 -> {delivery_date_day_of_week = "Friday"}
+                                      6 -> {delivery_date_day_of_week = "Saturday"}
+                                    end                     
 
                                     #IO.inspect(delivery_date_day_of_week)
 
-                                    #delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
+                                    #th/rd/st
+
+                                    case delivery_date.day do
+                                      n when n in [1, 21, 31] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                                      n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                                      n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                                      n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+                                    end
+
+                                    delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> delivery_date_day_formatted <> ", 2017"
                         
                                     #IO.inspect(delivery_date_formatted)
 
-
-                                    delivery_date_formatted = "Thursday Septempter 27th" <> args[:order_delivery_datetime_date]
+                                    #delivery_date_formatted = "Thursday Septempter 27th" <> args[:order_delivery_datetime_date]
 
                             
                                     #timex_datetime = Date.from(date)
 
-                                    IO.inspect("day")
-                                    IO.inspect("date")
+                                    #IO.inspect("day")
+                                    #IO.inspect("date")
 
                         end
 
@@ -1446,7 +1458,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #delivery_contact_address_changeset
                         #check if delivery address exists for a user.  if not add it else update whatever is there.
 
-                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == type(^user_id, Ecto.UUID), select: count(dca.user_delivery_contact_address_id))
+                        user_delivery_contact_address_count = Repo.one(from dca in "user_delivery_contacts_addresses", where: dca.user_id == type(^user_id, Ecto.UUID), select: count(dca.delivery_contact_address_id))
 
                         IO.puts("dca_id")
                         IO.inspect(user_delivery_contact_address_count)
@@ -1461,8 +1473,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #        #order_id = response.id
                         #end
 
+                        IO.inspect(Ecto.Date.utc)
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+
                         #delivery_contact_address_id, contact_id, payment_id
 
                         case Repo.insert(yours_social_order_changeset) do

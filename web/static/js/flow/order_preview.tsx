@@ -838,7 +838,7 @@ class Preview extends React.Component<any, any> {
                            <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Name: {this.props.User.user_first_name} {this.props.User.user_last_name}
+                                  {this.props.User.user_first_name} {this.props.User.user_last_name}
                               </div>
                             </div>
                         </form>
@@ -864,7 +864,7 @@ class Preview extends React.Component<any, any> {
                         <form className="form-horizontal">
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Name: {this.props.User.user_first_name} {this.props.User.user_last_name}
+                                  {this.props.User.user_first_name} {this.props.User.user_last_name}
                               </div>
                             </div>
                         </form>
@@ -876,7 +876,7 @@ class Preview extends React.Component<any, any> {
                             </div>
                             <div className="form-group">
                               <div className="col-sm-12">
-                                  Mobile:
+                                  Mobile: {this.props.User.user_contact_mobile}
                               </div>
                             </div>
                         </form>
@@ -892,44 +892,19 @@ class Preview extends React.Component<any, any> {
                         <br/>
                         9-11 am
                         <br/>
-                        Delivery Address{this.props.User.deliveryContactsAddresses[0].street1}{this.props.User.deliveryContactsAddresses[0].street2}{this.props.User.deliveryContactsAddresses[0].city}{this.props.User.deliveryContactsAddresses[0].state}
+                        <form className="form-horizontal">
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  {this.props.User.deliveryContactsAddresses[0].street1}{this.props.User.deliveryContactsAddresses[0].street2}
+                              </div>
+                            </div>
+                            <div className="form-group">
+                              <div className="col-sm-12">
+                                  {this.props.User.deliveryContactsAddresses[0].city}{this.props.User.deliveryContactsAddresses[0].state}
+                              </div>
+                            </div>
+                        </form>
                         <br/>
-                        11901 Santa Monica Blvd, Los Angeles, CA, 90025
-                        <br/>
-                        <br/>
-                        <form className="form-horizontal">
-                            <div className="form-group">
-                              <div className="col-sm-12">
-                                  Name:
-                              </div>
-                            </div>
-                        </form>
-                        <form className="form-horizontal">
-                            <div className="form-group">
-                              <div className="col-sm-12">
-                                  Ross Edwards
-                              </div>
-                            </div>
-                        </form>
-                        <form className="form-horizontal">
-                            <div className="form-group">
-                              <div className="col-sm-12">
-                                  Contact
-                              </div>
-                            </div>
-                        </form>
-                        <form className="form-horizontal">
-                            <div className="form-group">
-                              <div className="col-sm-12">
-                                  rossedwards@gmail.com
-                              </div>
-                            </div>
-                            <div className="form-group">
-                              <div className="col-sm-12">
-                                  310-775-5566
-                              </div>
-                            </div>
-                        </form>
                         <br/>
                         <Link to="/order/checkout">Edit Delivery Contact Address</Link>   
                         <br/>
@@ -979,11 +954,10 @@ class Preview extends React.Component<any, any> {
                                       <button type="button" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
                                     </div>
                                     <div className="col-md-3">
-                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
+                                      <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("back_to_menu")}>Checkout</button>  
                                     </div>
                                     <div className="col-md-3">
-                                      <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
-                                    </div>
+                                      <button type="button" className="btn btn-default btn-block" style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("cart")}>Cart</button>
                                   </div>
                                 </div>
                             </form>

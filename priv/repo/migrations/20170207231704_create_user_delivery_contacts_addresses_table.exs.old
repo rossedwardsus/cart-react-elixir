@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTable do
   use Ecto.Migration
 
-  def change do
+  def up do
   	create_if_not_exists table(:user_delivery_contacts_addresses, primary_key: false) do
   		add :id, :uuid, primary_key: true
   		add :user_id, :uuid
@@ -16,6 +16,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserDeliveryContactsAddressesTab
   		add :city, :string, size: 40
   		add :state, :string, size: 40
   		add :zipcode, :string, size: 40
+  		add :note, :string, size: 50
   		#note - per order meaning reusable
 
   		#add :note, :string
