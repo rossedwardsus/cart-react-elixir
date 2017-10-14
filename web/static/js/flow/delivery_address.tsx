@@ -58,6 +58,8 @@ class DeliveryAddress extends React.Component<any, any> {
         contact_email: "",
         contact_email_again: "",
         contact_mobile: "",
+        contact_mobile_displayed: "",
+        
         street1: "",
         street2: "",
         city: "",
@@ -307,13 +309,23 @@ class DeliveryAddress extends React.Component<any, any> {
 
         if(e.target.value.length == 3){
 
-            this.setState({contact_mobile: e.target.value + "-"});
+            //console.log("here1");
+
+            this.setState({contact_mobile_displayed: e.target.value + "-"});
             
         }else if(e.target.value.length == 7){
 
-            this.setState({contact_mobile: e.target.value + "-"});
+            this.setState({contact_mobile_displayed: e.target.value + "-"});
+
+        }else if(e.target.value.length == 13){
+
+            console.log("delivery email/mobile validated");
+
+            //this.props.userNameEmailMobileValidated();
 
         }else{
+
+            //console.log("here3 " + e.target.value);
 
             this.setState({contact_mobile: e.target.value});
 
@@ -629,7 +641,7 @@ class DeliveryAddress extends React.Component<any, any> {
                   <div className="form-group">
                     <div className="col-sm-3 col-md-3">
                         <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile} maxLength={12} onChange={this.setDeliveryContactAddressMobile} onInput={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                          <input type="text" value={this.state.contact_mobile_displayed} maxLength={12} onChange={this.setDeliveryContactAddressMobile} onInput={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
                         </div>
                     </div>
                   </div>
