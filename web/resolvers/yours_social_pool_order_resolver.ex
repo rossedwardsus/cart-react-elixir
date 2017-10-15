@@ -4,6 +4,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   alias Sconely.SconelySignatureOrderAdditionalItem
   alias Sconely.MenuItem
   alias Sconely.Registration
+  alias Sconely.GuestRegistration
   alias Sconely.User
   alias Sconely.UserPaymentMethod
   alias Sconely.UserDeliveryContactAddress
@@ -262,7 +263,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   #@spec format_order_datetime(any) : string
   defp format_order_datetime(order_datetime_converted) do
 
-      IO.puts(Integer.to_string(order_datetime_converted.minute))
+      IO.puts("order datetime converted")
+      IO.inspect(order_datetime_converted)
 
       order_datetime_formatted = nil
       order_datetime_month = nil
@@ -284,16 +286,23 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
         12 -> {order_datetime_month = "December"}
       end
 
+      #IO.inspect(Date.day_of_week(Ecto.DateTime.to_erl(order_datetime_converted) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date))
+      IO.inspect(Date.day_of_week(order_datetime_converted))
+
+      #case Date.day_of_week(Ecto.DateTime.to_erl(order_datetime) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date) do
+
+      case Date.day_of_week(order_datetime_converted) do
+
       #case Date.day_of_week(pool_order_delivery_date_from_erl) do
       #case Timex.weekday(order_datetime_converted) do
-      #  0 -> {order_datetime_day_of_week = "Sunday"}
-      #  1 -> {order_datetime_day_of_week = "Monday"}
-      #  2 -> {order_datetime_day_of_week = "Tuesday"}
-      #  3 -> {order_datetime_day_of_week = "Wednesday"}
-      #  4 -> {order_datetime_day_of_week = "Thursday"}
-      #  5 -> {order_datetime_day_of_week = "Friday"}
-      #  6 -> {order_datetime_day_of_week = "Saturday"}
-      #end
+        1 -> {order_datetime_day_of_week = "Sunday"}
+        2 -> {order_datetime_day_of_week = "Monday"}
+        3 -> {order_datetime_day_of_week = "Tuesday"}
+        4 -> {order_datetime_day_of_week = "Wednesday"}
+        5 -> {order_datetime_day_of_week = "Thursday"}
+        6 -> {order_datetime_day_of_week = "Friday"}
+        7 -> {order_datetime_day_of_week = "Saturday"}
+      end
 
       case order_datetime_converted.minute do
         0 -> order_datetime_minute_formatted = "00"
@@ -367,7 +376,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
       {:ok, date} = Ecto.Date.dump(pool_order_delivery_date)
       {:ok, pool_order_delivery_date_from_erl} = Date.from_erl(date)    
 
-      #IO.inspect(Date.day_of_week(date_from_erl))           
+      #IO.inspect(Date.day_of_week(date_from_erl))    
+
+      #Date.day_of_week(Ecto.DateTime.to_erl(order_datetime) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date)       
 
       case Date.day_of_week(pool_order_delivery_date_from_erl) do
       #case Timex.weekday do
@@ -388,7 +399,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   end
 
-  defp format__delivery_date(delivery_date) do
+  defp format_delivery_date(delivery_date) do
+
+      IO.puts("delivery_date")
+      IO.inspect(delivery_date)
 
       #pool_order_delivery_date
       delivery_date_month = nil
@@ -417,7 +431,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       #IO.inspect(Date.day_of_week(date_from_erl))           
 
-      case Date.day_of_week(pool_order_delivery_date_from_erl) do
+      case Date.day_of_week(delivery_date_from_erl) do
       #case Timex.weekday do
         1 -> {delivery_date_day_of_week = "Sunday"}
         2 -> {delivery_date_day_of_week = "Monday"}
@@ -1115,7 +1129,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #or delete and recreate them
             #does payment method have to be stored for a guest?  
 
-            user = Repo.get_by(Registration, %{email: "rossedwards.us@gmail.com"})
+            user = Repo.get_by(GuestRegistration, %{email: "rossedwards.us@gmail.com"})
             IO.inspect(user)
 
 
@@ -1242,6 +1256,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                           12 -> {order_date_month = "December"}
                         end
 
+                        #change to use Date instead
+                        IO.puts("pool order datetime")
+                        IO.inspect(Date.day_of_week(order_datetime_converted))
+
                         case Timex.weekday(order_datetime_converted) do
                           0 -> {order_date_day_of_week = "Sunday"}
                           1 -> {order_date_day_of_week = "Monday"}
@@ -1365,7 +1383,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     #order_as_date = Ecto.DateTime.to_date(order_datetime_converted)
 
-                                    IO.inspect(Timex.weekday(order_datetime_converted))
+                                    #IO.inspect(Timex.weekday(order_datetime_converted))
 
                                     format_order_datetime(order_datetime_converted)
 
@@ -1384,16 +1402,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                       12 -> {order_date_month = "December"}
                                     end
 
-                                    #case Date.day_of_week(delivery_date) do
+                                    IO.puts("order date day of week")
+                                    IO.inspect(Date.day_of_week(Ecto.DateTime.to_erl(order_datetime) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date))
+
+                                    case Date.day_of_week(Ecto.DateTime.to_erl(order_datetime) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date) do
+                                    #case Date.day_of_week(Ecto.DateTime.to_date(order_datetime)) do
                                     #case Timex.weekday(order_datetime_converted) do
-                                    #  0 -> {order_date_day_of_week = "Sunday"}
-                                    #  1 -> {order_date_day_of_week = "Monday"}
-                                    #  2 -> {order_date_day_of_week = "Tuesday"}
-                                    #  3 -> {order_date_day_of_week = "Wednesday"}
-                                    #  4 -> {order_date_day_of_week = "Thursday"}
-                                    #  5 -> {order_date_day_of_week = "Friday"}
-                                    #  6 -> {order_date_day_of_week = "Saturday"}
-                                    #end
+                                      1 -> {order_date_day_of_week = "Sunday"}
+                                      2 -> {order_date_day_of_week = "Monday"}
+                                      3 -> {order_date_day_of_week = "Tuesday"}
+                                      4 -> {order_date_day_of_week = "Wednesday"}
+                                      5 -> {order_date_day_of_week = "Thursday"}
+                                      6 -> {order_date_day_of_week = "Friday"}
+                                      7 -> {order_date_day_of_week = "Saturday"}
+                                    end
 
                                     order_datetime_converted_minute_formatted = nil
 
@@ -1466,19 +1488,19 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     #IO.inspect(Date.day_of_week(date_from_erl))           
 
-                                    #IO.puts("day of week")
+                                    #IO.puts("delivery date day of week")
                                     IO.puts(Date.day_of_week(delivery_date))
 
                                     case Date.day_of_week(delivery_date) do
                                     #case Date.day_of_week(date_from_erl) do
                                     #case Timex.weekday do
-                                      0 -> {delivery_date_day_of_week = "Sunday"}
-                                      1 -> {delivery_date_day_of_week = "Monday"}
-                                      2 -> {delivery_date_day_of_week = "Tuesday"}
-                                      3 -> {delivery_date_day_of_week = "Wednesday"}
-                                      4 -> {delivery_date_day_of_week = "Thursday"}
-                                      5 -> {delivery_date_day_of_week = "Friday"}
-                                      6 -> {delivery_date_day_of_week = "Saturday"}
+                                      1 -> {delivery_date_day_of_week = "Sunday"}
+                                      2 -> {delivery_date_day_of_week = "Monday"}
+                                      3 -> {delivery_date_day_of_week = "Tuesday"}
+                                      4 -> {delivery_date_day_of_week = "Wednesday"}
+                                      5 -> {delivery_date_day_of_week = "Thursday"}
+                                      6 -> {delivery_date_day_of_week = "Friday"}
+                                      7 -> {delivery_date_day_of_week = "Saturday"}
                                     end                     
 
                                     #IO.inspect(delivery_date_day_of_week)

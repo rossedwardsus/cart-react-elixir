@@ -4,21 +4,14 @@ defmodule Sconely.GuestRegistration do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:email, :password]}
-
-		#@valid_attrs %{email: "", password: ""}
 		@optional_fields ~W(email registration_datetime)
 		@required_fields ~W()
 
 		@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "guest_registration" do
-			#field :user_id, Ecto.UUID #:integer
 			field :email, :string
-			#field :password, :string
-			#field :password_hash, :string
 			field :registration_datetime, Ecto.DateTime
-			#field :active, :boolean, default: true
 		end
 
 		def changeset(struct, params \\ %{}) do

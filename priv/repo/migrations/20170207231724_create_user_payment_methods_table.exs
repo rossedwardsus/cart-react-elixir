@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreateUserPaymentMethodsTable do
   use Ecto.Migration
 
-  def change do
+  def up do
   	  create_if_not_exists table(:user_payment_methods, primary_key: false) do
 	      add :id, :uuid, primary_key: true
 	      add :user_id, :uuid

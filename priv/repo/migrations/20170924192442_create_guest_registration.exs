@@ -1,4 +1,4 @@
-defmodule SconeHomeElixir.Repo.Migrations.CreateGuestRegistration do
+defmodule SconeHomeElixir.Repo.Migrations.CreateGuestRegistrationTable do
   use Ecto.Migration
 
    def up do

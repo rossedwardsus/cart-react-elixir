@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrdersTable do
   use Ecto.Migration
 
-  def change do
+  def up do
 
   	create_if_not_exists table(:pool_orders, primary_key: false) do
       add :id, uuid, primary_key: false

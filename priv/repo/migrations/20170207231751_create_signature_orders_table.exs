@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureOrdersTable do
   use Ecto.Migration
 
-  def change do
+  def up do
 
   	 create_if_not_exists table(:signature_orders) do
       #id

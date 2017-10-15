@@ -1,11 +1,12 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrderResponsesTable do
   use Ecto.Migration
 
-  def change do
+  def up do
     create_if_not_exists table(:pool_order_responses) do
+      #id
       add :user_id, :uuid
       add :parent_order_id, :uuid
-  	  add :admin_receipt_pool_order_id, :bigint #yours, social, pool
+  	  #add :admin_receipt_pool_order_id, :bigint #yours, social, pool
       #add :delivery_contact_address_id, :smallint
       add :admin_receipt_order_id, :bigint
       add :payment_method_id, :smallint

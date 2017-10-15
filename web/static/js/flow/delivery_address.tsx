@@ -680,8 +680,8 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3 col-md-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>City</option>
-                            <option value="los_angeles">Los Angeles</option>
-                            <option value="santa_monica">Santa Monica</option>
+                            <option value="Los Angeles">Los Angeles</option>
+                            <option value="Santa Monica">Santa Monica</option>
                           </select>
                         </div>
                         <div className="hidden-lg col-xs-1">
@@ -690,7 +690,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>State</option>
-                            <option value="ca">CA</option>
+                            <option value="CA">CA</option>
                           </select>
                         </div>
                         <div className="col-sm-3">

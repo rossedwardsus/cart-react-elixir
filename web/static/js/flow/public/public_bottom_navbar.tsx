@@ -225,6 +225,7 @@ export default class Menu extends React.Component<any, any> {
                         </div>
                       </div>
                       <br/>
+                      <br/>
                       <div className="form-horizontal" style={{paddingLeft: 0}}>
                         <div className="col-md-1" style={{paddingLeft: 10}}>
                           <a className="fa fa-instagram" style={{fontSize: 20, textDecoration: "none", color: "grey"}} href="http://www.instagram.com/sconelyla"></a>

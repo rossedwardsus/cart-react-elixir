@@ -1,7 +1,7 @@
 defmodule SconeHomeElixir.Repo.Migrations.CreateSignatureGuestResponsesTable do
   use Ecto.Migration
 
-  def change do
+  def up do
 	create_if_not_exists table(:signature_guest_responses) do
       #add :id, :uuid
       add :parent_order_id, :uuid

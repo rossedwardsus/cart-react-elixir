@@ -2,14 +2,14 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateMenuItemsTable do
   use Ecto.Migration
 
   def up do
-  	create_if_not_exists table(:menu_items) do
-      add :menu_item_id, :smallint
+  	create_if_not_exists table(:menu_items, primary_key: false) do
+      add :menu_item_id, :smallint, primary_key: true
       add :name, :string, size: 100
       add :description, :text
       add :ingredients, :text
       add :assortment, :boolean
       add :active, :boolean
-
+      add :order, :smallint
     end
   end
 

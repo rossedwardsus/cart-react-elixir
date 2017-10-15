@@ -387,7 +387,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             9am - Noon
                             <br/>
                             <br/>
-                            Contact us about delivery in your area
+                            Contact us about other delivery options
                           <br/>   
                           <br/>
                         </div>
@@ -398,19 +398,21 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <a onClick={() => this.props.createOrder("yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
-                                    <br/>
-                                    2-10 freshly baked scones.
-                                    <br/>
-                                    <br/>
-                                    <br/>
                                     <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
                                     <br/>
-                                    1 doz  - 20 doz regular sized scones
+                                    1 dozen  - 20 dozen regular sized scones
                                     <br/>
-                                    2 doz - 40 doz mini scones
+                                    2 dozen - 40 dozen mini scones
                                     <br/>
                                     Freshly baked, delivered to your event
+                                    <br/>
+                                    Coming Soon
+                                    <br/>
+                                    Sconely Yours
+                                    <br/>
+                                    Sconely Pool
+                                    <br/>
+                                    Sconely Signature
                                   </div>
                         </div>
                         <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
@@ -427,20 +429,24 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <br/>
-                          <a onClick={() => this.props.createOrder("yours")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY YOURS</a>
-                          <br/>
-                          2-10 scones, freshly baked and delivered to you
-                          <br/>
-                          <br/>
-                          <br/>
                           <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
                           <br/>
-                          1 doz  - 20 doz regular sized scones
+                          1 dozen  - 20 dozen regular sized scones
                           <br/>
-                          2 doz - 40 doz mini scones
+                          2 dozen - 40 dozen mini scones
                           <br/>
                           Freshly baked, delivered to your event
+                          <br/>
+                          <br/>
+                          Coming Soon
+                          <br/>
+                          Sconely Yours
+                          <br/>
+                          Sconely Pool
+                          <br/>
+                          Sconely Signature
+                          <br/>
+                          
                         </div>
                     </div>
                     <PublicBottomNavbar/>
