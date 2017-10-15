@@ -17,6 +17,7 @@ defmodule Sconely.OrderItem do
 			field :menu_item_id, :integer
 			field :quantity, :integer #integer
 			field :size, :string	
+			#
 		end
 
 		def changeset(struct, params \\ %{}) do
