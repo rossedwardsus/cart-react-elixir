@@ -327,12 +327,13 @@ class DeliveryAddress extends React.Component<any, any> {
 
             //console.log("here3 " + e.target.value);
 
-            this.setState({contact_mobile: e.target.value});
+            this.setState({contact_mobile_displayed: e.target.value});
 
         }
 
       }else{
 
+          this.setState({contact_mobile_displayed: e.target.value});
           this.setState({user_mobile_border_color: "red"});
 
       }
