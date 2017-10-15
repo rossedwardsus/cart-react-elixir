@@ -1920,7 +1920,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
                             #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
 
-                            IO.inspect(List.first(Enum.filter(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end))[:name])
+                            #IO.inspect(List.first(Enum.filter(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end))[:name])
+
+                            IO.inspect(Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name])
+
 
                             Map.merge(cart_item, %{
                               :name => item_name,

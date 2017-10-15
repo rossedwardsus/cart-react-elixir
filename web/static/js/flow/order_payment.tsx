@@ -858,6 +858,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     let body: any = "";
     let item_count = this.state.item_count;
+    let regular_items = [];
+    let mini_items = [];
+    let subtotal_cost = 0.00;
+    let total_due_formatted = null
+    let total_regular_items_cost = null;
+    let total_mini_items_cost = null;
+    let total_cost = null;
+    let total_items = null;
+
 
     //alert(item_count);
 
@@ -867,20 +876,73 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
 
-    let total_due = 0.00;
-    let total_due_formatted = null
+  
+    regular_items = this.props.User.orders[0].cartItems.filter((item: any) => {
 
-    if(this.state.promo_code == 0){
+        //console.log(JSON.stringify(item));
 
-        total_due = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0);
+        if(item.size == "regular"){
+
+            return item;
+
+        }
+
+        return
+
+    });
+
+    mini_items = this.props.User.orders[0].cartItems.filter((item: any) => {
+
+        //console.log(JSON.stringify(item));
+
+        if(item.size == "mini"){
+
+            return item;
+
+        }
+
+        return
+
+    });
+
+    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+        
+          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 6.00; }, 0)
 
     }else{
 
-        total_due = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) - (this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0) * (this.state.promo_code_discount/100));
+      total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
     }
 
-    total_due_formatted = total_due.toFixed(2);
+    total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
+
+    //}
+
+
+    //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
+
+    //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
+
+
+    subtotal_cost = total_regular_items_cost + total_mini_items_cost;
+
+    //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+
+    //total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
+
+
+    if(this.state.promo_code_discount == 0){
+
+        total_cost = subtotal_cost;
+
+    }else{
+
+        total_cost = subtotal_cost - (subtotal_cost * (this.state.promo_code_discount/100));
+
+    }
+
+    //total_due_formatted = total_due.toFixed(2);
 
 
 
@@ -919,7 +981,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Subtotal Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity * 5.5, 0).toFixed(2)}
+                                    ${subtotal_cost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>
@@ -949,7 +1011,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${total_due_formatted}
+                                    ${total_cost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>

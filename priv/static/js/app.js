@@ -42406,7 +42406,7 @@ webpackJsonp([0],[
 	                //console.log("image id " + this.state["image_src_" + item.item_id]);
 	                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 	                return React.createElement("div", { className: "col-xs-12 col-md-4 col-lg-4", style: { marginTop: 0, marginBottom: 0 } }, React.createElement("img", { id: "1", className: "img-responsive", onClick: function onClick() {
-	                        return _this3.showItem(item.id);
+	                        return _this3.showItem(item.menu_item_id);
 	                    }, onMouseEnter: function onMouseEnter(e) {
 	                        return e.currentTarget.src = "/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + "rollover.jpg";
 	                    }, onMouseLeave: function onMouseLeave(e) {
@@ -43483,27 +43483,57 @@ webpackJsonp([0],[
 	            //<SidebarCart order={this.props.order} menuItems={this.props.menuItems} cartItems={this.props.cartItems}/>
 	            var body = "";
 	            var item_count = this.state.item_count;
+	            var regular_items = [];
+	            var mini_items = [];
+	            var subtotal_cost = 0.00;
+	            var total_due_formatted = null;
+	            var total_regular_items_cost = null;
+	            var total_mini_items_cost = null;
+	            var total_cost = null;
+	            var total_items = null;
 	            //alert(item_count);
 	            //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
 	            //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
 	            //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-	            var total_due = 0.00;
-	            var total_due_formatted = null;
-	            if (this.state.promo_code == 0) {
-	                total_due = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity * 5.5;
+	            regular_items = this.props.User.orders[0].cartItems.filter(function (item) {
+	                //console.log(JSON.stringify(item));
+	                if (item.size == "regular") {
+	                    return item;
+	                }
+	                return;
+	            });
+	            mini_items = this.props.User.orders[0].cartItems.filter(function (item) {
+	                //console.log(JSON.stringify(item));
+	                if (item.size == "mini") {
+	                    return item;
+	                }
+	                return;
+	            });
+	            if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool") {
+	                total_regular_items_cost = regular_items.reduce(function (amount, item) {
+	                    return amount + item.quantity * 6.00;
 	                }, 0);
 	            } else {
-	                total_due = this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity * 5.5;
-	                }, 0) - this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity * 5.5;
-	                }, 0) * (this.state.promo_code_discount / 100);
+	                total_regular_items_cost = regular_items.reduce(function (amount, item) {
+	                    return amount + item.quantity * 5.00;
+	                }, 0);
 	            }
-	            total_due_formatted = total_due.toFixed(2);
-	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, React.createElement(react_router_1.Link, { to: "/order/menu" }, "<-", " Menu")), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "$", this.props.User.orders[0].cartItems.reduce(function (amount, item) {
-	                return amount + item.quantity * 5.5;
-	            }, 0).toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.state.promo_code, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Discount"), React.createElement("div", { className: "col-md-2" }, "%", this.state.promo_code_discount))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", total_due_formatted))), React.createElement("br", null), this.state.payment_error_message, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { User: this.props.User, setPaymentNameOnCard: function setPaymentNameOnCard(e) {
+	            total_mini_items_cost = mini_items.reduce(function (amount, item) {
+	                return amount + item.quantity * 2.25;
+	            }, 0);
+	            //}
+	            //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
+	            //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
+	            subtotal_cost = total_regular_items_cost + total_mini_items_cost;
+	            //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+	            //total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
+	            if (this.state.promo_code_discount == 0) {
+	                total_cost = subtotal_cost;
+	            } else {
+	                total_cost = subtotal_cost - subtotal_cost * (this.state.promo_code_discount / 100);
+	            }
+	            //total_due_formatted = total_due.toFixed(2);
+	            return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3" }, React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement("br", null), React.createElement("div", { className: "hidden-lg" }, React.createElement(react_router_1.Link, { to: "/order/menu" }, "<-", " Menu")), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Subtotal Due:"), React.createElement("div", { className: "col-md-3" }, "$", subtotal_cost.toFixed(2)))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Promo Code"), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", maxLength: 30, onChange: this.setPromoCode, className: "form-control", value: this.state.promo_code, id: "exampleInputName2", placeholder: "Promo Code", style: { borderColor: "grey", borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Discount"), React.createElement("div", { className: "col-md-2" }, "%", this.state.promo_code_discount))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-3" }, "Total Due:"), React.createElement("div", { className: "col-md-3" }, "$", total_cost))), React.createElement("br", null), this.state.payment_error_message, React.createElement("br", null), React.createElement("br", null), React.createElement(payment_method_tsx_1.default, { User: this.props.User, setPaymentNameOnCard: function setPaymentNameOnCard(e) {
 	                    return _this2.props.setPaymentNameOnCard(e);
 	                }, setPaymentZipCode: function setPaymentZipCode(e) {
 	                    return _this2.props.setPaymentZipCode(e);
