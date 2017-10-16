@@ -638,9 +638,9 @@ class OrderMenu extends React.Component<any, any> {
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
-                            <b>SCONELY {this.props.User.orders[0].order_type.toUpperCase()}</b>
-                            <br/>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
+                              <b>SCONELY {this.props.User.orders[0].order_type.toUpperCase()}</b>
+                              <br/>
                               {(this.props.User.orders[0].order_type == "social" && this.props.User.orders[0].cartItems.length == 0) &&
                               (<div><br/><br/>Order by the dozen or 2 dozen for minis<br/>Plan ahead, order at least 48 hours in advance<br/><br/><b>Free Delivery</b><br/>Downtown LA<br/>Santa Monica<br/>Venice<br/><br/>Wednesday-Saturday<br/>9am-Noon<br/><br/>Contact us for other delivery options</div>)}
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
