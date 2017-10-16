@@ -561,11 +561,13 @@ class OrderMenu extends React.Component<any, any> {
 
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
+                                                    <div className="col-xs-4 col-sm-4 col-md-4" style={{paddingLeft: "0px"}}>
                                                       <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
                                                         <option value="">Mini or Regular</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Minis</option>
                                                       </select>
+                                                    </div>
                                                     <div className="col-xs-4 col-md-3">
                                                       <select className="form-control" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
                                                         <option>Quantity</option> 
