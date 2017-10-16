@@ -738,7 +738,9 @@ class OrderCart extends React.Component<any, any> {
 
         total_items = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
-        total_items_cost = total_regular_items_cost + total_mini_items_cost;
+        //subtotal = total_regular_items_cost + total_mini_items_cost;
+        //promo code if they added one
+        //deliver cost
 
 
         /*item_count = this.props.cart_items.map(function(item: any){
@@ -918,6 +920,7 @@ class OrderCart extends React.Component<any, any> {
                                    <div className="col-md-3"></div><div className="col-md-4">Total Items</div>
                                    <div className="col-md-1"><b>{total_items}</b></div>
                                    <br/>
+                                   <div className="col-md-3"></div><div className="col-md-4">Total Due</div><div className="col-md-1"><b>${subtotal.toFixed(2)}</b></div>
                                    <div className="col-md-3"></div><div className="col-md-4">Delivery Cost</div><div className="col-md-2"><b>$0.00</b></div>
                                    <br/>
                                    <div className="col-md-3"></div><div className="col-md-4">Total Due</div><div className="col-md-1"><b>${total_items_cost.toFixed(2)}</b></div>

@@ -561,6 +561,8 @@ class OrderMenu extends React.Component<any, any> {
 
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
+                                                  <form role="form">
+                                                      <div className="form-group">
                                                     <div className="col-xs-4 col-md-4" style={{paddingLeft: "0px"}}>
                                                       <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
                                                         <option value="">Mini or Regular</option> 
@@ -577,6 +579,8 @@ class OrderMenu extends React.Component<any, any> {
                                                     <div className="col-md-4">
                                                       <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
                                                     </div>
+                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
 
