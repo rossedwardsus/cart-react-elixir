@@ -62,7 +62,7 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 9, order: 
 
 Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 10, order: 10, name: "Paul Bear", ingredients: "Spelt flour*, Kamut flour*, Granny smith apples*, Golden raisins*, Virgin coconut oil*, Almond milk*, Flax seeds*, Coconut sugar*, Pure vanilla extract*, Baking powder, Cinnamon, Sea salt. *Organic", description: "Hearty ancient grains meet granny smith apples, golden raisins and crunchy cinnamon topping", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 10, order: 10, name: "Paul Bear (Vegan)", ingredients: "Spelt flour*, Kamut flour*, Granny smith apples*, Golden raisins*, Virgin coconut oil*, Almond milk*, Flax seeds*, Coconut sugar*, Pure vanilla extract*, Baking powder, Cinnamon, Sea salt. *Organic", description: "Hearty ancient grains meet granny smith apples, golden raisins and crunchy cinnamon topping", assortment: false, active: true})
 
 Repo.insert!(menu_item_changeset)
 
