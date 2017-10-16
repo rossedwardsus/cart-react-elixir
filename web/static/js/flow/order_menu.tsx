@@ -49,7 +49,7 @@ class OrderMenu extends React.Component<any, any> {
         selected_item_name: "",
         selected_item_description: "",
         selected_item_ingredients: "",
-        add_cart_item_button_classname: "btn btn-default disabled",
+        add_cart_item_button_classname: "form-control btn btn-default disabled",
         images: [],
         hover_images: [],
         options_count_array: [],
@@ -198,9 +198,9 @@ class OrderMenu extends React.Component<any, any> {
     };
   }
 
-  showItem = (item_id: any) => {
+  showItem = (menu_item_id: any) => {
 
-      console.log("item_id " + item_id);
+      console.log("menu_item_id " + menu_item_id);
 
       
       //findindex
@@ -209,10 +209,14 @@ class OrderMenu extends React.Component<any, any> {
 
           if(item.item_id === item_id){*/
 
-              this.setState({selected_item_id: item_id});
-              this.setState({selected_item_name: this.props.menuItems[item_id-1]["name"]});
-              this.setState({selected_item_description: this.props.menuItems[item_id-1]["description"]});
-              this.setState({selected_item_ingredients:  this.props.menuItems[item_id-1]["ingredients"]});
+              let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+
+              console.log(JSON.stringify(menu_item));
+
+              this.setState({selected_item_id: menu_item_id});
+              this.setState({selected_item_name: menu_item["name"]});
+              this.setState({selected_item_description: menu_item["description"]});
+              this.setState({selected_item_ingredients:  menu_item["ingredients"]});
 
       /*    }
 
@@ -262,7 +266,7 @@ class OrderMenu extends React.Component<any, any> {
 
     }
 
-    this.setState({add_cart_item_button_classname: "btn btn-default"});
+    this.setState({add_cart_item_button_classname: "form-control btn btn-default"});
       
     //set add cart button == active
     //this.set
@@ -561,17 +565,22 @@ class OrderMenu extends React.Component<any, any> {
 
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
+                                                      <div className="col-md-4">
                                                       <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150}}>
                                                         <option value="">Mini or Regular</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Minis</option>
                                                       </select>
+                                                      </div>
+                                                      <div className="col-md-4">
                                                       <select className="form-control" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
                                                         <option>Quantity</option> 
                                                         {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                                       </select>
+                                                      </div>
+                                                      <div className="col-md-4">
                                                       <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
-                                              
+                                                      </div>
                                                 </div>
                                             </div>
 

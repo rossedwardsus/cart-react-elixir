@@ -42059,15 +42059,19 @@ webpackJsonp([0],[
 	            //console.log("menu props");
 	            //console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
 	        };
-	        _this.showItem = function (item_id) {
-	            console.log("item_id " + item_id);
+	        _this.showItem = function (menu_item_id) {
+	            console.log("menu_item_id " + menu_item_id);
 	            //findindex
 	            /*this.props.menuItems.map(function(item: any){
 	                       if(item.item_id === item_id){*/
-	            _this.setState({ selected_item_id: item_id });
-	            _this.setState({ selected_item_name: _this.props.menuItems[item_id - 1]["name"] });
-	            _this.setState({ selected_item_description: _this.props.menuItems[item_id - 1]["description"] });
-	            _this.setState({ selected_item_ingredients: _this.props.menuItems[item_id - 1]["ingredients"] });
+	            var menu_item = _this.props.menuItems.find(function (item) {
+	                return item.menu_item_id == menu_item_id;
+	            });
+	            console.log(JSON.stringify(menu_item));
+	            _this.setState({ selected_item_id: menu_item_id });
+	            _this.setState({ selected_item_name: menu_item["name"] });
+	            _this.setState({ selected_item_description: menu_item["description"] });
+	            _this.setState({ selected_item_ingredients: menu_item["ingredients"] });
 	            /*    }
 	             
 	            }.bind(this));*/
@@ -42096,7 +42100,7 @@ webpackJsonp([0],[
 	                // this.setState({selected_item_quantity: parseInt(e.target.value)});
 	                //}
 	            }
-	            _this.setState({ add_cart_item_button_classname: "btn btn-default" });
+	            _this.setState({ add_cart_item_button_classname: "form-control btn btn-default" });
 	            //set add cart button == active
 	            //this.set
 	        };
@@ -42189,7 +42193,7 @@ webpackJsonp([0],[
 	            selected_item_name: "",
 	            selected_item_description: "",
 	            selected_item_ingredients: "",
-	            add_cart_item_button_classname: "btn btn-default disabled",
+	            add_cart_item_button_classname: "form-control btn btn-default disabled",
 	            images: [],
 	            hover_images: [],
 	            options_count_array: [],
@@ -42366,11 +42370,11 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis")), React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100 } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
 	                    return React.createElement("option", { value: value }, value);
-	                })), React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                }))), React.createElement("div", { className: "col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
-	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50 } }, "Add")));
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50 } }, "Add"))));
 	                //}
 	                //}
 	            }
