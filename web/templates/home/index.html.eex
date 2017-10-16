@@ -229,6 +229,10 @@
 
     }
 
+    body.modal-open {
+      position: fixed;
+    }
+
     //@-ms-viewport {
     //    width: device-width;
     //}
