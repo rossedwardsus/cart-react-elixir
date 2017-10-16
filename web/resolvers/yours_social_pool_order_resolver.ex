@@ -923,9 +923,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
@@ -2031,9 +2031,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                           #IO.inspect(delivery_address)
                   
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          #Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                         #end
 
