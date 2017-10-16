@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreatePoolOrdersTable do
   def up do
 
   	create_if_not_exists table(:pool_orders, primary_key: false) do
-      add :id, uuid, primary_key: false
+      add :id, :uuid, primary_key: false
       add :user_id, :uuid
       add :user_pool_id, :smallint
       add :parent_order_id, :uuid

@@ -4,7 +4,10 @@ defmodule Sconely.MenuItem do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
+		@optional_fields ~W(menu_item_id name description ingredients assortment active order)
+		@required_fields ~W()
+
+		@primary_key {:id, :binary_id, autogenerate: true}
 
 		schema "menu_items" do
 			field :menu_item_id, :integer
@@ -16,6 +19,11 @@ defmodule Sconely.MenuItem do
 			field :order, :integer
 			
 			#timestamps()
+		end
+
+		def changeset(struct, params \\ %{}) do
+		    struct
+		    |> cast(params, @required_fields, @optional_fields)
 		end
 
 end 

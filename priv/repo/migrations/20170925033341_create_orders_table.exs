@@ -3,7 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateOrdersTable do
 
   def up do
 
-  	    create_if_not_exists table(:orders, primary_key_false) do
+  	    create_if_not_exists table(:orders, primary_key: false) do
   	      add :order_id, :uuid, primary_key: true
 	      add :user_id, :uuid
 	      add :admin_receipt_order_id, :bigint

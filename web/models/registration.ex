@@ -4,8 +4,6 @@ defmodule Sconely.Registration do
 
 		use SconeHomeElixir.Web, :model
 
-		#@derive {Poison.Encoder, only: [:email, :password]}
-
 		#@valid_attrs %{email: "", password: ""}
 		@optional_fields ~W(email password_hash registration_datetime)
 		@required_fields ~W()
@@ -13,7 +11,6 @@ defmodule Sconely.Registration do
 		@primary_key {:user_id, :binary_id, autogenerate: true}
 
 		schema "registration" do
-			#field :user_id, Ecto.UUID #:integer
 			field :email, :string
 			#field :password, :string
 			field :password_hash, :string

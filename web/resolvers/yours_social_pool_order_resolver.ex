@@ -1105,10 +1105,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             #IO.inspect(order_changeset)
 
-            query = from mi in MenuItem,
-                     select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
-            menu_items = Repo.all(query)
-
+            
             #IO.inspect(menu_items)
 
             #menu_item[0].name
@@ -1128,6 +1125,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
             #if they end up registering either change their user id
             #or delete and recreate them
             #does payment method have to be stored for a guest?  
+
+
+            query = from mi in MenuItem,
+                     select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
+            menu_items = Repo.all(query)
 
             user = Repo.get_by(GuestRegistration, %{email: "rossedwards.us@gmail.com"})
             IO.inspect(user)
