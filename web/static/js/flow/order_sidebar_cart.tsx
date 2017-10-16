@@ -472,21 +472,21 @@ class SidebarCart extends React.Component<any, any> {
 
                       console.log("cart menuitems " + JSON.stringify(item));
 
-                      //let menu_item = this.props.menuItems.find((menu_item: any) => {
+                      let menu_item = this.props.menuItems.find((menu_item: any) => {
 
                           //console.log(JSON.stringify(menu_item) + " " + item.item_id);
 
-                      //    return menu_item.id === item.menu_item_id;
+                          return menu_item.menu_item_id === item.menu_item_id;
 
-                      //});
+                      });
 
                       //console.log("index " + JSON.stringify(menu_item.name));
 
                       //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
                       
-                      let item_name = this.props.menuItems[item.menu_item_id - 1].name;
+                      //let item_name = this.props.menuItems[item.menu_item_id - 1].name;
 
-                      //let item_name = "";
+                      let item_name = menu_item.name;
 
                       //if(menu_item != undefined){
                         
@@ -616,7 +616,7 @@ class SidebarCart extends React.Component<any, any> {
     let checkoutButton = null;
 
 
-    /*if(this.props.User.orders[0].order_type == "pool"){
+    if(this.props.User.orders[0].order_type == "pool"){
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
 
@@ -638,13 +638,13 @@ class SidebarCart extends React.Component<any, any> {
 
       
 
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){*/
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){
 
           checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
 
-      //}
+      }
 
-    //}
+    }
 
     if(total_items % 12 == 0){
 

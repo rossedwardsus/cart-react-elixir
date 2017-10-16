@@ -29,7 +29,6 @@ import "react-day-picker/lib/style.css"
 require('react-datepicker/dist/react-datepicker.css');
 
 import SidebarCart from './order_sidebar_cart.tsx';
-import PublicTopNavbar from './public/public_top_navbar.tsx';
 import NameContact from './name.tsx';
 import DeliveryContactAddress from './delivery_address.tsx';
 
@@ -47,6 +46,10 @@ import {userNameEmailMobileValidated, deliveryContactAddressValidated} from './a
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
 import {updateOrderSession} from './actions/session.ts';
+
+import PublicTopNavbar from './public/public_top_navbar.tsx';
+import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
 
 function addTodoWithDispatch() {
@@ -549,6 +552,8 @@ class DateTime extends React.Component<any, any> {
                             <br/>
                             <br/>
                         </div>
+                        <PublicBottomNavbar/>
+                        <PublicPrivacyTermsNavbar/>
                     </div>  
               </div>)
 

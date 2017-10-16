@@ -12,7 +12,7 @@ defmodule Sconely.OrderStartedEmail do
       from: "orders@sconely.com",
       subject: "A new order has been started.",
       #html_body: template,
-      html_body: "A new #{_params[:order_type]} order has been created",
+      html_body: "A new #{_params[:order_type]} order has been created with session id:  #{_params[:session_id]}",
       #text_body: "Thanks for joining!"
     )
 

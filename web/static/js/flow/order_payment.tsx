@@ -36,7 +36,11 @@ import SidebarCart from './order_sidebar_cart.tsx';
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
+
 import PublicTopNavbar from './public/public_top_navbar.tsx';
+import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
+
 
 //import { getPublicMenu } from './reducers/name';
 const Immutable  = require('immutable');

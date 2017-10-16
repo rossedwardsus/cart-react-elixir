@@ -42100,7 +42100,7 @@ webpackJsonp([0],[
 	                // this.setState({selected_item_quantity: parseInt(e.target.value)});
 	                //}
 	            }
-	            _this.setState({ add_cart_item_button_classname: "form-control btn btn-default" });
+	            _this.setState({ add_cart_item_button_classname: "form-control btn-block btn btn-default" });
 	            //set add cart button == active
 	            //this.set
 	        };
@@ -42193,7 +42193,7 @@ webpackJsonp([0],[
 	            selected_item_name: "",
 	            selected_item_description: "",
 	            selected_item_ingredients: "",
-	            add_cart_item_button_classname: "form-control btn btn-default disabled",
+	            add_cart_item_button_classname: "form-control btn-block btn btn-default disabled",
 	            images: [],
 	            hover_images: [],
 	            options_count_array: [],
@@ -42363,7 +42363,7 @@ webpackJsonp([0],[
 	                                                          <br/>
 	                                                        </div>
 	                                                        <div className="col-md-3">
-	                                                          <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0, WebkitAppearance: "none"}}>
+	                                                          <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{height: 35, borderRadius: 0, WebkitAppearance: "none"}}>
 	                                                            <option value="">Select Quantity</option>
 	                                                            {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
 	                                                          </select>
@@ -42376,11 +42376,11 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-4 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150 } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-4 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, width: 100, WebkitAppearance: "none" } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none" } }, React.createElement("option", { value: "" }, "Mini or Regular"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Minis"))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("select", { className: "form-control input-large", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, WebkitAppearance: "none" } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
 	                    return React.createElement("option", { value: value }, value);
-	                }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null), React.createElement("br", null)), React.createElement("div", { className: "col-xs-4 col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
+	                }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
-	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50 } }, "Add"))));
+	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 35 } }, "Add"))));
 	                //}
 	                //}
 	            }
@@ -42770,14 +42770,14 @@ webpackJsonp([0],[
 	                    var _this2 = this;
 	
 	                    console.log("cart menuitems " + JSON.stringify(item));
-	                    //let menu_item = this.props.menuItems.find((menu_item: any) => {
-	                    //console.log(JSON.stringify(menu_item) + " " + item.item_id);
-	                    //    return menu_item.id === item.menu_item_id;
-	                    //});
+	                    var menu_item = this.props.menuItems.find(function (menu_item) {
+	                        //console.log(JSON.stringify(menu_item) + " " + item.item_id);
+	                        return menu_item.menu_item_id === item.menu_item_id;
+	                    });
 	                    //console.log("index " + JSON.stringify(menu_item.name));
 	                    //let result = this.state.menuItemNames.find(function(item_name: any){return item_name.id === item.id;});
-	                    var item_name = this.props.menuItems[item.menu_item_id - 1].name;
-	                    //let item_name = "";
+	                    //let item_name = this.props.menuItems[item.menu_item_id - 1].name;
+	                    var item_name = menu_item.name;
 	                    //if(menu_item != undefined){
 	                    //  item_name = menu_item.name;
 	                    //}
@@ -42852,23 +42852,32 @@ webpackJsonp([0],[
 	            //});
 	            console.log("message");
 	            var checkoutButton = null;
-	            /*if(this.props.User.orders[0].order_type == "pool"){
-	                   if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
-	                       //{this.props.path == "/order/menu" &&
-	                       checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
-	                   }
-	                 }else if(this.props.User.orders[0].order_type == "yours"){
-	                   if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 1){
-	                       checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
-	                   }
-	                 }else if(this.props.User.orders[0].order_type == "social"){
-	                   
-	                   if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){*/
-	            checkoutButton = React.createElement("button", { onClick: function onClick() {
-	                    return _this3.props.updateOrderSession("checkout");
-	                }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
-	            //}
-	            //}
+	            if (this.props.User.orders[0].order_type == "pool") {
+	                if (this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0) > 0) {
+	                    //{this.props.path == "/order/menu" && 
+	                    checkoutButton = React.createElement("button", { onClick: function onClick() {
+	                            return _this3.props.updateOrderSession("checkout");
+	                        }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	                }
+	            } else if (this.props.User.orders[0].order_type == "yours") {
+	                if (this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity;
+	                }, 0) > 1) {
+	                    checkoutButton = React.createElement("button", { onClick: function onClick() {
+	                            return _this3.props.updateOrderSession("checkout");
+	                        }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	                }
+	            } else if (this.props.User.orders[0].order_type == "social") {
+	                if (this.state.cartItems.reduce(function (amount, item) {
+	                    return amount + item.quantity * 12;
+	                }, 0) > 11) {
+	                    checkoutButton = React.createElement("button", { onClick: function onClick() {
+	                            return _this3.props.updateOrderSession("checkout");
+	                        }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	                }
+	            }
 	            if (total_items % 12 == 0) {
 	                total_items_text = total_items / 12 + "dz";
 	            } else {
@@ -44023,7 +44032,6 @@ webpackJsonp([0],[
 	__webpack_require__(1132);
 	__webpack_require__(1136);
 	var order_sidebar_cart_tsx_1 = __webpack_require__(1141);
-	var public_top_navbar_tsx_1 = __webpack_require__(1066);
 	var name_tsx_1 = __webpack_require__(1145);
 	var delivery_address_tsx_1 = __webpack_require__(1146);
 	var user_ts_1 = __webpack_require__(1082);
@@ -44034,6 +44042,9 @@ webpackJsonp([0],[
 	//import {contactValidated} from './actions/order_validations.ts';
 	var order_ts_2 = __webpack_require__(920);
 	var session_ts_1 = __webpack_require__(948);
+	var public_top_navbar_tsx_1 = __webpack_require__(1066);
+	var public_bottom_navbar_tsx_1 = __webpack_require__(1067);
+	var public_privacy_terms_navbar_tsx_1 = __webpack_require__(1068);
 	function addTodoWithDispatch() {
 	    var action = {
 	        type: "VIEW_PUBLIC_MENU"
@@ -44369,7 +44380,7 @@ webpackJsonp([0],[
 	                        return _this2.setDate(e);
 	                    }, style: { borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1 }, value: this.state.selectedDate, dayPickerProps: { enableOutsideDays: false, fixedWeeks: false, disabledDays: [{ before: new Date(new Date().setDate(new Date().getDate() + 3)) }, { daysOfWeek: [0, 1, 2] }] } })), React.createElement("div", { className: "col-md-3" }, "9:00 am - 12:00 pm"), this.props.User.orders[0].order_type == "social" && React.createElement("div", { className: "col-md-3" }, "For other times please email eat@sconely.com"))), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-9" }, React.createElement("div", { className: "col-md-3" }, React.createElement("button", { type: "button", className: this.state.payment_button_classname, disabled: this.state.button_payment_disabled, style: { borderRadius: 0 }, onClick: function onClick(screen) {
 	                        return _this2.props.updateOrderSession("payment");
-	                    } }, "Payment")), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu"))))), React.createElement("br", null), React.createElement("br", null))));
+	                    } }, "Payment")), React.createElement("div", { className: "col-md-3" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu"))))), React.createElement("br", null), React.createElement("br", null)), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null)));
 	            }
 	        }
 	    }], [{
@@ -46753,6 +46764,20 @@ webpackJsonp([0],[
 	var _reactRedux = __webpack_require__(190);
 	
 	var _order = __webpack_require__(920);
+	
+	var _public_top_navbar = __webpack_require__(1066);
+	
+	var _public_top_navbar2 = _interopRequireDefault(_public_top_navbar);
+	
+	var _public_bottom_navbar = __webpack_require__(1067);
+	
+	var _public_bottom_navbar2 = _interopRequireDefault(_public_bottom_navbar);
+	
+	var _public_privacy_terms_navbar = __webpack_require__(1068);
+	
+	var _public_privacy_terms_navbar2 = _interopRequireDefault(_public_privacy_terms_navbar);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	

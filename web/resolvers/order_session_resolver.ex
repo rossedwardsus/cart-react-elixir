@@ -15,7 +15,7 @@ defmodule Sconely.OrderSessionResolver do
 
             #IO.inspect(Repo.get(OrderSession, response.session_id))
 
-            Sconely.OrderStartedEmail.order_started_email(%{order_type: args[:order_type]}) |> SconeHomeElixir.Mailer.deliver_later
+            Sconely.OrderStartedEmail.order_started_email(%{session_id: response.session_id, order_type: args[:order_type]}) |> SconeHomeElixir.Mailer.deliver_later
 
             {:ok, %{session_id: response.session_id}}
 

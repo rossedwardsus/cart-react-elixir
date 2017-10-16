@@ -17,6 +17,10 @@ import { connect } from 'react-redux';
 const Immutable  = require('immutable');
 import {completeOrder, clearOrder} from './actions/order.ts';
 
+import PublicTopNavbar from './public/public_top_navbar.tsx';
+import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
+import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
+
 
 function addTodoWithDispatch() {
   const action = {
