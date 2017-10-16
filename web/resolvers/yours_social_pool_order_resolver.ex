@@ -1972,11 +1972,28 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                             IO.inspect(Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name])
 
+                            quantity = nil
+
+                            if order_type == "social" do 
+                            
+                                quantity = Integer.to_string(round(cart_item.quantity/12)) <> " dz" 
+
+                            else 
+
+                                quantity = cart_item.quantity 
+
+                            end
+                            
 
                             Map.merge(cart_item, %{
                               :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
-                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name]
-                            })
+                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
+                              :quantity => quantity})
+
+                            #cart items
+                            #Map.merge(cart_item, %{
+                            #  :quantity => if order_type == "social" do cart_item.quantity/12 <> " dz"
+                            #})
 
                           else
 
@@ -1989,10 +2006,28 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             #Map.put(cart_item, :name, item_name)
                             #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
 
+                            quantity = nil
+
+                            if order_type == "social" do 
+                            
+                                quantity = Integer.to_string(round(cart_item.quantity/12)) <> " dz" 
+
+                            else 
+
+                                quantity = cart_item.quantity 
+
+                            end
+
                             Map.merge(cart_item, %{
-                              :name => item_name,
-                              :menu_image_name => Enum.at(menu_items, menu_item_index).name
+                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " mini",
+                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " mini",
+                              :quantity => quantity
                             })
+
+                            #Map.merge(cart_item, %{
+                            #  :quantity => "dozens"
+
+                            #})
 
                           end
 

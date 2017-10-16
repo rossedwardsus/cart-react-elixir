@@ -29669,7 +29669,7 @@ webpackJsonp([0],[
 	           }*/
 	      //<li><Link to="/login">LOGIN</Link></li>
 	      //<li><Link to="/register">SIGN UP</Link></li>
-	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "#" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" })))));
+	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "/" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" })))));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -47402,18 +47402,11 @@ webpackJsonp([0],[
 	              React.createElement('br', null),
 	              React.createElement('br', null),
 	              React.createElement('br', null),
-	              'Your order has been received.',
+	              'Thank you, your order has been received.',
 	              React.createElement('br', null),
-	              'Check your email for confirmation',
-	              React.createElement('br', null),
-	              'Check out our social links',
+	              'Please check your email for a confirmation message.',
 	              React.createElement('br', null),
 	              React.createElement('br', null),
-	              React.createElement(
-	                _reactRouter.Link,
-	                { to: '/', className: 'btn btn-default' },
-	                'Home'
-	              ),
 	              React.createElement('br', null)
 	            ),
 	            React.createElement(

@@ -566,19 +566,20 @@ class OrderComplete extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            Your order has been received.
+                            Thank you, your order has been received.
                             <br/>
-                            Check your email for confirmation
-                            <br/>
-                            Check out our social links
+                            Please check your email for a confirmation message.
                             <br/>
                             <br/>
-                            <Link to="/" className="btn btn-default">Home</Link>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                             <br/>
                         </div>
-                        <div className="hidden-xs col-md-2">
-                              maybe put something here
-                        </div>
+
                 </div>
             </div>
             <PublicBottomNavbar/>
