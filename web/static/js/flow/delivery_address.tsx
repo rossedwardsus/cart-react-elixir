@@ -697,25 +697,37 @@ class DeliveryAddress extends React.Component<any, any> {
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zip Code</option>
                             <option>Venice</option>
-                            <option>90013</option>
-                            <option>90014</option>
-                            <option>90015</option>
-                            <option>90021</option>
-                            <option>90071</option>
+                            <option value="90013">90013</option>
+                            <option value="90014">90014</option>
+                            <option value="90015">90015</option>
+                            <option value="90021">90021</option>
+                            <option value="90071">90071</option>
                             <option>Santa Monica</option>
-                            <option>90291</option>
-                            <option>90401</option>
-                            <option>90402</option>
-                            <option>90403</option>
-                            <option>90404</option>
-                            <option>90405</option>
-                            <option>90406</option>
-                            <option>90407</option>
-                            <option>90408</option>
-                            <option>90409</option>
-                            <option>90410</option>
-                            <option>90411</option>
+                            <option value="90291">90291</option>
+                            <option value="90401">90401</option>
+                            <option value="90402">90402</option>
+                            <option value="90403">90403</option>
+                            <option value="90404">90404</option>
+                            <option value="90405">90405</option>
+                            <option value="90406">90406</option>
+                            <option value="90407">90407</option>
+                            <option value="90408">90408</option>
+                            <option value="90409">90409</option>
+                            <option value="90410">90410</option>
+                            <option value="90411">90411</option>
                             <option>DTLA</option>
+                            <option value="90012">90012</option>
+                            <option value="90013">90013</option>
+                            <option value="90014">90014</option>
+                            <option value="90017">90017</option>
+                            <option value="90021">90021</option>
+                            <option value="90071">90071</option>
+                            <option value="90074">90074</option>
+                            <option value="90081">90081</option>
+                            <option value="90053">90053</option>
+                            <option value="90055">90055</option>
+                            <option value="90079">90079</option>
+                            <option value="90086">90086</option>
                           </select>
                         </div>
                     </div>
