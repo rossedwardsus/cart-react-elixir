@@ -331,7 +331,6 @@ export class PublicTermsAndConditions extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
                           <br/>
                           <br/>   
                           <br/>

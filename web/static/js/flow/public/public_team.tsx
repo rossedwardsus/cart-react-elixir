@@ -370,7 +370,6 @@ export class PublicTeam extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
                           <br/>
                           <br/>   
                           <br/>
@@ -378,29 +377,27 @@ export class PublicTeam extends React.Component<any, any> {
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
-                          Julia Friedman, Founder & CEO
+                          <b>Julia Friedman, Founder & CEO</b>
                           <br/>
-                          An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor.
-                          <br/>
-                          A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.
+                          An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor. A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.
                           ​<br/>
                           <br/>
-                          Ross Edwards, Lead Engineer
+                          <b>Ross Edwards, Lead Engineer</b>
                           <br/>
                           Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
                           <br/>
                           <br/>
-                          Chenin Burnett-Doering, Head Baker
+                          <b>Chenin Burnett-Doering, Head Baker</b>
                           <br/>
                           ​Chenin Burnett-Doering loved baking from a young age. She graduated from the California School of Culinary Arts in Pasadena, CA with degrees in baking as well as culinary arts. She was the Head Baker of Good Life Cafe in Columbia, SC; Executive Pastry Chef of The Nose Wine Cellar in Pasadena, CA; and co-owner of Sweetheart's Cakes. She has also worked as a personal chef. In her free time Chenin loves spending time with her family, writing, and is an avid Baltimore Ravens fan. 
                           ​<br/>
                           <br/>
-                          Dadi Revivo, Recipe Consultant
+                          <b>Dadi Revivo, Recipe Consultant</b>
                           <br/>
                           With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.
                           ​<br/>
                           <br/>
-                          Debi Saltzberg, Advisor
+                          <b>Debi Saltzberg, Advisor</b>
                           <br/>
                           A graduate from The Hotel Restaurant department at the University of Massachusetts in Amherst, Debi has spent 25 years in the Restaurant Industry experiencing all positions from the Back of the House to Upper Management and Operations at top restaurants and resorts. Her love for food and beverage has also taken her on a journey into Biodynamic and Organic Farming.   
                           </div>

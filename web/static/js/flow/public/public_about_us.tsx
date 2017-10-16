@@ -69,7 +69,7 @@ export default class Menu extends React.Component<any, any> {
                             <b>Sconely Signature</b>: 1 dozen – 10 dozen scones, providing the option for guests to pre-select their preferred scone before an event. The scones are delivered in individual personalized packages. Sconely Signature ensures that everyone at an event has something they can eat, decreases waste by allowing guests to pre-select their preferred scone, and creates community through shared food experiences.
                             ​<br/>
                             <br/>
-                            Sconely is partnering up to use hyperlocal produce grown by Community Healing Gardens in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.
+                            Sconely is partnering up to use hyperlocal produce grown by Community Healing Gardens in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to <a href="http://www.communityhealinggardens.com">Community Healing Gardens</a>, to plant and share healthy food in diverse and underserved communities in LA.
                             ​<br/>
                             <br/>
                             Sconely bakes at Crafted Kitchen in Downtown Los Angeles. Contact us at eat@sconely.com for more information.

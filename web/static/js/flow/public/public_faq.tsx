@@ -375,10 +375,6 @@ export class PublicFaq extends React.Component<any, any> {
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
                             <br/>
-                            <b>Why Sconely?</b>
-                            <br/>
-                            <br/>
-                            We love bringing people together around artisanal sweet and savory scones! See our story for more details about why we do what we do.
                             <br/>
                             <br/>
                             <b>What is Sconely?</b>
