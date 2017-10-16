@@ -48,21 +48,33 @@ export default class Menu extends React.Component<any, any> {
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
                             <br/>
-                                Colossal cookies, apple pie and chocolate mush cake – these were the centerpieces of holiday celebrations, lovingly made by my Mom when I was growing up. Then and now, food remains an expression of love in my family.    
-                                <br/>
-                                Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. While looking for healthier ways to satisfy my sweet tooth, I experimented with recipes that maximize nutrition and flavor. I started baking scones and sharing them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social. 
-                                <br/>
-                                When I was leaving NYC to move west, I envisioned driving across the country in a food truck named Scone Home. Seeing the potential to innovate with scones and new ways to share them with others, the initial idea for Scone Home evolved into a technology driven company, called Sconely.
-                                ​​<br/>
-                                Throughout 2016, I spoke with technologist Ross Edwards to develop a plan merging a social app with gourmet scones. We spoke with bakers and nutritional experts to create a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.
-                                ​<br/>
-                                Sconely is dedicated to my Mom, Marcia Friedman, who loved to bake, build community around food and made sure everyone at the table had something they could eat. Sconely follows in her tradition.
-                                ​<br/>
-                                We hope you enjoy the Sconely experience, as much as we have enjoyed creating it!
-                                ​<br/>
-                                Julia Friedman, Sconely Founder     ​
-                              </div>
-                            <div className="col-md-3">
+                            We love baking and delivering artisanal sweet and savory scones!
+​                            <br/>
+                            <br/>
+                            Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future. All of our scones are made from scratch and freshly baked to order. With an emphasis on locally sourced organic ingredients, our entire menu is free of refined sugar, soy and preservatives. 
+                            ​<br/>
+                            <br/>
+                            Sconely’s menu includes a wide variety of homemade scones, with vegan and gluten-free options. Most of our scones are available all year, with additional seasonal scones being added frequently. Check out our menu often for new scone flavors!
+                            <br/>
+                            <br/>
+                            Ordering is easy with the following services.
+                            <br/>
+                            <br/>
+                            <b>Sconely Yours</b>: 2-10 scones, delivered to you
+                            <br/>
+                            <br/>
+                            <b>Sconely Social</b>: 1 dozen - 20 dozen regular sized scones and / or 2 dozen – 40 dozen mini scones delivered to your event
+                            <br/>
+                            <br/>
+                            <b>Sconely Signature</b>: 1 dozen – 10 dozen scones, providing the option for guests to pre-select their preferred scone before an event. The scones are delivered in individual personalized packages. Sconely Signature ensures that everyone at an event has something they can eat, decreases waste by allowing guests to pre-select their preferred scone, and creates community through shared food experiences.
+                            ​<br/>
+                            <br/>
+                            Sconely is partnering up to use hyperlocal produce grown by Community Healing Gardens in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.
+                            ​<br/>
+                            <br/>
+                            Sconely bakes at Crafted Kitchen in Downtown Los Angeles. Contact us at eat@sconely.com for more information.
+                        </div>
+                        <div className="col-md-3">
                         </div>
                     </div>
                     <br/>

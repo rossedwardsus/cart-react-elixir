@@ -627,10 +627,10 @@ class OrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
-                            Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
+                            SCONELY {this.props.User.orders[0].order_type.toUpperCase()}
                             <br/>
                             {(this.props.User.orders[0].order_type == "social" && this.props.User.orders[0].cartItems.length == 0) &&
-                              (<div><br/><br/>Order by the dozen or 2 dozen for minis<br/>Plan ahead order at least 48 hours in advance<br/><br/><b>Free Delivery</b><br/>Downtown LA<br/>Santa Monica<br/>Venice<br/><br/>Wednesday-Saturday<br/>9am-Noon<br/><br/>Contact us for other delivery options</div>)}
+                              (<div><br/><br/>Order by the dozen or 2 dozen for minis<br/>Plan ahead, order at least 48 hours in advance<br/><br/><b>Free Delivery</b><br/>Downtown LA<br/>Santa Monica<br/>Venice<br/><br/>Wednesday-Saturday<br/>9am-Noon<br/><br/>Contact us for other delivery options</div>)}
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                               <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
                             <br/>
@@ -640,14 +640,13 @@ class OrderMenu extends React.Component<any, any> {
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
                               {(this.props.User.orders[0].order_type == "social" && this.props.User.orders[0].cartItems.length == 0) &&
-                              (<div><br/><br/>Order by the dozen or 2 dozen for minis<br/>Plan ahead order at least 48 hours in advance<br/><br/><b>Free Delivery</b><br/>Downtown LA<br/>Santa Monica<br/>Venice<br/><br/>Wednesday-Saturday<br/>9am-Noon<br/><br/>Contact us for other delivery options</div>)}
+                              (<div><br/><br/>Order by the dozen or 2 dozen for minis<br/>Plan ahead, order at least 48 hours in advance<br/><br/><b>Free Delivery</b><br/>Downtown LA<br/>Santa Monica<br/>Venice<br/><br/>Wednesday-Saturday<br/>9am-Noon<br/><br/>Contact us for other delivery options</div>)}
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                                 <img src="https://sconely-test.herokuapp.com/images/menu/laci/8thandhope_logo.jpg"/>}
                               <br/>
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                               <br/>
                             </div>
-                            <br/>
                             <br/>
                             {this.props.menuItems.map(function(item: any, index: any){
 
