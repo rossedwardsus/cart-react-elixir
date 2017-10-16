@@ -42842,32 +42842,23 @@ webpackJsonp([0],[
 	            //});
 	            console.log("message");
 	            var checkoutButton = null;
-	            if (this.props.User.orders[0].order_type == "pool") {
-	                if (this.state.cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity;
-	                }, 0) > 0) {
-	                    //{this.props.path == "/order/menu" && 
-	                    checkoutButton = React.createElement("button", { onClick: function onClick() {
-	                            return _this3.props.updateOrderSession("checkout");
-	                        }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
-	                }
-	            } else if (this.props.User.orders[0].order_type == "yours") {
-	                if (this.state.cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity;
-	                }, 0) > 1) {
-	                    checkoutButton = React.createElement("button", { onClick: function onClick() {
-	                            return _this3.props.updateOrderSession("checkout");
-	                        }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
-	                }
-	            } else if (this.props.User.orders[0].order_type == "social") {
-	                if (this.state.cartItems.reduce(function (amount, item) {
-	                    return amount + item.quantity * 12;
-	                }, 0) > 11) {
-	                    checkoutButton = React.createElement("button", { onClick: function onClick() {
-	                            return _this3.props.updateOrderSession("checkout");
-	                        }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
-	                }
-	            }
+	            /*if(this.props.User.orders[0].order_type == "pool"){
+	                   if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
+	                       //{this.props.path == "/order/menu" &&
+	                       checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
+	                   }
+	                 }else if(this.props.User.orders[0].order_type == "yours"){
+	                   if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 1){
+	                       checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
+	                   }
+	                 }else if(this.props.User.orders[0].order_type == "social"){
+	                   
+	                   if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){*/
+	            checkoutButton = React.createElement("button", { onClick: function onClick() {
+	                    return _this3.props.updateOrderSession("checkout");
+	                }, className: "btn btn-default", style: { borderRadius: 0 } }, "Checkout");
+	            //}
+	            //}
 	            if (total_items % 12 == 0) {
 	                total_items_text = total_items / 12 + "dz";
 	            } else {
