@@ -551,11 +551,17 @@ class OrderMenu extends React.Component<any, any> {
                                                         <div className="col-md-3">
                                                           2 Dozen Mini<input type="radio" name="12_or_24" value="24_minis" onChange={this.selectedSocialItemMini}/>
                                                         </div>
+                                                        <div className="hidden-lg col-xs-1">
+                                                          <br/>
+                                                        </div>
                                                         <div className="col-md-3">
-                                                          <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0}}>
+                                                          <select className="form-control" value={this.state.selected_item_quantity/12} onChange={this.selectedItemQuantity} style={{height: 35, width: 120, borderRadius: 0, WebkitAppearance: "none"}}>
                                                             <option value="">Select Quantity</option> 
                                                             {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
                                                           </select>
+                                                        </div>
+                                                        <div className="hidden-lg col-xs-1">
+                                                          <br/>
                                                         </div>
                                                         <div className="col-md-2">
                                                           <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
@@ -572,11 +578,17 @@ class OrderMenu extends React.Component<any, any> {
                                                         <option value="mini">2 Dozen Minis</option>
                                                       </select>
                                                       </div>
+                                                      <div className="hidden-lg col-xs-1">
+                                                        <br/>
+                                                      </div>
                                                       <div className="col-md-4">
                                                       <select className="form-control" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, width: 100}}>
                                                         <option>Quantity</option> 
                                                         {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                                       </select>
+                                                      </div>
+                                                      <div className="hidden-lg col-xs-1">
+                                                        <br/>
                                                       </div>
                                                       <div className="col-md-4">
                                                       <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
