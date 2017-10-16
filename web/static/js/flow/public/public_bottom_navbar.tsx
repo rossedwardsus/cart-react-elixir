@@ -218,10 +218,10 @@ export default class Menu extends React.Component<any, any> {
                         &nbsp;&nbsp;&nbsp;&nbsp;<a className="fa fa-facebook" style={{fontSize: 20, textDecoration: "none", color: "grey"}}  href="http://www.facebook.com/sconelyla"></a>
                     </div>
                   </div>
-                  <div className="hidden-xs col-md-2">
+                  <div className="hidden-xs col-md-3">
                       <div className="form-horizontal" style={{paddingLeft: 0}}>
-                        <div className="col-md-1" style={{paddingLeft: 10}}>
-                          <div style={{fontSize: 15, height: 10}}>@sconelyla</div>
+                        <div className="col-md-5" style={{paddingLeft: 10}}>
+                          <div style={{fontSize: 15, height: 10}}>eat@sconely.com</div>
                         </div>
                       </div>
                       <br/>

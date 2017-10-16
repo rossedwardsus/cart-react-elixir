@@ -406,7 +406,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     Freshly baked, delivered to your event
                                     <br/>
-                                    Coming Soon
+                                    <br/>
+                                    <br/>
+                                    <b>COMING SOON</b>
                                     <br/>
                                     Sconely Yours
                                     <br/>
@@ -438,8 +440,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           Freshly baked, delivered to your event
                           <br/>
                           <br/>
-                          Coming Soon
                           <br/>
+                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}><b>COMING SOON</b></div>
                           Sconely Yours
                           <br/>
                           Sconely Pool

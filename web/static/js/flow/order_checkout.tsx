@@ -40,7 +40,7 @@ import {setOrderDeliveryDatetimeDate, setOrderNote, setGiftOrder, setGiftNote} f
 
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode, setUserDeliveryContactAddressNote} from './actions/user_delivery_contact_address.ts';
 
-import {userNameEmailMobileValidated, deliveryContactAddressValidated} from './actions/order_validations.ts';
+import {userNameEmailMobileValidated, deliveryContactAddressValidated, dateValidated} from './actions/order_validations.ts';
 //import {contactValidated} from './actions/order_validations.ts';
 
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
@@ -92,8 +92,8 @@ class DateTime extends React.Component<any, any> {
         daysOfWeek: [],
         menuItems: [],
         User: [],
-        payment_button_classname: "btn btn-default btn-block",
-        payment_button_disabled: ""
+        payment_button_classname: "btn btn-default disabled btn-block",
+        payment_button_disabled: "disabled"
         
     };
 
@@ -149,17 +149,19 @@ class DateTime extends React.Component<any, any> {
 
   componentWillReceiveProps = () => {
 
-      console.log("order checkout cwrp" + JSON.stringify(this.props.User.orderSession.validations))
+      console.log("order checkout cwrp" + JSON.stringify(this.props.User.orderSession.validations["userNameEmailMobileValidated"]))
 
       //if order type == "pool"
       //else validate name contact
       //delivery contact and address
       //also date time
 
-      if(this.props.User.orderSession.validations.userNameEmailMobilValidated == true && this.props.User.orderSession.validations.deliveryContactAddressValidated == true){
+      if(this.props.User.orderSession.validations["userNameEmailMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+
+        console.log("validated");
       
-        //this.setState({payment_button_classname: "btn btn-default btn-block"});
-        //this.setState({payment_button_disabled: ""})
+        this.setState({payment_button_classname: "btn btn-default btn-block"});
+        this.setState({payment_button_disabled: ""})
       
       }
 
@@ -193,7 +195,7 @@ class DateTime extends React.Component<any, any> {
     this.props.setOrderDeliveryDatetimeDate(moment(date).format("YYYY-MM-DD"));    
 
     //this.props.cartValidated();
-    //this.props.datetimeValidated();
+    this.props.dateValidated();
 
   }
 
@@ -524,7 +526,7 @@ class DateTime extends React.Component<any, any> {
                             <form className="form-horizontal" style={{border: 0}}>
                               <div className="form-group show-lg" style={{borderRadius: 0}}>
                                 <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+3))}, {daysOfWeek: [0, 1, 2]}]}}/>
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1, 2]}]}}/>
                                 </div>
                                 <div className="col-md-3">
                                   9:00 am - 12:00 pm
@@ -594,11 +596,10 @@ function mapDispatchToProps(dispatch: any) {
     //  console.log("settime" + e.target.value);
     //  dispatch(setTime(e.target.value));
     },
-    //datetimeValidated: () => {
+    dateValidated: () => {
       //console.log(e.target.value);
-    //  dispatch(datetimeValidated());
-    //}
-
+      dispatch(dateValidated());
+    },
     getMenuItems: () => {
       dispatch(getMenuItems());
     },

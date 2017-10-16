@@ -4,7 +4,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   alias Sconely.SconelySignatureOrderAdditionalItem
   alias Sconely.MenuItem
   alias Sconely.Registration
-  alias Sconely.GuestRegistration
+  alias Sconely.MailingListGuestRegistration
   alias Sconely.User
   alias Sconely.UserPaymentMethod
   alias Sconely.UserDeliveryContactAddress
@@ -923,9 +923,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
@@ -934,7 +934,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             case Stripe.Charge.create(%{:amount => trunc(total*100), :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
-              {:ok, charge} -> #IO.inspect(charge["id"])
+              {:ok, charge} -> #IO.inspect(charge)
               stripe_charge_token = charge["id"]
               stripe_response = {:ok, charge}
             #                   {:ok, charge}
@@ -1131,7 +1131,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                      select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
             menu_items = Repo.all(query)
 
-            user = Repo.get_by(GuestRegistration, %{email: "rossedwards.us@gmail.com"})
+            user = Repo.get_by(MailingListGuestRegistration, %{email: "rossedwards.us@gmail.com"})
             IO.inspect(user)
 
 
@@ -1139,7 +1139,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
             if user == nil do
 
-              registration_changeset = Registration.changeset(%Registration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
+              registration_changeset = MailingListGuestRegistration.changeset(%MailingListGuestRegistration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
 
               case Repo.insert(registration_changeset) do
 
@@ -1261,6 +1261,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #change to use Date instead
                         IO.puts("pool order datetime")
                         IO.inspect(Date.day_of_week(order_datetime_converted))
+
+                        #1 -> {order_date_day_of_week = "Monday"}
+                        #2 -> {order_date_day_of_week = "Tuesday"}
+                        #3 -> {order_date_day_of_week = "Wednesday"}
+                        #4 -> {order_date_day_of_week = "Thursday"}
+                        #5 -> {order_date_day_of_week = "Friday"}
+                        #6 -> {order_date_day_of_week = "Saturday"}
+                        #7 -> {order_date_day_of_week = "Sunday"}
 
                         case Timex.weekday(order_datetime_converted) do
                           0 -> {order_date_day_of_week = "Sunday"}
@@ -1410,13 +1418,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     case Date.day_of_week(Ecto.DateTime.to_erl(order_datetime) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date) do
                                     #case Date.day_of_week(Ecto.DateTime.to_date(order_datetime)) do
                                     #case Timex.weekday(order_datetime_converted) do
-                                      1 -> {order_date_day_of_week = "Sunday"}
-                                      2 -> {order_date_day_of_week = "Monday"}
-                                      3 -> {order_date_day_of_week = "Tuesday"}
-                                      4 -> {order_date_day_of_week = "Wednesday"}
-                                      5 -> {order_date_day_of_week = "Thursday"}
-                                      6 -> {order_date_day_of_week = "Friday"}
-                                      7 -> {order_date_day_of_week = "Saturday"}
+                                      1 -> {order_date_day_of_week = "Monday"}
+                                      2 -> {order_date_day_of_week = "Tuesday"}
+                                      3 -> {order_date_day_of_week = "Wednesday"}
+                                      4 -> {order_date_day_of_week = "Thursday"}
+                                      5 -> {order_date_day_of_week = "Friday"}
+                                      6 -> {order_date_day_of_week = "Saturday"}
+                                      7 -> {order_date_day_of_week = "Sunday"}
                                     end
 
                                     order_datetime_converted_minute_formatted = nil
@@ -1436,11 +1444,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     end
 
 
-                                    #order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted_minute_formatted)
+                                    order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted_minute_formatted)
                                     
                                     #IO.inspect(format_order_datetime)
 
-                                    order_datetime_formatted = format_order_datetime(order_datetime_converted)
+                                    #order_datetime_formatted = format_order_datetime(order_datetime_converted)
 
 
 
@@ -1467,7 +1475,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     #end
 
                                     #Ecto.Date.cast
-                                    delivery_date = Date.from_iso8601!("2017-10-16")
+                                    delivery_date = Date.from_iso8601!(args[:order_delivery_datetime_date])
 
                                     case  delivery_date.month do
                                       1 -> {delivery_date_month = "January"}
@@ -1496,13 +1504,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                     case Date.day_of_week(delivery_date) do
                                     #case Date.day_of_week(date_from_erl) do
                                     #case Timex.weekday do
-                                      1 -> {delivery_date_day_of_week = "Sunday"}
-                                      2 -> {delivery_date_day_of_week = "Monday"}
-                                      3 -> {delivery_date_day_of_week = "Tuesday"}
-                                      4 -> {delivery_date_day_of_week = "Wednesday"}
-                                      5 -> {delivery_date_day_of_week = "Thursday"}
-                                      6 -> {delivery_date_day_of_week = "Friday"}
-                                      7 -> {delivery_date_day_of_week = "Saturday"}
+                                      1 -> {delivery_date_day_of_week = "Monday"}
+                                      2 -> {delivery_date_day_of_week = "Tuesday"}
+                                      3 -> {delivery_date_day_of_week = "Wednesday"}
+                                      4 -> {delivery_date_day_of_week = "Thursday"}
+                                      5 -> {delivery_date_day_of_week = "Friday"}
+                                      6 -> {delivery_date_day_of_week = "Saturday"}
+                                      7 -> {delivery_date_day_of_week = "Sunday"}
                                     end                     
 
                                     #IO.inspect(delivery_date_day_of_week)
@@ -1516,7 +1524,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                       n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
                                     end
 
-                                    delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> delivery_date_day_formatted <> ", 2017"
+                                    delivery_date_formatted = delivery_date_day_of_week <> " " <> delivery_date_month <> " " <> delivery_date_day_formatted <> ", 2017"
                         
                                     #IO.inspect(delivery_date_formatted)
 

@@ -385,21 +385,20 @@ export class PublicTeam extends React.Component<any, any> {
                           A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.
                           ​<br/>
                           <br/>
+                          Ross Edwards, Lead Engineer
+                          <br/>
+                          Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
+                          <br/>
+                          <br/>
                           Chenin Burnett-Doering, Head Baker
                           <br/>
-                          ​Chenin Burnett-Doering loved baking from a young age. She graduated from the California School of Culinary Arts in Pasadena, CA with
-                          degrees in baking as well as culinary arts. She was the Head Baker of Good Life Cafe in Columbia, SC; Executive Pastry Chef of The Nose Wine Cellar in Pasadena, CA; and co-owner of Sweetheart's Cakes. She has also worked as a personal chef. In her free time Chenin loves spending time with her family, writing, and is an avid Baltimore Ravens fan. 
+                          ​Chenin Burnett-Doering loved baking from a young age. She graduated from the California School of Culinary Arts in Pasadena, CA with degrees in baking as well as culinary arts. She was the Head Baker of Good Life Cafe in Columbia, SC; Executive Pastry Chef of The Nose Wine Cellar in Pasadena, CA; and co-owner of Sweetheart's Cakes. She has also worked as a personal chef. In her free time Chenin loves spending time with her family, writing, and is an avid Baltimore Ravens fan. 
                           ​<br/>
                           <br/>
                           Dadi Revivo, Recipe Consultant
                           <br/>
                           With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.
                           ​<br/>
-                          <br/>
-                          Ross Edwards, Lead Engineer
-                          <br/>
-                          Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
-                          <br/>
                           <br/>
                           Debi Saltzberg, Advisor
                           <br/>

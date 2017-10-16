@@ -1,4 +1,4 @@
-defmodule Sconely.GuestRegistration do
+defmodule Sconely.MailingListGuestRegistration do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -9,7 +9,7 @@ defmodule Sconely.GuestRegistration do
 
 		@primary_key {:user_id, :binary_id, autogenerate: true}
 
-		schema "guest_registration" do
+		schema "mailing_list_guest_registration" do
 			field :email, :string
 			field :registration_datetime, Ecto.DateTime
 		end
@@ -19,9 +19,14 @@ defmodule Sconely.GuestRegistration do
 		    |> cast(params, @required_fields, @optional_fields)
 		    #|> validate_required([:email])
 		    #|> validate_length(:user_id, min: 2)
-		    |> validate_length(:email, min: 2)
+		    #|> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)
 		    #contains
 		end
+
+		#def addUser() do
+
+		#end
+
 
 end 

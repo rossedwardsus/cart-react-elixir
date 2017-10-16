@@ -370,10 +370,7 @@ export class PublicFaq extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
-                          <br/>   
-                          <br/>
+                          
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
@@ -381,9 +378,7 @@ export class PublicFaq extends React.Component<any, any> {
                             <b>Why Sconely?</b>
                             <br/>
                             <br/>
-                            <div style={{fontFamily: 'Helvetica'}}>
                             We love bringing people together around artisanal sweet and savory scones! See our story for more details about why we do what we do.
-                            </div>
                             <br/>
                             <br/>
                             <b>What is Sconely?</b>
@@ -501,7 +496,7 @@ export class PublicFaq extends React.Component<any, any> {
                             We are continuously developing recipes that accommodate various dietary preferences. Although we offer gluten-free, nut-free and dairy free options, we cannot guarantee that any of our scones do not contain traces of allergens (including dairy, eggs, soy, tree nuts, wheat and others), as we bake in a common kitchen where shared equipment is used. 
                             <br/>
                             <br/>
-                            Where do the names of your scones come from?
+                            <b>Where do the names of your scones come from?</b>
                             <br/>
                             <br/>
                             The names are inspired by nicknames of Sconely friends and family
