@@ -561,8 +561,7 @@ class OrderMenu extends React.Component<any, any> {
 
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
-                                                      <div className="form-group">
-                                                    <div className="col-xs-4 col-md-4" style={{paddingLeft: "0px", cursor: "pointer"}}>
+                                                      <div className="col-xs-4 col-md-4" style={{paddingLeft: "0px", cursor: "pointer"}}>
                                                       <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, cursor: "pointer"}}>
                                                         <option value="">Mini or Regular</option> 
                                                         <option value="regular">1 Dozen Regular</option>
@@ -578,7 +577,7 @@ class OrderMenu extends React.Component<any, any> {
                                                     <div className="col-md-4">
                                                       <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 50}}>Add</button>
                                                     </div>
-                                                    </div>
+                                                    
                                                     
                                                 </div>
                                             </div>
@@ -687,6 +686,11 @@ class OrderMenu extends React.Component<any, any> {
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
+                                <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, cursor: "pointer"}}>
+                                <option value="">Mini or Regular</option> 
+                                <option value="regular">1 Dozen Regular</option>
+                                <option value="mini">2 Dozen Minis</option>
+                              </select>
                             <div className="form-group">
                                 {yours_social_pool_quantity_selector}
                             </div>
