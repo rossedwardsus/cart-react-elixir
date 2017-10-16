@@ -42964,6 +42964,8 @@ webpackJsonp([0],[
 	var order_ts_2 = __webpack_require__(920);
 	var payment_method_tsx_1 = __webpack_require__(1143);
 	var public_top_navbar_tsx_1 = __webpack_require__(1066);
+	var public_bottom_navbar_tsx_1 = __webpack_require__(1067);
+	var public_privacy_terms_navbar_tsx_1 = __webpack_require__(1068);
 	//import { getPublicMenu } from './reducers/name';
 	var Immutable = __webpack_require__(1084);
 	var DatePicker = __webpack_require__(1100);
@@ -43002,7 +43004,6 @@ webpackJsonp([0],[
 	        //componentWillReceiveProps
 	        _this.componentWillReceiveProps = function (nextProps) {
 	            //console.log("<b>recieved</b>");
-	            //this.props.cart_validated;
 	            //if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
 	            //if(this.props.User.orderSession.payment_status == "error"){
 	            //display error
@@ -43013,7 +43014,10 @@ webpackJsonp([0],[
 	            //  this.setState({security_code_border_color: "red"});        
 	            //   this.setState({button_complete_order_classname: "btn btn-default"});
 	            //   this.setState({button_complete_order_disabled: ""});
-	            //}
+	            if (_this.props.User.orderSession.validations.paymentMethodValidated == true) {
+	                _this.setState({ button_complete_order_classname: "btn btn-default" });
+	                _this.setState({ button_complete_order_disabled: "" });
+	            }
 	        };
 	        _this.setPromoCode = function (e) {
 	            _this.setState({ promo_code: e.target.value });
@@ -43125,7 +43129,7 @@ webpackJsonp([0],[
 	            selected_time: "",
 	            selected_specific_time: "",
 	            button_complete_order_classname: "btn btn-default",
-	            button_complete_order_disabled: "",
+	            button_complete_order_disabled: "disabled",
 	            promo_code: "",
 	            promo_code_discount: 0
 	        };
@@ -43541,7 +43545,9 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
-	                } }), React.createElement("br", null), React.createElement("button", { className: this.state.button_complete_order_classname, onClick: this.processYoursSocialPoolOrder, disabled: this.state.button_complete_order_disabled, style: { borderRadius: 0 } }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))));
+	                }, paymentMethodValidated: function paymentMethodValidated() {
+	                    return _this2.props.paymentMethodValidated();
+	                } }), React.createElement("br", null), React.createElement("button", { className: this.state.button_complete_order_classname, onClick: this.processYoursSocialPoolOrder, disabled: this.state.button_complete_order_disabled, style: { borderRadius: 0 } }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -43803,8 +43809,8 @@ webpackJsonp([0],[
 	                //
 	            } else if (/^5[1-5][0-9]{14}$/.test(e.target.value)) {
 	                console.log("mastercard");
-	                _this.setState({ card_brand: "VISA" });
-	                _this.props.setPaymentMethodCardBrand("VISA");
+	                _this.setState({ card_brand: "MASTERCARD" });
+	                _this.props.setPaymentMethodCardBrand("MASTERCARD");
 	            } else if (/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)) {
 	                console.log("discovery");
 	                _this.setState({ card_brand: "DISCOVER" });
@@ -43873,6 +43879,7 @@ webpackJsonp([0],[
 	                _this.setState({ cvc_border_color: "grey" });
 	                _this.setState({ security_code: e.target.value });
 	                _this.props.setPaymentSecurityCode(e);
+	                _this.props.paymentMethodValidated();
 	                /*if(this.state.payment_expiry_month.length > 0){
 	                       //if number
 	                    //month
@@ -44951,7 +44958,7 @@ webpackJsonp([0],[
 	                    _this.setState({ contact_mobile_displayed: e.target.value + "-" });
 	                } else if (e.target.value.length == 7) {
 	                    _this.setState({ contact_mobile_displayed: e.target.value + "-" });
-	                } else if (e.target.value.length == 13) {
+	                } else if (e.target.value.length == 12) {
 	                    console.log("delivery email/mobile validated");
 	                    //this.props.userNameEmailMobileValidated();
 	                } else {
@@ -47415,7 +47422,9 @@ webpackJsonp([0],[
 	              'maybe put something here'
 	            )
 	          )
-	        )
+	        ),
+	        React.createElement(_public_bottom_navbar2.default, null),
+	        React.createElement(_public_privacy_terms_navbar2.default, null)
 	      );
 	    }
 	
@@ -49946,7 +49955,7 @@ webpackJsonp([0],[
 	
 	}*/
 	function user() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { user_first_name: "", user_last_name: "", user_contact_email: "", user_contact_mobile: "", saveForLater: false, currentOrder: "social", orderSession: { sessionId: "", datetimeCreated: "", paymentErrorCode: "", networkError: false, deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, dateValidated: false, paymentValidated: false, userNameEmailMobileValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], deliveryContactsAddresses: [{ name: "1", contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: "" }], paymentMethods: [{ name_on_card: "", card_number: "", card_brand: "", expiry_month: "", expiry_year: "", zipcode: "", security_code: "", stripe_token: "" }] };
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { user_first_name: "", user_last_name: "", user_contact_email: "", user_contact_mobile: "", saveForLater: false, currentOrder: "social", orderSession: { sessionId: "", datetimeCreated: "", paymentErrorCode: "", networkError: false, deliveryCost: 0.00, promoCode: "", promoCodeDiscountPercentage: 0, validations: { cartValidated: false, nameValidated: false, contactValidated: false, deliveryContactAddressValidated: false, dateValidated: false, paymentMethodValidated: false, userNameEmailMobileValidated: false }, analytics_logging: { event: "user added item to cart" } }, orders: [], deliveryContactsAddresses: [{ name: "1", contact_first_name: "", contact_last_name: "", contact_email: "", contact_mobile: "", street1: "", street2: "", city: "", state: "", zipcode: "" }], paymentMethods: [{ name_on_card: "", card_number: "", card_brand: "", expiry_month: "", expiry_year: "", zipcode: "", security_code: "", stripe_token: "" }] };
 	    var action = arguments[1];
 	
 	    var delivery_contacts_addresses_updated = null;
@@ -50358,6 +50367,11 @@ webpackJsonp([0],[
 	            console.log("datetime VALIDATED reducer" + JSON.stringify(state));
 	            _order_session_updated = state.orderSession;
 	            _order_session_updated.validations["dateValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
+	        case actionTypes_ts_1.PAYMENT_METHOD_VALIDATED:
+	            console.log("payment method VALIDATED reducer" + JSON.stringify(state));
+	            _order_session_updated = state.orderSession;
+	            _order_session_updated.validations["paymentMethodValidated"] = true;
 	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
 	        default:
 	            //alert();

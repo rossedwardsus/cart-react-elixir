@@ -6,7 +6,7 @@ defmodule Sconely.YoursSocialOrder do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id parent_order_id user_delivery_contact_address_id user_payment_method_id stripe_charge_token delivery_date delivery_time_range)
+		@optional_fields ~W(user_id parent_order_id user_delivery_contact_address_id user_payment_method_id stripe_charge_token delivery_date delivery_time_range order_note)
 		@required_fields ~W()
 
 		schema "yours_social_orders" do

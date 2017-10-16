@@ -23,6 +23,14 @@
     <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street1 %></td></tr>
     <tr><td><%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
     <tr><td><br></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td>Order Note:</td></tr>
+    <tr><td><br><%= @key.args.order_note %></td></tr>
+    <tr><td><br></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td><br></td></tr>
     <tr><td><br>You have ordered the following items</td></tr>
     <tr><td><br></td></tr>
   </table>

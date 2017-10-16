@@ -185,8 +185,8 @@ class PaymentMethod extends React.Component<any, any> {
       }else if(/^5[1-5][0-9]{14}$/.test(e.target.value)){
 
           console.log("mastercard");
-          this.setState({card_brand: "VISA"});
-          this.props.setPaymentMethodCardBrand("VISA");
+          this.setState({card_brand: "MASTERCARD"});
+          this.props.setPaymentMethodCardBrand("MASTERCARD");
          
       }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
           
@@ -312,6 +312,7 @@ class PaymentMethod extends React.Component<any, any> {
               this.setState({cvc_border_color: "grey"})
               this.setState({security_code: e.target.value});
               this.props.setPaymentSecurityCode(e);
+              this.props.paymentMethodValidated();
 
               /*if(this.state.payment_expiry_month.length > 0){
 

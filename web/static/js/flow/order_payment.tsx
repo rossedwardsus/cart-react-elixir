@@ -108,7 +108,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         selected_time: "",
         selected_specific_time: "",
         button_complete_order_classname: "btn btn-default",
-        button_complete_order_disabled: "",      
+        button_complete_order_disabled: "disabled",      
         promo_code: "",
         promo_code_discount: 0,  
 
@@ -174,7 +174,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //console.log("<b>recieved</b>");
 
-    //this.props.cart_validated;
+    
 
     //if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
     //if(this.props.User.orderSession.payment_status == "error"){
@@ -191,7 +191,12 @@ class OrderDateTimeContact extends React.Component<any, any> {
      //   this.setState({button_complete_order_classname: "btn btn-default"});
      //   this.setState({button_complete_order_disabled: ""});
 
-    //}
+    if (this.props.User.orderSession.validations.paymentMethodValidated == true){
+
+          this.setState({button_complete_order_classname: "btn btn-default"});
+          this.setState({button_complete_order_disabled: ""});
+
+    }
 
   }
 
@@ -1023,13 +1028,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             {this.state.payment_error_message}
                             <br/>
                             <br/>
-                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)}/>
+                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>
                 </div>
+                <PublicBottomNavbar/>
+                <PublicPrivacyTermsNavbar/>
             </div>
     )
   }

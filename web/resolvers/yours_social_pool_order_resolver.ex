@@ -793,13 +793,16 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                       count + (quantity * 5.00)
             "mini" -> IO.puts("mini")
                     #quantity * 24 * 2.25
-                    count + (quantity * 2.50)
+                    count + (quantity * 2.25)
           end
         end)
 
       
 
     end
+
+    IO.puts("subtotal")
+    IO.puts(subtotal)
 
     #subtotal is cost without promo code and delivery cost
     subtotal_formatted = :erlang.float_to_binary(subtotal, [decimals: 2])
@@ -1429,22 +1432,34 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     order_datetime_converted_minute_formatted = nil
 
+                                    IO.puts("order datetime minute")
+                                    IO.puts(order_datetime_converted.minute)
+
                                     case order_datetime_converted.minute do
-                                      0 -> order_datetime_converted_minute_formatted = 00
-                                      1 -> order_datetime_converted_minute_formatted = 01
-                                      2 -> order_datetime_converted_minute_formatted = 02
-                                      3 -> order_datetime_converted_minute_formatted = 03
-                                      4 -> order_datetime_converted_minute_formatted = 04
-                                      5 -> order_datetime_converted_minute_formatted = 05
-                                      6 -> order_datetime_converted_minute_formatted = 06
-                                      7 -> order_datetime_converted_minute_formatted = 07
-                                      8 -> order_datetime_converted_minute_formatted = 08
-                                      9 -> order_datetime_converted_minute_formatted = 09
-                                      _ -> order_datetime_converted_minute_formatted = order_datetime_converted.minute
+                                      0 -> order_datetime_converted_minute_formatted = "00"
+                                      1 -> order_datetime_converted_minute_formatted = "01"
+                                      2 -> order_datetime_converted_minute_formatted = "02"
+                                      3 -> order_datetime_converted_minute_formatted = "03"
+                                      4 -> order_datetime_converted_minute_formatted = "04"
+                                      5 -> order_datetime_converted_minute_formatted = "05"
+                                      6 -> order_datetime_converted_minute_formatted = "06"
+                                      7 -> order_datetime_converted_minute_formatted = "07"
+                                      8 -> order_datetime_converted_minute_formatted = "08"
+                                      9 -> order_datetime_converted_minute_formatted = "09"
+                                      _ -> order_datetime_converted_minute_formatted = Integer.to_string(order_datetime_converted.minute)
+                                    end
+
+                                    if order_datetime_converted.hour < 13 do
+                                        converted_hour = order_datetime_converted.hour
+                                        am_pm = "am"
+                                    else
+                                        IO.puts(">13")
+                                        converted_hour = order_datetime_converted.hour - 12
+                                        am_pm = "pm"
                                     end
 
 
-                                    order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(order_datetime_converted.hour) <> ":" <> Integer.to_string(order_datetime_converted_minute_formatted)
+                                    order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime_converted.day) <> ", " <> Integer.to_string(order_datetime_converted.year) <> " at " <> Integer.to_string(converted_hour) <> ":" <> order_datetime_converted_minute_formatted <> " " <> am_pm
                                     
                                     #IO.inspect(format_order_datetime)
 
@@ -1574,7 +1589,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #IO.inspect(Ecto.Date.utc)
 
-                        card_number = "1234567890"
+                        #card_number = "1234567890"
+                        card_number = args[:payment_method_card_number]
                         last_four_digits = String.slice(card_number, (String.length(card_number) -4), String.length(card_number))
 
                         user_payment_method = Repo.get_by(UserPaymentMethod, %{user_id: user_id})
@@ -1945,9 +1961,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                           if cart_item[:size] == "regular" do
 
-                            menu_item_index = cart_item[:menu_item_id]-1
+                            #menu_item_index = cart_item[:menu_item_id]-1
 
-                            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name
+                            #item_name = Enum.at(menu_items, cart_item[:menu_item_id]).name
 
                             #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
                             #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
@@ -1958,8 +1974,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
 
                             Map.merge(cart_item, %{
-                              :name => item_name,
-                              :menu_image_name => Enum.at(menu_items, menu_item_index).name
+                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
+                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name]
                             })
 
                           else

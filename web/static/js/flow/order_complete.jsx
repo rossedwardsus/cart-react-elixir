@@ -581,6 +581,8 @@ class OrderComplete extends React.Component<any, any> {
                         </div>
                 </div>
             </div>
+            <PublicBottomNavbar/>
+            <PublicPrivacyTermsNavbar/>
             </div>
     )
   }

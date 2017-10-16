@@ -317,7 +317,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
             this.setState({contact_mobile_displayed: e.target.value + "-"});
 
-        }else if(e.target.value.length == 13){
+        }else if(e.target.value.length == 12){
 
             console.log("delivery email/mobile validated");
 
