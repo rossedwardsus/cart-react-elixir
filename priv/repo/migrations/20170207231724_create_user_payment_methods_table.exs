@@ -7,6 +7,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUserPaymentMethodsTable do
 	      add :user_id, :uuid
 	      add :payment_method_id, :smallint
 	      add :last_four_digits, :string, size: 5
+	      add :brand, :string, size: 10
 	      add :stripe_payment_token, :string, size: 30
 	      
 	      #create index(:posts, [:slug], concurrently: true)

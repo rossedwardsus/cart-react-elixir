@@ -9,6 +9,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateUsersTable do
   	  add :about_me, :string, size: 40
       add :email, :string, size: 50
       add :mobile, :string, size: 20
+      add :stripe_customer_id, :string, size: 50
       #photo
       
       #create index(:posts, [:slug], concurrently: true)

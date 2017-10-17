@@ -9,7 +9,7 @@ defmodule Sconely.MailingListGuestRegistration do
 
 		@primary_key {:user_id, :binary_id, autogenerate: true}
 
-		schema "mailing_list_guest_registration" do
+		schema "mailing_list_guest_registrations" do
 			field :email, :string
 			field :registration_datetime, Ecto.DateTime
 		end
