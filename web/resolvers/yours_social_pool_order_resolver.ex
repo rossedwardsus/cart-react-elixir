@@ -24,18 +24,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
   import Ecto.Query
   import Sconely.ProcessStripePayment
 
- 
-
-  def check_code(%{host_id: host_id}, _info) do
-    #check for full code at each typing
-    #urlencoded
-
-    IO.puts("user orders");
-    query = from o in SconelySignatureOrder, where: o.host_id == ^host_id
-    orders = Repo.all(query)
-    {:ok, orders}
-    #{:ok, [%{event_name: "hello"}]}
-  end
   
 
   def get_pool_order_details(args, _info) do
@@ -99,7 +87,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       IO.inspect(user_pool)
 
-      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, pool_id: user_pool.pool_id})
+      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.user_pool_id})
+
+      IO.inspect(pool_order)
 
       if pool_order != nil do
       

@@ -398,7 +398,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
+                                    <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>SCONELY SOCIAL MENU</a>
                                     <br/>
                                     1 dozen  - 20 dozen regular sized scones
                                     <br/>
@@ -431,7 +431,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>ORDER SCONELY SOCIAL</a>
+                          <a onClick={() => this.props.createOrder("social")} style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>SCONELY SOCIAL MENU</a>
                           <br/>
                           1 dozen  - 20 dozen regular sized scones
                           <br/>

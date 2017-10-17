@@ -14,10 +14,10 @@ defmodule Sconely.PoolOrder do
 		schema "pool_orders" do
 			field :user_id, Ecto.UUID
 			field :parent_order_id, Ecto.UUID
-			field :pool_id, :integer
+			field :user_pool_id, :integer
 			field :admin_receipt_order_id, :integer
-			field :pool_url_name, :string
-			field :pool_name, :string
+			#field :pool_url_name, :string
+			#field :pool_name, :string
 			field :delivery_date, Ecto.Date
 			field :delivery_time_range, :string, size: 20
 			field :user_delivery_contact_address_id, :integer
