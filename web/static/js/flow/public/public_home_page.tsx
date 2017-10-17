@@ -167,7 +167,7 @@ export class PublicHomePage extends React.Component<any, any> {
 
     //console.log("changeimage");
 
-    if(this.state.gallery_image_index == 3){
+    if(this.state.gallery_image_index == 4){
 
         
         //let gallery_image_index_temp = this.state.gallery_image_index; 
