@@ -27305,7 +27305,7 @@ webpackJsonp([0],[
 	            //dispatch(push("/order/menu"));
 	            dispatch(menu_ts_1.getMenuItems());
 	            dispatch(session_ts_1.createOrderSession(order_type));
-	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
+	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pickup_location}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	                console.log("pool order graphql response " + JSON.stringify(response));
 	                //if pool date is greater then 24 hours before
 	                //console.log(pool_date);
@@ -27315,16 +27315,16 @@ webpackJsonp([0],[
 	                var pool_delivery_date = moment(pool_url_date_split[2] + "" + pool_url_date_split[0] + "" + pool_url_date_split[1]);
 	                var pool_delivery_date_formatted = moment(pool_delivery_date).format('dddd') + ", " + moment(pool_delivery_date).format('MMMM') + ", " + moment(pool_delivery_date).format('Do') + " " + moment(pool_delivery_date).format('YYYY');
 	                var order_by_date = moment(pool_delivery_date).subtract(3, 'days');
-	                var pool_order_by_date_formatted = moment(order_by_date).format('dddd') + ", " + moment(order_by_date).format('MMMM') + ", " + moment(order_by_date).format('do') + " " + moment(order_by_date).format('YYYY');
+	                var pool_order_by_date_formatted = moment(order_by_date).format('dddd') + ", " + moment(order_by_date).format('MMMM') + ", " + moment(order_by_date).format('Do') + " " + moment(order_by_date).format('YYYY');
 	                //console.log(pool_order_date_formatted);
 	                dispatch({
 	                    type: actionTypes_ts_1.CREATE_ORDER,
 	                    order_type: order_type,
 	                    //pool_name: "this.props.params", 
 	                    pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
-	                    pool_name: response.data.data.getPoolOrderDetails.poolName,
+	                    //pool_name: response.data.data.getPoolOrderDetails.poolName, 
 	                    pool_address: response.data.data.getPoolOrderDetails.poolAddress,
-	                    pool_location: response.data.data.getPoolOrderDetails.poolLocation,
+	                    pickup_location: response.data.data.getPoolOrderDetails.pickupLocation,
 	                    pool_delivery_date_formatted: pool_delivery_date_formatted,
 	                    pool_order_by_date_formatted: pool_order_by_date_formatted
 	                });
@@ -49924,7 +49924,7 @@ webpackJsonp([0],[
 	            if (action.order_type == "yours" || action.order_type == "social") {
 	                orders_updated[0] = { deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: [], deliveryDatetimeDate: "", paymentSecurityCode: "" };
 	            } else {
-	                orders_updated[0] = { deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_name: action.pool_name, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address: action.pool_address, pool_location: action.pool_location, cartItems: [] };
+	                orders_updated[0] = { deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address: action.pool_address, pickup_location: action.pickup_location, cartItems: [] };
 	            }
 	            return Object.assign({}, state, { orders: orders_updated });
 	        case actionTypes_ts_1.ADD_CART_ITEM:

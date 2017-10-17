@@ -115,7 +115,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(createOrderSession(order_type));
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pickup_location}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -135,7 +135,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
                   let order_by_date = moment(pool_delivery_date).subtract(3, 'days');
                   
-                  let pool_order_by_date_formatted = moment(order_by_date).format('dddd') + ", " + moment(order_by_date).format('MMMM') + ", " + moment(order_by_date).format('do') + " " + moment(order_by_date).format('YYYY');
+                  let pool_order_by_date_formatted = moment(order_by_date).format('dddd') + ", " + moment(order_by_date).format('MMMM') + ", " + moment(order_by_date).format('Do') + " " + moment(order_by_date).format('YYYY');
 
                   //console.log(pool_order_date_formatted);
 
@@ -144,10 +144,10 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                               order_type: order_type, 
                               //pool_name: "this.props.params", 
                               pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
-                              pool_name: response.data.data.getPoolOrderDetails.poolName, 
+                              //pool_name: response.data.data.getPoolOrderDetails.poolName, 
                               pool_address: 
                               response.data.data.getPoolOrderDetails.poolAddress,
-                              pool_location: response.data.data.getPoolOrderDetails.poolLocation,
+                              pickup_location: response.data.data.getPoolOrderDetails.pickupLocation,
                               pool_delivery_date_formatted: pool_delivery_date_formatted,
                               pool_order_by_date_formatted: pool_order_by_date_formatted,
                   
