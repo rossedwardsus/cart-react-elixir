@@ -370,7 +370,6 @@ export class PublicFaq extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
-                          
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
@@ -380,7 +379,7 @@ export class PublicFaq extends React.Component<any, any> {
                             <b>What is Sconely?</b>
                             <br/>
                             <br/>
-                            Sconely is a personalized website and delivery service specializing in handmade sweet and savory scones. Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
+                            Sconely is a personalized website and delivery service specializing in gourmet sweet and savory scones. Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
                             <br/>
                             <br/>
                             <b>What’s on Sconely’s menu?</b>
