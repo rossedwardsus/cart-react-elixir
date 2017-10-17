@@ -46863,6 +46863,8 @@ webpackJsonp([0],[
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	
+	      window.scrollTo(0, 0);
+	
 	      //this.setState({order_id: this.props.order.order_id});
 	      //this.setState({order_email: this.props.contact.email});
 	
