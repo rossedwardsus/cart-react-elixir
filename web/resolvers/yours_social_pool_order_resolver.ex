@@ -112,7 +112,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
         IO.puts("there is no pool order")
 
-        {:ok, %{status: "error", error_message: "no pool order"}
+        {:ok, %{status: "error", error_message: "no pool order"}}
 
       end
 
