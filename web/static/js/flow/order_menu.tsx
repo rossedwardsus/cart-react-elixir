@@ -608,15 +608,13 @@ class OrderMenu extends React.Component<any, any> {
                       <br/>
                       <b>Delivery Address</b>: {this.props.User.orders[0].pool_address}
                       <br/>
-                      <b>Delivery Location</b>: {this.props.User.orders[0].pool_location}
+                      <b>Pickup Location</b>: {this.props.User.orders[0].pickup_location}
                       <br/>
                       <b>Delivery Date</b>: {this.props.User.orders[0].pool_delivery_date_formatted}
                       <br/>
+                      <b>Delivery Time</b>: 9:30 AM
                       <br/>
-                      <b>Delivery time</b>: 9:30 AM
-                      <br/>
-                      <br/>
-                      <b>Order by:</b>{this.props.User.orders[0].pool_order_by_date_formatted}
+                      <b>Order By:</b>{this.props.User.orders[0].pool_order_by_date_formatted}
                   </div>
 
 
