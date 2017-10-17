@@ -89,7 +89,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id})
 
-      #IO.inspect(pool_order)
+      IO.inspect(pool_order)
 
       if pool_order != nil do
       
@@ -101,7 +101,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
         #if pool_order not equal to nil
 
-        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_address: "801 s hope", pickup_location: "Lobby"}}
+        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_address: "801 s hope", pickup_location: pool_order.pickup_location}}
                         
 
         #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}

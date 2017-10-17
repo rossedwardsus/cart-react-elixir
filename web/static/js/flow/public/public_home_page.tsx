@@ -44,7 +44,7 @@ export class PublicHomePage extends React.Component<any, any> {
 
     this.state = {
 
-        gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg", "/images/gallery/SconelyGallery5.jpg"],
+        gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery5.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
         gallery_image: "",
         gallery_image_index: 0,
         guest_code: "",

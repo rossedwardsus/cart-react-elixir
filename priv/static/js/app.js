@@ -18931,7 +18931,7 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (PublicHomePage.__proto__ || Object.getPrototypeOf(PublicHomePage)).call(this, props));
 	
 	        _this.state = {
-	            gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg", "/images/gallery/SconelyGallery5.jpg"],
+	            gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery5.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
 	            gallery_image: "",
 	            gallery_image_index: 0,
 	            guest_code: "",
