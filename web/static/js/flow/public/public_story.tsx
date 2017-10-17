@@ -380,23 +380,23 @@ export class PublicStory extends React.Component<any, any> {
                           <img src="/images/mom_kids_scones.jpg"/>
                           <br/>
                           <br/>
-                          Colossal cookies, apple pie and chocolate mush cake – these were the centerpieces of birthday parties and holiday celebrations when I was a kid. The desserts were made by my Mom and all extremely delicious. Food was an expression of love in my family and the centerpiece of social gatherings.
+                          Colossal cookies, apple pie and chocolate mush cake – these were the centerpieces of holiday celebrations, lovingly made by my Mom when I was growing up. Then and now, food remains an expression of love in my family.    
                           <br/>
                           <br/>
-                          Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. I started thinking of healthier ways to satisfy my sweet tooth. I experimented with baking scones and shared them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social.
+                          Food became even more central to my life after overcoming cancer 9 years ago, which profoundly altered the way I ate and approached food. While looking for healthier ways to satisfy my sweet tooth, I experimented with recipes that maximize nutrition and flavor. I started baking scones and sharing them at meetings and parties. It became apparent that scones are underrated, versatile and incredibly social. 
                           <br/>
                           <br/>
-                          When I was leaving NYC to move west, I envisioned driving a bakery truck named Scone Home, with an oversized scone on top. I imagined stopping to bake scones with local ingredients and selling them along the way. That idea was only half-baked.
+                          When I was leaving NYC to move west, I envisioned driving across the country in a food truck named Scone Home. Seeing the potential to innovate with scones and new ways to share them with others, the initial idea for Scone Home evolved into a technology driven company, called Sconely.
+                          ​​<br/>
                           <br/>
-                          <br/>
-                          More recently, in discussions with technologist, Ross Edwards, Scone Home evolved into the technology driven business called Sconely. Ross and I spent a year developing a plan to merge a social app with gourmet scones. We spoke with bakers and nutritional experts to develop a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.
-                          <br/>
+                          Throughout 2016, I spoke with technologist Ross Edwards to develop a plan merging a social app with gourmet scones. We spoke with bakers and nutritional experts to create a truly inclusive menu that addresses a variety of dietary preferences, while updating traditional scones.
+                          ​<br/>
                           <br/>
                           Sconely is dedicated to my Mom, Marcia Friedman, who loved to bake, build community around food and made sure everyone at the table had something they could eat. Sconely follows in her tradition.
-                          <br/>
+                          ​<br/>
                           <br/>
                           We hope you enjoy the Sconely experience, as much as we have enjoyed creating it!
-                          <br/>
+                          ​<br/>
                           <br/>
                           Julia Friedman, Sconely Founder
                         </div>

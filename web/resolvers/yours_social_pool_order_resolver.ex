@@ -2020,7 +2020,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                             Map.merge(cart_item, %{
                               :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " mini",
-                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " mini",
+                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
                               :quantity => quantity
                             })
 

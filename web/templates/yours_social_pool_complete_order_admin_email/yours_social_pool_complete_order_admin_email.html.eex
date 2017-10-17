@@ -47,7 +47,7 @@
     <tr><td></td></tr>
   </table>
   <table width="50%">
-    <tr><td>Billed to:</td><td>Brand xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
+    <tr><td>Billed to:</td><td>xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
   </table>
 
 </html>

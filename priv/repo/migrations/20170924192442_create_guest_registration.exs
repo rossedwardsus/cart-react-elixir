@@ -3,7 +3,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateGuestRegistrationTable do
 
    def up do
     create table(:guest_registrations, primary_key: false) do
-      add :user_id, :uuid, primary_key: false
+      add :user_id, :uuid, primary_key: true
       add :email, :string, size: 100
       add :registration_datetime, :datetime
       
