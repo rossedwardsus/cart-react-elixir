@@ -462,7 +462,7 @@ class DateTime extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                                 <br/>
-                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={this.props.userNameEmailMobileValidated()}/>
+                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={() => this.props.userNameEmailMobileValidated()}/>
                                 <br/>
                                 <br/>
                                 <br/>

@@ -44318,7 +44318,9 @@ webpackJsonp([0],[
 	                        return _this2.props.nameValidated();
 	                    }, contactValidated: function contactValidated() {
 	                        return _this2.props.contactValidated();
-	                    }, userNameEmailMobileValidated: this.props.userNameEmailMobileValidated() }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart")))))));
+	                    }, userNameEmailMobileValidated: function userNameEmailMobileValidated() {
+	                        return _this2.props.userNameEmailMobileValidated();
+	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/cart", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Cart")))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 50 } }, React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1), React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
 	                        return _this2.props.increaseCartItemQuantity(item_index);
@@ -44958,6 +44960,7 @@ webpackJsonp([0],[
 	                    _this.setState({ contact_mobile_displayed: e.target.value + "-" });
 	                } else if (e.target.value.length == 12) {
 	                    console.log("delivery email/mobile validated");
+	                    _this.setState({ contact_mobile_displayed: e.target.value });
 	                    //this.props.userNameEmailMobileValidated();
 	                } else {
 	                    //console.log("here3 " + e.target.value);

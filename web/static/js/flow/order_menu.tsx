@@ -604,7 +604,7 @@ class OrderMenu extends React.Component<any, any> {
     //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
 
     let message = <div>
-                      {this.props.User.orders[0].pool_name}
+                      <b>{this.props.User.orders[0].pool_name}</b>
                       <br/>
                       <br/>
                       <b>Delivery Address</b>: {this.props.User.orders[0].pool_address}
@@ -614,7 +614,7 @@ class OrderMenu extends React.Component<any, any> {
                       <b>Delivery Date</b>: {this.props.User.orders[0].pool_delivery_date_formatted}
                       <br/>
                       <br/>
-                      <b>Delivery time</b>: 9:00 AM - 12:00 AM
+                      <b>Delivery time</b>: 9:30 AM
                       <br/>
                       <br/>
                       <b>Order by:</b>{this.props.User.orders[0].pool_order_by_date_formatted}
