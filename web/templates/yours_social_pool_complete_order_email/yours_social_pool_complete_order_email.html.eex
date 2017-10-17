@@ -17,7 +17,7 @@
     <tr><td><br></td></tr>
   </table>
   <table width="50%">
-    <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, between 9-12 am</td></tr>
+    <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, between 9-Noon</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>
     <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street2 %></td></tr>
@@ -36,7 +36,7 @@
   </table>
   <table width="50%">
     <%= for item <- @key.cart_items do %>
-    <tr><td><img width="50" height="50" src="https://sconely-produduction.herokuapp.com/images/menu/<%= String.downcase(item.menu_image_name) |> String.replace(" ", "") %>.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
+    <tr><td><img width="50" height="50" src="https://sconely-production.herokuapp.com/images/menu/<%= String.downcase(item.menu_image_name) |> String.replace(" ", "") %>.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
     <% end %>
   </table>
   <br/>
@@ -54,7 +54,7 @@
     <tr><td>Billed to:</td><td><%= @key.args.payment_method_card_brand %> xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
   </table>
   <table width="100%">
-    <tr><td colspan="3"><br>If you have any questions please contact us at eat@sconely.com</td></tr>
+    <tr><td colspan="3"><br>Contact us at orders@sconely.com with any questions.</td></tr>
     <tr><td><br></td></tr>
     <tr><td>Enjoy!</td></tr>
     <tr><td><br></td></tr>
