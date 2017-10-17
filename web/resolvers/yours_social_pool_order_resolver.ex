@@ -85,7 +85,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       user_pool = Repo.get_by(UserPool, %{pool_url_name: args[:pool_url_name]})
 
-      IO.inspect("user_pool")
+      IO.inspect(user_pool)
 
       #pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id})
 
