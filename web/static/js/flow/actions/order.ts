@@ -112,6 +112,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             //dispatch(push("/order/menu"));
 
             dispatch(getMenuItems());
+            dispatch(createOrderSession(order_type));
 
             axios.post('/api/graphql',
                      {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}'}, {headers: {'authorization': "bearer"}}

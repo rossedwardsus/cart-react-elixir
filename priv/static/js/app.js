@@ -27304,6 +27304,7 @@ webpackJsonp([0],[
 	            //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
 	            //dispatch(push("/order/menu"));
 	            dispatch(menu_ts_1.getMenuItems());
+	            dispatch(session_ts_1.createOrderSession(order_type));
 	            axios_1.default.post('/api/graphql', { query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pool_location pool_message}}' }, { headers: { 'authorization': "bearer" } }).then(function (response) {
 	                console.log("pool order graphql response " + JSON.stringify(response));
 	                //if pool date is greater then 24 hours before
@@ -44303,7 +44304,7 @@ webpackJsonp([0],[
 	                                </div>
 	            }*/
 	            if (this.props.User.orders[0].order_type == "pool") {
-	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 55 } }, React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1), React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
+	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 55 } }, React.createElement("br", null), React.createElement("br", null), "SCONELY ", this.props.User.orders[0].order_type.toUpperCase(), React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
 	                    }, setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	                        return _this2.props.setUserDeliveryContactAddressFirstName(e);

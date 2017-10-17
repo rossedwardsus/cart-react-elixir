@@ -454,7 +454,7 @@ class DateTime extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3"style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
-                            Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
+                            SCONELY {this.props.User.orders[0].order_type.toUpperCase()}
                             <br/>
                             <br/>
                             <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
