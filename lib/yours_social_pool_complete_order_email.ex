@@ -130,7 +130,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
 
     new_email(
       #to: _params["order_contact_email"],
-      to: ["rossedwards.us@gmail.com", _params.args[:user_contact_email]],
+      to: [_params.args[:user_contact_email]],
       from: "orders@sconely.com",
       subject: "Sconely.com order: " <> _params.order_datetime_formatted,
       html_body: template,
