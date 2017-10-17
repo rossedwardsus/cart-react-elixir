@@ -30,7 +30,21 @@ defmodule Sconely.SessionResolver do
     #{:ok, Blog.Repo.all(Post)}
 
     #OrderSession = Friends.Person |> Ecto.Query.first |> Friends.Repo.one
-    order_session = Repo.get_by!(OrderSession, %{session_id: args[:session_id]})
+
+    session_id = nil
+
+    if(args[:session_id] == "") do
+
+        session_id = Ecto.UUID.cast(00000000-0000-0000-0000-000000000000)
+
+    else
+
+        session_id = args[:session_id]
+
+    end
+
+    #order_session = Repo.get_by!(OrderSession, %{session_id: session_id})
+
     #order_changeset = OrderSession.changeset(order_session, %{status: args[:screen]})
     #update = Repo.update(order_changeset)
 
