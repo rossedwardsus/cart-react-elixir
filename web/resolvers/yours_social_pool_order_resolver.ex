@@ -87,7 +87,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       IO.inspect(user_pool)
 
-      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.user_pool_id})
+      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id})
 
       IO.inspect(pool_order)
 

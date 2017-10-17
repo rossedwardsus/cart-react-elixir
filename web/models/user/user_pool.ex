@@ -8,7 +8,7 @@ defmodule Sconely.UserPool do
 		@primary_key {:id, :binary_id, autogenerate: true}
 
 		schema "user_pools" do
-			field :user_pool_id, :integer
+			field :pool_id, :integer
 			field :user_id, Ecto.UUID #integer
 			field :pool_name, :string
 			field :pool_url_name, :string
