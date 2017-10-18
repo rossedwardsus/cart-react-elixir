@@ -102,7 +102,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
         #if pool_order not equal to nil
 
-        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_delivery_date: pool_order.delivery_date, pool_address: "801 S Hope St. Los Angeles, CA 90017", pickup_location: pool_order.pickup_location}}
+        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_delivery_date: pool_order.delivery_date, pool_address_street1: "801 S Hope St.", pool_address_city: "Los Angeles", pool_address_state: "CA", pool_address_zipcode: "90025", pickup_location: pool_order.pickup_location}}
                         
 
         #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}

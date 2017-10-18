@@ -115,7 +115,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(createOrderSession(order_type));
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_address pickup_location}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_address_street1 pool_address_city pool_address_state pool_address_zipcode pickup_location}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -135,7 +135,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
                   let order_by_date = moment(pool_delivery_date).subtract(1, 'days');
                   
-                  let pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D') + " 5pm";
+                  let pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D') + ", 5:30pm";
 
                   //console.log(pool_order_date_formatted);
 
@@ -145,8 +145,15 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                               //pool_name: "this.props.params", 
                               pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
                               //pool_name: response.data.data.getPoolOrderDetails.poolName, 
-                              pool_address: 
-                              response.data.data.getPoolOrderDetails.poolAddress,
+                              pool_address_street1: 
+                              response.data.data.getPoolOrderDetails.poolAddressStreet1,
+                              pool_address_city: 
+                              response.data.data.getPoolOrderDetails.poolAddressCity,
+                              pool_address_state: 
+                              response.data.data.getPoolOrderDetails.poolAddressState,
+                              pool_address_zipcode: 
+                              response.data.data.getPoolOrderDetails.poolAddressZipcode,
+                              
                               pickup_location: response.data.data.getPoolOrderDetails.pickupLocation,
                               pool_delivery_date_formatted: pool_delivery_date_formatted,
                               pool_order_by_date_formatted: pool_order_by_date_formatted,

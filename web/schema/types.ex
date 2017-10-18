@@ -144,7 +144,11 @@ defmodule Sconely.Schema.Types do
     field :pool_admin_receipt_order_id, :integer
     field :pool_name, :string
     field :pool_delivery_date, :string
-    field :pool_address, :string
+    field :pool_address_street1, :string
+    field :pool_address_street2, :string
+    field :pool_address_city, :string
+    field :pool_address_state, :string
+    field :pool_address_zipcode, :string
     field :pickup_location, :string
     #field :pool_message, :string
   end
