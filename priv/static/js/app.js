@@ -42794,7 +42794,7 @@ webpackJsonp([0],[
 	                    }else{*/
 	                    //if(item.size == "mini"){
 	                    //item_quantity_text = null;
-	                    if (this.User.orders[0].order_type == "yours" || this.User.orders[0].order_type == "social") {
+	                    if (this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "social") {
 	                        //if(item.quantity % 12 == 0){
 	                        item_quantity_text = item.quantity / 12 + "dz";
 	                    } else {
