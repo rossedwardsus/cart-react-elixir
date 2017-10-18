@@ -1180,7 +1180,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         IO.inspect(pool_order)
 
-                        pool_order_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: args[:user_id], delivery_contact_address})
+                        pool_order_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: args[:user_id], delivery_contact_address: pool_order.user_delivery_contact_address})
+                        
                         IO.inspect(pool_order_delivery_contact_address)
 
                         #get delivery contact address for pool order
