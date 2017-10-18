@@ -400,7 +400,7 @@ class PaymentMethod extends React.Component<any, any> {
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-md-4" style={{paddingLeft: 10}}>
+                      <div className="col-md-4" style={{paddingLeft: 5}}>
                              <div className="col-md-4">
                                 <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                               </div>
