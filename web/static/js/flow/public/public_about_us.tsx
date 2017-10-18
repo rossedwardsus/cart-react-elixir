@@ -48,7 +48,7 @@ export default class Menu extends React.Component<any, any> {
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
                             <br/>
-                            Sconely bakes and delivers artisanal sweet and savory scones with you and your guests in mind. Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future. All of our scones are handcrafted in small batches and freshly based to order. With an emphasis on locally sourced organic ingredients, our entire menu is free of refined sugar, soy and preservatives. 
+                            Sconely bakes and delivers artisanal sweet and savory scones with you and your guests in mind. Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future. All of our scones are handcrafted in small batches and freshly baked to order. With an emphasis on locally sourced organic ingredients, our entire menu is free of refined sugar, soy and preservatives. 
                             ​<br/>
                             <br/>
                             Sconely’s menu includes a wide variety of homemade scones, with vegan and gluten-free options. Most of our scones are available all year, with additional seasonal scones being added frequently. Check out our menu often for new scone flavors!

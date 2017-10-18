@@ -223,6 +223,7 @@ class OrderMenu extends React.Component<any, any> {
 
       }.bind(this));*/
 
+      this.setState({selected_item_quantity_selector: 0});
       $('#myModal').modal('show').css("background", "");;
 
   }
