@@ -46,7 +46,7 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 5, order: 
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 6, order: 6, name: "Julie Freedom (Vegan and Gluten-Free)", ingredients: "Gluten-free flour (brown rice flour*, sorghum flour*, potato starch, arrowroot powder*), Gluten free oats*, Almond meal*, Dried unsulfured apricots*, Whole raw almonds, Sunflower seeds, Pumpkin seeds*, Golden raisins, Chia seeds*, Dried unsulfured cranberries*, Dried unsweetened unsulfured dried cherries, Almond milk*, Virgin coconut oil*, Maple syrup*, Baking soda, Baking powder, Pure vanilla extract*, Sea salt, Tangerine*. *Organic", description: "Nutrient dense with chia seeds, dried fruit and crunchy nuts, naturally sweetened with maple syrup and tangerine", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 6, order: 6, name: "Julie Freedom (Vegan and Gluten-Free)", ingredients: "Gluten-free flour (brown rice flour*, sorghum flour*, potato starch, arrowroot powder*), Gluten free oats*, Almond meal*, Dried unsulfured apricots*, Whole raw almonds, Sunflower seeds, Pumpkin seeds*, Golden raisins, Chia seeds*, Dried unsulfured cranberries*, Dried unsulfured unsweetened cherries, Almond milk*, Virgin coconut oil*, Maple syrup*, Tangerine*,  Baking soda, Baking powder, Pure vanilla extract*, Sea salt. *Organic", description: "Nutrient dense with chia seeds, dried fruit and crunchy nuts, naturally sweetened with maple syrup and tangerine", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 
@@ -54,7 +54,8 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 7, order: 
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 8, order: 8, name: "Savvy Go Go", ingredients: "Unbleached white all-purpose flour*, Purple caramelized onions*, Gruyere, Butter*, Eggs*, Heavy cream*, Sage*, Baking powder, Raw cane sugar*, Sea salt. *Organic", description: "Savory and satisfying with sun-dried tomatoes, goat cheese and fresh herbs, Savvy Go Go is perfect for meals or snacks on the go!", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 8, order: 8, name: "Savvy Go Go", ingredients: "Unbleached white all-purpose flour,* Sun-dried tomatoes, Oven-dried tomatoes*, Goat cheese, Eggs*, Heavy cream*, Butter*, Thyme*, Basil*, Rosemary*, Oregano*, Garlic*, Baking powder, Raw cane sugar*, Sea salt. *Organic
+", description: "Savory and satisfying with sun-dried tomatoes, goat cheese and fresh herbs, Savvy Go Go is perfect for meals or snacks on the go!", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 

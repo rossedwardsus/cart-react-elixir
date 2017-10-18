@@ -115,7 +115,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(createOrderSession(order_type));
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_address pickup_location}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_address pickup_location}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -133,7 +133,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
                   let pool_delivery_date_formatted = moment(pool_delivery_date).format('ddd') + ", " + moment(pool_delivery_date).format('MMMM') + " " + moment(pool_delivery_date).format('D');
 
-                  let order_by_date = moment(pool_delivery_date).subtract(3, 'days');
+                  let order_by_date = moment(pool_delivery_date).subtract(1, 'days');
                   
                   let pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D') + " 8am";
 

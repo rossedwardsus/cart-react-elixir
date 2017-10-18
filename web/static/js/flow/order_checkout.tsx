@@ -474,9 +474,6 @@ class DateTime extends React.Component<any, any> {
                                     <div className="col-md-2">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
                                     </div>
-                                    <div className="col-md-2">
-                                      <Link to="/order/cart" className="btn btn-default btn-block" style={{borderRadius: 0}}>Cart</Link>  
-                                    </div>
                                   </div>
                               </form>
                           </div>

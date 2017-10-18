@@ -87,6 +87,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       IO.inspect(user_pool)
 
+      #supposed to look for pool id and pool date
       pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id})
 
       IO.inspect(pool_order)
@@ -101,7 +102,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
         #if pool_order not equal to nil
 
-        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_address: "801 S Hope St. Los Angeles, CA 90017", pickup_location: pool_order.pickup_location}}
+        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_delivery_date: pool_order.delivery_date, pool_address: "801 S Hope St. Los Angeles, CA 90017", pickup_location: pool_order.pickup_location}}
                         
 
         #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
@@ -916,9 +917,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
@@ -1180,9 +1181,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         IO.inspect(pool_order)
 
-                        pool_order_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: args[:user_id], delivery_contact_address: pool_order.user_delivery_contact_address})
+                        pool_order_user_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: pool_order.user_id, delivery_contact_address_id: pool_order.user_delivery_contact_address_id})
                         
-                        IO.inspect(pool_order_delivery_contact_address)
+                        IO.inspect(pool_order_user_delivery_contact_address)
 
                         #get delivery contact address for pool order
                         delivery_address = %{street1: "801 S Hope St", street2: "", city: "Los Angeles", state: "CA", zipcode: "90017"}
@@ -1353,7 +1354,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                             #pool_order_items?
                             #probably not
 
-                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: order_id, menu_item_id: 1, quantity: 1, size: "regular"})
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: order_id, menu_item_id: 1, quantity: 1, size: "regular", user_id: user_id})
 
                             case Repo.insert(order_item_changeset) do
 
@@ -1605,16 +1606,16 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         
                             user_payment_method_changeset = UserPaymentMethod.changeset(%UserPaymentMethod{}, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
 
-                            Repo.insert(user_payment_method_changeset)
+                            #Repo.insert(user_payment_method_changeset)
 
                         else
 
                             user_payment_method_changeset = UserPaymentMethod.changeset(user_payment_method, %{user_id: user_id, payment_method_id: 1, brand: "brand", last_four_digits: last_four_digits, stripe_payment_token: "token"})
 
-                            case Repo.update(user_payment_method_changeset) do
-                                {:ok, response} -> IO.inspect(response)
+                            #case Repo.update(user_payment_method_changeset) do
+                            #    {:ok, response} -> IO.inspect(response)
                             #        #order_id = response.id
-                            end
+                            #end
 
                         end
 

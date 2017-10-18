@@ -636,7 +636,7 @@ class OrderMenu extends React.Component<any, any> {
                                 <b>Time</b>: 
                             </div>
                             <div className="col-md-8">
-                                9:30 AM
+                                5:30 pm
                             </div>
                       </form>
                       <form className="form-horizontal">
