@@ -606,8 +606,6 @@ class OrderMenu extends React.Component<any, any> {
     //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
 
     let message = <div>
-                      <br/>
-                      <br/>
                       <form className="form-horizontal">
                         <div className="col-md-4">
                             <b>Address</b>: 
