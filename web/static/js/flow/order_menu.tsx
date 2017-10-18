@@ -614,15 +614,12 @@ class OrderMenu extends React.Component<any, any> {
                             {this.props.User.orders[0].pool_address}
                         </div>
                       </form>
-                      <br/>
-
                       <form className="form-horizontal">
                         <div className="col-md-4">
                             <b>Location</b>: 
                         </div>
                         <div className="col-md-8">
                             {this.props.User.orders[0].pickup_location}
-                            <br/>
                         </div>
                       </form>
                       <form className="form-horizontal">
@@ -631,7 +628,6 @@ class OrderMenu extends React.Component<any, any> {
                         </div>
                         <div className="col-md-8">
                             {this.props.User.orders[0].pool_delivery_date_formatted}
-                            <br/>
                         </div>
                       </form>
                       <form className="form-horizontal">
@@ -641,7 +637,6 @@ class OrderMenu extends React.Component<any, any> {
                             <div className="col-md-8">
                                 9:30 AM
                             </div>
-                            <br/>
                       </form>
                       <form className="form-horizontal">
                           <div className="col-md-4">
