@@ -1225,12 +1225,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #IO.inspect(delivery_date_day_of_week)
 
-                        case delivery_date.day do
-                          n when n in [1, 21, 31] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
-                          n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-                          n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-                          n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
-                        end
+                        #case delivery_date.day do
+                        #  n when n in [1, 21, 31] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "st"}
+                        #  n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
+                        #  n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
+                        #  n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+                        #end
 
                         delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
             
