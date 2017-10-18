@@ -44,9 +44,9 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
 
 
 #for sconely-test
-#config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
+config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
 #sconely-production
-config :stripe, :secret_key, "sk_live_V4rKgMKdlpl3CwUHHMLH0h1K"
+#config :stripe, :secret_key, "sk_live_V4rKgMKdlpl3CwUHHMLH0h1K"
 
 
 
