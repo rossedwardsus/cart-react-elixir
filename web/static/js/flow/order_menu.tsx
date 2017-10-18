@@ -606,15 +606,51 @@ class OrderMenu extends React.Component<any, any> {
     let message = <div>
                       <br/>
                       <br/>
-                      <b>Delivery Address</b>: {this.props.User.orders[0].pool_address}
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Address</b>: 
+                        </div>
+                        <div className="col-md-8">
+                            {this.props.User.orders[0].pool_address}
+                        </div>
+                      </form>
                       <br/>
-                      <b>Pickup Location</b>: {this.props.User.orders[0].pickup_location}
-                      <br/>
-                      <b>Delivery Date</b>: {this.props.User.orders[0].pool_delivery_date_formatted}
-                      <br/>
-                      <b>Delivery Time</b>: 9:30 AM
-                      <br/>
-                      <b>Order By:</b>{this.props.User.orders[0].pool_order_by_date_formatted}
+
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Location</b>: 
+                        </div>
+                        <div className="col-md-8">
+                            {this.props.User.orders[0].pickup_location}
+                            <br/>
+                        </div>
+                      </form>
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Date</b>: 
+                        </div>
+                        <div className="col-md-8">
+                            {this.props.User.orders[0].pool_delivery_date_formatted}
+                            <br/>
+                        </div>
+                      </form>
+                      <form className="form-horizontal">
+                            <div className="col-md-4">
+                                <b>Time</b>: 
+                            </div>
+                            <div className="col-md-8">
+                                9:30 AM
+                            </div>
+                            <br/>
+                      </form>
+                      <form className="form-horizontal">
+                          <div className="col-md-4">
+                              <b>Order By:</b>
+                          </div>
+                          <div className="col-md-8">
+                              {this.props.User.orders[0].pool_order_by_date_formatted}
+                          </div>
+                      </form>
                   </div>
 
 

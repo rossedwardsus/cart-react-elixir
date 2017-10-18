@@ -8,7 +8,7 @@ defmodule Sconely.PoolOrder do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id parent_order_id admin_receipt_order_id field user_delivery_contact_address_id order_datetime pool_name delivery_date delivery_time)
+		@optional_fields ~W(user_id parent_order_id admin_receipt_order_id user_delivery_contact_address_id order_datetime pool_name delivery_date delivery_time)
 		@required_fields ~W()
 
 		schema "pool_orders" do
