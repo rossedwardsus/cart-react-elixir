@@ -221,7 +221,7 @@ export default class Menu extends React.Component<any, any> {
                   <div className="hidden-xs col-md-3">
                       <div className="form-horizontal" style={{paddingLeft: 0}}>
                         <div className="col-md-5" style={{paddingLeft: 10}}>
-                          <div style={{fontSize: 15, height: 10}}>eat@sconely.com</div>
+                          <div style={{fontSize: 15, height: 10}}>We'd love to hear from you!<br/>eat@sconely.com</div>
                         </div>
                       </div>
                       <br/>
