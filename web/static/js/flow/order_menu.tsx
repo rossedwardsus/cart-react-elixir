@@ -613,7 +613,7 @@ class OrderMenu extends React.Component<any, any> {
                             <b>Address</b>: 
                         </div>
                         <div className="col-md-8">
-                            {this.props.User.orders[0].pool_address_street1}<br/>{this.props.User.orders[0].pool_address_city},<br/>{this.props.User.orders[0].pool_address_state}&nbsp;{this.props.User.orders[0].pool_address_zipcode}
+                            {this.props.User.orders[0].pool_address_street1}<br/>{this.props.User.orders[0].pool_address_city},&nbsp;{this.props.User.orders[0].pool_address_state}
                         </div>
                       </form>
                       <form className="form-horizontal">
@@ -637,7 +637,7 @@ class OrderMenu extends React.Component<any, any> {
                                 <b>Time</b>: 
                             </div>
                             <div className="col-md-8">
-                                9:30 AM
+                                9:30 am
                             </div>
                       </form>
                       <form className="form-horizontal">
