@@ -1180,10 +1180,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         IO.inspect(pool_order)
 
+                        #pool_order_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: args[:user_id]})
+                        IO.inspect(pool_order.delivery_date.month)
+
                         #get delivery contact address for pool order
-
-
-                        delivery_address = %{street1: "801 S Hope St", street2: "", city: "", state: "", zipcode: ""}
+                        delivery_address = %{street1: "801 S Hope St", street2: "", city: "Los Angeles", state: "CA", zipcode: "90017"}
 
                         #covert the time zone?
                         #actually this is only date
@@ -1273,6 +1274,20 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                           6 -> {order_date_day_of_week = "Saturday"}
                         end
 
+                        case order_datetime_converted.minute do
+                          0 -> order_datetime_converted_minute_formatted = "00"
+                          1 -> order_datetime_converted_minute_formatted = "01"
+                          2 -> order_datetime_converted_minute_formatted = "02"
+                          3 -> order_datetime_converted_minute_formatted = "03"
+                          4 -> order_datetime_converted_minute_formatted = "04"
+                          5 -> order_datetime_converted_minute_formatted = "05"
+                          6 -> order_datetime_converted_minute_formatted = "06"
+                          7 -> order_datetime_converted_minute_formatted = "07"
+                          8 -> order_datetime_converted_minute_formatted = "08"
+                          9 -> order_datetime_converted_minute_formatted = "09"
+                          _ -> order_datetime_converted_minute_formatted = Integer.to_string(order_datetime_converted.minute)
+                        end
+
                         converted_hour = nil
                         am_pm = nil
 
@@ -1290,7 +1305,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #use converted year month day as well
 
-                        order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime.day) <> ", " <> Integer.to_string(order_datetime.year) <> " " <> Integer.to_string(converted_hour) <> ":" <> Integer.to_string(order_datetime.min) <> " " <> am_pm 
+                        order_datetime_formatted = order_date_day_of_week <> " " <> order_date_month <> " " <> Integer.to_string(order_datetime.day) <> ", " <> Integer.to_string(order_datetime.year) <> " " <> Integer.to_string(converted_hour) <> ":" <> order_datetime_converted_minute_formatted <> " " <> am_pm 
 
 
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, order_datetime: order_datetime, stripe_charge_token: stripe_charge_token})
