@@ -30009,7 +30009,7 @@ webpackJsonp([0],[
 	                           })}
 	                    </div>
 	           }*/
-	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "coll-xs-12 col-md-12", style: { paddingLeft: "30px" } }, React.createElement("div", { className: "hidden-lg col-md-3" }, React.createElement("br", null), "\xA92017 Sconely | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("div", { className: "hidden-xs" }, "\xA92017 Sconely LLC | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy", style: { color: "grey", textDecoration: "none" } }, "PRIVACY POLICY")), React.createElement("br", null), React.createElement("br", null)));
+	      return React.createElement("div", { className: "row" }, React.createElement("div", { className: "coll-xs-12 col-md-12", style: { paddingLeft: "30px" } }, React.createElement("div", { className: "hidden-lg col-md-3" }, React.createElement("br", null), "\xA92017 Sconely | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy" }, "PRIVACY POLICY")), React.createElement("div", { className: "hidden-xs" }, "\xA92017 Sconely | ", React.createElement(react_router_1.Link, { to: "/public/privacy_policy", style: { color: "grey", textDecoration: "none" } }, "PRIVACY POLICY")), React.createElement("br", null), React.createElement("br", null)));
 	    }
 	  }], [{
 	    key: "contextTypes",
