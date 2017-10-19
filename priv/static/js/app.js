@@ -27453,6 +27453,14 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.termsValidated = termsValidated;
+	function setOrderStatus(value) {
+	    console.log("create order action ");
+	    return {
+	        type: actionTypes_ts_1.SET_ORDER_STATUS,
+	        value: value
+	    };
+	}
+	exports.setOrderStatus = setOrderStatus;
 	function mailingList(value) {
 	    console.log("create order action ");
 	    return {
@@ -27624,6 +27632,7 @@ webpackJsonp([0],[
 	exports.CREATE_ORDER = 'CREATE_ORDER';
 	exports.SET_ORDER_ID = 'SET_ORDER_ID';
 	exports.SET_ORDER_TYPE = 'SET_ORDER_TYPE';
+	exports.SET_ORDER_STATUS = 'SET_ORDER_STATUS';
 	exports.SET_PAYMENT_ERROR = 'SET_PAYMENT_ERROR';
 	exports.SET_NETWORK_ERROR = 'SET_NETWORK_ERROR';
 	exports.SET_USER_PAYMENT_METHOD_CARD_BRAND = 'SET_USER_PAYMENT_METHOD_CARD_BRAND';
@@ -29673,7 +29682,7 @@ webpackJsonp([0],[
 	           }*/
 	      //<li><Link to="/login">LOGIN</Link></li>
 	      //<li><Link to="/register">SIGN UP</Link></li>
-	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "/" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" })))));
+	      return React.createElement("div", null, React.createElement("nav", { className: "navbar navbar-default", style: { border: 1 } }, React.createElement("div", { className: "container-fluid" }, React.createElement("div", { className: "navbar-header" }, React.createElement("button", { type: "button", className: "navbar-toggle", "data-toggle": "collapse", "data-target": "#navigationbar" }, React.createElement("span", { className: "sr-only" }, "Toggle navigation"), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" }), React.createElement("span", { className: "icon-bar" })), React.createElement("a", { className: "navbar-brand", href: "https://www.sconely.com" }, React.createElement("img", { src: "https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg" }))), React.createElement("div", { className: "collapse navbar-collapse", id: "navigationbar" }, React.createElement("ul", { id: "navbar", className: "nav navbar-nav navbar-right" })))));
 	    }
 	  }], [{
 	    key: "contextTypes",
@@ -42370,7 +42379,7 @@ webpackJsonp([0],[
 	                                                        </div>
 	                                                      </div>*/
 	                //}else{
-	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none" } }, React.createElement("option", { value: "" }, "Regular or Mini"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Mini"))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("select", { className: "form-control input-large", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center" } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
+	                yours_social_pool_quantity_selector = React.createElement("div", null, React.createElement("div", { className: "col-xs-12 col-md-12" }, React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("select", { className: "form-control", value: this.state.selected_item_size, onChange: this.selectedItemSize, style: { borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16 } }, React.createElement("option", { value: "" }, "Regular or Mini"), React.createElement("option", { value: "regular" }, "1 Dozen Regular"), React.createElement("option", { value: "mini" }, "2 Dozen Mini"))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("select", { className: "form-control input-large text-center", value: this.state.selected_item_quantity_selector, onChange: this.selectedItemQuantity, style: { borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16 } }, React.createElement("option", null, "Quantity"), selected_item_quantity_options_array.map(function (value) {
 	                    return React.createElement("option", { value: value }, value);
 	                }))), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-4" }, React.createElement("button", { className: this.state.add_cart_item_button_classname, type: "button", onClick: function onClick() {
 	                        return _this2.addCartItem();
@@ -43032,19 +43041,22 @@ webpackJsonp([0],[
 	            //this.setState({"delivery_address_street1_classname": "form-group"});
 	            //if promo code is validate apply to total cost
 	            //let promo_codes = ["8thandhope", "grains"];
-	            if (e.target.value == "8thandhope") {
+	            if (e.target.value.toUpperCAse() == "8thandhope") {
 	                //if(promo_codes.indexof(e.target.value) > -1){
 	                _this.setState({ promo_code_discount: 10 });
 	                _this.props.setPromoCode(e.target.value);
 	                //}
-	            } else {}
-	                //if(e.target.value == "grains"){
+	            } else if (e.target.value.toUpperCase() == "GRAINS") {
 	                //if(promo_codes.indexof(e.target.value) > -1){
-	                //    this.setState({promo_code_discount: 10})
+	                _this.setState({ promo_code_discount: 10 });
 	                //}
-	
+	            } else if (e.target.value.toUpperCase() == "SCONELY10") {
+	                //if(promo_codes.indexof(e.target.value) > -1){
+	                _this.setState({ promo_code_discount: 10 });
 	                //}
-	                //}   
+	            }
+	            //}
+	            //}   
 	        };
 	        _this.processYoursSocialPoolOrder = function () {
 	            //alert("order complete this.props.order");
@@ -43054,50 +43066,17 @@ webpackJsonp([0],[
 	            //process order/dispatch
 	            //if this.props.order_state = "completed"?
 	            //else error
-	            //this.setState({button_complete_order_classname: "btn btn-default disabled"});
-	            //this.setState({button_complete_order_disabled: "disabled"});
+	            //disable payment form inputs
+	            //this.setState({name_on_card_classname: "disabled"});
+	            //this.setState({zipcode_classname: "disabled"});
+	            //this.setState({card_number_classname: "disabled"});
+	            //this.setState({expiry_date_month_classname: "disabled"});
+	            //this.setState({expiry_date_year_classname: "disabled"});
+	            //this.setState({security_code_classname: "disabled"});
+	            _this.setState({ button_complete_order_classname: "btn btn-default disabled" });
+	            _this.setState({ button_complete_order_disabled: "disabled" });
+	            //this.props.setOrderStatus("process_payment");
 	            _this.props.processYoursSocialPoolOrder();
-	            //export default function getBook(dispatch) {
-	            /*  $.ajax({
-	                  method: "GET",
-	                  url: "/api/data",
-	                  dataType: "json"
-	                }).success(function(data){
-	                  //return dispatch({type:'GET_BOOK', data: data});
-	                  this.context.router.push('/order/12345/order_complete');
-	                       });
-	            //}
-	                   this.context.router.push('/order/12345/order_complete');*/
-	            /*axios.post('http://localhost:4000/graphql', {
-	                   query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
-	            })
-	            .then( response => {
-	                         console.log(JSON.stringify(response));
-	                  //go to code/payment screen
-	            //        this.props.loadView();
-	                  //this.props.setSubscription();
-	                         //addtosubscribedblocklist
-	                         //setsubscriptiontype == 1 block
-	                  //setsubscriptionpaid == true
-	                  //setsusbcriptindatetime
-	             
-	                  //store in cookie
-	                         //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-	                  //setCookie("sconely_session_id", 1, 1)
-	                  //setCookie("sconely_first_name", 1, 1)
-	                  //setCookie("sconely_last_name", 1, 1)
-	             
-	            })
-	            .catch( error => {
-	                         console.log("error");
-	                  //go to code/payment screen
-	            //        this.props.loadView();
-	                  //if (!error.status) {
-	              // network error
-	            //}
-	                   })*/
-	            //alert(JSON.stringify(this.state.delivery_address_street));
-	            //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 	        };
 	        _this.saveForLater = function (e) {
 	            if (e.target.value == "on") {
@@ -43548,6 +43527,8 @@ webpackJsonp([0],[
 	                    return _this2.props.setPaymentExpiryYear(e);
 	                }, setPaymentSecurityCode: function setPaymentSecurityCode(e) {
 	                    return _this2.props.setPaymentSecurityCode(e);
+	                }, setOrderStatus: function setOrderStatus(e) {
+	                    return _this2.props.setOrderStatus(e);
 	                }, paymentMethodValidated: function paymentMethodValidated() {
 	                    return _this2.props.paymentMethodValidated();
 	                } }), React.createElement("br", null), React.createElement("button", { className: this.state.button_complete_order_classname, onClick: this.processYoursSocialPoolOrder, disabled: this.state.button_complete_order_disabled, style: { borderRadius: 0 } }, "Complete Order"), React.createElement("br", null), React.createElement("br", null))), React.createElement(public_bottom_navbar_tsx_1.default, null), React.createElement(public_privacy_terms_navbar_tsx_1.default, null));
@@ -43690,6 +43671,9 @@ webpackJsonp([0],[
 	        termsValidated: function termsValidated(value) {
 	            dispatch(order_ts_2.termsValidated(value));
 	        },
+	        setOrderStatus: function setOrderStatus(value) {
+	            dispatch(order_ts_1.setOrderStatus(value));
+	        },
 	        saveForLater: function saveForLater(value) {
 	            dispatch(order_ts_2.saveForLater(value));
 	        },
@@ -43758,6 +43742,14 @@ webpackJsonp([0],[
 	        _this.componentWillReceiveProps = function (nextProps) {
 	            //check for payment invalidated error
 	            //network error
+	            if (_this.props.User.orderSession.orderStatus == "processing_payment") {
+	                _this.setState({ name_on_card_disabled: "disabled" });
+	                //this.setState({zipcode_disabled: "disabled"});
+	                //this.setState({card_number_disabled: "disabled"});
+	                //this.setState({expiry_date_month_disabled: "disabled"});
+	                //this.setState({expiry_date_year_disabled: "disabled"});
+	                //this.setState({security_code_disabled: "disabled"});
+	            }
 	            if (_this.props.User.orderSession.paymentErrorCode == "incorrect_cvc") {
 	                _this.setState({ error_message_text: "An incorrect CVC was entered." });
 	                //    this.setState({card_number_border_color: "red"});
@@ -43908,7 +43900,13 @@ webpackJsonp([0],[
 	            card_number_border_color: "grey",
 	            expiry_month_border_color: "grey",
 	            expiry_year_border_color: "grey",
-	            security_code_border_color: "grey"
+	            security_code_border_color: "grey",
+	            name_on_card_disabled: "disabled",
+	            zipcode_disabled: "disabled",
+	            card_number_disabled: "disabled",
+	            expiry_date_month_disabled: "disabled",
+	            expiry_date_year_disabled: "disabled",
+	            security_code_disabled: "disabled"
 	        };
 	        //user_type=guest
 	        //order_type=yours load 
@@ -43970,7 +43968,7 @@ webpackJsonp([0],[
 	                    return _this2.setPaymentCardNumber(e);
 	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4", style: { paddingLeft: 5 } }, React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_month, maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryMonthFocus();
-	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_year, maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
+	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" }, disabled: this.state.name_on_card_disabled })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_year, maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
 	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "email", value: this.state.security_code, maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))));
 	        }
@@ -49911,6 +49909,11 @@ webpackJsonp([0],[
 	            _order_session_updated = state.orderSession;
 	            _order_session_updated["promoCode"] = action.code;
 	            _order_session_updated["promoCodeDiscountPercentage"] = 10;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
+	        case actionTypes_ts_1.SET_ORDER_STATUS:
+	            console.log("add cart reducer");
+	            _order_session_updated = state.orderSession;
+	            _order_session_updated["orderStatus"] = action.order_status;
 	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
 	        case actionTypes_ts_1.SET_PAYMENT_ERROR:
 	            console.log("add cart reducer");

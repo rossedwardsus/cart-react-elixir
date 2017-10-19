@@ -62,8 +62,12 @@ class PaymentMethod extends React.Component<any, any> {
        expiry_month_border_color: "grey",
        expiry_year_border_color: "grey",
        security_code_border_color: "grey",
-       
-
+       name_on_card_disabled: "disabled",
+       zipcode_disabled: "disabled",
+       card_number_disabled: "disabled",
+       expiry_date_month_disabled: "disabled",
+       expiry_date_year_disabled: "disabled",
+       security_code_disabled: "disabled",
     };
 
     //user_type=guest
@@ -98,6 +102,17 @@ class PaymentMethod extends React.Component<any, any> {
       //check for payment invalidated error
 
       //network error
+
+      if(this.props.User.orderSession.orderStatus == "processing_payment"){
+
+          this.setState({name_on_card_disabled: "disabled"});
+          //this.setState({zipcode_disabled: "disabled"});
+          //this.setState({card_number_disabled: "disabled"});
+          //this.setState({expiry_date_month_disabled: "disabled"});
+          //this.setState({expiry_date_year_disabled: "disabled"});
+          //this.setState({security_code_disabled: "disabled"});
+      
+      }
 
       if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
 
@@ -402,7 +417,7 @@ class PaymentMethod extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-md-4" style={{paddingLeft: 5}}>
                              <div className="col-md-4">
-                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.name_on_card_disabled}/>
                               </div>
                               <div className="hidden-lg col-xs-1">
                                 <br/>

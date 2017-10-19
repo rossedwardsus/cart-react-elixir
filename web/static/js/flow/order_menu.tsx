@@ -574,7 +574,7 @@ class OrderMenu extends React.Component<any, any> {
       yours_social_pool_quantity_selector =  <div>
                                                 <div className="col-xs-12 col-md-12">
                                                       <div className="col-xs-12 col-md-4">
-                                                      <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none"}}>
+                                                      <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
                                                         <option value="">Regular or Mini</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Mini</option>
@@ -584,7 +584,7 @@ class OrderMenu extends React.Component<any, any> {
                                                         <br/>
                                                       </div>
                                                       <div className="col-xs-12 col-md-4">
-                                                      <select className="form-control input-large" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center"}}>
+                                                      <select className="form-control input-large text-center" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
                                                         <option>Quantity</option> 
                                                         {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                                       </select>

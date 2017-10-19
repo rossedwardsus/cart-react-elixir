@@ -810,6 +810,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         total = subtotal - (subtotal * 10/100)
         "grain" ->  promo_code_discount = "10%"
                     total = subtotal - (subtotal * 10/100)
+        "sconely10" ->  promo_code_discount = "10%"
+                    total = subtotal - (subtotal * 10/100)
+        
 
 
     end
@@ -1125,7 +1128,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                      select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
             menu_items = Repo.all(query)
 
-            user = Repo.get_by(MailingListGuestRegistration, %{email: "rossedwards.us@gmail.com"})
+            user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
             IO.inspect(user)
 
 
@@ -1652,7 +1655,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         
                         
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, user_delivery_contact_address_id: 1, user_payment_method_id: 0, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, user_delivery_contact_address_id: 1, user_payment_method_id: 1, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
 
                         #delivery_contact_address_id, contact_id, payment_id
 

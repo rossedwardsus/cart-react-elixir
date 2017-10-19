@@ -20,7 +20,7 @@ import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMo
 import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
 import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';*/
 
-import {setPromoCode} from './actions/order.ts';
+import {setOrderStatus, setPromoCode} from './actions/order.ts';
 
 import {setPaymentNameOnCard, setPaymentZipCode, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 
@@ -641,7 +641,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
             //let promo_codes = ["8thandhope", "grains"];
 
-            if(e.target.value == "8thandhope"){
+            if(e.target.value.toUpperCAse() == "8thandhope"){
 
               //if(promo_codes.indexof(e.target.value) > -1){
 
@@ -650,13 +650,19 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
               //}
             
-            }else{
-
-              //if(e.target.value == "grains"){
+            }else if(e.target.value.toUpperCase() == "GRAINS"){
 
               //if(promo_codes.indexof(e.target.value) > -1){
 
-              //    this.setState({promo_code_discount: 10})
+                  this.setState({promo_code_discount: 10})
+
+              //}
+            
+            }else if(e.target.value.toUpperCase() == "SCONELY10"){
+
+              //if(promo_codes.indexof(e.target.value) > -1){
+
+                  this.setState({promo_code_discount: 10})
 
               //}
             
@@ -764,68 +770,24 @@ class OrderDateTimeContact extends React.Component<any, any> {
       //if this.props.order_state = "completed"?
       //else error
 
-      //this.setState({button_complete_order_classname: "btn btn-default disabled"});
-      //this.setState({button_complete_order_disabled: "disabled"});
-      
+      //disable payment form inputs
+
+      //this.setState({name_on_card_classname: "disabled"});
+      //this.setState({zipcode_classname: "disabled"});
+      //this.setState({card_number_classname: "disabled"});
+      //this.setState({expiry_date_month_classname: "disabled"});
+      //this.setState({expiry_date_year_classname: "disabled"});
+      //this.setState({security_code_classname: "disabled"});
+
+      this.setState({button_complete_order_classname: "btn btn-default disabled"});
+      this.setState({button_complete_order_disabled: "disabled"});
+
+      //this.props.setOrderStatus("process_payment");
       this.props.processYoursSocialPoolOrder();
 
 
-      //export default function getBook(dispatch) {
-      /*  $.ajax({
-            method: "GET",
-            url: "/api/data",
-            dataType: "json"
-          }).success(function(data){
-            //return dispatch({type:'GET_BOOK', data: data});
-            this.context.router.push('/order/12345/order_complete');
+     
 
-          });
-      //}
-
-      this.context.router.push('/order/12345/order_complete');*/
-
-
-      /*axios.post('http://localhost:4000/graphql', {
-             query: 'mutation {complete_sconely_social_order (first: "' + this.props.order.name.first + '", last: "' + this.props.order.name.last + '", contact_email: "' + this.props.order.contact.phone + '", contact_phone: "' + this.props.order.contact.phone + '", date: "' + this.props.order.datetime.date + '", time: "' + this.props.order.datetime.time + '", street1: "' + this.props.order.delivery_address.street1 + '", street2: "' + this.props.order.delivery_address.street2 + '", city: "' + this.props.order.delivery_address.city + '", state: "' + this.props.order.delivery_address.state + '", zipcode: "' + this.props.order.delivery_address.zipcode + '", name_on_card: "' + this.props.order.payment_method.name_on_card + '", expiry_date: "' + this.props.order.payment_method.expiry_date + '", security_code: "' + this.props.order.payment_method.security_code + '", zipcode: "' + this.props.order.payment_method.security_code + '", cart_items: [{item_id: "9"}]) {order_id}}'
-      })
-      .then( response => {
-
-            console.log(JSON.stringify(response));
-            //go to code/payment screen
-    //        this.props.loadView();
-            //this.props.setSubscription();
-
-            //addtosubscribedblocklist
-
-            //setsubscriptiontype == 1 block
-            //setsubscriptionpaid == true
-            //setsusbcriptindatetime
-
-
-            //store in cookie
-
-            //localStorage.set('user', {first_name:"", last_name: "", orders: [], delivery_addresses: [], payment_methods: []})
-            //setCookie("sconely_session_id", 1, 1)
-            //setCookie("sconely_first_name", 1, 1)
-            //setCookie("sconely_last_name", 1, 1)
-
-
-      })
-      .catch( error => {
-
-            console.log("error");
-            //go to code/payment screen
-    //        this.props.loadView();
-
-     //if (!error.status) {
-        // network error
-      //}
-
-      })*/
-
-      //alert(JSON.stringify(this.state.delivery_address_street));
-
-      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
 
   }
 
@@ -1028,7 +990,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             {this.state.payment_error_message}
                             <br/>
                             <br/>
-                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()}/>
+                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)}paymentMethodValidated={() => this.props.paymentMethodValidated()}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
@@ -1187,6 +1149,10 @@ function mapDispatchToProps(dispatch: any) {
     termsValidated: (value: any) => {
 
       dispatch(termsValidated(value));
+
+    },
+    setOrderStatus: (value: any) => {
+      dispatch(setOrderStatus(value));
 
     },
     saveForLater: (value: any) => {
