@@ -691,7 +691,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #IO.inspect(args[:user_contact_email])
     #IO.inspect(context)
 
-    #IO.inspect(args)
+    IO.inspect(args)
 
     #dont create user by default but how to identify them them
     #create them and look up the users email

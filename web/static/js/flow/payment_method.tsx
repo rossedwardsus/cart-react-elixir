@@ -62,12 +62,12 @@ class PaymentMethod extends React.Component<any, any> {
        expiry_month_border_color: "grey",
        expiry_year_border_color: "grey",
        security_code_border_color: "grey",
-       name_on_card_disabled: "disabled",
-       zipcode_disabled: "disabled",
-       card_number_disabled: "disabled",
-       expiry_date_month_disabled: "disabled",
-       expiry_date_year_disabled: "disabled",
-       security_code_disabled: "disabled",
+       name_on_card_disabled: "",
+       zipcode_disabled: "",
+       card_number_disabled: "",
+       expiry_date_month_disabled: "",
+       expiry_date_year_disabled: "",
+       security_code_disabled: "",
     };
 
     //user_type=guest
@@ -417,7 +417,7 @@ class PaymentMethod extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-md-4" style={{paddingLeft: 5}}>
                              <div className="col-md-4">
-                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.name_on_card_disabled}/>
+                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.expiry_date_month_disabled}/>
                               </div>
                               <div className="hidden-lg col-xs-1">
                                 <br/>

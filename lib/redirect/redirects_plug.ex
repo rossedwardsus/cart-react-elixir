@@ -10,7 +10,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #to = "/page"
     #IO.puts("redirect plug")
     #do_redirect(conn, to)
-    IO.inspect(conn)
+    #IO.inspect(conn)
     #IO.inspect(get_req_header(conn, "host") |> List.first)
     #IO.inspect(get_req_header(conn, "request_path") |> List.first)
     IO.inspect(conn.path_info |> List.first)
