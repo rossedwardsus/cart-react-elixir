@@ -43041,7 +43041,7 @@ webpackJsonp([0],[
 	            //this.setState({"delivery_address_street1_classname": "form-group"});
 	            //if promo code is validate apply to total cost
 	            //let promo_codes = ["8thandhope", "grains"];
-	            if (e.target.value.toUpperCAse() == "8thandhope") {
+	            if (e.target.value.toUpperCase() == "8THANDHOPE") {
 	                //if(promo_codes.indexof(e.target.value) > -1){
 	                _this.setState({ promo_code_discount: 10 });
 	                _this.props.setPromoCode(e.target.value);

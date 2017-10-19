@@ -641,7 +641,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
             //let promo_codes = ["8thandhope", "grains"];
 
-            if(e.target.value.toUpperCAse() == "8thandhope"){
+            if(e.target.value.toUpperCase() == "8THANDHOPE"){
 
               //if(promo_codes.indexof(e.target.value) > -1){
 
