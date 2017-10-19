@@ -30,15 +30,15 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 1, order: 
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 2, order: 2, name: "Snorker", ingredients: "Unbleached white all-purpose flour*, Dark chocolate*, Hazelnuts, Cocoa powder*, Heavy Cream*, Eggs*, Coconut sugar*, Butter*, Pure vanilla extract*, Baking powder, Sea salt. *Organic", description: "A rich double dark chocolate dessert scone with dark chocolate chunks and hazelnut praline", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 2, order: 2, name: "Snorker", ingredients: "Unbleached white all-purpose flour*, Dark chocolate*, Hazelnuts, Cocoa powder*, Heavy Cream*, Eggs*, Coconut sugar*, Unsalted butter*, Pure vanilla extract*, Baking powder, Sea salt. *Organic", description: "A rich double dark chocolate dessert scone with dark chocolate chunks and hazelnut praline", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 3, order: 3, name: "Ruby Q", ingredients: "Unbleached white all-purpose flour*, Fresh cherries*, Semisweet chocolate*, Butter*, Eggs*, Heavy Cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascar vanilla bean*, Sea salt. *Organic", description: "Fresh cherries, semisweet chocolate chunks and Madagascar vanilla bean", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 3, order: 3, name: "Ruby Q", ingredients: "Unbleached white all-purpose flour*, Fresh cherries*, Semisweet chocolate*, Unsalted butter*, Eggs*, Heavy cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascan vanilla bean*, Sea salt. *Organic", description: "Fresh cherries, semisweet chocolate chunks and Madagascan vanilla bean", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 4, order: 4, name: "Suzy Sunshine", ingredients: "Unbleached white all-purpose flour*, Bananas*, Deglet noor dates*, Eggs*, Yogurt*, Butter*, Chai tea*, Coconut sugar*, Baking powder, Pure vanilla extract*, Sea salt. *Organic", description: "A rich, warming banana date scone enhanced with Awarding-Winning Masala Chai from SerendipiTea.", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 4, order: 4, name: "Suzy Sunshine", ingredients: "Unbleached white all-purpose flour*, Bananas*, Deglet noor dates*, Eggs*, Yogurt*, Unsalted butter*, Chai tea*, Coconut sugar*, Baking powder, Pure vanilla extract*, Sea salt. *Organic", description: "A rich, warming banana date scone enhanced with Awarding-Winning Masala Chai from SerendipiTea.", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 
@@ -50,11 +50,11 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 6, order: 
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 7, order: 7, name: "Zilla", ingredients: "Unbleached white all-purpose flour*, Purple onions*, Gruyere, Butter*, Eggs*, Heavy cream*, Sage*, Baking powder, Raw cane sugar*, Sea salt. *Organic", description: "A savory powerhouse that perfectly combines gruyere cheese, caramelized purple onion and sage", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 7, order: 7, name: "Zilla", ingredients: "Unbleached white all-purpose flour*, Purple onions*, Gruyere, Unsalted butter*, Eggs*, Heavy cream*, Sage*, Baking powder, Raw cane sugar*, Sea salt. *Organic", description: "A savory powerhouse that perfectly combines gruyere cheese, caramelized purple onion and sage", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 8, order: 8, name: "Savvy Go Go", ingredients: "Unbleached white all-purpose flour,* Sun-dried tomatoes, Oven-dried tomatoes*, Goat cheese, Eggs*, Heavy cream*, Butter*, Thyme*, Basil*, Rosemary*, Oregano*, Garlic*, Baking powder, Raw cane sugar*, Sea salt. *Organic
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 8, order: 8, name: "Savvy Go Go", ingredients: "Unbleached white all-purpose flour,* Sun-dried tomatoes, Oven-dried tomatoes*, Goat cheese, Eggs*, Heavy cream*, Unsalted butter*, Thyme*, Basil*, Rosemary*, Oregano*, Garlic*, Baking powder, Raw cane sugar*, Sea salt. *Organic
 ", description: "Savory and satisfying with sun-dried tomatoes, goat cheese and fresh herbs, Savvy Go Go is perfect for meals or snacks on the go!", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
@@ -68,7 +68,7 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 10, order:
 #Repo.insert!(menu_item_changeset)
 
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 11, order: 11, name: "Lucky", ingredients: "Unbleached white all-purpose flour*, Sweet potatoes*, Leeks*, Eggs*, Heavy cream*, Dried unsulfured cranberries*, Butter*, Rosemary*, Aged Balsamic vinegar, Maple Syrup*, Baking powder, Sea salt. *Organic", description: "Our 2017 / 2018 holiday scone brings together roasted sweet potatoes, leeks, cranberries and rosemary", assortment: false, active: true})
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 11, order: 11, name: "Lucky", ingredients: "Unbleached white all-purpose flour*, Sweet potatoes*, Leeks*, Eggs*, Heavy cream*, Dried unsulfured cranberries*, Unsalted butter*, Rosemary*, Aged Balsamic vinegar, Maple Syrup*, Baking powder, Sea salt. *Organic", description: "Our 2017 / 2018 holiday scone brings together roasted sweet potatoes, leeks, cranberries and rosemary", assortment: false, active: true})
 
 #Repo.insert!(menu_item_changeset)
 

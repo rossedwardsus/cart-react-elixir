@@ -575,7 +575,7 @@ class OrderMenu extends React.Component<any, any> {
                                                 <div className="col-xs-12 col-md-12">
                                                       <div className="col-xs-12 col-md-4">
                                                       <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none"}}>
-                                                        <option value="">Mini or Regular</option> 
+                                                        <option value="">Regular or Mini</option> 
                                                         <option value="regular">1 Dozen Regular</option>
                                                         <option value="mini">2 Dozen Mini</option>
                                                       </select>
