@@ -27315,7 +27315,7 @@ webpackJsonp([0],[
 	                var pool_delivery_date = moment(pool_url_date_split[2] + "" + pool_url_date_split[0] + "" + pool_url_date_split[1]);
 	                var pool_delivery_date_formatted = moment(pool_delivery_date).format('ddd') + ", " + moment(pool_delivery_date).format('MMMM') + " " + moment(pool_delivery_date).format('D');
 	                var order_by_date = moment(pool_delivery_date).subtract(1, 'days');
-	                var pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D') + ", 5:30 pm";
+	                var pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D') + ", 11:59 pm";
 	                //console.log(pool_order_date_formatted);
 	                dispatch({
 	                    type: actionTypes_ts_1.CREATE_ORDER,
@@ -43016,16 +43016,17 @@ webpackJsonp([0],[
 	        //componentWillReceiveProps
 	        _this.componentWillReceiveProps = function (nextProps) {
 	            //console.log("<b>recieved</b>");
-	            //if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
-	            //if(this.props.User.orderSession.payment_status == "error"){
-	            //display error
-	            //if cvc then make the cvc border red
-	            //if card number
-	            //paymenterror set border color
-	            //    this.setState({card_number_border_color: "red"});
-	            //  this.setState({security_code_border_color: "red"});        
-	            //   this.setState({button_complete_order_classname: "btn btn-default"});
-	            //   this.setState({button_complete_order_disabled: ""});
+	            if (_this.props.User.orderSession.paymentErrorCode == "incorrect_cvc") {
+	                //display error
+	                //if cvc then make the cvc border red
+	                //if card number
+	                //paymenterror set border color
+	                //this.setState({card_number_border_color: "red"});
+	                _this.setState({ security_code_border_color: "red" });
+	                //   this.setState({button_complete_order_classname: "btn btn-default"});
+	                //   this.setState({button_complete_order_disabled: ""});
+	            }
+	            //else if(this.props.User.orderSession.paymentErrorCode == "error"){
 	            if (_this.props.User.orderSession.validations.paymentMethodValidated == true) {
 	                _this.setState({ button_complete_order_classname: "btn btn-default" });
 	                _this.setState({ button_complete_order_disabled: "" });
@@ -43970,7 +43971,7 @@ webpackJsonp([0],[
 	                    return _this2.onPaymentExpiryMonthFocus();
 	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" }, disabled: this.state.expiry_date_month_disabled })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_year, maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "email", value: this.state.security_code, maxLength: 3, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "email", value: this.state.security_code, maxLength: 4, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",

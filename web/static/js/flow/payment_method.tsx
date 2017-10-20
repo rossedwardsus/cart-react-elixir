@@ -429,7 +429,7 @@ class PaymentMethod extends React.Component<any, any> {
                                 <br/>
                               </div>
                               <div className="col-md-4">
-                                <input type="email" value={this.state.security_code} maxLength={3} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                <input type="email" value={this.state.security_code} maxLength={4} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
                               </div>
                           </div>
                   
