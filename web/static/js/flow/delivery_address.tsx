@@ -659,20 +659,20 @@ class DeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                       <div className="form-group">
                          <div className="col-sm-3 col-md-4">
-                            <input type="text" value={this.state.company_name} maxLength={40} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} onInput={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" id="exampleInputName2" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
+                            <input type="text" value={this.state.company_name} maxLength={40} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} onInput={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
                          </div>
                       </div>
                 </form>
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-4">
-                        <input type="text" maxLength={40} className="form-control" id="exampleInputName2" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} onInput={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                        <input type="text" maxLength={40} className="form-control" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} onInput={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
                       </div>
                       <div className="col-sm-3 col-md-4">
-                        <input type="text" value={this.state.street2} maxLength={30} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} onInput={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" id="exampleInputName2" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
+                        <input type="text" value={this.state.street2} maxLength={30} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} onInput={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
                       </div>
                     </div>
                 </form>

@@ -574,11 +574,27 @@ class SidebarCart extends React.Component<any, any> {
 
     }
 
-    if(total_items == 12){
+    
+
+
+
+    if(this.props.User.orders[0].order_type =="pool" && total_items == 11){
+
+        item_limit = "You have reached your item limit";
+
+    }else if(this.props.User.orders[0].order_type =="yours" && total_items == 11){
+
+        item_limit = "You have reached your item limit";
+
+    }else if(this.props.User.orders[0].order_type =="social" && total_items == 500){
 
         item_limit = "You have reached your item limit";
 
     }
+
+    
+
+
 
     //{this.props.params.repoName}
 

@@ -751,6 +751,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     total = 0.00
     total_formatted = nil
 
+    admin_email_subject = nil
+
 
     #move all of this before payment
  
@@ -1236,6 +1238,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #end
 
                         delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
+
+                        admin_email_subject = args[:order_type] <> " " <> "pool_name" <> " " <> delivery_date_formatted
             
                         #IO.inspect(delivery_date_formatted)
 
@@ -2127,11 +2131,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #else
 
                           #IO.inspect(delivery_address)
+
+                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+
+                          IO.inspect(response)
                   
                           Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
-                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
-
+                          
                         #end
 
                         #json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}

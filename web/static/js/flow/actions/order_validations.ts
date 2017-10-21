@@ -1,4 +1,4 @@
-import {CART_VALIDATED, CART_INVALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATE_VALIDATED, DATE_INVALIDATED, PAYMENT_METHOD_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED} from '../constants/actionTypes.ts';
+import {CART_VALIDATED, CART_INVALIDATED, FIRST_NAME_VALIDATED, LAST_NAME_VALIDATED, CONTACT_EMAIL_VALIDATED, CONTACT_EMAIL_AGAIN_VALIDATED, CONTACT_MOBILE_VALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATE_VALIDATED, DATE_INVALIDATED, PAYMENT_METHOD_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED} from '../constants/actionTypes.ts';
 
 export function cartValidated() {
   console.log("cart validated ");
@@ -32,6 +32,46 @@ export function deliveryContactAddressValidated() {
   }
 }
 
+export function userFirstNameValidated() {
+  console.log("user last name validated ");
+  return {
+    type: FIRST_NAME_VALIDATED,
+    
+  }
+}
+
+export function userLastNameValidated() {
+  console.log("user last name validated ");
+  return {
+    type: LAST_NAME_VALIDATED,
+    
+  }
+}
+
+export function userContactEmailValidated() {
+  console.log("user contact email validated ");
+  return {
+    type: CONTACT_EMAIL_VALIDATED,
+    
+  }
+}
+
+export function userContactEmailAgainValidated() {
+  console.log("user contact email validated ");
+  return {
+    type: CONTACT_EMAIL_AGAIN_VALIDATED,
+    
+  }
+}
+
+export function userContactMobileValidated() {
+  console.log("user contact email validated ");
+  return {
+    type: CONTACT_MOBILE_VALIDATED,
+    
+  }
+}
+
 /*export function deliveryAddressInvalidated() {
   console.log("cart validated ");
   return {
@@ -55,6 +95,8 @@ export function contactInvalidated() {
     
   }
 }
+
+
 
 export function nameValidated() {
   console.log("name validated action");

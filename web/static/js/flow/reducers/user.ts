@@ -1,4 +1,4 @@
-import { GET_USER, SET_ORDER_TYPE, SET_ORDER_STATUS, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATE_VALIDATED, SET_ORDER_DELIVERY_DATETIME_DATE, SET_ORDER_NOTE, SET_GIFT_ORDER, SET_GIFT_NOTE, SET_SESSION_ID } from '../constants/actionTypes.ts';
+import { GET_USER, SET_ORDER_TYPE, SET_ORDER_STATUS, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED, FIRST_NAME_VALIDATED, LAST_NAME_VALIDATED, CONTACT_EMAIL_VALIDATED, CONTACT_EMAIL_AGAIN_VALIDATED, CONTACT_MOBILE_VALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATE_VALIDATED, SET_ORDER_DELIVERY_DATETIME_DATE, SET_ORDER_NOTE, SET_GIFT_ORDER, SET_GIFT_NOTE, SET_SESSION_ID } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -708,15 +708,25 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       return Object.assign({}, state, {...state, payment_methods: payment_methods_updated});
 
-    case NAME_VALIDATED:
+    case FIRST_NAME_VALIDATED:
 
-      console.log("name VALIDATED reducer" + JSON.stringify(state));
+      console.log("FIRST name VALIDATED reducer" + JSON.stringify(state));
 
       order_session_updated = state.orderSession;
-      order_session_updated.validations["nameValidated"] = true;
+      order_session_updated.validations["firstNameValidated"] = true;
   
       return Object.assign({}, state, {...state, orderSession: order_session_updated});
    
+    case LAST_NAME_VALIDATED:
+
+      console.log("LAST name VALIDATED reducer" + JSON.stringify(state));
+
+      order_session_updated = state.orderSession;
+      order_session_updated.validations["lastNameValidated"] = true;
+  
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
+   
+
     case CONTACT_VALIDATED:
 
       console.log("contact VALIDATED reducer" + JSON.stringify(state));
@@ -725,7 +735,37 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       order_session_updated.validations["contactValidated"] = true;
   
       return Object.assign({}, state, {...state, orderSession: order_session_updated});
+
+    case CONTACT_EMAIL_VALIDATED:
+
+      console.log("contact EMAIL VALIDATED reducer" + JSON.stringify(state));
+
+      order_session_updated = state.orderSession;
+      order_session_updated.validations["contactEmailValidated"] = true;
+  
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
    
+    case CONTACT_EMAIL_AGAIN_VALIDATED:
+
+      console.log("contact EMAIL Again VALIDATED reducer" + JSON.stringify(state));
+
+      order_session_updated = state.orderSession;
+      order_session_updated.validations["contactEmailAgainValidated"] = true;
+  
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
+   
+   
+
+    case CONTACT_MOBILE_VALIDATED:
+
+      console.log("contact MOBILE VALIDATED reducer" + JSON.stringify(state));
+
+      order_session_updated = state.orderSession;
+      order_session_updated.validations["contactMobileValidated"] = true;
+  
+      return Object.assign({}, state, {...state, orderSession: order_session_updated});
+   
+
    case USER_NAME_EMAIL_MOBILE_VALIDATED:
 
       console.log("user name email mobile VALIDATED reducer" + JSON.stringify(state));

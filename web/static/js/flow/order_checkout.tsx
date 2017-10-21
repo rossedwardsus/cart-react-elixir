@@ -40,7 +40,7 @@ import {setOrderDeliveryDatetimeDate, setOrderNote, setGiftOrder, setGiftNote} f
 
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode, setUserDeliveryContactAddressNote} from './actions/user_delivery_contact_address.ts';
 
-import {userNameEmailMobileValidated, deliveryContactAddressValidated, dateValidated} from './actions/order_validations.ts';
+import {userNameEmailMobileValidated, userFirstNameValidated, userLastNameValidated, userContactEmailValidated, userContactEmailAgainValidated, userContactMobileValidated, deliveryContactAddressValidated, dateValidated} from './actions/order_validations.ts';
 //import {contactValidated} from './actions/order_validations.ts';
 
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
@@ -156,7 +156,7 @@ class DateTime extends React.Component<any, any> {
       //delivery contact and address
       //also date time
 
-      if(this.props.User.orderSession.validations["userNameEmailMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+      if(this.props.User.orderSession.validations["userContactEmailValidated"] == true && this.props.User.orderSession.validations["userNameEmailMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
 
         console.log("validated");
       
@@ -456,13 +456,12 @@ class DateTime extends React.Component<any, any> {
                             <br/>
                             SCONELY {this.props.User.orders[0].order_type.toUpperCase()}
                             <br/>
-                            <br/>
                             <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                                 <br/>
-                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} nameValidated={() => this.props.nameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={() => this.props.userNameEmailMobileValidated()}/>
+                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={() => this.props.userNameEmailMobileValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()} userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()} userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                                 <br/>
                                 <br/>
                                 <br/>
@@ -497,7 +496,9 @@ class DateTime extends React.Component<any, any> {
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
-                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)}/>
+                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
+                            userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()}  
+                            userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                             <br/>
                             <br/>
                             <DeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
@@ -613,11 +614,23 @@ function mapDispatchToProps(dispatch: any) {
     setUserMobile: (e: any) => {
       dispatch(setUserMobile(e.target.value))
     },
-    //nameValidated: (e: any) => {
-    //  dispatch(nameValidated());
-    //},
+    userFirstNameValidated: (e: any) => {
+      dispatch(userFirstNameValidated());
+    },
+    userLastNameValidated: (e: any) => {
+      dispatch(userLastNameValidated());
+    },
     userNameEmailMobileValidated: () => {
       dispatch(userNameEmailMobileValidated());
+    },
+    userContactEmailValidated: () => {
+      dispatch(userContactEmailValidated());
+    },
+    userContactEmailAgainValidated: () => {
+      dispatch(userContactEmailAgainValidated());
+    },
+    userContactMobileValidated: () => {
+      dispatch(userContactMobileValidated());
     },
     setUserDeliveryContactAddressFirstName: (e: any) => {
       dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))

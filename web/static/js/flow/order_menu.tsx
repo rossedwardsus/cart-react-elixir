@@ -584,7 +584,7 @@ class OrderMenu extends React.Component<any, any> {
                                                         <br/>
                                                       </div>
                                                       <div className="col-xs-12 col-md-4">
-                                                      <select className="form-control input-large text-center" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
+                                                      <select className="form-control input-large text-center text-align:center" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
                                                         <option>Quantity</option> 
                                                         {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                                       </select>

@@ -396,14 +396,14 @@ class PaymentMethod extends React.Component<any, any> {
                         <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="col-md-2">
-                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
                       </div>
                     </div>
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
-                        <input type="text" value={this.state.card_number} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.card_number} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.card_number_disabled}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
@@ -423,13 +423,13 @@ class PaymentMethod extends React.Component<any, any> {
                                 <br/>
                               </div>
                               <div className="col-md-4">
-                                <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                                <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.expiry_date_year_disabled}/>
                               </div>
                               <div className="hidden-lg col-xs-1">
                                 <br/>
                               </div>
                               <div className="col-md-4">
-                                <input type="email" value={this.state.security_code} maxLength={4} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                <input type="email" value={this.state.security_code} maxLength={4} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
                               </div>
                           </div>
                   

@@ -5,7 +5,8 @@
   <table width="70%">
     <tr><td><br></td></tr>
     <tr><td><br><br></td></tr>
-    <tr><td>Name <%= @key.args.user_first_name %>,</td></tr>
+    <tr><td>Name <%= @key.args.user_first_name %></td><td><%= @key.args.user_last_name %></td></tr>
+    <tr><td><%= @key.args.user_contact_email %></td><td><%= @key.args.user_contact_mobile %></td></tr>
     <tr><td><br></td></tr>
     <tr><td><br></td></tr>
   </table>

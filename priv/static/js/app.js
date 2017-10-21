@@ -27688,6 +27688,11 @@ webpackJsonp([0],[
 	exports.DATE_VALIDATED = 'DATE_VALIDATED';
 	exports.DATE_INVALIDATED = 'DATE_INVALIDATED';
 	exports.CONTACT_VALIDATED = 'CONTACT_VALIDATED';
+	exports.CONTACT_EMAIL_VALIDATED = 'CONTACT_EMAIL_VALIDATED';
+	exports.FIRST_NAME_VALIDATED = 'FIRST_NAME_VALIDATED';
+	exports.LAST_NAME_VALIDATED = 'LAST_NAME_VALIDATED';
+	exports.CONTACT_EMAIL_AGAIN_VALIDATED = 'CONTACT_EMAIL_AGAIN_VALIDATED';
+	exports.CONTACT_MOBILE_VALIDATED = 'CONTACT_MOBILE_VALIDATED';
 	exports.CONTACT_INVALIDATED = 'CONTACT_INVALIDATED';
 	exports.NAME_VALIDATED = 'NAME_VALIDATED';
 	exports.NAME_INVALIDATED = 'NAME_INVALIDATED';
@@ -30366,6 +30371,41 @@ webpackJsonp([0],[
 	    };
 	}
 	exports.deliveryContactAddressValidated = deliveryContactAddressValidated;
+	function userFirstNameValidated() {
+	    console.log("user last name validated ");
+	    return {
+	        type: actionTypes_ts_1.FIRST_NAME_VALIDATED
+	    };
+	}
+	exports.userFirstNameValidated = userFirstNameValidated;
+	function userLastNameValidated() {
+	    console.log("user last name validated ");
+	    return {
+	        type: actionTypes_ts_1.LAST_NAME_VALIDATED
+	    };
+	}
+	exports.userLastNameValidated = userLastNameValidated;
+	function userContactEmailValidated() {
+	    console.log("user contact email validated ");
+	    return {
+	        type: actionTypes_ts_1.CONTACT_EMAIL_VALIDATED
+	    };
+	}
+	exports.userContactEmailValidated = userContactEmailValidated;
+	function userContactEmailAgainValidated() {
+	    console.log("user contact email validated ");
+	    return {
+	        type: actionTypes_ts_1.CONTACT_EMAIL_AGAIN_VALIDATED
+	    };
+	}
+	exports.userContactEmailAgainValidated = userContactEmailAgainValidated;
+	function userContactMobileValidated() {
+	    console.log("user contact email validated ");
+	    return {
+	        type: actionTypes_ts_1.CONTACT_MOBILE_VALIDATED
+	    };
+	}
+	exports.userContactMobileValidated = userContactMobileValidated;
 	/*export function deliveryAddressInvalidated() {
 	  console.log("cart validated ");
 	  return {
@@ -30389,6 +30429,8 @@ webpackJsonp([0],[
 	    
 	  }
 	}
+	
+	
 	
 	export function nameValidated() {
 	  console.log("name validated action");
@@ -42832,7 +42874,11 @@ webpackJsonp([0],[
 	                    //}
 	                }.bind(this));
 	            }
-	            if (total_items == 12) {
+	            if (this.props.User.orders[0].order_type == "pool" && total_items == 11) {
+	                item_limit = "You have reached your item limit";
+	            } else if (this.props.User.orders[0].order_type == "yours" && total_items == 11) {
+	                item_limit = "You have reached your item limit";
+	            } else if (this.props.User.orders[0].order_type == "social" && total_items == 500) {
 	                item_limit = "You have reached your item limit";
 	            }
 	            //{this.props.params.repoName}
@@ -43965,13 +44011,13 @@ webpackJsonp([0],[
 	                          </form>*/
 	            return React.createElement("div", null, React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, "Payment"))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, this.state.error_message_text))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-3" }, React.createElement("input", { type: "text", value: this.state.name_on_card, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Name on Card", onChange: function onChange(e) {
 	                    return _this2.setPaymentNameOnCard(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.zipcode, maxLength: 5, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentZipCode, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" } })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", value: this.state.card_number, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "col-md-2" }, React.createElement("input", { type: "text", value: this.state.zipcode, maxLength: 5, className: "form-control", id: "exampleInputName2", placeholder: "ZIP CODE", onChange: this.setPaymentZipCode, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" }, disabled: this.state.zipcode_disabled })))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-sm-4" }, React.createElement("input", { type: "text", value: this.state.card_number, maxLength: 16, className: "form-control", id: "exampleInputName2", placeholder: "Card Number", onChange: function onChange(e) {
 	                    return _this2.setPaymentCardNumber(e);
-	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4", style: { paddingLeft: 5 } }, React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_month, maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
+	                }, style: { borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 }, disabled: this.state.card_number_disabled })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-sm-3" }, this.state.card_brand))), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-4", style: { paddingLeft: 5 } }, React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_month, maxLength: 2, className: "form-control", id: "exampleInputName2", placeholder: "MM", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryMonthFocus();
 	                }, onChange: this.setPaymentExpiryMonth, style: { borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none" }, disabled: this.state.expiry_date_month_disabled })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "text", value: this.state.expiry_year, maxLength: 4, className: "form-control", id: "exampleInputName2", placeholder: "YYYY", onFocus: function onFocus() {
 	                    return _this2.onPaymentExpiryYearFocus();
-	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 } })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "email", value: this.state.security_code, maxLength: 4, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" } }))))));
+	                }, onChange: this.setPaymentExpiryYear, style: { borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16 }, disabled: this.state.expiry_date_year_disabled })), React.createElement("div", { className: "hidden-lg col-xs-1" }, React.createElement("br", null)), React.createElement("div", { className: "col-md-4" }, React.createElement("input", { type: "email", value: this.state.security_code, maxLength: 4, className: "form-control", id: "exampleInputEmail2", placeholder: "CVC", onChange: this.setPaymentSecurityCode, style: { borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none" }, disabled: this.state.security_code_disabled }))))));
 	        }
 	    }], [{
 	        key: "contextTypes",
@@ -44088,7 +44134,7 @@ webpackJsonp([0],[
 	            //else validate name contact
 	            //delivery contact and address
 	            //also date time
-	            if (_this.props.User.orderSession.validations["userNameEmailMobileValidated"] == true && _this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && _this.props.User.orderSession.validations["dateValidated"] == true) {
+	            if (_this.props.User.orderSession.validations["userContactEmailValidated"] == true && _this.props.User.orderSession.validations["userNameEmailMobileValidated"] == true && _this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && _this.props.User.orderSession.validations["dateValidated"] == true) {
 	                console.log("validated");
 	                _this.setState({ payment_button_classname: "btn btn-default btn-block" });
 	                _this.setState({ payment_button_disabled: "" });
@@ -44308,7 +44354,7 @@ webpackJsonp([0],[
 	                                </div>
 	            }*/
 	            if (this.props.User.orders[0].order_type == "pool") {
-	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 55 } }, React.createElement("br", null), React.createElement("br", null), "SCONELY ", this.props.User.orders[0].order_type.toUpperCase(), React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
+	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 55 } }, React.createElement("br", null), React.createElement("br", null), "SCONELY ", this.props.User.orders[0].order_type.toUpperCase(), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems }), React.createElement("br", null)), React.createElement("div", { className: "col-xs-12 col-md-9", style: { paddingLeft: 70 } }, React.createElement("br", null), React.createElement(name_tsx_1.default, { User: this.props.User, setUserFirstName: function setUserFirstName(e) {
 	                        return _this2.props.setUserFirstName(e);
 	                    }, setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	                        return _this2.props.setUserDeliveryContactAddressFirstName(e);
@@ -44318,12 +44364,18 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserEmail(e);
 	                    }, setUserMobile: function setUserMobile(e) {
 	                        return _this2.props.setUserMobile(e);
-	                    }, nameValidated: function nameValidated() {
-	                        return _this2.props.nameValidated();
+	                    }, userFirstNameValidated: function userFirstNameValidated() {
+	                        return _this2.props.userFirstNameValidated();
+	                    }, userLastNameValidated: function userLastNameValidated() {
+	                        return _this2.props.userLastNameValidated();
 	                    }, contactValidated: function contactValidated() {
 	                        return _this2.props.contactValidated();
 	                    }, userNameEmailMobileValidated: function userNameEmailMobileValidated() {
 	                        return _this2.props.userNameEmailMobileValidated();
+	                    }, userContactEmailValidated: function userContactEmailValidated() {
+	                        return _this2.props.userContactEmailValidated();
+	                    }, userContactEmailAgainValidated: function userContactEmailAgainValidated() {
+	                        return _this2.props.userContactEmailAgainValidated();
 	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), React.createElement("form", { className: "form-horizontal" }, React.createElement("div", { className: "form-group" }, React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/payment", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Payment")), React.createElement("div", { className: "col-md-2" }, React.createElement(react_router_1.Link, { to: "/order/menu", className: "btn btn-default btn-block", style: { borderRadius: 0 } }, "Back to Menu")))))));
 	            } else {
 	                return React.createElement("div", null, React.createElement(public_top_navbar_tsx_1.default, null), React.createElement("div", { className: "row" }, React.createElement("div", { className: "hidden-xs col-md-3", style: { paddingLeft: 50 } }, React.createElement("br", null), React.createElement("br", null), "Sconely ", this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1), React.createElement("br", null), React.createElement("br", null), React.createElement(order_sidebar_cart_tsx_1.default, { User: this.props.User, menuItems: this.props.menuItems, increaseCartItemQuantity: function increaseCartItemQuantity(item_index) {
@@ -44348,8 +44400,20 @@ webpackJsonp([0],[
 	                        return _this2.props.setUserMobile(e);
 	                    }, setUserDeliveryContactAddressMobile: function setUserDeliveryContactAddressMobile(e) {
 	                        return _this2.props.setUserDeliveryContactAddressMobile(e);
+	                    }, firstNameValidated: function firstNameValidated() {
+	                        return _this2.props.firstNameValidated();
 	                    }, userNameEmailMobileValidated: function userNameEmailMobileValidated(e) {
 	                        return _this2.props.userNameEmailMobileValidated(e);
+	                    }, userFirstNameValidated: function userFirstNameValidated() {
+	                        return _this2.props.userFirstNameValidated();
+	                    }, userLastNameValidated: function userLastNameValidated() {
+	                        return _this2.props.userLastNameValidated();
+	                    }, userContactEmailValidated: function userContactEmailValidated() {
+	                        return _this2.props.userContactEmailValidated();
+	                    }, userContactEmailAgainValidated: function userContactEmailAgainValidated() {
+	                        return _this2.props.userContactEmailAgainValidated();
+	                    }, userContactMobileValidated: function userContactMobileValidated() {
+	                        return _this2.props.userContactMobileValidated();
 	                    } }), React.createElement("br", null), React.createElement("br", null), React.createElement(delivery_address_tsx_1.default, { User: this.props.User, session: this.props.session, order: this.props.order, deliveryAddress: this.props.order_delivery_address, setDeliveryContactAddressFirstName: function setDeliveryContactAddressFirstName(e) {
 	                        return _this2.props.setUserDeliveryContactAddressFirstName(e);
 	                    }, setDeliveryContactAddressLastName: function setDeliveryContactAddressLastName(e) {
@@ -44437,11 +44501,23 @@ webpackJsonp([0],[
 	        setUserMobile: function setUserMobile(e) {
 	            dispatch(user_ts_1.setUserMobile(e.target.value));
 	        },
-	        //nameValidated: (e: any) => {
-	        //  dispatch(nameValidated());
-	        //},
+	        userFirstNameValidated: function userFirstNameValidated(e) {
+	            dispatch(order_validations_ts_1.userFirstNameValidated());
+	        },
+	        userLastNameValidated: function userLastNameValidated(e) {
+	            dispatch(order_validations_ts_1.userLastNameValidated());
+	        },
 	        userNameEmailMobileValidated: function userNameEmailMobileValidated() {
 	            dispatch(order_validations_ts_1.userNameEmailMobileValidated());
+	        },
+	        userContactEmailValidated: function userContactEmailValidated() {
+	            dispatch(order_validations_ts_1.userContactEmailValidated());
+	        },
+	        userContactEmailAgainValidated: function userContactEmailAgainValidated() {
+	            dispatch(order_validations_ts_1.userContactEmailAgainValidated());
+	        },
+	        userContactMobileValidated: function userContactMobileValidated() {
+	            dispatch(order_validations_ts_1.userContactMobileValidated());
 	        },
 	        setUserDeliveryContactAddressFirstName: function setUserDeliveryContactAddressFirstName(e) {
 	            dispatch(user_delivery_contact_address_ts_1.setUserDeliveryContactAddressFirstName(e.target.value, ""));
@@ -44566,6 +44642,7 @@ webpackJsonp([0],[
 	                    _this.setState({ first_name_border_color: "grey" });
 	                    _this.props.setUserFirstName(e);
 	                    _this.props.setUserDeliveryContactAddressFirstName(e);
+	                    _this.props.userFirstNameValidated();
 	                    //if(this.state.last_name.length > 0){
 	                    //this.props.setNameValidated(e);
 	                    //}
@@ -44588,8 +44665,9 @@ webpackJsonp([0],[
 	                    _this.setState({ last_name_border_color: "grey" });
 	                    _this.props.setUserLastName(e);
 	                    _this.props.setUserDeliveryContactAddressLastName(e);
+	                    _this.props.userLastNameValidated();
 	                    //if(this.state.first_name.length > 0){
-	                    _this.props.nameValidated(e);
+	                    //this.props.nameValidated(e);
 	                } else {
 	                    _this.setState({ last_name_border_color: "red" });
 	                }
@@ -44624,9 +44702,9 @@ webpackJsonp([0],[
 	                                    //cant enter symbols????  or numbers
 	                                    //if email contains @ and at least one character and 2 character domain
 	                                    //validate contact and emails are same
-	                                    //this.props.setUserEmail(e);
 	                                    _this.setState({ "email_border_color": "grey" });
 	                                    //validate user email
+	                                    _this.props.userContactEmailValidated(e);
 	                                    console.log("email ok");
 	                                } else {
 	                                    _this.setState({ "email_border_color": "red" });
@@ -44656,7 +44734,7 @@ webpackJsonp([0],[
 	            if (_this.state.user_contact_email == e.target.value) {
 	                //validated
 	                //this.props.nameValidated();
-	                //this.props.contactEmailValidated();
+	                _this.props.userContactEmailAgainValidated();
 	                _this.setState({ "email_again_border_color": "grey" });
 	            } else {
 	                _this.setState({ "email_again_border_color": "red" });
@@ -44688,6 +44766,7 @@ webpackJsonp([0],[
 	                        console.log("user email/mobile validated");
 	                        _this.setState({ user_contact_mobile: e.target.value });
 	                        _this.props.userNameEmailMobileValidated();
+	                        _this.props.userContactMobileValidated();
 	                    } else {
 	                        _this.setState({ user_contact_mobile: e.target.value });
 	                        //this.props.contactMobileValidated();
@@ -50239,15 +50318,35 @@ webpackJsonp([0],[
 	            payment_methods_updated = state.payment_methods;
 	            payment_methods_updated[action.id]["expiry_year"] = action.value;
 	            return Object.assign({}, state, Object.assign({}, state, { payment_methods: payment_methods_updated }));
-	        case actionTypes_ts_1.NAME_VALIDATED:
-	            console.log("name VALIDATED reducer" + JSON.stringify(state));
+	        case actionTypes_ts_1.FIRST_NAME_VALIDATED:
+	            console.log("FIRST name VALIDATED reducer" + JSON.stringify(state));
 	            _order_session_updated = state.orderSession;
-	            _order_session_updated.validations["nameValidated"] = true;
+	            _order_session_updated.validations["firstNameValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
+	        case actionTypes_ts_1.LAST_NAME_VALIDATED:
+	            console.log("LAST name VALIDATED reducer" + JSON.stringify(state));
+	            _order_session_updated = state.orderSession;
+	            _order_session_updated.validations["lastNameValidated"] = true;
 	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
 	        case actionTypes_ts_1.CONTACT_VALIDATED:
 	            console.log("contact VALIDATED reducer" + JSON.stringify(state));
 	            _order_session_updated = state.orderSession;
 	            _order_session_updated.validations["contactValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
+	        case actionTypes_ts_1.CONTACT_EMAIL_VALIDATED:
+	            console.log("contact EMAIL VALIDATED reducer" + JSON.stringify(state));
+	            _order_session_updated = state.orderSession;
+	            _order_session_updated.validations["contactEmailValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
+	        case actionTypes_ts_1.CONTACT_EMAIL_AGAIN_VALIDATED:
+	            console.log("contact EMAIL Again VALIDATED reducer" + JSON.stringify(state));
+	            _order_session_updated = state.orderSession;
+	            _order_session_updated.validations["contactEmailAgainValidated"] = true;
+	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
+	        case actionTypes_ts_1.CONTACT_MOBILE_VALIDATED:
+	            console.log("contact MOBILE VALIDATED reducer" + JSON.stringify(state));
+	            _order_session_updated = state.orderSession;
+	            _order_session_updated.validations["contactMobileValidated"] = true;
 	            return Object.assign({}, state, Object.assign({}, state, { orderSession: _order_session_updated }));
 	        case actionTypes_ts_1.USER_NAME_EMAIL_MOBILE_VALIDATED:
 	            console.log("user name email mobile VALIDATED reducer" + JSON.stringify(state));
