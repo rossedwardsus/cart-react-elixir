@@ -3,6 +3,7 @@
 
 
 import * as React from 'react';
+import * as ReactDOM from 'react-dom'
 
 //import SconelyYoursMenu from './menu.tsx';
 //import Cart from './cart.tsx';
@@ -42,6 +43,8 @@ interface Order {
 
 class PaymentMethod extends React.Component<any, any> {
   //props: Props;
+
+  private cardNumber: HTMLInputElement;
 
   constructor(props: any) {
     super(props);
@@ -88,6 +91,16 @@ class PaymentMethod extends React.Component<any, any> {
 
   componentDidMount(){
 
+      //ReactDOM.findDOMNode(this.refs.cardNumber).focus();
+
+      //this.cardNumber.focus();
+      //this.cardNumber.offsetTop;
+      //const cardNumberInput = ReactDOM.findDOMNode(this.cardNumber);
+      //window.scrollTo(this.cardNumber.offsetTop, 0);
+
+      //const node = ReactDOM.findDOMNode(this.cardNumber);
+      //node.scrollIntoView({ behavior: "smooth" });
+
       this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
       //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
       //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
@@ -106,19 +119,22 @@ class PaymentMethod extends React.Component<any, any> {
       if(this.props.User.orderSession.orderStatus == "processing_payment"){
 
           this.setState({name_on_card_disabled: "disabled"});
-          //this.setState({zipcode_disabled: "disabled"});
-          //this.setState({card_number_disabled: "disabled"});
-          //this.setState({expiry_date_month_disabled: "disabled"});
-          //this.setState({expiry_date_year_disabled: "disabled"});
-          //this.setState({security_code_disabled: "disabled"});
+          this.setState({zipcode_disabled: "disabled"});
+          this.setState({card_number_disabled: "disabled"});
+          this.setState({expiry_date_month_disabled: "disabled"});
+          this.setState({expiry_date_year_disabled: "disabled"});
+          this.setState({security_code_disabled: "disabled"});
       
       }
 
       if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
 
-          this.setState({error_message_text: "An incorrect CVC was entered."});
+          this.setState({error_message_text: "An incorrect Card Number or CVC was entered."});
 
-      //    this.setState({card_number_border_color: "red"});
+          //this.refs.cardNumber.focus();
+          //ReactDOM.findDOMNode(this.refs.theDiv).focus();
+
+          this.setState({card_number_border_color: "red"});
           this.setState({security_code_border_color: "red"});        
 
       //    this.setState({button_complete_order_classname: "btn btn-default"});
@@ -393,17 +409,17 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3">
-                        <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
                       </div>
                       <div className="col-md-2">
-                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" id="exampleInputName2" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
+                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
                       </div>
                     </div>
                   </form>
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-4">
-                        <input type="text" value={this.state.card_number} maxLength={16} className="form-control" id="exampleInputName2" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.card_number_disabled}/>
+                        <input type="text" ref={(input) => {this.cardNumber = input}} value={this.state.card_number} maxLength={16} className="form-control" placeholder="Card Number" onChange={(e) => this.setPaymentCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.card_number_disabled}/>
                       </div>
                       <div className="hidden-lg col-xs-1">
                         <br/>
@@ -417,19 +433,19 @@ class PaymentMethod extends React.Component<any, any> {
                     <div className="form-group">
                       <div className="col-md-4" style={{paddingLeft: 5}}>
                              <div className="col-md-4">
-                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.expiry_date_month_disabled}/>
+                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" placeholder="MM" onFocus={() => this.onPaymentExpiryMonthFocus()} onChange={this.setPaymentExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.expiry_date_month_disabled}/>
                               </div>
                               <div className="hidden-lg col-xs-1">
                                 <br/>
                               </div>
                               <div className="col-md-4">
-                                <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.expiry_date_year_disabled}/>
+                                <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" placeholder="YYYY" onFocus={() => this.onPaymentExpiryYearFocus()} onChange={this.setPaymentExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.expiry_date_year_disabled}/>
                               </div>
                               <div className="hidden-lg col-xs-1">
                                 <br/>
                               </div>
                               <div className="col-md-4">
-                                <input type="email" value={this.state.security_code} maxLength={4} className="form-control" id="exampleInputEmail2" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
+                                <input type="email" value={this.state.security_code} maxLength={4} className="form-control" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
                               </div>
                           </div>
                   

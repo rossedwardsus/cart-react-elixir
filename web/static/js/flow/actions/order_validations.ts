@@ -24,13 +24,7 @@ export function dateValidated() {
   }
 }
 
-export function deliveryContactAddressValidated() {
-  console.log("delivery contact address validated ");
-  return {
-    type: DELIVERY_CONTACT_ADDRESS_VALIDATED,
-    
-  }
-}
+
 
 export function userFirstNameValidated() {
   console.log("user last name validated ");
@@ -71,6 +65,22 @@ export function userContactMobileValidated() {
     
   }
 }
+
+export function deliveryContactAddressValidated() {
+  console.log("delivery contact address validated ");
+  return {
+    type: DELIVERY_CONTACT_ADDRESS_VALIDATED,
+    
+  }
+}
+
+/*export function deliveryAddressZipcodeValidated() {
+  console.log("cart validated ");
+  return {
+    type: DELIVERY_ADDRESS_ZIPCODE_VALIDATED,
+    
+  }
+}*/
 
 /*export function deliveryAddressInvalidated() {
   console.log("cart validated ");

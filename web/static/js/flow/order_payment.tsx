@@ -3,6 +3,7 @@
 
 
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 //import SconelyYoursMenu from './menu.tsx';
 //import Cart from './order_datetime_contact_cart.tsx';
@@ -75,10 +76,13 @@ interface Order {
 class OrderDateTimeContact extends React.Component<any, any> {
   //props: Props;
 
+  private cardNumber: HTMLInputElement;
+
   constructor(props: any) {
     super(props);
     //this.getData();
-  
+
+    
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
@@ -156,7 +160,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       //componentDidMount = () => {
 
-        window.scrollTo(0, 0);
+        //window.scrollTo(0, 0);
+
+        //const node = ReactDOM.findDOMNode(this.cardNumber);
+        //node.scrollIntoView({ behavior: "smooth" });
+
 
       //}
 

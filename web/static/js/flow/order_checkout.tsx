@@ -156,7 +156,8 @@ class DateTime extends React.Component<any, any> {
       //delivery contact and address
       //also date time
 
-      if(this.props.User.orderSession.validations["userContactEmailValidated"] == true && this.props.User.orderSession.validations["userNameEmailMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+      
+       if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
 
         console.log("validated");
       

@@ -352,7 +352,7 @@ class Name extends React.Component<any, any> {
                     console.log("user email/mobile validated");
 
                     this.setState({user_contact_mobile: e.target.value});
-                    this.props.userNameEmailMobileValidated();
+                    //this.props.userNameEmailMobileValidated();
                     this.props.userContactMobileValidated();
 
             }else{

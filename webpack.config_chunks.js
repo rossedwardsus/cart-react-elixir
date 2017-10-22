@@ -1,12 +1,15 @@
 var path = require('path');
 var webpack = require('webpack');
+
+const CompressionPlugin = require("compression-webpack-plugin")
  
 module.exports = {
   devtool: "source-map",
+  //'bootstrap', 'immutable', 'lodash', 'react-datepicker', 
   entry: {
     app: './web/static/js/flow/flow_test.js',
     vendor: [
-      'react', 'react-dom', 'react-router', 'react-datepicker', 'moment', 'bootstrap', 'immutable', 'lodash'
+      'react', 'react-dom', 'react-router', 'moment'
     ],
   },
   
@@ -65,19 +68,24 @@ module.exports = {
     ],
   },
   plugins: [
-    //new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
-    //new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }}),
+    //new webpack.optimize.UglifyJsPlugin({ sourceMap: true, mangle: false, compress: { warnings: false }}),
     new webpack.NoErrorsPlugin(),
-  //  new webpack.DefinePlugin({ 'process.env.NODE_ENV': `"${config.env}"` })
-    //new webpack.optimize.AggressiveMergingPlugin(),
-    /*new CompressionPlugin({
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new CompressionPlugin({
       asset: "[path].gz[query]",
       algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
+      test: /\.js$|\.ts$|\.html$/,
       threshold: 10240,
       minRatio: 0
-    })*/
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        // This has effect on the react lib size
+        'NODE_ENV': JSON.stringify('production'),
+      }
+    }),
 
     
   ],
