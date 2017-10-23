@@ -96,13 +96,13 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
       
         #IO.inspect(pool_order.pool_message)
 
-        #user_delivery_contact_address = Repo.get_by(UserDeliveryContactAddresses, %{pool_url_name: args[:pool_url_name], delivery_date: args[:pool_url_date]})
+        user_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: pool_order.user_id, delivery_contact_address_id: pool_order.user_delivery_contact_address_id})
         
-        #IO.inspect(pool_order)
+        IO.inspect(user_delivery_contact_address)
 
         #if pool_order not equal to nil
 
-        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_delivery_date: pool_order.delivery_date, pool_address_street1: "801 S Hope St.", pool_address_city: "Los Angeles", pool_address_state: "CA", pool_address_zipcode: "90025", pickup_location: pool_order.pickup_location}}
+        {:ok, %{parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_delivery_date: pool_order.delivery_date, pool_address_street1: user_delivery_contact_address.street1, pool_address_street2: user_delivery_contact_address.street2, pool_address_city: user_delivery_contact_address.city, pool_address_state: user_delivery_contact_address.state, pool_address_zipcode: user_delivery_contact_address.zipcode, pickup_location: pool_order.pickup_location}}
                         
 
         #{:ok, %{admin_receipt_id: "1", pool_message: "Dear 8th + Hope residents,\n\n Sconely will be delivering to the 8th + Hope lobby on Saturday, September 23rd at 9:00 AM. You can pre-order your scones before Thursday, September 21st at midnight for this Saturday's delivery. \n\n Contact Sconely at eat@sconely.com with any questions.\n\n All the best, \n\n Niki Asvadi Resident Relations"}}
@@ -922,9 +922,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
@@ -1180,6 +1180,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #or it does with a type "pool_response"
 
                         #delivery dateime
+                        #pool name for admin
 
                         pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: args[:pool_admin_receipt_order_id]})
                         IO.inspect(pool_order.delivery_date.month)
@@ -1239,7 +1240,12 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         delivery_date_formatted = delivery_date_day_of_week <> " " <>delivery_date_month <> " " <> Integer.to_string(pool_order.delivery_date.day) <> ", 2017"
 
-                        admin_email_subject = args[:order_type] <> " " <> "pool_name" <> " " <> delivery_date_formatted
+
+
+                        admin_email_subject = args[:order_type] <> " order " <> args[:pool_name] <> " " <> delivery_date_formatted
+
+
+                        IO.inspect(admin_email_subject)
             
                         #IO.inspect(delivery_date_formatted)
 
@@ -1619,7 +1625,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         else
 
-                            user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(user_delivery_contact_address, %{first_name: args[:delivery_contact_address_contact_first_name], last_name: args[:delivery_contact_address_contact_last_name], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
+                            user_delivery_contact_address_changeset = UserDeliveryContactAddress.changeset(user_delivery_contact_address, %{first_name: args[:delivery_contact_address_contact_first_name], last_name: args[:delivery_contact_address_contact_last_name], contact_email: args[:delivery_contact_address_contact_email], mobile: args[:delivery_contact_address_contact_mobile], street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
                             #else update
 
                             case Repo.update(user_delivery_contact_address_changeset) do
@@ -2132,7 +2138,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                           #IO.inspect(delivery_address)
 
-                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           IO.inspect(response)
                   

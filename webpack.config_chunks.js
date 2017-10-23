@@ -70,7 +70,11 @@ module.exports = {
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js', Infinity),
-    //new webpack.optimize.UglifyJsPlugin({ sourceMap: true, mangle: false, compress: { warnings: false }}),
+    new webpack.optimize.UglifyJsPlugin({ 
+                  sourceMap: true, 
+                  mangle: false, 
+                  compress: { warnings: false, unused: true, dead_code: true}
+    }),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new CompressionPlugin({

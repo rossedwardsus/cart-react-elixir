@@ -246,6 +246,7 @@ defmodule Sconely.Schema do
 
     field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do
         arg :order_type, :string
+        arg :pool_name, :string
         arg :pool_admin_receipt_order_id, :string
         arg :save_for_later, :boolean
         arg :user_first_name, :string

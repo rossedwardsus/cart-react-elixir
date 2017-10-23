@@ -116,7 +116,7 @@ class PaymentMethod extends React.Component<any, any> {
 
       //network error
 
-      if(this.props.User.orderSession.orderStatus == "processing_payment"){
+      if(this.props.User.orderSession.orderStatus == "processing"){
 
           this.setState({name_on_card_disabled: "disabled"});
           this.setState({zipcode_disabled: "disabled"});
@@ -128,6 +128,8 @@ class PaymentMethod extends React.Component<any, any> {
       }
 
       if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
+
+          //enable all of the form inputs
 
           this.setState({error_message_text: "An incorrect Card Number or CVC was entered."});
 
@@ -409,7 +411,7 @@ class PaymentMethod extends React.Component<any, any> {
                   <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3">
-                        <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
+                        <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.name_on_card_disabled}/>
                       </div>
                       <div className="col-md-2">
                         <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>

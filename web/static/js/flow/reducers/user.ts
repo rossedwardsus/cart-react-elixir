@@ -115,10 +115,10 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
 
     case SET_ORDER_STATUS:
-      console.log("add cart reducer");
+      console.log("set order status reducer");
 
       order_session_updated = state.orderSession;
-      order_session_updated["orderStatus"] = action.order_status;
+      order_session_updated["orderStatus"] = action.orderStatus;
 
       return Object.assign({}, state, {...state, orderSession: order_session_updated});
 
@@ -154,7 +154,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       }else{
 
-          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address_street1: action.pool_address_street1, pool_address_city: action.pool_address_city, pool_address_state: action.pool_address_state, pool_address_zipcode: action.pool_address_zipcode, pickup_location: action.pickup_location, cartItems: []};
+          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", poolName: action.pool_name, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address_street1: action.pool_address_street1, pool_address_city: action.pool_address_city, pool_address_state: action.pool_address_state, pool_address_zipcode: action.pool_address_zipcode, pickup_location: action.pickup_location, cartItems: []};
 
       }
 

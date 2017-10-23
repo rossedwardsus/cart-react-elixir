@@ -175,8 +175,14 @@ class Name extends React.Component<any, any> {
           
             this.setState({last_name_border_color: "grey"});
             this.props.setUserLastName(e);
-            this.props.setUserDeliveryContactAddressLastName(e);
             this.props.userLastNameValidated();
+
+            //if(this.props.User.orders[0].order_type ! == "pool"){
+            
+                this.props.setUserDeliveryContactAddressLastName(e);
+
+            //}
+            
 
             //if(this.state.first_name.length > 0){
              
@@ -244,6 +250,8 @@ class Name extends React.Component<any, any> {
                                 //validate user email
 
                                 this.props.userContactEmailValidated(e);
+
+                                this.props.setUserDeliveryContactAddressEmail(e); 
 
                                 console.log("email ok")
 
@@ -355,6 +363,8 @@ class Name extends React.Component<any, any> {
                     //this.props.userNameEmailMobileValidated();
                     this.props.userContactMobileValidated();
 
+                    this.props.setUserDeliveryContactAddressMobile(e); 
+
             }else{
 
               this.setState({user_contact_mobile: e.target.value});
@@ -374,7 +384,12 @@ class Name extends React.Component<any, any> {
       }
 
       this.props.setUserMobile(e);
-      this.props.setUserDeliveryContactAddressMobile(e);
+
+      if(this.props.User.orders[0].order_type != "pool"){
+
+          this.props.setUserDeliveryContactAddressMobile(e);
+
+      }
 
   }
 

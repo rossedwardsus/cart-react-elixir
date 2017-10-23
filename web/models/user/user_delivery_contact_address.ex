@@ -6,7 +6,7 @@ defmodule Sconely.UserDeliveryContactAddress do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		@optional_fields ~W(user_id company_name delivery_contact_address_id first_name last_name email mobile)
+		@optional_fields ~W(user_id company_name delivery_contact_address_id first_name last_name email mobile street1 street2 city state zipcode)
 		@required_fields ~W()
 
 
@@ -19,10 +19,10 @@ defmodule Sconely.UserDeliveryContactAddress do
 			field :email, :string
 			field :mobile, :string
 			field :street1, :string
-			#field :street2, :string
-			#field :city, :string
-			#field :state, :string
-			#field :zipcode, :string
+			field :street2, :string
+			field :city, :string
+			field :state, :string
+			field :zipcode, :string
 			#note
 			
 			#timestamps()
