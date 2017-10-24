@@ -131,10 +131,19 @@ class PaymentMethod extends React.Component<any, any> {
 
           //enable all of the form inputs
 
+          this.setState({name_on_card_disabled: ""});
+          this.setState({zipcode_disabled: ""});
+          this.setState({card_number_disabled: ""});
+          this.setState({expiry_date_month_disabled: ""});
+          this.setState({expiry_date_year_disabled: ""});
+          this.setState({security_code_disabled: ""});
+      
+
           this.setState({error_message_text: "An incorrect Card Number or CVC was entered."});
 
           //this.refs.cardNumber.focus();
           //ReactDOM.findDOMNode(this.refs.theDiv).focus();
+          //this.cardNumber.offsetTop;
 
           this.setState({card_number_border_color: "red"});
           this.setState({security_code_border_color: "red"});        
@@ -149,7 +158,7 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({error_message_text: "An error occured with your card."});
           this.setState({security_code_border_color: "grey"});        
 
-      }else if(this.props.User.orderSession.paymentErrorCode == "incorrect_number"){
+      }/*else if(this.props.User.orderSession.paymentErrorCode == "incorrect_number"){
 
           //console.log("payment props" + JSON.stringify(nextProps));
 
@@ -163,7 +172,7 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({error_message_text: "An error occured with your card."});
           this.setState({security_code_border_color: "grey"});        
 
-      }else if(this.props.User.orderSession.networkError == true){
+      }*/else if(this.props.User.orderSession.networkError == true){
 
           this.setState({error_message_text: "An error occured please try again."});
 

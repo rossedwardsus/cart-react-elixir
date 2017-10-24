@@ -88,7 +88,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
       IO.inspect(user_pool)
 
       #supposed to look for pool id and pool date
-      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id})
+      pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id, delivery_date: date})
 
       IO.inspect(pool_order)
 
@@ -101,6 +101,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
         IO.inspect(user_delivery_contact_address)
 
         #if pool_order not equal to nil
+        #{:ok, %{status: "no order"}}
 
         {:ok, %{user_pool_id: user_pool.id, pool_parent_order_id: pool_order.parent_order_id, pool_admin_receipt_order_id: pool_order.admin_receipt_order_id, pool_name: user_pool.pool_name, pool_delivery_date: pool_order.delivery_date, pool_address_street1: user_delivery_contact_address.street1, pool_address_street2: user_delivery_contact_address.street2, pool_address_city: user_delivery_contact_address.city, pool_address_state: user_delivery_contact_address.state, pool_address_zipcode: user_delivery_contact_address.zipcode, pickup_location: pool_order.pickup_location}}
                         

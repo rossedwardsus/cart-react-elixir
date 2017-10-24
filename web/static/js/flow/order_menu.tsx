@@ -648,6 +648,12 @@ class OrderMenu extends React.Component<any, any> {
                               {this.props.User.orders[0].pool_order_by_date_formatted}
                           </div>
                       </form>
+                      <form className="form-horizontal">
+                          <div className="col-md-12">
+                              <br/>
+                              <b>Free Delivery</b>
+                          </div>
+                      </form>
                   </div>
 
 
