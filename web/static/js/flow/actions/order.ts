@@ -138,7 +138,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
                   let order_by_date = moment(pool_delivery_date).subtract(1, 'days');
                   
-                  let pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D') + ", 11:59 pm";
+                  let pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D');
 
                   //console.log(pool_order_date_formatted);
 
