@@ -84,12 +84,12 @@ module.exports = {
       threshold: 10240,
       minRatio: 0
     }),
-    /*new webpack.DefinePlugin({
+    new webpack.DefinePlugin({
       'process.env': {
         // This has effect on the react lib size
         'NODE_ENV': JSON.stringify('production'),
       }
-    }),*/
+    }),
 
     
   ],

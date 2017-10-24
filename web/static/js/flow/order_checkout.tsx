@@ -457,7 +457,7 @@ class DateTime extends React.Component<any, any> {
                             <br/>
                             SCONELY {this.props.User.orders[0].order_type.toUpperCase()}
                             <br/>
-                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems}/>
+                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
@@ -491,7 +491,7 @@ class DateTime extends React.Component<any, any> {
                         Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
                         <br/>
                         <br/>
-                        <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
+                        <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
                         <br/>
                       </div>
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
