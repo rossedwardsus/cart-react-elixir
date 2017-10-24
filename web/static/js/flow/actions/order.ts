@@ -118,7 +118,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             //dispatch(setOrderStatus("processing"));
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_address_street1 pool_address_city pool_address_state pool_address_zipcode pickup_location}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {user_pool_id parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_address_street1 pool_address_city pool_address_state pool_address_zipcode pickup_location}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -145,6 +145,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                   dispatch({
                               type: CREATE_ORDER, 
                               order_type: order_type, 
+                              user_pool_id: response.data.data.getPoolOrderDetails.userPoolId,
                               pool_name: pool_url_name, 
                               pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
                               //pool_name: response.data.data.getPoolOrderDetails.poolName, 

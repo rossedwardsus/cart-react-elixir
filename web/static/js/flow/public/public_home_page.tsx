@@ -12,7 +12,7 @@ import PublicBottomNavbar from './public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
 
 
-import {List, Map} from 'immutable';
+//import {List, Map} from 'immutable';
 
 //import * as Cookie from 'js-cookie';
 //const cookie: any = require('react-cookie');

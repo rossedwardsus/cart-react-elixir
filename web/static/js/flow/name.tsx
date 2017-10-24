@@ -124,8 +124,14 @@ class Name extends React.Component<any, any> {
         
           this.setState({first_name_border_color: "grey"});
           this.props.setUserFirstName(e);
-          this.props.setUserDeliveryContactAddressFirstName(e);
           this.props.userFirstNameValidated();
+
+          if(this.props.User.orders[0].order_type != "pool"){
+
+              this.props.setUserDeliveryContactAddressFirstName(e);
+
+          }
+          
 
           //if(this.state.last_name.length > 0){
           
@@ -177,11 +183,11 @@ class Name extends React.Component<any, any> {
             this.props.setUserLastName(e);
             this.props.userLastNameValidated();
 
-            //if(this.props.User.orders[0].order_type ! == "pool"){
+            if(this.props.User.orders[0].order_type != "pool"){
             
                 this.props.setUserDeliveryContactAddressLastName(e);
 
-            //}
+            }
             
 
             //if(this.state.first_name.length > 0){

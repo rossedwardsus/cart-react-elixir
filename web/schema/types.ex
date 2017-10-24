@@ -138,7 +138,7 @@ defmodule Sconely.Schema.Types do
   object :pool_order_details do
     #field :status, :string
     #field :sconely_user_token, :string
-    #field :stripe__token, :string
+    field :user_pool_id, :string
     #field :error_reason, :string
     field :pool_order_id, :integer
     field :pool_admin_receipt_order_id, :integer

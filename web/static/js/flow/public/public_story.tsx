@@ -11,7 +11,9 @@ import PublicTopNavbar from './public_top_navbar.tsx';
 import PublicBottomNavbar from './public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
 
-import {List, Map} from 'immutable';
+import {Helmet} from "react-helmet";
+
+//import {List, Map} from 'immutable';
 
 //import * as Cookie from 'js-cookie';
 //const cookie: any = require('react-cookie');
@@ -365,7 +367,16 @@ export class PublicStory extends React.Component<any, any> {
 
     return (
               <div>
-                   <PublicTopNavbar/>
+                    <Helmet>
+                        <title>Nested Title</title>
+                        <meta name="twitter:card" content="Nested component" />
+                        <meta name="twitter:title" content="The Always-Up-to-Date SEO Checklist from @BruceClayInc" />
+                        <meta name="twitter:url" content="https://www.bruceclay.com/blog/seo-checklist/" />
+                        <meta name="twitter:description" content="Just getting started optimizing websites? Here’s a time-tested SEO checklist to keep on-hand during your projects." />
+                        <meta name="twitter:image" content="https://www.bruceclay.com/blog/wp-content/uploads/2016/08/SEO-Checklist.jpg" />
+                    </Helmet>
+            
+                    <PublicTopNavbar/>
                     <div className="row">
                         <div className="hidden-xs col-md-3">
                           <br/>

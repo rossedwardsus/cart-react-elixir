@@ -6,7 +6,7 @@ import { Link, browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 
 import {getMenuItems} from '../actions/menu.ts';
-import {cartValidated} from '../actions/order_validations.ts';
+//import {cartValidated} from '../actions/order_validations.ts';
 //import {addCartItem} from '../actions/cart.ts';
 import {createOrder} from '../actions/order.ts';
 //import SidebarCart from './sidebar_cart.tsx';
@@ -451,7 +451,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       //dispatch(addCartItem(order_id, item_id, item_type, quantity));
     },
     cartValidated: () => {
-      dispatch(cartValidated());
+      //dispatch(cartValidated());
     },
     createOrder: (order_type: any, name: any) => {
       dispatch(createOrder(order_type, "name", "date"));
