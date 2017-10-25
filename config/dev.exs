@@ -9,7 +9,7 @@ use Mix.Config
 config :scone_home_elixir, SconeHomeElixir.Endpoint,
   http: [port: 4000],
   debug_errors: true,
-  #code_reloader: true,
+  code_reloader: true,
   cache_static_lookup: false,
   check_origin: false
   #watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
