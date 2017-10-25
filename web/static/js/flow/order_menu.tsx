@@ -610,7 +610,7 @@ class OrderMenu extends React.Component<any, any> {
     let message = <div>
                       <form className="form-horizontal">
                         <div className="col-md-4">
-                            <b>Address</b>: 
+                            <b>Address</b> 
                         </div>
                         <div className="col-md-8">
                             {this.props.User.orders[0].pool_address_street1}<br/>{this.props.User.orders[0].pool_address_city},&nbsp;{this.props.User.orders[0].pool_address_state}
