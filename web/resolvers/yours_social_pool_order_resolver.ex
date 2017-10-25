@@ -907,6 +907,10 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #IO.inspect(Stripe.Token.create(%{:card => %{"number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => "90025"}}))
 
 
+    #if encvironment == production
+    IO.puts("mix_env")
+    IO.inspect(System.get_env("MIX_ENV"))
+
 
     #IO.puts("test card date")
     #fraudulent
@@ -924,7 +928,6 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #working
     case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    #if encvironment == production
 
     #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
