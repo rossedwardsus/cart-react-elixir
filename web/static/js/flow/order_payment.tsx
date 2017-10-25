@@ -984,7 +984,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                   <div className="col-md-3">
                                       Promo Code
                                   </div>
-                                  <div className="col-md-2">
+                                  <div className="col-md-3">
                                       <input type="text" maxLength={30} onChange={this.setPromoCode} className="form-control" value={this.state.promo_code} id="exampleInputName2" placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
                                   </div>
                                 </div>
