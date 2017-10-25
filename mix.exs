@@ -40,6 +40,8 @@ defmodule SconeHomeElixir.Mixfile do
   #{:erlcloud, git: "https://github.com/gleber/erlcloud"},
 
   #{:stripity_stripe, "~> 1.4.0"},
+  #{:phoenix_live_reload, "~> 1.0", only: :dev},
+     
      
     
      
@@ -49,7 +51,6 @@ defmodule SconeHomeElixir.Mixfile do
      {:phoenix_ecto, "~> 2.0.1"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 2.6.0"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:poison, "~> 2.1", override: true},
      {:comeonin, "~> 3.0"},
