@@ -156,24 +156,40 @@ class DateTime extends React.Component<any, any> {
       //delivery contact and address
       //also date time
 
-      
-       if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+      //add cart validated checked
+      //if order type == pool then only validate name
 
-        console.log("validated");
-      
-        this.setState({payment_button_classname: "btn btn-default btn-block"});
-        this.setState({payment_button_disabled: ""})
-      
+      if(this.props.User.orders[0].order_type == "pool"){
+
+          if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true){
+
+              this.setState({payment_button_classname: "btn btn-default btn-block"});
+              this.setState({payment_button_disabled: ""})
+          
+          }
+
+      }else{
+
+          if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+
+            console.log("validated");
+          
+            this.setState({payment_button_classname: "btn btn-default btn-block"});
+            this.setState({payment_button_disabled: ""})
+          
+          }
+
       }
 
-      if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0){
+
+      //if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0){
 
         //if cart items total quantity = 0 then disable payment button
         
-        this.setState({payment_button_classname: "btn btn-default btn-block disabled"});
-        this.setState({payment_button_disabled: "disabled"})
+        //this.setState({payment_button_classname: "btn btn-default btn-block disabled"});
+        //this.setState({payment_button_disabled: "disabled"})
 
-      }
+      //}
         
 
       //this.setState({delivery_times: "9-11am"});
@@ -469,7 +485,7 @@ class DateTime extends React.Component<any, any> {
                                 <form className="form-horizontal">
                                   <div className="form-group">
                                     <div className="col-md-2">
-                                      <Link to="/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>  
+                                      <Link to="/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Payment</Link>  
                                     </div>
                                     <div className="col-md-2">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
