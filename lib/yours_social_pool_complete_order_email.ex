@@ -157,7 +157,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      to: ["rossedwards.us@gmail.com", julia@sconely.com],
+      to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
       from: "orders@sconely.com",
       subject: _params[:admin_email_subject],
       html_body: template,
