@@ -680,6 +680,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
               //}
             
+            }else if(e.target.value.toUpperCase() == "CROSSCAMPUS10"){
+
+              //if(promo_codes.indexof(e.target.value) > -1){
+
+                  this.setState({promo_code_discount: 10})
+                  this.props.setPromoCode(e.target.value);
+
+              //}
+            
             }
 
             

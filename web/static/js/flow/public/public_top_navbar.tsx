@@ -192,7 +192,7 @@ export default class Menu extends React.Component<any, any> {
                            <span className="icon-bar"></span>
                            <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="https://www.sconely.com"><img src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+                        <a className="navbar-brand" href="https://www.sconely.com"><img src="/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
                         <ul id="navbar" className="nav navbar-nav navbar-right">
