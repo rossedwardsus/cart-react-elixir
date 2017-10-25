@@ -9,20 +9,20 @@ use Mix.Config
 config :scone_home_elixir, SconeHomeElixir.Endpoint,
   http: [port: 4000],
   debug_errors: true,
-  #code_reloader: true,
+  code_reloader: true,
   cache_static_lookup: false,
   check_origin: false
   #watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 
 # Watch static and templates for browser reloading.
-#config :scone_home_elixir, SconeHomeElixir.Endpoint,
-#  live_reload: [
-#    patterns: [
+config :scone_home_elixir, SconeHomeElixir.Endpoint,
+  live_reload: [
+    patterns: [
 #      #~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
 #      #~r{web/views/.*(ex)$},
 #      #~r{web/templates/.*(eex)$}
-#    ]
-#  ]
+    ]
+  ]
 
 # Do not include metadata nor timestamps in development logs
 #config :logger, :console, format: "[$level] $message\n"
