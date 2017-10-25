@@ -710,7 +710,7 @@ class OrderMenu extends React.Component<any, any> {
                               {(this.props.User.orders[0].order_type == "social" && this.props.User.orders[0].cartItems.length == 0) &&
                               (<div><br/>Order by the dozen or 2 dozen for mini<br/>Plan ahead, order at least 48 hours in advance<br/><br/><b>Free Delivery</b><br/>Downtown LA<br/>Santa Monica<br/>Venice<br/><br/>Wednesday-Saturday<br/>9am-Noon<br/><br/>Contact us for other delivery options</div>)}
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
-                                <img src="/images/pool/00000000-0000-0000-0000-000000000000.jpg"/>}
+                                pool_image}
                               <br/>
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                               <br/>
