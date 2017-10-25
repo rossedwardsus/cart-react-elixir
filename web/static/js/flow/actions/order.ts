@@ -149,9 +149,9 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                               type: CREATE_ORDER, 
                               order_type: order_type, 
                               user_pool_id: response.data.data.getPoolOrderDetails.userPoolId,
-                              pool_name: pool_url_name, 
+                              //pool_name: pool_url_name, 
                               pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
-                              //pool_name: response.data.data.getPoolOrderDetails.poolName, 
+                              pool_name: response.data.data.getPoolOrderDetails.poolName, 
                               pool_address_street1: 
                               response.data.data.getPoolOrderDetails.poolAddressStreet1,
                               pool_address_city: 

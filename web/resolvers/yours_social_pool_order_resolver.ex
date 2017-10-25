@@ -85,7 +85,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       user_pool = Repo.get_by(UserPool, %{pool_url_name: args[:pool_url_name]})
 
-      IO.inspect(user_pool)
+      IO.inspect(user_pool.pool_name)
 
       #supposed to look for pool id and pool date
       pool_order = Repo.get_by(PoolOrder, %{user_id: user_pool.user_id, user_pool_id: user_pool.pool_id, delivery_date: date})
@@ -692,6 +692,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #IO.inspect(args[:user_contact_email])
     #IO.inspect(context)
 
+    #log args
     IO.inspect(args)
 
     #dont create user by default but how to identify them them
@@ -804,20 +805,18 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #apply promo code
     #promo_code = "8thandhope"
     
-    case args[:promo_code] do
+    case String.upcase(args[:promo_code]) do
 
         "" -> nil
               total = subtotal
 
-        "8thandhope" -> promo_code_discount = "10%"
+        "8THANDHOPE" -> promo_code_discount = "10%"
                         total = subtotal - (subtotal * 10/100)
-        "grain" ->  promo_code_discount = "10%"
+        "GRAIN" ->  promo_code_discount = "10%"
                     total = subtotal - (subtotal * 10/100)
-        "sconely10" ->  promo_code_discount = "10%"
+        "SCONELY10" ->  promo_code_discount = "10%"
                     total = subtotal - (subtotal * 10/100)
         
-
-
     end
 
     IO.puts("total")
@@ -923,9 +922,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #case Stripe.Token.create(%{:card => %{"number" => "4242424242424241", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
     
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    #if encvironment == production
+
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
@@ -1193,7 +1194,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.inspect(pool_order_user_delivery_contact_address)
 
                         #get delivery contact address for pool order
-                        delivery_address = %{street1: "801 S Hope St", street2: "", city: "Los Angeles", state: "CA", zipcode: "90017"}
+                        #delivery_address = %{company_name: pool_order_user_delivery_contact_address.company_name, street1: "801 S Hope St", street2: "", city: "Los Angeles", state: "CA", zipcode: "90017"}
+
+                        delivery_address = %{company_name: pool_order_user_delivery_contact_address.company_name, street1: pool_order_user_delivery_contact_address.street1, street2: "", city: pool_order_user_delivery_contact_address.city, state: pool_order_user_delivery_contact_address.state, zipcode: pool_order_user_delivery_contact_address.zipcode}
 
                         #covert the time zone?
                         #actually this is only date

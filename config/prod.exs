@@ -41,8 +41,10 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   url: "postgres://tisbfgptmbcsua:021ce0c0c137bd1f8d3e08749daedaa59845b9bc4bf5825cae9f3ac11178b720@ec2-184-73-189-221.compute-1.amazonaws.com:5432/d3n1ikvdskts5t",
   ssl: true
 
+#IO.puts("mix_env")
+#IO.inspect(System.get_env("MIX_ENV"))
 
-
+#remove this
 #for sconely-test
 #config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
 

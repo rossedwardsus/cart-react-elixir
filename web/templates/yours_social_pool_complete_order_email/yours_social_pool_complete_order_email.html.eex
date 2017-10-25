@@ -17,9 +17,10 @@
     <tr><td><br></td></tr>
   </table>
   <table width="60%">
-    <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, <%= if @key.args.order_type == "pool" do %> 9:30 am.<% else %>between 9-Noon<% end %></td></tr>
+    <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, <%= if @key.args.order_type == "pool" do %> 11:30 am.<% else %>between 9-Noon<% end %></td></tr>
     <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>
+    <tr><td><%= @key.delivery_address.company_name %></td></tr>
     <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street2 %></td></tr>
     <tr><td><%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
     <tr><td><br></td></tr>
