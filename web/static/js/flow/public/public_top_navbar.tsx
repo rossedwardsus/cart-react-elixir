@@ -38,6 +38,8 @@ export default class Menu extends React.Component<any, any> {
 
     //get active items from the database
 
+    window.scrollTo(0, 0);
+
   }
 
   static get contextTypes() {

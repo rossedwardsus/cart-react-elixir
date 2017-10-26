@@ -13,6 +13,7 @@ defmodule Sconely.OrderSession do
 			#field :session_id, Ecto.UUID
 			field :order_type, :string #integer
 			#order_id
+			#field :pool_name, :string
 			field :order_started_datetime, Ecto.DateTime
 			field :screen, :string
 			field :order_completed_datetime, Ecto.DateTime

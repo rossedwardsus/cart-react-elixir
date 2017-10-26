@@ -143,9 +143,13 @@ class Name extends React.Component<any, any> {
 
           this.setState({first_name_border_color: "red"});
 
-          //this.props.setNameInvalidated(e);
+          this.props.setUserFirstNameInvalidated(e);
 
         }
+
+    }else{
+
+      this.props.setUserFirstNameInvalidated(e);
 
     }
 
