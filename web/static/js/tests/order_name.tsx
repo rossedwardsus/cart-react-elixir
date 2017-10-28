@@ -9,8 +9,11 @@ import { mount, shallow } from 'enzyme';
 import * as TestUtils from "react-addons-test-utils";
 
 import { assert, expect } from 'chai';
-//import {chai} from 'chai';
-import {chaiEnzyme} from 'chai-enzyme'
+//import chai from 'chai';
+const chai = require('chai');
+
+const chaiEnzyme = require('chai-enzyme');
+
 //import assert from 'assert';
 import * as sinon from 'sinon';
 import 'jsdom-global/register';
@@ -18,7 +21,7 @@ import 'jsdom-global/register';
 import Login from '../flow/login.tsx';
 import Name from '../flow/name.tsx';
 
-//chai.use(chaiEnzyme());
+chai.use(chaiEnzyme());
 
 
 //import jsdom from 'jsdom'
@@ -30,6 +33,12 @@ import Name from '../flow/name.tsx';
 describe("Name", () => {
 
 	let renderer: any;
+
+	//divs
+	//inputs
+	//placehlders
+	//incorrent inputs
+
 
 	const container = shallow(<Name setUserEmail={() => {}}/>);
 	let wrapper = shallow(<Name setUserEmail={() => {}}/>);

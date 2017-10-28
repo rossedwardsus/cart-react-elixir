@@ -26,6 +26,14 @@ describe("Order Payment", () => {
 
 	let renderer: any;
 
+	//divs
+	//inputs
+	//placehlders
+	//incorrent inputs
+	//componentwillreceiveprps/props for incorrect cvc
+	//test that functions are triggerd with spy js
+
+
 	const container = shallow(<PaymentMethod setUserEmail={() => {}}/>);
 	let wrapper = shallow(<PaymentMethod setUserEmail={() => {}}/>);
 
