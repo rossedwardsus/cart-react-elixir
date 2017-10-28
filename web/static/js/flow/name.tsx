@@ -75,11 +75,11 @@ class Name extends React.Component<any, any> {
    
   }
 
-  static get contextTypes() {
-    return {
-      router: React.PropTypes.object.isRequired,
-    };
-  }
+  //static get contextTypes() {
+  //  return {
+  //    router: React.PropTypes.object.isRequired,
+  //  };
+  //}
 
   componentDidMount = () => {
 
@@ -87,7 +87,6 @@ class Name extends React.Component<any, any> {
     this.setState({user_last_name: this.props.User.user_last_name});
     this.setState({user_contact_email: this.props.User.user_contact_email});
     this.setState({user_contact_mobile: this.props.User.user_contact_mobile});
-
 
   }
 

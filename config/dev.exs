@@ -59,6 +59,12 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
 IO.puts("mix_env")
 IO.inspect(System.get_env("MIX_ENV"))
 
+IO.puts("db")
+IO.inspect(System.get_env("DB"))
+
+IO.puts("stripe key")
+IO.inspect(System.get_env("STRIPE_KEY"))
+
 
 config :stripe, :secret_key, "sk_test_ClIoWCLD5awvN9uqiZIqzI78"
 #config :stripe, :secret_key, "sk_live_V4rKgMKdlpl3CwUHHMLH0h1K"

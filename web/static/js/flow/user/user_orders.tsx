@@ -271,11 +271,11 @@ class UserOrders extends React.Component<any, any> {
                     Your Orders1
                     <br/>
                     <br/>
-                    {this.props.userOrders.map(function(order: any){
-
-                        return(<div><Link to={"/user/order/" + order.order_id}>order date-{order.order_type}</Link></div>);
-
-                    })};
+                    Order Date Order Type
+                    <br/>
+                    <Link to="/user/order">Friday October 28th, 2017</Link><Link to="">Social</Link>
+                    <br/>
+                    <Link to="/user/order">Friday October 29th, 2017</Link><Link to="">Pool</Link>
                     
                     
               </div>

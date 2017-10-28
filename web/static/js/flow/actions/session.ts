@@ -5,11 +5,11 @@ import axios from 'axios';
 import {push} from 'react-router-redux';
 //import {getUserOrders} from './user.ts';
 
-export function createOrderSession(order_type: any) {
+export function createOrderSession(order_type: any, pool_name: any) {
   let url = "";
   return function (dispatch: any) { 
     axios.post('/api/graphql',
-                     {query: 'mutation {create_order_session (order_type: "' + order_type + '") {session_id}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'mutation {create_order_session (order_type: "' + order_type + '", pool_name: "' + pool_name + '") {session_id}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 

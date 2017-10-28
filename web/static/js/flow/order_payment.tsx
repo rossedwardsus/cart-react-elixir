@@ -13,7 +13,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {paymentMethodValidated} from './actions/order_validations.ts';
+import {paymentMethodNameOnCardValidated, paymentMethodZipcodeValidated, paymentMethodCardNumberValidated, paymentMethodExpiryMonthValidated, paymentMethodExpiryYearValidated, paymentMethodSecurityCodeValidated} from './actions/order_validations.ts';
 
 /*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
@@ -44,7 +44,7 @@ import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
 
 //import { getPublicMenu } from './reducers/name';
-const Immutable  = require('immutable');
+//const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 import axios from 'axios';
@@ -108,7 +108,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         contact_mobile_classname: "form-group has-error",
         comtact_mobile_validated: false,
         name_on_card: "form-group has-error",
-        order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
+        //order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         selected_time: "",
         selected_specific_time: "",
         button_complete_order_classname: "btn btn-default",
@@ -182,7 +182,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //console.log("<b>recieved</b>");
 
+    //if(this.props.User.orderSession.validations.paymentMethodCardNumberValidated == true && this.props.User.orderSession..validations.paymentMethodExpiryMonthValidated == true && this.props.User.orderSession.validations.paymentMethodExpiryYearValidated == true && this.props.User.orderSession.validations.paymentMethodSecurityCodeValidated == true){
     
+      //this.setState({button_complete_order_classname: "btn btn-default"});
+      //this.setState({button_complete_order_disabled: ""});
+
+    
+    //}}
+
+
 
     if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
     
@@ -1013,7 +1021,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             {this.state.payment_error_message}
                             <br/>
                             <br/>
-                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)}paymentMethodValidated={() => this.props.paymentMethodValidated()}/>
+                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
@@ -1166,8 +1174,23 @@ function mapDispatchToProps(dispatch: any) {
     setPaymentSecurityCode: (e: any) => {
       dispatch(setPaymentSecurityCode(e.target.value, ""))
     },
-    paymentMethodValidated: (e: any) => {
-      dispatch(paymentMethodValidated())
+    paymentMethodNameOnCardValidated: (e: any) => {
+      dispatch(paymentMethodNameOnCardValidated())
+    },
+    paymentMethodZipcodeValidated: (e: any) => {
+      dispatch(paymentMethodZipcodeValidated())
+    },
+    paymentMethodCardNumberValidated: (e: any) => {
+      dispatch(paymentMethodCardNumberValidated())
+    },
+    paymentMethodExpiryMonthValidated: (e: any) => {
+      dispatch(paymentMethodExpiryMonthValidated())
+    },
+    paymentMethodExpiryYearValidated: (e: any) => {
+      dispatch(paymentMethodExpiryYearValidated())
+    },
+    paymentMethodSecurityCodeValidated: (e: any) => {
+      dispatch(paymentMethodSecurityCodeValidated())
     },
     termsValidated: (value: any) => {
 

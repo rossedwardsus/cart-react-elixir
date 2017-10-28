@@ -231,13 +231,14 @@ defmodule Sconely.Schema do
     field :create_order_session, type: :order_session_response do
         #arg :session_id, :string
         arg :order_type, :string
+        arg :pool_name, :string
 
         resolve &Sconely.OrderSessionResolver.create_order_session/2
     end
 
     field :update_order_session, type: :order_session_response do
         arg :session_id, :string
-        arg :order_type, :string
+        #arg :order_type, :string
         arg :screen, :string
 
         resolve &Sconely.OrderSessionResolver.update_order_session/2

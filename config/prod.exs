@@ -42,8 +42,8 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   ssl: true
 
 #if STRIPE_ENV == test/production
-#IO.puts("mix_env")
-#IO.inspect(System.get_env("STRIPE_ENV"))
+#IO.puts("STRIPE_KEY")
+#IO.inspect(System.get_env("STRIPE_KEY"))
 
 
 #remove this

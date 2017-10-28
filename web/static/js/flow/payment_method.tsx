@@ -83,11 +83,11 @@ class PaymentMethod extends React.Component<any, any> {
    
   }
 
-  static get contextTypes() {
-    return {
-      router: React.PropTypes.object.isRequired,
-    };
-  }
+  //static get contextTypes() {
+  //  return {
+  //    router: React.PropTypes.object.isRequired,
+  //  };
+  //}
 
   componentDidMount(){
 
@@ -101,7 +101,7 @@ class PaymentMethod extends React.Component<any, any> {
       //const node = ReactDOM.findDOMNode(this.cardNumber);
       //node.scrollIntoView({ behavior: "smooth" });
 
-      this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
+      //this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
       //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
       //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
       //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
@@ -214,6 +214,9 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({card_brand: "AMEX"});
           //this.setState({card_number: e.target.value});
           this.props.setPaymentMethodCardBrand("AMEX");
+
+          //this.props.paymentMethodCardNumberValidated();
+
            
       //
       }else if(/^4[0-9]{12}(?:[0-9]{3})?$/.test(e.target.value)){
@@ -222,6 +225,9 @@ class PaymentMethod extends React.Component<any, any> {
           console.log("visa");
           this.setState({card_brand: "VISA"});
           this.props.setPaymentMethodCardBrand("VISA");
+
+          //this.props.paymentMethodCardNumberValidated();
+
          
       //
       }else if(/^5[1-5][0-9]{14}$/.test(e.target.value)){
@@ -229,12 +235,18 @@ class PaymentMethod extends React.Component<any, any> {
           console.log("mastercard");
           this.setState({card_brand: "MASTERCARD"});
           this.props.setPaymentMethodCardBrand("MASTERCARD");
+
+          //this.props.paymentMethodCardNumberValidated();
+
          
       }else if(/^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$/.test(e.target.value)){
           
           console.log("discovery");
           this.setState({card_brand: "DISCOVER"});
           this.props.setPaymentMethodCardBrand("DISCOVER");
+
+          //this.props.paymentMethodCardNumberValidated();
+
          
       //
       //Discover Card: ^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$
@@ -267,6 +279,8 @@ class PaymentMethod extends React.Component<any, any> {
                       this.setState({expiry_month_border_color: "grey"});
                       this.setState({expiry_month: e.target.value});
                       this.props.setPaymentExpiryMonth(e);
+
+                      //this.props.paymentMethodExpiryMonthValidated();
 
                       //if(this.state.payment_expiry_year.length > 0){
 
@@ -311,6 +325,9 @@ class PaymentMethod extends React.Component<any, any> {
                   this.setState({expiry_year_border_color: "grey"})
                   this.setState({expiry_year: e.target.value});
 
+                  //this.props.paymentMethodExpiryYearValidated();
+
+
                   
                   /*if(this.state.payment_expiry_month.length > 0){
 
@@ -351,10 +368,13 @@ class PaymentMethod extends React.Component<any, any> {
            if(/^[0-9]{3}/.test(e.target.value)){
 
               //console.log("ok year");
-              this.setState({cvc_border_color: "grey"})
+              this.setState({security_code_border_color: "grey"})
               this.setState({security_code: e.target.value});
               this.props.setPaymentSecurityCode(e);
               this.props.paymentMethodValidated();
+
+              //this.props.paymentMethodSecurityCodeValidated();
+
 
               /*if(this.state.payment_expiry_month.length > 0){
 
@@ -369,7 +389,7 @@ class PaymentMethod extends React.Component<any, any> {
           }else{
 
               this.setState({security_code: e.target.value});
-              this.setState({cvc_border_color: "red"});
+              this.setState({security_code_border_color: "red"});
 
           }
       //}

@@ -8,11 +8,13 @@ defmodule Sconely.SessionResolver do
     #{:ok, Blog.Repo.all(Post)}
 
     order_session_changeset = OrderSession.changeset(%OrderSession{}, %{status: args[:screen]})
+    #order_session_changeset = OrderSession.changeset(%OrderSession{}, %{status: args[:screen], %{status: args[:pool_name]})
+
     case Repo.insert(order_session_changeset) do
 
       {:ok, response} -> IO.inspect(response)
 
-     #       Sconely.OrderStartedEmail.order_started_email(%{}) |> SconeHomeElixir.Mailer.deliver_later
+     #       Sconely.OrderStartedEmail.order_started_email(%{args: args}) |> SconeHomeElixir.Mailer.deliver_later
 
            {:ok, %{session_id: response.session_id}}
 

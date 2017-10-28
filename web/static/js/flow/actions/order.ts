@@ -86,7 +86,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             //if menu items alrady exist then dont get from the database again
 
             dispatch(getMenuItems());
-            dispatch(createOrderSession(order_type));
+            dispatch(createOrderSession(order_type, ""));
             dispatch({type: CREATE_ORDER, order_type: order_type});
             dispatch(push("/order/menu"));
 
@@ -114,7 +114,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             //dispatch(push("/order/menu"));
 
             dispatch(getMenuItems());
-            dispatch(createOrderSession(order_type));
+            dispatch(createOrderSession(order_type, pool_url_name));
             //dispatch(setOrderStatus("processing"));
 
             axios.post('/api/graphql',
