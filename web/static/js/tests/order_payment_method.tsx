@@ -31,8 +31,16 @@ describe("Order Payment", () => {
 	//placehlders
 	//incorrent inputs
 	//componentwillreceiveprps/props for incorrect cvc
+	//test disabled state
 	//test that functions are triggerd with spy js
+	//chai disabled
 
+	/*it('Should call the onClick prop when click is simulated', () => {
+	    const mockOnClick = sinon.spy();
+	    const wrapper = shallow(<ButtonComponent onClick={mockOnClick}/>);
+	    wrapper.find('button').simulate('click');
+	    expect(mockOnClick.calledOnce).to.be.true;
+  	});*/
 
 	const container = shallow(<PaymentMethod setUserEmail={() => {}}/>);
 	let wrapper = shallow(<PaymentMethod setUserEmail={() => {}}/>);
