@@ -62,7 +62,7 @@ defmodule Sconely.LoginController do
              #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: "12345"}, :access)
 
              #IO.inspect(Guardian.encode_and_sign(user, :access))
-             token = Phoenix.Token.sign(SconeHomeElixir.Endpoint, "user salt", user.user_id)
+             token = Phoenix.Token.sign(SconeHomeElixir.Endpoint, "sconely user", user.user_id)
 
              IO.inspect(token)
 
