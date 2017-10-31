@@ -385,14 +385,14 @@ export class PublicPress extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-7" style={{paddingLeft: "30px", fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>
+                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
                           <div className="col-md-3">
                               <b>Just Forking</b>
                           </div>
                           <div className="col-md-8">
-                              <a href="http://www.justforkingaround.net/julia-friedman-sconely">#021: Julia Friedman of Sconely: Making Scones Social and Delicious</a>
+                              <a href="http://www.justforkingaround.net/julia-friedman-sconely" style={{fontSize: 18, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Julia Friedman of Sconely: Making Scones Social and Delicious</a>
                           </div>
                           <br/>
                           <br/>
