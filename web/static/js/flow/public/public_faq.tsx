@@ -371,7 +371,7 @@ export class PublicFaq extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-7" style={{fontSize: 18, paddingLeft: "30px"}}>
                             <br/>
                             <br/>
                             <br/>

@@ -198,7 +198,7 @@ export default class Menu extends React.Component<any, any> {
                         </div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/about_us" style={{color: "grey", textDecoration: "none"}}>ABOUT US</Link>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/faq" style={{color: "grey", textDecoration: "none"}}>FAQs</Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/faq" style={{color: "grey", textDecoration: "none"}}>FAQ</Link>
                         <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/team" style={{color: "grey", textDecoration: "none"}}>TEAM</Link>
                         <br/>
