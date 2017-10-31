@@ -45,7 +45,7 @@ export default class Menu extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-7" style={{fontSize: 18, paddingLeft: "30px"}}>
                             <br/>
                             <br/>
                             Sconely updates old world scones, with sweet and savory scones that our fans have called “life changing,” “beyond delicious” and “epic.” Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
