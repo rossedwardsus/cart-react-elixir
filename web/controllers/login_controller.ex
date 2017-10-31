@@ -22,7 +22,7 @@ defmodule Sconely.LoginController do
   def create(conn, args) do
 
     #IO.inspect(pass)
-    IO.inspect(args)
+    IO.inspect(args["email"])
 
     user_id = UUID.uuid1()
     token = SecureRandom.uuid
@@ -30,12 +30,12 @@ defmodule Sconely.LoginController do
     #hash = hashpwsalt("password")
     #checkpw(given_pass, user.password_hash)
 
-    registration = Repo.get_by!(Registration, email: "gmail")
+    registration = Repo.get_by!(Registration, %{email: args["email"]})
     IO.inspect(registration)
 
-    checked = checkpw(args["password"], registration.password_hash)
+    #checked = checkpw(args["password"], registration.password_hash)
 
-    IO.inspect(checked)
+    #IO.inspect(checked)
 
     session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token})
 
@@ -43,10 +43,10 @@ defmodule Sconely.LoginController do
     #check passwords equal
     #checked = checkpw(args["data"]["password"], user.password_hash)
 
-    if checked do
+    if "checked" do
         if session_changeset.valid? do
 
-             user = Repo.get_by!(Userprofile, user_id: registration.user_id)
+             #user = Repo.get_by!(Userprofile, user_id: registration.user_id)
     
              #Repo.insert(session_changeset)
         

@@ -48,6 +48,8 @@ defmodule Sconely.Plugs.RedirectsPlug do
                     conn |> halt
         "social" -> IO.puts("social")
         "user" -> IO.puts("social")
+        "login" -> conn |> halt
+        "register" -> conn |> halt
         _ -> IO.puts("anything else")
               IO.inspect(Enum.at(conn.path_info, 0))
              url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)

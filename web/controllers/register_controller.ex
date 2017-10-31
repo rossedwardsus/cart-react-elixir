@@ -21,11 +21,13 @@ defmodule Sconely.RegisterController do
 
   def create(conn, args) do
 
-    IO.puts(args["password"])
+    IO.inspect(args)
+
 
     #user_id = UUID.uuid1()
-    user_id = SecureRandom.uuid
+    #user_id = SecureRandom.uuid
     token_id = SecureRandom.uuid
+
     password_hash = hashpwsalt(args["password"])
 
     IO.inspect(password_hash)
@@ -37,11 +39,11 @@ defmodule Sconely.RegisterController do
     #urlsafe_base64 string:
     #SecureRandom.urlsafe_base64 #=> "WAut546EWdXM3O_9sJGvmQ"
 
-    registration_changeset = Registration.changeset(%Registration{}, %{user_id: user_id, email: args["email"], password_hash: password_hash})
+    registration_changeset = Registration.changeset(%Registration{}, %{email: args["email"], password_hash: password_hash})
 
-    #user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], about_me: ""})
+    #user_profile_changeset = UserProfile.changeset(%UserProfile{}, %{user_id: user_id, first_name: args["first_name"], last_name: args["last_name"], email: args["email"], mobile: args["mobile"], about_me: ""})
 
-    session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
+    #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token_id})
 
 
     #insert into users/registration return user_id
@@ -95,19 +97,19 @@ defmodule Sconely.RegisterController do
 
     if registration_changeset.valid? do
 
-        user_count = Repo.one!(from u in Registration, where: u.email==^args["email"], select: count("*"))
+        #user_count = Repo.one!(from u in Registration, where: u.email==^args["email"], select: count("*"))
 
-        IO.inspect(user_count)
+        #IO.inspect(user_count)
 
         #if email doesnt already exist
-        if user_count == 0 do
+        #if user_count == 0 do
 
             
             #if user_profile_changeset.valid? do
 
-                if session_changeset.valid? do
+                #if session_changeset.valid? do
               
-                         Repo.insert(registration_changeset)
+                         #Repo.insert(registration_changeset)
                          #Repo.insert(user_profile_changeset)
                          #Repo.insert(session_changeset)
                     
@@ -117,125 +119,48 @@ defmodule Sconely.RegisterController do
                          #admin
                          #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
-                         json conn, %{token: "12345678"}
+               #          json conn, %{token: "12345678"}
 
-                end
+
+                #end
 
             #else 
 
                 #IO.inspect(user_profile_changeset.errors)
 
-                json conn, %{error: "email already exists"}
+            #    json conn, %{error: "email already exists"}
 
             #end
 
-        else
+        #else
 
-          json conn, %{error: "email already exists"}
+          
     end
 
+    #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: 12345}, :token)
 
+    user = Repo.one!(from u in Registration, where: u.email==^args["email"])
+    IO.inspect(user)
 
-    #transaction = Repo.transaction fn ->
+    #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: "12345"}, :access)
 
-    #    case Repo.insert(registration_changeset) do
-     #     {:ok, registration_response} -> IO.inspect(registration_response)
-        #    conn
-        #      |> put_flash(:info, "User created successfully.")
-        #      |> redirect(to: user_path(conn, :index))
+    IO.inspect(Guardian.encode_and_sign(user, :access))
+          
+          auth_conn = Guardian.Plug.api_sign_in(conn, user)
+          jwt = Guardian.Plug.current_token(auth_conn)
+          {:ok, claims} = Guardian.Plug.claims(auth_conn)
+          
+          auth_conn
+          |> put_resp_header("authorization", "Bearer #{jwt}")
+          |> json(%{access_token: jwt}) # Return token to the client
 
-        #    json conn, %{token: "12345678"}
+    #conn
+    #    |> put_resp_header("authorization", "Bearer #{jwt}")
+    #    |> json(%{access_token: jwt}) # Return token to the client
 
-                    
-             
-        #        case Repo.insert(user_profile_changeset) do
-        #          {:ok, user_profile_response} -> IO.inspect(user_profile_response)
-                #    conn
-                #      |> put_flash(:info, "User created successfully.")
-                #      |> redirect(to: user_path(conn, :index))
+    #json conn, %{error: "email already exists"}
+      
 
-                        
-                     
-                       
-                        #with {:ok, user} <- Sconely.Session.authenticate(params, Repo),
-                        #with {:ok, jwt, _ } <- Guardian.encode_and_sign(%{id: 1}) do
-                        #    #IO.puts(Guardian.encode_and_sign(%{id: 1}))
-                        #    IO.puts("hello")
-                        #    {:ok, %{user: jwt}}
-                        #end
-
-                        #json conn, %{token: "12345678"}
-
-
-                        #{:ok, %{user_id: user_id}}
-
-                        #session_changeset = Session.changeset(%Session{}, %{user_id: "e", token: ""})
-
-                        #case Repo.insert(session_changeset) do
-                        #  {:ok, _registration} -> IO.inspect("ok")
-         
-
-                        #      |> put_flash(:info, "User created successfully.")
-                        #      |> redirect(to: user_path(conn, :index))
-                        #  {:error, changeset} -> 
-                            #Ecto.Changeset.traverse_errors(changeset, fn
-                            #  IO.inspect(Map.fetch(changeset, :errors))
-                              #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
-                              #{msg, opts} -> IO.inspect(msg)
-                              #msg -> msg
-
-                                #{:ok, %{token: "1234"}}
-                                #phoenix.token or secure random
-                                #json conn, %{token: "1234"}
-
-                            #end)
-                        #    render(conn, "new.html", changeset: changeset)
-                        #end
-
-
-                  #{:error, changeset} ->  #Repo.rollback(registration_changeset)
-                  #   rollback registraction insert
-                                          json conn, %{status: "error"}
-                                          
-
-
-                    #Ecto.Changeset.traverse_errors(changeset, fn
-                     # IO.inspect(Map.fetch(changeset, :errors))
-                      #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
-                      #{msg, opts} -> IO.inspect(msg)
-                      #msg -> msg
-                    #end)
-                #    render(conn, "new.html", changeset: changeset)
-                
-                end
-
-     #    {:error, registration_changeset} ->  IO.inspect("error")
-                                              #{:error, registration_changeset.errors}
-                                              #Repo.rollback(registration_changeset)
-
-            #Ecto.Changeset.traverse_errors(changeset, fn
-            #  IO.inspect(Map.fetch(changeset, :errors))
-              #{msg, opts} -> String.replace(msg, "%{count}", to_string(opts[:count]))
-              #{msg, opts} -> IO.inspect(msg)
-              #msg -> msg
-            #end)
-        #    render(conn, "new.html", changeset: changeset)
-    #  end
-    #end
-    #IO.inspect(transaction)
-    #case transaction do
-    #  {:ok, _} ->  #working
-                   #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
-
-                    #admin
-                    #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
-
-     #               json conn, %{status: "ok", token: "1234567890"}
-
-      #{:error, _} -> IO.inspect("transaction error")
-                      #Repo.rollback(registration_changeset.errors)
-      #               json conn, %{status: "error"}
-    #end
   end
 
 end

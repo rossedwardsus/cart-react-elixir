@@ -256,6 +256,18 @@ class Register extends React.Component<any, any> {
 
   }
 
+  setMobile(e: any){
+
+      //let dot_patt = /[.]/;
+      //let dot_res = dot_patt.test(e.target.value);
+
+      //let ampersand_patt = /[@]/;
+      //let ampersand_res = ampersand_patt.test(e.target.value);
+
+      this.setState({mobile: e.target.value});
+
+  }
+
 
   setPassword(e: any){
 
@@ -291,12 +303,12 @@ class Register extends React.Component<any, any> {
 
     //if(this.state.first_name_validated === false){
 
-          axios.post('/api/register', {first_name: that.state.first_name, last_name: that.state.last_name, email: that.state.email, mobile: this.state.mobile, password: this.state.password})
+          axios.post('/api/register', {first_name: that.state.first_name, last_name: that.state.last_name, mobile: this.state.mobile, email: that.state.email,  password: this.state.password})
           .then( response => {
 
-                console.log("graphql respons" + JSON.stringify(response));
+                console.log("registration response access token " + JSON.stringify(response.data.access_token));
 
-                //localStorage.getItem('token')}
+                //localStorage.setItem('access_token', response.access_token)
 
                 //that.props.history.push('/user');
                 //context.router
@@ -371,32 +383,37 @@ class Register extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-6">
                                    <br/>
-                                    <input type="text" className="form-control" id="email" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} style={{borderColor: this.state.first_border_color}}/>
+                                    <input type="text" className="form-control" placeholder="First Name" onChange={(e: any) => this.setFirstName(e)} value={this.state.first_name} style={{borderColor: this.state.first_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Last Name" onChange={(e: any) => this.setLastName(e)} value={this.state.last_name} style={{borderColor: this.state.last_border_color}}/>
+                                    <input type="text" className="form-control" placeholder="Last Name" onChange={(e: any) => this.setLastName(e)} value={this.state.last_name} style={{borderColor: this.state.last_border_color}}/>
                                   </div>
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Email" onChange={this.setEmail} value={this.state.email} style={{borderColor: this.state.email_border_color}}/>
+                                    <input type="text" className="form-control" placeholder="Email" onChange={this.setEmail} value={this.state.email} style={{borderColor: this.state.email_border_color}}/>
                                   </div>
                                 </div>
                                  <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="email" placeholder="Email Again" onChange={(e: any) => this.setEmailAgain(e)} value={this.state.email_again} style={{borderColor: this.state.email_again_border_color}}/>
+                                    <input type="text" className="form-control" placeholder="Email Again" onChange={(e: any) => this.setEmailAgain(e)} value={this.state.email_again} style={{borderColor: this.state.email_again_border_color}}/>
                                   </div>
                                 </div>
-                                <div className="form-group">
+                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password" onChange={(e: any) => this.setPassword(e)} onFocus={() => this.onPasswordFocus()} style={{borderColor: this.state.password_border_color}}/>
+                                    <input type="text" className="form-control" placeholder="Mobile" onChange={(e: any) => this.setMobile(e)} onFocus={() => this.onPasswordAgainFocus()} style={{borderColor: this.state.password_again_border_color}} value={this.state.mobile}/>
                                  </div>
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" id="exampleInputName2" placeholder="Password Again" onChange={(e: any) => this.setPasswordAgain(e)} onFocus={() => this.onPasswordAgainFocus()} style={{borderColor: this.state.password_again_border_color}}/>
+                                    <input type="text" className="form-control" placeholder="Password" onChange={(e: any) => this.setPassword(e)} onFocus={() => this.onPasswordFocus()} style={{borderColor: this.state.password_border_color}}/>
+                                 </div>
+                                </div>
+                                <div className="form-group">
+                                  <div className="col-md-6">
+                                    <input type="text" className="form-control" placeholder="Password Again" onChange={(e: any) => this.setPasswordAgain(e)} onFocus={() => this.onPasswordAgainFocus()} style={{borderColor: this.state.password_again_border_color}}/>
                                  </div>
                                 </div>
                                 <div className="form-group">
