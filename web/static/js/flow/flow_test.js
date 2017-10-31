@@ -27,6 +27,7 @@ import PublicFaq from './public/public_faq.tsx';
 import PublicStory from './public/public_story.tsx';
 import PublicTeam from './public/public_team.tsx';
 import PublicPrivacyPolicy from './public/public_privacy_policy.tsx';
+import PublicPress from './public/public_press.tsx';
 
 
 import YoursRedirect from './yours_redirect.tsx';
@@ -194,6 +195,7 @@ const Root = () => (
         <Route path="/public/team" component={PublicTeam} />
         <Route path="/public/faq" component={PublicFaq} />
         <Route path="/public/story" component={PublicStory} />
+        <Route path="/public/press" component={PublicPress} />
         <Route path="/public/privacy_policy" component={PublicPrivacyPolicy} />
         <Route component={checkLogin}>
           <Route path="/order/menu" component={OrderMenu} />

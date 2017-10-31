@@ -221,10 +221,7 @@ class Login extends React.Component<any, any> {
 
       //this.props.loginUser("1", "2");
 
-      /*axios.post('/api/login', {headers: { Authorization: localStorage.getItem('sconely_token')}, body: {email: this.state.email, mobile: this.state.mobile, password: "this.state.password"}}, {withCredentials: true}).then((response: any) => {*/
-
-  
-      axios.post('/api/login', {email: this.state.email, password: this.state.password})
+       axios.post('/api/login', {email: this.state.email, password: this.state.password}, {headers: { Authorization: "Bearer SFMyNTY.g3QAAAACZAAEZGF0YW0AAAAkMDc3MjIwYWItMWYxMi00YTZhLThiZmItMzViMGExOTIzYTMxZAAGc2lnbmVkbgYATXTzc18B.UgZ7fwlpJiemvF3NPQE5xGBZRLU76QnDqu_sLm0odlk"}})
       .then((response: any) => {
 
             console.log("login response " + JSON.stringify(response.data.token));
@@ -235,7 +232,7 @@ class Login extends React.Component<any, any> {
             //localStorage.setItem("sconely_token", response.data.first_name)
             //localStorage.setItem("sconely_token", response.data.last_name)
 
-            that.props.history.push('/user');
+            //that.props.history.push('/user');
             //context.router
 
             //this.context.router.push('/order/complete');

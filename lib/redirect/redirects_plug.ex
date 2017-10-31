@@ -51,7 +51,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "login" -> conn |> halt
         "register" -> conn |> halt
         _ -> IO.puts("anything else")
-              IO.inspect(Enum.at(conn.path_info, 0))
+             # IO.inspect(Enum.at(conn.path_info, 0))
              url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)
                    IO.puts(url)
         #          #url = url <> "/"

@@ -37,14 +37,14 @@ defmodule Sconely.LoginController do
 
     #IO.inspect(checked)
 
-    session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token})
+    #session_changeset = Session.changeset(%Session{}, %{user_id: user_id, token: token})
 
     #if email exists
     #check passwords equal
     #checked = checkpw(args["data"]["password"], user.password_hash)
 
     if "checked" do
-        if session_changeset.valid? do
+        #if session_changeset.valid? do
 
              #user = Repo.get_by!(Userprofile, user_id: registration.user_id)
     
@@ -61,21 +61,27 @@ defmodule Sconely.LoginController do
 
              #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: "12345"}, :access)
 
-             IO.inspect(Guardian.encode_and_sign(user, :access))
+             #IO.inspect(Guardian.encode_and_sign(user, :access))
+             token = Phoenix.Token.sign(SconeHomeElixir.Endpoint, "user salt", user.user_id)
+
+             IO.inspect(token)
+
+             response = Phoenix.Token.verify(SconeHomeElixir.Endpoint, "user salt", token, max_age: 86400)
+
+             IO.inspect(response)
                     
-             auth_conn = Guardian.Plug.api_sign_in(conn, user)
-             jwt = Guardian.Plug.current_token(auth_conn)
-             {:ok, claims} = Guardian.Plug.claims(auth_conn)
+             #auth_conn = Guardian.Plug.api_sign_in(conn, user)
+             #jwt = Guardian.Plug.current_token(auth_conn)
+             #{:ok, claims} = Guardian.Plug.claims(auth_conn)
               
-             auth_conn
-             |> put_resp_header("authorization", "Bearer #{jwt}")
-             |> json(%{access_token: jwt}) # Return token to the client
+             #auth_conn
+             #|> put_resp_header("authorization", "Bearer #{jwt}")
+             #|> json(%{access_token: jwt}) # Return token to the client
 
    
+             json conn |> put_status(:ok), %{token: "token", first_name: "user", last_name: ""}
 
-             json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
-
-        end
+        #end
 
     else
 

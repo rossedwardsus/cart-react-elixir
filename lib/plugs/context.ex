@@ -10,14 +10,18 @@ defmodule SconeHomeElixir.Web.Context do
   def call(conn, _) do
     #case Guardian.Plug.current_resource(conn) do
     #  nil -> 
-        IO.inspect(get_req_header(conn, "authorization") |> List.first)
-        IO.inspect(conn)
+        IO.puts("authorization")
+        #IO.inspect(get_req_header(conn, "authorization") |> List.first)
+        #IO.inspect(conn)
 
         #IO.inspect(get_req_header(conn, "authorization"))
 
         #if get_req_header(conn, "authorization")
 
-        #with ["bearer " <> auth_token] <- get_req_header(conn, "authorization") do
+        with ["Bearer " <> auth_token] <- get_req_header(conn, "authorization") do
+
+            IO.puts("authorization1")
+            IO.puts(auth_token)
 
             #if no bearer toek then create one and create a session and pass the toekn to the resolver
 
@@ -60,7 +64,7 @@ defmodule SconeHomeElixir.Web.Context do
             #else
             #    put_private(conn, :absinthe, %{context: %{user_id: "new_user"}})
             #end
-        #end
+        end
 
             put_private(conn, :absinthe, %{context: %{user_id: "no user_id"}})
             
