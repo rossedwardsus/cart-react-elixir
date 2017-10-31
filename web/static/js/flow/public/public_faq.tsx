@@ -376,10 +376,7 @@ export class PublicFaq extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <b>What is Sconely?</b>
-                            <br/>
-                            <br/>
-                            Sconely is a personalized website and delivery service specializing in gourmet sweet and savory scones. Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
+                            Sconely is dedicated to creating miraculous scones, scones that our fans have called “life changing,” “beyond delicious” and “epic.” Through a menu that updates traditional scones and a personalized ordering system, Sconely brings scones into the future.
                             <br/>
                             <br/>
                             <b>What’s on Sconely’s menu?</b>

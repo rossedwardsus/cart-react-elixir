@@ -56,6 +56,23 @@ defmodule Sconely.LoginController do
              #admin
              #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
+             user = Repo.one!(from u in Registration, where: u.email==^args["email"])
+             IO.inspect(user)
+
+             #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: "12345"}, :access)
+
+             IO.inspect(Guardian.encode_and_sign(user, :access))
+                    
+             auth_conn = Guardian.Plug.api_sign_in(conn, user)
+             jwt = Guardian.Plug.current_token(auth_conn)
+             {:ok, claims} = Guardian.Plug.claims(auth_conn)
+              
+             auth_conn
+             |> put_resp_header("authorization", "Bearer #{jwt}")
+             |> json(%{access_token: jwt}) # Return token to the client
+
+   
+
              json conn |> put_status(:ok), %{token: token, first_name: "user", last_name: ""}
 
         end
