@@ -394,10 +394,33 @@ export class PublicPress extends React.Component<any, any> {
                           <div className="col-md-8">
                               <a href="http://www.justforkingaround.net/julia-friedman-sconely">#021: Julia Friedman of Sconely: Making Scones Social and Delicious</a>
                           </div>
-                        </div>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          </div>
                     </div>
-                    <br/>
-                    <br/>
+
                     <PublicBottomNavbar/>
                     <PublicPrivacyTermsNavbar/>
               </div>
