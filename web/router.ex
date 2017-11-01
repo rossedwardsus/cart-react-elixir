@@ -79,10 +79,11 @@ defmodule SconeHomeElixir.Router do
     post "/upload", Sconely.UserProfilePhotoController, :create
 
     #post "/register", Sconely.RegisterController, :create
-    post "/login", Sconely.LoginController, :create
+    #post "/login", Sconely.LoginController, :create
 
-    get "/guest/list", Sconely.GuestListDownloadController, :index   
+    #get "/guest/list", Sconely.GuestListDownloadController, :index   
 
+    #move to /api1 aka api - no need for graphql call
     get "/menu_items", Sconely.MenuItemsController, :index   
 
     #get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
@@ -120,6 +121,7 @@ defmodule SconeHomeElixir.Router do
     get "/", HomeController, :index
     get "/*anything", HomeController, :index
 
+    #this doesnt go anywhere - remove
     get "/:signature_event_name", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
