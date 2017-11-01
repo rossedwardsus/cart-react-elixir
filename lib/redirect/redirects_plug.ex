@@ -52,6 +52,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "register" -> ""
         _ -> IO.puts("anything else")
              # IO.inspect(Enum.at(conn.path_info, 0))
+             # check if pool - Enum.at(conn.path_info, 0) - if not redirect to homepage
              url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)
                    IO.puts(url)
         #          #url = url <> "/"
