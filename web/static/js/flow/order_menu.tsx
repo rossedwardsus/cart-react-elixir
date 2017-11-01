@@ -612,7 +612,7 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="col-md-4">
                             <b>Address</b> 
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8" style={{fontSize: 13}}>
                             {this.props.User.orders[0].pool_address_street1}<br/>{this.props.User.orders[0].pool_address_city},&nbsp;{this.props.User.orders[0].pool_address_state}
                         </div>
                       </form>
@@ -680,6 +680,11 @@ class OrderMenu extends React.Component<any, any> {
                       </form>
                       <form className="form-horizontal">
                           <div className="col-md-12">
+                              <br/>
+                              <br/>
+                              Choose between 1-11 scones
+                              <br/>
+                              $6 each
                               <br/>
                               <b>Free Delivery</b>
                           </div>
