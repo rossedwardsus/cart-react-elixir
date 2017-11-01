@@ -642,16 +642,15 @@ class OrderMenu extends React.Component<any, any> {
                         </div>
                       </form>
                       <br/>
+                      <br/>
                       <form className="form-horizontal">
-                            <div className="col-md-4">
-                                <b>Time</b> 
-                            </div>
-                            <div className="col-md-8" style={{fontSize: 13}}>
-                                {this.props.User.orders[0].pool_delivery_time_range}
-                            </div>
+                        <div className="col-md-4">
+                            <b>Time</b> 
+                        </div>
+                        <div className="col-md-8" style={{fontSize: 13}}>
+                            {this.props.User.orders[0].pool_delivery_time_range}
+                        </div>
                       </form>
-                      <br/>
-                      <br/>
                       <br/>
                       <br/>
                       <form className="form-horizontal">
