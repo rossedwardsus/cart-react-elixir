@@ -108,10 +108,23 @@ defmodule Sconely.RegisterController do
             #if user_profile_changeset.valid? do
 
                 #if session_changeset.valid? do
-              
-                         #Repo.insert(registration_changeset)
-                         #Repo.insert(user_profile_changeset)
+
+                         #setup stripe customer
+                         #use email address
+                         #add customer id to profile
+
+                         #case Stripe.Customer.create(%{:email => "email"}) do
+
+                         
+                         #case Repo.insert(registration_changeset) do
+
+                          #  {:ok, user} -> IO.puts("")
+
+                         #end
+
+                         #Repo.insert(user_changeset)
                          #Repo.insert(session_changeset)
+
                     
                          #working
                          #Sconely.RegistrationEmail.welcome_email(%{:first_name => args[:first_name], :last_name => args[:last_name], :email => args[:email]}) |> SconeHomeElixir.Mailer.deliver_later
@@ -120,6 +133,10 @@ defmodule Sconely.RegisterController do
                          #Sconely.RegistrationAdminEmail.welcome_email_admin(%{"delivery_address_street" => args[:delivery_address_street]}) |> SconeHomeElixir.Mailer.deliver_now
 
                #          json conn, %{token: "12345678"}
+
+                        token = Phoenix.Token.sign(SconeHomeElixir.Endpoint, "sconely user", "user.user_id")
+
+                        json conn, %{token: token}
 
 
                 #end
@@ -139,20 +156,20 @@ defmodule Sconely.RegisterController do
 
     #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: 12345}, :token)
 
-    user = Repo.one!(from u in Registration, where: u.email==^args["email"])
-    IO.inspect(user)
+    #user = Repo.one!(from u in Registration, where: u.email==^args["email"])
+    #IO.inspect(user)
 
     #{ :ok, jwt, _ } = Guardian.encode_and_sign(%{user_id: "12345"}, :access)
 
-    IO.inspect(Guardian.encode_and_sign(user, :access))
+    #IO.inspect(Guardian.encode_and_sign(user, :access))
           
-          auth_conn = Guardian.Plug.api_sign_in(conn, user)
-          jwt = Guardian.Plug.current_token(auth_conn)
-          {:ok, claims} = Guardian.Plug.claims(auth_conn)
+    #      auth_conn = Guardian.Plug.api_sign_in(conn, user)
+    #      jwt = Guardian.Plug.current_token(auth_conn)
+    #      {:ok, claims} = Guardian.Plug.claims(auth_conn)
           
-          auth_conn
-          |> put_resp_header("authorization", "Bearer #{jwt}")
-          |> json(%{access_token: jwt}) # Return token to the client
+    #      auth_conn
+    #      |> put_resp_header("authorization", "Bearer #{jwt}")
+    #      |> json(%{access_token: jwt}) # Return token to the client
 
     #conn
     #    |> put_resp_header("authorization", "Bearer #{jwt}")

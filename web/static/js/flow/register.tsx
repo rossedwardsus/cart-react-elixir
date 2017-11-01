@@ -66,14 +66,17 @@ class Register extends React.Component<any, any> {
         last_border_color: "grey",
         email_border_color: "grey",
         email_again_border_color: "grey",
+        mobile_border_color: "grey",
         password_border_color: "grey",
         password_again_border_color: "grey",
         first_name_validated: false,
         last_name_validated: false,
         email_validated: false,
         email_again_validated: false,
+        mobile_validated: false,
         
-        button_class: "btn btn-default"
+        button_class: "btn btn-default disabled",
+        button_disabled: ""        
 
     };
 
@@ -139,6 +142,8 @@ class Register extends React.Component<any, any> {
 
   setFirstName(e: any){
 
+      //if valid set first_name_validated = true
+
       
       //if(/[@-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/.test(e.target.value)){
       //let symbol_test = /[@-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/.test(e.target.value);
@@ -157,12 +162,14 @@ class Register extends React.Component<any, any> {
       //no symbols
       //no numbers
 
-      if(e.target.value.length > 0){
+      //if(e.target.value.length > 0){
 
-          //if(symbol_res == false){
+          if(!symbol_res){
           
             this.setState({first_name: e.target.value})
-            //this.setState({first_validated: true})
+            this.setState({first_name_validated: true})
+
+            console.log("first name validated");
             
             //this.checkButton();
 
@@ -173,9 +180,9 @@ class Register extends React.Component<any, any> {
           //  this.setState({first_name: e.target.value})
           //  this.setState({"first_border_color": "red"});
 
-          //}
+          }
       
-      }
+      //}
 
       //this.props.registerSetFirstName(e);
 
@@ -183,55 +190,143 @@ class Register extends React.Component<any, any> {
 
   setLastName(e: any){
 
+      let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_res = symbol_patt.test(e.target.value);
+
+      //let number_res = (/[0-9]/.test(e.target.value));
+
+      //console.log(/[0-9]/.test(e.target.value));
+
+      //larger then 0
+      //no symbols
+      //no numbers
+
       //if(e.target.value.length > 0){
-        
-        this.setState({last_name: e.target.value});
-        this.setState({last_name_validated: true});
+
+          if(!symbol_res){
+          
+            this.setState({last_name: e.target.value});
+            this.setState({last_name_validated: true});
             
-        this.checkButton();
+            console.log("last name validated");
 
+            //this.checkButton();
 
+            //this.setState({"first_border_color": "grey"});
+            
+          //}else{
+
+          //  this.setState({first_name: e.target.value})
+          //  this.setState({"first_border_color": "red"});
+
+          }
+      
       //}
-
-     // this.props.registerSetLastName(e);
 
   }
 
   setEmail = (e: any) => {
 
+      //valid email address obviously
+
+
+
       //console.log(/[\S\s]{1}@[\S\s]{1}.[\S\s]{2}/.test(e.target.value));
 
-      let email_pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+           //this.setState({contact_email: e.target.value})
+      //this.props.setUserEmail(e);
+      this.setState({email: e.target.value})
 
-      let email_result = email_pattern.test(e.target.value);
+      //let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      //let symbol_res = symbol_patt.test(e.target.value);
 
+      let number_res = (/[0-9]/.test(e.target.value));
 
+      //let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      //return re.test(email);
 
-      //not blank
-      //has to include @ and .
+      //console.log(/[0-9]/.test(e.target.value));
+
+      //larger then 0
       //no symbols
-      //cant already exist
+      //no numbers
 
-      let dot_patt = /[.]/;
-      let dot_res = dot_patt.test(e.target.value);
+      if(e.target.value.length > 0){
 
-      let ampersand_patt = /[@]/;
-      let ampersand_res = ampersand_patt.test(e.target.value);
+          //can only have _ .
+          //after @ at least one characted . then domain
 
-      //if(e.target.value.length > 0 && email_result === true){
+          //if(symbol_res == false){
+            let address = e.target.value.split("@")[0];
+            let symbol_patt = /[-!@$%^&*()+|~=`{}\[\]:";'<>?,\/]/;
+            let symbol_result = symbol_patt.test(address);
 
-          //less then 20, doesnt include @ and . _
-      //    console.log(dot_res + "" + ampersand_res);
+            if(!symbol_result){
 
-          this.setState({email: e.target.value});
-      //    this.setState({email_border_color: "grey"});
-      //    this.setState({email_validated: true});
-          this.checkButton();
+                //check if @ has been entered before texting
 
-      //}
+                if(e.target.value.indexOf("@") > 0){
 
-      //this.props.registerSetEmail(e);
+                    if(e.target.value.split("@")[1].indexOf(".") > 0){
 
+                        if(e.target.value.split("@")[1].split(".")[0].length > 0){
+
+                            if(e.target.value.split("@")[1].split(".")[1].length > 1){
+
+                                //cant enter symbols????  or numbers
+                  
+                  
+                                //if email contains @ and at least one character and 2 character domain
+                                //validate contact and emails are same
+                            
+                                this.setState({"email_border_color": "grey"});
+                                //validate user email
+
+                                console.log("email validated");
+
+                                //this.props.userContactEmailValidated(e);
+                                //this.props.setUserDeliveryContactAddressEmail(e); 
+
+                                console.log("email ok");
+
+                            }else{
+
+                              this.setState({"email_border_color": "red"});
+
+                            }
+                        }else{
+
+                          this.setState({"email_border_color": "red"});
+
+                        }
+
+                    }else{
+
+                      this.setState({"email_border_color": "red"});
+
+                    }
+                }else{
+
+                  this.setState({"email_border_color": "red"});
+
+                }
+
+            }else{
+
+                this.setState({"email_border_color": "red"});
+
+            }
+
+          //}else{
+
+              //console.log("email ok")
+
+          //  this.setState({first_name: e.target.value})
+            //this.setState({"email_color": "red"});
+
+          //}
+      
+      }
 
   }
 
@@ -252,19 +347,70 @@ class Register extends React.Component<any, any> {
           //this.setState({email_border_color: "grey"});
           this.setState({email_again_validated: true});
 
+          console.log("email_again_validated");
+
       }
 
   }
 
   setMobile(e: any){
 
-      //let dot_patt = /[.]/;
-      //let dot_res = dot_patt.test(e.target.value);
+      let mobile_number = e.target.value.replace("-", "");
+      let number_result = (/[0-9]/.test(mobile_number));
 
-      //let ampersand_patt = /[@]/;
-      //let ampersand_res = ampersand_patt.test(e.target.value);
+      //if larger then 3 append "-"
 
-      this.setState({mobile: e.target.value});
+      
+      if(number_result){
+
+          if(!this.state.delete_key_pressed){
+            
+            this.setState({mobile_border_color: "grey"});
+            
+            if(e.target.value.length == 3){
+
+              this.setState({mobile: e.target.value + "-"});
+            
+            }else if(e.target.value.length == 7){
+
+              this.setState({mobile: e.target.value + "-"});
+
+            }else if(e.target.value.length == 12){
+
+                    console.log("user email/mobile validated");
+
+                    this.setState({mobile: e.target.value});
+                    
+                    //this.props.userNameEmailMobileValidated();
+                    //this.props.userContactMobileValidated();
+                    //this.props.setUserDeliveryContactAddressMobile(e); 
+
+            }else{
+
+              this.setState({mobile: e.target.value});
+              //this.props.contactMobileValidated();
+
+            }
+          }else{
+            console.log("user contact mobile");
+            this.setState({mobile: e.target.value});
+          }
+      
+      }else{
+
+          this.setState({mobile: e.target.value});
+          this.setState({mobile_border_color: "red"});
+          
+      }
+
+      //this.props.setUserMobile(e);
+
+      //if(this.props.User.orders[0].order_type != "pool"){
+
+      //    this.props.setUserDeliveryContactAddressMobile(e);
+
+      //}
+
 
   }
 
@@ -276,6 +422,12 @@ class Register extends React.Component<any, any> {
       //no numbers
 
       this.setState({password: e.target.value})
+
+      if(e.target.value.length > 5){
+
+          this.setState({password_validated: true});
+
+      }
 
   }
 
@@ -303,7 +455,7 @@ class Register extends React.Component<any, any> {
 
     //if(this.state.first_name_validated === false){
 
-          axios.post('/api/register', {first_name: that.state.first_name, last_name: that.state.last_name, mobile: this.state.mobile, email: that.state.email,  password: this.state.password})
+          axios.post('/api1/register', {first_name: that.state.first_name, last_name: that.state.last_name, mobile: this.state.mobile, email: that.state.email,  password: this.state.password})
           .then( response => {
 
                 console.log("registration response access token " + JSON.stringify(response.data.access_token));
@@ -408,12 +560,12 @@ class Register extends React.Component<any, any> {
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" placeholder="Password" onChange={(e: any) => this.setPassword(e)} onFocus={() => this.onPasswordFocus()} style={{borderColor: this.state.password_border_color}}/>
+                                    <input type="password" className="form-control" placeholder="Password" onChange={(e: any) => this.setPassword(e)} onFocus={() => this.onPasswordFocus()} style={{borderColor: this.state.password_border_color}}/>
                                  </div>
                                 </div>
                                 <div className="form-group">
                                   <div className="col-md-6">
-                                    <input type="text" className="form-control" placeholder="Password Again" onChange={(e: any) => this.setPasswordAgain(e)} onFocus={() => this.onPasswordAgainFocus()} style={{borderColor: this.state.password_again_border_color}}/>
+                                    <input type="password" className="form-control" placeholder="Password Again" onChange={(e: any) => this.setPasswordAgain(e)} onFocus={() => this.onPasswordAgainFocus()} style={{borderColor: this.state.password_again_border_color}}/>
                                  </div>
                                 </div>
                                 <div className="form-group">

@@ -50,37 +50,36 @@ defmodule SconeHomeElixir.Router do
   #  post "/", LoginController, :create
   #end
 
-  #scope "/api1" do
+  scope "/api1" do
     #pipe_through :api
+
+    post "/login", Sconely.LoginController, :create
+    post "/register", Sconely.RegisterController, :create
+    
+    #get "/menu_items", Sconely.MenuItemsController, :index   
 
     #get "/upload", Sconely.UserProfilePhotoController, :create
     #post "/upload", Sconely.UserProfilePhotoController, :create
 
-    #post "/register", Sconely.RegisterController, :create
-    #post "/login", Sconely.LoginController, :create
+    get "/guest/list", Sconely.GuestListDownloadController, :index   
 
-    #get "/menu_items", Sconely.MenuItemsController, :index   
-  #end
+
+  end
 
 
 
   
 
-
+  #/api/graphql
   scope "/api"  do
     #pipe_through :api
     pipe_through :graphql
 
-  #  get "/", Api1Controller, :index
-    #post "/", LoginController, :create
-
     get "/upload", Sconely.UserProfilePhotoController, :create
     post "/upload", Sconely.UserProfilePhotoController, :create
 
-    post "/register", Sconely.RegisterController, :create
+    #post "/register", Sconely.RegisterController, :create
     post "/login", Sconely.LoginController, :create
-
-    get "/menu_items", Sconely.MenuItemsController, :index   
 
     get "/guest/list", Sconely.GuestListDownloadController, :index   
 
@@ -121,7 +120,7 @@ defmodule SconeHomeElixir.Router do
 
     get "/:signature_event_name", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
-    get "/pool/:pool_name/:pool_date", HomeController, :index
+    get "/:pool_name/:pool_date", HomeController, :index
     
     #get "/activate", ActivateController, :index
 

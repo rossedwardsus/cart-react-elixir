@@ -385,13 +385,12 @@ export class PublicPress extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-9" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-9 nopadding" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
-                          <div className="col-md-3">
+                          <div className="col-md-7 nopadding" style={{borderRight: 0, paddingRight: 0}}>
                               <b>Just Forking Around</b>
-                          </div>
-                          <div className="col-md-9">
+                              <br/>
                               <a href="http://www.justforkingaround.net/julia-friedman-sconely" style={{fontSize: 15, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Julia Friedman of Sconely: Making Scones Social and Delicious</a>
                           </div>
                           <br/>
