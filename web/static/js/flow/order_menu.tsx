@@ -637,7 +637,7 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="col-md-4">
                             <b>Date</b> 
                         </div>
-                        <div className="col-md-8" style={{fontSize: 15}}>
+                        <div className="col-md-8" style={{fontSize: 13}}>
                             {this.props.User.orders[0].pool_delivery_date_formatted}
                         </div>
                       </form>
