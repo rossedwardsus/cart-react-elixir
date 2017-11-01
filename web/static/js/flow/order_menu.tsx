@@ -620,7 +620,7 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="col-md-4">
                             <b>Location</b> 
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8" style={{fontSize: 13}}>
                             {this.props.User.orders[0].pickup_location}
                         </div>
                       </form>
@@ -637,16 +637,17 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="col-md-4">
                             <b>Date</b> 
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8" style={{fontSize: 15}}>
                             {this.props.User.orders[0].pool_delivery_date_formatted}
                         </div>
                       </form>
+                      <br/>
                       <form className="form-horizontal">
                             <div className="col-md-4">
                                 <b>Time</b> 
                             </div>
-                            <div className="col-md-8">
-                                11:30 am
+                            <div className="col-md-8" style={{fontSize: 13}}>
+                                {this.props.User.orders[0].pool_delivery_time_range}
                             </div>
                       </form>
                       <br/>
@@ -663,18 +664,20 @@ class OrderMenu extends React.Component<any, any> {
                               <b>Date</b>
                           </div>
                       </form>
+                      <br/>
                       <form className="form-horizontal">
-                          <div className="col-md-8">
+                          <div className="col-md-8" style={{fontSize: 13}}>
                               {this.props.User.orders[0].pool_order_by_date_formatted}
                           </div>
                       </form>
-                       <form className="form-horizontal">
+                      <br/>
+                      <form className="form-horizontal">
                           <div className="col-md-4">
                               <b>Time</b>
                           </div>
                       </form>
                       <form className="form-horizontal">
-                          <div className="col-md-8">
+                          <div className="col-md-8" style={{fontSize: 13}}>
                               9:00 pm
                           </div>
                       </form>
@@ -685,6 +688,7 @@ class OrderMenu extends React.Component<any, any> {
                               Choose between 1-11 scones
                               <br/>
                               $6 each
+                              <br/>
                               <br/>
                               <b>Free Delivery</b>
                           </div>

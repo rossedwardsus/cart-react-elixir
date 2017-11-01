@@ -118,7 +118,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             //dispatch(setOrderStatus("processing"));
 
             axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {user_pool_id parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_address_street1 pool_address_city pool_address_state pool_address_zipcode pickup_location}}'}, {headers: {'authorization': "bearer"}}
+                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {user_pool_id parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_delivery_time_range pool_address_street1 pool_address_city pool_address_state pool_address_zipcode pickup_location}}'}, {headers: {'authorization': "bearer"}}
             )
             .then((response: any) => {
 
@@ -160,9 +160,9 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
                               response.data.data.getPoolOrderDetails.poolAddressState,
                               pool_address_zipcode: 
                               response.data.data.getPoolOrderDetails.poolAddressZipcode,
-                              
                               pickup_location: response.data.data.getPoolOrderDetails.pickupLocation,
                               pool_delivery_date_formatted: pool_delivery_date_formatted,
+                              pool_delivery_time_range: response.data.data.getPoolOrderDetails.poolDeliveryTimeRange,
                               pool_order_by_date_formatted: pool_order_by_date_formatted,
                   
                   })
