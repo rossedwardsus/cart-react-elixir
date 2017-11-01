@@ -114,7 +114,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             //dispatch(push("/order/menu"));
 
             dispatch(getMenuItems());
-            dispatch(createOrderSession(order_type, pool_url_name));
+            //dispatch(createOrderSession(order_type, pool_url_name));
             //dispatch(setOrderStatus("processing"));
 
             axios.post('/api/graphql',

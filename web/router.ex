@@ -83,7 +83,9 @@ defmodule SconeHomeElixir.Router do
 
     get "/guest/list", Sconely.GuestListDownloadController, :index   
 
-    get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
+    get "/menu_items", Sconely.MenuItemsController, :index   
+
+    #get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
     forward "/graphql", Absinthe.Plug, schema: Sconely.Schema
     #forward "/graphql/register", Absinthe.Plug, schema: Sconely.RegisterSchema
 
@@ -116,7 +118,7 @@ defmodule SconeHomeElixir.Router do
 
 
     get "/", HomeController, :index
-    #get "/*anything", HomeController, :index
+    get "/*anything", HomeController, :index
 
     get "/:signature_event_name", HomeController, :index
     get "/:pool_name/:pool_date", HomeController, :index
@@ -133,7 +135,6 @@ defmodule SconeHomeElixir.Router do
     #forward "/graphql", Absinthe.Plug, schema: SconeHomeElixir.Schema
     
   end
-
 
 
   
