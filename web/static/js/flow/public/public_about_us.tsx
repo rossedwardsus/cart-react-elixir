@@ -59,9 +59,6 @@ export default class Menu extends React.Component<any, any> {
                             Ordering is easy with the following services.
                             <br/>
                             <br/>
-                            <b>Sconely Yours</b>: 2-10 scones, delivered to you
-                            <br/>
-                            <br/>
                             <b>Sconely Social</b>: 1 dozen - 20 dozen regular sized scones and / or 2 dozen – 40 dozen mini scones delivered to your event
                             <br/>
                             <br/>
