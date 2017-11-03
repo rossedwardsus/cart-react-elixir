@@ -389,52 +389,42 @@ export class PublicStory extends React.Component<any, any> {
                           This policy applies to information we collect:
                           <br/>
                           <br/>
-                          on this Website;
-                          <br/>
-                          <br/>
-                          in email, text, and other electronic messages between you and this Website; and
-                          <br/>
-                          <br/>
-                          when you interact with our advertising and applications on third-party websites and services, if those applications or advertising include links to this policy.
+                          <ul>
+                            <li>on this Website;</li>
+                            <li>in email, text, and other electronic messages between you and this Website; and</li>
+                            <li>when you interact with our advertising and applications on third-party websites and services, if those applications or advertising include links to this policy.</li>
+                          </ul>
                           <br/>
                           <br/>
                           It does not apply to information collected by:
                           <br/>
                           <br/>
-                          us offline or through any other means, including on any other website operated by Company or any third party (including our affiliates and subsidiaries); or
-                          <br/>
-                          <br/>
-                          any third party (including our affiliates and subsidiaries), including through any application or content that may link to or be accessible from or on the Website.
+                          <ul>
+                            <li>us offline or through any other means, including on any other website operated by Company or any third party (including our affiliates and subsidiaries); or</li>
+                            <li>any third party (including our affiliates and subsidiaries), including through any application or content that may link to or be accessible from or on the Website.</li>
+                          </ul>
                           <br/>
                           <br/>
                           Please read this policy carefully to understand our policies and practices regarding your information and how we will treat it. If you do not agree with our policies and practices, your choice is not to use our Website. By accessing or using this Website, you agree to this privacy policy. This policy may change from time to time (see Changes to Our Privacy Policy below). Your continued use of this Website after we make changes is deemed to be acceptance of those changes, so please check the policy periodically for updates.
                           <br/>
                           <br/>
-                          WHAT WE COLLECT
+                          <b>WHAT WE COLLECT</b>
                           <br/>
                           <br/>
                           We may collect the following information from and about users of our Website:
                           <br/>
                           <br/>
-                          name;
+                          <ul>
+                            <li>name;</li>
+                            <li>contact information including address, e-mail address, and telephone number;</li>
+                            <li>payment information;</li>
+                            <li>demographic information such as preferences, interests, and postal codes;</li>
+                            <li>information relevant to customer surveys and/or offers; and</li>
+                            <li>about your internet connection, the equipment you use to access our Website, and usage details.</li>
+                          </ul>
                           <br/>
                           <br/>
-                          contact information including address, e-mail address, and telephone number;
-                          <br/>
-                          <br/>
-                          payment information;
-                          <br/>
-                          <br/>
-                          demographic information such as preferences, interests, and postal codes;
-                          <br/>
-                          <br/>
-                          information relevant to customer surveys and/or offers; and
-                          <br/>
-                          <br/>
-                          about your internet connection, the equipment you use to access our Website, and usage details.
-                          <br/>
-                          <br/>
-                          SECURITY
+                          <b>SECURITY</b>
                           <br/>
                           <br/>
                           We are committed to ensuring that your information is secure. We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure.
@@ -446,7 +436,7 @@ export class PublicStory extends React.Component<any, any> {
                           Unfortunately, the transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted to our Website. Any transmission of personal information is at your own risk. We are not responsible for circumvention of any privacy settings or security measures contained on the Website.
                           <br/>
                           <br/>
-                          COOKIES
+                          <b>COOKIES</b>
                           <br/>
                           <br/>
                           Our Website uses cookies to deliver a better and more personalized service, including by enabling us to store information about your preferences and recognizing when you return to our Website.
@@ -455,13 +445,13 @@ export class PublicStory extends React.Component<any, any> {
                           A cookie is a small file placed on the hard drive of your computer. A cookie does not give us access to your computer or any information about you, other than the data you choose to share with us. You may refuse to accept browser cookies by activating the appropriate setting on your browser. However, if you select this setting you may be unable to access certain parts of our Website. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you direct your browser to our Website.
                           <br/>
                           <br/>
-                          CALIFORNIA DO NOT TRACK DISCLOSURE
+                          <b>CALIFORNIA DO NOT TRACK DISCLOSURE</b>
                           <br/>
                           <br/>
-                          Do Not Track (ÒDNTÓ) is a privacy preference that users can set in their web browsers.  When a user turns on the DNT signal, the browser sends a message to websites requesting them not to track the user. We do not track our customers over time and across third-party websites to provide targeted advertising and therefore do not respond to DNT signals.
+                          Do Not Track ("DNT") is a privacy preference that users can set in their web browsers.  When a user turns on the DNT signal, the browser sends a message to websites requesting them not to track the user. We do not track our customers over time and across third-party websites to provide targeted advertising and therefore do not respond to DNT signals.
                           <br/>
                           <br/>
-                          CORRECTING AND CONTROLLING YOUR INFORMATION
+                          <b>CORRECTING AND CONTROLLING YOUR INFORMATION</b>
                           <br/>
                           <br/>
                           If you do not wish to have your contact information used by the Company to promote our own products or services, you can opt-out by checking the relevant box located on the form on which we collect your data (for example, the order form or registration form) or at any other time by sending us an email stating your request to eat@sconely.com. If we have sent you a promotional email, you may send us a return email asking to be omitted from future email distributions. This opt out does not apply to information provided to the Company as a result of a product purchase, product service experience or other transactions.
