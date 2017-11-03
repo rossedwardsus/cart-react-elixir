@@ -474,6 +474,7 @@ export class PublicStory extends React.Component<any, any> {
                     <br/>
                     <br/>
                     <PublicBottomNavbar/>
+                    <PublicPrivacyTermsNavbar/>
               </div>
     )
   }
