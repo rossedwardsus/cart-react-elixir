@@ -371,12 +371,14 @@ export class PublicFaq extends React.Component<any, any> {
                           <br/>
                           <br/>
                         </div>
-                        <div className="col-md-7" style={{fontSize: 18, paddingLeft: "30px"}}>
+                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
                             <br/>
                             <br/>
                             <br/>
-                            Sconely is dedicated to creating miraculous scones, scones that our fans have called “life changing,” “beyond delicious” and “epic.” Through a menu that updates traditional scones and a personalized ordering system, Sconely brings scones into the future.
+                            <div style={{fontSize: 18}}>
+                                Sconely is dedicated to creating miraculous scones, scones that our fans have called “life changing,” “beyond delicious” and “epic.” Through a menu that updates traditional scones and a personalized ordering system, Sconely brings scones into the future.
+                            </div>
                             <br/>
                             <br/>
                             <b>What’s on Sconely’s menu?</b>

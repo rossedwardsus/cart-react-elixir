@@ -45,13 +45,15 @@ export default class Menu extends React.Component<any, any> {
                           <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-7" style={{fontSize: 18, paddingLeft: "30px"}}>
+                        <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
                             <br/>
-                            Sconely updates old world scones, with sweet and savory scones that our fans have called “life changing,” “beyond delicious” and “epic.” Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
-                            <br/>
-                            <br/>
-                            All of our scones are handcrafted in small batches and freshly baked to order. With an emphasis on locally sourced organic ingredients, our entire menu is free of refined sugar, soy and preservatives. Sconely’s menu includes a wide variety of artisanal scones, with vegan and gluten-free options. Check out our menu often for new flavors!
+                            <div style={{fontSize: 18}}>
+                                Sconely updates old world scones, with sweet and savory scones that our fans have called “life changing,” “beyond delicious” and “epic.” Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
+                                <br/>
+                                <br/>
+                                All of our scones are handcrafted in small batches and freshly baked to order. With an emphasis on locally sourced organic ingredients, our entire menu is free of refined sugar, soy and preservatives. Sconely’s menu includes a wide variety of artisanal scones, with vegan and gluten-free options. Check out our menu often for new flavors!
+                            </div>
                             <br/>
                             <br/>
                             Ordering is easy with the following services.
