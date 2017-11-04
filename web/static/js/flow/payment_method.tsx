@@ -370,9 +370,9 @@ class PaymentMethod extends React.Component<any, any> {
               //console.log("ok year");
               this.setState({security_code_border_color: "grey"})
               this.setState({security_code: e.target.value});
+              
               this.props.setPaymentSecurityCode(e);
-              this.props.paymentMethodValidated();
-
+              this.props.paymentMethodSecurityCodeValidated();
               //this.props.paymentMethodSecurityCodeValidated();
 
 

@@ -211,7 +211,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
     //else if(this.props.User.orderSession.paymentErrorCode == "error"){
 
 
-    if (this.props.User.orderSession.validations.paymentMethodValidated == true){
+    //this.props.User.orderSession.validations.paymentMethodNameOnCardValidated
+    //this.props.User.orderSession.validations.paymentMethodZipcodeValidated
+    //this.props.User.orderSession.validations.paymentMethodCardNumberValidated
+    
+    if (this.props.User.orderSession.validations.paymentMethodSecurityCodeValidated == true){
 
           this.setState({button_complete_order_classname: "btn btn-default"});
           this.setState({button_complete_order_disabled: ""});
