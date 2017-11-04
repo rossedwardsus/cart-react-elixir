@@ -224,26 +224,24 @@ class UserHomePage extends React.Component<any, any> {
               <div>
                     <UserNavbar />
                     <div className="row">
-                        <div className="hidden-xs col-md-4">
+                        <div className="hidden-xs col-md-3">
                           <br/>
                           <br/>
                           <br/>
                              
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-6" style={{paddingLeft: 0}}>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  <br/>
                                   <br/>
                                   <UserTabs/>
                                   <br/>
                                   <br/>
-                                  <Link to="/social/menu">Social</Link>-<a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
                                   <br/>
                                   <br/>
                                   <br/>
-                                  <div>
-                                    Your Orders
-                                    <br/>
-                                    <UserOrders userOrders={this.props.userOrders}/>
-                                  </div>
                                   <br/>
                                   <br/>
                                   <br/>
@@ -261,7 +259,7 @@ class UserHomePage extends React.Component<any, any> {
                               <br/>
                               <br/>
                               <br/>
-                              maybe put something here
+                              
                         </div>
                     </div>
               </div>
