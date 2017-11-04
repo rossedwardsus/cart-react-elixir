@@ -73,10 +73,10 @@ export function createOrderSession(order_type: any, pool_name: any) {
 export function updateOrderSession(screen: any) {
   let url = "";
   return function (dispatch: any, getState: any) { 
-    axios.post('/api/graphql',
+    /*axios.post('/api/graphql',
                      {query: 'mutation {update_order_session (session_id: "' + getState().User.orderSession.sessionId + '", screen: "' + screen + '") {status}}'}, {headers: {'authorization': "bearer"}}
     )
-    .then((response: any) => {
+    .then((response: any) => {*/
 
           dispatch(push("/order/" + screen));
 
@@ -95,14 +95,14 @@ export function updateOrderSession(screen: any) {
           
           })*/
    
-    })
+    /*})
     .catch((error: any) => {
 
           console.log("axios error handler here" + error);
 
           //dispatch({type: SET_NETWORK_ERROR, networkError: true});
 
-    })
+    })*/
     //dispatch({ type: SET_SESSION, user_id: "guest"});
     
   }

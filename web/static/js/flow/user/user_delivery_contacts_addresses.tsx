@@ -388,7 +388,7 @@ function mapStateToProps(state: any) {
   console.log("delivery addresses state" + JSON.stringify(state.User.delivery_addresses));
   return {
    //flattened delivery addresses
-   delivery_contacts_addresses: state.User.delivery_contacts_addresses
+   delivery_contacts_addresses: state.User.deliveryContactsAddresses
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };

@@ -232,7 +232,7 @@ class UserHomePage extends React.Component<any, any> {
                           <br/>
                           <Link to="/user/payment_methods">Payment</Link>
                           <br/>
-                          <Link to="/user/delivery_contact_addresses">Delivery</Link>
+                          <Link to="/user/delivery_contacts_addresses">Delivery</Link>
                           <br/>
                           <Link to="/user/pool">Pool</Link>
                           <br/>
