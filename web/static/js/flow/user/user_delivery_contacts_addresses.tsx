@@ -286,19 +286,6 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          Home
-                          <br/>
-                          <Link to="/public/menu">Menu</Link>
-                          <br/>
-                          <Link to="/user/delivery_addresses">Delivery Addresses</Link>
-                          <br/>
-                          <Link to="/user/delivery_contact">Delivery Contact</Link>
-                          <br/>
-                          <Link to="/user/payment_methods">Payment Methods</Link>
-                          <br/>
-                          <Link to="/user/about_me">About Me</Link>
-                          <br/>
-                          <Link to="/user/photo">Photo</Link>
                         </div>
                         <div className="col-md-8">
                                   <br/>
@@ -456,7 +443,7 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
                                   <br/>
                                   {delivery_contacts_addresses.map((delivery_contact_address: any, index: any) => {
 
-                                                    return(<div>
+                                                  return(<div>
                                                                 <form className="form-horizontal">
                                                     <div className="form-group">
                                                       <div className="col-sm-3 col-md-3">

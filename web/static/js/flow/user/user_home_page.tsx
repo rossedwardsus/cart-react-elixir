@@ -228,21 +228,11 @@ class UserHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          Home
-                          <br/>
-                          <Link to="/user/payment_methods">Payment</Link>
-                          <br/>
-                          <Link to="/user/delivery_contacts_addresses">Delivery</Link>
-                          <br/>
-                          <Link to="/user/pool">Pool</Link>
-                          <br/>
-                          <Link to="/user/signature">Signature</Link>
-                          <br/>
-                          <Link to="/public/menu">About Me</Link>
-                           
+                             
                         </div>
                         <div className="col-md-6">
                                   <br/>
+                                  <UserTabs/>
                                   <br/>
                                   <br/>
                                   <Link to="/social/menu">Social</Link>-<a onClick={() => this.createOrder("sconely_signature")}>Signature</a>
