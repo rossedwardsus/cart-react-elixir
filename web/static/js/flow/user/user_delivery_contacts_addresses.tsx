@@ -188,6 +188,67 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
 
   }
 
+
+  setUserDeliveryContactAddressCompanyName = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressStreet1 = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressStreet2 = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressCity = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressState = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
+  setUserDeliveryContactAddressZipcode = (e: any) => {
+
+    //console.log(id);
+
+    //validate mobile number format
+
+    //this.props.setUserDeliveryContactAddressMobile(e.target.id, e.target.value);
+
+  }
+
   setUserDeliveryContactAddressNote = (e: any) => {
 
     //console.log(id);
@@ -246,62 +307,146 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
                                   <UserTabs/>
                                   <br/>
                                   <br/>
-                                  Delivery Contact Addresses
-                                  <br/>
-                                  <form className="form-inline">
+                                  <form className="form-horizontal">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Address Name" onChange={this.setDeliveryContactAddressName} value={this.state.delivery_contact_address_name}/>
+                                        <div className="col-sm-3 col-md-3">
+                                            <b>Delivery Contact</b>
+                                            <br/>
+                                         </div>
+                                      </div>
+                                   </form>
+                                   <form className="form-horizontal">
+                                      <div className="form-group">
+                                        <div className="col-sm-3 col-md-4">
+                                          <div className={this.state.first_name_classname}>
+                                            <input type="text" value={this.state.contact_first_name}  onChange={this.setUserDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                          </div>
+                                        </div>
+                                        <div className="hidden-lg col-xs-1">
+                                          <br/>
+                                        </div>
+                                        <div className="col-sm-3 col-md-4">
+                                          <div className={this.state.last_name_classname}>
+                                            <input type="text" value={this.state.contact_last_name} maxLength={20} onChange={this.setUserDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                          </div>
+                                        </div>
                                       </div>
                                   </form>
-                                  <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="First Name" onChange={this.setFirstName} value={this.state.first_name}/>
+                                  <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-sm-3 col-md-4">
+                                          <div className={this.state.contact_email_classname}>
+                                            <input type="text" value={this.state.contact_email} onChange={this.setUserDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                                          </div>
                                       </div>
+                                      <div className="hidden-lg col-xs-1">
+                                        <br/>
+                                      </div>
+                                      <div className="col-sm-3 col-md-4">
+                                          <div className={this.state.contact_email_classname}>
+                                            <input type="text" value={this.state.contact_email_again} onChange={this.setUserDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </form>
+                                  <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-sm-3 col-md-3">
+                                          <div className={this.state.contact_mobile_classname}>
+                                            <input type="text" value={this.state.contact_mobile_displayed} maxLength={12} onChange={this.setUserDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </form>
+                                  <form className="form-horizontal">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Last Name" onChange={this.setLastName} value={this.state.last_name}/>
+                                        <div className="col-sm-3 col-md-3">
+                                            <b>Delivery Address</b>
+                                            <br/>
+                                         </div>
                                       </div>
                                   </form>
-                                  <form className="form-inline">
+                                  <form className="form-horizontal">
+                                        <div className="form-group">
+                                           <div className="col-sm-3 col-md-4">
+                                              <input type="text" value={this.state.company_name} maxLength={40} onChange={(e: any) => this.setUserDeliveryContactAddressCompanyName(e)} className="form-control" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
+                                           </div>
+                                        </div>
+                                  </form>
+                                  <form className="form-horizontal">
                                       <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Email" onChange={(e: any) => this.setStreet1(e)} value={this.state.street1}/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Mobile" onChange={(e: any) => this.setStreet2(e)} value={this.state.street2}/>
+                                        <div className="col-sm-3 col-md-4">
+                                          <input type="text" maxLength={40} className="form-control" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setUserDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                                        </div>
+                                        <div className="hidden-lg col-xs-1">
+                                          <br/>
+                                        </div>
+                                        <div className="col-sm-3 col-md-4">
+                                          <input type="text" value={this.state.street2} maxLength={30} onChange={(e: any) => this.setUserDeliveryContactAddressStreet2(e)} className="form-control" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
+                                        </div>
                                       </div>
                                   </form>
-                                  <form className="form-inline">
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 1" onChange={(e: any) => this.setStreet1(e)} value={this.state.street1}/>
-                                      </div>
-                                      <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2" onChange={(e: any) => this.setStreet2(e)} value={this.state.street2}/>
+                                  <form className="form-horizontal">
+                                        <div className="form-group">
+                                          <div className="col-sm-3 col-md-3">
+                                            <select className="form-control" onChange={(value) => this.setUserDeliveryContactAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                              <option>City</option>
+                                              <option value="Los Angeles">Los Angeles</option>
+                                              <option value="Santa Monica">Santa Monica</option>
+                                            </select>
+                                          </div>
+                                          <div className="hidden-lg col-xs-1">
+                                            <br/>
+                                          </div>
+                                          <div className="col-sm-3">
+                                            <select className="form-control" onChange={(value) => this.setUserDeliveryContactAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                              <option>State</option>
+                                              <option value="CA">CA</option>
+                                            </select>
+                                          </div>
+                                          <div className="hidden-lg col-xs-1">
+                                            <br/>
+                                          </div>
+                                          <div className="col-sm-3">
+                                            <select className="form-control" onChange={(value) => this.setUserDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                              <option>Zip Code</option>
+                                              <option>Venice</option>
+                                              <option value="90013">90013</option>
+                                              <option value="90014">90014</option>
+                                              <option value="90015">90015</option>
+                                              <option value="90021">90021</option>
+                                              <option value="90071">90071</option>
+                                              <option>Santa Monica</option>
+                                              <option value="90291">90291</option>
+                                              <option value="90401">90401</option>
+                                              <option value="90402">90402</option>
+                                              <option value="90403">90403</option>
+                                              <option value="90404">90404</option>
+                                              <option value="90405">90405</option>
+                                              <option value="90406">90406</option>
+                                              <option value="90407">90407</option>
+                                              <option value="90408">90408</option>
+                                              <option value="90409">90409</option>
+                                              <option value="90410">90410</option>
+                                              <option value="90411">90411</option>
+                                              <option>DTLA</option>
+                                              <option value="90012">90012</option>
+                                              <option value="90013">90013</option>
+                                              <option value="90014">90014</option>
+                                              <option value="90017">90017</option>
+                                              <option value="90021">90021</option>
+                                              <option value="90071">90071</option>
+                                              <option value="90074">90074</option>
+                                              <option value="90081">90081</option>
+                                              <option value="90053">90053</option>
+                                              <option value="90055">90055</option>
+                                              <option value="90079">90079</option>
+                                              <option value="90086">90086</option>
+                                            </select>
+                                          </div>
                                       </div>
                                   </form>
-                                  <form className="form-inline">
-                                      <div className="form-group">
-                                        <select className="form-control">
-                                            <option>City</option>
-                                            <option>Los Angeles</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control">
-                                            <option>State</option>
-                                            <option>CA</option>
-                                        </select>
-                                      </div>
-                                      <div className="form-group">
-                                        <select className="form-control" >
-                                            <option>Zipcode</option>
-                                            <option>90025</option>
-                                        </select>
-                                      </div>
-                                  </form>
-                                  <form className="form-inline">
-                                      <div className="form-group">
-                                        <textarea value={this.state.note} className="form-control" rows={5} cols={50} style={{resize: "none"}} id="note"></textarea>
-                                      </div>
-                                  </form>
+                                  
                                   <br/>
                                   <a className="btn btn-default" onClick={this.addUserDeliveryContactAddress}>Add Address</a>
                                   <br/>
@@ -311,62 +456,148 @@ class UserDeliveryContactsAddresses extends React.Component<any, any> {
                                   <br/>
                                   {delivery_contacts_addresses.map((delivery_contact_address: any, index: any) => {
 
-                                      return(<div>
-                                                  <form className="form-inline">
+                                                    return(<div>
+                                                                <form className="form-horizontal">
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_contact_address.name} className="form-control" id="key" placeholder="Address/Contact Name"/>
+                                                      <div className="col-sm-3 col-md-3">
+                                                          <b>Delivery Contact</b>
+                                                          <br/>
+                                                       </div>
                                                     </div>
-                                                  </form>
-                                                  <form className="form-inline">
+                                                 </form>
+                                                 <form className="form-horizontal">
                                                     <div className="form-group">
-                                                      <input type="text" value={delivery_contact_address.first_name} className="form-control" id="key" placeholder="First Name" onChange={this.setUserDeliveryContactAddressFirstName}/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                      <input type="text" value={delivery_contact_address.last_name} className="form-control" id="key" placeholder="Last Name" onChange={this.setUserDeliveryContactAddressLastName}/>
-                                                    </div>
-                                                  </form>
-                                                  <form className="form-inline">
-                                                    <div className="form-group">
-                                                      <input type="text" value={delivery_contact_address.email} className="form-control" id="key" placeholder="Email" onChange={this.setUserDeliveryContactAddressEmail}/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                      <input type="text" value={delivery_contact_address.mobile} className="form-control" id="key" placeholder="111-222-3333" onChange={this.setUserDeliveryContactAddressMobile}/>
-                                                    </div>
-                                                  </form>
-                                                
-                                                  <form className="form-inline">
-                                                    <div className="form-group">
-                                                      <input type="text" value={delivery_contact_address.street1} className="form-control" id="exampleInputName2" placeholder="Street 1"/>
-                                                    </div>
-                                                    <div className="form-group">
-                                                      <input type="text" className="form-control" id="exampleInputName2" placeholder="Street 2"/>
-                                                    </div>
-                                                  </form>
-                                                  <form className="form-inline">
-                                                    <div className="form-group">
-                                                      <select className="form-control">
-                                                          <option>Choose City</option>
-                                                          <option>Los Angeles</option>
-                                                      </select>
-                                                    </div>
-                                                    <div className="form-group">
-                                                      <select className="form-control">
-                                                          <option>Choose State</option>
-                                                          <option>CA</option>
-                                                      </select>
-                                                    </div>
-                                                    <div className="form-group">
-                                                      <select className="form-control" >
-                                                          <option>Choose Zip Code</option>
-                                                          <option>90025</option>
-                                                      </select>
-                                                    </div>
-                                                  </form>
-                                                  <form className="form-inline">
-                                                      <div className="form-group">
-                                                        <textarea  className="form-control" rows={5} cols={50} style={{resize: "none"}} id="comment" onChange={this.setUserDeliveryContactAddressNote}></textarea>
+                                                      <div className="col-sm-3 col-md-4">
+                                                        <div className={this.state.first_name_classname}>
+                                                          <input type="text" value={this.state.contact_first_name}  onChange={this.setUserDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                                        </div>
                                                       </div>
-                                                    </form>
+                                                      <div className="hidden-lg col-xs-1">
+                                                        <br/>
+                                                      </div>
+                                                      <div className="col-sm-3 col-md-4">
+                                                        <div className={this.state.last_name_classname}>
+                                                          <input type="text" value={this.state.contact_last_name} maxLength={20} onChange={this.setUserDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </form>
+                                                <form className="form-horizontal">
+                                                  <div className="form-group">
+                                                    <div className="col-sm-3 col-md-4">
+                                                        <div className={this.state.contact_email_classname}>
+                                                          <input type="text" value={this.state.contact_email} onChange={this.setUserDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                                                        </div>
+                                                    </div>
+                                                    <div className="hidden-lg col-xs-1">
+                                                      <br/>
+                                                    </div>
+                                                    <div className="col-sm-3 col-md-4">
+                                                        <div className={this.state.contact_email_classname}>
+                                                          <input type="text" value={this.state.contact_email_again} onChange={this.setUserDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                </form>
+                                                <form className="form-horizontal">
+                                                  <div className="form-group">
+                                                    <div className="col-sm-3 col-md-3">
+                                                        <div className={this.state.contact_mobile_classname}>
+                                                          <input type="text" value={this.state.contact_mobile_displayed} maxLength={12} onChange={this.setUserDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                </form>
+                                                <form className="form-horizontal">
+                                                    <div className="form-group">
+                                                      <div className="col-sm-3 col-md-3">
+                                                          <b>Delivery Address</b>
+                                                          <br/>
+                                                       </div>
+                                                    </div>
+                                                </form>
+                                                <form className="form-horizontal">
+                                                      <div className="form-group">
+                                                         <div className="col-sm-3 col-md-4">
+                                                            <input type="text" value={this.state.company_name} maxLength={40} onChange={(e: any) => this.setUserDeliveryContactAddressCompanyName(e)} className="form-control" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
+                                                         </div>
+                                                      </div>
+                                                </form>
+                                                <form className="form-horizontal">
+                                                    <div className="form-group">
+                                                      <div className="col-sm-3 col-md-4">
+                                                        <input type="text" maxLength={40} className="form-control" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setUserDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                                                      </div>
+                                                      <div className="hidden-lg col-xs-1">
+                                                        <br/>
+                                                      </div>
+                                                      <div className="col-sm-3 col-md-4">
+                                                        <input type="text" value={this.state.street2} maxLength={30} onChange={(e: any) => this.setUserDeliveryContactAddressStreet2(e)} className="form-control" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
+                                                      </div>
+                                                    </div>
+                                                </form>
+                                                <form className="form-horizontal">
+                                                      <div className="form-group">
+                                                        <div className="col-sm-3 col-md-3">
+                                                          <select className="form-control" onChange={(value) => this.setUserDeliveryContactAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                                            <option>City</option>
+                                                            <option value="Los Angeles">Los Angeles</option>
+                                                            <option value="Santa Monica">Santa Monica</option>
+                                                          </select>
+                                                        </div>
+                                                        <div className="hidden-lg col-xs-1">
+                                                          <br/>
+                                                        </div>
+                                                        <div className="col-sm-3">
+                                                          <select className="form-control" onChange={(value) => this.setUserDeliveryContactAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                                            <option>State</option>
+                                                            <option value="CA">CA</option>
+                                                          </select>
+                                                        </div>
+                                                        <div className="hidden-lg col-xs-1">
+                                                          <br/>
+                                                        </div>
+                                                        <div className="col-sm-3">
+                                                          <select className="form-control" onChange={(value) => this.setUserDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                                            <option>Zip Code</option>
+                                                            <option>Venice</option>
+                                                            <option value="90013">90013</option>
+                                                            <option value="90014">90014</option>
+                                                            <option value="90015">90015</option>
+                                                            <option value="90021">90021</option>
+                                                            <option value="90071">90071</option>
+                                                            <option>Santa Monica</option>
+                                                            <option value="90291">90291</option>
+                                                            <option value="90401">90401</option>
+                                                            <option value="90402">90402</option>
+                                                            <option value="90403">90403</option>
+                                                            <option value="90404">90404</option>
+                                                            <option value="90405">90405</option>
+                                                            <option value="90406">90406</option>
+                                                            <option value="90407">90407</option>
+                                                            <option value="90408">90408</option>
+                                                            <option value="90409">90409</option>
+                                                            <option value="90410">90410</option>
+                                                            <option value="90411">90411</option>
+                                                            <option>DTLA</option>
+                                                            <option value="90012">90012</option>
+                                                            <option value="90013">90013</option>
+                                                            <option value="90014">90014</option>
+                                                            <option value="90017">90017</option>
+                                                            <option value="90021">90021</option>
+                                                            <option value="90071">90071</option>
+                                                            <option value="90074">90074</option>
+                                                            <option value="90081">90081</option>
+                                                            <option value="90053">90053</option>
+                                                            <option value="90055">90055</option>
+                                                            <option value="90079">90079</option>
+                                                            <option value="90086">90086</option>
+                                                          </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <br/>
+                                                <br/>
                                                 <button className="btn btn-default" onClick={this.saveDeliveryContactAddress}>Save Address</button>
                                                 <br/>
                                                 <br/>

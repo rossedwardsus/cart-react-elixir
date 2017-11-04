@@ -30,6 +30,8 @@ import {setUserPaymentMethodCardNumber, setUserPaymentMethodExpiryMonth, setUser
 class UserPaymentMethods extends React.Component<any, any> {
   //props: Props;
 
+  private cardNumber: HTMLInputElement;
+
   constructor(props: any) {
     super(props);
     //this.getData();
@@ -90,7 +92,14 @@ class UserPaymentMethods extends React.Component<any, any> {
 
   }
 
-  setUserPaymentMethodName = (e: any) => {
+  setUserPaymentMethodNameOnCard = (e: any) => {
+
+      //this.setState({payment_method_name: e.target.value});
+      //this.props.setUserPaymentMethodName("name");
+
+  }
+
+  setUserPaymentMethodZipCode = (e: any) => {
 
       //this.setState({payment_method_name: e.target.value});
       //this.props.setUserPaymentMethodName("name");
@@ -114,6 +123,14 @@ class UserPaymentMethods extends React.Component<any, any> {
   }
 
   setUserPaymentMethodExpiryYear = (e: any) => {
+
+      console.log(e.target.id);
+      //this.setState({payment_method_name: e.target.value});
+      this.props.setUserPaymentMethodExpiryYear(e.target.id, e.target.value);
+
+  }
+
+  setUserPaymentMethodSecurityCode = (e: any) => {
 
       console.log(e.target.id);
       //this.setState({payment_method_name: e.target.value});
@@ -159,32 +176,66 @@ class UserPaymentMethods extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
-                                  Payment Methods
-                                  <br/>
-                                  <form className="form-inline">
+                                  <form className="form-horizontal">
                                     <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Name"/>
+                                      <div className="col-sm-4">
+                                          Payment
                                       </div>
-                                  </form>
-                                  <form className="form-inline">
-                                    <div className="form-group">
-                                        <input type="text" className="form-control" id="exampleInputName2" placeholder="Card Number" />
                                     </div>
                                   </form>
                                   <form className="form-horizontal">
                                     <div className="form-group">
-                                      <div className="col-md-2">
-                                        <input type="text" maxLength={2} className="form-control" id="exampleInputName2" placeholder="MM" style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                      </div>
-                                      <div className="col-md-2">
-                                        <input type="text" maxLength={4} className="form-control" id="exampleInputName2" placeholder="YYYY" style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}}/>
-                                      </div>
-                                      <div className="col-md-2">
-                                        <input type="email" className="form-control" id="exampleInputEmail2" placeholder="CVC" style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                      <div className="col-sm-4">
+                                          {this.state.error_message_text}
                                       </div>
                                     </div>
-                                  </form>  
-                                
+                                  </form>
+                                  <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-sm-3">
+                                        <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" placeholder="Name on Card" onChange={(e) => this.setUserPaymentMethodNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.name_on_card_disabled}/>
+                                      </div>
+                                      <div className="col-md-2">
+                                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" placeholder="ZIP CODE" onChange={this.setUserPaymentMethodZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
+                                      </div>
+                                    </div>
+                                  </form>
+                                  <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-sm-4">
+                                        <input type="text" ref={(input) => {this.cardNumber = input}} value={this.state.card_number} maxLength={16} className="form-control" placeholder="Card Number" onChange={(e) => this.setUserPaymentMethodCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.card_number_disabled}/>
+                                      </div>
+                                      <div className="hidden-lg col-xs-1">
+                                        <br/>
+                                      </div>
+                                      <div className="col-sm-3">
+                                          {this.state.card_brand}
+                                      </div>
+                                    </div>
+                                  </form>
+                                  <form className="form-horizontal">
+                                    <div className="form-group">
+                                      <div className="col-md-4" style={{paddingLeft: 5}}>
+                                             <div className="col-md-4">
+                                                <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" placeholder="MM" onChange={this.setUserPaymentMethodExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.expiry_date_month_disabled}/>
+                                              </div>
+                                              <div className="hidden-lg col-xs-1">
+                                                <br/>
+                                              </div>
+                                              <div className="col-md-4">
+                                                <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" placeholder="YYYY" onChange={this.setUserPaymentMethodExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.expiry_date_year_disabled}/>
+                                              </div>
+                                              <div className="hidden-lg col-xs-1">
+                                                <br/>
+                                              </div>
+                                              <div className="col-md-4">
+                                                <input type="email" value={this.state.security_code} maxLength={4} className="form-control" placeholder="CVC" onChange={this.setUserPaymentMethodSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
+                                              </div>
+                                          </div>
+                                  
+                                  </div>
+                                  </form>
+                                  
                                   <button className="btn btn-default" onClick={this.addUserPaymentMethod}>Add</button>
                                   <br/>
                                   <br/>
@@ -192,31 +243,68 @@ class UserPaymentMethods extends React.Component<any, any> {
                                   {Object.keys(payment_methods).map((key: any, index: any) => {
                                     console.log(JSON.stringify(payment_methods[key].name));
                                     return(<div>
-                                        <form className="form-inline">
-                                          <div className="form-group">
-                                              {key} 
-                                            </div>
-                                        </form>
-                                        <form className="form-inline">
-                                          <div className="form-group">
-                                              <input type="text" id={key} className="form-control" placeholder="Card Number" onChange={this.setUserPaymentMethodCardNumber}/>
-                                          </div>
-                                        </form>
-                                        <form className="form-horizontal">
-                                          <div className="form-group">
-                                            <div className="col-md-2">
-                                              <input type="text" maxLength={2} className="form-control" id={key}  placeholder="MM" style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} onChange={this.setUserPaymentMethodExpiryMonth}/>
-                                            </div>
-                                            <div className="col-md-2">
-                                              <input type="text" maxLength={4} className="form-control" id={key}  placeholder="YYYY" style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} onChange={this.setUserPaymentMethodExpiryYear}/>
-                                            </div>
-                                            <div className="col-md-2">
-                                              <input type="email" className="form-control" id={key}  placeholder="CVC" style={{borderColor: this.state.cvc_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                            </div>
-                                          </div>
-                                        </form>  
-                                        <button className="btn btn-default" id={key} onClick={this.saveUserPaymentMethod}>Save</button>
-                                  
+                                            <form className="form-horizontal">
+                                              <div className="form-group">
+                                                <div className="col-sm-4">
+                                                    Payment
+                                                </div>
+                                              </div>
+                                            </form>
+                                            <form className="form-horizontal">
+                                              <div className="form-group">
+                                                <div className="col-sm-4">
+                                                    {this.state.error_message_text}
+                                                </div>
+                                              </div>
+                                            </form>
+                                            <form className="form-horizontal">
+                                              <div className="form-group">
+                                                <div className="col-sm-3">
+                                                  <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" placeholder="Name on Card" onChange={(e) => this.setUserPaymentMethodNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.name_on_card_disabled}/>
+                                                </div>
+                                                <div className="col-md-2">
+                                                  <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" placeholder="ZIP CODE" onChange={this.setUserPaymentMethodZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
+                                                </div>
+                                              </div>
+                                            </form>
+                                            <form className="form-horizontal">
+                                              <div className="form-group">
+                                                <div className="col-sm-4">
+                                                  <input type="text" ref={(input) => {this.cardNumber = input}} value={this.state.card_number} maxLength={16} className="form-control" placeholder="Card Number" onChange={(e) => this.setUserPaymentMethodCardNumber(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.card_number_disabled}/>
+                                                </div>
+                                                <div className="hidden-lg col-xs-1">
+                                                  <br/>
+                                                </div>
+                                                <div className="col-sm-3">
+                                                    {this.state.card_brand}
+                                                </div>
+                                              </div>
+                                            </form>
+                                            <form className="form-horizontal">
+                                              <div className="form-group">
+                                                <div className="col-md-4" style={{paddingLeft: 5}}>
+                                                       <div className="col-md-4">
+                                                          <input type="text" value={this.state.expiry_month} maxLength={2} className="form-control" placeholder="MM" onChange={this.setUserPaymentMethodExpiryMonth} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.expiry_date_month_disabled}/>
+                                                        </div>
+                                                        <div className="hidden-lg col-xs-1">
+                                                          <br/>
+                                                        </div>
+                                                        <div className="col-md-4">
+                                                          <input type="text" value={this.state.expiry_year} maxLength={4} className="form-control" placeholder="YYYY" onChange={this.setUserPaymentMethodExpiryYear} style={{borderColor: this.state.expiry_year_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.expiry_date_year_disabled}/>
+                                                        </div>
+                                                        <div className="hidden-lg col-xs-1">
+                                                          <br/>
+                                                        </div>
+                                                        <div className="col-md-4">
+                                                          <input type="email" value={this.state.security_code} maxLength={4} className="form-control" placeholder="CVC" onChange={this.setUserPaymentMethodSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
+                                                        </div>
+                                                    </div>
+                                            
+                                                </div>
+                                                </form>
+                                          <br/>
+                                          <button className="btn btn-default" id={key} onClick={this.saveUserPaymentMethod}>Save</button>
+                                        
                                         </div>
                                     )
                                   })}
@@ -236,7 +324,7 @@ class UserPaymentMethods extends React.Component<any, any> {
 function mapStateToProps(state: any) {
   console.log("payment methods state" + JSON.stringify(state.User.payment_methods));
   return {
-   payment_methods: state.User.payment_methods
+   payment_methods: state.User.paymentMethods
    //menu_items: getPublicMenu
    //menu_items: dispatch()
   };
