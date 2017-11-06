@@ -1350,11 +1350,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.puts("hour")
                         IO.puts(order_datetime_converted.hour < 13)
 
-                        if order_datetime_converted.hour < 13 do
+                        if order_datetime_converted.hour < 12 do
                             converted_hour = order_datetime_converted.hour
                             am_pm = "am"
                         else
-                            IO.puts(">13")
+                            IO.puts(">12")
                             converted_hour = order_datetime_converted.hour - 12
                             am_pm = "pm"
                         end
@@ -1517,11 +1517,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                       _ -> order_datetime_converted_minute_formatted = Integer.to_string(order_datetime_converted.minute)
                                     end
 
-                                    if order_datetime_converted.hour < 13 do
+                                    if order_datetime_converted.hour < 12 do
                                         converted_hour = order_datetime_converted.hour
                                         am_pm = "am"
                                     else
-                                        IO.puts(">13")
+                                        IO.puts(">12")
                                         converted_hour = order_datetime_converted.hour - 12
                                         am_pm = "pm"
                                     end
