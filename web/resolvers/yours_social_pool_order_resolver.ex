@@ -740,6 +740,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     delivery_date_day_of_week = nil
     delivery_date_formatted = nil
 
+    delivery_time = nil
+
     delivery_address = nil
 
     mini_items_count = 0
@@ -1206,6 +1208,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         #delivery_address = %{company_name: pool_order_user_delivery_contact_address.company_name, street1: "801 S Hope St", street2: "", city: "Los Angeles", state: "CA", zipcode: "90017"}
 
                         delivery_address = %{company_name: pool_order_user_delivery_contact_address.company_name, street1: pool_order_user_delivery_contact_address.street1, street2: "", city: pool_order_user_delivery_contact_address.city, state: pool_order_user_delivery_contact_address.state, zipcode: pool_order_user_delivery_contact_address.zipcode}
+
+                        delivery_time = pool_order.delivery_time_range
+
+                        IO.puts("delivery time")
+                        IO.inspect(delivery_time)
 
                         #covert the time zone?
                         #actually this is only date
@@ -2153,11 +2160,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                           #IO.inspect(delivery_address)
 
-                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           IO.inspect(response)
                   
-                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: "", delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           
                         #end

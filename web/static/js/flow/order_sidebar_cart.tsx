@@ -608,7 +608,7 @@ class SidebarCart extends React.Component<any, any> {
     if(this.props.User.orders[0].order_type == "pool"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
-            item_quantity_message = "Please choose between 1 and 12 scones";
+            item_quantity_message = "Please choose between 1 and 11 scones";
 
         //}
 
