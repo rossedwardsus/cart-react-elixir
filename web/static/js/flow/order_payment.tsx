@@ -111,7 +111,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         //order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
         selected_time: "",
         selected_specific_time: "",
-        button_complete_order_classname: "btn btn-default",
+        button_complete_order_classname: "btn btn-default disabled",
         button_complete_order_disabled: "disabled",      
         promo_code: "",
         promo_code_discount: 0,  
@@ -214,12 +214,19 @@ class OrderDateTimeContact extends React.Component<any, any> {
     //this.props.User.orderSession.validations.paymentMethodNameOnCardValidated
     //this.props.User.orderSession.validations.paymentMethodZipcodeValidated
     //this.props.User.orderSession.validations.paymentMethodCardNumberValidated
-    
+
     if (this.props.User.orderSession.validations.paymentMethodSecurityCodeValidated == true){
 
           this.setState({button_complete_order_classname: "btn btn-default"});
           this.setState({button_complete_order_disabled: ""});
 
+    }
+
+    if(this.props.User.orderSession.orderStatus == "processing"){
+
+          this.setState({button_complete_order_classname: "btn btn-default disabled"});
+          this.setState({button_complete_order_disabled: "disabled"});
+          
     }
 
   }
