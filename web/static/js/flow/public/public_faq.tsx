@@ -377,7 +377,8 @@ export class PublicFaq extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <div style={{fontSize: 18}}>
-                                Sconely breaks from tradition with sweet and savory scones that fans have called “life changing”, “beyond delicious” and “epic.”   
+                                Sconely breaks from tradition with sweet and savory scones that fans have called “life changing”, “beyond delicious” and “epic.”  Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
+                                <br/>
                             </div>
                             <br/>
                             <br/>

@@ -49,7 +49,7 @@ export default class Menu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <div style={{fontSize: 18}}>
-                                Sconely breaks from tradition with sweet and savory scones that fans have called “life changing”, “beyond delicious” and “epic.”  
+                                Sconely breaks from tradition with sweet and savory scones that fans have called “life changing”, “beyond delicious” and “epic.”  Through a menu that focuses on personal dietary preferences and a unique ordering system, Sconely brings scones into the future.
                                 <br/>
                                 <br/>
                                 All of our scones are handcrafted in small batches and freshly baked to order. With an emphasis on locally sourced organic ingredients, our entire menu is free of refined sugar, soy and preservatives. Sconely’s menu includes a wide variety of artisanal scones, with vegan and gluten-free options. Check out our menu often for new flavors!
