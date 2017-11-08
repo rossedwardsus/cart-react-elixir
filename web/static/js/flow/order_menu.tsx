@@ -713,6 +713,7 @@ class OrderMenu extends React.Component<any, any> {
                                   <br/>
                                   $54 per 2 dozen mini
                                   <br/>
+                                  <br/>
                                   Plan ahead, order at least 48 hours in advance
                                   <br/>
                                   <br/>
