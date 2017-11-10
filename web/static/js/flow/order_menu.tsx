@@ -691,7 +691,8 @@ class OrderMenu extends React.Component<any, any> {
                               <br/>
                               <b>Freshly baked artisanal scones</b>
                               <br/>
-                              <b>Perfect for breakfast, lunch or snacks</b>
+                              <b>Perfect for breakfast, lunch or a snack</b>
+                              <br/>
                               <br/>
                               <b>Free Delivery</b>
                           </div>
