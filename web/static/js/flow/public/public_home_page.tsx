@@ -405,7 +405,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     Freshly baked, delivered to your event
                                     <br/>
-                                    <button onClick={() => this.props.createOrder("social")} className="btn btn-default">ORDER</button>
+                                    <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>ORDER</button>
                                     <br/>
                                     <br/>
                                     <br/>
@@ -439,7 +439,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           Freshly baked, delivered to your event
                           <br/>
                           <br/>
-                          <button onClick={() => this.props.createOrder("social")} className="btn btn-default">ORDER</button>
+                          <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>ORDER</button>
                           <br/>
                           <br/>
                           <br/>

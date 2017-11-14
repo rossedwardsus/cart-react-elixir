@@ -271,7 +271,7 @@ defmodule Sconely.GraphqlPoolOrderTest do
 
   end
 
-  test "user create pool order" do
+  test "user create pool order response" do
     #conn =
     #  build_conn
     #  |> post("/graphql", email: "alice@example.com")

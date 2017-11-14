@@ -19,7 +19,7 @@ defmodule Sconely.ApiTest do
      
     conn = build_conn(:get, "/api/menu_items")
 
-    IO.puts("\n")
+    IO.puts("\n" <> conn)
 
     #conn = build_conn(:get, "/api/login")
     response = Router.call(conn, @opts)

@@ -722,8 +722,9 @@ class OrderMenu extends React.Component<any, any> {
                                   Plan ahead, order at least 48 hours in advance
                                   <br/>
                                   <br/>
-                                  <b>Freshly baked artisanal scones 
-                                  Enjoy all day long!</b>
+                                  <b>Freshly baked artisanal scones </b>
+                                  <br/>
+                                  <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
                                   <b>Free Delivery</b>
@@ -766,8 +767,9 @@ class OrderMenu extends React.Component<any, any> {
                                   Plan ahead, order at least 48 hours in advance
                                   <br/>
                                   <br/>
-                                  <b>Freshly baked artisanal scones 
-                                  Enjoy all day long!</b>
+                                  <b>Freshly baked artisanal scones</b>
+                                  <br/> 
+                                  <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
                                   <b>Free Delivery</b>
