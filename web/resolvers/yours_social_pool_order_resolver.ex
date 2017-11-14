@@ -1350,6 +1350,15 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         IO.puts("hour")
                         IO.puts(order_datetime_converted.hour < 13)
 
+                        #if order_datetime_converted.hour == 12 
+                        #converted_hour = order_datetime_converted.hour
+                        #    am_pm = "pm"
+
+                        #case order_datetime_converted.hour
+                        #<12
+                        #12
+                        #>12
+                        
                         if order_datetime_converted.hour < 12 do
                             converted_hour = order_datetime_converted.hour
                             am_pm = "am"

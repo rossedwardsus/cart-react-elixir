@@ -387,7 +387,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             9am - Noon
                             <br/>
                             <br/>
-                            Contact us about other delivery options
+                            Contact us about other delivery options or for a free sample!
                           <br/>   
                           <br/>
                         </div>

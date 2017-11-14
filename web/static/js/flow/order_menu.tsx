@@ -703,7 +703,7 @@ class OrderMenu extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-md-3" style={{paddingLeft: 55}}>
+                          <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
                             <b>SCONELY {this.props.User.orders[0].order_type.toUpperCase()}</b>
@@ -711,12 +711,19 @@ class OrderMenu extends React.Component<any, any> {
                             {(this.props.User.orders[0].order_type == "social" && this.props.User.orders[0].cartItems.length == 0) &&
                               (<div>
                                   <br/>
+                                  Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
+                                  <br/>
+                                  <br/>
                                   $60 per dozen
                                   <br/>
                                   $54 per 2 dozen mini
                                   <br/>
                                   <br/>
                                   Plan ahead, order at least 48 hours in advance
+                                  <br/>
+                                  <br/>
+                                  <b>Freshly baked artisanal scones 
+                                  Enjoy all day long!</b>
                                   <br/>
                                   <br/>
                                   <b>Free Delivery</b>
@@ -733,9 +740,8 @@ class OrderMenu extends React.Component<any, any> {
                                   9am-Noon
                                   <br/>
                                   <br/>
-                                  Contact us for other delivery options
-                              </div>
-                            )}
+                                  Contact us for other delivery options or to schedule a tasting
+                                  </div>)}
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                               pool_image}
                             <br/>
@@ -749,9 +755,19 @@ class OrderMenu extends React.Component<any, any> {
                               {(this.props.User.orders[0].order_type == "social" && this.props.User.orders[0].cartItems.length == 0) &&
                               (<div>
                                   <br/>
-                                  Order by the dozen or 2 dozen for mini
+                                  Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
+                                  <br/>
+                                  <br/>
+                                  $60 per dozen
+                                  <br/>
+                                  $54 per 2 dozen mini
+                                  <br/>
                                   <br/>
                                   Plan ahead, order at least 48 hours in advance
+                                  <br/>
+                                  <br/>
+                                  <b>Freshly baked artisanal scones 
+                                  Enjoy all day long!</b>
                                   <br/>
                                   <br/>
                                   <b>Free Delivery</b>
@@ -768,7 +784,7 @@ class OrderMenu extends React.Component<any, any> {
                                   9am-Noon
                                   <br/>
                                   <br/>
-                                  Contact us for other delivery options
+                                  Contact us for other delivery options or to schedule a tasting
                                   </div>)}
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                                 pool_image}
