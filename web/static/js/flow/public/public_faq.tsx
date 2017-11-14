@@ -417,9 +417,12 @@ export class PublicFaq extends React.Component<any, any> {
                             <br/>
                             Ordering is easy with the following services. Just click on the links below or on our homepage to view the menu, select your scones, then check out. Sconely sends a confirmation email after an order is placed.
                             <br/>
+                            <br/>
                             Sconely Social: 1 dozen ($60) - 20 dozen regular sized scones and / or 2 dozen ($54) – 40 dozen mini scones, delivered to your event.
                             <br/>
+                            <br/>
                             Sconely Pool: 1-11 scones ($6 each), for a group of 5 or more people, delivered to one location. One host initiates order and sends link to others in their group to order and pay individually. Email us to start an order. 
+                            <br/>
                             <br/>
                             Sconely Signature: 1 dozen – 10 dozen regular sized scones, ordered and paid for by an event host, providing the option for guests to pre-select their preferred scone before an event. The scones are then delivered in individual personalized packages. (check back for this option)
                             <br/>
