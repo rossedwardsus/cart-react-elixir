@@ -58,7 +58,6 @@ export default class Menu extends React.Component<any, any> {
                               Sconely is partnering up to use hyperlocal produce grown by <a href="http://www.communityhealinggardens.com">Community Healing Gardens</a> in our homemade scones to support the urban farming movement in LA and their farm program in Watts Los Angeles a known food desert at the only LAUSD Middle School. For every dozen scones sold, Sconely donates 1% to Community Healing Gardens, to plant and share healthy food in diverse and underserved communities in LA.
                             </div>
                             <br/>
-                            <br/>
                             Ordering is easy with the following services.
                             <br/>
                             <br/>
