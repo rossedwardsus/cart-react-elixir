@@ -294,6 +294,22 @@ defmodule Sconely.GraphqlPoolOrderTest do
     #Plug.Conn.fetch_cookies/2
 
     #IO.inspect(conn)
+
+    #test successfull call
+    #assert delivery date, location, time, pool full name
+
+
+    #test expired pool order
+    #test pool order does not exist
+      
+    #test payment error
+
+    #test token exists
+
+    #unit test insert?
+    #maybe just changsets and functions at some point
+
+    #or use contacts app
       
     #Assert the response and status
     #assert conn.state == :sent

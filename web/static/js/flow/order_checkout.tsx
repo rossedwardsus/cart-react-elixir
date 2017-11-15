@@ -616,7 +616,7 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(dateValidated());
     },
     getMenuItems: () => {
-      dispatch(getMenuItems());
+      dispatch(getMenuItems(""));
     },
 
     setUserFirstName: (e: any) => {

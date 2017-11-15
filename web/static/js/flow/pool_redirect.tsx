@@ -122,7 +122,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(loadMenuItemsCreateOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"));
     },
     getMenuItems: () => {
-      dispatch(getMenuItems());
+      dispatch(getMenuItems("pool_response"));
     },
     addCartItem: (order_id: any, item_id: any, item_type: any, quantity: any) => {
       //dispatch(addCartItem(order_id, item_id, item_type, quantity));

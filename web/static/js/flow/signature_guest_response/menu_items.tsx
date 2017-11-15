@@ -48,7 +48,7 @@ class GuestMenu extends React.Component<any, any> {
     console.log("mounted");
 
     this.props.loadSignatureGuestResponseOrderDetails();
-    this.props.getMenuItems();
+    this.props.getMenuItems("signature_guest_response");
 
     //check event still valid
 
@@ -367,8 +367,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    getMenuItems: () => {
-      dispatch(getMenuItems());
+    getMenuItems: (order_type: any) => {
+      dispatch(getMenuItems(""));
     },
 
     loadSignatureGuestResponseOrderDetails: () => {

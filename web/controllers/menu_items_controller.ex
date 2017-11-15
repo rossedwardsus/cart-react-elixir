@@ -29,8 +29,11 @@ defmodule Sconely.MenuItemsController do
     #{:ok, Repo.all(from mi in MenuItem, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
 
-    #if order_type == "pool"
-    #where: %{assortment: false}
+    IO.puts("pool response order_type")
+    IO.inspect(_args)
+
+    #if _args.order_type == "pool"
+    #where: mi.assortment == false
 
     json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: [asc: mi.order])}
 

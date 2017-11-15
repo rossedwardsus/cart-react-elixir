@@ -445,7 +445,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     getMenuItems: () => {
-      dispatch(getMenuItems());
+      dispatch(getMenuItems(""));
     },
     addCartItem: (order_id: "", item_id: any, item_type: any, quantity: any) => {
       //dispatch(addCartItem(order_id, item_id, item_type, quantity));

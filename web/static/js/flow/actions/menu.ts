@@ -72,15 +72,15 @@ export function loadMenuItemsCreateOrder(order_type: any, pool_name: any, pool_d
 
 }
 
-
-export function getMenuItems(){
+//order_type
+export function getMenuItems(order_type: any){
 
       console.log("action");
       return function (dispatch: any) { 
 
             //event full name
 
-            axios.get('/api/menu_items',
+            axios.post('/api/menu_items', {order_type: order_type}
                      //{query: 'query {get_menu_items {id name description ingredients}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )

@@ -899,7 +899,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
 
     getMenuItems: () => {
       console.log("here");
-      dispatch(getMenuItems());
+      dispatch(getMenuItems(""));
     },
     addCartItem: (order_id: any, item_id: any, size: any, quantity: any) => {
       dispatch(addCartItem(order_id, item_id, size, quantity));

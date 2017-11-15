@@ -398,14 +398,14 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL MENU</div>
+                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
                                     1 dozen  - 20 dozen regular sized scones
                                     <br/>
                                     2 dozen - 40 dozen mini scones
                                     <br/>
                                     Freshly baked, delivered to your event
                                     <br/>
-                                    <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>ORDER</button>
+                                    <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                                     <br/>
                                     <br/>
                                     <br/>
@@ -439,7 +439,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           Freshly baked, delivered to your event
                           <br/>
                           <br/>
-                          <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>ORDER</button>
+                          <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                           <br/>
                           <br/>
                           <br/>

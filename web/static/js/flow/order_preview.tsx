@@ -995,7 +995,7 @@ function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
     getMenuItems: () => {
-      dispatch(getMenuItems());
+      dispatch(getMenuItems(""));
     },
     setDate: (e: any) => {
       //dispatch(setDate(e))
