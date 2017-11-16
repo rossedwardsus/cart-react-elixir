@@ -11,9 +11,34 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #IO.puts("redirect plug")
     #do_redirect(conn, to)
     #IO.inspect(conn)
+
+    #user_agent = conn |> get_req_header("user-agent")
+
+    user_agent = conn |> get_req_header("user-agent") |> List.first
+    #ip = conn |> get_req_header("http_client_ip")
+    
+    #IO.inspect(user_agent |> List.first)
+    
+    #IO.inspect(conn.remote_ip)
+    #data time
+    #ipaddress
+    #:inet_parse.ntoa(conn.remote_ip)
+
+
+    #changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
+    #{:error, changeset} = Repo.insert(changeset)
+
+    
+    IO.puts("user agent")
+    IO.inspect(get_req_header(conn, "user-agent"))
+
+    {index, _} = :binary.match(user_agent, "Mac")
+    #{9, 1}
+    IO.inspect(index)
+    
     #IO.inspect(get_req_header(conn, "host") |> List.first)
     #IO.inspect(get_req_header(conn, "request_path") |> List.first)
-    IO.inspect(conn.path_info |> List.first)
+    #IO.inspect(conn.path_info |> List.first)
     
     #if Map.has_key?(conn.params, "pool_name") && Map.has_key?(conn.params, "pool_date") do
 
@@ -54,11 +79,14 @@ defmodule Sconely.Plugs.RedirectsPlug do
              # IO.inspect(Enum.at(conn.path_info, 0))
              # check if pool - Enum.at(conn.path_info, 0) - if not redirect to homepage
              url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)
-                   IO.puts(url)
+                   #IO.puts(url)
         #          #url = url <> "/"
                    conn
+                    #|> put_status(302)
                     |> Phoenix.Controller.redirect(to: url)
                     |> halt
+
+                    #status code 302
         
     end
 

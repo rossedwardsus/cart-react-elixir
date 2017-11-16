@@ -11,7 +11,7 @@ defmodule SconeHomeElixir do
       supervisor(SconeHomeElixir.Endpoint, []),
       # Start the Ecto repository
       worker(SconeHomeElixir.Repo, []),
-      worker(SconeHomeElixir.RemindGuests, []),
+      worker(SconeHomeElixir.DailyLog, []),
       # Here you could define other workers and supervisors as children
       # worker(SconeHomeElixir.Worker, [arg1, arg2, arg3]),
     ]

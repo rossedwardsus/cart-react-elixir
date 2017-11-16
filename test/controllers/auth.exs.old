@@ -3,7 +3,9 @@ defmodule Sconely.RoutesControllerTest1 do
 
   #@opts SconeHomeElixir.Router.init([])
 
-  test "GET /" do
+  #guardian
+
+  test "GET /api/create pool" do
     #conn = get conn(), "/mobile"
     #assert html_response(conn, 200) =~ "1"
 
