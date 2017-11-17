@@ -778,7 +778,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       "pool" ->
 
-        subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 6.00) end)
+        subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 5.00) end)
 
 
       "social" -> 
