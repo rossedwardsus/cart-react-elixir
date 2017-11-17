@@ -1,24 +1,26 @@
-defmodule Sconely.OrderDeliveryContact do
+defmodule Sconely.BrowserLog do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
 		use SconeHomeElixir.Web, :model
 
-		@required_fields ~W(order_id)
+		@optional_fields ~W(log_entry log_datetime)
+		@required_fields ~W()
 		
-		#@primary_key {:order_id, :binary_id, autogenerate: true}
+		@primary_key {:order_id, :binary_id, autogenerate: true}
 
-		schema "order_delivery_contact" do
-			field :order_id, :string
-			field :email, :string
-			field :mobile, :string
-			field :first_name, :string
-			field :last_name, :string
+		schema "browser_log" do
+			field :log_entry, :string
+			#field :email, :string
+			#field :mobile, :string
+			#field :first_name, :string
+			#field :last_name, :string
+			field :log_datetime, :string
 		end
 
 		def changeset(struct, params \\ %{}) do
 		    struct
-		    |> cast(params, @required_fields)
+		    |> cast(params, @optional_fields, @required_fields)
 		    #|> validate_required([:email])
 		    |> validate_length(:email, min: 2)
 		    #|> validate_length(:password, min: 2)

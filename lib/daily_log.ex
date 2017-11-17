@@ -3,7 +3,7 @@ defmodule SconeHomeElixir.DailyLog do
   #use SconeHomeElixir.Web, :controller
   import Ecto.Query
 
-  #alias SconeHomeElixir.UserOrderItems
+  alias Sconely.BrowserLog
   #alias SconeHomeElixir.Repo
 
   def start_link do
@@ -35,10 +35,12 @@ defmodule SconeHomeElixir.DailyLog do
 
     #send messages to guests that havent chosen their item if it is a timeframe before the delivery date
 
-    #query = from w in UserOrderItems,
+    #query = from log in BrowserLog,
     #     select: %{id: w.id}
+    #get the logs for today
+    #Ecto.Date.utc()
 
-    #all_ids = Repo.all(query)
+    #logs = Repo.all(query)
 
     #Enum.map(all_ids, fn(x) -> IO.inspect x[:id] end)
     
