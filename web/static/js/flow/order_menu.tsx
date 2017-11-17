@@ -512,7 +512,7 @@ class OrderMenu extends React.Component<any, any> {
 
     if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
-        cost_text = <div>$6 each</div>
+        cost_text = <div>$5 each</div>
 
     }else{
 
@@ -686,7 +686,7 @@ class OrderMenu extends React.Component<any, any> {
                               <br/>
                               Choose between 1-11 scones
                               <br/>
-                              $6 each
+                              $5 each
                               <br/>
                               <br/>
                               <b>Freshly baked artisanal scones</b>
