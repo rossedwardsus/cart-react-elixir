@@ -462,6 +462,8 @@ class DateTime extends React.Component<any, any> {
                         </div>
     }*/
 
+    /*<DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1, 2]}]}}/>*/
+
 
     if(this.props.User.orders[0].order_type == "pool"){
 
@@ -541,7 +543,7 @@ class DateTime extends React.Component<any, any> {
                             <form className="form-horizontal" style={{border: 0}}>
                               <div className="form-group show-lg" style={{borderRadius: 0}}>
                                 <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1, 2]}]}}/>
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate}/>
                                 </div>
                                 <div className="col-md-3">
                                   9:00 am - 12:00 pm

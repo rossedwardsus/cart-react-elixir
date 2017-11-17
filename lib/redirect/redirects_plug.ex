@@ -59,6 +59,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #
     case conn.path_info |> List.first do
         nil -> IO.puts("nil")
+                #log browser user agent
                conn
                |> halt
         "image" -> IO.puts("image")
@@ -76,6 +77,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "login" -> ""
         "register" -> ""
         _ -> IO.puts("anything else")
+            #log browser
              # IO.inspect(Enum.at(conn.path_info, 0))
              # check if pool - Enum.at(conn.path_info, 0) - if not redirect to homepage
              url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)

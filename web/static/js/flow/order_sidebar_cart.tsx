@@ -351,7 +351,7 @@ class SidebarCart extends React.Component<any, any> {
 
             }else{
 
-                item_cost = 6.00;
+                item_cost = 5.00;
 
             }
 
@@ -406,7 +406,7 @@ class SidebarCart extends React.Component<any, any> {
 
         if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
         
-          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 6.00; }, 0)
+          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
         }else{
 
