@@ -1,4 +1,4 @@
-defmodule Sconely.BrowserAnalytics do
+defmodule Sconely.BrowserLog do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -9,7 +9,7 @@ defmodule Sconely.BrowserAnalytics do
 		@optional_fields ~W(data)
 		@required_fields ~W()
 
-		schema "browser_analytics" do
+		schema "browser_log" do
 			field :data, :string
 			field :datetime_logged, Ecto.DateTime, default: Ecto.DateTime.utc
 		end

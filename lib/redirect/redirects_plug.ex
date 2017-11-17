@@ -10,9 +10,9 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #to = "/page"
     #IO.puts("redirect plug")
     #do_redirect(conn, to)
-    #IO.inspect(conn)
+    IO.inspect(conn.path_info)
 
-    #user_agent = conn |> get_req_header("user-agent")
+    user_agent = conn |> get_req_header("user-agent")
 
     user_agent = conn |> get_req_header("user-agent") |> List.first
     #ip = conn |> get_req_header("http_client_ip")
@@ -25,12 +25,12 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #:inet_parse.ntoa(conn.remote_ip)
 
 
-    #changeset = BrowserAnalytics.changeset(%BrowserAnalytics{}, %{data: user_agent |> List.first})
+    #changeset = BrowserLog.changeset(%BrowserLog{}, %{data: user_agent |> List.first})
     #{:error, changeset} = Repo.insert(changeset)
 
     
-    IO.puts("user agent")
-    IO.inspect(get_req_header(conn, "user-agent"))
+    #IO.puts("user agent")
+    #IO.inspect(get_req_header(conn, "user-agent"))
 
     {index, _} = :binary.match(user_agent, "Mac")
     #{9, 1}
@@ -59,6 +59,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #
     case conn.path_info |> List.first do
         nil -> IO.puts("nil")
+                IO.puts("homepage browser log" <> user_agent)
                 #log browser user agent
                conn
                |> halt
@@ -76,8 +77,14 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "user" -> IO.puts("social")
         "login" -> ""
         "register" -> ""
-        _ -> IO.puts("anything else")
+        _ -> IO.puts("anything else1")
             #log browser
+             
+             #if Enum.at(conn.path_info, 0) == 8thandhope or weworkdtla
+             #if length(conn.path_info) == 0) do
+                IO.inspect("pool browser log" <> user_agent)
+             #end
+
              # IO.inspect(Enum.at(conn.path_info, 0))
              # check if pool - Enum.at(conn.path_info, 0) - if not redirect to homepage
              url = "/pool/" <> Enum.at(conn.path_info, 0) <> "/" <> Enum.at(conn.path_info, 1)
