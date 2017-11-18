@@ -822,6 +822,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                     total = subtotal - (subtotal * 10/100)
         "WEWORK10" ->  promo_code_discount = "10%"
                     total = subtotal - (subtotal * 10/100)
+        "HOLIDAY10" ->  promo_code_discount = "10%"
+                    total = subtotal - (subtotal * 10/100)
         
     end
 
