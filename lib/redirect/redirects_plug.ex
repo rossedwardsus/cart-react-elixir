@@ -63,6 +63,8 @@ defmodule Sconely.Plugs.RedirectsPlug do
                 #log browser user agent
                conn
                |> halt
+        "css" -> conn |> halt
+        "favicon.ico" -> conn |> halt
         "image" -> IO.puts("image")
         "pool" -> conn
                   #|> Phoenix.Controller.redirect(to: url)
@@ -79,6 +81,8 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "register" -> ""
         _ -> IO.puts("anything else1")
             #log browser
+
+            #api/graphql call
              
              #if Enum.at(conn.path_info, 0) == 8thandhope or weworkdtla
              #if length(conn.path_info) == 0) do
