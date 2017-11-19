@@ -1,4 +1,4 @@
-defmodule Sconely.ProcessOrderDatetime do
+defmodule Sconely.ProcessOrderDateTime do
   #import Bamboo.Email
 
   alias SconeHomeElixir.Repo

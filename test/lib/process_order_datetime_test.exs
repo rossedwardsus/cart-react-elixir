@@ -1,11 +1,22 @@
-defmodule Sconely.ProcessOrderDatetimeTest do
+defmodule Sconely.ProcessOrderDateTimeTest do
   use SconeHomeElixir.ConnCase, async: true
   #use Plug.Test
   #alias SconeHomeElixir.Router
 
+  use Timex
+
   #@opts Router.init([])
 
-  import Sconely.ProcessOrder
+  import Sconely.ProcessOrderDateTime
+
+  test "format entire date and time" do
+
+  		order_datetime = Ecto.DateTime.utc
+
+
+
+  end
+
 
   test "am_pm 11 am" do
   	 assert am_pm(11) == "11 am"
@@ -20,6 +31,8 @@ defmodule Sconely.ProcessOrderDatetimeTest do
   	 assert pad_minute(1) == "01"
   end
 
+
+
   test "day as word" do
   	 assert day_as_word(1) == "Monday"
   end
@@ -27,6 +40,8 @@ defmodule Sconely.ProcessOrderDatetimeTest do
   test "month as word" do
   	 assert month_as_word(1) == "January"
   end
+
+
 
   #timezone
   #
@@ -41,6 +56,6 @@ defmodule Sconely.ProcessOrderDatetimeTest do
 
 
   	#assert order_datetime_convert_timezone(order_datetime) = order_datetime_converted
-  #
+  end
 
 end

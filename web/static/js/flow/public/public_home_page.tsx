@@ -373,7 +373,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18}}>
-                            <b>FREE DELIVERY</b>
+                            <b>FREE DELIVERY TO MOST LOCATIONS</b>
                           </div>
                             Downtown LA
                             <br/>
@@ -395,8 +395,6 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             Hancock Park
                             <br/>
-                            Echo Park
-                            <br/>
                             Westwood
                             <br/>
                             <br/>
@@ -415,7 +413,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <div className="visible-xs">
                                     <div style={{fontSize: 18}}>
-                                    <b>FREE DELIVERY</b>
+                                    <b>FREE DELIVERY TO MOST LOCATIONS</b>
                                   </div>
                                     Downtown LA
                                     <br/>
@@ -434,8 +432,6 @@ export class PublicHomePage extends React.Component<any, any> {
                                     Brentwood
                                     <br/>
                                     Century City
-                                    <br/>
-                                    Hancock Park
                                     <br/>
                                     Echo Park
                                     <br/>
