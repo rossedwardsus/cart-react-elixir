@@ -10,8 +10,8 @@ defmodule Sconely.BrowserLog do
 		@required_fields ~W()
 
 		schema "browser_log" do
-			field :data, :string
-			field :datetime_logged, Ecto.DateTime, default: Ecto.DateTime.utc
+			field :user_agent, :string
+			field :datetime_logged, Ecto.DateTime
 		end
 
 		def changeset(struct, params \\ %{}) do

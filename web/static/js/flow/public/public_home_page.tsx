@@ -381,8 +381,24 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             Venice
                             <br/>
+                            Marina Del Rey
                             <br/>
-                            Wednesday - Saturday
+                            Beverly Hills
+                            <br/>
+                            West Hollywood
+                            <br/>
+                            Playa Vista
+                            <br/>
+                            Brentwood
+                            <br/>
+                            Century City
+                            <br/>
+                            Hancock Park
+                            <br/>
+                            Echo Park
+                            <br/>
+                            Westwood
+                            <br/>
                             <br/>
                             9am - Noon
                             <br/>
@@ -398,7 +414,41 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
+                                    <div style={{fontSize: 18}}>
+                                    <b>FREE DELIVERY</b>
+                                  </div>
+                                    Downtown LA
+                                    <br/>
+                                    Santa Monica 
+                                    <br/>
+                                    Venice
+                                    <br/>
+                                    Marina Del Rey
+                                    <br/>
+                                    Beverly Hills
+                                    <br/>
+                                    West Hollywood
+                                    <br/>
+                                    Playa Vista
+                                    <br/>
+                                    Brentwood
+                                    <br/>
+                                    Century City
+                                    <br/>
+                                    Hancock Park
+                                    <br/>
+                                    Echo Park
+                                    <br/>
+                                    Westwood
+                                    <br/>
+                                    <br/>
+                                    9am - Noon
+                                    <br/>
+                                    <br/>
+                                    Contact us about other delivery options or for a free sample!
+                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                                        SCONELY SOCIAL
+                                    </div>
                                     1 dozen  - 20 dozen regular sized scones
                                     <br/>
                                     2 dozen - 40 dozen mini scones

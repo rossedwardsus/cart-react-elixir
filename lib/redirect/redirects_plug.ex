@@ -25,9 +25,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #:inet_parse.ntoa(conn.remote_ip)
 
 
-    #changeset = BrowserLog.changeset(%BrowserLog{}, %{data: user_agent |> List.first})
-    #{:error, changeset} = Repo.insert(changeset)
-
+    
     
     #IO.puts("user agent")
     #IO.inspect(get_req_header(conn, "user-agent"))
@@ -59,7 +57,21 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #
     case conn.path_info |> List.first do
         nil -> IO.puts("nil")
-                IO.puts("homepage browser log" <> user_agent)
+                IO.puts("homepage browser log " <> user_agent)
+                #IO.inspect(user_agent =~ "Mozilla")
+
+                browser = nil
+
+                #case user_agent do
+
+                #    user_agent =~ "Mac" -> os = "osx"
+
+                #end
+
+                
+                #changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent})
+                #{:error, changeset} = Repo.insert(changeset)
+
                 #log browser user agent
                conn
                |> halt
@@ -83,10 +95,13 @@ defmodule Sconely.Plugs.RedirectsPlug do
             #log browser
 
             #api/graphql call
+
+
              
              #if Enum.at(conn.path_info, 0) == 8thandhope or weworkdtla
              #if length(conn.path_info) == 0) do
                 IO.inspect("pool browser log" <> user_agent)
+                IO.inspect(:binary.match user_agent, "Mac")
              #end
 
              # IO.inspect(Enum.at(conn.path_info, 0))
