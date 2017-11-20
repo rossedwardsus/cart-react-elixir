@@ -72,8 +72,11 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 11, order:
 
 #Repo.insert!(menu_item_changeset)
 
+menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 12, order: 12, name: "Sweet + Savory Assortment (6 of each flavor)", ingredients: "", description: "DWK\nAn exquisite combination of flavors and textures with caramelized pears, praline pecans and fresh ginger\nRuby Q\nFresh cherries, semisweet chocolate chunks and Madagascan vanilla bean\nSavvy Go Go\nSavory and satisfying, with sun-dried tomatoes, goat cheese and fresh herbs\nZilla\nA savory powerhouse that perfectly combines gruyere cheese, caramelized purple onions and sage", assortment: true, active: false})
 
+Repo.insert!(menu_item_changeset)
 
+#MIX_ENV=prod mix run priv/repo/seeds.exs
 
 
 #user_pools

@@ -6,7 +6,7 @@ defmodule Sconely.BrowserLog do
 
 		#@derive {Poison.Encoder, only: [:user_id, :email, :password]}
 
-		@optional_fields ~W(data)
+		@optional_fields ~W(user_agent datetime_logged)
 		@required_fields ~W()
 
 		schema "browser_log" do

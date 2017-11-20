@@ -5,6 +5,8 @@ defmodule Sconely.ProcessOrderDateTimeTest do
 
   use Timex
 
+  #mix test --trace
+
   #@opts Router.init([])
 
   import Sconely.ProcessOrderDateTime
@@ -19,7 +21,18 @@ defmodule Sconely.ProcessOrderDateTimeTest do
 
 
   test "am_pm 11 am" do
-  	 assert am_pm(11) == "11 am"
+  	task = Task.async(Sconely.ProcessOrderDateTime, :am_pm, [11])
+  	#IO.inspect(Task.await(task))
+
+  	assert Task.await(task) == "11 am"
+
+  	#parent = self()
+	#spawn fn -> send(parent, {:am_pm(11), self()}) end
+	#receive do
+	#   {:hello, pid} -> "Got hello from #{inspect pid}"
+	#end
+
+  	#assert am_pm(11) == "11 am"
   #  assert [2,4,6] = pmap([1,2,3], fn x -> x * 2 end)
   end
 

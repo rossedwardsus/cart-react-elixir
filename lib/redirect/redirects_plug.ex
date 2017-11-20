@@ -1,6 +1,9 @@
 defmodule Sconely.Plugs.RedirectsPlug do
   import Plug.Conn
 
+  alias Sconely.BrowserLog
+  alias SconeHomeElixir.Repo
+
   def init(options) do
     options
   end
@@ -68,9 +71,8 @@ defmodule Sconely.Plugs.RedirectsPlug do
 
                 #end
 
-                
-                #changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent})
-                #{:error, changeset} = Repo.insert(changeset)
+                changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent, datetime_logged: Ecto.DateTime.utc})
+                {:ok, changeset} = Repo.insert(changeset)
 
                 #log browser user agent
                conn

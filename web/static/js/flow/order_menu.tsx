@@ -211,11 +211,13 @@ class OrderMenu extends React.Component<any, any> {
 
               let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
 
-              console.log(JSON.stringify(menu_item));
+              console.log(JSON.stringify(menu_item["description"]));
+
+              let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}</p>);
 
               this.setState({selected_item_id: menu_item_id});
               this.setState({selected_item_name: menu_item["name"]});
-              this.setState({selected_item_description: menu_item["description"]});
+              this.setState({selected_item_description: menu_item_description});
               this.setState({selected_item_ingredients:  menu_item["ingredients"]});
 
       /*    }
@@ -836,13 +838,13 @@ class OrderMenu extends React.Component<any, any> {
                           <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
                         </div>
                         <div className="modal-body">
-                            {this.state.selected_item_description}
-                            <br/>
-                            <br/>
-                            Ingredients: {this.state.selected_item_ingredients}
-                            <br/>
-                            <br/>
-                            {cost_text}
+                          {this.state.selected_item_description} 
+                          <br/>
+                          <br/>
+                          Ingredients: {this.state.selected_item_ingredients}
+                          <br/>
+                          <br/>
+                          {cost_text}
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">

@@ -700,7 +700,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zip Code</option>
-                            <option>Venice</option>
+                            <option>Venice Free Delivery</option>
                             <option value="90013">90013</option>
                             <option value="90014">90014</option>
                             <option value="90015">90015</option>
@@ -732,6 +732,29 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option value="90055">90055</option>
                             <option value="90079">90079</option>
                             <option value="90086">90086</option>
+                            <option>Beverly Hills</option>
+                            <option>90035</option>
+                            <option>90209</option>
+                            <option>90210</option>
+                            <option>90211</option>
+                            <option>90212</option>
+                            <option>90213</option>
+                            <option>Marina Del Rey</option>
+                            <option>90292</option>
+                            <option>Playa Del Rey</option>
+                            <option>90094</option>
+                            <option>Brentwood</option>
+                            <option>90049</option>
+                            <option>Century City</option>
+                            <option>90067</option>
+                            <option>West Hollywood</option>
+                            <option>90046</option>
+                            <option>90048</option>
+                            <option>90069</option>
+                            <option>Hancock Park</option>
+                            <option>90004</option>
+                            <option>Westwood</option>
+                            <option>90024</option>
                           </select>
                         </div>
                     </div>
