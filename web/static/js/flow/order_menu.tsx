@@ -216,7 +216,7 @@ class OrderMenu extends React.Component<any, any> {
 
               //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
 
-              let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}</p>);
+              let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
 
               this.setState({selected_item_id: menu_item_id});
               this.setState({selected_item_name: menu_item["name"]});
@@ -733,20 +733,6 @@ class OrderMenu extends React.Component<any, any> {
                                   <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
-                                  <b>Free Delivery</b>
-                                  <br/>
-                                  Downtown LA
-                                  <br/>
-                                  Santa Monica
-                                  <br/>
-                                  Venice
-                                  <br/>
-                                  <br/>
-                                  Wednesday-Saturday
-                                  <br/>
-                                  9am-Noon
-                                  <br/>
-                                  <br/>
                                   Contact us for other delivery options or to schedule a tasting
                                   </div>)}
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
@@ -778,22 +764,7 @@ class OrderMenu extends React.Component<any, any> {
                                   <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
-                                  <b>Free Delivery</b>
-                                  <br/>
-                                  Downtown LA
-                                  <br/>
-                                  Santa Monica
-                                  <br/>
-                                  Venice
-                                  <br/>
-                                  <br/>
-                                  Wednesday-Saturday
-                                  <br/>
-                                  9am-Noon
-                                  <br/>
-                                  <br/>
-                                  Contact us for other delivery options or to schedule a tasting
-                                  </div>)}
+                                </div>)}
                               {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                                 pool_image}
                               <br/>

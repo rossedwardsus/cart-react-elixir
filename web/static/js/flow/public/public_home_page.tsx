@@ -400,7 +400,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           9am - Noon
                           <br/>
                           <br/>
-                          With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens, sharing healthy food with those in need. 
+                          With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens. 
                           <br/>
                           <br/>
                           Contact us about other delivery options or for a free sample!
@@ -414,34 +414,54 @@ export class PublicHomePage extends React.Component<any, any> {
                                       <div className="modal-content">
                                         <div className="modal-header">
                                           <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 className="modal-title" id="myModalLabel">Delivery Locaitons</h4>
+                                          <h4 className="modal-title" id="myModalLabel">Delivery Locations</h4>
                                         </div>
                                         <div className="modal-body">
-                                          Locations
-                                          <br/>
-                                          Downtown LA
-                                          <br/>
-                                          Santa Monica 
-                                          <br/>
-                                          Venice
-                                          <br/>
-                                          Marina Del Rey
-                                          <br/>
-                                          Beverly Hills
-                                          <br/>
-                                          West Hollywood
-                                          <br/>
-                                          Playa Vista
-                                          <br/>
-                                          Brentwood
-                                          <br/>
-                                          Century City
-                                          <br/>
-                                          Hancock Park
-                                          <br/>
-                                          Westwood
-                                          <br/>
+
+                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            Free Delivery
+                                            <br/>
+                                            <br/>
+                                            Downtown LA
+                                            <br/>
+                                            Santa Monica 
+                                            <br/>
+                                            Venice
+                                            <br/>
+                                            Marina Del Rey
+                                            <br/>
+                                            Beverly Hills
+                                            <br/>
+                                            West Hollywood
+                                            <br/>
+                                            Playa Vista
+                                            <br/>
+                                            Brentwood
+                                            <br/>
+                                            Century City
+                                            <br/>
+                                            Hancock Park
+                                            <br/>
+                                            Westwood
+                                            <br/>
+                                          </div>
+                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            $15 Dollar Delivery
+                                          </div>
                                         </div>
+                                        <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
                                       </div>
                                     </div>
                                   </div>
@@ -460,7 +480,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     9am - Noon
                                     <br/>
                                     <br/>
-                                    With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens, sharing healthy food with those in need. 
+                                    With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens. 
                                     <br/>
                                     <br/>
                                     Contact us about other delivery options or for a free sample!
