@@ -213,6 +213,8 @@ class OrderMenu extends React.Component<any, any> {
 
               console.log(JSON.stringify(menu_item["description"]));
 
+              //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
+
               let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}</p>);
 
               this.setState({selected_item_id: menu_item_id});

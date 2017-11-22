@@ -60,16 +60,120 @@ defmodule Sconely.ProcessOrderCart do
 
   #IO.inspect(Date.day_of_week(date_from_erl))           
 
+  def get_menu_item_name1(datetime) do
+
+    match = Enum.find(%{menu_item_id: "12345", description: "", ingredients: "", name: ""}, fn(element) ->
+      match?({_, "12345"}, element)
+    end)
+
+    IO.inspect(match)
+
+    #Map.merge(cart_item, %{
+    #  :name => item_name,
+    #  :menu_image_name => Enum.at(menu_items_mock, menu_item_index).name
+    #})
                   
+  end
 
 
-  def format_datetime(datetime) do
+  def get_menu_item_name(datetime) do
+
+    #just test with one item
+    menu_items_mock = %{menu_item_id: "12345", description: "", ingredients: "", name: ""}
+    cart_items_mock = %{menu_item_id: "12345", size: "regular", quantity: 1}
+
+    #get element with the menu item id using filter
+    #add the menu item name to the cart item
+    #also look in cart items for size == mini and 
+    #also menu item image
+
+    cart_items_with_name = Enum.map(cart_items_mock, fn(cart_item) ->
+          #Map.put(cart_item, :name, "name")
+          #IO.inspect(Enum.at(menu_items_mock, 0).name)
+          IO.inspect(cart_item[:size])
+
+          if cart_item[:size] == "regular" do
+
+            menu_item_index = cart_items_mock[:menu_item_id]-1
+
+            item_name = Enum.at(menu_items_mock, cart_items_mock[:menu_item_id]-1).name
+
+            #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
+            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
+
+            Map.merge(cart_item, %{
+              :name => item_name,
+              :menu_image_name => Enum.at(menu_items_mock, menu_item_index).name
+            })
+
+          else
+
+            #IO.inspect(cart_item[:menu_item_id]-1)
+
+            #use map to find the menu_item_id instead of by index
+            #also this code is mostly duplicate of above
+
+            item_name = Enum.at(menu_items_mock, cart_items_mock[:menu_item_id]-1).name <> " mini"
+
+            menu_item_index = cart_items_mock[:menu_item_id]-1
+
+            #Map.put(cart_item, :name, item_name)
+            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
+
+            Map.merge(cart_item, %{
+              :name => item_name,
+              :menu_image_name => Enum.at(menu_items_mock, menu_item_index).name <> " mini"
+            })
+
+          end
+
+          #name = Enum.filter(menu_items, fn(menu_item) ->
+            #match?({:, _}, element)
+            #IO.inspect(cart_item.item_id)
+            #IO.inspect(menu_item.item_id)
+          #  if(menu_item.item_id == cart_item.item_id) do
+              #IO.puts("here")
+              #IO.inspect(menu_item.name |> String.downcase |> String.replace(" ", ""))
+              #IO.inspect(String.downcase(menu_item.name) |> String.replace(menu_item.name, " ", ""))
+          #    Enum.at(Map.put(cart_item, :name, menu_item.name), 0)
+             #menu_item
+
+          #  end
+          #end)
+          #IO.inspect(String.downcase(name) |> String.replace(name, " ", ""))
+          #IO.inspect(cart_item)
+       #   name_temp = Enum.at(name, 0)
+          #IO.inspect(title_temp[:title])
+       #   Map.put(cart_item, :title, title_temp[:title])
+        end)
+
+        IO.inspect(cart_items_with_name)
 
     #day_as_word <> am_mp <> st_rd_th_nd <> timezone
 
   end
 
-  def cart_with_item_names() do
+  def cart_item_total_subtotal() do
+
+  end
+
+  def delivery_cost() do
+
+
+  end
+
+  def promo_code() do
+
+  end
+
+  def cart_total() do
+
+    #subtotal + promo code discount + bulk discount
+
+  end
+
+
+  def cart_with_one_item_names() do
 
       menu_items = nil
       cart_items_with_names = nil
@@ -143,6 +247,15 @@ defmodule Sconely.ProcessOrderCart do
         IO.inspect(cart_items_with_name)
 
   end
+
+
+
+
+
+
+
+
+
 
   def am_pm(hour) do
 

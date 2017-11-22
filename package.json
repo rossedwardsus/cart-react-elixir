@@ -76,6 +76,7 @@
     "nyc": "^10.2.0",
     "react-addons-test-utils": "^15.6.0",
     "react-bootstrap-date-picker": "^5.0.1",
+    "react-bootstrap-modal": "^4.0.0",
     "react-date-picker": "^5.3.28",
     "react-datepicker": "^0.29.0",
     "react-dropzone": "^3.8.0",

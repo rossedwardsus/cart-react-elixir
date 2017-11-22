@@ -11,6 +11,7 @@ import PublicTopNavbar from './public_top_navbar.tsx';
 import PublicBottomNavbar from './public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
 
+var Modal = require('react-bootstrap-modal')
 
 //import {List, Map} from 'immutable';
 
@@ -48,21 +49,25 @@ export class PublicHomePage extends React.Component<any, any> {
         gallery_image: "",
         gallery_image_index: 0,
         guest_code: "",
-        interval: ""
+        interval: "",
+        //open: false
         
     };
 
     //this.createSignatureOrder = this.createSignatureOrder.bind(this);
-    this.guestCode = this.guestCode.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onSwipedLeft = this.onSwipedLeft.bind(this);
-    this.onSwipedRight = this.onSwipedRight.bind(this);
-    this.guestCodeChange = this.guestCodeChange.bind(this);
+    //this.guestCode = this.guestCode.bind(this);
+    //this.onSubmit = this.onSubmit.bind(this);
+    //this.onSwipedLeft = this.onSwipedLeft.bind(this);
+    //this.onSwipedRight = this.onSwipedRight.bind(this);
+    //this.guestCodeChange = this.guestCodeChange.bind(this);
     this.changeImage = this.changeImage.bind(this);
 
   }
 
   componentDidMount(){
+
+    //$('#myModal').modal('show').css("background", "");;
+
 
     //dispatch(checkLoggedIn);
 
@@ -111,9 +116,19 @@ export class PublicHomePage extends React.Component<any, any> {
     };
   }
 
-  onSubmit(e: any){
+  showDeliveryLocations(){
 
-    e.preventDefault();
+    $('#myModal').modal('show').css("background", "");
+
+    //e.preventDefault();
+
+  }
+
+  closeDeliveryLocations(){
+
+    $('#myModal').modal('hide');
+
+    //e.preventDefault();
 
   }
 
@@ -371,77 +386,85 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
                           <br/>
                           <br/>
+                           <br/>
                           <br/>
                           <div style={{fontSize: 18}}>
-                            <b>FREE DELIVERY TO MOST LOCATIONS</b>
+                            <b>FREE DELIVERY</b>
                           </div>
-                            Downtown LA
-                            <br/>
-                            Santa Monica 
-                            <br/>
-                            Venice
-                            <br/>
-                            Marina Del Rey
-                            <br/>
-                            Beverly Hills
-                            <br/>
-                            West Hollywood
-                            <br/>
-                            Playa Vista
-                            <br/>
-                            Brentwood
-                            <br/>
-                            Century City
-                            <br/>
-                            Hancock Park
-                            <br/>
-                            Westwood
-                            <br/>
-                            <br/>
-                            9am - Noon
-                            <br/>
-                            <br/>
-                            Contact us about other delivery options or for a free sample!
-                          <br/>   
+                          <br/>
+                          <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
+                          <br/>
+                          <br/>
+                          Tuesday - Saturday Delivery
+                          <br/>
+                          9am - Noon
+                          <br/>
+                          <br/>
+                          With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens, sharing healthy food with those in need. 
+                          <br/>
+                          <br/>
+                          Contact us about other delivery options or for a free sample!
+                        <br/>   
                           <br/>
                         </div>
                         <div className="col-md-6" style={{paddingLeft: "30px"}}>
                                   <br/>
+                                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                                    <div className="modal-dialog" role="document">
+                                      <div className="modal-content">
+                                        <div className="modal-header">
+                                          <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 className="modal-title" id="myModalLabel">Delivery Locaitons</h4>
+                                        </div>
+                                        <div className="modal-body">
+                                          Locations
+                                          <br/>
+                                          Downtown LA
+                                          <br/>
+                                          Santa Monica 
+                                          <br/>
+                                          Venice
+                                          <br/>
+                                          Marina Del Rey
+                                          <br/>
+                                          Beverly Hills
+                                          <br/>
+                                          West Hollywood
+                                          <br/>
+                                          Playa Vista
+                                          <br/>
+                                          Brentwood
+                                          <br/>
+                                          Century City
+                                          <br/>
+                                          Hancock Park
+                                          <br/>
+                                          Westwood
+                                          <br/>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                   <br/>
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>
                                   <br/>
-                                  <br/>
                                   <div className="visible-xs">
                                     <div style={{fontSize: 18}}>
-                                    <b>FREE DELIVERY TO MOST LOCATIONS</b>
-                                  </div>
-                                    Downtown LA
+                                      <b>FREE DELIVERY</b>
+                                    </div>
                                     <br/>
-                                    Santa Monica 
+                                    <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
                                     <br/>
-                                    Venice
-                                    <br/>
-                                    Marina Del Rey
-                                    <br/>
-                                    Beverly Hills
-                                    <br/>
-                                    West Hollywood
-                                    <br/>
-                                    Playa Vista
-                                    <br/>
-                                    Brentwood
-                                    <br/>
-                                    Century City
-                                    <br/>
-                                    Echo Park
-                                    <br/>
-                                    Westwood
-                                    <br/>
+                                    Tuesday - Saturday Delivery
                                     <br/>
                                     9am - Noon
                                     <br/>
                                     <br/>
+                                    With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens, sharing healthy food with those in need. 
+                                    <br/>
+                                    <br/>
                                     Contact us about other delivery options or for a free sample!
+                                    <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
                                     </div>

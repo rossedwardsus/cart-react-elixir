@@ -172,9 +172,9 @@ defmodule Sconely.ProcessOrderDateTime do
 
       case day do
         n when n in [1, 21, 31] -> Integer.to_string(day) <> "st"
-      #  n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-      #  n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-      #  n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
+        n when n in [2, 22] -> Integer.to_string(day) <> "nd"
+        n when n in [3, 23] -> Integer.to_string(day) <> "rd"
+        n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> Integer.to_string(day) <> "th"
       end
 
   end
@@ -192,11 +192,11 @@ defmodule Sconely.ProcessOrderDateTime do
 
   end
 
-  def day_as_word(day_as_number) do
+  def week_day_as_word(week_day_as_number) do
 
     #case Date.day_of_week(date_from_erl) do
       #case Timex.weekday do
-      case day_as_number do
+      case week_day_as_number do
         1 -> "Monday"
         2 -> "Tuesday"
         3 -> "Wednesday"
