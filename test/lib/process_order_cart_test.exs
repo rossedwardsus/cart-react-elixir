@@ -1,4 +1,4 @@
-defmodule Sconely.ProcessOrderCartTest do
+defmodule Sconely.LibProcessOrderCartTest do
   use SconeHomeElixir.ConnCase, async: true
   #use Plug.Test
   #alias SconeHomeElixir.Router
@@ -11,18 +11,40 @@ defmodule Sconely.ProcessOrderCartTest do
 
   import Sconely.ProcessOrderCart
 
-  test "get_menu_item_name" do
+  test "get_cart_with_menu_item_name_and_image_name" do
 
     #from menu item get name
     #take name and add mini to it
     #add menu image name
     #cost
 
+    #map.put :name => item_name
+    #map.put :menu_image_name => 
+
+    x = for n <- [%{"1": 1}, %{"2": 2}, %{"3": 3}, %{"4": 4}] do 
+        #IO.inspect(n)
+        Map.merge(n, %{
+          :name => "item_name",
+          :menu_image_name => "image"
+        })
+        
+    end
+
+    IO.inspect(x)
+
+
+    #[%{menu_item_id: "67890", size: "regular", quantity: 12}, %{menu_item_id: "12345", size: "mini", quantity: 12}
+
+    #Map.merge(cart_item, %{
+    #  :name => item_name,
+    #  :menu_image_name => Enum.at(menu_items_mock, menu_item_index).name
+    #})
+
     match = Enum.find([%{menu_item_id: "67890", description: "", ingredients: "", name: ""}, %{menu_item_id: "12345", description: "", ingredients: "", name: "ruby q"}], fn(element) -> element.menu_item_id == "12345"
       #match?({_, "12345"}, element)
     end)
 
-    IO.inspect(match.name)
+    #IO.inspect(match.name)
 
     #Map.merge(cart_item, %{
     #  :name => item_name,
@@ -39,6 +61,8 @@ defmodule Sconely.ProcessOrderCartTest do
     #cost
 
     #Enum.reduce([1, 2, 3], 0, fn(x, acc) -> x + acc end)
+
+    #cart_items_subtotal(cart_items)
 
     subtotal = Enum.reduce([%{menu_item_id: "67890", size: "regular", quantity: 12}, %{menu_item_id: "12345", size: "mini", quantity: 12}], 0, fn(item, acc) -> 
       case item.size do

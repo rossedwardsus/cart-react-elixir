@@ -153,7 +153,17 @@ defmodule Sconely.ProcessOrderCart do
 
   end
 
-  def cart_item_total_subtotal() do
+  def cart_items_subtotal(cart_items) do
+
+    subtotal = Enum.reduce([%{menu_item_id: "67890", size: "regular", quantity: 12}, %{menu_item_id: "12345", size: "mini", quantity: 12}], 0, fn(item, acc) -> 
+      case item.size do
+
+          "regular" -> (item.quantity * 5) + acc
+          "mini" ->  (item.quantity * 2) + acc
+      
+      end
+    
+    end)
 
   end
 
