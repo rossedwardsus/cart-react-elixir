@@ -111,14 +111,13 @@ defmodule Sconely.LibProcessOrderCartTest do
 
   test "format cost" do
 
+    total_formatted = :erlang.float_to_binary(1000, [decimals: 2])
 
   end
 
   test "promo code" do
 
-    #case promo_code(code) do
-
-    #end
+    #assert promo_code("SCONELY 10") == 10
 
   end
 

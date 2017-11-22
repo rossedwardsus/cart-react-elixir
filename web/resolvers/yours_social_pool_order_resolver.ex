@@ -60,7 +60,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
       end
 
-      IO.inspect(pool_date_month_number <> "-" <> pool_date_day_year_as_date)
+      #IO.inspect(pool_date_month_number <> "-" <> pool_date_day_year_as_date)
 
       IO.inspect(args)
 
