@@ -403,7 +403,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           Contact us about other delivery options or for a free sample!
                           <br/>
                           <br/>
-                          <b>With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens.</b>
+                          <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                         <br/>   
                           <br/>
                         </div>
@@ -418,7 +418,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                         </div>
                                         <div className="modal-body">
 
-                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                          <div className="col-md-3" style={{paddingLeft: "30px"}}>
                                             Free Delivery
                                             <br/>
                                             <br/>
@@ -445,8 +445,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                             Westwood
                                             <br/>
                                           </div>
-                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
-                                            $15 Dollar Delivery
+                                          <div className="col-md-3" style={{paddingLeft: "30px"}}>
                                           </div>
                                         </div>
                                         <br/>
@@ -483,7 +482,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     Contact us about other delivery options or for a free sample!
                                     <br/>
                                     <br/>
-                                    <b>With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens.</b>
+                                    <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
