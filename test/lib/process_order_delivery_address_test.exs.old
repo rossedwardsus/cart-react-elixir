@@ -1,0 +1,20 @@
+defmodule Sconely.LibProcessOrderCartTest do
+  use SconeHomeElixir.ConnCase, async: true
+  #use Plug.Test
+  #alias SconeHomeElixir.Router
+
+  use Timex
+
+  #mix test --trace
+
+  #@opts Router.init([])
+
+  import Sconely.ProcessOrderCart
+
+  test "given city state zipcode" do
+
+      #assert "city state zipcode"
+
+  end
+
+end
