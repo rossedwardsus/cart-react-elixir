@@ -71,8 +71,8 @@ defmodule Sconely.Plugs.RedirectsPlug do
 
                 #end
 
-                changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent, datetime_logged: Ecto.DateTime.utc})
-                {:ok, changeset} = Repo.insert(changeset)
+                #changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent, datetime_logged: Ecto.DateTime.utc})
+                #{:ok, changeset} = Repo.insert(changeset)
 
                 #log browser user agent
                conn
@@ -98,8 +98,8 @@ defmodule Sconely.Plugs.RedirectsPlug do
 
             #api/graphql call
 
-            changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent, datetime_logged: Ecto.DateTime.utc})
-            {:ok, changeset} = Repo.insert(changeset)
+            #changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent, datetime_logged: Ecto.DateTime.utc})
+            #{:ok, changeset} = Repo.insert(changeset)
 
              #if Enum.at(conn.path_info, 0) == 8thandhope or weworkdtla
              #if length(conn.path_info) == 0) do
