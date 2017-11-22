@@ -395,7 +395,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
                           <br/>
                           <br/>
-                          Tuesday - Saturday Delivery
+                          Tuesday - Saturday
                           <br/>
                           9am - Noon
                           <br/>
@@ -455,7 +455,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
                                     <br/>
-                                    Tuesday - Saturday Delivery
+                                    Tuesday - Saturday
                                     <br/>
                                     9am - Noon
                                     <br/>
@@ -479,7 +479,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                                    1-11 scones per person, choose and pay separately 
+                                    1-11 scones per person, choose + pay separately 
                                     <br/>
                                     Freshly baked, delivered to one location
                                     <br/>
@@ -513,7 +513,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                          1-11 scones per person, choose and pay separately 
+                          1-11 scones per person, choose + pay separately 
                           <br/>
                           Freshly baked, delivered to one location
                           <br/>

@@ -49,6 +49,7 @@ class OrderMenu extends React.Component<any, any> {
         selected_item_name: "",
         selected_item_description: "",
         selected_item_ingredients: "",
+        selected_item_assortment: false,
         add_cart_item_button_classname: "form-control btn-block btn btn-default disabled",
         images: [],
         hover_images: [],
@@ -211,7 +212,7 @@ class OrderMenu extends React.Component<any, any> {
 
               let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
 
-              console.log(JSON.stringify(menu_item["description"]));
+              console.log(JSON.stringify(menu_item));
 
               //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
 
@@ -221,6 +222,7 @@ class OrderMenu extends React.Component<any, any> {
               this.setState({selected_item_name: menu_item["name"]});
               this.setState({selected_item_description: menu_item_description});
               this.setState({selected_item_ingredients:  menu_item["ingredients"]});
+              this.setState({selected_item_assortment:  menu_item["assortment"]});
 
       /*    }
 
@@ -842,8 +844,11 @@ class OrderMenu extends React.Component<any, any> {
                         <div className="modal-body">
                           {this.state.selected_item_description} 
                           <br/>
-                          <br/>
-                          Ingredients: {this.state.selected_item_ingredients}
+                          {this.state.selected_item_assortment == false && 
+                            <div>
+                                Ingredients: {this.state.selected_item_ingredients}
+                            </div>
+                          }
                           <br/>
                           <br/>
                           {cost_text}

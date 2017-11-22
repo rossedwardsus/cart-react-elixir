@@ -41,7 +41,7 @@ defmodule Sconely.MenuItemsController do
 
     else
 
-        json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.active == true, order_by: [asc: mi.order])}
+        json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.active == true, order_by: [asc: mi.order])}
 
     end
 
