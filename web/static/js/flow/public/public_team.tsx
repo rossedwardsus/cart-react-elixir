@@ -378,6 +378,7 @@ export class PublicTeam extends React.Component<any, any> {
                           <br/>
                           <img src="/images/sconely_team.jpg"/>
                           <br/>
+                          <br/>
                           <b>Julia Friedman, Founder & CEO</b>
                           <br/>
                           An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor. A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.

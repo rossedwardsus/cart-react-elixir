@@ -172,8 +172,49 @@ defmodule Sconely.ProcessOrderCart do
 
   end
 
-  def promo_code() do
+  def promo_code_text(promo_code) do
 
+      case promo_code do
+
+
+          "" -> total = subtotal
+
+          "8THANDHOPE" -> promo_code_discount = "10%"
+                          #total = subtotal - (subtotal * 10/100)
+          "GRAIN" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+          "SCONELY10" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+          "CROSSCAMPUS10" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+          "WEWORK10" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+
+
+          promo_code_discount
+       
+  end
+
+  def promo_code_amount(promo_code) do
+
+      case promo_code do
+
+
+          "" -> total = subtotal
+
+          "8THANDHOPE" -> 10
+          "GRAIN" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+          "SCONELY10" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+          "CROSSCAMPUS10" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+          "WEWORK10" ->  promo_code_discount = "10%"
+                      #total = subtotal - (subtotal * 10/100)
+
+
+          promo_code_discount
+       
   end
 
   def cart_total() do

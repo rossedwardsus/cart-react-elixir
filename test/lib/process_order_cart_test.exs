@@ -117,7 +117,9 @@ defmodule Sconely.LibProcessOrderCartTest do
 
   test "promo code" do
 
-    #assert promo_code("SCONELY 10") == 10
+    IO.inspect(promo_code("SCONELY 10"))
+
+    #assert promo_code("SCONELY10") == 10
 
   end
 
