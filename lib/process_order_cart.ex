@@ -177,7 +177,7 @@ defmodule Sconely.ProcessOrderCart do
       case promo_code do
 
 
-          "" -> total = subtotal
+          "" -> ""
 
           "8THANDHOPE" -> promo_code_discount = "10%"
                           #total = subtotal - (subtotal * 10/100)
@@ -192,6 +192,8 @@ defmodule Sconely.ProcessOrderCart do
 
 
           promo_code_discount
+
+      end
        
   end
 
@@ -200,7 +202,7 @@ defmodule Sconely.ProcessOrderCart do
       case promo_code do
 
 
-          "" -> total = subtotal
+          "" -> ""
 
           "8THANDHOPE" -> 10
           "GRAIN" ->  promo_code_discount = "10%"
@@ -214,6 +216,8 @@ defmodule Sconely.ProcessOrderCart do
 
 
           promo_code_discount
+
+      end
        
   end
 

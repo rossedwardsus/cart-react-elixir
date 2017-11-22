@@ -115,11 +115,19 @@ defmodule Sconely.LibProcessOrderCartTest do
 
   end
 
-  test "promo code" do
+  test "promo code discount text" do
 
-    IO.inspect(promo_code("SCONELY 10"))
+    IO.inspect(promo_code_text("SCONELY 10"))
 
-    #assert promo_code("SCONELY10") == 10
+    #assert promo_code_text("SCONELY10") == 10
+
+  end
+
+  test "promo code discount amount" do
+
+    IO.inspect(promo_code_amount("SCONELY10"))
+
+    #assert promo_code_amount("SCONELY10") == 10
 
   end
 
