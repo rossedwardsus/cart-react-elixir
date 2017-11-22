@@ -400,10 +400,10 @@ export class PublicHomePage extends React.Component<any, any> {
                           9am - Noon
                           <br/>
                           <br/>
-                          With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens. 
-                          <br/>
-                          <br/>
                           Contact us about other delivery options or for a free sample!
+                          <br/>
+                          <br/>
+                          <b>With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens.</b>
                         <br/>   
                           <br/>
                         </div>
@@ -480,10 +480,10 @@ export class PublicHomePage extends React.Component<any, any> {
                                     9am - Noon
                                     <br/>
                                     <br/>
-                                    With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens. 
-                                    <br/>
-                                    <br/>
                                     Contact us about other delivery options or for a free sample!
+                                    <br/>
+                                    <br/>
+                                    <b>With every dozen scones you purchase Sconely donates 1% to Community Healing Gardens.</b>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
