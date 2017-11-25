@@ -467,7 +467,6 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>
                                   <br/>
                                   <br/>
-                                  <br/>
                                   <div className="visible-xs">
                                     <div style={{fontSize: 18}}>
                                       <b>FREE DELIVERY</b>
