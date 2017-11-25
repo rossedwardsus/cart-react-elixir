@@ -491,7 +491,6 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <b>Enjoy all day long!</b>
                                     <br/>
-                                    <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
@@ -512,6 +511,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     Freshly baked, delivered to one location
                                     <br/>
                                     Email us to start an order
+                                    <br/>
+                                    <br/>
+                                    <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                   </div>
                         </div>
                         <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
