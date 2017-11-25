@@ -641,10 +641,6 @@ class PoolOrderMenu extends React.Component<any, any> {
                             Scones delivered to one location.
                             <br/>
                             <br/>
-                            Example guest pool here:
-                            <br/>
-                            {message}
-                            <br/>
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
