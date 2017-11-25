@@ -386,8 +386,6 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
                           <br/>
                           <br/>
-                           <br/>
-                          <br/>
                           <div style={{fontSize: 18}}>
                             <b>FREE DELIVERY</b>
                           </div>
@@ -475,6 +473,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <div style={{fontSize: 18}}>
                                       <b>FREE DELIVERY</b>
                                     </div>
+                                    <br/>
+                                    <br/>
+                                    <br/>
                                     <br/>
                                     <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
                                     <br/>
