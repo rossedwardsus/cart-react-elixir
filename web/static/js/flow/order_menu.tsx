@@ -720,7 +720,7 @@ class OrderMenu extends React.Component<any, any> {
                                   Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
                                   <br/>
                                   <br/>
-                                  $60 per dozen
+                                  $60 per dozen (Sconely bakers dozen includes 13 regular scones, enjoy 1 extra seasonal scone on us)
                                   <br/>
                                   $54 per 2 dozen mini
                                   <br/>

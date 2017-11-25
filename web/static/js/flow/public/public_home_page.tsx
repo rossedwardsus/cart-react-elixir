@@ -403,6 +403,10 @@ export class PublicHomePage extends React.Component<any, any> {
                           Contact us about other delivery options or for a free sample!
                           <br/>
                           <br/>
+                          Freshly baked artisanal scones, free of refined sugars, soy and preservatives
+                          <br/>
+                          Enjoy all day long!
+                          <br/>
                         <br/>   
                           <br/>
                         </div>
@@ -480,6 +484,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     Contact us about other delivery options or for a free sample!
                                     <br/>
+                                    Freshly baked artisanal scones, free of refined sugars, soy and preservatives
+                                    <br/>
+                                    Enjoy all day long!
                                     <br/>
                                     <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                     <br/>
@@ -512,15 +519,13 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
-                          <br/>
                           <br/>
                           <br/>
                           <br/>
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          1 dozen  - 20 dozen (Sconely bakers dozen includes 13 regular scones, enjoy 1 extra seasonal scone on us)
+                          1 dozen  - 20 dozen regular sized scones
                           <br/>
                           2 dozen - 40 dozen mini scones
                           <br/>
@@ -537,6 +542,11 @@ export class PublicHomePage extends React.Component<any, any> {
                           Freshly baked, delivered to one location
                           <br/>
                           Email us to start an order
+                          <br/>
+                          <br/>
+                          <br/>
+                          <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
+                          <br/>
                         </div>
                     </div>
                     <PublicBottomNavbar/>
