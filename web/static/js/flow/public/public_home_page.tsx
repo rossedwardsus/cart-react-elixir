@@ -403,7 +403,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           Contact us about other delivery options or for a free sample!
                           <br/>
                           <br/>
-                          Freshly baked artisanal scones, free of refined sugars, soy and preservatives
+                          <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
+                          <br/>
                           <br/>
                           Enjoy all day long!
                           <br/>
@@ -484,7 +485,8 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     Contact us about other delivery options or for a free sample!
                                     <br/>
-                                    Freshly baked artisanal scones, free of refined sugars, soy and preservatives
+                                    <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
+                                    <br/>
                                     <br/>
                                     Enjoy all day long!
                                     <br/>
