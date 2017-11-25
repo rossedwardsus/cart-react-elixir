@@ -63,243 +63,58 @@ defmodule Sconely.ProcessOrderCart do
                   
 
 
-  def format_datetime(datetime) do
+  def add_user_or_get_user_id(datetime) do
 
-    #day_as_word <> am_mp <> st_rd_th_nd <> timezone
+     #query = from mi in MenuItem, select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
+     #       menu_items = Repo.all(query)
+
+     #       user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
+     #       IO.inspect(user)
+
+
+            #check if the user exists in the registreation table
+
+     #       if user == nil do
+
+     #         registration_changeset = MailingListGuestRegistration.changeset(%MailingListGuestRegistration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
+
+     #         case Repo.insert(registration_changeset) do
+
+      #          {:ok, response} -> IO.inspect(response)
+
+      #              user_id = response.user_id
+
 
   end
 
-  def cart_with_item_names() do
+  def add_order_return_order_id() do
 
-      menu_items = nil
-      cart_items_with_names = nil
+      #pool_order = Repo.get_by(PoolOrder, %{admin_receipt_order_id: args[:pool_admin_receipt_order_id]})
+      #IO.inspect(pool_order.delivery_date.month)
 
-      query = from mi in MenuItem, select: %{"item_id": mi.id, "name": mi.name}
-      menu_items = Repo.all(query)
+      #IO.inspect(pool_order)
 
-      cart_items = nil
-
-
-       cart_items_with_name = Enum.map(cart_items, fn(cart_item) ->
-          #Map.put(cart_item, :name, "name")
-          #IO.inspect(Enum.at(menu_items, 0).name)
-          IO.inspect(cart_item[:size])
-
-          if cart_item[:size] == "regular" do
-
-            menu_item_index = cart_item[:menu_item_id]-1
-
-            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name
-
-            #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
-            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
-
-            Map.merge(cart_item, %{
-              :name => item_name,
-              :menu_image_name => Enum.at(menu_items, menu_item_index).name
-            })
-
-          else
-
-            #IO.inspect(cart_item[:menu_item_id]-1)
-
-            #use map to find the menu_item_id instead of by index
-            #also this code is mostly duplicate of above
-
-            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " mini"
-
-            menu_item_index = cart_item[:menu_item_id]-1
-
-            #Map.put(cart_item, :name, item_name)
-            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
-
-            Map.merge(cart_item, %{
-              :name => item_name,
-              :menu_image_name => Enum.at(menu_items, menu_item_index).name
-            })
-
-          end
-
-          #name = Enum.filter(menu_items, fn(menu_item) ->
-            #match?({:, _}, element)
-            #IO.inspect(cart_item.item_id)
-            #IO.inspect(menu_item.item_id)
-          #  if(menu_item.item_id == cart_item.item_id) do
-              #IO.puts("here")
-              #IO.inspect(menu_item.name |> String.downcase |> String.replace(" ", ""))
-              #IO.inspect(String.downcase(menu_item.name) |> String.replace(menu_item.name, " ", ""))
-          #    Enum.at(Map.put(cart_item, :name, menu_item.name), 0)
-             #menu_item
-
-          #  end
-          #end)
-          #IO.inspect(String.downcase(name) |> String.replace(name, " ", ""))
-          #IO.inspect(cart_item)
-       #   name_temp = Enum.at(name, 0)
-          #IO.inspect(title_temp[:title])
-       #   Map.put(cart_item, :title, title_temp[:title])
-        end)
-
-        IO.inspect(cart_items_with_name)
-
-  end
-
-  def am_pm(hour) do
-
-      #case hour do
-      #   < 12
-      #   == 12
-      #   > 12
-
-      cond do
-          hour < 12 -> Integer.to_string(hour) <> " am"
-
-
-      # if order_datetime_converted.hour == 12 do
-      #    converted_hour = order_datetime_converted.hour
-      #    am_pm = "am"
+      #pool_order_user_delivery_contact_address = Repo.get_by(UserDeliveryContactAddress, %{user_id: pool_order.user_id, delivery_contact_address_id: pool_order.user_delivery_contact_address_id})
       
-          hour == 12 -> Integer.to_string(hour)
+ 
 
-          hour > 12 -> Integer.to_string(hour) <> " pm"
-      end
+      #order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: "pool_response", admin_receipt_order_id: admin_receipt_order_id, order_datetime: order_datetime, stripe_charge_token: stripe_charge_token})
+                        #delivery_id, contact_id, payment_id
 
-      #use converted year month day as well
+      #order_id = 0
+      #order_datetime = nil
 
+      #case Repo.insert(order_changeset) do
+      #    {:ok, response} -> IO.inspect(response)
+      #            order_id = response.order_id
+                  #order_datetime = response.order_datetime
+      #end
+
+
+     
   end
 
-  def st_nd_rd_th(day) do
-
-      case day do
-        n when n in [1, 21, 31] -> Integer.to_string(day) <> "st"
-      #  n when n in [2, 22] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "nd"}
-      #  n when n in [3, 23] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "rd"}
-      #  n when n in [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 30] -> {delivery_date_day_formatted = Integer.to_string(delivery_date.day) <> "th"}
-      end
-
-  end
-
-  defp timezone(datetime_utc) do
-
-  end
-
-  def day_as_word(day_as_number) do
-
-    #case Date.day_of_week(date_from_erl) do
-      #case Timex.weekday do
-      case day_as_number do
-        1 -> "Monday"
-        2 -> "Tuesday"
-        3 -> "Wednesday"
-        4 -> "Thursday"
-        5 -> "Friday"
-        6 -> "Saturday"
-        7 -> "Sunday"
-      end     
-  end
-
-
-  #case Date.day_of_week(order_datetime_converted) do
-    #case Date.day_of_week(Ecto.DateTime.to_erl(order_datetime) |> NaiveDateTime.from_erl! |> NaiveDateTime.to_date) do
-    #case Date.day_of_week(Ecto.DateTime.to_date(order_datetime)) do
-    #case Timex.weekday(order_datetime_converted) do
-    #  1 -> {order_date_day_of_week = "Monday"}
-    #  2 -> {order_date_day_of_week = "Tuesday"}
-    #  3 -> {order_date_day_of_week = "Wednesday"}
-    #  4 -> {order_date_day_of_week = "Thursday"}
-    #  5 -> {order_date_day_of_week = "Friday"}
-    #  6 -> {order_date_day_of_week = "Saturday"}
-    #  7 -> {order_date_day_of_week = "Sunday"}
-  #end
-
-
-    #case Timex.weekday(order_datetime_converted) do
-    #  0 -> {order_date_day_of_week = "Sunday"}
-    #  1 -> {order_date_day_of_week = "Monday"}
-    #  2 -> {order_date_day_of_week = "Tuesday"}
-    #  3 -> {order_date_day_of_week = "Wednesday"}
-    #  4 -> {order_date_day_of_week = "Thursday"}
-    #  5 -> {order_date_day_of_week = "Friday"}
-    #  6 -> {order_date_day_of_week = "Saturday"}
-    #end
-
-  def pad_minute(minute) do
-
-    case minute do
-      0 -> "00"
-      1 -> "01"
-      2 -> "02"
-      3 -> "03"
-      4 -> "04"
-      5 -> "05"
-      6 -> "06"
-      7 -> "07"
-      8 -> "08"
-      9 -> "09"
-      _ -> Integer.to_string(minute)
-    end
-
-  end
-
-  def month_as_word(month_as_number) do
-
-    case month_as_number do
-      1 -> "January"
-      2 -> "February"
-      3 -> "March"
-      4 -> "April"
-      5 -> "May"
-      6 -> "June"
-      7 -> "July"
-      8 -> "August"
-      9 -> "September"
-      10 -> "October"
-      11 -> "November"
-      12 -> "December"
-    end
-
-  end
-
-
-  defp format_total(total) do
-
-    #total_formatted = :erlang.float_to_binary(total, [decimals: 2])
-
-  end
-
-  #return promo_code
-  defp promo_code_discount(promo_code, subtotal) do
-
-        case String.upcase(args[:promo_code]) do
-
-
-          "" -> total = subtotal
-
-          "8THANDHOPE" -> promo_code_discount = "10%"
-                          #total = subtotal - (subtotal * 10/100)
-          "GRAIN" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "SCONELY10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "CROSSCAMPUS10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "WEWORK10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-
-
-          promo_code_discount
-          #total
-          
-          #IO.puts("total")
-          #IO.puts(total*100)
-          #IO.puts(trunc(total*100))
-
-          #total_formatted = :erlang.float_to_binary(total, [decimals: 2])
-
-        end
-   
-  end
-
+ 
   defp apply_promo_code_to_subtotal() do
 
   end

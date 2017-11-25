@@ -183,13 +183,17 @@ export default class Menu extends React.Component<any, any> {
     return (
             <div className="row">
                   <div className="hidden-xs col-md-3">
-                        
+                        <br/>
+                        <br/>
                         <br/>
                         <br/>
                   </div>
                   <div className="col-xs-11 col-md-3">
                     <div>
                         <div className="hidden-lg">
+                          <br/>
+                          <br/>
+                          <br/>
                           <br/>
                         </div>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/about_us" style={{color: "grey", textDecoration: "none"}}>ABOUT US</Link>

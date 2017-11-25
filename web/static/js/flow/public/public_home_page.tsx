@@ -417,32 +417,31 @@ export class PublicHomePage extends React.Component<any, any> {
                                           <h4 className="modal-title" id="myModalLabel">Delivery Locations</h4>
                                         </div>
                                         <div className="modal-body">
-
                                           <div className="col-md-3" style={{paddingLeft: "30px"}}>
                                             Free Delivery
                                             <br/>
                                             <br/>
-                                            Downtown LA
-                                            <br/>
-                                            Santa Monica 
-                                            <br/>
-                                            Venice
-                                            <br/>
-                                            Marina Del Rey
-                                            <br/>
                                             Beverly Hills
-                                            <br/>
-                                            West Hollywood
-                                            <br/>
-                                            Playa Vista
                                             <br/>
                                             Brentwood
                                             <br/>
                                             Century City
                                             <br/>
+                                            Downtown LA
+                                            <br/>
+                                            Marina Del Rey
+                                            <br/>
+                                            Playa Vista
+                                            <br/>
                                             Hancock Park
                                             <br/>
+                                            Santa Monica 
+                                            <br/>
+                                            West Hollywood
+                                            <br/>
                                             Westwood
+                                            <br/>
+                                            Venice
                                             <br/>
                                           </div>
                                           <div className="col-md-3" style={{paddingLeft: "30px"}}>
@@ -466,6 +465,8 @@ export class PublicHomePage extends React.Component<any, any> {
                                   </div>
                                   <br/>
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>
+                                  <br/>
+                                  <br/>
                                   <br/>
                                   <div className="visible-xs">
                                     <div style={{fontSize: 18}}>
