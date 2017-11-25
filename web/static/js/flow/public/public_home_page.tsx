@@ -406,7 +406,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
                           <br/>
                           <br/>
-                          Enjoy all day long!
+                          <b>Enjoy all day long!</b>
                           <br/>
                         <br/>   
                           <br/>
@@ -488,7 +488,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
                                     <br/>
                                     <br/>
-                                    Enjoy all day long!
+                                    <b>Enjoy all day long!</b>
                                     <br/>
                                     <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                     <br/>
