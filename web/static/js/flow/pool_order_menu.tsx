@@ -632,7 +632,16 @@ class PoolOrderMenu extends React.Component<any, any> {
                             <br/>
                             <b>SCONELY POOL</b>
                             <br/>
-                          
+                            Select one scone to start your order.
+                            <br/>
+                            Invite up to 50 people to join your pool.
+                            <br/>
+                            Each person selects and pays separately.
+                            <br/>
+                            Scones delivered to one location.
+                            <br/>
+                            <br/>
+                            Example guest pool here:
                             <br/>
                             {message}
                             <br/>
@@ -755,8 +764,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     getMenuItems: () => {
-      console.log("here");
-      dispatch(getMenuItems(""));
+      console.log("pool order menu get menu items");
+      dispatch(getMenuItems("pool_response"));
     },
     addCartItem: (order_id: any, item_id: any, size: any, quantity: any) => {
       dispatch(addCartItem(order_id, item_id, size, quantity));
