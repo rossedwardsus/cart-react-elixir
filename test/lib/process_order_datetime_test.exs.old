@@ -11,6 +11,12 @@ defmodule Sconely.ProcessOrderDateTimeTest do
 
   import Sconely.ProcessOrderDateTime
 
+
+  #setup to use same datetime for all tests
+  #setup_all do
+  #  {:ok, order_datetime: Ecto.DateTime.utc}
+  #end
+
   test "format entire date and time" do
 
   		order_datetime = Ecto.DateTime.utc
@@ -76,7 +82,7 @@ defmodule Sconely.ProcessOrderDateTimeTest do
   end
 
 
-  test "st_nd_rd_th" do
+  test "day of month st_nd_rd_th" do
 
   	order_datetime = Ecto.DateTime.utc
 
@@ -95,7 +101,7 @@ defmodule Sconely.ProcessOrderDateTimeTest do
   	assert st_nd_rd_th(1) == "1st"
   end
 
-  test "pad minute" do
+  test "minute padding" do
   	task = Task.async(Sconely.ProcessOrderDateTime, :pad_minute, [1])
   	#IO.inspect(Task.await(task))
 
@@ -115,7 +121,7 @@ defmodule Sconely.ProcessOrderDateTimeTest do
   	#assert day_as_word(1) == "Monday"
   end
 
-  test "am_pm 11 am" do
+  test "hour am_pm" do
   	task = Task.async(Sconely.ProcessOrderDateTime, :am_pm, [11])
   	#IO.inspect(Task.await(task))
 
@@ -134,7 +140,7 @@ defmodule Sconely.ProcessOrderDateTimeTest do
 
   #timezone
   #
-  test "order datetime convert timezone" do
+  test "timezone" do
   	order_datetime = Ecto.DateTime.utc
 
   	timezone = Timezone.get("America/Los_Angeles", Timex.now)

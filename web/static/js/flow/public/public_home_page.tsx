@@ -529,6 +529,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
                           1 dozen  - 20 dozen regular sized scones
                           <br/>

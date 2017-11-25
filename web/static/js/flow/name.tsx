@@ -125,11 +125,11 @@ class Name extends React.Component<any, any> {
           this.props.setUserFirstName(e);
           this.props.userFirstNameValidated();
 
-          if(this.props.User.orders[0].order_type != "pool"){
+          //if(this.props.User.orders[0].order_type != "pool"){
 
-              this.props.setUserDeliveryContactAddressFirstName(e);
+          //    this.props.setUserDeliveryContactAddressFirstName(e);
 
-          }
+          //}
           
 
           //if(this.state.last_name.length > 0){
@@ -186,11 +186,11 @@ class Name extends React.Component<any, any> {
             this.props.setUserLastName(e);
             this.props.userLastNameValidated();
 
-            if(this.props.User.orders[0].order_type != "pool"){
+            //if(this.props.User.orders[0].order_type != "pool"){
             
-                this.props.setUserDeliveryContactAddressLastName(e);
+            //    this.props.setUserDeliveryContactAddressLastName(e);
 
-            }
+            //}
             
 
             //if(this.state.first_name.length > 0){
@@ -260,7 +260,7 @@ class Name extends React.Component<any, any> {
 
                                 this.props.userContactEmailValidated(e);
 
-                                this.props.setUserDeliveryContactAddressEmail(e); 
+                                //this.props.setUserDeliveryContactAddressEmail(e); 
 
                                 console.log("email ok")
 
@@ -316,7 +316,7 @@ class Name extends React.Component<any, any> {
 
           //validated
           //this.props.nameValidated();
-          this.props.userContactEmailAgainValidated();
+          //this.props.userContactEmailAgainValidated();
 
           this.setState({"email_again_border_color": "grey"});
 
@@ -372,7 +372,7 @@ class Name extends React.Component<any, any> {
                     //this.props.userNameEmailMobileValidated();
                     this.props.userContactMobileValidated();
 
-                    this.props.setUserDeliveryContactAddressMobile(e); 
+                    //this.props.setUserDeliveryContactAddressMobile(e); 
 
             }else{
 

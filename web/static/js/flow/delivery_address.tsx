@@ -60,6 +60,9 @@ class DeliveryAddress extends React.Component<any, any> {
         contact_mobile: "",
         contact_mobile_displayed: "",
         
+        delivery_contact_label: "Delivery Contact",
+        delivery_address_label: "Delivery Address",
+
         street1: "",
         street2: "",
         city: "",
@@ -115,12 +118,12 @@ class DeliveryAddress extends React.Component<any, any> {
       
       //check if props.giftOrder: true or false
 
-      this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+      /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
       this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
       this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
       this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});
       //this.setState({street1: this.props.deliveryAddress.street1})
-      //this.setState({street2: this.props.deliveryAddress.street2})
+      //this.setState({street2: this.props.deliveryAddress.street2})*/
 
     /*}else{
 
@@ -530,13 +533,16 @@ class DeliveryAddress extends React.Component<any, any> {
           console.log("hello");
 
           this.setState({gift_order_checked: "checked"});
+          this.setState({delivery_contact_label: "Recipient Delivery Contact"});
+          this.setState({delivery_address_label: "Recipient Delivery Address"});
+
           //this.props.setGiftOrder(true);
           //this.props.setDeliveryContactAddressFirstName("");
       
-          this.setState({contact_first_name: ""});
-          this.setState({contact_last_name: ""});
-          this.setState({contact_email: ""});
-          this.setState({contact_mobile: ""});
+          //this.setState({contact_first_name: ""});
+          //this.setState({contact_last_name: ""});
+          //this.setState({contact_email: ""});
+          //this.setState({contact_mobile: ""});
 
           /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
           this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
@@ -600,7 +606,7 @@ class DeliveryAddress extends React.Component<any, any> {
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
-                          <b>Delivery Contact</b>
+                          <b>{this.state.delivery_contact_label}</b>
                           <br/>
                        </div>
                     </div>
@@ -733,20 +739,20 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option value="90079">90079</option>
                             <option value="90086">90086</option>
                             <option>Beverly Hills</option>
-                            <option>90035</option>
-                            <option>90209</option>
-                            <option>90210</option>
-                            <option>90211</option>
-                            <option>90212</option>
-                            <option>90213</option>
+                            <option value="90035">90035</option>
+                            <option value="90209">90209</option>
+                            <option value="90210">90210</option>
+                            <option value="90211">90211</option>
+                            <option value="90212">90212</option>
+                            <option value="90213">90213</option>
                             <option>Marina Del Rey</option>
-                            <option>90292</option>
+                            <option value="90292">90292</option>
                             <option>Playa Del Rey</option>
-                            <option>90094</option>
+                            <option value="90094">90094</option>
                             <option>Brentwood</option>
-                            <option>90049</option>
+                            <option value="90049">90049</option>
                             <option>Century City</option>
-                            <option>90067</option>
+                            <option value="90067">90067</option>
                             <option>West Hollywood</option>
                             <option>90046</option>
                             <option>90048</option>
