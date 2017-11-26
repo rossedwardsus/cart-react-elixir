@@ -390,6 +390,9 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
+                          <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
@@ -511,6 +514,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                   </div>
                         </div>
                         <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
+                          <br/>
+                          <br/>
+                          <br/>
                           <br/>
                           <br/>
                           <br/>
