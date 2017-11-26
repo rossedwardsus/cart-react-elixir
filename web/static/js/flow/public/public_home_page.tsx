@@ -383,7 +383,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
                           <br/>
                           <br/>
                           <br/>
@@ -519,7 +519,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                   </div>
                         </div>
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: 30}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: 40}}>
                           <br/>
                           <br/>
                           <br/>
