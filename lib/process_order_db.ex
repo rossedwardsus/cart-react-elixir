@@ -1,4 +1,4 @@
-defmodule Sconely.ProcessOrderCart do
+defmodule Sconely.ProcessOrderDB do
   #import Bamboo.Email
 
   alias SconeHomeElixir.Repo

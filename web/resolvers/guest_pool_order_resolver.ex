@@ -22,11 +22,12 @@ defmodule Sconely.PoolOrderResolver do
 
   import Ecto.DateTime
   import Ecto.Query
-  import Sconely.ProcessStripePayment
 
-  
+  #import Sconely.ProcessStripePayment
+  import Sconely.ProcessOrderUser
+  #import Sconely.ProcessOrderCart
 
-  def get_pool_order_details(args, _info) do
+  def process_pool_order(args, _info) do
 
       total = nil
       subtotal = ""
@@ -41,6 +42,16 @@ defmodule Sconely.PoolOrderResolver do
       #add pool response order item
       #send emails
 
+      #ProcessCart.getCartSubtotal(cart_items)
+      #charge stripe
+      #ProcessOrderUser.getUser(email_address)
+      #ProcessOrderPool.createUserPool(user_id, company_name)
+      #ProcessOrderPool.getParentOrderId(email_address)
+      #ProcessOrderUser.createUserDeliveryContactAddress(do when creating user)
+      #ProcessOrderPool.createPoolOrder(parent_order_od)
+      #ProcessCart.getCartWithMenuItemNames(cart_items)
+      #send mail
+      
       #subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 5.00) end)
 
       #load one of these depenging on whether test or live

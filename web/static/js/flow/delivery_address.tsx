@@ -594,15 +594,17 @@ class DeliveryAddress extends React.Component<any, any> {
     let delivery_address:any = "";
 
     return ( <div>
-                <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
-                          <div className="checkbox">
-                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
+                {this.props.User.order_type != "pool" && 
+                    <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-3 col-md-3">
+                              <div className="checkbox">
+                                <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
+                              </div>
                           </div>
-                      </div>
-                    </div>
-                 </form>
+                        </div>
+                     </form>}
+
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">

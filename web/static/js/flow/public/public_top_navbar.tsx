@@ -205,8 +205,9 @@ export default class Menu extends React.Component<any, any> {
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
                         <ul id="navbar" className="nav navbar-nav navbar-right">
-                          <li><Link to="" onClick={() => this.showDeliveryLocations()}>DELIVERY ADDRESSES</Link></li>
-                          <li><Link to="/register">SIGN UP</Link></li>
+                          <li><Link to="/public/about_us">ABOUT US</Link></li>
+                          <li><Link to="" onClick={() => this.showDeliveryLocations()}>FREE DELIVERY ADDRESSES + TIMES</Link></li>
+                          <li><Link to="/">FREE SAMPLES</Link></li>
                         </ul>
                       </div>
                     </div>
@@ -255,10 +256,6 @@ export default class Menu extends React.Component<any, any> {
                                             Contact us about other delivery options or for a free sample!
                                             <br/>
                                             <br/>
-                                            <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
-                                            <br/>
-                                            <br/>
-                                            <b>Enjoy all day long!</b>
                                           </div>
                                         </div>
                                         <br/>

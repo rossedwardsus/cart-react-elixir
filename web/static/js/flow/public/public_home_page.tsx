@@ -45,7 +45,7 @@ export class PublicHomePage extends React.Component<any, any> {
 
     this.state = {
 
-        gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery5.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
+        gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
         gallery_image: "",
         gallery_image_index: 0,
         guest_code: "",
@@ -386,10 +386,12 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
                           <br/>
                           <br/>
-                          EPIC SCONES FOR EPIC HOLIDAYS
+                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                            EPIC SCONES FOR EPIC HOLIDAYS
+                          </div>
                           <br/>
                           <br/>
-                          <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
+                          With an empasis on organic ingredients, all of our scones are free of refined sugars, soy and preservatives
                           <br/>
                           <br/>
                           <b>Enjoy all day long!</b>
@@ -470,23 +472,11 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <div style={{fontSize: 18}}>
-                                      <b>FREE DELIVERY</b>
+                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                                    EPIC SCONES FOR EPIC HOLIDAYS
                                     </div>
                                     <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
-                                    <br/>
-                                    Tuesday - Saturday
-                                    <br/>
-                                    9am - Noon
-                                    <br/>
-                                    <br/>
-                                    Contact us about other delivery options or for a free sample!
-                                    <br/>
-                                    <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
+                                    With an empasis on organic ingredients, all of our scones are free of refined sugars, soy and preservatives
                                     <br/>
                                     <br/>
                                     <b>Enjoy all day long!</b>
@@ -506,7 +496,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                                    1-11 scones per person, choose + pay separately 
+                                    1-11 scones per person, select + pay separately 
                                     <br/>
                                     Freshly baked, delivered to one location
                                     <br/>
