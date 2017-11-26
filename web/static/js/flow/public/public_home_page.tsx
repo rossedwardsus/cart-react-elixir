@@ -386,19 +386,7 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 18}}>
-                            <b>FREE DELIVERY</b>
-                          </div>
-                          <br/>
-                          <button onClick={this.showDeliveryLocations} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Delivery Locations</button>
-                          <br/>
-                          <br/>
-                          Tuesday - Saturday
-                          <br/>
-                          9am - Noon
-                          <br/>
-                          <br/>
-                          Contact us about other delivery options or for a free sample!
+                          EPIC SCONES FOR EPIC HOLIDAYS
                           <br/>
                           <br/>
                           <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
@@ -447,6 +435,18 @@ export class PublicHomePage extends React.Component<any, any> {
                                             <br/>
                                           </div>
                                           <div className="col-md-3" style={{paddingLeft: "30px"}}>
+                                            Tuesday - Saturday
+                                            <br/>
+                                            9am - Noon
+                                            <br/>
+                                            <br/>
+                                            Contact us about other delivery options or for a free sample!
+                                            <br/>
+                                            <br/>
+                                            <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
+                                            <br/>
+                                            <br/>
+                                            <b>Enjoy all day long!</b>
                                           </div>
                                         </div>
                                         <br/>

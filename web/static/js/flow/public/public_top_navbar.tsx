@@ -30,15 +30,13 @@ export default class Menu extends React.Component<any, any> {
         cart: this.props.cart,
     };
 
-    //this.loadCart = this.loadCart.bind(this);
+    this.showDeliveryLocations = this.showDeliveryLocations.bind(this);
     
   }
 
   componentDidMount(){
 
     //get active items from the database
-
-    window.scrollTo(0, 0);
 
   }
 
@@ -49,10 +47,23 @@ export default class Menu extends React.Component<any, any> {
   }
 
 
+  showDeliveryLocations(){
 
- 
+      $('#myModal').modal('show');
 
-  
+      //e.preventDefault();
+
+  }
+
+  closeDeliveryLocations(){
+
+      $('#myModal').modal('hide');
+
+      //e.preventDefault();
+
+  }
+
+   
 
   render(): JSX.Element {
 
@@ -178,10 +189,6 @@ export default class Menu extends React.Component<any, any> {
 
     }*/
 
-    
-    //<li><Link to="/login">LOGIN</Link></li>
-    //<li><Link to="/register">SIGN UP</Link></li>
-
 
     return (
             <div>
@@ -194,15 +201,83 @@ export default class Menu extends React.Component<any, any> {
                            <span className="icon-bar"></span>
                            <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="https://www.sconely.com"><img src="/images/logo/LogoJune5d.jpg"/></a>
+                        <a className="navbar-brand" href="#"><img src="https://sconely-production.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
                         <ul id="navbar" className="nav navbar-nav navbar-right">
-                          
+                          <li><Link to="" onClick={() => this.showDeliveryLocations()}>DELIVERY ADDRESSES</Link></li>
+                          <li><Link to="/register">SIGN UP</Link></li>
                         </ul>
                       </div>
                     </div>
                   </nav>
+                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+                                    <div className="modal-dialog" role="document">
+                                      <div className="modal-content">
+                                        <div className="modal-header">
+                                          <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 className="modal-title" id="myModalLabel">Delivery Locations</h4>
+                                        </div>
+                                        <div className="modal-body">
+                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            Free Delivery
+                                            <br/>
+                                            <br/>
+                                            Beverly Hills
+                                            <br/>
+                                            Brentwood
+                                            <br/>
+                                            Century City
+                                            <br/>
+                                            Downtown LA
+                                            <br/>
+                                            Marina Del Rey
+                                            <br/>
+                                            Playa Vista
+                                            <br/>
+                                            Hancock Park
+                                            <br/>
+                                            Santa Monica 
+                                            <br/>
+                                            West Hollywood
+                                            <br/>
+                                            Westwood
+                                            <br/>
+                                            Venice
+                                            <br/>
+                                          </div>
+                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            Tuesday - Saturday
+                                            <br/>
+                                            9am - Noon
+                                            <br/>
+                                            <br/>
+                                            Contact us about other delivery options or for a free sample!
+                                            <br/>
+                                            <br/>
+                                            <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
+                                            <br/>
+                                            <br/>
+                                            <b>Enjoy all day long!</b>
+                                          </div>
+                                        </div>
+                                        <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                      </div>
+                                    </div>
+                                  </div>
+
             </div>
     )
   }
