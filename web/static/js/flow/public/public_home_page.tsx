@@ -182,7 +182,7 @@ export class PublicHomePage extends React.Component<any, any> {
 
     //console.log("changeimage");
 
-    if(this.state.gallery_image_index == 4){
+    if(this.state.gallery_image_index == 3){
 
         
         //let gallery_image_index_temp = this.state.gallery_image_index; 
@@ -386,15 +386,17 @@ export class PublicHomePage extends React.Component<any, any> {
                         <div className="hidden-xs col-md-3" style={{paddingLeft: "55px"}}>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
                           <br/>
-                          With an empasis on organic ingredients, all of our scones are free of refined sugars, soy and preservatives
+                          Empasis on organic ingredients, all of our scones are free of refined sugars, soy and preservatives
                           <br/>
                           <br/>
-                          <b>Enjoy all day long!</b>
+                          Enjoy all day long!
                           <br/>
                         <br/>   
                           <br/>
@@ -476,10 +478,11 @@ export class PublicHomePage extends React.Component<any, any> {
                                     EPIC SCONES FOR EPIC HOLIDAYS
                                     </div>
                                     <br/>
-                                    With an empasis on organic ingredients, all of our scones are free of refined sugars, soy and preservatives
+                                    <br/>
+                                    Empasis on organic ingredients, all of our scones are free of refined sugars, soy and preservatives
                                     <br/>
                                     <br/>
-                                    <b>Enjoy all day long!</b>
+                                    Enjoy all day long!
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>

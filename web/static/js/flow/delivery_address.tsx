@@ -770,10 +770,18 @@ class DeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-5">
-                        <textarea className="form-control" cols={100} rows={5} placeholder="Special delivery or parking details" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
+                        <textarea className="form-control" cols={100} rows={5} placeholder="Order Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
                       </div>
                     </div>
                 </form>
+                {this.props.User.order_type != "pool" && 
+                    <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-3 col-md-4">
+                            <input type="text" maxLength={40} className="form-control" placeholder="Pickup Location" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} onInput={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                          </div> 
+                        </div>
+                    </form>}
                 {this.state.gift_order_checked == "checked" &&
                   <form className="form-horizontal">
                       <div className="form-group">
@@ -782,7 +790,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         </div>
                       </div>
                   </form>}
-                </div>
+              </div>
                   
     )
   }
