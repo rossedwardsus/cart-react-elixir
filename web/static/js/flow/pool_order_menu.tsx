@@ -249,12 +249,12 @@ class PoolOrderMenu extends React.Component<any, any> {
 
     console.log("selected_item quantity " + e.target.value);
 
-    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
       this.setState({selected_item_quantity: parseInt(e.target.value)});
       this.setState({selected_item_quantity_selector: e.target.value});
 
-    }else{
+    /*}else{
 
       if(this.state.selected_item_size == "regular"){
         
@@ -272,7 +272,7 @@ class PoolOrderMenu extends React.Component<any, any> {
 
       //}
 
-    }
+    }*/
 
     this.setState({add_cart_item_button_classname: "form-control btn-block btn btn-default"});
       
@@ -333,15 +333,15 @@ class PoolOrderMenu extends React.Component<any, any> {
 
     //if(item_count < 12){
 
-    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
 
         this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
 
-    }else{
+    //}else{
 
-        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
+    //    this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
 
-    }
+    //}
     
     this.setState({pool_message_viewed: true});    
     this.setState({selected_item_quantity_selector: 0});
@@ -650,13 +650,13 @@ class PoolOrderMenu extends React.Component<any, any> {
                             <b>SCONELY POOL</b>
                             <br/>
                             <br/>
-                            {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
+                            {(this.props.User.orders[0].order_type == "pool_order" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
                               <b>SCONELY POOL</b>
                               <br/>
-                              {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
+                              {(this.props.User.orders[0].order_type == "pool_order" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                               <br/>
                             </div>
                             <br/>

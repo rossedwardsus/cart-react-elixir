@@ -39,7 +39,7 @@ defmodule Sconely.MenuItemsController do
 
         "pool_response" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.assortment == false, where: mi.active == true, order_by: [asc: mi.order])}
 
-        "pool" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.assortment == false, where: mi.active == true, order_by: [asc: mi.order])}
+        "pool_order" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.assortment == false, where: mi.active == true, order_by: [asc: mi.order])}
 
         "social" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.active == true, order_by: [asc: mi.order])}
 

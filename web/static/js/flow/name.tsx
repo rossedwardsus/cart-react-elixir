@@ -417,7 +417,7 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-              {(this.props.User.orders[0].order_type == "pool") &&
+              {(this.props.User.orders[0].order_type == "pool_order") &&
                   <form role="form" className="form-horizontal">
                     <div className="form-group">
                       <div className="col-md-4">

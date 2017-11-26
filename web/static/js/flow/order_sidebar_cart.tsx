@@ -577,8 +577,11 @@ class SidebarCart extends React.Component<any, any> {
     
 
 
+    if(this.props.User.orders[0].order_type =="pool_order" && total_items == 11){
 
-    if(this.props.User.orders[0].order_type =="pool" && total_items == 11){
+        item_limit = "You have reached your item limit";
+
+    }else if(this.props.User.orders[0].order_type =="pool_response" && total_items == 11){
 
         item_limit = "You have reached your item limit";
 
@@ -605,7 +608,14 @@ class SidebarCart extends React.Component<any, any> {
 
     let item_quantity_message = "";
 
-    if(this.props.User.orders[0].order_type == "pool"){
+    if(this.props.User.orders[0].order_type == "pool_order"){
+        //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
+
+            item_quantity_message = "Please choose between 1 and 11 scones";
+
+        //}
+
+    }if(this.props.User.orders[0].order_type == "pool_response"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
             item_quantity_message = "Please choose between 1 and 11 scones";
@@ -634,7 +644,17 @@ class SidebarCart extends React.Component<any, any> {
     let checkoutButton = null;
 
 
-    if(this.props.User.orders[0].order_type == "pool"){
+    if(this.props.User.orders[0].order_type == "pool_order"){
+
+      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
+
+          //{this.props.path == "/order/menu" && 
+
+          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
+
+      }
+
+    }if(this.props.User.orders[0].order_type == "pool_response"){
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
 

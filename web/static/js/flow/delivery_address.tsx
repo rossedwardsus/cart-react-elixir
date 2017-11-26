@@ -594,7 +594,7 @@ class DeliveryAddress extends React.Component<any, any> {
     let delivery_address:any = "";
 
     return ( <div>
-                {this.props.User.order_type != "pool" && 
+                {this.props.User.orders[0].order_type != "pool_order" && 
                     <form className="form-horizontal">
                         <div className="form-group">
                           <div className="col-sm-3 col-md-3">
@@ -604,7 +604,7 @@ class DeliveryAddress extends React.Component<any, any> {
                           </div>
                         </div>
                      </form>}
-                {(this.props.User.orders[0].order_type != "pool") &&
+                {(this.props.User.orders[0].order_type != "pool_order") &&
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
@@ -613,7 +613,7 @@ class DeliveryAddress extends React.Component<any, any> {
                        </div>
                     </div>
                  </form>}
-                {(this.props.User.orders[0].order_type != "pool") &&
+                {(this.props.User.orders[0].order_type != "pool_order") &&
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-4">
@@ -631,7 +631,7 @@ class DeliveryAddress extends React.Component<any, any> {
                       </div>
                     </div>
                 </form>}
-              {(this.props.User.orders[0].order_type != "pool") &&
+              {(this.props.User.orders[0].order_type != "pool_order") &&
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-3 col-md-4">
@@ -649,7 +649,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     </div>
                   </div>
                 </form>}
-              {(this.props.User.orders[0].order_type != "pool") &&
+              {(this.props.User.orders[0].order_type != "pool_order") &&
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-3 col-md-3">
@@ -661,8 +661,8 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>}
                 <form className="form-horizontal">
                     <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
-                          {(this.props.User.orders[0].order_type == "pool") ? <b>Delivery Address (all orders in this Pool will be delivered to this location)</b> : <b>Delivery Address</b>}
+                      <div className="col-sm-3 col-md-6">
+                          {(this.props.User.orders[0].order_type == "pool_order") ? <b>Delivery Address (all orders in this Pool will be delivered to this location)</b> : <b>Delivery Address</b>}
                           <br/>
                        </div>
                     </div>

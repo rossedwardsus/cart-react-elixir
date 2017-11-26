@@ -26,7 +26,9 @@ import {setOrderStatus, setPromoCode} from './actions/order.ts';
 import {setPaymentNameOnCard, setPaymentZipCode, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
-import {processYoursSocialPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
+
+import {processYoursSocialPoolOrder, processPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
+
 //import {processYoursSocialOrder1} from './actions/'
 
 import SidebarCart from './order_sidebar_cart.tsx';
@@ -34,6 +36,7 @@ import SidebarCart from './order_sidebar_cart.tsx';
 //import Contact from './order_contact.tsx';
 //import Datetime from './order_delivery.tsx';
 //import NameContact from './name.tsx';
+
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
@@ -845,6 +848,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
       //this.props.setOrderStatus("process_payment");
       this.props.processYoursSocialPoolOrder();
 
+      //if pool_order
+      //this.props.processPoolOrder();
+
 
      
 
@@ -1243,6 +1249,11 @@ function mapDispatchToProps(dispatch: any) {
     processYoursSocialPoolOrder: () => {
 
       dispatch(processYoursSocialPoolOrder());
+
+    },
+    processPoolOrder: () => {
+
+      dispatch(processPoolOrder());
 
     },
     

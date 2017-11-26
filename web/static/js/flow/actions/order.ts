@@ -91,12 +91,12 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(push("/order/menu"));
 
       //}
-      }else if(order_type == "pool"){
+      }else if(order_type == "pool_order"){
 
             //load menu
             dispatch(getMenuItems("pool"));
       //      dispatch(createOrderSession(order_type));
-            dispatch({type: CREATE_ORDER, order_type: "pool"});
+            dispatch({type: CREATE_ORDER, order_type: order_type});
             dispatch(push("/pool/order/menu"));
 
       }else if(order_type == "pool"){

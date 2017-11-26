@@ -519,7 +519,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                   </div>
                         </div>
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: 40}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: 10}}>
                           <br/>
                           <br/>
                           <br/>
@@ -548,7 +548,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           Email us to start an order
                           <br/>
-                          <button onClick={() => this.props.createOrder("pool")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
+                          <button onClick={() => this.props.createOrder("pool_order")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                           <br/>
                           <br/>
                           <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
