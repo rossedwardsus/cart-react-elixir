@@ -703,11 +703,9 @@ class PoolOrderMenu extends React.Component<any, any> {
                         <div className="modal-body">
                           {this.state.selected_item_description} 
                           <br/>
-                          {this.state.selected_item_assortment == false && 
                             <div>
                                 Ingredients: {this.state.selected_item_ingredients}
                             </div>
-                          }
                           <br/>
                           <br/>
                           {cost_text}

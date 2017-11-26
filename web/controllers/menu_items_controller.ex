@@ -35,13 +35,15 @@ defmodule Sconely.MenuItemsController do
     #if _args.order_type == "pool"
     #where: mi.assortment == false, mi.active: true
 
-    if _args["order_type"] == "pool_response" do
+    case _args["order_type"] do
 
-        json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.assortment == false, where: mi.active == true, order_by: [asc: mi.order])}
+        "pool_response" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.assortment == false, where: mi.active == true, order_by: [asc: mi.order])}
 
-    else
+        "pool" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, where: mi.assortment == false, where: mi.active == true, order_by: [asc: mi.order])}
 
-        json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.active == true, order_by: [asc: mi.order])}
+        "social" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.active == true, order_by: [asc: mi.order])}
+
+        "yours" -> json conn |> put_status(:ok), %{items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, description: mi.description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.active == true, order_by: [asc: mi.order])}
 
     end
 
