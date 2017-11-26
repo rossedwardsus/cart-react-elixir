@@ -399,6 +399,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           An abundance of organic ingredients
                           <br/>
+                          Free of refined sugars and soy
+                          <br/>
                           <br/>
                           Enjoy all day long!
                           <br/>
@@ -484,6 +486,8 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <br/>
                                     An abundance of organic ingredients
+                                    <br/>
+                                    Free of refined sugars and soy
                                     <br/>
                                     <br/>
                                     Enjoy all day long!
