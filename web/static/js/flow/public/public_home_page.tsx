@@ -397,12 +397,14 @@ export class PublicHomePage extends React.Component<any, any> {
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          An abundance of organic ingredients
-                          <br/>
-                          Free of refined sugars and soy
-                          <br/>
-                          <br/>
-                          Enjoy all day long!
+                          <div style={{fontSize: 14}}>
+                            An abundance of organic ingredients
+                            <br/>
+                            Free of refined sugars and soy
+                            <br/>
+                            <br/>
+                            Enjoy all day long!
+                          </div>
                           <br/>
                         <br/>   
                           <br/>
