@@ -123,11 +123,11 @@ export default class Menu extends React.Component<any, any> {
                                             <br/>
                                             Santa Monica 
                                             <br/>
+                                            Venice
+                                            <br/>
                                             West Hollywood
                                             <br/>
                                             Westwood
-                                            <br/>
-                                            Venice
                                             <br/>
                                           </div>
                                           <div className="col-md-6" style={{paddingLeft: "30px"}}>

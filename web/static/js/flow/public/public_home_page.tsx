@@ -397,7 +397,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          An abundance of locally sourced organic ingredients.
+                          An abundance of organic ingredients
                           <br/>
                           <br/>
                           Enjoy all day long!
@@ -483,7 +483,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                     <br/>
                                     <br/>
-                                    An abundance of locally sourced organic ingredients.
+                                    An abundance of organic ingredients
                                     <br/>
                                     <br/>
                                     Enjoy all day long!
