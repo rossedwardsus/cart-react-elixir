@@ -548,7 +548,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           Email us to start an order
                           <br/>
-                          <Link to="/pool/order/menu" style={{color: "grey", textDecoration: "none"}}>CLICK HERE TO VIEW POOL MENU</Link>
+                          <button onClick={() => this.props.createOrder("pool")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                           <br/>
                           <br/>
                           <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>

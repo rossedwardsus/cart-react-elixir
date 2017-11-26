@@ -134,6 +134,13 @@ defmodule Sconely.Schema.Types do
     field :error_code, :string
   end
 
+  object :process_pool_order_response do
+    field :status, :string
+    field :sconely_user_token, :string
+    #field :stripe__token, :string
+    field :error_code, :string
+  end
+
 
   object :pool_order_details do
     #field :status, :string

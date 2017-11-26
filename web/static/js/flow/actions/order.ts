@@ -91,13 +91,13 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(push("/order/menu"));
 
       //}
-      //}else if(order_type == "social"){
+      }else if(order_type == "pool"){
 
             //load menu
-      //      dispatch(getMenuItems());
+            dispatch(getMenuItems("pool"));
       //      dispatch(createOrderSession(order_type));
-      //      dispatch({type: CREATE_ORDER, order_type: order_type});
-      //      dispatch(push("/order/menu"));
+            dispatch({type: CREATE_ORDER, order_type: "pool"});
+            dispatch(push("/pool/order/menu"));
 
       }else if(order_type == "pool"){
 
@@ -365,6 +365,124 @@ export function processYoursSocialPoolOrder() {
         }
 
 }
+
+export function processPoolOrder() {
+  console.log("process pool order action ");
+  //console.log("action");
+
+  return function (dispatch: any, getState: any) { 
+
+            //event full name
+
+            //console.log("getstate" + JSON.stringify(getState().User.paymentMethods[0].card_number));
+            //state.User.orders
+
+            dispatch(setOrderStatus("processing"));
+
+            //dispatch({type: SET_PROCESSING_ORDER_STATUS, error: response.data.data.processYoursSocialPoolOrder.errorReason});
+
+
+            //if order type == pool then address isnt needed
+
+            axios.post('/api/graphql',
+                     {query: 'mutation {process_pool_order (order_type: "' + getState().User.orders[0].order_type + '", poolName: "' + getState().User.orders[0].poolName + '", order_note: "' + getState().User.orders[0].orderNote + '", gift_order: ' + getState().User.orders[0].giftOrder + ', gift_note: "' + getState().User.orders[0].giftNote + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: ' + JSON.stringify(getState().User.orders[0].cartItems).replace(/\"([^(\")"]+)\":/g,"$1:") + ', cart_items1: [{menu_item_id: 1, quantity: 100, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '",  user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '", payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}'}, {headers: {'authorization': "bearer"}}
+            )
+            .then((response: any) => {
+
+                  console.log("graphql response " + JSON.stringify(response));
+
+                  let error_message = "";
+
+                  if(response.data.data.processYoursSocialPoolOrder.status == "success"){
+                    //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
+                    //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
+                    ////error_message = "There was an error in your CVC code."
+                    //incorrect card number
+                    //
+
+                    dispatch(push("/order/complete"));
+
+                  }else{
+                  
+                    dispatch({type: SET_PAYMENT_ERROR, paymentErrorCode: response.data.data.processYoursSocialPoolOrder.errorCode});
+
+                  }
+
+
+                  /*if(response.data.data.processYoursSocialPoolOrder.errorReason != ""){
+
+                      //console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialPoolOrder.errorReason));
+
+                      
+
+
+                      //if save_info_for_later == true...
+                      //last four card number
+
+                      //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
+
+                      console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
+
+                      //else delete from redux
+                      //console.log("clear order");
+                      
+                      //dispatch({type: CLEAR_USER});
+            
+
+                      //that.props.history.push('/user');
+                      //context.router
+
+                      //this.context.router.push('/order/complete');
+                      //dispatch(push("/order/complete"));
+
+                  }else{
+
+                    //dispatch({ type: error, item_id: "session_id"});
+
+                    //if status == card_error
+                    //set status of order to payment error?
+
+                    dispatch({type: SET_NETWORK_ERROR, error: "response.data.data.processYoursSocialPoolOrder.errorReason"});
+
+                  
+
+                  }*/
+      
+
+            })
+            .catch((error: any) => {
+
+                  console.log("axios error handler " + error);
+
+                  //if network error reset button
+
+                  dispatch({type: SET_NETWORK_ERROR, networkError: true});
+
+
+                  //go to code/payment screen
+          //        this.props.loadView();
+
+
+                  //display errror to user - payment
+
+           //if (!error.status) {
+              // network error
+            //}
+
+            })
+            
+
+
+            //call the reducer themn redirect
+            //dispatch({ type: GUEST_ADD_CART_ITEM, item_id: "session_id"});
+            //dispatch(push("/order/complete"));
+            //dispatch({ type: SIGNATURE_GUEST_LOAD_ORDER, data: {event_full_name: "Laci Sconeli Launch August 2017 in DTLA", order_id: "response.data.data.loadSignatureGuestResponseOrderDetails. parent_order_id", image_id: "", host_id: "", invited_guest_message: "response.data.data.loadSignatureGuestResponseOrderDetails. invitedGuestMessage", menu_items: []}});
+                    
+        }
+
+}
+
+
 
 
 

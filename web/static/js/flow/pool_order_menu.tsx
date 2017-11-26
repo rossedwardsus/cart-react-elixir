@@ -624,6 +624,23 @@ class PoolOrderMenu extends React.Component<any, any> {
                   </div>
 
 
+        message = <div>
+                    Select one scone to start your order.
+                    <br/>
+                    <br/>
+                    Invite up to 50 people to join your pool.
+                    <br/>
+                    <br/>
+                    Each person selects and pays separately.
+                    <br/>
+                    <br/>
+                    Scones delivered to one location.
+                    <br/>
+                    <br/>
+                    Now choose your scone
+                  </div>
+
+
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
@@ -632,25 +649,14 @@ class PoolOrderMenu extends React.Component<any, any> {
                             <br/>
                             <b>SCONELY POOL</b>
                             <br/>
-                            Select one scone to start your order.
                             <br/>
-                            Invite up to 50 people to join your pool.
-                            <br/>
-                            Each person selects and pays separately.
-                            <br/>
-                            Scones delivered to one location.
-                            <br/>
-                            <br/>
+                            {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
                               <b>SCONELY POOL</b>
                               <br/>
-                              
-                              {(this.state.pool_message_viewed == false) &&
-                                pool_image}
-                              <br/>
-                              {message}
+                              {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) ? message : <SidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                               <br/>
                             </div>
                             <br/>
@@ -708,7 +714,19 @@ class PoolOrderMenu extends React.Component<any, any> {
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
-                                
+                            <div>
+                              <div className="col-xs-12 col-md-9">
+                                <div className="col-xs-6 col-md-4">
+                                  <select className="form-control" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{height: 35, width: 100, borderRadius: 0, WebkitAppearance: "none"}}>
+                                    <option value={0}>Quantity</option> 
+                                    {options_count_array.map((value: any) => <option value={value}>{value}</option>)}
+                                  </select>
+                                </div>
+                                <div className="col-xs-6 col-md-4">
+                                  <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35, width: 100}}>Add To Cart</button>
+                                </div>
+                              </div>
+                            </div>
                           </form>
                         </div>
                       </div>
