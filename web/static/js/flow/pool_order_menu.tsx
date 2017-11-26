@@ -625,19 +625,19 @@ class PoolOrderMenu extends React.Component<any, any> {
 
 
         message = <div>
-                    Select one scone to start your order.
+                    Select 1-11 scones to start your Pool order.  A link is sent to you after you order that allows for others to join your pool.  Share teh link with up to 50 people
                     <br/>
                     <br/>
-                    Invite up to 50 people to join your pool.
+                    Each person selects and pays separately
                     <br/>
                     <br/>
-                    Each person selects and pays separately.
+                    Scones delivered to one location
                     <br/>
+                    <b>Freshly baked artisenal scones.  $5 each</b>
                     <br/>
-                    Scones delivered to one location.
+                    <b>Perfect for breakfast, lunch or a snack</b>
                     <br/>
-                    <br/>
-                    Now choose your scone
+                    <b>Free delivery to many LA areas</b>
                   </div>
 
 

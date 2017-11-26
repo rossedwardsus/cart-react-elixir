@@ -107,9 +107,6 @@ export default class Menu extends React.Component<any, any> {
                                         </div>
                                         <div className="modal-body">
                                           <div className="col-md-6" style={{paddingLeft: "30px"}}>
-                                            FREE DELIVERY AREAS + TIMES
-                                            <br/>
-                                            <br/>
                                             Beverly Hills
                                             <br/>
                                             Brentwood
@@ -118,11 +115,11 @@ export default class Menu extends React.Component<any, any> {
                                             <br/>
                                             Downtown LA
                                             <br/>
+                                            Hancock Park
+                                            <br/>
                                             Marina Del Rey
                                             <br/>
                                             Playa Vista
-                                            <br/>
-                                            Hancock Park
                                             <br/>
                                             Santa Monica 
                                             <br/>

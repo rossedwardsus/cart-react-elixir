@@ -397,7 +397,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          Empasis on organic ingredients, all of our scones are free of refined sugars and soy.
+                          An abundance of locally sourced organic ingredients.
                           <br/>
                           <br/>
                           Enjoy all day long!
@@ -483,7 +483,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                     <br/>
                                     <br/>
-                                    Empasis on organic ingredients, all of our scones are free of refined sugars and soy.
+                                    An abundance of locally sourced organic ingredients.
                                     <br/>
                                     <br/>
                                     Enjoy all day long!
