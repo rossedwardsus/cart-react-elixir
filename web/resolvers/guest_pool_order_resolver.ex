@@ -62,6 +62,9 @@ defmodule Sconely.PoolOrderResolver do
       #ProcessOrderUser.createUserDeliveryContactAddress(do when creating user)
       #ProcessOrderPool.createPoolOrder(parent_order_od)
       #ProcessCart.getCartWithMenuItemNames(cart_items)
+      #formatOrderDateTime
+      #formatDeliveryDateTime
+      #pool url
       #send mail
       
       #subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 5.00) end)
