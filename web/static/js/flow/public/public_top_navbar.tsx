@@ -93,7 +93,7 @@ export default class Menu extends React.Component<any, any> {
                         <ul id="navbar" className="nav navbar-nav navbar-right">
                           <li><Link to="/public/about_us">ABOUT US</Link></li>
                           <li><Link to="" onClick={() => this.showDeliveryLocations()}>FREE DELIVERY AREAS + TIMES</Link></li>
-                          <li><Link to="/">FREE SAMPLES</Link></li>
+                          <li><Link to="/public/free_sample">FREE SAMPLES</Link></li>
                         </ul>
                       </div>
                     </div>

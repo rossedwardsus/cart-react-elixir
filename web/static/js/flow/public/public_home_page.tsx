@@ -517,7 +517,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                   </div>
                         </div>
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: 10}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
                           <br/>
                           <br/>
                           <br/>
