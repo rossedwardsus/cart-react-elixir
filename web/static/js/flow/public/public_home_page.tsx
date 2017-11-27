@@ -397,7 +397,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: 15}}>
+                          <div style={{fontSize: 16}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
@@ -487,12 +487,16 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                     <br/>
                                     <br/>
-                                    Many locally sourced organic ingredients
-                                    <br/>
-                                    Free of refined sugars and soy
-                                    <br/>
-                                    <br/>
-                                    Perfect for breakfast, lunch or dinner!
+                                    <div style={{fontSize: 16}}>
+                          
+                                        Many locally sourced organic ingredients
+                                        <br/>
+                                        Free of refined sugars and soy
+                                        <br/>
+                                        <br/>
+                                        Perfect for breakfast, lunch or dinner!
+
+                                    </div>
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
@@ -528,7 +532,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          Dozens of regular size or mini scones
+                          Dozens of regular sized or mini scones
                           <br/>
                           Freshly baked, delivered to your event
                           <br/>
