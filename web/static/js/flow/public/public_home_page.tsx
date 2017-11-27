@@ -498,9 +498,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
                                     </div>
-                                    Dozens of freshly baked scones
+                                    Dozens of regular size or mini scones
                                     <br/>
-                                    Delivered to your event
+                                    Freshly baked, delivered to your event
                                     <br/>
                                     <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                                     <br/>
@@ -528,7 +528,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          Dozens of freshly baked scones
+                          Dozens of regular size or mini scones
                           <br/>
                           Freshly baked, delivered to your event
                           <br/>
@@ -544,7 +544,6 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           Email us to start an order
                           <br/>
-                          <button onClick={() => this.props.createOrder("pool_order")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                           <br/>
                           <br/>
                           <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
@@ -557,6 +556,8 @@ export class PublicHomePage extends React.Component<any, any> {
     )
   }
 }
+
+//<button onClick={() => this.props.createOrder("pool_order")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
 
 const mapStateToProps = (state: any, ownProps: any) => {
   console.log("homepage" + JSON.stringify(state));

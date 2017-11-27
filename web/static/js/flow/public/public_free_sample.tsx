@@ -47,7 +47,27 @@ export default class FreeSample extends React.Component<any, any> {
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                             <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                             For a free sample send us an email at eat@sconely.com
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                             <br/>
                         </div>
                         <div className="col-md-3">
