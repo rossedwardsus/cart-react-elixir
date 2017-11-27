@@ -397,7 +397,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: 14}}>
+                          <div style={{fontSize: 15}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
