@@ -25,12 +25,14 @@ defmodule Sconely.PoolOrderResolver do
 
   #import Sconely.ProcessStripePayment
   import Sconely.ProcessOrderUser
-  #import Sconely.ProcessOrderCart
+  import Sconely.ProcessOrderCart
 
   def process_pool_order(args, _info) do
 
+      IO.inspect(args)
+
       total = nil
-      subtotal = ""
+      subtotal = nil
       delivery_contact_address = %{}
 
       #calculate cost
@@ -56,30 +58,34 @@ defmodule Sconely.PoolOrderResolver do
 
       #load one of these depenging on whether test or live
       #env("test_prod") == test
+
+      stripe_response = processPayment(%{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]})
+
       #working
       #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-      case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+      #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
-      #IO.inspect(token["id"])  
+      case stripe_response do
+        {:ok, charge} -> IO.inspect(charge["id"])
+      #{:ok, token} -> {:ok, token}
 
-      {:ok, token} -> {:ok, token}
+            #IO.inspect(token["id"])  
 
-            case Stripe.Charge.create(%{:amount => trunc(total*100), :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+            #case Stripe.Charge.create(%{:amount => trunc(total*100), :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
 
-              {:ok, charge} -> #IO.inspect(charge)
-              stripe_charge_token = charge["id"]
-              stripe_response = {:ok, charge}
+            #  {:ok, charge} -> #IO.inspect(charge)
+            #  stripe_charge_token = charge["id"]
+            #  stripe_response = {:ok, charge}
             #                   {:ok, charge}
-              {:error, error} -> {:error, error}
-                  stripe_response = {:error, error}
+            #  {:error, error} -> {:error, error}
+            #      stripe_response = {:error, error}
 
-            end
+            #end
 
-            query = from mi in MenuItem,
-                           select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
-            menu_items = Repo.all(query)
+            #query = from mi in MenuItem, select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
+            #menu_items = Repo.all(query)
 
             user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
             IO.inspect(user)
@@ -158,10 +164,10 @@ defmodule Sconely.PoolOrderResolver do
 
             end
 
-            {:error, error} -> {:error, error}
+      {:error, error} -> IO.inspect(error)
                   stripe_response = {:error, error}
 
-
+                  #sorry an error occred with your payment
           
 
  

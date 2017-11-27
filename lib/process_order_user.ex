@@ -51,27 +51,39 @@ defmodule Sconely.ProcessOrderUser do
 
                   
 
-
-  def getUser(email) do
+  #@spec
+  def getUser(email, mobile, first_name, last_name, about_me) do
 
      #query = from mi in MenuItem, select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
      #       menu_items = Repo.all(query)
 
-     #       user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
-     #       IO.inspect(user)
+     #user = Repo.get_by(MailingListGuestRegistration, %{email: email})
+     # IO.inspect(user)
 
 
-            #check if the user exists in the registreation table
+     #check if the user exists in the registreation table
 
-     #       if user == nil do
+     #if user == nil do
 
-     #         registration_changeset = MailingListGuestRegistration.changeset(%MailingListGuestRegistration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
+       #move into contexts
+       #mailing_list_registration_changeset = MailingListGuestRegistration.changeset(%MailingListGuestRegistration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
 
-     #         case Repo.insert(registration_changeset) do
+       #MyRepo.insert %Post{title: "Ecto is great"}
+       
+       #{:ok, registration_response} = Repo.insert(registration_changeset)
+       #IO.inspect(mailing_list_registration_response)
 
-      #          {:ok, response} -> IO.inspect(response)
 
-      #              user_id = response.user_id
+     #  {:ok, registration_response} -> IO.inspect(response)
+
+            #user_changeset = User.changeset(%User{}, %{user_id: registration_response.user_id, first_name: user_first_name, last_name: user_last_name, email: email, mobile: mobile, about_me: "", stripe_customer_id: ""})
+                
+            #case Repo.insert(user_profile_changeset) do
+              #    {:ok, user_profile_response} -> IO.inspect(response)
+              #  user_id = response.user_id
+            #end
+
+     #end
 
 
   end

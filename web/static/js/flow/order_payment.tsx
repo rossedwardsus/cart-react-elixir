@@ -845,11 +845,22 @@ class OrderDateTimeContact extends React.Component<any, any> {
       this.setState({button_complete_order_classname: "btn btn-default disabled"});
       this.setState({button_complete_order_disabled: "disabled"});
 
-      //this.props.setOrderStatus("process_payment");
-      this.props.processYoursSocialPoolOrder();
+      console.log("order type " + this.props.User.orders[0].order_type);
 
-      //if pool_order
-      //this.props.processPoolOrder();
+      //if order type == yours social pool_response
+      if(this.props.User.orders[0].order_type == "pool_order"){
+      
+        this.props.processPoolOrder();
+
+      }else{
+        
+        //this.props.setOrderStatus("process_payment");
+        
+        this.props.processYoursSocialPoolOrder();
+
+      }
+
+      
 
 
      
@@ -1058,7 +1069,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                             <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
                             <br/>
-                            <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
+                            <button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>
@@ -1068,6 +1079,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
             </div>
     )
   }
+
+  //<button className={this.state.button_complete_order_classname} onClick={this.processYoursSocialPoolOrder} disabled={this.state.button_complete_order_disabled} style={{borderRadius: 0}}>Complete Order</button>
 
   /*render(){
     alert(JSON.stringify(this.props.menu_items));

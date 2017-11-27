@@ -288,17 +288,12 @@ defmodule Sconely.Schema do
   end
 
   field :process_pool_order, type: :process_pool_order_response do
-        arg :order_type, :string
+        #arg :order_type, :string
         arg :pool_name, :string
-        arg :pool_admin_receipt_order_id, :string
-        arg :save_for_later, :boolean
         arg :user_first_name, :string
         arg :user_last_name, :string
         arg :user_contact_email, :string
         arg :user_contact_mobile, :string
-        #arg :pool_admin_order_receipt_id, :string
-        #arg :pool_url_name, :string
-        #arg :pool_url_date, :string
         arg :user_delivery_contact_address_contact_first_name, :string
         arg :user_delivery_contact_address_contact_last_name, :string
         arg :user_delivery_contact_address_contact_email, :string
@@ -321,11 +316,7 @@ defmodule Sconely.Schema do
         arg :cart_items, list_of(:cart_item)
         arg :promo_code, :string
         arg :order_note, :string
-        arg :gift_order, :boolean
-        arg :gift_note, :string
-        #arg :terms
-        #arg :mailing_list
-
+       
         resolve &Sconely.PoolOrderResolver.process_pool_order/2
       end
 

@@ -58,7 +58,31 @@ defmodule Sconely.ProcessOrderCart do
   #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
   #{:ok, date_from_erl} = Date.from_erl(date)    
 
-  #IO.inspect(Date.day_of_week(date_from_erl))           
+  #IO.inspect(Date.day_of_week(date_from_erl))
+
+  def processPayment(args) do
+
+      #working
+      case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+
+      #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+
+
+      
+      {:ok, token} -> {:ok, token}
+
+            #token["id"]
+
+            case Stripe.Charge.create(%{:amount => 100, :currency => "usd", :source => token["id"], :description => "Charge for Sconely.com"}) do
+
+              {:ok, charge} -> {:ok, charge}
+              {:error, error} -> {:error, error}
+
+            end
+
+      end
+
+  end
 
   def get_menu_item_name1(datetime) do
 

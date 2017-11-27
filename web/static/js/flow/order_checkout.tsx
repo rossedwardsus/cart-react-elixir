@@ -561,7 +561,7 @@ class DateTime extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-9">
                                     <div className="col-md-3">
-                                      <button type="button" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
+                                      <button type="button" className={this.state.payment_button_classname} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
                                     </div>
                                     <div className="col-md-3">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
@@ -579,6 +579,8 @@ class DateTime extends React.Component<any, any> {
 
         }
   }
+
+  //<button type="button" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button> 
 
   /*render(){
     alert(JSON.stringify(this.props.menu_items));
