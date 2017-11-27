@@ -393,11 +393,11 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 15, fontFamily: "Helvetica-Bold"}}>
+                          <div style={{fontSize: 16, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: 13}}>
+                          <div style={{fontSize: 14}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
