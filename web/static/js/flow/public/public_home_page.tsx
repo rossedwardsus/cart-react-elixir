@@ -383,7 +383,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-4" style={{paddingLeft: "55px", paddingRight: "0px", border: '1px solid red'}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
                           <br/>
                           <br/>
                           <br/>
@@ -409,7 +409,7 @@ export class PublicHomePage extends React.Component<any, any> {
                         <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-4" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-6" style={{paddingLeft: "30px"}}>
                                   <br/>
                                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
                                     <div className="modal-dialog" role="document">
@@ -523,7 +523,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                   </div>
                         </div>
-                        <div className="hidden-xs col-md-4" style={{paddingLeft: 20, border: '1px solid red'}}>
+                        <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
                           <br/>
                           <br/>
                           <br/>
