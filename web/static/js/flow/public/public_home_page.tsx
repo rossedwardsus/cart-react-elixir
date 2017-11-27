@@ -533,8 +533,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 15, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          <div style={{fontSize: 14}}>
+                          <div style={{fontSize: 17, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
+                          <div style={{fontSize: 16}}>
                             Dozens of regular sized or mini scones
                             <br/>
                             Freshly baked, delivered to your event
@@ -545,8 +545,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 15, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                          <div style={{fontSize: 14}}>
+                          <div style={{fontSize: 17, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
+                          <div style={{fontSize: 16}}>
                             Up to eleven scones per person, paid separately
                             <br/>
                             Freshly baked, delivered to one location
