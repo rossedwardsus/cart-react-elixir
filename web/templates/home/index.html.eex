@@ -127,7 +127,7 @@
     }
 
     html, body {
-      width: 96%;
+      width: 100%;
       font-family: "Helvetica-Light"
     }
 
@@ -135,7 +135,7 @@
       margin: 0px;
       padding: 0px;
       margin-right: 0px;
-      padding-right: 35px
+      padding-right: 0px
     }
 
     .pull-right {
@@ -151,9 +151,9 @@
       padding:0px;
       margin:0px;
       padding-right: 0px;
-      padding-left: 30px;
+      padding-left: 0px;
       margin-right: 0px;
-      margin-left: 15px;
+      margin-left: 0px;
     }
 
    .row {

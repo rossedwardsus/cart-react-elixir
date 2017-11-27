@@ -383,7 +383,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
+                        <div className="hidden-xs col-md-4" style={{paddingLeft: "55px", paddingRight: "0px", border: '1px solid red'}}>
                           <br/>
                           <br/>
                           <br/>
@@ -393,11 +393,11 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                          <div style={{fontSize: 15, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: 16}}>
+                          <div style={{fontSize: 13}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
@@ -409,7 +409,7 @@ export class PublicHomePage extends React.Component<any, any> {
                         <br/>   
                           <br/>
                         </div>
-                        <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-4" style={{paddingLeft: "30px"}}>
                                   <br/>
                                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
                                     <div className="modal-dialog" role="document">
@@ -523,7 +523,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                   </div>
                         </div>
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
+                        <div className="hidden-xs col-md-4" style={{paddingLeft: 20, border: '1px solid red'}}>
                           <br/>
                           <br/>
                           <br/>
