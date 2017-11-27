@@ -528,9 +528,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          1 dozen  - 20 dozen regular sized scones
-                          <br/>
-                          2 dozen - 40 dozen mini scones
+                          Dozens of freshly baked scones
                           <br/>
                           Freshly baked, delivered to your event
                           <br/>
@@ -540,7 +538,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                          1-11 scones per person, choose + pay separately 
+                          Up to eleven scones per person, paid separately
                           <br/>
                           Freshly baked, delivered to one location
                           <br/>
