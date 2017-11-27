@@ -64,6 +64,9 @@ defmodule Sconely.PoolOrderResolver do
 
       #order_datetime = Ecto.Datetime.utc()
       #delivery date is gotten from the user 
+      #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
+      #{:ok, date_from_erl} = Date.from_erl(date)    
+
 
       #charge stripe
       #ProcessOrderUser.getUser(email_address)

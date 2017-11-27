@@ -113,20 +113,25 @@ defmodule Sconely.ProcessOrderPool do
 
     #add user pool
     #add order
+
+    #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
+    #{:ok, date_from_erl} = Date.from_erl(date)    
+
                     
 
 
-     #         pool_order_changeset = PoolOrder.changeset(%UserPool{}, %{user_pool_id: args[:user_contact_email], parent_order_id: "", user_cdelivery_contact_address_id: 0, pickup_location: "", delivery_date: "", delivery_time_range: "", user_id: "", user_payment_method_id: 0})  
+     #pool_order_changeset = PoolOrder.changeset(%UserPool{}, %{user_pool_id: args[:user_contact_email], parent_order_id: "", user_cdelivery_contact_address_id: 0, pickup_location: "", delivery_date: "", delivery_time_range: "", user_id: "", user_payment_method_id: 0})  
 
-     #         {:ok, pool_order} = Repo.insert(pool_order_changeset)
+     #{:ok, pool_order} = Repo.insert(pool_order_changeset)
 
      #           pool_order.order_id
 
 
   end
 
-  def addPoolOrderItem(datetime) do
+  def addPoolOrderItem(cart_items) do
 
+     #for item in cart_items do
     
 
      #         pool_order_item_changeset = OrderItem.changeset(%MailingListGuestRegistration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
@@ -135,6 +140,22 @@ defmodule Sconely.ProcessOrderPool do
 
      #{:ok}
 
+
+     #Enum.map(cart_items, fn(item) -> 
+     #     IO.inspect(item)
+
+          #pool_order_items?
+          #probably not
+
+     #     order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: order_id, menu_item_id: 1, quantity: 1, size: "regular", user_id: user_id})
+
+      #    {:ok, response} = Repo.insert(order_item_changeset)
+
+       #       {:ok, response} -> IO.inspect(response)
+
+       #   end
+
+      #end)
       
 
   end

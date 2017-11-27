@@ -127,7 +127,7 @@
     }
 
     html, body {
-      width: 97%;
+      width: 100%;
       font-family: "Helvetica-Light"
     }
 
