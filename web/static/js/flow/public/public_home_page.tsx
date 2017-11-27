@@ -511,11 +511,13 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                                    Up to eleven scones per person, paid separately
-                                    <br/>
-                                    Freshly baked, delivered to one location
-                                    <br/>
-                                    Email us to start an order
+                                    <div style={{fontSize: 16}}>
+                                      Up to eleven scones per person, paid separately
+                                      <br/>
+                                      Freshly baked, delivered to one location
+                                      <br/>
+                                      Email us to start an order
+                                    </div>
                                     <br/>
                                     <br/>
                                     <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
@@ -532,21 +534,25 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          Dozens of regular sized or mini scones
-                          <br/>
-                          Freshly baked, delivered to your event
-                          <br/>
+                          <div style={{fontSize: 16}}>
+                            Dozens of regular sized or mini scones
+                            <br/>
+                            Freshly baked, delivered to your event
+                            <br/>
+                          </div>
                           <br/>
                           <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                           <br/>
                           <br/>
                           <br/>
                           <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                          Up to eleven scones per person, paid separately
-                          <br/>
-                          Freshly baked, delivered to one location
-                          <br/>
-                          Email us to start an order
+                          <div style={{fontSize: 16}}>
+                            Up to eleven scones per person, paid separately
+                            <br/>
+                            Freshly baked, delivered to one location
+                            <br/>
+                            Email us to start an order
+                          </div>
                           <br/>
                           <br/>
                           <br/>
