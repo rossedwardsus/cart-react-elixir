@@ -62,15 +62,15 @@ defmodule Sconely.PoolOrderResolver do
 
       #assert Task.await(task) == "Monday"
 
-      #test_order_datetime = Ecto.Datetime.utc()
-  
+      #order_datetime = Ecto.Datetime.utc()
+      #delivery date is gotten from the user 
 
       #charge stripe
       #ProcessOrderUser.getUser(email_address)
       #ProcessOrderPool.createUserPool(user_id, company_name)
       #ProcessOrderPool.getParentOrderId(email_address)
       #ProcessOrderUser.createUserDeliveryContactAddress(do when creating user)
-      #ProcessOrderPool.createPoolOrder(parent_order_od)
+      #ProcessOrderPool.createPoolOrder(parent_order_id, args)
       #ProcessCart.getCartWithMenuItemNames(cart_items)
       #formatOrderDateTime
       #formatDeliveryDateTime

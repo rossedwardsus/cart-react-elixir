@@ -127,7 +127,7 @@
     }
 
     html, body {
-      width: 100%;
+      width: 97%;
       font-family: "Helvetica-Light"
     }
 
@@ -151,7 +151,7 @@
       padding:0px;
       margin:0px;
       padding-right: 0px;
-      padding-left: 0px;
+      padding-left: 30px;
       margin-right: 0px;
       margin-left: 0px;
     }
