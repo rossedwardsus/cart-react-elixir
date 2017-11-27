@@ -733,7 +733,6 @@ class OrderMenu extends React.Component<any, any> {
                                   <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
-                                  Contact us for other delivery options or to schedule a tasting
                                   </div>)}
                             {(this.props.User.orders[0].order_type == "pool" && this.state.pool_message_viewed == false) &&
                               pool_image}
