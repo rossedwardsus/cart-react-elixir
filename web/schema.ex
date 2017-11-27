@@ -316,6 +316,7 @@ defmodule Sconely.Schema do
         arg :cart_items, list_of(:cart_item)
         arg :promo_code, :string
         arg :order_note, :string
+        arg :pickup_location, :string
        
         resolve &Sconely.PoolOrderResolver.process_pool_order/2
       end

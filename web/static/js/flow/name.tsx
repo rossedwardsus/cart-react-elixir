@@ -417,14 +417,6 @@ class Name extends React.Component<any, any> {
 
    
     return ( <div>
-              {(this.props.User.orders[0].order_type == "pool_order") &&
-                  <form role="form" className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-md-4">
-                        <input className="form-control margin-bottom-5" type="text" maxLength={30} onFocus={() => this.onFirstNameFocus()} onChange={(e: any) => this.setUserFirstName(e)} onInput={(e: any) => this.setUserFirstName(e)} value={this.state.user_first_name} placeholder="Pool Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                      </div>  
-                    </div>
-                  </form>}
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-4">

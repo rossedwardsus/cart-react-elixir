@@ -60,7 +60,7 @@ defmodule Sconely.ProcessOrderCart do
 
   #IO.inspect(Date.day_of_week(date_from_erl))
 
-  def processPayment(args) do
+  def processPayment(payment_args, amount) do
 
       #working
       case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
@@ -177,9 +177,9 @@ defmodule Sconely.ProcessOrderCart do
 
   end
 
-  def cart_items_subtotal(cart_items) do
+  def cartItemsSubtotal(cart_items) do
 
-    subtotal = Enum.reduce([%{menu_item_id: "67890", size: "regular", quantity: 12}, %{menu_item_id: "12345", size: "mini", quantity: 12}], 0, fn(item, acc) -> 
+    Enum.reduce([%{menu_item_id: "67890", size: "regular", quantity: 12}, %{menu_item_id: "12345", size: "mini", quantity: 12}], 0, fn(item, acc) -> 
       case item.size do
 
           "regular" -> (item.quantity * 5) + acc
@@ -196,7 +196,7 @@ defmodule Sconely.ProcessOrderCart do
 
   end
 
-  def promo_code_discount(promo_code) do
+  def promoCodeDiscount(promo_code) do
 
       case promo_code do
 
@@ -204,15 +204,10 @@ defmodule Sconely.ProcessOrderCart do
           "" -> ""
 
           "8THANDHOPE" -> {"10%", 10}
-                          #total = subtotal - (subtotal * 10/100)
-          "GRAIN" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "SCONELY10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "CROSSCAMPUS10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "WEWORK10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
+          "GRAIN" ->  {"10%", 10}
+          "SCONELY10" ->  {"10%", 10}
+          "CROSSCAMPUS10" ->  {"10%", 10}
+          "WEWORK10" ->  {"10%", 10}
 
 
           #%promo_code_discount
@@ -245,9 +240,9 @@ defmodule Sconely.ProcessOrderCart do
        
   end
 
-  def cart_total() do
+  def cartTotal(subtotal, discount_amount) do
 
-    #subtotal + promo code discount + bulk discount
+    subtotal - (subtotal * discount_amount/100)
 
   end
 

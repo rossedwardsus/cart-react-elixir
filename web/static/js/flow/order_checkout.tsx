@@ -34,7 +34,7 @@ import DeliveryContactAddress from './delivery_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
-import {setOrderDeliveryDatetimeDate, setOrderNote, setGiftOrder, setGiftNote} from './actions/order.ts';
+import {setPoolName, setOrderDeliveryDatetimeDate, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation} from './actions/order.ts';
 
 //import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setDeliveryContactAddressNote} from './actions/order_delivery_contact_address.ts';
 
@@ -84,6 +84,7 @@ class DateTime extends React.Component<any, any> {
 
     this.state = {
 
+        poolName: "",
         selectedDate: "",
         selected_time: "",
         selected_specific_time: "",
@@ -198,7 +199,16 @@ class DateTime extends React.Component<any, any> {
 
   }
 
-  
+  setPoolName(e: any){
+
+    this.setState({poolName: e.target.value});
+    
+    this.props.setPoolName(e);
+    
+    //this.props.poolNameValidated();
+
+  }
+
   setDate(date: any){
 
     //console.log("date " + moment(date).toISOString());
@@ -516,6 +526,14 @@ class DateTime extends React.Component<any, any> {
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
+                            {(this.props.User.orders[0].order_type == "pool_order") &&
+                                <form role="form" className="form-horizontal">
+                                  <div className="form-group">
+                                    <div className="col-md-4">
+                                      <input className="form-control margin-bottom-5" type="text" maxLength={30} onChange={(e: any) => this.setPoolName(e)} onInput={(e: any) => this.setPoolName(e)} value={this.state.pool_name} placeholder="Pool Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
+                                    </div>  
+                                  </div>
+                                </form>}
                             <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
                             userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()}  
                             userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
@@ -531,7 +549,7 @@ class DateTime extends React.Component<any, any> {
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
                             setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
                             setOrderNote={(e: any) => this.props.setOrderNote(e)} 
-                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)}
+                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
 
                             <form className="form-horizontal">
@@ -687,6 +705,9 @@ function mapDispatchToProps(dispatch: any) {
     setUserDeliveryContactAddressNote: (e: any) => {
       dispatch(setUserDeliveryContactAddressNote(e.target.value, ""))
     },
+    setPoolName: (e: any) => {
+      dispatch(setPoolName(e.target.value));
+    },
     setOrderNote: (e: any) => {
       dispatch(setOrderNote(e.target.value));
     },
@@ -695,6 +716,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setGiftNote: (e: any) => {
       dispatch(setGiftNote(e.target.value));
+    },
+    setPickupLocation: (e: any) => {
+      dispatch(setPickupLocation(e.target.value));
     },
     deliveryContactAddressValidated: () => {
       dispatch(deliveryContactAddressValidated());

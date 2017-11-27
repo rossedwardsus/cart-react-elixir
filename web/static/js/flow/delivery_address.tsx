@@ -78,7 +78,8 @@ class DeliveryAddress extends React.Component<any, any> {
         street2_border_color: "grey",
         city_border_color: "grey",
         gift_order_checked: "",
-        gift_note: ""
+        gift_note: "",
+        pickupLocation: ""
     };
 
     //user_type=guest
@@ -587,6 +588,18 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressInvalidated();
 
   }
+
+  setPickupLocation = (e: any) => {
+
+      this.setState({pickupLocation: e.target.value});
+      this.props.setPickupLocation(e);
+
+      //if street1 street2 city state
+
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
+
+  }
   
   
   render(): JSX.Element{
@@ -781,7 +794,7 @@ class DeliveryAddress extends React.Component<any, any> {
                     <form className="form-horizontal">
                         <div className="form-group">
                           <div className="col-sm-3 col-md-4">
-                            <input type="text" maxLength={40} className="form-control" placeholder="Pickup Location" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} onInput={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                            <input type="text" maxLength={40} className="form-control" placeholder="Pickup Location" value={this.state.pickupLocation} onChange={(e) => this.setPickupLocation(e)} onInput={(e) => this.setPickupLocation(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
                           </div> 
                         </div>
                     </form>}

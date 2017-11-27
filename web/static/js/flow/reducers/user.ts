@@ -1,4 +1,4 @@
-import { GET_USER, SET_ORDER_TYPE, SET_ORDER_STATUS, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED, PAYMENT_METHOD_NAME_ON_CARD_VALIDATED, PAYMENT_METHOD_ZIPCODE_VALIDATED, PAYMENT_METHOD_CARD_NUMBER_VALIDATED, PAYMENT_METHOD_EXPIRY_MONTH_VALIDATED, PAYMENT_METHOD_EXPIRY_YEAR_VALIDATED, PAYMENT_METHOD_SECURITY_CODE_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED, FIRST_NAME_VALIDATED, FIRST_NAME_INVALIDATED, LAST_NAME_VALIDATED, CONTACT_EMAIL_VALIDATED, CONTACT_EMAIL_AGAIN_VALIDATED, CONTACT_MOBILE_VALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATE_VALIDATED, SET_ORDER_DELIVERY_DATETIME_DATE, SET_ORDER_NOTE, SET_GIFT_ORDER, SET_GIFT_NOTE, SET_SESSION_ID } from '../constants/actionTypes.ts';
+import { GET_USER, SET_ORDER_TYPE, SET_ORDER_STATUS, SET_PAYMENT_ERROR, SET_NETWORK_ERROR, SET_PROMO_CODE, CREATE_ORDER, COMPLETE_ORDER, CLEAR_USER, SET_POOL_NAME, ADD_CART_ITEM, INCREASE_CART_ITEM_QUANTITY, DECREASE_CART_ITEM_QUANTITY, REMOVE_CART_ITEM, SET_USER_FIRST_NAME, SET_USER_LAST_NAME, SET_USER_CONTACT_EMAIL, SET_USER_CONTACT_MOBILE, GET_USER_ORDERS, ADD_USER_DELIVERY_CONTACT_ADDRESS, SET_USER_DELIVERY_CONTACT_ADDRESS_FIRST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_LAST_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_EMAIL, SET_USER_DELIVERY_CONTACT_ADDRESS_MOBILE, SET_USER_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET1, SET_USER_DELIVERY_CONTACT_ADDRESS_STREET2, SET_USER_DELIVERY_CONTACT_ADDRESS_CITY, SET_USER_DELIVERY_CONTACT_ADDRESS_STATE, SET_USER_DELIVERY_CONTACT_ADDRESS_ZIPCODE, SET_USER_DELIVERY_CONTACT_ADDRESS_NOTE, ADD_USER_PAYMENT_METHOD, SET_USER_PAYMENT_METHOD_NAME_ON_CARD, SET_USER_PAYMENT_METHOD_CARD_NUMBER, SET_USER_PAYMENT_METHOD_CARD_BRAND, SET_USER_PAYMENT_METHOD_EXPIRY_MONTH, SET_USER_PAYMENT_METHOD_EXPIRY_YEAR, SET_USER_PAYMENT_METHOD_SECURITY_CODE, SET_USER_PAYMENT_METHOD_ZIPCODE, SAVE_FOR_LATER, CONTACT_VALIDATED, NAME_VALIDATED, PAYMENT_METHOD_VALIDATED, PAYMENT_METHOD_NAME_ON_CARD_VALIDATED, PAYMENT_METHOD_ZIPCODE_VALIDATED, PAYMENT_METHOD_CARD_NUMBER_VALIDATED, PAYMENT_METHOD_EXPIRY_MONTH_VALIDATED, PAYMENT_METHOD_EXPIRY_YEAR_VALIDATED, PAYMENT_METHOD_SECURITY_CODE_VALIDATED, USER_NAME_EMAIL_MOBILE_VALIDATED, FIRST_NAME_VALIDATED, FIRST_NAME_INVALIDATED, LAST_NAME_VALIDATED, CONTACT_EMAIL_VALIDATED, CONTACT_EMAIL_AGAIN_VALIDATED, CONTACT_MOBILE_VALIDATED, DELIVERY_CONTACT_ADDRESS_VALIDATED, DATE_VALIDATED, SET_ORDER_DELIVERY_DATETIME_DATE, SET_ORDER_NOTE, SET_GIFT_ORDER, SET_GIFT_NOTE, SET_PICKUP_LOCATION, SET_SESSION_ID } from '../constants/actionTypes.ts';
 
 /*let menu_items: any;
 
@@ -112,8 +112,6 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       return Object.assign({}, state, {...state, orderSession: order_session_updated});
 
 
-
-
     case SET_ORDER_STATUS:
       console.log("set order status reducer");
 
@@ -154,12 +152,32 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
 
       }else{
 
-          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", userPoolId: action.user_pool_id, order_type: action.order_type, orderNote: "", poolName: action.pool_name, pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_delivery_time_range: action.pool_delivery_time_range, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address_street1: action.pool_address_street1, pool_address_city: action.pool_address_city, pool_address_state: action.pool_address_state, pool_address_zipcode: action.pool_address_zipcode, pickup_location: action.pickup_location, cartItems: []};
+          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", userPoolId: action.user_pool_id, order_type: action.order_type, orderNote: "", poolName: action.pool_name, pickupLocation: "", pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_delivery_time_range: action.pool_delivery_time_range, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address_street1: action.pool_address_street1, pool_address_city: action.pool_address_city, pool_address_state: action.pool_address_state, pool_address_zipcode: action.pool_address_zipcode, pickup_location: action.pickup_location, cartItems: []};
 
       }
 
+      //else pool_order
+
       return Object.assign({}, state, {orders: orders_updated});
 
+
+    case SET_POOL_NAME:
+      console.log("pool name reducer");
+
+      orders_updated = state.orders;
+      orders_updated[0]["poolName"] = action.name;
+      //order_updated["promoCodeDiscountPercentage"] = 10;
+
+      return Object.assign({}, state, {...state, orders: orders_updated});
+
+    case SET_PICKUP_LOCATION:
+      console.log("pool name reducer");
+
+      orders_updated = state.orders;
+      orders_updated[0]["pickupLocation"] = action.location;
+      //order_updated["promoCodeDiscountPercentage"] = 10;
+
+      return Object.assign({}, state, {...state, orders: orders_updated});
 
 
     case ADD_CART_ITEM:

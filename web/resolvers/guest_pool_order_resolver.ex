@@ -33,6 +33,7 @@ defmodule Sconely.PoolOrderResolver do
 
       total = nil
       subtotal = nil
+      discount_amount = nil
       delivery_contact_address = %{}
 
       #calculate cost
@@ -44,7 +45,16 @@ defmodule Sconely.PoolOrderResolver do
       #add pool response order item
       #send emails
 
-      #ProcessCart.getCartSubtotal(cart_items)
+      subtotal = cartItemsSubtotal(args[:cart_items])
+      
+      {text, discount_amount} = promoCodeDiscount("SCONELY10")
+      IO.inspect(discount_amount)
+
+      #delivery cost
+      total = cartTotal(subtotal, discount_amount)
+      IO.inspect(total)
+      #ProcessCart.getcartTotal
+
       #charge stripe
       #ProcessOrderUser.getUser(email_address)
       #ProcessOrderPool.createUserPool(user_id, company_name)
@@ -59,7 +69,7 @@ defmodule Sconely.PoolOrderResolver do
       #load one of these depenging on whether test or live
       #env("test_prod") == test
 
-      stripe_response = processPayment(%{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]})
+      stripe_response = processPayment(%{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}, total)
 
       #working
       #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do

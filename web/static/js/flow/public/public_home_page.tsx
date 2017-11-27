@@ -398,12 +398,12 @@ export class PublicHomePage extends React.Component<any, any> {
                           </div>
                           <br/>
                           <div style={{fontSize: 14}}>
-                            An abundance of organic ingredients
+                            Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
                             <br/>
                             <br/>
-                            Enjoy all day long!
+                            Perfect for breakfast, lunch or dinner!
                           </div>
                           <br/>
                         <br/>   
@@ -487,29 +487,27 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                     <br/>
                                     <br/>
-                                    An abundance of organic ingredients
+                                    Many locally sourced organic ingredients
                                     <br/>
                                     Free of refined sugars and soy
                                     <br/>
                                     <br/>
-                                    Enjoy all day long!
+                                    Perfect for breakfast, lunch or dinner!
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
                                     </div>
-                                    1 dozen  - 20 dozen regular sized scones
+                                    Dozens of freshly baked scones
                                     <br/>
-                                    2 dozen - 40 dozen mini scones
-                                    <br/>
-                                    Freshly baked, delivered to your event
+                                    Delivered to your event
                                     <br/>
                                     <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW MENU + ORDER</button>
                                     <br/>
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                                    1-11 scones per person, select + pay separately 
+                                    Up to eleven scones per person, paid separately
                                     <br/>
                                     Freshly baked, delivered to one location
                                     <br/>
