@@ -45,6 +45,8 @@ defmodule Sconely.PoolOrderResolver do
       #add pool response order item
       #send emails
 
+
+
       subtotal = cartItemsSubtotal(args[:cart_items])
       
       {text, discount_amount} = promoCodeDiscount("SCONELY10")
@@ -54,6 +56,14 @@ defmodule Sconely.PoolOrderResolver do
       total = cartTotal(subtotal, discount_amount)
       IO.inspect(total)
       #ProcessCart.getcartTotal
+
+      #task = Task.async(Sconely.ProcessOrderDateTime, :week_day_as_word, [1])
+      #IO.inspect(Task.await(task))
+
+      #assert Task.await(task) == "Monday"
+
+      #test_order_datetime = Ecto.Datetime.utc()
+  
 
       #charge stripe
       #ProcessOrderUser.getUser(email_address)
