@@ -517,10 +517,10 @@ export class PublicHomePage extends React.Component<any, any> {
                                       Freshly baked, delivered to one location
                                       <br/>
                                       Email us to start an order
+                                      <br/>
+                                      <br/>
+                                      <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                     </div>
-                                    <br/>
-                                    <br/>
-                                    <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                                   </div>
                         </div>
                         <div className="hidden-xs col-md-3" style={{paddingLeft: 20}}>
@@ -552,11 +552,10 @@ export class PublicHomePage extends React.Component<any, any> {
                             Freshly baked, delivered to one location
                             <br/>
                             Email us to start an order
+                            <br/>
+                            <br/>
+                            <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                           </div>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <b>With every dozen scones you purchase we donate 1% to Community Healing Gardens.</b>
                           <br/>
                         </div>
                     </div>
