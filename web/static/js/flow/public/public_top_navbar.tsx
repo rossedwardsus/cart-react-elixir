@@ -136,7 +136,7 @@ export default class Menu extends React.Component<any, any> {
                                             9am - Noon
                                             <br/>
                                             <br/>
-                                            Contact us about other delivery options or for a free sample!
+                                            Contact us about other delivery options!
                                             <br/>
                                             <br/>
                                           </div>
