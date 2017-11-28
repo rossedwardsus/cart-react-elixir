@@ -51,6 +51,8 @@ export class PublicHomePage extends React.Component<any, any> {
         guest_code: "",
         interval: "",
         //open: false
+        fontSizeLarge: 14,
+        fontSizeSmall: 13
         
     };
 
@@ -66,27 +68,26 @@ export class PublicHomePage extends React.Component<any, any> {
 
   componentDidMount(){
 
-    //$('#myModal').modal('show').css("background", "");;
+    if(window.innerWidth == 1280){
 
+        this.setState({fontSizeLarge: 14});
+        this.setState({fontSizeSmall: 13});        
 
-    //dispatch(checkLoggedIn);
+    }else{
 
-    //this.props.checkLoggedIn();
+        this.setState({fontSizeLarge: 18});
+        this.setState({fontSizeSmall: 17});        
 
-    //alert("jsx");
+    }
 
-    //get active items from the database
-
-
+ 
     this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
 
     let interval = setInterval(this.changeImage, 5000);
     this.setState({interval: interval});
 
 
-    //Cookies.set('name', 'value');
-    //alert(Cookies.get('name'));
-
+ 
     //function setCookie(cname, cvalue, exdays) {
         var d = new Date();
         d.setTime(d.getTime() + (1*24*60*60*1000));
@@ -98,11 +99,8 @@ export class PublicHomePage extends React.Component<any, any> {
 
     
 
-    //alert(getCookie("mommy_id"));
-
-    //document.cookie = "session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    //document.cookie = "sportssharing_session_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
+ 
+ 
   }
 
   componentWillUnmount() {
@@ -383,7 +381,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
+                        <div className="col-lg-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
                           <br/>
                           <br/>
                           <br/>
@@ -393,11 +391,11 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                          <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: 17}}>
+                          <div style={{fontSize: this.state.fontSizeSmall}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
