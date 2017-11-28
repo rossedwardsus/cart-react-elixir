@@ -35,7 +35,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
 
     #{index, _} = :binary.match(user_agent, "Mac")
     #{9, 1}
-    IO.inspect(index)
+    #IO.inspect(index)
     
     #IO.inspect(get_req_header(conn, "host") |> List.first)
     #IO.inspect(get_req_header(conn, "request_path") |> List.first)
