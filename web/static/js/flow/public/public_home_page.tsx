@@ -75,8 +75,8 @@ export class PublicHomePage extends React.Component<any, any> {
 
     }else{
 
-        this.setState({fontSizeLarge: 17});
-        this.setState({fontSizeSmall: 16});        
+        this.setState({fontSizeLarge: 16});
+        this.setState({fontSizeSmall: 15});        
 
     }
 
@@ -512,7 +512,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
                                     <div style={{fontSize: this.state.fontSizeSmall}}>
-                                      Up to eleven scones per person, paid separately
+                                      Up to eleven scones each, paid separately
                                       <br/>
                                       Freshly baked, delivered to one location
                                       <br/>
@@ -549,7 +549,7 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
                           <div style={{fontSize: this.state.fontSizeSmall}}>
-                            Up to eleven scones per person, paid separately
+                            Up to eleven scones each, paid separately
                             <br/>
                             Freshly baked, delivered to one location
                             <br/>
