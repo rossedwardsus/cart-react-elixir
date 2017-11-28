@@ -393,11 +393,33 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 17, fontFamily: "Helvetica-Bold"}}>
+                          <div style={{fontSize: 14, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: 16}}>
+                          <div style={{fontSize: 13}}>
+                            Many locally sourced organic ingredients
+                            <br/>
+                            Free of refined sugars and soy
+                            <br/>
+                            <br/>
+                            Perfect for breakfast, lunch or dinner!
+                          </div>
+                          <div className="hidden-xs col-lg-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                            EPIC SCONES FOR EPIC HOLIDAYS
+                          </div>
+                          <br/>
+                          <div style={{fontSize: 17}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
@@ -408,6 +430,10 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                         <br/>   
                           <br/>
+                        </div>
+                          <br/>
+                        <br/>   
+                        <br/>
                         </div>
                         <div className="col-md-6" style={{paddingLeft: "30px"}}>
                                   <br/>
