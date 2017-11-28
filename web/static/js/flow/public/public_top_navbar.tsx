@@ -90,8 +90,8 @@ export default class Menu extends React.Component<any, any> {
                         <a className="navbar-brand" href="#"><img src="https://sconely-production.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
-                        <ul id="navbar" className="nav navbar-nav navbar-right">
-                              <li><a href="#">Link</a></li>
+                        <ul className="nav navbar-nav navbar-right">
+                              <li><Link to="/public/about_us">ABOUT US</Link></li>
                               <li><Link to="" onClick={() => this.showDeliveryLocations()}>FREE DELIVERY AREAS + TIMES</Link></li>
                               <li><Link to="/public/free_sample">FREE SAMPLES</Link></li>
                         </ul>

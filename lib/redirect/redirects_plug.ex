@@ -78,7 +78,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
                conn
                |> halt
         "css" -> conn |> halt
-        "favicon.ico" -> conn |> halt
+        "favicon.ico" -> IO.puts("favicon")
         "image" -> IO.puts("image")
         "pool" -> conn
                   #|> Phoenix.Controller.redirect(to: url)

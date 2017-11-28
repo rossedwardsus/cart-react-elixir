@@ -383,7 +383,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="hidden-xs col-md-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
+                        <div className="visible-lg col-md-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
                           <br/>
                           <br/>
                           <br/>
@@ -405,7 +405,11 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             Perfect for breakfast, lunch or dinner!
                           </div>
-                          <div className="hidden-xs col-lg-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
+                          <br/>
+                          <br/>   
+                          <br/>
+                        </div>
+                        <div className="visable-xl col-lg-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
                           <br/>
                           <br/>
                           <br/>
@@ -427,13 +431,6 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             Perfect for breakfast, lunch or dinner!
                           </div>
-                          <br/>
-                        <br/>   
-                          <br/>
-                        </div>
-                          <br/>
-                        <br/>   
-                        <br/>
                         </div>
                         <div className="col-md-6" style={{paddingLeft: "30px"}}>
                                   <br/>
