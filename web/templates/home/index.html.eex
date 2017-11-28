@@ -64,42 +64,6 @@
         color: #FFFFFF;
     }
 
-    .navbar-right {
-        padding-top: 10px;
-        padding-left: .5;
-        color: #FFFFFF;
-    }
-
-    .navbar-default {
-      background-color: white;
-      border-color: #E7E7E7;
-      min-height:80px; 
-      border: 0;
-      padding-right: 0px;
-      padding-top: 10px;
-    }
-
-    .navbar {
-      padding-right: 0px;
-    }
-
-    .navbar-collapse {
-            padding-top: 0px;
-            margin-top: 0px;
-            border: 0;
-            max-height: 100% !important; 
-            height: 100% !important; 
-            display: none!important;
-    } 
-
-    .collapse {
-            max-height: 340px;
-            padding-top: 0px;
-            margin-top: 0px;
-            border: 0px;
-            max-height: 100% !important; 
-            height: 100% !important; 
-    } 
 
     .main-header-background {
         background-size: 100% 100%;
