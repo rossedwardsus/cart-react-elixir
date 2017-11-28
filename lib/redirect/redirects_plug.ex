@@ -33,6 +33,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #IO.puts("user agent")
     #IO.inspect(get_req_header(conn, "user-agent"))
 
+    #case???
     #{index, _} = :binary.match(user_agent, "Mac")
     #{9, 1}
     #IO.inspect(index)

@@ -87,13 +87,13 @@ export default class Menu extends React.Component<any, any> {
                            <span className="icon-bar"></span>
                            <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#"><img src="https://sconely-production.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
+                        <a className="navbar-brand" href="/"><img src="https://sconely-production.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
                         <ul className="nav navbar-nav navbar-right">
                               <li><Link to="/public/about_us">ABOUT US</Link></li>
                               <li><Link to="" onClick={() => this.showDeliveryLocations()}>FREE DELIVERY AREAS + TIMES</Link></li>
-                              <li><Link to="/public/free_sample">FREE SAMPLES</Link></li>
+                              <li><Link to="/public/free_sample">FREE SAMPLE</Link></li>
                         </ul>
                       </div>
                     </div>
