@@ -480,12 +480,12 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                                    <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
                                     EPIC SCONES FOR EPIC HOLIDAYS
                                     </div>
                                     <br/>
                                     <br/>
-                                    <div style={{fontSize: 17}}>
+                                    <div style={{fontSize: this.state.fontSizeSmall}}>
                                         Many locally sourced organic ingredients
                                         <br/>
                                         Free of refined sugars and soy
@@ -495,10 +495,10 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                     <br/>
                                     <br/>
-                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>
+                                    <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
                                     </div>
-                                    <div style={{fontSize: 17}}>
+                                    <div style={{fontSize: this.state.fontSizeSmall}}>
                                       Dozens of regular size or mini scones
                                       <br/>
                                       Freshly baked, delivered to your event
@@ -508,8 +508,8 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     <br/>
                                     <br/>
-                                    <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                                    <div style={{fontSize: 17}}>
+                                    <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
+                                    <div style={{fontSize: this.state.fontSizeSmall}}>
                                       Up to eleven scones per person, paid separately
                                       <br/>
                                       Freshly baked, delivered to one location
@@ -531,8 +531,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          <div style={{fontSize: 17}}>
+                          <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
+                          <div style={{fontSize: this.state.fontSizeSmall}}>
                             Dozens of regular sized or mini scones
                             <br/>
                             Freshly baked, delivered to your event
@@ -543,8 +543,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: 18, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
-                          <div style={{fontSize: 17}}>
+                          <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>SCONELY POOL</div>
+                          <div style={{fontSize: this.state.fontSizeSmall}}>
                             Up to eleven scones per person, paid separately
                             <br/>
                             Freshly baked, delivered to one location
