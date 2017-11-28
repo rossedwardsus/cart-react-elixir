@@ -33,6 +33,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
     #IO.puts("user agent")
     #IO.inspect(get_req_header(conn, "user-agent"))
 
+    #"1test2" =~ "test"
     #case???
     #{index, _} = :binary.match(user_agent, "Mac")
     #{9, 1}
@@ -102,6 +103,7 @@ defmodule Sconely.Plugs.RedirectsPlug do
             #changeset = BrowserLog.changeset(%BrowserLog{}, %{user_agent: user_agent, datetime_logged: Ecto.DateTime.utc})
             #{:ok, changeset} = Repo.insert(changeset)
 
+             #"1test2" =~ "test"
              #if Enum.at(conn.path_info, 0) == 8thandhope or weworkdtla
              #if length(conn.path_info) == 0) do
              #   IO.inspect("pool browser log" <> user_agent)
