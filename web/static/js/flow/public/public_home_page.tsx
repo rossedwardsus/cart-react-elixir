@@ -407,7 +407,7 @@ export class PublicHomePage extends React.Component<any, any> {
                         <br/>   
                         <br/>
                         </div>
-                        <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                        <div className="col-md-6" style={{paddingLeft: "25px"}}>
                                   <br/>
                                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
                                     <div className="modal-dialog" role="document">
