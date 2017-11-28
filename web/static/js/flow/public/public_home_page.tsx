@@ -381,7 +381,7 @@ export class PublicHomePage extends React.Component<any, any> {
               <div>
                    <PublicTopNavbar/>
                     <div className="row">
-                        <div className="col-lg-3" style={{paddingLeft: "55px", paddingRight: "0px"}}>
+                        <div className="col-lg-3" style={{paddingLeft: "60px", paddingRight: "0px"}}>
                           <br/>
                           <br/>
                           <br/>
