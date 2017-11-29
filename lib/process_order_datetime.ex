@@ -55,92 +55,20 @@ defmodule Sconely.ProcessOrderDateTime do
   test_args = %{first_name: "ross", last_name: "edwards", email: "", mobile: ""}
 
 
-  #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
-  #{:ok, date_from_erl} = Date.from_erl(date)    
-
-  #IO.inspect(Date.day_of_week(date_from_erl))           
-
-                  
+  def format_order_datetime(datetime) do
 
 
-  def format_datetime(datetime) do
+      #{:ok, date} = Ecto.Date.dump(pool_order.delivery_date)
+      #{:ok, date_from_erl} = Date.from_erl(date)    
 
-    #day_as_word <> am_mp <> st_rd_th_nd <> timezone
+      #IO.inspect(Date.day_of_week(date_from_erl))           
 
   end
+                
 
-  def cart_with_item_names() do
+  def format_order_datetime(datetime) do
 
-      menu_items = nil
-      cart_items_with_names = nil
-
-      query = from mi in MenuItem, select: %{"item_id": mi.id, "name": mi.name}
-      menu_items = Repo.all(query)
-
-      cart_items = nil
-
-
-       cart_items_with_name = Enum.map(cart_items, fn(cart_item) ->
-          #Map.put(cart_item, :name, "name")
-          #IO.inspect(Enum.at(menu_items, 0).name)
-          IO.inspect(cart_item[:size])
-
-          if cart_item[:size] == "regular" do
-
-            menu_item_index = cart_item[:menu_item_id]-1
-
-            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name
-
-            #Map.put(cart_item, :name, Enum.at(menu_items, menu_item_index).name)
-            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
-
-            Map.merge(cart_item, %{
-              :name => item_name,
-              :menu_image_name => Enum.at(menu_items, menu_item_index).name
-            })
-
-          else
-
-            #IO.inspect(cart_item[:menu_item_id]-1)
-
-            #use map to find the menu_item_id instead of by index
-            #also this code is mostly duplicate of above
-
-            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " mini"
-
-            menu_item_index = cart_item[:menu_item_id]-1
-
-            #Map.put(cart_item, :name, item_name)
-            #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
-
-            Map.merge(cart_item, %{
-              :name => item_name,
-              :menu_image_name => Enum.at(menu_items, menu_item_index).name
-            })
-
-          end
-
-          #name = Enum.filter(menu_items, fn(menu_item) ->
-            #match?({:, _}, element)
-            #IO.inspect(cart_item.item_id)
-            #IO.inspect(menu_item.item_id)
-          #  if(menu_item.item_id == cart_item.item_id) do
-              #IO.puts("here")
-              #IO.inspect(menu_item.name |> String.downcase |> String.replace(" ", ""))
-              #IO.inspect(String.downcase(menu_item.name) |> String.replace(menu_item.name, " ", ""))
-          #    Enum.at(Map.put(cart_item, :name, menu_item.name), 0)
-             #menu_item
-
-          #  end
-          #end)
-          #IO.inspect(String.downcase(name) |> String.replace(name, " ", ""))
-          #IO.inspect(cart_item)
-       #   name_temp = Enum.at(name, 0)
-          #IO.inspect(title_temp[:title])
-       #   Map.put(cart_item, :title, title_temp[:title])
-        end)
-
-        IO.inspect(cart_items_with_name)
+    #day_as_word <> am_pm <> st_rd_th_nd <> timezone
 
   end
 
@@ -179,7 +107,7 @@ defmodule Sconely.ProcessOrderDateTime do
 
   end
 
-  def order_datetime_convert_timezone(datetime_utc) do
+  def convert_timezone(datetime_utc) do
 
       #order_datetime = Ecto.DateTime.utc
 
@@ -269,81 +197,4 @@ defmodule Sconely.ProcessOrderDateTime do
 
   end
 
-
-  defp format_total(total) do
-
-    #total_formatted = :erlang.float_to_binary(total, [decimals: 2])
-
-  end
-
-  #return promo_code
-  defp promo_code_discount(promo_code, subtotal) do
-
-        case String.upcase(args[:promo_code]) do
-
-
-          "" -> total = subtotal
-
-          "8THANDHOPE" -> promo_code_discount = "10%"
-                          #total = subtotal - (subtotal * 10/100)
-          "GRAIN" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "SCONELY10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "CROSSCAMPUS10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-          "WEWORK10" ->  promo_code_discount = "10%"
-                      #total = subtotal - (subtotal * 10/100)
-
-
-          promo_code_discount
-          #total
-          
-          #IO.puts("total")
-          #IO.puts(total*100)
-          #IO.puts(trunc(total*100))
-
-          #total_formatted = :erlang.float_to_binary(total, [decimals: 2])
-
-        end
-   
-  end
-
-  defp apply_promo_code_to_subtotal() do
-
-  end
-
-  defp subtotal(cart_items) do
-
-      case order_type do
-
-          "yours" -> 
-
-            subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 6.00) end)
-
-          "pool" ->
-
-            subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity}, count) -> count + (quantity * 6.00) end)
-
-
-          "social" -> 
-
-            subtotal = Enum.reduce(cart_items, 0, fn(%{"quantity": quantity, "size": size}, count) -> 
-              case size do
-                "regular" ->  IO.puts("regular")
-                          #quantity * 12 * 5.00
-                          count + (quantity * 5.00)
-                "mini" -> IO.puts("mini")
-                        #quantity * 24 * 2.25
-                        count + (quantity * 2.25)
-              end
-            end)
-
-      end
-
-  end
-
-
-
- 
 end
