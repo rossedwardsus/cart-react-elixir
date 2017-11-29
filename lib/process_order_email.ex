@@ -56,4 +56,6 @@ defmodule Sconely.ProcessOrderPoolCompleteOrderEmail do
     )
 
   end
+
+  #Sconely.ProcessOrderPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{pool_name: "pool_name", pool_url: "pool_url_name"order_id: "order_id", admin_receipt_order_id: "admin_receipt_order_id", order_datetime_formatted: "order_datetime_formatted", delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: "delivery_address", args: args, subtotal: "", total_items: 0, subtotal_formatted: "subtotal_formatted", delivery_cost: 0.00, promo_code_discount: "promo_code_discount", total_formatted: "total_formatted", cart_items: "cart_items_with_name"}) |> SconeHomeElixir.Mailer.deliver_later
 end

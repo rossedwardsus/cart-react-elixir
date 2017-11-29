@@ -1,0 +1,55 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+
+  <table width="70%">
+    <tr><td><br></td></tr>
+    <tr><td><br><br></td></tr>
+    <tr><td>Name <%= @key.args.user_first_name %></td><td><%= @key.args.user_last_name %></td></tr>
+    <tr><td><%= @key.args.user_contact_email %></td><td><%= @key.args.user_contact_mobile %></td></tr>
+    <tr><td><br></td></tr>
+    <tr><td><br></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td width="15%">Order Number</td><td width="35%"><%= Integer.to_string(@key.admin_receipt_order_id) %></td></tr>
+    <tr><td>Order Date: </td><td><%= @key.order_datetime_formatted %></td></tr>
+    <tr><td><br></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td>Scheduled delivery for <%= @key.delivery_date_formatted %>, <%= if @key.args.order_type == "pool" do %><%= @key.delivery_time %><% else %>between 9-Noon<% end %></td></tr>
+    <tr><td><br></td></tr>
+    <tr><td>Delivery Address:</td></tr>
+    <tr><td><%= @key.delivery_address.company_name %></td></tr>
+    <tr><td><%= @key.delivery_address.street1 %>, <%= @key.delivery_address.street2 %><%= @key.delivery_address.city %> <%= @key.delivery_address.state %>, <%= @key.delivery_address.zipcode %></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td>Order Note:</td></tr>
+    <tr><td><br><%= @key.args.order_note %></td></tr>
+    <tr><td><br></td></tr>
+  </table>
+  <table>
+    <tr><td><br></td></tr>
+    <tr><td><br>You have ordered the following items</td></tr>
+    <tr><td><br></td></tr>
+  </table>
+  <table width="50%">
+    <%= for item <- @key.cart_items do %>
+    <tr><td><img width="50" height="50" src="https://sconely-production.herokuapp.com/images/menu/<%= String.downcase(item.menu_image_name) |> String.replace(" ", "") %>.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
+    <% end %>
+  </table>
+  <br/>
+  <br/>
+  <table width="40%">
+    <tr><td><br><br></td></tr>
+    <tr><td>Subtotal Cost</td><td>$<%= @key.subtotal_formatted %></td></tr>
+    <tr><td>Delivery Cost</td><td><%= @key.delivery_cost %></td></tr>
+    <tr><td>Discount</td><td><%= @key.promo_code_discount %></td></tr>
+    <tr><td><b>Total Cost</b></td><td>$<%= @key.total_formatted %></td></tr>
+    <tr><td><br><br></td></tr>
+    <tr><td></td></tr>
+  </table>
+  <table width="50%">
+    <tr><td>Billed to:</td><td>xxx-xxx-xxxx-<%= String.slice(@key.args.payment_method_card_number, String.length(@key.args.payment_method_card_number)-4..String.length(@key.args.payment_method_card_number)) %></td></tr>
+  </table>
+
+</html>

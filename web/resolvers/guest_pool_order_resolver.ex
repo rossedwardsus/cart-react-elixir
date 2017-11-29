@@ -113,13 +113,13 @@ defmodule Sconely.PoolOrderResolver do
             #query = from mi in MenuItem, select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
             #menu_items = Repo.all(query)
 
-            user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
-            IO.inspect(user)
+            #user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
+            #IO.inspect(user)
 
 
             #check if the user exists in the registreation table
 
-            if user == nil do
+            #if user == nil do
 
               #random_number = :rand.uniform(9999999999)
               #check if it exists in the database?
@@ -184,11 +184,11 @@ defmodule Sconely.PoolOrderResolver do
 
               #IO.inspect(response)
   
-              #Sconely.ProcessOrderPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+              #Sconely.ProcessOrderPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{pool_name: "pool_name", pool_url: "pool_url_name"order_id: "order_id", admin_receipt_order_id: "admin_receipt_order_id", order_datetime_formatted: "order_datetime_formatted", delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: "delivery_address", args: args, subtotal: "", total_items: 0, subtotal_formatted: "subtotal_formatted", delivery_cost: 0.00, promo_code_discount: "promo_code_discount", total_formatted: "total_formatted", cart_items: "cart_items_with_name"}) |> SconeHomeElixir.Mailer.deliver_later
 
 
 
-            end
+            #end
 
       {:error, error} -> IO.inspect(error)
                   stripe_response = {:error, error}
