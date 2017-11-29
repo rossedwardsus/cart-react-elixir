@@ -421,7 +421,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                       <div className="modal-content">
                                         <div className="modal-header">
                                           <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 className="modal-title" id="myModalLabel">Delivery Locations</h4>
+                                          <h4 className="modal-title" id="myModalLabel1">Delivery Locations</h4>
                                         </div>
                                         <div className="modal-body">
                                           <div className="col-md-3" style={{paddingLeft: "30px"}}>

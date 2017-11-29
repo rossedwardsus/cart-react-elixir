@@ -1,59 +1,59 @@
-defmodule Sconely.ProcessOrderEmail do
-  #import Bamboo.Email
+defmodule Sconely.ProcessOrderPoolCompleteOrderEmail do
+  use Bamboo.Phoenix, view: SconeHomeElixir.UserOrderProcessedEmailView
 
-  alias SconeHomeElixir.Repo
-  alias Sconely.SconelySignatureOrder
-  alias Sconely.SconelySignatureOrderAdditionalItem
-  alias Sconely.MenuItem
-  alias Sconely.Registration
-  alias Sconely.MailingListGuestRegistration
-  alias Sconely.User
-  alias Sconely.UserPaymentMethod
-  alias Sconely.UserDeliveryContactAddress
-  alias Sconely.Order
-  alias Sconely.UserPool
-  alias Sconely.PoolOrder
-  alias Sconely.PoolOrderResponse
-  alias Sconely.PoolOrderResponseItem
-  alias Sconely.YoursSocialOrder
-  alias Sconely.OrderItem
-  #alias Ecto.Multi
-  alias Sconely.CompleteOrderResolverHelper
+  #@typedef
+  def pool_complete_order_email(_params) do
 
-  use Timex
 
-  import Ecto.DateTime
-  import Ecto.Query
-  import Sconely.ProcessStripePayment
 
-  #stripe payment
+    #IO.puts("hello")
+    #IO.inspect(_params)
+    #IO.inspect(_params["order_contact_email"])
+    #IO.inspect(Map.fetch(_params, :order_contact_email))
+    #IO.inspect(System.get_env("MIX"))
+    
+    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompleteOrderEmailView, "yours_social_pool_complete_order_email.html", key: _params)
+
+    #IO.inspect(_params.args[:user_contact_email])
+
+    #send to admin as well
+
+    new_email(
+      #to: _params["order_contact_email"],
+      to: [_params.args[:user_contact_email]],
+      from: "orders@sconely.com",
+      subject: "Sconely.com order: " <> _params.order_datetime_formatted,
+      html_body: template,
+      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
+      #text_body: "Thanks for joining!"
+    )
+
+  end
+
   
-  #email receipts-order id
-  #items
-  #date time
-  #contact
-  #name
-  #cost
-  #pool order-delivery address
-  #database inserts
-  #get menu
-  #time zone
-  #format datetime
 
-  formatted_datetime = nil
-  subtotal = nil
-  promo_code = nil
-  promo_code_discount = nil
+  def pool_complete_order_admin_email(_params) do
 
-  def admin_email(datetime) do
+    #IO.puts("hello")
+    #IO.inspect(_params)
+    #IO.inspect(_params["order_contact_email"])
+    #IO.inspect(Map.fetch(_params, :order_contact_email))
+    #IO.inspect(System.get_env("MIX"))
+    
+    template = Phoenix.View.render_to_string(Sconely.YoursSocialPoolCompleteOrderAdminEmailView, "yours_social_pool_complete_order_admin_email.html", key: _params)
 
-    #day_as_word <> am_mp <> st_rd_th_nd <> timezone
+    #IO.inspect(_params["order_first_name"])
+
+    #send to admin as well
+
+    new_email(
+      to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
+      from: "orders@sconely.com",
+      subject: _params[:admin_email_subject],
+      html_body: template,
+      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
+      #text_body: "Thanks for joining!"
+    )
 
   end
-
-  def user_email() do
-
-   
-  end
- 
 end
