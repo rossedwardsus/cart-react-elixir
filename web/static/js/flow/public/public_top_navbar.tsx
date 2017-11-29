@@ -49,7 +49,7 @@ export default class Menu extends React.Component<any, any> {
 
   showDeliveryLocations(){
 
-      $('#deliveryAreas').modal('show');
+      $('#deliveryAreas').modal('show').css("background-color", "rgba(0,0,0,.0001)");
 
       //e.preventDefault();
 
@@ -90,7 +90,7 @@ export default class Menu extends React.Component<any, any> {
                         <a className="navbar-brand" href="/"><img src="https://sconely-production.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
-                        <ul className="nav navbar-nav navbar-right">
+                        <ul id="navbar" className="nav navbar-nav navbar-right">
                               <li><Link to="/public/about_us">ABOUT US</Link></li>
                               <li><a onClick={() => this.showDeliveryLocations()}>FREE DELIVERY AREAS + TIMES</a></li>
                               <li><Link to="/public/free_sample">FREE SAMPLE</Link></li>
@@ -98,7 +98,7 @@ export default class Menu extends React.Component<any, any> {
                       </div>
                     </div>
                   </nav>
-                  <div className="modal fade" id="deliveryAreas" role="dialog" aria-labelledby="myModalLabel">
+                  <div className="modal fade" id="deliveryAreas" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false">
                                     <div className="modal-dialog" role="document">
                                       <div className="modal-content">
                                         <div className="modal-header">
