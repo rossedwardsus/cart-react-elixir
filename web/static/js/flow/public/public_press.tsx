@@ -152,6 +152,15 @@ export class PublicPress extends React.Component<any, any> {
                         <div className="col-md-9 nopadding" style={{paddingLeft: "30px"}}>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
+                          <div className="col-md-7 nopadding" style={{borderRight: 0, paddingRight: 0}}>
+                              <b>LA Downtowner</b>
+                              <br/>
+                              <a href="https://www.ladowntowner.com/articles/2017/12/1/sconely" style={{fontSize: 15, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Edible Moments</a>
+                          </div>
+                          <br/>
+                          <br/>
                           <div className="col-md-7 nopadding" style={{borderRight: 0, paddingRight: 0}}>
                               <b>Just Forking Around</b>
                               <br/>
@@ -160,11 +169,6 @@ export class PublicPress extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div className="col-md-7 nopadding" style={{borderRight: 0, paddingRight: 0}}>
-                              <b>LA Downtowner</b>
-                              <br/>
-                              <a href="https://www.ladowntowner.com/articles/2017/12/1/sconely" style={{fontSize: 15, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Edible Moments</a>
-                          </div>
                           <br/>
                           <br/>
                           <br/>
