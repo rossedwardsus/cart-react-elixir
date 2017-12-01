@@ -54,16 +54,12 @@ export class PublicPress extends React.Component<any, any> {
     };
 
     //this.createSignatureOrder = this.createSignatureOrder.bind(this);
-    this.guestCode = this.guestCode.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onSwipedLeft = this.onSwipedLeft.bind(this);
-    this.onSwipedRight = this.onSwipedRight.bind(this);
-    this.guestCodeChange = this.guestCodeChange.bind(this);
-    this.changeImage = this.changeImage.bind(this);
-
+  
   }
 
   componentDidMount(){
+
+    window.scrollTo(0, 0);
 
     //dispatch(checkLoggedIn);
 
@@ -74,10 +70,10 @@ export class PublicPress extends React.Component<any, any> {
     //get active items from the database
 
 
-    this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
+    //this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
 
-    let interval = setInterval(this.changeImage, 5000);
-    this.setState({interval: interval});
+    //let interval = setInterval(this.changeImage, 5000);
+    //this.setState({interval: interval});
 
 
     //Cookies.set('name', 'value');
@@ -118,206 +114,8 @@ export class PublicPress extends React.Component<any, any> {
 
   }
 
-  guestCode() {
 
-    //e.preventDefault();
-
-    //alert(order_type);
-
-    //if(order_type == "sconely_yours"){
-
-          //if user is logged in then 
-        //guest code is right then
-        //this.context.router.push('/order/' + this.state.guest_code + '/guest/');
-
-        this.context.router.push('/order/' + this.state.guest_code + '/guest/event');
-
-        //store.dispatch(push('/order/' + this.state.guest_code + '/guest/'));
-
-        //this.props.dispatch(routeActions.push('/foo'));
-
-        
-
-    //}
-
-  }
-
-  guestCodeChange(e: any){
-
-      this.setState({guest_code: e.target.value});
-
-  }
-
-  onSwipedLeft(){
-
-    //alert("left");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  onSwipedRight(){
-
-    //alert("right");
-    //this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"})
-    this.changeImage();
-
-  }
-
-  changeImage(){
-
-    //console.log("changeimage");
-
-    if(this.state.gallery_image_index == 3){
-
-        
-        //let gallery_image_index_temp = this.state.gallery_image_index; 
-        this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
-        this.setState({gallery_image_index: 0});
-
-    }else{
-
-        //console.log("changeimage else");
-
-        //let gallery_image_index_temp = this.state.gallery_image_index; 
-        this.setState({gallery_image: this.state.gallery_images[this.state.gallery_image_index]});
-        this.setState({gallery_image_index: this.state.gallery_image_index + 1});
-
-    }
-
-    
-
-    //if(this.state.gallery_image == "/images/gallery/sconely_group_HPb.jpg"){
-
-    //    this.setState({image: "/images/gallery/Sconely_HomePage_image_new_site.jpg"});
-
-    //}else{
-
-    //    this.setState({image: "/images/gallery/sconely_group_HPb.jpg"});
-
-    //}
-
-  }
-
-
-  createOrder(order_type: any) {
-
-    console.log(order_type);
-
-    this.props.createOrder(order_type, "");
-
-    //if user is logged in then 
-    //this.context.router.push('/order/menu');
-
-
-    /*if(order_type == "sconely_yours"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-
-        //orders.push({order_id: 54321, user_type: "guest", order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-       
-        //orders.push({order_id: 54321, user_type: "rgistered, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: //[{link: "event_details", text: "Event Details"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        this.props.createOrder("sconely_yours", "");
-
-        //if user is logged in then 
-        this.context.router.push('/order/menu');
-
-        //this.context.router.push('/public/menu');
-
-
-    }else if(order_type == "sconely_social"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        //localStorage.setState("order", Map({name: "name", contact: "contact", cart: List([]), delivery_address: {street: ""}, payment: ""}));
-
-        this.props.createOrder("sconely_social", "");
-
-        this.context.router.push('/order/menu');
-         
-    }else if(order_type == "sconely_signature"){
-
-        //var orders = JSON.parse(localStorage.getItem("user")).orders;
-        //alert(orders);
-        //orders.push({order_id: 54321, order_type: order_type, address: "", event_name: "", guest_chooses: false, menu: [{link: "event_details", text: "Event Details"}, {link: "guests", text: "Guests"}, {link: "menu", text: "Menu"}], status: "new"});
-
-        this.context.router.push('/order/signature');
-        
-         
-    }*/
-
-
-    /*const client = GQLClient('http://localhost:3000', {
-      // anything passed here is merged with 
-      // the options passed to fetch() 
-      credentials: true,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    });*/
-
-    /*client.mutate(`
-      mutation ($id: RecordID!, $name: String!) {
-        updateUser(input: {id: $id, name: $name}) {
-          user {
-            id
-            name
-          }
-        }
-      }
-    `, { id: 1234, name: 'Danny' }).then((result) => {
-      console.log(result.data.user);
-      // => { id: 1234, name: 'Danny' } 
-    });*/
-
-
-
-    /*var query = `
-      query q (id: String!) {
-        user(id: $id) {
-          id,
-          email,
-          name
-        }
-      }
-    `
-    var queryVars = {
-      id: 'abcdef'
-    }
-    var opts = {
-      // custom fetch options 
-    }*/
-     
-    /**
-     * @param  {Query} query graphql query
-     * @param  {Object} [vars]  graphql query args, optional
-     * @param  {Object} [opts]  fetch options, optional
-     */
-    /*fetch(query, queryVars, opts).then(function (results) {
-      if (results.errors) {
-        //... 
-        return
-      }
-      var user = result.data.user
-      //... 
-    })*/
-
-
-  
-
-    //alert(order_type);
-    
-    //this.context.router.push('/order/12345/event_details');
-    
-    //browserHistory.push('#/order/12345');
-    //browserHistory.push('/mobile/user#/order/12345');
-    //save id in local storage
-  
-  }
+ 
 
   //<Swipeable onSwipingLeft={this.onSwipedLeft} onSwipingRight={this.onSwipedRight}><img width="300" height="300" src={this.state.image}/></Swipeable>
                                   
@@ -329,41 +127,7 @@ export class PublicPress extends React.Component<any, any> {
 
 
     
-    /*if(this.props.user.user_id != undefined){
-        
-        menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-header">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Start Order</li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><span className="sr-only">Home</span></li>
-                      </ul>
-                    </div>
-    }else{
 
-        menu = <div>
-                      <ul id="navbar" className="nav navbar-nav navbar-left">
-                      <li><Link to="/login">Login</Link></li>
-                      <li><Link to="/register">Signup</Link></li>
-                      <ul className="nav navbar-nav">
-                        <li><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </ul>
-                    <div id="navbar" className="nav navbar-form navbar-right">
-                              <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                              </div>
-                              <button type="submit" className="btn btn-default">Submit</button>
-                    </div>
-                </div>
-
-    }*/
 
     return (
               <div>
@@ -394,11 +158,12 @@ export class PublicPress extends React.Component<any, any> {
                               <a href="http://www.justforkingaround.net/julia-friedman-sconely" style={{fontSize: 15, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Julia Friedman of Sconely: Making Scones Social and Delicious</a>
                           </div>
                           <br/>
+                          <br/>
+                          <br/>
                           <div className="col-md-7 nopadding" style={{borderRight: 0, paddingRight: 0}}>
                               <b>LA Downtowner</b>
                               <br/>
-                              <br/>
-                              <a href="https://www.ladowntowner.com/articles/2017/12/1/sconely">LAdowntowner</a>
+                              <a href="https://www.ladowntowner.com/articles/2017/12/1/sconely" style={{fontSize: 15, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Edible Moments</a>
                           </div>
                           <br/>
                           <br/>

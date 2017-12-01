@@ -68,6 +68,9 @@ export class PublicHomePage extends React.Component<any, any> {
 
   componentDidMount(){
 
+    window.scrollTo(0, 0);
+
+
     if(window.innerWidth == 1280){
 
         this.setState({fontSizeLarge: 14});
