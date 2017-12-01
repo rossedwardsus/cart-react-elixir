@@ -394,8 +394,12 @@ export class PublicPress extends React.Component<any, any> {
                               <a href="http://www.justforkingaround.net/julia-friedman-sconely" style={{fontSize: 15, fontFamily: "Helvetica-Bold", color: "#00afec"}}>Julia Friedman of Sconely: Making Scones Social and Delicious</a>
                           </div>
                           <br/>
-                          <br/>
-                          <br/>
+                          <div className="col-md-7 nopadding" style={{borderRight: 0, paddingRight: 0}}>
+                              <b>LA Downtowner</b>
+                              <br/>
+                              <br/>
+                              <a href="https://www.ladowntowner.com/articles/2017/12/1/sconely">LAdowntowner</a>
+                          </div>
                           <br/>
                           <br/>
                           <br/>

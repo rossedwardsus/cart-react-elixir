@@ -200,6 +200,8 @@ export default class Menu extends React.Component<any, any> {
                         <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/faq" style={{color: "grey", textDecoration: "none"}}>FAQ</Link>
                         <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/press" style={{color: "grey", textDecoration: "none"}}>Press</Link>
+                        <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/team" style={{color: "grey", textDecoration: "none"}}>TEAM</Link>
                         <br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/public/story" style={{color: "grey", textDecoration: "none"}}>OUR STORY</Link>

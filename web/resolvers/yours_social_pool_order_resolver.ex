@@ -22,7 +22,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
   import Ecto.DateTime
   import Ecto.Query
-  import Sconely.ProcessStripePayment
+  #import Sconely.ProcessStripePayment
 
   
 

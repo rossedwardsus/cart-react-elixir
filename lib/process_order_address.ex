@@ -24,8 +24,7 @@ defmodule Sconely.ProcessOrderAddress do
 
   import Ecto.DateTime
   import Ecto.Query
-  import Sconely.ProcessStripePayment
-
+  
   #stripe payment
   
   #email receipts-order id

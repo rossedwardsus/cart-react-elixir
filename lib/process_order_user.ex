@@ -13,8 +13,7 @@ defmodule Sconely.ProcessOrderUser do
 
   import Ecto.DateTime
   import Ecto.Query
-  import Sconely.ProcessStripePayment
-
+  
   #stripe payment
   
   #email receipts-order id
@@ -69,7 +68,7 @@ defmodule Sconely.ProcessOrderUser do
        #mailing_list_registration_changeset = MailingListGuestRegistration.changeset(%MailingListGuestRegistration{}, %{email: args[:user_contact_email], password: "", registration_datetime: Ecto.DateTime.utc})  
 
        #MyRepo.insert %Post{title: "Ecto is great"}
-       
+
        #{:ok, registration_response} = Repo.insert(registration_changeset)
        #IO.inspect(mailing_list_registration_response)
 

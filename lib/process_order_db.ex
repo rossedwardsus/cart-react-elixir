@@ -24,7 +24,8 @@ defmodule Sconely.ProcessOrderDB do
 
   import Ecto.DateTime
   import Ecto.Query
-  import Sconely.ProcessStripePayment
+  
+  #import Sconely.ProcessOrderPayment
 
   #stripe payment
   
