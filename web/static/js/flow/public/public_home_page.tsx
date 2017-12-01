@@ -78,8 +78,8 @@ export class PublicHomePage extends React.Component<any, any> {
 
     }else if(window.innerWidth > 1280){
 
-        this.setState({fontSizeLarge: 19});
-        this.setState({fontSizeSmall: 18});        
+        this.setState({fontSizeLarge: 16});
+        this.setState({fontSizeSmall: 15});        
 
     }else if(window.innerWidth < 1280){
 
