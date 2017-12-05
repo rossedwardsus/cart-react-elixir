@@ -108,7 +108,7 @@
     }
 
     html, body {
-      width: 96%;
+      width: 92%;
       font-family: "Helvetica-Light"
     }
 
