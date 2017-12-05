@@ -78,7 +78,7 @@ export default class Menu extends React.Component<any, any> {
 
     return (
             <div>
-               <nav className="navbar navbar-default" style={{border: 1}}>
+               <nav className="navbar navbar-default">
                     <div className="container-fluid">
                       <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
@@ -90,7 +90,7 @@ export default class Menu extends React.Component<any, any> {
                         <a className="navbar-brand" href="/"><img src="https://sconely-production.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
-                        <ul id="navbar" className="nav navbar-nav navbar-right">
+                        <ul className="nav navbar-nav navbar-right">
                               <li><Link to="/public/about_us">ABOUT US</Link></li>
                               <li><a onClick={() => this.showDeliveryLocations()}>FREE DELIVERY AREAS + TIMES</a></li>
                               <li><Link to="/public/free_sample">FREE SAMPLE</Link></li>
@@ -98,65 +98,7 @@ export default class Menu extends React.Component<any, any> {
                       </div>
                     </div>
                   </nav>
-                  <div className="modal fade" id="deliveryAreas" role="dialog" aria-labelledby="myModalLabel">
-                                    <div className="modal-dialog" role="document">
-                                      <div className="modal-content">
-                                        <div className="modal-header">
-                                          <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 className="modal-title" id="myModalLabel">Free Delivery Areas + Times</h4>
-                                        </div>
-                                        <div className="modal-body">
-                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
-                                            Beverly Hills
-                                            <br/>
-                                            Brentwood
-                                            <br/>
-                                            Century City
-                                            <br/>
-                                            Downtown LA
-                                            <br/>
-                                            Hancock Park
-                                            <br/>
-                                            Marina Del Rey
-                                            <br/>
-                                            Playa Vista
-                                            <br/>
-                                            Santa Monica 
-                                            <br/>
-                                            Venice
-                                            <br/>
-                                            West Hollywood
-                                            <br/>
-                                            Westwood
-                                            <br/>
-                                          </div>
-                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
-                                            Tuesday - Saturday
-                                            <br/>
-                                            9am - Noon
-                                            <br/>
-                                            <br/>
-                                            Contact us about other delivery options!
-                                            <br/>
-                                            <br/>
-                                          </div>
-                                        </div>
-                                        <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                      </div>
-                                    </div>
-                                  </div>
+               
 
             </div>
     )
