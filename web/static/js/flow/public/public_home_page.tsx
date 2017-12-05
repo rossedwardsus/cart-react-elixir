@@ -78,8 +78,8 @@ export class PublicHomePage extends React.Component<any, any> {
 
     }else if(window.innerWidth > 1280){
 
-        this.setState({fontSizeLarge: 16});
-        this.setState({fontSizeSmall: 15});        
+        this.setState({fontSizeLarge: 18});
+        this.setState({fontSizeSmall: 17});        
 
     }else if(window.innerWidth < 1280){
 
@@ -418,73 +418,8 @@ export class PublicHomePage extends React.Component<any, any> {
                         <br/>
                         </div>
                         <div className="col-md-6" style={{paddingLeft: "10px"}}>
+                                
                                   <br/>
-                                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-                                    <div className="modal-dialog" role="document">
-                                      <div className="modal-content">
-                                        <div className="modal-header">
-                                          <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 className="modal-title" id="myModalLabel1">Delivery Locations</h4>
-                                        </div>
-                                        <div className="modal-body">
-                                          <div className="col-md-3" style={{paddingLeft: "30px"}}>
-                                            Free Delivery
-                                            <br/>
-                                            <br/>
-                                            Beverly Hills
-                                            <br/>
-                                            Brentwood
-                                            <br/>
-                                            Century City
-                                            <br/>
-                                            Downtown LA
-                                            <br/>
-                                            Marina Del Rey
-                                            <br/>
-                                            Playa Vista
-                                            <br/>
-                                            Hancock Park
-                                            <br/>
-                                            Santa Monica 
-                                            <br/>
-                                            West Hollywood
-                                            <br/>
-                                            Westwood
-                                            <br/>
-                                            Venice
-                                            <br/>
-                                          </div>
-                                          <div className="col-md-3" style={{paddingLeft: "30px"}}>
-                                            Tuesday - Saturday
-                                            <br/>
-                                            9am - Noon
-                                            <br/>
-                                            <br/>
-                                            Contact us about other delivery options or for a free sample!
-                                            <br/>
-                                            <br/>
-                                            <b>Freshly baked artisanal scones, free of refined sugars, soy and preservatives</b>
-                                            <br/>
-                                            <br/>
-                                            <b>Enjoy all day long!</b>
-                                          </div>
-                                        </div>
-                                        <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                      </div>
-                                    </div>
-                                  </div>
                                   <br/>
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>
                                   <br/>
