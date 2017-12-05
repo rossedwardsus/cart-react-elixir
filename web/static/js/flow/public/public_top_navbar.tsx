@@ -78,7 +78,7 @@ export default class Menu extends React.Component<any, any> {
 
     return (
             <div>
-               <nav className="navbar navbar-default navbar-fixed-top" style={{border: 1}}>
+               <nav className="navbar navbar-default" style={{border: 1}}>
                     <div className="container-fluid">
                       <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">

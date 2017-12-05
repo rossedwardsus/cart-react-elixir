@@ -423,6 +423,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <br/>
+                                  <br/>
+                                  <br/>
+                                  
                                   <img src={this.state.gallery_image} height="100%" width="100%"/>
                                   <br/>
                                   <br/>
