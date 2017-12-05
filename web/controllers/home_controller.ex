@@ -106,8 +106,11 @@ defmodule SconeHomeElixir.HomeController do
   		#redirect conn, to: url
 
     #else
-
+    	#conn
+  		#|> put_resp_header("cache-control", "max-age=2000")		
     	render conn, "index.html"
+    	#header("Cache-Control: no-cache, must-revalidate");
+  		#header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
     #end
   end

@@ -78,7 +78,7 @@ export default class Menu extends React.Component<any, any> {
 
     return (
             <div>
-               <nav className="navbar navbar-default" style={{border: 1}}>
+               <nav className="navbar navbar-default navbar-fixed-top" style={{border: 1}}>
                     <div className="container-fluid">
                       <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
@@ -87,7 +87,7 @@ export default class Menu extends React.Component<any, any> {
                            <span className="icon-bar"></span>
                            <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="/"><img src="https://sconely-production.herokuapp.com/images/logo/Sconelylogo.5.jpg"/></a>
+                        <a className="navbar-brand" href="/"><img src="https://sconely-test.herokuapp.com/images/logo/LogoJune5d.jpg"/></a>
                       </div>
                       <div className="collapse navbar-collapse" id="navigationbar">
                         <ul id="navbar" className="nav navbar-nav navbar-right">
