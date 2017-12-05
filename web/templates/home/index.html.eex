@@ -68,7 +68,7 @@
     }
 
     .navbar {
-      padding-right: 0px;
+      padding-right: 10px;
     }
 
    
@@ -93,7 +93,7 @@
     }
 
     .full-width {
-                max-width:100%;
+                max-width:95%;
                 top:0;
                 left:0;
                 min-height: 100%;
@@ -108,7 +108,7 @@
     }
 
     html, body {
-      width: 92%;
+      width: 97%;
       font-family: "Helvetica-Light"
     }
 
