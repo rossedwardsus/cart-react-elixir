@@ -12,7 +12,7 @@ import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
-import SidebarCart from './order_sidebar_cart.tsx';
+import SidebarCart from './yours_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
@@ -89,109 +89,13 @@ class YoursOrderMenu extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
-    /*if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-        this.setState({cost_text: "6 each"});
-
-    }else{
-
-        this.setState({cost_text: <p>60 dollars per dozen regular</p><p>54 dollars per 2 dozen mini</p>});
-
-    }*/
-
-
-    //get active items from the database
-    console.log("mi" + JSON.stringify(this.props.menuItems));
-
-    //alert(JSON.stringify(this.props.cart_items));
-    //this.props.dispatch();
-
-    //this.setState({image_src: "/images/menu/MenuSavvy4in.jpg"});
-
-    let that = this;
-
-    /*this.state.crafted_kitchen_menu_items.map(function(item: any, index: any){
-
-          //console.log(value.item_id);
-          let images_temp = that.state.images;
-          images_temp.push(item.image_id);
-
-          let hover_images_temp = that.state.hover_images;
-          hover_images_temp.push(item.hover_image_id);
-
-          that.setState({images: images_temp});
-          that.setState({hover_images: hover_images_temp});          
-
-    });*/
-
-    //call the backend to get id and message
-    //or maybe call this in pool redirect 
-    //this.props.createOrder("pool", this.props.params.pool_name);
-
-
-    //this.props.getMenuItems();
-
-    //get menu items here
-    
-    //this.props.getMenuItems();
-    //this.setState({menu_items: this.props.menuItems.menu_items});
-
-    /*axios.post('/api/graphql',
-             {query: 'query {get_pool_order_details (pool_name: "pn", pool_date: "pd") {pool_order_id pool_order_message}}'}, {headers: {'authorization': "bearer"}}
-    )
-    .then((response: any) => {
-
-          console.log("order menu pool graphql response " + JSON.stringify(response));
-
-          dispatch({type: SET_ORDER_TYPE, order_type: "pool", pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
-
-          //dispatch(push("/order/menu"));
-
-          //this.setState({pool_message: response.data.data.getPoolOrderDetails.poolOrderMessage});*/
-
-
-
-          /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
-
-              console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
-
-              //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
-
-
-              //if save_info_for_later == true...
-              //last four card number
-
-              //localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
-
-              console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
-
-              //else delete from redux
-              //console.log("clear order");
-              
-              //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: response.data.pool_message});
-    
-
-              //that.props.history.push('/user');
-              //context.router
-
-              //this.context.router.push('/order/complete');
-              //dispatch(push("/order/complete"));
-
-          }else{
-
-            //dispatch({ type: , item_id: "session_id"});
-
-          }*/
-
-    //});
+ 
     
   }
 
   componentWillReceiveProps = (nextProp:any) => {
 
-      //console.log("menu props");
-      //console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
-
+ 
   }
 
   static get contextTypes() {
@@ -207,10 +111,7 @@ class YoursOrderMenu extends React.Component<any, any> {
       
       //findindex
 
-      /*this.props.menuItems.map(function(item: any){
-
-          if(item.item_id === item_id){*/
-
+  
               let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
 
               console.log(JSON.stringify(menu_item));
@@ -225,10 +126,7 @@ class YoursOrderMenu extends React.Component<any, any> {
               this.setState({selected_item_ingredients:  menu_item["ingredients"]});
               this.setState({selected_item_assortment:  menu_item["assortment"]});
 
-      /*    }
-
-
-      }.bind(this));*/
+   
 
       this.setState({selected_item_quantity_selector: 0});
     
@@ -236,44 +134,14 @@ class YoursOrderMenu extends React.Component<any, any> {
 
   }
 
-  /*selectedItemType = (e: any) => {
-
-      //alert(e.target.value);
-
-      this.setState({selected_item_type: e.target.value});
-      this.setState({add_cart_item_button_classname: "btn btn-default"});
-      
-  }*/
-
 
   selectedItemQuantity = (e: any) => {
 
     console.log("selected_item quantity " + e.target.value);
 
-    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-      this.setState({selected_item_quantity: parseInt(e.target.value)});
-      this.setState({selected_item_quantity_selector: e.target.value});
-
-    /*}else{
-
-      if(this.state.selected_item_size == "regular"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }else if(this.state.selected_item_size == "mini"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }//else{ 
-
-       // this.setState({selected_item_quantity: parseInt(e.target.value)});
-
-      //}
-
-    }*/
+ 
+    this.setState({selected_item_quantity: parseInt(e.target.value)});
+    this.setState({selected_item_quantity_selector: e.target.value});
 
     this.setState({add_cart_item_button_classname: "btn-block btn btn-default"});
     this.setState({add_cart_item_button_disabled: ""});
@@ -291,17 +159,7 @@ class YoursOrderMenu extends React.Component<any, any> {
 
   }
 
-  /*selectedSocialItemQuantity = (e: any) => {
 
-    console.log("selected_item quantity " + parseInt(e.target.value));
-
-    //this.setState({selected_item_quantity: parseInt(e.target.value)});
-    this.setState({add_cart_item_button_classname: "btn btn-default"});
-      
-    //set add cart button == active
-    //this.set
-
-  }*/
 
   addCartItem = () => {
 
@@ -345,7 +203,7 @@ class YoursOrderMenu extends React.Component<any, any> {
 
     }*/
     
-    this.setState({pool_message_viewed: true});    
+    //this.setState({pool_message_viewed: true});    
     this.setState({selected_item_quantity_selector: 0});
     this.setState({selected_item_size: ""});
 
@@ -360,81 +218,7 @@ class YoursOrderMenu extends React.Component<any, any> {
 
   }
 
-  goToDateTimeContact(){
-
-      this.context.router.push("/order/12345/signature");
-      
-  } 
-
-  onMouseEnter = (item_id: any) => {
-
-      console.log("mouse enter" + JSON.stringify(item_id));
-
-      //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-
-      //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
-
-      //get index of of element with item id
-      //also get name of image and append "rollover to it"
-
-      //let images_temp = this.state.images;
-      //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
-
-      let menu_items_updated = this.state.menu_items.map((item: any) => 
-
-          {
-              if(item.item_id == item_id){
-
-              //let image_name = item.image_id;
-                item.image_id = item.image_id + "roll";
-
-              }
-
-              return item;
-
-          })
-
-      console.log(JSON.stringify(menu_items_updated));
-
-      this.setState({menu_items: menu_items_updated});
-
-  }
-
-  onMouseLeave = (item_id: any) => {
-
-      //console.log("mouse leave" + item_id);
-
-      //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-
-      //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
-
-      //this.setState({["image_src_" + item_id]: image_id});
-
-       let menu_items_updated = this.state.menu_items.map((item: any) => 
-
-          {
-              if(item.item_id == item_id){
-
-                //let image_name = item.image_id;
-                //remove "roll"
-                let roll_index = item.image_id.indexOf("roll");
-
-                item.image_id = item.image_id.slice(0, roll_index);
-                console.log("item.image_id");
-
-              }
-
-              return item;
-
-          })
-
-      console.log(JSON.stringify(menu_items_updated));
-
-      this.setState({menu_items: menu_items_updated});
-
-
-  }
-
+ 
   render(): JSX.Element{
 
     //var that = this;
@@ -592,11 +376,6 @@ class YoursOrderMenu extends React.Component<any, any> {
                                   <div>
                                     <br/>
                                     Choose between 2 and 11 scones
-                                    <br/>
-                                    <br/>
-                                    $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
-                                    <br/>
-                                    $54 per 2 dozen mini
                                     <br/>
                                     <br/>
                                     Plan ahead, order at least 48 hours in advance

@@ -703,6 +703,8 @@ class SidebarCart extends React.Component<any, any> {
                   <br/>
                   {item_quantity_message}
                   <br/>
+                  <br/>
+                  <br/>
                   {cart}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :

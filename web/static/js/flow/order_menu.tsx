@@ -684,7 +684,7 @@ class OrderMenu extends React.Component<any, any> {
                       </form>
                       <form className="form-horizontal">
                           <div className="col-md-8" style={{fontSize: 13}}>
-                              6:00 pm
+                              12:00 pm
                           </div>
                       </form>
                       <form className="form-horizontal">
@@ -729,7 +729,7 @@ class OrderMenu extends React.Component<any, any> {
                                   Plan ahead, order at least 48 hours in advance
                                   <br/>
                                   <br/>
-                                  <b>Freshly baked artisanal scones </b>
+                                  <b>Freshly baked artisanal scones perfect for breakfast, lunch, dinner or a snack.</b>
                                   <br/>
                                   <b>Enjoy all day long!</b>
                                   <br/>
