@@ -658,7 +658,7 @@ class SidebarCart extends React.Component<any, any> {
 
       }
 
-    }if(this.props.User.orders[0].order_type == "pool_response"){
+    }if(this.props.User.orders[0].order_type == "pool"){
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
 
