@@ -570,6 +570,13 @@ class DateTime extends React.Component<any, any> {
                                 </div>
                                 {this.props.User.orders[0].order_type == "social" &&
                                   <div className="col-md-3">
+                                    <select>
+                                        <option>8:00</option>
+                                        <option>8:30</option>
+                                    </select>
+                                  </div>}
+                                {this.props.User.orders[0].order_type == "social" &&
+                                  <div className="col-md-3">
                                     For other times please email eat@sconely.com
                                   </div>}
                               </div>

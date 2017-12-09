@@ -50,7 +50,8 @@ class OrderMenu extends React.Component<any, any> {
         selected_item_description: "",
         selected_item_ingredients: "",
         selected_item_assortment: false,
-        add_cart_item_button_classname: "form-control btn-block btn btn-default disabled",
+        add_cart_item_button_classname: "btn-block btn btn-default disabled",
+        add_cart_item_button_disabled: "disabled",
         images: [],
         hover_images: [],
         options_count_array: [],
@@ -599,7 +600,7 @@ class OrderMenu extends React.Component<any, any> {
                                                         <br/>
                                                       </div>
                                                       <div className="col-xs-12 col-md-4">
-                                                      <button className={this.state.add_cart_item_button_classname}  type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
+                                                      <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
                                                       </div>
                                                 </div>
                                             </div>

@@ -401,6 +401,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
                           <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
@@ -476,6 +478,9 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
+                          <br/>
+                          <br/>
+                          <button onClick={() => this.props.createOrder("yours")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>VIEW YOURS MENU + ORDER</button>
                           <br/>
                           <br/>
                           <br/>

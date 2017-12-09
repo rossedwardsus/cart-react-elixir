@@ -526,7 +526,11 @@ class SidebarCart extends React.Component<any, any> {
 
                               //item_quantity_text = null;
 
-                              if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "social"){
+                              if(this.props.User.orders[0].order_type == "yours"){
+
+                                  item_quantity_text = item.quantity;
+
+                              }else if(this.props.User.orders[0].order_type == "yours1" || this.props.User.orders[0].order_type == "social"){
 
                               //if(item.quantity % 12 == 0){
 

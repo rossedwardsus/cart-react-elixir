@@ -43,7 +43,7 @@ import UserPaymentMethods from './user/user_payment_methods.tsx';
 import UserAboutMe from './user/user_about_me.tsx';
 import UserOrder from './user/user_order.tsx';
 
-//import Order from "./order.jsx";
+import YoursOrderMenu from "./yours_order_menu.tsx";
 import PoolOrderMenu from "./pool_order_menu.tsx";
 import OrderMenu from "./order_menu.tsx";
 import OrderPayment from "./order_payment.tsx";
@@ -201,6 +201,7 @@ const Root = () => (
         <Route path="/public/press" component={PublicPress} />
         <Route path="/public/privacy_policy" component={PublicPrivacyPolicy} />
         <Route component={checkLogin}>
+          <Route path="/yours/menu" component={YoursOrderMenu} />
           <Route path="/pool/order/menu" component={PoolOrderMenu} />
           <Route path="/order/menu" component={OrderMenu} />
           <Route path="/order/checkout" component={OrderCheckout} />
