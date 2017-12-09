@@ -420,7 +420,7 @@ class Name extends React.Component<any, any> {
               <form className="form-horizontal">
                 <div className="form-group">
                   <div className="col-md-4">
-                      {(this.props.User.orders[0].order_type == "pool") ? <b>Name (this is the main contact)</b> : <b>Name</b>} 
+                      <b>Name</b>
                       <br/>
                   </div>
                 </div>
