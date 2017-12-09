@@ -98,7 +98,65 @@ export default class Menu extends React.Component<any, any> {
                       </div>
                     </div>
                   </nav>
-               
+                  <div className="modal fade" id="deliveryAreas" role="dialog" aria-labelledby="myModalLabel">
+                                    <div className="modal-dialog" role="document">
+                                      <div className="modal-content">
+                                        <div className="modal-header">
+                                          <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 className="modal-title" id="myModalLabel">Free Delivery Areas + Times</h4>
+                                        </div>
+                                        <div className="modal-body">
+                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            Beverly Hills
+                                            <br/>
+                                            Brentwood
+                                            <br/>
+                                            Century City
+                                            <br/>
+                                            Downtown LA
+                                            <br/>
+                                            Hancock Park
+                                            <br/>
+                                            Marina Del Rey
+                                            <br/>
+                                            Playa Vista
+                                            <br/>
+                                            Santa Monica 
+                                            <br/>
+                                            Venice
+                                            <br/>
+                                            West Hollywood
+                                            <br/>
+                                            Westwood
+                                            <br/>
+                                          </div>
+                                          <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            Tuesday - Saturday
+                                            <br/>
+                                            9am - Noon
+                                            <br/>
+                                            <br/>
+                                            Contact us about other delivery options!
+                                            <br/>
+                                            <br/>
+                                          </div>
+                                        </div>
+                                        <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                          <br/>
+                                      </div>
+                                    </div>
+                                  </div>
 
             </div>
     )
