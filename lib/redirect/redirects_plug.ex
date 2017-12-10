@@ -89,6 +89,9 @@ defmodule Sconely.Plugs.RedirectsPlug do
         "pool" -> conn
                   #|> Phoenix.Controller.redirect(to: url)
                   |> halt
+        "pool_response" -> conn
+                  #|> Phoenix.Controller.redirect(to: url)
+                  |> halt
         "yours" -> IO.puts("yours")
                     conn |> halt
         "order" -> IO.puts("orders")

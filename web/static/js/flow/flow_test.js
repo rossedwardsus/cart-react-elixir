@@ -206,6 +206,7 @@ const Root = () => (
         <Route component={checkLogin}>
           <Route path="/yours/menu" component={YoursOrderMenu} />
           <Route path="/pool/order/menu" component={PoolOrderMenu} />
+          <Route path="/pool_response/:pool_name/:pool_date/menu" component={PoolResponseOrderMenu} />  
           <Route path="/pool/menu" component={PoolResponseOrderMenu} />
           <Route path="/order/menu" component={OrderMenu} />
           <Route path="/order/checkout" component={OrderCheckout} />

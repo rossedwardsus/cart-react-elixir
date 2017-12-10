@@ -55,22 +55,23 @@ class PaymentMethod extends React.Component<any, any> {
     this.state = {
 
        name_on_card: "",
+       name_on_card_disabled: "",
        zipcode: "",
+       zipcode_border_color: "grey",
+       zipcode_disabled: "",
        card_number: "",
        card_brand: "",
        expiry_month: "",
        expiry_year: "",
        security_code: "",
-       card_number_border_color: "grey",
-       expiry_month_border_color: "grey",
-       expiry_year_border_color: "grey",
        security_code_border_color: "grey",
-       name_on_card_disabled: "",
-       zipcode_disabled: "",
-       card_number_disabled: "",
-       expiry_date_month_disabled: "",
-       expiry_date_year_disabled: "",
        security_code_disabled: "",
+       card_number_border_color: "grey",
+       card_number_disabled: "",
+       expiry_month_border_color: "grey",
+       expiry_date_month_disabled: "",
+       expiry_year_border_color: "grey",
+       expiry_date_year_disabled: "",
     };
 
     //user_type=guest
@@ -90,6 +91,19 @@ class PaymentMethod extends React.Component<any, any> {
   //}
 
   componentDidMount(){
+
+      //if user swipes back or uses the back button
+      //this.setState({zipcode_border_color: "grey"});
+
+      this.setState({expiry_month_border_color: "grey"});
+      this.setState({expiry_year_border_color: "grey"});
+      this.setState({security_code_border_color: "grey"});
+
+      //expiry_year_border_color
+      //expiry_cvc_border_color
+      //enabe form
+
+
 
       //ReactDOM.findDOMNode(this.refs.cardNumber).focus();
 
@@ -443,7 +457,7 @@ class PaymentMethod extends React.Component<any, any> {
                         <input type="text" value={this.state.name_on_card} maxLength={16} className="form-control" placeholder="Name on Card" onChange={(e) => this.setPaymentNameOnCard(e)} style={{borderColor: this.state.card_number_border_color, borderRadius: 0, WebkitAppearance: "none", fontSize: 16}} disabled={this.state.name_on_card_disabled}/>
                       </div>
                       <div className="col-md-2">
-                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.expiry_month_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
+                        <input type="text" value={this.state.zipcode} maxLength={5} className="form-control" placeholder="ZIP CODE" onChange={this.setPaymentZipCode} style={{borderColor: this.state.zipcode_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.zipcode_disabled}/>
                       </div>
                     </div>
                   </form>

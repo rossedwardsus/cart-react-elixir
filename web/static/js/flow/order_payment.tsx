@@ -155,6 +155,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   componentDidMount = () => {
 
+      //promo code needs to be readded here if they entered it and swiped.
+      this.setState({promo_code: this.props.User.orders[0].promo_code})
+
+      //same with payment method errors.
+      //clear errors in payment method
+      //done in payment_method.tsx
+
+
+
       ///if(this.props.order.order_type == undefined){
 
       //    redirect to homepage
@@ -1075,6 +1084,11 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             <br/>
                         </div>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <PublicBottomNavbar/>
                 <PublicPrivacyTermsNavbar/>
             </div>
