@@ -78,8 +78,8 @@ export class PublicHomePage extends React.Component<any, any> {
 
     }else if(window.innerWidth > 1280){
 
-        this.setState({fontSizeLarge: 18});
-        this.setState({fontSizeSmall: 17});        
+        this.setState({fontSizeLarge: 17});
+        this.setState({fontSizeSmall: 18});        
 
     }else if(window.innerWidth < 1280){
 
@@ -413,7 +413,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             Free of refined sugars and soy
                             <br/>
                             <br/>
-                            Perfect for breakfast, lunch or dinner!
+                            Perfect for a meal or a snack!
                           </div>
                           <br/>
                         <br/>   
@@ -440,7 +440,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                         Free of refined sugars and soy
                                         <br/>
                                         <br/>
-                                        Perfect for breakfast, lunch or dinner!
+                                        Perfect for a meal or a snack!
                                     </div>
                                     <br/>
                                     <br/>
