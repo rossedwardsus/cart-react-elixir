@@ -166,7 +166,7 @@ class DateTime extends React.Component<any, any> {
           if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true){
 
               this.setState({payment_button_classname: "btn btn-default btn-block"});
-              this.setState({payment_button_disabled: ""})
+              this.setState({payment_button_disabled: false})
           
           }
 
@@ -177,7 +177,7 @@ class DateTime extends React.Component<any, any> {
             console.log("validated");
           
             this.setState({payment_button_classname: "btn btn-default btn-block"});
-            this.setState({payment_button_disabled: ""})
+            this.setState({payment_button_disabled: false})
           
           }
 
@@ -479,6 +479,14 @@ class DateTime extends React.Component<any, any> {
     //change to "pool_response"
     if(this.props.User.orders[0].order_type == "pool"){
 
+    /*{this.props.User.orders[0].order_type == "social" &&
+                                  <div className="col-md-3">
+                                    <select onChange={(e: any) => this.setSpecicTimeRange(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                        <option>8:00</option>
+                                        <option>8:30</option>
+                                    </select>
+                                  </div>}*/
+
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
@@ -568,13 +576,7 @@ class DateTime extends React.Component<any, any> {
                                 <div className="col-md-3">
                                   9:00 am - 12:00 pm
                                 </div>
-                                {this.props.User.orders[0].order_type == "social" &&
-                                  <div className="col-md-3">
-                                    <select>
-                                        <option>8:00</option>
-                                        <option>8:30</option>
-                                    </select>
-                                  </div>}
+                                
                                 {this.props.User.orders[0].order_type == "social" &&
                                   <div className="col-md-3">
                                     For other times please email eat@sconely.com

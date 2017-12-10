@@ -51,7 +51,7 @@ class OrderMenu extends React.Component<any, any> {
         selected_item_ingredients: "",
         selected_item_assortment: false,
         add_cart_item_button_classname: "btn-block btn btn-default disabled",
-        add_cart_item_button_disabled: "disabled",
+        add_cart_item_button_disabled: true,
         images: [],
         hover_images: [],
         options_count_array: [],
@@ -246,6 +246,15 @@ class OrderMenu extends React.Component<any, any> {
   }*/
 
 
+  selectedItemSize = (e: any) => {
+
+    console.log("selected_item size " + e.target.value);
+
+    this.setState({selected_item_size: e.target.value});
+  
+  }
+
+
   selectedItemQuantity = (e: any) => {
 
     console.log("selected_item quantity " + e.target.value);
@@ -276,19 +285,14 @@ class OrderMenu extends React.Component<any, any> {
     }
 
     this.setState({add_cart_item_button_classname: "form-control btn-block btn btn-default"});
+    this.setState({add_cart_item_button_disabled: false});
       
     //set add cart button == active
     //this.set
 
   }
 
-  selectedItemSize = (e: any) => {
-
-    console.log("selected_item size " + e.target.value);
-
-    this.setState({selected_item_size: e.target.value});
-
-  }
+  
 
   /*selectedSocialItemQuantity = (e: any) => {
 
@@ -347,6 +351,9 @@ class OrderMenu extends React.Component<any, any> {
     this.setState({pool_message_viewed: true});    
     this.setState({selected_item_quantity_selector: 0});
     this.setState({selected_item_size: ""});
+    this.setState({add_cart_item_button_classname: "btn-block btn btn-default disabled"});
+    this.setState({add_cart_item_button_disabled: true});
+
 
 
     //}

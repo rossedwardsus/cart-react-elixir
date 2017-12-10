@@ -600,6 +600,15 @@ class DeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressInvalidated();
 
   }
+
+  /*{this.props.User.order_type != "pool" && 
+                    <form className="form-horizontal">
+                        <div className="form-group">
+                          <div className="col-sm-3 col-md-4">
+                            <input type="text" maxLength={40} className="form-control" placeholder="Pickup Location" value={this.state.pickupLocation} onChange={(e) => this.setPickupLocation(e)} onInput={(e) => this.setPickupLocation(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
+                          </div> 
+                        </div>
+                    </form>}*/
   
   
   render(): JSX.Element{
@@ -790,14 +799,7 @@ class DeliveryAddress extends React.Component<any, any> {
                       </div>
                     </div>
                 </form>
-                {this.props.User.order_type != "pool" && 
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-3 col-md-4">
-                            <input type="text" maxLength={40} className="form-control" placeholder="Pickup Location" value={this.state.pickupLocation} onChange={(e) => this.setPickupLocation(e)} onInput={(e) => this.setPickupLocation(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
-                          </div> 
-                        </div>
-                    </form>}
+                
                 {this.state.gift_order_checked == "checked" &&
                   <form className="form-horizontal">
                       <div className="form-group">
