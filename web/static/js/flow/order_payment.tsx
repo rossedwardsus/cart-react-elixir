@@ -155,8 +155,13 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   componentDidMount = () => {
 
+      console.log(this.props.User.orderSession.promoCode);
       //promo code needs to be readded here if they entered it and swiped.
-      this.setState({promo_code: this.props.User.orders[0].promo_code})
+      //this.setState({promo_code: this.props.User.orderSession.promoCode})
+      //need to apply promo code again
+      
+      this.applyPromoCode(this.props.User.orderSession.promoCode);
+
 
       //same with payment method errors.
       //clear errors in payment method
@@ -371,6 +376,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   }*/
 
+
+  //none of this is needed here
   setDate(e: any){
 
 
@@ -662,13 +669,102 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
 
+  applyPromoCode = (promo_code: any) => {
 
+        this.setState({promo_code: promo_code})
+
+      //if(e.target.value.length > 0){
+
+        //alert();
+
+        //if(/^[a-zA-Z]/.test(e.target.value)){
+
+        //alert();
+
+        //this.setState({"delivery_address_street1": e.target.value});
+        //this.setState({"delivery_address_street1_classname": "form-group"});
+
+        //if promo code is validate apply to total cost
+
+        //let promo_codes = ["8thandhope", "grains"];
+
+
+
+        if(promo_code.toUpperCase() == "8THANDHOPE"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 10})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }else if(promo_code.toUpperCase() == "GRAINS"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 10})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }else if(promo_code.toUpperCase() == "SCONELY10"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 10})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }else if(promo_code.toUpperCase() == "CROSSCAMPUS10"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 10})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }else if(promo_code.toUpperCase() == "WEWORK10"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 10})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }else if(promo_code.toUpperCase() == "HOLIDAY10"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 10})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }else if(promo_code == ""){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 0})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
+        }
+
+
+  }
 
 
 
   setPromoCode = (e: any) => {
 
-      this.setState({promo_code: e.target.value})
+      this.applyPromoCode(e.target.value)
+
+      /*this.setState({promo_code: e.target.value})
 
       //if(e.target.value.length > 0){
 
@@ -684,6 +780,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
             //if promo code is validate apply to total cost
 
             //let promo_codes = ["8thandhope", "grains"];
+
+
 
             if(e.target.value.toUpperCase() == "8THANDHOPE"){
 
@@ -739,12 +837,21 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
               //}
             
+            }else if(e.target.value == ""){
+
+              //if(promo_codes.indexof(e.target.value) > -1){
+
+                  this.setState({promo_code_discount: 0})
+                  this.props.setPromoCode(e.target.value);
+
+              //}
+            
             }
 
             
 
         //}
-      //}   
+      //}*/
 
   }
 
