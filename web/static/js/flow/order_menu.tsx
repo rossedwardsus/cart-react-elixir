@@ -738,7 +738,6 @@ class OrderMenu extends React.Component<any, any> {
                                   <br/>
                                   <b>Perfect for a meal or a snack.</b>
                                   <br/>
-                                  <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
                                   </div>)}
@@ -768,7 +767,6 @@ class OrderMenu extends React.Component<any, any> {
                                   <br/>
                                   <b>Perfect for a meal or a snack</b>
                                   <br/> 
-                                  <b>Enjoy all day long!</b>
                                   <br/>
                                   <br/>
                                 </div>)}
