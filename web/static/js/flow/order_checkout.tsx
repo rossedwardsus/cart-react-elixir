@@ -95,7 +95,7 @@ class DateTime extends React.Component<any, any> {
         menuItems: [],
         User: [],
         payment_button_classname: "btn btn-default disabled btn-block",
-        payment_button_disabled: "disabled"
+        payment_button_disabled: true,
         
     };
 

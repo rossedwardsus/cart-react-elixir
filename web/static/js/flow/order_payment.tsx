@@ -115,7 +115,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         selected_time: "",
         selected_specific_time: "",
         button_complete_order_classname: "btn btn-default disabled",
-        button_complete_order_disabled: "disabled",      
+        button_complete_order_disabled: true,      
         promo_code: "",
         promo_code_discount: 0,  
 
@@ -185,13 +185,14 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     //console.log("<b>recieved</b>");
 
-    //if(this.props.User.orderSession.validations.paymentMethodCardNumberValidated == true && this.props.User.orderSession..validations.paymentMethodExpiryMonthValidated == true && this.props.User.orderSession.validations.paymentMethodExpiryYearValidated == true && this.props.User.orderSession.validations.paymentMethodSecurityCodeValidated == true){
-    
-      //this.setState({button_complete_order_classname: "btn btn-default"});
-      //this.setState({button_complete_order_disabled: ""});
+    let paymentValidations = this.props.User.orderSession.validations;
 
+    if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){
     
-    //}}
+      this.setState({button_complete_order_classname: "btn btn-default"});
+      this.setState({button_complete_order_disabled: false});
+    
+    }
 
 
 

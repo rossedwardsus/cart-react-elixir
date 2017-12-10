@@ -316,7 +316,7 @@ class Name extends React.Component<any, any> {
 
           //validated
           //this.props.nameValidated();
-          //this.props.userContactEmailAgainValidated();
+          this.props.userContactEmailAgainValidated();
 
           this.setState({"email_again_border_color": "grey"});
 
