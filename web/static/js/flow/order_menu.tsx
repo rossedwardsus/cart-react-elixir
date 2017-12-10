@@ -736,7 +736,7 @@ class OrderMenu extends React.Component<any, any> {
                                   Plan ahead, order at least 48 hours in advance
                                   <br/>
                                   <br/>
-                                  <b>Perfect for a meal or a snack.</b>
+                                  <b>Perfect for a meal or a snack!</b>
                                   <br/>
                                   <br/>
                                   <br/>
@@ -765,7 +765,7 @@ class OrderMenu extends React.Component<any, any> {
                                   Plan ahead, order at least 48 hours in advance
                                   <br/>
                                   <br/>
-                                  <b>Perfect for a meal or a snack</b>
+                                  <b>Perfect for a meal or a snack!</b>
                                   <br/> 
                                   <br/>
                                   <br/>
