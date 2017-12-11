@@ -403,11 +403,11 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
+                          <div style={{fontSize: "15px", fontFamily: "Helvetica-Bold"}}>
                             EPIC SCONES FOR EPIC HOLIDAYS
                           </div>
                           <br/>
-                          <div style={{fontSize: this.state.fontSizeSmall}}>
+                          <div style={{fontSize: "14px"}}>
                             Many locally sourced organic ingredients
                             <br/>
                             Free of refined sugars and soy
@@ -483,8 +483,8 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          <div style={{fontSize: this.state.fontSizeSmall}}>
+                          <div style={{fontSize: "15px", fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
+                          <div style={{fontSize: "14px"}}>
                             Dozens of regular sized or mini scones
                             <br/>
                             Freshly baked, delivered to your event
