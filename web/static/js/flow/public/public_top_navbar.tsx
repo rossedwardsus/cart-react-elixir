@@ -131,9 +131,9 @@ export default class Menu extends React.Component<any, any> {
                                             <br/>
                                           </div>
                                           <div className="col-md-6" style={{paddingLeft: "30px"}}>
-                                            Tuesday - Saturday
+                                            Wednesday - Saturday
                                             <br/>
-                                            9am - Noon
+                                            8am - Noon
                                             <br/>
                                             <br/>
                                             Contact us about other delivery options!

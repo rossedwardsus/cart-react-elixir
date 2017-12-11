@@ -47,6 +47,7 @@ import YoursOrderMenu from "./yours_order_menu.tsx";
 
 import PoolOrderMenu from "./pool_guest_order_menu.tsx";
 import PoolResponseOrderMenu from "./pool_response_order_menu.tsx";
+import PoolResponseOrderCheckout from "./pool_response_order_checkout.tsx";
 
 import OrderMenu from "./order_menu.tsx";
 import OrderPayment from "./order_payment.tsx";
@@ -207,6 +208,7 @@ const Root = () => (
           <Route path="/yours/menu" component={YoursOrderMenu} />
           <Route path="/pool/order/menu" component={PoolOrderMenu} />
           <Route path="/pool_response/:pool_name/:pool_date/menu" component={PoolResponseOrderMenu} />  
+          <Route path="/pool_response/:pool_name/:pool_date/checkout" component={PoolResponseOrderCheckout} />  
           <Route path="/pool/menu" component={PoolResponseOrderMenu} />
           <Route path="/order/menu" component={OrderMenu} />
           <Route path="/order/checkout" component={OrderCheckout} />

@@ -117,7 +117,7 @@ class DateTime extends React.Component<any, any> {
 
   componentDidMount = () => {
 
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
 
   }
 
@@ -128,24 +128,6 @@ class DateTime extends React.Component<any, any> {
     console.log("checkout User " + JSON.stringify(this.props.User));
     //console.log("checkout menuItems " + JSON.stringify(this.props.menuItems));
 
-    //this.setState({User: this.props.User});
-    //this.setState({menuItems: this.props.menuItems});        
-
-    //alert();
-
-    //this.props.getMenuItems();
-    //this.setState({delivery_times: "1-3am"});
-
-    //if(this.props.User.orders[0].order_type == "social"){
-
-    //delivery_dates == all
-    //delivery start day three days from now
-    //this.setState({daysOfWeek: [0, 1, 2, 3, 4, 5, 6]});
-
-    //}
-
-    //if yours disable selectable days until zipcode is selected and set delivery dates on zipcode selection
-    //
     
   }
 
@@ -170,7 +152,7 @@ class DateTime extends React.Component<any, any> {
           
           }
 
-      }else{
+      }/*else{
 
           if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
 
@@ -181,7 +163,7 @@ class DateTime extends React.Component<any, any> {
           
           }
 
-      }
+      }*/
 
 
       //if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0){
@@ -200,196 +182,6 @@ class DateTime extends React.Component<any, any> {
 
   }
 
-  setPoolName(e: any){
-
-    this.setState({poolName: e.target.value});
-    
-    this.props.setPoolName(e);
-    
-    //this.props.poolNameValidated();
-
-  }
-
-  setDate(date: any){
-
-    //console.log("date " + moment(date).toISOString());
-
-    //moment().format('MMMM Do YYYY")
-
-    this.setState({selectedDate: moment(date).format("MMMM Do, YYYY")});
-    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
-    //this.props.setOrderDeliveryDatetime(moment(date).toISOString());
-    this.props.setOrderDeliveryDatetimeDate(moment(date).format("YYYY-MM-DD"));    
-
-    //this.props.cartValidated();
-    this.props.dateValidated();
-
-  }
-
-  //setDay(day: any){
-
-    //console.log("date " + moment(day).format("YYYY/MM/DD"));
-
-    //this.setState({selectedDate: date});
-    //this.props.setDate(moment(date).format("YYYY/MM/DD"));
-    //this.props.setDate(moment(date).toISOString());
-
-    //this.props.cartValidated();
-    //this.props.datetimeValidated();
-
-  //}
-
-  setTimeRange(date: any){
-
-    console.log("date " + moment(date).toISOString());
-
-    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-    //this.props.setTime();
-    //this.props.setDeliveryCost
-
-    //this.props.cartValidated();
-    //this.props.datetimeValidated();
-
-  }
-
-  setSpecificTime(date: any){
-
-    console.log("date " + moment(date).toISOString());
-
-    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
-    //this.props.setSpecificTime();
-    
-  }
-
-  setUserDeliveryContactAddressZipcode = (e: any) => {
-
-      
-      let dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
-      let santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"]
-      let venice_zipcodes = ["90291", "90292", "90293"];
-
-      let order_type = this.props.User.orders[0].order_type;
-
-      console.log(order_type === "social");
-      console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
-
-      //this.props.setDeliveryAddressZipcode(e.target.value)
-
-
-      if(this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))){
-
-          console.log("here000");
-
-
-      //    days == monday friday
-      //    9-11
-      //    
-      //    setUserDeliveryContactAddressZipcode
-      //    this.props.setDeliveryAvaliableTime("9-11am")
-      //    this.setstate date_values
-      //    this.setState({delivery_time: "9-11am"});
-      //    
-            this.setState({delivery_time: ["9:00", "9:30"]});
-
-      //    this.props.setDeliveryCost("15.00")   
-
-      
-      }else if(this.props.User.orders[0].order_type === "yours" && santa_monica_zipcodes.includes(e.target.value)){
-
-          console.log("here00");
-
-
-      //    days == monday friday
-      //    9-11
-
-      //    this.props.setDeliveryAvaliableTime("1-3pm")
-      //    this.setState({delivery_time: "9-11am"});
-     
-      //    this.props.deliveryCost      
-
-      }else if(this.props.User.orders[0].order_type === "yours" && venice_zipcodes.includes(e.target.value)){
-
-      console.log("here0");
-
-
-      //    days == monday friday
-      //    9-11
-
-      //    this.props.setDeliveryAvaliableTime("1-3pm")
-      
-      //    this.setState({delivery_time: "9-11am"});
-      //    this.props.deliveryCost      
-     
-
-      }else if(this.props.User.orders[0].order_type === "social" && santa_monica_zipcodes.includes(e.target.value)){
-
-          console.log("here1");
-
-
-      //    days == anyday
-      //    anytime
-            this.setState({delivery_times: "1-3pm"});
-      //    this.props.deliveryCost      
-     
-      }else if(this.props.User.orders[0].order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))){
-
-          console.log("here2");
-
-          //    days == anyday
-          //    anytime
-          //      this.setState({time_value: ["8:00", "9:00"]});
-          //      this.setState({delivery_times: "9-11pm"});
-          //    this.props.deliveryCost     
-
-          this.setState({delivery_times: "1-3pm"}); 
-         
-
-      }else if(this.props.User.orders[0].order_type === "social" && venice_zipcodes.includes(e.target.value)){
-
-          console.log("here3");
-
-
-      //    days == anyday
-      //    anytime
-      //    this.props.deliveryCost      
-     
-      }
-
-
-
-
-
-      //var numOfDays = new Date(2012, 10, 0).getDate();
-      //var date = new Date();
-      //getDay()
-      //var date = new Date(year, month, 1);
-      // var days = [];
-      // while (date.getMonth() === month) {
-      //    days.push(new Date(date));
-      //    date.setDate(date.getDate() + 1);
-      // }
-      // return days;
-
-      //yours
-      //dtla
-      //if zipcode == 90015, 90014, 90013, 90021, 90071
-      //days == monday friday
-      //9-11
-      //cost == free
-
-      //yours
-      //90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411
-      //90291. CA.  90292. CA.  90293. 90294. 90295. 90296. CA. 
-      //days == monday friday
-      //9-11
-      //cost == free
-
-      //social
-      //three days in advance
-      //everyday
-      //9-11 dtla, 1-3, west side
-  }
 
   
   
@@ -401,30 +193,6 @@ class DateTime extends React.Component<any, any> {
 
     //console.log(typeof(this.state.delivery_times));
 
-    /*if(this.props.User.orders[0].order_type === "social"){
-
-        //console.log("array");
-
-        delivery_times = <select><option>9:30</option></select>
-
-    }else{
-
-        //console.log("array");
-
-        delivery_times = this.state.delivery_times;
-
-    }*/
-
-
-    /*if(this.props.order.order_type == "sconely_yours"){
-
-        delivery_address_pickup_datetime = <b>Pickup Date and Time</b>;
-
-    }else{
-
-        delivery_address_pickup_datetime = <b>Delivery Date and Time</b>;
-
-    }*/
 
 
     //if pool then only show name and then link to
@@ -435,44 +203,7 @@ class DateTime extends React.Component<any, any> {
 
     console.log("order type " + this.props.User.orders[0].order_type);
 
-    /*if(this.props.User.orders[0].order_type == "pool"){
-      
-      screen = <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)}/>
-    
-    }else{ 
-
-      screen = <div>
-                      <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} />
-                      <DeliveryContactAddress session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
-                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
-                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
-                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
-                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
-                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
-                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
-                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
-                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e) setOrderNote(e: any) => this.props.setOrderNote(e)} setGiftOrder(e: any) => this.props.setGiftOrder(e)}
-                            deliveryAddressValidated={() => this.props.deliveryAddressValidated()} deliveryAddressInvalidated={() => this.props.deliveryAddressInvalidated()}/>
-
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      <b/>Delivery Date Time</b>
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal" style={{border: 0}}>
-                              <div className="form-group show-lg" style={{borderRadius: 0}}>
-                                <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{disabledDays: {daysOfWeek: this.state.daysOfWeek,}}}/>
-                                </div>
-                                <div className="col-md-3">
-                                  9:00 am - 11:00 am
-                                </div>
-                            </form>
-                        </div>
-    }*/
-
+  
     /*<DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1, 2]}]}}/>*/
 
 
@@ -499,10 +230,10 @@ class DateTime extends React.Component<any, any> {
                                 <form className="form-horizontal">
                                   <div className="form-group">
                                     <div className="col-md-2">
-                                      <Link to="/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Payment</Link>  
+                                      <Link to="/pool_response/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Payment</Link>  
                                     </div>
                                     <div className="col-md-2">
-                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
+                                      <Link to="/pool_response/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
                                     </div>
                                   </div>
                               </form>
@@ -510,100 +241,7 @@ class DateTime extends React.Component<any, any> {
                     </div>
                 </div>)
    
-    }else{
-          
-          return ( <div>
-                <PublicTopNavbar/>
-                <div className="row">
-                      <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
-                        <br/>
-                        <br/>
-                        Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
-                        <br/>
-                        <br/>
-                        <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
-                        <br/>
-                      </div>
-                      <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
-                            <br/>
-                            <br/>
-                            {(this.props.User.orders[0].order_type == "pool_order") &&
-                                <form role="form" className="form-horizontal">
-                                  <div className="form-group">
-                                    <div className="col-md-4">
-                                      <input className="form-control margin-bottom-5" type="text" maxLength={30} onChange={(e: any) => this.setPoolName(e)} onInput={(e: any) => this.setPoolName(e)} value={this.state.pool_name} placeholder="Pool Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                                    </div>  
-                                  </div>
-                                </form>}
-                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
-                            userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()}  
-                            userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
-                            <br/>
-                            <br/>
-                            <DeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
-                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
-                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
-                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
-                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
-                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
-                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
-                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
-                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
-                            setOrderNote={(e: any) => this.props.setOrderNote(e)} 
-                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
-                            deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
-
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Delivery Date Time
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal" style={{border: 0}}>
-                              <div className="form-group show-lg" style={{borderRadius: 0}}>
-                                <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1]}]}}/>
-                                </div>
-                                <div className="col-md-3">
-                                  9:00 am - 12:00 pm
-                                </div>
-                                {this.props.User.orders[0].order_type == "social" &&
-                                  <div className="col-md-3">
-                                    <select>
-                                        <option>8:00</option>
-                                        <option>8:30</option>
-                                    </select>
-                                  </div>}
-                                {this.props.User.orders[0].order_type == "social" &&
-                                  <div className="col-md-3">
-                                    For other times please email eat@sconely.com
-                                  </div>}
-                              </div>
-                            </form>
-                            <br/>
-                            <br/>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-9">
-                                    <div className="col-md-3">
-                                      <button type="button" className={this.state.payment_button_classname} style={{borderRadius: 0}} disabled={this.state.button_payment_disabled} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button>  
-                                    </div>
-                                    <div className="col-md-3">
-                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
-                                    </div>
-                                  </div>
-                                </div>
-                            </form>
-                            <br/>
-                            <br/>
-                        </div>
-                        <PublicBottomNavbar/>
-                        <PublicPrivacyTermsNavbar/>
-                    </div>  
-              </div>)
-
-        }
+    }
   }
 
   //<button type="button" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled} style={{borderRadius: 0}} onClick={(screen: any) => this.props.updateOrderSession("payment")}>Payment</button> 

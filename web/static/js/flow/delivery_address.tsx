@@ -177,6 +177,10 @@ class DeliveryAddress extends React.Component<any, any> {
       //strip out -
       //check if only number
 
+      this.setState({contact_last_name: e.target.value});
+      this.props.setDeliveryContactAddressLastName(e);
+
+
      // /^[a-zA-Z]*$/
       let last_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
 

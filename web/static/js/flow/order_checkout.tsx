@@ -34,7 +34,7 @@ import DeliveryContactAddress from './delivery_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
-import {setPoolName, setOrderDeliveryDatetimeDate, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation} from './actions/order.ts';
+import {setPoolName, setOrderDeliveryDatetimeDate, setOrderDeliveryDatetimeSpecificTime, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation} from './actions/order.ts';
 
 //import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setDeliveryContactAddressNote} from './actions/order_delivery_contact_address.ts';
 
@@ -259,6 +259,9 @@ class DateTime extends React.Component<any, any> {
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setSpecificTime();
+
+    //this.setState({selected_specific_time: e.target.value});
+    //this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
     
   }
 
@@ -574,7 +577,7 @@ class DateTime extends React.Component<any, any> {
                                   <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1]}]}}/>
                                 </div>
                                 <div className="col-md-3">
-                                  9:00 am - 12:00 pm
+                                  8:00 am - 12:00 pm
                                 </div>
                                 
                                 {this.props.User.orders[0].order_type == "social" &&
@@ -735,6 +738,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setOrderDeliveryDatetimeDate: (value: any) => {
       dispatch(setOrderDeliveryDatetimeDate(value));
+    },
+    setOrderDeliveryDatetimeSpecificTime: (value: any) => {
+      dispatch(setOrderDeliveryDatetimeSpecificTime(value));
     },
     increaseCartItemQuantity: (index: any) => {
       dispatch(increaseCartItemQuantity(index));
