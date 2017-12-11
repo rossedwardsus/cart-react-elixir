@@ -107,9 +107,9 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
 
       this.setState({delivery_address_pickup_location: this.props.User.orders[0].pickup_location});
 
-      this.setState({delivery_date_formatted: this.props.User.orders[0].delivery_date_formatted});
+      this.setState({delivery_date_formatted: this.props.User.orders[0].pool_delivery_date_formatted});
 
-      //{this.props.User.orders[0].delivery_time_range}
+      this.setState({delivery_time_range: this.props.User.orders[0].pool_delivery_time_range});
                  
       //{this.props.User.orders[0].pool_order_by_date_formatted}
                     
