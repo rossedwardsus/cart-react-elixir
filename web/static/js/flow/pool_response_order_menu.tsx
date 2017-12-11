@@ -12,7 +12,7 @@ import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
-import PoolSidebarCart from './pool_order_sidebar_cart.tsx';
+import PoolSidebarCart from './pool_response_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';

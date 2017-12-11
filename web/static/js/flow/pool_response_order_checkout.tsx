@@ -73,7 +73,7 @@ interface Order {
   //completed: boolean
 }
 
-class DateTime extends React.Component<any, any> {
+class PoolResponseOrderCheckout extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -230,7 +230,7 @@ class DateTime extends React.Component<any, any> {
                                 <form className="form-horizontal">
                                   <div className="form-group">
                                     <div className="col-md-2">
-                                      <Link to="/pool_response/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Payment</Link>  
+                                      <Link to="/pool_response/weworkdtla/12-14-2017/order/payment" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Payment</Link>  
                                     </div>
                                     <div className="col-md-2">
                                       <Link to="/pool_response/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
@@ -318,79 +318,16 @@ function mapDispatchToProps(dispatch: any) {
     userContactMobileValidated: () => {
       dispatch(userContactMobileValidated());
     },
-    setUserDeliveryContactAddressFirstName: (e: any) => {
-      dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressLastName: (e: any) => {
-      dispatch(setUserDeliveryContactAddressLastName(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressCompanyName: (e: any) => {
-      dispatch(setUserDeliveryContactAddressCompanyName(e.target.value))
-    },
-    setUserDeliveryContactAddressEmail: (e: any) => {
-      dispatch(setUserDeliveryContactAddressEmail(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressMobile: (e: any) => {
-      dispatch(setUserDeliveryContactAddressMobile(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressStreet1: (e: any) => {
-      dispatch(setUserDeliveryContactAddressStreet1(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressStreet2: (e: any) => {
-      dispatch(setUserDeliveryContactAddressStreet2(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressCity: (e: any) => {
-      dispatch(setUserDeliveryContactAddressCity(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressState: (e: any) => {
-      dispatch(setUserDeliveryContactAddressState(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressZipcode: (e: any) => {
-      dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressNote: (e: any) => {
-      dispatch(setUserDeliveryContactAddressNote(e.target.value, ""))
-    },
-    setPoolName: (e: any) => {
-      dispatch(setPoolName(e.target.value));
-    },
-    setOrderNote: (e: any) => {
-      dispatch(setOrderNote(e.target.value));
-    },
-    setGiftOrder: (value: any) => {
-      dispatch(setGiftOrder(value));
-    },
-    setGiftNote: (e: any) => {
-      dispatch(setGiftNote(e.target.value));
-    },
-    setPickupLocation: (e: any) => {
-      dispatch(setPickupLocation(e.target.value));
-    },
-    deliveryContactAddressValidated: () => {
-      dispatch(deliveryContactAddressValidated());
-    },
-    setOrderDeliveryDatetimeDate: (value: any) => {
-      dispatch(setOrderDeliveryDatetimeDate(value));
-    },
-    increaseCartItemQuantity: (index: any) => {
-      dispatch(increaseCartItemQuantity(index));
-    },
-    decreaseCartItemQuantity: (index: any) => {
-      dispatch(decreaseCartItemQuantity(index));
-    },
-    removeCartItem: (index: any) => {
-      dispatch(removeCartItem(index));
-    },
     updateOrderSession: (screen: any) => {
       dispatch(updateOrderSession(screen));
     }
   }
 }
 
-const DateTimeConnected = connect(
+const PoolResponseOrderCheckoutConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(DateTime)
+)(PoolResponseOrderCheckout)
 
-export default DateTimeConnected;
+export default PoolResponseOrderCheckoutConnected;
 
