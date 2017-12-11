@@ -176,8 +176,8 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
                   //dispatch(setPoolOrder("pool_name", "pool_date", "pool_id", "pool_message")).then(() => {});
 
-                  //dispatch(push("/order/menu"));
-                  dispatch(push("/pool_response/weworkdtla/12-14-2017/menu"));
+                  dispatch(push("/order/menu"));
+                  //dispatch(push("/pool_response/weworkdtla/12-14-2017/menu"));
 
             
             }).then((response: any) => {
