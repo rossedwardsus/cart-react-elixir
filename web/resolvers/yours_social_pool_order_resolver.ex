@@ -1456,7 +1456,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
                         #delivery_id, contact_id, payment_id
 
-                        delivery_address = %{street1: args[:user_delivery_contact_address_street1], street2: args[:user_delivery_contact_address_street2], city: args[:user_delivery_contact_address_city], state: args[:user_delivery_contact_address_state], zipcode: args[:user_delivery_contact_address_zipcode]}
+                        delivery_address = %{company_name: args[:user_delivery_contact_address_company_name], street1: args[:user_delivery_contact_address_street1], street2: args[:user_delivery_contact_address_street2], city: args[:user_delivery_contact_address_city], state: args[:user_delivery_contact_address_state], zipcode: args[:user_delivery_contact_address_zipcode]}
 
                         IO.inspect(delivery_address)
 
@@ -1736,7 +1736,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         end)
 
                         #args[:user_delivery_contact_address_company_name]
-                        Map.merge(delivery_address, %{company_name: "", street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
+                        #Map.merge(delivery_address, %{company_name: "", street1: args[:delivery_contact_address_street1], street2: args[:delivery_contact_address_street2], city: args[:delivery_contact_address_city], state: args[:delivery_contact_address_state], zipcode: args[:delivery_contact_address_zipcode]})
 
                         #order id from response
                         #Enum.map

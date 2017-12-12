@@ -128,6 +128,20 @@ class SocialOrderMenu extends React.Component<any, any> {
 
       console.log("menu_item_id " + menu_item_id);
 
+       let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+
+      console.log(JSON.stringify(menu_item));
+
+      //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
+
+      let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
+
+      this.setState({selected_item_id: menu_item_id});
+      this.setState({selected_item_name: menu_item["name"]});
+      this.setState({selected_item_description: menu_item_description});
+      this.setState({selected_item_ingredients:  menu_item["ingredients"]});
+      this.setState({selected_item_assortment:  menu_item["assortment"]});
+
 
       this.setState({selected_item_quantity_selector: 0});
     
