@@ -947,9 +947,9 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     #load one of these depenging on whether test or live
     #env("test_prod") == test
     #working
-    #case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
+    case Stripe.Token.create(%{:card => %{"number" => "4000000000000077", "exp_month" => 9, "exp_year" => 2018, "cvc" => "314", "address_zip" => "90025", "name" => "Ross Edwards"}}) do
 
-    case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
+    #case Stripe.Token.create(%{:card => %{"name" => args[:payment_method_name_on_card], "number" => args[:payment_method_card_number], "exp_month" => args[:payment_method_expiry_month], "exp_year" => args[:payment_method_expiry_year], "cvc" => args[:payment_method_security_code], "address_zip" => args[:payment_method_zipcode]}}) do
 
 
         #IO.inspect(token["id"])  
@@ -1456,7 +1456,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         order_changeset = Order.changeset(%Order{}, %{user_id: user_id, order_type: args[:order_type], order_datetime: order_datetime, admin_receipt_order_id: admin_receipt_order_id})
                         #delivery_id, contact_id, payment_id
 
-                        delivery_address = %{company_name: args[:user_delivery_contact_address_company_name], street1: args[:user_delivery_contact_address_street1], street2: args[:user_delivery_contact_address_street2], city: args[:user_delivery_contact_address_city], state: args[:user_delivery_contact_address_state], zipcode: args[:user_delivery_contact_address_zipcode]}
+                        delivery_address = %{first_name: args[:user_delivery_contact_address_contact_first_name], last_name: args[:user_delivery_contact_address_contact_last_name], email: args[:user_delivery_contact_address_contact_email], mobile: args[:user_delivery_contact_address_contact_mobile], company_name: args[:user_delivery_contact_address_company_name], street1: args[:user_delivery_contact_address_street1], street2: args[:user_delivery_contact_address_street2], city: args[:user_delivery_contact_address_city], state: args[:user_delivery_contact_address_state], zipcode: args[:user_delivery_contact_address_zipcode]}
 
                         IO.inspect(delivery_address)
 

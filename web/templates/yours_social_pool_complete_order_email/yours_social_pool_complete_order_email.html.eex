@@ -19,6 +19,12 @@
   <table width="60%">
     <tr><td>Your delivery is scheduled for <%= @key.delivery_date_formatted %>, <%= if @key.args.order_type == "pool" do %><%= @key.delivery_time %><% else %>between 9-Noon<% end %></td></tr>
     <tr><td><br></td></tr>
+    <tr><td>Delivery Contact:</td></tr>
+    <tr><td><%= @key.delivery_address.first_name %></td></tr>
+    <tr><td><%= @key.delivery_address.last_name %></td></tr>
+    <tr><td><%= @key.delivery_address.mobile %></td></tr>
+    <tr><td><%= @key.delivery_address.email %></td></tr>
+    <tr><td><br></td></tr>
     <tr><td>Delivery Address:</td></tr>
     <tr><td><%= @key.delivery_address.company_name %></td></tr>
     <tr><td><%= @key.delivery_address.street1 %> <%= @key.delivery_address.street2 %></td></tr>

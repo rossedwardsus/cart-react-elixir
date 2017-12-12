@@ -434,7 +434,7 @@ export default function user(state:any = {user_first_name: "", user_last_name: "
       console.log("user delivery contact address company name reducer");
 
       delivery_contacts_addresses_updated = state.deliveryContactsAddresses;
-      delivery_contacts_addresses_updated[0].company = action.value; 
+      delivery_contacts_addresses_updated[0].companyName = action.value; 
 
       return Object.assign({}, state, {...state, deliveryContactsAddresses: delivery_contacts_addresses_updated });
 

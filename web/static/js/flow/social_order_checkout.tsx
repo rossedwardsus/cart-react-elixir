@@ -30,7 +30,10 @@ require('react-datepicker/dist/react-datepicker.css');
 
 import SidebarCart from './order_sidebar_cart.tsx';
 import NameContact from './name.tsx';
+import SocialNameContact from './social_name_contact.tsx';
 import DeliveryContactAddress from './delivery_address.tsx';
+import SocialDeliveryContactAddress from './social_delivery_address.tsx';
+import DeliveryDateTime from './social_delivery_datetime.tsx'
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
@@ -294,7 +297,7 @@ class DateTime extends React.Component<any, any> {
                       <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                         <br/>
                         <br/>
-                        Sconely {this.props.User.orders[0].order_type[0].toUpperCase() + this.props.User.orders[0].order_type.substring(1)}
+                        Sconely Social}
                         <br/>
                         <br/>
                         <SocialSidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
@@ -303,12 +306,12 @@ class DateTime extends React.Component<any, any> {
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
-                            <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
+                            <SocialNameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
                             userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()}  
                             userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                             <br/>
                             <br/>
-                            <DeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            <SocialDeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
                             setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
@@ -321,6 +324,7 @@ class DateTime extends React.Component<any, any> {
                             setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
 
+                            <DeliveryDateTime />
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-12">

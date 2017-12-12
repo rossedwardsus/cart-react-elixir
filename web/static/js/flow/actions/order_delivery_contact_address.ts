@@ -104,21 +104,13 @@ export function setDeliveryContactAddressMobile(value: any, order_id: any) {
 
 export function setDeliveryContactAddressCompanyName(value: any) {
   console.log("delivery contact address company name action");
-  //if user is logged in theb SET_USER_ORDER_DELVIERY_ADDRESS_STREET1
-  //else SET_DELIVERY_ADDRESS_STREET1
-
-  //if("session.user_id" == "guest"){
-  //    return {
-  //      type: SET_DELIVERY_ADDRESS_STREET1,
-  //      value
-  //    }
-  //}else{
+  
       return {
         type: SET_DELIVERY_CONTACT_ADDRESS_COMPANY_NAME,
         value,
         //order_id
       }
-  //}
+  
 
 }
 
