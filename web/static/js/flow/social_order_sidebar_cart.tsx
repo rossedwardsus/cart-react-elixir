@@ -436,70 +436,17 @@ class SocialSidebarCart extends React.Component<any, any> {
     }
 
     
-
-
-    /*if(this.props.User.orders[0].order_type =="pool_order" && total_items == 11){
+    if(total_items == 150){
 
         item_limit = "You have reached your item limit";
-
-    }else if(this.props.User.orders[0].order_type =="pool_response" && total_items == 11){
-
-        item_limit = "You have reached your item limit";
-
-    }else if(this.props.User.orders[0].order_type =="yours" && total_items == 11){
-
-        item_limit = "You have reached your item limit";
-
-    }else if(this.props.User.orders[0].order_type =="social" && total_items == 500){*/
-
-        item_limit = "You have reached your item limit";
-
-    //}
-
-    
-
-
-
-    //{this.props.params.repoName}
-
-    //this.props.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)
-
-
-    //message if pool
-
-    let item_quantity_message = "";
-
-    if(this.props.User.orders[0].order_type == "pool_order"){
-        //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
-
-            item_quantity_message = "Please choose between 1 and 11 scones";
-
-        //}
-
-    }if(this.props.User.orders[0].order_type == "pool"){
-        //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
-
-            item_quantity_message = "Please choose between 1 and 11 scones";
-
-        //}
-
-    }else if(this.props.User.orders[0].order_type == "yours"){
-
-        item_quantity_message = "Please choose between 2 and 11 scones";
 
     }
-                  
-    /*{this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
-    <br/>
-    <br/>
-    {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
 
-    //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
 
-    //let message = this.props.User.orders[0].pool_message.split('\n').map((item: any, i: any) => {
-    //    return <p key={i}>{item}</p>;
-    //});
 
+    let item_quantity_message = "Please choose between 12 and 100 scones";
+
+    
     console.log("message");
 
     let checkoutButton = null;
@@ -565,26 +512,26 @@ class SocialSidebarCart extends React.Component<any, any> {
                   <br/>
                   <br/>
                   {(this.state.cartItems.length == 0) ?
-                              (<div>
-                                  <br/>
-                                  cart
-                                  <br/>
-                                  Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
-                                  <br/>
-                                  <br/>
-                                  $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
-                                  <br/>
-                                  $54 per 2 dozen mini
-                                  <br/>
-                                  <br/>
-                                  Plan ahead, order at least 48 hours in advance
-                                  <br/>
-                                  <br/>
-                                  <b>Perfect for a meal or a snack!</b>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  </div>) : cart}
+                        (<div>
+                            <br/>
+                            cart
+                            <br/>
+                            Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
+                            <br/>
+                            <br/>
+                            $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
+                            <br/>
+                            $54 per 2 dozen mini
+                            <br/>
+                            <br/>
+                            Plan ahead, order at least 48 hours in advance
+                            <br/>
+                            <br/>
+                            <b>Perfect for a meal or a snack!</b>
+                            <br/>
+                            <br/>
+                            <br/>
+                            </div>) : cart}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 

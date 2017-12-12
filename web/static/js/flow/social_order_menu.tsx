@@ -14,6 +14,8 @@ import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuan
 
 import SocialSidebarCart from './social_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
+import SocialMenuItems from './social_order_menu_items.tsx';
+import SocialMenuModal from './social_order_menu_modal.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
@@ -264,11 +266,8 @@ class SocialOrderMenu extends React.Component<any, any> {
     let social_quantity_selector = null;
     let cartItemsQuantity = 0;
 
-    if(this.props.User.orders.length > 0){
-
-      cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
-
-    }
+    
+    cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
     //let cartItemsQuantity = 12;
 
@@ -327,7 +326,7 @@ class SocialOrderMenu extends React.Component<any, any> {
     let cost_text = <div><p>$60 per dozen</p><p>$54 per 2 dozen mini</p></div>;
 
     
-    if(cartItemsQuantity < 11){
+    if(cartItemsQuantity < 100){
 
         
           social_quantity_selector =  <div>
@@ -375,32 +374,6 @@ class SocialOrderMenu extends React.Component<any, any> {
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
-                            <div className="hidden-lg" style={{paddingLeft: 15}}>
-                              <b>SCONELY SOCIAL</b>
-                              <br/>
-                              {(this.state.cartItems.length == 0) &&
-                              (<div>
-                                  <br/>
-                                  Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
-                                  <br/>
-                                  <br/>
-                                  $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
-                                  <br/>
-                                  $54 per 2 dozen mini
-                                  <br/>
-                                  <br/>
-                                  Plan ahead, order at least 48 hours in advance
-                                  <br/>
-                                  <br/>
-                                  <b>Perfect for a meal or a snack!</b>
-                                  <br/> 
-                                  <br/>
-                                  <br/>
-                                </div>)}
-                             
-                              {(this.state.cartItems.length > 0) && <SocialSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
-                              <br/>
-                            </div>
                             <br/>
                             {this.props.menuItems.map(function(item: any, index: any){
 
@@ -428,39 +401,12 @@ class SocialOrderMenu extends React.Component<any, any> {
                                         </div>
                               );
                             }.bind(this))}
-                              
-                            <br/>
-                            <br/>
-                            <br/>
                           </div>
-                    </div>
-                  <br/>
-                  <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
-                        </div>
-                        <div className="modal-body">
-                          {this.state.selected_item_description} 
-                          <br/>
-                          {this.state.selected_item_assortment == false && 
-                            <div>
-                                Ingredients: {this.state.selected_item_ingredients}
-                            </div>
-                          }
                           <br/>
                           <br/>
-                          {cost_text}
-                        </div>
-                        <div className="modal-footer">
-                          <form className="form-horizontal">
-                                {social_quantity_selector}
-                          </form>
-                        </div>
-                      </div>
-                    </div>
+                          <br/>
+                          <SocialMenuModal/>
+                        
                   </div>
                   <PublicBottomNavbar/>
                   <PublicPrivacyTermsNavbar/>

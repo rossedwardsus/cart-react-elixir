@@ -88,7 +88,8 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch(getMenuItems(order_type));
             //dispatch(createOrderSession(order_type, ""));
             dispatch({type: CREATE_ORDER, order_type: order_type});
-            dispatch(push("/order/menu"));
+            
+            //dispatch(push("/order/menu"));
             
             //dispatch(push("/social/order"));
 

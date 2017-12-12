@@ -31,7 +31,7 @@ import axios from 'axios';
 //};
 
 
-class SocialOrderMenuItems extends React.Component<any, any> {
+class SocialMenuItems extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -398,76 +398,8 @@ class SocialOrderMenuItems extends React.Component<any, any> {
   }
 }
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
-  return {
 
-    //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
 
-    //if yours
-    //menuItems: getYoursMenuItems(state),
-    //else
-    //menuItems: getYoursMenuItems(state),
-    
-
-    //active: ownProps.filter === state.visibilityFilter
-
-    //if(state.default.order.cart_items != undefined){
-        
-        menuItems: state.menuItems.items,
-        //guestOrder: state.guestOrder,
-        //order: state.User.orders.find((order: any) => order.status == "current"),
-        User: state.User,
-        path: state.routing.locationBeforeTransitions.pathname,
-        
-        //cart_total_items //computed
-        //cart_total_cost //cost
-        //delivery_cost: state.guestOrder.delivery_cost
-        
-        //cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
-        
-
-    //}
-  }
-};
-
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    //viewmenuthunk
-
-    getMenuItems: () => {
-      console.log("gmi");
-      dispatch(getMenuItems("social"));
-    },
-    createOrder: (order_type: any) => {
-      dispatch(createOrder(order_type, "", ""));
-    },
-    addCartItem: (order_id: any, item_id: any, size: any, quantity: any) => {
-      dispatch(addCartItem(order_id, item_id, size, quantity));
-    },
-    increaseCartItemQuantity: (item_index: any) => {
-      dispatch(increaseCartItemQuantity(item_index));
-    },
-    decreaseCartItemQuantity: (item_index: any) => {
-      dispatch(decreaseCartItemQuantity(item_index));
-    },
-    removeCartItem: (item_index: any) => {
-      dispatch(removeCartItem(item_index));
-    },
-    cartValidated: () => {
-      dispatch(cartValidated());
-    },
-    updateOrderSession: (screen: any) => {
-      dispatch(updateOrderSession(screen))
-    }
-  }
-}
-
-const SocialOrderMenuConnected = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SocialOrderMenu);
-
-export default SocialOrderMenuItems;
+export default SocialMenuItems;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

@@ -88,10 +88,10 @@ class SocialOrderMenuModal extends React.Component<any, any> {
 
     //}
 
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
 
-    this.props.createOrder("social", "", "");
-    this.props.getMenuItems();
+    //this.props.createOrder("social", "", "");
+    //this.props.getMenuItems();
     //this.setState({menuItems: this.props.menuItems});
 
 
@@ -114,7 +114,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
 
       //console.log("menu props");
       console.log("social menu mi cwrp " + JSON.stringify(this.props.menuItems));
-      this.setState({menuItems: this.props.menuItems});
+      //this.setState({menuItems: this.props.menuItems});
 
   }
 
@@ -264,11 +264,11 @@ class SocialOrderMenuModal extends React.Component<any, any> {
     let social_quantity_selector = null;
     let cartItemsQuantity = 0;
 
-    if(this.props.User.orders.length > 0){
+    //if(this.props.User.orders.length > 0){
 
-      cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+    //  cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
-    }
+    //}
 
     //let cartItemsQuantity = 12;
 
@@ -327,7 +327,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
     let cost_text = <div><p>$60 per dozen</p><p>$54 per 2 dozen mini</p></div>;
 
     
-    if(cartItemsQuantity < 11){
+    //if(cartItemsQuantity < 11){
 
         
           social_quantity_selector =  <div>
@@ -360,7 +360,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
 
           //}
         //}
-    }
+    //}
 
      
           return(<div>
@@ -372,99 +372,56 @@ class SocialOrderMenuModal extends React.Component<any, any> {
                           <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
                         </div>
                         <div className="modal-body">
-                          {this.state.selected_item_description} 
+                          
                           <br/>
-                          {this.state.selected_item_assortment == false && 
                             <div>
-                                Ingredients: {this.state.selected_item_ingredients}
+                                Ingredients: 
                             </div>
-                          }
+                          
                           <br/>
                           <br/>
                           {cost_text}
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
-                                {social_quantity_selector}
+                            <div className="col-xs-12 col-md-12">
+                                  <div className="col-xs-12 col-md-4">
+                                    <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
+                                        <option value="">Regular or Mini</option> 
+                                        <option value="regular">1 Dozen Regular</option>
+                                        <option value="mini">2 Dozen Mini</option>
+                                    </select>
+                                  </div>
+                                  <div className="hidden-lg col-xs-1">
+                                    <br/>
+                                  </div>
+                                  <div className="col-xs-12 col-md-4">
+                                    <select className="form-control input-large text-center text-align:center" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
+                                      <option>Quantity</option> 
+                                      {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
+                                    </select>
+                                  </div>
+                                  <div className="hidden-lg col-xs-1">
+                                    <br/>
+                                  </div>
+                                  <div className="col-xs-12 col-md-4">
+                                    <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
+                                  </div>
+                            </div>
                           </form>
                         </div>
                       </div>
                     </div>
+                  </div>
                 </div>)
 
     
   }
 }
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
-  return {
 
-    //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
 
-    //if yours
-    //menuItems: getYoursMenuItems(state),
-    //else
-    //menuItems: getYoursMenuItems(state),
-    
 
-    //active: ownProps.filter === state.visibilityFilter
-
-    //if(state.default.order.cart_items != undefined){
-        
-        menuItems: state.menuItems.items,
-        //guestOrder: state.guestOrder,
-        //order: state.User.orders.find((order: any) => order.status == "current"),
-        User: state.User,
-        path: state.routing.locationBeforeTransitions.pathname,
-        
-        //cart_total_items //computed
-        //cart_total_cost //cost
-        //delivery_cost: state.guestOrder.delivery_cost
-        
-        //cartItemsTotalQuantity: state.guestOrder.cart_items.reduce((amount: any, item: any) => amount + item.quantity, 0)
-        
-
-    //}
-  }
-};
-
-const mapDispatchToProps = (dispatch: any, ownProps: any) => {
-  return {
-    //viewmenuthunk
-
-    getMenuItems: () => {
-      console.log("gmi");
-      dispatch(getMenuItems("social"));
-    },
-    createOrder: (order_type: any) => {
-      dispatch(createOrder(order_type, "", ""));
-    },
-    addCartItem: (order_id: any, item_id: any, size: any, quantity: any) => {
-      dispatch(addCartItem(order_id, item_id, size, quantity));
-    },
-    increaseCartItemQuantity: (item_index: any) => {
-      dispatch(increaseCartItemQuantity(item_index));
-    },
-    decreaseCartItemQuantity: (item_index: any) => {
-      dispatch(decreaseCartItemQuantity(item_index));
-    },
-    removeCartItem: (item_index: any) => {
-      dispatch(removeCartItem(item_index));
-    },
-    cartValidated: () => {
-      dispatch(cartValidated());
-    },
-    updateOrderSession: (screen: any) => {
-      dispatch(updateOrderSession(screen))
-    }
-  }
-}
-
-const SocialOrderMenuConnected = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SocialOrderMenu);
 
 export default SocialOrderMenuModal;
 
