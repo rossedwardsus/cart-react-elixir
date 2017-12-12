@@ -441,13 +441,13 @@ export class PublicFaq extends React.Component<any, any> {
                             <b>Is there a charge for delivery?</b>
                             <br/>
                             <br/>
-                            We offer free delivery to Beverly Hills, Brentwood, Century City, Downtown LA, Marina Del Rey, Playa Vista, Hancock Park, Santa Monica, West Hollywood, Westwood and Venice between 9am and noon, Tuesday through Saturday. For deliveries to other areas of LA there is a $15 charge, if we can accommodate your request.
+                            We offer free delivery to Beverly Hills, Brentwood, Century City, Downtown LA, Marina Del Rey, Playa Vista, Hancock Park, Santa Monica, West Hollywood, Westwood and Venice between 9am and noon, Wednesday through Saturday. For deliveries to other areas of LA there is a $15 charge, if we can accommodate your request.
                             <br/>
                             <br/>
                             <b>Can you deliver at specific times?</b>
                             <br/>
                             <br/>
-                            Since our scones stay fresh throughout the day, we suggest deliveries between 9am and noon. If you need a delivery at a specific time, please contact us at orders@sconely.com with your request. We try to accommodate special delivery times.
+                            Since our scones stay fresh throughout the day, we suggest deliveries between 8am and noon. If you need a delivery at a specific time, please contact us at orders@sconely.com with your request. We try to accommodate special delivery times.
                             <br/>
                             <br/>
                             <b>Who delivers the scones?</b>

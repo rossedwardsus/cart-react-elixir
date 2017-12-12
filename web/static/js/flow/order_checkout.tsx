@@ -578,8 +578,7 @@ class DateTime extends React.Component<any, any> {
                                 </div>
                                 <div className="col-md-3">
                                   Free Delivery
-                                </div>
-                                <div className="col-md-3">
+                                  <br/>
                                   8:00 am - 12:00 pm
                                 </div>
                                 
