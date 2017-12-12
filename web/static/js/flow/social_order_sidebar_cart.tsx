@@ -72,10 +72,11 @@ class SocialSidebarCart extends React.Component<any, any> {
     //get menu items
     //this.setState({pool_message: "this.props.menuItems"})
 
-    //console.log("sbc menu items " + JSON.stringify(this.props.menuItems));
-    console.log("sidebarcart user " + JSON.stringify(this.props.User));
+    console.log("sbc menu items cwm" + JSON.stringify(this.props.menuItems));
+    console.log("sidebarcart user ");
 
     //this.setState({menuItemNames: this.props.menuItems})
+
     this.setState({cartItems: this.props.User.orders[0].cartItems})
 
     
@@ -83,11 +84,11 @@ class SocialSidebarCart extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProps: any){
 
-      //console.log("sbc menu items cwrp " + JSON.stringify(this.props.menuItems));
-      console.log("sbc cart items cwrp " + JSON.stringify(this.props.User));
+      console.log("sbc menu items cwrp " + JSON.stringify(this.props.menuItems));
+      console.log("sbc user cwrp " + JSON.stringify(this.props.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 
-      //this.setState({menuItemNames: this.props.menuItems})
+      this.setState({menuItem: this.props.menuItems})
       this.setState({cartItems: this.props.User.orders[0].cartItems})
 
   }
@@ -204,8 +205,8 @@ class SocialSidebarCart extends React.Component<any, any> {
     let total_items = 0;
     let item_limit = "";
     let item_cost = 0;
-    let item_quantity_text = null;
-    let total_items_text = null;
+    let item_quantity_text = "";
+    let total_items_text = "";
 
     //alert(JSON.stringify(this.props.order.toJS()));
    
@@ -361,13 +362,13 @@ class SocialSidebarCart extends React.Component<any, any> {
 
                       console.log("cart menuitems " + JSON.stringify(item));
 
-                      let menu_item = this.props.menuItems.find((menu_item: any) => {
+                      //let menu_item = this.props.menuItems.find((menu_item: any) => {
 
-                          //console.log(JSON.stringify(menu_item) + " " + item.item_id);
+                          //console.log(JSON.stringify(menu_item) + " " + JSON.stringify(item));
 
-                          return menu_item.menu_item_id === item.menu_item_id;
+                      //    return menu_item.menu_item_id === item.menu_item_id;
 
-                      });
+                      //});
 
                       //console.log("index " + JSON.stringify(menu_item.name));
 
@@ -375,7 +376,7 @@ class SocialSidebarCart extends React.Component<any, any> {
                       
                       //let item_name = this.props.menuItems[item.menu_item_id - 1].name;
 
-                      let item_name = menu_item.name;
+                      let item_name = "menu_item.name";
 
                       //if(menu_item != undefined){
                         
@@ -406,7 +407,7 @@ class SocialSidebarCart extends React.Component<any, any> {
 
                               //if(item.quantity % 12 == 0){
 
-                                  item_quantity_text = (item.quantity/12) + "dz";
+                             //     item_quantity_text = (item.quantity/12) + "dz";
 
                               //}else{
 
@@ -563,7 +564,27 @@ class SocialSidebarCart extends React.Component<any, any> {
                   <br/>
                   <br/>
                   <br/>
-                  {cart}
+                  {(this.state.cartItems.length == 0) ?
+                              (<div>
+                                  <br/>
+                                  cart
+                                  <br/>
+                                  Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
+                                  <br/>
+                                  <br/>
+                                  $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
+                                  <br/>
+                                  $54 per 2 dozen mini
+                                  <br/>
+                                  <br/>
+                                  Plan ahead, order at least 48 hours in advance
+                                  <br/>
+                                  <br/>
+                                  <b>Perfect for a meal or a snack!</b>
+                                  <br/>
+                                  <br/>
+                                  <br/>
+                                  </div>) : cart}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 

@@ -207,8 +207,8 @@ const Root = () => (
         <Route path="/public/press" component={PublicPress} />
         <Route path="/public/privacy_policy" component={PublicPrivacyPolicy} />
         <Route component={checkLogin}>
-          <Route path="/yours/menu" component={YoursOrderMenu} />
-          <Route path="/social/menu" component={SocialOrderMenu} />
+          <Route path="/yours/order" component={YoursOrderMenu} />
+          <Route path="/social/order" component={SocialOrderMenu} />
           <Route path="/pool/order/menu" component={PoolOrderMenu} />
           <Route path="/pool_response/:pool_name/:pool_date/menu" component={PoolResponseOrderMenu} />  
           <Route path="/pool_response/:pool_name/:pool_date/checkout" component={PoolResponseOrderCheckout} />  

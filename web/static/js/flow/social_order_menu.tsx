@@ -91,9 +91,12 @@ class SocialOrderMenu extends React.Component<any, any> {
     window.scrollTo(0, 0);
 
     this.props.createOrder("social", "", "");
+    this.props.getMenuItems();
+    //this.setState({menuItems: this.props.menuItems});
+
 
     //get active items from the database
-    console.log("mi" + JSON.stringify(this.props.menuItems));
+    //console.log("mi" + JSON.stringify(this.props.menuItems));
 
     //alert(JSON.stringify(this.props.cart_items));
     //this.props.dispatch();
@@ -110,7 +113,8 @@ class SocialOrderMenu extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      //console.log("mi cwrp " + JSON.stringify(this.props.menuItems));
+      console.log("social menu mi cwrp " + JSON.stringify(this.props.menuItems));
+      this.setState({menuItems: this.props.menuItems});
 
   }
 
@@ -353,27 +357,7 @@ class SocialOrderMenu extends React.Component<any, any> {
                             <br/>
                             <b>SCONELY SOCIAL</b>
                             <br/>
-                            {(this.state.cartItems.length == 0) &&
-                              (<div>
-                                  <br/>
-                                  Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
-                                  <br/>
-                                  <br/>
-                                  $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
-                                  <br/>
-                                  $54 per 2 dozen mini
-                                  <br/>
-                                  <br/>
-                                  Plan ahead, order at least 48 hours in advance
-                                  <br/>
-                                  <br/>
-                                  <b>Perfect for a meal or a snack!</b>
-                                  <br/>
-                                  <br/>
-                                  <br/>
-                                  </div>)}
-                            
-                            {(this.state.cartItems.length > 0) && <SocialSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
+                            <SocialSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
@@ -510,8 +494,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     //viewmenuthunk
 
     getMenuItems: () => {
-      console.log("here");
-      dispatch(getMenuItems(""));
+      console.log("gmi");
+      dispatch(getMenuItems("social"));
     },
     createOrder: (order_type: any) => {
       dispatch(createOrder(order_type, "", ""));
