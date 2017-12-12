@@ -113,8 +113,18 @@ class SocialOrderMenuModal extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      console.log("social menu mi cwrp " + JSON.stringify(this.props.menuItems));
-      //this.setState({menuItems: this.props.menuItems});
+      console.log("social menu modal cwrp " + JSON.stringify(nextProp));
+      this.setState({selected_item_name: nextProp.selected_item_name});
+
+  }
+
+  componentDidReceiveProps = (nextProp:any) => {
+
+      //cart items
+
+      //console.log("menu props");
+      console.log("social menu modal cdrp " + JSON.stringify(this.props));
+      //this.setState({selected_item_name: this.props.selected_item_name});
 
   }
 
@@ -372,10 +382,12 @@ class SocialOrderMenuModal extends React.Component<any, any> {
                           <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
                         </div>
                         <div className="modal-body">
-                          
+                          {this.state.selected_item_name}
+                          <br/>
+                          {this.state.selected_item_description}
                           <br/>
                             <div>
-                                Ingredients: 
+                                Ingredients: {this.state.selected_item_ingredients}
                             </div>
                           
                           <br/>

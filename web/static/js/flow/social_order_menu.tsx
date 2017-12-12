@@ -130,7 +130,7 @@ class SocialOrderMenu extends React.Component<any, any> {
 
       console.log("menu_item_id " + menu_item_id);
 
-       let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+      let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
 
       console.log(JSON.stringify(menu_item));
 
@@ -405,7 +405,7 @@ class SocialOrderMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <SocialMenuModal/>
+                          <SocialMenuModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name}/>
                         
                   </div>
                   <PublicBottomNavbar/>
