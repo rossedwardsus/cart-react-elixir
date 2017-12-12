@@ -169,7 +169,7 @@ class PaymentMethod extends React.Component<any, any> {
 
           //console.log("payment props" + JSON.stringify(nextProps));
 
-          this.setState({error_message_text: "An error occured with your card."});
+          this.setState({error_message_text: "An error occurred with your card."});
           this.setState({security_code_border_color: "grey"});        
 
       }/*else if(this.props.User.orderSession.paymentErrorCode == "incorrect_number"){
@@ -188,7 +188,7 @@ class PaymentMethod extends React.Component<any, any> {
 
       }*/else if(this.props.User.orderSession.networkError == true){
 
-          this.setState({error_message_text: "An error occured please try again."});
+          this.setState({error_message_text: "An error occurred please try again."});
 
       }
 
