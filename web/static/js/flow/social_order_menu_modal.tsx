@@ -45,7 +45,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
         selected_item_id: "",
         selected_item_size: "",
         selected_item_quantity: 0,
-        selected_item_quantity_selector: 0,
+        selected_item_quantity_value: 0,
         selected_item_name: "",
         selected_item_description: "",
         selected_item_ingredients: "",
@@ -159,98 +159,50 @@ class SocialOrderMenuModal extends React.Component<any, any> {
 
   }
 
-
-
   selectedItemSize = (e: any) => {
 
-    console.log("selected_item size " + e.target.value);
+      //console.log(e.target.value);
 
-    this.setState({selected_item_size: e.target.value});
-  
+      this.setState({selected_item_size: e.target.value});
+      this.props.selectedItemSize(e);
+
   }
-
 
   selectedItemQuantity = (e: any) => {
 
-    console.log("selected_item quantity " + e.target.value);
+      //console.log(e.target.value);
 
-    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-    //  this.setState({selected_item_quantity: parseInt(e.target.value)});
-    //  this.setState({selected_item_quantity_selector: e.target.value});
-
-    //}else{
+      //this.setState({selected_item_quantity: e.target.value});
+      //this.props.selectedItemQuantity(e.target.value);
 
       if(this.state.selected_item_size == "regular"){
         
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_selector: e.target.value});
+        //this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
+        this.setState({selected_item_quantity_value: e.target.value});
+        this.props.selectedItemQuantity(e);
+
       
       }else if(this.state.selected_item_size == "mini"){
         
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_selector: e.target.value});
+        //this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
+        this.setState({selected_item_quantity_value: e.target.value});
+        this.props.selectedItemQuantity(e);
       
-      }//else{ 
+      }
 
-       // this.setState({selected_item_quantity: parseInt(e.target.value)});
-
-      //}
-
-    //}
-
-    this.setState({add_cart_item_button_classname: "form-control btn-block btn btn-default"});
-    this.setState({add_cart_item_button_disabled: false});
-      
-    //set add cart button == active
-    //this.set
+      this.setState({add_cart_item_button_classname: "btn-block btn btn-default"});
+      this.setState({add_cart_item_button_disabled: false});  
 
   }
 
-  
-
   addCartItem = () => {
 
-    //if order type is social and 12_or_24 == 24 then mini flag == true
+      this.props.addCartItem();
 
-    console.log("add cart item");
-
-    //if they haven't selected quantity and dozens dont submit and show them an error
-
-    
-    //let item_count = 0
-
-  
-
-    //console.log("yours items count" + item_count);
-
-    //if(item_count < 12){
-
-    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-    //    this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
-
-    //}else{
-
-        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
-
-    //}
-    
-    //this.setState({pool_message_viewed: true});    
-    this.setState({selected_item_quantity_selector: 0});
-    this.setState({selected_item_size: ""});
-    this.setState({add_cart_item_button_classname: "btn-block btn btn-default disabled"});
-    this.setState({add_cart_item_button_disabled: true});
-
-
-
-    //}
-
-    //this.props.cartValidated();
-
-    $('#myModal').modal('toggle');
-
-    //cart validated in redux
+      this.setState({selected_item_size: ""});
+      this.setState({selected_item_quantity_value: 0});
+      this.setState({add_cart_item_button_classname: "btn-block btn btn-default disabled"});
+      this.setState({add_cart_item_button_disabled: true});
 
   }
 
@@ -340,7 +292,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
     //if(cartItemsQuantity < 11){
 
         
-          social_quantity_selector =  <div>
+     /*     social_quantity_selector =  <div>
                                         <div className="col-xs-12 col-md-12">
                                                 <div className="col-xs-12 col-md-4">
                                                 <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
@@ -365,7 +317,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
                                                 <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
                                                 </div>
                                           </div>
-                                      </div>
+                                      </div>*/
 
 
           //}
@@ -408,7 +360,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
                                     <br/>
                                   </div>
                                   <div className="col-xs-12 col-md-4">
-                                    <select className="form-control input-large text-center text-align:center" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
+                                    <select className="form-control input-large text-center text-align:center" value={this.state.selected_item_quantity_value} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
                                       <option>Quantity</option> 
                                       {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
                                     </select>
@@ -417,7 +369,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
                                     <br/>
                                   </div>
                                   <div className="col-xs-12 col-md-4">
-                                    <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
+                                    <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.props.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
                                   </div>
                             </div>
                           </form>

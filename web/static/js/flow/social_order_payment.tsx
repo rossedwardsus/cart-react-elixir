@@ -1150,7 +1150,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                   </div>
                                 </div>
                             </form>
-                            <SocialPromoCode/>
+                            <SocialPromoCode setPromoCode={(e: any) => {this.setPromoCode(e)}/>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
@@ -1242,94 +1242,17 @@ function mapStateToProps(state: any) {
 function mapDispatchToProps(dispatch: any) {
   //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
   return {
-    /*setDate: (e: any) => {
-      //dispatch(setDate(e))
-    },
-    setTime: (e: any) => {
-      //dispatch(setTime(e.target.value))
-    },
-    cartValidated: () => {
-      dispatch(cartValidated());
-    },
-    datetimeValidated: () => {
-        dispatch(datetimeValidated());
-    },
-    setSpecificTime: (e: any) => {
-      dispatch(setSpecificTime(e.target.value))
-    },
-    setUserNameFirst: (e: any) => {
-      dispatch(setUserNameFirst(e.target.value))
-    },
-    setUserNameLast: (e: any) => {
-      dispatch(setUserNameLast(e.target.value))
-    },
-    setUserContactEmail: (e: any) => {
-      dispatch(setUserContactEmail(e.target.value))
-    },
-    setUserContactMobile: (e: any) => {
-      dispatch(setUserContactMobile(e.target.value))
-    },
-    setNameValidated: (e: any) => {
-      dispatch(nameValidated())
-    },
-    setUserDeliveryContactAddressFirstName: (e: any) => {
-      dispatch(setUserDeliveryContactAddressFirstName(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressLastName: (e: any) => {
-      dispatch(setUserDeliveryContactAddressLastName(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressCompanyName: (e: any) => {
-      dispatch(setUserDeliveryContactAddressCompanyName(e.target.value))
-    },
-    setUserDeliveryContactAddressEmail: (e: any) => {
-      dispatch(setUserDeliveryContactAddressEmail(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressMobile: (e: any) => {
-      dispatch(setUserDeliveryContactAddressMobile(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressStreet1: (e: any) => {
-      dispatch(setUserDeliveryContactAddressStreet1(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressStreet2: (e: any) => {
-      dispatch(setUserDeliveryContactAddressStreet2(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressCity: (e: any) => {
-      dispatch(setUserDeliveryContactAddressCity(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressState: (e: any) => {
-      dispatch(setUserDeliveryContactAddressState(e.target.value, ""))
-    },
-    setUserDeliveryContactAddressZipcode: (e: any) => {
-      dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
-    },
-    setDeliveryCost: (value: any) => {
-      dispatch(setDeliveryCost(value));
-    },*/
+    
     setPromoCode: (value: any) => {
       dispatch(setPromoCode(value));
     },
-    /*deliveryAddressValidated: () => {
-      dispatch(deliveryAddressValidated())
-    },
-    deliveryAddressInvalidated: () => {
-      dispatch(deliveryAddressInvalidated())
-    },
-    increaseCartItemQuantity: (e: any) => {
-      dispatch(increaseCartItemQuantity(e));
-    },
-    decreaseCartItemQuantity: (e: any) => {
-      dispatch(decreaseCartItemQuantity(e));
-    },
-    removeCartItem: (item_id: any) => {
-      dispatch(removeCartItem(item_id));
-    },*/
+   
     setPaymentNameOnCard: (e: any) => {
       dispatch(setPaymentNameOnCard(e.target.value, ""))
     },
     setPaymentZipCode: (e: any) => {
       dispatch(setPaymentZipCode(e.target.value, ""))
     },
-    
     setPaymentCardNumber: (e: any) => {
       dispatch(setPaymentMethodCardNumber(e.target.value, ""))
     },

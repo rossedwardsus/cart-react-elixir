@@ -176,12 +176,12 @@ class SocialOrderMenu extends React.Component<any, any> {
       if(this.state.selected_item_size == "regular"){
         
         this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_selector: e.target.value});
+        //this.setState({selected_item_quantity_selector: e.target.value});
       
       }else if(this.state.selected_item_size == "mini"){
         
         this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_selector: e.target.value});
+        //this.setState({selected_item_quantity_selector: e.target.value});
       
       }//else{ 
 
@@ -329,7 +329,7 @@ class SocialOrderMenu extends React.Component<any, any> {
     if(cartItemsQuantity < 100){
 
         
-          social_quantity_selector =  <div>
+          /*social_quantity_selector =  <div>
                                         <div className="col-xs-12 col-md-12">
                                                 <div className="col-xs-12 col-md-4">
                                                 <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
@@ -354,7 +354,7 @@ class SocialOrderMenu extends React.Component<any, any> {
                                                 <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
                                                 </div>
                                           </div>
-                                      </div>
+                                      </div>*/
 
 
           //}
@@ -405,7 +405,7 @@ class SocialOrderMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <SocialMenuModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name}/>
+                          <SocialMenuModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name} selected_item_ingredients={this.state.selected_item_ingredients} selected_item_description={this.state.selected_item_description} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
                         
                   </div>
                   <PublicBottomNavbar/>

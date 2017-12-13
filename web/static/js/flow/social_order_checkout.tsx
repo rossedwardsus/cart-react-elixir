@@ -76,7 +76,7 @@ interface Order {
   //completed: boolean
 }
 
-class DateTime extends React.Component<any, any> {
+class SocialCheckout extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -324,7 +324,8 @@ class DateTime extends React.Component<any, any> {
                             setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
 
-                            <DeliveryDateTime />
+                            <DeliveryDateTime setDate={(e: any) => this.setDate(e)}/>
+
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-12">
@@ -516,10 +517,10 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const DateTimeConnected = connect(
+const SocialCheckoutConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(DateTime)
+)(SocialCheckout)
 
-export default DateTimeConnected;
+export default SocialCheckoutConnected;
 

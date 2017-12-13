@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 
-//import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
+import SocialSidebarCartItem from './social_order_sidebar_cart_item.tsx';
+
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 import { Link } from 'react-router'
 //import { bindActionCreators } from 'redux';
@@ -11,19 +12,11 @@ import { connect } from 'react-redux';
 //import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 //import { getPublicMenu } from './reducers/menu';
 
-const Immutable  = require('immutable');
+//const Immutable  = require('immutable');
 //import _ from 'lodash';
 
 import axios from 'axios';
 
-
-function addTodoWithDispatch() {
-  const action = {
-    type: "VIEW_PUBLIC_MENU",
-    //text
-  }
-  //dispatch(action)
-}
 
 export interface HelloProps { 
     compiler: string; 
@@ -93,98 +86,6 @@ class SocialSidebarCart extends React.Component<any, any> {
 
   }
 
-  /*increaseCartItemQuantity = (item_index:any) => {
-
-      //alert(item_id);
-
-      console.log("item_index" + item_index)
-
-      //console.log("total cart item quantity " + this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
-
-      if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) < 13){
-
-        this.props.increaseCartItemQuantity(item_index);
-
-      }
-
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-
-          let new_item: any = "";
-
-          if(item.item_id == item_id){
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-
-          }else{
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-
-          }
-
-          return new_item;
-
-      });
-
-      //cart_items_temp.
-
-      //alert(JSON.stringify(cart_items_temp_updated));
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
-
-  decreaseCartItemQuantity = (item_index:any) => {
-
-      //alert(item_id);
-
-      this.props.decreaseCartItemQuantity(item_index);
-
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-
-          let new_item: any = "";
-
-          if(item.item_id == item_id){
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-
-          }else{
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-
-          }
-
-          return new_item;
-
-      });
-
-      //cart_items_temp.
-
-      //alert(JSON.stringify(cart_items_temp_updated));
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
-
-  removeItemFromCart = (item_id:any) => {
-
-      //alert(item_id);
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.filter(function(item: any) {
-          return item.item_id !== item_id;
-      });
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }*/
-
   
 
   render(){
@@ -229,6 +130,9 @@ class SocialSidebarCart extends React.Component<any, any> {
         let that = this;
 
         //let cart_items = [{item_id: 1, quantity: 2}];
+
+
+        //turn this into a function
 
         regular_items = this.state.cartItems.filter((item: any) => {
 
@@ -331,15 +235,8 @@ class SocialSidebarCart extends React.Component<any, any> {
 
         //if(social_regular_items.length != 0){
 
-        //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-        
-       //   total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
-        //}else{
-
-          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
-
-        //}
+        total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
         total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 
@@ -407,7 +304,7 @@ class SocialSidebarCart extends React.Component<any, any> {
 
                               //if(item.quantity % 12 == 0){
 
-                             //     item_quantity_text = (item.quantity/12) + "dz";
+                                  item_quantity_text = (item.quantity/12) + "dz";
 
                               //}else{
 
@@ -415,7 +312,7 @@ class SocialSidebarCart extends React.Component<any, any> {
 
                               //}
 
-
+                              //<SocialSidebarCartItem index={index} item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={this.props.increaseCartItemQuantity(index)}} descreaseCartItemQuantity={this.props.decreaseCartItemQuantity(index)} removeCartItem={this.props.increaseCartItemQuantity(index)} />
                           
                               return(
                                         <form className="form-horizontal" style={{border: 1, position: "static"}}>
@@ -532,6 +429,8 @@ class SocialSidebarCart extends React.Component<any, any> {
                             <br/>
                             <br/>
                             </div>) : cart}
+                  <br/>
+                  {this.state.cartItems.map((item: any, index: any) => <SocialSidebarCartItem index={"index"} item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity("index")} descreaseCartItemQuantity={() => this.props.decreaseCartItemQuantity("index")} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 
