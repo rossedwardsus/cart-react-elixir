@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 import {getMenuItems} from './actions/menu.ts';
 
-const Immutable  = require('immutable');
+//const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
@@ -28,9 +28,10 @@ import "react-day-picker/lib/style.css"
 
 require('react-datepicker/dist/react-datepicker.css');
 
-import SidebarCart from './order_sidebar_cart.tsx';
-import NameContact from './name.tsx';
-import DeliveryContactAddress from './delivery_address.tsx';
+import PoolSidebarCart from './pool_response_sidebar_cart.tsx';
+import PoolResponsePoolName from './pool_response_pool_name.tsx';
+import PoolNameContact from './pool_response_name_contact.tsx';
+import PoolOrderContactAddressAddress from './pool_order_contact_address_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
@@ -216,14 +217,15 @@ class PoolResponseOrderCheckout extends React.Component<any, any> {
                           <div className="hidden-xs col-md-3"style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
-                            SCONELY {this.props.User.orders[0].order_type.toUpperCase()}
+                            SCONELY POOL}
                             <br/>
-                            <SidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
+                            <PoolSidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
+                                <PoolResponsePoolName/>
                                 <br/>
-                                <NameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={() => this.props.userNameEmailMobileValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()} userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()} userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
+                                <PoolNameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} contactValidated={() => this.props.contactValidated()} userNameEmailMobileValidated={() => this.props.userNameEmailMobileValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()} userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()} userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                                 <br/>
                                 <br/>
                                 <br/>

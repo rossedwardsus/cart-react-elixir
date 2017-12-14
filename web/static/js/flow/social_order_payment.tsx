@@ -38,7 +38,7 @@ import SocialPromoCode from './social_promo_code.tsx';
 //import NameContact from './name.tsx';
 
 import OrderCart from './order_cart.tsx';
-import PaymentMethod from './payment_method.tsx';
+import SocialPaymentMethod from './Social_payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
@@ -55,14 +55,6 @@ import axios from 'axios';
 require('react-datepicker/dist/react-datepicker.css');
 
 
-function addTodoWithDispatch() {
-  const action = {
-    type: "VIEW_PUBLIC_MENU",
-    //text
-  }
-  //dispatch(action)
-}
-
 export interface HelloProps { 
     compiler: string; 
     framework: string; 
@@ -76,7 +68,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderDateTimeContact extends React.Component<any, any> {
+class SocialPayment extends React.Component<any, any> {
   //props: Props;
 
   private cardNumber: HTMLInputElement;
@@ -129,21 +121,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
     //or separate into order_menu and order_delivery_address_payment objects
     //or have everything work of a "pages" flag
     
-    /*this.addCartItem = this.addCartItem.bind(this);
-    this.increaseCartItemQuantity = this.increaseCartItemQuantity.bind(this);
-    this.decreaseCartItemQuantity = this.decreaseCartItemQuantity.bind(this);
-    this.removeCartItem = this.removeCartItem.bind(this);
-    this.addDeliveryAddress = this.addDeliveryAddress.bind(this);
-    this.setDeliveryAddressStreet = this.setDeliveryAddressStreet.bind(this);
-    this.setDeliveryAddressCity = this.setDeliveryAddressCity.bind(this);
-    this.setDeliveryAddressZipcode = this.setDeliveryAddressZipcode.bind(this);
-    this.setCardNumber = this.setCardNumber.bind(this);
-    this.setExpiryDate = this.setExpiryDate.bind(this);
-    this.setSecurityCode = this.setSecurityCode.bind(this);
-    this.showMenu = this.showMenu.bind(this);
-    this.showCart = this.showCart.bind(this);
-    this.showDeliveryAddressPayment = this.showDeliveryAddressPayment.bind(this);
-    this.completeOrder = this.completeOrder.bind(this);*/
 
   }
 
@@ -221,8 +198,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
         //this.setState({card_number_border_color: "red"});
         this.setState({security_code_border_color: "red"});        
 
-     //   this.setState({button_complete_order_classname: "btn btn-default"});
-     //   this.setState({button_complete_order_disabled: ""});
+        this.setState({button_complete_order_classname: "btn btn-default"});
+        this.setState({button_complete_order_disabled: ""});
 
     }
 
@@ -249,21 +226,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
   }
 
-  /*showMenu(){
-
-      //alert();
-
-      this.setState({page: "menu"});
-
-  }
-
-  showDeliveryAddressPayment(){
-
-      //alert();
-
-      this.setState({page: "delivery_address_payment"})
-
-  }*/
 
   showCart(){
 
@@ -277,396 +239,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
       //this.context.router.push('/order/12345/datetime_contact_delivery_address_payment');
       
   //}
-
-  
-
-  /*addCartItem(item_id: any, item_dozens: any, item_quantity: any, mini: any){
-
-    //alert(item_id + "" + item_dozens + "" + item_quantity);
-
-    let order_temp = this.state.order;
-
-    //item_id, quanity, mini
-
-    let new_cart_items: any = [];
-
-    //order_temp.set('key', .get('key').push
-    let order_temp_updated = order_temp.updateIn(['cart'], (arr: any) => arr.push({item_id: item_id, dozens: item_dozens, quantity: item_quantity, mini: mini}));
-
-
-    //for(let i: any = 0; i <= item_quantity - 1; i++){
-
-      //alert();
-
-      //new_cart_items.push({item_id: 1, dozens: item_dozens, item_quantity: item_quantity, mini: mini});*/
-
-    
-
-    /*const myMap = Immutable.fromJS({
-      nested: {
-        someKey: ['hello', 'world'],
-      },
-    });
-
-    //const myNewMap = myMap.updateIn(['nested', 'someKey'], arr => arr.push('bye'));*/
-
-    //var newMap = myMap.set('key', myMap.get('key').push(newData))
-
-
-    //let cart_items_temp = this.state.cart_items;
-    //let cart_items_temp_updated = cart_items_temp.setIn(['items', 'quantity'], value = value + 1);
-
-      
-     //}
-
-     //alert(JSON.stringify(new_cart_items));
-
-     //let cart_items_temp_updated = cart_items_temp.concat(new_cart_items);
-
-     //alert(JSON.stringify(cart_items_temp_updated));
-
-     //this.setState({order: order_temp_updated});
-
-
-  //}
-
-  //selectItemDozens(e: any){
-
-  //    alert(e.target.value);
-
-  //}
-
-  //addDeliveryAddress(street: any, city: any, state: any, zipcode: any){
-
-      //alert(street);
-
-      //this.setState({delivery_address: {street: street, city: city, state: state, zipcode: zipcode}});
-
-  //}
-
-  /*removeCartItem(index: any){
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.delete(index);
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
-
-  increaseCartItemQuantity(item_id: any, index: any){
-
-    //alert(JSON.stringify(item_id + "" + index));
-
-    let cart_items_temp = this.state.cart_items;
-
-    let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") + 1; return item.set("quantity", quantity_updated)});
-
-    this.setState({cart_items: cart_items_temp_updated});
-
-  }  
-
-  decreaseCartItemQuantity(item_id: any, index: any){
-
-    let cart_items_temp = this.state.cart_items;
-
-    let cart_items_temp_updated = cart_items_temp.update(index, (item: any) => {let quantity_updated = item.get("quantity") - 1; return item.set("quantity", quantity_updated)});
-
-    this.setState({cart_items: cart_items_temp_updated});
-
-  }*/
-
-
-  //none of this is needed here
-  setDate(e: any){
-
-
-      alert(e);
-
-      //if value is not ""
-      this.props.setDate(e);
-      //date validated
-
-  }
-
-  setTime(e: any){
-
-
-      alert(e.target.value);
-
-      //if value is not ""
-      this.setState({selected_time: e.target.value});
-      this.setState({selected_specific_time: ""});
-      //this.props.setTime(e);
-      //time validated
-
-  }
-
-  setSpecificTime(e: any){
-
-      alert(e.target.value);
-
-      this.setState({selected_specific_time: e.target.value});
-      this.setState({selected_time: ""});
-      //this.props.setSpecificTime(e);
-      //specific time validated
-  }
-
-  setFirstName(e: any){
-
-     //alert(e.target.value);
-
-
-
-     if(e.target.value.length > 0){
-
-        //alert(/^[a-zA-Z]+$/.test(e.target.value));
-
-        if(/^[a-zA-Z]+$/.test(e.target.value)){
-
-            //alert("correct");
-
-            //this.setState({"first_name": e.target.value});
-            this.setState({"first_name_classname": "form-group"});
-            //this.setState({"first_name_validated": true});
-
-            this.props.setFirstName(e)
-            //first name validated
-
-        }else{
-
-            alert("error");
-
-            this.setState({"first_name_classname": "form-group has-error"});
-
-        }
-      }   
-
-  }
-
-  onBlurFirstName(){
-
-      //alert();
-
-  }
-
-  setLastName(e: any){
-
-     alert(e.target.value);
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        if(/^[a-zA-Z]/.test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"last_name": e.target.value});
-            //this.setState({"last_name_classname": "form-group"});
-            //this.setState({"last_name_validated": true});
-
-            this.props.setLastName(e);
-
-        }
-      }
-  }
-
-  setContactEmail(e: any){
-
-      alert(e.target.value);
-
-      if(e.target.value.length > 0){
-
-        //alert();
-
-        //var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        //return re.test(email);
-
-        if((/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"contact_email": e.target.value});
-            this.setState({"contact_email_classname": "form-group"});
-            this.setState({"contact_email_validated": true});
-
-            this.props.setContactEmail(e);
-
-        }
-      }   
-
-  }
-
-  setContactPhone(e: any){
-
-     alert(e.target.value);
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            //alert();
-
-            //this.setState({"first_name": e.target.value});
-            //this.setState({"first_name_classname": "form-group"});
-
-            this.props.setContactPhone(e);
-
-        //}
-      }   
-  }
-
-  setCompanyName(e: any){
-
-      //let order_temp = this.state.order;
-      //.setIn([ 'user', 'profile', 'name' ], 'Jack')
-      //order_temp_updated = order_temp.updateIn([ 'name', 'first_name', 'name' ], (s) => s = e.target.value)
-
-      //alert(e.target.value);
-
-      //this.setState({order: order_temp_udated});
-
-      //validate and this.props
-
-  }
-
-
-  setDeliveryAddressStreet1(e: any){
-
-    alert(e.target.value);
-
-    if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressStreet1(e);
-
-        //}
-      }   
-
-  }
-
-   setDeliveryAddressStreet2(e: any){
-
-     alert(e.target.value);
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressStreet2(e);
-
-        //}
-      }   
-
-  }
-
-  setDeliveryAddressCity(e: any){
-
-     alert(e.target.value);
-
-
-    if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressCity(e);
-
-        //}
-      }  
-
-  }
-
-  setDeliveryAddressState(e: any){
-
-     if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressState(e);
-
-        //}
-      }   
-
-  }
-
-  
-
-  setDeliveryAddressZipcode(e: any){
-
-    if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setDeliveryAddressZipcode(e);
-
-        //}
-      }  
-
-  }
-
-  setPaymentNameOnCard(e: any){
-
-      alert(e.target.value);
-
-      if(e.target.value.length > 0){
-
-        //alert();
-
-        //if(/^[a-zA-Z]/.test(e.target.value)){
-
-            alert();
-
-            //this.setState({"delivery_address_street1": e.target.value});
-            //this.setState({"delivery_address_street1_classname": "form-group"});
-
-            this.props.setPaymentNameOnCard(e);
-
-        //}
-      }   
-  }
-
-
-
-
 
 
   applyPromoCode = (promo_code: any) => {
@@ -857,6 +429,27 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
 
+ setPaymentNameOnCard(e: any){
+
+      alert(e.target.value);
+
+      if(e.target.value.length > 0){
+
+        //alert();
+
+        //if(/^[a-zA-Z]/.test(e.target.value)){
+
+            alert();
+
+            //this.setState({"delivery_address_street1": e.target.value});
+            //this.setState({"delivery_address_street1_classname": "form-group"});
+
+            this.props.setPaymentNameOnCard(e);
+
+        //}
+      }   
+  }
+
 
 
 
@@ -937,27 +530,6 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
 
   processYoursSocialPoolOrder = () => {
-
-      //alert("order complete this.props.order");
-
-      //if all inputs are validated
-
-      //alert(JSON.stringify(this.props.order));
-
-      //if first_name_validated == true && last_name_validated == true
-      //process order/dispatch
-
-      //if this.props.order_state = "completed"?
-      //else error
-
-      //disable payment form inputs
-
-      //this.setState({name_on_card_classname: "disabled"});
-      //this.setState({zipcode_classname: "disabled"});
-      //this.setState({card_number_classname: "disabled"});
-      //this.setState({expiry_date_month_classname: "disabled"});
-      //this.setState({expiry_date_year_classname: "disabled"});
-      //this.setState({security_code_classname: "disabled"});
 
       this.setState({button_complete_order_classname: "btn btn-default disabled"});
       this.setState({button_complete_order_disabled: "disabled"});
@@ -1185,7 +757,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                             {this.state.payment_error_message}
                             <br/>
                             <br/>
-                            <PaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
+                            <SocialPaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
                             <br/>
                             <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processYoursSocialPoolOrder} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
@@ -1339,10 +911,10 @@ function mapDispatchToProps(dispatch: any) {
 
 //export default connect(mapStateToProps, mapDispatchToProps)(Order);
 
-const CheckoutConnected = connect(
+const SocialPaymentConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderDateTimeContact)
+)(SocialPayment)
 
-export default CheckoutConnected;
+export default SocialPaymentConnected;
 

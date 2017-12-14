@@ -4,6 +4,8 @@ import * as React from 'react';
 
 //import SconelyYoursMenu from './sconely_yours_social_menu.tsx';
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
+import PoolResponseSidebarCartItem from './pool_response_sidebar_cart_item.tsx';
+
 import { Link } from 'react-router'
 //import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -11,7 +13,7 @@ import { connect } from 'react-redux';
 //import {addCartItem, removeCartItem} from './actions/cart_items.ts';
 //import { getPublicMenu } from './reducers/menu';
 
-const Immutable  = require('immutable');
+//const Immutable  = require('immutable');
 //import _ from 'lodash';
 
 import axios from 'axios';
@@ -255,24 +257,14 @@ class PoolSidebarCart extends React.Component<any, any> {
 
        //if(social_regular_items.length != 0){
 
-        /*if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-        
-          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
-        }else{*/
-
-          total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
+        total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
         //}
 
         //total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 
         //}
-
-
-        //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
-
-        //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
 
 
         total_items_cost = total_regular_items_cost;
@@ -305,7 +297,7 @@ class PoolSidebarCart extends React.Component<any, any> {
                       
                       //let item_name = this.props.menuItems[item.menu_item_id - 1].name;
 
-                      let item_name = menu_item.name;
+                      let item_name = "menu_item.name";
 
                       //code is here to check for minis existing???
                       //if item.size == "" then pool or yours
@@ -378,7 +370,7 @@ class PoolSidebarCart extends React.Component<any, any> {
 
         item_limit = "You have reached your item limit";
 
-    }else if(this.props.User.orders[0].order_type =="yours" && total_items == 11){
+    }/*else if(this.props.User.orders[0].order_type =="yours" && total_items == 11){
 
         item_limit = "You have reached your item limit";
 
@@ -386,7 +378,7 @@ class PoolSidebarCart extends React.Component<any, any> {
 
         item_limit = "You have reached your item limit";
 
-    }
+    }*/
 
     
 
@@ -408,7 +400,9 @@ class PoolSidebarCart extends React.Component<any, any> {
 
         //}
 
-    }else*/if(this.props.User.orders[0].order_type == "pool"){
+    }else*/
+
+    if(this.props.User.orders[0].order_type == "pool"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
             item_quantity_message = "Please choose between 1 and 11 scones";
@@ -421,16 +415,6 @@ class PoolSidebarCart extends React.Component<any, any> {
 
     }*/
                   
-    /*{this.props.User.orders[0].order_type == "yours" && "a minimum of 2 items is required"}
-    <br/>
-    <br/>
-    {this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 9 && 'You have reached the item limit for this order'}*/
-
-    //let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
-
-    //let message = this.props.User.orders[0].pool_message.split('\n').map((item: any, i: any) => {
-    //    return <p key={i}>{item}</p>;
-    //});
 
     console.log("message");
 
@@ -483,22 +467,113 @@ class PoolSidebarCart extends React.Component<any, any> {
 
     }*/
 
-    if(total_items % 12 == 0){
+    total_items_text = "" + total_items;
 
-        total_items_text = (total_items/12) + "dz";
+    //pool response
+      let message = <div>
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Address</b> 
+                        </div>
+                        <div className="col-md-8" style={{fontSize: 13}}>
+                            {this.state.delivery_address_street1}<br/>{this.state.delivery_address_city},&nbsp;{this.state.delivery_address_state}
+                        </div>
+                      </form>
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Location</b> 
+                        </div>
+                        <div className="col-md-8" style={{fontSize: 13}}>
+                            {this.state.delivery_address_pickup_location}
+                        </div>
+                      </form>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <form className="form-horizontal">
+                        <div className="col-md-12" style={{paddingLeft: 10}}>
+                            <b>Delivery</b> 
+                        </div>
+                      </form>
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Date</b> 
+                        </div>
+                        <div className="col-md-8" style={{fontSize: 13}}>
+                            {this.state.delivery_date_formatted}
+                        </div>
+                      </form>
+                      <br/>
+                      <br/>
+                      <form className="form-horizontal">
+                        <div className="col-md-4">
+                            <b>Time</b> 
+                        </div>
+                        <div className="col-md-8" style={{fontSize: 13}}>
+                            {this.state.delivery_time_range}
+                        </div>
+                      </form>
+                      <br/>
+                      <br/>
+                      <form className="form-horizontal">
+                        <div className="col-md-12" style={{paddingLeft: 10}}>
+                            <b>Order By</b>
+                        </div>
+                      </form>
+                      <form className="form-horizontal">
+                          <div className="col-md-4">
+                              <b>Date</b>
+                          </div>
+                      </form>
+                      <br/>
+                      <form className="form-horizontal">
+                          <div className="col-md-8" style={{fontSize: 13}}>
+                              {this.state.order_by_date_formatted}
+                          </div>
+                      </form>
+                      <br/>
+                      <form className="form-horizontal">
+                          <div className="col-md-4">
+                              <b>Time</b>
+                          </div>
+                      </form>
+                      <form className="form-horizontal">
+                          <div className="col-md-8" style={{fontSize: 13}}>
+                              6:00 pm
+                          </div>
+                      </form>
+                      <form className="form-horizontal">
+                          <div className="col-md-12">
+                              <br/>
+                              <br/>
+                              Choose between 1-11 scones
+                              <br/>
+                              $5 each
+                              <br/>
+                              <br/>
+                              <b>Freshly baked artisanal scones</b>
+                              <br/>
+                              <b>Perfect for breakfast, lunch or a snack</b>
+                              <br/>
+                              <br/>
+                              <b>Free Delivery</b>
+                          </div>
+                      </form>
+                  </div>
 
-    }else{
-
-        total_items_text = "" + total_items;
-
-    }
 
     return (<div> 
                   {item_limit}
                   <br/>
                   {item_quantity_message}
                   <br/>
+                  if pool response
                   <br/>
+                  if pool create order
+                  <br/>
+                  <br/>
+                  {this.state.cartItems.map((item: any, index: any) => <PoolResponseSidebarCartItem index={"index"} item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity("index")} descreaseCartItemQuantity={() => this.props.decreaseCartItemQuantity("index")} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
                   <br/>
                   {cart}
                   <br/>

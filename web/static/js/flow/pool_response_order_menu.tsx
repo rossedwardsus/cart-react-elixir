@@ -14,14 +14,15 @@ import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuan
 
 import PoolSidebarCart from './pool_response_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
+import PoolResponseMenuModal from './pool_response_menu_modal.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
-import {getYoursMenuItems} from './selectors/menu.ts'; 
+//import {getYoursMenuItems} from './selectors/menu.ts'; 
 
-import axios from 'axios';
+//import axios from 'axios';
 
 
 //type Props = {
@@ -599,19 +600,18 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
-                            <b>SCONELY {this.state.order_type.toUpperCase()}</b>
+                            <b>SCONELY POOL</b>
                             <br/>
                             
                             <br/>
-                            {(this.state.pool_message_viewed == false) ? message : <PoolSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
+                            {<PoolSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <div className="hidden-lg" style={{paddingLeft: 15}}>
-                              <b>SCONELY {this.state.order_type.toUpperCase()}</b>
+                              <b>SCONELY POOL</b>
                               <br/>
-                              
-                              {(this.state.pool_message_viewed == false) ? message : <PoolSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
+                              {<PoolSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>}
                               <br/>
                             </div>
                             <br/>
@@ -646,7 +646,8 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                           </div>
-                    </div>
+                  </div>
+                  <PoolResponseMenuModal />
                   <br/>
                   <div className="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
                     <div className="modal-dialog" role="document">

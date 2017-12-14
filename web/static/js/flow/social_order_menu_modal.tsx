@@ -159,11 +159,11 @@ class SocialOrderMenuModal extends React.Component<any, any> {
 
   }
 
-  selectedItemSize = (e: any) => {
+  selectedItemSize = (e: React.FormEvent<HTMLSelectElement>) => {
 
       //console.log(e.target.value);
 
-      this.setState({selected_item_size: e.target.value});
+      this.setState({selected_item_size: e.currentTarget.value});
       this.props.selectedItemSize(e);
 
   }
@@ -350,7 +350,7 @@ class SocialOrderMenuModal extends React.Component<any, any> {
                           <form className="form-horizontal">
                             <div className="col-xs-12 col-md-12">
                                   <div className="col-xs-12 col-md-4">
-                                    <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
+                                    <select className="form-control" value={this.state.selected_item_size} onChange={(e) => this.selectedItemSize(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
                                         <option value="">Regular or Mini</option> 
                                         <option value="regular">1 Dozen Regular</option>
                                         <option value="mini">2 Dozen Mini</option>

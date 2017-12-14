@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 //import { getPublicMenu } from './reducers/menu';
 import {getMenuItems} from './actions/menu.ts';
 
-const Immutable  = require('immutable');
+//const Immutable  = require('immutable');
 var DatePicker = require('react-datepicker');
 var moment = require('moment');
 
@@ -28,11 +28,14 @@ import "react-day-picker/lib/style.css"
 
 require('react-datepicker/dist/react-datepicker.css');
 
-import SidebarCart from './order_sidebar_cart.tsx';
-import NameContact from './name.tsx';
+import SidebarCart from './social_order_sidebar_cart.tsx';
+import NameContact from './social_name_contact.tsx';
 import SocialNameContact from './social_name_contact.tsx';
 import DeliveryContactAddress from './delivery_address.tsx';
-import SocialDeliveryContactAddress from './social_delivery_address.tsx';
+import SocialDeliveryContactAddressNameContact from './social_delivery_contact_address_name_contact.tsx';
+import SocialDeliveryContactAddressAddress from './social_delivery_contact_address_address.tsx';
+import SocialDeliveryContactNote from './social_delivery_address_note.tsx';
+import SocialDeliveryContactGiftNote from './social_delivery_address_gift_note.tsx';
 import DeliveryDateTime from './social_delivery_datetime.tsx'
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
@@ -54,14 +57,6 @@ import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
-
-function addTodoWithDispatch() {
-  const action = {
-    type: "VIEW_PUBLIC_MENU",
-    //text
-  }
-  //dispatch(action)
-}
 
 export interface HelloProps { 
     compiler: string; 
@@ -126,7 +121,7 @@ class SocialCheckout extends React.Component<any, any> {
 
   componentWillMount = () => {
 
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
 
     console.log("checkout User " + JSON.stringify(this.props.User));
     //console.log("checkout menuItems " + JSON.stringify(this.props.menuItems));
@@ -134,21 +129,11 @@ class SocialCheckout extends React.Component<any, any> {
     //this.setState({User: this.props.User});
     //this.setState({menuItems: this.props.menuItems});        
 
-    //alert();
-
     //this.props.getMenuItems();
     //this.setState({delivery_times: "1-3am"});
 
     //if(this.props.User.orders[0].order_type == "social"){
 
-    //delivery_dates == all
-    //delivery start day three days from now
-    //this.setState({daysOfWeek: [0, 1, 2, 3, 4, 5, 6]});
-
-    //}
-
-    //if yours disable selectable days until zipcode is selected and set delivery dates on zipcode selection
-    //
     
   }
 
@@ -156,23 +141,15 @@ class SocialCheckout extends React.Component<any, any> {
 
       console.log("order checkout cwrp" + JSON.stringify(this.props.User.orderSession.validations["userNameEmailMobileValidated"]))
 
-      //if order type == "pool"
-      //else validate name contact
-      //delivery contact and address
-      //also date time
 
-      //add cart validated checked
-      //if order type == pool then only validate name
+      if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
 
-
-          if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
-
-            console.log("validated");
-          
-            this.setState({payment_button_classname: "btn btn-default btn-block"});
-            this.setState({payment_button_disabled: false})
-          
-          }
+        console.log("checkout validated");
+      
+        this.setState({payment_button_classname: "btn btn-default btn-block"});
+        this.setState({payment_button_disabled: false})
+      
+      }
 
       
 
@@ -311,7 +288,7 @@ class SocialCheckout extends React.Component<any, any> {
                             userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                             <br/>
                             <br/>
-                            <SocialDeliveryContactAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            <SocialDeliveryContactAddressNameContact User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
                             setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
@@ -323,9 +300,24 @@ class SocialCheckout extends React.Component<any, any> {
                             setOrderNote={(e: any) => this.props.setOrderNote(e)} 
                             setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
-
-                            <DeliveryDateTime setDate={(e: any) => this.setDate(e)}/>
-
+                            <br/>
+                            <br/>
+                            <SocialDeliveryContactAddressAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
+                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
+                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
+                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
+                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
+                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
+                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
+                            setOrderNote={(e: any) => this.props.setOrderNote(e)} 
+                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
+                            deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
+                            <br/>
+                            <br/>
+                            <SocialDeliveryDateTime setDate={(e: any) => this.setDate(e)} setSpecificTime={(e: any) => this.setPecificTime(e)}/>
+                            <br/>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-sm-12">

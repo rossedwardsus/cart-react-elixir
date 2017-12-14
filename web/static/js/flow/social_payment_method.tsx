@@ -20,13 +20,6 @@ const Immutable  = require('immutable');
 //import {setPaymentNameOnCard, setPaymentCardNumber, setPaymentExpiryDate, setPaymentSecurityCode} from './actions/order_payment.ts';
 
 
-function addTodoWithDispatch() {
-  const action = {
-    type: "VIEW_PUBLIC_MENU",
-    //text
-  }
-  //dispatch(action)
-}
 
 export interface HelloProps { 
     compiler: string; 
@@ -41,7 +34,7 @@ interface Order {
   //completed: boolean
 }
 
-class PaymentMethod extends React.Component<any, any> {
+class SocialPaymentMethod extends React.Component<any, any> {
   //props: Props;
 
   private cardNumber: HTMLInputElement;
@@ -71,7 +64,9 @@ class PaymentMethod extends React.Component<any, any> {
        expiry_month_border_color: "grey",
        expiry_date_month_disabled: "",
        expiry_year_border_color: "grey",
-       expiry_date_year_disabled: "",
+       expiry_date_year_disabled: true,
+       button_complete_order_classname: "btn btn-default",
+       button_complete_order_disabled: false,
     };
 
     //user_type=guest
@@ -115,12 +110,6 @@ class PaymentMethod extends React.Component<any, any> {
       //const node = ReactDOM.findDOMNode(this.cardNumber);
       //node.scrollIntoView({ behavior: "smooth" });
 
-      //this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
-      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
 
   }
 
@@ -138,12 +127,13 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({expiry_date_month_disabled: "disabled"});
           this.setState({expiry_date_year_disabled: "disabled"});
           this.setState({security_code_disabled: "disabled"});
+          this.setState({button_complete_order_classname: "btn btn-default disabled"});
+          this.setState({button_complete_order_disabled: true});
       
       }
 
-      if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
 
-          //enable all of the form inputs
+      if(this.props.User.orderSession.paymentErrorCode != ""){
 
           this.setState({name_on_card_disabled: ""});
           this.setState({zipcode_disabled: ""});
@@ -151,9 +141,24 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({expiry_date_month_disabled: ""});
           this.setState({expiry_date_year_disabled: ""});
           this.setState({security_code_disabled: ""});
-      
 
-          this.setState({error_message_text: "An incorrect Card Number or CVC was entered."});
+          this.setState({button_complete_order_classname: "btn btn-default disabled"});
+          this.setState({button_complete_order_disabled: false});
+
+      }
+
+
+      //month and year
+      //expired_card
+      //processing error
+      //zipcode validation
+
+      if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
+
+          //enable all of the form inputs
+
+          //have this as a library function maybe
+          this.setState({error_message_text: "An incorrect Card Number or CVC was entered.  Feel free to contact us"});
 
           //this.refs.cardNumber.focus();
           //ReactDOM.findDOMNode(this.refs.theDiv).focus();
@@ -167,28 +172,30 @@ class PaymentMethod extends React.Component<any, any> {
 
       }else if(this.props.User.orderSession.paymentErrorCode == "card_declined"){
 
-          //console.log("payment props" + JSON.stringify(nextProps));
+          //console.log("payment props" + JSON.stringify(nextProps));    
 
           this.setState({error_message_text: "An error occurred with your card."});
           this.setState({security_code_border_color: "grey"});        
 
-      }/*else if(this.props.User.orderSession.paymentErrorCode == "incorrect_number"){
+      }else if(this.props.User.orderSession.paymentErrorCode == "incorrect_number"){
 
           //console.log("payment props" + JSON.stringify(nextProps));
 
           this.setState({error_message_text: "An error occured with your card."});
-          this.setState({security_code_border_color: "grey"});        
+          //this.setState({security_code_border_color: "grey"});        
 
       }else if(this.props.User.orderSession.paymentErrorCode == "expired_card"){
 
+          //we cant check for this
+
           //console.log("payment props" + JSON.stringify(nextProps));
-
+      
           this.setState({error_message_text: "An error occured with your card."});
-          this.setState({security_code_border_color: "grey"});        
+          //this.setState({security_code_border_color: "grey"});        
 
-      }*/else if(this.props.User.orderSession.networkError == true){
-
-          this.setState({error_message_text: "An error occurred please try again."});
+      }else if(this.props.User.orderSession.networkError == true){
+     
+          this.setState({error_message_text: "An error occurred.  Please try again."});
 
       }
 
@@ -493,7 +500,9 @@ class PaymentMethod extends React.Component<any, any> {
                                 <input type="email" value={this.state.security_code} maxLength={4} className="form-control" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
                               </div>
                           </div>
-                  
+                          <br/>
+                          <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processYoursSocialPoolOrder} style={{borderRadius: 0}}>Complete Order</button>
+                            
                   </div>
                   </form>
             </div>

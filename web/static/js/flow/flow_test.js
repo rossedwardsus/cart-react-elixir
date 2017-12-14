@@ -210,6 +210,8 @@ const Root = () => (
           <Route path="/yours/order" component={YoursOrderMenu} />
           <Route path="/social/order" component={SocialOrderMenu} />
           <Route path="/pool/order/menu" component={PoolOrderMenu} />
+          <Route path="/pool_response/menu" component={PoolResponseOrderMenu} />  
+          <Route path="/pool_response/checkout" component={PoolResponseOrderCheckout} />  
           <Route path="/pool_response/:pool_name/:pool_date/menu" component={PoolResponseOrderMenu} />  
           <Route path="/pool_response/:pool_name/:pool_date/checkout" component={PoolResponseOrderCheckout} />  
           <Route path="/pool/menu" component={PoolResponseOrderMenu} />
