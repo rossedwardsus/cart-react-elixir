@@ -71,13 +71,6 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
         
         
     };
-
-    //this.loadCart = this.loadCart.bind(this);
-    //this.showItem = this.showItem.bind(this);
-    //this.selectedItemDozens = this.selectedItemDozens.bind(this);
-    //this.selectedItemQuantity = this.selectedItemQuantity.bind(this);
-    //this.addCartItem = this.addCartItem.bind(this);
-    //this.onMouseEnter = this.onMouseEnter.bind(this);
    
   }
 
@@ -162,44 +155,11 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
 
   }
 
-  /*selectedItemType = (e: any) => {
-
-      //alert(e.target.value);
-
-      this.setState({selected_item_type: e.target.value});
-      this.setState({add_cart_item_button_classname: "btn btn-default"});
-      
-  }*/
-
-
   selectedItemQuantity = (e: any) => {
 
     console.log("selected_item quantity " + e.target.value);
 
-    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-      this.setState({selected_item_quantity: parseInt(e.target.value)});
-      this.setState({selected_item_quantity_selector: e.target.value});
-
-    }else{
-
-      if(this.state.selected_item_size == "regular"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }else if(this.state.selected_item_size == "mini"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }//else{ 
-
-       // this.setState({selected_item_quantity: parseInt(e.target.value)});
-
-      //}
-
-    }
+    this.setState({selected_item_quantity_selector: e.target.value});
 
     this.setState({add_cart_item_button_classname: "form-control btn-block btn btn-default"});
       
@@ -216,18 +176,6 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
 
   }
 
-  /*selectedSocialItemQuantity = (e: any) => {
-
-    console.log("selected_item quantity " + parseInt(e.target.value));
-
-    //this.setState({selected_item_quantity: parseInt(e.target.value)});
-    this.setState({add_cart_item_button_classname: "btn btn-default"});
-      
-    //set add cart button == active
-    //this.set
-
-  }*/
-
   addCartItem = () => {
 
     //if order type is social and 12_or_24 == 24 then mini flag == true
@@ -237,39 +185,8 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
     //if they haven't selected quantity and dozens dont submit and show them an error
 
     
-    //let item_count = 0
+    this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
 
-    /*this.props.cart.cart_items.map(function(item: any){
-
-            //console.log("item " + JSON.stringify(item));
-            //console.log("order type" + JSON.stringify(that.props.order));
-
-            //if(that.props.order.order_type == "sconely_yours"){
-
-              //if total_cost is more then 2 then cost = 5 else 6
-              //dont have to loop.  just times cart length
-
-              //total_cost = total_cost + (5 * item.quantity);
-              item_count = item_count + item.quantity;
-
-            //}else{
-
-    });*/
-
-    //console.log("yours items count" + item_count);
-
-    //if(item_count < 12){
-
-    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-        this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
-
-    }else{
-
-        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
-
-    }
-    
     this.setState({pool_message_viewed: true});    
     this.setState({selected_item_quantity_selector: 0});
     this.setState({selected_item_size: ""});
@@ -285,80 +202,6 @@ class PoolResponseOrderMenu extends React.Component<any, any> {
 
   }
 
-  goToDateTimeContact(){
-
-      this.context.router.push("/order/12345/signature");
-      
-  } 
-
-  onMouseEnter = (item_id: any) => {
-
-      console.log("mouse enter" + JSON.stringify(item_id));
-
-      //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-
-      //let image_name = this.state.smorgasbourgh_menu_items.find((item: any) => item.item_id === item_id).image_id;
-
-      //get index of of element with item id
-      //also get name of image and append "rollover to it"
-
-      //let images_temp = this.state.images;
-      //images_temp[item_id-1] = "SavvymenuJuneb5x5roll";
-
-      let menu_items_updated = this.state.menu_items.map((item: any) => 
-
-          {
-              if(item.item_id == item_id){
-
-              //let image_name = item.image_id;
-                item.image_id = item.image_id + "roll";
-
-              }
-
-              return item;
-
-          })
-
-      console.log(JSON.stringify(menu_items_updated));
-
-      this.setState({menu_items: menu_items_updated});
-
-  }
-
-  onMouseLeave = (item_id: any) => {
-
-      //console.log("mouse leave" + item_id);
-
-      //console.log(this.state.menu_items.find((item: any) => item.item_id === item_id).hover_image_id);
-
-      //let image_id = this.state.menu_items.find((item: any) => item.item_id === item_id).image_id;
-
-      //this.setState({["image_src_" + item_id]: image_id});
-
-       let menu_items_updated = this.state.menu_items.map((item: any) => 
-
-          {
-              if(item.item_id == item_id){
-
-                //let image_name = item.image_id;
-                //remove "roll"
-                let roll_index = item.image_id.indexOf("roll");
-
-                item.image_id = item.image_id.slice(0, roll_index);
-                console.log("item.image_id");
-
-              }
-
-              return item;
-
-          })
-
-      console.log(JSON.stringify(menu_items_updated));
-
-      this.setState({menu_items: menu_items_updated});
-
-
-  }
 
   render(): JSX.Element{
 

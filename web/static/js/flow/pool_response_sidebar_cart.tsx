@@ -90,99 +90,6 @@ class PoolSidebarCart extends React.Component<any, any> {
 
   }
 
-  /*increaseCartItemQuantity = (item_index:any) => {
-
-      //alert(item_id);
-
-      console.log("item_index" + item_index)
-
-      //console.log("total cart item quantity " + this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
-
-      if(this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) < 13){
-
-        this.props.increaseCartItemQuantity(item_index);
-
-      }
-
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-
-          let new_item: any = "";
-
-          if(item.item_id == item_id){
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-
-          }else{
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-
-          }
-
-          return new_item;
-
-      });
-
-      //cart_items_temp.
-
-      //alert(JSON.stringify(cart_items_temp_updated));
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
-
-  decreaseCartItemQuantity = (item_index:any) => {
-
-      //alert(item_id);
-
-      this.props.decreaseCartItemQuantity(item_index);
-
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.map(function(item: any) {
-
-          let new_item: any = "";
-
-          if(item.item_id == item_id){
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: quantity};
-
-          }else{
-
-              new_item = {item_id: item.item_id, item_title: item.item_title, quantity: item.quantity};
-
-          }
-
-          return new_item;
-
-      });
-
-      //cart_items_temp.
-
-      //alert(JSON.stringify(cart_items_temp_updated));
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }
-
-  removeItemFromCart = (item_id:any) => {
-
-      //alert(item_id);
-
-      let cart_items_temp = this.state.cart_items;
-
-      let cart_items_temp_updated = cart_items_temp.filter(function(item: any) {
-          return item.item_id !== item_id;
-      });
-
-      this.setState({cart_items: cart_items_temp_updated});
-
-  }*/
-
-  
 
   render(){
 
@@ -190,15 +97,12 @@ class PoolSidebarCart extends React.Component<any, any> {
     let { removeCartItem } = this.props;
     
 
-    
     let order_type = this.props.User.orders[0].order_type;
     let regular_items = [];
     //let mini_items = [];
     let total_items_cost = 0;
     let total_regular_items = 0;
     let total_regular_items_cost = 0;
-    //let total_mini_items = 0;
-    //let total_mini_items_cost = 0;
     let total_items = 0;
     let item_limit = "";
     let item_cost = 0;
@@ -259,10 +163,6 @@ class PoolSidebarCart extends React.Component<any, any> {
 
 
         total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
-
-        //}
-
-        //total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 
         //}
 
@@ -370,18 +270,7 @@ class PoolSidebarCart extends React.Component<any, any> {
 
         item_limit = "You have reached your item limit";
 
-    }/*else if(this.props.User.orders[0].order_type =="yours" && total_items == 11){
-
-        item_limit = "You have reached your item limit";
-
-    }else if(this.props.User.orders[0].order_type =="social" && total_items == 500){
-
-        item_limit = "You have reached your item limit";
-
-    }*/
-
-    
-
+    }
 
 
     //{this.props.params.repoName}
@@ -409,29 +298,15 @@ class PoolSidebarCart extends React.Component<any, any> {
 
         //}
 
-    }/*else if(this.props.User.orders[0].order_type == "yours"){
-
-        item_quantity_message = "Please choose between 2 and 11 scones";
-
-    }*/
+    }
                   
 
-    console.log("message");
+    //console.log("message");
 
     let checkoutButton = null;
 
 
-    /*if(this.props.User.orders[0].order_type == "pool_order"){
-
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
-
-          //{this.props.path == "/order/menu" && 
-
-          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
-
-      }
-
-    }*/if(this.props.User.orders[0].order_type == "pool"){
+    if(this.props.User.orders[0].order_type == "pool"){
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
 
@@ -439,34 +314,12 @@ class PoolSidebarCart extends React.Component<any, any> {
 
           //checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
 
-          checkoutButton = <Link to="/pool_response/weworkdtla/12-14-2017/checkout" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Checkout</Link> 
+          checkoutButton = <Link to="/pool_response/checkout" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Checkout</Link> 
 
       }
 
     }//else pool guest create order
-    /*else if(this.props.User.orders[0].order_type == "yours"){
-
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 1){
-
-          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
-
-      }
-
-    }else if(this.props.User.orders[0].order_type == "social"){
-
-      //if this.props.path "/pool_response/weworkdtla/12-14-2017/menu" 
-
-      //else don't show button
-      //"/pool_response/weworkdtla/12-14-2017/checkout"
-
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){
-
-          checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
-
-      }
-
-    }*/
-
+    
     total_items_text = "" + total_items;
 
     //pool response

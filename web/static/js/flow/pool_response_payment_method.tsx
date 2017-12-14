@@ -495,7 +495,10 @@ class PaymentMethod extends React.Component<any, any> {
                           </div>
                   
                   </div>
-                  </form>
+                </form>
+                <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processYoursSocialPoolOrder} style={{borderRadius: 0}}>Complete Order</button>
+                <br/>
+                <br/>
             </div>
     )
   }
