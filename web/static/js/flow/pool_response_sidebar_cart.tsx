@@ -282,7 +282,7 @@ class PoolSidebarCart extends React.Component<any, any> {
 
     let item_quantity_message = "";
 
-    /*if(this.props.User.orders[0].order_type == "pool_order"){
+    /*if(this.props.User.orders[0].order_type == "pool_create_pool"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
             item_quantity_message = "Please choose between 1 and 11 scones";
@@ -291,7 +291,7 @@ class PoolSidebarCart extends React.Component<any, any> {
 
     }else*/
 
-    if(this.props.User.orders[0].order_type == "pool"){
+    if(this.props.User.orders[0].order_type == "pool_response"){
         //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 0 || this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) == 11){
 
             item_quantity_message = "Please choose between 1 and 11 scones";
@@ -306,7 +306,7 @@ class PoolSidebarCart extends React.Component<any, any> {
     let checkoutButton = null;
 
 
-    if(this.props.User.orders[0].order_type == "pool"){
+    if(this.props.User.orders[0].order_type == "pool_response"){
 
       if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0) > 0){
 
@@ -423,7 +423,7 @@ class PoolSidebarCart extends React.Component<any, any> {
                   <br/>
                   if pool response
                   <br/>
-                  if pool create order
+                  if pool create pool
                   <br/>
                   <br/>
                   {this.state.cartItems.map((item: any, index: any) => <PoolResponseSidebarCartItem index={"index"} item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity("index")} descreaseCartItemQuantity={() => this.props.decreaseCartItemQuantity("index")} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}

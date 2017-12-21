@@ -15,12 +15,6 @@ import { connect } from 'react-redux';
 
 import {paymentMethodNameOnCardValidated, paymentMethodZipcodeValidated, paymentMethodCardNumberValidated, paymentMethodExpiryMonthValidated, paymentMethodExpiryYearValidated, paymentMethodSecurityCodeValidated} from './actions/order_validations.ts';
 
-/*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
-import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
-import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
-import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
-import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';*/
-
 import {setOrderStatus, setPromoCode} from './actions/order.ts';
 
 import {setPaymentNameOnCard, setPaymentZipCode, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
@@ -31,11 +25,7 @@ import {processYoursSocialPoolOrder, processPoolOrder, setDeliveryCost, termsVal
 
 //import {processYoursSocialOrder1} from './actions/'
 
-import SidebarCart from './order_sidebar_cart.tsx';
-//import DeliveryContactAddress from './order_delivery_address.tsx';
-//import Contact from './order_contact.tsx';
-//import Datetime from './order_delivery.tsx';
-//import NameContact from './name.tsx';
+import PoolResponsePromoCode from './pool_response_payment.tsx';
 
 import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
@@ -48,20 +38,12 @@ import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
 //import { getPublicMenu } from './reducers/name';
 //const Immutable  = require('immutable');
-var DatePicker = require('react-datepicker');
-var moment = require('moment');
-import axios from 'axios';
+//var DatePicker = require('react-datepicker');
+//var moment = require('moment');
+//import axios from 'axios';
 
-require('react-datepicker/dist/react-datepicker.css');
+//require('react-datepicker/dist/react-datepicker.css');
 
-
-function addTodoWithDispatch() {
-  const action = {
-    type: "VIEW_PUBLIC_MENU",
-    //text
-  }
-  //dispatch(action)
-}
 
 export interface HelloProps { 
     compiler: string; 
@@ -76,7 +58,7 @@ interface Order {
   //completed: boolean
 }
 
-class OrderDateTimeContact extends React.Component<any, any> {
+class PoolResponsePayment extends React.Component<any, any> {
   //props: Props;
 
   private cardNumber: HTMLInputElement;
@@ -90,31 +72,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     this.state = {
 
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: "",
-        business_name: "",
-        delivery_addresses: [{street: "santa monica blvd"}],
-        street: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        startDate: moment(),
-        form_inputs_validated: false,
-        first_name_classname: "form-group has-error",
-        first_name_validated: false,
-        last_name_classname: "form-group has-error",
-        last_name_validated: false,
-        contact_email_classname: "form-group has-error", 
-        contact_email_validated: false,
-        contact_mobile_classname: "form-group has-error",
-        comtact_mobile_validated: false,
         name_on_card: "form-group has-error",
-        //order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-        selected_time: "",
-        selected_specific_time: "",
-        button_complete_order_classname: "btn btn-default disabled",
+        //order: Immutable.fromJS({name: "name", contact: "contact", cart: [], button_complete_order_classname: "btn btn-default disabled",
         button_complete_order_disabled: "disabled",      
         promo_code: "",
         promo_code_discount: 0,  
@@ -145,22 +104,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
       //}
 
-      //componentDidMount = () => {
 
-        //window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
 
-        //const node = ReactDOM.findDOMNode(this.cardNumber);
-        //node.scrollIntoView({ behavior: "smooth" });
-
-
-      //}
-
-      //this.setState({name_on_card: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
   
   }
 
@@ -188,7 +134,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         //paymenterror set border color
 
         //this.setState({card_number_border_color: "red"});
-        this.setState({security_code_border_color: "red"});        
+        //this.setState({security_code_border_color: "red"});        
 
      //   this.setState({button_complete_order_classname: "btn btn-default"});
      //   this.setState({button_complete_order_disabled: ""});
@@ -611,6 +557,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                   </div>
                                 </div>
                             </form>
+                            <PoolPromoCode/>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">

@@ -37,7 +37,7 @@ import SidebarCart from './order_sidebar_cart.tsx';
 //import Datetime from './order_delivery.tsx';
 //import NameContact from './name.tsx';
 
-import OrderCart from './order_cart.tsx';
+//import OrderCart from './order_cart.tsx';
 import PaymentMethod from './payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
 

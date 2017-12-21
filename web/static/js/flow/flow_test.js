@@ -55,8 +55,8 @@ import OrderMenu from "./order_menu.tsx";
 import OrderPayment from "./order_payment.tsx";
 import OrderCheckout from './order_checkout.tsx';
 //import PaymentMethod from './order_payment_method.tsx'
-import OrderCart from "./order_cart.tsx";
-import OrderPreview from './order_preview.tsx';
+//import OrderCart from "./order_cart.tsx";
+//import OrderPreview from './order_preview.tsx';
 import OrderComplete from './order_complete.jsx';
 
 import Login from './login.tsx';
@@ -217,9 +217,7 @@ const Root = () => (
           <Route path="/pool/menu" component={PoolResponseOrderMenu} />
           <Route path="/order/menu" component={OrderMenu} />
           <Route path="/order/checkout" component={OrderCheckout} />
-          <Route path="/order/preview" component={OrderPreview} />
           <Route path="/order/payment" component={OrderPayment} />
-          <Route path="/order/cart" component={OrderCart} />
           <Route path="/order/complete" component={OrderComplete} />
         </Route>
         <Route path="/user" component={UserHomePage} />

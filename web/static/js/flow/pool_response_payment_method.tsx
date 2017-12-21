@@ -72,6 +72,8 @@ class PaymentMethod extends React.Component<any, any> {
        expiry_date_month_disabled: "",
        expiry_year_border_color: "grey",
        expiry_date_year_disabled: "",
+       button_complete_order_classname: "btn btn-default",
+       button_complete_order_disabled: false,
     };
 
     //user_type=guest
@@ -115,13 +117,6 @@ class PaymentMethod extends React.Component<any, any> {
       //const node = ReactDOM.findDOMNode(this.cardNumber);
       //node.scrollIntoView({ behavior: "smooth" });
 
-      //this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
-      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
-
   }
 
   componentWillReceiveProps = (nextProps: any) => {
@@ -138,8 +133,26 @@ class PaymentMethod extends React.Component<any, any> {
           this.setState({expiry_date_month_disabled: "disabled"});
           this.setState({expiry_date_year_disabled: "disabled"});
           this.setState({security_code_disabled: "disabled"});
+
+          this.setState({button_complete_order_classname: "btn btn-default disabled"});
+          this.setState({button_complete_order_disabled: true});
+              
       
+      }else{
+
+          this.setState({button_complete_order_classname: "btn btn-default"});
+          this.setState({button_complete_order_disabled: false});
+
       }
+
+      if(this.props.User.orderSession.paymentErrorCode == ""){
+
+
+
+
+
+      }
+
 
       if(this.props.User.orderSession.paymentErrorCode == "incorrect_cvc"){
 
